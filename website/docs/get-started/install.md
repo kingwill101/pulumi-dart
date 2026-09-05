@@ -17,8 +17,8 @@ curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scri
 Pin to an explicit version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | \
-  bash -s -- --version v0.1.0
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/pulumi-v3.1.1/scripts/install-pulumi-language-dart.sh | \
+  bash -s -- --version v3.1.1
 ```
 
 Install to a custom directory:
@@ -42,8 +42,13 @@ pulumi-dart install-language-host
 With explicit version:
 
 ```bash
-pulumi-dart install-language-host --version v0.1.0
+pulumi-dart install-language-host --version v3.1.1
 ```
+
+The Dart CLI wrapper currently supports Linux and macOS. On Windows, download
+the matching `.zip` asset from the
+[GitHub Release](https://github.com/kingwill101/pulumi-dart/releases/tag/v3.1.1),
+extract `pulumi-language-dart.exe`, and place it in a directory on `%PATH%`.
 
 ## Option B: build from source
 

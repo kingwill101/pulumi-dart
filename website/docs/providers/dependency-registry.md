@@ -2,13 +2,12 @@
 sidebar_position: 4
 ---
 
-# Dependency Registry for Generated SDKs
+# External Dependency Registries for Generated SDKs
 
-Generated provider packages can consume Dart dependency metadata from a registry file.
-
-Default community registry in this repository:
-
-- `packages/sdk_dependency_registry.yaml`
+Generated provider packages can consume Dart dependency metadata from an
+optional external registry file. This repository does not ship a default
+registry; normal provider updates use schema metadata and the tracked schema
+sources in `packages/sdks/schema_sources.json`.
 
 ## Why the registry exists
 
@@ -77,16 +76,13 @@ export PULUMI_DART_DEPENDENCY_REGISTRY_URL=https://example.com/my_registry.yaml
 pulumi package add ./provider.schema.json
 ```
 
-## Contributing registry entries to this repo
+## When to use one
 
-1. Add/update provider section in `packages/sdk_dependency_registry.yaml`
-2. Generate provider package in a clean workspace
-3. Confirm `dart pub get` resolves dependencies
-4. Run smoke test for at least one resource/invoke path
-5. Submit PR with:
-   - registry diff
-   - reproduction/generation commands
-   - validation notes
+Use an external registry only when an upstream schema omits required
+Dart-specific dependency metadata and the missing dependency cannot be inferred
+from schema references. Keep the registry alongside the consuming project or in
+a controlled team-owned location, and include its generation and validation
+details when reporting a generator issue.
 
 ## Circular dependency guidance
 

@@ -8,10 +8,10 @@ Pulumi Dart is community-maintained. This page describes practical contribution 
 
 ## Where to contribute
 
-- Core runtime SDK: `pulumi-dart/`
+- Core runtime SDK: `packages/pulumi-dart/`
 - Language host and generator: `pulumi-language-dart/`
-- Generated provider packages: `packages/<provider>/`
-- Dependency registry: `packages/sdk_dependency_registry.yaml`
+- Generated provider packages: `packages/sdks/<provider>/`
+- Provider schema sources: `packages/sdks/schema_sources.json`
 - Docs site: `website/`
 
 ## Common contribution types
@@ -22,15 +22,15 @@ Pulumi Dart is community-maintained. This page describes practical contribution 
 - Test additions (unit/integration/golden)
 - Documentation improvements and tutorials
 
-## Submitting a provider registry entry
+## Submitting a provider update
 
 Include in your PR:
 
-1. registry diff
-2. provider/schema used
-3. generation command used
-4. `dart pub get` result for generated package
-5. smoke test evidence (preview/up output summary)
+1. the provider and upstream schema version
+2. the `repodoc packages:update` command used
+3. schema and generated package changes
+4. `dart pub get`, analysis, and test results
+5. smoke-test evidence for at least one resource or invoke path
 
 ## Maintaining your own registry fork
 

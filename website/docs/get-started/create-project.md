@@ -54,6 +54,27 @@ dependencies:
   pulumi_random: ^4.21.1+1
 ```
 
+### Option B: use Git source directly (community flow)
+
+```yaml title="pubspec.yaml (Git dependencies)"
+name: pulumi_dart_quickstart
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ">=3.11.0 <4.0.0"
+
+dependencies:
+  pulumi:
+    git:
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/pulumi-dart
+  pulumi_random:
+    git:
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/sdks/random
+```
+
 Install dependencies:
 
 ```bash

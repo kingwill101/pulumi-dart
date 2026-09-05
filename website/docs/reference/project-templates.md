@@ -109,7 +109,7 @@ dependencies:
 
 dependency_overrides:
   pulumi:
-    path: /abs/path/to/pulumi-dart/pulumi-dart
+    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
 ```
 
 ## Template C: stack using generated provider package
@@ -129,7 +129,7 @@ dependencies:
 
 dependency_overrides:
   pulumi:
-    path: /abs/path/to/pulumi-dart/pulumi-dart
+    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
 ```
 
 ## Stack config example

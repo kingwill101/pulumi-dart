@@ -13,6 +13,22 @@ dart pub add pulumi
 dart pub add pulumi_random
 ```
 
+Published provider packages currently maintained from this repository include:
+
+- `pulumi_aws` and `pulumi_awsx`
+- `pulumi_cloudflare`
+- `pulumi_command`
+- `pulumi_digitalocean`
+- `pulumi_docker` and `pulumi_docker_build`
+- `pulumi_gcp`
+- `pulumi_postgresql`
+- `pulumi_random`
+- `pulumi_terraform`
+
+`pulumi_dart_faas` is also published for Dart serverless deployment patterns.
+Use `dart pub add <package>` without a hard-coded constraint to select the
+latest compatible release from pub.dev.
+
 ## Import patterns
 
 ```dart
@@ -41,13 +57,25 @@ This keeps symbols scoped and reduces collisions in larger programs.
 
 ## When to avoid pub.dev and use local/git dependencies
 
-Use local/git dependencies when:
+Use local or Git dependencies when:
 
 - provider package is not published yet
 - testing generator changes
 - validating fixes for provider-specific schema issues
 
-In these cases, switch to [Generate Provider SDKs from Schemas](./generate-provider-sdk.md).
+For a Git dependency, use this repository and the package's actual workspace
+path:
+
+```yaml
+dependencies:
+  pulumi_aws:
+    git:
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/sdks/aws
+```
+
+For generation work, continue with
+[Generate Provider SDKs from Schemas](./generate-provider-sdk.md).
 
 ## Next steps
 

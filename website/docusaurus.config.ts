@@ -78,7 +78,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Pulumi Corporation`,
+      copyright: `Copyright © ${new Date().getFullYear()} Pulumi Dart contributors`,
     },
     prism: {
       theme: prismThemes.github,
