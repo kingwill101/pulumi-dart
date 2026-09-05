@@ -7,7 +7,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingC
   /// AWS region.
   final pulumi.Input<String> region;
   /// Routing controls. See `routingControl` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>>? routingControls;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>?>? routingControls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl].
   /// [region] AWS region.

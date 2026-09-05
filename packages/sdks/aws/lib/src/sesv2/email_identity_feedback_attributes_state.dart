@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EmailIdentityFeedbackAttributes resources.
 class EmailIdentityFeedbackAttributesState {
   /// Sets the feedback forwarding configuration for the identity.
-  final pulumi.Input<bool>? emailForwardingEnabled;
-  /// The email identity.
-  final pulumi.Input<String>? emailIdentity;
+  final pulumi.Input<bool?>? emailForwardingEnabled;
+  /// Email identity.
+  final pulumi.Input<String?>? emailIdentity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [EmailIdentityFeedbackAttributesState].
   /// [emailForwardingEnabled] Sets the feedback forwarding configuration for the identity.
-  /// [emailIdentity] The email identity.
+  /// [emailIdentity] Email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const EmailIdentityFeedbackAttributesState({
     this.emailForwardingEnabled,

@@ -5,7 +5,7 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow {
   /// Custom handling for allowed requests. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllowCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllowCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow].
   /// [customRequestHandling] Custom handling for allowed requests. See below.

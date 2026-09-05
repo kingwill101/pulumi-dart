@@ -27,7 +27,7 @@ class GetListenerRuleActionForwardTargetGroup {
   factory GetListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionForwardTargetGroup(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

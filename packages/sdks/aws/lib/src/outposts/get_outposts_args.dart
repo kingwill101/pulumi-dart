@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_outposts_get_outposts_get_outposts_args_doc}
 class GetOutpostsArgs {
   /// Availability Zone name.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Availability Zone identifier.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// AWS Account identifier of the Outpost owner.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Site identifier.
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
 
   /// Creates a new [GetOutpostsArgs].
   /// [availabilityZone] Availability Zone name.

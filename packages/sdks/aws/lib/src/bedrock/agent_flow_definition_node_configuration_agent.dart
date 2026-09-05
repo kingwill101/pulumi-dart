@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationAgent {
-  /// The Amazon Resource Name (ARN) of the alias of the agent to invoke.
+  /// ARN of the alias of the agent to invoke.
   final pulumi.Input<String> agentAliasArn;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationAgent].
-  /// [agentAliasArn] The Amazon Resource Name (ARN) of the alias of the agent to invoke.
+  /// [agentAliasArn] ARN of the alias of the agent to invoke.
   const AgentFlowDefinitionNodeConfigurationAgent({
     required this.agentAliasArn,
   });

@@ -354,11 +354,11 @@ import 'email_identity_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sesv2.EmailIdentity("example", {
-///     emailIdentity: "example.com",
 ///     dkimSigningAttributes: {
 ///         domainSigningPrivateKey: "MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM...",
 ///         domainSigningSelector: "example",
 ///     },
+///     emailIdentity: "example.com",
 /// });
 /// ```
 /// ```python
@@ -366,11 +366,11 @@ import 'email_identity_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sesv2.EmailIdentity("example",
-///     email_identity="example.com",
 ///     dkim_signing_attributes={
 ///         "domain_signing_private_key": "MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM...",
 ///         "domain_signing_selector": "example",
-///     })
+///     },
+///     email_identity="example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -382,12 +382,12 @@ import 'email_identity_state.dart';
 /// {
 ///     var example = new Aws.SesV2.EmailIdentity("example", new()
 ///     {
-///         EmailIdentityDetails = "example.com",
 ///         DkimSigningAttributes = new Aws.SesV2.Inputs.EmailIdentityDkimSigningAttributesArgs
 ///         {
 ///             DomainSigningPrivateKey = "MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM...",
 ///             DomainSigningSelector = "example",
 ///         },
+///         EmailIdentityDetails = "example.com",
 ///     });
 ///
 /// });
@@ -403,11 +403,11 @@ import 'email_identity_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sesv2.NewEmailIdentity(ctx, "example", &sesv2.EmailIdentityArgs{
-/// 			EmailIdentity: pulumi.String("example.com"),
 /// 			DkimSigningAttributes: &sesv2.EmailIdentityDkimSigningAttributesArgs{
 /// 				DomainSigningPrivateKey: pulumi.String("MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM..."),
 /// 				DomainSigningSelector:   pulumi.String("example"),
 /// 			},
+/// 			EmailIdentity: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -426,11 +426,12 @@ import 'email_identity_state.dart';
 /// }
 ///
 /// resource "aws_sesv2_emailidentity" "example" {
-///   email_identity = "example.com"
 ///   dkim_signing_attributes = {
 ///     domain_signing_private_key = "MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM..."
 ///     domain_signing_selector    = "example"
 ///   }
+///   #PEM private key without headers or newline characters
+///   email_identity = "example.com"
 /// }
 /// ```
 /// ```java
@@ -456,11 +457,11 @@ import 'email_identity_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EmailIdentity("example", EmailIdentityArgs.builder()
-///             .emailIdentity("example.com")
 ///             .dkimSigningAttributes(EmailIdentityDkimSigningAttributesArgs.builder()
 ///                 .domainSigningPrivateKey("MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM...")
 ///                 .domainSigningSelector("example")
 ///                 .build())
+///             .emailIdentity("example.com")
 ///             .build());
 ///
 ///     }
@@ -471,10 +472,10 @@ import 'email_identity_state.dart';
 ///   example:
 ///     type: aws:sesv2:EmailIdentity
 ///     properties:
-///       emailIdentity: example.com
 ///       dkimSigningAttributes:
 ///         domainSigningPrivateKey: MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM...
 ///         domainSigningSelector: example
+///       emailIdentity: example.com
 /// ```
 ///
 ///
@@ -488,15 +489,15 @@ import 'email_identity_state.dart';
 class EmailIdentity extends pulumi.CustomResource {
   /// ARN of the Email Identity.
   late final pulumi.Output<String> arn;
-  /// The configuration set to use by default when sending from this identity. Note that any configuration set defined in the email sending request takes precedence.
+  /// Configuration set to use by default when sending from this identity. Any configuration set defined in the email sending request takes precedence.
   late final pulumi.Output<String?> configurationSetName;
-  /// The configuration of the DKIM authentication settings for an email domain identity.
+  /// Configuration block for the DKIM authentication settings for an email domain identity. See `dkimSigningAttributes` Block below.
   late final pulumi.Output<EmailIdentityDkimSigningAttributes> dkimSigningAttributes;
-  /// The email address or domain to verify.
+  /// Email address or domain to verify.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> emailIdentity;
-  /// The email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
+  /// Email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
   late final pulumi.Output<String> identityType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -504,9 +505,9 @@ class EmailIdentity extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
+  /// Verification status of the identity. One of `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
   late final pulumi.Output<String> verificationStatus;
-  /// Specifies whether or not the identity is verified.
+  /// Whether the identity is verified.
   late final pulumi.Output<bool> verifiedForSendingStatus;
 
   /// Creates a new [EmailIdentity].
@@ -521,7 +522,7 @@ class EmailIdentity extends pulumi.CustomResource {
           'aws:sesv2/emailIdentity:EmailIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurationSetName = registerOutput<String?>('configurationSetName');
@@ -529,8 +530,8 @@ class EmailIdentity extends pulumi.CustomResource {
     emailIdentity = registerOutput<String>('emailIdentity');
     identityType = registerOutput<String>('identityType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verificationStatus = registerOutput<String>('verificationStatus');
     verifiedForSendingStatus = registerOutput<bool>('verifiedForSendingStatus');
   }
@@ -540,11 +541,12 @@ class EmailIdentity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailIdentityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailIdentity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -564,8 +566,29 @@ class EmailIdentity extends pulumi.CustomResource {
     emailIdentity = registerOutput<String>('emailIdentity');
     identityType = registerOutput<String>('identityType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verificationStatus = registerOutput<String>('verificationStatus');
+    verifiedForSendingStatus = registerOutput<bool>('verifiedForSendingStatus');
+  }
+
+  /// Creates a typed reference to an existing [EmailIdentity] resource.
+  EmailIdentity.reference(String urn)
+    : super(
+        'aws:sesv2/emailIdentity:EmailIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configurationSetName = registerOutput<String?>('configurationSetName');
+    dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>('dkimSigningAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailIdentityDkimSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    emailIdentity = registerOutput<String>('emailIdentity');
+    identityType = registerOutput<String>('identityType');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verificationStatus = registerOutput<String>('verificationStatus');
     verifiedForSendingStatus = registerOutput<bool>('verifiedForSendingStatus');
   }

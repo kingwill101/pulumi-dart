@@ -1,10 +1,13 @@
-enum StorageType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum StorageType implements pulumi.PulumiEnum<String> {
   standard("standard"),
   gP2("gp2"),
   gP3("gp3"),
   iO1("io1");
 
   const StorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageType fromValue(String value) {

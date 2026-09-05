@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'image_builder_access_endpoint.dart';
 import 'image_builder_args.dart';
 import 'image_builder_domain_join_info.dart';
 import 'image_builder_state.dart';
@@ -14,15 +15,15 @@ import 'image_builder_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testFleet = new aws.appstream.ImageBuilder("test_fleet", {
+///     vpcConfig: {
+///         subnetIds: [example.id],
+///     },
 ///     name: "Name",
 ///     description: "Description of a ImageBuilder",
 ///     displayName: "Display name of a ImageBuilder",
 ///     enableDefaultInternetAccess: false,
 ///     imageName: "AppStream-WinServer2019-10-05-2022",
 ///     instanceType: "stream.standard.large",
-///     vpcConfig: {
-///         subnetIds: [example.id],
-///     },
 ///     tags: {
 ///         Name: "Example Image Builder",
 ///     },
@@ -33,15 +34,15 @@ import 'image_builder_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// test_fleet = aws.appstream.ImageBuilder("test_fleet",
+///     vpc_config={
+///         "subnet_ids": [example["id"]],
+///     },
 ///     name="Name",
 ///     description="Description of a ImageBuilder",
 ///     display_name="Display name of a ImageBuilder",
 ///     enable_default_internet_access=False,
 ///     image_name="AppStream-WinServer2019-10-05-2022",
 ///     instance_type="stream.standard.large",
-///     vpc_config={
-///         "subnet_ids": [example["id"]],
-///     },
 ///     tags={
 ///         "Name": "Example Image Builder",
 ///     })
@@ -56,12 +57,6 @@ import 'image_builder_vpc_config.dart';
 /// {
 ///     var testFleet = new Aws.AppStream.ImageBuilder("test_fleet", new()
 ///     {
-///         Name = "Name",
-///         Description = "Description of a ImageBuilder",
-///         DisplayName = "Display name of a ImageBuilder",
-///         EnableDefaultInternetAccess = false,
-///         ImageName = "AppStream-WinServer2019-10-05-2022",
-///         InstanceType = "stream.standard.large",
 ///         VpcConfig = new Aws.AppStream.Inputs.ImageBuilderVpcConfigArgs
 ///         {
 ///             SubnetIds = new[]
@@ -69,6 +64,12 @@ import 'image_builder_vpc_config.dart';
 ///                 example.Id,
 ///             },
 ///         },
+///         Name = "Name",
+///         Description = "Description of a ImageBuilder",
+///         DisplayName = "Display name of a ImageBuilder",
+///         EnableDefaultInternetAccess = false,
+///         ImageName = "AppStream-WinServer2019-10-05-2022",
+///         InstanceType = "stream.standard.large",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Image Builder" },
@@ -88,17 +89,17 @@ import 'image_builder_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appstream.NewImageBuilder(ctx, "test_fleet", &appstream.ImageBuilderArgs{
+/// 			VpcConfig: &appstream.ImageBuilderVpcConfigArgs{
+/// 				SubnetIds: pulumi.StringArray{
+/// 					example.Id,
+/// 				},
+/// 			},
 /// 			Name:                        pulumi.String("Name"),
 /// 			Description:                 pulumi.String("Description of a ImageBuilder"),
 /// 			DisplayName:                 pulumi.String("Display name of a ImageBuilder"),
 /// 			EnableDefaultInternetAccess: pulumi.Bool(false),
 /// 			ImageName:                   pulumi.String("AppStream-WinServer2019-10-05-2022"),
 /// 			InstanceType:                pulumi.String("stream.standard.large"),
-/// 			VpcConfig: &appstream.ImageBuilderVpcConfigArgs{
-/// 				SubnetIds: pulumi.StringArray{
-/// 					example.Id,
-/// 				},
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Image Builder"),
 /// 			},
@@ -120,15 +121,15 @@ import 'image_builder_vpc_config.dart';
 /// }
 ///
 /// resource "aws_appstream_imagebuilder" "test_fleet" {
+///   vpc_config = {
+///     subnet_ids = [example.id]
+///   }
 ///   name                           = "Name"
 ///   description                    = "Description of a ImageBuilder"
 ///   display_name                   = "Display name of a ImageBuilder"
 ///   enable_default_internet_access = false
 ///   image_name                     = "AppStream-WinServer2019-10-05-2022"
 ///   instance_type                  = "stream.standard.large"
-///   vpc_config = {
-///     subnet_ids = [example.id]
-///   }
 ///   tags = {
 ///     "Name" = "Example Image Builder"
 ///   }
@@ -157,15 +158,15 @@ import 'image_builder_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testFleet = new ImageBuilder("testFleet", ImageBuilderArgs.builder()
+///             .vpcConfig(ImageBuilderVpcConfigArgs.builder()
+///                 .subnetIds(example.id())
+///                 .build())
 ///             .name("Name")
 ///             .description("Description of a ImageBuilder")
 ///             .displayName("Display name of a ImageBuilder")
 ///             .enableDefaultInternetAccess(false)
 ///             .imageName("AppStream-WinServer2019-10-05-2022")
 ///             .instanceType("stream.standard.large")
-///             .vpcConfig(ImageBuilderVpcConfigArgs.builder()
-///                 .subnetIds(example.id())
-///                 .build())
 ///             .tags(Map.of("Name", "Example Image Builder"))
 ///             .build());
 ///
@@ -178,15 +179,15 @@ import 'image_builder_vpc_config.dart';
 ///     type: aws:appstream:ImageBuilder
 ///     name: test_fleet
 ///     properties:
+///       vpcConfig:
+///         subnetIds:
+///           - ${example.id}
 ///       name: Name
 ///       description: Description of a ImageBuilder
 ///       displayName: Display name of a ImageBuilder
 ///       enableDefaultInternetAccess: false
 ///       imageName: AppStream-WinServer2019-10-05-2022
 ///       instanceType: stream.standard.large
-///       vpcConfig:
-///         subnetIds:
-///           - ${example.id}
 ///       tags:
 ///         Name: Example Image Builder
 /// ```
@@ -201,7 +202,7 @@ import 'image_builder_vpc_config.dart';
 /// ```
 class ImageBuilder extends pulumi.CustomResource {
   /// Set of interface VPC endpoint (interface endpoint) objects. Maximum of 4. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> accessEndpoints;
+  late final pulumi.Output<List<ImageBuilderAccessEndpoint>?> accessEndpoints;
   /// Version of the AppStream 2.0 agent to use for this image builder.
   late final pulumi.Output<String> appstreamAgentVersion;
   /// ARN of the appstream image builder.
@@ -251,9 +252,9 @@ class ImageBuilder extends pulumi.CustomResource {
           'aws:appstream/imageBuilder:ImageBuilder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accessEndpoints = registerOutput<List<Map<String, dynamic>>?>('accessEndpoints');
+    accessEndpoints = registerOutput<List<ImageBuilderAccessEndpoint>?>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(guardedValue, (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     appstreamAgentVersion = registerOutput<String>('appstreamAgentVersion');
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
@@ -268,8 +269,8 @@ class ImageBuilder extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<ImageBuilderVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageBuilderVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -278,11 +279,12 @@ class ImageBuilder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImageBuilderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImageBuilder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,7 +298,7 @@ class ImageBuilder extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessEndpoints = registerOutput<List<Map<String, dynamic>>?>('accessEndpoints');
+    accessEndpoints = registerOutput<List<ImageBuilderAccessEndpoint>?>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(guardedValue, (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     appstreamAgentVersion = registerOutput<String>('appstreamAgentVersion');
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
@@ -311,8 +313,37 @@ class ImageBuilder extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfig = registerOutput<ImageBuilderVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageBuilderVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ImageBuilder] resource.
+  ImageBuilder.reference(String urn)
+    : super(
+        'aws:appstream/imageBuilder:ImageBuilder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessEndpoints = registerOutput<List<ImageBuilderAccessEndpoint>?>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(guardedValue, (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    appstreamAgentVersion = registerOutput<String>('appstreamAgentVersion');
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    domainJoinInfo = registerOutput<ImageBuilderDomainJoinInfo>('domainJoinInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageBuilderDomainJoinInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableDefaultInternetAccess = registerOutput<bool>('enableDefaultInternetAccess');
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    imageArn = registerOutput<String>('imageArn');
+    imageName = registerOutput<String>('imageName');
+    instanceType = registerOutput<String>('instanceType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<ImageBuilderVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageBuilderVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

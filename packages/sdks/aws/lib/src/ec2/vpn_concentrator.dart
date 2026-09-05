@@ -220,11 +220,11 @@ class VpnConcentrator extends pulumi.CustomResource {
           'aws:ec2/vpnConcentrator:VpnConcentrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String>('transitGatewayId');
     type = registerOutput<String>('type');
@@ -236,11 +236,12 @@ class VpnConcentrator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnConcentratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnConcentrator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,8 +256,26 @@ class VpnConcentrator extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+    type = registerOutput<String>('type');
+    vpnConcentratorId = registerOutput<String>('vpnConcentratorId');
+  }
+
+  /// Creates a typed reference to an existing [VpnConcentrator] resource.
+  VpnConcentrator.reference(String urn)
+    : super(
+        'aws:ec2/vpnConcentrator:VpnConcentrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String>('transitGatewayId');
     type = registerOutput<String>('type');

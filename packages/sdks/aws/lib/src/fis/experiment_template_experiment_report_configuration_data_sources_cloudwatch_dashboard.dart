@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard {
   /// ARN of the CloudWatch dashboard.
-  final pulumi.Input<String>? dashboardArn;
+  final pulumi.Input<String?>? dashboardArn;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard].
   /// [dashboardArn] ARN of the CloudWatch dashboard.

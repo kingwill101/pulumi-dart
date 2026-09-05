@@ -5,7 +5,7 @@ import 'get_log_data_protection_policy_document_configuration_custom_data_identi
 
 class GetLogDataProtectionPolicyDocumentConfiguration {
   /// Configures custom regular expressions to detect sensitive data. Read more in [Custom data identifiers](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL-custom-data-identifiers.html).
-  final pulumi.Input<List<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>>? customDataIdentifiers;
+  final pulumi.Input<List<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>?>? customDataIdentifiers;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentConfiguration].
   /// [customDataIdentifiers] Configures custom regular expressions to detect sensitive data. Read more in [Custom data identifiers](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL-custom-data-identifiers.html).

@@ -234,12 +234,12 @@ import 'server_workflow_details.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.transfer.Server("example", {
-///     endpointType: "VPC",
 ///     endpointDetails: {
 ///         addressAllocationIds: [exampleAwsEip.id],
 ///         subnetIds: [exampleAwsSubnet.id],
 ///         vpcId: exampleAwsVpc.id,
 ///     },
+///     endpointType: "VPC",
 /// });
 /// ```
 /// ```python
@@ -247,12 +247,12 @@ import 'server_workflow_details.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.transfer.Server("example",
-///     endpoint_type="VPC",
 ///     endpoint_details={
 ///         "address_allocation_ids": [example_aws_eip["id"]],
 ///         "subnet_ids": [example_aws_subnet["id"]],
 ///         "vpc_id": example_aws_vpc["id"],
-///     })
+///     },
+///     endpoint_type="VPC")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -264,7 +264,6 @@ import 'server_workflow_details.dart';
 /// {
 ///     var example = new Aws.Transfer.Server("example", new()
 ///     {
-///         EndpointType = "VPC",
 ///         EndpointDetails = new Aws.Transfer.Inputs.ServerEndpointDetailsArgs
 ///         {
 ///             AddressAllocationIds = new[]
@@ -277,6 +276,7 @@ import 'server_workflow_details.dart';
 ///             },
 ///             VpcId = exampleAwsVpc.Id,
 ///         },
+///         EndpointType = "VPC",
 ///     });
 ///
 /// });
@@ -292,7 +292,6 @@ import 'server_workflow_details.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewServer(ctx, "example", &transfer.ServerArgs{
-/// 			EndpointType: pulumi.String("VPC"),
 /// 			EndpointDetails: &transfer.ServerEndpointDetailsArgs{
 /// 				AddressAllocationIds: pulumi.StringArray{
 /// 					exampleAwsEip.Id,
@@ -302,6 +301,7 @@ import 'server_workflow_details.dart';
 /// 				},
 /// 				VpcId: pulumi.Any(exampleAwsVpc.Id),
 /// 			},
+/// 			EndpointType: pulumi.String("VPC"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -320,12 +320,12 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
-///   endpoint_type = "VPC"
 ///   endpoint_details = {
 ///     address_allocation_ids = [exampleAwsEip.id]
 ///     subnet_ids             = [exampleAwsSubnet.id]
 ///     vpc_id                 = exampleAwsVpc.id
 ///   }
+///   endpoint_type = "VPC"
 /// }
 /// ```
 /// ```java
@@ -351,12 +351,12 @@ import 'server_workflow_details.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
-///             .endpointType("VPC")
 ///             .endpointDetails(ServerEndpointDetailsArgs.builder()
 ///                 .addressAllocationIds(exampleAwsEip.id())
 ///                 .subnetIds(exampleAwsSubnet.id())
 ///                 .vpcId(exampleAwsVpc.id())
 ///                 .build())
+///             .endpointType("VPC")
 ///             .build());
 ///
 ///     }
@@ -367,13 +367,13 @@ import 'server_workflow_details.dart';
 ///   example:
 ///     type: aws:transfer:Server
 ///     properties:
-///       endpointType: VPC
 ///       endpointDetails:
 ///         addressAllocationIds:
 ///           - ${exampleAwsEip.id}
 ///         subnetIds:
 ///           - ${exampleAwsSubnet.id}
 ///         vpcId: ${exampleAwsVpc.id}
+///       endpointType: VPC
 /// ```
 ///
 ///
@@ -605,11 +605,11 @@ import 'server_workflow_details.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.transfer.Server("example", {
-///     endpointType: "VPC",
 ///     endpointDetails: {
 ///         subnetIds: [exampleAwsSubnet.id],
 ///         vpcId: exampleAwsVpc.id,
 ///     },
+///     endpointType: "VPC",
 ///     protocols: [
 ///         "FTP",
 ///         "FTPS",
@@ -624,11 +624,11 @@ import 'server_workflow_details.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.transfer.Server("example",
-///     endpoint_type="VPC",
 ///     endpoint_details={
 ///         "subnet_ids": [example_aws_subnet["id"]],
 ///         "vpc_id": example_aws_vpc["id"],
 ///     },
+///     endpoint_type="VPC",
 ///     protocols=[
 ///         "FTP",
 ///         "FTPS",
@@ -647,7 +647,6 @@ import 'server_workflow_details.dart';
 /// {
 ///     var example = new Aws.Transfer.Server("example", new()
 ///     {
-///         EndpointType = "VPC",
 ///         EndpointDetails = new Aws.Transfer.Inputs.ServerEndpointDetailsArgs
 ///         {
 ///             SubnetIds = new[]
@@ -656,6 +655,7 @@ import 'server_workflow_details.dart';
 ///             },
 ///             VpcId = exampleAwsVpc.Id,
 ///         },
+///         EndpointType = "VPC",
 ///         Protocols = new[]
 ///         {
 ///             "FTP",
@@ -679,13 +679,13 @@ import 'server_workflow_details.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewServer(ctx, "example", &transfer.ServerArgs{
-/// 			EndpointType: pulumi.String("VPC"),
 /// 			EndpointDetails: &transfer.ServerEndpointDetailsArgs{
 /// 				SubnetIds: pulumi.StringArray{
 /// 					exampleAwsSubnet.Id,
 /// 				},
 /// 				VpcId: pulumi.Any(exampleAwsVpc.Id),
 /// 			},
+/// 			EndpointType: pulumi.String("VPC"),
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("FTP"),
 /// 				pulumi.String("FTPS"),
@@ -711,11 +711,11 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
-///   endpoint_type = "VPC"
 ///   endpoint_details = {
 ///     subnet_ids = [exampleAwsSubnet.id]
 ///     vpc_id     = exampleAwsVpc.id
 ///   }
+///   endpoint_type          = "VPC"
 ///   protocols              = ["FTP", "FTPS"]
 ///   certificate            = exampleAwsAcmCertificate.arn
 ///   identity_provider_type = "API_GATEWAY"
@@ -745,11 +745,11 @@ import 'server_workflow_details.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
-///             .endpointType("VPC")
 ///             .endpointDetails(ServerEndpointDetailsArgs.builder()
 ///                 .subnetIds(exampleAwsSubnet.id())
 ///                 .vpcId(exampleAwsVpc.id())
 ///                 .build())
+///             .endpointType("VPC")
 ///             .protocols(
 ///                 "FTP",
 ///                 "FTPS")
@@ -766,11 +766,11 @@ import 'server_workflow_details.dart';
 ///   example:
 ///     type: aws:transfer:Server
 ///     properties:
-///       endpointType: VPC
 ///       endpointDetails:
 ///         subnetIds:
 ///           - ${exampleAwsSubnet.id}
 ///         vpcId: ${exampleAwsVpc.id}
+///       endpointType: VPC
 ///       protocols:
 ///         - FTP
 ///         - FTPS
@@ -790,11 +790,11 @@ import 'server_workflow_details.dart';
 /// const transfer = new aws.cloudwatch.LogGroup("transfer", {namePrefix: "transfer_test_"});
 /// const transferAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["transfer.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -816,11 +816,11 @@ import 'server_workflow_details.dart';
 ///
 /// transfer = aws.cloudwatch.LogGroup("transfer", name_prefix="transfer_test_")
 /// transfer_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["transfer.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// iam_for_transfer = aws.iam.Role("iam_for_transfer",
@@ -852,7 +852,6 @@ import 'server_workflow_details.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -864,6 +863,7 @@ import 'server_workflow_details.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -921,7 +921,6 @@ import 'server_workflow_details.dart';
 /// 		transferAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -930,6 +929,7 @@ import 'server_workflow_details.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -979,11 +979,11 @@ import 'server_workflow_details.dart';
 ///
 /// data "aws_iam_getpolicydocument" "transferAssumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transfer.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -1038,11 +1038,11 @@ import 'server_workflow_details.dart';
 ///
 ///         final var transferAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("transfer.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -1093,11 +1093,11 @@ import 'server_workflow_details.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - transfer.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -1116,9 +1116,9 @@ import 'server_workflow_details.dart';
 ///
 /// Certain resource arguments, such as `hostKey`, cannot be read via the API and imported into the provider. This provider will display a difference for these arguments the first run after import if declared in the provider configuration for an imported resource.
 class Server extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of Transfer Server
+  /// ARN of Transfer Server
   late final pulumi.Output<String> arn;
-  /// Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM) certificate. Required when `protocols` is set to `FTPS`.
+  /// ARN of the AWS Certificate Manager (ACM) certificate. Required when `protocols` is set to `FTPS`.
   late final pulumi.Output<String?> certificate;
   /// Directory service ID of the directory service you want to connect to with an `identityProviderType` of `AWS_DIRECTORY_SERVICE`.
   late final pulumi.Output<String?> directoryId;
@@ -1126,7 +1126,7 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<String?> domain;
   /// Endpoint of the Transfer Server (e.g., `s-12345678.server.transfer.REGION.amazonaws.com`)
   late final pulumi.Output<String> endpoint;
-  /// Virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. See `endpointDetails` Block below for details.
+  /// VPC endpoint settings that you want to configure for your SFTP server. See `endpointDetails` Block below for details.
   late final pulumi.Output<ServerEndpointDetails?> endpointDetails;
   /// Type of endpoint that you want your SFTP server connect to. If you connect to a `VPC` (or `VPC_ENDPOINT`), your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set `PUBLIC`. Defaults to `PUBLIC`.
   late final pulumi.Output<String?> endpointType;
@@ -1140,11 +1140,11 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<String> hostKeyFingerprint;
   /// Mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice. Using `AWS_DIRECTORY_SERVICE` will allow for authentication against AWS Managed Active Directory or Microsoft Active Directory in your on-premises environment, or in AWS using AD Connectors. Use the `AWS_LAMBDA` value to directly use a Lambda function as your identity provider. If you choose this value, you must specify the ARN for the lambda function in the `function` argument.
   late final pulumi.Output<String?> identityProviderType;
-  /// Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identityProviderType` of `API_GATEWAY`.
+  /// ARN of the IAM role used to authenticate the user account with an `identityProviderType` of `API_GATEWAY`.
   late final pulumi.Output<String?> invocationRole;
   /// Type of IP addresses for the AWS Transfer Family endpoint. Valid values are `IPV4` and `DUALSTACK`. The default value is `IPV4`. When `ipAddressType` is set to `DUALSTACK`, `addressAllocationIds` cannot be specified in the `endpointDetails` block. Updating `ipAddressType` stops the server and then restarts it with the new `ipAddressType` value.
   late final pulumi.Output<String> ipAddressType;
-  /// Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
+  /// ARN of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
   late final pulumi.Output<String?> loggingRole;
   /// Specify a string to display when users connect to a server. This string is displayed after the user authenticates. The SFTP protocol does not support post-authentication display banners.
   late final pulumi.Output<String?> postAuthenticationLoginBanner;
@@ -1185,7 +1185,8 @@ class Server extends pulumi.CustomResource {
           'aws:transfer/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['hostKey', 'postAuthenticationLoginBanner', 'preAuthenticationLoginBanner'],
         ) {
     arn = registerOutput<String>('arn');
     certificate = registerOutput<String?>('certificate');
@@ -1196,23 +1197,23 @@ class Server extends pulumi.CustomResource {
     endpointType = registerOutput<String?>('endpointType');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     function = registerOutput<String?>('function');
-    hostKey = registerOutput<String?>('hostKey');
+    hostKey = registerOutput<String?>('hostKey', isSecret: true);
     hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
     identityProviderType = registerOutput<String?>('identityProviderType');
     invocationRole = registerOutput<String?>('invocationRole');
     ipAddressType = registerOutput<String>('ipAddressType');
     loggingRole = registerOutput<String?>('loggingRole');
-    postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner');
-    preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner');
+    postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner', isSecret: true);
+    preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner', isSecret: true);
     protocolDetails = registerOutput<ServerProtocolDetails>('protocolDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerProtocolDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     s3StorageOptions = registerOutput<ServerS3StorageOptions>('s3StorageOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerS3StorageOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPolicyName = registerOutput<String?>('securityPolicyName');
     sftpAuthenticationMethods = registerOutput<String>('sftpAuthenticationMethods');
-    structuredLogDestinations = registerOutput<List<String>?>('structuredLogDestinations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    structuredLogDestinations = registerOutput<List<String>?>('structuredLogDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String?>('url');
     workflowDetails = registerOutput<ServerWorkflowDetails?>('workflowDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerWorkflowDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1222,11 +1223,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1249,23 +1251,63 @@ class Server extends pulumi.CustomResource {
     endpointType = registerOutput<String?>('endpointType');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     function = registerOutput<String?>('function');
-    hostKey = registerOutput<String?>('hostKey');
+    hostKey = registerOutput<String?>('hostKey', isSecret: true);
     hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
     identityProviderType = registerOutput<String?>('identityProviderType');
     invocationRole = registerOutput<String?>('invocationRole');
     ipAddressType = registerOutput<String>('ipAddressType');
     loggingRole = registerOutput<String?>('loggingRole');
-    postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner');
-    preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner');
+    postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner', isSecret: true);
+    preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner', isSecret: true);
     protocolDetails = registerOutput<ServerProtocolDetails>('protocolDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerProtocolDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     s3StorageOptions = registerOutput<ServerS3StorageOptions>('s3StorageOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerS3StorageOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPolicyName = registerOutput<String?>('securityPolicyName');
     sftpAuthenticationMethods = registerOutput<String>('sftpAuthenticationMethods');
-    structuredLogDestinations = registerOutput<List<String>?>('structuredLogDestinations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    structuredLogDestinations = registerOutput<List<String>?>('structuredLogDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String?>('url');
+    workflowDetails = registerOutput<ServerWorkflowDetails?>('workflowDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerWorkflowDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'aws:transfer/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['hostKey', 'postAuthenticationLoginBanner', 'preAuthenticationLoginBanner'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    certificate = registerOutput<String?>('certificate');
+    directoryId = registerOutput<String?>('directoryId');
+    domain = registerOutput<String?>('domain');
+    endpoint = registerOutput<String>('endpoint');
+    endpointDetails = registerOutput<ServerEndpointDetails?>('endpointDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerEndpointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointType = registerOutput<String?>('endpointType');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    function = registerOutput<String?>('function');
+    hostKey = registerOutput<String?>('hostKey', isSecret: true);
+    hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
+    identityProviderType = registerOutput<String?>('identityProviderType');
+    invocationRole = registerOutput<String?>('invocationRole');
+    ipAddressType = registerOutput<String>('ipAddressType');
+    loggingRole = registerOutput<String?>('loggingRole');
+    postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner', isSecret: true);
+    preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner', isSecret: true);
+    protocolDetails = registerOutput<ServerProtocolDetails>('protocolDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerProtocolDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    s3StorageOptions = registerOutput<ServerS3StorageOptions>('s3StorageOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerS3StorageOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityPolicyName = registerOutput<String?>('securityPolicyName');
+    sftpAuthenticationMethods = registerOutput<String>('sftpAuthenticationMethods');
+    structuredLogDestinations = registerOutput<List<String>?>('structuredLogDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String?>('url');
     workflowDetails = registerOutput<ServerWorkflowDetails?>('workflowDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerWorkflowDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

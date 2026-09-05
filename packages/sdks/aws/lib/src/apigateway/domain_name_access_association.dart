@@ -127,7 +127,7 @@ import 'domain_name_access_association_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the API Gateway domain name access association.
+/// - `arn` (String) ARN of the API Gateway domain name access association.
 ///
 ///
 /// Using `pulumi import`, import API Gateway domain name acces associations as using their `arn`. For example:
@@ -163,15 +163,15 @@ class DomainNameAccessAssociation extends pulumi.CustomResource {
           'aws:apigateway/domainNameAccessAssociation:DomainNameAccessAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessAssociationSource = registerOutput<String>('accessAssociationSource');
     accessAssociationSourceType = registerOutput<String>('accessAssociationSourceType');
     arn = registerOutput<String>('arn');
     domainNameArn = registerOutput<String>('domainNameArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DomainNameAccessAssociation] resource's state with the given [name] and [id].
@@ -179,11 +179,12 @@ class DomainNameAccessAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainNameAccessAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainNameAccessAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,7 +203,25 @@ class DomainNameAccessAssociation extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     domainNameArn = registerOutput<String>('domainNameArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DomainNameAccessAssociation] resource.
+  DomainNameAccessAssociation.reference(String urn)
+    : super(
+        'aws:apigateway/domainNameAccessAssociation:DomainNameAccessAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessAssociationSource = registerOutput<String>('accessAssociationSource');
+    accessAssociationSourceType = registerOutput<String>('accessAssociationSourceType');
+    arn = registerOutput<String>('arn');
+    domainNameArn = registerOutput<String>('domainNameArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

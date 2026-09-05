@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agentcore_gateway_rule_action.dart';
 import 'agentcore_gateway_rule_args.dart';
+import 'agentcore_gateway_rule_condition.dart';
 import 'agentcore_gateway_rule_state.dart';
+import 'agentcore_gateway_rule_system.dart';
 import 'agentcore_gateway_rule_timeouts.dart';
 
 /// Manages an AWS Bedrock AgentCore Gateway Rule. Rules define conditions and actions that control how requests are routed and processed through a gateway, including principal-based access control, path-based routing, weighted target routing, and configuration bundle overrides. Rules are evaluated in order of `priority` (lower numbers first).
@@ -15,9 +18,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreGatewayRule("example", {
-///     gatewayIdentifier: exampleAwsBedrockagentcoreGateway.gatewayId,
-///     priority: 100,
-///     description: "Route all requests to the primary target",
 ///     actions: [{
 ///         routeToTarget: {
 ///             staticRoute: {
@@ -25,6 +25,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///             },
 ///         },
 ///     }],
+///     gatewayIdentifier: exampleAwsBedrockagentcoreGateway.gatewayId,
+///     priority: 100,
+///     description: "Route all requests to the primary target",
 /// });
 /// ```
 /// ```python
@@ -32,16 +35,16 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreGatewayRule("example",
-///     gateway_identifier=example_aws_bedrockagentcore_gateway["gatewayId"],
-///     priority=100,
-///     description="Route all requests to the primary target",
 ///     actions=[{
 ///         "route_to_target": {
 ///             "static_route": {
 ///                 "target_name": example_aws_bedrockagentcore_gateway_target["name"],
 ///             },
 ///         },
-///     }])
+///     }],
+///     gateway_identifier=example_aws_bedrockagentcore_gateway["gatewayId"],
+///     priority=100,
+///     description="Route all requests to the primary target")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,9 +56,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreGatewayRule("example", new()
 ///     {
-///         GatewayIdentifier = exampleAwsBedrockagentcoreGateway.GatewayId,
-///         Priority = 100,
-///         Description = "Route all requests to the primary target",
 ///         Actions = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreGatewayRuleActionArgs
@@ -69,6 +69,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         GatewayIdentifier = exampleAwsBedrockagentcoreGateway.GatewayId,
+///         Priority = 100,
+///         Description = "Route all requests to the primary target",
 ///     });
 ///
 /// });
@@ -84,9 +87,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreGatewayRule(ctx, "example", &bedrock.AgentcoreGatewayRuleArgs{
-/// 			GatewayIdentifier: pulumi.Any(exampleAwsBedrockagentcoreGateway.GatewayId),
-/// 			Priority:          pulumi.Int(100),
-/// 			Description:       pulumi.String("Route all requests to the primary target"),
 /// 			Actions: bedrock.AgentcoreGatewayRuleActionArray{
 /// 				&bedrock.AgentcoreGatewayRuleActionArgs{
 /// 					RouteToTarget: &bedrock.AgentcoreGatewayRuleActionRouteToTargetArgs{
@@ -96,6 +96,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			GatewayIdentifier: pulumi.Any(exampleAwsBedrockagentcoreGateway.GatewayId),
+/// 			Priority:          pulumi.Int(100),
+/// 			Description:       pulumi.String("Route all requests to the primary target"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,9 +117,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoregatewayrule" "example" {
-///   gateway_identifier = exampleAwsBedrockagentcoreGateway.gatewayId
-///   priority           = 100
-///   description        = "Route all requests to the primary target"
 ///   actions {
 ///     route_to_target = {
 ///       static_route = {
@@ -124,6 +124,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///       }
 ///     }
 ///   }
+///   gateway_identifier = exampleAwsBedrockagentcoreGateway.gatewayId
+///   priority           = 100
+///   description        = "Route all requests to the primary target"
 /// }
 /// ```
 /// ```java
@@ -151,9 +154,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreGatewayRule("example", AgentcoreGatewayRuleArgs.builder()
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
-///             .priority(100)
-///             .description("Route all requests to the primary target")
 ///             .actions(AgentcoreGatewayRuleActionArgs.builder()
 ///                 .routeToTarget(AgentcoreGatewayRuleActionRouteToTargetArgs.builder()
 ///                     .staticRoute(AgentcoreGatewayRuleActionRouteToTargetStaticRouteArgs.builder()
@@ -161,6 +161,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .priority(100)
+///             .description("Route all requests to the primary target")
 ///             .build());
 ///
 ///     }
@@ -171,13 +174,13 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreGatewayRule
 ///     properties:
-///       gatewayIdentifier: ${exampleAwsBedrockagentcoreGateway.gatewayId}
-///       priority: 100
-///       description: Route all requests to the primary target
 ///       actions:
 ///         - routeToTarget:
 ///             staticRoute:
 ///               targetName: ${exampleAwsBedrockagentcoreGatewayTarget.name}
+///       gatewayIdentifier: ${exampleAwsBedrockagentcoreGateway.gatewayId}
+///       priority: 100
+///       description: Route all requests to the primary target
 /// ```
 ///
 ///
@@ -189,8 +192,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const canary = new aws.bedrock.AgentcoreGatewayRule("canary", {
-///     gatewayIdentifier: example.gatewayId,
-///     priority: 100,
 ///     actions: [{
 ///         routeToTarget: {
 ///             weightedRoute: {
@@ -209,6 +210,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///             },
 ///         },
 ///     }],
+///     gatewayIdentifier: example.gatewayId,
+///     priority: 100,
 /// });
 /// ```
 /// ```python
@@ -216,8 +219,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// canary = aws.bedrock.AgentcoreGatewayRule("canary",
-///     gateway_identifier=example["gatewayId"],
-///     priority=100,
 ///     actions=[{
 ///         "route_to_target": {
 ///             "weighted_route": {
@@ -235,7 +236,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                 ],
 ///             },
 ///         },
-///     }])
+///     }],
+///     gateway_identifier=example["gatewayId"],
+///     priority=100)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -247,8 +250,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// {
 ///     var canary = new Aws.Bedrock.AgentcoreGatewayRule("canary", new()
 ///     {
-///         GatewayIdentifier = example.GatewayId,
-///         Priority = 100,
 ///         Actions = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreGatewayRuleActionArgs
@@ -276,6 +277,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         GatewayIdentifier = example.GatewayId,
+///         Priority = 100,
 ///     });
 ///
 /// });
@@ -291,8 +294,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreGatewayRule(ctx, "canary", &bedrock.AgentcoreGatewayRuleArgs{
-/// 			GatewayIdentifier: pulumi.Any(example.GatewayId),
-/// 			Priority:          pulumi.Int(100),
 /// 			Actions: bedrock.AgentcoreGatewayRuleActionArray{
 /// 				&bedrock.AgentcoreGatewayRuleActionArgs{
 /// 					RouteToTarget: &bedrock.AgentcoreGatewayRuleActionRouteToTargetArgs{
@@ -313,6 +314,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			GatewayIdentifier: pulumi.Any(example.GatewayId),
+/// 			Priority:          pulumi.Int(100),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -331,8 +334,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoregatewayrule" "canary" {
-///   gateway_identifier = example.gatewayId
-///   priority           = 100
 ///   actions {
 ///     route_to_target = {
 ///       weighted_route = {
@@ -348,6 +349,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///       }
 ///     }
 ///   }
+///   gateway_identifier = example.gatewayId
+///   priority           = 100
 /// }
 /// ```
 /// ```java
@@ -376,8 +379,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var canary = new AgentcoreGatewayRule("canary", AgentcoreGatewayRuleArgs.builder()
-///             .gatewayIdentifier(example.gatewayId())
-///             .priority(100)
 ///             .actions(AgentcoreGatewayRuleActionArgs.builder()
 ///                 .routeToTarget(AgentcoreGatewayRuleActionRouteToTargetArgs.builder()
 ///                     .weightedRoute(AgentcoreGatewayRuleActionRouteToTargetWeightedRouteArgs.builder()
@@ -395,6 +396,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .gatewayIdentifier(example.gatewayId())
+///             .priority(100)
 ///             .build());
 ///
 ///     }
@@ -405,8 +408,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   canary:
 ///     type: aws:bedrock:AgentcoreGatewayRule
 ///     properties:
-///       gatewayIdentifier: ${example.gatewayId}
-///       priority: 100
 ///       actions:
 ///         - routeToTarget:
 ///             weightedRoute:
@@ -417,6 +418,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                 - name: canary
 ///                   targetName: ${canaryAwsBedrockagentcoreGatewayTarget.name}
 ///                   weight: 10
+///       gatewayIdentifier: ${example.gatewayId}
+///       priority: 100
 /// ```
 ///
 ///
@@ -430,8 +433,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetPartition = aws.getPartition({});
 /// const restricted = new aws.bedrock.AgentcoreGatewayRule("restricted", {
-///     gatewayIdentifier: exampleAwsBedrockagentcoreGateway.gatewayId,
-///     priority: 50,
 ///     actions: [{
 ///         routeToTarget: {
 ///             staticRoute: {
@@ -456,6 +457,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///             },
 ///         },
 ///     ],
+///     gatewayIdentifier: exampleAwsBedrockagentcoreGateway.gatewayId,
+///     priority: 50,
 /// });
 /// ```
 /// ```python
@@ -465,8 +468,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// current_get_partition = aws.get_partition()
 /// restricted = aws.bedrock.AgentcoreGatewayRule("restricted",
-///     gateway_identifier=example_aws_bedrockagentcore_gateway["gatewayId"],
-///     priority=50,
 ///     actions=[{
 ///         "route_to_target": {
 ///             "static_route": {
@@ -490,7 +491,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                 "any_ofs": ["/api/*"],
 ///             },
 ///         },
-///     ])
+///     ],
+///     gateway_identifier=example_aws_bedrockagentcore_gateway["gatewayId"],
+///     priority=50)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -506,8 +509,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///
 ///     var restricted = new Aws.Bedrock.AgentcoreGatewayRule("restricted", new()
 ///     {
-///         GatewayIdentifier = exampleAwsBedrockagentcoreGateway.GatewayId,
-///         Priority = 50,
 ///         Actions = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreGatewayRuleActionArgs
@@ -556,6 +557,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         GatewayIdentifier = exampleAwsBedrockagentcoreGateway.GatewayId,
+///         Priority = 50,
 ///     });
 ///
 /// });
@@ -580,8 +583,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreGatewayRule(ctx, "restricted", &bedrock.AgentcoreGatewayRuleArgs{
-/// 			GatewayIdentifier: pulumi.Any(exampleAwsBedrockagentcoreGateway.GatewayId),
-/// 			Priority:          pulumi.Int(50),
 /// 			Actions: bedrock.AgentcoreGatewayRuleActionArray{
 /// 				&bedrock.AgentcoreGatewayRuleActionArgs{
 /// 					RouteToTarget: &bedrock.AgentcoreGatewayRuleActionRouteToTargetArgs{
@@ -612,6 +613,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			GatewayIdentifier: pulumi.Any(exampleAwsBedrockagentcoreGateway.GatewayId),
+/// 			Priority:          pulumi.Int(50),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -635,8 +638,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoregatewayrule" "restricted" {
-///   gateway_identifier = exampleAwsBedrockagentcoreGateway.gatewayId
-///   priority           = 50
 ///   actions {
 ///     route_to_target = {
 ///       static_route = {
@@ -659,6 +660,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///       any_ofs = ["/api/*"]
 ///     }
 ///   }
+///   gateway_identifier = exampleAwsBedrockagentcoreGateway.gatewayId
+///   priority           = 50
 /// }
 /// ```
 /// ```java
@@ -700,8 +703,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///             .build());
 ///
 ///         var restricted = new AgentcoreGatewayRule("restricted", AgentcoreGatewayRuleArgs.builder()
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
-///             .priority(50)
 ///             .actions(AgentcoreGatewayRuleActionArgs.builder()
 ///                 .routeToTarget(AgentcoreGatewayRuleActionRouteToTargetArgs.builder()
 ///                     .staticRoute(AgentcoreGatewayRuleActionRouteToTargetStaticRouteArgs.builder()
@@ -725,6 +726,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                         .anyOfs("/api/*")
 ///                         .build())
 ///                     .build())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .priority(50)
 ///             .build());
 ///
 ///     }
@@ -735,8 +738,6 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   restricted:
 ///     type: aws:bedrock:AgentcoreGatewayRule
 ///     properties:
-///       gatewayIdentifier: ${exampleAwsBedrockagentcoreGateway.gatewayId}
-///       priority: 50
 ///       actions:
 ///         - routeToTarget:
 ///             staticRoute:
@@ -750,6 +751,8 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///         - matchPaths:
 ///             anyOfs:
 ///               - /api/*
+///       gatewayIdentifier: ${exampleAwsBedrockagentcoreGateway.gatewayId}
+///       priority: 50
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -784,9 +787,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// ```
 class AgentcoreGatewayRule extends pulumi.CustomResource {
   /// One or two `action` blocks defining what happens when the rule's conditions match. See Action below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<AgentcoreGatewayRuleAction>?> actions;
   /// Up to two `condition` blocks that must all be satisfied for the rule's actions to apply. See Condition below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
+  late final pulumi.Output<List<AgentcoreGatewayRuleCondition>?> conditions;
   /// Description of the rule. Between 1 and 256 characters.
   late final pulumi.Output<String> description;
   /// ARN of the gateway that owns the rule.
@@ -802,7 +805,7 @@ class AgentcoreGatewayRule extends pulumi.CustomResource {
   /// Identifier of the rule.
   late final pulumi.Output<String> ruleId;
   /// Present when the rule is system-managed. See `system` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> systems;
+  late final pulumi.Output<List<AgentcoreGatewayRuleSystem>> systems;
   late final pulumi.Output<AgentcoreGatewayRuleTimeouts?> timeouts;
 
   /// Creates a new [AgentcoreGatewayRule].
@@ -817,17 +820,17 @@ class AgentcoreGatewayRule extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGatewayRule:AgentcoreGatewayRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    actions = registerOutput<List<AgentcoreGatewayRuleAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleAction>(guardedValue, (value) => AgentcoreGatewayRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    conditions = registerOutput<List<AgentcoreGatewayRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleCondition>(guardedValue, (value) => AgentcoreGatewayRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     gatewayArn = registerOutput<String>('gatewayArn');
     gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
     ruleId = registerOutput<String>('ruleId');
-    systems = registerOutput<List<Map<String, dynamic>>>('systems');
+    systems = registerOutput<List<AgentcoreGatewayRuleSystem>>('systems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleSystem>(guardedValue, (value) => AgentcoreGatewayRuleSystem.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<AgentcoreGatewayRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -836,11 +839,12 @@ class AgentcoreGatewayRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreGatewayRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreGatewayRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -854,15 +858,36 @@ class AgentcoreGatewayRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    actions = registerOutput<List<AgentcoreGatewayRuleAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleAction>(guardedValue, (value) => AgentcoreGatewayRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    conditions = registerOutput<List<AgentcoreGatewayRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleCondition>(guardedValue, (value) => AgentcoreGatewayRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     gatewayArn = registerOutput<String>('gatewayArn');
     gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
     ruleId = registerOutput<String>('ruleId');
-    systems = registerOutput<List<Map<String, dynamic>>>('systems');
+    systems = registerOutput<List<AgentcoreGatewayRuleSystem>>('systems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleSystem>(guardedValue, (value) => AgentcoreGatewayRuleSystem.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<AgentcoreGatewayRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreGatewayRule] resource.
+  AgentcoreGatewayRule.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreGatewayRule:AgentcoreGatewayRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<AgentcoreGatewayRuleAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleAction>(guardedValue, (value) => AgentcoreGatewayRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    conditions = registerOutput<List<AgentcoreGatewayRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleCondition>(guardedValue, (value) => AgentcoreGatewayRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    ruleId = registerOutput<String>('ruleId');
+    systems = registerOutput<List<AgentcoreGatewayRuleSystem>>('systems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleSystem>(guardedValue, (value) => AgentcoreGatewayRuleSystem.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<AgentcoreGatewayRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

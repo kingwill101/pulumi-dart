@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'organizational_unit_account.dart';
 import 'organizational_unit_args.dart';
 import 'organizational_unit_state.dart';
 
@@ -134,7 +135,7 @@ import 'organizational_unit_state.dart';
 /// ```
 class OrganizationalUnit extends pulumi.CustomResource {
   /// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> accounts;
+  late final pulumi.Output<List<OrganizationalUnitAccount>> accounts;
   /// ARN of the organizational unit
   late final pulumi.Output<String> arn;
   /// The name for the organizational unit
@@ -158,14 +159,14 @@ class OrganizationalUnit extends pulumi.CustomResource {
           'aws:organizations/organizationalUnit:OrganizationalUnit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accounts = registerOutput<List<Map<String, dynamic>>>('accounts');
+    accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationalUnitAccount>(guardedValue, (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     parentId = registerOutput<String>('parentId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [OrganizationalUnit] resource's state with the given [name] and [id].
@@ -173,11 +174,12 @@ class OrganizationalUnit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationalUnitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationalUnit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,11 +193,28 @@ class OrganizationalUnit extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accounts = registerOutput<List<Map<String, dynamic>>>('accounts');
+    accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationalUnitAccount>(guardedValue, (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     parentId = registerOutput<String>('parentId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [OrganizationalUnit] resource.
+  OrganizationalUnit.reference(String urn)
+    : super(
+        'aws:organizations/organizationalUnit:OrganizationalUnit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationalUnitAccount>(guardedValue, (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    parentId = registerOutput<String>('parentId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

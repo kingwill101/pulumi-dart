@@ -1,10 +1,13 @@
-enum ProtocolType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ProtocolType implements pulumi.PulumiEnum<String> {
   all("all"),
   tCP("tcp"),
   uDP("udp"),
   iCMP("icmp");
 
   const ProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtocolType fromValue(String value) {

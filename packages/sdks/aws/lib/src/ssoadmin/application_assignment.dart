@@ -269,7 +269,7 @@ class ApplicationAssignment extends pulumi.CustomResource {
           'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     principalId = registerOutput<String>('principalId');
@@ -282,11 +282,12 @@ class ApplicationAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,21 @@ class ApplicationAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationArn = registerOutput<String>('applicationArn');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationAssignment] resource.
+  ApplicationAssignment.reference(String urn)
+    : super(
+        'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationArn = registerOutput<String>('applicationArn');
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');

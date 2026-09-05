@@ -9,11 +9,11 @@ import 'get_patch_baselines_filter.dart';
 /// {@macro pulumi_ssm_get_patch_baselines_get_patch_baselines_args_doc}
 class GetPatchBaselinesArgs {
   /// Only return baseline identities where `defaultBaseline` is `true`.
-  final pulumi.Input<bool>? defaultBaselines;
+  final pulumi.Input<bool?>? defaultBaselines;
   /// Key-value pairs used to filter the results. See `filter` below.
-  final pulumi.Input<List<GetPatchBaselinesFilter>>? filters;
+  final pulumi.Input<List<GetPatchBaselinesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetPatchBaselinesArgs].
   /// [defaultBaselines] Only return baseline identities where `defaultBaseline` is `true`.

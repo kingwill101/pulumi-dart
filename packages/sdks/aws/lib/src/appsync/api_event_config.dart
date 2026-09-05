@@ -17,7 +17,7 @@ class ApiEventConfig {
   /// List of default authentication modes for subscribing. See `event_config.default_subscribe_auth_mode` Block below.
   final pulumi.Input<List<ApiEventConfigDefaultSubscribeAuthMode>> defaultSubscribeAuthModes;
   /// Logging configuration. See `logConfig` Block below.
-  final pulumi.Input<ApiEventConfigLogConfig>? logConfig;
+  final pulumi.Input<ApiEventConfigLogConfig?>? logConfig;
 
   /// Creates a new [ApiEventConfig].
   /// [authProviders] List of authentication providers. See `event_config.auth_provider` Block below.

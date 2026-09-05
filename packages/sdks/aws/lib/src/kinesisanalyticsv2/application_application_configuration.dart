@@ -14,19 +14,19 @@ class ApplicationApplicationConfiguration {
   /// The code location and type parameters for the application.
   final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfiguration> applicationCodeConfiguration;
   /// The encryption configuration for the application. This can be used to encrypt data at rest in the application.
-  final pulumi.Input<ApplicationApplicationConfigurationApplicationEncryptionConfiguration>? applicationEncryptionConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationApplicationEncryptionConfiguration?>? applicationEncryptionConfiguration;
   /// Describes whether snapshots are enabled for a Flink-based application.
-  final pulumi.Input<ApplicationApplicationConfigurationApplicationSnapshotConfiguration>? applicationSnapshotConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationApplicationSnapshotConfiguration?>? applicationSnapshotConfiguration;
   /// Describes execution properties for a Flink-based application.
-  final pulumi.Input<ApplicationApplicationConfigurationEnvironmentProperties>? environmentProperties;
+  final pulumi.Input<ApplicationApplicationConfigurationEnvironmentProperties?>? environmentProperties;
   /// The configuration of a Flink-based application.
-  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfiguration>? flinkApplicationConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfiguration?>? flinkApplicationConfiguration;
   /// Describes the starting properties for a Flink-based application.
-  final pulumi.Input<ApplicationApplicationConfigurationRunConfiguration>? runConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationRunConfiguration?>? runConfiguration;
   /// The configuration of a SQL-based application.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfiguration>? sqlApplicationConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfiguration?>? sqlApplicationConfiguration;
   /// The VPC configuration of a Flink-based application.
-  final pulumi.Input<ApplicationApplicationConfigurationVpcConfiguration>? vpcConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationVpcConfiguration?>? vpcConfiguration;
 
   /// Creates a new [ApplicationApplicationConfiguration].
   /// [applicationCodeConfiguration] The code location and type parameters for the application.

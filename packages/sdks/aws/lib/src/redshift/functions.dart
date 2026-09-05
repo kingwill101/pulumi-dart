@@ -25,16 +25,7 @@ import 'get_subnet_group_result.dart';
 ///     clusterIdentifier: "example-cluster",
 /// });
 /// const exampleStream = new aws.kinesis.FirehoseDeliveryStream("example_stream", {
-///     name: "kinesis-firehose-example-stream",
-///     destination: "redshift",
 ///     redshiftConfiguration: {
-///         roleArn: firehoseRole.arn,
-///         clusterJdbcurl: example.then(example => `jdbc:redshift://${example.endpoint}/${example.databaseName}`),
-///         username: "exampleuser",
-///         password: "Exampl3Pass",
-///         dataTableName: "example-table",
-///         copyOptions: "delimiter '|'",
-///         dataTableColumns: "example-col",
 ///         s3Configuration: {
 ///             roleArn: firehoseRole.arn,
 ///             bucketArn: bucket.arn,
@@ -42,7 +33,16 @@ import 'get_subnet_group_result.dart';
 ///             bufferInterval: 400,
 ///             compressionFormat: "GZIP",
 ///         },
+///         roleArn: firehoseRole.arn,
+///         clusterJdbcurl: example.then(example => `jdbc:redshift://${example.endpoint}/${example.databaseName}`),
+///         username: "exampleuser",
+///         password: "Exampl3Pass",
+///         dataTableName: "example-table",
+///         copyOptions: "delimiter '|'",
+///         dataTableColumns: "example-col",
 ///     },
+///     name: "kinesis-firehose-example-stream",
+///     destination: "redshift",
 /// });
 /// ```
 /// ```python
@@ -51,16 +51,7 @@ import 'get_subnet_group_result.dart';
 ///
 /// example = aws.redshift.get_cluster(cluster_identifier="example-cluster")
 /// example_stream = aws.kinesis.FirehoseDeliveryStream("example_stream",
-///     name="kinesis-firehose-example-stream",
-///     destination="redshift",
 ///     redshift_configuration={
-///         "role_arn": firehose_role["arn"],
-///         "cluster_jdbcurl": f"jdbc:redshift://{example.endpoint}/{example.database_name}",
-///         "username": "exampleuser",
-///         "password": "Exampl3Pass",
-///         "data_table_name": "example-table",
-///         "copy_options": "delimiter '|'",
-///         "data_table_columns": "example-col",
 ///         "s3_configuration": {
 ///             "role_arn": firehose_role["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -68,7 +59,16 @@ import 'get_subnet_group_result.dart';
 ///             "buffer_interval": 400,
 ///             "compression_format": "GZIP",
 ///         },
-///     })
+///         "role_arn": firehose_role["arn"],
+///         "cluster_jdbcurl": f"jdbc:redshift://{example.endpoint}/{example.database_name}",
+///         "username": "exampleuser",
+///         "password": "Exampl3Pass",
+///         "data_table_name": "example-table",
+///         "copy_options": "delimiter '|'",
+///         "data_table_columns": "example-col",
+///     },
+///     name="kinesis-firehose-example-stream",
+///     destination="redshift")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -85,17 +85,8 @@ import 'get_subnet_group_result.dart';
 ///
 ///     var exampleStream = new Aws.Kinesis.FirehoseDeliveryStream("example_stream", new()
 ///     {
-///         Name = "kinesis-firehose-example-stream",
-///         Destination = "redshift",
 ///         RedshiftConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamRedshiftConfigurationArgs
 ///         {
-///             RoleArn = firehoseRole.Arn,
-///             ClusterJdbcurl = $"jdbc:redshift://{example.Apply(getClusterResult => getClusterResult.Endpoint)}/{example.Apply(getClusterResult => getClusterResult.DatabaseName)}",
-///             Username = "exampleuser",
-///             Password = "Exampl3Pass",
-///             DataTableName = "example-table",
-///             CopyOptions = "delimiter '|'",
-///             DataTableColumns = "example-col",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehoseRole.Arn,
@@ -104,7 +95,16 @@ import 'get_subnet_group_result.dart';
 ///                 BufferInterval = 400,
 ///                 CompressionFormat = "GZIP",
 ///             },
+///             RoleArn = firehoseRole.Arn,
+///             ClusterJdbcurl = $"jdbc:redshift://{example.Apply(getClusterResult => getClusterResult.Endpoint)}/{example.Apply(getClusterResult => getClusterResult.DatabaseName)}",
+///             Username = "exampleuser",
+///             Password = "Exampl3Pass",
+///             DataTableName = "example-table",
+///             CopyOptions = "delimiter '|'",
+///             DataTableColumns = "example-col",
 ///         },
+///         Name = "kinesis-firehose-example-stream",
+///         Destination = "redshift",
 ///     });
 ///
 /// });
@@ -127,16 +127,7 @@ import 'get_subnet_group_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "example_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-example-stream"),
-/// 			Destination: pulumi.String("redshift"),
 /// 			RedshiftConfiguration: &kinesis.FirehoseDeliveryStreamRedshiftConfigurationArgs{
-/// 				RoleArn:          pulumi.Any(firehoseRole.Arn),
-/// 				ClusterJdbcurl:   pulumi.Sprintf("jdbc:redshift://%v/%v", example.Endpoint, example.DatabaseName),
-/// 				Username:         pulumi.String("exampleuser"),
-/// 				Password:         pulumi.String("Exampl3Pass"),
-/// 				DataTableName:    pulumi.String("example-table"),
-/// 				CopyOptions:      pulumi.String("delimiter '|'"),
-/// 				DataTableColumns: pulumi.String("example-col"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehoseRole.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -144,7 +135,16 @@ import 'get_subnet_group_result.dart';
 /// 					BufferInterval:    400,
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
+/// 				RoleArn:          pulumi.Any(firehoseRole.Arn),
+/// 				ClusterJdbcurl:   pulumi.Sprintf("jdbc:redshift://%v/%v", example.Endpoint, example.DatabaseName),
+/// 				Username:         pulumi.String("exampleuser"),
+/// 				Password:         pulumi.String("Exampl3Pass"),
+/// 				DataTableName:    pulumi.String("example-table"),
+/// 				CopyOptions:      pulumi.String("delimiter '|'"),
+/// 				DataTableColumns: pulumi.String("example-col"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-example-stream"),
+/// 			Destination: pulumi.String("redshift"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,16 +167,7 @@ import 'get_subnet_group_result.dart';
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "example_stream" {
-///   name        = "kinesis-firehose-example-stream"
-///   destination = "redshift"
 ///   redshift_configuration = {
-///     role_arn           = firehoseRole.arn
-///     cluster_jdbcurl    ="jdbc:redshift://${data.aws_redshift_getcluster.example.endpoint}/${data.aws_redshift_getcluster.example.database_name}"
-///     username           = "exampleuser"
-///     password           = "Exampl3Pass"
-///     data_table_name    = "example-table"
-///     copy_options       = "delimiter '|'"
-///     data_table_columns = "example-col"
 ///     s3_configuration = {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
@@ -184,7 +175,17 @@ import 'get_subnet_group_result.dart';
 ///       buffer_interval    = 400
 ///       compression_format = "GZIP"
 ///     }
+///     role_arn           = firehoseRole.arn
+///     cluster_jdbcurl    ="jdbc:redshift://${data.aws_redshift_getcluster.example.endpoint}/${data.aws_redshift_getcluster.example.database_name}"
+///     username           = "exampleuser"
+///     password           = "Exampl3Pass"
+///     data_table_name    = "example-table"
+///     copy_options       = "delimiter '|'"
+///     data_table_columns = "example-col"
 ///   }
+///   # the default delimiter
+///   name        = "kinesis-firehose-example-stream"
+///   destination = "redshift"
 /// }
 /// ```
 /// ```java
@@ -217,16 +218,7 @@ import 'get_subnet_group_result.dart';
 ///             .build());
 ///
 ///         var exampleStream = new FirehoseDeliveryStream("exampleStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-example-stream")
-///             .destination("redshift")
 ///             .redshiftConfiguration(FirehoseDeliveryStreamRedshiftConfigurationArgs.builder()
-///                 .roleArn(firehoseRole.arn())
-///                 .clusterJdbcurl(String.format("jdbc:redshift://%s/%s", example.endpoint(),example.databaseName()))
-///                 .username("exampleuser")
-///                 .password("Exampl3Pass")
-///                 .dataTableName("example-table")
-///                 .copyOptions("delimiter '|'")
-///                 .dataTableColumns("example-col")
 ///                 .s3Configuration(FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehoseRole.arn())
 ///                     .bucketArn(bucket.arn())
@@ -234,7 +226,16 @@ import 'get_subnet_group_result.dart';
 ///                     .bufferInterval(400)
 ///                     .compressionFormat("GZIP")
 ///                     .build())
+///                 .roleArn(firehoseRole.arn())
+///                 .clusterJdbcurl(String.format("jdbc:redshift://%s/%s", example.endpoint(),example.databaseName()))
+///                 .username("exampleuser")
+///                 .password("Exampl3Pass")
+///                 .dataTableName("example-table")
+///                 .copyOptions("delimiter '|'")
+///                 .dataTableColumns("example-col")
 ///                 .build())
+///             .name("kinesis-firehose-example-stream")
+///             .destination("redshift")
 ///             .build());
 ///
 ///     }
@@ -246,9 +247,13 @@ import 'get_subnet_group_result.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: example_stream
 ///     properties:
-///       name: kinesis-firehose-example-stream
-///       destination: redshift
 ///       redshiftConfiguration:
+///         s3Configuration:
+///           roleArn: ${firehoseRole.arn}
+///           bucketArn: ${bucket.arn}
+///           bufferSize: 10
+///           bufferInterval: 400
+///           compressionFormat: GZIP
 ///         roleArn: ${firehoseRole.arn}
 ///         clusterJdbcurl: jdbc:redshift://${example.endpoint}/${example.databaseName}
 ///         username: exampleuser
@@ -256,12 +261,8 @@ import 'get_subnet_group_result.dart';
 ///         dataTableName: example-table
 ///         copyOptions: delimiter '|'
 ///         dataTableColumns: example-col
-///         s3Configuration:
-///           roleArn: ${firehoseRole.arn}
-///           bucketArn: ${bucket.arn}
-///           bufferSize: 10
-///           bufferInterval: 400
-///           compressionFormat: GZIP
+///       name: kinesis-firehose-example-stream
+///       destination: redshift
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -282,6 +283,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshift/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Provides redshift cluster temporary credentials.
@@ -409,6 +421,17 @@ Future<GetClusterCredentialsResult> getClusterCredentials(
   return GetClusterCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterCredentialsResult> getClusterCredentialsOutput(
+  GetClusterCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshift/getClusterCredentials:getClusterCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterCredentialsResult.fromMap);
+}
+
 /// Data source for managing AWS Redshift Data Shares.
 ///
 /// ## Example Usage
@@ -517,6 +540,17 @@ Future<GetDataSharesResult> getDataShares(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataSharesResult.fromMap(result);
+}
+
+pulumi.Output<GetDataSharesResult> getDataSharesOutput(
+  GetDataSharesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshift/getDataShares:getDataShares',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSharesResult.fromMap);
 }
 
 /// Information about Redshift Orderable Clusters and valid parameter combinations.
@@ -661,6 +695,17 @@ Future<GetOrderableClusterResult> getOrderableCluster(
   return GetOrderableClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetOrderableClusterResult> getOrderableClusterOutput(
+  GetOrderableClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshift/getOrderableCluster:getOrderableCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrderableClusterResult.fromMap);
+}
+
 /// Data source for managing AWS Redshift Producer Data Shares.
 ///
 /// ## Example Usage
@@ -781,6 +826,17 @@ Future<GetProducerDataSharesResult> getProducerDataShares(
   return GetProducerDataSharesResult.fromMap(result);
 }
 
+pulumi.Output<GetProducerDataSharesResult> getProducerDataSharesOutput(
+  GetProducerDataSharesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshift/getProducerDataShares:getProducerDataShares',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProducerDataSharesResult.fromMap);
+}
+
 /// Provides details about a specific redshift subnet group.
 ///
 /// ## Example Usage
@@ -897,4 +953,15 @@ Future<GetSubnetGroupResult> getSubnetGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
+  GetSubnetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshift/getSubnetGroup:getSubnetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetGroupResult.fromMap);
 }

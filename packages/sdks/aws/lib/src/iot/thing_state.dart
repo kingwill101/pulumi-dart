@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Thing resources.
 class ThingState {
   /// The ARN of the thing.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Map of attributes of the thing.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
   /// The default client ID.
-  final pulumi.Input<String>? defaultClientId;
+  final pulumi.Input<String?>? defaultClientId;
   /// The name of the thing.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The thing type name.
-  final pulumi.Input<String>? thingTypeName;
+  final pulumi.Input<String?>? thingTypeName;
   /// The current version of the thing record in the registry.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [ThingState].
   /// [arn] The ARN of the thing.
@@ -57,7 +57,7 @@ class ThingState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       thingTypeName: (() { final guardedValue = map['thingTypeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

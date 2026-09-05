@@ -8,61 +8,61 @@ import 'ontap_volume_tiering_policy.dart';
 /// Input properties used for looking up and filtering OntapVolume resources.
 class OntapVolumeState {
   /// Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregateConfiguration` Block] for details.
-  final pulumi.Input<OntapVolumeAggregateConfiguration>? aggregateConfiguration;
-  /// Amazon Resource Name of the volune.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<OntapVolumeAggregateConfiguration?>? aggregateConfiguration;
+  /// ARN of the volune.
+  final pulumi.Input<String?>? arn;
   /// Whether to allow a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
-  final pulumi.Input<bool>? bypassSnaplockEnterpriseRetention;
+  final pulumi.Input<bool?>? bypassSnaplockEnterpriseRetention;
   /// Whether tags for the volume should be copied to backups. This value defaults to `false`.
-  final pulumi.Input<bool>? copyTagsToBackups;
+  final pulumi.Input<bool?>? copyTagsToBackups;
   /// File system for the volume, e.g. `fs-12345679`
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// Map of tags to apply to the volume's final backup.
-  final pulumi.Input<Map<String, String>>? finalBackupTags;
+  final pulumi.Input<Map<String, String>?>? finalBackupTags;
   /// FlexCache endpoint type of the volume, Valid values are `NONE`, `ORIGIN`, `CACHE`. Default value is `NONE`. These can be set by the ONTAP CLI or API and are use with FlexCache feature.
-  final pulumi.Input<String>? flexcacheEndpointType;
+  final pulumi.Input<String?>? flexcacheEndpointType;
   /// Location in the storage virtual machine's namespace where the volume is mounted. The junctionPath must have a leading forward slash, such as `/vol3`
-  final pulumi.Input<String>? junctionPath;
+  final pulumi.Input<String?>? junctionPath;
   /// Name of the Volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of volume, valid values are `RW`, `DP`. Default value is `RW`. These can be set by the ONTAP CLI or API. This setting is used as part of migration and replication [Migrating to Amazon FSx for NetApp ONTAP](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap.html)
-  final pulumi.Input<String>? ontapVolumeType;
+  final pulumi.Input<String?>? ontapVolumeType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`.
-  final pulumi.Input<String>? securityStyle;
+  final pulumi.Input<String?>? securityStyle;
   /// Size of the volume, in megabytes (MB), that you are creating. Can be used for any size but required for volumes over 2 PB. Either sizeInBytes or sizeInMegabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
-  final pulumi.Input<String>? sizeInBytes;
+  final pulumi.Input<String?>? sizeInBytes;
   /// Size of the volume, in megabytes (MB), that you are creating. Supported when creating volumes under 2 PB. Either sizeInBytes or sizeInMegabytes must be specified. Minimum size for `FLEXGROUP` volumes are 100GiB per constituent.
-  final pulumi.Input<int>? sizeInMegabytes;
+  final pulumi.Input<int?>? sizeInMegabytes;
   /// Whether to skip the default final backup taken when the volume is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
-  final pulumi.Input<bool>? skipFinalBackup;
+  final pulumi.Input<bool?>? skipFinalBackup;
   /// SnapLock configuration for an FSx for ONTAP volume. See `snaplockConfiguration` Block for details.
-  final pulumi.Input<OntapVolumeSnaplockConfiguration>? snaplockConfiguration;
+  final pulumi.Input<OntapVolumeSnaplockConfiguration?>? snaplockConfiguration;
   /// Snapshot policy for the volume. See [snapshot policies](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snapshots-ontap.html#snapshot-policies) in the Amazon FSx ONTAP User Guide
-  final pulumi.Input<String>? snapshotPolicy;
+  final pulumi.Input<String?>? snapshotPolicy;
   /// Whether to enable deduplication, compression, and compaction storage efficiency features on the volume.
-  final pulumi.Input<bool>? storageEfficiencyEnabled;
+  final pulumi.Input<bool?>? storageEfficiencyEnabled;
   /// Storage virtual machine in which to create the volume.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? storageVirtualMachineId;
+  final pulumi.Input<String?>? storageVirtualMachineId;
   /// Map of tags to assign to the volume. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Data tiering policy for an FSx for ONTAP volume. See `tieringPolicy` Block for details.
-  final pulumi.Input<OntapVolumeTieringPolicy>? tieringPolicy;
+  final pulumi.Input<OntapVolumeTieringPolicy?>? tieringPolicy;
   /// Volume's UUID (universally unique identifier).
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Styles of volume, valid values are `FLEXVOL`, `FLEXGROUP`. Default value is `FLEXVOL`. FLEXGROUPS have a larger minimum and maximum size. See Volume Styles for more details. [Volume Styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-styles.html)
-  final pulumi.Input<String>? volumeStyle;
+  final pulumi.Input<String?>? volumeStyle;
   /// Type of volume, currently the only valid value is `ONTAP`.
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
 
   /// Creates a new [OntapVolumeState].
   /// [aggregateConfiguration] Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregateConfiguration` Block] for details.
-  /// [arn] Amazon Resource Name of the volune.
+  /// [arn] ARN of the volune.
   /// [bypassSnaplockEnterpriseRetention] Whether to allow a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
   /// [copyTagsToBackups] Whether tags for the volume should be copied to backups. This value defaults to `false`.
   /// [fileSystemId] File system for the volume, e.g. `fs-12345679`
@@ -159,7 +159,7 @@ class OntapVolumeState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityStyle: (() { final guardedValue = map['securityStyle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInMegabytes: (() { final guardedValue = map['sizeInMegabytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeInMegabytes: (() { final guardedValue = map['sizeInMegabytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       skipFinalBackup: (() { final guardedValue = map['skipFinalBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       snaplockConfiguration: (() { final guardedValue = map['snaplockConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OntapVolumeSnaplockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       snapshotPolicy: (() { final guardedValue = map['snapshotPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

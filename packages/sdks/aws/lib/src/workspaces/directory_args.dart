@@ -14,39 +14,39 @@ import 'directory_workspace_creation_properties.dart';
 /// {@macro pulumi_workspaces_directory_directory_args_doc}
 class DirectoryArgs {
   /// Configuration for Active Directory integration when `workspaceType` is set to `POOLS`. Defined below.
-  final pulumi.Input<DirectoryActiveDirectoryConfig>? activeDirectoryConfig;
+  final pulumi.Input<DirectoryActiveDirectoryConfig?>? activeDirectoryConfig;
   /// Configuration of certificate-based authentication (CBA) integration. Requires SAML authentication to be enabled. Defined below.
-  final pulumi.Input<DirectoryCertificateBasedAuthProperties>? certificateBasedAuthProperties;
+  final pulumi.Input<DirectoryCertificateBasedAuthProperties?>? certificateBasedAuthProperties;
   /// The directory identifier for registration in WorkSpaces service.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// The identifiers of the IP access control groups associated with the directory.
-  final pulumi.Input<List<String>>? ipGroupIds;
+  final pulumi.Input<List<String>?>? ipGroupIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration of SAML authentication integration. Defined below.
-  final pulumi.Input<DirectorySamlProperties>? samlProperties;
+  final pulumi.Input<DirectorySamlProperties?>? samlProperties;
   /// Permissions to enable or disable self-service capabilities when `workspaceType` is set to `PERSONAL`.. Defined below.
-  final pulumi.Input<DirectorySelfServicePermissions>? selfServicePermissions;
+  final pulumi.Input<DirectorySelfServicePermissions?>? selfServicePermissions;
   /// The identifiers of the subnets where the directory resides.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Tenancy of the WorkSpaces directory. Valid values are `DEDICATED` or `SHARED`.
-  final pulumi.Input<String>? tenancy;
+  final pulumi.Input<String?>? tenancy;
   /// Specifies the user identity type for the WorkSpaces directory. Valid values are `CUSTOMER_MANAGED`, `AWS_DIRECTORY_SERVICE`, `AWS_IAM_IDENTITY_CENTER`.
   ///
   /// &gt; **Note:** When `workspaceType` is set to `POOLS`, the `directoryId` is automatically generated and cannot be manually set.
-  final pulumi.Input<String>? userIdentityType;
+  final pulumi.Input<String?>? userIdentityType;
   /// Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
-  final pulumi.Input<DirectoryWorkspaceAccessProperties>? workspaceAccessProperties;
+  final pulumi.Input<DirectoryWorkspaceAccessProperties?>? workspaceAccessProperties;
   /// Default properties that are used for creating WorkSpaces. Defined below.
-  final pulumi.Input<DirectoryWorkspaceCreationProperties>? workspaceCreationProperties;
+  final pulumi.Input<DirectoryWorkspaceCreationProperties?>? workspaceCreationProperties;
   /// The description of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
-  final pulumi.Input<String>? workspaceDirectoryDescription;
+  final pulumi.Input<String?>? workspaceDirectoryDescription;
   /// The name of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
-  final pulumi.Input<String>? workspaceDirectoryName;
+  final pulumi.Input<String?>? workspaceDirectoryName;
   /// Specifies the type of WorkSpaces directory. Valid values are `PERSONAL` and `POOLS`. Default is `PERSONAL`.
-  final pulumi.Input<String>? workspaceType;
+  final pulumi.Input<String?>? workspaceType;
 
   /// Creates a new [DirectoryArgs].
   /// [activeDirectoryConfig] Configuration for Active Directory integration when `workspaceType` is set to `POOLS`. Defined below.

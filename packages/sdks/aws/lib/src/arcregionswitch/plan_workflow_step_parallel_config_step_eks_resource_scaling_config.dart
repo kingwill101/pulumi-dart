@@ -10,17 +10,17 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
   /// EKS clusters. See `eksClusters` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>>? eksClusters;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>?>? eksClusters;
   /// Kubernetes resource type. See `kubernetesResourceType` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>>? kubernetesResourceTypes;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>?>? kubernetesResourceTypes;
   /// Scaling resources. See `scalingResources` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>>? scalingResources;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>?>? scalingResources;
   /// Target capacity percentage.
   final pulumi.Input<int> targetPercent;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
   /// Ungraceful behavior configuration. See `workflow.step.eks_resource_scaling_config.ungraceful` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>?>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEksResourceScalingConfig].
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
@@ -58,8 +58,8 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
       eksClusters: (() { final guardedValue = map['eksClusters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster.fromMap((value as Map).cast<String, dynamic>()))); })(),
       kubernetesResourceTypes: (() { final guardedValue = map['kubernetesResourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scalingResources: (() { final guardedValue = map['scalingResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetPercent: pulumi.Input.fromValue(map['targetPercent'] as int),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetPercent: pulumi.Input.fromValue((map['targetPercent'] as num).toInt()),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

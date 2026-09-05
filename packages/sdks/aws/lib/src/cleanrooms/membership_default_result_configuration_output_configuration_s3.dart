@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MembershipDefaultResultConfigurationOutputConfigurationS3 {
   final pulumi.Input<String> bucket;
-  final pulumi.Input<String>? keyPrefix;
+  final pulumi.Input<String?>? keyPrefix;
   final pulumi.Input<String> resultFormat;
 
   /// Creates a new [MembershipDefaultResultConfigurationOutputConfigurationS3].

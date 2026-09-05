@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering StreamConsumer resources.
 class StreamConsumerState {
-  /// Amazon Resource Name (ARN) of the stream consumer.
-  final pulumi.Input<String>? arn;
+  /// ARN of the stream consumer.
+  final pulumi.Input<String?>? arn;
   /// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Name of the stream consumer.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
-  final pulumi.Input<String>? streamArn;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? region;
+  /// ARN of the data stream the consumer is registered with.
+  final pulumi.Input<String?>? streamArn;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [StreamConsumerState].
-  /// [arn] Amazon Resource Name (ARN) of the stream consumer.
+  /// [arn] ARN of the stream consumer.
   /// [creationTimestamp] Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
   /// [name] Name of the stream consumer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [streamArn] Amazon Resource Name (ARN) of the data stream the consumer is registered with.
+  /// [streamArn] ARN of the data stream the consumer is registered with.
   /// [tags] Optional.
   /// [tagsAll] Optional.
   const StreamConsumerState({

@@ -184,13 +184,14 @@ class ApiKey extends pulumi.CustomResource {
           'aws:appsync/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['key'],
         ) {
     apiId = registerOutput<String>('apiId');
     apiKeyId = registerOutput<String>('apiKeyId');
     description = registerOutput<String>('description');
     expires = registerOutput<String?>('expires');
-    key = registerOutput<String>('key');
+    key = registerOutput<String>('key', isSecret: true);
     region = registerOutput<String>('region');
   }
 
@@ -199,11 +200,12 @@ class ApiKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,7 +223,25 @@ class ApiKey extends pulumi.CustomResource {
     apiKeyId = registerOutput<String>('apiKeyId');
     description = registerOutput<String>('description');
     expires = registerOutput<String?>('expires');
-    key = registerOutput<String>('key');
+    key = registerOutput<String>('key', isSecret: true);
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ApiKey] resource.
+  ApiKey.reference(String urn)
+    : super(
+        'aws:appsync/apiKey:ApiKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['key'],
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    apiKeyId = registerOutput<String>('apiKeyId');
+    description = registerOutput<String>('description');
+    expires = registerOutput<String?>('expires');
+    key = registerOutput<String>('key', isSecret: true);
     region = registerOutput<String>('region');
   }
 }

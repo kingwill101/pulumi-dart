@@ -9,11 +9,11 @@ import 'get_eips_filter.dart';
 /// {@macro pulumi_ec2_get_eips_get_eips_args_doc}
 class GetEipsArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetEipsFilter>>? filters;
+  final pulumi.Input<List<GetEipsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired Elastic IPs.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetEipsArgs].
   /// [filters] Custom filter block as described below.

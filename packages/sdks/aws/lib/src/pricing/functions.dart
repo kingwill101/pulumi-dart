@@ -13,7 +13,6 @@ import 'get_product_result.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.pricing.getProduct({
-///     serviceCode: "AmazonEC2",
 ///     filters: [
 ///         {
 ///             field: "instanceType",
@@ -44,14 +43,14 @@ import 'get_product_result.dart';
 ///             value: "Used",
 ///         },
 ///     ],
+///     serviceCode: "AmazonEC2",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.pricing.get_product(service_code="AmazonEC2",
-///     filters=[
+/// example = aws.pricing.get_product(filters=[
 ///         {
 ///             "field": "instanceType",
 ///             "value": "c5.xlarge",
@@ -80,7 +79,8 @@ import 'get_product_result.dart';
 ///             "field": "capacitystatus",
 ///             "value": "Used",
 ///         },
-///     ])
+///     ],
+///     service_code="AmazonEC2")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -92,7 +92,6 @@ import 'get_product_result.dart';
 /// {
 ///     var example = Aws.Pricing.GetProduct.Invoke(new()
 ///     {
-///         ServiceCode = "AmazonEC2",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Pricing.Inputs.GetProductFilterInputArgs
@@ -131,6 +130,7 @@ import 'get_product_result.dart';
 ///                 Value = "Used",
 ///             },
 ///         },
+///         ServiceCode = "AmazonEC2",
 ///     });
 ///
 /// });
@@ -146,7 +146,6 @@ import 'get_product_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := pricing.GetProduct(ctx, &pricing.GetProductArgs{
-/// 			ServiceCode: "AmazonEC2",
 /// 			Filters: []pricing.GetProductFilter{
 /// 				{
 /// 					Field: "instanceType",
@@ -177,6 +176,7 @@ import 'get_product_result.dart';
 /// 					Value: "Used",
 /// 				},
 /// 			},
+/// 			ServiceCode: "AmazonEC2",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -195,7 +195,6 @@ import 'get_product_result.dart';
 /// }
 ///
 /// data "aws_pricing_getproduct" "example" {
-///   service_code = "AmazonEC2"
 ///   filters {
 ///     field = "instanceType"
 ///     value = "c5.xlarge"
@@ -224,6 +223,7 @@ import 'get_product_result.dart';
 ///     field = "capacitystatus"
 ///     value = "Used"
 ///   }
+///   service_code = "AmazonEC2"
 /// }
 /// ```
 /// ```java
@@ -249,7 +249,6 @@ import 'get_product_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = PricingFunctions.getProduct(GetProductArgs.builder()
-///             .serviceCode("AmazonEC2")
 ///             .filters(
 ///                 GetProductFilterArgs.builder()
 ///                     .field("instanceType")
@@ -279,6 +278,7 @@ import 'get_product_result.dart';
 ///                     .field("capacitystatus")
 ///                     .value("Used")
 ///                     .build())
+///             .serviceCode("AmazonEC2")
 ///             .build());
 ///
 ///     }
@@ -290,7 +290,6 @@ import 'get_product_result.dart';
 ///     fn::invoke:
 ///       function: aws:pricing:getProduct
 ///       arguments:
-///         serviceCode: AmazonEC2
 ///         filters:
 ///           - field: instanceType
 ///             value: c5.xlarge
@@ -306,6 +305,7 @@ import 'get_product_result.dart';
 ///             value: Shared
 ///           - field: capacitystatus
 ///             value: Used
+///         serviceCode: AmazonEC2
 /// ```
 ///
 ///
@@ -315,7 +315,6 @@ import 'get_product_result.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.pricing.getProduct({
-///     serviceCode: "AmazonRedshift",
 ///     filters: [
 ///         {
 ///             field: "instanceType",
@@ -326,14 +325,14 @@ import 'get_product_result.dart';
 ///             value: "US East (N. Virginia)",
 ///         },
 ///     ],
+///     serviceCode: "AmazonRedshift",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.pricing.get_product(service_code="AmazonRedshift",
-///     filters=[
+/// example = aws.pricing.get_product(filters=[
 ///         {
 ///             "field": "instanceType",
 ///             "value": "ds1.xlarge",
@@ -342,7 +341,8 @@ import 'get_product_result.dart';
 ///             "field": "location",
 ///             "value": "US East (N. Virginia)",
 ///         },
-///     ])
+///     ],
+///     service_code="AmazonRedshift")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -354,7 +354,6 @@ import 'get_product_result.dart';
 /// {
 ///     var example = Aws.Pricing.GetProduct.Invoke(new()
 ///     {
-///         ServiceCode = "AmazonRedshift",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Pricing.Inputs.GetProductFilterInputArgs
@@ -368,6 +367,7 @@ import 'get_product_result.dart';
 ///                 Value = "US East (N. Virginia)",
 ///             },
 ///         },
+///         ServiceCode = "AmazonRedshift",
 ///     });
 ///
 /// });
@@ -383,7 +383,6 @@ import 'get_product_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := pricing.GetProduct(ctx, &pricing.GetProductArgs{
-/// 			ServiceCode: "AmazonRedshift",
 /// 			Filters: []pricing.GetProductFilter{
 /// 				{
 /// 					Field: "instanceType",
@@ -394,6 +393,7 @@ import 'get_product_result.dart';
 /// 					Value: "US East (N. Virginia)",
 /// 				},
 /// 			},
+/// 			ServiceCode: "AmazonRedshift",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -412,7 +412,6 @@ import 'get_product_result.dart';
 /// }
 ///
 /// data "aws_pricing_getproduct" "example" {
-///   service_code = "AmazonRedshift"
 ///   filters {
 ///     field = "instanceType"
 ///     value = "ds1.xlarge"
@@ -421,6 +420,7 @@ import 'get_product_result.dart';
 ///     field = "location"
 ///     value = "US East (N. Virginia)"
 ///   }
+///   service_code = "AmazonRedshift"
 /// }
 /// ```
 /// ```java
@@ -446,7 +446,6 @@ import 'get_product_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = PricingFunctions.getProduct(GetProductArgs.builder()
-///             .serviceCode("AmazonRedshift")
 ///             .filters(
 ///                 GetProductFilterArgs.builder()
 ///                     .field("instanceType")
@@ -456,6 +455,7 @@ import 'get_product_result.dart';
 ///                     .field("location")
 ///                     .value("US East (N. Virginia)")
 ///                     .build())
+///             .serviceCode("AmazonRedshift")
 ///             .build());
 ///
 ///     }
@@ -467,12 +467,12 @@ import 'get_product_result.dart';
 ///     fn::invoke:
 ///       function: aws:pricing:getProduct
 ///       arguments:
-///         serviceCode: AmazonRedshift
 ///         filters:
 ///           - field: instanceType
 ///             value: ds1.xlarge
 ///           - field: location
 ///             value: US East (N. Virginia)
+///         serviceCode: AmazonRedshift
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_pricing_get_product_get_product_args_doc}
 /// [options] Invoke options controlling this call.
@@ -487,4 +487,15 @@ Future<GetProductResult> getProduct(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProductResult.fromMap(result);
+}
+
+pulumi.Output<GetProductResult> getProductOutput(
+  GetProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:pricing/getProduct:getProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductResult.fromMap);
 }

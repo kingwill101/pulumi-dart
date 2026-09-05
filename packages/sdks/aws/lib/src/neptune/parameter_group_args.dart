@@ -9,19 +9,19 @@ import 'parameter_group_parameter.dart';
 /// {@macro pulumi_neptune_parameter_group_parameter_group_args_doc}
 class ParameterGroupArgs {
   /// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The family of the Neptune parameter group.
   final pulumi.Input<String> family;
   /// The name of the Neptune parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// A list of Neptune parameters to apply.
-  final pulumi.Input<List<ParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<ParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ParameterGroupArgs].
   /// [description] The description of the Neptune parameter group. Defaults to "Managed by Pulumi".

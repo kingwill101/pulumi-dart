@@ -238,7 +238,7 @@ class ProductSubscription extends pulumi.CustomResource {
           'aws:securityhub/productSubscription:ProductSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     productArn = registerOutput<String>('productArn');
@@ -250,11 +250,12 @@ class ProductSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProductSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,6 +269,20 @@ class ProductSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    productArn = registerOutput<String>('productArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ProductSubscription] resource.
+  ProductSubscription.reference(String urn)
+    : super(
+        'aws:securityhub/productSubscription:ProductSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     productArn = registerOutput<String>('productArn');
     region = registerOutput<String>('region');

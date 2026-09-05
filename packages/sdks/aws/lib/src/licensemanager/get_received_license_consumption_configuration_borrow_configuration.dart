@@ -26,7 +26,7 @@ class GetReceivedLicenseConsumptionConfigurationBorrowConfiguration {
   factory GetReceivedLicenseConsumptionConfigurationBorrowConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfigurationBorrowConfiguration(
       allowEarlyCheckIn: pulumi.Input.fromValue(map['allowEarlyCheckIn'] as bool),
-      maxTimeToLiveInMinutes: pulumi.Input.fromValue(map['maxTimeToLiveInMinutes'] as int),
+      maxTimeToLiveInMinutes: pulumi.Input.fromValue((map['maxTimeToLiveInMinutes'] as num).toInt()),
     );
   }
 }

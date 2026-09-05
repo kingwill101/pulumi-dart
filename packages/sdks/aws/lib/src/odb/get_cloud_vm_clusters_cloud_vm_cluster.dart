@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudVmClustersCloudVmCluster {
-  /// Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// ARN for the cloud vm cluster.
   final pulumi.Input<String> arn;
   /// ID of the Cloud Exadata Infrastructure.
   final pulumi.Input<String> cloudExadataInfrastructureId;
@@ -21,7 +21,7 @@ class GetCloudVmClustersCloudVmCluster {
   final pulumi.Input<String> odbNetworkId;
 
   /// Creates a new [GetCloudVmClustersCloudVmCluster].
-  /// [arn] Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// [arn] ARN for the cloud vm cluster.
   /// [cloudExadataInfrastructureId] ID of the Cloud Exadata Infrastructure.
   /// [displayName] Display name of the VM cluster.
   /// [id] Unique identifier of the cloud vm cluster.

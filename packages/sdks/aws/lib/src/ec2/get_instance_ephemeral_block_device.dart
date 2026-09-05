@@ -6,9 +6,9 @@ class GetInstanceEphemeralBlockDevice {
   /// Physical name of the device.
   final pulumi.Input<String> deviceName;
   /// Whether the specified device included in the device mapping was suppressed or not (Boolean).
-  final pulumi.Input<bool>? noDevice;
+  final pulumi.Input<bool?>? noDevice;
   /// Virtual device name.
-  final pulumi.Input<String>? virtualName;
+  final pulumi.Input<String?>? virtualName;
 
   /// Creates a new [GetInstanceEphemeralBlockDevice].
   /// [deviceName] Physical name of the device.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_args.dart';
+import 'network_acl_egress.dart';
+import 'network_acl_ingress.dart';
 import 'network_acl_state.dart';
 
 /// Provides an network ACL resource. You might set up network ACLs with rules similar
@@ -23,7 +25,6 @@ import 'network_acl_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const main = new aws.ec2.NetworkAcl("main", {
-///     vpcId: mainAwsVpc.id,
 ///     egress: [{
 ///         protocol: "tcp",
 ///         ruleNo: 200,
@@ -40,6 +41,7 @@ import 'network_acl_state.dart';
 ///         fromPort: 80,
 ///         toPort: 80,
 ///     }],
+///     vpcId: mainAwsVpc.id,
 ///     tags: {
 ///         Name: "main",
 ///     },
@@ -50,7 +52,6 @@ import 'network_acl_state.dart';
 /// import pulumi_aws as aws
 ///
 /// main = aws.ec2.NetworkAcl("main",
-///     vpc_id=main_aws_vpc["id"],
 ///     egress=[{
 ///         "protocol": "tcp",
 ///         "rule_no": 200,
@@ -67,6 +68,7 @@ import 'network_acl_state.dart';
 ///         "from_port": 80,
 ///         "to_port": 80,
 ///     }],
+///     vpc_id=main_aws_vpc["id"],
 ///     tags={
 ///         "Name": "main",
 ///     })
@@ -81,7 +83,6 @@ import 'network_acl_state.dart';
 /// {
 ///     var main = new Aws.Ec2.NetworkAcl("main", new()
 ///     {
-///         VpcId = mainAwsVpc.Id,
 ///         Egress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.NetworkAclEgressArgs
@@ -106,6 +107,7 @@ import 'network_acl_state.dart';
 ///                 ToPort = 80,
 ///             },
 ///         },
+///         VpcId = mainAwsVpc.Id,
 ///         Tags =
 ///         {
 ///             { "Name", "main" },
@@ -125,7 +127,6 @@ import 'network_acl_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewNetworkAcl(ctx, "main", &ec2.NetworkAclArgs{
-/// 			VpcId: pulumi.Any(mainAwsVpc.Id),
 /// 			Egress: ec2.NetworkAclEgressArray{
 /// 				&ec2.NetworkAclEgressArgs{
 /// 					Protocol:  pulumi.String("tcp"),
@@ -146,6 +147,7 @@ import 'network_acl_state.dart';
 /// 					ToPort:    pulumi.Int(80),
 /// 				},
 /// 			},
+/// 			VpcId: pulumi.Any(mainAwsVpc.Id),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("main"),
 /// 			},
@@ -167,7 +169,6 @@ import 'network_acl_state.dart';
 /// }
 ///
 /// resource "aws_ec2_networkacl" "main" {
-///   vpc_id = mainAwsVpc.id
 ///   egress {
 ///     protocol   = "tcp"
 ///     rule_no    = 200
@@ -184,6 +185,7 @@ import 'network_acl_state.dart';
 ///     from_port  = 80
 ///     to_port    = 80
 ///   }
+///   vpc_id = mainAwsVpc.id
 ///   tags = {
 ///     "Name" = "main"
 ///   }
@@ -213,7 +215,6 @@ import 'network_acl_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var main = new NetworkAcl("main", NetworkAclArgs.builder()
-///             .vpcId(mainAwsVpc.id())
 ///             .egress(NetworkAclEgressArgs.builder()
 ///                 .protocol("tcp")
 ///                 .ruleNo(200)
@@ -230,6 +231,7 @@ import 'network_acl_state.dart';
 ///                 .fromPort(80)
 ///                 .toPort(80)
 ///                 .build())
+///             .vpcId(mainAwsVpc.id())
 ///             .tags(Map.of("Name", "main"))
 ///             .build());
 ///
@@ -241,7 +243,6 @@ import 'network_acl_state.dart';
 ///   main:
 ///     type: aws:ec2:NetworkAcl
 ///     properties:
-///       vpcId: ${mainAwsVpc.id}
 ///       egress:
 ///         - protocol: tcp
 ///           ruleNo: 200
@@ -256,6 +257,7 @@ import 'network_acl_state.dart';
 ///           cidrBlock: 10.3.0.0/18
 ///           fromPort: 80
 ///           toPort: 80
+///       vpcId: ${mainAwsVpc.id}
 ///       tags:
 ///         Name: main
 /// ```
@@ -272,9 +274,9 @@ class NetworkAcl extends pulumi.CustomResource {
   /// The ARN of the network ACL
   late final pulumi.Output<String> arn;
   /// Specifies an egress rule. Parameters defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> egress;
+  late final pulumi.Output<List<NetworkAclEgress>> egress;
   /// Specifies an ingress rule. Parameters defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ingress;
+  late final pulumi.Output<List<NetworkAclIngress>> ingress;
   /// The ID of the AWS account that owns the network ACL.
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -300,16 +302,16 @@ class NetworkAcl extends pulumi.CustomResource {
           'aws:ec2/networkAcl:NetworkAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    egress = registerOutput<List<Map<String, dynamic>>>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
+    egress = registerOutput<List<NetworkAclEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclEgress>(guardedValue, (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<NetworkAclIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclIngress>(guardedValue, (value) => NetworkAclIngress.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -318,11 +320,12 @@ class NetworkAcl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkAclState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkAcl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,13 +340,33 @@ class NetworkAcl extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    egress = registerOutput<List<Map<String, dynamic>>>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
+    egress = registerOutput<List<NetworkAclEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclEgress>(guardedValue, (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<NetworkAclIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclIngress>(guardedValue, (value) => NetworkAclIngress.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkAcl] resource.
+  NetworkAcl.reference(String urn)
+    : super(
+        'aws:ec2/networkAcl:NetworkAcl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    egress = registerOutput<List<NetworkAclEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclEgress>(guardedValue, (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<NetworkAclIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclIngress>(guardedValue, (value) => NetworkAclIngress.fromMap((value as Map).cast<String, dynamic>())); });
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

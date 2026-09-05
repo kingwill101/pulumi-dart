@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanStageTargetContactTargetInfo {
-  /// The Amazon Resource Name (ARN) of the contact.
-  final pulumi.Input<String>? contactId;
+  /// The ARN of the contact.
+  final pulumi.Input<String?>? contactId;
   /// A Boolean value determining if the contact's acknowledgement stops the progress of stages in the plan.
   final pulumi.Input<bool> isEssential;
 
   /// Creates a new [PlanStageTargetContactTargetInfo].
-  /// [contactId] The Amazon Resource Name (ARN) of the contact.
+  /// [contactId] The ARN of the contact.
   /// [isEssential] A Boolean value determining if the contact's acknowledgement stops the progress of stages in the plan.
   const PlanStageTargetContactTargetInfo({
     this.contactId,

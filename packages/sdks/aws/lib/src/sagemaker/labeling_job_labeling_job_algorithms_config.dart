@@ -5,11 +5,11 @@ import 'labeling_job_labeling_job_algorithms_config_labeling_job_resource_config
 
 class LabelingJobLabelingJobAlgorithmsConfig {
   /// ARN of the final model used for auto-labeling.
-  final pulumi.Input<String>? initialActiveLearningModelArn;
+  final pulumi.Input<String?>? initialActiveLearningModelArn;
   /// ARN of the algorithm used for auto-labeling.
   final pulumi.Input<String> labelingJobAlgorithmSpecificationArn;
   /// Configuration information for the labeling job. Fields are documented below.
-  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig>? labelingJobResourceConfig;
+  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig?>? labelingJobResourceConfig;
 
   /// Creates a new [LabelingJobLabelingJobAlgorithmsConfig].
   /// [initialActiveLearningModelArn] ARN of the final model used for auto-labeling.

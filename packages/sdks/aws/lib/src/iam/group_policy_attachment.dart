@@ -222,7 +222,7 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
           'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     group = registerOutput<String>('group');
     policyArn = registerOutput<String>('policyArn');
@@ -233,11 +233,12 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupPolicyAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupPolicyAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -251,6 +252,19 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    group = registerOutput<String>('group');
+    policyArn = registerOutput<String>('policyArn');
+  }
+
+  /// Creates a typed reference to an existing [GroupPolicyAttachment] resource.
+  GroupPolicyAttachment.reference(String urn)
+    : super(
+        'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     group = registerOutput<String>('group');
     policyArn = registerOutput<String>('policyArn');
   }

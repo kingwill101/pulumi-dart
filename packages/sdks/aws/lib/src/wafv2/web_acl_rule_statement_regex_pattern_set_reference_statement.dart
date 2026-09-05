@@ -8,9 +8,9 @@ class WebAclRuleStatementRegexPatternSetReferenceStatement {
   /// ARN of the regex pattern set to reference.
   final pulumi.Input<String> arn;
   /// Part of the web request that you want WAF to inspect. See Field to Match below.
-  final pulumi.Input<WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch?>? fieldToMatch;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
-  final pulumi.Input<List<WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRegexPatternSetReferenceStatement].
   /// [arn] ARN of the regex pattern set to reference.

@@ -30,9 +30,9 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticCh
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration(
-      breakpointPercentileThreshold: pulumi.Input.fromValue(map['breakpointPercentileThreshold'] as int),
-      bufferSize: pulumi.Input.fromValue(map['bufferSize'] as int),
-      maxToken: pulumi.Input.fromValue(map['maxToken'] as int),
+      breakpointPercentileThreshold: pulumi.Input.fromValue((map['breakpointPercentileThreshold'] as num).toInt()),
+      bufferSize: pulumi.Input.fromValue((map['bufferSize'] as num).toInt()),
+      maxToken: pulumi.Input.fromValue((map['maxToken'] as num).toInt()),
     );
   }
 }

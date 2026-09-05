@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetCostTypes {
   /// A boolean value whether to include credits in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeCredit;
+  final pulumi.Input<bool?>? includeCredit;
   /// Whether a budget includes discounts. Defaults to `true`
-  final pulumi.Input<bool>? includeDiscount;
+  final pulumi.Input<bool?>? includeDiscount;
   /// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeOtherSubscription;
+  final pulumi.Input<bool?>? includeOtherSubscription;
   /// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeRecurring;
+  final pulumi.Input<bool?>? includeRecurring;
   /// A boolean value whether to include refunds in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeRefund;
+  final pulumi.Input<bool?>? includeRefund;
   /// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeSubscription;
+  final pulumi.Input<bool?>? includeSubscription;
   /// A boolean value whether to include support costs in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeSupport;
+  final pulumi.Input<bool?>? includeSupport;
   /// A boolean value whether to include tax in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeTax;
+  final pulumi.Input<bool?>? includeTax;
   /// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
-  final pulumi.Input<bool>? includeUpfront;
+  final pulumi.Input<bool?>? includeUpfront;
   /// Whether a budget uses the amortized rate. Defaults to `false`
-  final pulumi.Input<bool>? useAmortized;
+  final pulumi.Input<bool?>? useAmortized;
   /// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
-  final pulumi.Input<bool>? useBlended;
+  final pulumi.Input<bool?>? useBlended;
 
   /// Creates a new [BudgetCostTypes].
   /// [includeCredit] A boolean value whether to include credits in the cost budget. Defaults to `true`

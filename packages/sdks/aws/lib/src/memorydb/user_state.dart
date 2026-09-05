@@ -6,23 +6,23 @@ import 'user_authentication_mode.dart';
 /// Input properties used for looking up and filtering User resources.
 class UserState {
   /// Access permissions string used for this user.
-  final pulumi.Input<String>? accessString;
+  final pulumi.Input<String?>? accessString;
   /// ARN of the user.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Denotes the user's authentication properties. Detailed below.
-  final pulumi.Input<UserAuthenticationMode>? authenticationMode;
+  final pulumi.Input<UserAuthenticationMode?>? authenticationMode;
   /// Minimum engine version supported for the user.
-  final pulumi.Input<String>? minimumEngineVersion;
+  final pulumi.Input<String?>? minimumEngineVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Name of the MemoryDB user. Up to 40 characters.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserState].
   /// [accessString] Access permissions string used for this user.

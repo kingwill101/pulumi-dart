@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_configuration.dart';
 import 'cluster_service_connect_defaults.dart';
+import 'cluster_setting.dart';
 import 'cluster_state.dart';
 
 /// Provides an ECS cluster.
@@ -14,11 +15,11 @@ import 'cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.ecs.Cluster("foo", {
-///     name: "white-hart",
 ///     settings: [{
 ///         name: "containerInsights",
 ///         value: "enabled",
 ///     }],
+///     name: "white-hart",
 /// });
 /// ```
 /// ```python
@@ -26,11 +27,11 @@ import 'cluster_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.ecs.Cluster("foo",
-///     name="white-hart",
 ///     settings=[{
 ///         "name": "containerInsights",
 ///         "value": "enabled",
-///     }])
+///     }],
+///     name="white-hart")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -42,7 +43,6 @@ import 'cluster_state.dart';
 /// {
 ///     var foo = new Aws.Ecs.Cluster("foo", new()
 ///     {
-///         Name = "white-hart",
 ///         Settings = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.ClusterSettingArgs
@@ -51,6 +51,7 @@ import 'cluster_state.dart';
 ///                 Value = "enabled",
 ///             },
 ///         },
+///         Name = "white-hart",
 ///     });
 ///
 /// });
@@ -66,13 +67,13 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewCluster(ctx, "foo", &ecs.ClusterArgs{
-/// 			Name: pulumi.String("white-hart"),
 /// 			Settings: ecs.ClusterSettingArray{
 /// 				&ecs.ClusterSettingArgs{
 /// 					Name:  pulumi.String("containerInsights"),
 /// 					Value: pulumi.String("enabled"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("white-hart"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,11 +92,11 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_ecs_cluster" "foo" {
-///   name = "white-hart"
 ///   settings {
 ///     name  = "containerInsights"
 ///     value = "enabled"
 ///   }
+///   name = "white-hart"
 /// }
 /// ```
 /// ```java
@@ -121,11 +122,11 @@ import 'cluster_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new Cluster("foo", ClusterArgs.builder()
-///             .name("white-hart")
 ///             .settings(ClusterSettingArgs.builder()
 ///                 .name("containerInsights")
 ///                 .value("enabled")
 ///                 .build())
+///             .name("white-hart")
 ///             .build());
 ///
 ///     }
@@ -136,10 +137,10 @@ import 'cluster_state.dart';
 ///   foo:
 ///     type: aws:ecs:Cluster
 ///     properties:
-///       name: white-hart
 ///       settings:
 ///         - name: containerInsights
 ///           value: enabled
+///       name: white-hart
 /// ```
 ///
 ///
@@ -156,17 +157,17 @@ import 'cluster_state.dart';
 /// });
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "example"});
 /// const test = new aws.ecs.Cluster("test", {
-///     name: "example",
 ///     configuration: {
 ///         executeCommandConfiguration: {
-///             kmsKeyId: example.arn,
-///             logging: "OVERRIDE",
 ///             logConfiguration: {
 ///                 cloudWatchEncryptionEnabled: true,
 ///                 cloudWatchLogGroupName: exampleLogGroup.name,
 ///             },
+///             kmsKeyId: example.arn,
+///             logging: "OVERRIDE",
 ///         },
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -178,17 +179,17 @@ import 'cluster_state.dart';
 ///     deletion_window_in_days=7)
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="example")
 /// test = aws.ecs.Cluster("test",
-///     name="example",
 ///     configuration={
 ///         "execute_command_configuration": {
-///             "kms_key_id": example.arn,
-///             "logging": "OVERRIDE",
 ///             "log_configuration": {
 ///                 "cloud_watch_encryption_enabled": True,
 ///                 "cloud_watch_log_group_name": example_log_group.name,
 ///             },
+///             "kms_key_id": example.arn,
+///             "logging": "OVERRIDE",
 ///         },
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -211,20 +212,20 @@ import 'cluster_state.dart';
 ///
 ///     var test = new Aws.Ecs.Cluster("test", new()
 ///     {
-///         Name = "example",
 ///         Configuration = new Aws.Ecs.Inputs.ClusterConfigurationArgs
 ///         {
 ///             ExecuteCommandConfiguration = new Aws.Ecs.Inputs.ClusterConfigurationExecuteCommandConfigurationArgs
 ///             {
-///                 KmsKeyId = example.Arn,
-///                 Logging = "OVERRIDE",
 ///                 LogConfiguration = new Aws.Ecs.Inputs.ClusterConfigurationExecuteCommandConfigurationLogConfigurationArgs
 ///                 {
 ///                     CloudWatchEncryptionEnabled = true,
 ///                     CloudWatchLogGroupName = exampleLogGroup.Name,
 ///                 },
+///                 KmsKeyId = example.Arn,
+///                 Logging = "OVERRIDE",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -255,17 +256,17 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewCluster(ctx, "test", &ecs.ClusterArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Configuration: &ecs.ClusterConfigurationArgs{
 /// 				ExecuteCommandConfiguration: &ecs.ClusterConfigurationExecuteCommandConfigurationArgs{
-/// 					KmsKeyId: example.Arn,
-/// 					Logging:  pulumi.String("OVERRIDE"),
 /// 					LogConfiguration: &ecs.ClusterConfigurationExecuteCommandConfigurationLogConfigurationArgs{
 /// 						CloudWatchEncryptionEnabled: pulumi.Bool(true),
 /// 						CloudWatchLogGroupName:      exampleLogGroup.Name,
 /// 					},
+/// 					KmsKeyId: example.Arn,
+/// 					Logging:  pulumi.String("OVERRIDE"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -291,17 +292,17 @@ import 'cluster_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_ecs_cluster" "test" {
-///   name = "example"
 ///   configuration = {
 ///     execute_command_configuration = {
-///       kms_key_id = aws_kms_key.example.arn
-///       logging    = "OVERRIDE"
 ///       log_configuration = {
 ///         cloud_watch_encryption_enabled = true
 ///         cloud_watch_log_group_name     = aws_cloudwatch_loggroup.example.name
 ///       }
+///       kms_key_id = aws_kms_key.example.arn
+///       logging    = "OVERRIDE"
 ///     }
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -342,17 +343,17 @@ import 'cluster_state.dart';
 ///             .build());
 ///
 ///         var test = new Cluster("test", ClusterArgs.builder()
-///             .name("example")
 ///             .configuration(ClusterConfigurationArgs.builder()
 ///                 .executeCommandConfiguration(ClusterConfigurationExecuteCommandConfigurationArgs.builder()
-///                     .kmsKeyId(example.arn())
-///                     .logging("OVERRIDE")
 ///                     .logConfiguration(ClusterConfigurationExecuteCommandConfigurationLogConfigurationArgs.builder()
 ///                         .cloudWatchEncryptionEnabled(true)
 ///                         .cloudWatchLogGroupName(exampleLogGroup.name())
 ///                         .build())
+///                     .kmsKeyId(example.arn())
+///                     .logging("OVERRIDE")
 ///                     .build())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -373,14 +374,14 @@ import 'cluster_state.dart';
 ///   test:
 ///     type: aws:ecs:Cluster
 ///     properties:
-///       name: example
 ///       configuration:
 ///         executeCommandConfiguration:
-///           kmsKeyId: ${example.arn}
-///           logging: OVERRIDE
 ///           logConfiguration:
 ///             cloudWatchEncryptionEnabled: true
 ///             cloudWatchLogGroupName: ${exampleLogGroup.name}
+///           kmsKeyId: ${example.arn}
+///           logging: OVERRIDE
+///       name: example
 /// ```
 ///
 ///
@@ -448,12 +449,12 @@ import 'cluster_state.dart';
 ///     }),
 /// });
 /// const test = new aws.ecs.Cluster("test", {
-///     name: "example",
 ///     configuration: {
 ///         managedStorageConfiguration: {
 ///             fargateEphemeralStorageKmsKeyId: example.arn,
 ///         },
 ///     },
+///     name: "example",
 /// }, {
 ///     dependsOn: [exampleKeyPolicy],
 /// });
@@ -518,12 +519,12 @@ import 'cluster_state.dart';
 ///         "Version": "2012-10-17",
 ///     }))
 /// test = aws.ecs.Cluster("test",
-///     name="example",
 ///     configuration={
 ///         "managed_storage_configuration": {
 ///             "fargate_ephemeral_storage_kms_key_id": example.arn,
 ///         },
 ///     },
+///     name="example",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_key_policy]))
 /// ```
 /// ```csharp
@@ -632,7 +633,6 @@ import 'cluster_state.dart';
 ///
 ///     var test = new Aws.Ecs.Cluster("test", new()
 ///     {
-///         Name = "example",
 ///         Configuration = new Aws.Ecs.Inputs.ClusterConfigurationArgs
 ///         {
 ///             ManagedStorageConfiguration = new Aws.Ecs.Inputs.ClusterConfigurationManagedStorageConfigurationArgs
@@ -640,6 +640,7 @@ import 'cluster_state.dart';
 ///                 FargateEphemeralStorageKmsKeyId = example.Arn,
 ///             },
 ///         },
+///         Name = "example",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -749,12 +750,12 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewCluster(ctx, "test", &ecs.ClusterArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Configuration: &ecs.ClusterConfigurationArgs{
 /// 				ManagedStorageConfiguration: &ecs.ClusterConfigurationManagedStorageConfigurationArgs{
 /// 					FargateEphemeralStorageKmsKeyId: example.Arn,
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleKeyPolicy,
 /// 		}))
@@ -830,12 +831,12 @@ import 'cluster_state.dart';
 /// }
 /// resource "aws_ecs_cluster" "test" {
 ///   depends_on = [aws_kms_keypolicy.example]
-///   name       = "example"
 ///   configuration = {
 ///     managed_storage_configuration = {
 ///       fargate_ephemeral_storage_kms_key_id = aws_kms_key.example.arn
 ///     }
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -931,12 +932,12 @@ import 'cluster_state.dart';
 ///             .build());
 ///
 ///         var test = new Cluster("test", ClusterArgs.builder()
-///             .name("example")
 ///             .configuration(ClusterConfigurationArgs.builder()
 ///                 .managedStorageConfiguration(ClusterConfigurationManagedStorageConfigurationArgs.builder()
 ///                     .fargateEphemeralStorageKmsKeyId(example.arn())
 ///                     .build())
 ///                 .build())
+///             .name("example")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleKeyPolicy)
 ///                 .build());
@@ -999,10 +1000,10 @@ import 'cluster_state.dart';
 ///   test:
 ///     type: aws:ecs:Cluster
 ///     properties:
-///       name: example
 ///       configuration:
 ///         managedStorageConfiguration:
 ///           fargateEphemeralStorageKmsKeyId: ${example.arn}
+///       name: example
 ///     options:
 ///       dependsOn:
 ///         - ${exampleKeyPolicy}
@@ -1015,6 +1016,18 @@ import 'cluster_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the cluster.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import ECS clusters using the cluster name. For example:
 ///
@@ -1035,7 +1048,7 @@ class Cluster extends pulumi.CustomResource {
   /// Default Service Connect namespace. See `serviceConnectDefaults` Block for details.
   late final pulumi.Output<ClusterServiceConnectDefaults?> serviceConnectDefaults;
   /// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. See `setting` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> settings;
+  late final pulumi.Output<List<ClusterSetting>> settings;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -1053,16 +1066,16 @@ class Cluster extends pulumi.CustomResource {
           'aws:ecs/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ClusterConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serviceConnectDefaults = registerOutput<ClusterServiceConnectDefaults?>('serviceConnectDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServiceConnectDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    settings = registerOutput<List<Map<String, dynamic>>>('settings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    settings = registerOutput<List<ClusterSetting>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterSetting>(guardedValue, (value) => ClusterSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -1070,11 +1083,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1093,8 +1107,27 @@ class Cluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serviceConnectDefaults = registerOutput<ClusterServiceConnectDefaults?>('serviceConnectDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServiceConnectDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    settings = registerOutput<List<Map<String, dynamic>>>('settings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    settings = registerOutput<List<ClusterSetting>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterSetting>(guardedValue, (value) => ClusterSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:ecs/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<ClusterConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serviceConnectDefaults = registerOutput<ClusterServiceConnectDefaults?>('serviceConnectDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServiceConnectDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    settings = registerOutput<List<ClusterSetting>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterSetting>(guardedValue, (value) => ClusterSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

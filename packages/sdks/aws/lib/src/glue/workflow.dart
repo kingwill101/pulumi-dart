@@ -15,17 +15,14 @@ import 'workflow_state.dart';
 ///
 /// const example = new aws.glue.Workflow("example", {name: "example"});
 /// const example_start = new aws.glue.Trigger("example-start", {
-///     name: "trigger-start",
-///     type: "ON_DEMAND",
-///     workflowName: example.name,
 ///     actions: [{
 ///         jobName: "example-job",
 ///     }],
+///     name: "trigger-start",
+///     type: "ON_DEMAND",
+///     workflowName: example.name,
 /// });
 /// const example_inner = new aws.glue.Trigger("example-inner", {
-///     name: "trigger-inner",
-///     type: "CONDITIONAL",
-///     workflowName: example.name,
 ///     predicate: {
 ///         conditions: [{
 ///             jobName: "example-job",
@@ -35,6 +32,9 @@ import 'workflow_state.dart';
 ///     actions: [{
 ///         jobName: "another-example-job",
 ///     }],
+///     name: "trigger-inner",
+///     type: "CONDITIONAL",
+///     workflowName: example.name,
 /// });
 /// ```
 /// ```python
@@ -43,16 +43,13 @@ import 'workflow_state.dart';
 ///
 /// example = aws.glue.Workflow("example", name="example")
 /// example_start = aws.glue.Trigger("example-start",
-///     name="trigger-start",
-///     type="ON_DEMAND",
-///     workflow_name=example.name,
 ///     actions=[{
 ///         "job_name": "example-job",
-///     }])
+///     }],
+///     name="trigger-start",
+///     type="ON_DEMAND",
+///     workflow_name=example.name)
 /// example_inner = aws.glue.Trigger("example-inner",
-///     name="trigger-inner",
-///     type="CONDITIONAL",
-///     workflow_name=example.name,
 ///     predicate={
 ///         "conditions": [{
 ///             "job_name": "example-job",
@@ -61,7 +58,10 @@ import 'workflow_state.dart';
 ///     },
 ///     actions=[{
 ///         "job_name": "another-example-job",
-///     }])
+///     }],
+///     name="trigger-inner",
+///     type="CONDITIONAL",
+///     workflow_name=example.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,9 +78,6 @@ import 'workflow_state.dart';
 ///
 ///     var example_start = new Aws.Glue.Trigger("example-start", new()
 ///     {
-///         Name = "trigger-start",
-///         Type = "ON_DEMAND",
-///         WorkflowName = example.Name,
 ///         Actions = new[]
 ///         {
 ///             new Aws.Glue.Inputs.TriggerActionArgs
@@ -88,13 +85,13 @@ import 'workflow_state.dart';
 ///                 JobName = "example-job",
 ///             },
 ///         },
+///         Name = "trigger-start",
+///         Type = "ON_DEMAND",
+///         WorkflowName = example.Name,
 ///     });
 ///
 ///     var example_inner = new Aws.Glue.Trigger("example-inner", new()
 ///     {
-///         Name = "trigger-inner",
-///         Type = "CONDITIONAL",
-///         WorkflowName = example.Name,
 ///         Predicate = new Aws.Glue.Inputs.TriggerPredicateArgs
 ///         {
 ///             Conditions = new[]
@@ -113,6 +110,9 @@ import 'workflow_state.dart';
 ///                 JobName = "another-example-job",
 ///             },
 ///         },
+///         Name = "trigger-inner",
+///         Type = "CONDITIONAL",
+///         WorkflowName = example.Name,
 ///     });
 ///
 /// });
@@ -134,22 +134,19 @@ import 'workflow_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = glue.NewTrigger(ctx, "example-start", &glue.TriggerArgs{
-/// 			Name:         pulumi.String("trigger-start"),
-/// 			Type:         pulumi.String("ON_DEMAND"),
-/// 			WorkflowName: example.Name,
 /// 			Actions: glue.TriggerActionArray{
 /// 				&glue.TriggerActionArgs{
 /// 					JobName: pulumi.String("example-job"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("trigger-start"),
+/// 			Type:         pulumi.String("ON_DEMAND"),
+/// 			WorkflowName: example.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = glue.NewTrigger(ctx, "example-inner", &glue.TriggerArgs{
-/// 			Name:         pulumi.String("trigger-inner"),
-/// 			Type:         pulumi.String("CONDITIONAL"),
-/// 			WorkflowName: example.Name,
 /// 			Predicate: &glue.TriggerPredicateArgs{
 /// 				Conditions: glue.TriggerPredicateConditionArray{
 /// 					&glue.TriggerPredicateConditionArgs{
@@ -163,6 +160,9 @@ import 'workflow_state.dart';
 /// 					JobName: pulumi.String("another-example-job"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("trigger-inner"),
+/// 			Type:         pulumi.String("CONDITIONAL"),
+/// 			WorkflowName: example.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -184,17 +184,14 @@ import 'workflow_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_glue_trigger" "example-start" {
-///   name          = "trigger-start"
-///   type          = "ON_DEMAND"
-///   workflow_name = aws_glue_workflow.example.name
 ///   actions {
 ///     job_name = "example-job"
 ///   }
+///   name          = "trigger-start"
+///   type          = "ON_DEMAND"
+///   workflow_name = aws_glue_workflow.example.name
 /// }
 /// resource "aws_glue_trigger" "example-inner" {
-///   name          = "trigger-inner"
-///   type          = "CONDITIONAL"
-///   workflow_name = aws_glue_workflow.example.name
 ///   predicate = {
 ///     conditions = [{
 ///       "jobName" = "example-job"
@@ -204,6 +201,9 @@ import 'workflow_state.dart';
 ///   actions {
 ///     job_name = "another-example-job"
 ///   }
+///   name          = "trigger-inner"
+///   type          = "CONDITIONAL"
+///   workflow_name = aws_glue_workflow.example.name
 /// }
 /// ```
 /// ```java
@@ -237,18 +237,15 @@ import 'workflow_state.dart';
 ///             .build());
 ///
 ///         var example_start = new Trigger("example-start", TriggerArgs.builder()
-///             .name("trigger-start")
-///             .type("ON_DEMAND")
-///             .workflowName(example.name())
 ///             .actions(TriggerActionArgs.builder()
 ///                 .jobName("example-job")
 ///                 .build())
+///             .name("trigger-start")
+///             .type("ON_DEMAND")
+///             .workflowName(example.name())
 ///             .build());
 ///
 ///         var example_inner = new Trigger("example-inner", TriggerArgs.builder()
-///             .name("trigger-inner")
-///             .type("CONDITIONAL")
-///             .workflowName(example.name())
 ///             .predicate(TriggerPredicateArgs.builder()
 ///                 .conditions(TriggerPredicateConditionArgs.builder()
 ///                     .jobName("example-job")
@@ -258,6 +255,9 @@ import 'workflow_state.dart';
 ///             .actions(TriggerActionArgs.builder()
 ///                 .jobName("another-example-job")
 ///                 .build())
+///             .name("trigger-inner")
+///             .type("CONDITIONAL")
+///             .workflowName(example.name())
 ///             .build());
 ///
 ///     }
@@ -272,23 +272,23 @@ import 'workflow_state.dart';
 ///   example-start:
 ///     type: aws:glue:Trigger
 ///     properties:
+///       actions:
+///         - jobName: example-job
 ///       name: trigger-start
 ///       type: ON_DEMAND
 ///       workflowName: ${example.name}
-///       actions:
-///         - jobName: example-job
 ///   example-inner:
 ///     type: aws:glue:Trigger
 ///     properties:
-///       name: trigger-inner
-///       type: CONDITIONAL
-///       workflowName: ${example.name}
 ///       predicate:
 ///         conditions:
 ///           - jobName: example-job
 ///             state: SUCCEEDED
 ///       actions:
 ///         - jobName: another-example-job
+///       name: trigger-inner
+///       type: CONDITIONAL
+///       workflowName: ${example.name}
 /// ```
 ///
 ///
@@ -300,7 +300,7 @@ import 'workflow_state.dart';
 /// $ pulumi import aws:glue/workflow:Workflow MyWorkflow MyWorkflow
 /// ```
 class Workflow extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of Glue Workflow
+  /// ARN of Glue Workflow
   late final pulumi.Output<String> arn;
   /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
   late final pulumi.Output<Map<String, String>?> defaultRunProperties;
@@ -329,16 +329,16 @@ class Workflow extends pulumi.CustomResource {
           'aws:glue/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties');
+    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     maxConcurrentRuns = registerOutput<int?>('maxConcurrentRuns');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workflow] resource's state with the given [name] and [id].
@@ -346,11 +346,12 @@ class Workflow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkflowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workflow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -365,12 +366,31 @@ class Workflow extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties');
+    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     maxConcurrentRuns = registerOutput<int?>('maxConcurrentRuns');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workflow] resource.
+  Workflow.reference(String urn)
+    : super(
+        'aws:glue/workflow:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String?>('description');
+    maxConcurrentRuns = registerOutput<int?>('maxConcurrentRuns');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

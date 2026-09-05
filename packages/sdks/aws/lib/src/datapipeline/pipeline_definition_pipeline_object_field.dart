@@ -6,9 +6,9 @@ class PipelineDefinitionPipelineObjectField {
   /// Field identifier.
   final pulumi.Input<String> key;
   /// Field value, expressed as the identifier of another object
-  final pulumi.Input<String>? refValue;
+  final pulumi.Input<String?>? refValue;
   /// Field value, expressed as a String.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
 
   /// Creates a new [PipelineDefinitionPipelineObjectField].
   /// [key] Field identifier.

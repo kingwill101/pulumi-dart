@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeviceLocation {
   /// Physical address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Latitude.
-  final pulumi.Input<String>? latitude;
+  final pulumi.Input<String?>? latitude;
   /// Longitude.
-  final pulumi.Input<String>? longitude;
+  final pulumi.Input<String?>? longitude;
 
   /// Creates a new [DeviceLocation].
   /// [address] Physical address.

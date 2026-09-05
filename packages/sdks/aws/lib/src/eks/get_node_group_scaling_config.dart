@@ -30,9 +30,9 @@ class GetNodeGroupScalingConfig {
 
   factory GetNodeGroupScalingConfig.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupScalingConfig(
-      desiredSize: pulumi.Input.fromValue(map['desiredSize'] as int),
-      maxSize: pulumi.Input.fromValue(map['maxSize'] as int),
-      minSize: pulumi.Input.fromValue(map['minSize'] as int),
+      desiredSize: pulumi.Input.fromValue((map['desiredSize'] as num).toInt()),
+      maxSize: pulumi.Input.fromValue((map['maxSize'] as num).toInt()),
+      minSize: pulumi.Input.fromValue((map['minSize'] as num).toInt()),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'listener_rule_transform_host_header_rewrite_config_rewrite.dart';
 
 class ListenerRuleTransformHostHeaderRewriteConfig {
   /// Block for host header rewrite configuration. Only one block is accepted. See Rewrite Blocks below.
-  final pulumi.Input<ListenerRuleTransformHostHeaderRewriteConfigRewrite>? rewrite;
+  final pulumi.Input<ListenerRuleTransformHostHeaderRewriteConfigRewrite?>? rewrite;
 
   /// Creates a new [ListenerRuleTransformHostHeaderRewriteConfig].
   /// [rewrite] Block for host header rewrite configuration. Only one block is accepted. See Rewrite Blocks below.

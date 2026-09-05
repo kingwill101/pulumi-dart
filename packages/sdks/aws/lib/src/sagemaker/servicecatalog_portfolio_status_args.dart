@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sagemaker_servicecatalog_portfolio_status_servicecatalog_portfolio_status_args_doc}
 class ServicecatalogPortfolioStatusArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
   final pulumi.Input<String> status;
 

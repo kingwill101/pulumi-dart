@@ -12,7 +12,7 @@ class GetOfferingsResult {
   final List<GetOfferingsFilter>? filters;
   final List<String>? offeringIds;
   /// List of Savings Plans Offerings. See `offerings` Attribute Reference.
-  final List<GetOfferingsOffering> offerings;
+  final List<GetOfferingsOffering>? offerings;
   final List<String>? operations;
   final List<String>? paymentOptions;
   final List<String>? planTypes;
@@ -39,7 +39,7 @@ class GetOfferingsResult {
     this.durations,
     this.filters,
     this.offeringIds,
-    required this.offerings,
+    this.offerings,
     this.operations,
     this.paymentOptions,
     this.planTypes,
@@ -55,7 +55,7 @@ class GetOfferingsResult {
       'durations': ?durations,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOfferingsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'offeringIds': ?offeringIds,
-      'offerings': pulumi.Input.encodeList<GetOfferingsOffering, Map<String, dynamic>>(offerings, (value) => value.toMap()),
+      'offerings': ?(() { final guardedValue = offerings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOfferingsOffering, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'operations': ?operations,
       'paymentOptions': ?paymentOptions,
       'planTypes': ?planTypes,
@@ -72,7 +72,7 @@ class GetOfferingsResult {
       durations: (() { final guardedValue = map['durations']; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOfferingsFilter>(guardedValue, (value) => GetOfferingsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       offeringIds: (() { final guardedValue = map['offeringIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      offerings: pulumi.Input.decodeList<GetOfferingsOffering>(map['offerings']!, (value) => GetOfferingsOffering.fromMap((value as Map).cast<String, dynamic>())),
+      offerings: (() { final guardedValue = map['offerings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOfferingsOffering>(guardedValue, (value) => GetOfferingsOffering.fromMap((value as Map).cast<String, dynamic>())); })(),
       operations: (() { final guardedValue = map['operations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       paymentOptions: (() { final guardedValue = map['paymentOptions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       planTypes: (() { final guardedValue = map['planTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

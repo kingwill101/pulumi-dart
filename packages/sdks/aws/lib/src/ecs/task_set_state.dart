@@ -9,53 +9,53 @@ import 'task_set_service_registries.dart';
 
 /// Input properties used for looking up and filtering TaskSet resources.
 class TaskSetState {
-  /// Amazon Resource Name (ARN) that identifies the task set.
-  final pulumi.Input<String>? arn;
+  /// ARN that identifies the task set.
+  final pulumi.Input<String?>? arn;
   /// Capacity provider strategy to use for the service. Can be one or more. Defined below.
-  final pulumi.Input<List<TaskSetCapacityProviderStrategy>>? capacityProviderStrategies;
+  final pulumi.Input<List<TaskSetCapacityProviderStrategy>?>? capacityProviderStrategies;
   /// Short name or ARN of the cluster that hosts the service to create the task set in.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// External ID associated with the task set.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Whether to allow deleting the task set without waiting for scaling down to 0. You can force a task set to delete even if it's in the process of scaling a resource. Normally, the provider drains all the tasks before deleting the task set. This bypasses that behavior and potentially leaves resources dangling.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
   /// Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
-  final pulumi.Input<String>? launchType;
+  final pulumi.Input<String?>? launchType;
   /// Details on load balancers that are used with a task set. Detailed below.
-  final pulumi.Input<List<TaskSetLoadBalancer>>? loadBalancers;
+  final pulumi.Input<List<TaskSetLoadBalancer>?>? loadBalancers;
   /// Network configuration for the service. Required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and not supported for other network modes. Detailed below.
-  final pulumi.Input<TaskSetNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<TaskSetNetworkConfiguration?>? networkConfiguration;
   /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
-  final pulumi.Input<String>? platformVersion;
+  final pulumi.Input<String?>? platformVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Floating-point percentage of the desired number of tasks to place and keep running in the task set. Detailed below.
-  final pulumi.Input<TaskSetScale>? scale;
+  final pulumi.Input<TaskSetScale?>? scale;
   /// Short name or ARN of the ECS service.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// Service discovery registries for the service. The maximum number of `serviceRegistries` blocks is `1`. Detailed below.
-  final pulumi.Input<TaskSetServiceRegistries>? serviceRegistries;
+  final pulumi.Input<TaskSetServiceRegistries?>? serviceRegistries;
   /// Stability status. This indicates whether the task set has reached a steady state.
-  final pulumi.Input<String>? stabilityStatus;
+  final pulumi.Input<String?>? stabilityStatus;
   /// Status of the task set.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Family and revision (`family:revision`) or full ARN of the task definition to run in your service.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? taskDefinition;
+  final pulumi.Input<String?>? taskDefinition;
   /// ID of the task set.
-  final pulumi.Input<String>? taskSetId;
+  final pulumi.Input<String?>? taskSetId;
   /// Whether the provider should wait until the task set has reached `STEADY_STATE`.
-  final pulumi.Input<bool>? waitUntilStable;
+  final pulumi.Input<bool?>? waitUntilStable;
   /// Wait timeout for task set to reach `STEADY_STATE`. Valid time units include `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. Default `10m`.
-  final pulumi.Input<String>? waitUntilStableTimeout;
+  final pulumi.Input<String?>? waitUntilStableTimeout;
 
   /// Creates a new [TaskSetState].
-  /// [arn] Amazon Resource Name (ARN) that identifies the task set.
+  /// [arn] ARN that identifies the task set.
   /// [capacityProviderStrategies] Capacity provider strategy to use for the service. Can be one or more. Defined below.
   /// [cluster] Short name or ARN of the cluster that hosts the service to create the task set in.
   /// [externalId] External ID associated with the task set.

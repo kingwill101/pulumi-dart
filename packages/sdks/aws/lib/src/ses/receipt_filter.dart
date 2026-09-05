@@ -129,11 +129,11 @@ import 'receipt_filter_state.dart';
 /// $ pulumi import aws:ses/receiptFilter:ReceiptFilter test some-filter
 /// ```
 class ReceiptFilter extends pulumi.CustomResource {
-  /// The SES receipt filter ARN.
+  /// SES receipt filter ARN.
   late final pulumi.Output<String> arn;
-  /// The IP address or address range to filter, in CIDR notation
+  /// IP address or address range to filter, in CIDR notation
   late final pulumi.Output<String> cidr;
-  /// The name of the filter
+  /// Name of the filter
   late final pulumi.Output<String> name;
   /// Block or Allow
   late final pulumi.Output<String> policy;
@@ -152,7 +152,7 @@ class ReceiptFilter extends pulumi.CustomResource {
           'aws:ses/receiptFilter:ReceiptFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cidr = registerOutput<String>('cidr');
@@ -166,11 +166,12 @@ class ReceiptFilter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReceiptFilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReceiptFilter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -184,6 +185,22 @@ class ReceiptFilter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    cidr = registerOutput<String>('cidr');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ReceiptFilter] resource.
+  ReceiptFilter.reference(String urn)
+    : super(
+        'aws:ses/receiptFilter:ReceiptFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     cidr = registerOutput<String>('cidr');
     this.name = registerOutput<String>('name');

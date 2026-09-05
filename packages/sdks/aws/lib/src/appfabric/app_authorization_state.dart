@@ -8,38 +8,38 @@ import 'app_authorization_timeouts.dart';
 /// Input properties used for looking up and filtering AppAuthorization resources.
 class AppAuthorizationState {
   /// Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
-  final pulumi.Input<String>? app;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
-  final pulumi.Input<String>? appBundleArn;
+  final pulumi.Input<String?>? app;
+  /// ARN of the app bundle to use for the request.
+  final pulumi.Input<String?>? appBundleArn;
   /// ARN of the App Authorization.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<String?>? authType;
   /// Application URL for the OAuth flow.
-  final pulumi.Input<String>? authUrl;
+  final pulumi.Input<String?>? authUrl;
   /// Timestamp of when the app authorization was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Credentials for the application, such as an API key or OAuth2 client ID and secret. Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (`oauth2`), then you should provide only the OAuth2 credentials. See `credential` Block for details.
-  final pulumi.Input<AppAuthorizationCredential>? credential;
+  final pulumi.Input<AppAuthorizationCredential?>? credential;
   /// User persona of the app authorization.
-  final pulumi.Input<String>? persona;
+  final pulumi.Input<String?>? persona;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Information about an application tenant, such as the application display name and identifier. See `tenant` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<AppAuthorizationTenant>>? tenants;
-  final pulumi.Input<AppAuthorizationTimeouts>? timeouts;
+  final pulumi.Input<List<AppAuthorizationTenant>?>? tenants;
+  final pulumi.Input<AppAuthorizationTimeouts?>? timeouts;
   /// Timestamp of when the app authorization was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [AppAuthorizationState].
   /// [app] Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
-  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [appBundleArn] ARN of the app bundle to use for the request.
   /// [arn] ARN of the App Authorization.
   /// [authType] Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
   /// [authUrl] Application URL for the OAuth flow.

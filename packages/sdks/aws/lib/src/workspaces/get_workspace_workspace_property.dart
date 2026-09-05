@@ -41,10 +41,10 @@ class GetWorkspaceWorkspaceProperty {
   factory GetWorkspaceWorkspaceProperty.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceWorkspaceProperty(
       computeTypeName: pulumi.Input.fromValue(map['computeTypeName'] as String),
-      rootVolumeSizeGib: pulumi.Input.fromValue(map['rootVolumeSizeGib'] as int),
+      rootVolumeSizeGib: pulumi.Input.fromValue((map['rootVolumeSizeGib'] as num).toInt()),
       runningMode: pulumi.Input.fromValue(map['runningMode'] as String),
-      runningModeAutoStopTimeoutInMinutes: pulumi.Input.fromValue(map['runningModeAutoStopTimeoutInMinutes'] as int),
-      userVolumeSizeGib: pulumi.Input.fromValue(map['userVolumeSizeGib'] as int),
+      runningModeAutoStopTimeoutInMinutes: pulumi.Input.fromValue((map['runningModeAutoStopTimeoutInMinutes'] as num).toInt()),
+      userVolumeSizeGib: pulumi.Input.fromValue((map['userVolumeSizeGib'] as num).toInt()),
     );
   }
 }

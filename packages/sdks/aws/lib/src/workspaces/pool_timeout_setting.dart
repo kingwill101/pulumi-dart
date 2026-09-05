@@ -30,9 +30,9 @@ class PoolTimeoutSetting {
 
   factory PoolTimeoutSetting.fromMap(Map<String, dynamic> map) {
     return PoolTimeoutSetting(
-      disconnectTimeoutInSeconds: pulumi.Input.fromValue(map['disconnectTimeoutInSeconds'] as int),
-      idleDisconnectTimeoutInSeconds: pulumi.Input.fromValue(map['idleDisconnectTimeoutInSeconds'] as int),
-      maxUserDurationInSeconds: pulumi.Input.fromValue(map['maxUserDurationInSeconds'] as int),
+      disconnectTimeoutInSeconds: pulumi.Input.fromValue((map['disconnectTimeoutInSeconds'] as num).toInt()),
+      idleDisconnectTimeoutInSeconds: pulumi.Input.fromValue((map['idleDisconnectTimeoutInSeconds'] as num).toInt()),
+      maxUserDurationInSeconds: pulumi.Input.fromValue((map['maxUserDurationInSeconds'] as num).toInt()),
     );
   }
 }

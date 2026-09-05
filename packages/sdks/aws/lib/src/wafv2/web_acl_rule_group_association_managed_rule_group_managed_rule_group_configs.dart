@@ -8,13 +8,13 @@ import 'web_acl_rule_group_association_managed_rule_group_managed_rule_group_con
 
 class WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigs {
   /// Additional configuration for using the Account Creation Fraud Prevention managed rule group. Use this to specify information such as the registration page of your application and the type of content to accept or reject from the client. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSet>? awsManagedRulesAcfpRuleSet;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSet?>? awsManagedRulesAcfpRuleSet;
   /// Configuration for using the anti-DDoS managed rule group. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAntiDdosRuleSet>? awsManagedRulesAntiDdosRuleSet;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAntiDdosRuleSet?>? awsManagedRulesAntiDdosRuleSet;
   /// Additional configuration for using the Account Takeover Protection managed rule group. Use this to specify information such as the sign-in page of your application and the type of content to accept or reject from the client. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSet>? awsManagedRulesAtpRuleSet;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSet?>? awsManagedRulesAtpRuleSet;
   /// Additional configuration for using the Bot Control managed rule group. Use this to specify the inspection level that you want to use. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesBotControlRuleSet>? awsManagedRulesBotControlRuleSet;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesBotControlRuleSet?>? awsManagedRulesBotControlRuleSet;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigs].
   /// [awsManagedRulesAcfpRuleSet] Additional configuration for using the Account Creation Fraud Prevention managed rule group. Use this to specify information such as the registration page of your application and the type of content to accept or reject from the client. See below.

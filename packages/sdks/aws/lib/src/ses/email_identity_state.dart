@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering EmailIdentity resources.
 class EmailIdentityState {
-  /// The ARN of the email identity.
-  final pulumi.Input<String>? arn;
-  /// The email address to assign to SES.
-  final pulumi.Input<String>? email;
+  /// ARN of the email identity.
+  final pulumi.Input<String?>? arn;
+  /// Email address to assign to SES.
+  final pulumi.Input<String?>? email;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [EmailIdentityState].
-  /// [arn] The ARN of the email identity.
-  /// [email] The email address to assign to SES.
+  /// [arn] ARN of the email identity.
+  /// [email] Email address to assign to SES.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const EmailIdentityState({
     this.arn,

@@ -30,7 +30,7 @@ class HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup {
 
   factory HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup(
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       instanceGroupName: pulumi.Input.fromValue(map['instanceGroupName'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );

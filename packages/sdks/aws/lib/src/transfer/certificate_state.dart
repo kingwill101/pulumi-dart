@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
   /// Date when the certificate becomes active
-  final pulumi.Input<String>? activeDate;
+  final pulumi.Input<String?>? activeDate;
   /// ARN of the certificate
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Valid certificate file required for the transfer.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Optional list of certificate that make up the chain for the certificate that is being imported.
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateChain;
   /// Unique identifier for the AS2 certificate
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// Short description that helps identify the certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Date when the certificate becomes inactive
-  final pulumi.Input<String>? inactiveDate;
+  final pulumi.Input<String?>? inactiveDate;
   /// Private key associated with the certificate being imported.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Whether a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
-  final pulumi.Input<String>? usage;
+  final pulumi.Input<String?>? usage;
 
   /// Creates a new [CertificateState].
   /// [activeDate] Date when the certificate becomes active

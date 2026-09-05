@@ -6,19 +6,19 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_rege
 import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_regex_pattern_set_reference_statement_text_transformation.dart';
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement {
-  /// The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
+  /// ARN of the Regex Pattern Set that this statement references.
   final pulumi.Input<String> arn;
   /// The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch?>? fieldToMatch;
   /// Text transformations to apply to the raw query string before AWS WAF parses the string into individual query arguments, and before any `textTransformation` is applied. Supported only when `fieldToMatch` specifies `singleQueryArgument` or `allQueryArguments`. Maximum of 10. See Pre-Parse Text Transformation below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementPreParseTextTransformation>>? preParseTextTransformations;
+  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementPreParseTextTransformation>?>? preParseTextTransformations;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
   /// At least one required.
   /// See Text Transformation below for details.
   final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation>> textTransformations;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement].
-  /// [arn] The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
+  /// [arn] ARN of the Regex Pattern Set that this statement references.
   /// [fieldToMatch] The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
   /// [preParseTextTransformations] Text transformations to apply to the raw query string before AWS WAF parses the string into individual query arguments, and before any `textTransformation` is applied. Supported only when `fieldToMatch` specifies `singleQueryArgument` or `allQueryArguments`. Maximum of 10. See Pre-Parse Text Transformation below for details.
   /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.

@@ -8,12 +8,12 @@ import 'drt_access_role_arn_association_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_shield_drt_access_role_arn_association_drt_access_role_arn_association_args_doc}
 class DrtAccessRoleArnAssociationArgs {
-  /// The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
+  /// ARN of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
   final pulumi.Input<String> roleArn;
-  final pulumi.Input<DrtAccessRoleArnAssociationTimeouts>? timeouts;
+  final pulumi.Input<DrtAccessRoleArnAssociationTimeouts?>? timeouts;
 
   /// Creates a new [DrtAccessRoleArnAssociationArgs].
-  /// [roleArn] The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
+  /// [roleArn] ARN of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
   /// [timeouts] Optional.
   const DrtAccessRoleArnAssociationArgs({
     required this.roleArn,

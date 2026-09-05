@@ -6,11 +6,11 @@ class DistributionOrigin {
   /// Name of the origin resource. Your origin can be an instance with an attached static IP, a bucket, or a load balancer that has at least one instance attached to it.
   final pulumi.Input<String> name;
   /// Protocol that your Amazon Lightsail distribution uses when establishing a connection with your origin to pull content.
-  final pulumi.Input<String>? protocolPolicy;
+  final pulumi.Input<String?>? protocolPolicy;
   /// AWS Region name of the origin resource.
   final pulumi.Input<String> regionName;
   /// Lightsail resource type (e.g., Distribution).
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [DistributionOrigin].
   /// [name] Name of the origin resource. Your origin can be an instance with an attached static IP, a bucket, or a load balancer that has at least one instance attached to it.

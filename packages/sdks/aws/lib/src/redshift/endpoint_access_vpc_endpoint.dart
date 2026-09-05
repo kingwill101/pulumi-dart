@@ -5,11 +5,11 @@ import 'endpoint_access_vpc_endpoint_network_interface.dart';
 
 class EndpointAccessVpcEndpoint {
   /// One or more network interfaces of the endpoint. Also known as an interface endpoint. See details below.
-  final pulumi.Input<List<EndpointAccessVpcEndpointNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<EndpointAccessVpcEndpointNetworkInterface>?>? networkInterfaces;
   /// The connection endpoint ID for connecting an Amazon Redshift cluster through the proxy.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// The VPC identifier that the endpoint is associated.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [EndpointAccessVpcEndpoint].
   /// [networkInterfaces] One or more network interfaces of the endpoint. Also known as an interface endpoint. See details below.

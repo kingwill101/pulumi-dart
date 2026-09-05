@@ -6,7 +6,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   /// The lower limit of the port range. This must be less than or equal to the `toPort`.
   final pulumi.Input<int> fromPort;
   /// The upper limit of the port range. This must be greater than or equal to the `fromPort`.
-  final pulumi.Input<int>? toPort;
+  final pulumi.Input<int?>? toPort;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort].
   /// [fromPort] The lower limit of the port range. This must be less than or equal to the `toPort`.
@@ -25,8 +25,8 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
 
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort(
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

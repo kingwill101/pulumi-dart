@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_group_args.dart';
 import 'subnet_group_state.dart';
 
-/// Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
+/// Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing VPC when creating Amazon Redshift subnet group.
 ///
 /// ## Example Usage
 ///
@@ -309,7 +309,7 @@ import 'subnet_group_state.dart';
 /// $ pulumi import aws:redshift/subnetGroup:SubnetGroup testgroup1 test-cluster-subnet-group
 /// ```
 class SubnetGroup extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Redshift Subnet group name
+  /// ARN of the Redshift Subnet group name
   late final pulumi.Output<String> arn;
   /// The description of the Redshift Subnet group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
@@ -336,15 +336,15 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:redshift/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SubnetGroup] resource's state with the given [name] and [id].
@@ -352,11 +352,12 @@ class SubnetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,8 +375,26 @@ class SubnetGroup extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SubnetGroup] resource.
+  SubnetGroup.reference(String urn)
+    : super(
+        'aws:redshift/subnetGroup:SubnetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

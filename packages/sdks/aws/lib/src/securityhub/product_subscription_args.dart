@@ -48,7 +48,7 @@ class ProductSubscriptionArgs {
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
   final pulumi.Input<String> productArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ProductSubscriptionArgs].
   /// [productArn] The ARN of the product that generates findings that you want to import into Security Hub - see below.

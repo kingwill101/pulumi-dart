@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vectors_index_args.dart';
+import 'vectors_index_encryption_configuration.dart';
 import 'vectors_index_metadata_configuration.dart';
 import 'vectors_index_state.dart';
 
@@ -162,7 +163,7 @@ class VectorsIndex extends pulumi.CustomResource {
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
   late final pulumi.Output<String> distanceMetric;
   /// Block for encryption configuration for the vector index. See `encryptionConfiguration` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigurations;
+  late final pulumi.Output<List<VectorsIndexEncryptionConfiguration>> encryptionConfigurations;
   /// ARN of the vector index.
   late final pulumi.Output<String> indexArn;
   /// Name of the vector index.
@@ -192,19 +193,19 @@ class VectorsIndex extends pulumi.CustomResource {
           'aws:s3/vectorsIndex:VectorsIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     dataType = registerOutput<String>('dataType');
     dimension = registerOutput<int>('dimension');
     distanceMetric = registerOutput<String>('distanceMetric');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<VectorsIndexEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     indexArn = registerOutput<String>('indexArn');
     indexName = registerOutput<String>('indexName');
     metadataConfiguration = registerOutput<VectorsIndexMetadataConfiguration?>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VectorsIndexMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vectorBucketName = registerOutput<String>('vectorBucketName');
   }
 
@@ -213,11 +214,12 @@ class VectorsIndex extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VectorsIndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VectorsIndex._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,13 +237,36 @@ class VectorsIndex extends pulumi.CustomResource {
     dataType = registerOutput<String>('dataType');
     dimension = registerOutput<int>('dimension');
     distanceMetric = registerOutput<String>('distanceMetric');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<VectorsIndexEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     indexArn = registerOutput<String>('indexArn');
     indexName = registerOutput<String>('indexName');
     metadataConfiguration = registerOutput<VectorsIndexMetadataConfiguration?>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VectorsIndexMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vectorBucketName = registerOutput<String>('vectorBucketName');
+  }
+
+  /// Creates a typed reference to an existing [VectorsIndex] resource.
+  VectorsIndex.reference(String urn)
+    : super(
+        'aws:s3/vectorsIndex:VectorsIndex',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTime = registerOutput<String>('creationTime');
+    dataType = registerOutput<String>('dataType');
+    dimension = registerOutput<int>('dimension');
+    distanceMetric = registerOutput<String>('distanceMetric');
+    encryptionConfigurations = registerOutput<List<VectorsIndexEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    indexArn = registerOutput<String>('indexArn');
+    indexName = registerOutput<String>('indexName');
+    metadataConfiguration = registerOutput<VectorsIndexMetadataConfiguration?>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VectorsIndexMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vectorBucketName = registerOutput<String>('vectorBucketName');
   }
 }

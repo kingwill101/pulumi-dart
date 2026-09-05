@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OrganizationDelegatedAdminAccount resources.
 class OrganizationDelegatedAdminAccountState {
   /// An organization member account ID that you want to designate as a delegated administrator.
-  final pulumi.Input<String>? accountId;
-  /// The Amazon Resource Name (ARN) of the delegated administrator's account.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? accountId;
+  /// ARN of the delegated administrator's account.
+  final pulumi.Input<String?>? arn;
   /// The email address that is associated with the delegated administrator's AWS account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The friendly name of the delegated administrator's account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The AWS CloudTrail service principal name.
-  final pulumi.Input<String>? servicePrincipal;
+  final pulumi.Input<String?>? servicePrincipal;
 
   /// Creates a new [OrganizationDelegatedAdminAccountState].
   /// [accountId] An organization member account ID that you want to designate as a delegated administrator.
-  /// [arn] The Amazon Resource Name (ARN) of the delegated administrator's account.
+  /// [arn] ARN of the delegated administrator's account.
   /// [email] The email address that is associated with the delegated administrator's AWS account.
   /// [name] The friendly name of the delegated administrator's account.
   /// [servicePrincipal] The AWS CloudTrail service principal name.

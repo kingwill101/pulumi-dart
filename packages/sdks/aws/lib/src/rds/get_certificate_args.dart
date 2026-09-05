@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_rds_get_certificate_get_certificate_args_doc}
 class GetCertificateArgs {
   /// When enabled, returns the default certificate for new RDS instances.
-  final pulumi.Input<bool>? defaultForNewLaunches;
+  final pulumi.Input<bool?>? defaultForNewLaunches;
   /// Certificate identifier. For example, `rds-ca-2019`.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// When enabled, returns the certificate with the latest `ValidTill`.
-  final pulumi.Input<bool>? latestValidTill;
+  final pulumi.Input<bool?>? latestValidTill;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetCertificateArgs].
   /// [defaultForNewLaunches] When enabled, returns the default certificate for new RDS instances.

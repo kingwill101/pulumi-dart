@@ -5,15 +5,15 @@ import 'size_constraint_set_size_constraint.dart';
 
 /// Input properties used for looking up and filtering SizeConstraintSet resources.
 class SizeConstraintSetState {
-  /// Amazon Resource Name (ARN).
-  final pulumi.Input<String>? arn;
+  /// ARN.
+  final pulumi.Input<String?>? arn;
   /// Name or description of the Size Constraint Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parts of web requests that you want to inspect the size of.
-  final pulumi.Input<List<SizeConstraintSetSizeConstraint>>? sizeConstraints;
+  final pulumi.Input<List<SizeConstraintSetSizeConstraint>?>? sizeConstraints;
 
   /// Creates a new [SizeConstraintSetState].
-  /// [arn] Amazon Resource Name (ARN).
+  /// [arn] ARN.
   /// [name] Name or description of the Size Constraint Set.
   /// [sizeConstraints] Parts of web requests that you want to inspect the size of.
   const SizeConstraintSetState({

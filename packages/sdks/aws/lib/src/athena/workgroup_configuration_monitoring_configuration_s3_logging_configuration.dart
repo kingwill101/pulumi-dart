@@ -6,9 +6,9 @@ class WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration {
   /// Boolean whether Amazon S3 logging is enabled for the workgroup.
   final pulumi.Input<bool> enabled;
   /// KMS key ARN to encrypt the logs published to the given Amazon S3 destination.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Amazon S3 destination URI (`s3://bucket/prefix`) for log publishing.
-  final pulumi.Input<String>? logLocation;
+  final pulumi.Input<String?>? logLocation;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration].
   /// [enabled] Boolean whether Amazon S3 logging is enabled for the workgroup.

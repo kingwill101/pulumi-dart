@@ -6,9 +6,9 @@ class StackStorageConnector {
   /// Type of storage connector. Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.
   final pulumi.Input<String> connectorType;
   /// Names of the domains for the account.
-  final pulumi.Input<List<String>>? domains;
+  final pulumi.Input<List<String>?>? domains;
   /// ARN of the storage connector.
-  final pulumi.Input<String>? resourceIdentifier;
+  final pulumi.Input<String?>? resourceIdentifier;
 
   /// Creates a new [StackStorageConnector].
   /// [connectorType] Type of storage connector. Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.

@@ -5,7 +5,7 @@ import 'event_source_mapping_filter_criteria_filter.dart';
 
 class EventSourceMappingFilterCriteria {
   /// Set of up to 5 filter. If an event satisfies at least one, Lambda sends the event to the function or adds it to the next batch. See below.
-  final pulumi.Input<List<EventSourceMappingFilterCriteriaFilter>>? filters;
+  final pulumi.Input<List<EventSourceMappingFilterCriteriaFilter>?>? filters;
 
   /// Creates a new [EventSourceMappingFilterCriteria].
   /// [filters] Set of up to 5 filter. If an event satisfies at least one, Lambda sends the event to the function or adds it to the next batch. See below.

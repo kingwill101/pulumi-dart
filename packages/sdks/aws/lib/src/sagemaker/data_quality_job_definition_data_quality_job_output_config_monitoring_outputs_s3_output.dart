@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output {
   /// The local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job. LocalPath is an absolute path for the output data. Defaults to `/opt/ml/processing/output`.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// Whether to upload the results of the monitoring job continuously or after the job completes. Valid values are `Continuous` or `EndOfJob`
-  final pulumi.Input<String>? s3UploadMode;
+  final pulumi.Input<String?>? s3UploadMode;
   /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   final pulumi.Input<String> s3Uri;
 

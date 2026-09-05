@@ -13,8 +13,6 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.FsxOpenZfsFileSystem("example", {
-///     fsxFilesystemArn: exampleAwsFsxOpenzfsFileSystem.arn,
-///     securityGroupArns: [exampleAwsSecurityGroup.arn],
 ///     protocol: {
 ///         nfs: {
 ///             mountOptions: {
@@ -22,6 +20,8 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///             },
 ///         },
 ///     },
+///     fsxFilesystemArn: exampleAwsFsxOpenzfsFileSystem.arn,
+///     securityGroupArns: [exampleAwsSecurityGroup.arn],
 /// });
 /// ```
 /// ```python
@@ -29,15 +29,15 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.FsxOpenZfsFileSystem("example",
-///     fsx_filesystem_arn=example_aws_fsx_openzfs_file_system["arn"],
-///     security_group_arns=[example_aws_security_group["arn"]],
 ///     protocol={
 ///         "nfs": {
 ///             "mount_options": {
 ///                 "version": "AUTOMATIC",
 ///             },
 ///         },
-///     })
+///     },
+///     fsx_filesystem_arn=example_aws_fsx_openzfs_file_system["arn"],
+///     security_group_arns=[example_aws_security_group["arn"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,11 +49,6 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// {
 ///     var example = new Aws.DataSync.FsxOpenZfsFileSystem("example", new()
 ///     {
-///         FsxFilesystemArn = exampleAwsFsxOpenzfsFileSystem.Arn,
-///         SecurityGroupArns = new[]
-///         {
-///             exampleAwsSecurityGroup.Arn,
-///         },
 ///         Protocol = new Aws.DataSync.Inputs.FsxOpenZfsFileSystemProtocolArgs
 ///         {
 ///             Nfs = new Aws.DataSync.Inputs.FsxOpenZfsFileSystemProtocolNfsArgs
@@ -63,6 +58,11 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///                     Version = "AUTOMATIC",
 ///                 },
 ///             },
+///         },
+///         FsxFilesystemArn = exampleAwsFsxOpenzfsFileSystem.Arn,
+///         SecurityGroupArns = new[]
+///         {
+///             exampleAwsSecurityGroup.Arn,
 ///         },
 ///     });
 ///
@@ -79,16 +79,16 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewFsxOpenZfsFileSystem(ctx, "example", &datasync.FsxOpenZfsFileSystemArgs{
-/// 			FsxFilesystemArn: pulumi.Any(exampleAwsFsxOpenzfsFileSystem.Arn),
-/// 			SecurityGroupArns: pulumi.StringArray{
-/// 				exampleAwsSecurityGroup.Arn,
-/// 			},
 /// 			Protocol: &datasync.FsxOpenZfsFileSystemProtocolArgs{
 /// 				Nfs: &datasync.FsxOpenZfsFileSystemProtocolNfsArgs{
 /// 					MountOptions: &datasync.FsxOpenZfsFileSystemProtocolNfsMountOptionsArgs{
 /// 						Version: pulumi.String("AUTOMATIC"),
 /// 					},
 /// 				},
+/// 			},
+/// 			FsxFilesystemArn: pulumi.Any(exampleAwsFsxOpenzfsFileSystem.Arn),
+/// 			SecurityGroupArns: pulumi.StringArray{
+/// 				exampleAwsSecurityGroup.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -108,8 +108,6 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// }
 ///
 /// resource "aws_datasync_fsxopenzfsfilesystem" "example" {
-///   fsx_filesystem_arn  = exampleAwsFsxOpenzfsFileSystem.arn
-///   security_group_arns = [exampleAwsSecurityGroup.arn]
 ///   protocol = {
 ///     nfs = {
 ///       mount_options = {
@@ -117,6 +115,8 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///       }
 ///     }
 ///   }
+///   fsx_filesystem_arn  = exampleAwsFsxOpenzfsFileSystem.arn
+///   security_group_arns = [exampleAwsSecurityGroup.arn]
 /// }
 /// ```
 /// ```java
@@ -144,8 +144,6 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FsxOpenZfsFileSystem("example", FsxOpenZfsFileSystemArgs.builder()
-///             .fsxFilesystemArn(exampleAwsFsxOpenzfsFileSystem.arn())
-///             .securityGroupArns(exampleAwsSecurityGroup.arn())
 ///             .protocol(FsxOpenZfsFileSystemProtocolArgs.builder()
 ///                 .nfs(FsxOpenZfsFileSystemProtocolNfsArgs.builder()
 ///                     .mountOptions(FsxOpenZfsFileSystemProtocolNfsMountOptionsArgs.builder()
@@ -153,6 +151,8 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .fsxFilesystemArn(exampleAwsFsxOpenzfsFileSystem.arn())
+///             .securityGroupArns(exampleAwsSecurityGroup.arn())
 ///             .build());
 ///
 ///     }
@@ -163,13 +163,13 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///   example:
 ///     type: aws:datasync:FsxOpenZfsFileSystem
 ///     properties:
-///       fsxFilesystemArn: ${exampleAwsFsxOpenzfsFileSystem.arn}
-///       securityGroupArns:
-///         - ${exampleAwsSecurityGroup.arn}
 ///       protocol:
 ///         nfs:
 ///           mountOptions:
 ///             version: AUTOMATIC
+///       fsxFilesystemArn: ${exampleAwsFsxOpenzfsFileSystem.arn}
+///       securityGroupArns:
+///         - ${exampleAwsSecurityGroup.arn}
 /// ```
 ///
 ///
@@ -181,17 +181,17 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// $ pulumi import aws:datasync/fsxOpenZfsFileSystem:FsxOpenZfsFileSystem example arn:aws:datasync:us-west-2:123456789012:location/loc-12345678901234567#arn:aws:fsx:us-west-2:123456789012:file-system/fs-08e04cd442c1bb94a
 /// ```
 class FsxOpenZfsFileSystem extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The time that the FSx for openzfs location was created.
   late final pulumi.Output<String> creationTime;
-  /// The Amazon Resource Name (ARN) for the FSx for OpenZfs file system.
+  /// ARN for the FSx for OpenZfs file system.
   late final pulumi.Output<String> fsxFilesystemArn;
   /// The type of protocol that DataSync uses to access your file system. See below.
   late final pulumi.Output<FsxOpenZfsFileSystemProtocol> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for openzfs file system.
+  /// ARNs of the security groups that are to use to configure the FSx for openzfs file system.
   late final pulumi.Output<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination. Must start with `/fsx`.
   late final pulumi.Output<String> subdirectory;
@@ -214,17 +214,17 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
           'aws:datasync/fsxOpenZfsFileSystem:FsxOpenZfsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
     protocol = registerOutput<FsxOpenZfsFileSystemProtocol>('protocol', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FsxOpenZfsFileSystemProtocol.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -233,11 +233,12 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FsxOpenZfsFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FsxOpenZfsFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -256,10 +257,31 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
     protocol = registerOutput<FsxOpenZfsFileSystemProtocol>('protocol', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FsxOpenZfsFileSystemProtocol.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [FsxOpenZfsFileSystem] resource.
+  FsxOpenZfsFileSystem.reference(String urn)
+    : super(
+        'aws:datasync/fsxOpenZfsFileSystem:FsxOpenZfsFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
+    protocol = registerOutput<FsxOpenZfsFileSystemProtocol>('protocol', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FsxOpenZfsFileSystemProtocol.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

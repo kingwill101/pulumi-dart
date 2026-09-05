@@ -116,7 +116,7 @@ class TransitGateway extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** Modifying `amazonSideAsn` on a Transit Gateway with active BGP sessions is [not allowed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html). You must first delete all Transit Gateway attachments that have BGP configured prior to modifying `amazonSideAsn`.
   late final pulumi.Output<int?> amazonSideAsn;
-  /// EC2 Transit Gateway Amazon Resource Name (ARN)
+  /// EC2 Transit Gateway ARN
   late final pulumi.Output<String> arn;
   /// Identifier of the default association route table
   late final pulumi.Output<String> associationDefaultRouteTableId;
@@ -163,7 +163,7 @@ class TransitGateway extends pulumi.CustomResource {
           'aws:ec2transitgateway/transitGateway:TransitGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amazonSideAsn = registerOutput<int?>('amazonSideAsn');
     arn = registerOutput<String>('arn');
@@ -179,9 +179,9 @@ class TransitGateway extends pulumi.CustomResource {
     propagationDefaultRouteTableId = registerOutput<String>('propagationDefaultRouteTableId');
     region = registerOutput<String>('region');
     securityGroupReferencingSupport = registerOutput<String?>('securityGroupReferencingSupport');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayCidrBlocks = registerOutput<List<String>?>('transitGatewayCidrBlocks');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayCidrBlocks = registerOutput<List<String>?>('transitGatewayCidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpnEcmpSupport = registerOutput<String?>('vpnEcmpSupport');
   }
 
@@ -190,11 +190,12 @@ class TransitGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransitGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransitGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,9 +223,38 @@ class TransitGateway extends pulumi.CustomResource {
     propagationDefaultRouteTableId = registerOutput<String>('propagationDefaultRouteTableId');
     region = registerOutput<String>('region');
     securityGroupReferencingSupport = registerOutput<String?>('securityGroupReferencingSupport');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayCidrBlocks = registerOutput<List<String>?>('transitGatewayCidrBlocks');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayCidrBlocks = registerOutput<List<String>?>('transitGatewayCidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpnEcmpSupport = registerOutput<String?>('vpnEcmpSupport');
+  }
+
+  /// Creates a typed reference to an existing [TransitGateway] resource.
+  TransitGateway.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/transitGateway:TransitGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amazonSideAsn = registerOutput<int?>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    associationDefaultRouteTableId = registerOutput<String>('associationDefaultRouteTableId');
+    autoAcceptSharedAttachments = registerOutput<String?>('autoAcceptSharedAttachments');
+    defaultRouteTableAssociation = registerOutput<String?>('defaultRouteTableAssociation');
+    defaultRouteTablePropagation = registerOutput<String?>('defaultRouteTablePropagation');
+    description = registerOutput<String?>('description');
+    dnsSupport = registerOutput<String?>('dnsSupport');
+    encryptionSupport = registerOutput<String>('encryptionSupport');
+    multicastSupport = registerOutput<String?>('multicastSupport');
+    ownerId = registerOutput<String>('ownerId');
+    propagationDefaultRouteTableId = registerOutput<String>('propagationDefaultRouteTableId');
+    region = registerOutput<String>('region');
+    securityGroupReferencingSupport = registerOutput<String?>('securityGroupReferencingSupport');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayCidrBlocks = registerOutput<List<String>?>('transitGatewayCidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpnEcmpSupport = registerOutput<String?>('vpnEcmpSupport');
   }
 }

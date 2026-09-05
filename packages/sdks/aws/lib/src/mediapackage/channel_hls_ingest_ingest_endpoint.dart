@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelHlsIngestIngestEndpoint {
   /// The password
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The URL
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The username
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ChannelHlsIngestIngestEndpoint].
   /// [password] The password

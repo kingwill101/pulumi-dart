@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleActionRedirect {
   /// The hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The absolute path, starting with the leading "/". This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}. Defaults to `/#{path}`.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// The protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?". Defaults to `#{query}`.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// The HTTP redirect code. The redirect is either permanent (`HTTP_301`) or temporary (`HTTP_302`).
   final pulumi.Input<String> statusCode;
 

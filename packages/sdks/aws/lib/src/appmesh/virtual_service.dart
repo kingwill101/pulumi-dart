@@ -15,8 +15,6 @@ import 'virtual_service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const servicea = new aws.appmesh.VirtualService("servicea", {
-///     name: "servicea.simpleapp.local",
-///     meshName: simple.id,
 ///     spec: {
 ///         provider: {
 ///             virtualNode: {
@@ -24,6 +22,8 @@ import 'virtual_service_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "servicea.simpleapp.local",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -31,15 +31,15 @@ import 'virtual_service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// servicea = aws.appmesh.VirtualService("servicea",
-///     name="servicea.simpleapp.local",
-///     mesh_name=simple["id"],
 ///     spec={
 ///         "provider": {
 ///             "virtual_node": {
 ///                 "virtual_node_name": serviceb1["name"],
 ///             },
 ///         },
-///     })
+///     },
+///     name="servicea.simpleapp.local",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,8 +51,6 @@ import 'virtual_service_state.dart';
 /// {
 ///     var servicea = new Aws.AppMesh.VirtualService("servicea", new()
 ///     {
-///         Name = "servicea.simpleapp.local",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualServiceSpecArgs
 ///         {
 ///             Provider = new Aws.AppMesh.Inputs.VirtualServiceSpecProviderArgs
@@ -63,6 +61,8 @@ import 'virtual_service_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "servicea.simpleapp.local",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -78,8 +78,6 @@ import 'virtual_service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
-/// 			Name:     pulumi.String("servicea.simpleapp.local"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualServiceSpecArgs{
 /// 				Provider: &appmesh.VirtualServiceSpecProviderArgs{
 /// 					VirtualNode: &appmesh.VirtualServiceSpecProviderVirtualNodeArgs{
@@ -87,6 +85,8 @@ import 'virtual_service_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("servicea.simpleapp.local"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -105,8 +105,6 @@ import 'virtual_service_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualservice" "servicea" {
-///   name      = "servicea.simpleapp.local"
-///   mesh_name = simple.id
 ///   spec = {
 ///     provider = {
 ///       virtual_node = {
@@ -114,6 +112,8 @@ import 'virtual_service_state.dart';
 ///       }
 ///     }
 ///   }
+///   name      = "servicea.simpleapp.local"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -141,8 +141,6 @@ import 'virtual_service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var servicea = new VirtualService("servicea", VirtualServiceArgs.builder()
-///             .name("servicea.simpleapp.local")
-///             .meshName(simple.id())
 ///             .spec(VirtualServiceSpecArgs.builder()
 ///                 .provider(VirtualServiceSpecProviderArgs.builder()
 ///                     .virtualNode(VirtualServiceSpecProviderVirtualNodeArgs.builder()
@@ -150,6 +148,8 @@ import 'virtual_service_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("servicea.simpleapp.local")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -160,12 +160,12 @@ import 'virtual_service_state.dart';
 ///   servicea:
 ///     type: aws:appmesh:VirtualService
 ///     properties:
-///       name: servicea.simpleapp.local
-///       meshName: ${simple.id}
 ///       spec:
 ///         provider:
 ///           virtualNode:
 ///             virtualNodeName: ${serviceb1.name}
+///       name: servicea.simpleapp.local
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -177,8 +177,6 @@ import 'virtual_service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const servicea = new aws.appmesh.VirtualService("servicea", {
-///     name: "servicea.simpleapp.local",
-///     meshName: simple.id,
 ///     spec: {
 ///         provider: {
 ///             virtualRouter: {
@@ -186,6 +184,8 @@ import 'virtual_service_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "servicea.simpleapp.local",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -193,15 +193,15 @@ import 'virtual_service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// servicea = aws.appmesh.VirtualService("servicea",
-///     name="servicea.simpleapp.local",
-///     mesh_name=simple["id"],
 ///     spec={
 ///         "provider": {
 ///             "virtual_router": {
 ///                 "virtual_router_name": serviceb["name"],
 ///             },
 ///         },
-///     })
+///     },
+///     name="servicea.simpleapp.local",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -213,8 +213,6 @@ import 'virtual_service_state.dart';
 /// {
 ///     var servicea = new Aws.AppMesh.VirtualService("servicea", new()
 ///     {
-///         Name = "servicea.simpleapp.local",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualServiceSpecArgs
 ///         {
 ///             Provider = new Aws.AppMesh.Inputs.VirtualServiceSpecProviderArgs
@@ -225,6 +223,8 @@ import 'virtual_service_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "servicea.simpleapp.local",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -240,8 +240,6 @@ import 'virtual_service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
-/// 			Name:     pulumi.String("servicea.simpleapp.local"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualServiceSpecArgs{
 /// 				Provider: &appmesh.VirtualServiceSpecProviderArgs{
 /// 					VirtualRouter: &appmesh.VirtualServiceSpecProviderVirtualRouterArgs{
@@ -249,6 +247,8 @@ import 'virtual_service_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("servicea.simpleapp.local"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -267,8 +267,6 @@ import 'virtual_service_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualservice" "servicea" {
-///   name      = "servicea.simpleapp.local"
-///   mesh_name = simple.id
 ///   spec = {
 ///     provider = {
 ///       virtual_router = {
@@ -276,6 +274,8 @@ import 'virtual_service_state.dart';
 ///       }
 ///     }
 ///   }
+///   name      = "servicea.simpleapp.local"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -303,8 +303,6 @@ import 'virtual_service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var servicea = new VirtualService("servicea", VirtualServiceArgs.builder()
-///             .name("servicea.simpleapp.local")
-///             .meshName(simple.id())
 ///             .spec(VirtualServiceSpecArgs.builder()
 ///                 .provider(VirtualServiceSpecProviderArgs.builder()
 ///                     .virtualRouter(VirtualServiceSpecProviderVirtualRouterArgs.builder()
@@ -312,6 +310,8 @@ import 'virtual_service_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("servicea.simpleapp.local")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -322,12 +322,12 @@ import 'virtual_service_state.dart';
 ///   servicea:
 ///     type: aws:appmesh:VirtualService
 ///     properties:
-///       name: servicea.simpleapp.local
-///       meshName: ${simple.id}
 ///       spec:
 ///         provider:
 ///           virtualRouter:
 ///             virtualRouterName: ${serviceb.name}
+///       name: servicea.simpleapp.local
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -374,7 +374,7 @@ class VirtualService extends pulumi.CustomResource {
           'aws:appmesh/virtualService:VirtualService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -385,8 +385,8 @@ class VirtualService extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualServiceSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualServiceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualService] resource's state with the given [name] and [id].
@@ -394,11 +394,12 @@ class VirtualService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,7 +422,29 @@ class VirtualService extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualServiceSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualServiceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualService] resource.
+  VirtualService.reference(String urn)
+    : super(
+        'aws:appmesh/virtualService:VirtualService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshName = registerOutput<String>('meshName');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<VirtualServiceSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualServiceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

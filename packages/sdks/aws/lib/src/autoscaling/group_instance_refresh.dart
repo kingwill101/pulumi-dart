@@ -5,7 +5,7 @@ import 'group_instance_refresh_preferences.dart';
 
 class GroupInstanceRefresh {
   /// Override default parameters for Instance Refresh.
-  final pulumi.Input<GroupInstanceRefreshPreferences>? preferences;
+  final pulumi.Input<GroupInstanceRefreshPreferences?>? preferences;
   /// Strategy to use for instance refresh. The only allowed value is `Rolling`. See [StartInstanceRefresh Action](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_StartInstanceRefresh.html#API_StartInstanceRefresh_RequestParameters) for more information.
   final pulumi.Input<String> strategy;
   /// Set of additional property names that will trigger an Instance Refresh. A refresh will always be triggered by a change in any of `launchConfiguration`, `launchTemplate`, or `mixedInstancesPolicy`.
@@ -17,7 +17,7 @@ class GroupInstanceRefresh {
   /// &gt; **NOTE:** Auto Scaling Groups support up to one active instance refresh at a time. When this resource is updated, any existing refresh is cancelled.
   ///
   /// &gt; **NOTE:** Depending on health check settings and group size, an instance refresh may take a long time or fail. This resource does not wait for the instance refresh to complete.
-  final pulumi.Input<List<String>>? triggers;
+  final pulumi.Input<List<String>?>? triggers;
 
   /// Creates a new [GroupInstanceRefresh].
   /// [preferences] Override default parameters for Instance Refresh.

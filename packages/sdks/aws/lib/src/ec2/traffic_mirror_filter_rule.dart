@@ -30,14 +30,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///     trafficDirection: "egress",
 /// });
 /// const rulein = new aws.ec2.TrafficMirrorFilterRule("rulein", {
-///     description: "test rule",
-///     trafficMirrorFilterId: filter.id,
-///     destinationCidrBlock: "10.0.0.0/8",
-///     sourceCidrBlock: "10.0.0.0/8",
-///     ruleNumber: 1,
-///     ruleAction: "accept",
-///     trafficDirection: "ingress",
-///     protocol: 6,
 ///     destinationPortRange: {
 ///         fromPort: 22,
 ///         toPort: 53,
@@ -46,6 +38,14 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///         fromPort: 0,
 ///         toPort: 10,
 ///     },
+///     description: "test rule",
+///     trafficMirrorFilterId: filter.id,
+///     destinationCidrBlock: "10.0.0.0/8",
+///     sourceCidrBlock: "10.0.0.0/8",
+///     ruleNumber: 1,
+///     ruleAction: "accept",
+///     trafficDirection: "ingress",
+///     protocol: 6,
 /// });
 /// ```
 /// ```python
@@ -64,14 +64,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///     rule_action="accept",
 ///     traffic_direction="egress")
 /// rulein = aws.ec2.TrafficMirrorFilterRule("rulein",
-///     description="test rule",
-///     traffic_mirror_filter_id=filter.id,
-///     destination_cidr_block="10.0.0.0/8",
-///     source_cidr_block="10.0.0.0/8",
-///     rule_number=1,
-///     rule_action="accept",
-///     traffic_direction="ingress",
-///     protocol=6,
 ///     destination_port_range={
 ///         "from_port": 22,
 ///         "to_port": 53,
@@ -79,7 +71,15 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///     source_port_range={
 ///         "from_port": 0,
 ///         "to_port": 10,
-///     })
+///     },
+///     description="test rule",
+///     traffic_mirror_filter_id=filter.id,
+///     destination_cidr_block="10.0.0.0/8",
+///     source_cidr_block="10.0.0.0/8",
+///     rule_number=1,
+///     rule_action="accept",
+///     traffic_direction="ingress",
+///     protocol=6)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -111,14 +111,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///
 ///     var rulein = new Aws.Ec2.TrafficMirrorFilterRule("rulein", new()
 ///     {
-///         Description = "test rule",
-///         TrafficMirrorFilterId = filter.Id,
-///         DestinationCidrBlock = "10.0.0.0/8",
-///         SourceCidrBlock = "10.0.0.0/8",
-///         RuleNumber = 1,
-///         RuleAction = "accept",
-///         TrafficDirection = "ingress",
-///         Protocol = 6,
 ///         DestinationPortRange = new Aws.Ec2.Inputs.TrafficMirrorFilterRuleDestinationPortRangeArgs
 ///         {
 ///             FromPort = 22,
@@ -129,6 +121,14 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///             FromPort = 0,
 ///             ToPort = 10,
 ///         },
+///         Description = "test rule",
+///         TrafficMirrorFilterId = filter.Id,
+///         DestinationCidrBlock = "10.0.0.0/8",
+///         SourceCidrBlock = "10.0.0.0/8",
+///         RuleNumber = 1,
+///         RuleAction = "accept",
+///         TrafficDirection = "ingress",
+///         Protocol = 6,
 ///     });
 ///
 /// });
@@ -165,14 +165,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "rulein", &ec2.TrafficMirrorFilterRuleArgs{
-/// 			Description:           pulumi.String("test rule"),
-/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
-/// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
-/// 			SourceCidrBlock:       pulumi.String("10.0.0.0/8"),
-/// 			RuleNumber:            pulumi.Int(1),
-/// 			RuleAction:            pulumi.String("accept"),
-/// 			TrafficDirection:      pulumi.String("ingress"),
-/// 			Protocol:              pulumi.Int(6),
 /// 			DestinationPortRange: &ec2.TrafficMirrorFilterRuleDestinationPortRangeArgs{
 /// 				FromPort: pulumi.Int(22),
 /// 				ToPort:   pulumi.Int(53),
@@ -181,6 +173,14 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 				FromPort: pulumi.Int(0),
 /// 				ToPort:   pulumi.Int(10),
 /// 			},
+/// 			Description:           pulumi.String("test rule"),
+/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
+/// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
+/// 			SourceCidrBlock:       pulumi.String("10.0.0.0/8"),
+/// 			RuleNumber:            pulumi.Int(1),
+/// 			RuleAction:            pulumi.String("accept"),
+/// 			TrafficDirection:      pulumi.String("ingress"),
+/// 			Protocol:              pulumi.Int(6),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -212,14 +212,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///   traffic_direction        = "egress"
 /// }
 /// resource "aws_ec2_trafficmirrorfilterrule" "rulein" {
-///   description              = "test rule"
-///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
-///   destination_cidr_block   = "10.0.0.0/8"
-///   source_cidr_block        = "10.0.0.0/8"
-///   rule_number              = 1
-///   rule_action              = "accept"
-///   traffic_direction        = "ingress"
-///   protocol                 = 6
 ///   destination_port_range = {
 ///     from_port = 22
 ///     to_port   = 53
@@ -228,6 +220,14 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///     from_port = 0
 ///     to_port   = 10
 ///   }
+///   description              = "test rule"
+///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
+///   destination_cidr_block   = "10.0.0.0/8"
+///   source_cidr_block        = "10.0.0.0/8"
+///   rule_number              = 1
+///   rule_action              = "accept"
+///   traffic_direction        = "ingress"
+///   protocol                 = 6
 /// }
 /// ```
 /// ```java
@@ -271,14 +271,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///             .build());
 ///
 ///         var rulein = new TrafficMirrorFilterRule("rulein", TrafficMirrorFilterRuleArgs.builder()
-///             .description("test rule")
-///             .trafficMirrorFilterId(filter.id())
-///             .destinationCidrBlock("10.0.0.0/8")
-///             .sourceCidrBlock("10.0.0.0/8")
-///             .ruleNumber(1)
-///             .ruleAction("accept")
-///             .trafficDirection("ingress")
-///             .protocol(6)
 ///             .destinationPortRange(TrafficMirrorFilterRuleDestinationPortRangeArgs.builder()
 ///                 .fromPort(22)
 ///                 .toPort(53)
@@ -287,6 +279,14 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///                 .fromPort(0)
 ///                 .toPort(10)
 ///                 .build())
+///             .description("test rule")
+///             .trafficMirrorFilterId(filter.id())
+///             .destinationCidrBlock("10.0.0.0/8")
+///             .sourceCidrBlock("10.0.0.0/8")
+///             .ruleNumber(1)
+///             .ruleAction("accept")
+///             .trafficDirection("ingress")
+///             .protocol(6)
 ///             .build());
 ///
 ///     }
@@ -313,6 +313,12 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///   rulein:
 ///     type: aws:ec2:TrafficMirrorFilterRule
 ///     properties:
+///       destinationPortRange:
+///         fromPort: 22
+///         toPort: 53
+///       sourcePortRange:
+///         fromPort: 0
+///         toPort: 10
 ///       description: test rule
 ///       trafficMirrorFilterId: ${filter.id}
 ///       destinationCidrBlock: 10.0.0.0/8
@@ -321,12 +327,6 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///       ruleAction: accept
 ///       trafficDirection: ingress
 ///       protocol: 6
-///       destinationPortRange:
-///         fromPort: 22
-///         toPort: 53
-///       sourcePortRange:
-///         fromPort: 0
-///         toPort: 10
 /// ```
 ///
 ///
@@ -377,7 +377,7 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorFilterRule:TrafficMirrorFilterRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -398,11 +398,12 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficMirrorFilterRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficMirrorFilterRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -416,6 +417,29 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    destinationPortRange = registerOutput<TrafficMirrorFilterRuleDestinationPortRange?>('destinationPortRange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficMirrorFilterRuleDestinationPortRange.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocol = registerOutput<int?>('protocol');
+    region = registerOutput<String>('region');
+    ruleAction = registerOutput<String>('ruleAction');
+    ruleNumber = registerOutput<int>('ruleNumber');
+    sourceCidrBlock = registerOutput<String>('sourceCidrBlock');
+    sourcePortRange = registerOutput<TrafficMirrorFilterRuleSourcePortRange?>('sourcePortRange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficMirrorFilterRuleSourcePortRange.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficDirection = registerOutput<String>('trafficDirection');
+    trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');
+  }
+
+  /// Creates a typed reference to an existing [TrafficMirrorFilterRule] resource.
+  TrafficMirrorFilterRule.reference(String urn)
+    : super(
+        'aws:ec2/trafficMirrorFilterRule:TrafficMirrorFilterRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');

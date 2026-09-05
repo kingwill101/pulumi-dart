@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_args.dart';
+import 'channel_hls_ingest.dart';
 import 'channel_state.dart';
 
 /// Provides an AWS Elemental MediaPackage Channel.
@@ -129,7 +130,7 @@ class Channel extends pulumi.CustomResource {
   /// A description of the channel
   late final pulumi.Output<String> description;
   /// A single item list of HLS ingest information
-  late final pulumi.Output<List<Map<String, dynamic>>> hlsIngests;
+  late final pulumi.Output<List<ChannelHlsIngest>> hlsIngests;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -149,15 +150,15 @@ class Channel extends pulumi.CustomResource {
           'aws:mediapackage/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     channelId = registerOutput<String>('channelId');
     description = registerOutput<String>('description');
-    hlsIngests = registerOutput<List<Map<String, dynamic>>>('hlsIngests');
+    hlsIngests = registerOutput<List<ChannelHlsIngest>>('hlsIngests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelHlsIngest>(guardedValue, (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Channel] resource's state with the given [name] and [id].
@@ -165,11 +166,12 @@ class Channel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Channel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -186,9 +188,27 @@ class Channel extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     channelId = registerOutput<String>('channelId');
     description = registerOutput<String>('description');
-    hlsIngests = registerOutput<List<Map<String, dynamic>>>('hlsIngests');
+    hlsIngests = registerOutput<List<ChannelHlsIngest>>('hlsIngests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelHlsIngest>(guardedValue, (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Channel] resource.
+  Channel.reference(String urn)
+    : super(
+        'aws:mediapackage/channel:Channel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    channelId = registerOutput<String>('channelId');
+    description = registerOutput<String>('description');
+    hlsIngests = registerOutput<List<ChannelHlsIngest>>('hlsIngests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelHlsIngest>(guardedValue, (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

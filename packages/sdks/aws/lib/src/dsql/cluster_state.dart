@@ -8,30 +8,30 @@ import 'cluster_timeouts.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// ARN of the Cluster.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether deletion protection is enabled in this cluster.
   /// Default value is `false`.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Encryption configuration details for the DSQL Cluster.
-  final pulumi.Input<List<ClusterEncryptionDetail>>? encryptionDetails;
+  final pulumi.Input<List<ClusterEncryptionDetail>?>? encryptionDetails;
   /// Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// Default value is `false`.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Cluster Identifier.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// The ARN of the AWS KMS key that encrypts data in the DSQL Cluster, or `"AWS_OWNED_KMS_KEY"`.
-  final pulumi.Input<String>? kmsEncryptionKey;
+  final pulumi.Input<String?>? kmsEncryptionKey;
   /// Multi-region properties of the DSQL Cluster.
-  final pulumi.Input<ClusterMultiRegionProperties>? multiRegionProperties;
+  final pulumi.Input<ClusterMultiRegionProperties?>? multiRegionProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of tags to be associated with the AWS DSQL Cluster resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ClusterTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ClusterTimeouts?>? timeouts;
   /// The DSQL Cluster's VPC endpoint service name.
-  final pulumi.Input<String>? vpcEndpointServiceName;
+  final pulumi.Input<String?>? vpcEndpointServiceName;
 
   /// Creates a new [ClusterState].
   /// [arn] ARN of the Cluster.

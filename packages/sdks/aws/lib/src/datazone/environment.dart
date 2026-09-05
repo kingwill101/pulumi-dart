@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
+import 'environment_last_deployment.dart';
+import 'environment_provisioned_resource.dart';
 import 'environment_state.dart';
 import 'environment_timeouts.dart';
+import 'environment_user_parameter.dart';
 
 /// Resource for managing an AWS DataZone Environment.
 ///
@@ -15,11 +18,6 @@ import 'environment_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datazone.Environment("example", {
-///     name: "example",
-///     blueprintIdentifier: test.environmentBlueprintId,
-///     profileIdentifier: testAwsDatazoneEnvironmentProfile.id,
-///     projectIdentifier: testAwsDatazoneProject.id,
-///     domainIdentifier: testAwsDatazoneDomain.id,
 ///     userParameters: [
 ///         {
 ///             name: "consumerGlueDbName",
@@ -34,6 +32,11 @@ import 'environment_timeouts.dart';
 ///             value: "workgroup",
 ///         },
 ///     ],
+///     name: "example",
+///     blueprintIdentifier: test.environmentBlueprintId,
+///     profileIdentifier: testAwsDatazoneEnvironmentProfile.id,
+///     projectIdentifier: testAwsDatazoneProject.id,
+///     domainIdentifier: testAwsDatazoneDomain.id,
 /// });
 /// ```
 /// ```python
@@ -41,11 +44,6 @@ import 'environment_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datazone.Environment("example",
-///     name="example",
-///     blueprint_identifier=test["environmentBlueprintId"],
-///     profile_identifier=test_aws_datazone_environment_profile["id"],
-///     project_identifier=test_aws_datazone_project["id"],
-///     domain_identifier=test_aws_datazone_domain["id"],
 ///     user_parameters=[
 ///         {
 ///             "name": "consumerGlueDbName",
@@ -59,7 +57,12 @@ import 'environment_timeouts.dart';
 ///             "name": "workgroupName",
 ///             "value": "workgroup",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     blueprint_identifier=test["environmentBlueprintId"],
+///     profile_identifier=test_aws_datazone_environment_profile["id"],
+///     project_identifier=test_aws_datazone_project["id"],
+///     domain_identifier=test_aws_datazone_domain["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -71,11 +74,6 @@ import 'environment_timeouts.dart';
 /// {
 ///     var example = new Aws.DataZone.Environment("example", new()
 ///     {
-///         Name = "example",
-///         BlueprintIdentifier = test.EnvironmentBlueprintId,
-///         ProfileIdentifier = testAwsDatazoneEnvironmentProfile.Id,
-///         ProjectIdentifier = testAwsDatazoneProject.Id,
-///         DomainIdentifier = testAwsDatazoneDomain.Id,
 ///         UserParameters = new[]
 ///         {
 ///             new Aws.DataZone.Inputs.EnvironmentUserParameterArgs
@@ -94,6 +92,11 @@ import 'environment_timeouts.dart';
 ///                 Value = "workgroup",
 ///             },
 ///         },
+///         Name = "example",
+///         BlueprintIdentifier = test.EnvironmentBlueprintId,
+///         ProfileIdentifier = testAwsDatazoneEnvironmentProfile.Id,
+///         ProjectIdentifier = testAwsDatazoneProject.Id,
+///         DomainIdentifier = testAwsDatazoneDomain.Id,
 ///     });
 ///
 /// });
@@ -109,11 +112,6 @@ import 'environment_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datazone.NewEnvironment(ctx, "example", &datazone.EnvironmentArgs{
-/// 			Name:                pulumi.String("example"),
-/// 			BlueprintIdentifier: pulumi.Any(test.EnvironmentBlueprintId),
-/// 			ProfileIdentifier:   pulumi.Any(testAwsDatazoneEnvironmentProfile.Id),
-/// 			ProjectIdentifier:   pulumi.Any(testAwsDatazoneProject.Id),
-/// 			DomainIdentifier:    pulumi.Any(testAwsDatazoneDomain.Id),
 /// 			UserParameters: datazone.EnvironmentUserParameterArray{
 /// 				&datazone.EnvironmentUserParameterArgs{
 /// 					Name:  pulumi.String("consumerGlueDbName"),
@@ -128,6 +126,11 @@ import 'environment_timeouts.dart';
 /// 					Value: pulumi.String("workgroup"),
 /// 				},
 /// 			},
+/// 			Name:                pulumi.String("example"),
+/// 			BlueprintIdentifier: pulumi.Any(test.EnvironmentBlueprintId),
+/// 			ProfileIdentifier:   pulumi.Any(testAwsDatazoneEnvironmentProfile.Id),
+/// 			ProjectIdentifier:   pulumi.Any(testAwsDatazoneProject.Id),
+/// 			DomainIdentifier:    pulumi.Any(testAwsDatazoneDomain.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -146,11 +149,6 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_datazone_environment" "example" {
-///   name                 = "example"
-///   blueprint_identifier = test.environmentBlueprintId
-///   profile_identifier   = testAwsDatazoneEnvironmentProfile.id
-///   project_identifier   = testAwsDatazoneProject.id
-///   domain_identifier    = testAwsDatazoneDomain.id
 ///   user_parameters {
 ///     name  = "consumerGlueDbName"
 ///     value = "consumer"
@@ -163,6 +161,11 @@ import 'environment_timeouts.dart';
 ///     name  = "workgroupName"
 ///     value = "workgroup"
 ///   }
+///   name                 = "example"
+///   blueprint_identifier = test.environmentBlueprintId
+///   profile_identifier   = testAwsDatazoneEnvironmentProfile.id
+///   project_identifier   = testAwsDatazoneProject.id
+///   domain_identifier    = testAwsDatazoneDomain.id
 /// }
 /// ```
 /// ```java
@@ -188,11 +191,6 @@ import 'environment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Environment("example", EnvironmentArgs.builder()
-///             .name("example")
-///             .blueprintIdentifier(test.environmentBlueprintId())
-///             .profileIdentifier(testAwsDatazoneEnvironmentProfile.id())
-///             .projectIdentifier(testAwsDatazoneProject.id())
-///             .domainIdentifier(testAwsDatazoneDomain.id())
 ///             .userParameters(
 ///                 EnvironmentUserParameterArgs.builder()
 ///                     .name("consumerGlueDbName")
@@ -206,6 +204,11 @@ import 'environment_timeouts.dart';
 ///                     .name("workgroupName")
 ///                     .value("workgroup")
 ///                     .build())
+///             .name("example")
+///             .blueprintIdentifier(test.environmentBlueprintId())
+///             .profileIdentifier(testAwsDatazoneEnvironmentProfile.id())
+///             .projectIdentifier(testAwsDatazoneProject.id())
+///             .domainIdentifier(testAwsDatazoneDomain.id())
 ///             .build());
 ///
 ///     }
@@ -216,11 +219,6 @@ import 'environment_timeouts.dart';
 ///   example:
 ///     type: aws:datazone:Environment
 ///     properties:
-///       name: example
-///       blueprintIdentifier: ${test.environmentBlueprintId}
-///       profileIdentifier: ${testAwsDatazoneEnvironmentProfile.id}
-///       projectIdentifier: ${testAwsDatazoneProject.id}
-///       domainIdentifier: ${testAwsDatazoneDomain.id}
 ///       userParameters:
 ///         - name: consumerGlueDbName
 ///           value: consumer
@@ -228,6 +226,11 @@ import 'environment_timeouts.dart';
 ///           value: producer
 ///         - name: workgroupName
 ///           value: workgroup
+///       name: example
+///       blueprintIdentifier: ${test.environmentBlueprintId}
+///       profileIdentifier: ${testAwsDatazoneEnvironmentProfile.id}
+///       projectIdentifier: ${testAwsDatazoneProject.id}
+///       domainIdentifier: ${testAwsDatazoneDomain.id}
 /// ```
 ///
 ///
@@ -269,7 +272,7 @@ class Environment extends pulumi.CustomResource {
   /// The business glossary terms that can be used in this environment.
   late final pulumi.Output<List<String>?> glossaryTerms;
   /// The details of the last deployment of the environment.
-  late final pulumi.Output<List<Map<String, dynamic>>> lastDeployments;
+  late final pulumi.Output<List<EnvironmentLastDeployment>> lastDeployments;
   /// The name of the environment.
   late final pulumi.Output<String> name;
   /// The ID of the profile with which the environment is created.
@@ -280,14 +283,14 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String> projectIdentifier;
   /// The provider of the environment.
   late final pulumi.Output<String> providerEnvironment;
-  late final pulumi.Output<List<Map<String, dynamic>>> provisionedResources;
+  late final pulumi.Output<List<EnvironmentProvisionedResource>> provisionedResources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<EnvironmentTimeouts?> timeouts;
   /// The user parameters that are used in the environment.
   /// See User Parameters for more information.
   /// Changing these values recreates the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> userParameters;
+  late final pulumi.Output<List<EnvironmentUserParameter>?> userParameters;
 
   /// Creates a new [Environment].
   /// [name] The Pulumi resource name.
@@ -301,7 +304,7 @@ class Environment extends pulumi.CustomResource {
           'aws:datazone/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountIdentifier = registerOutput<String>('accountIdentifier');
     accountRegion = registerOutput<String>('accountRegion');
@@ -310,16 +313,16 @@ class Environment extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    lastDeployments = registerOutput<List<Map<String, dynamic>>>('lastDeployments');
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastDeployments = registerOutput<List<EnvironmentLastDeployment>>('lastDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentLastDeployment>(guardedValue, (value) => EnvironmentLastDeployment.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     profileIdentifier = registerOutput<String>('profileIdentifier');
     projectIdentifier = registerOutput<String>('projectIdentifier');
     providerEnvironment = registerOutput<String>('providerEnvironment');
-    provisionedResources = registerOutput<List<Map<String, dynamic>>>('provisionedResources');
+    provisionedResources = registerOutput<List<EnvironmentProvisionedResource>>('provisionedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentProvisionedResource>(guardedValue, (value) => EnvironmentProvisionedResource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    userParameters = registerOutput<List<Map<String, dynamic>>?>('userParameters');
+    userParameters = registerOutput<List<EnvironmentUserParameter>?>('userParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentUserParameter>(guardedValue, (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -327,11 +330,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -352,15 +356,43 @@ class Environment extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    lastDeployments = registerOutput<List<Map<String, dynamic>>>('lastDeployments');
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastDeployments = registerOutput<List<EnvironmentLastDeployment>>('lastDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentLastDeployment>(guardedValue, (value) => EnvironmentLastDeployment.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     profileIdentifier = registerOutput<String>('profileIdentifier');
     projectIdentifier = registerOutput<String>('projectIdentifier');
     providerEnvironment = registerOutput<String>('providerEnvironment');
-    provisionedResources = registerOutput<List<Map<String, dynamic>>>('provisionedResources');
+    provisionedResources = registerOutput<List<EnvironmentProvisionedResource>>('provisionedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentProvisionedResource>(guardedValue, (value) => EnvironmentProvisionedResource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    userParameters = registerOutput<List<Map<String, dynamic>>?>('userParameters');
+    userParameters = registerOutput<List<EnvironmentUserParameter>?>('userParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentUserParameter>(guardedValue, (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'aws:datazone/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountIdentifier = registerOutput<String>('accountIdentifier');
+    accountRegion = registerOutput<String>('accountRegion');
+    blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastDeployments = registerOutput<List<EnvironmentLastDeployment>>('lastDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentLastDeployment>(guardedValue, (value) => EnvironmentLastDeployment.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    profileIdentifier = registerOutput<String>('profileIdentifier');
+    projectIdentifier = registerOutput<String>('projectIdentifier');
+    providerEnvironment = registerOutput<String>('providerEnvironment');
+    provisionedResources = registerOutput<List<EnvironmentProvisionedResource>>('provisionedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentProvisionedResource>(guardedValue, (value) => EnvironmentProvisionedResource.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userParameters = registerOutput<List<EnvironmentUserParameter>?>('userParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentUserParameter>(guardedValue, (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

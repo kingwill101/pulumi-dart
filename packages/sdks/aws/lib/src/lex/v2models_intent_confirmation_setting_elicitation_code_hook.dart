@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentConfirmationSettingElicitationCodeHook {
   /// Whether a Lambda function should be invoked for the dialog.
-  final pulumi.Input<bool>? enableCodeHookInvocation;
+  final pulumi.Input<bool?>? enableCodeHookInvocation;
   /// Label that indicates the dialog step from which the dialog code hook is happening.
-  final pulumi.Input<String>? invocationLabel;
+  final pulumi.Input<String?>? invocationLabel;
 
   /// Creates a new [V2modelsIntentConfirmationSettingElicitationCodeHook].
   /// [enableCodeHookInvocation] Whether a Lambda function should be invoked for the dialog.

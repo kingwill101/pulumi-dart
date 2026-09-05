@@ -5,7 +5,7 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration {
   /// Configurations for a knowledge base connected to an Amazon Redshift database. See `redshiftConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration>? redshiftConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration?>? redshiftConfiguration;
   /// Type of SQL database to connect to the knowledge base. Valid values: `REDSHIFT`.
   final pulumi.Input<String> type;
 

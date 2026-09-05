@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionReplaceRecipient {
   /// Replacement envelope recipient addresses.
-  final pulumi.Input<List<String>>? replaceWiths;
+  final pulumi.Input<List<String>?>? replaceWiths;
 
   /// Creates a new [RuleSetRuleActionReplaceRecipient].
   /// [replaceWiths] Replacement envelope recipient addresses.

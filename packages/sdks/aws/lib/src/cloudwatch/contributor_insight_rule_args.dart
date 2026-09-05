@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudwatch_contributor_insight_rule_contributor_insight_rule_args_doc}
 class ContributorInsightRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Definition of the rule, as a JSON object. For details on the valid syntax, see [Contributor Insights Rule Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-RuleSyntax.html).
   final pulumi.Input<String> ruleDefinition;
   /// Unique name of the rule.
@@ -16,8 +16,8 @@ class ContributorInsightRuleArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> ruleName;
   /// State of the rule. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? ruleState;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? ruleState;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ContributorInsightRuleArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

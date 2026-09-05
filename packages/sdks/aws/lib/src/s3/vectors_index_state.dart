@@ -7,31 +7,31 @@ import 'vectors_index_metadata_configuration.dart';
 /// Input properties used for looking up and filtering VectorsIndex resources.
 class VectorsIndexState {
   /// Date and time when the vector index was created.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Data type of the vectors to be inserted into the vector index. Valid values: `float32`.
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// Dimensions of the vectors to be inserted into the vector index.
-  final pulumi.Input<int>? dimension;
+  final pulumi.Input<int?>? dimension;
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
-  final pulumi.Input<String>? distanceMetric;
+  final pulumi.Input<String?>? distanceMetric;
   /// Block for encryption configuration for the vector index. See `encryptionConfiguration` Block below.
-  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>>? encryptionConfigurations;
+  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>?>? encryptionConfigurations;
   /// ARN of the vector index.
-  final pulumi.Input<String>? indexArn;
+  final pulumi.Input<String?>? indexArn;
   /// Name of the vector index.
-  final pulumi.Input<String>? indexName;
+  final pulumi.Input<String?>? indexName;
   /// Block for metadata configuration for the vector index. See `metadataConfiguration` Block below.
-  final pulumi.Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
+  final pulumi.Input<VectorsIndexMetadataConfiguration?>? metadataConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Name of the vector bucket for the vector index.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? vectorBucketName;
+  final pulumi.Input<String?>? vectorBucketName;
 
   /// Creates a new [VectorsIndexState].
   /// [creationTime] Date and time when the vector index was created.
@@ -82,7 +82,7 @@ class VectorsIndexState {
     return VectorsIndexState(
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       distanceMetric: (() { final guardedValue = map['distanceMetric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionConfigurations: (() { final guardedValue = map['encryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       indexArn: (() { final guardedValue = map['indexArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

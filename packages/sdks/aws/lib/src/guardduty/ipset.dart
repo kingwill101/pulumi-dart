@@ -293,7 +293,7 @@ import 'ipset_state.dart';
 class IPSet extends pulumi.CustomResource {
   /// Specifies whether GuardDuty is to start using the uploaded IPSet.
   late final pulumi.Output<bool> activate;
-  /// Amazon Resource Name (ARN) of the GuardDuty IPSet.
+  /// ARN of the GuardDuty IPSet.
   late final pulumi.Output<String> arn;
   /// The detector ID of the GuardDuty.
   late final pulumi.Output<String> detectorId;
@@ -324,7 +324,7 @@ class IPSet extends pulumi.CustomResource {
           'aws:guardduty/iPSet:IPSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activate = registerOutput<bool>('activate');
     arn = registerOutput<String>('arn');
@@ -334,8 +334,8 @@ class IPSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IPSet] resource's state with the given [name] and [id].
@@ -343,11 +343,12 @@ class IPSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IPSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IPSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -369,7 +370,28 @@ class IPSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IPSet] resource.
+  IPSet.reference(String urn)
+    : super(
+        'aws:guardduty/iPSet:IPSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activate = registerOutput<bool>('activate');
+    arn = registerOutput<String>('arn');
+    detectorId = registerOutput<String>('detectorId');
+    format = registerOutput<String>('format');
+    ipSetId = registerOutput<String>('ipSetId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

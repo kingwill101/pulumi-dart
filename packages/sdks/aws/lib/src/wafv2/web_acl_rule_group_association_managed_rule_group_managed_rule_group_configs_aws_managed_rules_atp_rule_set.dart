@@ -6,13 +6,13 @@ import 'web_acl_rule_group_association_managed_rule_group_managed_rule_group_con
 
 class WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSet {
   /// Whether or not to allow the use of regular expressions in the login page path.
-  final pulumi.Input<bool>? enableRegexInPath;
+  final pulumi.Input<bool?>? enableRegexInPath;
   /// Path of the login endpoint for your application.
   final pulumi.Input<String> loginPath;
   /// Criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspection>? requestInspection;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspection?>? requestInspection;
   /// Criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetResponseInspection>? responseInspection;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetResponseInspection?>? responseInspection;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSet].
   /// [enableRegexInPath] Whether or not to allow the use of regular expressions in the login page path.

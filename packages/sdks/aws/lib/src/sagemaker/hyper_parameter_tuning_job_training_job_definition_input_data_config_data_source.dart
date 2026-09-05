@@ -6,9 +6,9 @@ import 'hyper_parameter_tuning_job_training_job_definition_input_data_config_dat
 
 class HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSource {
   /// File system source settings. See `fileSystemDataSource`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceFileSystemDataSource>? fileSystemDataSource;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceFileSystemDataSource?>? fileSystemDataSource;
   /// S3 source settings. See `s3DataSource`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSource>? s3DataSource;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSource?>? s3DataSource;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSource].
   /// [fileSystemDataSource] File system source settings. See `fileSystemDataSource`.

@@ -4,56 +4,56 @@
 /// Result data returned by getTopic.
 class GetTopicResult {
   /// ARN of the MSK topic.
-  final String arn;
-  final String clusterArn;
+  final String? arn;
+  final String? clusterArn;
   /// Aggregated Kafka configuration in JSON format for the topic.
-  final String configs;
-  final String name;
+  final String? configs;
+  final String? name;
   /// Number of partitions for the topic.
-  final int partitionCount;
-  final String region;
+  final int? partitionCount;
+  final String? region;
   /// Replication factor for the topic.
-  final int replicationFactor;
+  final int? replicationFactor;
 
   /// Creates a new [GetTopicResult].
   /// [arn] ARN of the MSK topic.
-  /// [clusterArn] Required.
+  /// [clusterArn] Optional.
   /// [configs] Aggregated Kafka configuration in JSON format for the topic.
-  /// [name] Required.
+  /// [name] Optional.
   /// [partitionCount] Number of partitions for the topic.
-  /// [region] Required.
+  /// [region] Optional.
   /// [replicationFactor] Replication factor for the topic.
   const GetTopicResult({
-    required this.arn,
-    required this.clusterArn,
-    required this.configs,
-    required this.name,
-    required this.partitionCount,
-    required this.region,
-    required this.replicationFactor,
+    this.arn,
+    this.clusterArn,
+    this.configs,
+    this.name,
+    this.partitionCount,
+    this.region,
+    this.replicationFactor,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'clusterArn': clusterArn,
-      'configs': configs,
-      'name': name,
-      'partitionCount': partitionCount,
-      'region': region,
-      'replicationFactor': replicationFactor,
+      'arn': ?arn,
+      'clusterArn': ?clusterArn,
+      'configs': ?configs,
+      'name': ?name,
+      'partitionCount': ?partitionCount,
+      'region': ?region,
+      'replicationFactor': ?replicationFactor,
     };
   }
 
   factory GetTopicResult.fromMap(Map<String, dynamic> map) {
     return GetTopicResult(
-      arn: map['arn'] as String,
-      clusterArn: map['clusterArn'] as String,
-      configs: map['configs'] as String,
-      name: map['name'] as String,
-      partitionCount: map['partitionCount'] as int,
-      region: map['region'] as String,
-      replicationFactor: map['replicationFactor'] as int,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterArn: (() { final guardedValue = map['clusterArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partitionCount: (() { final guardedValue = map['partitionCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'experiment_template_experiment_report_configuration_data_sources_cloudwa
 
 class ExperimentTemplateExperimentReportConfigurationDataSources {
   /// Data sources for the experiment report. See below.
-  final pulumi.Input<List<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>>? cloudwatchDashboards;
+  final pulumi.Input<List<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>?>? cloudwatchDashboards;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSources].
   /// [cloudwatchDashboards] Data sources for the experiment report. See below.

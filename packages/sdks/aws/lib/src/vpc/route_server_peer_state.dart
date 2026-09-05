@@ -7,34 +7,34 @@ import 'route_server_peer_timeouts.dart';
 /// Input properties used for looking up and filtering RouteServerPeer resources.
 class RouteServerPeerState {
   /// The ARN of the route server peer.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The BGP options for the peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings. Configuration block with BGP Options configuration Detailed below
-  final pulumi.Input<RouteServerPeerBgpOptions>? bgpOptions;
+  final pulumi.Input<RouteServerPeerBgpOptions?>? bgpOptions;
   /// The IP address of the Elastic network interface for the route server endpoint.
-  final pulumi.Input<String>? endpointEniAddress;
+  final pulumi.Input<String?>? endpointEniAddress;
   /// The ID of the Elastic network interface for the route server endpoint.
-  final pulumi.Input<String>? endpointEniId;
+  final pulumi.Input<String?>? endpointEniId;
   /// The IPv4 address of the peer device.
-  final pulumi.Input<String>? peerAddress;
+  final pulumi.Input<String?>? peerAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the route server endpoint for which to create a peer.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? routeServerEndpointId;
+  final pulumi.Input<String?>? routeServerEndpointId;
   /// The ID of the route server associated with this peer.
-  final pulumi.Input<String>? routeServerId;
+  final pulumi.Input<String?>? routeServerId;
   /// The unique identifier of the route server peer.
-  final pulumi.Input<String>? routeServerPeerId;
+  final pulumi.Input<String?>? routeServerPeerId;
   /// The ID of the subnet containing the route server peer.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<RouteServerPeerTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<RouteServerPeerTimeouts?>? timeouts;
   /// The ID of the VPC containing the route server peer.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [RouteServerPeerState].
   /// [arn] The ARN of the route server peer.

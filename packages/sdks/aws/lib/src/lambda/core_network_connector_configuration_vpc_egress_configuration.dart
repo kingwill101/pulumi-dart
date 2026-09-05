@@ -6,7 +6,7 @@ class CoreNetworkConnectorConfigurationVpcEgressConfiguration {
   /// Compute resource types that may use this connector. Valid values: `MicroVm`.
   final pulumi.Input<List<String>> associatedComputeResourceTypes;
   /// Network protocol. Valid values: `IPv4`, `DualStack`.
-  final pulumi.Input<String>? networkProtocol;
+  final pulumi.Input<String?>? networkProtocol;
   /// Set of security group IDs applied to the connector's ENIs.
   final pulumi.Input<List<String>> securityGroupIds;
   /// Set of subnet IDs where the connector provisions its ENIs.

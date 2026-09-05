@@ -5,7 +5,7 @@ import 'bot_abort_statement_message.dart';
 
 class BotAbortStatement {
   final pulumi.Input<List<BotAbortStatementMessage>> messages;
-  final pulumi.Input<String>? responseCard;
+  final pulumi.Input<String?>? responseCard;
 
   /// Creates a new [BotAbortStatement].
   /// [messages] Required.

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody {
-  final pulumi.Input<String>? oversizeHandling;
+  final pulumi.Input<String?>? oversizeHandling;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.

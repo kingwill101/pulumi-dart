@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketObjectLockConfigurationV2RuleDefaultRetention {
   /// Number of days that you want to specify for the default retention period.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// Default Object Lock retention mode you want to apply to new objects placed in the specified bucket. Valid values: `COMPLIANCE`, `GOVERNANCE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Number of years that you want to specify for the default retention period.
-  final pulumi.Input<int>? years;
+  final pulumi.Input<int?>? years;
 
   /// Creates a new [BucketObjectLockConfigurationV2RuleDefaultRetention].
   /// [days] Number of days that you want to specify for the default retention period.
@@ -30,9 +30,9 @@ class BucketObjectLockConfigurationV2RuleDefaultRetention {
 
   factory BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationV2RuleDefaultRetention(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      years: (() { final guardedValue = map['years']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      years: (() { final guardedValue = map['years']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inference_profile_args.dart';
+import 'inference_profile_model.dart';
 import 'inference_profile_model_source.dart';
 import 'inference_profile_state.dart';
 import 'inference_profile_timeouts.dart';
@@ -17,11 +18,11 @@ import 'inference_profile_timeouts.dart';
 ///
 /// const current = aws.getCallerIdentity({});
 /// const example = new aws.bedrock.InferenceProfile("example", {
-///     name: "Claude Sonnet for Project 123",
-///     description: "Profile with tag for cost allocation tracking",
 ///     modelSource: {
 ///         copyFrom: "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0",
 ///     },
+///     name: "Claude Sonnet for Project 123",
+///     description: "Profile with tag for cost allocation tracking",
 ///     tags: {
 ///         ProjectID: "123",
 ///     },
@@ -33,11 +34,11 @@ import 'inference_profile_timeouts.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example = aws.bedrock.InferenceProfile("example",
-///     name="Claude Sonnet for Project 123",
-///     description="Profile with tag for cost allocation tracking",
 ///     model_source={
 ///         "copy_from": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0",
 ///     },
+///     name="Claude Sonnet for Project 123",
+///     description="Profile with tag for cost allocation tracking",
 ///     tags={
 ///         "ProjectID": "123",
 ///     })
@@ -54,12 +55,12 @@ import 'inference_profile_timeouts.dart';
 ///
 ///     var example = new Aws.Bedrock.InferenceProfile("example", new()
 ///     {
-///         Name = "Claude Sonnet for Project 123",
-///         Description = "Profile with tag for cost allocation tracking",
 ///         ModelSource = new Aws.Bedrock.Inputs.InferenceProfileModelSourceArgs
 ///         {
 ///             CopyFrom = "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0",
 ///         },
+///         Name = "Claude Sonnet for Project 123",
+///         Description = "Profile with tag for cost allocation tracking",
 ///         Tags =
 ///         {
 ///             { "ProjectID", "123" },
@@ -84,11 +85,11 @@ import 'inference_profile_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewInferenceProfile(ctx, "example", &bedrock.InferenceProfileArgs{
-/// 			Name:        pulumi.String("Claude Sonnet for Project 123"),
-/// 			Description: pulumi.String("Profile with tag for cost allocation tracking"),
 /// 			ModelSource: &bedrock.InferenceProfileModelSourceArgs{
 /// 				CopyFrom: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"),
 /// 			},
+/// 			Name:        pulumi.String("Claude Sonnet for Project 123"),
+/// 			Description: pulumi.String("Profile with tag for cost allocation tracking"),
 /// 			Tags: pulumi.StringMap{
 /// 				"ProjectID": pulumi.String("123"),
 /// 			},
@@ -113,11 +114,11 @@ import 'inference_profile_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_inferenceprofile" "example" {
-///   name        = "Claude Sonnet for Project 123"
-///   description = "Profile with tag for cost allocation tracking"
 ///   model_source = {
 ///     copy_from = "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"
 ///   }
+///   name        = "Claude Sonnet for Project 123"
+///   description = "Profile with tag for cost allocation tracking"
 ///   tags = {
 ///     "ProjectID" = "123"
 ///   }
@@ -151,11 +152,11 @@ import 'inference_profile_timeouts.dart';
 ///             .build());
 ///
 ///         var example = new InferenceProfile("example", InferenceProfileArgs.builder()
-///             .name("Claude Sonnet for Project 123")
-///             .description("Profile with tag for cost allocation tracking")
 ///             .modelSource(InferenceProfileModelSourceArgs.builder()
 ///                 .copyFrom("arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0")
 ///                 .build())
+///             .name("Claude Sonnet for Project 123")
+///             .description("Profile with tag for cost allocation tracking")
 ///             .tags(Map.of("ProjectID", "123"))
 ///             .build());
 ///
@@ -167,10 +168,10 @@ import 'inference_profile_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:InferenceProfile
 ///     properties:
-///       name: Claude Sonnet for Project 123
-///       description: Profile with tag for cost allocation tracking
 ///       modelSource:
 ///         copyFrom: arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0
+///       name: Claude Sonnet for Project 123
+///       description: Profile with tag for cost allocation tracking
 ///       tags:
 ///         ProjectID: '123'
 /// variables:
@@ -189,7 +190,7 @@ import 'inference_profile_timeouts.dart';
 /// $ pulumi import aws:bedrock/inferenceProfile:InferenceProfile example inference_profile-id-12345678
 /// ```
 class InferenceProfile extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the inference profile.
+  /// The ARN of the inference profile.
   late final pulumi.Output<String> arn;
   /// The time at which the inference profile was created.
   late final pulumi.Output<String> createdAt;
@@ -200,7 +201,7 @@ class InferenceProfile extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<InferenceProfileModelSource?> modelSource;
   /// A list of information about each model in the inference profile. See `models`.
-  late final pulumi.Output<List<Map<String, dynamic>>> models;
+  late final pulumi.Output<List<InferenceProfileModel>> models;
   /// The name of the inference profile.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -228,18 +229,18 @@ class InferenceProfile extends pulumi.CustomResource {
           'aws:bedrock/inferenceProfile:InferenceProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     modelSource = registerOutput<InferenceProfileModelSource?>('modelSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceProfileModelSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    models = registerOutput<List<Map<String, dynamic>>>('models');
+    models = registerOutput<List<InferenceProfileModel>>('models', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InferenceProfileModel>(guardedValue, (value) => InferenceProfileModel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<InferenceProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
@@ -250,11 +251,12 @@ class InferenceProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InferenceProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InferenceProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,12 +274,36 @@ class InferenceProfile extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     modelSource = registerOutput<InferenceProfileModelSource?>('modelSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceProfileModelSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    models = registerOutput<List<Map<String, dynamic>>>('models');
+    models = registerOutput<List<InferenceProfileModel>>('models', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InferenceProfileModel>(guardedValue, (value) => InferenceProfileModel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<InferenceProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [InferenceProfile] resource.
+  InferenceProfile.reference(String urn)
+    : super(
+        'aws:bedrock/inferenceProfile:InferenceProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    modelSource = registerOutput<InferenceProfileModelSource?>('modelSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceProfileModelSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    models = registerOutput<List<InferenceProfileModel>>('models', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InferenceProfileModel>(guardedValue, (value) => InferenceProfileModel.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<InferenceProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');

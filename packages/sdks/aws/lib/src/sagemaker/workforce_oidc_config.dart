@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforceOidcConfig {
   /// A string to string map of identifiers specific to the custom identity provider (IdP) being used.
-  final pulumi.Input<Map<String, String>>? authenticationRequestExtraParams;
+  final pulumi.Input<Map<String, String>?>? authenticationRequestExtraParams;
   /// The OIDC IdP authorization endpoint used to configure your private workforce.
   final pulumi.Input<String> authorizationEndpoint;
   /// The OIDC IdP client ID used to configure your private workforce.
@@ -18,7 +18,7 @@ class WorkforceOidcConfig {
   /// The OIDC IdP logout endpoint used to configure your private workforce.
   final pulumi.Input<String> logoutEndpoint;
   /// An array of string identifiers used to refer to the specific pieces of user data or claims that the client application wants to access.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The OIDC IdP token endpoint used to configure your private workforce.
   final pulumi.Input<String> tokenEndpoint;
   /// The OIDC IdP user information endpoint used to configure your private workforce.

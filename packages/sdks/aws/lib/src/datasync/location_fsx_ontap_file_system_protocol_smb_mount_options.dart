@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationFsxOntapFileSystemProtocolSmbMountOptions {
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolSmbMountOptions].
   /// [version] Optional.

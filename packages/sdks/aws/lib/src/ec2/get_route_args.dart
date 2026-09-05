@@ -8,39 +8,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_get_route_get_route_args_doc}
 class GetRouteArgs {
   /// EC2 Carrier Gateway ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? carrierGatewayId;
+  final pulumi.Input<String?>? carrierGatewayId;
   /// Core network ARN of the Route belonging to the Route Table.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// CIDR block of the Route belonging to the Route Table.
-  final pulumi.Input<String>? destinationCidrBlock;
+  final pulumi.Input<String?>? destinationCidrBlock;
   /// IPv6 CIDR block of the Route belonging to the Route Table.
-  final pulumi.Input<String>? destinationIpv6CidrBlock;
+  final pulumi.Input<String?>? destinationIpv6CidrBlock;
   /// ID of a managed prefix list destination of the Route belonging to the Route Table.
-  final pulumi.Input<String>? destinationPrefixListId;
+  final pulumi.Input<String?>? destinationPrefixListId;
   /// Egress Only Gateway ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? egressOnlyGatewayId;
+  final pulumi.Input<String?>? egressOnlyGatewayId;
   /// Gateway ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// Instance ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Local Gateway ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? localGatewayId;
+  final pulumi.Input<String?>? localGatewayId;
   /// NAT Gateway ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? natGatewayId;
+  final pulumi.Input<String?>? natGatewayId;
   /// Network Interface ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// ODB network ARN of the Route belonging to the Route Table.
-  final pulumi.Input<String>? odbNetworkArn;
+  final pulumi.Input<String?>? odbNetworkArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the specific Route Table containing the Route entry.
   final pulumi.Input<String> routeTableId;
   /// EC2 Transit Gateway ID of the Route belonging to the Route Table.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
   /// VPC Peering Connection ID of the Route belonging to the Route Table.
   ///
   /// The arguments of this data source act as filters for querying the available Route in the current region. The given filters must match exactly oneRoute whose data will be exported as attributes.
-  final pulumi.Input<String>? vpcPeeringConnectionId;
+  final pulumi.Input<String?>? vpcPeeringConnectionId;
 
   /// Creates a new [GetRouteArgs].
   /// [carrierGatewayId] EC2 Carrier Gateway ID of the Route belonging to the Route Table.

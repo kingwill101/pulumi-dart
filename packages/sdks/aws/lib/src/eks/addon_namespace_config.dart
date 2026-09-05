@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddonNamespaceConfig {
   /// Name of the Kubernetes namespace to install the add-on in. Once you install an add-on in a specific namespace, you must remove and re-create the add-on to change its namespace. For more details see the [Custom namespace for add-ons](https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html#custom-namespace).
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [AddonNamespaceConfig].
   /// [namespace] Name of the Kubernetes namespace to install the add-on in. Once you install an add-on in a specific namespace, you must remove and re-create the add-on to change its namespace. For more details see the [Custom namespace for add-ons](https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html#custom-namespace).

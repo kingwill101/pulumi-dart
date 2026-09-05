@@ -7,11 +7,11 @@ import 'endpoint_deployment_config_rolling_update_policy.dart';
 
 class EndpointDeploymentConfig {
   /// Automatic rollback configuration for handling endpoint deployment failures and recovery. See Auto Rollback Configuration.
-  final pulumi.Input<EndpointDeploymentConfigAutoRollbackConfiguration>? autoRollbackConfiguration;
+  final pulumi.Input<EndpointDeploymentConfigAutoRollbackConfiguration?>? autoRollbackConfiguration;
   /// Update policy for a blue/green deployment. If this update policy is specified, SageMaker AI creates a new fleet during the deployment while maintaining the old fleet. SageMaker AI flips traffic to the new fleet according to the specified traffic routing configuration. Only one update policy should be used in the deployment configuration. If no update policy is specified, SageMaker AI uses a blue/green deployment strategy with all at once traffic shifting by default. See Blue Green Update Config.
-  final pulumi.Input<EndpointDeploymentConfigBlueGreenUpdatePolicy>? blueGreenUpdatePolicy;
+  final pulumi.Input<EndpointDeploymentConfigBlueGreenUpdatePolicy?>? blueGreenUpdatePolicy;
   /// Specifies a rolling deployment strategy for updating a SageMaker AI endpoint. See Rolling Update Policy.
-  final pulumi.Input<EndpointDeploymentConfigRollingUpdatePolicy>? rollingUpdatePolicy;
+  final pulumi.Input<EndpointDeploymentConfigRollingUpdatePolicy?>? rollingUpdatePolicy;
 
   /// Creates a new [EndpointDeploymentConfig].
   /// [autoRollbackConfiguration] Automatic rollback configuration for handling endpoint deployment failures and recovery. See Auto Rollback Configuration.

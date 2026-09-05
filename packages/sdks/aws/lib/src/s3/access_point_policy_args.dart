@@ -12,7 +12,7 @@ class AccessPointPolicyArgs {
   /// Policy that you want to apply to the specified access point.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AccessPointPolicyArgs].
   /// [accessPointArn] ARN of the access point that you want to associate with the specified policy.

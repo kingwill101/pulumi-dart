@@ -317,16 +317,16 @@ import 'subnet_state.dart';
 ///     dependsOn: [testVpcIpamPoolCidr],
 /// });
 /// const vpc = new aws.ec2.VpcIpamPool("vpc", {
-///     addressFamily: "ipv4",
-///     ipamScopeId: test.privateDefaultScopeId,
-///     locale: current.then(current => current.region),
-///     sourceIpamPoolId: testVpcIpamPool.id,
 ///     sourceResource: {
 ///         resourceId: testVpc.id,
 ///         resourceOwner: currentAwsCallerIdentity.accountId,
 ///         resourceRegion: current.then(current => current.region),
 ///         resourceType: "vpc",
 ///     },
+///     addressFamily: "ipv4",
+///     ipamScopeId: test.privateDefaultScopeId,
+///     locale: current.then(current => current.region),
+///     sourceIpamPoolId: testVpcIpamPool.id,
 /// });
 /// const vpcVpcIpamPoolCidr = new aws.ec2.VpcIpamPoolCidr("vpc", {
 ///     ipamPoolId: vpc.id,
@@ -361,16 +361,16 @@ import 'subnet_state.dart';
 ///     ipv4_netmask_length=24,
 ///     opts = pulumi.ResourceOptions(depends_on=[test_vpc_ipam_pool_cidr]))
 /// vpc = aws.ec2.VpcIpamPool("vpc",
-///     address_family="ipv4",
-///     ipam_scope_id=test.private_default_scope_id,
-///     locale=current.region,
-///     source_ipam_pool_id=test_vpc_ipam_pool.id,
 ///     source_resource={
 ///         "resource_id": test_vpc.id,
 ///         "resource_owner": current_aws_caller_identity["accountId"],
 ///         "resource_region": current.region,
 ///         "resource_type": "vpc",
-///     })
+///     },
+///     address_family="ipv4",
+///     ipam_scope_id=test.private_default_scope_id,
+///     locale=current.region,
+///     source_ipam_pool_id=test_vpc_ipam_pool.id)
 /// vpc_vpc_ipam_pool_cidr = aws.ec2.VpcIpamPoolCidr("vpc",
 ///     ipam_pool_id=vpc.id,
 ///     cidr=test_vpc.cidr_block)
@@ -429,10 +429,6 @@ import 'subnet_state.dart';
 ///
 ///     var vpc = new Aws.Ec2.VpcIpamPool("vpc", new()
 ///     {
-///         AddressFamily = "ipv4",
-///         IpamScopeId = test.PrivateDefaultScopeId,
-///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
-///         SourceIpamPoolId = testVpcIpamPool.Id,
 ///         SourceResource = new Aws.Ec2.Inputs.VpcIpamPoolSourceResourceArgs
 ///         {
 ///             ResourceId = testVpc.Id,
@@ -440,6 +436,10 @@ import 'subnet_state.dart';
 ///             ResourceRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///             ResourceType = "vpc",
 ///         },
+///         AddressFamily = "ipv4",
+///         IpamScopeId = test.PrivateDefaultScopeId,
+///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
+///         SourceIpamPoolId = testVpcIpamPool.Id,
 ///     });
 ///
 ///     var vpcVpcIpamPoolCidr = new Aws.Ec2.VpcIpamPoolCidr("vpc", new()
@@ -514,16 +514,16 @@ import 'subnet_state.dart';
 /// 			return err
 /// 		}
 /// 		vpc, err := ec2.NewVpcIpamPool(ctx, "vpc", &ec2.VpcIpamPoolArgs{
-/// 			AddressFamily:    pulumi.String("ipv4"),
-/// 			IpamScopeId:      test.PrivateDefaultScopeId,
-/// 			Locale:           pulumi.String(current.Region),
-/// 			SourceIpamPoolId: testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceResource: &ec2.VpcIpamPoolSourceResourceArgs{
 /// 				ResourceId:     testVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				ResourceOwner:  pulumi.Any(currentAwsCallerIdentity.AccountId),
 /// 				ResourceRegion: pulumi.String(current.Region),
 /// 				ResourceType:   pulumi.String("vpc"),
 /// 			},
+/// 			AddressFamily:    pulumi.String("ipv4"),
+/// 			IpamScopeId:      test.PrivateDefaultScopeId,
+/// 			Locale:           pulumi.String(current.Region),
+/// 			SourceIpamPoolId: testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -582,16 +582,16 @@ import 'subnet_state.dart';
 ///   ipv4_netmask_length = 24
 /// }
 /// resource "aws_ec2_vpcipampool" "vpc" {
-///   address_family      = "ipv4"
-///   ipam_scope_id       = aws_ec2_vpcipam.test.private_default_scope_id
-///   locale              = data.aws_getregion.current.region
-///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
 ///   source_resource = {
 ///     resource_id     = aws_ec2_vpc.test.id
 ///     resource_owner  = currentAwsCallerIdentity.accountId
 ///     resource_region = data.aws_getregion.current.region
 ///     resource_type   = "vpc"
 ///   }
+///   address_family      = "ipv4"
+///   ipam_scope_id       = aws_ec2_vpcipam.test.private_default_scope_id
+///   locale              = data.aws_getregion.current.region
+///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
 /// }
 /// resource "aws_ec2_vpcipampoolcidr" "vpc" {
 ///   ipam_pool_id = aws_ec2_vpcipampool.vpc.id
@@ -667,16 +667,16 @@ import 'subnet_state.dart';
 ///                 .build());
 ///
 ///         var vpc = new VpcIpamPool("vpc", VpcIpamPoolArgs.builder()
-///             .addressFamily("ipv4")
-///             .ipamScopeId(test.privateDefaultScopeId())
-///             .locale(current.region())
-///             .sourceIpamPoolId(testVpcIpamPool.id())
 ///             .sourceResource(VpcIpamPoolSourceResourceArgs.builder()
 ///                 .resourceId(testVpc.id())
 ///                 .resourceOwner(currentAwsCallerIdentity.accountId())
 ///                 .resourceRegion(current.region())
 ///                 .resourceType("vpc")
 ///                 .build())
+///             .addressFamily("ipv4")
+///             .ipamScopeId(test.privateDefaultScopeId())
+///             .locale(current.region())
+///             .sourceIpamPoolId(testVpcIpamPool.id())
 ///             .build());
 ///
 ///         var vpcVpcIpamPoolCidr = new VpcIpamPoolCidr("vpcVpcIpamPoolCidr", VpcIpamPoolCidrArgs.builder()
@@ -728,15 +728,15 @@ import 'subnet_state.dart';
 ///   vpc:
 ///     type: aws:ec2:VpcIpamPool
 ///     properties:
-///       addressFamily: ipv4
-///       ipamScopeId: ${test.privateDefaultScopeId}
-///       locale: ${current.region}
-///       sourceIpamPoolId: ${testVpcIpamPool.id}
 ///       sourceResource:
 ///         resourceId: ${testVpc.id}
 ///         resourceOwner: ${currentAwsCallerIdentity.accountId}
 ///         resourceRegion: ${current.region}
 ///         resourceType: vpc
+///       addressFamily: ipv4
+///       ipamScopeId: ${test.privateDefaultScopeId}
+///       locale: ${current.region}
+///       sourceIpamPoolId: ${testVpcIpamPool.id}
 ///   vpcVpcIpamPoolCidr:
 ///     type: aws:ec2:VpcIpamPoolCidr
 ///     name: vpc
@@ -823,7 +823,7 @@ class Subnet extends pulumi.CustomResource {
   late final pulumi.Output<bool?> mapCustomerOwnedIpOnLaunch;
   /// Specify true to indicate that instances launched into the subnet should be assigned a public IP address. Default is `false`.
   late final pulumi.Output<bool?> mapPublicIpOnLaunch;
-  /// The Amazon Resource Name (ARN) of the Outpost.
+  /// ARN of the Outpost.
   late final pulumi.Output<String?> outpostArn;
   /// The ID of the AWS account that owns the subnet.
   late final pulumi.Output<String> ownerId;
@@ -850,7 +850,7 @@ class Subnet extends pulumi.CustomResource {
           'aws:ec2/subnet:Subnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');
@@ -875,8 +875,8 @@ class Subnet extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -885,11 +885,12 @@ class Subnet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subnet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -926,8 +927,45 @@ class Subnet extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [Subnet] resource.
+  Subnet.reference(String urn)
+    : super(
+        'aws:ec2/subnet:Subnet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
+    enableDns64 = registerOutput<bool?>('enableDns64');
+    enableLniAtDeviceIndex = registerOutput<int?>('enableLniAtDeviceIndex');
+    enableResourceNameDnsARecordOnLaunch = registerOutput<bool?>('enableResourceNameDnsARecordOnLaunch');
+    enableResourceNameDnsAaaaRecordOnLaunch = registerOutput<bool?>('enableResourceNameDnsAaaaRecordOnLaunch');
+    ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
+    ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    ipv6CidrBlockAssociationId = registerOutput<String>('ipv6CidrBlockAssociationId');
+    ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
+    ipv6Native = registerOutput<bool?>('ipv6Native');
+    ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
+    mapCustomerOwnedIpOnLaunch = registerOutput<bool?>('mapCustomerOwnedIpOnLaunch');
+    mapPublicIpOnLaunch = registerOutput<bool?>('mapPublicIpOnLaunch');
+    outpostArn = registerOutput<String?>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

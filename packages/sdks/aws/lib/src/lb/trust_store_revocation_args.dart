@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_lb_trust_store_revocation_trust_store_revocation_args_doc}
 class TrustStoreRevocationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// S3 Bucket name holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Bucket;
   /// S3 object key holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Key;
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
-  final pulumi.Input<String>? revocationsS3ObjectVersion;
+  final pulumi.Input<String?>? revocationsS3ObjectVersion;
   /// Trust Store ARN.
   final pulumi.Input<String> trustStoreArn;
 

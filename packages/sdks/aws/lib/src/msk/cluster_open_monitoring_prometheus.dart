@@ -6,9 +6,9 @@ import 'cluster_open_monitoring_prometheus_node_exporter.dart';
 
 class ClusterOpenMonitoringPrometheus {
   /// Configuration block for JMX Exporter. See openMonitoring prometheus jmxExporter Argument Reference below.
-  final pulumi.Input<ClusterOpenMonitoringPrometheusJmxExporter>? jmxExporter;
+  final pulumi.Input<ClusterOpenMonitoringPrometheusJmxExporter?>? jmxExporter;
   /// Configuration block for Node Exporter. See openMonitoring prometheus nodeExporter Argument Reference below.
-  final pulumi.Input<ClusterOpenMonitoringPrometheusNodeExporter>? nodeExporter;
+  final pulumi.Input<ClusterOpenMonitoringPrometheusNodeExporter?>? nodeExporter;
 
   /// Creates a new [ClusterOpenMonitoringPrometheus].
   /// [jmxExporter] Configuration block for JMX Exporter. See openMonitoring prometheus jmxExporter Argument Reference below.

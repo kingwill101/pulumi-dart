@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Type resources.
 class TypeState {
   /// GraphQL API ID.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// ARN of the type.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Type definition.
-  final pulumi.Input<String>? definition;
+  final pulumi.Input<String?>? definition;
   /// Type description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Type format: `SDL` or `JSON`.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Type name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [TypeState].
   /// [apiId] GraphQL API ID.

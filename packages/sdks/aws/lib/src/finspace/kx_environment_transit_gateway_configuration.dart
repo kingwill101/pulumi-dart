@@ -5,7 +5,7 @@ import 'kx_environment_transit_gateway_configuration_attachment_network_acl_conf
 
 class KxEnvironmentTransitGatewayConfiguration {
   /// Rules that define how you manage outbound traffic from kdb network to your internal network. Defined below.
-  final pulumi.Input<List<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>>? attachmentNetworkAclConfigurations;
+  final pulumi.Input<List<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>?>? attachmentNetworkAclConfigurations;
   /// Routing CIDR on behalf of KX environment. It could be any “/26 range in the 100.64.0.0 CIDR space. After providing, it will be added to the customer’s transit gateway routing table so that the traffics could be routed to KX network.
   final pulumi.Input<String> routableCidrSpace;
   /// Identifier of the transit gateway created by the customer to connect outbound traffics from KX network to your internal network.

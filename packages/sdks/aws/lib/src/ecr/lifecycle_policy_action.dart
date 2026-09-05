@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyAction {
   /// The storage class to transition the image to. Required when 'type' is 'transition'. 'archive' is the only supported value.
-  final pulumi.Input<String>? targetStorageClass;
+  final pulumi.Input<String?>? targetStorageClass;
   /// The type of action to take. Either 'expire' or 'transition'.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [LifecyclePolicyAction].
   /// [targetStorageClass] The storage class to transition the image to. Required when 'type' is 'transition'. 'archive' is the only supported value.
@@ -26,7 +26,7 @@ class LifecyclePolicyAction {
   factory LifecyclePolicyAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyAction(
       targetStorageClass: (() { final guardedValue = map['targetStorageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

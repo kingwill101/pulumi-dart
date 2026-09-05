@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_shield_protection_health_check_association_protection_health_check_association_args_doc}
 class ProtectionHealthCheckAssociationArgs {
-  /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
+  /// ARN of the Route53 Health Check resource which will be associated to the protected resource.
   final pulumi.Input<String> healthCheckArn;
   /// The ID of the protected resource.
   final pulumi.Input<String> shieldProtectionId;
 
   /// Creates a new [ProtectionHealthCheckAssociationArgs].
-  /// [healthCheckArn] The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
+  /// [healthCheckArn] ARN of the Route53 Health Check resource which will be associated to the protected resource.
   /// [shieldProtectionId] The ID of the protected resource.
   const ProtectionHealthCheckAssociationArgs({
     required this.healthCheckArn,

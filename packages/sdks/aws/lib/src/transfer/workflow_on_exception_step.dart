@@ -9,15 +9,15 @@ import 'workflow_on_exception_step_tag_step_details.dart';
 
 class WorkflowOnExceptionStep {
   /// Details for a step that performs a file copy. See `copyStepDetails` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepCopyStepDetails>? copyStepDetails;
+  final pulumi.Input<WorkflowOnExceptionStepCopyStepDetails?>? copyStepDetails;
   /// Details for a step that invokes a lambda function. See `customStepDetails` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepCustomStepDetails>? customStepDetails;
+  final pulumi.Input<WorkflowOnExceptionStepCustomStepDetails?>? customStepDetails;
   /// Details for a step that decrypts the file. See `decryptStepDetails` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetails>? decryptStepDetails;
+  final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetails?>? decryptStepDetails;
   /// Details for a step that deletes the file. See `deleteStepDetails` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepDeleteStepDetails>? deleteStepDetails;
+  final pulumi.Input<WorkflowOnExceptionStepDeleteStepDetails?>? deleteStepDetails;
   /// Details for a step that creates one or more tags. See `tagStepDetails` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepTagStepDetails>? tagStepDetails;
+  final pulumi.Input<WorkflowOnExceptionStepTagStepDetails?>? tagStepDetails;
   /// Step type. Valid values are `COPY`, `CUSTOM`, `DECRYPT`, `DELETE`, and `TAG`.
   final pulumi.Input<String> type;
 

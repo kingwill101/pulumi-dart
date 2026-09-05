@@ -35,7 +35,7 @@ class GetConnectionVgwTelemetry {
 
   factory GetConnectionVgwTelemetry.fromMap(Map<String, dynamic> map) {
     return GetConnectionVgwTelemetry(
-      acceptedRouteCount: pulumi.Input.fromValue(map['acceptedRouteCount'] as int),
+      acceptedRouteCount: pulumi.Input.fromValue((map['acceptedRouteCount'] as num).toInt()),
       lastStatusChange: pulumi.Input.fromValue(map['lastStatusChange'] as String),
       outsideIpAddress: pulumi.Input.fromValue(map['outsideIpAddress'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

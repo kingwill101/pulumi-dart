@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterKubeControllerManagerConfigHorizontalPodAutoscalerControllerConfig {
   /// The interval between each sync of the horizontal pod autoscaler. Must be a single-unit duration (e.g., `10s`, `15s`). Valid range: `10s` to `15s`. Default is `15s`.
-  final pulumi.Input<String>? horizontalPodAutoscalerSyncPeriod;
+  final pulumi.Input<String?>? horizontalPodAutoscalerSyncPeriod;
 
   /// Creates a new [ClusterKubeControllerManagerConfigHorizontalPodAutoscalerControllerConfig].
   /// [horizontalPodAutoscalerSyncPeriod] The interval between each sync of the horizontal pod autoscaler. Must be a single-unit duration (e.g., `10s`, `15s`). Valid range: `10s` to `15s`. Default is `15s`.

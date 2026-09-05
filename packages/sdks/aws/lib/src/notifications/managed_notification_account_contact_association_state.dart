@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedNotificationAccountContactAssociation resources.
 class ManagedNotificationAccountContactAssociationState {
   /// A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.
-  final pulumi.Input<String>? contactIdentifier;
+  final pulumi.Input<String?>? contactIdentifier;
   /// ARN of the managed notification configuration to associate the account contact with.
-  final pulumi.Input<String>? managedNotificationConfigurationArn;
+  final pulumi.Input<String?>? managedNotificationConfigurationArn;
 
   /// Creates a new [ManagedNotificationAccountContactAssociationState].
   /// [contactIdentifier] A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.

@@ -15,11 +15,11 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.chime.SdkvoiceSipMediaApplication("example", {
-///     awsRegion: "us-east-1",
-///     name: "example-sip-media-application",
 ///     endpoints: {
 ///         lambdaArn: test.arn,
 ///     },
+///     awsRegion: "us-east-1",
+///     name: "example-sip-media-application",
 /// });
 /// ```
 /// ```python
@@ -27,11 +27,11 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.chime.SdkvoiceSipMediaApplication("example",
-///     aws_region="us-east-1",
-///     name="example-sip-media-application",
 ///     endpoints={
 ///         "lambda_arn": test["arn"],
-///     })
+///     },
+///     aws_region="us-east-1",
+///     name="example-sip-media-application")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,12 +43,12 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// {
 ///     var example = new Aws.Chime.SdkvoiceSipMediaApplication("example", new()
 ///     {
-///         AwsRegion = "us-east-1",
-///         Name = "example-sip-media-application",
 ///         Endpoints = new Aws.Chime.Inputs.SdkvoiceSipMediaApplicationEndpointsArgs
 ///         {
 ///             LambdaArn = test.Arn,
 ///         },
+///         AwsRegion = "us-east-1",
+///         Name = "example-sip-media-application",
 ///     });
 ///
 /// });
@@ -64,11 +64,11 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := chime.NewSdkvoiceSipMediaApplication(ctx, "example", &chime.SdkvoiceSipMediaApplicationArgs{
-/// 			AwsRegion: pulumi.String("us-east-1"),
-/// 			Name:      pulumi.String("example-sip-media-application"),
 /// 			Endpoints: &chime.SdkvoiceSipMediaApplicationEndpointsArgs{
 /// 				LambdaArn: pulumi.Any(test.Arn),
 /// 			},
+/// 			AwsRegion: pulumi.String("us-east-1"),
+/// 			Name:      pulumi.String("example-sip-media-application"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,11 +87,11 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// }
 ///
 /// resource "aws_chime_sdkvoicesipmediaapplication" "example" {
-///   aws_region = "us-east-1"
-///   name       = "example-sip-media-application"
 ///   endpoints = {
 ///     lambda_arn = test.arn
 ///   }
+///   aws_region = "us-east-1"
+///   name       = "example-sip-media-application"
 /// }
 /// ```
 /// ```java
@@ -117,11 +117,11 @@ import 'sdkvoice_sip_media_application_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SdkvoiceSipMediaApplication("example", SdkvoiceSipMediaApplicationArgs.builder()
-///             .awsRegion("us-east-1")
-///             .name("example-sip-media-application")
 ///             .endpoints(SdkvoiceSipMediaApplicationEndpointsArgs.builder()
 ///                 .lambdaArn(test.arn())
 ///                 .build())
+///             .awsRegion("us-east-1")
+///             .name("example-sip-media-application")
 ///             .build());
 ///
 ///     }
@@ -132,10 +132,10 @@ import 'sdkvoice_sip_media_application_state.dart';
 ///   example:
 ///     type: aws:chime:SdkvoiceSipMediaApplication
 ///     properties:
-///       awsRegion: us-east-1
-///       name: example-sip-media-application
 ///       endpoints:
 ///         lambdaArn: ${test.arn}
+///       awsRegion: us-east-1
+///       name: example-sip-media-application
 /// ```
 ///
 ///
@@ -147,11 +147,11 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// $ pulumi import aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication example abcdef123456
 /// ```
 class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
-  /// ARN (Amazon Resource Name) of the AWS Chime SDK Voice Sip Media Application
+  /// ARN of the AWS Chime SDK Voice Sip Media Application
   late final pulumi.Output<String> arn;
   /// The AWS Region in which the AWS Chime SDK Voice Sip Media Application is created.
   late final pulumi.Output<String> awsRegion;
-  /// List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
+  /// List of endpoints (Lambda ARNs) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
   late final pulumi.Output<SdkvoiceSipMediaApplicationEndpoints> endpoints;
   /// The name of the AWS Chime SDK Voice Sip Media Application.
   ///
@@ -176,15 +176,15 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
           'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsRegion = registerOutput<String>('awsRegion');
     endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceSipMediaApplicationEndpoints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SdkvoiceSipMediaApplication] resource's state with the given [name] and [id].
@@ -192,11 +192,12 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SdkvoiceSipMediaApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SdkvoiceSipMediaApplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,7 +216,25 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
     endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceSipMediaApplicationEndpoints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SdkvoiceSipMediaApplication] resource.
+  SdkvoiceSipMediaApplication.reference(String urn)
+    : super(
+        'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsRegion = registerOutput<String>('awsRegion');
+    endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceSipMediaApplicationEndpoints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

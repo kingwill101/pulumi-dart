@@ -9,8 +9,8 @@ import 'otel_enrichment_timeouts.dart';
 /// {@macro pulumi_cloudwatch_otel_enrichment_otel_enrichment_args_doc}
 class OtelEnrichmentArgs {
   /// AWS region where this resource is managed.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<OtelEnrichmentTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<OtelEnrichmentTimeouts?>? timeouts;
 
   /// Creates a new [OtelEnrichmentArgs].
   /// [region] AWS region where this resource is managed.

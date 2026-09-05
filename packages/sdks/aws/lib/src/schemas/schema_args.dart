@@ -10,15 +10,15 @@ class SchemaArgs {
   /// The schema specification. Must be a valid Open API 3.0 spec.
   final pulumi.Input<String> content;
   /// The description of the schema. Maximum of 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the schema. Maximum of 385 characters consisting of lower case letters, upper case letters, ., -, _, @.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the registry in which this schema belongs.
   final pulumi.Input<String> registryName;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
   final pulumi.Input<String> type;
 

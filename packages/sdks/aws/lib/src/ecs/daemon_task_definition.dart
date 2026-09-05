@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'daemon_task_definition_args.dart';
+import 'daemon_task_definition_container_definition.dart';
 import 'daemon_task_definition_state.dart';
+import 'daemon_task_definition_volume.dart';
 
 /// Manages a revision of an ECS daemon task definition for use with daemon scheduling strategy.
 ///
@@ -14,9 +16,6 @@ import 'daemon_task_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.DaemonTaskDefinition("example", {
-///     family: "my-daemon-service",
-///     cpu: "512",
-///     memory: "1024",
 ///     containerDefinitions: [{
 ///         name: "app",
 ///         image: "nginx:latest",
@@ -24,6 +23,9 @@ import 'daemon_task_definition_state.dart';
 ///         memory: 512,
 ///         essential: true,
 ///     }],
+///     family: "my-daemon-service",
+///     cpu: "512",
+///     memory: "1024",
 /// });
 /// ```
 /// ```python
@@ -31,16 +33,16 @@ import 'daemon_task_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.DaemonTaskDefinition("example",
-///     family="my-daemon-service",
-///     cpu="512",
-///     memory="1024",
 ///     container_definitions=[{
 ///         "name": "app",
 ///         "image": "nginx:latest",
 ///         "cpu": 256,
 ///         "memory": 512,
 ///         "essential": True,
-///     }])
+///     }],
+///     family="my-daemon-service",
+///     cpu="512",
+///     memory="1024")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,9 +54,6 @@ import 'daemon_task_definition_state.dart';
 /// {
 ///     var example = new Aws.Ecs.DaemonTaskDefinition("example", new()
 ///     {
-///         Family = "my-daemon-service",
-///         Cpu = "512",
-///         Memory = "1024",
 ///         ContainerDefinitions = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.DaemonTaskDefinitionContainerDefinitionArgs
@@ -66,6 +65,9 @@ import 'daemon_task_definition_state.dart';
 ///                 Essential = true,
 ///             },
 ///         },
+///         Family = "my-daemon-service",
+///         Cpu = "512",
+///         Memory = "1024",
 ///     });
 ///
 /// });
@@ -81,9 +83,6 @@ import 'daemon_task_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewDaemonTaskDefinition(ctx, "example", &ecs.DaemonTaskDefinitionArgs{
-/// 			Family: pulumi.String("my-daemon-service"),
-/// 			Cpu:    pulumi.String("512"),
-/// 			Memory: pulumi.String("1024"),
 /// 			ContainerDefinitions: ecs.DaemonTaskDefinitionContainerDefinitionArray{
 /// 				&ecs.DaemonTaskDefinitionContainerDefinitionArgs{
 /// 					Name:      pulumi.String("app"),
@@ -93,6 +92,9 @@ import 'daemon_task_definition_state.dart';
 /// 					Essential: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			Family: pulumi.String("my-daemon-service"),
+/// 			Cpu:    pulumi.String("512"),
+/// 			Memory: pulumi.String("1024"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -111,9 +113,6 @@ import 'daemon_task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_daemontaskdefinition" "example" {
-///   family = "my-daemon-service"
-///   cpu    = "512"
-///   memory = "1024"
 ///   container_definitions {
 ///     name      = "app"
 ///     image     = "nginx:latest"
@@ -121,6 +120,9 @@ import 'daemon_task_definition_state.dart';
 ///     memory    = 512
 ///     essential = true
 ///   }
+///   family = "my-daemon-service"
+///   cpu    = "512"
+///   memory = "1024"
 /// }
 /// ```
 /// ```java
@@ -146,9 +148,6 @@ import 'daemon_task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DaemonTaskDefinition("example", DaemonTaskDefinitionArgs.builder()
-///             .family("my-daemon-service")
-///             .cpu("512")
-///             .memory("1024")
 ///             .containerDefinitions(DaemonTaskDefinitionContainerDefinitionArgs.builder()
 ///                 .name("app")
 ///                 .image("nginx:latest")
@@ -156,6 +155,9 @@ import 'daemon_task_definition_state.dart';
 ///                 .memory(512)
 ///                 .essential(true)
 ///                 .build())
+///             .family("my-daemon-service")
+///             .cpu("512")
+///             .memory("1024")
 ///             .build());
 ///
 ///     }
@@ -166,15 +168,15 @@ import 'daemon_task_definition_state.dart';
 ///   example:
 ///     type: aws:ecs:DaemonTaskDefinition
 ///     properties:
-///       family: my-daemon-service
-///       cpu: '512'
-///       memory: '1024'
 ///       containerDefinitions:
 ///         - name: app
 ///           image: nginx:latest
 ///           cpu: 256
 ///           memory: 512
 ///           essential: true
+///       family: my-daemon-service
+///       cpu: '512'
+///       memory: '1024'
 /// ```
 ///
 ///
@@ -212,11 +214,6 @@ import 'daemon_task_definition_state.dart';
 ///     }),
 /// });
 /// const example = new aws.ecs.DaemonTaskDefinition("example", {
-///     family: "my-daemon-service",
-///     executionRoleArn: taskExecution.arn,
-///     taskRoleArn: task.arn,
-///     cpu: "512",
-///     memory: "1024",
 ///     containerDefinitions: [{
 ///         name: "app",
 ///         image: "nginx:latest",
@@ -224,6 +221,11 @@ import 'daemon_task_definition_state.dart';
 ///         memory: 512,
 ///         essential: true,
 ///     }],
+///     family: "my-daemon-service",
+///     executionRoleArn: taskExecution.arn,
+///     taskRoleArn: task.arn,
+///     cpu: "512",
+///     memory: "1024",
 /// });
 /// ```
 /// ```python
@@ -256,18 +258,18 @@ import 'daemon_task_definition_state.dart';
 ///         }],
 ///     }))
 /// example = aws.ecs.DaemonTaskDefinition("example",
-///     family="my-daemon-service",
-///     execution_role_arn=task_execution.arn,
-///     task_role_arn=task.arn,
-///     cpu="512",
-///     memory="1024",
 ///     container_definitions=[{
 ///         "name": "app",
 ///         "image": "nginx:latest",
 ///         "cpu": 256,
 ///         "memory": 512,
 ///         "essential": True,
-///     }])
+///     }],
+///     family="my-daemon-service",
+///     execution_role_arn=task_execution.arn,
+///     task_role_arn=task.arn,
+///     cpu="512",
+///     memory="1024")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -322,11 +324,6 @@ import 'daemon_task_definition_state.dart';
 ///
 ///     var example = new Aws.Ecs.DaemonTaskDefinition("example", new()
 ///     {
-///         Family = "my-daemon-service",
-///         ExecutionRoleArn = taskExecution.Arn,
-///         TaskRoleArn = task.Arn,
-///         Cpu = "512",
-///         Memory = "1024",
 ///         ContainerDefinitions = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.DaemonTaskDefinitionContainerDefinitionArgs
@@ -338,6 +335,11 @@ import 'daemon_task_definition_state.dart';
 ///                 Essential = true,
 ///             },
 ///         },
+///         Family = "my-daemon-service",
+///         ExecutionRoleArn = taskExecution.Arn,
+///         TaskRoleArn = task.Arn,
+///         Cpu = "512",
+///         Memory = "1024",
 ///     });
 ///
 /// });
@@ -402,11 +404,6 @@ import 'daemon_task_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewDaemonTaskDefinition(ctx, "example", &ecs.DaemonTaskDefinitionArgs{
-/// 			Family:           pulumi.String("my-daemon-service"),
-/// 			ExecutionRoleArn: taskExecution.Arn,
-/// 			TaskRoleArn:      task.Arn,
-/// 			Cpu:              pulumi.String("512"),
-/// 			Memory:           pulumi.String("1024"),
 /// 			ContainerDefinitions: ecs.DaemonTaskDefinitionContainerDefinitionArray{
 /// 				&ecs.DaemonTaskDefinitionContainerDefinitionArgs{
 /// 					Name:      pulumi.String("app"),
@@ -416,6 +413,11 @@ import 'daemon_task_definition_state.dart';
 /// 					Essential: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			Family:           pulumi.String("my-daemon-service"),
+/// 			ExecutionRoleArn: taskExecution.Arn,
+/// 			TaskRoleArn:      task.Arn,
+/// 			Cpu:              pulumi.String("512"),
+/// 			Memory:           pulumi.String("1024"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -460,11 +462,6 @@ import 'daemon_task_definition_state.dart';
 ///   })
 /// }
 /// resource "aws_ecs_daemontaskdefinition" "example" {
-///   family             = "my-daemon-service"
-///   execution_role_arn = aws_iam_role.task_execution.arn
-///   task_role_arn      = aws_iam_role.task.arn
-///   cpu                = "512"
-///   memory             = "1024"
 ///   container_definitions {
 ///     name      = "app"
 ///     image     = "nginx:latest"
@@ -472,6 +469,11 @@ import 'daemon_task_definition_state.dart';
 ///     memory    = 512
 ///     essential = true
 ///   }
+///   family             = "my-daemon-service"
+///   execution_role_arn = aws_iam_role.task_execution.arn
+///   task_role_arn      = aws_iam_role.task.arn
+///   cpu                = "512"
+///   memory             = "1024"
 /// }
 /// ```
 /// ```java
@@ -530,11 +532,6 @@ import 'daemon_task_definition_state.dart';
 ///             .build());
 ///
 ///         var example = new DaemonTaskDefinition("example", DaemonTaskDefinitionArgs.builder()
-///             .family("my-daemon-service")
-///             .executionRoleArn(taskExecution.arn())
-///             .taskRoleArn(task.arn())
-///             .cpu("512")
-///             .memory("1024")
 ///             .containerDefinitions(DaemonTaskDefinitionContainerDefinitionArgs.builder()
 ///                 .name("app")
 ///                 .image("nginx:latest")
@@ -542,6 +539,11 @@ import 'daemon_task_definition_state.dart';
 ///                 .memory(512)
 ///                 .essential(true)
 ///                 .build())
+///             .family("my-daemon-service")
+///             .executionRoleArn(taskExecution.arn())
+///             .taskRoleArn(task.arn())
+///             .cpu("512")
+///             .memory("1024")
 ///             .build());
 ///
 ///     }
@@ -577,17 +579,17 @@ import 'daemon_task_definition_state.dart';
 ///   example:
 ///     type: aws:ecs:DaemonTaskDefinition
 ///     properties:
-///       family: my-daemon-service
-///       executionRoleArn: ${taskExecution.arn}
-///       taskRoleArn: ${task.arn}
-///       cpu: '512'
-///       memory: '1024'
 ///       containerDefinitions:
 ///         - name: app
 ///           image: nginx:latest
 ///           cpu: 256
 ///           memory: 512
 ///           essential: true
+///       family: my-daemon-service
+///       executionRoleArn: ${taskExecution.arn}
+///       taskRoleArn: ${task.arn}
+///       cpu: '512'
+///       memory: '1024'
 /// ```
 ///
 ///
@@ -599,9 +601,6 @@ import 'daemon_task_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.DaemonTaskDefinition("example", {
-///     family: "my-daemon-service",
-///     cpu: "512",
-///     memory: "1024",
 ///     containerDefinitions: [{
 ///         name: "app",
 ///         image: "nginx:latest",
@@ -611,18 +610,21 @@ import 'daemon_task_definition_state.dart';
 ///     }],
 ///     volumes: [
 ///         {
-///             name: "data-volume",
 ///             hosts: [{
 ///                 sourcePath: "/data",
 ///             }],
+///             name: "data-volume",
 ///         },
 ///         {
-///             name: "logs-volume",
 ///             hosts: [{
 ///                 sourcePath: "/var/log",
 ///             }],
+///             name: "logs-volume",
 ///         },
 ///     ],
+///     family: "my-daemon-service",
+///     cpu: "512",
+///     memory: "1024",
 /// });
 /// ```
 /// ```python
@@ -630,9 +632,6 @@ import 'daemon_task_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.DaemonTaskDefinition("example",
-///     family="my-daemon-service",
-///     cpu="512",
-///     memory="1024",
 ///     container_definitions=[{
 ///         "name": "app",
 ///         "image": "nginx:latest",
@@ -642,18 +641,21 @@ import 'daemon_task_definition_state.dart';
 ///     }],
 ///     volumes=[
 ///         {
-///             "name": "data-volume",
 ///             "hosts": [{
 ///                 "source_path": "/data",
 ///             }],
+///             "name": "data-volume",
 ///         },
 ///         {
-///             "name": "logs-volume",
 ///             "hosts": [{
 ///                 "source_path": "/var/log",
 ///             }],
+///             "name": "logs-volume",
 ///         },
-///     ])
+///     ],
+///     family="my-daemon-service",
+///     cpu="512",
+///     memory="1024")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -665,9 +667,6 @@ import 'daemon_task_definition_state.dart';
 /// {
 ///     var example = new Aws.Ecs.DaemonTaskDefinition("example", new()
 ///     {
-///         Family = "my-daemon-service",
-///         Cpu = "512",
-///         Memory = "1024",
 ///         ContainerDefinitions = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.DaemonTaskDefinitionContainerDefinitionArgs
@@ -683,7 +682,6 @@ import 'daemon_task_definition_state.dart';
 ///         {
 ///             new Aws.Ecs.Inputs.DaemonTaskDefinitionVolumeArgs
 ///             {
-///                 Name = "data-volume",
 ///                 Hosts = new[]
 ///                 {
 ///                     new Aws.Ecs.Inputs.DaemonTaskDefinitionVolumeHostArgs
@@ -691,10 +689,10 @@ import 'daemon_task_definition_state.dart';
 ///                         SourcePath = "/data",
 ///                     },
 ///                 },
+///                 Name = "data-volume",
 ///             },
 ///             new Aws.Ecs.Inputs.DaemonTaskDefinitionVolumeArgs
 ///             {
-///                 Name = "logs-volume",
 ///                 Hosts = new[]
 ///                 {
 ///                     new Aws.Ecs.Inputs.DaemonTaskDefinitionVolumeHostArgs
@@ -702,8 +700,12 @@ import 'daemon_task_definition_state.dart';
 ///                         SourcePath = "/var/log",
 ///                     },
 ///                 },
+///                 Name = "logs-volume",
 ///             },
 ///         },
+///         Family = "my-daemon-service",
+///         Cpu = "512",
+///         Memory = "1024",
 ///     });
 ///
 /// });
@@ -719,9 +721,6 @@ import 'daemon_task_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewDaemonTaskDefinition(ctx, "example", &ecs.DaemonTaskDefinitionArgs{
-/// 			Family: pulumi.String("my-daemon-service"),
-/// 			Cpu:    pulumi.String("512"),
-/// 			Memory: pulumi.String("1024"),
 /// 			ContainerDefinitions: ecs.DaemonTaskDefinitionContainerDefinitionArray{
 /// 				&ecs.DaemonTaskDefinitionContainerDefinitionArgs{
 /// 					Name:      pulumi.String("app"),
@@ -733,22 +732,25 @@ import 'daemon_task_definition_state.dart';
 /// 			},
 /// 			Volumes: ecs.DaemonTaskDefinitionVolumeArray{
 /// 				&ecs.DaemonTaskDefinitionVolumeArgs{
-/// 					Name: pulumi.String("data-volume"),
 /// 					Hosts: ecs.DaemonTaskDefinitionVolumeHostArray{
 /// 						&ecs.DaemonTaskDefinitionVolumeHostArgs{
 /// 							SourcePath: pulumi.String("/data"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("data-volume"),
 /// 				},
 /// 				&ecs.DaemonTaskDefinitionVolumeArgs{
-/// 					Name: pulumi.String("logs-volume"),
 /// 					Hosts: ecs.DaemonTaskDefinitionVolumeHostArray{
 /// 						&ecs.DaemonTaskDefinitionVolumeHostArgs{
 /// 							SourcePath: pulumi.String("/var/log"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("logs-volume"),
 /// 				},
 /// 			},
+/// 			Family: pulumi.String("my-daemon-service"),
+/// 			Cpu:    pulumi.String("512"),
+/// 			Memory: pulumi.String("1024"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -767,9 +769,6 @@ import 'daemon_task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_daemontaskdefinition" "example" {
-///   family = "my-daemon-service"
-///   cpu    = "512"
-///   memory = "1024"
 ///   container_definitions {
 ///     name      = "app"
 ///     image     = "nginx:latest"
@@ -778,17 +777,20 @@ import 'daemon_task_definition_state.dart';
 ///     essential = true
 ///   }
 ///   volumes {
-///     name = "data-volume"
 ///     hosts {
 ///       source_path = "/data"
 ///     }
+///     name = "data-volume"
 ///   }
 ///   volumes {
-///     name = "logs-volume"
 ///     hosts {
 ///       source_path = "/var/log"
 ///     }
+///     name = "logs-volume"
 ///   }
+///   family = "my-daemon-service"
+///   cpu    = "512"
+///   memory = "1024"
 /// }
 /// ```
 /// ```java
@@ -816,9 +818,6 @@ import 'daemon_task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DaemonTaskDefinition("example", DaemonTaskDefinitionArgs.builder()
-///             .family("my-daemon-service")
-///             .cpu("512")
-///             .memory("1024")
 ///             .containerDefinitions(DaemonTaskDefinitionContainerDefinitionArgs.builder()
 ///                 .name("app")
 ///                 .image("nginx:latest")
@@ -828,17 +827,20 @@ import 'daemon_task_definition_state.dart';
 ///                 .build())
 ///             .volumes(
 ///                 DaemonTaskDefinitionVolumeArgs.builder()
-///                     .name("data-volume")
 ///                     .hosts(DaemonTaskDefinitionVolumeHostArgs.builder()
 ///                         .sourcePath("/data")
 ///                         .build())
+///                     .name("data-volume")
 ///                     .build(),
 ///                 DaemonTaskDefinitionVolumeArgs.builder()
-///                     .name("logs-volume")
 ///                     .hosts(DaemonTaskDefinitionVolumeHostArgs.builder()
 ///                         .sourcePath("/var/log")
 ///                         .build())
+///                     .name("logs-volume")
 ///                     .build())
+///             .family("my-daemon-service")
+///             .cpu("512")
+///             .memory("1024")
 ///             .build());
 ///
 ///     }
@@ -849,9 +851,6 @@ import 'daemon_task_definition_state.dart';
 ///   example:
 ///     type: aws:ecs:DaemonTaskDefinition
 ///     properties:
-///       family: my-daemon-service
-///       cpu: '512'
-///       memory: '1024'
 ///       containerDefinitions:
 ///         - name: app
 ///           image: nginx:latest
@@ -859,12 +858,15 @@ import 'daemon_task_definition_state.dart';
 ///           memory: 512
 ///           essential: true
 ///       volumes:
-///         - name: data-volume
-///           hosts:
+///         - hosts:
 ///             - sourcePath: /data
-///         - name: logs-volume
-///           hosts:
+///           name: data-volume
+///         - hosts:
 ///             - sourcePath: /var/log
+///           name: logs-volume
+///       family: my-daemon-service
+///       cpu: '512'
+///       memory: '1024'
 /// ```
 ///
 ///
@@ -876,9 +878,6 @@ import 'daemon_task_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.DaemonTaskDefinition("example", {
-///     family: "my-daemon-service",
-///     cpu: "512",
-///     memory: "1024",
 ///     containerDefinitions: [
 ///         {
 ///             name: "app",
@@ -895,6 +894,9 @@ import 'daemon_task_definition_state.dart';
 ///             essential: false,
 ///         },
 ///     ],
+///     family: "my-daemon-service",
+///     cpu: "512",
+///     memory: "1024",
 /// });
 /// ```
 /// ```python
@@ -902,9 +904,6 @@ import 'daemon_task_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.DaemonTaskDefinition("example",
-///     family="my-daemon-service",
-///     cpu="512",
-///     memory="1024",
 ///     container_definitions=[
 ///         {
 ///             "name": "app",
@@ -920,7 +919,10 @@ import 'daemon_task_definition_state.dart';
 ///             "memory": 256,
 ///             "essential": False,
 ///         },
-///     ])
+///     ],
+///     family="my-daemon-service",
+///     cpu="512",
+///     memory="1024")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -932,9 +934,6 @@ import 'daemon_task_definition_state.dart';
 /// {
 ///     var example = new Aws.Ecs.DaemonTaskDefinition("example", new()
 ///     {
-///         Family = "my-daemon-service",
-///         Cpu = "512",
-///         Memory = "1024",
 ///         ContainerDefinitions = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.DaemonTaskDefinitionContainerDefinitionArgs
@@ -954,6 +953,9 @@ import 'daemon_task_definition_state.dart';
 ///                 Essential = false,
 ///             },
 ///         },
+///         Family = "my-daemon-service",
+///         Cpu = "512",
+///         Memory = "1024",
 ///     });
 ///
 /// });
@@ -969,9 +971,6 @@ import 'daemon_task_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewDaemonTaskDefinition(ctx, "example", &ecs.DaemonTaskDefinitionArgs{
-/// 			Family: pulumi.String("my-daemon-service"),
-/// 			Cpu:    pulumi.String("512"),
-/// 			Memory: pulumi.String("1024"),
 /// 			ContainerDefinitions: ecs.DaemonTaskDefinitionContainerDefinitionArray{
 /// 				&ecs.DaemonTaskDefinitionContainerDefinitionArgs{
 /// 					Name:      pulumi.String("app"),
@@ -988,6 +987,9 @@ import 'daemon_task_definition_state.dart';
 /// 					Essential: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			Family: pulumi.String("my-daemon-service"),
+/// 			Cpu:    pulumi.String("512"),
+/// 			Memory: pulumi.String("1024"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1006,9 +1008,6 @@ import 'daemon_task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_daemontaskdefinition" "example" {
-///   family = "my-daemon-service"
-///   cpu    = "512"
-///   memory = "1024"
 ///   container_definitions {
 ///     name      = "app"
 ///     image     = "my-app:latest"
@@ -1023,6 +1022,9 @@ import 'daemon_task_definition_state.dart';
 ///     memory    = 256
 ///     essential = false
 ///   }
+///   family = "my-daemon-service"
+///   cpu    = "512"
+///   memory = "1024"
 /// }
 /// ```
 /// ```java
@@ -1048,9 +1050,6 @@ import 'daemon_task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DaemonTaskDefinition("example", DaemonTaskDefinitionArgs.builder()
-///             .family("my-daemon-service")
-///             .cpu("512")
-///             .memory("1024")
 ///             .containerDefinitions(
 ///                 DaemonTaskDefinitionContainerDefinitionArgs.builder()
 ///                     .name("app")
@@ -1066,6 +1065,9 @@ import 'daemon_task_definition_state.dart';
 ///                     .memory(256)
 ///                     .essential(false)
 ///                     .build())
+///             .family("my-daemon-service")
+///             .cpu("512")
+///             .memory("1024")
 ///             .build());
 ///
 ///     }
@@ -1076,9 +1078,6 @@ import 'daemon_task_definition_state.dart';
 ///   example:
 ///     type: aws:ecs:DaemonTaskDefinition
 ///     properties:
-///       family: my-daemon-service
-///       cpu: '512'
-///       memory: '1024'
 ///       containerDefinitions:
 ///         - name: app
 ///           image: my-app:latest
@@ -1090,6 +1089,9 @@ import 'daemon_task_definition_state.dart';
 ///           cpu: 128
 ///           memory: 256
 ///           essential: false
+///       family: my-daemon-service
+///       cpu: '512'
+///       memory: '1024'
 /// ```
 ///
 ///
@@ -1111,7 +1113,7 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
   /// Full ARN of the Daemon Task Definition (including both `family` and `revision`).
   late final pulumi.Output<String> arn;
   /// One or more container definition blocks. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> containerDefinitions;
+  late final pulumi.Output<List<DaemonTaskDefinitionContainerDefinition>> containerDefinitions;
   /// Number of CPU units used by the task.
   late final pulumi.Output<String?> cpu;
   /// ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
@@ -1135,7 +1137,7 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
   /// ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   late final pulumi.Output<String?> taskRoleArn;
   /// Repeatable configuration block for volumes that containers in your task may use. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+  late final pulumi.Output<List<DaemonTaskDefinitionVolume>?> volumes;
 
   /// Creates a new [DaemonTaskDefinition].
   /// [name] The Pulumi resource name.
@@ -1149,10 +1151,10 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
           'aws:ecs/daemonTaskDefinition:DaemonTaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    containerDefinitions = registerOutput<List<Map<String, dynamic>>>('containerDefinitions');
+    containerDefinitions = registerOutput<List<DaemonTaskDefinitionContainerDefinition>>('containerDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinition>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     cpu = registerOutput<String?>('cpu');
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     family = registerOutput<String>('family');
@@ -1160,10 +1162,10 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     revision = registerOutput<int>('revision');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskRoleArn = registerOutput<String?>('taskRoleArn');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<DaemonTaskDefinitionVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionVolume>(guardedValue, (value) => DaemonTaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DaemonTaskDefinition] resource's state with the given [name] and [id].
@@ -1171,11 +1173,12 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DaemonTaskDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DaemonTaskDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1190,7 +1193,7 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    containerDefinitions = registerOutput<List<Map<String, dynamic>>>('containerDefinitions');
+    containerDefinitions = registerOutput<List<DaemonTaskDefinitionContainerDefinition>>('containerDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinition>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     cpu = registerOutput<String?>('cpu');
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     family = registerOutput<String>('family');
@@ -1198,9 +1201,33 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     revision = registerOutput<int>('revision');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskRoleArn = registerOutput<String?>('taskRoleArn');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<DaemonTaskDefinitionVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionVolume>(guardedValue, (value) => DaemonTaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DaemonTaskDefinition] resource.
+  DaemonTaskDefinition.reference(String urn)
+    : super(
+        'aws:ecs/daemonTaskDefinition:DaemonTaskDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    containerDefinitions = registerOutput<List<DaemonTaskDefinitionContainerDefinition>>('containerDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinition>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinition.fromMap((value as Map).cast<String, dynamic>())); });
+    cpu = registerOutput<String?>('cpu');
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
+    family = registerOutput<String>('family');
+    memory = registerOutput<String?>('memory');
+    region = registerOutput<String>('region');
+    revision = registerOutput<int>('revision');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taskRoleArn = registerOutput<String?>('taskRoleArn');
+    volumes = registerOutput<List<DaemonTaskDefinitionVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionVolume>(guardedValue, (value) => DaemonTaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -15,21 +15,21 @@ import 'table_ttl.dart';
 /// {@macro pulumi_keyspaces_table_table_args_doc}
 class TableArgs {
   /// Specifies the read/write throughput capacity mode for the table.
-  final pulumi.Input<TableCapacitySpecification>? capacitySpecification;
+  final pulumi.Input<TableCapacitySpecification?>? capacitySpecification;
   /// Enables client-side timestamps for the table. By default, the setting is disabled.
-  final pulumi.Input<TableClientSideTimestamps>? clientSideTimestamps;
+  final pulumi.Input<TableClientSideTimestamps?>? clientSideTimestamps;
   /// A description of the table.
-  final pulumi.Input<TableComment>? comment;
+  final pulumi.Input<TableComment?>? comment;
   /// The default Time to Live setting in seconds for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl).
-  final pulumi.Input<int>? defaultTimeToLive;
+  final pulumi.Input<int?>? defaultTimeToLive;
   /// Specifies how the encryption key for encryption at rest is managed for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html).
-  final pulumi.Input<TableEncryptionSpecification>? encryptionSpecification;
+  final pulumi.Input<TableEncryptionSpecification?>? encryptionSpecification;
   /// The name of the keyspace that the table is going to be created in.
   final pulumi.Input<String> keyspaceName;
   /// Specifies if point-in-time recovery is enabled or disabled for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html).
-  final pulumi.Input<TablePointInTimeRecovery>? pointInTimeRecovery;
+  final pulumi.Input<TablePointInTimeRecovery?>? pointInTimeRecovery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Describes the schema of the table.
   final pulumi.Input<TableSchemaDefinition> schemaDefinition;
   /// The name of the table.
@@ -37,9 +37,9 @@ class TableArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> tableName;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
-  final pulumi.Input<TableTtl>? ttl;
+  final pulumi.Input<TableTtl?>? ttl;
 
   /// Creates a new [TableArgs].
   /// [capacitySpecification] Specifies the read/write throughput capacity mode for the table.
@@ -91,7 +91,7 @@ class TableArgs {
       capacitySpecification: (() { final guardedValue = map['capacitySpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clientSideTimestamps: (() { final guardedValue = map['clientSideTimestamps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableClientSideTimestamps.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableComment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultTimeToLive: (() { final guardedValue = map['defaultTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultTimeToLive: (() { final guardedValue = map['defaultTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       encryptionSpecification: (() { final guardedValue = map['encryptionSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableEncryptionSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyspaceName: pulumi.Input.fromValue(map['keyspaceName'] as String),
       pointInTimeRecovery: (() { final guardedValue = map['pointInTimeRecovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

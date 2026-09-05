@@ -9,11 +9,11 @@ import 'get_regions_filter.dart';
 /// {@macro pulumi_index_get_regions_get_regions_args_doc}
 class GetRegionsArgs {
   /// If true the source will query all regions regardless of availability.
-  final pulumi.Input<bool>? allRegions;
+  final pulumi.Input<bool?>? allRegions;
   /// Configuration block(s) to use as filters. Detailed below.
-  final pulumi.Input<List<GetRegionsFilter>>? filters;
+  final pulumi.Input<List<GetRegionsFilter>?>? filters;
   /// (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetRegionsArgs].
   /// [allRegions] If true the source will query all regions regardless of availability.

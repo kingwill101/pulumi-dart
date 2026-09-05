@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterLoggingInfoBrokerLogsS3 {
   /// Name of the S3 bucket to deliver logs to.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   final pulumi.Input<bool> enabled;
   /// Prefix to append to the folder name.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsS3].
   /// [bucket] Name of the S3 bucket to deliver logs to.

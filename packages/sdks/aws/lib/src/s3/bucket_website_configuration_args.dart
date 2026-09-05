@@ -14,19 +14,19 @@ class BucketWebsiteConfigurationArgs {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
   /// Name of the error document for the website. See below.
-  final pulumi.Input<BucketWebsiteConfigurationErrorDocument>? errorDocument;
+  final pulumi.Input<BucketWebsiteConfigurationErrorDocument?>? errorDocument;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Name of the index document for the website. See below.
-  final pulumi.Input<BucketWebsiteConfigurationIndexDocument>? indexDocument;
+  final pulumi.Input<BucketWebsiteConfigurationIndexDocument?>? indexDocument;
   /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `errorDocument`, `indexDocument`, and `routingRule`.
-  final pulumi.Input<BucketWebsiteConfigurationRedirectAllRequestsTo>? redirectAllRequestsTo;
+  final pulumi.Input<BucketWebsiteConfigurationRedirectAllRequestsTo?>? redirectAllRequestsTo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html) describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
-  final pulumi.Input<String>? routingRuleDetails;
+  final pulumi.Input<String?>? routingRuleDetails;
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
-  final pulumi.Input<List<BucketWebsiteConfigurationRoutingRule>>? routingRules;
+  final pulumi.Input<List<BucketWebsiteConfigurationRoutingRule>?>? routingRules;
 
   /// Creates a new [BucketWebsiteConfigurationArgs].
   /// [bucket] Name of the bucket.

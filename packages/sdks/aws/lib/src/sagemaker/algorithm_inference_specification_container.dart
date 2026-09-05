@@ -8,35 +8,35 @@ import 'algorithm_inference_specification_container_model_input.dart';
 
 class AlgorithmInferenceSpecificationContainer {
   /// Additional model data to make available to the container. See Additional S3 Data Source.
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerAdditionalS3DataSource>? additionalS3DataSource;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerAdditionalS3DataSource?>? additionalS3DataSource;
   /// Base model information for the container. See Base Model.
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerBaseModel>? baseModel;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerBaseModel?>? baseModel;
   /// DNS host name for the container.
-  final pulumi.Input<String>? containerHostname;
+  final pulumi.Input<String?>? containerHostname;
   /// Environment variables to pass to the container.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Machine learning framework in the container image.
-  final pulumi.Input<String>? framework;
+  final pulumi.Input<String?>? framework;
   /// Framework version in the container image.
-  final pulumi.Input<String>? frameworkVersion;
+  final pulumi.Input<String?>? frameworkVersion;
   /// Container image URI.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Digest of the container image.
-  final pulumi.Input<String>? imageDigest;
+  final pulumi.Input<String?>? imageDigest;
   /// Whether the container is used as a checkpoint container.
-  final pulumi.Input<bool>? isCheckpoint;
+  final pulumi.Input<bool?>? isCheckpoint;
   /// ETag for `modelDataUrl`.
-  final pulumi.Input<String>? modelDataEtag;
+  final pulumi.Input<String?>? modelDataEtag;
   /// Source of model data for the container. See Model Data Source.
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSource>? modelDataSource;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSource?>? modelDataSource;
   /// S3 or HTTPS URL of the model artifacts.
-  final pulumi.Input<String>? modelDataUrl;
+  final pulumi.Input<String?>? modelDataUrl;
   /// Additional model input configuration. See Model Input.
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelInput>? modelInput;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelInput?>? modelInput;
   /// Name of a pre-existing model nearest to the one being created.
-  final pulumi.Input<String>? nearestModelName;
+  final pulumi.Input<String?>? nearestModelName;
   /// AWS Marketplace product ID.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
 
   /// Creates a new [AlgorithmInferenceSpecificationContainer].
   /// [additionalS3DataSource] Additional model data to make available to the container. See Additional S3 Data Source.

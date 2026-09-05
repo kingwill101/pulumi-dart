@@ -7,13 +7,13 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranch {
   /// Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition>? condition;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition?>? condition;
   /// Name of the branch.
   final pulumi.Input<String> name;
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranch].
   /// [condition] Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.

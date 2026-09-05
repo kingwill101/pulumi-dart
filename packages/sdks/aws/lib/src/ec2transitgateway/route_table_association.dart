@@ -700,7 +700,7 @@ class RouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2transitgateway/routeTableAssociation:RouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     replaceExistingAssociation = registerOutput<bool?>('replaceExistingAssociation');
@@ -715,11 +715,12 @@ class RouteTableAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteTableAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteTableAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -733,6 +734,23 @@ class RouteTableAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    replaceExistingAssociation = registerOutput<bool?>('replaceExistingAssociation');
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+  }
+
+  /// Creates a typed reference to an existing [RouteTableAssociation] resource.
+  RouteTableAssociation.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/routeTableAssociation:RouteTableAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     replaceExistingAssociation = registerOutput<bool?>('replaceExistingAssociation');
     resourceId = registerOutput<String>('resourceId');

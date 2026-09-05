@@ -13,7 +13,7 @@ class FleetArgs {
   /// Number of machines allocated to the ﬂeet.
   final pulumi.Input<int> baseCapacity;
   /// The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
-  final pulumi.Input<FleetComputeConfiguration>? computeConfiguration;
+  final pulumi.Input<FleetComputeConfiguration?>? computeConfiguration;
   /// Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   final pulumi.Input<String> computeType;
   /// Environment type of the compute fleet. See [environment types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
@@ -21,21 +21,21 @@ class FleetArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> environmentType;
   /// The service role associated with the compute fleet.
-  final pulumi.Input<String>? fleetServiceRole;
-  /// The Amazon Machine Image (AMI) of the compute fleet.
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? fleetServiceRole;
+  /// AMI of the compute fleet.
+  final pulumi.Input<String?>? imageId;
   /// Fleet name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Overflow behavior for compute fleet. Valid values: `ON_DEMAND`, `QUEUE`.
-  final pulumi.Input<String>? overflowBehavior;
+  final pulumi.Input<String?>? overflowBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
-  final pulumi.Input<FleetScalingConfiguration>? scalingConfiguration;
+  final pulumi.Input<FleetScalingConfiguration?>? scalingConfiguration;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block. See `vpcConfig` below.
-  final pulumi.Input<List<FleetVpcConfig>>? vpcConfigs;
+  final pulumi.Input<List<FleetVpcConfig>?>? vpcConfigs;
 
   /// Creates a new [FleetArgs].
   /// [baseCapacity] Number of machines allocated to the ﬂeet.
@@ -43,7 +43,7 @@ class FleetArgs {
   /// [computeType] Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   /// [environmentType] Environment type of the compute fleet. See [environment types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   /// [fleetServiceRole] The service role associated with the compute fleet.
-  /// [imageId] The Amazon Machine Image (AMI) of the compute fleet.
+  /// [imageId] AMI of the compute fleet.
   /// [name] Fleet name.
   /// [overflowBehavior] Overflow behavior for compute fleet. Valid values: `ON_DEMAND`, `QUEUE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -84,7 +84,7 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      baseCapacity: pulumi.Input.fromValue(map['baseCapacity'] as int),
+      baseCapacity: pulumi.Input.fromValue((map['baseCapacity'] as num).toInt()),
       computeConfiguration: (() { final guardedValue = map['computeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetComputeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       computeType: pulumi.Input.fromValue(map['computeType'] as String),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),

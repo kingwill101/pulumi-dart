@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayGatewayNetworkInterface {
-  /// The Internet Protocol version 4 (IPv4) address of the interface.
-  final pulumi.Input<String>? ipv4Address;
+  /// IP version 4 (IPv4) address of the interface.
+  final pulumi.Input<String?>? ipv4Address;
 
   /// Creates a new [GatewayGatewayNetworkInterface].
-  /// [ipv4Address] The Internet Protocol version 4 (IPv4) address of the interface.
+  /// [ipv4Address] IP version 4 (IPv4) address of the interface.
   const GatewayGatewayNetworkInterface({
     this.ipv4Address,
   });

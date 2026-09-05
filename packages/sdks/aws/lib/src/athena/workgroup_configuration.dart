@@ -11,31 +11,31 @@ import 'workgroup_configuration_result_configuration.dart';
 
 class WorkgroupConfiguration {
   /// Integer for the upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan. Must be at least `10485760`.
-  final pulumi.Input<int>? bytesScannedCutoffPerQuery;
+  final pulumi.Input<int?>? bytesScannedCutoffPerQuery;
   /// Configuration block to specify the KMS key that is used to encrypt the user's data stores in Athena. This setting applies to the PySpark engine for Athena notebooks. See Customer Content Encryption Configuration below.
-  final pulumi.Input<WorkgroupConfigurationCustomerContentEncryptionConfiguration>? customerContentEncryptionConfiguration;
+  final pulumi.Input<WorkgroupConfigurationCustomerContentEncryptionConfiguration?>? customerContentEncryptionConfiguration;
   /// Boolean indicating whether a minimum level of encryption is enforced for the workgroup for query and calculation results written to Amazon S3.
-  final pulumi.Input<bool>? enableMinimumEncryptionConfiguration;
+  final pulumi.Input<bool?>? enableMinimumEncryptionConfiguration;
   /// Boolean whether the settings for the workgroup override client-side settings. For more information, see [Workgroup Settings Override Client-Side Settings](https://docs.aws.amazon.com/athena/latest/ug/workgroups-settings-override.html). Defaults to `true`.
-  final pulumi.Input<bool>? enforceWorkgroupConfiguration;
+  final pulumi.Input<bool?>? enforceWorkgroupConfiguration;
   /// Configuration block for the Athena Engine Versioning. For more information, see [Athena Engine Versioning](https://docs.aws.amazon.com/athena/latest/ug/engine-versions.html). See Engine Version below.
-  final pulumi.Input<WorkgroupConfigurationEngineVersion>? engineVersion;
+  final pulumi.Input<WorkgroupConfigurationEngineVersion?>? engineVersion;
   /// Role used to access user resources in notebook sessions and IAM Identity Center enabled workgroups. The property is required for IAM Identity Center enabled workgroups.
-  final pulumi.Input<String>? executionRole;
+  final pulumi.Input<String?>? executionRole;
   /// Configuration block to set up an IAM Identity Center enabled workgroup. See Identity Center Configuration below.
-  final pulumi.Input<WorkgroupConfigurationIdentityCenterConfiguration>? identityCenterConfiguration;
+  final pulumi.Input<WorkgroupConfigurationIdentityCenterConfiguration?>? identityCenterConfiguration;
   /// Configuration block for storing results in Athena owned storage. See Managed Query Results Configuration below.
-  final pulumi.Input<WorkgroupConfigurationManagedQueryResultsConfiguration>? managedQueryResultsConfiguration;
+  final pulumi.Input<WorkgroupConfigurationManagedQueryResultsConfiguration?>? managedQueryResultsConfiguration;
   /// Configuration block for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc. Only applicable to Apache Spark engine. See Monitoring Configuration below.
-  final pulumi.Input<WorkgroupConfigurationMonitoringConfiguration>? monitoringConfiguration;
+  final pulumi.Input<WorkgroupConfigurationMonitoringConfiguration?>? monitoringConfiguration;
   /// Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to `true`.
-  final pulumi.Input<bool>? publishCloudwatchMetricsEnabled;
+  final pulumi.Input<bool?>? publishCloudwatchMetricsEnabled;
   /// Configuration block for S3 access grants. See Query Results S3 Access Grants Configuration below.
-  final pulumi.Input<WorkgroupConfigurationQueryResultsS3AccessGrantsConfiguration>? queryResultsS3AccessGrantsConfiguration;
-  /// If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.
-  final pulumi.Input<bool>? requesterPaysEnabled;
+  final pulumi.Input<WorkgroupConfigurationQueryResultsS3AccessGrantsConfiguration?>? queryResultsS3AccessGrantsConfiguration;
+  /// If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the S3 Developer Guide.
+  final pulumi.Input<bool?>? requesterPaysEnabled;
   /// Configuration block with result settings. See Result Configuration below.
-  final pulumi.Input<WorkgroupConfigurationResultConfiguration>? resultConfiguration;
+  final pulumi.Input<WorkgroupConfigurationResultConfiguration?>? resultConfiguration;
 
   /// Creates a new [WorkgroupConfiguration].
   /// [bytesScannedCutoffPerQuery] Integer for the upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan. Must be at least `10485760`.
@@ -49,7 +49,7 @@ class WorkgroupConfiguration {
   /// [monitoringConfiguration] Configuration block for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc. Only applicable to Apache Spark engine. See Monitoring Configuration below.
   /// [publishCloudwatchMetricsEnabled] Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to `true`.
   /// [queryResultsS3AccessGrantsConfiguration] Configuration block for S3 access grants. See Query Results S3 Access Grants Configuration below.
-  /// [requesterPaysEnabled] If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.
+  /// [requesterPaysEnabled] If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the S3 Developer Guide.
   /// [resultConfiguration] Configuration block with result settings. See Result Configuration below.
   const WorkgroupConfiguration({
     this.bytesScannedCutoffPerQuery,
@@ -87,7 +87,7 @@ class WorkgroupConfiguration {
 
   factory WorkgroupConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfiguration(
-      bytesScannedCutoffPerQuery: (() { final guardedValue = map['bytesScannedCutoffPerQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bytesScannedCutoffPerQuery: (() { final guardedValue = map['bytesScannedCutoffPerQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customerContentEncryptionConfiguration: (() { final guardedValue = map['customerContentEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableMinimumEncryptionConfiguration: (() { final guardedValue = map['enableMinimumEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enforceWorkgroupConfiguration: (() { final guardedValue = map['enforceWorkgroupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

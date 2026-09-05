@@ -12,9 +12,9 @@ class GetQuerySuggestionsBlockListArgs {
   /// Identifier of the block list.
   final pulumi.Input<String> querySuggestionsBlockListId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Metadata that helps organize the block list you create.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetQuerySuggestionsBlockListArgs].
   /// [indexId] Identifier of the index that contains the block list.

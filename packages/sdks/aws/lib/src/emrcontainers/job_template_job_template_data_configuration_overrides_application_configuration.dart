@@ -7,9 +7,9 @@ class JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration {
   /// The classification within a configuration.
   final pulumi.Input<String> classification;
   /// A list of additional configurations to apply within a configuration object.
-  final pulumi.Input<List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration>>? configurations;
+  final pulumi.Input<List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration>?>? configurations;
   /// A set of properties specified within a configuration classification.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration].
   /// [classification] The classification within a configuration.

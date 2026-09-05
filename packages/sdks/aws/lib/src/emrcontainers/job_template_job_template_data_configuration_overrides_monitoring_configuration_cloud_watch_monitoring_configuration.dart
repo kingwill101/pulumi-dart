@@ -6,7 +6,7 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationClo
   /// The name of the log group for log publishing.
   final pulumi.Input<String> logGroupName;
   /// The specified name prefix for log streams.
-  final pulumi.Input<String>? logStreamNamePrefix;
+  final pulumi.Input<String?>? logStreamNamePrefix;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration].
   /// [logGroupName] The name of the log group for log publishing.

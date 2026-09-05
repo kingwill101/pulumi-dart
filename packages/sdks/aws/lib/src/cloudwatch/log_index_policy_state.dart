@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LogIndexPolicy resources.
 class LogIndexPolicyState {
   /// Log group name to set the policy for.
-  final pulumi.Input<String>? logGroupName;
+  final pulumi.Input<String?>? logGroupName;
   /// JSON policy document. This is a JSON formatted string.
-  final pulumi.Input<String>? policyDocument;
+  final pulumi.Input<String?>? policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LogIndexPolicyState].
   /// [logGroupName] Log group name to set the policy for.

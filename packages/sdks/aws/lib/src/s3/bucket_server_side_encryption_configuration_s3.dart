@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_server_side_encryption_configuration_args.dart';
+import 'bucket_server_side_encryption_configuration_rule.dart';
 import 'bucket_server_side_encryption_configuration_state.dart';
 
 /// Provides a S3 bucket server-side encryption configuration resource.
@@ -21,13 +22,13 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 /// });
 /// const mybucket = new aws.s3.Bucket("mybucket", {bucket: "mybucket"});
 /// const example = new aws.s3.BucketServerSideEncryptionConfiguration("example", {
-///     bucket: mybucket.id,
 ///     rules: [{
 ///         applyServerSideEncryptionByDefault: {
 ///             kmsMasterKeyId: mykey.arn,
 ///             sseAlgorithm: "aws:kms",
 ///         },
 ///     }],
+///     bucket: mybucket.id,
 /// });
 /// ```
 /// ```python
@@ -39,13 +40,13 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///     deletion_window_in_days=10)
 /// mybucket = aws.s3.Bucket("mybucket", bucket="mybucket")
 /// example = aws.s3.BucketServerSideEncryptionConfiguration("example",
-///     bucket=mybucket.id,
 ///     rules=[{
 ///         "apply_server_side_encryption_by_default": {
 ///             "kms_master_key_id": mykey.arn,
 ///             "sse_algorithm": "aws:kms",
 ///         },
-///     }])
+///     }],
+///     bucket=mybucket.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -68,7 +69,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///
 ///     var example = new Aws.S3.BucketServerSideEncryptionConfiguration("example", new()
 ///     {
-///         Bucket = mybucket.Id,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleArgs
@@ -80,6 +80,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = mybucket.Id,
 ///     });
 ///
 /// });
@@ -109,7 +110,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketServerSideEncryptionConfiguration(ctx, "example", &s3.BucketServerSideEncryptionConfigurationArgs{
-/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketServerSideEncryptionConfigurationRuleArray{
 /// 				&s3.BucketServerSideEncryptionConfigurationRuleArgs{
 /// 					ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
@@ -118,6 +118,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -143,13 +144,13 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///   bucket = "mybucket"
 /// }
 /// resource "aws_s3_bucketserversideencryptionconfiguration" "example" {
-///   bucket = aws_s3_bucket.mybucket.id
 ///   rules {
 ///     apply_server_side_encryption_by_default = {
 ///       kms_master_key_id = aws_kms_key.mykey.arn
 ///       sse_algorithm     = "aws:kms"
 ///     }
 ///   }
+///   bucket = aws_s3_bucket.mybucket.id
 /// }
 /// ```
 /// ```java
@@ -189,13 +190,13 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///             .build());
 ///
 ///         var example = new BucketServerSideEncryptionConfiguration("example", BucketServerSideEncryptionConfigurationArgs.builder()
-///             .bucket(mybucket.id())
 ///             .rules(BucketServerSideEncryptionConfigurationRuleArgs.builder()
 ///                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs.builder()
 ///                     .kmsMasterKeyId(mykey.arn())
 ///                     .sseAlgorithm("aws:kms")
 ///                     .build())
 ///                 .build())
+///             .bucket(mybucket.id())
 ///             .build());
 ///
 ///     }
@@ -215,11 +216,11 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///   example:
 ///     type: aws:s3:BucketServerSideEncryptionConfiguration
 ///     properties:
-///       bucket: ${mybucket.id}
 ///       rules:
 ///         - applyServerSideEncryptionByDefault:
 ///             kmsMasterKeyId: ${mykey.arn}
 ///             sseAlgorithm: aws:kms
+///       bucket: ${mybucket.id}
 /// ```
 ///
 ///
@@ -236,7 +237,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 /// });
 /// const mybucket = new aws.s3.Bucket("mybucket", {bucket: "mybucket"});
 /// const example = new aws.s3.BucketServerSideEncryptionConfiguration("example", {
-///     bucket: mybucket.id,
 ///     rules: [{
 ///         applyServerSideEncryptionByDefault: {
 ///             kmsMasterKeyId: mykey.arn,
@@ -245,6 +245,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///         bucketKeyEnabled: true,
 ///         blockedEncryptionTypes: ["SSE-C"],
 ///     }],
+///     bucket: mybucket.id,
 /// });
 /// ```
 /// ```python
@@ -256,7 +257,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///     deletion_window_in_days=10)
 /// mybucket = aws.s3.Bucket("mybucket", bucket="mybucket")
 /// example = aws.s3.BucketServerSideEncryptionConfiguration("example",
-///     bucket=mybucket.id,
 ///     rules=[{
 ///         "apply_server_side_encryption_by_default": {
 ///             "kms_master_key_id": mykey.arn,
@@ -264,7 +264,8 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///         },
 ///         "bucket_key_enabled": True,
 ///         "blocked_encryption_types": ["SSE-C"],
-///     }])
+///     }],
+///     bucket=mybucket.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -287,7 +288,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///
 ///     var example = new Aws.S3.BucketServerSideEncryptionConfiguration("example", new()
 ///     {
-///         Bucket = mybucket.Id,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleArgs
@@ -304,6 +304,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = mybucket.Id,
 ///     });
 ///
 /// });
@@ -333,7 +334,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketServerSideEncryptionConfiguration(ctx, "example", &s3.BucketServerSideEncryptionConfigurationArgs{
-/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketServerSideEncryptionConfigurationRuleArray{
 /// 				&s3.BucketServerSideEncryptionConfigurationRuleArgs{
 /// 					ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
@@ -346,6 +346,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -371,7 +372,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///   bucket = "mybucket"
 /// }
 /// resource "aws_s3_bucketserversideencryptionconfiguration" "example" {
-///   bucket = aws_s3_bucket.mybucket.id
 ///   rules {
 ///     apply_server_side_encryption_by_default = {
 ///       kms_master_key_id = aws_kms_key.mykey.arn
@@ -380,6 +380,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///     bucket_key_enabled       = true
 ///     blocked_encryption_types = ["SSE-C"]
 ///   }
+///   bucket = aws_s3_bucket.mybucket.id
 /// }
 /// ```
 /// ```java
@@ -419,7 +420,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///             .build());
 ///
 ///         var example = new BucketServerSideEncryptionConfiguration("example", BucketServerSideEncryptionConfigurationArgs.builder()
-///             .bucket(mybucket.id())
 ///             .rules(BucketServerSideEncryptionConfigurationRuleArgs.builder()
 ///                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs.builder()
 ///                     .kmsMasterKeyId(mykey.arn())
@@ -428,6 +428,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///                 .bucketKeyEnabled(true)
 ///                 .blockedEncryptionTypes("SSE-C")
 ///                 .build())
+///             .bucket(mybucket.id())
 ///             .build());
 ///
 ///     }
@@ -447,7 +448,6 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///   example:
 ///     type: aws:s3:BucketServerSideEncryptionConfiguration
 ///     properties:
-///       bucket: ${mybucket.id}
 ///       rules:
 ///         - applyServerSideEncryptionByDefault:
 ///             kmsMasterKeyId: ${mykey.arn}
@@ -455,6 +455,7 @@ import 'bucket_server_side_encryption_configuration_state.dart';
 ///           bucketKeyEnabled: true
 ///           blockedEncryptionTypes:
 ///             - SSE-C
+///       bucket: ${mybucket.id}
 /// ```
 ///
 ///
@@ -496,7 +497,7 @@ class BucketServerSideEncryptionConfigurationS3 extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<BucketServerSideEncryptionConfigurationRule>> rules;
 
   /// Creates a new [BucketServerSideEncryptionConfigurationS3].
   /// [name] The Pulumi resource name.
@@ -510,12 +511,12 @@ class BucketServerSideEncryptionConfigurationS3 extends pulumi.CustomResource {
           'aws:s3/bucketServerSideEncryptionConfiguration:BucketServerSideEncryptionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<BucketServerSideEncryptionConfigurationRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationRule>(guardedValue, (value) => BucketServerSideEncryptionConfigurationRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [BucketServerSideEncryptionConfigurationS3] resource's state with the given [name] and [id].
@@ -523,11 +524,12 @@ class BucketServerSideEncryptionConfigurationS3 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketServerSideEncryptionConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketServerSideEncryptionConfigurationS3._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -544,6 +546,21 @@ class BucketServerSideEncryptionConfigurationS3 extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<BucketServerSideEncryptionConfigurationRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationRule>(guardedValue, (value) => BucketServerSideEncryptionConfigurationRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BucketServerSideEncryptionConfigurationS3] resource.
+  BucketServerSideEncryptionConfigurationS3.reference(String urn)
+    : super(
+        'aws:s3/bucketServerSideEncryptionConfiguration:BucketServerSideEncryptionConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<BucketServerSideEncryptionConfigurationRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationRule>(guardedValue, (value) => BucketServerSideEncryptionConfigurationRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -5,7 +5,7 @@ import 'agentcore_browser_enterprise_policy_location_s3.dart';
 
 class AgentcoreBrowserEnterprisePolicyLocation {
   /// S3 location of the enterprise policy file. See `s3` below.
-  final pulumi.Input<AgentcoreBrowserEnterprisePolicyLocationS3>? s3;
+  final pulumi.Input<AgentcoreBrowserEnterprisePolicyLocationS3?>? s3;
 
   /// Creates a new [AgentcoreBrowserEnterprisePolicyLocation].
   /// [s3] S3 location of the enterprise policy file. See `s3` below.

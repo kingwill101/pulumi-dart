@@ -27,9 +27,9 @@ class GetRouteSpecTcpRouteActionWeightedTarget {
 
   factory GetRouteSpecTcpRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteActionWeightedTarget(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       virtualNode: pulumi.Input.fromValue(map['virtualNode'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

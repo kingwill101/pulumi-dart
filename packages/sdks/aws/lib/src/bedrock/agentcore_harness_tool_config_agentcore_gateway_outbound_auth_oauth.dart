@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuthOauth {
   /// Map of custom parameters.
-  final pulumi.Input<Map<String, String>>? customParameters;
+  final pulumi.Input<Map<String, String>?>? customParameters;
   /// Default return URL for OAuth flow.
-  final pulumi.Input<String>? defaultReturnUrl;
+  final pulumi.Input<String?>? defaultReturnUrl;
   /// OAuth grant type.
-  final pulumi.Input<String>? grantType;
+  final pulumi.Input<String?>? grantType;
   /// ARN of the OAuth credential provider.
   final pulumi.Input<String> providerArn;
   /// List of OAuth scopes.

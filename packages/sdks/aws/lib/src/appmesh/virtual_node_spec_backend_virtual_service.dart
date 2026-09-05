@@ -5,7 +5,7 @@ import 'virtual_node_spec_backend_virtual_service_client_policy.dart';
 
 class VirtualNodeSpecBackendVirtualService {
   /// Default client policy for virtual service backends. See `spec.backend_defaults.client_policy` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicy>? clientPolicy;
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicy?>? clientPolicy;
   /// Name of the virtual service that is acting as a virtual node backend. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualServiceName;
 

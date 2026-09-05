@@ -5,7 +5,7 @@ import 'response_plan_integration_pagerduty.dart';
 
 class ResponsePlanIntegration {
   /// Details about the PagerDuty configuration for a response plan. The following values are supported:
-  final pulumi.Input<List<ResponsePlanIntegrationPagerduty>>? pagerduties;
+  final pulumi.Input<List<ResponsePlanIntegrationPagerduty>?>? pagerduties;
 
   /// Creates a new [ResponsePlanIntegration].
   /// [pagerduties] Details about the PagerDuty configuration for a response plan. The following values are supported:

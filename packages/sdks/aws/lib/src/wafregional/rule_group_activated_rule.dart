@@ -10,7 +10,7 @@ class RuleGroupActivatedRule {
   final pulumi.Input<int> priority;
   /// The ID of a rule
   final pulumi.Input<String> ruleId;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RuleGroupActivatedRule].
   /// [action] Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
@@ -36,7 +36,7 @@ class RuleGroupActivatedRule {
   factory RuleGroupActivatedRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupActivatedRule(
       action: pulumi.Input.fromValue(RuleGroupActivatedRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

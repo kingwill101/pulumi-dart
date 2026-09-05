@@ -23,8 +23,8 @@ class GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
 
   factory GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange(
-      from: pulumi.Input.fromValue(map['from'] as int),
-      to: pulumi.Input.fromValue(map['to'] as int),
+      from: pulumi.Input.fromValue((map['from'] as num).toInt()),
+      to: pulumi.Input.fromValue((map['to'] as num).toInt()),
     );
   }
 }

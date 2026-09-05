@@ -50,13 +50,13 @@ class GetVirtualNodeSpecListenerHealthCheck {
 
   factory GetVirtualNodeSpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerHealthCheck(
-      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
-      intervalMillis: pulumi.Input.fromValue(map['intervalMillis'] as int),
+      healthyThreshold: pulumi.Input.fromValue((map['healthyThreshold'] as num).toInt()),
+      intervalMillis: pulumi.Input.fromValue((map['intervalMillis'] as num).toInt()),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeoutMillis: pulumi.Input.fromValue(map['timeoutMillis'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
+      timeoutMillis: pulumi.Input.fromValue((map['timeoutMillis'] as num).toInt()),
+      unhealthyThreshold: pulumi.Input.fromValue((map['unhealthyThreshold'] as num).toInt()),
     );
   }
 }

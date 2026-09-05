@@ -200,7 +200,7 @@ import 'organization_managed_rule_state.dart';
 /// $ pulumi import aws:cfg/organizationManagedRule:OrganizationManagedRule example example
 /// ```
 class OrganizationManagedRule extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the rule
+  /// ARN of the rule
   late final pulumi.Output<String> arn;
   /// Description of the rule
   late final pulumi.Output<String?> description;
@@ -237,17 +237,17 @@ class OrganizationManagedRule extends pulumi.CustomResource {
           'aws:cfg/organizationManagedRule:OrganizationManagedRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inputParameters = registerOutput<String?>('inputParameters');
     maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceIdScope = registerOutput<String?>('resourceIdScope');
-    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes');
+    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ruleIdentifier = registerOutput<String>('ruleIdentifier');
     tagKeyScope = registerOutput<String?>('tagKeyScope');
     tagValueScope = registerOutput<String?>('tagValueScope');
@@ -258,11 +258,12 @@ class OrganizationManagedRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationManagedRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationManagedRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -278,13 +279,36 @@ class OrganizationManagedRule extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inputParameters = registerOutput<String?>('inputParameters');
     maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceIdScope = registerOutput<String?>('resourceIdScope');
-    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes');
+    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleIdentifier = registerOutput<String>('ruleIdentifier');
+    tagKeyScope = registerOutput<String?>('tagKeyScope');
+    tagValueScope = registerOutput<String?>('tagValueScope');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationManagedRule] resource.
+  OrganizationManagedRule.reference(String urn)
+    : super(
+        'aws:cfg/organizationManagedRule:OrganizationManagedRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputParameters = registerOutput<String?>('inputParameters');
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceIdScope = registerOutput<String?>('resourceIdScope');
+    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ruleIdentifier = registerOutput<String>('ruleIdentifier');
     tagKeyScope = registerOutput<String?>('tagKeyScope');
     tagValueScope = registerOutput<String?>('tagValueScope');

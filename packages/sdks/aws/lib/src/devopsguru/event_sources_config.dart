@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_sources_config_args.dart';
+import 'event_sources_config_event_source.dart';
 import 'event_sources_config_state.dart';
 
 /// Resource for managing an AWS DevOps Guru Event Sources Config. Currently the only service that can be integrated with DevOps Guru is Amazon CodeGuru Profiler, which can produce proactive recommendations which can be stored and viewed in DevOps Guru.
@@ -167,7 +168,7 @@ import 'event_sources_config_state.dart';
 /// ```
 class EventSourcesConfig extends pulumi.CustomResource {
   /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `eventSources` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> eventSources;
+  late final pulumi.Output<List<EventSourcesConfigEventSource>> eventSources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -183,9 +184,9 @@ class EventSourcesConfig extends pulumi.CustomResource {
           'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    eventSources = registerOutput<List<Map<String, dynamic>>>('eventSources');
+    eventSources = registerOutput<List<EventSourcesConfigEventSource>>('eventSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourcesConfigEventSource>(guardedValue, (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -194,11 +195,12 @@ class EventSourcesConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventSourcesConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventSourcesConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -212,7 +214,20 @@ class EventSourcesConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    eventSources = registerOutput<List<Map<String, dynamic>>>('eventSources');
+    eventSources = registerOutput<List<EventSourcesConfigEventSource>>('eventSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourcesConfigEventSource>(guardedValue, (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EventSourcesConfig] resource.
+  EventSourcesConfig.reference(String urn)
+    : super(
+        'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    eventSources = registerOutput<List<EventSourcesConfigEventSource>>('eventSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourcesConfigEventSource>(guardedValue, (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

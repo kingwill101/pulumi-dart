@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetDeliveryOptions {
-  /// The maximum amount of time, in seconds, that Amazon SES API v2 will attempt delivery of email. If specified, the value must greater than or equal to 300 seconds (5 minutes) and less than or equal to 50400 seconds (840 minutes).
-  final pulumi.Input<int>? maxDeliverySeconds;
-  /// The name of the dedicated IP pool to associate with the configuration set.
-  final pulumi.Input<String>? sendingPoolName;
-  /// Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). Valid values: `REQUIRE`, `OPTIONAL`.
-  final pulumi.Input<String>? tlsPolicy;
+  /// Maximum amount of time, in seconds, that Amazon SES API v2 will attempt delivery of email. If specified, the value must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 50400 seconds (840 minutes).
+  final pulumi.Input<int?>? maxDeliverySeconds;
+  /// Name of the dedicated IP pool to associate with the configuration set.
+  final pulumi.Input<String?>? sendingPoolName;
+  /// Whether messages that use the configuration set are required to use TLS. Valid values: `REQUIRE`, `OPTIONAL`.
+  final pulumi.Input<String?>? tlsPolicy;
 
   /// Creates a new [ConfigurationSetDeliveryOptions].
-  /// [maxDeliverySeconds] The maximum amount of time, in seconds, that Amazon SES API v2 will attempt delivery of email. If specified, the value must greater than or equal to 300 seconds (5 minutes) and less than or equal to 50400 seconds (840 minutes).
-  /// [sendingPoolName] The name of the dedicated IP pool to associate with the configuration set.
-  /// [tlsPolicy] Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). Valid values: `REQUIRE`, `OPTIONAL`.
+  /// [maxDeliverySeconds] Maximum amount of time, in seconds, that Amazon SES API v2 will attempt delivery of email. If specified, the value must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 50400 seconds (840 minutes).
+  /// [sendingPoolName] Name of the dedicated IP pool to associate with the configuration set.
+  /// [tlsPolicy] Whether messages that use the configuration set are required to use TLS. Valid values: `REQUIRE`, `OPTIONAL`.
   const ConfigurationSetDeliveryOptions({
     this.maxDeliverySeconds,
     this.sendingPoolName,
@@ -30,7 +30,7 @@ class ConfigurationSetDeliveryOptions {
 
   factory ConfigurationSetDeliveryOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetDeliveryOptions(
-      maxDeliverySeconds: (() { final guardedValue = map['maxDeliverySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliverySeconds: (() { final guardedValue = map['maxDeliverySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sendingPoolName: (() { final guardedValue = map['sendingPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tlsPolicy: (() { final guardedValue = map['tlsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -12,11 +12,11 @@ class ApiCacheArgs {
   /// GraphQL API ID.
   final pulumi.Input<String> apiId;
   /// At-rest encryption flag for cache. You cannot update this setting after creation.
-  final pulumi.Input<bool>? atRestEncryptionEnabled;
+  final pulumi.Input<bool?>? atRestEncryptionEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Transit encryption flag when connecting to cache. You cannot update this setting after creation.
-  final pulumi.Input<bool>? transitEncryptionEnabled;
+  final pulumi.Input<bool?>? transitEncryptionEnabled;
   /// TTL in seconds for cache entries.
   final pulumi.Input<int> ttl;
   /// Cache instance type. Valid values are `SMALL`, `MEDIUM`, `LARGE`, `XLARGE`, `LARGE_2X`, `LARGE_4X`, `LARGE_8X`, `LARGE_12X`, `T2_SMALL`, `T2_MEDIUM`, `R4_LARGE`, `R4_XLARGE`, `R4_2XLARGE`, `R4_4XLARGE`, `R4_8XLARGE`.
@@ -59,7 +59,7 @@ class ApiCacheArgs {
       atRestEncryptionEnabled: (() { final guardedValue = map['atRestEncryptionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transitEncryptionEnabled: (() { final guardedValue = map['transitEncryptionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

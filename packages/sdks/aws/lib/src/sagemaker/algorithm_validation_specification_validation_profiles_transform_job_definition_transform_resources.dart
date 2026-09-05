@@ -8,9 +8,9 @@ class AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTr
   /// Transform instance type.
   final pulumi.Input<String> instanceType;
   /// Transform AMI version.
-  final pulumi.Input<String>? transformAmiVersion;
+  final pulumi.Input<String?>? transformAmiVersion;
   /// KMS key ID used to encrypt the transform volume.
-  final pulumi.Input<String>? volumeKmsKeyId;
+  final pulumi.Input<String?>? volumeKmsKeyId;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformResources].
   /// [instanceCount] Number of transform instances.
@@ -35,7 +35,7 @@ class AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTr
 
   factory AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformResources.fromMap(Map<String, dynamic> map) {
     return AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformResources(
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       transformAmiVersion: (() { final guardedValue = map['transformAmiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeKmsKeyId: (() { final guardedValue = map['volumeKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

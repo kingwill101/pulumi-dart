@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeviceAwsLocation {
   /// ARN of the subnet that the device is located in.
-  final pulumi.Input<String>? subnetArn;
+  final pulumi.Input<String?>? subnetArn;
   /// Zone that the device is located in. Specify the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [DeviceAwsLocation].
   /// [subnetArn] ARN of the subnet that the device is located in.

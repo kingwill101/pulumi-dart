@@ -7,7 +7,7 @@ class AgentAgentActionGroupFunctionSchema {
   /// Contains a list of functions.
   /// Each function describes and action in the action group.
   /// See `memberFunctions` Block for details.
-  final pulumi.Input<AgentAgentActionGroupFunctionSchemaMemberFunctions>? memberFunctions;
+  final pulumi.Input<AgentAgentActionGroupFunctionSchemaMemberFunctions?>? memberFunctions;
 
   /// Creates a new [AgentAgentActionGroupFunctionSchema].
   /// [memberFunctions] Contains a list of functions.

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering StaticIp resources.
 class StaticIpState {
   /// ARN of the Lightsail static IP.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Allocated static IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Name for the allocated static IP.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Support code for the static IP. Include this code in your email to support when you have questions about a static IP in Lightsail. This code enables our support team to look up your Lightsail information more easily.
-  final pulumi.Input<String>? supportCode;
+  final pulumi.Input<String?>? supportCode;
 
   /// Creates a new [StaticIpState].
   /// [arn] ARN of the Lightsail static IP.

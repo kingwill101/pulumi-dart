@@ -10,19 +10,19 @@ import 'agent_data_source_data_source_configuration_web_configuration.dart';
 
 class AgentDataSourceDataSourceConfiguration {
   /// Details about the configuration of the Confluence data source. See `confluenceDataSourceConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfiguration>? confluenceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfiguration?>? confluenceConfiguration;
   /// Details about the configuration of a Managed Knowledge Base connector data source. See `managedKnowledgeBaseConnectorConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration>? managedKnowledgeBaseConnectorConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration?>? managedKnowledgeBaseConnectorConfiguration;
   /// Details about the configuration of the S3 object containing the data source. See `s3DataSourceConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationS3Configuration>? s3Configuration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationS3Configuration?>? s3Configuration;
   /// Details about the configuration of the Salesforce data source. See `salesforceDataSourceConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfiguration>? salesforceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfiguration?>? salesforceConfiguration;
   /// Details about the configuration of the SharePoint data source. See `sharePointDataSourceConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfiguration>? sharePointConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfiguration?>? sharePointConfiguration;
   /// Type of storage for the data source. Valid values: `S3`, `WEB`, `CONFLUENCE`, `SALESFORCE`, `SHAREPOINT`, `CUSTOM`, `REDSHIFT_METADATA`, `MANAGED_KNOWLEDGE_BASE_CONNECTOR`.
   final pulumi.Input<String> type;
   /// Details about the configuration of the web data source. See `webDataSourceConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfiguration>? webConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfiguration?>? webConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfiguration].
   /// [confluenceConfiguration] Details about the configuration of the Confluence data source. See `confluenceDataSourceConfiguration` block for details.

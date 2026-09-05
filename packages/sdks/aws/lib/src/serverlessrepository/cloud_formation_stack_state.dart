@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CloudFormationStack resources.
 class CloudFormationStackState {
   /// ARN of the application from the Serverless Application Repository.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// List of capabilities. Valid values are `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_RESOURCE_POLICY`, or `CAPABILITY_AUTO_EXPAND`. If the application contains IAM resources, IAM resources with custom names, resource-based policies, or nested applications, the corresponding capability must be specified. If omitted, the value applied by AWS is tracked in state.
-  final pulumi.Input<List<String>>? capabilities;
+  final pulumi.Input<List<String>?>? capabilities;
   /// Name of the stack to create. The resource deployed in AWS will be prefixed with `serverlessrepo-`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of outputs from the stack.
-  final pulumi.Input<Map<String, String>>? outputs;
+  final pulumi.Input<Map<String, String>?>? outputs;
   /// Map of Parameter structures that specify input parameters for the stack.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Version of the application to deploy. If not supplied, deploys the latest version.
-  final pulumi.Input<String>? semanticVersion;
+  final pulumi.Input<String?>? semanticVersion;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CloudFormationStackState].
   /// [applicationId] ARN of the application from the Serverless Application Repository.

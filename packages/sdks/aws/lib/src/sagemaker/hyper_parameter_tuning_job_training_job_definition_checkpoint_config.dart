@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperParameterTuningJobTrainingJobDefinitionCheckpointConfig {
   /// Local path for checkpoints.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// S3 or HTTPS destination for checkpoints.
   final pulumi.Input<String> s3Uri;
 

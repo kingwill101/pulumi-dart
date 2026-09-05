@@ -11,10 +11,10 @@ class ConnectionAliasArgs {
   /// The connection string specified for the connection alias. The connection string must be in the form of a fully qualified domain name (FQDN), such as www.example.com.
   final pulumi.Input<String> connectionString;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ConnectionAliasTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ConnectionAliasTimeouts?>? timeouts;
 
   /// Creates a new [ConnectionAliasArgs].
   /// [connectionString] The connection string specified for the connection alias. The connection string must be in the form of a fully qualified domain name (FQDN), such as www.example.com.

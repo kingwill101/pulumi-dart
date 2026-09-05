@@ -27,8 +27,8 @@ class GetPlanRuleLifecycle {
 
   factory GetPlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleLifecycle(
-      coldStorageAfter: pulumi.Input.fromValue(map['coldStorageAfter'] as int),
-      deleteAfter: pulumi.Input.fromValue(map['deleteAfter'] as int),
+      coldStorageAfter: pulumi.Input.fromValue((map['coldStorageAfter'] as num).toInt()),
+      deleteAfter: pulumi.Input.fromValue((map['deleteAfter'] as num).toInt()),
       optInToArchiveForSupportedResources: pulumi.Input.fromValue(map['optInToArchiveForSupportedResources'] as bool),
     );
   }

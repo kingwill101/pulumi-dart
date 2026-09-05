@@ -12,7 +12,7 @@ import 'feature_group_throughput_config.dart';
 /// {@macro pulumi_sagemaker_feature_group_feature_group_args_doc}
 class FeatureGroupArgs {
   /// A free-form description of a Feature Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the feature that stores the EventTime of a Record in a Feature Group.
   final pulumi.Input<String> eventTimeFeatureName;
   /// A list of Feature names and types. See Feature Definition Below.
@@ -20,18 +20,18 @@ class FeatureGroupArgs {
   /// The name of the Feature Group. The name must be unique within an AWS Region in an AWS account.
   final pulumi.Input<String> featureGroupName;
   /// The Offline Feature Store Configuration. See Offline Store Config Below.
-  final pulumi.Input<FeatureGroupOfflineStoreConfig>? offlineStoreConfig;
+  final pulumi.Input<FeatureGroupOfflineStoreConfig?>? offlineStoreConfig;
   /// The Online Feature Store Configuration. See Online Store Config Below.
-  final pulumi.Input<FeatureGroupOnlineStoreConfig>? onlineStoreConfig;
+  final pulumi.Input<FeatureGroupOnlineStoreConfig?>? onlineStoreConfig;
   /// The name of the Feature whose value uniquely identifies a Record defined in the Feature Store. Only the latest record per identifier value will be stored in the Online Store.
   final pulumi.Input<String> recordIdentifierFeatureName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offlineStoreConfig` is provided.
+  final pulumi.Input<String?>? region;
+  /// The ARN of the IAM execution role used to persist data into the Offline Store if an `offlineStoreConfig` is provided.
   final pulumi.Input<String> roleArn;
   /// Map of resource tags for the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<FeatureGroupThroughputConfig>? throughputConfig;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<FeatureGroupThroughputConfig?>? throughputConfig;
 
   /// Creates a new [FeatureGroupArgs].
   /// [description] A free-form description of a Feature Group.
@@ -42,7 +42,7 @@ class FeatureGroupArgs {
   /// [onlineStoreConfig] The Online Feature Store Configuration. See Online Store Config Below.
   /// [recordIdentifierFeatureName] The name of the Feature whose value uniquely identifies a Record defined in the Feature Store. Only the latest record per identifier value will be stored in the Online Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offlineStoreConfig` is provided.
+  /// [roleArn] The ARN of the IAM execution role used to persist data into the Offline Store if an `offlineStoreConfig` is provided.
   /// [tags] Map of resource tags for the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [throughputConfig] Optional.
   const FeatureGroupArgs({

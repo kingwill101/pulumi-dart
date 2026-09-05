@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_region_get_region_args_doc}
 class GetRegionArgs {
   /// EC2 endpoint of the region to select.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// (**Deprecated**) Region's name (e.g. `us-east-1`).
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Full name of the region to select. Use `region` instead.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Full name of the region to select (e.g. `us-east-1`), and the region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetRegionArgs].
   /// [endpoint] EC2 endpoint of the region to select.

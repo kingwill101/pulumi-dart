@@ -214,3 +214,14 @@ Future<GetVoicesResult> getVoices(
   );
   return GetVoicesResult.fromMap(result);
 }
+
+pulumi.Output<GetVoicesResult> getVoicesOutput(
+  GetVoicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:polly/getVoices:getVoices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVoicesResult.fromMap);
+}

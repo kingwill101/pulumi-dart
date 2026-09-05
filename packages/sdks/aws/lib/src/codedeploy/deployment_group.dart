@@ -4,9 +4,13 @@ import 'deployment_group_args.dart';
 import 'deployment_group_auto_rollback_configuration.dart';
 import 'deployment_group_blue_green_deployment_config.dart';
 import 'deployment_group_deployment_style.dart';
+import 'deployment_group_ec2_tag_filter.dart';
+import 'deployment_group_ec2_tag_set.dart';
 import 'deployment_group_ecs_service.dart';
 import 'deployment_group_load_balancer_info.dart';
+import 'deployment_group_on_premises_instance_tag_filter.dart';
 import 'deployment_group_state.dart';
+import 'deployment_group_trigger_configuration.dart';
 
 /// Provides a CodeDeploy Deployment Group for a CodeDeploy Application
 ///
@@ -21,11 +25,11 @@ import 'deployment_group_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["codedeploy.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -40,9 +44,14 @@ import 'deployment_group_state.dart';
 /// const exampleApplication = new aws.codedeploy.Application("example", {name: "example-app"});
 /// const exampleTopic = new aws.sns.Topic("example", {name: "example-topic"});
 /// const exampleDeploymentGroup = new aws.codedeploy.DeploymentGroup("example", {
-///     appName: exampleApplication.name,
-///     deploymentGroupName: "example-group",
-///     serviceRoleArn: example.arn,
+///     autoRollbackConfiguration: {
+///         enabled: true,
+///         events: ["DEPLOYMENT_FAILURE"],
+///     },
+///     alarmConfiguration: {
+///         alarms: ["my-alarm-name"],
+///         enabled: true,
+///     },
 ///     ec2TagSets: [{
 ///         ec2TagFilters: [
 ///             {
@@ -62,14 +71,9 @@ import 'deployment_group_state.dart';
 ///         triggerName: "example-trigger",
 ///         triggerTargetArn: exampleTopic.arn,
 ///     }],
-///     autoRollbackConfiguration: {
-///         enabled: true,
-///         events: ["DEPLOYMENT_FAILURE"],
-///     },
-///     alarmConfiguration: {
-///         alarms: ["my-alarm-name"],
-///         enabled: true,
-///     },
+///     appName: exampleApplication.name,
+///     deploymentGroupName: "example-group",
+///     serviceRoleArn: example.arn,
 ///     outdatedInstancesStrategy: "UPDATE",
 /// });
 /// ```
@@ -78,11 +82,11 @@ import 'deployment_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["codedeploy.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
@@ -94,9 +98,14 @@ import 'deployment_group_state.dart';
 /// example_application = aws.codedeploy.Application("example", name="example-app")
 /// example_topic = aws.sns.Topic("example", name="example-topic")
 /// example_deployment_group = aws.codedeploy.DeploymentGroup("example",
-///     app_name=example_application.name,
-///     deployment_group_name="example-group",
-///     service_role_arn=example.arn,
+///     auto_rollback_configuration={
+///         "enabled": True,
+///         "events": ["DEPLOYMENT_FAILURE"],
+///     },
+///     alarm_configuration={
+///         "alarms": ["my-alarm-name"],
+///         "enabled": True,
+///     },
 ///     ec2_tag_sets=[{
 ///         "ec2_tag_filters": [
 ///             {
@@ -116,14 +125,9 @@ import 'deployment_group_state.dart';
 ///         "trigger_name": "example-trigger",
 ///         "trigger_target_arn": example_topic.arn,
 ///     }],
-///     auto_rollback_configuration={
-///         "enabled": True,
-///         "events": ["DEPLOYMENT_FAILURE"],
-///     },
-///     alarm_configuration={
-///         "alarms": ["my-alarm-name"],
-///         "enabled": True,
-///     },
+///     app_name=example_application.name,
+///     deployment_group_name="example-group",
+///     service_role_arn=example.arn,
 ///     outdated_instances_strategy="UPDATE")
 /// ```
 /// ```csharp
@@ -140,7 +144,6 @@ import 'deployment_group_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -152,6 +155,7 @@ import 'deployment_group_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -184,9 +188,22 @@ import 'deployment_group_state.dart';
 ///
 ///     var exampleDeploymentGroup = new Aws.CodeDeploy.DeploymentGroup("example", new()
 ///     {
-///         AppName = exampleApplication.Name,
-///         DeploymentGroupName = "example-group",
-///         ServiceRoleArn = example.Arn,
+///         AutoRollbackConfiguration = new Aws.CodeDeploy.Inputs.DeploymentGroupAutoRollbackConfigurationArgs
+///         {
+///             Enabled = true,
+///             Events = new[]
+///             {
+///                 "DEPLOYMENT_FAILURE",
+///             },
+///         },
+///         AlarmConfiguration = new Aws.CodeDeploy.Inputs.DeploymentGroupAlarmConfigurationArgs
+///         {
+///             Alarms = new[]
+///             {
+///                 "my-alarm-name",
+///             },
+///             Enabled = true,
+///         },
 ///         Ec2TagSets = new[]
 ///         {
 ///             new Aws.CodeDeploy.Inputs.DeploymentGroupEc2TagSetArgs
@@ -220,22 +237,9 @@ import 'deployment_group_state.dart';
 ///                 TriggerTargetArn = exampleTopic.Arn,
 ///             },
 ///         },
-///         AutoRollbackConfiguration = new Aws.CodeDeploy.Inputs.DeploymentGroupAutoRollbackConfigurationArgs
-///         {
-///             Enabled = true,
-///             Events = new[]
-///             {
-///                 "DEPLOYMENT_FAILURE",
-///             },
-///         },
-///         AlarmConfiguration = new Aws.CodeDeploy.Inputs.DeploymentGroupAlarmConfigurationArgs
-///         {
-///             Alarms = new[]
-///             {
-///                 "my-alarm-name",
-///             },
-///             Enabled = true,
-///         },
+///         AppName = exampleApplication.Name,
+///         DeploymentGroupName = "example-group",
+///         ServiceRoleArn = example.Arn,
 ///         OutdatedInstancesStrategy = "UPDATE",
 ///     });
 ///
@@ -256,7 +260,6 @@ import 'deployment_group_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -265,6 +268,7 @@ import 'deployment_group_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -301,9 +305,18 @@ import 'deployment_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codedeploy.NewDeploymentGroup(ctx, "example", &codedeploy.DeploymentGroupArgs{
-/// 			AppName:             exampleApplication.Name,
-/// 			DeploymentGroupName: pulumi.String("example-group"),
-/// 			ServiceRoleArn:      example.Arn,
+/// 			AutoRollbackConfiguration: &codedeploy.DeploymentGroupAutoRollbackConfigurationArgs{
+/// 				Enabled: pulumi.Bool(true),
+/// 				Events: pulumi.StringArray{
+/// 					pulumi.String("DEPLOYMENT_FAILURE"),
+/// 				},
+/// 			},
+/// 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
+/// 				Alarms: pulumi.StringArray{
+/// 					pulumi.String("my-alarm-name"),
+/// 				},
+/// 				Enabled: pulumi.Bool(true),
+/// 			},
 /// 			Ec2TagSets: codedeploy.DeploymentGroupEc2TagSetArray{
 /// 				&codedeploy.DeploymentGroupEc2TagSetArgs{
 /// 					Ec2TagFilters: codedeploy.DeploymentGroupEc2TagSetEc2TagFilterArray{
@@ -329,18 +342,9 @@ import 'deployment_group_state.dart';
 /// 					TriggerTargetArn: exampleTopic.Arn,
 /// 				},
 /// 			},
-/// 			AutoRollbackConfiguration: &codedeploy.DeploymentGroupAutoRollbackConfigurationArgs{
-/// 				Enabled: pulumi.Bool(true),
-/// 				Events: pulumi.StringArray{
-/// 					pulumi.String("DEPLOYMENT_FAILURE"),
-/// 				},
-/// 			},
-/// 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
-/// 				Alarms: pulumi.StringArray{
-/// 					pulumi.String("my-alarm-name"),
-/// 				},
-/// 				Enabled: pulumi.Bool(true),
-/// 			},
+/// 			AppName:                   exampleApplication.Name,
+/// 			DeploymentGroupName:       pulumi.String("example-group"),
+/// 			ServiceRoleArn:            example.Arn,
 /// 			OutdatedInstancesStrategy: pulumi.String("UPDATE"),
 /// 		})
 /// 		if err != nil {
@@ -361,11 +365,11 @@ import 'deployment_group_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codedeploy.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -385,9 +389,14 @@ import 'deployment_group_state.dart';
 ///   name = "example-topic"
 /// }
 /// resource "aws_codedeploy_deploymentgroup" "example" {
-///   app_name              = aws_codedeploy_application.example.name
-///   deployment_group_name = "example-group"
-///   service_role_arn      = aws_iam_role.example.arn
+///   auto_rollback_configuration = {
+///     enabled = true
+///     events  = ["DEPLOYMENT_FAILURE"]
+///   }
+///   alarm_configuration = {
+///     alarms  = ["my-alarm-name"]
+///     enabled = true
+///   }
 ///   ec2_tag_sets {
 ///     ec2_tag_filters {
 ///       key   = "filterkey1"
@@ -405,14 +414,9 @@ import 'deployment_group_state.dart';
 ///     trigger_name       = "example-trigger"
 ///     trigger_target_arn = aws_sns_topic.example.arn
 ///   }
-///   auto_rollback_configuration = {
-///     enabled = true
-///     events  = ["DEPLOYMENT_FAILURE"]
-///   }
-///   alarm_configuration = {
-///     alarms  = ["my-alarm-name"]
-///     enabled = true
-///   }
+///   app_name                    = aws_codedeploy_application.example.name
+///   deployment_group_name       = "example-group"
+///   service_role_arn            = aws_iam_role.example.arn
 ///   outdated_instances_strategy = "UPDATE"
 /// }
 /// ```
@@ -436,11 +440,11 @@ import 'deployment_group_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.codedeploy.DeploymentGroup;
 /// import com.pulumi.aws.codedeploy.DeploymentGroupArgs;
+/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAutoRollbackConfigurationArgs;
+/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAlarmConfigurationArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupEc2TagSetArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupEc2TagSetEc2TagFilterArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupTriggerConfigurationArgs;
-/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAutoRollbackConfigurationArgs;
-/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAlarmConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -456,11 +460,11 @@ import 'deployment_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("codedeploy.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -484,9 +488,14 @@ import 'deployment_group_state.dart';
 ///             .build());
 ///
 ///         var exampleDeploymentGroup = new DeploymentGroup("exampleDeploymentGroup", DeploymentGroupArgs.builder()
-///             .appName(exampleApplication.name())
-///             .deploymentGroupName("example-group")
-///             .serviceRoleArn(example.arn())
+///             .autoRollbackConfiguration(DeploymentGroupAutoRollbackConfigurationArgs.builder()
+///                 .enabled(true)
+///                 .events("DEPLOYMENT_FAILURE")
+///                 .build())
+///             .alarmConfiguration(DeploymentGroupAlarmConfigurationArgs.builder()
+///                 .alarms("my-alarm-name")
+///                 .enabled(true)
+///                 .build())
 ///             .ec2TagSets(DeploymentGroupEc2TagSetArgs.builder()
 ///                 .ec2TagFilters(
 ///                     DeploymentGroupEc2TagSetEc2TagFilterArgs.builder()
@@ -505,14 +514,9 @@ import 'deployment_group_state.dart';
 ///                 .triggerName("example-trigger")
 ///                 .triggerTargetArn(exampleTopic.arn())
 ///                 .build())
-///             .autoRollbackConfiguration(DeploymentGroupAutoRollbackConfigurationArgs.builder()
-///                 .enabled(true)
-///                 .events("DEPLOYMENT_FAILURE")
-///                 .build())
-///             .alarmConfiguration(DeploymentGroupAlarmConfigurationArgs.builder()
-///                 .alarms("my-alarm-name")
-///                 .enabled(true)
-///                 .build())
+///             .appName(exampleApplication.name())
+///             .deploymentGroupName("example-group")
+///             .serviceRoleArn(example.arn())
 ///             .outdatedInstancesStrategy("UPDATE")
 ///             .build());
 ///
@@ -546,9 +550,14 @@ import 'deployment_group_state.dart';
 ///     type: aws:codedeploy:DeploymentGroup
 ///     name: example
 ///     properties:
-///       appName: ${exampleApplication.name}
-///       deploymentGroupName: example-group
-///       serviceRoleArn: ${example.arn}
+///       autoRollbackConfiguration:
+///         enabled: true
+///         events:
+///           - DEPLOYMENT_FAILURE
+///       alarmConfiguration:
+///         alarms:
+///           - my-alarm-name
+///         enabled: true
 ///       ec2TagSets:
 ///         - ec2TagFilters:
 ///             - key: filterkey1
@@ -562,14 +571,9 @@ import 'deployment_group_state.dart';
 ///             - DeploymentFailure
 ///           triggerName: example-trigger
 ///           triggerTargetArn: ${exampleTopic.arn}
-///       autoRollbackConfiguration:
-///         enabled: true
-///         events:
-///           - DEPLOYMENT_FAILURE
-///       alarmConfiguration:
-///         alarms:
-///           - my-alarm-name
-///         enabled: true
+///       appName: ${exampleApplication.name}
+///       deploymentGroupName: example-group
+///       serviceRoleArn: ${example.arn}
 ///       outdatedInstancesStrategy: UPDATE
 /// variables:
 ///   assumeRole:
@@ -577,11 +581,11 @@ import 'deployment_group_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - codedeploy.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -599,10 +603,6 @@ import 'deployment_group_state.dart';
 ///     name: "example",
 /// });
 /// const exampleDeploymentGroup = new aws.codedeploy.DeploymentGroup("example", {
-///     appName: example.name,
-///     deploymentConfigName: "CodeDeployDefault.ECSAllAtOnce",
-///     deploymentGroupName: "example",
-///     serviceRoleArn: exampleAwsIamRole.arn,
 ///     autoRollbackConfiguration: {
 ///         enabled: true,
 ///         events: ["DEPLOYMENT_FAILURE"],
@@ -639,6 +639,10 @@ import 'deployment_group_state.dart';
 ///             ],
 ///         },
 ///     },
+///     appName: example.name,
+///     deploymentConfigName: "CodeDeployDefault.ECSAllAtOnce",
+///     deploymentGroupName: "example",
+///     serviceRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -649,10 +653,6 @@ import 'deployment_group_state.dart';
 ///     compute_platform="ECS",
 ///     name="example")
 /// example_deployment_group = aws.codedeploy.DeploymentGroup("example",
-///     app_name=example.name,
-///     deployment_config_name="CodeDeployDefault.ECSAllAtOnce",
-///     deployment_group_name="example",
-///     service_role_arn=example_aws_iam_role["arn"],
 ///     auto_rollback_configuration={
 ///         "enabled": True,
 ///         "events": ["DEPLOYMENT_FAILURE"],
@@ -688,7 +688,11 @@ import 'deployment_group_state.dart';
 ///                 },
 ///             ],
 ///         },
-///     })
+///     },
+///     app_name=example.name,
+///     deployment_config_name="CodeDeployDefault.ECSAllAtOnce",
+///     deployment_group_name="example",
+///     service_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -706,10 +710,6 @@ import 'deployment_group_state.dart';
 ///
 ///     var exampleDeploymentGroup = new Aws.CodeDeploy.DeploymentGroup("example", new()
 ///     {
-///         AppName = example.Name,
-///         DeploymentConfigName = "CodeDeployDefault.ECSAllAtOnce",
-///         DeploymentGroupName = "example",
-///         ServiceRoleArn = exampleAwsIamRole.Arn,
 ///         AutoRollbackConfiguration = new Aws.CodeDeploy.Inputs.DeploymentGroupAutoRollbackConfigurationArgs
 ///         {
 ///             Enabled = true,
@@ -764,6 +764,10 @@ import 'deployment_group_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AppName = example.Name,
+///         DeploymentConfigName = "CodeDeployDefault.ECSAllAtOnce",
+///         DeploymentGroupName = "example",
+///         ServiceRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -786,10 +790,6 @@ import 'deployment_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codedeploy.NewDeploymentGroup(ctx, "example", &codedeploy.DeploymentGroupArgs{
-/// 			AppName:              example.Name,
-/// 			DeploymentConfigName: pulumi.String("CodeDeployDefault.ECSAllAtOnce"),
-/// 			DeploymentGroupName:  pulumi.String("example"),
-/// 			ServiceRoleArn:       pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AutoRollbackConfiguration: &codedeploy.DeploymentGroupAutoRollbackConfigurationArgs{
 /// 				Enabled: pulumi.Bool(true),
 /// 				Events: pulumi.StringArray{
@@ -830,6 +830,10 @@ import 'deployment_group_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AppName:              example.Name,
+/// 			DeploymentConfigName: pulumi.String("CodeDeployDefault.ECSAllAtOnce"),
+/// 			DeploymentGroupName:  pulumi.String("example"),
+/// 			ServiceRoleArn:       pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -852,10 +856,6 @@ import 'deployment_group_state.dart';
 ///   name             = "example"
 /// }
 /// resource "aws_codedeploy_deploymentgroup" "example" {
-///   app_name               = aws_codedeploy_application.example.name
-///   deployment_config_name = "CodeDeployDefault.ECSAllAtOnce"
-///   deployment_group_name  = "example"
-///   service_role_arn       = exampleAwsIamRole.arn
 ///   auto_rollback_configuration = {
 ///     enabled = true
 ///     events  = ["DEPLOYMENT_FAILURE"]
@@ -889,6 +889,10 @@ import 'deployment_group_state.dart';
 ///       }]
 ///     }
 ///   }
+///   app_name               = aws_codedeploy_application.example.name
+///   deployment_config_name = "CodeDeployDefault.ECSAllAtOnce"
+///   deployment_group_name  = "example"
+///   service_role_arn       = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -930,10 +934,6 @@ import 'deployment_group_state.dart';
 ///             .build());
 ///
 ///         var exampleDeploymentGroup = new DeploymentGroup("exampleDeploymentGroup", DeploymentGroupArgs.builder()
-///             .appName(example.name())
-///             .deploymentConfigName("CodeDeployDefault.ECSAllAtOnce")
-///             .deploymentGroupName("example")
-///             .serviceRoleArn(exampleAwsIamRole.arn())
 ///             .autoRollbackConfiguration(DeploymentGroupAutoRollbackConfigurationArgs.builder()
 ///                 .enabled(true)
 ///                 .events("DEPLOYMENT_FAILURE")
@@ -969,6 +969,10 @@ import 'deployment_group_state.dart';
 ///                             .build())
 ///                     .build())
 ///                 .build())
+///             .appName(example.name())
+///             .deploymentConfigName("CodeDeployDefault.ECSAllAtOnce")
+///             .deploymentGroupName("example")
+///             .serviceRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -985,10 +989,6 @@ import 'deployment_group_state.dart';
 ///     type: aws:codedeploy:DeploymentGroup
 ///     name: example
 ///     properties:
-///       appName: ${example.name}
-///       deploymentConfigName: CodeDeployDefault.ECSAllAtOnce
-///       deploymentGroupName: example
-///       serviceRoleArn: ${exampleAwsIamRole.arn}
 ///       autoRollbackConfiguration:
 ///         enabled: true
 ///         events:
@@ -1013,6 +1013,10 @@ import 'deployment_group_state.dart';
 ///           targetGroups:
 ///             - name: ${blue.name}
 ///             - name: ${green.name}
+///       appName: ${example.name}
+///       deploymentConfigName: CodeDeployDefault.ECSAllAtOnce
+///       deploymentGroupName: example
+///       serviceRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1025,9 +1029,6 @@ import 'deployment_group_state.dart';
 ///
 /// const example = new aws.codedeploy.Application("example", {name: "example-app"});
 /// const exampleDeploymentGroup = new aws.codedeploy.DeploymentGroup("example", {
-///     appName: example.name,
-///     deploymentGroupName: "example-group",
-///     serviceRoleArn: exampleAwsIamRole.arn,
 ///     deploymentStyle: {
 ///         deploymentOption: "WITH_TRAFFIC_CONTROL",
 ///         deploymentType: "BLUE_GREEN",
@@ -1049,6 +1050,9 @@ import 'deployment_group_state.dart';
 ///             action: "KEEP_ALIVE",
 ///         },
 ///     },
+///     appName: example.name,
+///     deploymentGroupName: "example-group",
+///     serviceRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1057,9 +1061,6 @@ import 'deployment_group_state.dart';
 ///
 /// example = aws.codedeploy.Application("example", name="example-app")
 /// example_deployment_group = aws.codedeploy.DeploymentGroup("example",
-///     app_name=example.name,
-///     deployment_group_name="example-group",
-///     service_role_arn=example_aws_iam_role["arn"],
 ///     deployment_style={
 ///         "deployment_option": "WITH_TRAFFIC_CONTROL",
 ///         "deployment_type": "BLUE_GREEN",
@@ -1080,7 +1081,10 @@ import 'deployment_group_state.dart';
 ///         "terminate_blue_instances_on_deployment_success": {
 ///             "action": "KEEP_ALIVE",
 ///         },
-///     })
+///     },
+///     app_name=example.name,
+///     deployment_group_name="example-group",
+///     service_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1097,9 +1101,6 @@ import 'deployment_group_state.dart';
 ///
 ///     var exampleDeploymentGroup = new Aws.CodeDeploy.DeploymentGroup("example", new()
 ///     {
-///         AppName = example.Name,
-///         DeploymentGroupName = "example-group",
-///         ServiceRoleArn = exampleAwsIamRole.Arn,
 ///         DeploymentStyle = new Aws.CodeDeploy.Inputs.DeploymentGroupDeploymentStyleArgs
 ///         {
 ///             DeploymentOption = "WITH_TRAFFIC_CONTROL",
@@ -1131,6 +1132,9 @@ import 'deployment_group_state.dart';
 ///                 Action = "KEEP_ALIVE",
 ///             },
 ///         },
+///         AppName = example.Name,
+///         DeploymentGroupName = "example-group",
+///         ServiceRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1152,9 +1156,6 @@ import 'deployment_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codedeploy.NewDeploymentGroup(ctx, "example", &codedeploy.DeploymentGroupArgs{
-/// 			AppName:             example.Name,
-/// 			DeploymentGroupName: pulumi.String("example-group"),
-/// 			ServiceRoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 			DeploymentStyle: &codedeploy.DeploymentGroupDeploymentStyleArgs{
 /// 				DeploymentOption: pulumi.String("WITH_TRAFFIC_CONTROL"),
 /// 				DeploymentType:   pulumi.String("BLUE_GREEN"),
@@ -1178,6 +1179,9 @@ import 'deployment_group_state.dart';
 /// 					Action: pulumi.String("KEEP_ALIVE"),
 /// 				},
 /// 			},
+/// 			AppName:             example.Name,
+/// 			DeploymentGroupName: pulumi.String("example-group"),
+/// 			ServiceRoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1199,9 +1203,6 @@ import 'deployment_group_state.dart';
 ///   name = "example-app"
 /// }
 /// resource "aws_codedeploy_deploymentgroup" "example" {
-///   app_name              = aws_codedeploy_application.example.name
-///   deployment_group_name = "example-group"
-///   service_role_arn      = exampleAwsIamRole.arn
 ///   deployment_style = {
 ///     deployment_option = "WITH_TRAFFIC_CONTROL"
 ///     deployment_type   = "BLUE_GREEN"
@@ -1223,6 +1224,9 @@ import 'deployment_group_state.dart';
 ///       action = "KEEP_ALIVE"
 ///     }
 ///   }
+///   app_name              = aws_codedeploy_application.example.name
+///   deployment_group_name = "example-group"
+///   service_role_arn      = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1260,9 +1264,6 @@ import 'deployment_group_state.dart';
 ///             .build());
 ///
 ///         var exampleDeploymentGroup = new DeploymentGroup("exampleDeploymentGroup", DeploymentGroupArgs.builder()
-///             .appName(example.name())
-///             .deploymentGroupName("example-group")
-///             .serviceRoleArn(exampleAwsIamRole.arn())
 ///             .deploymentStyle(DeploymentGroupDeploymentStyleArgs.builder()
 ///                 .deploymentOption("WITH_TRAFFIC_CONTROL")
 ///                 .deploymentType("BLUE_GREEN")
@@ -1284,6 +1285,9 @@ import 'deployment_group_state.dart';
 ///                     .action("KEEP_ALIVE")
 ///                     .build())
 ///                 .build())
+///             .appName(example.name())
+///             .deploymentGroupName("example-group")
+///             .serviceRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1299,9 +1303,6 @@ import 'deployment_group_state.dart';
 ///     type: aws:codedeploy:DeploymentGroup
 ///     name: example
 ///     properties:
-///       appName: ${example.name}
-///       deploymentGroupName: example-group
-///       serviceRoleArn: ${exampleAwsIamRole.arn}
 ///       deploymentStyle:
 ///         deploymentOption: WITH_TRAFFIC_CONTROL
 ///         deploymentType: BLUE_GREEN
@@ -1316,6 +1317,9 @@ import 'deployment_group_state.dart';
 ///           action: DISCOVER_EXISTING
 ///         terminateBlueInstancesOnDeploymentSuccess:
 ///           action: KEEP_ALIVE
+///       appName: ${example.name}
+///       deploymentGroupName: example-group
+///       serviceRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1350,15 +1354,15 @@ class DeploymentGroup extends pulumi.CustomResource {
   /// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
   late final pulumi.Output<DeploymentGroupDeploymentStyle?> deploymentStyle;
   /// Tag filters associated with the deployment group. See the AWS docs for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ec2TagFilters;
+  late final pulumi.Output<List<DeploymentGroupEc2TagFilter>?> ec2TagFilters;
   /// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ec2TagSets;
+  late final pulumi.Output<List<DeploymentGroupEc2TagSet>?> ec2TagSets;
   /// Configuration block(s) of the ECS services for a deployment group (documented below).
   late final pulumi.Output<DeploymentGroupEcsService?> ecsService;
   /// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
   late final pulumi.Output<DeploymentGroupLoadBalancerInfo?> loadBalancerInfo;
   /// On premise tag filters associated with the group. See the AWS docs for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> onPremisesInstanceTagFilters;
+  late final pulumi.Output<List<DeploymentGroupOnPremisesInstanceTagFilter>?> onPremisesInstanceTagFilters;
   /// Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
   late final pulumi.Output<String?> outdatedInstancesStrategy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -1372,7 +1376,7 @@ class DeploymentGroup extends pulumi.CustomResource {
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   late final pulumi.Output<bool?> terminationHookEnabled;
   /// Configuration block(s) of the triggers for the deployment group (documented below).
-  late final pulumi.Output<List<Map<String, dynamic>>?> triggerConfigurations;
+  late final pulumi.Output<List<DeploymentGroupTriggerConfiguration>?> triggerConfigurations;
 
   /// Creates a new [DeploymentGroup].
   /// [name] The Pulumi resource name.
@@ -1386,31 +1390,31 @@ class DeploymentGroup extends pulumi.CustomResource {
           'aws:codedeploy/deploymentGroup:DeploymentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appName = registerOutput<String>('appName');
     arn = registerOutput<String>('arn');
     autoRollbackConfiguration = registerOutput<DeploymentGroupAutoRollbackConfiguration?>('autoRollbackConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAutoRollbackConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
+    autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     blueGreenDeploymentConfig = registerOutput<DeploymentGroupBlueGreenDeploymentConfig>('blueGreenDeploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupBlueGreenDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computePlatform = registerOutput<String>('computePlatform');
     deploymentConfigName = registerOutput<String?>('deploymentConfigName');
     deploymentGroupId = registerOutput<String>('deploymentGroupId');
     deploymentGroupName = registerOutput<String>('deploymentGroupName');
     deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupDeploymentStyle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>('ec2TagFilters');
-    ec2TagSets = registerOutput<List<Map<String, dynamic>>?>('ec2TagSets');
+    ec2TagFilters = registerOutput<List<DeploymentGroupEc2TagFilter>?>('ec2TagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupEc2TagFilter>(guardedValue, (value) => DeploymentGroupEc2TagFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    ec2TagSets = registerOutput<List<DeploymentGroupEc2TagSet>?>('ec2TagSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupEc2TagSet>(guardedValue, (value) => DeploymentGroupEc2TagSet.fromMap((value as Map).cast<String, dynamic>())); });
     ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupEcsService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupLoadBalancerInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>('onPremisesInstanceTagFilters');
+    onPremisesInstanceTagFilters = registerOutput<List<DeploymentGroupOnPremisesInstanceTagFilter>?>('onPremisesInstanceTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupOnPremisesInstanceTagFilter>(guardedValue, (value) => DeploymentGroupOnPremisesInstanceTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
     outdatedInstancesStrategy = registerOutput<String?>('outdatedInstancesStrategy');
     region = registerOutput<String>('region');
     serviceRoleArn = registerOutput<String>('serviceRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationHookEnabled = registerOutput<bool?>('terminationHookEnabled');
-    triggerConfigurations = registerOutput<List<Map<String, dynamic>>?>('triggerConfigurations');
+    triggerConfigurations = registerOutput<List<DeploymentGroupTriggerConfiguration>?>('triggerConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupTriggerConfiguration>(guardedValue, (value) => DeploymentGroupTriggerConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DeploymentGroup] resource's state with the given [name] and [id].
@@ -1418,11 +1422,12 @@ class DeploymentGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1440,24 +1445,58 @@ class DeploymentGroup extends pulumi.CustomResource {
     appName = registerOutput<String>('appName');
     arn = registerOutput<String>('arn');
     autoRollbackConfiguration = registerOutput<DeploymentGroupAutoRollbackConfiguration?>('autoRollbackConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAutoRollbackConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
+    autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     blueGreenDeploymentConfig = registerOutput<DeploymentGroupBlueGreenDeploymentConfig>('blueGreenDeploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupBlueGreenDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computePlatform = registerOutput<String>('computePlatform');
     deploymentConfigName = registerOutput<String?>('deploymentConfigName');
     deploymentGroupId = registerOutput<String>('deploymentGroupId');
     deploymentGroupName = registerOutput<String>('deploymentGroupName');
     deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupDeploymentStyle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>('ec2TagFilters');
-    ec2TagSets = registerOutput<List<Map<String, dynamic>>?>('ec2TagSets');
+    ec2TagFilters = registerOutput<List<DeploymentGroupEc2TagFilter>?>('ec2TagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupEc2TagFilter>(guardedValue, (value) => DeploymentGroupEc2TagFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    ec2TagSets = registerOutput<List<DeploymentGroupEc2TagSet>?>('ec2TagSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupEc2TagSet>(guardedValue, (value) => DeploymentGroupEc2TagSet.fromMap((value as Map).cast<String, dynamic>())); });
     ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupEcsService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupLoadBalancerInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>('onPremisesInstanceTagFilters');
+    onPremisesInstanceTagFilters = registerOutput<List<DeploymentGroupOnPremisesInstanceTagFilter>?>('onPremisesInstanceTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupOnPremisesInstanceTagFilter>(guardedValue, (value) => DeploymentGroupOnPremisesInstanceTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
     outdatedInstancesStrategy = registerOutput<String?>('outdatedInstancesStrategy');
     region = registerOutput<String>('region');
     serviceRoleArn = registerOutput<String>('serviceRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationHookEnabled = registerOutput<bool?>('terminationHookEnabled');
-    triggerConfigurations = registerOutput<List<Map<String, dynamic>>?>('triggerConfigurations');
+    triggerConfigurations = registerOutput<List<DeploymentGroupTriggerConfiguration>?>('triggerConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupTriggerConfiguration>(guardedValue, (value) => DeploymentGroupTriggerConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentGroup] resource.
+  DeploymentGroup.reference(String urn)
+    : super(
+        'aws:codedeploy/deploymentGroup:DeploymentGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appName = registerOutput<String>('appName');
+    arn = registerOutput<String>('arn');
+    autoRollbackConfiguration = registerOutput<DeploymentGroupAutoRollbackConfiguration?>('autoRollbackConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAutoRollbackConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blueGreenDeploymentConfig = registerOutput<DeploymentGroupBlueGreenDeploymentConfig>('blueGreenDeploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupBlueGreenDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computePlatform = registerOutput<String>('computePlatform');
+    deploymentConfigName = registerOutput<String?>('deploymentConfigName');
+    deploymentGroupId = registerOutput<String>('deploymentGroupId');
+    deploymentGroupName = registerOutput<String>('deploymentGroupName');
+    deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupDeploymentStyle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ec2TagFilters = registerOutput<List<DeploymentGroupEc2TagFilter>?>('ec2TagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupEc2TagFilter>(guardedValue, (value) => DeploymentGroupEc2TagFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    ec2TagSets = registerOutput<List<DeploymentGroupEc2TagSet>?>('ec2TagSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupEc2TagSet>(guardedValue, (value) => DeploymentGroupEc2TagSet.fromMap((value as Map).cast<String, dynamic>())); });
+    ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupEcsService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupLoadBalancerInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremisesInstanceTagFilters = registerOutput<List<DeploymentGroupOnPremisesInstanceTagFilter>?>('onPremisesInstanceTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupOnPremisesInstanceTagFilter>(guardedValue, (value) => DeploymentGroupOnPremisesInstanceTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    outdatedInstancesStrategy = registerOutput<String?>('outdatedInstancesStrategy');
+    region = registerOutput<String>('region');
+    serviceRoleArn = registerOutput<String>('serviceRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminationHookEnabled = registerOutput<bool?>('terminationHookEnabled');
+    triggerConfigurations = registerOutput<List<DeploymentGroupTriggerConfiguration>?>('triggerConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentGroupTriggerConfiguration>(guardedValue, (value) => DeploymentGroupTriggerConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

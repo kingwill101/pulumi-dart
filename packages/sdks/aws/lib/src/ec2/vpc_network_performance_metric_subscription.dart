@@ -138,7 +138,7 @@ class VpcNetworkPerformanceMetricSubscription extends pulumi.CustomResource {
           'aws:ec2/vpcNetworkPerformanceMetricSubscription:VpcNetworkPerformanceMetricSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     destination = registerOutput<String>('destination');
     metric = registerOutput<String?>('metric');
@@ -153,11 +153,12 @@ class VpcNetworkPerformanceMetricSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcNetworkPerformanceMetricSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcNetworkPerformanceMetricSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,6 +172,23 @@ class VpcNetworkPerformanceMetricSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destination = registerOutput<String>('destination');
+    metric = registerOutput<String?>('metric');
+    period = registerOutput<String>('period');
+    region = registerOutput<String>('region');
+    source = registerOutput<String>('source');
+    statistic = registerOutput<String?>('statistic');
+  }
+
+  /// Creates a typed reference to an existing [VpcNetworkPerformanceMetricSubscription] resource.
+  VpcNetworkPerformanceMetricSubscription.reference(String urn)
+    : super(
+        'aws:ec2/vpcNetworkPerformanceMetricSubscription:VpcNetworkPerformanceMetricSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destination = registerOutput<String>('destination');
     metric = registerOutput<String?>('metric');
     period = registerOutput<String>('period');

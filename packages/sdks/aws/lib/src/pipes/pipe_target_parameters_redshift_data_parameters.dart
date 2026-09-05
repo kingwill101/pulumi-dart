@@ -6,15 +6,15 @@ class PipeTargetParametersRedshiftDataParameters {
   /// The name of the database. Required when authenticating using temporary credentials.
   final pulumi.Input<String> database;
   /// The database user name. Required when authenticating using temporary credentials.
-  final pulumi.Input<String>? dbUser;
+  final pulumi.Input<String?>? dbUser;
   /// The name or ARN of the secret that enables access to the database. Required when authenticating using Secrets Manager.
-  final pulumi.Input<String>? secretManagerArn;
+  final pulumi.Input<String?>? secretManagerArn;
   /// List of SQL statements text to run, each of maximum length of 100,000.
   final pulumi.Input<List<String>> sqls;
   /// The name of the SQL statement. You can name the SQL statement when you create it to identify the query.
-  final pulumi.Input<String>? statementName;
+  final pulumi.Input<String?>? statementName;
   /// Indicates whether to send an event back to EventBridge after the SQL statement runs.
-  final pulumi.Input<bool>? withEvent;
+  final pulumi.Input<bool?>? withEvent;
 
   /// Creates a new [PipeTargetParametersRedshiftDataParameters].
   /// [database] The name of the database. Required when authenticating using temporary credentials.

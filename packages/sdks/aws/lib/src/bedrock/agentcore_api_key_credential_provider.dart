@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agentcore_api_key_credential_provider_api_key_secret_arn.dart';
 import 'agentcore_api_key_credential_provider_args.dart';
 import 'agentcore_api_key_credential_provider_state.dart';
 
@@ -248,7 +249,7 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
   /// **Write-Only API Key (choose one approach):**
   late final pulumi.Output<String?> apiKey;
   /// ARN of the AWS Secrets Manager secret containing the API key.
-  late final pulumi.Output<List<Map<String, dynamic>>> apiKeySecretArns;
+  late final pulumi.Output<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>> apiKeySecretArns;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only API key value. Cannot be used with `apiKey`. Must be used together with `apiKeyWoVersion`.
   late final pulumi.Output<String?> apiKeyWo;
@@ -281,17 +282,18 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['apiKey', 'apiKeyWo'],
         ) {
-    apiKey = registerOutput<String?>('apiKey');
-    apiKeySecretArns = registerOutput<List<Map<String, dynamic>>>('apiKeySecretArns');
-    apiKeyWo = registerOutput<String?>('apiKeyWo');
+    apiKey = registerOutput<String?>('apiKey', isSecret: true);
+    apiKeySecretArns = registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>('apiKeySecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>())); });
+    apiKeyWo = registerOutput<String?>('apiKeyWo', isSecret: true);
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AgentcoreApiKeyCredentialProvider] resource's state with the given [name] and [id].
@@ -299,11 +301,12 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreApiKeyCredentialProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreApiKeyCredentialProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,14 +320,35 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String?>('apiKey');
-    apiKeySecretArns = registerOutput<List<Map<String, dynamic>>>('apiKeySecretArns');
-    apiKeyWo = registerOutput<String?>('apiKeyWo');
+    apiKey = registerOutput<String?>('apiKey', isSecret: true);
+    apiKeySecretArns = registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>('apiKeySecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>())); });
+    apiKeyWo = registerOutput<String?>('apiKeyWo', isSecret: true);
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreApiKeyCredentialProvider] resource.
+  AgentcoreApiKeyCredentialProvider.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey', 'apiKeyWo'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String?>('apiKey', isSecret: true);
+    apiKeySecretArns = registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>('apiKeySecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>())); });
+    apiKeyWo = registerOutput<String?>('apiKeyWo', isSecret: true);
+    apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
+    credentialProviderArn = registerOutput<String>('credentialProviderArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

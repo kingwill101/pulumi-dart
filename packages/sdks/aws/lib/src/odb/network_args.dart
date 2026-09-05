@@ -9,7 +9,7 @@ import 'network_timeouts.dart';
 /// {@macro pulumi_odb_network_network_args_doc}
 class NetworkArgs {
   /// Name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure `availabilityZone` maps correctly with `availabilityZoneId`.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String> availabilityZoneId;
   /// CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
@@ -17,32 +17,32 @@ class NetworkArgs {
   /// CIDR notation for the network resource. Changing this will force terraform to create new resource.
   final pulumi.Input<String> clientSubnetCidr;
   /// List of regions enabled for cross-region restore in the ODB network.
-  final pulumi.Input<List<String>>? crossRegionS3RestoreSourcesAccesses;
+  final pulumi.Input<List<String>?>? crossRegionS3RestoreSourcesAccesses;
   /// Name of the custom domain that the network is located. `customDomainName` and `defaultDnsPrefix` both can't be given. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? customDomainName;
+  final pulumi.Input<String?>? customDomainName;
   /// Default DNS prefix for the network resource. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? defaultDnsPrefix;
+  final pulumi.Input<String?>? defaultDnsPrefix;
   /// If set to true deletes associated OCI resources. Default false.
-  final pulumi.Input<bool>? deleteAssociatedResources;
+  final pulumi.Input<bool?>? deleteAssociatedResources;
   /// User-friendly name for the odb network. Changing this will force terraform to create a new resource.
   final pulumi.Input<String> displayName;
   /// Configuration for KMS access from the ODB network.
-  final pulumi.Input<String>? kmsAccess;
+  final pulumi.Input<String?>? kmsAccess;
   /// Endpoint policy for KMS access from the ODB network.
-  final pulumi.Input<String>? kmsPolicyDocument;
+  final pulumi.Input<String?>? kmsPolicyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for Amazon S3 access from the ODB network.
   final pulumi.Input<String> s3Access;
   /// Endpoint policy for Amazon S3 access from the ODB network.
-  final pulumi.Input<String>? s3PolicyDocument;
+  final pulumi.Input<String?>? s3PolicyDocument;
   /// Configuration for STS access from the ODB network.
-  final pulumi.Input<String>? stsAccess;
+  final pulumi.Input<String?>? stsAccess;
   /// Endpoint policy for STS access from the ODB network.
-  final pulumi.Input<String>? stsPolicyDocument;
+  final pulumi.Input<String?>? stsPolicyDocument;
   /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<NetworkTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<NetworkTimeouts?>? timeouts;
   /// Configuration for Zero-ETL access from the ODB network.
   ///
   /// The following arguments are optional:

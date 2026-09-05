@@ -5,7 +5,7 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage {
   /// Configuration block for intermedia S3 storage.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location>? s3Location;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location?>? s3Location;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage].
   /// [s3Location] Configuration block for intermedia S3 storage.

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileCacheLustreConfigurationLogConfiguration {
-  /// Amazon Resource Name (ARN) of the destination that receives the logs.
-  final pulumi.Input<String>? destination;
+  /// ARN of the destination that receives the logs.
+  final pulumi.Input<String?>? destination;
   /// Level of logging that Lustre logs write to the destination.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
 
   /// Creates a new [FileCacheLustreConfigurationLogConfiguration].
-  /// [destination] Amazon Resource Name (ARN) of the destination that receives the logs.
+  /// [destination] ARN of the destination that receives the logs.
   /// [level] Level of logging that Lustre logs write to the destination.
   const FileCacheLustreConfigurationLogConfiguration({
     this.destination,

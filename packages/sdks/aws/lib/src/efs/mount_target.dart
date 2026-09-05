@@ -199,7 +199,7 @@ class MountTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> availabilityZoneName;
   /// The DNS name for the EFS file system.
   late final pulumi.Output<String> dnsName;
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> fileSystemArn;
   /// The ID of the file system for which the mount target is intended.
   late final pulumi.Output<String> fileSystemId;
@@ -236,7 +236,7 @@ class MountTarget extends pulumi.CustomResource {
           'aws:efs/mountTarget:MountTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     availabilityZoneName = registerOutput<String>('availabilityZoneName');
@@ -250,7 +250,7 @@ class MountTarget extends pulumi.CustomResource {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String>('subnetId');
   }
 
@@ -259,11 +259,12 @@ class MountTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MountTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MountTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -289,7 +290,32 @@ class MountTarget extends pulumi.CustomResource {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [MountTarget] resource.
+  MountTarget.reference(String urn)
+    : super(
+        'aws:efs/mountTarget:MountTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    availabilityZoneName = registerOutput<String>('availabilityZoneName');
+    dnsName = registerOutput<String>('dnsName');
+    fileSystemArn = registerOutput<String>('fileSystemArn');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipAddressType = registerOutput<String>('ipAddressType');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    mountTargetDnsName = registerOutput<String>('mountTargetDnsName');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String>('subnetId');
   }
 }

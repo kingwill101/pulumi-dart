@@ -6,9 +6,9 @@ import 'agentcore_gateway_rule_action_route_to_target.dart';
 
 class AgentcoreGatewayRuleAction {
   /// Reference to the configuration bundle for this variant.
-  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundle>? configurationBundle;
+  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundle?>? configurationBundle;
   /// Route requests to a gateway target when the rule's conditions match. See routeToTarget below.
-  final pulumi.Input<AgentcoreGatewayRuleActionRouteToTarget>? routeToTarget;
+  final pulumi.Input<AgentcoreGatewayRuleActionRouteToTarget?>? routeToTarget;
 
   /// Creates a new [AgentcoreGatewayRuleAction].
   /// [configurationBundle] Reference to the configuration bundle for this variant.

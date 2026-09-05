@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_secondary_index_args.dart';
+import 'global_secondary_index_key_schema.dart';
 import 'global_secondary_index_on_demand_throughput.dart';
 import 'global_secondary_index_projection.dart';
 import 'global_secondary_index_provisioned_throughput.dart';
@@ -17,12 +18,6 @@ import 'global_secondary_index_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleTable = new aws.dynamodb.Table("example", {
-///     name: "example",
-///     billingMode: "PROVISIONED",
-///     readCapacity: 20,
-///     writeCapacity: 20,
-///     hashKey: "UserId",
-///     rangeKey: "GameTitle",
 ///     attributes: [
 ///         {
 ///             name: "UserId",
@@ -33,10 +28,14 @@ import 'global_secondary_index_warm_throughput.dart';
 ///             type: "S",
 ///         },
 ///     ],
+///     name: "example",
+///     billingMode: "PROVISIONED",
+///     readCapacity: 20,
+///     writeCapacity: 20,
+///     hashKey: "UserId",
+///     rangeKey: "GameTitle",
 /// });
 /// const example = new aws.dynamodb.GlobalSecondaryIndex("example", {
-///     tableName: exampleTable.name,
-///     indexName: "GameTitleIndex",
 ///     projection: {
 ///         projectionType: "INCLUDE",
 ///         nonKeyAttributes: ["UserId"],
@@ -50,6 +49,8 @@ import 'global_secondary_index_warm_throughput.dart';
 ///         attributeType: "S",
 ///         keyType: "HASH",
 ///     }],
+///     tableName: exampleTable.name,
+///     indexName: "GameTitleIndex",
 /// });
 /// ```
 /// ```python
@@ -57,12 +58,6 @@ import 'global_secondary_index_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// example_table = aws.dynamodb.Table("example",
-///     name="example",
-///     billing_mode="PROVISIONED",
-///     read_capacity=20,
-///     write_capacity=20,
-///     hash_key="UserId",
-///     range_key="GameTitle",
 ///     attributes=[
 ///         {
 ///             "name": "UserId",
@@ -72,10 +67,14 @@ import 'global_secondary_index_warm_throughput.dart';
 ///             "name": "GameTitle",
 ///             "type": "S",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     billing_mode="PROVISIONED",
+///     read_capacity=20,
+///     write_capacity=20,
+///     hash_key="UserId",
+///     range_key="GameTitle")
 /// example = aws.dynamodb.GlobalSecondaryIndex("example",
-///     table_name=example_table.name,
-///     index_name="GameTitleIndex",
 ///     projection={
 ///         "projection_type": "INCLUDE",
 ///         "non_key_attributes": ["UserId"],
@@ -88,7 +87,9 @@ import 'global_secondary_index_warm_throughput.dart';
 ///         "attribute_name": "GameTitle",
 ///         "attribute_type": "S",
 ///         "key_type": "HASH",
-///     }])
+///     }],
+///     table_name=example_table.name,
+///     index_name="GameTitleIndex")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -100,12 +101,6 @@ import 'global_secondary_index_warm_throughput.dart';
 /// {
 ///     var exampleTable = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example",
-///         BillingMode = "PROVISIONED",
-///         ReadCapacity = 20,
-///         WriteCapacity = 20,
-///         HashKey = "UserId",
-///         RangeKey = "GameTitle",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -119,12 +114,16 @@ import 'global_secondary_index_warm_throughput.dart';
 ///                 Type = "S",
 ///             },
 ///         },
+///         Name = "example",
+///         BillingMode = "PROVISIONED",
+///         ReadCapacity = 20,
+///         WriteCapacity = 20,
+///         HashKey = "UserId",
+///         RangeKey = "GameTitle",
 ///     });
 ///
 ///     var example = new Aws.DynamoDB.GlobalSecondaryIndex("example", new()
 ///     {
-///         TableName = exampleTable.Name,
-///         IndexName = "GameTitleIndex",
 ///         Projection = new Aws.DynamoDB.Inputs.GlobalSecondaryIndexProjectionArgs
 ///         {
 ///             ProjectionType = "INCLUDE",
@@ -147,6 +146,8 @@ import 'global_secondary_index_warm_throughput.dart';
 ///                 KeyType = "HASH",
 ///             },
 ///         },
+///         TableName = exampleTable.Name,
+///         IndexName = "GameTitleIndex",
 ///     });
 ///
 /// });
@@ -162,12 +163,6 @@ import 'global_secondary_index_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleTable, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			BillingMode:   pulumi.String("PROVISIONED"),
-/// 			ReadCapacity:  pulumi.Int(20),
-/// 			WriteCapacity: pulumi.Int(20),
-/// 			HashKey:       pulumi.String("UserId"),
-/// 			RangeKey:      pulumi.String("GameTitle"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("UserId"),
@@ -178,13 +173,17 @@ import 'global_secondary_index_warm_throughput.dart';
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("example"),
+/// 			BillingMode:   pulumi.String("PROVISIONED"),
+/// 			ReadCapacity:  pulumi.Int(20),
+/// 			WriteCapacity: pulumi.Int(20),
+/// 			HashKey:       pulumi.String("UserId"),
+/// 			RangeKey:      pulumi.String("GameTitle"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = dynamodb.NewGlobalSecondaryIndex(ctx, "example", &dynamodb.GlobalSecondaryIndexArgs{
-/// 			TableName: exampleTable.Name,
-/// 			IndexName: pulumi.String("GameTitleIndex"),
 /// 			Projection: &dynamodb.GlobalSecondaryIndexProjectionArgs{
 /// 				ProjectionType: pulumi.String("INCLUDE"),
 /// 				NonKeyAttributes: pulumi.StringArray{
@@ -202,6 +201,8 @@ import 'global_secondary_index_warm_throughput.dart';
 /// 					KeyType:       pulumi.String("HASH"),
 /// 				},
 /// 			},
+/// 			TableName: exampleTable.Name,
+/// 			IndexName: pulumi.String("GameTitleIndex"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -220,8 +221,6 @@ import 'global_secondary_index_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_globalsecondaryindex" "example" {
-///   table_name = aws_dynamodb_table.example.name
-///   index_name = "GameTitleIndex"
 ///   projection = {
 ///     projection_type    = "INCLUDE"
 ///     non_key_attributes = ["UserId"]
@@ -235,14 +234,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///     attribute_type = "S"
 ///     key_type       = "HASH"
 ///   }
+///   table_name = aws_dynamodb_table.example.name
+///   index_name = "GameTitleIndex"
 /// }
 /// resource "aws_dynamodb_table" "example" {
-///   name           = "example"
-///   billing_mode   = "PROVISIONED"
-///   read_capacity  = 20
-///   write_capacity = 20
-///   hash_key       = "UserId"
-///   range_key      = "GameTitle"
 ///   attributes {
 ///     name = "UserId"
 ///     type = "S"
@@ -251,6 +246,12 @@ import 'global_secondary_index_warm_throughput.dart';
 ///     name = "GameTitle"
 ///     type = "S"
 ///   }
+///   name           = "example"
+///   billing_mode   = "PROVISIONED"
+///   read_capacity  = 20
+///   write_capacity = 20
+///   hash_key       = "UserId"
+///   range_key      = "GameTitle"
 /// }
 /// ```
 /// ```java
@@ -281,12 +282,6 @@ import 'global_secondary_index_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleTable = new Table("exampleTable", TableArgs.builder()
-///             .name("example")
-///             .billingMode("PROVISIONED")
-///             .readCapacity(20)
-///             .writeCapacity(20)
-///             .hashKey("UserId")
-///             .rangeKey("GameTitle")
 ///             .attributes(
 ///                 TableAttributeArgs.builder()
 ///                     .name("UserId")
@@ -296,11 +291,15 @@ import 'global_secondary_index_warm_throughput.dart';
 ///                     .name("GameTitle")
 ///                     .type("S")
 ///                     .build())
+///             .name("example")
+///             .billingMode("PROVISIONED")
+///             .readCapacity(20)
+///             .writeCapacity(20)
+///             .hashKey("UserId")
+///             .rangeKey("GameTitle")
 ///             .build());
 ///
 ///         var example = new GlobalSecondaryIndex("example", GlobalSecondaryIndexArgs.builder()
-///             .tableName(exampleTable.name())
-///             .indexName("GameTitleIndex")
 ///             .projection(GlobalSecondaryIndexProjectionArgs.builder()
 ///                 .projectionType("INCLUDE")
 ///                 .nonKeyAttributes("UserId")
@@ -314,6 +313,8 @@ import 'global_secondary_index_warm_throughput.dart';
 ///                 .attributeType("S")
 ///                 .keyType("HASH")
 ///                 .build())
+///             .tableName(exampleTable.name())
+///             .indexName("GameTitleIndex")
 ///             .build());
 ///
 ///     }
@@ -324,8 +325,6 @@ import 'global_secondary_index_warm_throughput.dart';
 ///   example:
 ///     type: aws:dynamodb:GlobalSecondaryIndex
 ///     properties:
-///       tableName: ${exampleTable.name}
-///       indexName: GameTitleIndex
 ///       projection:
 ///         projectionType: INCLUDE
 ///         nonKeyAttributes:
@@ -337,21 +336,23 @@ import 'global_secondary_index_warm_throughput.dart';
 ///         - attributeName: GameTitle
 ///           attributeType: S
 ///           keyType: HASH
+///       tableName: ${exampleTable.name}
+///       indexName: GameTitleIndex
 ///   exampleTable:
 ///     type: aws:dynamodb:Table
 ///     name: example
 ///     properties:
+///       attributes:
+///         - name: UserId
+///           type: S
+///         - name: GameTitle
+///           type: S
 ///       name: example
 ///       billingMode: PROVISIONED
 ///       readCapacity: 20
 ///       writeCapacity: 20
 ///       hashKey: UserId
 ///       rangeKey: GameTitle
-///       attributes:
-///         - name: UserId
-///           type: S
-///         - name: GameTitle
-///           type: S
 /// ```
 ///
 ///
@@ -369,10 +370,20 @@ import 'global_secondary_index_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.Table("example", {
-///     name: "example-table",
-///     hashKey: "example-key",
-///     readCapacity: 1,
-///     writeCapacity: 1,
+///     attributes: [
+///         {
+///             name: "example-key",
+///             type: "S",
+///         },
+///         {
+///             name: "example-gsi-key-1",
+///             type: "S",
+///         },
+///         {
+///             name: "example-gsi-key-2",
+///             type: "S",
+///         },
+///     ],
 ///     globalSecondaryIndexes: [
 ///         {
 ///             name: "example-index-1",
@@ -389,20 +400,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///             writeCapacity: 1,
 ///         },
 ///     ],
-///     attributes: [
-///         {
-///             name: "example-key",
-///             type: "S",
-///         },
-///         {
-///             name: "example-gsi-key-1",
-///             type: "S",
-///         },
-///         {
-///             name: "example-gsi-key-2",
-///             type: "S",
-///         },
-///     ],
+///     name: "example-table",
+///     hashKey: "example-key",
+///     readCapacity: 1,
+///     writeCapacity: 1,
 /// });
 /// ```
 /// ```python
@@ -410,10 +411,20 @@ import 'global_secondary_index_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.Table("example",
-///     name="example-table",
-///     hash_key="example-key",
-///     read_capacity=1,
-///     write_capacity=1,
+///     attributes=[
+///         {
+///             "name": "example-key",
+///             "type": "S",
+///         },
+///         {
+///             "name": "example-gsi-key-1",
+///             "type": "S",
+///         },
+///         {
+///             "name": "example-gsi-key-2",
+///             "type": "S",
+///         },
+///     ],
 ///     global_secondary_indexes=[
 ///         {
 ///             "name": "example-index-1",
@@ -430,20 +441,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///             "write_capacity": 1,
 ///         },
 ///     ],
-///     attributes=[
-///         {
-///             "name": "example-key",
-///             "type": "S",
-///         },
-///         {
-///             "name": "example-gsi-key-1",
-///             "type": "S",
-///         },
-///         {
-///             "name": "example-gsi-key-2",
-///             "type": "S",
-///         },
-///     ])
+///     name="example-table",
+///     hash_key="example-key",
+///     read_capacity=1,
+///     write_capacity=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -455,10 +456,24 @@ import 'global_secondary_index_warm_throughput.dart';
 /// {
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example-table",
-///         HashKey = "example-key",
-///         ReadCapacity = 1,
-///         WriteCapacity = 1,
+///         Attributes = new[]
+///         {
+///             new Aws.DynamoDB.Inputs.TableAttributeArgs
+///             {
+///                 Name = "example-key",
+///                 Type = "S",
+///             },
+///             new Aws.DynamoDB.Inputs.TableAttributeArgs
+///             {
+///                 Name = "example-gsi-key-1",
+///                 Type = "S",
+///             },
+///             new Aws.DynamoDB.Inputs.TableAttributeArgs
+///             {
+///                 Name = "example-gsi-key-2",
+///                 Type = "S",
+///             },
+///         },
 ///         GlobalSecondaryIndexes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableGlobalSecondaryIndexArgs
@@ -478,24 +493,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///                 WriteCapacity = 1,
 ///             },
 ///         },
-///         Attributes = new[]
-///         {
-///             new Aws.DynamoDB.Inputs.TableAttributeArgs
-///             {
-///                 Name = "example-key",
-///                 Type = "S",
-///             },
-///             new Aws.DynamoDB.Inputs.TableAttributeArgs
-///             {
-///                 Name = "example-gsi-key-1",
-///                 Type = "S",
-///             },
-///             new Aws.DynamoDB.Inputs.TableAttributeArgs
-///             {
-///                 Name = "example-gsi-key-2",
-///                 Type = "S",
-///             },
-///         },
+///         Name = "example-table",
+///         HashKey = "example-key",
+///         ReadCapacity = 1,
+///         WriteCapacity = 1,
 ///     });
 ///
 /// });
@@ -511,10 +512,20 @@ import 'global_secondary_index_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:          pulumi.String("example-table"),
-/// 			HashKey:       pulumi.String("example-key"),
-/// 			ReadCapacity:  pulumi.Int(1),
-/// 			WriteCapacity: pulumi.Int(1),
+/// 			Attributes: dynamodb.TableAttributeArray{
+/// 				&dynamodb.TableAttributeArgs{
+/// 					Name: pulumi.String("example-key"),
+/// 					Type: pulumi.String("S"),
+/// 				},
+/// 				&dynamodb.TableAttributeArgs{
+/// 					Name: pulumi.String("example-gsi-key-1"),
+/// 					Type: pulumi.String("S"),
+/// 				},
+/// 				&dynamodb.TableAttributeArgs{
+/// 					Name: pulumi.String("example-gsi-key-2"),
+/// 					Type: pulumi.String("S"),
+/// 				},
+/// 			},
 /// 			GlobalSecondaryIndexes: dynamodb.TableGlobalSecondaryIndexArray{
 /// 				&dynamodb.TableGlobalSecondaryIndexArgs{
 /// 					Name:           pulumi.String("example-index-1"),
@@ -531,20 +542,10 @@ import 'global_secondary_index_warm_throughput.dart';
 /// 					WriteCapacity:  pulumi.Int(1),
 /// 				},
 /// 			},
-/// 			Attributes: dynamodb.TableAttributeArray{
-/// 				&dynamodb.TableAttributeArgs{
-/// 					Name: pulumi.String("example-key"),
-/// 					Type: pulumi.String("S"),
-/// 				},
-/// 				&dynamodb.TableAttributeArgs{
-/// 					Name: pulumi.String("example-gsi-key-1"),
-/// 					Type: pulumi.String("S"),
-/// 				},
-/// 				&dynamodb.TableAttributeArgs{
-/// 					Name: pulumi.String("example-gsi-key-2"),
-/// 					Type: pulumi.String("S"),
-/// 				},
-/// 			},
+/// 			Name:          pulumi.String("example-table"),
+/// 			HashKey:       pulumi.String("example-key"),
+/// 			ReadCapacity:  pulumi.Int(1),
+/// 			WriteCapacity: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -563,10 +564,18 @@ import 'global_secondary_index_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   name           = "example-table"
-///   hash_key       = "example-key"
-///   read_capacity  = 1
-///   write_capacity = 1
+///   attributes {
+///     name = "example-key"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "example-gsi-key-1"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "example-gsi-key-2"
+///     type = "S"
+///   }
 ///   global_secondary_indexes {
 ///     name            = "example-index-1"
 ///     projection_type = "ALL"
@@ -581,18 +590,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///     read_capacity   = 1
 ///     write_capacity  = 1
 ///   }
-///   attributes {
-///     name = "example-key"
-///     type = "S"
-///   }
-///   attributes {
-///     name = "example-gsi-key-1"
-///     type = "S"
-///   }
-///   attributes {
-///     name = "example-gsi-key-2"
-///     type = "S"
-///   }
+///   name           = "example-table"
+///   hash_key       = "example-key"
+///   read_capacity  = 1
+///   write_capacity = 1
 /// }
 /// ```
 /// ```java
@@ -603,8 +604,8 @@ import 'global_secondary_index_warm_throughput.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dynamodb.Table;
 /// import com.pulumi.aws.dynamodb.TableArgs;
-/// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
+/// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -619,10 +620,19 @@ import 'global_secondary_index_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .name("example-table")
-///             .hashKey("example-key")
-///             .readCapacity(1)
-///             .writeCapacity(1)
+///             .attributes(
+///                 TableAttributeArgs.builder()
+///                     .name("example-key")
+///                     .type("S")
+///                     .build(),
+///                 TableAttributeArgs.builder()
+///                     .name("example-gsi-key-1")
+///                     .type("S")
+///                     .build(),
+///                 TableAttributeArgs.builder()
+///                     .name("example-gsi-key-2")
+///                     .type("S")
+///                     .build())
 ///             .globalSecondaryIndexes(
 ///                 TableGlobalSecondaryIndexArgs.builder()
 ///                     .name("example-index-1")
@@ -638,19 +648,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///                     .readCapacity(1)
 ///                     .writeCapacity(1)
 ///                     .build())
-///             .attributes(
-///                 TableAttributeArgs.builder()
-///                     .name("example-key")
-///                     .type("S")
-///                     .build(),
-///                 TableAttributeArgs.builder()
-///                     .name("example-gsi-key-1")
-///                     .type("S")
-///                     .build(),
-///                 TableAttributeArgs.builder()
-///                     .name("example-gsi-key-2")
-///                     .type("S")
-///                     .build())
+///             .name("example-table")
+///             .hashKey("example-key")
+///             .readCapacity(1)
+///             .writeCapacity(1)
 ///             .build());
 ///
 ///     }
@@ -661,10 +662,13 @@ import 'global_secondary_index_warm_throughput.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: example-table
-///       hashKey: example-key
-///       readCapacity: 1
-///       writeCapacity: 1
+///       attributes:
+///         - name: example-key
+///           type: S
+///         - name: example-gsi-key-1
+///           type: S
+///         - name: example-gsi-key-2
+///           type: S
 ///       globalSecondaryIndexes:
 ///         - name: example-index-1
 ///           projectionType: ALL
@@ -676,13 +680,10 @@ import 'global_secondary_index_warm_throughput.dart';
 ///           hashKey: example-gsi-key-2
 ///           readCapacity: 1
 ///           writeCapacity: 1
-///       attributes:
-///         - name: example-key
-///           type: S
-///         - name: example-gsi-key-1
-///           type: S
-///         - name: example-gsi-key-2
-///           type: S
+///       name: example-table
+///       hashKey: example-key
+///       readCapacity: 1
+///       writeCapacity: 1
 /// ```
 ///
 ///
@@ -711,7 +712,7 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
   /// All elements with the `keyType` of `HASH` must precede elements with `keyType` of `RANGE`.
   /// Changing any values in `keySchema` will re-create the resource.
   /// See `keySchema` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> keySchemas;
+  late final pulumi.Output<List<GlobalSecondaryIndexKeySchema>> keySchemas;
   /// Sets the maximum number of read and write units for the index.
   /// See `onDemandThroughput` below.
   /// Only valid if the table's `billingMode` is `PAY_PER_REQUEST`.
@@ -746,11 +747,11 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
           'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     indexName = registerOutput<String>('indexName');
-    keySchemas = registerOutput<List<Map<String, dynamic>>>('keySchemas');
+    keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>>('keySchemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(guardedValue, (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>())); });
     onDemandThroughput = registerOutput<GlobalSecondaryIndexOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projection = registerOutput<GlobalSecondaryIndexProjection?>('projection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexProjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisionedThroughput = registerOutput<GlobalSecondaryIndexProvisionedThroughput?>('provisionedThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexProvisionedThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -765,11 +766,12 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalSecondaryIndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalSecondaryIndex._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -785,7 +787,28 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     indexName = registerOutput<String>('indexName');
-    keySchemas = registerOutput<List<Map<String, dynamic>>>('keySchemas');
+    keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>>('keySchemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(guardedValue, (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>())); });
+    onDemandThroughput = registerOutput<GlobalSecondaryIndexOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    projection = registerOutput<GlobalSecondaryIndexProjection?>('projection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexProjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisionedThroughput = registerOutput<GlobalSecondaryIndexProvisionedThroughput?>('provisionedThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexProvisionedThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tableName = registerOutput<String>('tableName');
+    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>('warmThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [GlobalSecondaryIndex] resource.
+  GlobalSecondaryIndex.reference(String urn)
+    : super(
+        'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    indexName = registerOutput<String>('indexName');
+    keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>>('keySchemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(guardedValue, (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>())); });
     onDemandThroughput = registerOutput<GlobalSecondaryIndexOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projection = registerOutput<GlobalSecondaryIndexProjection?>('projection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexProjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisionedThroughput = registerOutput<GlobalSecondaryIndexProvisionedThroughput?>('provisionedThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalSecondaryIndexProvisionedThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });

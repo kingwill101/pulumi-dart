@@ -11,20 +11,20 @@ class ConfigurationTemplateArgs {
   /// name of the application to associate with this configuration template
   final pulumi.Input<String> application;
   /// Short description of the Template
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the environment used with this configuration template
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// A unique name for this Template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
-  final pulumi.Input<List<ConfigurationTemplateSetting>>? settings;
+  final pulumi.Input<List<ConfigurationTemplateSetting>?>? settings;
   /// A solution stack to base your Template
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
-  final pulumi.Input<String>? solutionStackName;
+  final pulumi.Input<String?>? solutionStackName;
 
   /// Creates a new [ConfigurationTemplateArgs].
   /// [application] name of the application to associate with this configuration template

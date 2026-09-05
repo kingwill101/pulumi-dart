@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLTransformInputRecordTable {
   /// A unique identifier for the AWS Glue Data Catalog.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// The name of the connection to the AWS Glue Data Catalog.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// A database name in the AWS Glue Data Catalog.
   final pulumi.Input<String> databaseName;
   /// A table name in the AWS Glue Data Catalog.

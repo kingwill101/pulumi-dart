@@ -4,39 +4,39 @@
 /// Result data returned by getAuthorizers.
 class GetAuthorizersResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// List of Authorizer identifiers.
-  final List<String> ids;
-  final String region;
-  final String restApiId;
+  final List<String>? ids;
+  final String? region;
+  final String? restApiId;
 
   /// Creates a new [GetAuthorizersResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] List of Authorizer identifiers.
-  /// [region] Required.
-  /// [restApiId] Required.
+  /// [region] Optional.
+  /// [restApiId] Optional.
   const GetAuthorizersResult({
-    required this.id,
-    required this.ids,
-    required this.region,
-    required this.restApiId,
+    this.id,
+    this.ids,
+    this.region,
+    this.restApiId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'ids': ids,
-      'region': region,
-      'restApiId': restApiId,
+      'id': ?id,
+      'ids': ?ids,
+      'region': ?region,
+      'restApiId': ?restApiId,
     };
   }
 
   factory GetAuthorizersResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizersResult(
-      id: map['id'] as String,
-      ids: (map['ids'] as List).cast<String>(),
-      region: map['region'] as String,
-      restApiId: map['restApiId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      restApiId: (() { final guardedValue = map['restApiId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -24,11 +24,11 @@ import 'resource_policy_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [current.then(current => current.accountId)],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "aps:RemoteWrite",
 ///             "aps:QueryMetrics",
@@ -51,11 +51,11 @@ import 'resource_policy_timeouts.dart';
 /// example_workspace = aws.amp.Workspace("example", alias="example-workspace")
 /// current = aws.get_caller_identity()
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [current.account_id],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "aps:RemoteWrite",
 ///         "aps:QueryMetrics",
@@ -90,7 +90,6 @@ import 'resource_policy_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -102,6 +101,7 @@ import 'resource_policy_timeouts.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "aps:RemoteWrite",
@@ -151,7 +151,6 @@ import 'resource_policy_timeouts.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -160,6 +159,7 @@ import 'resource_policy_timeouts.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("aps:RemoteWrite"),
 /// 						pulumi.String("aps:QueryMetrics"),
@@ -197,11 +197,11 @@ import 'resource_policy_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [data.aws_getcalleridentity.current.account_id]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["aps:RemoteWrite", "aps:QueryMetrics", "aps:GetSeries", "aps:GetLabels", "aps:GetMetricMetadata"]
 ///     resources = [aws_amp_workspace.example.arn]
 ///   }
@@ -253,11 +253,11 @@ import 'resource_policy_timeouts.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(current.accountId())
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "aps:RemoteWrite",
 ///                     "aps:QueryMetrics",
@@ -299,11 +299,11 @@ import 'resource_policy_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${current.accountId}
+///             effect: Allow
 ///             actions:
 ///               - aps:RemoteWrite
 ///               - aps:QueryMetrics
@@ -325,11 +325,11 @@ import 'resource_policy_timeouts.dart';
 /// const example = new aws.amp.Workspace("example", {alias: "example-workspace"});
 /// const crossAccount = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["arn:aws:iam::123456789012:root"],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "aps:RemoteWrite",
 ///             "aps:QueryMetrics",
@@ -348,11 +348,11 @@ import 'resource_policy_timeouts.dart';
 ///
 /// example = aws.amp.Workspace("example", alias="example-workspace")
 /// cross_account = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["arn:aws:iam::123456789012:root"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "aps:RemoteWrite",
 ///         "aps:QueryMetrics",
@@ -382,7 +382,6 @@ import 'resource_policy_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -394,6 +393,7 @@ import 'resource_policy_timeouts.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "aps:RemoteWrite",
@@ -435,7 +435,6 @@ import 'resource_policy_timeouts.dart';
 /// 		crossAccount := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -444,6 +443,7 @@ import 'resource_policy_timeouts.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("aps:RemoteWrite"),
 /// 						pulumi.String("aps:QueryMetrics"),
@@ -476,11 +476,11 @@ import 'resource_policy_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "crossAccount" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::123456789012:root"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["aps:RemoteWrite", "aps:QueryMetrics"]
 ///     resources = [aws_amp_workspace.example.arn]
 ///   }
@@ -527,11 +527,11 @@ import 'resource_policy_timeouts.dart';
 ///
 ///         final var crossAccount = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("arn:aws:iam::123456789012:root")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "aps:RemoteWrite",
 ///                     "aps:QueryMetrics")
@@ -565,11 +565,11 @@ import 'resource_policy_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - arn:aws:iam::123456789012:root
+///             effect: Allow
 ///             actions:
 ///               - aps:RemoteWrite
 ///               - aps:QueryMetrics
@@ -588,11 +588,11 @@ import 'resource_policy_timeouts.dart';
 /// const example = new aws.amp.Workspace("example", {alias: "example-workspace"});
 /// const serviceAccess = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["grafana.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "aps:QueryMetrics",
 ///             "aps:GetSeries",
@@ -613,11 +613,11 @@ import 'resource_policy_timeouts.dart';
 ///
 /// example = aws.amp.Workspace("example", alias="example-workspace")
 /// service_access = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["grafana.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "aps:QueryMetrics",
 ///         "aps:GetSeries",
@@ -649,7 +649,6 @@ import 'resource_policy_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -661,6 +660,7 @@ import 'resource_policy_timeouts.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "aps:QueryMetrics",
@@ -704,7 +704,6 @@ import 'resource_policy_timeouts.dart';
 /// 		serviceAccess := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -713,6 +712,7 @@ import 'resource_policy_timeouts.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("aps:QueryMetrics"),
 /// 						pulumi.String("aps:GetSeries"),
@@ -747,11 +747,11 @@ import 'resource_policy_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "serviceAccess" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["grafana.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["aps:QueryMetrics", "aps:GetSeries", "aps:GetLabels", "aps:GetMetricMetadata"]
 ///     resources = [aws_amp_workspace.example.arn]
 ///   }
@@ -798,11 +798,11 @@ import 'resource_policy_timeouts.dart';
 ///
 ///         final var serviceAccess = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("grafana.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "aps:QueryMetrics",
 ///                     "aps:GetSeries",
@@ -838,11 +838,11 @@ import 'resource_policy_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - grafana.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - aps:QueryMetrics
 ///               - aps:GetSeries
@@ -885,7 +885,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:amp/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');
@@ -899,11 +899,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -917,6 +918,22 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policyDocument = registerOutput<String>('policyDocument');
+    region = registerOutput<String>('region');
+    revisionId = registerOutput<String>('revisionId');
+    timeouts = registerOutput<ResourcePolicyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'aws:amp/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');
     revisionId = registerOutput<String>('revisionId');

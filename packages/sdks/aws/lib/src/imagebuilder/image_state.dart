@@ -9,60 +9,60 @@ import 'image_workflow.dart';
 
 /// Input properties used for looking up and filtering Image resources.
 class ImageState {
-  /// Amazon Resource Name (ARN) of the image.
-  final pulumi.Input<String>? arn;
-  /// Amazon Resource Name (ARN) of the container recipe.
-  final pulumi.Input<String>? containerRecipeArn;
+  /// ARN of the image.
+  final pulumi.Input<String?>? arn;
+  /// ARN of the container recipe.
+  final pulumi.Input<String?>? containerRecipeArn;
   /// Date the image was created.
-  final pulumi.Input<String>? dateCreated;
-  /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
-  final pulumi.Input<String>? distributionConfigurationArn;
+  final pulumi.Input<String?>? dateCreated;
+  /// ARN of the Image Builder Distribution Configuration.
+  final pulumi.Input<String?>? distributionConfigurationArn;
   /// Whether additional information about the image being created is collected. Defaults to `true`.
-  final pulumi.Input<bool>? enhancedImageMetadataEnabled;
-  /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
-  final pulumi.Input<String>? executionRole;
-  /// Amazon Resource Name (ARN) of the image recipe.
-  final pulumi.Input<String>? imageRecipeArn;
+  final pulumi.Input<bool?>? enhancedImageMetadataEnabled;
+  /// ARN of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
+  final pulumi.Input<String?>? executionRole;
+  /// ARN of the image recipe.
+  final pulumi.Input<String?>? imageRecipeArn;
   /// Configuration block with image scanning configuration. Detailed below.
-  final pulumi.Input<ImageImageScanningConfiguration>? imageScanningConfiguration;
+  final pulumi.Input<ImageImageScanningConfiguration?>? imageScanningConfiguration;
   /// Configuration block with image tests configuration. Detailed below.
-  final pulumi.Input<ImageImageTestsConfiguration>? imageTestsConfiguration;
-  /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
+  final pulumi.Input<ImageImageTestsConfiguration?>? imageTestsConfiguration;
+  /// ARN of the Image Builder Infrastructure Configuration.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? infrastructureConfigurationArn;
+  final pulumi.Input<String?>? infrastructureConfigurationArn;
   /// Configuration block with logging configuration. Detailed below.
-  final pulumi.Input<ImageLoggingConfiguration>? loggingConfiguration;
+  final pulumi.Input<ImageLoggingConfiguration?>? loggingConfiguration;
   /// Name of the AMI.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Operating System version of the image.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
   /// List of objects with resources created by the image.
-  final pulumi.Input<List<ImageOutputResource>>? outputResources;
+  final pulumi.Input<List<ImageOutputResource>?>? outputResources;
   /// Platform of the image.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the Image Builder Image. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Version of the image.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Configuration block with the workflow configuration. Detailed below.
-  final pulumi.Input<List<ImageWorkflow>>? workflows;
+  final pulumi.Input<List<ImageWorkflow>?>? workflows;
 
   /// Creates a new [ImageState].
-  /// [arn] Amazon Resource Name (ARN) of the image.
-  /// [containerRecipeArn] Amazon Resource Name (ARN) of the container recipe.
+  /// [arn] ARN of the image.
+  /// [containerRecipeArn] ARN of the container recipe.
   /// [dateCreated] Date the image was created.
-  /// [distributionConfigurationArn] Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
+  /// [distributionConfigurationArn] ARN of the Image Builder Distribution Configuration.
   /// [enhancedImageMetadataEnabled] Whether additional information about the image being created is collected. Defaults to `true`.
-  /// [executionRole] Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
-  /// [imageRecipeArn] Amazon Resource Name (ARN) of the image recipe.
+  /// [executionRole] ARN of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
+  /// [imageRecipeArn] ARN of the image recipe.
   /// [imageScanningConfiguration] Configuration block with image scanning configuration. Detailed below.
   /// [imageTestsConfiguration] Configuration block with image tests configuration. Detailed below.
-  /// [infrastructureConfigurationArn] Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
+  /// [infrastructureConfigurationArn] ARN of the Image Builder Infrastructure Configuration.
   /// [loggingConfiguration] Configuration block with logging configuration. Detailed below.
   /// [name] Name of the AMI.
   /// [osVersion] Operating System version of the image.

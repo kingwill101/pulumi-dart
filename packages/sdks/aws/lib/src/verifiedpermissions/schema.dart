@@ -15,7 +15,6 @@ import 'schema_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.verifiedpermissions.Schema("example", {
-///     policyStoreId: exampleAwsVerifiedpermissionsPolicyStore.policyStoreId,
 ///     definition: {
 ///         value: JSON.stringify({
 ///             Namespace: {
@@ -24,6 +23,7 @@ import 'schema_state.dart';
 ///             },
 ///         }),
 ///     },
+///     policyStoreId: exampleAwsVerifiedpermissionsPolicyStore.policyStoreId,
 /// });
 /// ```
 /// ```python
@@ -32,7 +32,6 @@ import 'schema_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.verifiedpermissions.Schema("example",
-///     policy_store_id=example_aws_verifiedpermissions_policy_store["policyStoreId"],
 ///     definition={
 ///         "value": json.dumps({
 ///             "Namespace": {
@@ -40,7 +39,8 @@ import 'schema_state.dart';
 ///                 "actions": {},
 ///             },
 ///         }),
-///     })
+///     },
+///     policy_store_id=example_aws_verifiedpermissions_policy_store["policyStoreId"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,7 +53,6 @@ import 'schema_state.dart';
 /// {
 ///     var example = new Aws.VerifiedPermissions.Schema("example", new()
 ///     {
-///         PolicyStoreId = exampleAwsVerifiedpermissionsPolicyStore.PolicyStoreId,
 ///         Definition = new Aws.VerifiedPermissions.Inputs.SchemaDefinitionArgs
 ///         {
 ///             Value = JsonSerializer.Serialize(new Dictionary<string, object?>
@@ -69,6 +68,7 @@ import 'schema_state.dart';
 ///                 },
 ///             }),
 ///         },
+///         PolicyStoreId = exampleAwsVerifiedpermissionsPolicyStore.PolicyStoreId,
 ///     });
 ///
 /// });
@@ -96,10 +96,10 @@ import 'schema_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = verifiedpermissions.NewSchema(ctx, "example", &verifiedpermissions.SchemaArgs{
-/// 			PolicyStoreId: pulumi.Any(exampleAwsVerifiedpermissionsPolicyStore.PolicyStoreId),
 /// 			Definition: &verifiedpermissions.SchemaDefinitionArgs{
 /// 				Value: pulumi.String(json0),
 /// 			},
+/// 			PolicyStoreId: pulumi.Any(exampleAwsVerifiedpermissionsPolicyStore.PolicyStoreId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -118,7 +118,6 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "aws_verifiedpermissions_schema" "example" {
-///   policy_store_id = exampleAwsVerifiedpermissionsPolicyStore.policyStoreId
 ///   definition = {
 ///     value = jsonencode({
 ///       "Namespace" = {
@@ -127,6 +126,7 @@ import 'schema_state.dart';
 ///       }
 ///     })
 ///   }
+///   policy_store_id = exampleAwsVerifiedpermissionsPolicyStore.policyStoreId
 /// }
 /// ```
 /// ```java
@@ -153,7 +153,6 @@ import 'schema_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Schema("example", SchemaArgs.builder()
-///             .policyStoreId(exampleAwsVerifiedpermissionsPolicyStore.policyStoreId())
 ///             .definition(SchemaDefinitionArgs.builder()
 ///                 .value(serializeJson(
 ///                     jsonObject(
@@ -167,6 +166,7 @@ import 'schema_state.dart';
 ///                         ))
 ///                     )))
 ///                 .build())
+///             .policyStoreId(exampleAwsVerifiedpermissionsPolicyStore.policyStoreId())
 ///             .build());
 ///
 ///     }
@@ -177,13 +177,13 @@ import 'schema_state.dart';
 ///   example:
 ///     type: aws:verifiedpermissions:Schema
 ///     properties:
-///       policyStoreId: ${exampleAwsVerifiedpermissionsPolicyStore.policyStoreId}
 ///       definition:
 ///         value:
 ///           fn::toJSON:
 ///             Namespace:
 ///               entityTypes: {}
 ///               actions: {}
+///       policyStoreId: ${exampleAwsVerifiedpermissionsPolicyStore.policyStoreId}
 /// ```
 ///
 ///
@@ -216,10 +216,10 @@ class Schema extends pulumi.CustomResource {
           'aws:verifiedpermissions/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     definition = registerOutput<SchemaDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    namespaces = registerOutput<List<String>>('namespaces');
+    namespaces = registerOutput<List<String>>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');
   }
@@ -229,11 +229,12 @@ class Schema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,7 +249,22 @@ class Schema extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     definition = registerOutput<SchemaDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    namespaces = registerOutput<List<String>>('namespaces');
+    namespaces = registerOutput<List<String>>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    policyStoreId = registerOutput<String>('policyStoreId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'aws:verifiedpermissions/schema:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    definition = registerOutput<SchemaDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    namespaces = registerOutput<List<String>>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');
   }

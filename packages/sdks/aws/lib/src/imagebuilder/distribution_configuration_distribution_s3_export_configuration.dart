@@ -10,7 +10,7 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
   /// The name of the S3 bucket to store the exported image in. The bucket needs to exist before the export configuration is created.
   final pulumi.Input<String> s3Bucket;
   /// The prefix for the exported image.
-  final pulumi.Input<String>? s3Prefix;
+  final pulumi.Input<String?>? s3Prefix;
 
   /// Creates a new [DistributionConfigurationDistributionS3ExportConfiguration].
   /// [diskImageFormat] The disk image format of the exported image (`RAW`, `VHD`, or `VMDK`)

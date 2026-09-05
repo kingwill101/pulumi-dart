@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
   /// Document type specified in the Veeva document extract flow.
-  final pulumi.Input<String>? documentType;
+  final pulumi.Input<String?>? documentType;
   /// Whether to include all versions of files in the Veeva document extract flow.
-  final pulumi.Input<bool>? includeAllVersions;
+  final pulumi.Input<bool?>? includeAllVersions;
   /// Whether to include file renditions in the Veeva document extract flow.
-  final pulumi.Input<bool>? includeRenditions;
+  final pulumi.Input<bool?>? includeRenditions;
   /// Whether to include source files in the Veeva document extract flow.
-  final pulumi.Input<bool>? includeSourceFiles;
+  final pulumi.Input<bool?>? includeSourceFiles;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesVeeva].

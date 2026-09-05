@@ -9,17 +9,17 @@ import 'data_quality_ruleset_target_table.dart';
 /// {@macro pulumi_glue_data_quality_ruleset_data_quality_ruleset_args_doc}
 class DataQualityRulesetArgs {
   /// Description of the data quality ruleset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the data quality ruleset.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   final pulumi.Input<String> ruleset;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
-  final pulumi.Input<DataQualityRulesetTargetTable>? targetTable;
+  final pulumi.Input<DataQualityRulesetTargetTable?>? targetTable;
 
   /// Creates a new [DataQualityRulesetArgs].
   /// [description] Description of the data quality ruleset.

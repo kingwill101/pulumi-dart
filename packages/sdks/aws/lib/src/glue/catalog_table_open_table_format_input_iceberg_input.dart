@@ -5,11 +5,11 @@ import 'catalog_table_open_table_format_input_iceberg_input_iceberg_table_input.
 
 class CatalogTableOpenTableFormatInputIcebergInput {
   /// Configuration parameters, including table properties and metadata specifications. See `icebergTableInput` below.
-  final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInput>? icebergTableInput;
+  final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInput?>? icebergTableInput;
   /// Required metadata operation. Can only be set to CREATE.
   final pulumi.Input<String> metadataOperation;
   /// Table version for the Iceberg table. Defaults to 2.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CatalogTableOpenTableFormatInputIcebergInput].
   /// [icebergTableInput] Configuration parameters, including table properties and metadata specifications. See `icebergTableInput` below.

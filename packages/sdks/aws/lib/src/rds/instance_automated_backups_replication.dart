@@ -474,7 +474,7 @@ import 'instance_automated_backups_replication_state.dart';
 /// $ pulumi import aws:rds/instanceAutomatedBackupsReplication:InstanceAutomatedBackupsReplication default arn:aws:rds:us-east-1:123456789012:auto-backup:ab-faaa2mgdj1vmp4xflr7yhsrmtbtob7ltrzzz2my
 /// ```
 class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
-  /// The AWS KMS key identifier for encryption of the replicated automated backups. The KMS key ID is the Amazon Resource Name (ARN) for the KMS encryption key in the destination AWS Region, for example, `arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE`.
+  /// AWS KMS key identifier for encryption of the replicated automated backups. The KMS key ID is the ARN for the KMS encryption key in the destination AWS Region, for example, `arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE`.
   late final pulumi.Output<String> kmsKeyId;
   /// A URL that contains a [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) signed request for the [`StartDBInstanceAutomatedBackupsReplication`](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_StartDBInstanceAutomatedBackupsReplication.html) action to be called in the AWS Region of the source DB instance.
   late final pulumi.Output<String?> preSignedUrl;
@@ -482,7 +482,7 @@ class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The retention period for the replicated automated backups, defaults to `7`.
   late final pulumi.Output<int?> retentionPeriod;
-  /// The Amazon Resource Name (ARN) of the source DB instance for the replicated automated backups, for example, `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
+  /// ARN of the source DB instance for the replicated automated backups, for example, `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
   late final pulumi.Output<String> sourceDbInstanceArn;
 
   /// Creates a new [InstanceAutomatedBackupsReplication].
@@ -497,7 +497,7 @@ class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
           'aws:rds/instanceAutomatedBackupsReplication:InstanceAutomatedBackupsReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     preSignedUrl = registerOutput<String?>('preSignedUrl');
@@ -511,11 +511,12 @@ class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceAutomatedBackupsReplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceAutomatedBackupsReplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -529,6 +530,22 @@ class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    preSignedUrl = registerOutput<String?>('preSignedUrl');
+    region = registerOutput<String>('region');
+    retentionPeriod = registerOutput<int?>('retentionPeriod');
+    sourceDbInstanceArn = registerOutput<String>('sourceDbInstanceArn');
+  }
+
+  /// Creates a typed reference to an existing [InstanceAutomatedBackupsReplication] resource.
+  InstanceAutomatedBackupsReplication.reference(String urn)
+    : super(
+        'aws:rds/instanceAutomatedBackupsReplication:InstanceAutomatedBackupsReplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     preSignedUrl = registerOutput<String?>('preSignedUrl');
     region = registerOutput<String>('region');

@@ -138,15 +138,15 @@ import 'nfs_file_share_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.NfsFileShare` using the NFS File Share Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.NfsFileShare` using the NFS File Share ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/nfsFileShare:NfsFileShare example arn:aws:storagegateway:us-east-1:123456789012:share/share-12345678
 /// ```
 class NfsFileShare extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the NFS File Share.
+  /// ARN of the NFS File Share.
   late final pulumi.Output<String> arn;
-  /// The Amazon Resource Name (ARN) of the storage used for audit logs.
+  /// ARN of the storage used for audit logs.
   late final pulumi.Output<String?> auditDestinationArn;
   /// The region of the S3 bucket used by the file share. Required when specifying `vpcEndpointDnsName`.
   late final pulumi.Output<String?> bucketRegion;
@@ -160,13 +160,13 @@ class NfsFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> fileShareName;
   /// ID of the NFS File Share.
   late final pulumi.Output<String> fileshareId;
-  /// Amazon Resource Name (ARN) of the file gateway.
+  /// ARN of the file gateway.
   late final pulumi.Output<String> gatewayArn;
   /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
   late final pulumi.Output<bool?> guessMimeTypeEnabled;
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
+  /// ARN for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   late final pulumi.Output<String?> kmsKeyArn;
   /// The ARN of the backed storage used for storing file data.
   late final pulumi.Output<String> locationArn;
@@ -207,13 +207,13 @@ class NfsFileShare extends pulumi.CustomResource {
           'aws:storagegateway/nfsFileShare:NfsFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     bucketRegion = registerOutput<String?>('bucketRegion');
     cacheAttributes = registerOutput<NfsFileShareCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsFileShareCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    clientLists = registerOutput<List<String>>('clientLists');
+    clientLists = registerOutput<List<String>>('clientLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultStorageClass = registerOutput<String?>('defaultStorageClass');
     fileShareName = registerOutput<String>('fileShareName');
     fileshareId = registerOutput<String>('fileshareId');
@@ -231,8 +231,8 @@ class NfsFileShare extends pulumi.CustomResource {
     requesterPays = registerOutput<bool?>('requesterPays');
     roleArn = registerOutput<String>('roleArn');
     squash = registerOutput<String?>('squash');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
   }
 
@@ -241,11 +241,12 @@ class NfsFileShare extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsFileShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NfsFileShare._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,7 +264,7 @@ class NfsFileShare extends pulumi.CustomResource {
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     bucketRegion = registerOutput<String?>('bucketRegion');
     cacheAttributes = registerOutput<NfsFileShareCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsFileShareCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    clientLists = registerOutput<List<String>>('clientLists');
+    clientLists = registerOutput<List<String>>('clientLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultStorageClass = registerOutput<String?>('defaultStorageClass');
     fileShareName = registerOutput<String>('fileShareName');
     fileshareId = registerOutput<String>('fileshareId');
@@ -281,8 +282,44 @@ class NfsFileShare extends pulumi.CustomResource {
     requesterPays = registerOutput<bool?>('requesterPays');
     roleArn = registerOutput<String>('roleArn');
     squash = registerOutput<String?>('squash');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
+  }
+
+  /// Creates a typed reference to an existing [NfsFileShare] resource.
+  NfsFileShare.reference(String urn)
+    : super(
+        'aws:storagegateway/nfsFileShare:NfsFileShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    auditDestinationArn = registerOutput<String?>('auditDestinationArn');
+    bucketRegion = registerOutput<String?>('bucketRegion');
+    cacheAttributes = registerOutput<NfsFileShareCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsFileShareCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientLists = registerOutput<List<String>>('clientLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultStorageClass = registerOutput<String?>('defaultStorageClass');
+    fileShareName = registerOutput<String>('fileShareName');
+    fileshareId = registerOutput<String>('fileshareId');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    guessMimeTypeEnabled = registerOutput<bool?>('guessMimeTypeEnabled');
+    kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    locationArn = registerOutput<String>('locationArn');
+    nfsFileShareDefaults = registerOutput<NfsFileShareNfsFileShareDefaults?>('nfsFileShareDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsFileShareNfsFileShareDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationPolicy = registerOutput<String?>('notificationPolicy');
+    objectAcl = registerOutput<String?>('objectAcl');
+    path = registerOutput<String>('path');
+    readOnly = registerOutput<bool?>('readOnly');
+    region = registerOutput<String>('region');
+    requesterPays = registerOutput<bool?>('requesterPays');
+    roleArn = registerOutput<String>('roleArn');
+    squash = registerOutput<String?>('squash');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
   }
 }

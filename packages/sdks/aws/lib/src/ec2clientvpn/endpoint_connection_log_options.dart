@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointConnectionLogOptions {
   /// The name of the CloudWatch Logs log group.
-  final pulumi.Input<String>? cloudwatchLogGroup;
+  final pulumi.Input<String?>? cloudwatchLogGroup;
   /// The name of the CloudWatch Logs log stream to which the connection data is published.
-  final pulumi.Input<String>? cloudwatchLogStream;
+  final pulumi.Input<String?>? cloudwatchLogStream;
   /// Indicates whether connection logging is enabled.
   final pulumi.Input<bool> enabled;
 

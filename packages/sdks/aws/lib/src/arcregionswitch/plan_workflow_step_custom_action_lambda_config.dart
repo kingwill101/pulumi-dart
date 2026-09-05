@@ -6,15 +6,15 @@ import 'plan_workflow_step_custom_action_lambda_config_ungraceful.dart';
 
 class PlanWorkflowStepCustomActionLambdaConfig {
   /// Lambda function configuration. See `lambda` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigLambda>>? lambdas;
+  final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigLambda>?>? lambdas;
   /// Region where the Lambda function should run. Valid values: `activatingRegion`, `deactivatingRegion`.
   final pulumi.Input<String> regionToRun;
   /// Retry interval in minutes.
   final pulumi.Input<double> retryIntervalMinutes;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
   /// Ungraceful behavior configuration. See `workflow.step.custom_action_lambda_config.ungraceful` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigUngraceful>>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigUngraceful>?>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepCustomActionLambdaConfig].
   /// [lambdas] Lambda function configuration. See `lambda` Block for details.
@@ -44,8 +44,8 @@ class PlanWorkflowStepCustomActionLambdaConfig {
     return PlanWorkflowStepCustomActionLambdaConfig(
       lambdas: (() { final guardedValue = map['lambdas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigLambda>(guardedValue, (value) => PlanWorkflowStepCustomActionLambdaConfigLambda.fromMap((value as Map).cast<String, dynamic>()))); })(),
       regionToRun: pulumi.Input.fromValue(map['regionToRun'] as String),
-      retryIntervalMinutes: pulumi.Input.fromValue(map['retryIntervalMinutes'] as double),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryIntervalMinutes: pulumi.Input.fromValue((map['retryIntervalMinutes'] as num).toDouble()),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

@@ -6,7 +6,7 @@ class LogTransformerTransformerConfigGrok {
   /// Specifies the grok pattern to match against the log event.
   final pulumi.Input<String> match;
   /// Specifies the path to the field in the log event that has the comma separated values to be parsed. If omitted, the whole log message is processed.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [LogTransformerTransformerConfigGrok].
   /// [match] Specifies the grok pattern to match against the log event.

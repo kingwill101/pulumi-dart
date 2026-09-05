@@ -6,9 +6,9 @@ class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
   /// The entry point of job application.
   final pulumi.Input<String> entryPoint;
   /// The arguments for job application.
-  final pulumi.Input<List<String>>? entryPointArguments;
+  final pulumi.Input<List<String>?>? entryPointArguments;
   /// The Spark submit parameters that are used for job runs.
-  final pulumi.Input<String>? sparkSubmitParameters;
+  final pulumi.Input<String?>? sparkSubmitParameters;
 
   /// Creates a new [JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver].
   /// [entryPoint] The entry point of job application.

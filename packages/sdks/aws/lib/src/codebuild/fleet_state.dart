@@ -9,40 +9,40 @@ import 'fleet_vpc_config.dart';
 /// Input properties used for looking up and filtering Fleet resources.
 class FleetState {
   /// ARN of the Fleet.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Number of machines allocated to the ﬂeet.
-  final pulumi.Input<int>? baseCapacity;
+  final pulumi.Input<int?>? baseCapacity;
   /// The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
-  final pulumi.Input<FleetComputeConfiguration>? computeConfiguration;
+  final pulumi.Input<FleetComputeConfiguration?>? computeConfiguration;
   /// Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
-  final pulumi.Input<String>? computeType;
+  final pulumi.Input<String?>? computeType;
   /// Creation time of the fleet.
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// Environment type of the compute fleet. See [environment types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<String?>? environmentType;
   /// The service role associated with the compute fleet.
-  final pulumi.Input<String>? fleetServiceRole;
-  /// The Amazon Machine Image (AMI) of the compute fleet.
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? fleetServiceRole;
+  /// AMI of the compute fleet.
+  final pulumi.Input<String?>? imageId;
   /// Last modification time of the fleet.
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// Fleet name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Overflow behavior for compute fleet. Valid values: `ON_DEMAND`, `QUEUE`.
-  final pulumi.Input<String>? overflowBehavior;
+  final pulumi.Input<String?>? overflowBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
-  final pulumi.Input<FleetScalingConfiguration>? scalingConfiguration;
+  final pulumi.Input<FleetScalingConfiguration?>? scalingConfiguration;
   /// Nested attribute containing information about the current status of the fleet.
-  final pulumi.Input<List<FleetStatus>>? statuses;
+  final pulumi.Input<List<FleetStatus>?>? statuses;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration block. See `vpcConfig` below.
-  final pulumi.Input<List<FleetVpcConfig>>? vpcConfigs;
+  final pulumi.Input<List<FleetVpcConfig>?>? vpcConfigs;
 
   /// Creates a new [FleetState].
   /// [arn] ARN of the Fleet.
@@ -52,7 +52,7 @@ class FleetState {
   /// [created] Creation time of the fleet.
   /// [environmentType] Environment type of the compute fleet. See [environment types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   /// [fleetServiceRole] The service role associated with the compute fleet.
-  /// [imageId] The Amazon Machine Image (AMI) of the compute fleet.
+  /// [imageId] AMI of the compute fleet.
   /// [lastModified] Last modification time of the fleet.
   /// [name] Fleet name.
   /// [overflowBehavior] Overflow behavior for compute fleet. Valid values: `ON_DEMAND`, `QUEUE`.
@@ -107,7 +107,7 @@ class FleetState {
   factory FleetState.fromMap(Map<String, dynamic> map) {
     return FleetState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      baseCapacity: (() { final guardedValue = map['baseCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      baseCapacity: (() { final guardedValue = map['baseCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       computeConfiguration: (() { final guardedValue = map['computeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetComputeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       computeType: (() { final guardedValue = map['computeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,11 +9,11 @@ import 'get_ami_ids_filter.dart';
 /// {@macro pulumi_autoscaling_get_ami_ids_get_ami_ids_args_doc}
 class GetAmiIdsArgs {
   /// Filter used to scope the list e.g., by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
-  final pulumi.Input<List<GetAmiIdsFilter>>? filters;
+  final pulumi.Input<List<GetAmiIdsFilter>?>? filters;
   /// List of autoscaling group names
-  final pulumi.Input<List<String>>? names;
+  final pulumi.Input<List<String>?>? names;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetAmiIdsArgs].
   /// [filters] Filter used to scope the list e.g., by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).

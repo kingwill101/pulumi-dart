@@ -10,9 +10,9 @@ class GetRepositoryCreationTemplateArgs {
   /// The repository name prefix that the template matches against.
   final pulumi.Input<String> prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to any created repositories.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
 
   /// Creates a new [GetRepositoryCreationTemplateArgs].
   /// [prefix] The repository name prefix that the template matches against.

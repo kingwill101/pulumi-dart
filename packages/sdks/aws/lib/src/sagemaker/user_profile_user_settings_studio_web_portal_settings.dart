@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsStudioWebPortalSettings {
   /// The Applications supported in Studio that are hidden from the Studio left navigation pane.
-  final pulumi.Input<List<String>>? hiddenAppTypes;
+  final pulumi.Input<List<String>?>? hiddenAppTypes;
   /// The instance types you are hiding from the Studio user interface.
-  final pulumi.Input<List<String>>? hiddenInstanceTypes;
+  final pulumi.Input<List<String>?>? hiddenInstanceTypes;
   /// The machine learning tools that are hidden from the Studio left navigation pane.
-  final pulumi.Input<List<String>>? hiddenMlTools;
+  final pulumi.Input<List<String>?>? hiddenMlTools;
 
   /// Creates a new [UserProfileUserSettingsStudioWebPortalSettings].
   /// [hiddenAppTypes] The Applications supported in Studio that are hidden from the Studio left navigation pane.

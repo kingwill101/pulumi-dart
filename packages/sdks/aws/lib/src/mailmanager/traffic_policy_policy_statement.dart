@@ -7,7 +7,7 @@ class TrafficPolicyPolicyStatement {
   /// Action applied when all conditions match. Valid values are `ALLOW` and `DENY`.
   final pulumi.Input<String> action;
   /// Conditions evaluated by the statement. See `condition` Block below.
-  final pulumi.Input<List<TrafficPolicyPolicyStatementCondition>>? conditions;
+  final pulumi.Input<List<TrafficPolicyPolicyStatementCondition>?>? conditions;
 
   /// Creates a new [TrafficPolicyPolicyStatement].
   /// [action] Action applied when all conditions match. Valid values are `ALLOW` and `DENY`.

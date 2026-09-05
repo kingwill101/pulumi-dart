@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'input_args_type.dart';
+import 'input_destination.dart';
+import 'input_input_device.dart';
+import 'input_media_connect_flow.dart';
+import 'input_source.dart';
 import 'input_state.dart';
 import 'input_vpc.dart';
 
@@ -243,11 +247,11 @@ class InputType extends pulumi.CustomResource {
   /// Channels attached to Input.
   late final pulumi.Output<List<String>> attachedChannels;
   /// Destination settings for PUSH type inputs. See Destinations for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinations;
+  late final pulumi.Output<List<InputDestination>?> destinations;
   /// The input class.
   late final pulumi.Output<String> inputClass;
   /// Settings for the devices. See Input Devices for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> inputDevices;
+  late final pulumi.Output<List<InputInputDevice>> inputDevices;
   /// A list of IDs for all Inputs which are partners of this one.
   late final pulumi.Output<List<String>> inputPartnerIds;
   /// List of input security groups.
@@ -255,7 +259,7 @@ class InputType extends pulumi.CustomResource {
   /// Source type of the input.
   late final pulumi.Output<String> inputSourceType;
   /// A list of the MediaConnect Flows. See Media Connect Flows for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> mediaConnectFlows;
+  late final pulumi.Output<List<InputMediaConnectFlow>> mediaConnectFlows;
   /// Name of the input.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -263,7 +267,7 @@ class InputType extends pulumi.CustomResource {
   /// The ARN of the role this input assumes during and after creation.
   late final pulumi.Output<String> roleArn;
   /// The source URLs for a PULL-type input. See Sources for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+  late final pulumi.Output<List<InputSource>> sources;
   /// A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -286,23 +290,23 @@ class InputType extends pulumi.CustomResource {
           'aws:medialive/input:Input',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    attachedChannels = registerOutput<List<String>>('attachedChannels');
-    destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
+    attachedChannels = registerOutput<List<String>>('attachedChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<InputDestination>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputDestination>(guardedValue, (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>())); });
     inputClass = registerOutput<String>('inputClass');
-    inputDevices = registerOutput<List<Map<String, dynamic>>>('inputDevices');
-    inputPartnerIds = registerOutput<List<String>>('inputPartnerIds');
-    inputSecurityGroups = registerOutput<List<String>?>('inputSecurityGroups');
+    inputDevices = registerOutput<List<InputInputDevice>>('inputDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputInputDevice>(guardedValue, (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    inputPartnerIds = registerOutput<List<String>>('inputPartnerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputSecurityGroups = registerOutput<List<String>?>('inputSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inputSourceType = registerOutput<String>('inputSourceType');
-    mediaConnectFlows = registerOutput<List<Map<String, dynamic>>>('mediaConnectFlows');
+    mediaConnectFlows = registerOutput<List<InputMediaConnectFlow>>('mediaConnectFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputMediaConnectFlow>(guardedValue, (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sources = registerOutput<List<InputSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputSource>(guardedValue, (value) => InputSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vpc = registerOutput<InputVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InputVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -312,11 +316,12 @@ class InputType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InputState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InputType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -331,20 +336,48 @@ class InputType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    attachedChannels = registerOutput<List<String>>('attachedChannels');
-    destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
+    attachedChannels = registerOutput<List<String>>('attachedChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<InputDestination>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputDestination>(guardedValue, (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>())); });
     inputClass = registerOutput<String>('inputClass');
-    inputDevices = registerOutput<List<Map<String, dynamic>>>('inputDevices');
-    inputPartnerIds = registerOutput<List<String>>('inputPartnerIds');
-    inputSecurityGroups = registerOutput<List<String>?>('inputSecurityGroups');
+    inputDevices = registerOutput<List<InputInputDevice>>('inputDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputInputDevice>(guardedValue, (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    inputPartnerIds = registerOutput<List<String>>('inputPartnerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputSecurityGroups = registerOutput<List<String>?>('inputSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inputSourceType = registerOutput<String>('inputSourceType');
-    mediaConnectFlows = registerOutput<List<Map<String, dynamic>>>('mediaConnectFlows');
+    mediaConnectFlows = registerOutput<List<InputMediaConnectFlow>>('mediaConnectFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputMediaConnectFlow>(guardedValue, (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sources = registerOutput<List<InputSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputSource>(guardedValue, (value) => InputSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vpc = registerOutput<InputVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InputVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [InputType] resource.
+  InputType.reference(String urn)
+    : super(
+        'aws:medialive/input:Input',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachedChannels = registerOutput<List<String>>('attachedChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<InputDestination>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputDestination>(guardedValue, (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>())); });
+    inputClass = registerOutput<String>('inputClass');
+    inputDevices = registerOutput<List<InputInputDevice>>('inputDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputInputDevice>(guardedValue, (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    inputPartnerIds = registerOutput<List<String>>('inputPartnerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputSecurityGroups = registerOutput<List<String>?>('inputSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputSourceType = registerOutput<String>('inputSourceType');
+    mediaConnectFlows = registerOutput<List<InputMediaConnectFlow>>('mediaConnectFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputMediaConnectFlow>(guardedValue, (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    sources = registerOutput<List<InputSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputSource>(guardedValue, (value) => InputSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vpc = registerOutput<InputVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InputVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

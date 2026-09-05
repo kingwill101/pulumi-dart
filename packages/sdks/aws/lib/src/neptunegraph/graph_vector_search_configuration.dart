@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GraphVectorSearchConfiguration {
   /// Specifies the number of dimensions for vector embeddings.  Value must be between 1 and 65,535.
-  final pulumi.Input<int>? vectorSearchDimension;
+  final pulumi.Input<int?>? vectorSearchDimension;
 
   /// Creates a new [GraphVectorSearchConfiguration].
   /// [vectorSearchDimension] Specifies the number of dimensions for vector embeddings.  Value must be between 1 and 65,535.
@@ -20,7 +20,7 @@ class GraphVectorSearchConfiguration {
 
   factory GraphVectorSearchConfiguration.fromMap(Map<String, dynamic> map) {
     return GraphVectorSearchConfiguration(
-      vectorSearchDimension: (() { final guardedValue = map['vectorSearchDimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vectorSearchDimension: (() { final guardedValue = map['vectorSearchDimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

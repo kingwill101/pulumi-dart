@@ -8,30 +8,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connect_instance_instance_args_doc}
 class InstanceArgs {
   /// Specifies whether auto resolve best voices is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? autoResolveBestVoicesEnabled;
+  final pulumi.Input<bool?>? autoResolveBestVoicesEnabled;
   /// Specifies whether contact flow logs are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? contactFlowLogsEnabled;
+  final pulumi.Input<bool?>? contactFlowLogsEnabled;
   /// Specifies whether contact lens is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? contactLensEnabled;
+  final pulumi.Input<bool?>? contactLensEnabled;
   /// The identifier for the directory if identityManagementType is `EXISTING_DIRECTORY`.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// Specifies whether early media for outbound calls is enabled . Defaults to `true` if outbound calls is enabled.
-  final pulumi.Input<bool>? earlyMediaEnabled;
+  final pulumi.Input<bool?>? earlyMediaEnabled;
   /// Specifies the identity management type attached to the instance. Allowed Values are: `SAML`, `CONNECT_MANAGED`, `EXISTING_DIRECTORY`.
   final pulumi.Input<String> identityManagementType;
   /// Specifies whether inbound calls are enabled.
   final pulumi.Input<bool> inboundCallsEnabled;
   /// Specifies the name of the instance. Required if `directoryId` not specified.
-  final pulumi.Input<String>? instanceAlias;
+  final pulumi.Input<String?>? instanceAlias;
   /// Specifies whether multi-party calls/conference is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? multiPartyConferenceEnabled;
+  final pulumi.Input<bool?>? multiPartyConferenceEnabled;
   /// Specifies whether outbound calls are enabled.
   final pulumi.Input<bool> outboundCallsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the Instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// &lt;!-- * `useCustomTtsVoices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` --&gt;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InstanceArgs].
   /// [autoResolveBestVoicesEnabled] Specifies whether auto resolve best voices is enabled. Defaults to `true`.

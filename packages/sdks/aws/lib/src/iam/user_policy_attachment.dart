@@ -222,7 +222,7 @@ class UserPolicyAttachment extends pulumi.CustomResource {
           'aws:iam/userPolicyAttachment:UserPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policyArn = registerOutput<String>('policyArn');
     user = registerOutput<String>('user');
@@ -233,11 +233,12 @@ class UserPolicyAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPolicyAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPolicyAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -251,6 +252,19 @@ class UserPolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policyArn = registerOutput<String>('policyArn');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [UserPolicyAttachment] resource.
+  UserPolicyAttachment.reference(String urn)
+    : super(
+        'aws:iam/userPolicyAttachment:UserPolicyAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policyArn = registerOutput<String>('policyArn');
     user = registerOutput<String>('user');
   }

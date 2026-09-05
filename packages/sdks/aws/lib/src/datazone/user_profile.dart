@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_profile_args.dart';
+import 'user_profile_detail.dart';
 import 'user_profile_state.dart';
 import 'user_profile_timeouts.dart';
 
@@ -146,7 +147,7 @@ import 'user_profile_timeouts.dart';
 /// ```
 class UserProfile extends pulumi.CustomResource {
   /// Details about the user profile.
-  late final pulumi.Output<List<Map<String, dynamic>>> details;
+  late final pulumi.Output<List<UserProfileDetail>> details;
   /// The domain identifier.
   late final pulumi.Output<String> domainIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -175,9 +176,9 @@ class UserProfile extends pulumi.CustomResource {
           'aws:datazone/userProfile:UserProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    details = registerOutput<List<Map<String, dynamic>>>('details');
+    details = registerOutput<List<UserProfileDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserProfileDetail>(guardedValue, (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>())); });
     domainIdentifier = registerOutput<String>('domainIdentifier');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -192,11 +193,12 @@ class UserProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,7 +212,26 @@ class UserProfile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    details = registerOutput<List<Map<String, dynamic>>>('details');
+    details = registerOutput<List<UserProfileDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserProfileDetail>(guardedValue, (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<UserProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userIdentifier = registerOutput<String>('userIdentifier');
+    userType = registerOutput<String>('userType');
+  }
+
+  /// Creates a typed reference to an existing [UserProfile] resource.
+  UserProfile.reference(String urn)
+    : super(
+        'aws:datazone/userProfile:UserProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    details = registerOutput<List<UserProfileDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserProfileDetail>(guardedValue, (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>())); });
     domainIdentifier = registerOutput<String>('domainIdentifier');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

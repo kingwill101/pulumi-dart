@@ -7,44 +7,44 @@ import 'replication_configuration_template_timeouts.dart';
 /// Input properties used for looking up and filtering ReplicationConfigurationTemplate resources.
 class ReplicationConfigurationTemplateState {
   /// Replication configuration template ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether to associate the default Elastic Disaster Recovery Security group with the Replication Configuration Template.
-  final pulumi.Input<bool>? associateDefaultSecurityGroup;
+  final pulumi.Input<bool?>? associateDefaultSecurityGroup;
   /// Whether to allow the AWS replication agent to automatically replicate newly added disks.
-  final pulumi.Input<bool>? autoReplicateNewDisks;
+  final pulumi.Input<bool?>? autoReplicateNewDisks;
   /// Configure bandwidth throttling for the outbound data transfer rate of the Source Server in Mbps.
-  final pulumi.Input<int>? bandwidthThrottling;
+  final pulumi.Input<int?>? bandwidthThrottling;
   /// Whether to create a Public IP for the Recovery Instance by default.
-  final pulumi.Input<bool>? createPublicIp;
+  final pulumi.Input<bool?>? createPublicIp;
   /// Data plane routing mechanism that will be used for replication. Valid values are `PUBLIC_IP` and `PRIVATE_IP`.
-  final pulumi.Input<String>? dataPlaneRouting;
+  final pulumi.Input<String?>? dataPlaneRouting;
   /// Staging Disk EBS volume type to be used during replication. Valid values are `GP2`, `GP3`, `ST1`, or `AUTO`.
-  final pulumi.Input<String>? defaultLargeStagingDiskType;
+  final pulumi.Input<String?>? defaultLargeStagingDiskType;
   /// Type of EBS encryption to be used during replication. Valid values are `DEFAULT` and `CUSTOM`.
-  final pulumi.Input<String>? ebsEncryption;
+  final pulumi.Input<String?>? ebsEncryption;
   /// ARN of the EBS encryption key to be used during replication.
-  final pulumi.Input<String>? ebsEncryptionKeyArn;
+  final pulumi.Input<String?>? ebsEncryptionKeyArn;
   /// Configuration block for Point in time (PIT) policy to manage snapshots taken during replication. See below.
-  final pulumi.Input<List<ReplicationConfigurationTemplatePitPolicy>>? pitPolicies;
+  final pulumi.Input<List<ReplicationConfigurationTemplatePitPolicy>?>? pitPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Instance type to be used for the replication server.
-  final pulumi.Input<String>? replicationServerInstanceType;
+  final pulumi.Input<String?>? replicationServerInstanceType;
   /// Security group IDs that will be used by the replication server.
-  final pulumi.Input<List<String>>? replicationServersSecurityGroupsIds;
+  final pulumi.Input<List<String>?>? replicationServersSecurityGroupsIds;
   /// Subnet to be used by the replication staging area.
-  final pulumi.Input<String>? stagingAreaSubnetId;
+  final pulumi.Input<String?>? stagingAreaSubnetId;
   /// Set of tags to be associated with all resources created in the replication staging area: EC2 replication server, EBS volumes, EBS snapshots, etc.
-  final pulumi.Input<Map<String, String>>? stagingAreaTags;
+  final pulumi.Input<Map<String, String>?>? stagingAreaTags;
   /// Set of tags to be associated with the Replication Configuration Template resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ReplicationConfigurationTemplateTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ReplicationConfigurationTemplateTimeouts?>? timeouts;
   /// Whether to use a dedicated Replication Server in the replication staging area.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<bool>? useDedicatedReplicationServer;
+  final pulumi.Input<bool?>? useDedicatedReplicationServer;
 
   /// Creates a new [ReplicationConfigurationTemplateState].
   /// [arn] Replication configuration template ARN.
@@ -117,7 +117,7 @@ class ReplicationConfigurationTemplateState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       associateDefaultSecurityGroup: (() { final guardedValue = map['associateDefaultSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       autoReplicateNewDisks: (() { final guardedValue = map['autoReplicateNewDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      bandwidthThrottling: (() { final guardedValue = map['bandwidthThrottling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bandwidthThrottling: (() { final guardedValue = map['bandwidthThrottling']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       createPublicIp: (() { final guardedValue = map['createPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dataPlaneRouting: (() { final guardedValue = map['dataPlaneRouting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultLargeStagingDiskType: (() { final guardedValue = map['defaultLargeStagingDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,19 +6,19 @@ import 'get_user_authentication_mode.dart';
 /// Result data returned by getUser.
 class GetUserResult {
   /// Access permissions string used for this user.
-  final String accessString;
+  final String? accessString;
   /// ARN of the user.
-  final String arn;
+  final String? arn;
   /// Denotes the user's authentication properties.
-  final List<GetUserAuthenticationMode> authenticationModes;
+  final List<GetUserAuthenticationMode>? authenticationModes;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Minimum engine version supported for the user.
-  final String minimumEngineVersion;
-  final String region;
+  final String? minimumEngineVersion;
+  final String? region;
   /// Map of tags assigned to the user.
-  final Map<String, String> tags;
-  final String userName;
+  final Map<String, String>? tags;
+  final String? userName;
 
   /// Creates a new [GetUserResult].
   /// [accessString] Access permissions string used for this user.
@@ -26,43 +26,43 @@ class GetUserResult {
   /// [authenticationModes] Denotes the user's authentication properties.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [minimumEngineVersion] Minimum engine version supported for the user.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Map of tags assigned to the user.
-  /// [userName] Required.
+  /// [userName] Optional.
   const GetUserResult({
-    required this.accessString,
-    required this.arn,
-    required this.authenticationModes,
-    required this.id,
-    required this.minimumEngineVersion,
-    required this.region,
-    required this.tags,
-    required this.userName,
+    this.accessString,
+    this.arn,
+    this.authenticationModes,
+    this.id,
+    this.minimumEngineVersion,
+    this.region,
+    this.tags,
+    this.userName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessString': accessString,
-      'arn': arn,
-      'authenticationModes': pulumi.Input.encodeList<GetUserAuthenticationMode, Map<String, dynamic>>(authenticationModes, (value) => value.toMap()),
-      'id': id,
-      'minimumEngineVersion': minimumEngineVersion,
-      'region': region,
-      'tags': tags,
-      'userName': userName,
+      'accessString': ?accessString,
+      'arn': ?arn,
+      'authenticationModes': ?(() { final guardedValue = authenticationModes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserAuthenticationMode, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'minimumEngineVersion': ?minimumEngineVersion,
+      'region': ?region,
+      'tags': ?tags,
+      'userName': ?userName,
     };
   }
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      accessString: map['accessString'] as String,
-      arn: map['arn'] as String,
-      authenticationModes: pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes']!, (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      minimumEngineVersion: map['minimumEngineVersion'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userName: map['userName'] as String,
+      accessString: (() { final guardedValue = map['accessString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authenticationModes: (() { final guardedValue = map['authenticationModes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserAuthenticationMode>(guardedValue, (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      minimumEngineVersion: (() { final guardedValue = map['minimumEngineVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

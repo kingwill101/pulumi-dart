@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_args.dart';
 import 'accelerator_attributes.dart';
+import 'accelerator_ip_set.dart';
 import 'accelerator_state.dart';
 
 /// Creates a Global Accelerator accelerator.
@@ -13,15 +14,15 @@ import 'accelerator_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.globalaccelerator.Accelerator("example", {
-///     name: "Example",
-///     ipAddressType: "IPV4",
-///     ipAddresses: ["1.2.3.4"],
-///     enabled: true,
 ///     attributes: {
 ///         flowLogsEnabled: true,
 ///         flowLogsS3Bucket: "example-bucket",
 ///         flowLogsS3Prefix: "flow-logs/",
 ///     },
+///     name: "Example",
+///     ipAddressType: "IPV4",
+///     ipAddresses: ["1.2.3.4"],
+///     enabled: true,
 /// });
 /// ```
 /// ```python
@@ -29,15 +30,15 @@ import 'accelerator_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.globalaccelerator.Accelerator("example",
-///     name="Example",
-///     ip_address_type="IPV4",
-///     ip_addresses=["1.2.3.4"],
-///     enabled=True,
 ///     attributes={
 ///         "flow_logs_enabled": True,
 ///         "flow_logs_s3_bucket": "example-bucket",
 ///         "flow_logs_s3_prefix": "flow-logs/",
-///     })
+///     },
+///     name="Example",
+///     ip_address_type="IPV4",
+///     ip_addresses=["1.2.3.4"],
+///     enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,6 +50,12 @@ import 'accelerator_state.dart';
 /// {
 ///     var example = new Aws.GlobalAccelerator.Accelerator("example", new()
 ///     {
+///         Attributes = new Aws.GlobalAccelerator.Inputs.AcceleratorAttributesArgs
+///         {
+///             FlowLogsEnabled = true,
+///             FlowLogsS3Bucket = "example-bucket",
+///             FlowLogsS3Prefix = "flow-logs/",
+///         },
 ///         Name = "Example",
 ///         IpAddressType = "IPV4",
 ///         IpAddresses = new[]
@@ -56,12 +63,6 @@ import 'accelerator_state.dart';
 ///             "1.2.3.4",
 ///         },
 ///         Enabled = true,
-///         Attributes = new Aws.GlobalAccelerator.Inputs.AcceleratorAttributesArgs
-///         {
-///             FlowLogsEnabled = true,
-///             FlowLogsS3Bucket = "example-bucket",
-///             FlowLogsS3Prefix = "flow-logs/",
-///         },
 ///     });
 ///
 /// });
@@ -77,17 +78,17 @@ import 'accelerator_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := globalaccelerator.NewAccelerator(ctx, "example", &globalaccelerator.AcceleratorArgs{
+/// 			Attributes: &globalaccelerator.AcceleratorAttributesArgs{
+/// 				FlowLogsEnabled:  pulumi.Bool(true),
+/// 				FlowLogsS3Bucket: pulumi.String("example-bucket"),
+/// 				FlowLogsS3Prefix: pulumi.String("flow-logs/"),
+/// 			},
 /// 			Name:          pulumi.String("Example"),
 /// 			IpAddressType: pulumi.String("IPV4"),
 /// 			IpAddresses: pulumi.StringArray{
 /// 				pulumi.String("1.2.3.4"),
 /// 			},
 /// 			Enabled: pulumi.Bool(true),
-/// 			Attributes: &globalaccelerator.AcceleratorAttributesArgs{
-/// 				FlowLogsEnabled:  pulumi.Bool(true),
-/// 				FlowLogsS3Bucket: pulumi.String("example-bucket"),
-/// 				FlowLogsS3Prefix: pulumi.String("flow-logs/"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -106,15 +107,15 @@ import 'accelerator_state.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_accelerator" "example" {
-///   name            = "Example"
-///   ip_address_type = "IPV4"
-///   ip_addresses    = ["1.2.3.4"]
-///   enabled         = true
 ///   attributes = {
 ///     flow_logs_enabled   = true
 ///     flow_logs_s3_bucket = "example-bucket"
 ///     flow_logs_s3_prefix = "flow-logs/"
 ///   }
+///   name            = "Example"
+///   ip_address_type = "IPV4"
+///   ip_addresses    = ["1.2.3.4"]
+///   enabled         = true
 /// }
 /// ```
 /// ```java
@@ -140,15 +141,15 @@ import 'accelerator_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Accelerator("example", AcceleratorArgs.builder()
-///             .name("Example")
-///             .ipAddressType("IPV4")
-///             .ipAddresses("1.2.3.4")
-///             .enabled(true)
 ///             .attributes(AcceleratorAttributesArgs.builder()
 ///                 .flowLogsEnabled(true)
 ///                 .flowLogsS3Bucket("example-bucket")
 ///                 .flowLogsS3Prefix("flow-logs/")
 ///                 .build())
+///             .name("Example")
+///             .ipAddressType("IPV4")
+///             .ipAddresses("1.2.3.4")
+///             .enabled(true)
 ///             .build());
 ///
 ///     }
@@ -159,15 +160,15 @@ import 'accelerator_state.dart';
 ///   example:
 ///     type: aws:globalaccelerator:Accelerator
 ///     properties:
+///       attributes:
+///         flowLogsEnabled: true
+///         flowLogsS3Bucket: example-bucket
+///         flowLogsS3Prefix: flow-logs/
 ///       name: Example
 ///       ipAddressType: IPV4
 ///       ipAddresses:
 ///         - 1.2.3.4
 ///       enabled: true
-///       attributes:
-///         flowLogsEnabled: true
-///         flowLogsS3Bucket: example-bucket
-///         flowLogsS3Prefix: flow-logs/
 /// ```
 ///
 ///
@@ -177,7 +178,7 @@ import 'accelerator_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Global Accelerator accelerator.
+/// - `arn` (String) ARN of the Global Accelerator accelerator.
 ///
 ///
 /// Using `pulumi import`, import Global Accelerator accelerators using the `arn`. For example:
@@ -186,13 +187,13 @@ import 'accelerator_state.dart';
 /// $ pulumi import aws:globalaccelerator/accelerator:Accelerator example arn:aws:globalaccelerator::111111111111:accelerator/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 /// ```
 class Accelerator extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the accelerator.
+  /// ARN of the accelerator.
   late final pulumi.Output<String> arn;
   /// The attributes of the accelerator. Fields documented below.
   late final pulumi.Output<AcceleratorAttributes?> attributes;
   /// The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
   late final pulumi.Output<String> dnsName;
-  /// The Domain Name System (DNS) name that Global Accelerator creates that points to a dual-stack accelerator's four static IP addresses: two IPv4 addresses and two IPv6 addresses. For example, `a1234567890abcdef.dualstack.awsglobalaccelerator.com`.
+  /// DNS name that Global Accelerator creates that points to a dual-stack accelerator's four static IP addresses: two IPv4 addresses and two IPv6 addresses. For example, `a1234567890abcdef.dualstack.awsglobalaccelerator.com`.
   late final pulumi.Output<String> dualStackDnsName;
   /// Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> enabled;
@@ -205,7 +206,7 @@ class Accelerator extends pulumi.CustomResource {
   /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   late final pulumi.Output<List<String>?> ipAddresses;
   /// IP address set associated with the accelerator.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipSets;
+  late final pulumi.Output<List<AcceleratorIpSet>> ipSets;
   /// The name of the accelerator.
   late final pulumi.Output<String> name;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -225,7 +226,7 @@ class Accelerator extends pulumi.CustomResource {
           'aws:globalaccelerator/accelerator:Accelerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<AcceleratorAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcceleratorAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -234,11 +235,11 @@ class Accelerator extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     ipAddressType = registerOutput<String?>('ipAddressType');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
-    ipSets = registerOutput<List<Map<String, dynamic>>>('ipSets');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipSets = registerOutput<List<AcceleratorIpSet>>('ipSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorIpSet>(guardedValue, (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Accelerator] resource's state with the given [name] and [id].
@@ -246,11 +247,12 @@ class Accelerator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AcceleratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Accelerator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -271,10 +273,33 @@ class Accelerator extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     ipAddressType = registerOutput<String?>('ipAddressType');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
-    ipSets = registerOutput<List<Map<String, dynamic>>>('ipSets');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipSets = registerOutput<List<AcceleratorIpSet>>('ipSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorIpSet>(guardedValue, (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Accelerator] resource.
+  Accelerator.reference(String urn)
+    : super(
+        'aws:globalaccelerator/accelerator:Accelerator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attributes = registerOutput<AcceleratorAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcceleratorAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsName = registerOutput<String>('dnsName');
+    dualStackDnsName = registerOutput<String>('dualStackDnsName');
+    enabled = registerOutput<bool?>('enabled');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    ipAddressType = registerOutput<String?>('ipAddressType');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipSets = registerOutput<List<AcceleratorIpSet>>('ipSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorIpSet>(guardedValue, (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

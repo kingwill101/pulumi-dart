@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group_variation_image_response_card_button.dart';
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCard {
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton>>? buttons;
-  final pulumi.Input<String>? imageUrl;
-  final pulumi.Input<String>? subtitle;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton>?>? buttons;
+  final pulumi.Input<String?>? imageUrl;
+  final pulumi.Input<String?>? subtitle;
   final pulumi.Input<String> title;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCard].

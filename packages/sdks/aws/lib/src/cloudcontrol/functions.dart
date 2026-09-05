@@ -126,3 +126,14 @@ Future<GetResourceResult> getResource(
   );
   return GetResourceResult.fromMap(result);
 }
+
+pulumi.Output<GetResourceResult> getResourceOutput(
+  GetResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudcontrol/getResource:getResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceResult.fromMap);
+}

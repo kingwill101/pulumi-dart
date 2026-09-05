@@ -8,24 +8,24 @@ import 'get_table_schema.dart';
 /// Result data returned by getTable.
 class GetTableResult {
   /// ARN that uniquely identifies the table.
-  final String arn;
+  final String? arn;
   /// Time that table was created.
-  final String creationTime;
+  final String? creationTime;
   /// Name of database.
-  final String databaseName;
+  final String? databaseName;
   /// Last time table was updated.
-  final String lastUpdatedTime;
+  final String? lastUpdatedTime;
   /// Object containing the following attributes to desribe magnetic store writes.
-  final List<GetTableMagneticStoreWriteProperty> magneticStoreWriteProperties;
+  final List<GetTableMagneticStoreWriteProperty>? magneticStoreWriteProperties;
   /// Name of the table.
-  final String name;
-  final String region;
+  final String? name;
+  final String? region;
   /// Object containing the following attributes to describe the retention duration for the memory and magnetic stores.
-  final List<GetTableRetentionProperty> retentionProperties;
+  final List<GetTableRetentionProperty>? retentionProperties;
   /// Object containing the following attributes to describe the schema of the table.
-  final List<GetTableSchema> schemas;
+  final List<GetTableSchema>? schemas;
   /// Current state of table.
-  final String tableStatus;
+  final String? tableStatus;
 
   /// Creates a new [GetTableResult].
   /// [arn] ARN that uniquely identifies the table.
@@ -34,50 +34,50 @@ class GetTableResult {
   /// [lastUpdatedTime] Last time table was updated.
   /// [magneticStoreWriteProperties] Object containing the following attributes to desribe magnetic store writes.
   /// [name] Name of the table.
-  /// [region] Required.
+  /// [region] Optional.
   /// [retentionProperties] Object containing the following attributes to describe the retention duration for the memory and magnetic stores.
   /// [schemas] Object containing the following attributes to describe the schema of the table.
   /// [tableStatus] Current state of table.
   const GetTableResult({
-    required this.arn,
-    required this.creationTime,
-    required this.databaseName,
-    required this.lastUpdatedTime,
-    required this.magneticStoreWriteProperties,
-    required this.name,
-    required this.region,
-    required this.retentionProperties,
-    required this.schemas,
-    required this.tableStatus,
+    this.arn,
+    this.creationTime,
+    this.databaseName,
+    this.lastUpdatedTime,
+    this.magneticStoreWriteProperties,
+    this.name,
+    this.region,
+    this.retentionProperties,
+    this.schemas,
+    this.tableStatus,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'creationTime': creationTime,
-      'databaseName': databaseName,
-      'lastUpdatedTime': lastUpdatedTime,
-      'magneticStoreWriteProperties': pulumi.Input.encodeList<GetTableMagneticStoreWriteProperty, Map<String, dynamic>>(magneticStoreWriteProperties, (value) => value.toMap()),
-      'name': name,
-      'region': region,
-      'retentionProperties': pulumi.Input.encodeList<GetTableRetentionProperty, Map<String, dynamic>>(retentionProperties, (value) => value.toMap()),
-      'schemas': pulumi.Input.encodeList<GetTableSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
-      'tableStatus': tableStatus,
+      'arn': ?arn,
+      'creationTime': ?creationTime,
+      'databaseName': ?databaseName,
+      'lastUpdatedTime': ?lastUpdatedTime,
+      'magneticStoreWriteProperties': ?(() { final guardedValue = magneticStoreWriteProperties; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTableMagneticStoreWriteProperty, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'region': ?region,
+      'retentionProperties': ?(() { final guardedValue = retentionProperties; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTableRetentionProperty, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'schemas': ?(() { final guardedValue = schemas; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTableSchema, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tableStatus': ?tableStatus,
     };
   }
 
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
     return GetTableResult(
-      arn: map['arn'] as String,
-      creationTime: map['creationTime'] as String,
-      databaseName: map['databaseName'] as String,
-      lastUpdatedTime: map['lastUpdatedTime'] as String,
-      magneticStoreWriteProperties: pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(map['magneticStoreWriteProperties']!, (value) => GetTableMagneticStoreWriteProperty.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      region: map['region'] as String,
-      retentionProperties: pulumi.Input.decodeList<GetTableRetentionProperty>(map['retentionProperties']!, (value) => GetTableRetentionProperty.fromMap((value as Map).cast<String, dynamic>())),
-      schemas: pulumi.Input.decodeList<GetTableSchema>(map['schemas']!, (value) => GetTableSchema.fromMap((value as Map).cast<String, dynamic>())),
-      tableStatus: map['tableStatus'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      magneticStoreWriteProperties: (() { final guardedValue = map['magneticStoreWriteProperties']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(guardedValue, (value) => GetTableMagneticStoreWriteProperty.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      retentionProperties: (() { final guardedValue = map['retentionProperties']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableRetentionProperty>(guardedValue, (value) => GetTableRetentionProperty.fromMap((value as Map).cast<String, dynamic>())); })(),
+      schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableSchema>(guardedValue, (value) => GetTableSchema.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tableStatus: (() { final guardedValue = map['tableStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

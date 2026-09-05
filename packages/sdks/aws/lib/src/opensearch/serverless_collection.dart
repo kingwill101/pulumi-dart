@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_collection_args.dart';
+import 'serverless_collection_encryption_config.dart';
 import 'serverless_collection_state.dart';
 import 'serverless_collection_timeouts.dart';
+import 'serverless_collection_vector_option.dart';
 
 /// Manages an AWS OpenSearch Serverless Collection.
 ///
@@ -254,12 +256,12 @@ import 'serverless_collection_timeouts.dart';
 ///     standbyReplicas: "ENABLED",
 /// });
 /// const exampleServerlessCollection = new aws.opensearch.ServerlessCollection("example", {
-///     name: "example",
-///     type: "SEARCH",
-///     collectionGroupName: exampleServerlessCollectionGroup.name,
 ///     encryptionConfigs: [{
 ///         kmsKeyArn: example.arn,
 ///     }],
+///     name: "example",
+///     type: "SEARCH",
+///     collectionGroupName: exampleServerlessCollectionGroup.name,
 /// });
 /// ```
 /// ```python
@@ -273,12 +275,12 @@ import 'serverless_collection_timeouts.dart';
 ///     name="example-group",
 ///     standby_replicas="ENABLED")
 /// example_serverless_collection = aws.opensearch.ServerlessCollection("example",
-///     name="example",
-///     type="SEARCH",
-///     collection_group_name=example_serverless_collection_group.name,
 ///     encryption_configs=[{
 ///         "kms_key_arn": example.arn,
-///     }])
+///     }],
+///     name="example",
+///     type="SEARCH",
+///     collection_group_name=example_serverless_collection_group.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -302,9 +304,6 @@ import 'serverless_collection_timeouts.dart';
 ///
 ///     var exampleServerlessCollection = new Aws.OpenSearch.ServerlessCollection("example", new()
 ///     {
-///         Name = "example",
-///         Type = "SEARCH",
-///         CollectionGroupName = exampleServerlessCollectionGroup.Name,
 ///         EncryptionConfigs = new[]
 ///         {
 ///             new Aws.OpenSearch.Inputs.ServerlessCollectionEncryptionConfigArgs
@@ -312,6 +311,9 @@ import 'serverless_collection_timeouts.dart';
 ///                 KmsKeyArn = example.Arn,
 ///             },
 ///         },
+///         Name = "example",
+///         Type = "SEARCH",
+///         CollectionGroupName = exampleServerlessCollectionGroup.Name,
 ///     });
 ///
 /// });
@@ -342,14 +344,14 @@ import 'serverless_collection_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewServerlessCollection(ctx, "example", &opensearch.ServerlessCollectionArgs{
-/// 			Name:                pulumi.String("example"),
-/// 			Type:                pulumi.String("SEARCH"),
-/// 			CollectionGroupName: exampleServerlessCollectionGroup.Name,
 /// 			EncryptionConfigs: opensearch.ServerlessCollectionEncryptionConfigArray{
 /// 				&opensearch.ServerlessCollectionEncryptionConfigArgs{
 /// 					KmsKeyArn: example.Arn,
 /// 				},
 /// 			},
+/// 			Name:                pulumi.String("example"),
+/// 			Type:                pulumi.String("SEARCH"),
+/// 			CollectionGroupName: exampleServerlessCollectionGroup.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -376,12 +378,12 @@ import 'serverless_collection_timeouts.dart';
 ///   standby_replicas = "ENABLED"
 /// }
 /// resource "aws_opensearch_serverlesscollection" "example" {
-///   name                  = "example"
-///   type                  = "SEARCH"
-///   collection_group_name = aws_opensearch_serverlesscollectiongroup.example.name
 ///   encryption_configs {
 ///     kms_key_arn = aws_kms_key.example.arn
 ///   }
+///   name                  = "example"
+///   type                  = "SEARCH"
+///   collection_group_name = aws_opensearch_serverlesscollectiongroup.example.name
 /// }
 /// ```
 /// ```java
@@ -421,12 +423,12 @@ import 'serverless_collection_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleServerlessCollection = new ServerlessCollection("exampleServerlessCollection", ServerlessCollectionArgs.builder()
-///             .name("example")
-///             .type("SEARCH")
-///             .collectionGroupName(exampleServerlessCollectionGroup.name())
 ///             .encryptionConfigs(ServerlessCollectionEncryptionConfigArgs.builder()
 ///                 .kmsKeyArn(example.arn())
 ///                 .build())
+///             .name("example")
+///             .type("SEARCH")
+///             .collectionGroupName(exampleServerlessCollectionGroup.name())
 ///             .build());
 ///
 ///     }
@@ -449,11 +451,11 @@ import 'serverless_collection_timeouts.dart';
 ///     type: aws:opensearch:ServerlessCollection
 ///     name: example
 ///     properties:
+///       encryptionConfigs:
+///         - kmsKeyArn: ${example.arn}
 ///       name: example
 ///       type: SEARCH
 ///       collectionGroupName: ${exampleServerlessCollectionGroup.name}
-///       encryptionConfigs:
-///         - kmsKeyArn: ${example.arn}
 /// ```
 ///
 ///
@@ -477,7 +479,7 @@ import 'serverless_collection_timeouts.dart';
 /// $ pulumi import aws:opensearch/serverlessCollection:ServerlessCollection example example
 /// ```
 class ServerlessCollection extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the collection.
+  /// ARN of the collection.
   late final pulumi.Output<String> arn;
   /// Collection-specific endpoint used to submit index, search, and data upload requests to an OpenSearch Serverless collection.
   late final pulumi.Output<String> collectionEndpoint;
@@ -488,7 +490,7 @@ class ServerlessCollection extends pulumi.CustomResource {
   /// Description of the collection.
   late final pulumi.Output<String?> description;
   /// Configuration block for direct collection encryption settings. See `encryptionConfig` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigs;
+  late final pulumi.Output<List<ServerlessCollectionEncryptionConfig>> encryptionConfigs;
   /// ARN of the Amazon Web Services KMS key used to encrypt the collection.
   late final pulumi.Output<String> kmsKeyArn;
   /// Name of the collection.
@@ -507,7 +509,7 @@ class ServerlessCollection extends pulumi.CustomResource {
   /// Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
   late final pulumi.Output<String> type;
   /// Configuration block for vector search options. Only valid when `type` is `VECTORSEARCH`. See `vectorOptions` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> vectorOptions;
+  late final pulumi.Output<List<ServerlessCollectionVectorOption>> vectorOptions;
 
   /// Creates a new [ServerlessCollection].
   /// [name] The Pulumi resource name.
@@ -521,23 +523,23 @@ class ServerlessCollection extends pulumi.CustomResource {
           'aws:opensearch/serverlessCollection:ServerlessCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     collectionEndpoint = registerOutput<String>('collectionEndpoint');
     collectionGroupName = registerOutput<String?>('collectionGroupName');
     dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
     description = registerOutput<String?>('description');
-    encryptionConfigs = registerOutput<List<Map<String, dynamic>>>('encryptionConfigs');
+    encryptionConfigs = registerOutput<List<ServerlessCollectionEncryptionConfig>>('encryptionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionEncryptionConfig>(guardedValue, (value) => ServerlessCollectionEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     standbyReplicas = registerOutput<String>('standbyReplicas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ServerlessCollectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCollectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    vectorOptions = registerOutput<List<Map<String, dynamic>>>('vectorOptions');
+    vectorOptions = registerOutput<List<ServerlessCollectionVectorOption>>('vectorOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionVectorOption>(guardedValue, (value) => ServerlessCollectionVectorOption.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ServerlessCollection] resource's state with the given [name] and [id].
@@ -545,11 +547,12 @@ class ServerlessCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -568,15 +571,41 @@ class ServerlessCollection extends pulumi.CustomResource {
     collectionGroupName = registerOutput<String?>('collectionGroupName');
     dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
     description = registerOutput<String?>('description');
-    encryptionConfigs = registerOutput<List<Map<String, dynamic>>>('encryptionConfigs');
+    encryptionConfigs = registerOutput<List<ServerlessCollectionEncryptionConfig>>('encryptionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionEncryptionConfig>(guardedValue, (value) => ServerlessCollectionEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     standbyReplicas = registerOutput<String>('standbyReplicas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ServerlessCollectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCollectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    vectorOptions = registerOutput<List<Map<String, dynamic>>>('vectorOptions');
+    vectorOptions = registerOutput<List<ServerlessCollectionVectorOption>>('vectorOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionVectorOption>(guardedValue, (value) => ServerlessCollectionVectorOption.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ServerlessCollection] resource.
+  ServerlessCollection.reference(String urn)
+    : super(
+        'aws:opensearch/serverlessCollection:ServerlessCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    collectionEndpoint = registerOutput<String>('collectionEndpoint');
+    collectionGroupName = registerOutput<String?>('collectionGroupName');
+    dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
+    description = registerOutput<String?>('description');
+    encryptionConfigs = registerOutput<List<ServerlessCollectionEncryptionConfig>>('encryptionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionEncryptionConfig>(guardedValue, (value) => ServerlessCollectionEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    standbyReplicas = registerOutput<String>('standbyReplicas');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ServerlessCollectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCollectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    vectorOptions = registerOutput<List<ServerlessCollectionVectorOption>>('vectorOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionVectorOption>(guardedValue, (value) => ServerlessCollectionVectorOption.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -862,7 +862,8 @@ class Database extends pulumi.CustomResource {
           'aws:lightsail/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['masterPassword'],
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
@@ -880,7 +881,7 @@ class Database extends pulumi.CustomResource {
     masterDatabaseName = registerOutput<String>('masterDatabaseName');
     masterEndpointAddress = registerOutput<String>('masterEndpointAddress');
     masterEndpointPort = registerOutput<int>('masterEndpointPort');
-    masterPassword = registerOutput<String>('masterPassword');
+    masterPassword = registerOutput<String>('masterPassword', isSecret: true);
     masterUsername = registerOutput<String>('masterUsername');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
@@ -891,8 +892,8 @@ class Database extends pulumi.CustomResource {
     secondaryAvailabilityZone = registerOutput<String>('secondaryAvailabilityZone');
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     supportCode = registerOutput<String>('supportCode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Database] resource's state with the given [name] and [id].
@@ -900,11 +901,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -934,7 +936,7 @@ class Database extends pulumi.CustomResource {
     masterDatabaseName = registerOutput<String>('masterDatabaseName');
     masterEndpointAddress = registerOutput<String>('masterEndpointAddress');
     masterEndpointPort = registerOutput<int>('masterEndpointPort');
-    masterPassword = registerOutput<String>('masterPassword');
+    masterPassword = registerOutput<String>('masterPassword', isSecret: true);
     masterUsername = registerOutput<String>('masterUsername');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
@@ -945,7 +947,48 @@ class Database extends pulumi.CustomResource {
     secondaryAvailabilityZone = registerOutput<String>('secondaryAvailabilityZone');
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     supportCode = registerOutput<String>('supportCode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'aws:lightsail/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['masterPassword'],
+        isResourceReference: true,
+      ) {
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    backupRetentionEnabled = registerOutput<bool?>('backupRetentionEnabled');
+    blueprintId = registerOutput<String>('blueprintId');
+    bundleId = registerOutput<String>('bundleId');
+    caCertificateIdentifier = registerOutput<String>('caCertificateIdentifier');
+    cpuCount = registerOutput<int>('cpuCount');
+    createdAt = registerOutput<String>('createdAt');
+    diskSize = registerOutput<double>('diskSize');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    finalSnapshotName = registerOutput<String?>('finalSnapshotName');
+    masterDatabaseName = registerOutput<String>('masterDatabaseName');
+    masterEndpointAddress = registerOutput<String>('masterEndpointAddress');
+    masterEndpointPort = registerOutput<int>('masterEndpointPort');
+    masterPassword = registerOutput<String>('masterPassword', isSecret: true);
+    masterUsername = registerOutput<String>('masterUsername');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    ramSize = registerOutput<double>('ramSize');
+    region = registerOutput<String>('region');
+    relationalDatabaseName = registerOutput<String>('relationalDatabaseName');
+    secondaryAvailabilityZone = registerOutput<String>('secondaryAvailabilityZone');
+    skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    supportCode = registerOutput<String>('supportCode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

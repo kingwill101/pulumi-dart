@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyExcludeMap {
   /// List of AWS Organization member accounts to exclude from this AWS FMS Policy.
-  final pulumi.Input<List<String>>? accounts;
+  final pulumi.Input<List<String>?>? accounts;
   /// List of IDs of the AWS Organizational Units to exclude from this AWS FMS Policy. Specifying an OU is equivalent to specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time.
-  final pulumi.Input<List<String>>? orgunits;
+  final pulumi.Input<List<String>?>? orgunits;
 
   /// Creates a new [PolicyExcludeMap].
   /// [accounts] List of AWS Organization member accounts to exclude from this AWS FMS Policy.

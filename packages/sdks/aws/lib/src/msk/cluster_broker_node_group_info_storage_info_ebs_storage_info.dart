@@ -5,9 +5,9 @@ import 'cluster_broker_node_group_info_storage_info_ebs_storage_info_provisioned
 
 class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   /// A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebsStorageInfo provisioned_throughput Argument Reference below.
-  final pulumi.Input<ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>? provisionedThroughput;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput?>? provisionedThroughput;
   /// The size in GiB of the EBS volume for the data drive on each broker node. Minimum value of `1` and maximum value of `16384`.
-  final pulumi.Input<int>? volumeSize;
+  final pulumi.Input<int?>? volumeSize;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo].
   /// [provisionedThroughput] A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebsStorageInfo provisioned_throughput Argument Reference below.
@@ -27,7 +27,7 @@ class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   factory ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo(
       provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

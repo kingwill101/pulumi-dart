@@ -9,19 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustArgs {
   /// Set of IPv4 addresses for the DNS server associated with the remote Directory.
   /// Can contain between 1 and 4 values.
-  final pulumi.Input<List<String>>? conditionalForwarderIpAddrs;
+  final pulumi.Input<List<String>?>? conditionalForwarderIpAddrs;
   /// Whether to delete the conditional forwarder when deleting the Trust relationship.
-  final pulumi.Input<bool>? deleteAssociatedConditionalForwarder;
+  final pulumi.Input<bool?>? deleteAssociatedConditionalForwarder;
   /// ID of the Directory.
   final pulumi.Input<String> directoryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Fully qualified domain name of the remote Directory.
   final pulumi.Input<String> remoteDomainName;
   /// Whether to enable selective authentication.
   /// Valid values are `Enabled` and `Disabled`.
   /// Default value is `Disabled`.
-  final pulumi.Input<String>? selectiveAuth;
+  final pulumi.Input<String?>? selectiveAuth;
   /// The direction of the Trust relationship.
   /// Valid values are `One-Way: Outgoing`, `One-Way: Incoming`, and `Two-Way`.
   final pulumi.Input<String> trustDirection;
@@ -33,7 +33,7 @@ class TrustArgs {
   /// Type of the Trust relationship.
   /// Valid values are `Forest` and `External`.
   /// Default value is `Forest`.
-  final pulumi.Input<String>? trustType;
+  final pulumi.Input<String?>? trustType;
 
   /// Creates a new [TrustArgs].
   /// [conditionalForwarderIpAddrs] Set of IPv4 addresses for the DNS server associated with the remote Directory.

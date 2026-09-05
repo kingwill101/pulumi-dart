@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ContributorManagedInsightRule resources.
 class ContributorManagedInsightRuleState {
   /// ARN of the Contributor Managed Insight Rule.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// Name of the Contributor Insights rule that contains data for the specified AWS resource.
-  final pulumi.Input<String>? ruleName;
-  final pulumi.Input<String>? state;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? ruleName;
+  final pulumi.Input<String?>? state;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [ContributorManagedInsightRuleState].
   /// [arn] ARN of the Contributor Managed Insight Rule.

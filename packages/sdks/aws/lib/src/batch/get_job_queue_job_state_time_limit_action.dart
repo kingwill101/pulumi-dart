@@ -33,7 +33,7 @@ class GetJobQueueJobStateTimeLimitAction {
   factory GetJobQueueJobStateTimeLimitAction.fromMap(Map<String, dynamic> map) {
     return GetJobQueueJobStateTimeLimitAction(
       action: pulumi.Input.fromValue(map['action'] as String),
-      maxTimeSeconds: pulumi.Input.fromValue(map['maxTimeSeconds'] as int),
+      maxTimeSeconds: pulumi.Input.fromValue((map['maxTimeSeconds'] as num).toInt()),
       reason: pulumi.Input.fromValue(map['reason'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
     );

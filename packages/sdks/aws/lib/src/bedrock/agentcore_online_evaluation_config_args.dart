@@ -14,7 +14,7 @@ class AgentcoreOnlineEvaluationConfigArgs {
   /// Data source configuration specifying where to read agent traces. See `dataSourceConfig` Block below.
   final pulumi.Input<AgentcoreOnlineEvaluationConfigDataSourceConfig> dataSourceConfig;
   /// Description of the online evaluation configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to enable the online evaluation configuration immediately upon creation.
   final pulumi.Input<bool> enableOnCreate;
   /// ARN of the IAM role that grants permissions to read from CloudWatch logs, write evaluation results, and invoke Amazon Bedrock models for evaluation.
@@ -22,18 +22,18 @@ class AgentcoreOnlineEvaluationConfigArgs {
   /// List of evaluators to apply during online evaluation. Minimum 1, maximum 10. See `evaluator` Block below.
   final pulumi.Input<List<AgentcoreOnlineEvaluationConfigEvaluator>> evaluators;
   /// Execution status to enable or disable the online evaluation. Valid values: `ENABLED`, `DISABLED`. Computed on create based on `enableOnCreate`.
-  final pulumi.Input<String>? executionStatus;
+  final pulumi.Input<String?>? executionStatus;
   /// Name of the online evaluation configuration. Must start with a letter and contain only alphanumeric characters and underscores, up to 48 characters.
   final pulumi.Input<String> onlineEvaluationConfigName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Evaluation rule defining sampling configuration, filters, and session detection settings. See `rule` Block below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AgentcoreOnlineEvaluationConfigRule> rule;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentcoreOnlineEvaluationConfigTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentcoreOnlineEvaluationConfigTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreOnlineEvaluationConfigArgs].
   /// [dataSourceConfig] Data source configuration specifying where to read agent traces. See `dataSourceConfig` Block below.

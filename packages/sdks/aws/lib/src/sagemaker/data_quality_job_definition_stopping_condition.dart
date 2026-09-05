@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionStoppingCondition {
   /// The maximum runtime allowed in seconds.
-  final pulumi.Input<int>? maxRuntimeInSeconds;
+  final pulumi.Input<int?>? maxRuntimeInSeconds;
 
   /// Creates a new [DataQualityJobDefinitionStoppingCondition].
   /// [maxRuntimeInSeconds] The maximum runtime allowed in seconds.
@@ -20,7 +20,7 @@ class DataQualityJobDefinitionStoppingCondition {
 
   factory DataQualityJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

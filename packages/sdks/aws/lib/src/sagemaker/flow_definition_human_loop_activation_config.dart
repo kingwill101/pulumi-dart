@@ -5,7 +5,7 @@ import 'flow_definition_human_loop_activation_config_human_loop_activation_condi
 
 class FlowDefinitionHumanLoopActivationConfig {
   /// defines under what conditions SageMaker AI creates a human loop. See Human Loop Activation Conditions Config details below.
-  final pulumi.Input<FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig>? humanLoopActivationConditionsConfig;
+  final pulumi.Input<FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig?>? humanLoopActivationConditionsConfig;
 
   /// Creates a new [FlowDefinitionHumanLoopActivationConfig].
   /// [humanLoopActivationConditionsConfig] defines under what conditions SageMaker AI creates a human loop. See Human Loop Activation Conditions Config details below.

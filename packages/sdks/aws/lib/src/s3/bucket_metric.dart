@@ -152,8 +152,6 @@ import 'bucket_metric_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "example"});
 /// const example_filtered = new aws.s3.BucketMetric("example-filtered", {
-///     bucket: example.id,
-///     name: "ImportantBlueDocuments",
 ///     filter: {
 ///         prefix: "documents/",
 ///         tags: {
@@ -161,6 +159,8 @@ import 'bucket_metric_state.dart';
 ///             "class": "blue",
 ///         },
 ///     },
+///     bucket: example.id,
+///     name: "ImportantBlueDocuments",
 /// });
 /// ```
 /// ```python
@@ -169,15 +169,15 @@ import 'bucket_metric_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="example")
 /// example_filtered = aws.s3.BucketMetric("example-filtered",
-///     bucket=example.id,
-///     name="ImportantBlueDocuments",
 ///     filter={
 ///         "prefix": "documents/",
 ///         "tags": {
 ///             "priority": "high",
 ///             "class": "blue",
 ///         },
-///     })
+///     },
+///     bucket=example.id,
+///     name="ImportantBlueDocuments")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -194,8 +194,6 @@ import 'bucket_metric_state.dart';
 ///
 ///     var example_filtered = new Aws.S3.BucketMetric("example-filtered", new()
 ///     {
-///         Bucket = example.Id,
-///         Name = "ImportantBlueDocuments",
 ///         Filter = new Aws.S3.Inputs.BucketMetricFilterArgs
 ///         {
 ///             Prefix = "documents/",
@@ -205,6 +203,8 @@ import 'bucket_metric_state.dart';
 ///                 { "class", "blue" },
 ///             },
 ///         },
+///         Bucket = example.Id,
+///         Name = "ImportantBlueDocuments",
 ///     });
 ///
 /// });
@@ -226,8 +226,6 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-filtered", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Filter: &s3.BucketMetricFilterArgs{
 /// 				Prefix: pulumi.String("documents/"),
 /// 				Tags: pulumi.StringMap{
@@ -235,6 +233,8 @@ import 'bucket_metric_state.dart';
 /// 					"class":    pulumi.String("blue"),
 /// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -256,8 +256,6 @@ import 'bucket_metric_state.dart';
 ///   bucket = "example"
 /// }
 /// resource "aws_s3_bucketmetric" "example-filtered" {
-///   bucket = aws_s3_bucket.example.id
-///   name   = "ImportantBlueDocuments"
 ///   filter = {
 ///     prefix = "documents/"
 ///     tags = {
@@ -265,6 +263,8 @@ import 'bucket_metric_state.dart';
 ///       "class"    = "blue"
 ///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
 /// }
 /// ```
 /// ```java
@@ -296,8 +296,6 @@ import 'bucket_metric_state.dart';
 ///             .build());
 ///
 ///         var example_filtered = new BucketMetric("example-filtered", BucketMetricArgs.builder()
-///             .bucket(example.id())
-///             .name("ImportantBlueDocuments")
 ///             .filter(BucketMetricFilterArgs.builder()
 ///                 .prefix("documents/")
 ///                 .tags(Map.ofEntries(
@@ -305,6 +303,8 @@ import 'bucket_metric_state.dart';
 ///                     Map.entry("class", "blue")
 ///                 ))
 ///                 .build())
+///             .bucket(example.id())
+///             .name("ImportantBlueDocuments")
 ///             .build());
 ///
 ///     }
@@ -319,13 +319,13 @@ import 'bucket_metric_state.dart';
 ///   example-filtered:
 ///     type: aws:s3:BucketMetric
 ///     properties:
-///       bucket: ${example.id}
-///       name: ImportantBlueDocuments
 ///       filter:
 ///         prefix: documents/
 ///         tags:
 ///           priority: high
 ///           class: blue
+///       bucket: ${example.id}
+///       name: ImportantBlueDocuments
 /// ```
 ///
 ///
@@ -342,8 +342,6 @@ import 'bucket_metric_state.dart';
 ///     name: "example-access-point",
 /// });
 /// const example_filtered = new aws.s3.BucketMetric("example-filtered", {
-///     bucket: example.id,
-///     name: "ImportantBlueDocuments",
 ///     filter: {
 ///         accessPoint: example_access_point.arn,
 ///         tags: {
@@ -351,6 +349,8 @@ import 'bucket_metric_state.dart';
 ///             "class": "blue",
 ///         },
 ///     },
+///     bucket: example.id,
+///     name: "ImportantBlueDocuments",
 /// });
 /// ```
 /// ```python
@@ -362,15 +362,15 @@ import 'bucket_metric_state.dart';
 ///     bucket=example.id,
 ///     name="example-access-point")
 /// example_filtered = aws.s3.BucketMetric("example-filtered",
-///     bucket=example.id,
-///     name="ImportantBlueDocuments",
 ///     filter={
 ///         "access_point": example_access_point.arn,
 ///         "tags": {
 ///             "priority": "high",
 ///             "class": "blue",
 ///         },
-///     })
+///     },
+///     bucket=example.id,
+///     name="ImportantBlueDocuments")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -393,8 +393,6 @@ import 'bucket_metric_state.dart';
 ///
 ///     var example_filtered = new Aws.S3.BucketMetric("example-filtered", new()
 ///     {
-///         Bucket = example.Id,
-///         Name = "ImportantBlueDocuments",
 ///         Filter = new Aws.S3.Inputs.BucketMetricFilterArgs
 ///         {
 ///             AccessPoint = example_access_point.Arn,
@@ -404,6 +402,8 @@ import 'bucket_metric_state.dart';
 ///                 { "class", "blue" },
 ///             },
 ///         },
+///         Bucket = example.Id,
+///         Name = "ImportantBlueDocuments",
 ///     });
 ///
 /// });
@@ -432,8 +432,6 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-filtered", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Filter: &s3.BucketMetricFilterArgs{
 /// 				AccessPoint: example_access_point.Arn,
 /// 				Tags: pulumi.StringMap{
@@ -441,6 +439,8 @@ import 'bucket_metric_state.dart';
 /// 					"class":    pulumi.String("blue"),
 /// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -466,8 +466,6 @@ import 'bucket_metric_state.dart';
 ///   name   = "example-access-point"
 /// }
 /// resource "aws_s3_bucketmetric" "example-filtered" {
-///   bucket = aws_s3_bucket.example.id
-///   name   = "ImportantBlueDocuments"
 ///   filter = {
 ///     access_point = aws_s3_accesspoint.example-access-point.arn
 ///     tags = {
@@ -475,6 +473,8 @@ import 'bucket_metric_state.dart';
 ///       "class"    = "blue"
 ///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
 /// }
 /// ```
 /// ```java
@@ -513,8 +513,6 @@ import 'bucket_metric_state.dart';
 ///             .build());
 ///
 ///         var example_filtered = new BucketMetric("example-filtered", BucketMetricArgs.builder()
-///             .bucket(example.id())
-///             .name("ImportantBlueDocuments")
 ///             .filter(BucketMetricFilterArgs.builder()
 ///                 .accessPoint(example_access_point.arn())
 ///                 .tags(Map.ofEntries(
@@ -522,6 +520,8 @@ import 'bucket_metric_state.dart';
 ///                     Map.entry("class", "blue")
 ///                 ))
 ///                 .build())
+///             .bucket(example.id())
+///             .name("ImportantBlueDocuments")
 ///             .build());
 ///
 ///     }
@@ -541,13 +541,13 @@ import 'bucket_metric_state.dart';
 ///   example-filtered:
 ///     type: aws:s3:BucketMetric
 ///     properties:
-///       bucket: ${example.id}
-///       name: ImportantBlueDocuments
 ///       filter:
 ///         accessPoint: ${["example-access-point"].arn}
 ///         tags:
 ///           priority: high
 ///           class: blue
+///       bucket: ${example.id}
+///       name: ImportantBlueDocuments
 /// ```
 ///
 ///
@@ -562,22 +562,22 @@ import 'bucket_metric_state.dart';
 ///     state: "available",
 /// });
 /// const example = new aws.s3.DirectoryBucket("example", {
-///     bucket: "example--zoneId--x-s3",
 ///     location: {
 ///         name: available.then(available => available.zoneIds?.[0]),
 ///     },
+///     bucket: "example--zoneId--x-s3",
 /// });
 /// const example_access_point = new aws.s3.AccessPoint("example-access-point", {
 ///     bucket: example.id,
 ///     name: "example--zoneId--xa-s3",
 /// });
 /// const example_bucket_metric = new aws.s3.BucketMetric("example-bucket-metric", {
-///     bucket: example.id,
-///     name: "ExampleBucketMetricForDirectoryBuckets",
 ///     filter: {
 ///         accessPoint: example_access_point.arn,
 ///         prefix: "documents/",
 ///     },
+///     bucket: example.id,
+///     name: "ExampleBucketMetricForDirectoryBuckets",
 /// });
 /// ```
 /// ```python
@@ -586,20 +586,20 @@ import 'bucket_metric_state.dart';
 ///
 /// available = aws.get_availability_zones(state="available")
 /// example = aws.s3.DirectoryBucket("example",
-///     bucket="example--zoneId--x-s3",
 ///     location={
 ///         "name": available.zone_ids[0],
-///     })
+///     },
+///     bucket="example--zoneId--x-s3")
 /// example_access_point = aws.s3.AccessPoint("example-access-point",
 ///     bucket=example.id,
 ///     name="example--zoneId--xa-s3")
 /// example_bucket_metric = aws.s3.BucketMetric("example-bucket-metric",
-///     bucket=example.id,
-///     name="ExampleBucketMetricForDirectoryBuckets",
 ///     filter={
 ///         "access_point": example_access_point.arn,
 ///         "prefix": "documents/",
-///     })
+///     },
+///     bucket=example.id,
+///     name="ExampleBucketMetricForDirectoryBuckets")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -616,11 +616,11 @@ import 'bucket_metric_state.dart';
 ///
 ///     var example = new Aws.S3.DirectoryBucket("example", new()
 ///     {
-///         Bucket = "example--zoneId--x-s3",
 ///         Location = new Aws.S3.Inputs.DirectoryBucketLocationArgs
 ///         {
 ///             Name = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.ZoneIds[0]),
 ///         },
+///         Bucket = "example--zoneId--x-s3",
 ///     });
 ///
 ///     var example_access_point = new Aws.S3.AccessPoint("example-access-point", new()
@@ -631,13 +631,13 @@ import 'bucket_metric_state.dart';
 ///
 ///     var example_bucket_metric = new Aws.S3.BucketMetric("example-bucket-metric", new()
 ///     {
-///         Bucket = example.Id,
-///         Name = "ExampleBucketMetricForDirectoryBuckets",
 ///         Filter = new Aws.S3.Inputs.BucketMetricFilterArgs
 ///         {
 ///             AccessPoint = example_access_point.Arn,
 ///             Prefix = "documents/",
 ///         },
+///         Bucket = example.Id,
+///         Name = "ExampleBucketMetricForDirectoryBuckets",
 ///     });
 ///
 /// });
@@ -660,10 +660,10 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := s3.NewDirectoryBucket(ctx, "example", &s3.DirectoryBucketArgs{
-/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
 /// 			Location: &s3.DirectoryBucketLocationArgs{
 /// 				Name: pulumi.String(available.ZoneIds[0]),
 /// 			},
+/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -676,12 +676,12 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-bucket-metric", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:   pulumi.String("ExampleBucketMetricForDirectoryBuckets"),
 /// 			Filter: &s3.BucketMetricFilterArgs{
 /// 				AccessPoint: example_access_point.Arn,
 /// 				Prefix:      pulumi.String("documents/"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("ExampleBucketMetricForDirectoryBuckets"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -704,22 +704,22 @@ import 'bucket_metric_state.dart';
 /// }
 ///
 /// resource "aws_s3_directorybucket" "example" {
-///   bucket = "example--zoneId--x-s3"
 ///   location = {
 ///     name = data.aws_getavailabilityzones.available.zone_ids[0]
 ///   }
+///   bucket = "example--zoneId--x-s3"
 /// }
 /// resource "aws_s3_accesspoint" "example-access-point" {
 ///   bucket = aws_s3_directorybucket.example.id
 ///   name   = "example--zoneId--xa-s3"
 /// }
 /// resource "aws_s3_bucketmetric" "example-bucket-metric" {
-///   bucket = aws_s3_directorybucket.example.id
-///   name   = "ExampleBucketMetricForDirectoryBuckets"
 ///   filter = {
 ///     access_point = aws_s3_accesspoint.example-access-point.arn
 ///     prefix       = "documents/"
 ///   }
+///   bucket = aws_s3_directorybucket.example.id
+///   name   = "ExampleBucketMetricForDirectoryBuckets"
 /// }
 /// ```
 /// ```java
@@ -756,10 +756,10 @@ import 'bucket_metric_state.dart';
 ///             .build());
 ///
 ///         var example = new DirectoryBucket("example", DirectoryBucketArgs.builder()
-///             .bucket("example--zoneId--x-s3")
 ///             .location(DirectoryBucketLocationArgs.builder()
 ///                 .name(available.zoneIds()[0])
 ///                 .build())
+///             .bucket("example--zoneId--x-s3")
 ///             .build());
 ///
 ///         var example_access_point = new AccessPoint("example-access-point", AccessPointArgs.builder()
@@ -768,12 +768,12 @@ import 'bucket_metric_state.dart';
 ///             .build());
 ///
 ///         var example_bucket_metric = new BucketMetric("example-bucket-metric", BucketMetricArgs.builder()
-///             .bucket(example.id())
-///             .name("ExampleBucketMetricForDirectoryBuckets")
 ///             .filter(BucketMetricFilterArgs.builder()
 ///                 .accessPoint(example_access_point.arn())
 ///                 .prefix("documents/")
 ///                 .build())
+///             .bucket(example.id())
+///             .name("ExampleBucketMetricForDirectoryBuckets")
 ///             .build());
 ///
 ///     }
@@ -784,9 +784,9 @@ import 'bucket_metric_state.dart';
 ///   example:
 ///     type: aws:s3:DirectoryBucket
 ///     properties:
-///       bucket: example--zoneId--x-s3
 ///       location:
 ///         name: ${available.zoneIds[0]}
+///       bucket: example--zoneId--x-s3
 ///   example-access-point:
 ///     type: aws:s3:AccessPoint
 ///     properties:
@@ -795,11 +795,11 @@ import 'bucket_metric_state.dart';
 ///   example-bucket-metric:
 ///     type: aws:s3:BucketMetric
 ///     properties:
-///       bucket: ${example.id}
-///       name: ExampleBucketMetricForDirectoryBuckets
 ///       filter:
 ///         accessPoint: ${["example-access-point"].arn}
 ///         prefix: documents/
+///       bucket: ${example.id}
+///       name: ExampleBucketMetricForDirectoryBuckets
 /// variables:
 ///   available:
 ///     fn::invoke:
@@ -838,7 +838,7 @@ class BucketMetric extends pulumi.CustomResource {
           'aws:s3/bucketMetric:BucketMetric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<BucketMetricFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetricFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -851,11 +851,12 @@ class BucketMetric extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketMetricState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketMetric._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -869,6 +870,21 @@ class BucketMetric extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    filter = registerOutput<BucketMetricFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetricFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BucketMetric] resource.
+  BucketMetric.reference(String urn)
+    : super(
+        'aws:s3/bucketMetric:BucketMetric',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<BucketMetricFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetricFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

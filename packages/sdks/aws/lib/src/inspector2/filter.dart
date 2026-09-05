@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'filter_args.dart';
+import 'filter_filter_criteria.dart';
 import 'filter_state.dart';
 
 /// Resource for managing an AWS Inspector Filter.
@@ -14,14 +15,14 @@ import 'filter_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.inspector2.Filter("example", {
-///     name: "test",
-///     action: "NONE",
 ///     filterCriterias: [{
 ///         awsAccountIds: [{
 ///             comparison: "EQUALS",
 ///             value: "111222333444",
 ///         }],
 ///     }],
+///     name: "test",
+///     action: "NONE",
 /// });
 /// ```
 /// ```python
@@ -29,14 +30,14 @@ import 'filter_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.inspector2.Filter("example",
-///     name="test",
-///     action="NONE",
 ///     filter_criterias=[{
 ///         "aws_account_ids": [{
 ///             "comparison": "EQUALS",
 ///             "value": "111222333444",
 ///         }],
-///     }])
+///     }],
+///     name="test",
+///     action="NONE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,8 +49,6 @@ import 'filter_state.dart';
 /// {
 ///     var example = new Aws.Inspector2.Filter("example", new()
 ///     {
-///         Name = "test",
-///         Action = "NONE",
 ///         FilterCriterias = new[]
 ///         {
 ///             new Aws.Inspector2.Inputs.FilterFilterCriteriaArgs
@@ -64,6 +63,8 @@ import 'filter_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "test",
+///         Action = "NONE",
 ///     });
 ///
 /// });
@@ -79,8 +80,6 @@ import 'filter_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := inspector2.NewFilter(ctx, "example", &inspector2.FilterArgs{
-/// 			Name:   pulumi.String("test"),
-/// 			Action: pulumi.String("NONE"),
 /// 			FilterCriterias: inspector2.FilterFilterCriteriaArray{
 /// 				&inspector2.FilterFilterCriteriaArgs{
 /// 					AwsAccountIds: inspector2.FilterFilterCriteriaAwsAccountIdArray{
@@ -91,6 +90,8 @@ import 'filter_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("test"),
+/// 			Action: pulumi.String("NONE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -109,14 +110,14 @@ import 'filter_state.dart';
 /// }
 ///
 /// resource "aws_inspector2_filter" "example" {
-///   name   = "test"
-///   action = "NONE"
 ///   filter_criterias {
 ///     aws_account_ids {
 ///       comparison = "EQUALS"
 ///       value      = "111222333444"
 ///     }
 ///   }
+///   name   = "test"
+///   action = "NONE"
 /// }
 /// ```
 /// ```java
@@ -143,14 +144,14 @@ import 'filter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Filter("example", FilterArgs.builder()
-///             .name("test")
-///             .action("NONE")
 ///             .filterCriterias(FilterFilterCriteriaArgs.builder()
 ///                 .awsAccountIds(FilterFilterCriteriaAwsAccountIdArgs.builder()
 ///                     .comparison("EQUALS")
 ///                     .value("111222333444")
 ///                     .build())
 ///                 .build())
+///             .name("test")
+///             .action("NONE")
 ///             .build());
 ///
 ///     }
@@ -161,12 +162,12 @@ import 'filter_state.dart';
 ///   example:
 ///     type: aws:inspector2:Filter
 ///     properties:
-///       name: test
-///       action: NONE
 ///       filterCriterias:
 ///         - awsAccountIds:
 ///             - comparison: EQUALS
 ///               value: '111222333444'
+///       name: test
+///       action: NONE
 /// ```
 ///
 ///
@@ -176,7 +177,7 @@ import 'filter_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Inspector filter.
+/// - `arn` (String) ARN of the Inspector filter.
 ///
 ///
 /// Using `pulumi import`, import Inspector Filter using the `arn`. For example:
@@ -194,7 +195,7 @@ class Filter extends pulumi.CustomResource {
   /// Details on the filter criteria. Documented below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> filterCriterias;
+  late final pulumi.Output<List<FilterFilterCriteria>> filterCriterias;
   /// Name of the filter.
   late final pulumi.Output<String> name;
   /// Reason for creating the filter
@@ -218,17 +219,17 @@ class Filter extends pulumi.CustomResource {
           'aws:inspector2/filter:Filter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    filterCriterias = registerOutput<List<Map<String, dynamic>>>('filterCriterias');
+    filterCriterias = registerOutput<List<FilterFilterCriteria>>('filterCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilterFilterCriteria>(guardedValue, (value) => FilterFilterCriteria.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     reason = registerOutput<String?>('reason');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Filter] resource's state with the given [name] and [id].
@@ -236,11 +237,12 @@ class Filter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Filter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,11 +259,31 @@ class Filter extends pulumi.CustomResource {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    filterCriterias = registerOutput<List<Map<String, dynamic>>>('filterCriterias');
+    filterCriterias = registerOutput<List<FilterFilterCriteria>>('filterCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilterFilterCriteria>(guardedValue, (value) => FilterFilterCriteria.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     reason = registerOutput<String?>('reason');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Filter] resource.
+  Filter.reference(String urn)
+    : super(
+        'aws:inspector2/filter:Filter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    filterCriterias = registerOutput<List<FilterFilterCriteria>>('filterCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilterFilterCriteria>(guardedValue, (value) => FilterFilterCriteria.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    reason = registerOutput<String?>('reason');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

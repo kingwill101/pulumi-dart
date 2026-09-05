@@ -16,7 +16,7 @@ class LbStickinessPolicyArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> lbName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LbStickinessPolicyArgs].
   /// [cookieDuration] Cookie duration in seconds. This determines the length of the session stickiness.
@@ -41,7 +41,7 @@ class LbStickinessPolicyArgs {
 
   factory LbStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LbStickinessPolicyArgs(
-      cookieDuration: pulumi.Input.fromValue(map['cookieDuration'] as int),
+      cookieDuration: pulumi.Input.fromValue((map['cookieDuration'] as num).toInt()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       lbName: pulumi.Input.fromValue(map['lbName'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

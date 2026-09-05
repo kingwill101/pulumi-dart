@@ -6,11 +6,11 @@ class AgentcoreHarnessMemoryAgentcoreMemoryConfigurationRetrievalConfig {
   /// Namespace path template for retrieval settings.
   final pulumi.Input<String> mapBlockKey;
   /// Relevance score threshold. Valid value is between `0` and `1`.
-  final pulumi.Input<double>? relevanceScore;
+  final pulumi.Input<double?>? relevanceScore;
   /// ID of the memory strategy.
-  final pulumi.Input<String>? strategyId;
+  final pulumi.Input<String?>? strategyId;
   /// Number of top results to retrieve.
-  final pulumi.Input<int>? topK;
+  final pulumi.Input<int?>? topK;
 
   /// Creates a new [AgentcoreHarnessMemoryAgentcoreMemoryConfigurationRetrievalConfig].
   /// [mapBlockKey] Namespace path template for retrieval settings.
@@ -36,9 +36,9 @@ class AgentcoreHarnessMemoryAgentcoreMemoryConfigurationRetrievalConfig {
   factory AgentcoreHarnessMemoryAgentcoreMemoryConfigurationRetrievalConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreHarnessMemoryAgentcoreMemoryConfigurationRetrievalConfig(
       mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
-      relevanceScore: (() { final guardedValue = map['relevanceScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      relevanceScore: (() { final guardedValue = map['relevanceScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       strategyId: (() { final guardedValue = map['strategyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      topK: (() { final guardedValue = map['topK']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      topK: (() { final guardedValue = map['topK']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

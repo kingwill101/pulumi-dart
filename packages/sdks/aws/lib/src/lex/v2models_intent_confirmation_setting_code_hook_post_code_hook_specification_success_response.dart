@@ -5,9 +5,9 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
-  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<bool?>? allowInterrupt;
   /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup>>? messageGroups;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup>?>? messageGroups;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.

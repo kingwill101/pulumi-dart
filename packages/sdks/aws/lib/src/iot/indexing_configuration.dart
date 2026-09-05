@@ -14,10 +14,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.iot.IndexingConfiguration("example", {thingIndexingConfiguration: {
-///     thingIndexingMode: "REGISTRY_AND_SHADOW",
-///     thingConnectivityIndexingMode: "STATUS",
-///     deviceDefenderIndexingMode: "VIOLATIONS",
-///     namedShadowIndexingMode: "ON",
 ///     filter: {
 ///         namedShadowNames: ["thing1shadow"],
 ///     },
@@ -39,6 +35,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///             type: "Number",
 ///         },
 ///     ],
+///     thingIndexingMode: "REGISTRY_AND_SHADOW",
+///     thingConnectivityIndexingMode: "STATUS",
+///     deviceDefenderIndexingMode: "VIOLATIONS",
+///     namedShadowIndexingMode: "ON",
 /// }});
 /// ```
 /// ```python
@@ -46,10 +46,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iot.IndexingConfiguration("example", thing_indexing_configuration={
-///     "thing_indexing_mode": "REGISTRY_AND_SHADOW",
-///     "thing_connectivity_indexing_mode": "STATUS",
-///     "device_defender_indexing_mode": "VIOLATIONS",
-///     "named_shadow_indexing_mode": "ON",
 ///     "filter": {
 ///         "named_shadow_names": ["thing1shadow"],
 ///     },
@@ -71,6 +67,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///             "type": "Number",
 ///         },
 ///     ],
+///     "thing_indexing_mode": "REGISTRY_AND_SHADOW",
+///     "thing_connectivity_indexing_mode": "STATUS",
+///     "device_defender_indexing_mode": "VIOLATIONS",
+///     "named_shadow_indexing_mode": "ON",
 /// })
 /// ```
 /// ```csharp
@@ -85,10 +85,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///     {
 ///         ThingIndexingConfiguration = new Aws.Iot.Inputs.IndexingConfigurationThingIndexingConfigurationArgs
 ///         {
-///             ThingIndexingMode = "REGISTRY_AND_SHADOW",
-///             ThingConnectivityIndexingMode = "STATUS",
-///             DeviceDefenderIndexingMode = "VIOLATIONS",
-///             NamedShadowIndexingMode = "ON",
 ///             Filter = new Aws.Iot.Inputs.IndexingConfigurationThingIndexingConfigurationFilterArgs
 ///             {
 ///                 NamedShadowNames = new[]
@@ -119,6 +115,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///                     Type = "Number",
 ///                 },
 ///             },
+///             ThingIndexingMode = "REGISTRY_AND_SHADOW",
+///             ThingConnectivityIndexingMode = "STATUS",
+///             DeviceDefenderIndexingMode = "VIOLATIONS",
+///             NamedShadowIndexingMode = "ON",
 ///         },
 ///     });
 ///
@@ -136,10 +136,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := iot.NewIndexingConfiguration(ctx, "example", &iot.IndexingConfigurationArgs{
 /// 			ThingIndexingConfiguration: &iot.IndexingConfigurationThingIndexingConfigurationArgs{
-/// 				ThingIndexingMode:             pulumi.String("REGISTRY_AND_SHADOW"),
-/// 				ThingConnectivityIndexingMode: pulumi.String("STATUS"),
-/// 				DeviceDefenderIndexingMode:    pulumi.String("VIOLATIONS"),
-/// 				NamedShadowIndexingMode:       pulumi.String("ON"),
 /// 				Filter: &iot.IndexingConfigurationThingIndexingConfigurationFilterArgs{
 /// 					NamedShadowNames: pulumi.StringArray{
 /// 						pulumi.String("thing1shadow"),
@@ -163,6 +159,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// 						Type: pulumi.String("Number"),
 /// 					},
 /// 				},
+/// 				ThingIndexingMode:             pulumi.String("REGISTRY_AND_SHADOW"),
+/// 				ThingConnectivityIndexingMode: pulumi.String("STATUS"),
+/// 				DeviceDefenderIndexingMode:    pulumi.String("VIOLATIONS"),
+/// 				NamedShadowIndexingMode:       pulumi.String("ON"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -183,10 +183,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///
 /// resource "aws_iot_indexingconfiguration" "example" {
 ///   thing_indexing_configuration = {
-///     thing_indexing_mode              = "REGISTRY_AND_SHADOW"
-///     thing_connectivity_indexing_mode = "STATUS"
-///     device_defender_indexing_mode    = "VIOLATIONS"
-///     named_shadow_indexing_mode       = "ON"
 ///     filter = {
 ///       named_shadow_names = ["thing1shadow"]
 ///     }
@@ -203,6 +199,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///       "name" = "deviceDefender.securityProfile1.NUMBER_VALUE_BEHAVIOR.lastViolationValue.number"
 ///       "type" = "Number"
 ///     }]
+///     thing_indexing_mode              = "REGISTRY_AND_SHADOW"
+///     thing_connectivity_indexing_mode = "STATUS"
+///     device_defender_indexing_mode    = "VIOLATIONS"
+///     named_shadow_indexing_mode       = "ON"
 ///   }
 /// }
 /// ```
@@ -232,10 +232,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new IndexingConfiguration("example", IndexingConfigurationArgs.builder()
 ///             .thingIndexingConfiguration(IndexingConfigurationThingIndexingConfigurationArgs.builder()
-///                 .thingIndexingMode("REGISTRY_AND_SHADOW")
-///                 .thingConnectivityIndexingMode("STATUS")
-///                 .deviceDefenderIndexingMode("VIOLATIONS")
-///                 .namedShadowIndexingMode("ON")
 ///                 .filter(IndexingConfigurationThingIndexingConfigurationFilterArgs.builder()
 ///                     .namedShadowNames("thing1shadow")
 ///                     .build())
@@ -256,6 +252,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///                         .name("deviceDefender.securityProfile1.NUMBER_VALUE_BEHAVIOR.lastViolationValue.number")
 ///                         .type("Number")
 ///                         .build())
+///                 .thingIndexingMode("REGISTRY_AND_SHADOW")
+///                 .thingConnectivityIndexingMode("STATUS")
+///                 .deviceDefenderIndexingMode("VIOLATIONS")
+///                 .namedShadowIndexingMode("ON")
 ///                 .build())
 ///             .build());
 ///
@@ -268,10 +268,6 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///     type: aws:iot:IndexingConfiguration
 ///     properties:
 ///       thingIndexingConfiguration:
-///         thingIndexingMode: REGISTRY_AND_SHADOW
-///         thingConnectivityIndexingMode: STATUS
-///         deviceDefenderIndexingMode: VIOLATIONS
-///         namedShadowIndexingMode: ON
 ///         filter:
 ///           namedShadowNames:
 ///             - thing1shadow
@@ -284,6 +280,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///             type: String
 ///           - name: deviceDefender.securityProfile1.NUMBER_VALUE_BEHAVIOR.lastViolationValue.number
 ///             type: Number
+///         thingIndexingMode: REGISTRY_AND_SHADOW
+///         thingConnectivityIndexingMode: STATUS
+///         deviceDefenderIndexingMode: VIOLATIONS
+///         namedShadowIndexingMode: ON
 /// ```
 class IndexingConfiguration extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -305,7 +305,7 @@ class IndexingConfiguration extends pulumi.CustomResource {
           'aws:iot/indexingConfiguration:IndexingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingGroupIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -317,11 +317,12 @@ class IndexingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IndexingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IndexingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,6 +336,20 @@ class IndexingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingGroupIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    thingIndexingConfiguration = registerOutput<IndexingConfigurationThingIndexingConfiguration>('thingIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IndexingConfiguration] resource.
+  IndexingConfiguration.reference(String urn)
+    : super(
+        'aws:iot/indexingConfiguration:IndexingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingGroupIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     thingIndexingConfiguration = registerOutput<IndexingConfigurationThingIndexingConfiguration>('thingIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -20,11 +20,11 @@ import 'recorder_status_state.dart';
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["config.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -71,11 +71,11 @@ import 'recorder_status_state.dart';
 ///     name="example",
 ///     s3_bucket_name=b.bucket)
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["config.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// r = aws.iam.Role("r",
@@ -129,7 +129,6 @@ import 'recorder_status_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -141,6 +140,7 @@ import 'recorder_status_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -238,7 +238,6 @@ import 'recorder_status_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -247,6 +246,7 @@ import 'recorder_status_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -325,11 +325,11 @@ import 'recorder_status_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -420,11 +420,11 @@ import 'recorder_status_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("config.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -519,11 +519,11 @@ import 'recorder_status_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - config.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   p:
@@ -579,7 +579,7 @@ class RecorderStatus extends pulumi.CustomResource {
           'aws:cfg/recorderStatus:RecorderStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     isEnabled = registerOutput<bool>('isEnabled');
     this.name = registerOutput<String>('name');
@@ -591,11 +591,12 @@ class RecorderStatus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecorderStatusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RecorderStatus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,6 +610,20 @@ class RecorderStatus extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    isEnabled = registerOutput<bool>('isEnabled');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [RecorderStatus] resource.
+  RecorderStatus.reference(String urn)
+    : super(
+        'aws:cfg/recorderStatus:RecorderStatus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     isEnabled = registerOutput<bool>('isEnabled');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Attachment resources.
 class AttachmentState {
   /// The name of the ELB.
-  final pulumi.Input<String>? elb;
+  final pulumi.Input<String?>? elb;
   /// Instance ID to place in the ELB pool.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AttachmentState].
   /// [elb] The name of the ELB.

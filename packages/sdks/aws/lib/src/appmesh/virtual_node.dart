@@ -17,9 +17,12 @@ import 'virtual_node_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb1 = new aws.appmesh.VirtualNode("serviceb1", {
-///     name: "serviceBv1",
-///     meshName: simple.id,
 ///     spec: {
+///         serviceDiscovery: {
+///             dns: {
+///                 hostname: "serviceb.simpleapp.local",
+///             },
+///         },
 ///         backends: [{
 ///             virtualService: {
 ///                 virtualServiceName: "servicea.simpleapp.local",
@@ -31,12 +34,9 @@ import 'virtual_node_state.dart';
 ///                 protocol: "http",
 ///             },
 ///         }],
-///         serviceDiscovery: {
-///             dns: {
-///                 hostname: "serviceb.simpleapp.local",
-///             },
-///         },
 ///     },
+///     name: "serviceBv1",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -44,9 +44,12 @@ import 'virtual_node_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-///     name="serviceBv1",
-///     mesh_name=simple["id"],
 ///     spec={
+///         "service_discovery": {
+///             "dns": {
+///                 "hostname": "serviceb.simpleapp.local",
+///             },
+///         },
 ///         "backends": [{
 ///             "virtual_service": {
 ///                 "virtual_service_name": "servicea.simpleapp.local",
@@ -58,12 +61,9 @@ import 'virtual_node_state.dart';
 ///                 "protocol": "http",
 ///             },
 ///         }],
-///         "service_discovery": {
-///             "dns": {
-///                 "hostname": "serviceb.simpleapp.local",
-///             },
-///         },
-///     })
+///     },
+///     name="serviceBv1",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -75,10 +75,15 @@ import 'virtual_node_state.dart';
 /// {
 ///     var serviceb1 = new Aws.AppMesh.VirtualNode("serviceb1", new()
 ///     {
-///         Name = "serviceBv1",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualNodeSpecArgs
 ///         {
+///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
+///             {
+///                 Dns = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryDnsArgs
+///                 {
+///                     Hostname = "serviceb.simpleapp.local",
+///                 },
+///             },
 ///             Backends = new[]
 ///             {
 ///                 new Aws.AppMesh.Inputs.VirtualNodeSpecBackendArgs
@@ -100,14 +105,9 @@ import 'virtual_node_state.dart';
 ///                     },
 ///                 },
 ///             },
-///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
-///             {
-///                 Dns = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryDnsArgs
-///                 {
-///                     Hostname = "serviceb.simpleapp.local",
-///                 },
-///             },
 ///         },
+///         Name = "serviceBv1",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -123,9 +123,12 @@ import 'virtual_node_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
-/// 			Name:     pulumi.String("serviceBv1"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualNodeSpecArgs{
+/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
+/// 					Dns: &appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs{
+/// 						Hostname: pulumi.String("serviceb.simpleapp.local"),
+/// 					},
+/// 				},
 /// 				Backends: appmesh.VirtualNodeSpecBackendArray{
 /// 					&appmesh.VirtualNodeSpecBackendArgs{
 /// 						VirtualService: &appmesh.VirtualNodeSpecBackendVirtualServiceArgs{
@@ -141,12 +144,9 @@ import 'virtual_node_state.dart';
 /// 						},
 /// 					},
 /// 				},
-/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
-/// 					Dns: &appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs{
-/// 						Hostname: pulumi.String("serviceb.simpleapp.local"),
-/// 					},
-/// 				},
 /// 			},
+/// 			Name:     pulumi.String("serviceBv1"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -165,9 +165,12 @@ import 'virtual_node_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   name      = "serviceBv1"
-///   mesh_name = simple.id
 ///   spec = {
+///     service_discovery = {
+///       dns = {
+///         hostname = "serviceb.simpleapp.local"
+///       }
+///     }
 ///     backends = [{
 ///       "virtualService" = {
 ///         "virtualServiceName" = "servicea.simpleapp.local"
@@ -179,12 +182,9 @@ import 'virtual_node_state.dart';
 ///         "protocol" = "http"
 ///       }
 ///     }]
-///     service_discovery = {
-///       dns = {
-///         hostname = "serviceb.simpleapp.local"
-///       }
-///     }
 ///   }
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -196,12 +196,12 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -216,9 +216,12 @@ import 'virtual_node_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb1 = new VirtualNode("serviceb1", VirtualNodeArgs.builder()
-///             .name("serviceBv1")
-///             .meshName(simple.id())
 ///             .spec(VirtualNodeSpecArgs.builder()
+///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
+///                     .dns(VirtualNodeSpecServiceDiscoveryDnsArgs.builder()
+///                         .hostname("serviceb.simpleapp.local")
+///                         .build())
+///                     .build())
 ///                 .backends(VirtualNodeSpecBackendArgs.builder()
 ///                     .virtualService(VirtualNodeSpecBackendVirtualServiceArgs.builder()
 ///                         .virtualServiceName("servicea.simpleapp.local")
@@ -230,12 +233,9 @@ import 'virtual_node_state.dart';
 ///                         .protocol("http")
 ///                         .build())
 ///                     .build())
-///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
-///                     .dns(VirtualNodeSpecServiceDiscoveryDnsArgs.builder()
-///                         .hostname("serviceb.simpleapp.local")
-///                         .build())
-///                     .build())
 ///                 .build())
+///             .name("serviceBv1")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -246,9 +246,10 @@ import 'virtual_node_state.dart';
 ///   serviceb1:
 ///     type: aws:appmesh:VirtualNode
 ///     properties:
-///       name: serviceBv1
-///       meshName: ${simple.id}
 ///       spec:
+///         serviceDiscovery:
+///           dns:
+///             hostname: serviceb.simpleapp.local
 ///         backends:
 ///           - virtualService:
 ///               virtualServiceName: servicea.simpleapp.local
@@ -256,9 +257,8 @@ import 'virtual_node_state.dart';
 ///           - portMapping:
 ///               port: 8080
 ///               protocol: http
-///         serviceDiscovery:
-///           dns:
-///             hostname: serviceb.simpleapp.local
+///       name: serviceBv1
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -271,9 +271,16 @@ import 'virtual_node_state.dart';
 ///
 /// const example = new aws.servicediscovery.HttpNamespace("example", {name: "example-ns"});
 /// const serviceb1 = new aws.appmesh.VirtualNode("serviceb1", {
-///     name: "serviceBv1",
-///     meshName: simple.id,
 ///     spec: {
+///         serviceDiscovery: {
+///             awsCloudMap: {
+///                 attributes: {
+///                     stack: "blue",
+///                 },
+///                 serviceName: "serviceb1",
+///                 namespaceName: example.name,
+///             },
+///         },
 ///         backends: [{
 ///             virtualService: {
 ///                 virtualServiceName: "servicea.simpleapp.local",
@@ -285,16 +292,9 @@ import 'virtual_node_state.dart';
 ///                 protocol: "http",
 ///             },
 ///         }],
-///         serviceDiscovery: {
-///             awsCloudMap: {
-///                 attributes: {
-///                     stack: "blue",
-///                 },
-///                 serviceName: "serviceb1",
-///                 namespaceName: example.name,
-///             },
-///         },
 ///     },
+///     name: "serviceBv1",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -303,9 +303,16 @@ import 'virtual_node_state.dart';
 ///
 /// example = aws.servicediscovery.HttpNamespace("example", name="example-ns")
 /// serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-///     name="serviceBv1",
-///     mesh_name=simple["id"],
 ///     spec={
+///         "service_discovery": {
+///             "aws_cloud_map": {
+///                 "attributes": {
+///                     "stack": "blue",
+///                 },
+///                 "service_name": "serviceb1",
+///                 "namespace_name": example.name,
+///             },
+///         },
 ///         "backends": [{
 ///             "virtual_service": {
 ///                 "virtual_service_name": "servicea.simpleapp.local",
@@ -317,16 +324,9 @@ import 'virtual_node_state.dart';
 ///                 "protocol": "http",
 ///             },
 ///         }],
-///         "service_discovery": {
-///             "aws_cloud_map": {
-///                 "attributes": {
-///                     "stack": "blue",
-///                 },
-///                 "service_name": "serviceb1",
-///                 "namespace_name": example.name,
-///             },
-///         },
-///     })
+///     },
+///     name="serviceBv1",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -343,10 +343,20 @@ import 'virtual_node_state.dart';
 ///
 ///     var serviceb1 = new Aws.AppMesh.VirtualNode("serviceb1", new()
 ///     {
-///         Name = "serviceBv1",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualNodeSpecArgs
 ///         {
+///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
+///             {
+///                 AwsCloudMap = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs
+///                 {
+///                     Attributes =
+///                     {
+///                         { "stack", "blue" },
+///                     },
+///                     ServiceName = "serviceb1",
+///                     NamespaceName = example.Name,
+///                 },
+///             },
 ///             Backends = new[]
 ///             {
 ///                 new Aws.AppMesh.Inputs.VirtualNodeSpecBackendArgs
@@ -368,19 +378,9 @@ import 'virtual_node_state.dart';
 ///                     },
 ///                 },
 ///             },
-///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
-///             {
-///                 AwsCloudMap = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs
-///                 {
-///                     Attributes =
-///                     {
-///                         { "stack", "blue" },
-///                     },
-///                     ServiceName = "serviceb1",
-///                     NamespaceName = example.Name,
-///                 },
-///             },
 ///         },
+///         Name = "serviceBv1",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -403,9 +403,16 @@ import 'virtual_node_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
-/// 			Name:     pulumi.String("serviceBv1"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualNodeSpecArgs{
+/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
+/// 					AwsCloudMap: &appmesh.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs{
+/// 						Attributes: pulumi.StringMap{
+/// 							"stack": pulumi.String("blue"),
+/// 						},
+/// 						ServiceName:   pulumi.String("serviceb1"),
+/// 						NamespaceName: example.Name,
+/// 					},
+/// 				},
 /// 				Backends: appmesh.VirtualNodeSpecBackendArray{
 /// 					&appmesh.VirtualNodeSpecBackendArgs{
 /// 						VirtualService: &appmesh.VirtualNodeSpecBackendVirtualServiceArgs{
@@ -421,16 +428,9 @@ import 'virtual_node_state.dart';
 /// 						},
 /// 					},
 /// 				},
-/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
-/// 					AwsCloudMap: &appmesh.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs{
-/// 						Attributes: pulumi.StringMap{
-/// 							"stack": pulumi.String("blue"),
-/// 						},
-/// 						ServiceName:   pulumi.String("serviceb1"),
-/// 						NamespaceName: example.Name,
-/// 					},
-/// 				},
 /// 			},
+/// 			Name:     pulumi.String("serviceBv1"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -452,9 +452,16 @@ import 'virtual_node_state.dart';
 ///   name = "example-ns"
 /// }
 /// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   name      = "serviceBv1"
-///   mesh_name = simple.id
 ///   spec = {
+///     service_discovery = {
+///       aws_cloud_map = {
+///         attributes = {
+///           "stack" = "blue"
+///         }
+///         service_name   = "serviceb1"
+///         namespace_name = aws_servicediscovery_httpnamespace.example.name
+///       }
+///     }
 ///     backends = [{
 ///       "virtualService" = {
 ///         "virtualServiceName" = "servicea.simpleapp.local"
@@ -466,16 +473,9 @@ import 'virtual_node_state.dart';
 ///         "protocol" = "http"
 ///       }
 ///     }]
-///     service_discovery = {
-///       aws_cloud_map = {
-///         attributes = {
-///           "stack" = "blue"
-///         }
-///         service_name   = "serviceb1"
-///         namespace_name = aws_servicediscovery_httpnamespace.example.name
-///       }
-///     }
 ///   }
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -489,12 +489,12 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -513,9 +513,14 @@ import 'virtual_node_state.dart';
 ///             .build());
 ///
 ///         var serviceb1 = new VirtualNode("serviceb1", VirtualNodeArgs.builder()
-///             .name("serviceBv1")
-///             .meshName(simple.id())
 ///             .spec(VirtualNodeSpecArgs.builder()
+///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
+///                     .awsCloudMap(VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs.builder()
+///                         .attributes(Map.of("stack", "blue"))
+///                         .serviceName("serviceb1")
+///                         .namespaceName(example.name())
+///                         .build())
+///                     .build())
 ///                 .backends(VirtualNodeSpecBackendArgs.builder()
 ///                     .virtualService(VirtualNodeSpecBackendVirtualServiceArgs.builder()
 ///                         .virtualServiceName("servicea.simpleapp.local")
@@ -527,14 +532,9 @@ import 'virtual_node_state.dart';
 ///                         .protocol("http")
 ///                         .build())
 ///                     .build())
-///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
-///                     .awsCloudMap(VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs.builder()
-///                         .attributes(Map.of("stack", "blue"))
-///                         .serviceName("serviceb1")
-///                         .namespaceName(example.name())
-///                         .build())
-///                     .build())
 ///                 .build())
+///             .name("serviceBv1")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -549,9 +549,13 @@ import 'virtual_node_state.dart';
 ///   serviceb1:
 ///     type: aws:appmesh:VirtualNode
 ///     properties:
-///       name: serviceBv1
-///       meshName: ${simple.id}
 ///       spec:
+///         serviceDiscovery:
+///           awsCloudMap:
+///             attributes:
+///               stack: blue
+///             serviceName: serviceb1
+///             namespaceName: ${example.name}
 ///         backends:
 ///           - virtualService:
 ///               virtualServiceName: servicea.simpleapp.local
@@ -559,12 +563,8 @@ import 'virtual_node_state.dart';
 ///           - portMapping:
 ///               port: 8080
 ///               protocol: http
-///         serviceDiscovery:
-///           awsCloudMap:
-///             attributes:
-///               stack: blue
-///             serviceName: serviceb1
-///             namespaceName: ${example.name}
+///       name: serviceBv1
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -576,9 +576,12 @@ import 'virtual_node_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb1 = new aws.appmesh.VirtualNode("serviceb1", {
-///     name: "serviceBv1",
-///     meshName: simple.id,
 ///     spec: {
+///         serviceDiscovery: {
+///             dns: {
+///                 hostname: "serviceb.simpleapp.local",
+///             },
+///         },
 ///         backends: [{
 ///             virtualService: {
 ///                 virtualServiceName: "servicea.simpleapp.local",
@@ -598,12 +601,9 @@ import 'virtual_node_state.dart';
 ///                 intervalMillis: 5000,
 ///             },
 ///         }],
-///         serviceDiscovery: {
-///             dns: {
-///                 hostname: "serviceb.simpleapp.local",
-///             },
-///         },
 ///     },
+///     name: "serviceBv1",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -611,9 +611,12 @@ import 'virtual_node_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-///     name="serviceBv1",
-///     mesh_name=simple["id"],
 ///     spec={
+///         "service_discovery": {
+///             "dns": {
+///                 "hostname": "serviceb.simpleapp.local",
+///             },
+///         },
 ///         "backends": [{
 ///             "virtual_service": {
 ///                 "virtual_service_name": "servicea.simpleapp.local",
@@ -633,12 +636,9 @@ import 'virtual_node_state.dart';
 ///                 "interval_millis": 5000,
 ///             },
 ///         }],
-///         "service_discovery": {
-///             "dns": {
-///                 "hostname": "serviceb.simpleapp.local",
-///             },
-///         },
-///     })
+///     },
+///     name="serviceBv1",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -650,10 +650,15 @@ import 'virtual_node_state.dart';
 /// {
 ///     var serviceb1 = new Aws.AppMesh.VirtualNode("serviceb1", new()
 ///     {
-///         Name = "serviceBv1",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualNodeSpecArgs
 ///         {
+///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
+///             {
+///                 Dns = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryDnsArgs
+///                 {
+///                     Hostname = "serviceb.simpleapp.local",
+///                 },
+///             },
 ///             Backends = new[]
 ///             {
 ///                 new Aws.AppMesh.Inputs.VirtualNodeSpecBackendArgs
@@ -684,14 +689,9 @@ import 'virtual_node_state.dart';
 ///                     },
 ///                 },
 ///             },
-///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
-///             {
-///                 Dns = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryDnsArgs
-///                 {
-///                     Hostname = "serviceb.simpleapp.local",
-///                 },
-///             },
 ///         },
+///         Name = "serviceBv1",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -707,9 +707,12 @@ import 'virtual_node_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
-/// 			Name:     pulumi.String("serviceBv1"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualNodeSpecArgs{
+/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
+/// 					Dns: &appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs{
+/// 						Hostname: pulumi.String("serviceb.simpleapp.local"),
+/// 					},
+/// 				},
 /// 				Backends: appmesh.VirtualNodeSpecBackendArray{
 /// 					&appmesh.VirtualNodeSpecBackendArgs{
 /// 						VirtualService: &appmesh.VirtualNodeSpecBackendVirtualServiceArgs{
@@ -733,12 +736,9 @@ import 'virtual_node_state.dart';
 /// 						},
 /// 					},
 /// 				},
-/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
-/// 					Dns: &appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs{
-/// 						Hostname: pulumi.String("serviceb.simpleapp.local"),
-/// 					},
-/// 				},
 /// 			},
+/// 			Name:     pulumi.String("serviceBv1"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -757,9 +757,12 @@ import 'virtual_node_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   name      = "serviceBv1"
-///   mesh_name = simple.id
 ///   spec = {
+///     service_discovery = {
+///       dns = {
+///         hostname = "serviceb.simpleapp.local"
+///       }
+///     }
 ///     backends = [{
 ///       "virtualService" = {
 ///         "virtualServiceName" = "servicea.simpleapp.local"
@@ -779,12 +782,9 @@ import 'virtual_node_state.dart';
 ///         "intervalMillis"     = 5000
 ///       }
 ///     }]
-///     service_discovery = {
-///       dns = {
-///         hostname = "serviceb.simpleapp.local"
-///       }
-///     }
 ///   }
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -796,13 +796,13 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerHealthCheckArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -817,9 +817,12 @@ import 'virtual_node_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb1 = new VirtualNode("serviceb1", VirtualNodeArgs.builder()
-///             .name("serviceBv1")
-///             .meshName(simple.id())
 ///             .spec(VirtualNodeSpecArgs.builder()
+///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
+///                     .dns(VirtualNodeSpecServiceDiscoveryDnsArgs.builder()
+///                         .hostname("serviceb.simpleapp.local")
+///                         .build())
+///                     .build())
 ///                 .backends(VirtualNodeSpecBackendArgs.builder()
 ///                     .virtualService(VirtualNodeSpecBackendVirtualServiceArgs.builder()
 ///                         .virtualServiceName("servicea.simpleapp.local")
@@ -839,12 +842,9 @@ import 'virtual_node_state.dart';
 ///                         .intervalMillis(5000)
 ///                         .build())
 ///                     .build())
-///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
-///                     .dns(VirtualNodeSpecServiceDiscoveryDnsArgs.builder()
-///                         .hostname("serviceb.simpleapp.local")
-///                         .build())
-///                     .build())
 ///                 .build())
+///             .name("serviceBv1")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -855,9 +855,10 @@ import 'virtual_node_state.dart';
 ///   serviceb1:
 ///     type: aws:appmesh:VirtualNode
 ///     properties:
-///       name: serviceBv1
-///       meshName: ${simple.id}
 ///       spec:
+///         serviceDiscovery:
+///           dns:
+///             hostname: serviceb.simpleapp.local
 ///         backends:
 ///           - virtualService:
 ///               virtualServiceName: servicea.simpleapp.local
@@ -872,9 +873,8 @@ import 'virtual_node_state.dart';
 ///               unhealthyThreshold: 2
 ///               timeoutMillis: 2000
 ///               intervalMillis: 5000
-///         serviceDiscovery:
-///           dns:
-///             hostname: serviceb.simpleapp.local
+///       name: serviceBv1
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -886,20 +886,7 @@ import 'virtual_node_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb1 = new aws.appmesh.VirtualNode("serviceb1", {
-///     name: "serviceBv1",
-///     meshName: simple.id,
 ///     spec: {
-///         backends: [{
-///             virtualService: {
-///                 virtualServiceName: "servicea.simpleapp.local",
-///             },
-///         }],
-///         listeners: [{
-///             portMapping: {
-///                 port: 8080,
-///                 protocol: "http",
-///             },
-///         }],
 ///         serviceDiscovery: {
 ///             dns: {
 ///                 hostname: "serviceb.simpleapp.local",
@@ -912,7 +899,20 @@ import 'virtual_node_state.dart';
 ///                 },
 ///             },
 ///         },
+///         backends: [{
+///             virtualService: {
+///                 virtualServiceName: "servicea.simpleapp.local",
+///             },
+///         }],
+///         listeners: [{
+///             portMapping: {
+///                 port: 8080,
+///                 protocol: "http",
+///             },
+///         }],
 ///     },
+///     name: "serviceBv1",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -920,20 +920,7 @@ import 'virtual_node_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-///     name="serviceBv1",
-///     mesh_name=simple["id"],
 ///     spec={
-///         "backends": [{
-///             "virtual_service": {
-///                 "virtual_service_name": "servicea.simpleapp.local",
-///             },
-///         }],
-///         "listeners": [{
-///             "port_mapping": {
-///                 "port": 8080,
-///                 "protocol": "http",
-///             },
-///         }],
 ///         "service_discovery": {
 ///             "dns": {
 ///                 "hostname": "serviceb.simpleapp.local",
@@ -946,7 +933,20 @@ import 'virtual_node_state.dart';
 ///                 },
 ///             },
 ///         },
-///     })
+///         "backends": [{
+///             "virtual_service": {
+///                 "virtual_service_name": "servicea.simpleapp.local",
+///             },
+///         }],
+///         "listeners": [{
+///             "port_mapping": {
+///                 "port": 8080,
+///                 "protocol": "http",
+///             },
+///         }],
+///     },
+///     name="serviceBv1",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -958,10 +958,25 @@ import 'virtual_node_state.dart';
 /// {
 ///     var serviceb1 = new Aws.AppMesh.VirtualNode("serviceb1", new()
 ///     {
-///         Name = "serviceBv1",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualNodeSpecArgs
 ///         {
+///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
+///             {
+///                 Dns = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryDnsArgs
+///                 {
+///                     Hostname = "serviceb.simpleapp.local",
+///                 },
+///             },
+///             Logging = new Aws.AppMesh.Inputs.VirtualNodeSpecLoggingArgs
+///             {
+///                 AccessLog = new Aws.AppMesh.Inputs.VirtualNodeSpecLoggingAccessLogArgs
+///                 {
+///                     File = new Aws.AppMesh.Inputs.VirtualNodeSpecLoggingAccessLogFileArgs
+///                     {
+///                         Path = "/dev/stdout",
+///                     },
+///                 },
+///             },
 ///             Backends = new[]
 ///             {
 ///                 new Aws.AppMesh.Inputs.VirtualNodeSpecBackendArgs
@@ -983,24 +998,9 @@ import 'virtual_node_state.dart';
 ///                     },
 ///                 },
 ///             },
-///             ServiceDiscovery = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryArgs
-///             {
-///                 Dns = new Aws.AppMesh.Inputs.VirtualNodeSpecServiceDiscoveryDnsArgs
-///                 {
-///                     Hostname = "serviceb.simpleapp.local",
-///                 },
-///             },
-///             Logging = new Aws.AppMesh.Inputs.VirtualNodeSpecLoggingArgs
-///             {
-///                 AccessLog = new Aws.AppMesh.Inputs.VirtualNodeSpecLoggingAccessLogArgs
-///                 {
-///                     File = new Aws.AppMesh.Inputs.VirtualNodeSpecLoggingAccessLogFileArgs
-///                     {
-///                         Path = "/dev/stdout",
-///                     },
-///                 },
-///             },
 ///         },
+///         Name = "serviceBv1",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -1016,9 +1016,19 @@ import 'virtual_node_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
-/// 			Name:     pulumi.String("serviceBv1"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualNodeSpecArgs{
+/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
+/// 					Dns: &appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs{
+/// 						Hostname: pulumi.String("serviceb.simpleapp.local"),
+/// 					},
+/// 				},
+/// 				Logging: &appmesh.VirtualNodeSpecLoggingArgs{
+/// 					AccessLog: &appmesh.VirtualNodeSpecLoggingAccessLogArgs{
+/// 						File: &appmesh.VirtualNodeSpecLoggingAccessLogFileArgs{
+/// 							Path: pulumi.String("/dev/stdout"),
+/// 						},
+/// 					},
+/// 				},
 /// 				Backends: appmesh.VirtualNodeSpecBackendArray{
 /// 					&appmesh.VirtualNodeSpecBackendArgs{
 /// 						VirtualService: &appmesh.VirtualNodeSpecBackendVirtualServiceArgs{
@@ -1034,19 +1044,9 @@ import 'virtual_node_state.dart';
 /// 						},
 /// 					},
 /// 				},
-/// 				ServiceDiscovery: &appmesh.VirtualNodeSpecServiceDiscoveryArgs{
-/// 					Dns: &appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs{
-/// 						Hostname: pulumi.String("serviceb.simpleapp.local"),
-/// 					},
-/// 				},
-/// 				Logging: &appmesh.VirtualNodeSpecLoggingArgs{
-/// 					AccessLog: &appmesh.VirtualNodeSpecLoggingAccessLogArgs{
-/// 						File: &appmesh.VirtualNodeSpecLoggingAccessLogFileArgs{
-/// 							Path: pulumi.String("/dev/stdout"),
-/// 						},
-/// 					},
-/// 				},
 /// 			},
+/// 			Name:     pulumi.String("serviceBv1"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1065,20 +1065,7 @@ import 'virtual_node_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   name      = "serviceBv1"
-///   mesh_name = simple.id
 ///   spec = {
-///     backends = [{
-///       "virtualService" = {
-///         "virtualServiceName" = "servicea.simpleapp.local"
-///       }
-///     }]
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
-///       }
-///     }]
 ///     service_discovery = {
 ///       dns = {
 ///         hostname = "serviceb.simpleapp.local"
@@ -1091,7 +1078,20 @@ import 'virtual_node_state.dart';
 ///         }
 ///       }
 ///     }
+///     backends = [{
+///       "virtualService" = {
+///         "virtualServiceName" = "servicea.simpleapp.local"
+///       }
+///     }]
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///     }]
 ///   }
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -1103,15 +1103,15 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecLoggingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecLoggingAccessLogArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecLoggingAccessLogFileArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1126,20 +1126,7 @@ import 'virtual_node_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb1 = new VirtualNode("serviceb1", VirtualNodeArgs.builder()
-///             .name("serviceBv1")
-///             .meshName(simple.id())
 ///             .spec(VirtualNodeSpecArgs.builder()
-///                 .backends(VirtualNodeSpecBackendArgs.builder()
-///                     .virtualService(VirtualNodeSpecBackendVirtualServiceArgs.builder()
-///                         .virtualServiceName("servicea.simpleapp.local")
-///                         .build())
-///                     .build())
-///                 .listeners(VirtualNodeSpecListenerArgs.builder()
-///                     .portMapping(VirtualNodeSpecListenerPortMappingArgs.builder()
-///                         .port(8080)
-///                         .protocol("http")
-///                         .build())
-///                     .build())
 ///                 .serviceDiscovery(VirtualNodeSpecServiceDiscoveryArgs.builder()
 ///                     .dns(VirtualNodeSpecServiceDiscoveryDnsArgs.builder()
 ///                         .hostname("serviceb.simpleapp.local")
@@ -1152,7 +1139,20 @@ import 'virtual_node_state.dart';
 ///                             .build())
 ///                         .build())
 ///                     .build())
+///                 .backends(VirtualNodeSpecBackendArgs.builder()
+///                     .virtualService(VirtualNodeSpecBackendVirtualServiceArgs.builder()
+///                         .virtualServiceName("servicea.simpleapp.local")
+///                         .build())
+///                     .build())
+///                 .listeners(VirtualNodeSpecListenerArgs.builder()
+///                     .portMapping(VirtualNodeSpecListenerPortMappingArgs.builder()
+///                         .port(8080)
+///                         .protocol("http")
+///                         .build())
+///                     .build())
 ///                 .build())
+///             .name("serviceBv1")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -1163,16 +1163,7 @@ import 'virtual_node_state.dart';
 ///   serviceb1:
 ///     type: aws:appmesh:VirtualNode
 ///     properties:
-///       name: serviceBv1
-///       meshName: ${simple.id}
 ///       spec:
-///         backends:
-///           - virtualService:
-///               virtualServiceName: servicea.simpleapp.local
-///         listeners:
-///           - portMapping:
-///               port: 8080
-///               protocol: http
 ///         serviceDiscovery:
 ///           dns:
 ///             hostname: serviceb.simpleapp.local
@@ -1180,6 +1171,15 @@ import 'virtual_node_state.dart';
 ///           accessLog:
 ///             file:
 ///               path: /dev/stdout
+///         backends:
+///           - virtualService:
+///               virtualServiceName: servicea.simpleapp.local
+///         listeners:
+///           - portMapping:
+///               port: 8080
+///               protocol: http
+///       name: serviceBv1
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -1226,7 +1226,7 @@ class VirtualNode extends pulumi.CustomResource {
           'aws:appmesh/virtualNode:VirtualNode',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -1237,8 +1237,8 @@ class VirtualNode extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualNodeSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNodeSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualNode] resource's state with the given [name] and [id].
@@ -1246,11 +1246,12 @@ class VirtualNode extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNodeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNode._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1273,7 +1274,29 @@ class VirtualNode extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualNodeSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNodeSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualNode] resource.
+  VirtualNode.reference(String urn)
+    : super(
+        'aws:appmesh/virtualNode:VirtualNode',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshName = registerOutput<String>('meshName');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<VirtualNodeSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNodeSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

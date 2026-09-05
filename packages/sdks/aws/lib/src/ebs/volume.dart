@@ -168,7 +168,7 @@ class Volume extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyId;
   /// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported on `io1` and `io2` volumes.
   late final pulumi.Output<bool?> multiAttachEnabled;
-  /// Amazon Resource Name (ARN) of the Outpost.
+  /// ARN of the Outpost.
   late final pulumi.Output<String?> outpostArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -203,7 +203,7 @@ class Volume extends pulumi.CustomResource {
           'aws:ebs/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
@@ -217,8 +217,8 @@ class Volume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String>('snapshotId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughput = registerOutput<int>('throughput');
     type = registerOutput<String>('type');
     volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');
@@ -229,11 +229,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,8 +260,36 @@ class Volume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String>('snapshotId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughput = registerOutput<int>('throughput');
+    type = registerOutput<String>('type');
+    volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'aws:ebs/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    createTime = registerOutput<String>('createTime');
+    encrypted = registerOutput<bool>('encrypted');
+    finalSnapshot = registerOutput<bool?>('finalSnapshot');
+    iops = registerOutput<int>('iops');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    multiAttachEnabled = registerOutput<bool?>('multiAttachEnabled');
+    outpostArn = registerOutput<String?>('outpostArn');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughput = registerOutput<int>('throughput');
     type = registerOutput<String>('type');
     volumeInitializationRate = registerOutput<int?>('volumeInitializationRate');

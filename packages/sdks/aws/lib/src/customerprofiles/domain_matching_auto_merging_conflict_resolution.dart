@@ -6,7 +6,7 @@ class DomainMatchingAutoMergingConflictResolution {
   /// How the auto-merging process should resolve conflicts between different profiles. Valid values are `RECENCY` and `SOURCE`
   final pulumi.Input<String> conflictResolvingModel;
   /// The `ObjectType` name that is used to resolve profile merging conflicts when choosing `SOURCE` as the `ConflictResolvingModel`.
-  final pulumi.Input<String>? sourceName;
+  final pulumi.Input<String?>? sourceName;
 
   /// Creates a new [DomainMatchingAutoMergingConflictResolution].
   /// [conflictResolvingModel] How the auto-merging process should resolve conflicts between different profiles. Valid values are `RECENCY` and `SOURCE`

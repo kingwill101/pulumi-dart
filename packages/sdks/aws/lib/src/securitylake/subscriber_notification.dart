@@ -15,10 +15,10 @@ import 'subscriber_notification_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.SubscriberNotification("example", {
-///     subscriberId: exampleAwsSecuritylakeSubscriber.id,
 ///     configuration: {
 ///         sqsNotificationConfiguration: {},
 ///     },
+///     subscriberId: exampleAwsSecuritylakeSubscriber.id,
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'subscriber_notification_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.SubscriberNotification("example",
-///     subscriber_id=example_aws_securitylake_subscriber["id"],
 ///     configuration={
 ///         "sqs_notification_configuration": {},
-///     })
+///     },
+///     subscriber_id=example_aws_securitylake_subscriber["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,11 +41,11 @@ import 'subscriber_notification_state.dart';
 /// {
 ///     var example = new Aws.SecurityLake.SubscriberNotification("example", new()
 ///     {
-///         SubscriberId = exampleAwsSecuritylakeSubscriber.Id,
 ///         Configuration = new Aws.SecurityLake.Inputs.SubscriberNotificationConfigurationArgs
 ///         {
 ///             SqsNotificationConfiguration = null,
 ///         },
+///         SubscriberId = exampleAwsSecuritylakeSubscriber.Id,
 ///     });
 ///
 /// });
@@ -61,10 +61,10 @@ import 'subscriber_notification_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewSubscriberNotification(ctx, "example", &securitylake.SubscriberNotificationArgs{
-/// 			SubscriberId: pulumi.Any(exampleAwsSecuritylakeSubscriber.Id),
 /// 			Configuration: &securitylake.SubscriberNotificationConfigurationArgs{
 /// 				SqsNotificationConfiguration: &securitylake.SubscriberNotificationConfigurationSqsNotificationConfigurationArgs{},
 /// 			},
+/// 			SubscriberId: pulumi.Any(exampleAwsSecuritylakeSubscriber.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,10 +83,10 @@ import 'subscriber_notification_state.dart';
 /// }
 ///
 /// resource "aws_securitylake_subscribernotification" "example" {
-///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
 ///   configuration = {
 ///     sqs_notification_configuration = {}
 ///   }
+///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
 /// }
 /// ```
 /// ```java
@@ -113,11 +113,11 @@ import 'subscriber_notification_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SubscriberNotification("example", SubscriberNotificationArgs.builder()
-///             .subscriberId(exampleAwsSecuritylakeSubscriber.id())
 ///             .configuration(SubscriberNotificationConfigurationArgs.builder()
 ///                 .sqsNotificationConfiguration(SubscriberNotificationConfigurationSqsNotificationConfigurationArgs.builder()
 ///                     .build())
 ///                 .build())
+///             .subscriberId(exampleAwsSecuritylakeSubscriber.id())
 ///             .build());
 ///
 ///     }
@@ -128,9 +128,9 @@ import 'subscriber_notification_state.dart';
 ///   example:
 ///     type: aws:securitylake:SubscriberNotification
 ///     properties:
-///       subscriberId: ${exampleAwsSecuritylakeSubscriber.id}
 ///       configuration:
 ///         sqsNotificationConfiguration: {}
+///       subscriberId: ${exampleAwsSecuritylakeSubscriber.id}
 /// ```
 ///
 ///
@@ -142,13 +142,13 @@ import 'subscriber_notification_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.SubscriberNotification("example", {
-///     subscriberId: exampleAwsSecuritylakeSubscriber.id,
 ///     configuration: {
 ///         httpsNotificationConfiguration: {
 ///             endpoint: test.apiEndpoint,
 ///             targetRoleArn: eventBridge.arn,
 ///         },
 ///     },
+///     subscriberId: exampleAwsSecuritylakeSubscriber.id,
 /// });
 /// ```
 /// ```python
@@ -156,13 +156,13 @@ import 'subscriber_notification_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.SubscriberNotification("example",
-///     subscriber_id=example_aws_securitylake_subscriber["id"],
 ///     configuration={
 ///         "https_notification_configuration": {
 ///             "endpoint": test["apiEndpoint"],
 ///             "target_role_arn": event_bridge["arn"],
 ///         },
-///     })
+///     },
+///     subscriber_id=example_aws_securitylake_subscriber["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,7 +174,6 @@ import 'subscriber_notification_state.dart';
 /// {
 ///     var example = new Aws.SecurityLake.SubscriberNotification("example", new()
 ///     {
-///         SubscriberId = exampleAwsSecuritylakeSubscriber.Id,
 ///         Configuration = new Aws.SecurityLake.Inputs.SubscriberNotificationConfigurationArgs
 ///         {
 ///             HttpsNotificationConfiguration = new Aws.SecurityLake.Inputs.SubscriberNotificationConfigurationHttpsNotificationConfigurationArgs
@@ -183,6 +182,7 @@ import 'subscriber_notification_state.dart';
 ///                 TargetRoleArn = eventBridge.Arn,
 ///             },
 ///         },
+///         SubscriberId = exampleAwsSecuritylakeSubscriber.Id,
 ///     });
 ///
 /// });
@@ -198,13 +198,13 @@ import 'subscriber_notification_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewSubscriberNotification(ctx, "example", &securitylake.SubscriberNotificationArgs{
-/// 			SubscriberId: pulumi.Any(exampleAwsSecuritylakeSubscriber.Id),
 /// 			Configuration: &securitylake.SubscriberNotificationConfigurationArgs{
 /// 				HttpsNotificationConfiguration: &securitylake.SubscriberNotificationConfigurationHttpsNotificationConfigurationArgs{
 /// 					Endpoint:      pulumi.Any(test.ApiEndpoint),
 /// 					TargetRoleArn: pulumi.Any(eventBridge.Arn),
 /// 				},
 /// 			},
+/// 			SubscriberId: pulumi.Any(exampleAwsSecuritylakeSubscriber.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -223,13 +223,13 @@ import 'subscriber_notification_state.dart';
 /// }
 ///
 /// resource "aws_securitylake_subscribernotification" "example" {
-///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
 ///   configuration = {
 ///     https_notification_configuration = {
 ///       endpoint        = test.apiEndpoint
 ///       target_role_arn = eventBridge.arn
 ///     }
 ///   }
+///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
 /// }
 /// ```
 /// ```java
@@ -256,13 +256,13 @@ import 'subscriber_notification_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SubscriberNotification("example", SubscriberNotificationArgs.builder()
-///             .subscriberId(exampleAwsSecuritylakeSubscriber.id())
 ///             .configuration(SubscriberNotificationConfigurationArgs.builder()
 ///                 .httpsNotificationConfiguration(SubscriberNotificationConfigurationHttpsNotificationConfigurationArgs.builder()
 ///                     .endpoint(test.apiEndpoint())
 ///                     .targetRoleArn(eventBridge.arn())
 ///                     .build())
 ///                 .build())
+///             .subscriberId(exampleAwsSecuritylakeSubscriber.id())
 ///             .build());
 ///
 ///     }
@@ -273,11 +273,11 @@ import 'subscriber_notification_state.dart';
 ///   example:
 ///     type: aws:securitylake:SubscriberNotification
 ///     properties:
-///       subscriberId: ${exampleAwsSecuritylakeSubscriber.id}
 ///       configuration:
 ///         httpsNotificationConfiguration:
 ///           endpoint: ${test.apiEndpoint}
 ///           targetRoleArn: ${eventBridge.arn}
+///       subscriberId: ${exampleAwsSecuritylakeSubscriber.id}
 /// ```
 class SubscriberNotification extends pulumi.CustomResource {
   /// Specify the configuration using which you want to create the subscriber notification..
@@ -303,7 +303,7 @@ class SubscriberNotification extends pulumi.CustomResource {
           'aws:securitylake/subscriberNotification:SubscriberNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configuration = registerOutput<SubscriberNotificationConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointId = registerOutput<String>('endpointId');
@@ -317,11 +317,12 @@ class SubscriberNotification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriberNotificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriberNotification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,6 +336,22 @@ class SubscriberNotification extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configuration = registerOutput<SubscriberNotificationConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointId = registerOutput<String>('endpointId');
+    region = registerOutput<String>('region');
+    subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
+    subscriberId = registerOutput<String>('subscriberId');
+  }
+
+  /// Creates a typed reference to an existing [SubscriberNotification] resource.
+  SubscriberNotification.reference(String urn)
+    : super(
+        'aws:securitylake/subscriberNotification:SubscriberNotification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configuration = registerOutput<SubscriberNotificationConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointId = registerOutput<String>('endpointId');
     region = registerOutput<String>('region');

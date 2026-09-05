@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration {
-  final pulumi.Input<String>? cmkArn;
-  final pulumi.Input<bool>? encrypted;
+  final pulumi.Input<String?>? cmkArn;
+  final pulumi.Input<bool?>? encrypted;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration].
   /// [cmkArn] Optional.

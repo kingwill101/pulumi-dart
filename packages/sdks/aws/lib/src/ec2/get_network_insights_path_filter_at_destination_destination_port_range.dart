@@ -23,8 +23,8 @@ class GetNetworkInsightsPathFilterAtDestinationDestinationPortRange {
 
   factory GetNetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathFilterAtDestinationDestinationPortRange(
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
     );
   }
 }

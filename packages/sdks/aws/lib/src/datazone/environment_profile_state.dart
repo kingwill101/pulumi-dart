@@ -6,29 +6,29 @@ import 'environment_profile_user_parameter.dart';
 /// Input properties used for looking up and filtering EnvironmentProfile resources.
 class EnvironmentProfileState {
   /// Id of the AWS account being used.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Desired region for environment profile.
-  final pulumi.Input<String>? awsAccountRegion;
+  final pulumi.Input<String?>? awsAccountRegion;
   /// Creation time of environment profile.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Creator of environment profile.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Description of environment profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Domain Identifier for environment profile.
-  final pulumi.Input<String>? domainIdentifier;
+  final pulumi.Input<String?>? domainIdentifier;
   /// ID of the blueprint which the environment will be created with.
-  final pulumi.Input<String>? environmentBlueprintIdentifier;
+  final pulumi.Input<String?>? environmentBlueprintIdentifier;
   /// Name of the environment profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Project identifier for environment profile.
-  final pulumi.Input<String>? projectIdentifier;
+  final pulumi.Input<String?>? projectIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Time of last update to environment profile.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// Array of user parameters of the environment profile with the following attributes:
-  final pulumi.Input<List<EnvironmentProfileUserParameter>>? userParameters;
+  final pulumi.Input<List<EnvironmentProfileUserParameter>?>? userParameters;
 
   /// Creates a new [EnvironmentProfileState].
   /// [awsAccountId] Id of the AWS account being used.

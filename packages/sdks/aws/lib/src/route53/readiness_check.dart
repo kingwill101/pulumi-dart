@@ -147,13 +147,13 @@ class ReadinessCheck extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     readinessCheckName = registerOutput<String>('readinessCheckName');
     resourceSetName = registerOutput<String>('resourceSetName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ReadinessCheck] resource's state with the given [name] and [id].
@@ -161,11 +161,12 @@ class ReadinessCheck extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReadinessCheckState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReadinessCheck._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -182,7 +183,23 @@ class ReadinessCheck extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     readinessCheckName = registerOutput<String>('readinessCheckName');
     resourceSetName = registerOutput<String>('resourceSetName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ReadinessCheck] resource.
+  ReadinessCheck.reference(String urn)
+    : super(
+        'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    readinessCheckName = registerOutput<String>('readinessCheckName');
+    resourceSetName = registerOutput<String>('resourceSetName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

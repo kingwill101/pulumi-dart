@@ -19,7 +19,7 @@ class GetDevEnvironmentPersistentStorage {
 
   factory GetDevEnvironmentPersistentStorage.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentPersistentStorage(
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

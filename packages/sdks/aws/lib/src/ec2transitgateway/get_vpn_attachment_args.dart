@@ -9,15 +9,15 @@ import 'get_vpn_attachment_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_vpn_attachment_get_vpn_attachment_args_doc}
 class GetVpnAttachmentArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetVpnAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetVpnAttachmentFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the EC2 Transit Gateway.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
   /// Identifier of the EC2 VPN Connection.
-  final pulumi.Input<String>? vpnConnectionId;
+  final pulumi.Input<String?>? vpnConnectionId;
 
   /// Creates a new [GetVpnAttachmentArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

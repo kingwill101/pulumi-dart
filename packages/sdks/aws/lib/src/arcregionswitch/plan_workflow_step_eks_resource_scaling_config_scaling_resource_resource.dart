@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
   /// Name of the Horizontal Pod Autoscaler.
-  final pulumi.Input<String>? hpaName;
+  final pulumi.Input<String?>? hpaName;
   /// Name of the Kubernetes object.
   final pulumi.Input<String> name;
   /// Kubernetes namespace.

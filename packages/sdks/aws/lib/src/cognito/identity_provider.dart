@@ -262,11 +262,11 @@ class IdentityProvider extends pulumi.CustomResource {
           'aws:cognito/identityProvider:IdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
-    idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers');
-    providerDetails = registerOutput<Map<String, String>>('providerDetails');
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerDetails = registerOutput<Map<String, String>>('providerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     providerName = registerOutput<String>('providerName');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
@@ -278,11 +278,12 @@ class IdentityProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,9 +297,27 @@ class IdentityProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
-    idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers');
-    providerDetails = registerOutput<Map<String, String>>('providerDetails');
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerDetails = registerOutput<Map<String, String>>('providerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    providerName = registerOutput<String>('providerName');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProvider] resource.
+  IdentityProvider.reference(String urn)
+    : super(
+        'aws:cognito/identityProvider:IdentityProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerDetails = registerOutput<Map<String, String>>('providerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     providerName = registerOutput<String>('providerName');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');

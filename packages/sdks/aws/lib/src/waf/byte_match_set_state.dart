@@ -5,17 +5,17 @@ import 'byte_match_set_byte_match_tuple.dart';
 
 /// Input properties used for looking up and filtering ByteMatchSet resources.
 class ByteMatchSetState {
-  /// Amazon Resource Name (ARN) of the byte match set.
-  final pulumi.Input<String>? arn;
+  /// ARN of the byte match set.
+  final pulumi.Input<String?>? arn;
   /// Specifies the bytes (typically a string that corresponds
   /// with ASCII characters) that you want to search for in web requests,
   /// the location in requests that you want to search, and other settings.
-  final pulumi.Input<List<ByteMatchSetByteMatchTuple>>? byteMatchTuples;
+  final pulumi.Input<List<ByteMatchSetByteMatchTuple>?>? byteMatchTuples;
   /// The name or description of the Byte Match Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ByteMatchSetState].
-  /// [arn] Amazon Resource Name (ARN) of the byte match set.
+  /// [arn] ARN of the byte match set.
   /// [byteMatchTuples] Specifies the bytes (typically a string that corresponds
   /// [name] The name or description of the Byte Match Set.
   const ByteMatchSetState({

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CaCertificateValidity {
   /// The certificate is not valid after this date.
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// The certificate is not valid before this date.
-  final pulumi.Input<String>? notBefore;
+  final pulumi.Input<String?>? notBefore;
 
   /// Creates a new [CaCertificateValidity].
   /// [notAfter] The certificate is not valid after this date.

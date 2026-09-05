@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
   /// Boolean flag to indicate if the certificate should be active
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// The ARN of the created certificate.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The certificate ID of the CA certificate used to sign the certificate.
-  final pulumi.Input<String>? caCertificateId;
+  final pulumi.Input<String?>? caCertificateId;
   /// The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
-  final pulumi.Input<String>? caPem;
+  final pulumi.Input<String?>? caPem;
   /// The certificate to be registered. If `caPem` is unspecified, review
   /// [RegisterCertificateWithoutCA](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificateWithoutCA.html).
   /// If `caPem` is specified, review
   /// [RegisterCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificate.html)
   /// for more information on registering a certificate.
-  final pulumi.Input<String>? certificatePem;
+  final pulumi.Input<String?>? certificatePem;
   /// The certificate signing request. Review
   /// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
   /// for more information on generating a certificate from a certificate signing request (CSR).
   /// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
   /// for more information on generating keys and a certificate.
-  final pulumi.Input<String>? csr;
+  final pulumi.Input<String?>? csr;
   /// When neither CSR nor certificate is provided, the private key.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// When neither CSR nor certificate is provided, the public key.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [CertificateState].
   /// [active] Boolean flag to indicate if the certificate should be active

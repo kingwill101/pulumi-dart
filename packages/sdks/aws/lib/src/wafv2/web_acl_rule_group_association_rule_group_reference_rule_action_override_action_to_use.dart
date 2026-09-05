@@ -9,15 +9,15 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUse {
   /// Allow the request. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow>? allow;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow?>? allow;
   /// Block the request. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock>? block;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock?>? block;
   /// Require CAPTCHA verification. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha>? captcha;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha?>? captcha;
   /// Require challenge verification. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge>? challenge;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge?>? challenge;
   /// Count the request without taking action. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCount>? count;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCount?>? count;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUse].
   /// [allow] Allow the request. See below.

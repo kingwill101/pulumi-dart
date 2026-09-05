@@ -6,7 +6,7 @@ class ClusterParameterGroupParameter {
   /// "immediate" (default), or "pending-reboot". Some
   /// engines can't apply some parameters without a reboot, and you will need to
   /// specify "pending-reboot" here.
-  final pulumi.Input<String>? applyMethod;
+  final pulumi.Input<String?>? applyMethod;
   /// The name of the DB parameter.
   final pulumi.Input<String> name;
   /// The value of the DB parameter.

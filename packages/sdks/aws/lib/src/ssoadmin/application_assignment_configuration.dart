@@ -127,7 +127,7 @@ import 'application_assignment_configuration_state.dart';
 ///
 /// #### Required
 ///
-/// - `applicationArn` (String) Amazon Resource Name (ARN) of the SSO application.
+/// - `applicationArn` (String) ARN of the SSO application.
 ///
 /// #### Optional
 ///
@@ -159,7 +159,7 @@ class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
           'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     assignmentRequired = registerOutput<bool>('assignmentRequired');
@@ -171,11 +171,12 @@ class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationAssignmentConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationAssignmentConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -189,6 +190,20 @@ class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationArn = registerOutput<String>('applicationArn');
+    assignmentRequired = registerOutput<bool>('assignmentRequired');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationAssignmentConfiguration] resource.
+  ApplicationAssignmentConfiguration.reference(String urn)
+    : super(
+        'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationArn = registerOutput<String>('applicationArn');
     assignmentRequired = registerOutput<bool>('assignmentRequired');
     region = registerOutput<String>('region');

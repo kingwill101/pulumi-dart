@@ -6,11 +6,11 @@ import 'telemetry_rule_for_organization_rule_destination_configuration_waf_loggi
 
 class TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParameters {
   /// Type of WAF logs to collect (currently `WAF_LOGS`).
-  final pulumi.Input<String>? logType;
+  final pulumi.Input<String?>? logType;
   /// Filter configuration that determines which WAF log records to include or exclude. See `loggingFilter` below.
-  final pulumi.Input<TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersLoggingFilter>? loggingFilter;
+  final pulumi.Input<TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersLoggingFilter?>? loggingFilter;
   /// List of fields to redact from WAF logs. See `redactedFields` below.
-  final pulumi.Input<List<TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersRedactedField>>? redactedFields;
+  final pulumi.Input<List<TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersRedactedField>?>? redactedFields;
 
   /// Creates a new [TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParameters].
   /// [logType] Type of WAF logs to collect (currently `WAF_LOGS`).

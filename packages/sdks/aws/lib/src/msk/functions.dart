@@ -132,6 +132,17 @@ Future<GetBootstrapBrokersResult> getBootstrapBrokers(
   return GetBootstrapBrokersResult.fromMap(result);
 }
 
+pulumi.Output<GetBootstrapBrokersResult> getBootstrapBrokersOutput(
+  GetBootstrapBrokersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getBootstrapBrokers:getBootstrapBrokers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBootstrapBrokersResult.fromMap);
+}
+
 /// Get information on an Amazon MSK Broker Nodes.
 ///
 /// ## Example Usage
@@ -248,6 +259,17 @@ Future<GetBrokerNodesResult> getBrokerNodes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBrokerNodesResult.fromMap(result);
+}
+
+pulumi.Output<GetBrokerNodesResult> getBrokerNodesOutput(
+  GetBrokerNodesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getBrokerNodes:getBrokerNodes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerNodesResult.fromMap);
 }
 
 /// Get information on an Amazon MSK Cluster.
@@ -370,6 +392,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Get information on an Amazon MSK Configuration.
 ///
 /// ## Example Usage
@@ -486,6 +519,17 @@ Future<GetConfigurationResult> getConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getConfiguration:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
 }
 
 /// Get information on a Amazon MSK Kafka Version
@@ -656,6 +700,17 @@ Future<GetKafkaVersionResult> getKafkaVersion(
   return GetKafkaVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetKafkaVersionResult> getKafkaVersionOutput(
+  GetKafkaVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getKafkaVersion:getKafkaVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKafkaVersionResult.fromMap);
+}
+
 /// Get information on an Amazon MSK Topic.
 ///
 /// ## Example Usage
@@ -781,6 +836,17 @@ Future<GetTopicResult> getTopic(
   return GetTopicResult.fromMap(result);
 }
 
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getTopic:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
+}
+
 /// Get information on an Amazon MSK VPC Connection.
 ///
 /// ## Example Usage
@@ -897,4 +963,15 @@ Future<GetVpcConnectionResult> getVpcConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetVpcConnectionResult> getVpcConnectionOutput(
+  GetVpcConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:msk/getVpcConnection:getVpcConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcConnectionResult.fromMap);
 }

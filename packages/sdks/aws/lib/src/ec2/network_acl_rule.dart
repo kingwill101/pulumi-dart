@@ -268,7 +268,7 @@ class NetworkAclRule extends pulumi.CustomResource {
           'aws:ec2/networkAclRule:NetworkAclRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidrBlock = registerOutput<String?>('cidrBlock');
     egress = registerOutput<bool?>('egress');
@@ -289,11 +289,12 @@ class NetworkAclRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkAclRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkAclRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,29 @@ class NetworkAclRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cidrBlock = registerOutput<String?>('cidrBlock');
+    egress = registerOutput<bool?>('egress');
+    fromPort = registerOutput<int?>('fromPort');
+    icmpCode = registerOutput<int?>('icmpCode');
+    icmpType = registerOutput<int?>('icmpType');
+    ipv6CidrBlock = registerOutput<String?>('ipv6CidrBlock');
+    networkAclId = registerOutput<String>('networkAclId');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    ruleAction = registerOutput<String>('ruleAction');
+    ruleNumber = registerOutput<int>('ruleNumber');
+    toPort = registerOutput<int?>('toPort');
+  }
+
+  /// Creates a typed reference to an existing [NetworkAclRule] resource.
+  NetworkAclRule.reference(String urn)
+    : super(
+        'aws:ec2/networkAclRule:NetworkAclRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cidrBlock = registerOutput<String?>('cidrBlock');
     egress = registerOutput<bool?>('egress');
     fromPort = registerOutput<int?>('fromPort');

@@ -34,14 +34,14 @@ import 'permissions_boundary_attachment_state.dart';
 ///     }),
 /// });
 /// const examplePermissionsBoundaryAttachment = new aws.ssoadmin.PermissionsBoundaryAttachment("example", {
-///     instanceArn: examplePermissionSet.instanceArn,
-///     permissionSetArn: examplePermissionSet.arn,
 ///     permissionsBoundary: {
 ///         customerManagedPolicyReference: {
 ///             name: examplePolicy.name,
 ///             path: "/",
 ///         },
 ///     },
+///     instanceArn: examplePermissionSet.instanceArn,
+///     permissionSetArn: examplePermissionSet.arn,
 /// });
 /// ```
 /// ```python
@@ -65,14 +65,14 @@ import 'permissions_boundary_attachment_state.dart';
 ///         }],
 ///     }))
 /// example_permissions_boundary_attachment = aws.ssoadmin.PermissionsBoundaryAttachment("example",
-///     instance_arn=example_permission_set.instance_arn,
-///     permission_set_arn=example_permission_set.arn,
 ///     permissions_boundary={
 ///         "customer_managed_policy_reference": {
 ///             "name": example_policy.name,
 ///             "path": "/",
 ///         },
-///     })
+///     },
+///     instance_arn=example_permission_set.instance_arn,
+///     permission_set_arn=example_permission_set.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -115,8 +115,6 @@ import 'permissions_boundary_attachment_state.dart';
 ///
 ///     var examplePermissionsBoundaryAttachment = new Aws.SsoAdmin.PermissionsBoundaryAttachment("example", new()
 ///     {
-///         InstanceArn = examplePermissionSet.InstanceArn,
-///         PermissionSetArn = examplePermissionSet.Arn,
 ///         PermissionsBoundary = new Aws.SsoAdmin.Inputs.PermissionsBoundaryAttachmentPermissionsBoundaryArgs
 ///         {
 ///             CustomerManagedPolicyReference = new Aws.SsoAdmin.Inputs.PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReferenceArgs
@@ -125,6 +123,8 @@ import 'permissions_boundary_attachment_state.dart';
 ///                 Path = "/",
 ///             },
 ///         },
+///         InstanceArn = examplePermissionSet.InstanceArn,
+///         PermissionSetArn = examplePermissionSet.Arn,
 ///     });
 ///
 /// });
@@ -178,14 +178,14 @@ import 'permissions_boundary_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssoadmin.NewPermissionsBoundaryAttachment(ctx, "example", &ssoadmin.PermissionsBoundaryAttachmentArgs{
-/// 			InstanceArn:      examplePermissionSet.InstanceArn,
-/// 			PermissionSetArn: examplePermissionSet.Arn,
 /// 			PermissionsBoundary: &ssoadmin.PermissionsBoundaryAttachmentPermissionsBoundaryArgs{
 /// 				CustomerManagedPolicyReference: &ssoadmin.PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReferenceArgs{
 /// 					Name: examplePolicy.Name,
 /// 					Path: pulumi.String("/"),
 /// 				},
 /// 			},
+/// 			InstanceArn:      examplePermissionSet.InstanceArn,
+/// 			PermissionSetArn: examplePermissionSet.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -223,14 +223,14 @@ import 'permissions_boundary_attachment_state.dart';
 ///   })
 /// }
 /// resource "aws_ssoadmin_permissionsboundaryattachment" "example" {
-///   instance_arn       = aws_ssoadmin_permissionset.example.instance_arn
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
 ///   permissions_boundary = {
 ///     customer_managed_policy_reference = {
 ///       name = aws_iam_policy.example.name
 ///       path = "/"
 ///     }
 ///   }
+///   instance_arn       = aws_ssoadmin_permissionset.example.instance_arn
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
 /// }
 /// ```
 /// ```java
@@ -286,14 +286,14 @@ import 'permissions_boundary_attachment_state.dart';
 ///             .build());
 ///
 ///         var examplePermissionsBoundaryAttachment = new PermissionsBoundaryAttachment("examplePermissionsBoundaryAttachment", PermissionsBoundaryAttachmentArgs.builder()
-///             .instanceArn(examplePermissionSet.instanceArn())
-///             .permissionSetArn(examplePermissionSet.arn())
 ///             .permissionsBoundary(PermissionsBoundaryAttachmentPermissionsBoundaryArgs.builder()
 ///                 .customerManagedPolicyReference(PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReferenceArgs.builder()
 ///                     .name(examplePolicy.name())
 ///                     .path("/")
 ///                     .build())
 ///                 .build())
+///             .instanceArn(examplePermissionSet.instanceArn())
+///             .permissionSetArn(examplePermissionSet.arn())
 ///             .build());
 ///
 ///     }
@@ -325,12 +325,12 @@ import 'permissions_boundary_attachment_state.dart';
 ///     type: aws:ssoadmin:PermissionsBoundaryAttachment
 ///     name: example
 ///     properties:
-///       instanceArn: ${examplePermissionSet.instanceArn}
-///       permissionSetArn: ${examplePermissionSet.arn}
 ///       permissionsBoundary:
 ///         customerManagedPolicyReference:
 ///           name: ${examplePolicy.name}
 ///           path: /
+///       instanceArn: ${examplePermissionSet.instanceArn}
+///       permissionSetArn: ${examplePermissionSet.arn}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -347,11 +347,11 @@ import 'permissions_boundary_attachment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssoadmin.PermissionsBoundaryAttachment("example", {
-///     instanceArn: exampleAwsSsoadminPermissionSet.instanceArn,
-///     permissionSetArn: exampleAwsSsoadminPermissionSet.arn,
 ///     permissionsBoundary: {
 ///         managedPolicyArn: "arn:aws:iam::aws:policy/ReadOnlyAccess",
 ///     },
+///     instanceArn: exampleAwsSsoadminPermissionSet.instanceArn,
+///     permissionSetArn: exampleAwsSsoadminPermissionSet.arn,
 /// });
 /// ```
 /// ```python
@@ -359,11 +359,11 @@ import 'permissions_boundary_attachment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssoadmin.PermissionsBoundaryAttachment("example",
-///     instance_arn=example_aws_ssoadmin_permission_set["instanceArn"],
-///     permission_set_arn=example_aws_ssoadmin_permission_set["arn"],
 ///     permissions_boundary={
 ///         "managed_policy_arn": "arn:aws:iam::aws:policy/ReadOnlyAccess",
-///     })
+///     },
+///     instance_arn=example_aws_ssoadmin_permission_set["instanceArn"],
+///     permission_set_arn=example_aws_ssoadmin_permission_set["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -375,12 +375,12 @@ import 'permissions_boundary_attachment_state.dart';
 /// {
 ///     var example = new Aws.SsoAdmin.PermissionsBoundaryAttachment("example", new()
 ///     {
-///         InstanceArn = exampleAwsSsoadminPermissionSet.InstanceArn,
-///         PermissionSetArn = exampleAwsSsoadminPermissionSet.Arn,
 ///         PermissionsBoundary = new Aws.SsoAdmin.Inputs.PermissionsBoundaryAttachmentPermissionsBoundaryArgs
 ///         {
 ///             ManagedPolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess",
 ///         },
+///         InstanceArn = exampleAwsSsoadminPermissionSet.InstanceArn,
+///         PermissionSetArn = exampleAwsSsoadminPermissionSet.Arn,
 ///     });
 ///
 /// });
@@ -396,11 +396,11 @@ import 'permissions_boundary_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssoadmin.NewPermissionsBoundaryAttachment(ctx, "example", &ssoadmin.PermissionsBoundaryAttachmentArgs{
-/// 			InstanceArn:      pulumi.Any(exampleAwsSsoadminPermissionSet.InstanceArn),
-/// 			PermissionSetArn: pulumi.Any(exampleAwsSsoadminPermissionSet.Arn),
 /// 			PermissionsBoundary: &ssoadmin.PermissionsBoundaryAttachmentPermissionsBoundaryArgs{
 /// 				ManagedPolicyArn: pulumi.String("arn:aws:iam::aws:policy/ReadOnlyAccess"),
 /// 			},
+/// 			InstanceArn:      pulumi.Any(exampleAwsSsoadminPermissionSet.InstanceArn),
+/// 			PermissionSetArn: pulumi.Any(exampleAwsSsoadminPermissionSet.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -419,11 +419,11 @@ import 'permissions_boundary_attachment_state.dart';
 /// }
 ///
 /// resource "aws_ssoadmin_permissionsboundaryattachment" "example" {
-///   instance_arn       = exampleAwsSsoadminPermissionSet.instanceArn
-///   permission_set_arn = exampleAwsSsoadminPermissionSet.arn
 ///   permissions_boundary = {
 ///     managed_policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 ///   }
+///   instance_arn       = exampleAwsSsoadminPermissionSet.instanceArn
+///   permission_set_arn = exampleAwsSsoadminPermissionSet.arn
 /// }
 /// ```
 /// ```java
@@ -449,11 +449,11 @@ import 'permissions_boundary_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PermissionsBoundaryAttachment("example", PermissionsBoundaryAttachmentArgs.builder()
-///             .instanceArn(exampleAwsSsoadminPermissionSet.instanceArn())
-///             .permissionSetArn(exampleAwsSsoadminPermissionSet.arn())
 ///             .permissionsBoundary(PermissionsBoundaryAttachmentPermissionsBoundaryArgs.builder()
 ///                 .managedPolicyArn("arn:aws:iam::aws:policy/ReadOnlyAccess")
 ///                 .build())
+///             .instanceArn(exampleAwsSsoadminPermissionSet.instanceArn())
+///             .permissionSetArn(exampleAwsSsoadminPermissionSet.arn())
 ///             .build());
 ///
 ///     }
@@ -464,10 +464,10 @@ import 'permissions_boundary_attachment_state.dart';
 ///   example:
 ///     type: aws:ssoadmin:PermissionsBoundaryAttachment
 ///     properties:
-///       instanceArn: ${exampleAwsSsoadminPermissionSet.instanceArn}
-///       permissionSetArn: ${exampleAwsSsoadminPermissionSet.arn}
 ///       permissionsBoundary:
 ///         managedPolicyArn: arn:aws:iam::aws:policy/ReadOnlyAccess
+///       instanceArn: ${exampleAwsSsoadminPermissionSet.instanceArn}
+///       permissionSetArn: ${exampleAwsSsoadminPermissionSet.arn}
 /// ```
 ///
 ///
@@ -479,9 +479,9 @@ import 'permissions_boundary_attachment_state.dart';
 /// $ pulumi import aws:ssoadmin/permissionsBoundaryAttachment:PermissionsBoundaryAttachment example arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
 /// ```
 class PermissionsBoundaryAttachment extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
+  /// ARN of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
-  /// The Amazon Resource Name (ARN) of the Permission Set.
+  /// ARN of the Permission Set.
   late final pulumi.Output<String> permissionSetArn;
   /// The permissions boundary policy. See below.
   late final pulumi.Output<PermissionsBoundaryAttachmentPermissionsBoundary> permissionsBoundary;
@@ -500,7 +500,7 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
           'aws:ssoadmin/permissionsBoundaryAttachment:PermissionsBoundaryAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
@@ -513,11 +513,12 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PermissionsBoundaryAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PermissionsBoundaryAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -531,6 +532,21 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    permissionsBoundary = registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>('permissionsBoundary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PermissionsBoundaryAttachment] resource.
+  PermissionsBoundaryAttachment.reference(String urn)
+    : super(
+        'aws:ssoadmin/permissionsBoundaryAttachment:PermissionsBoundaryAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     permissionsBoundary = registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>('permissionsBoundary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((guardedValue as Map).cast<String, dynamic>()); });

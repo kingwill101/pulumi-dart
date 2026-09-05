@@ -5,7 +5,7 @@ import 'data_set_row_level_permission_tag_configuration_tag_rule.dart';
 
 class DataSetRowLevelPermissionTagConfiguration {
   /// The status of row-level security tags. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A set of rules associated with row-level security, such as the tag names and columns that they are assigned to. See tag_rules.
   final pulumi.Input<List<DataSetRowLevelPermissionTagConfigurationTagRule>> tagRules;
 

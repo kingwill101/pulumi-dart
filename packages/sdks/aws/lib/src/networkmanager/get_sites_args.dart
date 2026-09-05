@@ -10,7 +10,7 @@ class GetSitesArgs {
   /// ID of the Global Network of the sites to retrieve.
   final pulumi.Input<String> globalNetworkId;
   /// Restricts the list to the sites with these tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSitesArgs].
   /// [globalNetworkId] ID of the Global Network of the sites to retrieve.

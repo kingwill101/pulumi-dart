@@ -10,9 +10,9 @@ class BucketPolicyArgs {
   /// Name of the bucket to which to apply the policy.
   final pulumi.Input<String> bucket;
   /// Text of the policy. Although this is a bucket policy rather than an IAM policy, the `aws.iam.getPolicyDocument` data source may be used, so long as it specifies a principal. For more information about building AWS IAM policy documents, see the AWS IAM Policy Document Guide. Note: Bucket policies are limited to 20 KB in size.
-  final pulumi.Input<String> policy;
+  final pulumi.Input<dynamic> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BucketPolicyArgs].
   /// [bucket] Name of the bucket to which to apply the policy.
@@ -35,7 +35,7 @@ class BucketPolicyArgs {
   factory BucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BucketPolicyArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      policy: pulumi.Input.fromValue(map['policy'] as String),
+      policy: pulumi.Input.fromValue(map['policy']),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

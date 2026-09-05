@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ArchiveRuleFilter {
   /// Contains comparator.
-  final pulumi.Input<List<String>>? contains;
+  final pulumi.Input<List<String>?>? contains;
   /// Filter criteria.
   final pulumi.Input<String> criteria;
   /// Equals comparator.
-  final pulumi.Input<List<String>>? eqs;
+  final pulumi.Input<List<String>?>? eqs;
   /// Boolean comparator.
-  final pulumi.Input<String>? exists;
+  final pulumi.Input<String?>? exists;
   /// Not Equals comparator.
-  final pulumi.Input<List<String>>? neqs;
+  final pulumi.Input<List<String>?>? neqs;
 
   /// Creates a new [ArchiveRuleFilter].
   /// [contains] Contains comparator.

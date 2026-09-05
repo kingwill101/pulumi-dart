@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecorderRecordingGroupRecordingStrategy {
-  final pulumi.Input<String>? useOnly;
+  final pulumi.Input<String?>? useOnly;
 
   /// Creates a new [RecorderRecordingGroupRecordingStrategy].
   /// [useOnly] Optional.

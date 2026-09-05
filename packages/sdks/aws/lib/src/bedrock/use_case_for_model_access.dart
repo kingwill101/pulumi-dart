@@ -217,7 +217,7 @@ class UseCaseForModelAccess extends pulumi.CustomResource {
           'aws:bedrock/useCaseForModelAccess:UseCaseForModelAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     formData = registerOutput<String>('formData');
   }
@@ -227,11 +227,12 @@ class UseCaseForModelAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UseCaseForModelAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UseCaseForModelAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,6 +246,18 @@ class UseCaseForModelAccess extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    formData = registerOutput<String>('formData');
+  }
+
+  /// Creates a typed reference to an existing [UseCaseForModelAccess] resource.
+  UseCaseForModelAccess.reference(String urn)
+    : super(
+        'aws:bedrock/useCaseForModelAccess:UseCaseForModelAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     formData = registerOutput<String>('formData');
   }
 }

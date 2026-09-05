@@ -25,7 +25,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
   factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting(
       checkDigitString: pulumi.Input.fromValue(map['checkDigitString'] as String),
-      sid: pulumi.Input.fromValue(map['sid'] as double),
+      sid: pulumi.Input.fromValue((map['sid'] as num).toDouble()),
     );
   }
 }

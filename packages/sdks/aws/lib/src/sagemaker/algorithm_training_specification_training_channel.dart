@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmTrainingSpecificationTrainingChannel {
   /// Description of the channel.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the channel is required.
-  final pulumi.Input<bool>? isRequired;
+  final pulumi.Input<bool?>? isRequired;
   /// Channel name.
   final pulumi.Input<String> name;
   /// Supported compression types. Allowed values are: `None` and `Gzip`.
-  final pulumi.Input<List<String>>? supportedCompressionTypes;
+  final pulumi.Input<List<String>?>? supportedCompressionTypes;
   /// Supported input content types.
   final pulumi.Input<List<String>> supportedContentTypes;
   /// Supported training input modes.

@@ -217,7 +217,7 @@ import 'account_v2_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Security Hub V2 resource.
+/// - `arn` (String) ARN of the Security Hub V2 resource.
 ///
 ///
 /// Using `pulumi import`, import Security Hub V2 accounts using `arn`. For example:
@@ -247,12 +247,12 @@ class AccountV2 extends pulumi.CustomResource {
           'aws:securityhub/accountV2:AccountV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccountV2] resource's state with the given [name] and [id].
@@ -260,11 +260,12 @@ class AccountV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -280,7 +281,22 @@ class AccountV2 extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountV2] resource.
+  AccountV2.reference(String urn)
+    : super(
+        'aws:securityhub/accountV2:AccountV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

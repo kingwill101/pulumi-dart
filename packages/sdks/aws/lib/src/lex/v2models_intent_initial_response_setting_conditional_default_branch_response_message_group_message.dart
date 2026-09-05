@@ -8,13 +8,13 @@ import 'v2models_intent_initial_response_setting_conditional_default_branch_resp
 
 class V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `customPayload`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload>? customPayload;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload?>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard?>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plainTextMessage`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage?>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage?>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `customPayload`.

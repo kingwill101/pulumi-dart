@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_account_region_region_args_doc}
 class RegionArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted. To use this parameter, the caller must be an identity in the organization's management account or a delegated administrator account. The specified account ID must also be a member account in the same organization. The organization must have all features enabled, and the organization must have trusted access enabled for the Account Management service, and optionally a delegated admin account assigned.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Whether the region is enabled.
   final pulumi.Input<bool> enabled;
   /// The region name to manage.

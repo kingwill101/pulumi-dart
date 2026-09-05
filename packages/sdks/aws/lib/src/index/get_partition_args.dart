@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_partition_get_partition_args_doc}
 class GetPartitionArgs {
   /// (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China). Use `partition` instead.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetPartitionArgs].
   /// [id] (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China). Use `partition` instead.

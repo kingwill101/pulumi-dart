@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PrefixListReference resources.
 class PrefixListReferenceState {
   /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
-  final pulumi.Input<bool>? blackhole;
+  final pulumi.Input<bool?>? blackhole;
   /// Identifier of EC2 Prefix List.
-  final pulumi.Input<String>? prefixListId;
-  final pulumi.Input<String>? prefixListOwnerId;
+  final pulumi.Input<String?>? prefixListId;
+  final pulumi.Input<String?>? prefixListOwnerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of EC2 Transit Gateway Attachment.
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transitGatewayRouteTableId;
+  final pulumi.Input<String?>? transitGatewayRouteTableId;
 
   /// Creates a new [PrefixListReferenceState].
   /// [blackhole] Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.

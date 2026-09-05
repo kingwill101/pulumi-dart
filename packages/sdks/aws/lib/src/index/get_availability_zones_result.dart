@@ -10,15 +10,15 @@ class GetAvailabilityZonesResult {
   final List<String>? excludeZoneIds;
   final List<GetAvailabilityZonesFilter>? filters;
   /// Set of the Availability Zone Group names. For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
-  final List<String> groupNames;
+  final List<String>? groupNames;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// List of the Availability Zone names available to the account.
-  final List<String> names;
-  final String region;
+  final List<String>? names;
+  final String? region;
   final String? state;
   /// List of the Availability Zone IDs available to the account.
-  final List<String> zoneIds;
+  final List<String>? zoneIds;
 
   /// Creates a new [GetAvailabilityZonesResult].
   /// [allAvailabilityZones] Optional.
@@ -28,7 +28,7 @@ class GetAvailabilityZonesResult {
   /// [groupNames] Set of the Availability Zone Group names. For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] List of the Availability Zone names available to the account.
-  /// [region] Required.
+  /// [region] Optional.
   /// [state] Optional.
   /// [zoneIds] List of the Availability Zone IDs available to the account.
   const GetAvailabilityZonesResult({
@@ -36,12 +36,12 @@ class GetAvailabilityZonesResult {
     this.excludeNames,
     this.excludeZoneIds,
     this.filters,
-    required this.groupNames,
-    required this.id,
-    required this.names,
-    required this.region,
+    this.groupNames,
+    this.id,
+    this.names,
+    this.region,
     this.state,
-    required this.zoneIds,
+    this.zoneIds,
   });
 
   Map<String, dynamic> toMap() {
@@ -50,12 +50,12 @@ class GetAvailabilityZonesResult {
       'excludeNames': ?excludeNames,
       'excludeZoneIds': ?excludeZoneIds,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAvailabilityZonesFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'groupNames': groupNames,
-      'id': id,
-      'names': names,
-      'region': region,
+      'groupNames': ?groupNames,
+      'id': ?id,
+      'names': ?names,
+      'region': ?region,
       'state': ?state,
-      'zoneIds': zoneIds,
+      'zoneIds': ?zoneIds,
     };
   }
 
@@ -65,12 +65,12 @@ class GetAvailabilityZonesResult {
       excludeNames: (() { final guardedValue = map['excludeNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       excludeZoneIds: (() { final guardedValue = map['excludeZoneIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAvailabilityZonesFilter>(guardedValue, (value) => GetAvailabilityZonesFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      groupNames: (map['groupNames'] as List).cast<String>(),
-      id: map['id'] as String,
-      names: (map['names'] as List).cast<String>(),
-      region: map['region'] as String,
+      groupNames: (() { final guardedValue = map['groupNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      zoneIds: (map['zoneIds'] as List).cast<String>(),
+      zoneIds: (() { final guardedValue = map['zoneIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcIngressConnectionIngressVpcConfiguration {
   /// ID of the VPC endpoint that your App Runner service connects to.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// ID of the VPC that is used for the VPC endpoint.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcIngressConnectionIngressVpcConfiguration].
   /// [vpcEndpointId] ID of the VPC endpoint that your App Runner service connects to.

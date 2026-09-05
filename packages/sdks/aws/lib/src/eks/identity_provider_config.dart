@@ -13,12 +13,12 @@ import 'identity_provider_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.eks.IdentityProviderConfig("example", {
-///     clusterName: exampleAwsEksCluster.name,
 ///     oidc: {
 ///         clientId: "your client_id",
 ///         identityProviderConfigName: "example",
 ///         issuerUrl: "your issuer_url",
 ///     },
+///     clusterName: exampleAwsEksCluster.name,
 /// });
 /// ```
 /// ```python
@@ -26,12 +26,12 @@ import 'identity_provider_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.eks.IdentityProviderConfig("example",
-///     cluster_name=example_aws_eks_cluster["name"],
 ///     oidc={
 ///         "client_id": "your client_id",
 ///         "identity_provider_config_name": "example",
 ///         "issuer_url": "your issuer_url",
-///     })
+///     },
+///     cluster_name=example_aws_eks_cluster["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,13 +43,13 @@ import 'identity_provider_config_state.dart';
 /// {
 ///     var example = new Aws.Eks.IdentityProviderConfig("example", new()
 ///     {
-///         ClusterName = exampleAwsEksCluster.Name,
 ///         Oidc = new Aws.Eks.Inputs.IdentityProviderConfigOidcArgs
 ///         {
 ///             ClientId = "your client_id",
 ///             IdentityProviderConfigName = "example",
 ///             IssuerUrl = "your issuer_url",
 ///         },
+///         ClusterName = exampleAwsEksCluster.Name,
 ///     });
 ///
 /// });
@@ -65,12 +65,12 @@ import 'identity_provider_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := eks.NewIdentityProviderConfig(ctx, "example", &eks.IdentityProviderConfigArgs{
-/// 			ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
 /// 			Oidc: &eks.IdentityProviderConfigOidcArgs{
 /// 				ClientId:                   pulumi.String("your client_id"),
 /// 				IdentityProviderConfigName: pulumi.String("example"),
 /// 				IssuerUrl:                  pulumi.String("your issuer_url"),
 /// 			},
+/// 			ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,12 +89,12 @@ import 'identity_provider_config_state.dart';
 /// }
 ///
 /// resource "aws_eks_identityproviderconfig" "example" {
-///   cluster_name = exampleAwsEksCluster.name
 ///   oidc = {
 ///     client_id                     = "your client_id"
 ///     identity_provider_config_name = "example"
 ///     issuer_url                    = "your issuer_url"
 ///   }
+///   cluster_name = exampleAwsEksCluster.name
 /// }
 /// ```
 /// ```java
@@ -120,12 +120,12 @@ import 'identity_provider_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IdentityProviderConfig("example", IdentityProviderConfigArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
 ///             .oidc(IdentityProviderConfigOidcArgs.builder()
 ///                 .clientId("your client_id")
 ///                 .identityProviderConfigName("example")
 ///                 .issuerUrl("your issuer_url")
 ///                 .build())
+///             .clusterName(exampleAwsEksCluster.name())
 ///             .build());
 ///
 ///     }
@@ -136,11 +136,11 @@ import 'identity_provider_config_state.dart';
 ///   example:
 ///     type: aws:eks:IdentityProviderConfig
 ///     properties:
-///       clusterName: ${exampleAwsEksCluster.name}
 ///       oidc:
 ///         clientId: your client_id
 ///         identityProviderConfigName: example
 ///         issuerUrl: your issuer_url
+///       clusterName: ${exampleAwsEksCluster.name}
 /// ```
 ///
 ///
@@ -165,7 +165,7 @@ import 'identity_provider_config_state.dart';
 /// $ pulumi import aws:eks/identityProviderConfig:IdentityProviderConfig example example-cluster:example-config
 /// ```
 class IdentityProviderConfig extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the EKS Identity Provider Configuration.
+  /// ARN of the EKS Identity Provider Configuration.
   late final pulumi.Output<String> arn;
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
@@ -193,7 +193,7 @@ class IdentityProviderConfig extends pulumi.CustomResource {
           'aws:eks/identityProviderConfig:IdentityProviderConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');
@@ -201,8 +201,8 @@ class IdentityProviderConfig extends pulumi.CustomResource {
     oidc = registerOutput<IdentityProviderConfigOidc>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityProviderConfigOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IdentityProviderConfig] resource's state with the given [name] and [id].
@@ -210,11 +210,12 @@ class IdentityProviderConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProviderConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,7 +235,26 @@ class IdentityProviderConfig extends pulumi.CustomResource {
     oidc = registerOutput<IdentityProviderConfigOidc>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityProviderConfigOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IdentityProviderConfig] resource.
+  IdentityProviderConfig.reference(String urn)
+    : super(
+        'aws:eks/identityProviderConfig:IdentityProviderConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    clusterName = registerOutput<String>('clusterName');
+    identityProviderConfigName = registerOutput<String>('identityProviderConfigName');
+    oidc = registerOutput<IdentityProviderConfigOidc>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityProviderConfigOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

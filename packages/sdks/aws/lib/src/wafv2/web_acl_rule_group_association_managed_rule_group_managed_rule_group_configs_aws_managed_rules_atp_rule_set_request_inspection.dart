@@ -6,11 +6,11 @@ import 'web_acl_rule_group_association_managed_rule_group_managed_rule_group_con
 
 class WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspection {
   /// Details about your login page password field. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspectionPasswordField>? passwordField;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspectionPasswordField?>? passwordField;
   /// Payload type for your login endpoint, either JSON or form encoded.
   final pulumi.Input<String> payloadType;
   /// Details about your login page username field. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspectionUsernameField>? usernameField;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspectionUsernameField?>? usernameField;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAtpRuleSetRequestInspection].
   /// [passwordField] Details about your login page password field. See below.

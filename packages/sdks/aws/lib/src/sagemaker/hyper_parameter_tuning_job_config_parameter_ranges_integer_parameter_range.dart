@@ -10,7 +10,7 @@ class HyperParameterTuningJobConfigParameterRangesIntegerParameterRange {
   /// Parameter name.
   final pulumi.Input<String> name;
   /// Scaling rule for the range.
-  final pulumi.Input<String>? scalingType;
+  final pulumi.Input<String?>? scalingType;
 
   /// Creates a new [HyperParameterTuningJobConfigParameterRangesIntegerParameterRange].
   /// [maxValue] Maximum value.

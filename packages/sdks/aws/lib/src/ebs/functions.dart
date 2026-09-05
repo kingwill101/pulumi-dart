@@ -165,6 +165,17 @@ Future<GetDefaultKmsKeyResult> getDefaultKmsKey(
   return GetDefaultKmsKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultKmsKeyResult> getDefaultKmsKeyOutput(
+  GetDefaultKmsKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ebs/getDefaultKmsKey:getDefaultKmsKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultKmsKeyResult.fromMap);
+}
+
 /// `aws.ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
 ///
 /// This data source can be useful for getting a list of volume IDs with (for example) matching tags.
@@ -278,6 +289,17 @@ Future<GetEbsVolumesResult> getEbsVolumes(
   return GetEbsVolumesResult.fromMap(result);
 }
 
+pulumi.Output<GetEbsVolumesResult> getEbsVolumesOutput(
+  GetEbsVolumesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ebs/getEbsVolumes:getEbsVolumes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEbsVolumesResult.fromMap);
+}
+
 /// Provides a way to check whether default EBS encryption is enabled for your AWS account in the current AWS region.
 ///
 /// ## Example Usage
@@ -386,6 +408,17 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
   return GetEncryptionByDefaultResult.fromMap(result);
 }
 
+pulumi.Output<GetEncryptionByDefaultResult> getEncryptionByDefaultOutput(
+  GetEncryptionByDefaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ebs/getEncryptionByDefault:getEncryptionByDefault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptionByDefaultResult.fromMap);
+}
+
 /// Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
 ///
 /// ## Example Usage
@@ -396,8 +429,6 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ebsVolume = aws.ebs.getSnapshot({
-///     mostRecent: true,
-///     owners: ["self"],
 ///     filters: [
 ///         {
 ///             name: "volume-size",
@@ -408,15 +439,15 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///             values: ["Example"],
 ///         },
 ///     ],
+///     mostRecent: true,
+///     owners: ["self"],
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ebs_volume = aws.ebs.get_snapshot(most_recent=True,
-///     owners=["self"],
-///     filters=[
+/// ebs_volume = aws.ebs.get_snapshot(filters=[
 ///         {
 ///             "name": "volume-size",
 ///             "values": ["40"],
@@ -425,7 +456,9 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///             "name": "tag:Name",
 ///             "values": ["Example"],
 ///         },
-///     ])
+///     ],
+///     most_recent=True,
+///     owners=["self"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -437,11 +470,6 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// {
 ///     var ebsVolume = Aws.Ebs.GetSnapshot.Invoke(new()
 ///     {
-///         MostRecent = true,
-///         Owners = new[]
-///         {
-///             "self",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ebs.Inputs.GetSnapshotFilterInputArgs
@@ -461,6 +489,11 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
+///         Owners = new[]
+///         {
+///             "self",
+///         },
 ///     });
 ///
 /// });
@@ -476,10 +509,6 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ebs.LookupSnapshot(ctx, &ebs.LookupSnapshotArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
-/// 			Owners: []string{
-/// 				"self",
-/// 			},
 /// 			Filters: []ebs.GetSnapshotFilter{
 /// 				{
 /// 					Name: "volume-size",
@@ -493,6 +522,10 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// 						"Example",
 /// 					},
 /// 				},
+/// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
+/// 			Owners: []string{
+/// 				"self",
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -512,8 +545,6 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 /// }
 ///
 /// data "aws_ebs_getsnapshot" "ebsVolume" {
-///   most_recent = true
-///   owners      = ["self"]
 ///   filters {
 ///     name   = "volume-size"
 ///     values = ["40"]
@@ -522,6 +553,8 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///     name   = "tag:Name"
 ///     values = ["Example"]
 ///   }
+///   most_recent = true
+///   owners      = ["self"]
 /// }
 /// ```
 /// ```java
@@ -547,8 +580,6 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ebsVolume = EbsFunctions.getSnapshot(GetSnapshotArgs.builder()
-///             .mostRecent(true)
-///             .owners("self")
 ///             .filters(
 ///                 GetSnapshotFilterArgs.builder()
 ///                     .name("volume-size")
@@ -558,6 +589,8 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///                     .name("tag:Name")
 ///                     .values("Example")
 ///                     .build())
+///             .mostRecent(true)
+///             .owners("self")
 ///             .build());
 ///
 ///     }
@@ -569,9 +602,6 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///     fn::invoke:
 ///       function: aws:ebs:getSnapshot
 ///       arguments:
-///         mostRecent: true
-///         owners:
-///           - self
 ///         filters:
 ///           - name: volume-size
 ///             values:
@@ -579,6 +609,9 @@ Future<GetEncryptionByDefaultResult> getEncryptionByDefault(
 ///           - name: tag:Name
 ///             values:
 ///               - Example
+///         mostRecent: true
+///         owners:
+///           - self
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ebs_get_snapshot_get_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
@@ -595,6 +628,17 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ebs/getSnapshot:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
+}
+
 /// Use this data source to get a list of EBS Snapshot IDs matching the specified
 /// criteria.
 ///
@@ -606,7 +650,6 @@ Future<GetSnapshotResult> getSnapshot(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ebsVolumes = aws.ebs.getSnapshotIds({
-///     owners: ["self"],
 ///     filters: [
 ///         {
 ///             name: "volume-size",
@@ -617,14 +660,14 @@ Future<GetSnapshotResult> getSnapshot(
 ///             values: ["Example"],
 ///         },
 ///     ],
+///     owners: ["self"],
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ebs_volumes = aws.ebs.get_snapshot_ids(owners=["self"],
-///     filters=[
+/// ebs_volumes = aws.ebs.get_snapshot_ids(filters=[
 ///         {
 ///             "name": "volume-size",
 ///             "values": ["40"],
@@ -633,7 +676,8 @@ Future<GetSnapshotResult> getSnapshot(
 ///             "name": "tag:Name",
 ///             "values": ["Example"],
 ///         },
-///     ])
+///     ],
+///     owners=["self"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -645,10 +689,6 @@ Future<GetSnapshotResult> getSnapshot(
 /// {
 ///     var ebsVolumes = Aws.Ebs.GetSnapshotIds.Invoke(new()
 ///     {
-///         Owners = new[]
-///         {
-///             "self",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ebs.Inputs.GetSnapshotIdsFilterInputArgs
@@ -668,6 +708,10 @@ Future<GetSnapshotResult> getSnapshot(
 ///                 },
 ///             },
 ///         },
+///         Owners = new[]
+///         {
+///             "self",
+///         },
 ///     });
 ///
 /// });
@@ -683,9 +727,6 @@ Future<GetSnapshotResult> getSnapshot(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ebs.GetSnapshotIds(ctx, &ebs.GetSnapshotIdsArgs{
-/// 			Owners: []string{
-/// 				"self",
-/// 			},
 /// 			Filters: []ebs.GetSnapshotIdsFilter{
 /// 				{
 /// 					Name: "volume-size",
@@ -699,6 +740,9 @@ Future<GetSnapshotResult> getSnapshot(
 /// 						"Example",
 /// 					},
 /// 				},
+/// 			},
+/// 			Owners: []string{
+/// 				"self",
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -718,7 +762,6 @@ Future<GetSnapshotResult> getSnapshot(
 /// }
 ///
 /// data "aws_ebs_getsnapshotids" "ebsVolumes" {
-///   owners = ["self"]
 ///   filters {
 ///     name   = "volume-size"
 ///     values = ["40"]
@@ -727,6 +770,7 @@ Future<GetSnapshotResult> getSnapshot(
 ///     name   = "tag:Name"
 ///     values = ["Example"]
 ///   }
+///   owners = ["self"]
 /// }
 /// ```
 /// ```java
@@ -752,7 +796,6 @@ Future<GetSnapshotResult> getSnapshot(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ebsVolumes = EbsFunctions.getSnapshotIds(GetSnapshotIdsArgs.builder()
-///             .owners("self")
 ///             .filters(
 ///                 GetSnapshotIdsFilterArgs.builder()
 ///                     .name("volume-size")
@@ -762,6 +805,7 @@ Future<GetSnapshotResult> getSnapshot(
 ///                     .name("tag:Name")
 ///                     .values("Example")
 ///                     .build())
+///             .owners("self")
 ///             .build());
 ///
 ///     }
@@ -773,8 +817,6 @@ Future<GetSnapshotResult> getSnapshot(
 ///     fn::invoke:
 ///       function: aws:ebs:getSnapshotIds
 ///       arguments:
-///         owners:
-///           - self
 ///         filters:
 ///           - name: volume-size
 ///             values:
@@ -782,6 +824,8 @@ Future<GetSnapshotResult> getSnapshot(
 ///           - name: tag:Name
 ///             values:
 ///               - Example
+///         owners:
+///           - self
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ebs_get_snapshot_ids_get_snapshot_ids_args_doc}
 /// [options] Invoke options controlling this call.
@@ -798,6 +842,17 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
   return GetSnapshotIdsResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotIdsResult> getSnapshotIdsOutput(
+  GetSnapshotIdsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ebs/getSnapshotIds:getSnapshotIds',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotIdsResult.fromMap);
+}
+
 /// Use this data source to get information about an EBS volume for use in other
 /// resources.
 ///
@@ -809,7 +864,6 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ebsVolume = aws.ebs.getVolume({
-///     mostRecent: true,
 ///     filters: [
 ///         {
 ///             name: "volume-type",
@@ -820,14 +874,14 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///             values: ["Example"],
 ///         },
 ///     ],
+///     mostRecent: true,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ebs_volume = aws.ebs.get_volume(most_recent=True,
-///     filters=[
+/// ebs_volume = aws.ebs.get_volume(filters=[
 ///         {
 ///             "name": "volume-type",
 ///             "values": ["gp2"],
@@ -836,7 +890,8 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///             "name": "tag:Name",
 ///             "values": ["Example"],
 ///         },
-///     ])
+///     ],
+///     most_recent=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -848,7 +903,6 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// {
 ///     var ebsVolume = Aws.Ebs.GetVolume.Invoke(new()
 ///     {
-///         MostRecent = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ebs.Inputs.GetVolumeFilterInputArgs
@@ -868,6 +922,7 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
 ///     });
 ///
 /// });
@@ -883,7 +938,6 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ebs.LookupVolume(ctx, &ebs.LookupVolumeArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Filters: []ebs.GetVolumeFilter{
 /// 				{
 /// 					Name: "volume-type",
@@ -898,6 +952,7 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -916,7 +971,6 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 /// }
 ///
 /// data "aws_ebs_getvolume" "ebsVolume" {
-///   most_recent = true
 ///   filters {
 ///     name   = "volume-type"
 ///     values = ["gp2"]
@@ -925,6 +979,7 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///     name   = "tag:Name"
 ///     values = ["Example"]
 ///   }
+///   most_recent = true
 /// }
 /// ```
 /// ```java
@@ -950,7 +1005,6 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ebsVolume = EbsFunctions.getVolume(GetVolumeArgs.builder()
-///             .mostRecent(true)
 ///             .filters(
 ///                 GetVolumeFilterArgs.builder()
 ///                     .name("volume-type")
@@ -960,6 +1014,7 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///                     .name("tag:Name")
 ///                     .values("Example")
 ///                     .build())
+///             .mostRecent(true)
 ///             .build());
 ///
 ///     }
@@ -971,7 +1026,6 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///     fn::invoke:
 ///       function: aws:ebs:getVolume
 ///       arguments:
-///         mostRecent: true
 ///         filters:
 ///           - name: volume-type
 ///             values:
@@ -979,6 +1033,7 @@ Future<GetSnapshotIdsResult> getSnapshotIds(
 ///           - name: tag:Name
 ///             values:
 ///               - Example
+///         mostRecent: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ebs_get_volume_get_volume_args_doc}
 /// [options] Invoke options controlling this call.
@@ -993,4 +1048,15 @@ Future<GetVolumeResult> getVolume(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ebs/getVolume:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
 }

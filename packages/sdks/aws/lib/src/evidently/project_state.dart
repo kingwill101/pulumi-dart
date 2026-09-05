@@ -6,35 +6,35 @@ import 'project_data_delivery.dart';
 /// Input properties used for looking up and filtering Project resources.
 class ProjectState {
   /// The number of ongoing experiments currently in the project.
-  final pulumi.Input<int>? activeExperimentCount;
+  final pulumi.Input<int?>? activeExperimentCount;
   /// The number of ongoing launches currently in the project.
-  final pulumi.Input<int>? activeLaunchCount;
+  final pulumi.Input<int?>? activeLaunchCount;
   /// The ARN of the project.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The date and time that the project is created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// A block that contains information about where Evidently is to store evaluation events for longer term storage, if you choose to do so. If you choose not to store these events, Evidently deletes them after using them to produce metrics and other experiment results that you can view. See below.
-  final pulumi.Input<ProjectDataDelivery>? dataDelivery;
+  final pulumi.Input<ProjectDataDelivery?>? dataDelivery;
   /// Specifies the description of the project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The number of experiments currently in the project. This includes all experiments that have been created and not deleted, whether they are ongoing or not.
-  final pulumi.Input<int>? experimentCount;
+  final pulumi.Input<int?>? experimentCount;
   /// The number of features currently in the project.
-  final pulumi.Input<int>? featureCount;
+  final pulumi.Input<int?>? featureCount;
   /// The date and time that the project was most recently updated.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// The number of launches currently in the project. This includes all launches that have been created and not deleted, whether they are ongoing or not.
-  final pulumi.Input<int>? launchCount;
+  final pulumi.Input<int?>? launchCount;
   /// A name for the project.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The current state of the project. Valid values are `AVAILABLE` and `UPDATING`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Tags to apply to the project. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ProjectState].
   /// [activeExperimentCount] The number of ongoing experiments currently in the project.
@@ -92,16 +92,16 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      activeExperimentCount: (() { final guardedValue = map['activeExperimentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      activeLaunchCount: (() { final guardedValue = map['activeLaunchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activeExperimentCount: (() { final guardedValue = map['activeExperimentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      activeLaunchCount: (() { final guardedValue = map['activeLaunchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataDelivery: (() { final guardedValue = map['dataDelivery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectDataDelivery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      experimentCount: (() { final guardedValue = map['experimentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      featureCount: (() { final guardedValue = map['featureCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      experimentCount: (() { final guardedValue = map['experimentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      featureCount: (() { final guardedValue = map['featureCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      launchCount: (() { final guardedValue = map['launchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      launchCount: (() { final guardedValue = map['launchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

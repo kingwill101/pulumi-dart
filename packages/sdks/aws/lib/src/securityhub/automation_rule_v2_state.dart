@@ -7,26 +7,26 @@ import 'automation_rule_v2_criteria.dart';
 /// Input properties used for looking up and filtering AutomationRuleV2 resources.
 class AutomationRuleV2State {
   /// Actions to take when the rule matches. Maximum of 1 action block. See `action` below.
-  final pulumi.Input<AutomationRuleV2Action>? action;
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<AutomationRuleV2Action?>? action;
+  final pulumi.Input<String?>? arn;
   /// Filtering type and configuration of the automation rule. See `criteria` below.
-  final pulumi.Input<AutomationRuleV2Criteria>? criteria;
+  final pulumi.Input<AutomationRuleV2Criteria?>? criteria;
   /// A description of the automation rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the automation rule.
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// The name of the automation rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// The priority of the rule. Lower values indicate higher priority.
-  final pulumi.Input<double>? ruleOrder;
+  final pulumi.Input<double?>? ruleOrder;
   /// The status of the rule. Valid values: `ENABLED`, `DISABLED`. Defaults to `ENABLED`.
-  final pulumi.Input<String>? ruleStatus;
+  final pulumi.Input<String?>? ruleStatus;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AutomationRuleV2State].
   /// [action] Actions to take when the rule matches. Maximum of 1 action block. See `action` below.
@@ -79,7 +79,7 @@ class AutomationRuleV2State {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       ruleStatus: (() { final guardedValue = map['ruleStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

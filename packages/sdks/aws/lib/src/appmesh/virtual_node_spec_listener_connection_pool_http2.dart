@@ -20,7 +20,7 @@ class VirtualNodeSpecListenerConnectionPoolHttp2 {
 
   factory VirtualNodeSpecListenerConnectionPoolHttp2.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerConnectionPoolHttp2(
-      maxRequests: pulumi.Input.fromValue(map['maxRequests'] as int),
+      maxRequests: pulumi.Input.fromValue((map['maxRequests'] as num).toInt()),
     );
   }
 }

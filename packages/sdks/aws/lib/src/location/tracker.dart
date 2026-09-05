@@ -126,7 +126,7 @@ class Tracker extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all AWS.
+  /// ARN for the tracker resource. Used when you need to specify a resource across all AWS.
   late final pulumi.Output<String> trackerArn;
   /// The name of the tracker resource.
   ///
@@ -147,15 +147,15 @@ class Tracker extends pulumi.CustomResource {
           'aws:location/tracker:Tracker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     positionFiltering = registerOutput<String?>('positionFiltering');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackerArn = registerOutput<String>('trackerArn');
     trackerName = registerOutput<String>('trackerName');
     updateTime = registerOutput<String>('updateTime');
@@ -166,11 +166,12 @@ class Tracker extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrackerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tracker._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -189,8 +190,29 @@ class Tracker extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     positionFiltering = registerOutput<String?>('positionFiltering');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trackerArn = registerOutput<String>('trackerArn');
+    trackerName = registerOutput<String>('trackerName');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Tracker] resource.
+  Tracker.reference(String urn)
+    : super(
+        'aws:location/tracker:Tracker',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    positionFiltering = registerOutput<String?>('positionFiltering');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackerArn = registerOutput<String>('trackerArn');
     trackerName = registerOutput<String>('trackerName');
     updateTime = registerOutput<String>('updateTime');

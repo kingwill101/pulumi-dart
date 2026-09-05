@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_args.dart';
 import 'pipeline_content_config.dart';
+import 'pipeline_content_config_permission.dart';
 import 'pipeline_notifications.dart';
 import 'pipeline_state.dart';
 import 'pipeline_thumbnail_config.dart';
+import 'pipeline_thumbnail_config_permission.dart';
 
 /// Provides an Elastic Transcoder pipeline resource.
 ///
@@ -17,9 +19,6 @@ import 'pipeline_thumbnail_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const bar = new aws.elastictranscoder.Pipeline("bar", {
-///     inputBucket: inputBucket.id,
-///     name: "aws_elastictranscoder_pipeline_my_test_",
-///     role: testRole.arn,
 ///     contentConfig: {
 ///         bucket: contentBucket.id,
 ///         storageClass: "Standard",
@@ -28,6 +27,9 @@ import 'pipeline_thumbnail_config.dart';
 ///         bucket: thumbBucket.id,
 ///         storageClass: "Standard",
 ///     },
+///     inputBucket: inputBucket.id,
+///     name: "aws_elastictranscoder_pipeline_my_test_",
+///     role: testRole.arn,
 /// });
 /// ```
 /// ```python
@@ -35,9 +37,6 @@ import 'pipeline_thumbnail_config.dart';
 /// import pulumi_aws as aws
 ///
 /// bar = aws.elastictranscoder.Pipeline("bar",
-///     input_bucket=input_bucket["id"],
-///     name="aws_elastictranscoder_pipeline_my_test_",
-///     role=test_role["arn"],
 ///     content_config={
 ///         "bucket": content_bucket["id"],
 ///         "storage_class": "Standard",
@@ -45,7 +44,10 @@ import 'pipeline_thumbnail_config.dart';
 ///     thumbnail_config={
 ///         "bucket": thumb_bucket["id"],
 ///         "storage_class": "Standard",
-///     })
+///     },
+///     input_bucket=input_bucket["id"],
+///     name="aws_elastictranscoder_pipeline_my_test_",
+///     role=test_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,9 +59,6 @@ import 'pipeline_thumbnail_config.dart';
 /// {
 ///     var bar = new Aws.ElasticTranscoder.Pipeline("bar", new()
 ///     {
-///         InputBucket = inputBucket.Id,
-///         Name = "aws_elastictranscoder_pipeline_my_test_",
-///         Role = testRole.Arn,
 ///         ContentConfig = new Aws.ElasticTranscoder.Inputs.PipelineContentConfigArgs
 ///         {
 ///             Bucket = contentBucket.Id,
@@ -70,6 +69,9 @@ import 'pipeline_thumbnail_config.dart';
 ///             Bucket = thumbBucket.Id,
 ///             StorageClass = "Standard",
 ///         },
+///         InputBucket = inputBucket.Id,
+///         Name = "aws_elastictranscoder_pipeline_my_test_",
+///         Role = testRole.Arn,
 ///     });
 ///
 /// });
@@ -85,9 +87,6 @@ import 'pipeline_thumbnail_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elastictranscoder.NewPipeline(ctx, "bar", &elastictranscoder.PipelineArgs{
-/// 			InputBucket: pulumi.Any(inputBucket.Id),
-/// 			Name:        pulumi.String("aws_elastictranscoder_pipeline_my_test_"),
-/// 			Role:        pulumi.Any(testRole.Arn),
 /// 			ContentConfig: &elastictranscoder.PipelineContentConfigArgs{
 /// 				Bucket:       pulumi.Any(contentBucket.Id),
 /// 				StorageClass: pulumi.String("Standard"),
@@ -96,6 +95,9 @@ import 'pipeline_thumbnail_config.dart';
 /// 				Bucket:       pulumi.Any(thumbBucket.Id),
 /// 				StorageClass: pulumi.String("Standard"),
 /// 			},
+/// 			InputBucket: pulumi.Any(inputBucket.Id),
+/// 			Name:        pulumi.String("aws_elastictranscoder_pipeline_my_test_"),
+/// 			Role:        pulumi.Any(testRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,9 +116,6 @@ import 'pipeline_thumbnail_config.dart';
 /// }
 ///
 /// resource "aws_elastictranscoder_pipeline" "bar" {
-///   input_bucket = inputBucket.id
-///   name         = "aws_elastictranscoder_pipeline_my_test_"
-///   role         = testRole.arn
 ///   content_config = {
 ///     bucket        = contentBucket.id
 ///     storage_class = "Standard"
@@ -125,6 +124,9 @@ import 'pipeline_thumbnail_config.dart';
 ///     bucket        = thumbBucket.id
 ///     storage_class = "Standard"
 ///   }
+///   input_bucket = inputBucket.id
+///   name         = "aws_elastictranscoder_pipeline_my_test_"
+///   role         = testRole.arn
 /// }
 /// ```
 /// ```java
@@ -151,9 +153,6 @@ import 'pipeline_thumbnail_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bar = new Pipeline("bar", PipelineArgs.builder()
-///             .inputBucket(inputBucket.id())
-///             .name("aws_elastictranscoder_pipeline_my_test_")
-///             .role(testRole.arn())
 ///             .contentConfig(PipelineContentConfigArgs.builder()
 ///                 .bucket(contentBucket.id())
 ///                 .storageClass("Standard")
@@ -162,6 +161,9 @@ import 'pipeline_thumbnail_config.dart';
 ///                 .bucket(thumbBucket.id())
 ///                 .storageClass("Standard")
 ///                 .build())
+///             .inputBucket(inputBucket.id())
+///             .name("aws_elastictranscoder_pipeline_my_test_")
+///             .role(testRole.arn())
 ///             .build());
 ///
 ///     }
@@ -172,15 +174,15 @@ import 'pipeline_thumbnail_config.dart';
 ///   bar:
 ///     type: aws:elastictranscoder:Pipeline
 ///     properties:
-///       inputBucket: ${inputBucket.id}
-///       name: aws_elastictranscoder_pipeline_my_test_
-///       role: ${testRole.arn}
 ///       contentConfig:
 ///         bucket: ${contentBucket.id}
 ///         storageClass: Standard
 ///       thumbnailConfig:
 ///         bucket: ${thumbBucket.id}
 ///         storageClass: Standard
+///       inputBucket: ${inputBucket.id}
+///       name: aws_elastictranscoder_pipeline_my_test_
+///       role: ${testRole.arn}
 /// ```
 ///
 ///
@@ -194,12 +196,12 @@ import 'pipeline_thumbnail_config.dart';
 class Pipeline extends pulumi.CustomResource {
   /// The ARN of the Elastictranscoder pipeline.
   late final pulumi.Output<String> arn;
-  /// The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
+  /// KMS key that you want to use with this pipeline.
   late final pulumi.Output<String?> awsKmsKeyArn;
   /// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
   late final pulumi.Output<PipelineContentConfig> contentConfig;
   /// The permissions for the `contentConfig` object. (documented below)
-  late final pulumi.Output<List<Map<String, dynamic>>?> contentConfigPermissions;
+  late final pulumi.Output<List<PipelineContentConfigPermission>?> contentConfigPermissions;
   /// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
   late final pulumi.Output<String> inputBucket;
   /// The name of the pipeline. Maximum 40 characters
@@ -210,7 +212,7 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String> outputBucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
+  /// IAM ARN for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
   late final pulumi.Output<String> role;
   /// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   late final pulumi.Output<PipelineThumbnailConfig> thumbnailConfig;
@@ -224,7 +226,7 @@ class Pipeline extends pulumi.CustomResource {
   /// you specify values for `contentConfig`, you must also specify values for
   /// `thumbnailConfig`. If you specify values for `contentConfig` and
   /// `thumbnailConfig`, omit the `outputBucket` object.
-  late final pulumi.Output<List<Map<String, dynamic>>?> thumbnailConfigPermissions;
+  late final pulumi.Output<List<PipelineThumbnailConfigPermission>?> thumbnailConfigPermissions;
 
   /// Creates a new [Pipeline].
   /// [name] The Pulumi resource name.
@@ -238,12 +240,12 @@ class Pipeline extends pulumi.CustomResource {
           'aws:elastictranscoder/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
     contentConfig = registerOutput<PipelineContentConfig>('contentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineContentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('contentConfigPermissions');
+    contentConfigPermissions = registerOutput<List<PipelineContentConfigPermission>?>('contentConfigPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineContentConfigPermission>(guardedValue, (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>())); });
     inputBucket = registerOutput<String>('inputBucket');
     this.name = registerOutput<String>('name');
     notifications = registerOutput<PipelineNotifications?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -251,7 +253,7 @@ class Pipeline extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     thumbnailConfig = registerOutput<PipelineThumbnailConfig>('thumbnailConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineThumbnailConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('thumbnailConfigPermissions');
+    thumbnailConfigPermissions = registerOutput<List<PipelineThumbnailConfigPermission>?>('thumbnailConfigPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(guardedValue, (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -259,11 +261,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -280,7 +283,7 @@ class Pipeline extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
     contentConfig = registerOutput<PipelineContentConfig>('contentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineContentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('contentConfigPermissions');
+    contentConfigPermissions = registerOutput<List<PipelineContentConfigPermission>?>('contentConfigPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineContentConfigPermission>(guardedValue, (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>())); });
     inputBucket = registerOutput<String>('inputBucket');
     this.name = registerOutput<String>('name');
     notifications = registerOutput<PipelineNotifications?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -288,6 +291,29 @@ class Pipeline extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     thumbnailConfig = registerOutput<PipelineThumbnailConfig>('thumbnailConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineThumbnailConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('thumbnailConfigPermissions');
+    thumbnailConfigPermissions = registerOutput<List<PipelineThumbnailConfigPermission>?>('thumbnailConfigPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(guardedValue, (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'aws:elastictranscoder/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
+    contentConfig = registerOutput<PipelineContentConfig>('contentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineContentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentConfigPermissions = registerOutput<List<PipelineContentConfigPermission>?>('contentConfigPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineContentConfigPermission>(guardedValue, (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    inputBucket = registerOutput<String>('inputBucket');
+    this.name = registerOutput<String>('name');
+    notifications = registerOutput<PipelineNotifications?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputBucket = registerOutput<String>('outputBucket');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    thumbnailConfig = registerOutput<PipelineThumbnailConfig>('thumbnailConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineThumbnailConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    thumbnailConfigPermissions = registerOutput<List<PipelineThumbnailConfigPermission>?>('thumbnailConfigPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(guardedValue, (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

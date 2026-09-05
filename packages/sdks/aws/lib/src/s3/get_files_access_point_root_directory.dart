@@ -5,7 +5,7 @@ import 'get_files_access_point_root_directory_creation_permission.dart';
 
 class GetFilesAccessPointRootDirectory {
   /// Permissions set when the root directory was created. See `creationPermissions` below.
-  final pulumi.Input<List<GetFilesAccessPointRootDirectoryCreationPermission>>? creationPermissions;
+  final pulumi.Input<List<GetFilesAccessPointRootDirectoryCreationPermission>?>? creationPermissions;
   /// Root directory path.
   final pulumi.Input<String> path;
 

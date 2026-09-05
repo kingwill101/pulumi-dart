@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_fsx_backup_backup_args_doc}
 class BackupArgs {
   /// ID of the file system to back up. Required if backing up Lustre or Windows file systems.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the volume to back up. Required if backing up a ONTAP Volume.
-  final pulumi.Input<String>? volumeId;
+  final pulumi.Input<String?>? volumeId;
 
   /// Creates a new [BackupArgs].
   /// [fileSystemId] ID of the file system to back up. Required if backing up Lustre or Windows file systems.

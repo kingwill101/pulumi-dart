@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ecr_get_images_get_images_args_doc}
 class GetImagesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the Registry where the repository resides.
-  final pulumi.Input<String>? registryId;
+  final pulumi.Input<String?>? registryId;
   /// Name of the ECR Repository.
   final pulumi.Input<String> repositoryName;
 

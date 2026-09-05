@@ -131,7 +131,7 @@ import 'domain_state.dart';
 /// $ pulumi import aws:swf/domain:Domain foo test-domain
 /// ```
 class Domain extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN)
+  /// ARN
   late final pulumi.Output<String> arn;
   /// The domain description.
   late final pulumi.Output<String?> description;
@@ -160,15 +160,15 @@ class Domain extends pulumi.CustomResource {
           'aws:swf/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workflowExecutionRetentionPeriodInDays = registerOutput<String>('workflowExecutionRetentionPeriodInDays');
   }
 
@@ -177,11 +177,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,8 +201,27 @@ class Domain extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflowExecutionRetentionPeriodInDays = registerOutput<String>('workflowExecutionRetentionPeriodInDays');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:swf/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workflowExecutionRetentionPeriodInDays = registerOutput<String>('workflowExecutionRetentionPeriodInDays');
   }
 }

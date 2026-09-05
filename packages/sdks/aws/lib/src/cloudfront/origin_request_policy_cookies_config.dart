@@ -5,7 +5,7 @@ import 'origin_request_policy_cookies_config_cookies.dart';
 
 class OriginRequestPolicyCookiesConfig {
   final pulumi.Input<String> cookieBehavior;
-  final pulumi.Input<OriginRequestPolicyCookiesConfigCookies>? cookies;
+  final pulumi.Input<OriginRequestPolicyCookiesConfigCookies?>? cookies;
 
   /// Creates a new [OriginRequestPolicyCookiesConfig].
   /// [cookieBehavior] Required.

@@ -9,32 +9,32 @@ import 'algorithm_validation_specification.dart';
 /// Input properties used for looking up and filtering Algorithm resources.
 class AlgorithmState {
   /// Description of the algorithm.
-  final pulumi.Input<String>? algorithmDescription;
+  final pulumi.Input<String?>? algorithmDescription;
   /// Name of the algorithm.
-  final pulumi.Input<String>? algorithmName;
+  final pulumi.Input<String?>? algorithmName;
   /// Status of the algorithm.
-  final pulumi.Input<String>? algorithmStatus;
+  final pulumi.Input<String?>? algorithmStatus;
   /// ARN of the algorithm.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether to certify the algorithm for AWS Marketplace.
-  final pulumi.Input<bool>? certifyForMarketplace;
+  final pulumi.Input<bool?>? certifyForMarketplace;
   /// Time when the algorithm was created, in RFC3339 format.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Configuration for inference jobs that use this algorithm. See Inference Specification.
-  final pulumi.Input<AlgorithmInferenceSpecification>? inferenceSpecification;
+  final pulumi.Input<AlgorithmInferenceSpecification?>? inferenceSpecification;
   /// AWS Marketplace product ID associated with the algorithm.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// Region where this resource is managed. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including tags inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AlgorithmTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AlgorithmTimeouts?>? timeouts;
   /// Configuration for training jobs that use this algorithm. See Training Specification.
-  final pulumi.Input<AlgorithmTrainingSpecification>? trainingSpecification;
+  final pulumi.Input<AlgorithmTrainingSpecification?>? trainingSpecification;
   /// Configuration used to validate the algorithm. See Validation Specification.
-  final pulumi.Input<AlgorithmValidationSpecification>? validationSpecification;
+  final pulumi.Input<AlgorithmValidationSpecification?>? validationSpecification;
 
   /// Creates a new [AlgorithmState].
   /// [algorithmDescription] Description of the algorithm.

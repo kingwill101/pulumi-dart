@@ -20,7 +20,7 @@ class FileCacheLustreConfigurationMetadataConfiguration {
 
   factory FileCacheLustreConfigurationMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return FileCacheLustreConfigurationMetadataConfiguration(
-      storageCapacity: pulumi.Input.fromValue(map['storageCapacity'] as int),
+      storageCapacity: pulumi.Input.fromValue((map['storageCapacity'] as num).toInt()),
     );
   }
 }

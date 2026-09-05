@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProvisioningTemplatePreProvisioningHook {
   /// The version of the payload that was sent to the target function. The only valid (and the default) payload version is `"2020-04-01"`.
-  final pulumi.Input<String>? payloadVersion;
+  final pulumi.Input<String?>? payloadVersion;
   /// The ARN of the target function.
   final pulumi.Input<String> targetArn;
 

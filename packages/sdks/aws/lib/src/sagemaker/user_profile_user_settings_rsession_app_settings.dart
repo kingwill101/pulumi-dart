@@ -6,13 +6,13 @@ import 'user_profile_user_settings_rsession_app_settings_default_resource_spec.d
 
 class UserProfileUserSettingsRSessionAppSettings {
   /// A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see Custom Image below.
-  final pulumi.Input<List<UserProfileUserSettingsRSessionAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec>? defaultResourceSpec;
+  final pulumi.Input<List<UserProfileUserSettingsRSessionAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  final pulumi.Input<UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
 
   /// Creates a new [UserProfileUserSettingsRSessionAppSettings].
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see Custom Image below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
   const UserProfileUserSettingsRSessionAppSettings({
     this.customImages,
     this.defaultResourceSpec,

@@ -7,25 +7,25 @@ import 'automation_rule_criteria.dart';
 /// Input properties used for looking up and filtering AutomationRule resources.
 class AutomationRuleState {
   /// A block that specifies one or more actions to update finding fields if a finding matches the conditions specified in `Criteria`. Documented below.
-  final pulumi.Input<List<AutomationRuleAction>>? actions;
+  final pulumi.Input<List<AutomationRuleAction>?>? actions;
   /// The ARN of the Security Hub automation rule.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// A block that specifies a set of ASFF finding field attributes and corresponding expected values that Security Hub uses to filter findings. Documented below.
-  final pulumi.Input<AutomationRuleCriteria>? criteria;
+  final pulumi.Input<AutomationRuleCriteria?>? criteria;
   /// The description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies whether a rule is the last to be applied with respect to a finding that matches the rule criteria. Defaults to `false`.
-  final pulumi.Input<bool>? isTerminal;
+  final pulumi.Input<bool?>? isTerminal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// An integer ranging from 1 to 1000 that represents the order in which the rule action is applied to findings. Security Hub applies rules with lower values for this parameter first.
-  final pulumi.Input<int>? ruleOrder;
+  final pulumi.Input<int?>? ruleOrder;
   /// Whether the rule is active after it is created.
-  final pulumi.Input<String>? ruleStatus;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? ruleStatus;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AutomationRuleState].
   /// [actions] A block that specifies one or more actions to update finding fields if a finding matches the conditions specified in `Criteria`. Documented below.
@@ -78,7 +78,7 @@ class AutomationRuleState {
       isTerminal: (() { final guardedValue = map['isTerminal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ruleStatus: (() { final guardedValue = map['ruleStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

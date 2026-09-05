@@ -10,9 +10,9 @@ class GetStreamArgs {
   /// Name of the Kinesis Stream.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assigned to the stream.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetStreamArgs].
   /// [name] Name of the Kinesis Stream.

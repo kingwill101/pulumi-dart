@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Federated principal for identity providers.
 class FederatedPrincipal {
   /// The federated principal identifier.
-  final pulumi.Input<String> federated;
+  final pulumi.Input<dynamic> federated;
 
   /// Creates a new [FederatedPrincipal].
   /// [federated] The federated principal identifier.
@@ -21,7 +21,7 @@ class FederatedPrincipal {
 
   factory FederatedPrincipal.fromMap(Map<String, dynamic> map) {
     return FederatedPrincipal(
-      federated: pulumi.Input.fromValue(map['Federated'] as String),
+      federated: pulumi.Input.fromValue(map['Federated']),
     );
   }
 }

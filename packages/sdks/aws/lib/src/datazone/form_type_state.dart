@@ -8,31 +8,31 @@ import 'form_type_timeouts.dart';
 /// Input properties used for looking up and filtering FormType resources.
 class FormTypeState {
   /// Creation time of the Form Type.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Creator of the Form Type.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Description of form type. Must have a length of between 1 and 2048 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier of the domain.
-  final pulumi.Input<String>? domainIdentifier;
-  final pulumi.Input<List<FormTypeImport>>? imports;
+  final pulumi.Input<String?>? domainIdentifier;
+  final pulumi.Input<List<FormTypeImport>?>? imports;
   /// Object of the model of the form type that contains the following attributes.
-  final pulumi.Input<FormTypeModel>? model;
+  final pulumi.Input<FormTypeModel?>? model;
   /// Name of the form type. Must be the name of the structure in smithy document.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Origin domain id of the Form Type.
-  final pulumi.Input<String>? originDomainId;
+  final pulumi.Input<String?>? originDomainId;
   /// Origin project id of the Form Type.
-  final pulumi.Input<String>? originProjectId;
+  final pulumi.Input<String?>? originProjectId;
   /// Identifier of project that owns the form type. Must follow regex of ^[a-zA-Z0-9_-]{1,36}.
-  final pulumi.Input<String>? owningProjectIdentifier;
+  final pulumi.Input<String?>? owningProjectIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Revision of the Form Type.
-  final pulumi.Input<String>? revision;
+  final pulumi.Input<String?>? revision;
   /// Status of form type. Must be "ENABLED" or "DISABLED" If status is set to "ENABLED" terraform cannot delete the resource until it is manually changed in the AWS console.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<FormTypeTimeouts>? timeouts;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<FormTypeTimeouts?>? timeouts;
 
   /// Creates a new [FormTypeState].
   /// [createdAt] Creation time of the Form Type.

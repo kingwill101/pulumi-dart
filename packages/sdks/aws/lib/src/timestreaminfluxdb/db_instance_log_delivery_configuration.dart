@@ -5,7 +5,7 @@ import 'db_instance_log_delivery_configuration_s3_configuration.dart';
 
 class DbInstanceLogDeliveryConfiguration {
   /// Configuration for S3 bucket log delivery.
-  final pulumi.Input<DbInstanceLogDeliveryConfigurationS3Configuration>? s3Configuration;
+  final pulumi.Input<DbInstanceLogDeliveryConfigurationS3Configuration?>? s3Configuration;
 
   /// Creates a new [DbInstanceLogDeliveryConfiguration].
   /// [s3Configuration] Configuration for S3 bucket log delivery.

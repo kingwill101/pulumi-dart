@@ -6,7 +6,7 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_cust
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat {
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric> metric;
   final pulumi.Input<String> stat;
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat].
   /// [metric] Required.

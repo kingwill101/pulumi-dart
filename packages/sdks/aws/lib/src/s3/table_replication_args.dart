@@ -9,11 +9,11 @@ import 'table_replication_rule.dart';
 /// {@macro pulumi_s3_tables_table_replication_table_replication_args_doc}
 class TableReplicationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
   final pulumi.Input<String> role;
   /// Replication rules. See Rule below for more details.
-  final pulumi.Input<TableReplicationRule>? rule;
+  final pulumi.Input<TableReplicationRule?>? rule;
   /// ARN referencing the Table that owns this replication configuration.
   final pulumi.Input<String> tableArn;
 

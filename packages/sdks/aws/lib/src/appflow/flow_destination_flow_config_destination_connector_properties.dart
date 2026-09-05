@@ -15,25 +15,25 @@ import 'flow_destination_flow_config_destination_connector_properties_upsolver.d
 import 'flow_destination_flow_config_destination_connector_properties_zendesk.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorProperties {
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector>? customConnector;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector?>? customConnector;
   /// Properties required to query Amazon Connect Customer Profiles. See the `destination_flow_config.destination_connector_properties.customer_profiles` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles>? customerProfiles;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles?>? customerProfiles;
   /// Properties required to query Amazon EventBridge. See the `destination_flow_config.destination_connector_properties.event_bridge` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge>? eventBridge;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge?>? eventBridge;
   /// Properties required to query Amazon Honeycode. See the `destination_flow_config.destination_connector_properties.honeycode` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode>? honeycode;
-  final pulumi.Input<Map<String, dynamic>>? lookoutMetrics;
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo>? marketo;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode?>? honeycode;
+  final pulumi.Input<Map<String, dynamic>?>? lookoutMetrics;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo?>? marketo;
   /// Properties required to query Amazon Redshift. See the `destination_flow_config.destination_connector_properties.redshift` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift>? redshift;
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3>? s3;
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce>? salesforce;
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData>? sapoData;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift?>? redshift;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3?>? s3;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce?>? salesforce;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData?>? sapoData;
   /// Properties required to query Snowflake. See the `destination_flow_config.destination_connector_properties.snowflake` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake>? snowflake;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake?>? snowflake;
   /// Properties required to query Upsolver. See the `destination_flow_config.destination_connector_properties.upsolver` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver>? upsolver;
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk>? zendesk;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver?>? upsolver;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk?>? zendesk;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorProperties].
   /// [customConnector] Optional.

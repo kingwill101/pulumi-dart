@@ -6,11 +6,11 @@ class RemediationConfigurationParameter {
   /// Name of the attribute.
   final pulumi.Input<String> name;
   /// Value is dynamic and changes at run-time.
-  final pulumi.Input<String>? resourceValue;
+  final pulumi.Input<String?>? resourceValue;
   /// Value is static and does not change at run-time.
-  final pulumi.Input<String>? staticValue;
+  final pulumi.Input<String?>? staticValue;
   /// List of static values.
-  final pulumi.Input<List<String>>? staticValues;
+  final pulumi.Input<List<String>?>? staticValues;
 
   /// Creates a new [RemediationConfigurationParameter].
   /// [name] Name of the attribute.

@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DedicatedHost resources.
 class DedicatedHostState {
   /// The ARN of the Dedicated Host.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The ID of the Outpost hardware asset on which to allocate the Dedicated Hosts. This parameter is supported only if you specify OutpostArn. If you are allocating the Dedicated Hosts in a Region, omit this parameter.
-  final pulumi.Input<String>? assetId;
+  final pulumi.Input<String?>? assetId;
   /// Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. Valid values: `on`, `off`. Default: `on`.
-  final pulumi.Input<String>? autoPlacement;
+  final pulumi.Input<String?>? autoPlacement;
   /// The Availability Zone in which to allocate the Dedicated Host.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Indicates whether to enable or disable host recovery for the Dedicated Host. Valid values: `on`, `off`. Default: `off`.
-  final pulumi.Input<String>? hostRecovery;
+  final pulumi.Input<String?>? hostRecovery;
   /// Specifies the instance family to be supported by the Dedicated Hosts. If you specify an instance family, the Dedicated Hosts support multiple instance types within that instance family. Exactly one of `instanceFamily` or `instanceType` must be specified.
-  final pulumi.Input<String>? instanceFamily;
+  final pulumi.Input<String?>? instanceFamily;
   /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an instance type, the Dedicated Hosts support instances of the specified instance type only. Exactly one of `instanceFamily` or `instanceType` must be specified.
-  final pulumi.Input<String>? instanceType;
-  /// The Amazon Resource Name (ARN) of the AWS Outpost on which to allocate the Dedicated Host.
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<String?>? instanceType;
+  /// ARN of the AWS Outpost on which to allocate the Dedicated Host.
+  final pulumi.Input<String?>? outpostArn;
   /// The ID of the AWS account that owns the Dedicated Host.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [DedicatedHostState].
   /// [arn] The ARN of the Dedicated Host.
@@ -37,7 +37,7 @@ class DedicatedHostState {
   /// [hostRecovery] Indicates whether to enable or disable host recovery for the Dedicated Host. Valid values: `on`, `off`. Default: `off`.
   /// [instanceFamily] Specifies the instance family to be supported by the Dedicated Hosts. If you specify an instance family, the Dedicated Hosts support multiple instance types within that instance family. Exactly one of `instanceFamily` or `instanceType` must be specified.
   /// [instanceType] Specifies the instance type to be supported by the Dedicated Hosts. If you specify an instance type, the Dedicated Hosts support instances of the specified instance type only. Exactly one of `instanceFamily` or `instanceType` must be specified.
-  /// [outpostArn] The Amazon Resource Name (ARN) of the AWS Outpost on which to allocate the Dedicated Host.
+  /// [outpostArn] ARN of the AWS Outpost on which to allocate the Dedicated Host.
   /// [ownerId] The ID of the AWS account that owns the Dedicated Host.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

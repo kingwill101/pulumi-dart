@@ -211,9 +211,9 @@ class LicenseGrant extends pulumi.CustomResource {
           'aws:licensemanager/licenseGrant:LicenseGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    allowedOperations = registerOutput<List<String>>('allowedOperations');
+    allowedOperations = registerOutput<List<String>>('allowedOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     homeRegion = registerOutput<String>('homeRegion');
     licenseArn = registerOutput<String>('licenseArn');
@@ -230,11 +230,12 @@ class LicenseGrant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicenseGrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicenseGrant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,7 +249,28 @@ class LicenseGrant extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedOperations = registerOutput<List<String>>('allowedOperations');
+    allowedOperations = registerOutput<List<String>>('allowedOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    homeRegion = registerOutput<String>('homeRegion');
+    licenseArn = registerOutput<String>('licenseArn');
+    this.name = registerOutput<String>('name');
+    parentArn = registerOutput<String>('parentArn');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [LicenseGrant] resource.
+  LicenseGrant.reference(String urn)
+    : super(
+        'aws:licensemanager/licenseGrant:LicenseGrant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedOperations = registerOutput<List<String>>('allowedOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     homeRegion = registerOutput<String>('homeRegion');
     licenseArn = registerOutput<String>('licenseArn');

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ontap_file_system_args.dart';
 import 'ontap_file_system_disk_iops_configuration.dart';
+import 'ontap_file_system_endpoint.dart';
 import 'ontap_file_system_state.dart';
 
 /// Manages an Amazon FSx for NetApp ONTAP file system.
@@ -606,13 +607,16 @@ import 'ontap_file_system_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.fsx.OntapFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]});
+/// const example = new aws.fsx.OntapFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]}, {
+///     ignoreChanges: ["securityGroupIds"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.fsx.OntapFileSystem("example", security_group_ids=[example_aws_security_group["id"]])
+/// example = aws.fsx.OntapFileSystem("example", security_group_ids=[example_aws_security_group["id"]],
+/// opts = pulumi.ResourceOptions(ignore_changes=["securityGroupIds"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -627,6 +631,12 @@ import 'ontap_file_system_state.dart';
 ///         SecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "securityGroupIds",
 ///         },
 ///     });
 ///
@@ -646,7 +656,9 @@ import 'ontap_file_system_state.dart';
 /// 			SecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"securityGroupIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -664,6 +676,9 @@ import 'ontap_file_system_state.dart';
 /// }
 ///
 /// resource "aws_fsx_ontapfilesystem" "example" {
+///   lifecycle {
+///     ignore_changes = [securityGroupIds]
+///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
 /// ```
@@ -675,6 +690,7 @@ import 'ontap_file_system_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.OntapFileSystem;
 /// import com.pulumi.aws.fsx.OntapFileSystemArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -690,7 +706,9 @@ import 'ontap_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new OntapFileSystem("example", OntapFileSystemArgs.builder()
 ///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("securityGroupIds")
+///                 .build());
 ///
 ///     }
 /// }
@@ -702,9 +720,12 @@ import 'ontap_file_system_state.dart';
 ///     properties:
 ///       securityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
+///     options:
+///       ignoreChanges:
+///         - securityGroupIds
 /// ```
 class OntapFileSystem extends pulumi.CustomResource {
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// Number of days to retain automatic backups. Setting this to 0 disables automatic backups. You can retain automatic backups for a maximum of 90 days.
   late final pulumi.Output<int?> automaticBackupRetentionDays;
@@ -719,7 +740,7 @@ class OntapFileSystem extends pulumi.CustomResource {
   /// IP address range in which the endpoints to access your file system will be created. By default, Amazon FSx selects an unused IP address range for you from the 198.19.\* range. Note that the 198.19.\* range is also used by AWS services such as WorkSpaces and AppStream 2.0 for their [management network interfaces](https://docs.aws.amazon.com/appstream2/latest/developerguide/management_ports.html).
   late final pulumi.Output<String> endpointIpAddressRange;
   /// Endpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<OntapFileSystemEndpoint>> endpoints;
   /// ONTAP administrative password for the fsxadmin user that you can use to administer your file system using the ONTAP CLI and REST API.
   late final pulumi.Output<String?> fsxAdminPassword;
   /// Number of haPairs to deploy for the file system. Valid value is 1 for `SINGLE_AZ_1` or `MULTI_AZ_1` and `MULTI_AZ_2`. Valid values are 1 through 12 for `SINGLE_AZ_2`.
@@ -732,7 +753,7 @@ class OntapFileSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> networkType;
   /// AWS account identifier that created the file system.
   late final pulumi.Output<String> ownerId;
-  /// ID for a subnet. A subnet is a range of IP addresses in your virtual private cloud (VPC).
+  /// ID for a subnet. A subnet is a range of IP addresses in your VPC.
   late final pulumi.Output<String> preferredSubnetId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -754,7 +775,7 @@ class OntapFileSystem extends pulumi.CustomResource {
   late final pulumi.Output<int> throughputCapacity;
   /// Sets the per-HA-pair throughput capacity (in MBps) for the file system that you're creating, as opposed to `throughputCapacity` which specifies the total throughput capacity for the file system. Valid value for `MULTI_AZ_1` and `SINGLE_AZ_1` are `128`, `256`, `512`, `1024`, `2048`, and `4096`. Valid values for deployment type `MULTI_AZ_2` and `SINGLE_AZ_2` are `384`,`768`,`1536`,`3072`,`6144` where `haPairs` is `1`. Valid values for deployment type `SINGLE_AZ_2` are `1536`, `3072`, and `6144` where `haPairs` is greater than 1. This parameter is only supported when specifying the haPairs parameter. Either throughputCapacity or throughputCapacityPerHaPair must be specified.
   late final pulumi.Output<int> throughputCapacityPerHaPair;
-  /// Identifier of the Virtual Private Cloud for the file system.
+  /// Identifier of the VPC for the file system.
   late final pulumi.Output<String> vpcId;
   /// Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   late final pulumi.Output<String> weeklyMaintenanceStartTime;
@@ -771,7 +792,8 @@ class OntapFileSystem extends pulumi.CustomResource {
           'aws:fsx/ontapFileSystem:OntapFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['fsxAdminPassword'],
         ) {
     arn = registerOutput<String>('arn');
     automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
@@ -780,22 +802,22 @@ class OntapFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration = registerOutput<OntapFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
-    fsxAdminPassword = registerOutput<String?>('fsxAdminPassword');
+    endpoints = registerOutput<List<OntapFileSystemEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OntapFileSystemEndpoint>(guardedValue, (value) => OntapFileSystemEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    fsxAdminPassword = registerOutput<String?>('fsxAdminPassword', isSecret: true);
     haPairs = registerOutput<int>('haPairs');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     preferredSubnetId = registerOutput<String>('preferredSubnetId');
     region = registerOutput<String>('region');
-    routeTableIds = registerOutput<List<String>>('routeTableIds');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageCapacity = registerOutput<int>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int>('throughputCapacity');
     throughputCapacityPerHaPair = registerOutput<int>('throughputCapacityPerHaPair');
     vpcId = registerOutput<String>('vpcId');
@@ -807,11 +829,12 @@ class OntapFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OntapFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OntapFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -832,22 +855,61 @@ class OntapFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration = registerOutput<OntapFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
-    fsxAdminPassword = registerOutput<String?>('fsxAdminPassword');
+    endpoints = registerOutput<List<OntapFileSystemEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OntapFileSystemEndpoint>(guardedValue, (value) => OntapFileSystemEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    fsxAdminPassword = registerOutput<String?>('fsxAdminPassword', isSecret: true);
     haPairs = registerOutput<int>('haPairs');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     preferredSubnetId = registerOutput<String>('preferredSubnetId');
     region = registerOutput<String>('region');
-    routeTableIds = registerOutput<List<String>>('routeTableIds');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageCapacity = registerOutput<int>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputCapacity = registerOutput<int>('throughputCapacity');
+    throughputCapacityPerHaPair = registerOutput<int>('throughputCapacityPerHaPair');
+    vpcId = registerOutput<String>('vpcId');
+    weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
+  }
+
+  /// Creates a typed reference to an existing [OntapFileSystem] resource.
+  OntapFileSystem.reference(String urn)
+    : super(
+        'aws:fsx/ontapFileSystem:OntapFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['fsxAdminPassword'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
+    dailyAutomaticBackupStartTime = registerOutput<String>('dailyAutomaticBackupStartTime');
+    deploymentType = registerOutput<String>('deploymentType');
+    diskIopsConfiguration = registerOutput<OntapFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsName = registerOutput<String>('dnsName');
+    endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
+    endpoints = registerOutput<List<OntapFileSystemEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OntapFileSystemEndpoint>(guardedValue, (value) => OntapFileSystemEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    fsxAdminPassword = registerOutput<String?>('fsxAdminPassword', isSecret: true);
+    haPairs = registerOutput<int>('haPairs');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    networkType = registerOutput<String>('networkType');
+    ownerId = registerOutput<String>('ownerId');
+    preferredSubnetId = registerOutput<String>('preferredSubnetId');
+    region = registerOutput<String>('region');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageCapacity = registerOutput<int>('storageCapacity');
+    storageType = registerOutput<String?>('storageType');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int>('throughputCapacity');
     throughputCapacityPerHaPair = registerOutput<int>('throughputCapacityPerHaPair');
     vpcId = registerOutput<String>('vpcId');

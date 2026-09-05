@@ -202,13 +202,14 @@ class Ciphertext extends pulumi.CustomResource {
           'aws:kms/ciphertext:Ciphertext',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['plaintext', 'plaintextWo'],
         ) {
     ciphertextBlob = registerOutput<String>('ciphertextBlob');
-    context = registerOutput<Map<String, String>?>('context');
+    context = registerOutput<Map<String, String>?>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     keyId = registerOutput<String>('keyId');
-    plaintext = registerOutput<String?>('plaintext');
-    plaintextWo = registerOutput<String?>('plaintextWo');
+    plaintext = registerOutput<String?>('plaintext', isSecret: true);
+    plaintextWo = registerOutput<String?>('plaintextWo', isSecret: true);
     plaintextWoVersion = registerOutput<String?>('plaintextWoVersion');
     region = registerOutput<String>('region');
   }
@@ -218,11 +219,12 @@ class Ciphertext extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CiphertextState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Ciphertext._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,10 +239,29 @@ class Ciphertext extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     ciphertextBlob = registerOutput<String>('ciphertextBlob');
-    context = registerOutput<Map<String, String>?>('context');
+    context = registerOutput<Map<String, String>?>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     keyId = registerOutput<String>('keyId');
-    plaintext = registerOutput<String?>('plaintext');
-    plaintextWo = registerOutput<String?>('plaintextWo');
+    plaintext = registerOutput<String?>('plaintext', isSecret: true);
+    plaintextWo = registerOutput<String?>('plaintextWo', isSecret: true);
+    plaintextWoVersion = registerOutput<String?>('plaintextWoVersion');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Ciphertext] resource.
+  Ciphertext.reference(String urn)
+    : super(
+        'aws:kms/ciphertext:Ciphertext',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['plaintext', 'plaintextWo'],
+        isResourceReference: true,
+      ) {
+    ciphertextBlob = registerOutput<String>('ciphertextBlob');
+    context = registerOutput<Map<String, String>?>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    keyId = registerOutput<String>('keyId');
+    plaintext = registerOutput<String?>('plaintext', isSecret: true);
+    plaintextWo = registerOutput<String?>('plaintextWo', isSecret: true);
     plaintextWoVersion = registerOutput<String?>('plaintextWoVersion');
     region = registerOutput<String>('region');
   }

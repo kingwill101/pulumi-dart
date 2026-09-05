@@ -5,10 +5,10 @@ import 'v2models_slot_sub_slot_setting_slot_specification.dart';
 
 class V2modelsSlotSubSlotSetting {
   /// Expression text for defining the constituent sub slots in the composite slot using logical `AND` and `OR` operators.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// Specifications for the constituent sub slots of a composite slot.
   /// See the `slotSpecification` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecification>>? slotSpecifications;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecification>?>? slotSpecifications;
 
   /// Creates a new [V2modelsSlotSubSlotSetting].
   /// [expression] Expression text for defining the constituent sub slots in the composite slot using logical `AND` and `OR` operators.

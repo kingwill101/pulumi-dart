@@ -7,7 +7,7 @@ class EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveConfig {
   /// Identifier of the knowledge base.
   final pulumi.Input<String> knowledgeBaseId;
   /// Knowledge base retrieval configuration. See `knowledgeBaseRetrievalConfiguration` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveConfigKnowledgeBaseRetrievalConfiguration>? knowledgeBaseRetrievalConfiguration;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveConfigKnowledgeBaseRetrievalConfiguration?>? knowledgeBaseRetrievalConfiguration;
 
   /// Creates a new [EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveConfig].
   /// [knowledgeBaseId] Identifier of the knowledge base.

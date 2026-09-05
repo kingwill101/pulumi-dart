@@ -9,18 +9,18 @@ import 'instance_connect_endpoint_timeouts.dart';
 /// {@macro pulumi_ec2transitgateway_instance_connect_endpoint_instance_connect_endpoint_args_doc}
 class InstanceConnectEndpointArgs {
   /// IP address type of the endpoint. Valid values are `ipv4`, `ipv6`, and `dualstack`. The default value is determined by the IP address type of the subnet. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInstanceConnectEndpoint.html) for more details.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// Indicates whether your client's IP address is preserved as the source. Default: `true`.
-  final pulumi.Input<bool>? preserveClientIp;
+  final pulumi.Input<bool?>? preserveClientIp;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more security groups to associate with the endpoint. If you don't specify a security group, the default security group for the VPC will be associated with the endpoint.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// The ID of the subnet in which to create the EC2 Instance Connect Endpoint.
   final pulumi.Input<String> subnetId;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<InstanceConnectEndpointTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<InstanceConnectEndpointTimeouts?>? timeouts;
 
   /// Creates a new [InstanceConnectEndpointArgs].
   /// [ipAddressType] IP address type of the endpoint. Valid values are `ipv4`, `ipv6`, and `dualstack`. The default value is determined by the IP address type of the subnet. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInstanceConnectEndpoint.html) for more details.

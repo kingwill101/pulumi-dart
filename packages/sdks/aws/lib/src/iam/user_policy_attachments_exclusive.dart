@@ -265,9 +265,9 @@ class UserPolicyAttachmentsExclusive extends pulumi.CustomResource {
           'aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    policyArns = registerOutput<List<String>>('policyArns');
+    policyArns = registerOutput<List<String>>('policyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userName = registerOutput<String>('userName');
   }
 
@@ -276,11 +276,12 @@ class UserPolicyAttachmentsExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPolicyAttachmentsExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPolicyAttachmentsExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,7 +295,20 @@ class UserPolicyAttachmentsExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    policyArns = registerOutput<List<String>>('policyArns');
+    policyArns = registerOutput<List<String>>('policyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [UserPolicyAttachmentsExclusive] resource.
+  UserPolicyAttachmentsExclusive.reference(String urn)
+    : super(
+        'aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    policyArns = registerOutput<List<String>>('policyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userName = registerOutput<String>('userName');
   }
 }

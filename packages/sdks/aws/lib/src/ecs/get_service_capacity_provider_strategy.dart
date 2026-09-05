@@ -30,9 +30,9 @@ class GetServiceCapacityProviderStrategy {
 
   factory GetServiceCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return GetServiceCapacityProviderStrategy(
-      base: pulumi.Input.fromValue(map['base'] as int),
+      base: pulumi.Input.fromValue((map['base'] as num).toInt()),
       capacityProvider: pulumi.Input.fromValue(map['capacityProvider'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

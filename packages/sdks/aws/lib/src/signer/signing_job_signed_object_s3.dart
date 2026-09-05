@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningJobSignedObjectS3 {
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Key name of the object that contains your unsigned code.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [SigningJobSignedObjectS3].
   /// [bucket] Optional.

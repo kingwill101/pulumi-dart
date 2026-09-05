@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_exadata_infrastructure_args.dart';
+import 'cloud_exadata_infrastructure_customer_contacts_to_send_to_oci.dart';
 import 'cloud_exadata_infrastructure_maintenance_window.dart';
 import 'cloud_exadata_infrastructure_state.dart';
 import 'cloud_exadata_infrastructure_timeouts.dart';
@@ -20,7 +21,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
   late final pulumi.Output<int> activatedStorageCount;
   /// Number of storage servers requested for the Exadata infrastructure.
   late final pulumi.Output<int> additionalStorageCount;
-  /// Amazon Resource Name (ARN) of the Exadata infrastructure.
+  /// ARN of the Exadata infrastructure.
   late final pulumi.Output<String> arn;
   /// Name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   late final pulumi.Output<String> availabilityZone;
@@ -37,7 +38,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
   /// Time when the Exadata infrastructure was created.
   late final pulumi.Output<String> createdAt;
   /// Email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource. See `customerContactsToSendToOci` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customerContactsToSendToOcis;
+  late final pulumi.Output<List<CloudExadataInfrastructureCustomerContactsToSendToOci>?> customerContactsToSendToOcis;
   /// Size of the Exadata infrastructure's data disk group, in terabytes (TB).
   late final pulumi.Output<double> dataStorageSizeInTbs;
   /// Database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
@@ -111,7 +112,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
           'aws:odb/cloudExadataInfrastructure:CloudExadataInfrastructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activatedStorageCount = registerOutput<int>('activatedStorageCount');
     additionalStorageCount = registerOutput<int>('additionalStorageCount');
@@ -123,7 +124,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     computeModel = registerOutput<String>('computeModel');
     cpuCount = registerOutput<int>('cpuCount');
     createdAt = registerOutput<String>('createdAt');
-    customerContactsToSendToOcis = registerOutput<List<Map<String, dynamic>>?>('customerContactsToSendToOcis');
+    customerContactsToSendToOcis = registerOutput<List<CloudExadataInfrastructureCustomerContactsToSendToOci>?>('customerContactsToSendToOcis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(guardedValue, (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>())); });
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     databaseServerType = registerOutput<String?>('databaseServerType');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
@@ -150,8 +151,8 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     storageCount = registerOutput<int>('storageCount');
     storageServerType = registerOutput<String?>('storageServerType');
     storageServerVersion = registerOutput<String>('storageServerVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudExadataInfrastructureTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     totalStorageSizeInGbs = registerOutput<int>('totalStorageSizeInGbs');
   }
@@ -161,11 +162,12 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudExadataInfrastructureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudExadataInfrastructure._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -189,7 +191,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     computeModel = registerOutput<String>('computeModel');
     cpuCount = registerOutput<int>('cpuCount');
     createdAt = registerOutput<String>('createdAt');
-    customerContactsToSendToOcis = registerOutput<List<Map<String, dynamic>>?>('customerContactsToSendToOcis');
+    customerContactsToSendToOcis = registerOutput<List<CloudExadataInfrastructureCustomerContactsToSendToOci>?>('customerContactsToSendToOcis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(guardedValue, (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>())); });
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     databaseServerType = registerOutput<String?>('databaseServerType');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
@@ -216,8 +218,60 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     storageCount = registerOutput<int>('storageCount');
     storageServerType = registerOutput<String?>('storageServerType');
     storageServerVersion = registerOutput<String>('storageServerVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudExadataInfrastructureTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    totalStorageSizeInGbs = registerOutput<int>('totalStorageSizeInGbs');
+  }
+
+  /// Creates a typed reference to an existing [CloudExadataInfrastructure] resource.
+  CloudExadataInfrastructure.reference(String urn)
+    : super(
+        'aws:odb/cloudExadataInfrastructure:CloudExadataInfrastructure',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activatedStorageCount = registerOutput<int>('activatedStorageCount');
+    additionalStorageCount = registerOutput<int>('additionalStorageCount');
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    availableStorageSizeInGbs = registerOutput<int>('availableStorageSizeInGbs');
+    computeCount = registerOutput<int>('computeCount');
+    computeModel = registerOutput<String>('computeModel');
+    cpuCount = registerOutput<int>('cpuCount');
+    createdAt = registerOutput<String>('createdAt');
+    customerContactsToSendToOcis = registerOutput<List<CloudExadataInfrastructureCustomerContactsToSendToOci>?>('customerContactsToSendToOcis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(guardedValue, (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>())); });
+    dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    databaseServerType = registerOutput<String?>('databaseServerType');
+    dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
+    dbServerVersion = registerOutput<String>('dbServerVersion');
+    displayName = registerOutput<String>('displayName');
+    lastMaintenanceRunId = registerOutput<String>('lastMaintenanceRunId');
+    maintenanceWindow = registerOutput<CloudExadataInfrastructureMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudExadataInfrastructureMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxCpuCount = registerOutput<int>('maxCpuCount');
+    maxDataStorageInTbs = registerOutput<double>('maxDataStorageInTbs');
+    maxDbNodeStorageSizeInGbs = registerOutput<int>('maxDbNodeStorageSizeInGbs');
+    maxMemoryInGbs = registerOutput<int>('maxMemoryInGbs');
+    memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    monthlyDbServerVersion = registerOutput<String>('monthlyDbServerVersion');
+    monthlyStorageServerVersion = registerOutput<String>('monthlyStorageServerVersion');
+    nextMaintenanceRunId = registerOutput<String>('nextMaintenanceRunId');
+    ociResourceAnchorName = registerOutput<String>('ociResourceAnchorName');
+    ociUrl = registerOutput<String>('ociUrl');
+    ocid = registerOutput<String>('ocid');
+    percentProgress = registerOutput<double>('percentProgress');
+    region = registerOutput<String>('region');
+    shape = registerOutput<String>('shape');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    storageCount = registerOutput<int>('storageCount');
+    storageServerType = registerOutput<String?>('storageServerType');
+    storageServerVersion = registerOutput<String>('storageServerVersion');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudExadataInfrastructureTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     totalStorageSizeInGbs = registerOutput<int>('totalStorageSizeInGbs');
   }

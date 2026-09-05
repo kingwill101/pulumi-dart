@@ -5,7 +5,7 @@ import 'web_acl_rule_captcha_config_immunity_time_property.dart';
 
 class WebAclRuleCaptchaConfig {
   /// Immunity time configuration. See Immunity Time Property below.
-  final pulumi.Input<WebAclRuleCaptchaConfigImmunityTimeProperty>? immunityTimeProperty;
+  final pulumi.Input<WebAclRuleCaptchaConfigImmunityTimeProperty?>? immunityTimeProperty;
 
   /// Creates a new [WebAclRuleCaptchaConfig].
   /// [immunityTimeProperty] Immunity time configuration. See Immunity Time Property below.

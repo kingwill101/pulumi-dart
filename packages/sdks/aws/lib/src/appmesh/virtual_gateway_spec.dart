@@ -7,11 +7,11 @@ import 'virtual_gateway_spec_logging.dart';
 
 class VirtualGatewaySpec {
   /// Defaults for backends. See `backendDefaults` Block for details.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaults>? backendDefaults;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaults?>? backendDefaults;
   /// Listeners that the mesh endpoint is expected to receive inbound traffic from. You can specify one listener. See `listener` Block for details.
   final pulumi.Input<List<VirtualGatewaySpecListener>> listeners;
   /// Inbound and outbound access logging information for the virtual gateway. See `logging` Block for details.
-  final pulumi.Input<VirtualGatewaySpecLogging>? logging;
+  final pulumi.Input<VirtualGatewaySpecLogging?>? logging;
 
   /// Creates a new [VirtualGatewaySpec].
   /// [backendDefaults] Defaults for backends. See `backendDefaults` Block for details.

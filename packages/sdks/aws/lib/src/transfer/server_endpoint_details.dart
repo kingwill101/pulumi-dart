@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerEndpointDetails {
   /// List of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint. This property can only be used when `endpointType` is set to `VPC`.
-  final pulumi.Input<List<String>>? addressAllocationIds;
+  final pulumi.Input<List<String>?>? addressAllocationIds;
   /// List of security groups IDs that are available to attach to your server's endpoint. If no security groups are specified, the VPC's default security groups are automatically assigned to your endpoint. This property can only be used when `endpointType` is set to `VPC`.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// List of subnet IDs that are required to host your SFTP server endpoint in your VPC. This property can only be used when `endpointType` is set to `VPC`.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// ID of the VPC endpoint. This property can only be used when `endpointType` is set to `VPC_ENDPOINT`
-  final pulumi.Input<String>? vpcEndpointId;
-  /// VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted. This property can only be used when `endpointType` is set to `VPC`.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcEndpointId;
+  /// VPC ID of the VPC in which the SFTP server's endpoint will be hosted. This property can only be used when `endpointType` is set to `VPC`.
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ServerEndpointDetails].
   /// [addressAllocationIds] List of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint. This property can only be used when `endpointType` is set to `VPC`.
   /// [securityGroupIds] List of security groups IDs that are available to attach to your server's endpoint. If no security groups are specified, the VPC's default security groups are automatically assigned to your endpoint. This property can only be used when `endpointType` is set to `VPC`.
   /// [subnetIds] List of subnet IDs that are required to host your SFTP server endpoint in your VPC. This property can only be used when `endpointType` is set to `VPC`.
   /// [vpcEndpointId] ID of the VPC endpoint. This property can only be used when `endpointType` is set to `VPC_ENDPOINT`
-  /// [vpcId] VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted. This property can only be used when `endpointType` is set to `VPC`.
+  /// [vpcId] VPC ID of the VPC in which the SFTP server's endpoint will be hosted. This property can only be used when `endpointType` is set to `VPC`.
   const ServerEndpointDetails({
     this.addressAllocationIds,
     this.securityGroupIds,

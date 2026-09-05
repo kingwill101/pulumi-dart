@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcLink resources.
 class VpcLinkState {
   /// VPC Link ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the VPC Link. Must be between 1 and 128 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Security group IDs for the VPC Link.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Subnet IDs for the VPC Link.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Map of tags to assign to the VPC Link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VpcLinkState].
   /// [arn] VPC Link ARN.

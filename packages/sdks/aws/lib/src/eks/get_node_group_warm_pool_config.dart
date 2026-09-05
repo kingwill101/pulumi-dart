@@ -35,8 +35,8 @@ class GetNodeGroupWarmPoolConfig {
 
   factory GetNodeGroupWarmPoolConfig.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupWarmPoolConfig(
-      maxGroupPreparedCapacity: pulumi.Input.fromValue(map['maxGroupPreparedCapacity'] as int),
-      minSize: pulumi.Input.fromValue(map['minSize'] as int),
+      maxGroupPreparedCapacity: pulumi.Input.fromValue((map['maxGroupPreparedCapacity'] as num).toInt()),
+      minSize: pulumi.Input.fromValue((map['minSize'] as num).toInt()),
       poolState: pulumi.Input.fromValue(map['poolState'] as String),
       reuseOnScaleIn: pulumi.Input.fromValue(map['reuseOnScaleIn'] as bool),
     );

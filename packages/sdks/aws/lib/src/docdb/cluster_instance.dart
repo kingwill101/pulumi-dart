@@ -299,7 +299,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:docdb/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');
@@ -327,8 +327,8 @@ class ClusterInstance extends pulumi.CustomResource {
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     writer = registerOutput<bool>('writer');
   }
 
@@ -337,11 +337,12 @@ class ClusterInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -381,8 +382,48 @@ class ClusterInstance extends pulumi.CustomResource {
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    writer = registerOutput<bool>('writer');
+  }
+
+  /// Creates a typed reference to an existing [ClusterInstance] resource.
+  ClusterInstance.reference(String urn)
+    : super(
+        'aws:docdb/clusterInstance:ClusterInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyImmediately = registerOutput<bool?>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    caCertIdentifier = registerOutput<String>('caCertIdentifier');
+    certificateRotationRestart = registerOutput<String?>('certificateRotationRestart');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    dbiResourceId = registerOutput<String>('dbiResourceId');
+    enablePerformanceInsights = registerOutput<bool?>('enablePerformanceInsights');
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<String?>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    identifier = registerOutput<String>('identifier');
+    identifierPrefix = registerOutput<String>('identifierPrefix');
+    instanceClass = registerOutput<String>('instanceClass');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
+    port = registerOutput<int>('port');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    promotionTier = registerOutput<int?>('promotionTier');
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     writer = registerOutput<bool>('writer');
   }
 }

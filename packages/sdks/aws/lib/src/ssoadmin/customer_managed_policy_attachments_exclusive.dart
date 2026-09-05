@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_managed_policy_attachments_exclusive_args.dart';
+import 'customer_managed_policy_attachments_exclusive_customer_managed_policy_reference.dart';
 import 'customer_managed_policy_attachments_exclusive_state.dart';
 import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 
@@ -38,12 +39,12 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///     }),
 /// });
 /// const exampleCustomerManagedPolicyAttachmentsExclusive = new aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusive("example", {
-///     instanceArn: example.then(example => example.arns?.[0]),
-///     permissionSetArn: examplePermissionSet.arn,
 ///     customerManagedPolicyReferences: [{
 ///         name: examplePolicy.name,
 ///         path: "/",
 ///     }],
+///     instanceArn: example.then(example => example.arns?.[0]),
+///     permissionSetArn: examplePermissionSet.arn,
 /// });
 /// ```
 /// ```python
@@ -67,12 +68,12 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///         }],
 ///     }))
 /// example_customer_managed_policy_attachments_exclusive = aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusive("example",
-///     instance_arn=example.arns[0],
-///     permission_set_arn=example_permission_set.arn,
 ///     customer_managed_policy_references=[{
 ///         "name": example_policy.name,
 ///         "path": "/",
-///     }])
+///     }],
+///     instance_arn=example.arns[0],
+///     permission_set_arn=example_permission_set.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -115,8 +116,6 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///
 ///     var exampleCustomerManagedPolicyAttachmentsExclusive = new Aws.SsoAdmin.CustomerManagedPolicyAttachmentsExclusive("example", new()
 ///     {
-///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
-///         PermissionSetArn = examplePermissionSet.Arn,
 ///         CustomerManagedPolicyReferences = new[]
 ///         {
 ///             new Aws.SsoAdmin.Inputs.CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReferenceArgs
@@ -125,6 +124,8 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///                 Path = "/",
 ///             },
 ///         },
+///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
+///         PermissionSetArn = examplePermissionSet.Arn,
 ///     });
 ///
 /// });
@@ -178,14 +179,14 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssoadmin.NewCustomerManagedPolicyAttachmentsExclusive(ctx, "example", &ssoadmin.CustomerManagedPolicyAttachmentsExclusiveArgs{
-/// 			InstanceArn:      pulumi.String(example.Arns[0]),
-/// 			PermissionSetArn: examplePermissionSet.Arn,
 /// 			CustomerManagedPolicyReferences: ssoadmin.CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReferenceArray{
 /// 				&ssoadmin.CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReferenceArgs{
 /// 					Name: examplePolicy.Name,
 /// 					Path: pulumi.String("/"),
 /// 				},
 /// 			},
+/// 			InstanceArn:      pulumi.String(example.Arns[0]),
+/// 			PermissionSetArn: examplePermissionSet.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -223,12 +224,12 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_ssoadmin_customermanagedpolicyattachmentsexclusive" "example" {
-///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
 ///   customer_managed_policy_references {
 ///     name = aws_iam_policy.example.name
 ///     path = "/"
 ///   }
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
 /// }
 /// ```
 /// ```java
@@ -283,12 +284,12 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleCustomerManagedPolicyAttachmentsExclusive = new CustomerManagedPolicyAttachmentsExclusive("exampleCustomerManagedPolicyAttachmentsExclusive", CustomerManagedPolicyAttachmentsExclusiveArgs.builder()
-///             .instanceArn(example.arns()[0])
-///             .permissionSetArn(examplePermissionSet.arn())
 ///             .customerManagedPolicyReferences(CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReferenceArgs.builder()
 ///                 .name(examplePolicy.name())
 ///                 .path("/")
 ///                 .build())
+///             .instanceArn(example.arns()[0])
+///             .permissionSetArn(examplePermissionSet.arn())
 ///             .build());
 ///
 ///     }
@@ -320,11 +321,11 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///     type: aws:ssoadmin:CustomerManagedPolicyAttachmentsExclusive
 ///     name: example
 ///     properties:
-///       instanceArn: ${example.arns[0]}
-///       permissionSetArn: ${examplePermissionSet.arn}
 ///       customerManagedPolicyReferences:
 ///         - name: ${examplePolicy.name}
 ///           path: /
+///       instanceArn: ${example.arns[0]}
+///       permissionSetArn: ${examplePermissionSet.arn}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -469,7 +470,7 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// ```
 class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customerManagedPolicyReferences;
+  late final pulumi.Output<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?> customerManagedPolicyReferences;
   /// ARN of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
   /// ARN of the Permission Set.
@@ -492,9 +493,9 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
           'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    customerManagedPolicyReferences = registerOutput<List<Map<String, dynamic>>?>('customerManagedPolicyReferences');
+    customerManagedPolicyReferences = registerOutput<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>('customerManagedPolicyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(guardedValue, (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
@@ -506,11 +507,12 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomerManagedPolicyAttachmentsExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomerManagedPolicyAttachmentsExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -524,7 +526,23 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    customerManagedPolicyReferences = registerOutput<List<Map<String, dynamic>>?>('customerManagedPolicyReferences');
+    customerManagedPolicyReferences = registerOutput<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>('customerManagedPolicyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(guardedValue, (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CustomerManagedPolicyAttachmentsExclusive] resource.
+  CustomerManagedPolicyAttachmentsExclusive.reference(String urn)
+    : super(
+        'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customerManagedPolicyReferences = registerOutput<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>('customerManagedPolicyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(guardedValue, (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');

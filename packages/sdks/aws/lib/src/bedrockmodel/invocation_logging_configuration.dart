@@ -20,6 +20,11 @@ import 'invocation_logging_configuration_state.dart';
 /// const example = new aws.s3.Bucket("example", {
 ///     bucket: "example",
 ///     forceDestroy: true,
+/// }, {
+///     ignoreChanges: [
+///         "tags[\"CreatorId\"]",
+///         "tags[\"CreatorName\"]",
+///     ],
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: example.bucket,
@@ -51,14 +56,14 @@ import 'invocation_logging_configuration_state.dart';
 /// `),
 /// });
 /// const exampleInvocationLoggingConfiguration = new aws.bedrockmodel.InvocationLoggingConfiguration("example", {loggingConfig: {
-///     embeddingDataDeliveryEnabled: true,
-///     imageDataDeliveryEnabled: true,
-///     textDataDeliveryEnabled: true,
-///     videoDataDeliveryEnabled: true,
 ///     s3Config: {
 ///         bucketName: example.id,
 ///         keyPrefix: "bedrock",
 ///     },
+///     embeddingDataDeliveryEnabled: true,
+///     imageDataDeliveryEnabled: true,
+///     textDataDeliveryEnabled: true,
+///     videoDataDeliveryEnabled: true,
 /// }}, {
 ///     dependsOn: [exampleBucketPolicy],
 /// });
@@ -70,7 +75,11 @@ import 'invocation_logging_configuration_state.dart';
 /// current = aws.get_caller_identity()
 /// example = aws.s3.Bucket("example",
 ///     bucket="example",
-///     force_destroy=True)
+///     force_destroy=True,
+///     opts = pulumi.ResourceOptions(ignore_changes=[
+///             "tags[\"CreatorId\"]",
+///             "tags[\"CreatorName\"]",
+///         ]))
 /// example_bucket_policy = aws.s3.BucketPolicy("example",
 ///     bucket=example.bucket,
 ///     policy=example.arn.apply(lambda arn: f"""{{
@@ -100,14 +109,14 @@ import 'invocation_logging_configuration_state.dart';
 /// }}
 /// """))
 /// example_invocation_logging_configuration = aws.bedrockmodel.InvocationLoggingConfiguration("example", logging_config={
-///     "embedding_data_delivery_enabled": True,
-///     "image_data_delivery_enabled": True,
-///     "text_data_delivery_enabled": True,
-///     "video_data_delivery_enabled": True,
 ///     "s3_config": {
 ///         "bucket_name": example.id,
 ///         "key_prefix": "bedrock",
 ///     },
+///     "embedding_data_delivery_enabled": True,
+///     "image_data_delivery_enabled": True,
+///     "text_data_delivery_enabled": True,
+///     "video_data_delivery_enabled": True,
 /// },
 /// opts = pulumi.ResourceOptions(depends_on=[example_bucket_policy]))
 /// ```
@@ -125,6 +134,13 @@ import 'invocation_logging_configuration_state.dart';
 ///     {
 ///         BucketName = "example",
 ///         ForceDestroy = true,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "tags[\"CreatorId\"]",
+///             "tags[\"CreatorName\"]",
+///         },
 ///     });
 ///
 ///     var exampleBucketPolicy = new Aws.S3.BucketPolicy("example", new()
@@ -167,15 +183,15 @@ import 'invocation_logging_configuration_state.dart';
 ///     {
 ///         LoggingConfig = new Aws.BedrockModel.Inputs.InvocationLoggingConfigurationLoggingConfigArgs
 ///         {
-///             EmbeddingDataDeliveryEnabled = true,
-///             ImageDataDeliveryEnabled = true,
-///             TextDataDeliveryEnabled = true,
-///             VideoDataDeliveryEnabled = true,
 ///             S3Config = new Aws.BedrockModel.Inputs.InvocationLoggingConfigurationLoggingConfigS3ConfigArgs
 ///             {
 ///                 BucketName = example.Id,
 ///                 KeyPrefix = "bedrock",
 ///             },
+///             EmbeddingDataDeliveryEnabled = true,
+///             ImageDataDeliveryEnabled = true,
+///             TextDataDeliveryEnabled = true,
+///             VideoDataDeliveryEnabled = true,
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -208,7 +224,10 @@ import 'invocation_logging_configuration_state.dart';
 /// 		example, err := s3.NewBucket(ctx, "example", &s3.BucketArgs{
 /// 			Bucket:       pulumi.String("example"),
 /// 			ForceDestroy: pulumi.Bool(true),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"tags[\"CreatorId\"]",
+/// 			"tags[\"CreatorName\"]",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -248,14 +267,14 @@ import 'invocation_logging_configuration_state.dart';
 /// 		}
 /// 		_, err = bedrockmodel.NewInvocationLoggingConfiguration(ctx, "example", &bedrockmodel.InvocationLoggingConfigurationArgs{
 /// 			LoggingConfig: &bedrockmodel.InvocationLoggingConfigurationLoggingConfigArgs{
-/// 				EmbeddingDataDeliveryEnabled: pulumi.Bool(true),
-/// 				ImageDataDeliveryEnabled:     pulumi.Bool(true),
-/// 				TextDataDeliveryEnabled:      pulumi.Bool(true),
-/// 				VideoDataDeliveryEnabled:     pulumi.Bool(true),
 /// 				S3Config: &bedrockmodel.InvocationLoggingConfigurationLoggingConfigS3ConfigArgs{
 /// 					BucketName: example.ID().ToIDOutput().ToStringOutput(),
 /// 					KeyPrefix:  pulumi.String("bedrock"),
 /// 				},
+/// 				EmbeddingDataDeliveryEnabled: pulumi.Bool(true),
+/// 				ImageDataDeliveryEnabled:     pulumi.Bool(true),
+/// 				TextDataDeliveryEnabled:      pulumi.Bool(true),
+/// 				VideoDataDeliveryEnabled:     pulumi.Bool(true),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketPolicy,
@@ -280,6 +299,9 @@ import 'invocation_logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     ignore_changes = [tags["CreatorId"], tags["CreatorName"]]
+///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
@@ -315,14 +337,14 @@ import 'invocation_logging_configuration_state.dart';
 /// resource "aws_bedrockmodel_invocationloggingconfiguration" "example" {
 ///   depends_on = [aws_s3_bucketpolicy.example]
 ///   logging_config = {
-///     embedding_data_delivery_enabled = true
-///     image_data_delivery_enabled     = true
-///     text_data_delivery_enabled      = true
-///     video_data_delivery_enabled     = true
 ///     s3_config = {
 ///       bucket_name = aws_s3_bucket.example.id
 ///       key_prefix  = "bedrock"
 ///     }
+///     embedding_data_delivery_enabled = true
+///     image_data_delivery_enabled     = true
+///     text_data_delivery_enabled      = true
+///     video_data_delivery_enabled     = true
 ///   }
 /// }
 /// ```
@@ -362,7 +384,9 @@ import 'invocation_logging_configuration_state.dart';
 ///         var example = new Bucket("example", BucketArgs.builder()
 ///             .bucket("example")
 ///             .forceDestroy(true)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("tags[\"CreatorId\"]", "tags[\"CreatorName\"]")
+///                 .build());
 ///
 ///         var exampleBucketPolicy = new BucketPolicy("exampleBucketPolicy", BucketPolicyArgs.builder()
 ///             .bucket(example.bucket())
@@ -397,14 +421,14 @@ import 'invocation_logging_configuration_state.dart';
 ///
 ///         var exampleInvocationLoggingConfiguration = new InvocationLoggingConfiguration("exampleInvocationLoggingConfiguration", InvocationLoggingConfigurationArgs.builder()
 ///             .loggingConfig(InvocationLoggingConfigurationLoggingConfigArgs.builder()
-///                 .embeddingDataDeliveryEnabled(true)
-///                 .imageDataDeliveryEnabled(true)
-///                 .textDataDeliveryEnabled(true)
-///                 .videoDataDeliveryEnabled(true)
 ///                 .s3Config(InvocationLoggingConfigurationLoggingConfigS3ConfigArgs.builder()
 ///                     .bucketName(example.id())
 ///                     .keyPrefix("bedrock")
 ///                     .build())
+///                 .embeddingDataDeliveryEnabled(true)
+///                 .imageDataDeliveryEnabled(true)
+///                 .textDataDeliveryEnabled(true)
+///                 .videoDataDeliveryEnabled(true)
 ///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleBucketPolicy)
@@ -420,6 +444,10 @@ import 'invocation_logging_configuration_state.dart';
 ///     properties:
 ///       bucket: example
 ///       forceDestroy: true
+///     options:
+///       ignoreChanges:
+///         - tags.CreatorId
+///         - tags.CreatorName
 ///   exampleBucketPolicy:
 ///     type: aws:s3:BucketPolicy
 ///     name: example
@@ -456,13 +484,13 @@ import 'invocation_logging_configuration_state.dart';
 ///     name: example
 ///     properties:
 ///       loggingConfig:
+///         s3Config:
+///           bucketName: ${example.id}
+///           keyPrefix: bedrock
 ///         embeddingDataDeliveryEnabled: true
 ///         imageDataDeliveryEnabled: true
 ///         textDataDeliveryEnabled: true
 ///         videoDataDeliveryEnabled: true
-///         s3Config:
-///           bucketName: ${example.id}
-///           keyPrefix: bedrock
 ///     options:
 ///       dependsOn:
 ///         - ${exampleBucketPolicy}
@@ -507,7 +535,7 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
           'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationLoggingConfigurationLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -518,11 +546,12 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InvocationLoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InvocationLoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -536,6 +565,19 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationLoggingConfigurationLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [InvocationLoggingConfiguration] resource.
+  InvocationLoggingConfiguration.reference(String urn)
+    : super(
+        'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationLoggingConfigurationLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
   }

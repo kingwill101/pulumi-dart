@@ -6,9 +6,9 @@ import 'mesh_spec_service_discovery.dart';
 
 class MeshSpec {
   /// Egress filter rules for the service mesh. See `egressFilter` Block for details.
-  final pulumi.Input<MeshSpecEgressFilter>? egressFilter;
+  final pulumi.Input<MeshSpecEgressFilter?>? egressFilter;
   /// Service discovery information for the service mesh. See `serviceDiscovery` Block for details.
-  final pulumi.Input<MeshSpecServiceDiscovery>? serviceDiscovery;
+  final pulumi.Input<MeshSpecServiceDiscovery?>? serviceDiscovery;
 
   /// Creates a new [MeshSpec].
   /// [egressFilter] Egress filter rules for the service mesh. See `egressFilter` Block for details.

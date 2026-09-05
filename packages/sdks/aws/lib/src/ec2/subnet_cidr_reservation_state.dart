@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SubnetCidrReservation resources.
 class SubnetCidrReservationState {
   /// The CIDR block for the reservation.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// A brief description of the reservation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the AWS account that owns this CIDR reservation.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The type of reservation to create. Valid values: `explicit`, `prefix`
-  final pulumi.Input<String>? reservationType;
+  final pulumi.Input<String?>? reservationType;
   /// The ID of the subnet to create the reservation for.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [SubnetCidrReservationState].
   /// [cidrBlock] The CIDR block for the reservation.

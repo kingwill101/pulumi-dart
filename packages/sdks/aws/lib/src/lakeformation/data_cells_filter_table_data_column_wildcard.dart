@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCellsFilterTableDataColumnWildcard {
   /// (Optional) Excludes column names. Any column with this name will be excluded.
-  final pulumi.Input<List<String>>? excludedColumnNames;
+  final pulumi.Input<List<String>?>? excludedColumnNames;
 
   /// Creates a new [DataCellsFilterTableDataColumnWildcard].
   /// [excludedColumnNames] (Optional) Excludes column names. Any column with this name will be excluded.

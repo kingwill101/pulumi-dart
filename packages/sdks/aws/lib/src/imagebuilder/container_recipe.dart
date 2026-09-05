@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_recipe_args.dart';
+import 'container_recipe_component.dart';
 import 'container_recipe_instance_configuration.dart';
 import 'container_recipe_state.dart';
 import 'container_recipe_target_repository.dart';
@@ -14,16 +15,11 @@ import 'container_recipe_target_repository.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.imagebuilder.ContainerRecipe("example", {
-///     name: "example",
-///     version: "1.0.0",
-///     containerType: "DOCKER",
-///     parentImage: "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x",
 ///     targetRepository: {
 ///         repositoryName: exampleAwsEcrRepository.name,
 ///         service: "ECR",
 ///     },
 ///     components: [{
-///         componentArn: exampleAwsImagebuilderComponent.arn,
 ///         parameters: [
 ///             {
 ///                 name: "Parameter1",
@@ -34,7 +30,12 @@ import 'container_recipe_target_repository.dart';
 ///                 value: "Value2",
 ///             },
 ///         ],
+///         componentArn: exampleAwsImagebuilderComponent.arn,
 ///     }],
+///     name: "example",
+///     version: "1.0.0",
+///     containerType: "DOCKER",
+///     parentImage: "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x",
 ///     dockerfileTemplateData: `FROM {{{ imagebuilder:parentImage }}}
 /// {{{ imagebuilder:environments }}}
 /// {{{ imagebuilder:components }}}
@@ -46,16 +47,11 @@ import 'container_recipe_target_repository.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.imagebuilder.ContainerRecipe("example",
-///     name="example",
-///     version="1.0.0",
-///     container_type="DOCKER",
-///     parent_image="arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x",
 ///     target_repository={
 ///         "repository_name": example_aws_ecr_repository["name"],
 ///         "service": "ECR",
 ///     },
 ///     components=[{
-///         "component_arn": example_aws_imagebuilder_component["arn"],
 ///         "parameters": [
 ///             {
 ///                 "name": "Parameter1",
@@ -66,7 +62,12 @@ import 'container_recipe_target_repository.dart';
 ///                 "value": "Value2",
 ///             },
 ///         ],
+///         "component_arn": example_aws_imagebuilder_component["arn"],
 ///     }],
+///     name="example",
+///     version="1.0.0",
+///     container_type="DOCKER",
+///     parent_image="arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x",
 ///     dockerfile_template_data="""FROM {{{ imagebuilder:parentImage }}}
 /// {{{ imagebuilder:environments }}}
 /// {{{ imagebuilder:components }}}
@@ -82,10 +83,6 @@ import 'container_recipe_target_repository.dart';
 /// {
 ///     var example = new Aws.ImageBuilder.ContainerRecipe("example", new()
 ///     {
-///         Name = "example",
-///         Version = "1.0.0",
-///         ContainerType = "DOCKER",
-///         ParentImage = "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x",
 ///         TargetRepository = new Aws.ImageBuilder.Inputs.ContainerRecipeTargetRepositoryArgs
 ///         {
 ///             RepositoryName = exampleAwsEcrRepository.Name,
@@ -95,7 +92,6 @@ import 'container_recipe_target_repository.dart';
 ///         {
 ///             new Aws.ImageBuilder.Inputs.ContainerRecipeComponentArgs
 ///             {
-///                 ComponentArn = exampleAwsImagebuilderComponent.Arn,
 ///                 Parameters = new[]
 ///                 {
 ///                     new Aws.ImageBuilder.Inputs.ContainerRecipeComponentParameterArgs
@@ -109,8 +105,13 @@ import 'container_recipe_target_repository.dart';
 ///                         Value = "Value2",
 ///                     },
 ///                 },
+///                 ComponentArn = exampleAwsImagebuilderComponent.Arn,
 ///             },
 ///         },
+///         Name = "example",
+///         Version = "1.0.0",
+///         ContainerType = "DOCKER",
+///         ParentImage = "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x",
 ///         DockerfileTemplateData = @"FROM {{{ imagebuilder:parentImage }}}
 /// {{{ imagebuilder:environments }}}
 /// {{{ imagebuilder:components }}}
@@ -130,17 +131,12 @@ import 'container_recipe_target_repository.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := imagebuilder.NewContainerRecipe(ctx, "example", &imagebuilder.ContainerRecipeArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			Version:       pulumi.String("1.0.0"),
-/// 			ContainerType: pulumi.String("DOCKER"),
-/// 			ParentImage:   pulumi.String("arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x"),
 /// 			TargetRepository: &imagebuilder.ContainerRecipeTargetRepositoryArgs{
 /// 				RepositoryName: pulumi.Any(exampleAwsEcrRepository.Name),
 /// 				Service:        pulumi.String("ECR"),
 /// 			},
 /// 			Components: imagebuilder.ContainerRecipeComponentArray{
 /// 				&imagebuilder.ContainerRecipeComponentArgs{
-/// 					ComponentArn: pulumi.Any(exampleAwsImagebuilderComponent.Arn),
 /// 					Parameters: imagebuilder.ContainerRecipeComponentParameterArray{
 /// 						&imagebuilder.ContainerRecipeComponentParameterArgs{
 /// 							Name:  pulumi.String("Parameter1"),
@@ -151,8 +147,13 @@ import 'container_recipe_target_repository.dart';
 /// 							Value: pulumi.String("Value2"),
 /// 						},
 /// 					},
+/// 					ComponentArn: pulumi.Any(exampleAwsImagebuilderComponent.Arn),
 /// 				},
 /// 			},
+/// 			Name:                   pulumi.String("example"),
+/// 			Version:                pulumi.String("1.0.0"),
+/// 			ContainerType:          pulumi.String("DOCKER"),
+/// 			ParentImage:            pulumi.String("arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x"),
 /// 			DockerfileTemplateData: pulumi.String("FROM {{{ imagebuilder:parentImage }}}\n{{{ imagebuilder:environments }}}\n{{{ imagebuilder:components }}}\n"),
 /// 		})
 /// 		if err != nil {
@@ -172,16 +173,11 @@ import 'container_recipe_target_repository.dart';
 /// }
 ///
 /// resource "aws_imagebuilder_containerrecipe" "example" {
-///   name           = "example"
-///   version        = "1.0.0"
-///   container_type = "DOCKER"
-///   parent_image   = "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x"
 ///   target_repository = {
 ///     repository_name = exampleAwsEcrRepository.name
 ///     service         = "ECR"
 ///   }
 ///   components {
-///     component_arn = exampleAwsImagebuilderComponent.arn
 ///     parameters {
 ///       name  = "Parameter1"
 ///       value = "Value1"
@@ -190,7 +186,12 @@ import 'container_recipe_target_repository.dart';
 ///       name  = "Parameter2"
 ///       value = "Value2"
 ///     }
+///     component_arn = exampleAwsImagebuilderComponent.arn
 ///   }
+///   name                     = "example"
+///   version                  = "1.0.0"
+///   container_type           = "DOCKER"
+///   parent_image             = "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x"
 ///   dockerfile_template_data = "FROM {{{ imagebuilder:parentImage }}}\n{{{ imagebuilder:environments }}}\n{{{ imagebuilder:components }}}\n"
 /// }
 /// ```
@@ -219,16 +220,11 @@ import 'container_recipe_target_repository.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContainerRecipe("example", ContainerRecipeArgs.builder()
-///             .name("example")
-///             .version("1.0.0")
-///             .containerType("DOCKER")
-///             .parentImage("arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x")
 ///             .targetRepository(ContainerRecipeTargetRepositoryArgs.builder()
 ///                 .repositoryName(exampleAwsEcrRepository.name())
 ///                 .service("ECR")
 ///                 .build())
 ///             .components(ContainerRecipeComponentArgs.builder()
-///                 .componentArn(exampleAwsImagebuilderComponent.arn())
 ///                 .parameters(
 ///                     ContainerRecipeComponentParameterArgs.builder()
 ///                         .name("Parameter1")
@@ -238,7 +234,12 @@ import 'container_recipe_target_repository.dart';
 ///                         .name("Parameter2")
 ///                         .value("Value2")
 ///                         .build())
+///                 .componentArn(exampleAwsImagebuilderComponent.arn())
 ///                 .build())
+///             .name("example")
+///             .version("1.0.0")
+///             .containerType("DOCKER")
+///             .parentImage("arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x")
 ///             .dockerfileTemplateData("""
 /// FROM {{{ imagebuilder:parentImage }}}
 /// {{{ imagebuilder:environments }}}
@@ -254,20 +255,20 @@ import 'container_recipe_target_repository.dart';
 ///   example:
 ///     type: aws:imagebuilder:ContainerRecipe
 ///     properties:
-///       name: example
-///       version: 1.0.0
-///       containerType: DOCKER
-///       parentImage: arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x
 ///       targetRepository:
 ///         repositoryName: ${exampleAwsEcrRepository.name}
 ///         service: ECR
 ///       components:
-///         - componentArn: ${exampleAwsImagebuilderComponent.arn}
-///           parameters:
+///         - parameters:
 ///             - name: Parameter1
 ///               value: Value1
 ///             - name: Parameter2
 ///               value: Value2
+///           componentArn: ${exampleAwsImagebuilderComponent.arn}
+///       name: example
+///       version: 1.0.0
+///       containerType: DOCKER
+///       parentImage: arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x
 ///       dockerfileTemplateData: |
 ///         FROM {{{ imagebuilder:parentImage }}}
 ///         {{{ imagebuilder:environments }}}
@@ -281,19 +282,19 @@ import 'container_recipe_target_repository.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder container recipe.
+/// - `arn` (String) ARN of the Image Builder container recipe.
 ///
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.ContainerRecipe` resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.ContainerRecipe` resources using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/containerRecipe:ContainerRecipe example arn:aws:imagebuilder:us-east-1:123456789012:container-recipe/example/1.0.0
 /// ```
 class ContainerRecipe extends pulumi.CustomResource {
-  /// (Required) Amazon Resource Name (ARN) of the container recipe.
+  /// (Required) ARN of the container recipe.
   late final pulumi.Output<String> arn;
   /// Ordered configuration block(s) with components for the container recipe. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> components;
+  late final pulumi.Output<List<ContainerRecipeComponent>> components;
   /// The type of the container to create. Valid values: `DOCKER`.
   late final pulumi.Output<String> containerType;
   /// Date the container recipe was created.
@@ -347,10 +348,10 @@ class ContainerRecipe extends pulumi.CustomResource {
           'aws:imagebuilder/containerRecipe:ContainerRecipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    components = registerOutput<List<Map<String, dynamic>>>('components');
+    components = registerOutput<List<ContainerRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRecipeComponent>(guardedValue, (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });
     containerType = registerOutput<String>('containerType');
     dateCreated = registerOutput<String>('dateCreated');
     description = registerOutput<String?>('description');
@@ -365,8 +366,8 @@ class ContainerRecipe extends pulumi.CustomResource {
     platform = registerOutput<String>('platform');
     platformOverride = registerOutput<String?>('platformOverride');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetRepository = registerOutput<ContainerRecipeTargetRepository>('targetRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeTargetRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');
@@ -377,11 +378,12 @@ class ContainerRecipe extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerRecipeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerRecipe._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,7 +398,7 @@ class ContainerRecipe extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    components = registerOutput<List<Map<String, dynamic>>>('components');
+    components = registerOutput<List<ContainerRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRecipeComponent>(guardedValue, (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });
     containerType = registerOutput<String>('containerType');
     dateCreated = registerOutput<String>('dateCreated');
     description = registerOutput<String?>('description');
@@ -411,8 +413,40 @@ class ContainerRecipe extends pulumi.CustomResource {
     platform = registerOutput<String>('platform');
     platformOverride = registerOutput<String?>('platformOverride');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRepository = registerOutput<ContainerRecipeTargetRepository>('targetRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeTargetRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+    workingDirectory = registerOutput<String?>('workingDirectory');
+  }
+
+  /// Creates a typed reference to an existing [ContainerRecipe] resource.
+  ContainerRecipe.reference(String urn)
+    : super(
+        'aws:imagebuilder/containerRecipe:ContainerRecipe',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    components = registerOutput<List<ContainerRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRecipeComponent>(guardedValue, (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });
+    containerType = registerOutput<String>('containerType');
+    dateCreated = registerOutput<String>('dateCreated');
+    description = registerOutput<String?>('description');
+    dockerfileTemplateData = registerOutput<String>('dockerfileTemplateData');
+    dockerfileTemplateUri = registerOutput<String?>('dockerfileTemplateUri');
+    encrypted = registerOutput<bool>('encrypted');
+    instanceConfiguration = registerOutput<ContainerRecipeInstanceConfiguration?>('instanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeInstanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    parentImage = registerOutput<String>('parentImage');
+    platform = registerOutput<String>('platform');
+    platformOverride = registerOutput<String?>('platformOverride');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetRepository = registerOutput<ContainerRecipeTargetRepository>('targetRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeTargetRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');

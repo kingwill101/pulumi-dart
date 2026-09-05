@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration {
   /// Whether to return exact responses from Kendra. Defaults to `false`.
-  final pulumi.Input<bool>? exactResponse;
+  final pulumi.Input<bool?>? exactResponse;
   /// ARN of the Kendra index.
   final pulumi.Input<String> kendraIndex;
   /// Query filter string for Kendra.
-  final pulumi.Input<String>? queryFilterString;
+  final pulumi.Input<String?>? queryFilterString;
   /// Whether the query filter string is enabled.
-  final pulumi.Input<bool>? queryFilterStringEnabled;
+  final pulumi.Input<bool?>? queryFilterStringEnabled;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration].
   /// [exactResponse] Whether to return exact responses from Kendra. Defaults to `false`.

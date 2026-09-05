@@ -4,26 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexUserTokenConfigurationsJwtTokenTypeConfiguration {
   /// The regular expression that identifies the claim. Minimum length of 1. Maximum length of 100.
-  final pulumi.Input<String>? claimRegex;
+  final pulumi.Input<String?>? claimRegex;
   /// The group attribute field. Minimum length of 1. Maximum length of 100.
-  final pulumi.Input<String>? groupAttributeField;
+  final pulumi.Input<String?>? groupAttributeField;
   /// The issuer of the token. Minimum length of 1. Maximum length of 65.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// The location of the key. Valid values are `URL` or `SECRET_MANAGER`
   final pulumi.Input<String> keyLocation;
-  /// The Amazon Resource Name (ARN) of the secret.
-  final pulumi.Input<String>? secretsManagerArn;
+  /// ARN of the secret.
+  final pulumi.Input<String?>? secretsManagerArn;
   /// The signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The user name attribute field. Minimum length of 1. Maximum length of 100.
-  final pulumi.Input<String>? userNameAttributeField;
+  final pulumi.Input<String?>? userNameAttributeField;
 
   /// Creates a new [IndexUserTokenConfigurationsJwtTokenTypeConfiguration].
   /// [claimRegex] The regular expression that identifies the claim. Minimum length of 1. Maximum length of 100.
   /// [groupAttributeField] The group attribute field. Minimum length of 1. Maximum length of 100.
   /// [issuer] The issuer of the token. Minimum length of 1. Maximum length of 65.
   /// [keyLocation] The location of the key. Valid values are `URL` or `SECRET_MANAGER`
-  /// [secretsManagerArn] The Amazon Resource Name (ARN) of the secret.
+  /// [secretsManagerArn] ARN of the secret.
   /// [url] The signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`
   /// [userNameAttributeField] The user name attribute field. Minimum length of 1. Maximum length of 100.
   const IndexUserTokenConfigurationsJwtTokenTypeConfiguration({

@@ -9,19 +9,19 @@ import 'get_route_table_filter.dart';
 /// {@macro pulumi_ec2_get_route_table_get_route_table_args_doc}
 class GetRouteTableArgs {
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<GetRouteTableFilter>>? filters;
+  final pulumi.Input<List<GetRouteTableFilter>?>? filters;
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the specific Route Table to retrieve.
-  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<String?>? routeTableId;
   /// ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Map of tags, each pair of which must exactly match a pair on the desired Route Table.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the VPC that the desired Route Table belongs to.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetRouteTableArgs].
   /// [filters] Configuration block. Detailed below.

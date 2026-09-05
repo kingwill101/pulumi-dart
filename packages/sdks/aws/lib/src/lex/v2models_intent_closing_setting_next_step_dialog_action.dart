@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentClosingSettingNextStepDialogAction {
   /// If the dialog action is `ElicitSlot`, defines the slot to elicit from the user.
-  final pulumi.Input<String>? slotToElicit;
+  final pulumi.Input<String?>? slotToElicit;
   /// Whether the next message for the intent is _not_ used.
-  final pulumi.Input<bool>? suppressNextMessage;
+  final pulumi.Input<bool?>? suppressNextMessage;
   /// Action that the bot should execute. Valid values are `ElicitIntent`, `StartIntent`, `ElicitSlot`, `EvaluateConditional`, `InvokeDialogCodeHook`, `ConfirmIntent`, `FulfillIntent`, `CloseIntent`, `EndConversation`.
   final pulumi.Input<String> type;
 

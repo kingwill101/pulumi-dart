@@ -10,7 +10,7 @@ class GetBootstrapBrokersArgs {
   /// ARN of the cluster the nodes belong to.
   final pulumi.Input<String> clusterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetBootstrapBrokersArgs].
   /// [clusterArn] ARN of the cluster the nodes belong to.

@@ -9,13 +9,13 @@ import 'cloud_formation_type_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.cloudformation.CloudFormationType` using the type version Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.cloudformation.CloudFormationType` using the type version ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudformation/cloudFormationType:CloudFormationType example arn:aws:cloudformation:us-east-1:123456789012:type/resource/ExampleCompany-ExampleService-ExampleType/1
 /// ```
 class CloudFormationType extends pulumi.CustomResource {
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `typeArn`.
+  /// (Optional) ARN of the CloudFormation Type version. See also `typeArn`.
   late final pulumi.Output<String> arn;
   /// Identifier of the CloudFormation Type default version.
   late final pulumi.Output<String> defaultVersionId;
@@ -25,7 +25,7 @@ class CloudFormationType extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   /// URL of the documentation for the CloudFormation Type.
   late final pulumi.Output<String> documentationUrl;
-  /// Amazon Resource Name (ARN) of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
+  /// ARN of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
   late final pulumi.Output<String?> executionRoleArn;
   /// Whether the CloudFormation Type version is the default version.
   late final pulumi.Output<bool> isDefaultVersion;
@@ -43,7 +43,7 @@ class CloudFormationType extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceUrl;
   /// CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
   late final pulumi.Output<String> type;
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type. See also `arn`.
+  /// (Optional) ARN of the CloudFormation Type. See also `arn`.
   late final pulumi.Output<String> typeArn;
   /// CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
   late final pulumi.Output<String> typeName;
@@ -64,7 +64,7 @@ class CloudFormationType extends pulumi.CustomResource {
           'aws:cloudformation/cloudFormationType:CloudFormationType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultVersionId = registerOutput<String>('defaultVersionId');
@@ -91,11 +91,12 @@ class CloudFormationType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudFormationTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudFormationType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -109,6 +110,35 @@ class CloudFormationType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    defaultVersionId = registerOutput<String>('defaultVersionId');
+    deprecatedStatus = registerOutput<String>('deprecatedStatus');
+    description = registerOutput<String>('description');
+    documentationUrl = registerOutput<String>('documentationUrl');
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
+    isDefaultVersion = registerOutput<bool>('isDefaultVersion');
+    loggingConfig = registerOutput<CloudFormationTypeLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudFormationTypeLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningType = registerOutput<String>('provisioningType');
+    region = registerOutput<String>('region');
+    schema = registerOutput<String>('schema');
+    schemaHandlerPackage = registerOutput<String>('schemaHandlerPackage');
+    sourceUrl = registerOutput<String>('sourceUrl');
+    type = registerOutput<String>('type');
+    typeArn = registerOutput<String>('typeArn');
+    typeName = registerOutput<String>('typeName');
+    versionId = registerOutput<String>('versionId');
+    visibility = registerOutput<String>('visibility');
+  }
+
+  /// Creates a typed reference to an existing [CloudFormationType] resource.
+  CloudFormationType.reference(String urn)
+    : super(
+        'aws:cloudformation/cloudFormationType:CloudFormationType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     defaultVersionId = registerOutput<String>('defaultVersionId');
     deprecatedStatus = registerOutput<String>('deprecatedStatus');

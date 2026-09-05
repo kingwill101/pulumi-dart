@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_group_args.dart';
+import 'ip_group_rule.dart';
 import 'ip_group_state.dart';
 
 /// Provides an IP access control group in AWS WorkSpaces Service
@@ -12,8 +13,6 @@ import 'ip_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const contractors = new aws.workspaces.IpGroup("contractors", {
-///     name: "Contractors",
-///     description: "Contractors IP access control group",
 ///     rules: [
 ///         {
 ///             source: "150.24.14.0/24",
@@ -28,6 +27,8 @@ import 'ip_group_state.dart';
 ///             description: "STL",
 ///         },
 ///     ],
+///     name: "Contractors",
+///     description: "Contractors IP access control group",
 /// });
 /// ```
 /// ```python
@@ -35,8 +36,6 @@ import 'ip_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// contractors = aws.workspaces.IpGroup("contractors",
-///     name="Contractors",
-///     description="Contractors IP access control group",
 ///     rules=[
 ///         {
 ///             "source": "150.24.14.0/24",
@@ -50,7 +49,9 @@ import 'ip_group_state.dart';
 ///             "source": "44.98.100.0/24",
 ///             "description": "STL",
 ///         },
-///     ])
+///     ],
+///     name="Contractors",
+///     description="Contractors IP access control group")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,8 +63,6 @@ import 'ip_group_state.dart';
 /// {
 ///     var contractors = new Aws.Workspaces.IpGroup("contractors", new()
 ///     {
-///         Name = "Contractors",
-///         Description = "Contractors IP access control group",
 ///         Rules = new[]
 ///         {
 ///             new Aws.Workspaces.Inputs.IpGroupRuleArgs
@@ -82,6 +81,8 @@ import 'ip_group_state.dart';
 ///                 Description = "STL",
 ///             },
 ///         },
+///         Name = "Contractors",
+///         Description = "Contractors IP access control group",
 ///     });
 ///
 /// });
@@ -97,8 +98,6 @@ import 'ip_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspaces.NewIpGroup(ctx, "contractors", &workspaces.IpGroupArgs{
-/// 			Name:        pulumi.String("Contractors"),
-/// 			Description: pulumi.String("Contractors IP access control group"),
 /// 			Rules: workspaces.IpGroupRuleArray{
 /// 				&workspaces.IpGroupRuleArgs{
 /// 					Source:      pulumi.String("150.24.14.0/24"),
@@ -113,6 +112,8 @@ import 'ip_group_state.dart';
 /// 					Description: pulumi.String("STL"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("Contractors"),
+/// 			Description: pulumi.String("Contractors IP access control group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,8 +132,6 @@ import 'ip_group_state.dart';
 /// }
 ///
 /// resource "aws_workspaces_ipgroup" "contractors" {
-///   name        = "Contractors"
-///   description = "Contractors IP access control group"
 ///   rules {
 ///     source      = "150.24.14.0/24"
 ///     description = "NY"
@@ -145,6 +144,8 @@ import 'ip_group_state.dart';
 ///     source      = "44.98.100.0/24"
 ///     description = "STL"
 ///   }
+///   name        = "Contractors"
+///   description = "Contractors IP access control group"
 /// }
 /// ```
 /// ```java
@@ -170,8 +171,6 @@ import 'ip_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var contractors = new IpGroup("contractors", IpGroupArgs.builder()
-///             .name("Contractors")
-///             .description("Contractors IP access control group")
 ///             .rules(
 ///                 IpGroupRuleArgs.builder()
 ///                     .source("150.24.14.0/24")
@@ -185,6 +184,8 @@ import 'ip_group_state.dart';
 ///                     .source("44.98.100.0/24")
 ///                     .description("STL")
 ///                     .build())
+///             .name("Contractors")
+///             .description("Contractors IP access control group")
 ///             .build());
 ///
 ///     }
@@ -195,8 +196,6 @@ import 'ip_group_state.dart';
 ///   contractors:
 ///     type: aws:workspaces:IpGroup
 ///     properties:
-///       name: Contractors
-///       description: Contractors IP access control group
 ///       rules:
 ///         - source: 150.24.14.0/24
 ///           description: NY
@@ -204,6 +203,8 @@ import 'ip_group_state.dart';
 ///           description: LA
 ///         - source: 44.98.100.0/24
 ///           description: STL
+///       name: Contractors
+///       description: Contractors IP access control group
 /// ```
 ///
 ///
@@ -222,7 +223,7 @@ class IpGroup extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<IpGroupRule>?> rules;
   /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -240,14 +241,14 @@ class IpGroup extends pulumi.CustomResource {
           'aws:workspaces/ipGroup:IpGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<IpGroupRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpGroupRule>(guardedValue, (value) => IpGroupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IpGroup] resource's state with the given [name] and [id].
@@ -255,11 +256,12 @@ class IpGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IpGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IpGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,8 +278,25 @@ class IpGroup extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<IpGroupRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpGroupRule>(guardedValue, (value) => IpGroupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IpGroup] resource.
+  IpGroup.reference(String urn)
+    : super(
+        'aws:workspaces/ipGroup:IpGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<IpGroupRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpGroupRule>(guardedValue, (value) => IpGroupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

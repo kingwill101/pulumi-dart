@@ -13,13 +13,13 @@ import 'network_interface_permission_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.NetworkInterface("example", {
-///     subnetId: exampleAwsSubnet.id,
-///     privateIps: ["10.0.0.50"],
-///     securityGroups: [exampleAwsSecurityGroup.id],
 ///     attachments: [{
 ///         instance: exampleAwsInstance.id,
 ///         deviceIndex: 1,
 ///     }],
+///     subnetId: exampleAwsSubnet.id,
+///     privateIps: ["10.0.0.50"],
+///     securityGroups: [exampleAwsSecurityGroup.id],
 /// });
 /// const exampleNetworkInterfacePermission = new aws.ec2.NetworkInterfacePermission("example", {
 ///     networkInterfaceId: example.id,
@@ -32,13 +32,13 @@ import 'network_interface_permission_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.NetworkInterface("example",
-///     subnet_id=example_aws_subnet["id"],
-///     private_ips=["10.0.0.50"],
-///     security_groups=[example_aws_security_group["id"]],
 ///     attachments=[{
 ///         "instance": example_aws_instance["id"],
 ///         "device_index": 1,
-///     }])
+///     }],
+///     subnet_id=example_aws_subnet["id"],
+///     private_ips=["10.0.0.50"],
+///     security_groups=[example_aws_security_group["id"]])
 /// example_network_interface_permission = aws.ec2.NetworkInterfacePermission("example",
 ///     network_interface_id=example.id,
 ///     aws_account_id="123456789012",
@@ -54,6 +54,14 @@ import 'network_interface_permission_timeouts.dart';
 /// {
 ///     var example = new Aws.Ec2.NetworkInterface("example", new()
 ///     {
+///         Attachments = new[]
+///         {
+///             new Aws.Ec2.Inputs.NetworkInterfaceAttachmentArgs
+///             {
+///                 Instance = exampleAwsInstance.Id,
+///                 DeviceIndex = 1,
+///             },
+///         },
 ///         SubnetId = exampleAwsSubnet.Id,
 ///         PrivateIps = new[]
 ///         {
@@ -62,14 +70,6 @@ import 'network_interface_permission_timeouts.dart';
 ///         SecurityGroups = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
-///         },
-///         Attachments = new[]
-///         {
-///             new Aws.Ec2.Inputs.NetworkInterfaceAttachmentArgs
-///             {
-///                 Instance = exampleAwsInstance.Id,
-///                 DeviceIndex = 1,
-///             },
 ///         },
 ///     });
 ///
@@ -93,18 +93,18 @@ import 'network_interface_permission_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := ec2.NewNetworkInterface(ctx, "example", &ec2.NetworkInterfaceArgs{
+/// 			Attachments: ec2.NetworkInterfaceAttachmentTypeArray{
+/// 				&ec2.NetworkInterfaceAttachmentTypeArgs{
+/// 					Instance:    pulumi.Any(exampleAwsInstance.Id),
+/// 					DeviceIndex: pulumi.Int(1),
+/// 				},
+/// 			},
 /// 			SubnetId: pulumi.Any(exampleAwsSubnet.Id),
 /// 			PrivateIps: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.50"),
 /// 			},
 /// 			SecurityGroups: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
-/// 			},
-/// 			Attachments: ec2.NetworkInterfaceAttachmentTypeArray{
-/// 				&ec2.NetworkInterfaceAttachmentTypeArgs{
-/// 					Instance:    pulumi.Any(exampleAwsInstance.Id),
-/// 					DeviceIndex: pulumi.Int(1),
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -132,13 +132,13 @@ import 'network_interface_permission_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_networkinterface" "example" {
-///   subnet_id       = exampleAwsSubnet.id
-///   private_ips     = ["10.0.0.50"]
-///   security_groups = [exampleAwsSecurityGroup.id]
 ///   attachments {
 ///     instance     = exampleAwsInstance.id
 ///     device_index = 1
 ///   }
+///   subnet_id       = exampleAwsSubnet.id
+///   private_ips     = ["10.0.0.50"]
+///   security_groups = [exampleAwsSecurityGroup.id]
 /// }
 /// resource "aws_ec2_networkinterfacepermission" "example" {
 ///   network_interface_id = aws_ec2_networkinterface.example.id
@@ -171,13 +171,13 @@ import 'network_interface_permission_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NetworkInterface("example", NetworkInterfaceArgs.builder()
-///             .subnetId(exampleAwsSubnet.id())
-///             .privateIps("10.0.0.50")
-///             .securityGroups(exampleAwsSecurityGroup.id())
 ///             .attachments(NetworkInterfaceAttachmentArgs.builder()
 ///                 .instance(exampleAwsInstance.id())
 ///                 .deviceIndex(1)
 ///                 .build())
+///             .subnetId(exampleAwsSubnet.id())
+///             .privateIps("10.0.0.50")
+///             .securityGroups(exampleAwsSecurityGroup.id())
 ///             .build());
 ///
 ///         var exampleNetworkInterfacePermission = new NetworkInterfacePermission("exampleNetworkInterfacePermission", NetworkInterfacePermissionArgs.builder()
@@ -194,14 +194,14 @@ import 'network_interface_permission_timeouts.dart';
 ///   example:
 ///     type: aws:ec2:NetworkInterface
 ///     properties:
+///       attachments:
+///         - instance: ${exampleAwsInstance.id}
+///           deviceIndex: 1
 ///       subnetId: ${exampleAwsSubnet.id}
 ///       privateIps:
 ///         - 10.0.0.50
 ///       securityGroups:
 ///         - ${exampleAwsSecurityGroup.id}
-///       attachments:
-///         - instance: ${exampleAwsInstance.id}
-///           deviceIndex: 1
 ///   exampleNetworkInterfacePermission:
 ///     type: aws:ec2:NetworkInterfacePermission
 ///     name: example
@@ -244,7 +244,7 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
           'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
@@ -259,11 +259,12 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInterfacePermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterfacePermission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,6 +278,23 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    networkInterfacePermissionId = registerOutput<String>('networkInterfacePermissionId');
+    permission = registerOutput<String>('permission');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfacePermissionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterfacePermission] resource.
+  NetworkInterfacePermission.reference(String urn)
+    : super(
+        'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     networkInterfacePermissionId = registerOutput<String>('networkInterfacePermissionId');

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetColumnLevelPermissionRule {
   /// An array of column names.
-  final pulumi.Input<List<String>>? columnNames;
+  final pulumi.Input<List<String>?>? columnNames;
   /// An array of ARNs for Amazon QuickSight users or groups.
-  final pulumi.Input<List<String>>? principals;
+  final pulumi.Input<List<String>?>? principals;
 
   /// Creates a new [DataSetColumnLevelPermissionRule].
   /// [columnNames] An array of column names.

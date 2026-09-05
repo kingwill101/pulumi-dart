@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventEndpointReplicationConfig {
   /// The state of event replication. Valid values: `ENABLED`, `DISABLED`. The default state is `ENABLED`, which means you must supply a `roleArn`. If you don't have a `roleArn` or you don't want event replication enabled, set `state` to `DISABLED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [EventEndpointReplicationConfig].
   /// [state] The state of event replication. Valid values: `ENABLED`, `DISABLED`. The default state is `ENABLED`, which means you must supply a `roleArn`. If you don't have a `roleArn` or you don't want event replication enabled, set `state` to `DISABLED`.

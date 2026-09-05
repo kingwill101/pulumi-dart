@@ -8,17 +8,17 @@ import 'pipeline_definition_pipeline_object.dart';
 /// Input properties used for looking up and filtering PipelineDefinition resources.
 class PipelineDefinitionState {
   /// Configuration block for the parameter objects used in the pipeline definition. See below
-  final pulumi.Input<List<PipelineDefinitionParameterObject>>? parameterObjects;
+  final pulumi.Input<List<PipelineDefinitionParameterObject>?>? parameterObjects;
   /// Configuration block for the parameter values used in the pipeline definition. See below
-  final pulumi.Input<List<PipelineDefinitionParameterValue>>? parameterValues;
+  final pulumi.Input<List<PipelineDefinitionParameterValue>?>? parameterValues;
   /// ID of the pipeline.
-  final pulumi.Input<String>? pipelineId;
+  final pulumi.Input<String?>? pipelineId;
   /// Configuration block for the objects that define the pipeline. See below
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<PipelineDefinitionPipelineObject>>? pipelineObjects;
+  final pulumi.Input<List<PipelineDefinitionPipelineObject>?>? pipelineObjects;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PipelineDefinitionState].
   /// [parameterObjects] Configuration block for the parameter objects used in the pipeline definition. See below

@@ -27,15 +27,15 @@ import 'query_log_state.dart';
 /// // to any log group under /aws/route53/*
 /// const route53_query_logging_policy = aws.iam.getPolicyDocument({
 ///     statements: [{
+///         principals: [{
+///             identifiers: ["route53.amazonaws.com"],
+///             type: "Service",
+///         }],
 ///         actions: [
 ///             "logs:CreateLogStream",
 ///             "logs:PutLogEvents",
 ///         ],
 ///         resources: ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
-///         principals: [{
-///             identifiers: ["route53.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///     }],
 /// });
 /// const route53_query_logging_policyLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("route53-query-logging-policy", {
@@ -61,15 +61,15 @@ import 'query_log_state.dart';
 /// # Example CloudWatch log resource policy to allow Route53 to write logs
 /// # to any log group under /aws/route53/*
 /// route53_query_logging_policy = aws.iam.get_policy_document(statements=[{
+///     "principals": [{
+///         "identifiers": ["route53.amazonaws.com"],
+///         "type": "Service",
+///     }],
 ///     "actions": [
 ///         "logs:CreateLogStream",
 ///         "logs:PutLogEvents",
 ///     ],
 ///     "resources": ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
-///     "principals": [{
-///         "identifiers": ["route53.amazonaws.com"],
-///         "type": "Service",
-///     }],
 /// }])
 /// route53_query_logging_policy_log_resource_policy = aws.cloudwatch.LogResourcePolicy("route53-query-logging-policy",
 ///     policy_document=route53_query_logging_policy.json,
@@ -107,15 +107,6 @@ import 'query_log_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:logs:*:*:log-group:/aws/route53/*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -126,6 +117,15 @@ import 'query_log_state.dart';
 ///                         },
 ///                         Type = "Service",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:logs:*:*:log-group:/aws/route53/*",
 ///                 },
 ///             },
 ///         },
@@ -186,13 +186,6 @@ import 'query_log_state.dart';
 /// 		route53_query_logging_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"logs:CreateLogStream",
-/// 						"logs:PutLogEvents",
-/// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:logs:*:*:log-group:/aws/route53/*",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: []string{
@@ -200,6 +193,13 @@ import 'query_log_state.dart';
 /// 							},
 /// 							Type: "Service",
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"logs:CreateLogStream",
+/// 						"logs:PutLogEvents",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:logs:*:*:log-group:/aws/route53/*",
 /// 					},
 /// 				},
 /// 			},
@@ -238,12 +238,12 @@ import 'query_log_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "route53-query-logging-policy" {
 ///   statements {
-///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-///     resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
 ///     principals {
 ///       identifiers = ["route53.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+///     resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
 ///   }
 /// }
 ///
@@ -313,14 +313,14 @@ import 'query_log_state.dart';
 ///         // to any log group under /aws/route53/*
 ///         final var route53-query-logging-policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions(
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents")
-///                 .resources("arn:aws:logs:*:*:log-group:/aws/route53/*")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("route53.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
+///                 .actions(
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents")
+///                 .resources("arn:aws:logs:*:*:log-group:/aws/route53/*")
 ///                 .build())
 ///             .build());
 ///
@@ -376,15 +376,15 @@ import 'query_log_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
+///           - principals:
+///               - identifiers:
+///                   - route53.amazonaws.com
+///                 type: Service
+///             actions:
 ///               - logs:CreateLogStream
 ///               - logs:PutLogEvents
 ///             resources:
 ///               - arn:aws:logs:*:*:log-group:/aws/route53/*
-///             principals:
-///               - identifiers:
-///                   - route53.amazonaws.com
-///                 type: Service
 /// ```
 ///
 ///
@@ -396,7 +396,7 @@ import 'query_log_state.dart';
 /// $ pulumi import aws:route53/queryLog:QueryLog example_com xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 /// ```
 class QueryLog extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Query Logging Config.
+  /// ARN of the Query Logging Config.
   late final pulumi.Output<String> arn;
   /// CloudWatch log group ARN to send query logs.
   late final pulumi.Output<String> cloudwatchLogGroupArn;
@@ -415,7 +415,7 @@ class QueryLog extends pulumi.CustomResource {
           'aws:route53/queryLog:QueryLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String>('cloudwatchLogGroupArn');
@@ -427,11 +427,12 @@ class QueryLog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueryLogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueryLog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -445,6 +446,20 @@ class QueryLog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    cloudwatchLogGroupArn = registerOutput<String>('cloudwatchLogGroupArn');
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [QueryLog] resource.
+  QueryLog.reference(String urn)
+    : super(
+        'aws:route53/queryLog:QueryLog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String>('cloudwatchLogGroupArn');
     zoneId = registerOutput<String>('zoneId');

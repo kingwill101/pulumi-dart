@@ -5,6 +5,7 @@ import 'image_pipeline_image_tests_configuration.dart';
 import 'image_pipeline_logging_configuration.dart';
 import 'image_pipeline_schedule.dart';
 import 'image_pipeline_state.dart';
+import 'image_pipeline_workflow.dart';
 
 /// Manages an Image Builder Image Pipeline.
 ///
@@ -12,18 +13,18 @@ import 'image_pipeline_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder image pipeline.
+/// - `arn` (String) ARN of the Image Builder image pipeline.
 ///
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.ImagePipeline` resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.ImagePipeline` resources using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/imagePipeline:ImagePipeline example arn:aws:imagebuilder:us-east-1:123456789012:image-pipeline/example
 /// ```
 class ImagePipeline extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the image pipeline.
+  /// ARN of the image pipeline.
   late final pulumi.Output<String> arn;
-  /// Amazon Resource Name (ARN) of the container recipe.
+  /// ARN of the container recipe.
   late final pulumi.Output<String?> containerRecipeArn;
   /// Date the image pipeline was created.
   late final pulumi.Output<String> dateCreated;
@@ -35,19 +36,19 @@ class ImagePipeline extends pulumi.CustomResource {
   late final pulumi.Output<String> dateUpdated;
   /// Description of the image pipeline.
   late final pulumi.Output<String?> description;
-  /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
+  /// ARN of the Image Builder Distribution Configuration.
   late final pulumi.Output<String?> distributionConfigurationArn;
   /// Whether additional information about the image being created is collected. Defaults to `true`.
   late final pulumi.Output<bool?> enhancedImageMetadataEnabled;
-  /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
+  /// ARN of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
   late final pulumi.Output<String?> executionRole;
-  /// Amazon Resource Name (ARN) of the image recipe.
+  /// ARN of the image recipe.
   late final pulumi.Output<String?> imageRecipeArn;
   /// Configuration block with image scanning configuration. Detailed below.
   late final pulumi.Output<ImagePipelineImageScanningConfiguration> imageScanningConfiguration;
   /// Configuration block with image tests configuration. Detailed below.
   late final pulumi.Output<ImagePipelineImageTestsConfiguration> imageTestsConfiguration;
-  /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
+  /// ARN of the Image Builder Infrastructure Configuration.
   late final pulumi.Output<String> infrastructureConfigurationArn;
   /// Configuration block with logging configuration. Detailed below.
   late final pulumi.Output<ImagePipelineLoggingConfiguration?> loggingConfiguration;
@@ -68,7 +69,7 @@ class ImagePipeline extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block with the workflow configuration. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> workflows;
+  late final pulumi.Output<List<ImagePipelineWorkflow>> workflows;
 
   /// Creates a new [ImagePipeline].
   /// [name] The Pulumi resource name.
@@ -82,7 +83,7 @@ class ImagePipeline extends pulumi.CustomResource {
           'aws:imagebuilder/imagePipeline:ImagePipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containerRecipeArn = registerOutput<String?>('containerRecipeArn');
@@ -104,9 +105,9 @@ class ImagePipeline extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schedule = registerOutput<ImagePipelineSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePipelineSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    workflows = registerOutput<List<Map<String, dynamic>>>('workflows');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflows = registerOutput<List<ImagePipelineWorkflow>>('workflows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImagePipelineWorkflow>(guardedValue, (value) => ImagePipelineWorkflow.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ImagePipeline] resource's state with the given [name] and [id].
@@ -114,11 +115,12 @@ class ImagePipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImagePipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImagePipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -152,8 +154,42 @@ class ImagePipeline extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schedule = registerOutput<ImagePipelineSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePipelineSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    workflows = registerOutput<List<Map<String, dynamic>>>('workflows');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflows = registerOutput<List<ImagePipelineWorkflow>>('workflows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImagePipelineWorkflow>(guardedValue, (value) => ImagePipelineWorkflow.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ImagePipeline] resource.
+  ImagePipeline.reference(String urn)
+    : super(
+        'aws:imagebuilder/imagePipeline:ImagePipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    containerRecipeArn = registerOutput<String?>('containerRecipeArn');
+    dateCreated = registerOutput<String>('dateCreated');
+    dateLastRun = registerOutput<String>('dateLastRun');
+    dateNextRun = registerOutput<String>('dateNextRun');
+    dateUpdated = registerOutput<String>('dateUpdated');
+    description = registerOutput<String?>('description');
+    distributionConfigurationArn = registerOutput<String?>('distributionConfigurationArn');
+    enhancedImageMetadataEnabled = registerOutput<bool?>('enhancedImageMetadataEnabled');
+    executionRole = registerOutput<String?>('executionRole');
+    imageRecipeArn = registerOutput<String?>('imageRecipeArn');
+    imageScanningConfiguration = registerOutput<ImagePipelineImageScanningConfiguration>('imageScanningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePipelineImageScanningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageTestsConfiguration = registerOutput<ImagePipelineImageTestsConfiguration>('imageTestsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePipelineImageTestsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureConfigurationArn = registerOutput<String>('infrastructureConfigurationArn');
+    loggingConfiguration = registerOutput<ImagePipelineLoggingConfiguration?>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePipelineLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    platform = registerOutput<String>('platform');
+    region = registerOutput<String>('region');
+    schedule = registerOutput<ImagePipelineSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePipelineSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflows = registerOutput<List<ImagePipelineWorkflow>>('workflows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImagePipelineWorkflow>(guardedValue, (value) => ImagePipelineWorkflow.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

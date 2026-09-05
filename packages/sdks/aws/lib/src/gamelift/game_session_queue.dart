@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'game_session_queue_args.dart';
+import 'game_session_queue_player_latency_policy.dart';
 import 'game_session_queue_state.dart';
 
 /// Provides an GameLift Game Session Queue resource.
@@ -12,12 +13,6 @@ import 'game_session_queue_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.gamelift.GameSessionQueue("test", {
-///     name: "example-session-queue",
-///     destinations: [
-///         usWest2Fleet.arn,
-///         euCentral1Fleet.arn,
-///     ],
-///     notificationTarget: gameSessionQueueNotifications.arn,
 ///     playerLatencyPolicies: [
 ///         {
 ///             maximumIndividualPlayerLatencyMilliseconds: 100,
@@ -27,6 +22,12 @@ import 'game_session_queue_state.dart';
 ///             maximumIndividualPlayerLatencyMilliseconds: 200,
 ///         },
 ///     ],
+///     name: "example-session-queue",
+///     destinations: [
+///         usWest2Fleet.arn,
+///         euCentral1Fleet.arn,
+///     ],
+///     notificationTarget: gameSessionQueueNotifications.arn,
 ///     timeoutInSeconds: 60,
 /// });
 /// ```
@@ -35,12 +36,6 @@ import 'game_session_queue_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.gamelift.GameSessionQueue("test",
-///     name="example-session-queue",
-///     destinations=[
-///         us_west2_fleet["arn"],
-///         eu_central1_fleet["arn"],
-///     ],
-///     notification_target=game_session_queue_notifications["arn"],
 ///     player_latency_policies=[
 ///         {
 ///             "maximum_individual_player_latency_milliseconds": 100,
@@ -50,6 +45,12 @@ import 'game_session_queue_state.dart';
 ///             "maximum_individual_player_latency_milliseconds": 200,
 ///         },
 ///     ],
+///     name="example-session-queue",
+///     destinations=[
+///         us_west2_fleet["arn"],
+///         eu_central1_fleet["arn"],
+///     ],
+///     notification_target=game_session_queue_notifications["arn"],
 ///     timeout_in_seconds=60)
 /// ```
 /// ```csharp
@@ -62,13 +63,6 @@ import 'game_session_queue_state.dart';
 /// {
 ///     var test = new Aws.GameLift.GameSessionQueue("test", new()
 ///     {
-///         Name = "example-session-queue",
-///         Destinations = new[]
-///         {
-///             usWest2Fleet.Arn,
-///             euCentral1Fleet.Arn,
-///         },
-///         NotificationTarget = gameSessionQueueNotifications.Arn,
 ///         PlayerLatencyPolicies = new[]
 ///         {
 ///             new Aws.GameLift.Inputs.GameSessionQueuePlayerLatencyPolicyArgs
@@ -81,6 +75,13 @@ import 'game_session_queue_state.dart';
 ///                 MaximumIndividualPlayerLatencyMilliseconds = 200,
 ///             },
 ///         },
+///         Name = "example-session-queue",
+///         Destinations = new[]
+///         {
+///             usWest2Fleet.Arn,
+///             euCentral1Fleet.Arn,
+///         },
+///         NotificationTarget = gameSessionQueueNotifications.Arn,
 ///         TimeoutInSeconds = 60,
 ///     });
 ///
@@ -97,12 +98,6 @@ import 'game_session_queue_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewGameSessionQueue(ctx, "test", &gamelift.GameSessionQueueArgs{
-/// 			Name: pulumi.String("example-session-queue"),
-/// 			Destinations: pulumi.StringArray{
-/// 				usWest2Fleet.Arn,
-/// 				euCentral1Fleet.Arn,
-/// 			},
-/// 			NotificationTarget: pulumi.Any(gameSessionQueueNotifications.Arn),
 /// 			PlayerLatencyPolicies: gamelift.GameSessionQueuePlayerLatencyPolicyArray{
 /// 				&gamelift.GameSessionQueuePlayerLatencyPolicyArgs{
 /// 					MaximumIndividualPlayerLatencyMilliseconds: pulumi.Int(100),
@@ -112,7 +107,13 @@ import 'game_session_queue_state.dart';
 /// 					MaximumIndividualPlayerLatencyMilliseconds: pulumi.Int(200),
 /// 				},
 /// 			},
-/// 			TimeoutInSeconds: pulumi.Int(60),
+/// 			Name: pulumi.String("example-session-queue"),
+/// 			Destinations: pulumi.StringArray{
+/// 				usWest2Fleet.Arn,
+/// 				euCentral1Fleet.Arn,
+/// 			},
+/// 			NotificationTarget: pulumi.Any(gameSessionQueueNotifications.Arn),
+/// 			TimeoutInSeconds:   pulumi.Int(60),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,9 +132,6 @@ import 'game_session_queue_state.dart';
 /// }
 ///
 /// resource "aws_gamelift_gamesessionqueue" "test" {
-///   name                = "example-session-queue"
-///   destinations        = [usWest2Fleet.arn, euCentral1Fleet.arn]
-///   notification_target = gameSessionQueueNotifications.arn
 ///   player_latency_policies {
 ///     maximum_individual_player_latency_milliseconds = 100
 ///     policy_duration_seconds                        = 5
@@ -141,7 +139,10 @@ import 'game_session_queue_state.dart';
 ///   player_latency_policies {
 ///     maximum_individual_player_latency_milliseconds = 200
 ///   }
-///   timeout_in_seconds = 60
+///   name                = "example-session-queue"
+///   destinations        = [usWest2Fleet.arn, euCentral1Fleet.arn]
+///   notification_target = gameSessionQueueNotifications.arn
+///   timeout_in_seconds  = 60
 /// }
 /// ```
 /// ```java
@@ -167,11 +168,6 @@ import 'game_session_queue_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new GameSessionQueue("test", GameSessionQueueArgs.builder()
-///             .name("example-session-queue")
-///             .destinations(
-///                 usWest2Fleet.arn(),
-///                 euCentral1Fleet.arn())
-///             .notificationTarget(gameSessionQueueNotifications.arn())
 ///             .playerLatencyPolicies(
 ///                 GameSessionQueuePlayerLatencyPolicyArgs.builder()
 ///                     .maximumIndividualPlayerLatencyMilliseconds(100)
@@ -180,6 +176,11 @@ import 'game_session_queue_state.dart';
 ///                 GameSessionQueuePlayerLatencyPolicyArgs.builder()
 ///                     .maximumIndividualPlayerLatencyMilliseconds(200)
 ///                     .build())
+///             .name("example-session-queue")
+///             .destinations(
+///                 usWest2Fleet.arn(),
+///                 euCentral1Fleet.arn())
+///             .notificationTarget(gameSessionQueueNotifications.arn())
 ///             .timeoutInSeconds(60)
 ///             .build());
 ///
@@ -191,15 +192,15 @@ import 'game_session_queue_state.dart';
 ///   test:
 ///     type: aws:gamelift:GameSessionQueue
 ///     properties:
+///       playerLatencyPolicies:
+///         - maximumIndividualPlayerLatencyMilliseconds: 100
+///           policyDurationSeconds: 5
+///         - maximumIndividualPlayerLatencyMilliseconds: 200
 ///       name: example-session-queue
 ///       destinations:
 ///         - ${usWest2Fleet.arn}
 ///         - ${euCentral1Fleet.arn}
 ///       notificationTarget: ${gameSessionQueueNotifications.arn}
-///       playerLatencyPolicies:
-///         - maximumIndividualPlayerLatencyMilliseconds: 100
-///           policyDurationSeconds: 5
-///         - maximumIndividualPlayerLatencyMilliseconds: 200
 ///       timeoutInSeconds: 60
 /// ```
 ///
@@ -223,7 +224,7 @@ class GameSessionQueue extends pulumi.CustomResource {
   /// An SNS topic ARN that is set up to receive game session placement notifications.
   late final pulumi.Output<String?> notificationTarget;
   /// One or more policies used to choose fleet based on player latency. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> playerLatencyPolicies;
+  late final pulumi.Output<List<GameSessionQueuePlayerLatencyPolicy>?> playerLatencyPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -245,17 +246,17 @@ class GameSessionQueue extends pulumi.CustomResource {
           'aws:gamelift/gameSessionQueue:GameSessionQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customEventData = registerOutput<String?>('customEventData');
-    destinations = registerOutput<List<String>?>('destinations');
+    destinations = registerOutput<List<String>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     notificationTarget = registerOutput<String?>('notificationTarget');
-    playerLatencyPolicies = registerOutput<List<Map<String, dynamic>>?>('playerLatencyPolicies');
+    playerLatencyPolicies = registerOutput<List<GameSessionQueuePlayerLatencyPolicy>?>('playerLatencyPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(guardedValue, (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
   }
 
@@ -264,11 +265,12 @@ class GameSessionQueue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GameSessionQueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GameSessionQueue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,13 +286,34 @@ class GameSessionQueue extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     customEventData = registerOutput<String?>('customEventData');
-    destinations = registerOutput<List<String>?>('destinations');
+    destinations = registerOutput<List<String>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     notificationTarget = registerOutput<String?>('notificationTarget');
-    playerLatencyPolicies = registerOutput<List<Map<String, dynamic>>?>('playerLatencyPolicies');
+    playerLatencyPolicies = registerOutput<List<GameSessionQueuePlayerLatencyPolicy>?>('playerLatencyPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(guardedValue, (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+  }
+
+  /// Creates a typed reference to an existing [GameSessionQueue] resource.
+  GameSessionQueue.reference(String urn)
+    : super(
+        'aws:gamelift/gameSessionQueue:GameSessionQueue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    customEventData = registerOutput<String?>('customEventData');
+    destinations = registerOutput<List<String>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    notificationTarget = registerOutput<String?>('notificationTarget');
+    playerLatencyPolicies = registerOutput<List<GameSessionQueuePlayerLatencyPolicy>?>('playerLatencyPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(guardedValue, (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
   }
 }

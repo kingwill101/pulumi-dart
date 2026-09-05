@@ -8,7 +8,7 @@ import 'get_secret_secret.dart';
 /// {@endtemplate}
 /// {@macro pulumi_kms_get_secret_get_secret_args_doc}
 class GetSecretArgs {
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<List<GetSecretSecret>> secrets;
 
   /// Creates a new [GetSecretArgs].

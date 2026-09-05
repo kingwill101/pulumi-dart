@@ -10,21 +10,21 @@ class LifecycleHookArgs {
   /// Name of the Auto Scaling group to which you want to assign the lifecycle hook
   final pulumi.Input<String> autoscalingGroupName;
   /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
-  final pulumi.Input<String>? defaultResult;
+  final pulumi.Input<String?>? defaultResult;
   /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
-  final pulumi.Input<int>? heartbeatTimeout;
+  final pulumi.Input<int?>? heartbeatTimeout;
   /// Instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
   final pulumi.Input<String> lifecycleTransition;
   /// Name of the lifecycle hook.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
-  final pulumi.Input<String>? notificationMetadata;
+  final pulumi.Input<String?>? notificationMetadata;
   /// ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue, an SNS topic, or a Lambda function.
-  final pulumi.Input<String>? notificationTargetArn;
+  final pulumi.Input<String?>? notificationTargetArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [LifecycleHookArgs].
   /// [autoscalingGroupName] Name of the Auto Scaling group to which you want to assign the lifecycle hook
@@ -66,7 +66,7 @@ class LifecycleHookArgs {
     return LifecycleHookArgs(
       autoscalingGroupName: pulumi.Input.fromValue(map['autoscalingGroupName'] as String),
       defaultResult: (() { final guardedValue = map['defaultResult']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      heartbeatTimeout: (() { final guardedValue = map['heartbeatTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      heartbeatTimeout: (() { final guardedValue = map['heartbeatTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       lifecycleTransition: pulumi.Input.fromValue(map['lifecycleTransition'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationMetadata: (() { final guardedValue = map['notificationMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

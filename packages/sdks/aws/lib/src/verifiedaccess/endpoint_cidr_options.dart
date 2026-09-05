@@ -6,8 +6,8 @@ import 'endpoint_cidr_options_port_range.dart';
 class EndpointCidrOptions {
   final pulumi.Input<String> cidr;
   final pulumi.Input<List<EndpointCidrOptionsPortRange>> portRanges;
-  final pulumi.Input<String>? protocol;
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<String?>? protocol;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [EndpointCidrOptions].
   /// [cidr] Required.

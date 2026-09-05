@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableComment {
   /// A description of the table.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [TableComment].
   /// [message] A description of the table.

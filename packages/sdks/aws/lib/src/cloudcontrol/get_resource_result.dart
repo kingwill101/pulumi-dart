@@ -4,53 +4,53 @@
 /// Result data returned by getResource.
 class GetResourceResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String identifier;
+  final String? id;
+  final String? identifier;
   /// JSON string matching the CloudFormation resource type schema with current configuration.
-  final String properties;
-  final String region;
+  final String? properties;
+  final String? region;
   final String? roleArn;
-  final String typeName;
+  final String? typeName;
   final String? typeVersionId;
 
   /// Creates a new [GetResourceResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [identifier] Required.
+  /// [identifier] Optional.
   /// [properties] JSON string matching the CloudFormation resource type schema with current configuration.
-  /// [region] Required.
+  /// [region] Optional.
   /// [roleArn] Optional.
-  /// [typeName] Required.
+  /// [typeName] Optional.
   /// [typeVersionId] Optional.
   const GetResourceResult({
-    required this.id,
-    required this.identifier,
-    required this.properties,
-    required this.region,
+    this.id,
+    this.identifier,
+    this.properties,
+    this.region,
     this.roleArn,
-    required this.typeName,
+    this.typeName,
     this.typeVersionId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'identifier': identifier,
-      'properties': properties,
-      'region': region,
+      'id': ?id,
+      'identifier': ?identifier,
+      'properties': ?properties,
+      'region': ?region,
       'roleArn': ?roleArn,
-      'typeName': typeName,
+      'typeName': ?typeName,
       'typeVersionId': ?typeVersionId,
     };
   }
 
   factory GetResourceResult.fromMap(Map<String, dynamic> map) {
     return GetResourceResult(
-      id: map['id'] as String,
-      identifier: map['identifier'] as String,
-      properties: map['properties'] as String,
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      typeName: map['typeName'] as String,
+      typeName: (() { final guardedValue = map['typeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       typeVersionId: (() { final guardedValue = map['typeVersionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -13,46 +13,46 @@ import 'web_acl_visibility_config.dart';
 /// Input properties used for looking up and filtering WebAcl resources.
 class WebAclState {
   /// The URL to use in SDK integrations with managed rule groups.
-  final pulumi.Input<String>? applicationIntegrationUrl;
+  final pulumi.Input<String?>? applicationIntegrationUrl;
   /// The ARN of the WAF WebACL.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Specifies custom configurations for the associations between the web ACL and protected resources. See `associationConfig` below for details.
-  final pulumi.Input<WebAclAssociationConfig>? associationConfig;
+  final pulumi.Input<WebAclAssociationConfig?>? associationConfig;
   /// Web ACL capacity units (WCUs) currently being used by this web ACL.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Specifies how AWS WAF should handle CAPTCHA evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `captchaConfig` below for details.
-  final pulumi.Input<WebAclCaptchaConfig>? captchaConfig;
+  final pulumi.Input<WebAclCaptchaConfig?>? captchaConfig;
   /// Specifies how AWS WAF should handle Challenge evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `challengeConfig` below for details.
-  final pulumi.Input<WebAclChallengeConfig>? challengeConfig;
+  final pulumi.Input<WebAclChallengeConfig?>? challengeConfig;
   /// Defines custom response bodies that can be referenced by `customResponse` actions. See `customResponseBody` below for details.
-  final pulumi.Input<List<WebAclCustomResponseBody>>? customResponseBodies;
+  final pulumi.Input<List<WebAclCustomResponseBody>?>? customResponseBodies;
   /// Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option. See `dataProtectionConfig` below for details.
-  final pulumi.Input<WebAclDataProtectionConfig>? dataProtectionConfig;
+  final pulumi.Input<WebAclDataProtectionConfig?>? dataProtectionConfig;
   /// Action to perform if none of the `rules` contained in the WebACL match. See `defaultAction` below for details.
-  final pulumi.Input<WebAclDefaultAction>? defaultAction;
+  final pulumi.Input<WebAclDefaultAction?>? defaultAction;
   /// Friendly description of the WebACL.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? lockToken;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? lockToken;
   /// Friendly name of the WebACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Raw JSON string to allow more than three nested statements. Conflicts with `rule` attribute. This is for advanced use cases where more than 3 levels of nested statements are required. **There is no drift detection at this time**. If you use this attribute instead of `rule`, you will be foregoing drift detection. Additionally, importing an existing web ACL into a configuration with `ruleJson` set will result in a one time in-place update as the remote rule configuration is initially written to the `rule` attribute. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateWebACL.html) for the JSON structure.
-  final pulumi.Input<String>? ruleJson;
+  final pulumi.Input<String?>? ruleJson;
   /// **`rule` blocks in this resource have several known limitations.** Consider using `aws.wafv2.WebAclRule` to manage rules as separate resources instead. Rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See `rule` below for details.
-  final pulumi.Input<List<WebAclRule>>? rules;
+  final pulumi.Input<List<WebAclRule>?>? rules;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Map of key-value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Specifies the domains that AWS WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When AWS WAF provides a token, it uses the domain of the AWS resource that the web ACL is protecting. If you don't specify a list of token domains, AWS WAF accepts tokens only for the domain of the protected resource. With a token domain list, AWS WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
-  final pulumi.Input<List<String>>? tokenDomains;
+  final pulumi.Input<List<String>?>? tokenDomains;
   /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See `visibilityConfig` below for details.
-  final pulumi.Input<WebAclVisibilityConfig>? visibilityConfig;
+  final pulumi.Input<WebAclVisibilityConfig?>? visibilityConfig;
 
   /// Creates a new [WebAclState].
   /// [applicationIntegrationUrl] The URL to use in SDK integrations with managed rule groups.
@@ -131,7 +131,7 @@ class WebAclState {
       applicationIntegrationUrl: (() { final guardedValue = map['applicationIntegrationUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       associationConfig: (() { final guardedValue = map['associationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclAssociationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       captchaConfig: (() { final guardedValue = map['captchaConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       challengeConfig: (() { final guardedValue = map['challengeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customResponseBodies: (() { final guardedValue = map['customResponseBodies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclCustomResponseBody>(guardedValue, (value) => WebAclCustomResponseBody.fromMap((value as Map).cast<String, dynamic>()))); })(),

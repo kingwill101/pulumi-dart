@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_alarm_args.dart';
 import 'metric_alarm_evaluation_criteria.dart';
+import 'metric_alarm_metric_query.dart';
 import 'metric_alarm_state.dart';
 
 /// Provides a CloudWatch Metric Alarm resource.
@@ -433,12 +434,6 @@ import 'metric_alarm_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foobar = new aws.cloudwatch.MetricAlarm("foobar", {
-///     name: "test-foobar",
-///     comparisonOperator: "GreaterThanOrEqualToThreshold",
-///     evaluationPeriods: 2,
-///     threshold: 10,
-///     alarmDescription: "Request error rate has exceeded 10%",
-///     insufficientDataActions: [],
 ///     metricQueries: [
 ///         {
 ///             id: "e1",
@@ -447,7 +442,6 @@ import 'metric_alarm_state.dart';
 ///             returnData: true,
 ///         },
 ///         {
-///             id: "m1",
 ///             metric: {
 ///                 metricName: "RequestCount",
 ///                 namespace: "AWS/ApplicationELB",
@@ -458,9 +452,9 @@ import 'metric_alarm_state.dart';
 ///                     LoadBalancer: "app/web",
 ///                 },
 ///             },
+///             id: "m1",
 ///         },
 ///         {
-///             id: "m2",
 ///             metric: {
 ///                 metricName: "HTTPCode_ELB_5XX_Count",
 ///                 namespace: "AWS/ApplicationELB",
@@ -471,8 +465,15 @@ import 'metric_alarm_state.dart';
 ///                     LoadBalancer: "app/web",
 ///                 },
 ///             },
+///             id: "m2",
 ///         },
 ///     ],
+///     name: "test-foobar",
+///     comparisonOperator: "GreaterThanOrEqualToThreshold",
+///     evaluationPeriods: 2,
+///     threshold: 10,
+///     alarmDescription: "Request error rate has exceeded 10%",
+///     insufficientDataActions: [],
 /// });
 /// ```
 /// ```python
@@ -480,12 +481,6 @@ import 'metric_alarm_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foobar = aws.cloudwatch.MetricAlarm("foobar",
-///     name="test-foobar",
-///     comparison_operator="GreaterThanOrEqualToThreshold",
-///     evaluation_periods=2,
-///     threshold=float(10),
-///     alarm_description="Request error rate has exceeded 10%",
-///     insufficient_data_actions=[],
 ///     metric_queries=[
 ///         {
 ///             "id": "e1",
@@ -494,7 +489,6 @@ import 'metric_alarm_state.dart';
 ///             "return_data": True,
 ///         },
 ///         {
-///             "id": "m1",
 ///             "metric": {
 ///                 "metric_name": "RequestCount",
 ///                 "namespace": "AWS/ApplicationELB",
@@ -505,9 +499,9 @@ import 'metric_alarm_state.dart';
 ///                     "LoadBalancer": "app/web",
 ///                 },
 ///             },
+///             "id": "m1",
 ///         },
 ///         {
-///             "id": "m2",
 ///             "metric": {
 ///                 "metric_name": "HTTPCode_ELB_5XX_Count",
 ///                 "namespace": "AWS/ApplicationELB",
@@ -518,8 +512,15 @@ import 'metric_alarm_state.dart';
 ///                     "LoadBalancer": "app/web",
 ///                 },
 ///             },
+///             "id": "m2",
 ///         },
-///     ])
+///     ],
+///     name="test-foobar",
+///     comparison_operator="GreaterThanOrEqualToThreshold",
+///     evaluation_periods=2,
+///     threshold=float(10),
+///     alarm_description="Request error rate has exceeded 10%",
+///     insufficient_data_actions=[])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -531,12 +532,6 @@ import 'metric_alarm_state.dart';
 /// {
 ///     var foobar = new Aws.CloudWatch.MetricAlarm("foobar", new()
 ///     {
-///         Name = "test-foobar",
-///         ComparisonOperator = "GreaterThanOrEqualToThreshold",
-///         EvaluationPeriods = 2,
-///         Threshold = 10,
-///         AlarmDescription = "Request error rate has exceeded 10%",
-///         InsufficientDataActions =  {},
 ///         MetricQueries = new[]
 ///         {
 ///             new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryArgs
@@ -548,7 +543,6 @@ import 'metric_alarm_state.dart';
 ///             },
 ///             new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryArgs
 ///             {
-///                 Id = "m1",
 ///                 Metric = new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryMetricArgs
 ///                 {
 ///                     MetricName = "RequestCount",
@@ -561,10 +555,10 @@ import 'metric_alarm_state.dart';
 ///                         { "LoadBalancer", "app/web" },
 ///                     },
 ///                 },
+///                 Id = "m1",
 ///             },
 ///             new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryArgs
 ///             {
-///                 Id = "m2",
 ///                 Metric = new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryMetricArgs
 ///                 {
 ///                     MetricName = "HTTPCode_ELB_5XX_Count",
@@ -577,8 +571,15 @@ import 'metric_alarm_state.dart';
 ///                         { "LoadBalancer", "app/web" },
 ///                     },
 ///                 },
+///                 Id = "m2",
 ///             },
 ///         },
+///         Name = "test-foobar",
+///         ComparisonOperator = "GreaterThanOrEqualToThreshold",
+///         EvaluationPeriods = 2,
+///         Threshold = 10,
+///         AlarmDescription = "Request error rate has exceeded 10%",
+///         InsufficientDataActions =  {},
 ///     });
 ///
 /// });
@@ -595,12 +596,6 @@ import 'metric_alarm_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
-/// 			Name:                    pulumi.String("test-foobar"),
-/// 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
-/// 			EvaluationPeriods:       pulumi.Int(2),
-/// 			Threshold:               pulumi.Float64(10),
-/// 			AlarmDescription:        pulumi.String("Request error rate has exceeded 10%"),
-/// 			InsufficientDataActions: pulumi.Array{},
 /// 			MetricQueries: cloudwatch.MetricAlarmMetricQueryArray{
 /// 				&cloudwatch.MetricAlarmMetricQueryArgs{
 /// 					Id:         pulumi.String("e1"),
@@ -609,7 +604,6 @@ import 'metric_alarm_state.dart';
 /// 					ReturnData: pulumi.Bool(true),
 /// 				},
 /// 				&cloudwatch.MetricAlarmMetricQueryArgs{
-/// 					Id: pulumi.String("m1"),
 /// 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
 /// 						MetricName: pulumi.String("RequestCount"),
 /// 						Namespace:  pulumi.String("AWS/ApplicationELB"),
@@ -620,9 +614,9 @@ import 'metric_alarm_state.dart';
 /// 							"LoadBalancer": pulumi.String("app/web"),
 /// 						},
 /// 					},
+/// 					Id: pulumi.String("m1"),
 /// 				},
 /// 				&cloudwatch.MetricAlarmMetricQueryArgs{
-/// 					Id: pulumi.String("m2"),
 /// 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
 /// 						MetricName: pulumi.String("HTTPCode_ELB_5XX_Count"),
 /// 						Namespace:  pulumi.String("AWS/ApplicationELB"),
@@ -633,8 +627,15 @@ import 'metric_alarm_state.dart';
 /// 							"LoadBalancer": pulumi.String("app/web"),
 /// 						},
 /// 					},
+/// 					Id: pulumi.String("m2"),
 /// 				},
 /// 			},
+/// 			Name:                    pulumi.String("test-foobar"),
+/// 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
+/// 			EvaluationPeriods:       pulumi.Int(2),
+/// 			Threshold:               pulumi.Float64(10),
+/// 			AlarmDescription:        pulumi.String("Request error rate has exceeded 10%"),
+/// 			InsufficientDataActions: pulumi.Array{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -653,12 +654,6 @@ import 'metric_alarm_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_metricalarm" "foobar" {
-///   name                      = "test-foobar"
-///   comparison_operator       = "GreaterThanOrEqualToThreshold"
-///   evaluation_periods        = 2
-///   threshold                 = 10
-///   alarm_description         = "Request error rate has exceeded 10%"
-///   insufficient_data_actions = []
 ///   metric_queries {
 ///     id          = "e1"
 ///     expression  = "m2/m1*100"
@@ -666,7 +661,6 @@ import 'metric_alarm_state.dart';
 ///     return_data = "true"
 ///   }
 ///   metric_queries {
-///     id = "m1"
 ///     metric = {
 ///       metric_name = "RequestCount"
 ///       namespace   = "AWS/ApplicationELB"
@@ -677,9 +671,9 @@ import 'metric_alarm_state.dart';
 ///         "LoadBalancer" = "app/web"
 ///       }
 ///     }
+///     id = "m1"
 ///   }
 ///   metric_queries {
-///     id = "m2"
 ///     metric = {
 ///       metric_name = "HTTPCode_ELB_5XX_Count"
 ///       namespace   = "AWS/ApplicationELB"
@@ -690,7 +684,14 @@ import 'metric_alarm_state.dart';
 ///         "LoadBalancer" = "app/web"
 ///       }
 ///     }
+///     id = "m2"
 ///   }
+///   name                      = "test-foobar"
+///   comparison_operator       = "GreaterThanOrEqualToThreshold"
+///   evaluation_periods        = 2
+///   threshold                 = 10
+///   alarm_description         = "Request error rate has exceeded 10%"
+///   insufficient_data_actions = []
 /// }
 /// ```
 /// ```java
@@ -717,12 +718,6 @@ import 'metric_alarm_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foobar = new MetricAlarm("foobar", MetricAlarmArgs.builder()
-///             .name("test-foobar")
-///             .comparisonOperator("GreaterThanOrEqualToThreshold")
-///             .evaluationPeriods(2)
-///             .threshold(10.0)
-///             .alarmDescription("Request error rate has exceeded 10%")
-///             .insufficientDataActions()
 ///             .metricQueries(
 ///                 MetricAlarmMetricQueryArgs.builder()
 ///                     .id("e1")
@@ -731,7 +726,6 @@ import 'metric_alarm_state.dart';
 ///                     .returnData(true)
 ///                     .build(),
 ///                 MetricAlarmMetricQueryArgs.builder()
-///                     .id("m1")
 ///                     .metric(MetricAlarmMetricQueryMetricArgs.builder()
 ///                         .metricName("RequestCount")
 ///                         .namespace("AWS/ApplicationELB")
@@ -740,9 +734,9 @@ import 'metric_alarm_state.dart';
 ///                         .unit("Count")
 ///                         .dimensions(Map.of("LoadBalancer", "app/web"))
 ///                         .build())
+///                     .id("m1")
 ///                     .build(),
 ///                 MetricAlarmMetricQueryArgs.builder()
-///                     .id("m2")
 ///                     .metric(MetricAlarmMetricQueryMetricArgs.builder()
 ///                         .metricName("HTTPCode_ELB_5XX_Count")
 ///                         .namespace("AWS/ApplicationELB")
@@ -751,7 +745,14 @@ import 'metric_alarm_state.dart';
 ///                         .unit("Count")
 ///                         .dimensions(Map.of("LoadBalancer", "app/web"))
 ///                         .build())
+///                     .id("m2")
 ///                     .build())
+///             .name("test-foobar")
+///             .comparisonOperator("GreaterThanOrEqualToThreshold")
+///             .evaluationPeriods(2)
+///             .threshold(10.0)
+///             .alarmDescription("Request error rate has exceeded 10%")
+///             .insufficientDataActions()
 ///             .build());
 ///
 ///     }
@@ -762,19 +763,12 @@ import 'metric_alarm_state.dart';
 ///   foobar:
 ///     type: aws:cloudwatch:MetricAlarm
 ///     properties:
-///       name: test-foobar
-///       comparisonOperator: GreaterThanOrEqualToThreshold
-///       evaluationPeriods: 2
-///       threshold: 10
-///       alarmDescription: Request error rate has exceeded 10%
-///       insufficientDataActions: []
 ///       metricQueries:
 ///         - id: e1
 ///           expression: m2/m1*100
 ///           label: Error Rate
 ///           returnData: 'true'
-///         - id: m1
-///           metric:
+///         - metric:
 ///             metricName: RequestCount
 ///             namespace: AWS/ApplicationELB
 ///             period: 120
@@ -782,8 +776,8 @@ import 'metric_alarm_state.dart';
 ///             unit: Count
 ///             dimensions:
 ///               LoadBalancer: app/web
-///         - id: m2
-///           metric:
+///           id: m1
+///         - metric:
 ///             metricName: HTTPCode_ELB_5XX_Count
 ///             namespace: AWS/ApplicationELB
 ///             period: 120
@@ -791,6 +785,13 @@ import 'metric_alarm_state.dart';
 ///             unit: Count
 ///             dimensions:
 ///               LoadBalancer: app/web
+///           id: m2
+///       name: test-foobar
+///       comparisonOperator: GreaterThanOrEqualToThreshold
+///       evaluationPeriods: 2
+///       threshold: 10
+///       alarmDescription: Request error rate has exceeded 10%
+///       insufficientDataActions: []
 /// ```
 ///
 ///
@@ -802,8 +803,6 @@ import 'metric_alarm_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const promqlAlarm = new aws.cloudwatch.MetricAlarm("promql_alarm", {
-///     name: "high-cpu-promql",
-///     alarmDescription: "Alarm when average CPU exceeds 80% using PromQL",
 ///     evaluationCriteria: {
 ///         promqlCriteria: {
 ///             query: "avg(cpu_utilization_percent) > 80",
@@ -811,6 +810,8 @@ import 'metric_alarm_state.dart';
 ///             recoveryPeriod: 120,
 ///         },
 ///     },
+///     name: "high-cpu-promql",
+///     alarmDescription: "Alarm when average CPU exceeds 80% using PromQL",
 ///     evaluationInterval: 30,
 ///     alarmActions: [alerts.arn],
 /// });
@@ -820,8 +821,6 @@ import 'metric_alarm_state.dart';
 /// import pulumi_aws as aws
 ///
 /// promql_alarm = aws.cloudwatch.MetricAlarm("promql_alarm",
-///     name="high-cpu-promql",
-///     alarm_description="Alarm when average CPU exceeds 80% using PromQL",
 ///     evaluation_criteria={
 ///         "promql_criteria": {
 ///             "query": "avg(cpu_utilization_percent) > 80",
@@ -829,6 +828,8 @@ import 'metric_alarm_state.dart';
 ///             "recovery_period": 120,
 ///         },
 ///     },
+///     name="high-cpu-promql",
+///     alarm_description="Alarm when average CPU exceeds 80% using PromQL",
 ///     evaluation_interval=30,
 ///     alarm_actions=[alerts["arn"]])
 /// ```
@@ -842,8 +843,6 @@ import 'metric_alarm_state.dart';
 /// {
 ///     var promqlAlarm = new Aws.CloudWatch.MetricAlarm("promql_alarm", new()
 ///     {
-///         Name = "high-cpu-promql",
-///         AlarmDescription = "Alarm when average CPU exceeds 80% using PromQL",
 ///         EvaluationCriteria = new Aws.CloudWatch.Inputs.MetricAlarmEvaluationCriteriaArgs
 ///         {
 ///             PromqlCriteria = new Aws.CloudWatch.Inputs.MetricAlarmEvaluationCriteriaPromqlCriteriaArgs
@@ -853,6 +852,8 @@ import 'metric_alarm_state.dart';
 ///                 RecoveryPeriod = 120,
 ///             },
 ///         },
+///         Name = "high-cpu-promql",
+///         AlarmDescription = "Alarm when average CPU exceeds 80% using PromQL",
 ///         EvaluationInterval = 30,
 ///         AlarmActions =
 ///         {
@@ -874,8 +875,6 @@ import 'metric_alarm_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewMetricAlarm(ctx, "promql_alarm", &cloudwatch.MetricAlarmArgs{
-/// 			Name:             pulumi.String("high-cpu-promql"),
-/// 			AlarmDescription: pulumi.String("Alarm when average CPU exceeds 80% using PromQL"),
 /// 			EvaluationCriteria: &cloudwatch.MetricAlarmEvaluationCriteriaArgs{
 /// 				PromqlCriteria: &cloudwatch.MetricAlarmEvaluationCriteriaPromqlCriteriaArgs{
 /// 					Query:          pulumi.String("avg(cpu_utilization_percent) > 80"),
@@ -883,6 +882,8 @@ import 'metric_alarm_state.dart';
 /// 					RecoveryPeriod: pulumi.Int(120),
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("high-cpu-promql"),
+/// 			AlarmDescription:   pulumi.String("Alarm when average CPU exceeds 80% using PromQL"),
 /// 			EvaluationInterval: pulumi.Int(30),
 /// 			AlarmActions: pulumi.Array{
 /// 				alerts.Arn,
@@ -905,8 +906,6 @@ import 'metric_alarm_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_metricalarm" "promql_alarm" {
-///   name              = "high-cpu-promql"
-///   alarm_description = "Alarm when average CPU exceeds 80% using PromQL"
 ///   evaluation_criteria = {
 ///     promql_criteria = {
 ///       query           = "avg(cpu_utilization_percent) > 80"
@@ -917,6 +916,8 @@ import 'metric_alarm_state.dart';
 ///   # 5 minutes
 ///   # 5 minutes
 ///   # 2 minutes
+///   name                = "high-cpu-promql"
+///   alarm_description   = "Alarm when average CPU exceeds 80% using PromQL"
 ///   evaluation_interval = 30 # seconds
 ///   alarm_actions       = [alerts.arn]
 /// }
@@ -945,8 +946,6 @@ import 'metric_alarm_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var promqlAlarm = new MetricAlarm("promqlAlarm", MetricAlarmArgs.builder()
-///             .name("high-cpu-promql")
-///             .alarmDescription("Alarm when average CPU exceeds 80% using PromQL")
 ///             .evaluationCriteria(MetricAlarmEvaluationCriteriaArgs.builder()
 ///                 .promqlCriteria(MetricAlarmEvaluationCriteriaPromqlCriteriaArgs.builder()
 ///                     .query("avg(cpu_utilization_percent) > 80")
@@ -954,6 +953,8 @@ import 'metric_alarm_state.dart';
 ///                     .recoveryPeriod(120)
 ///                     .build())
 ///                 .build())
+///             .name("high-cpu-promql")
+///             .alarmDescription("Alarm when average CPU exceeds 80% using PromQL")
 ///             .evaluationInterval(30)
 ///             .alarmActions(alerts.arn())
 ///             .build());
@@ -967,13 +968,13 @@ import 'metric_alarm_state.dart';
 ///     type: aws:cloudwatch:MetricAlarm
 ///     name: promql_alarm
 ///     properties:
-///       name: high-cpu-promql
-///       alarmDescription: Alarm when average CPU exceeds 80% using PromQL
 ///       evaluationCriteria:
 ///         promqlCriteria:
 ///           query: avg(cpu_utilization_percent) > 80
 ///           pendingPeriod: 300
 ///           recoveryPeriod: 120
+///       name: high-cpu-promql
+///       alarmDescription: Alarm when average CPU exceeds 80% using PromQL
 ///       evaluationInterval: 30 # seconds
 ///       alarmActions:
 ///         - ${alerts.arn}
@@ -986,12 +987,6 @@ import 'metric_alarm_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const xxAnomalyDetection = new aws.cloudwatch.MetricAlarm("xx_anomaly_detection", {
-///     name: "test-foobar",
-///     comparisonOperator: "GreaterThanUpperThreshold",
-///     evaluationPeriods: 2,
-///     thresholdMetricId: "e1",
-///     alarmDescription: "This metric monitors ec2 cpu utilization",
-///     insufficientDataActions: [],
 ///     metricQueries: [
 ///         {
 ///             id: "e1",
@@ -1000,8 +995,6 @@ import 'metric_alarm_state.dart';
 ///             label: "CPUUtilization (Expected)",
 ///         },
 ///         {
-///             id: "m1",
-///             returnData: true,
 ///             metric: {
 ///                 metricName: "CPUUtilization",
 ///                 namespace: "AWS/EC2",
@@ -1012,8 +1005,16 @@ import 'metric_alarm_state.dart';
 ///                     InstanceId: "i-abc123",
 ///                 },
 ///             },
+///             id: "m1",
+///             returnData: true,
 ///         },
 ///     ],
+///     name: "test-foobar",
+///     comparisonOperator: "GreaterThanUpperThreshold",
+///     evaluationPeriods: 2,
+///     thresholdMetricId: "e1",
+///     alarmDescription: "This metric monitors ec2 cpu utilization",
+///     insufficientDataActions: [],
 /// });
 /// ```
 /// ```python
@@ -1021,12 +1022,6 @@ import 'metric_alarm_state.dart';
 /// import pulumi_aws as aws
 ///
 /// xx_anomaly_detection = aws.cloudwatch.MetricAlarm("xx_anomaly_detection",
-///     name="test-foobar",
-///     comparison_operator="GreaterThanUpperThreshold",
-///     evaluation_periods=2,
-///     threshold_metric_id="e1",
-///     alarm_description="This metric monitors ec2 cpu utilization",
-///     insufficient_data_actions=[],
 ///     metric_queries=[
 ///         {
 ///             "id": "e1",
@@ -1035,8 +1030,6 @@ import 'metric_alarm_state.dart';
 ///             "label": "CPUUtilization (Expected)",
 ///         },
 ///         {
-///             "id": "m1",
-///             "return_data": True,
 ///             "metric": {
 ///                 "metric_name": "CPUUtilization",
 ///                 "namespace": "AWS/EC2",
@@ -1047,8 +1040,16 @@ import 'metric_alarm_state.dart';
 ///                     "InstanceId": "i-abc123",
 ///                 },
 ///             },
+///             "id": "m1",
+///             "return_data": True,
 ///         },
-///     ])
+///     ],
+///     name="test-foobar",
+///     comparison_operator="GreaterThanUpperThreshold",
+///     evaluation_periods=2,
+///     threshold_metric_id="e1",
+///     alarm_description="This metric monitors ec2 cpu utilization",
+///     insufficient_data_actions=[])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1060,12 +1061,6 @@ import 'metric_alarm_state.dart';
 /// {
 ///     var xxAnomalyDetection = new Aws.CloudWatch.MetricAlarm("xx_anomaly_detection", new()
 ///     {
-///         Name = "test-foobar",
-///         ComparisonOperator = "GreaterThanUpperThreshold",
-///         EvaluationPeriods = 2,
-///         ThresholdMetricId = "e1",
-///         AlarmDescription = "This metric monitors ec2 cpu utilization",
-///         InsufficientDataActions =  {},
 ///         MetricQueries = new[]
 ///         {
 ///             new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryArgs
@@ -1077,8 +1072,6 @@ import 'metric_alarm_state.dart';
 ///             },
 ///             new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryArgs
 ///             {
-///                 Id = "m1",
-///                 ReturnData = true,
 ///                 Metric = new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryMetricArgs
 ///                 {
 ///                     MetricName = "CPUUtilization",
@@ -1091,8 +1084,16 @@ import 'metric_alarm_state.dart';
 ///                         { "InstanceId", "i-abc123" },
 ///                     },
 ///                 },
+///                 Id = "m1",
+///                 ReturnData = true,
 ///             },
 ///         },
+///         Name = "test-foobar",
+///         ComparisonOperator = "GreaterThanUpperThreshold",
+///         EvaluationPeriods = 2,
+///         ThresholdMetricId = "e1",
+///         AlarmDescription = "This metric monitors ec2 cpu utilization",
+///         InsufficientDataActions =  {},
 ///     });
 ///
 /// });
@@ -1109,12 +1110,6 @@ import 'metric_alarm_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewMetricAlarm(ctx, "xx_anomaly_detection", &cloudwatch.MetricAlarmArgs{
-/// 			Name:                    pulumi.String("test-foobar"),
-/// 			ComparisonOperator:      pulumi.String("GreaterThanUpperThreshold"),
-/// 			EvaluationPeriods:       pulumi.Int(2),
-/// 			ThresholdMetricId:       pulumi.String("e1"),
-/// 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
-/// 			InsufficientDataActions: pulumi.Array{},
 /// 			MetricQueries: cloudwatch.MetricAlarmMetricQueryArray{
 /// 				&cloudwatch.MetricAlarmMetricQueryArgs{
 /// 					Id:         pulumi.String("e1"),
@@ -1123,8 +1118,6 @@ import 'metric_alarm_state.dart';
 /// 					Label:      pulumi.String("CPUUtilization (Expected)"),
 /// 				},
 /// 				&cloudwatch.MetricAlarmMetricQueryArgs{
-/// 					Id:         pulumi.String("m1"),
-/// 					ReturnData: pulumi.Bool(true),
 /// 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
 /// 						MetricName: pulumi.String("CPUUtilization"),
 /// 						Namespace:  pulumi.String("AWS/EC2"),
@@ -1135,8 +1128,16 @@ import 'metric_alarm_state.dart';
 /// 							"InstanceId": pulumi.String("i-abc123"),
 /// 						},
 /// 					},
+/// 					Id:         pulumi.String("m1"),
+/// 					ReturnData: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			Name:                    pulumi.String("test-foobar"),
+/// 			ComparisonOperator:      pulumi.String("GreaterThanUpperThreshold"),
+/// 			EvaluationPeriods:       pulumi.Int(2),
+/// 			ThresholdMetricId:       pulumi.String("e1"),
+/// 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
+/// 			InsufficientDataActions: pulumi.Array{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1155,12 +1156,6 @@ import 'metric_alarm_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_metricalarm" "xx_anomaly_detection" {
-///   name                      = "test-foobar"
-///   comparison_operator       = "GreaterThanUpperThreshold"
-///   evaluation_periods        = 2
-///   threshold_metric_id       = "e1"
-///   alarm_description         = "This metric monitors ec2 cpu utilization"
-///   insufficient_data_actions = []
 ///   metric_queries {
 ///     id          = "e1"
 ///     return_data = true
@@ -1168,8 +1163,6 @@ import 'metric_alarm_state.dart';
 ///     label       = "CPUUtilization (Expected)"
 ///   }
 ///   metric_queries {
-///     id          = "m1"
-///     return_data = true
 ///     metric = {
 ///       metric_name = "CPUUtilization"
 ///       namespace   = "AWS/EC2"
@@ -1180,7 +1173,15 @@ import 'metric_alarm_state.dart';
 ///         "InstanceId" = "i-abc123"
 ///       }
 ///     }
+///     id          = "m1"
+///     return_data = true
 ///   }
+///   name                      = "test-foobar"
+///   comparison_operator       = "GreaterThanUpperThreshold"
+///   evaluation_periods        = 2
+///   threshold_metric_id       = "e1"
+///   alarm_description         = "This metric monitors ec2 cpu utilization"
+///   insufficient_data_actions = []
 /// }
 /// ```
 /// ```java
@@ -1207,12 +1208,6 @@ import 'metric_alarm_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var xxAnomalyDetection = new MetricAlarm("xxAnomalyDetection", MetricAlarmArgs.builder()
-///             .name("test-foobar")
-///             .comparisonOperator("GreaterThanUpperThreshold")
-///             .evaluationPeriods(2)
-///             .thresholdMetricId("e1")
-///             .alarmDescription("This metric monitors ec2 cpu utilization")
-///             .insufficientDataActions()
 ///             .metricQueries(
 ///                 MetricAlarmMetricQueryArgs.builder()
 ///                     .id("e1")
@@ -1221,8 +1216,6 @@ import 'metric_alarm_state.dart';
 ///                     .label("CPUUtilization (Expected)")
 ///                     .build(),
 ///                 MetricAlarmMetricQueryArgs.builder()
-///                     .id("m1")
-///                     .returnData(true)
 ///                     .metric(MetricAlarmMetricQueryMetricArgs.builder()
 ///                         .metricName("CPUUtilization")
 ///                         .namespace("AWS/EC2")
@@ -1231,7 +1224,15 @@ import 'metric_alarm_state.dart';
 ///                         .unit("Count")
 ///                         .dimensions(Map.of("InstanceId", "i-abc123"))
 ///                         .build())
+///                     .id("m1")
+///                     .returnData(true)
 ///                     .build())
+///             .name("test-foobar")
+///             .comparisonOperator("GreaterThanUpperThreshold")
+///             .evaluationPeriods(2)
+///             .thresholdMetricId("e1")
+///             .alarmDescription("This metric monitors ec2 cpu utilization")
+///             .insufficientDataActions()
 ///             .build());
 ///
 ///     }
@@ -1243,20 +1244,12 @@ import 'metric_alarm_state.dart';
 ///     type: aws:cloudwatch:MetricAlarm
 ///     name: xx_anomaly_detection
 ///     properties:
-///       name: test-foobar
-///       comparisonOperator: GreaterThanUpperThreshold
-///       evaluationPeriods: 2
-///       thresholdMetricId: e1
-///       alarmDescription: This metric monitors ec2 cpu utilization
-///       insufficientDataActions: []
 ///       metricQueries:
 ///         - id: e1
 ///           returnData: true
 ///           expression: ANOMALY_DETECTION_BAND(m1)
 ///           label: CPUUtilization (Expected)
-///         - id: m1
-///           returnData: true
-///           metric:
+///         - metric:
 ///             metricName: CPUUtilization
 ///             namespace: AWS/EC2
 ///             period: 120
@@ -1264,6 +1257,14 @@ import 'metric_alarm_state.dart';
 ///             unit: Count
 ///             dimensions:
 ///               InstanceId: i-abc123
+///           id: m1
+///           returnData: true
+///       name: test-foobar
+///       comparisonOperator: GreaterThanUpperThreshold
+///       evaluationPeriods: 2
+///       thresholdMetricId: e1
+///       alarmDescription: This metric monitors ec2 cpu utilization
+///       insufficientDataActions: []
 /// ```
 ///
 ///
@@ -1275,12 +1276,6 @@ import 'metric_alarm_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudwatch.MetricAlarm("example", {
-///     name: "example-alarm",
-///     alarmDescription: "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold",
-///     comparisonOperator: "GreaterThanThreshold",
-///     evaluationPeriods: 1,
-///     threshold: 0.6,
-///     treatMissingData: "notBreaching",
 ///     metricQueries: [{
 ///         id: "q1",
 ///         expression: `SELECT
@@ -1295,6 +1290,12 @@ import 'metric_alarm_state.dart';
 ///         returnData: true,
 ///         label: "Max DB Load of the Least-Loaded RDS Instance",
 ///     }],
+///     name: "example-alarm",
+///     alarmDescription: "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold",
+///     comparisonOperator: "GreaterThanThreshold",
+///     evaluationPeriods: 1,
+///     threshold: 0.6,
+///     treatMissingData: "notBreaching",
 /// });
 /// ```
 /// ```python
@@ -1302,12 +1303,6 @@ import 'metric_alarm_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudwatch.MetricAlarm("example",
-///     name="example-alarm",
-///     alarm_description="Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold",
-///     comparison_operator="GreaterThanThreshold",
-///     evaluation_periods=1,
-///     threshold=0.6,
-///     treat_missing_data="notBreaching",
 ///     metric_queries=[{
 ///         "id": "q1",
 ///         "expression": """SELECT
@@ -1321,7 +1316,13 @@ import 'metric_alarm_state.dart';
 ///         "period": 60,
 ///         "return_data": True,
 ///         "label": "Max DB Load of the Least-Loaded RDS Instance",
-///     }])
+///     }],
+///     name="example-alarm",
+///     alarm_description="Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold",
+///     comparison_operator="GreaterThanThreshold",
+///     evaluation_periods=1,
+///     threshold=0.6,
+///     treat_missing_data="notBreaching")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1333,12 +1334,6 @@ import 'metric_alarm_state.dart';
 /// {
 ///     var example = new Aws.CloudWatch.MetricAlarm("example", new()
 ///     {
-///         Name = "example-alarm",
-///         AlarmDescription = "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold",
-///         ComparisonOperator = "GreaterThanThreshold",
-///         EvaluationPeriods = 1,
-///         Threshold = 0.6,
-///         TreatMissingData = "notBreaching",
 ///         MetricQueries = new[]
 ///         {
 ///             new Aws.CloudWatch.Inputs.MetricAlarmMetricQueryArgs
@@ -1357,6 +1352,12 @@ import 'metric_alarm_state.dart';
 ///                 Label = "Max DB Load of the Least-Loaded RDS Instance",
 ///             },
 ///         },
+///         Name = "example-alarm",
+///         AlarmDescription = "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold",
+///         ComparisonOperator = "GreaterThanThreshold",
+///         EvaluationPeriods = 1,
+///         Threshold = 0.6,
+///         TreatMissingData = "notBreaching",
 ///     });
 ///
 /// });
@@ -1372,12 +1373,6 @@ import 'metric_alarm_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewMetricAlarm(ctx, "example", &cloudwatch.MetricAlarmArgs{
-/// 			Name:               pulumi.String("example-alarm"),
-/// 			AlarmDescription:   pulumi.String("Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold"),
-/// 			ComparisonOperator: pulumi.String("GreaterThanThreshold"),
-/// 			EvaluationPeriods:  pulumi.Int(1),
-/// 			Threshold:          pulumi.Float64(0.6),
-/// 			TreatMissingData:   pulumi.String("notBreaching"),
 /// 			MetricQueries: cloudwatch.MetricAlarmMetricQueryArray{
 /// 				&cloudwatch.MetricAlarmMetricQueryArgs{
 /// 					Id: pulumi.String("q1"),
@@ -1394,6 +1389,12 @@ import 'metric_alarm_state.dart';
 /// 					Label:      pulumi.String("Max DB Load of the Least-Loaded RDS Instance"),
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("example-alarm"),
+/// 			AlarmDescription:   pulumi.String("Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold"),
+/// 			ComparisonOperator: pulumi.String("GreaterThanThreshold"),
+/// 			EvaluationPeriods:  pulumi.Int(1),
+/// 			Threshold:          pulumi.Float64(0.6),
+/// 			TreatMissingData:   pulumi.String("notBreaching"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1412,12 +1413,6 @@ import 'metric_alarm_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_metricalarm" "example" {
-///   name                = "example-alarm"
-///   alarm_description   = "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold"
-///   comparison_operator = "GreaterThanThreshold"
-///   evaluation_periods  = 1
-///   threshold           = 0.6
-///   treat_missing_data  = "notBreaching"
 ///   metric_queries {
 ///     id          = "q1"
 ///     expression  = "SELECT\n  MAX(DBLoadRelativeToNumVCPUs)\nFROM SCHEMA(\\\"AWS/RDS\\\", DBInstanceIdentifier)\nWHERE DBInstanceIdentifier != 'example-rds-instance'\nGROUP BY DBInstanceIdentifier\nORDER BY MIN() ASC\nLIMIT 1\n"
@@ -1425,6 +1420,12 @@ import 'metric_alarm_state.dart';
 ///     return_data = true
 ///     label       = "Max DB Load of the Least-Loaded RDS Instance"
 ///   }
+///   name                = "example-alarm"
+///   alarm_description   = "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold"
+///   comparison_operator = "GreaterThanThreshold"
+///   evaluation_periods  = 1
+///   threshold           = 0.6
+///   treat_missing_data  = "notBreaching"
 /// }
 /// ```
 /// ```java
@@ -1450,12 +1451,6 @@ import 'metric_alarm_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MetricAlarm("example", MetricAlarmArgs.builder()
-///             .name("example-alarm")
-///             .alarmDescription("Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold")
-///             .comparisonOperator("GreaterThanThreshold")
-///             .evaluationPeriods(1)
-///             .threshold(0.6)
-///             .treatMissingData("notBreaching")
 ///             .metricQueries(MetricAlarmMetricQueryArgs.builder()
 ///                 .id("q1")
 ///                 .expression("""
@@ -1471,6 +1466,12 @@ import 'metric_alarm_state.dart';
 ///                 .returnData(true)
 ///                 .label("Max DB Load of the Least-Loaded RDS Instance")
 ///                 .build())
+///             .name("example-alarm")
+///             .alarmDescription("Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold")
+///             .comparisonOperator("GreaterThanThreshold")
+///             .evaluationPeriods(1)
+///             .threshold(0.6)
+///             .treatMissingData("notBreaching")
 ///             .build());
 ///
 ///     }
@@ -1481,12 +1482,6 @@ import 'metric_alarm_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:MetricAlarm
 ///     properties:
-///       name: example-alarm
-///       alarmDescription: Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold
-///       comparisonOperator: GreaterThanThreshold
-///       evaluationPeriods: 1
-///       threshold: 0.6
-///       treatMissingData: notBreaching
 ///       metricQueries:
 ///         - id: q1
 ///           expression: |
@@ -1500,6 +1495,12 @@ import 'metric_alarm_state.dart';
 ///           period: 60
 ///           returnData: true
 ///           label: Max DB Load of the Least-Loaded RDS Instance
+///       name: example-alarm
+///       alarmDescription: Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold
+///       comparisonOperator: GreaterThanThreshold
+///       evaluationPeriods: 1
+///       threshold: 0.6
+///       treatMissingData: notBreaching
 /// ```
 ///
 ///
@@ -1750,7 +1751,7 @@ import 'metric_alarm_state.dart';
 class MetricAlarm extends pulumi.CustomResource {
   /// Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
   late final pulumi.Output<bool?> actionsEnabled;
-  /// The list of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+  /// List of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an ARN.
   late final pulumi.Output<List<String>?> alarmActions;
   /// The description for the alarm.
   late final pulumi.Output<String?> alarmDescription;
@@ -1775,19 +1776,19 @@ class MetricAlarm extends pulumi.CustomResource {
   late final pulumi.Output<int?> evaluationPeriods;
   /// The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
   late final pulumi.Output<String?> extendedStatistic;
-  /// The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+  /// List of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an ARN.
   late final pulumi.Output<List<String>?> insufficientDataActions;
   /// The name for the alarm's associated metric.
   /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
   late final pulumi.Output<String?> metricName;
   /// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metricQueries;
+  late final pulumi.Output<List<MetricAlarmMetricQuery>?> metricQueries;
   /// The descriptive name for the alarm. This name must be unique within the user's AWS account
   late final pulumi.Output<String> name;
   /// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
   /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
   late final pulumi.Output<String?> namespace;
-  /// The list of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+  /// List of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an ARN.
   late final pulumi.Output<List<String>?> okActions;
   /// The period in seconds over which the specified `statistic` is applied.
   /// Valid values are `10`, `20`, `30`, or any multiple of `60`.
@@ -1827,31 +1828,31 @@ class MetricAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/metricAlarm:MetricAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
-    alarmActions = registerOutput<List<String>?>('alarmActions');
+    alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     alarmDescription = registerOutput<String?>('alarmDescription');
     arn = registerOutput<String>('arn');
     comparisonOperator = registerOutput<String?>('comparisonOperator');
     datapointsToAlarm = registerOutput<int?>('datapointsToAlarm');
-    dimensions = registerOutput<Map<String, String>?>('dimensions');
+    dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     evaluateLowSampleCountPercentiles = registerOutput<String>('evaluateLowSampleCountPercentiles');
     evaluationCriteria = registerOutput<MetricAlarmEvaluationCriteria?>('evaluationCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlarmEvaluationCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     evaluationInterval = registerOutput<int?>('evaluationInterval');
     evaluationPeriods = registerOutput<int?>('evaluationPeriods');
     extendedStatistic = registerOutput<String?>('extendedStatistic');
-    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions');
+    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     metricName = registerOutput<String?>('metricName');
-    metricQueries = registerOutput<List<Map<String, dynamic>>?>('metricQueries');
+    metricQueries = registerOutput<List<MetricAlarmMetricQuery>?>('metricQueries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricAlarmMetricQuery>(guardedValue, (value) => MetricAlarmMetricQuery.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
-    okActions = registerOutput<List<String>?>('okActions');
+    okActions = registerOutput<List<String>?>('okActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     period = registerOutput<int?>('period');
     region = registerOutput<String>('region');
     statistic = registerOutput<String?>('statistic');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threshold = registerOutput<double?>('threshold');
     thresholdMetricId = registerOutput<String?>('thresholdMetricId');
     treatMissingData = registerOutput<String?>('treatMissingData');
@@ -1863,11 +1864,12 @@ class MetricAlarm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetricAlarmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetricAlarm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1882,28 +1884,66 @@ class MetricAlarm extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
-    alarmActions = registerOutput<List<String>?>('alarmActions');
+    alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     alarmDescription = registerOutput<String?>('alarmDescription');
     arn = registerOutput<String>('arn');
     comparisonOperator = registerOutput<String?>('comparisonOperator');
     datapointsToAlarm = registerOutput<int?>('datapointsToAlarm');
-    dimensions = registerOutput<Map<String, String>?>('dimensions');
+    dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     evaluateLowSampleCountPercentiles = registerOutput<String>('evaluateLowSampleCountPercentiles');
     evaluationCriteria = registerOutput<MetricAlarmEvaluationCriteria?>('evaluationCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlarmEvaluationCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     evaluationInterval = registerOutput<int?>('evaluationInterval');
     evaluationPeriods = registerOutput<int?>('evaluationPeriods');
     extendedStatistic = registerOutput<String?>('extendedStatistic');
-    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions');
+    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     metricName = registerOutput<String?>('metricName');
-    metricQueries = registerOutput<List<Map<String, dynamic>>?>('metricQueries');
+    metricQueries = registerOutput<List<MetricAlarmMetricQuery>?>('metricQueries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricAlarmMetricQuery>(guardedValue, (value) => MetricAlarmMetricQuery.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
-    okActions = registerOutput<List<String>?>('okActions');
+    okActions = registerOutput<List<String>?>('okActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     period = registerOutput<int?>('period');
     region = registerOutput<String>('region');
     statistic = registerOutput<String?>('statistic');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    threshold = registerOutput<double?>('threshold');
+    thresholdMetricId = registerOutput<String?>('thresholdMetricId');
+    treatMissingData = registerOutput<String?>('treatMissingData');
+    unit = registerOutput<String?>('unit');
+  }
+
+  /// Creates a typed reference to an existing [MetricAlarm] resource.
+  MetricAlarm.reference(String urn)
+    : super(
+        'aws:cloudwatch/metricAlarm:MetricAlarm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionsEnabled = registerOutput<bool?>('actionsEnabled');
+    alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    alarmDescription = registerOutput<String?>('alarmDescription');
+    arn = registerOutput<String>('arn');
+    comparisonOperator = registerOutput<String?>('comparisonOperator');
+    datapointsToAlarm = registerOutput<int?>('datapointsToAlarm');
+    dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    evaluateLowSampleCountPercentiles = registerOutput<String>('evaluateLowSampleCountPercentiles');
+    evaluationCriteria = registerOutput<MetricAlarmEvaluationCriteria?>('evaluationCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlarmEvaluationCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    evaluationInterval = registerOutput<int?>('evaluationInterval');
+    evaluationPeriods = registerOutput<int?>('evaluationPeriods');
+    extendedStatistic = registerOutput<String?>('extendedStatistic');
+    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    metricName = registerOutput<String?>('metricName');
+    metricQueries = registerOutput<List<MetricAlarmMetricQuery>?>('metricQueries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricAlarmMetricQuery>(guardedValue, (value) => MetricAlarmMetricQuery.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String?>('namespace');
+    okActions = registerOutput<List<String>?>('okActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    period = registerOutput<int?>('period');
+    region = registerOutput<String>('region');
+    statistic = registerOutput<String?>('statistic');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threshold = registerOutput<double?>('threshold');
     thresholdMetricId = registerOutput<String?>('thresholdMetricId');
     treatMissingData = registerOutput<String?>('treatMissingData');

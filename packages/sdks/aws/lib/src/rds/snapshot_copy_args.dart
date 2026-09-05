@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_rds_snapshot_copy_snapshot_copy_args_doc}
 class SnapshotCopyArgs {
   /// Whether to copy existing tags. Defaults to `false`.
-  final pulumi.Input<bool>? copyTags;
+  final pulumi.Input<bool?>? copyTags;
   /// The Destination region to place snapshot copy.
-  final pulumi.Input<String>? destinationRegion;
+  final pulumi.Input<String?>? destinationRegion;
   /// KMS key ID.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The name of an option group to associate with the copy of the snapshot.
-  final pulumi.Input<String>? optionGroupName;
+  final pulumi.Input<String?>? optionGroupName;
   /// he URL that contains a Signature Version 4 signed request.
-  final pulumi.Input<String>? presignedUrl;
+  final pulumi.Input<String?>? presignedUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
-  final pulumi.Input<List<String>>? sharedAccounts;
+  final pulumi.Input<List<String>?>? sharedAccounts;
   /// Snapshot identifier of the source snapshot.
   final pulumi.Input<String> sourceDbSnapshotIdentifier;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The external custom Availability Zone.
-  final pulumi.Input<String>? targetCustomAvailabilityZone;
+  final pulumi.Input<String?>? targetCustomAvailabilityZone;
   /// The Identifier for the snapshot.
   final pulumi.Input<String> targetDbSnapshotIdentifier;
 

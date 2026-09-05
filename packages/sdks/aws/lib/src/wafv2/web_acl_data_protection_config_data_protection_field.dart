@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclDataProtectionConfigDataProtectionField {
   /// Array of strings to specify the keys to protect for the specified field type. If you don't specify any key, then all keys for the field type are protected.
-  final pulumi.Input<List<String>>? fieldKeys;
+  final pulumi.Input<List<String>?>? fieldKeys;
   /// Specifies the web request component type to protect. Valid Values are `SINGLE_HEADER`, `SINGLE_COOKIE`, `SINGLE_QUERY_ARGUMENT`, `QUERY_STRING`, `BODY`.
   final pulumi.Input<String> fieldType;
 

@@ -6,9 +6,9 @@ import 'route_spec_grpc_route_timeout_per_request.dart';
 
 class RouteSpecGrpcRouteTimeout {
   /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.tcp_route.timeout.idle` Block for details.
-  final pulumi.Input<RouteSpecGrpcRouteTimeoutIdle>? idle;
+  final pulumi.Input<RouteSpecGrpcRouteTimeoutIdle?>? idle;
   /// Per request timeout. See `spec.http_route.timeout.per_request` Block for details.
-  final pulumi.Input<RouteSpecGrpcRouteTimeoutPerRequest>? perRequest;
+  final pulumi.Input<RouteSpecGrpcRouteTimeoutPerRequest?>? perRequest;
 
   /// Creates a new [RouteSpecGrpcRouteTimeout].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.tcp_route.timeout.idle` Block for details.

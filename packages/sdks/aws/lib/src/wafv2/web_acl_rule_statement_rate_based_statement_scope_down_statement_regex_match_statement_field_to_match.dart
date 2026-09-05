@@ -14,33 +14,33 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_m
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch {
   /// Inspect all query arguments.
-  final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
+  final pulumi.Input<Map<String, dynamic>?>? allQueryArguments;
   /// Inspect the request body as plain text. See Body below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody>? body;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody?>? body;
   /// Inspect the request cookies. See Cookies below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies>? cookies;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies?>? cookies;
   /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request. See Header Order below.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder>>? headerOrders;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder>?>? headerOrders;
   /// Inspect the request headers. See Headers below.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader>>? headers;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchHeader>?>? headers;
   /// Match against the request's JA3 fingerprint (CloudFront and ALB only). See JA3 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa3Fingerprint?>? ja3Fingerprint;
   /// Match against the request's JA4 fingerprint (CloudFront and ALB only). See JA4 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJa4Fingerprint?>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody>? jsonBody;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody?>? jsonBody;
   /// Inspect the HTTP method.
-  final pulumi.Input<Map<String, dynamic>>? method;
+  final pulumi.Input<Map<String, dynamic>?>? method;
   /// Inspect the query string.
-  final pulumi.Input<Map<String, dynamic>>? queryString;
+  final pulumi.Input<Map<String, dynamic>?>? queryString;
   /// Inspect a single header. See Single Header below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader>? singleHeader;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader?>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleQueryArgument?>? singleQueryArgument;
   /// Inspect fragments of the request URI. See URI Fragment below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchUriFragment>? uriFragment;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchUriFragment?>? uriFragment;
   /// Inspect the request URI path.
-  final pulumi.Input<Map<String, dynamic>>? uriPath;
+  final pulumi.Input<Map<String, dynamic>?>? uriPath;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.

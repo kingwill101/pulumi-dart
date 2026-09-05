@@ -6,11 +6,11 @@ import 'replication_configuration_replication_configuration.dart';
 /// Input properties used for looking up and filtering ReplicationConfiguration resources.
 class ReplicationConfigurationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The registry ID where the replication configuration was created.
-  final pulumi.Input<String>? registryId;
+  final pulumi.Input<String?>? registryId;
   /// Replication configuration for a registry. See Replication Configuration.
-  final pulumi.Input<ReplicationConfigurationReplicationConfiguration>? replicationConfiguration;
+  final pulumi.Input<ReplicationConfigurationReplicationConfiguration?>? replicationConfiguration;
 
   /// Creates a new [ReplicationConfigurationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

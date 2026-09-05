@@ -6,7 +6,7 @@ class SubscriberSourceAwsLogSourceResource {
   /// The name for a AWS source. This must be a Regionally unique value. Valid values: `ROUTE53`, `VPC_FLOW`, `SH_FINDINGS`, `CLOUD_TRAIL_MGMT`, `LAMBDA_EXECUTION`, `S3_DATA`, `EKS_AUDIT` and `WAF`.
   final pulumi.Input<String> sourceName;
   /// The version for a AWS source. This must be a Regionally unique value.
-  final pulumi.Input<String>? sourceVersion;
+  final pulumi.Input<String?>? sourceVersion;
 
   /// Creates a new [SubscriberSourceAwsLogSourceResource].
   /// [sourceName] The name for a AWS source. This must be a Regionally unique value. Valid values: `ROUTE53`, `VPC_FLOW`, `SH_FINDINGS`, `CLOUD_TRAIL_MGMT`, `LAMBDA_EXECUTION`, `S3_DATA`, `EKS_AUDIT` and `WAF`.

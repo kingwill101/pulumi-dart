@@ -12,17 +12,17 @@ import 'workforce_workforce_vpc_config.dart';
 /// {@macro pulumi_sagemaker_workforce_workforce_args_doc}
 class WorkforceArgs {
   /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidcConfig`. see Cognito Config details below.
-  final pulumi.Input<WorkforceCognitoConfig>? cognitoConfig;
+  final pulumi.Input<WorkforceCognitoConfig?>? cognitoConfig;
   /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognitoConfig`. see OIDC Config details below.
-  final pulumi.Input<WorkforceOidcConfig>? oidcConfig;
+  final pulumi.Input<WorkforceOidcConfig?>? oidcConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source Ip Config details below.
-  final pulumi.Input<WorkforceSourceIpConfig>? sourceIpConfig;
+  final pulumi.Input<WorkforceSourceIpConfig?>? sourceIpConfig;
   /// The name of the Workforce (must be unique).
   final pulumi.Input<String> workforceName;
   /// configure a workforce using VPC. see Workforce VPC Config details below.
-  final pulumi.Input<WorkforceWorkforceVpcConfig>? workforceVpcConfig;
+  final pulumi.Input<WorkforceWorkforceVpcConfig?>? workforceVpcConfig;
 
   /// Creates a new [WorkforceArgs].
   /// [cognitoConfig] Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidcConfig`. see Cognito Config details below.

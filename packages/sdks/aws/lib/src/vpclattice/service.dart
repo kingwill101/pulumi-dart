@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
+import 'service_dns_entry.dart';
 import 'service_state.dart';
 
 /// Resource for managing an AWS VPC Lattice Service.
@@ -135,12 +136,12 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Type of IAM policy. Either `NONE` or `AWS_IAM`.
   late final pulumi.Output<String> authType;
-  /// Amazon Resource Name (ARN) of the certificate.
+  /// ARN of the certificate.
   late final pulumi.Output<String?> certificateArn;
   /// Custom domain name of the service.
   late final pulumi.Output<String?> customDomainName;
   /// DNS name of the service.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
+  late final pulumi.Output<List<ServiceDnsEntry>> dnsEntries;
   /// Amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. Default is 60 seconds.
   late final pulumi.Output<int> idleTimeoutSeconds;
   /// Name of the service. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.Must be between 3 and 40 characters in length.
@@ -168,19 +169,19 @@ class Service extends pulumi.CustomResource {
           'aws:vpclattice/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authType = registerOutput<String>('authType');
     certificateArn = registerOutput<String?>('certificateArn');
     customDomainName = registerOutput<String?>('customDomainName');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    dnsEntries = registerOutput<List<ServiceDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceDnsEntry>(guardedValue, (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     idleTimeoutSeconds = registerOutput<int>('idleTimeoutSeconds');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -188,11 +189,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,12 +212,34 @@ class Service extends pulumi.CustomResource {
     authType = registerOutput<String>('authType');
     certificateArn = registerOutput<String?>('certificateArn');
     customDomainName = registerOutput<String?>('customDomainName');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    dnsEntries = registerOutput<List<ServiceDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceDnsEntry>(guardedValue, (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     idleTimeoutSeconds = registerOutput<int>('idleTimeoutSeconds');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'aws:vpclattice/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authType = registerOutput<String>('authType');
+    certificateArn = registerOutput<String?>('certificateArn');
+    customDomainName = registerOutput<String?>('customDomainName');
+    dnsEntries = registerOutput<List<ServiceDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceDnsEntry>(guardedValue, (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    idleTimeoutSeconds = registerOutput<int>('idleTimeoutSeconds');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

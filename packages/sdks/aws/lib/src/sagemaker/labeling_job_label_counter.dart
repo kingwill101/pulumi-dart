@@ -40,11 +40,11 @@ class LabelingJobLabelCounter {
 
   factory LabelingJobLabelCounter.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelCounter(
-      failedNonRetryableError: pulumi.Input.fromValue(map['failedNonRetryableError'] as int),
-      humanLabeled: pulumi.Input.fromValue(map['humanLabeled'] as int),
-      machineLabeled: pulumi.Input.fromValue(map['machineLabeled'] as int),
-      totalLabeled: pulumi.Input.fromValue(map['totalLabeled'] as int),
-      unlabeled: pulumi.Input.fromValue(map['unlabeled'] as int),
+      failedNonRetryableError: pulumi.Input.fromValue((map['failedNonRetryableError'] as num).toInt()),
+      humanLabeled: pulumi.Input.fromValue((map['humanLabeled'] as num).toInt()),
+      machineLabeled: pulumi.Input.fromValue((map['machineLabeled'] as num).toInt()),
+      totalLabeled: pulumi.Input.fromValue((map['totalLabeled'] as num).toInt()),
+      unlabeled: pulumi.Input.fromValue((map['unlabeled'] as num).toInt()),
     );
   }
 }

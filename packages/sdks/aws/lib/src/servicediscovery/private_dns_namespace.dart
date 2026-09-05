@@ -186,15 +186,15 @@ class PrivateDnsNamespace extends pulumi.CustomResource {
           'aws:servicediscovery/privateDnsNamespace:PrivateDnsNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     hostedZone = registerOutput<String>('hostedZone');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpc = registerOutput<String>('vpc');
   }
 
@@ -203,11 +203,12 @@ class PrivateDnsNamespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateDnsNamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateDnsNamespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,8 +227,27 @@ class PrivateDnsNamespace extends pulumi.CustomResource {
     hostedZone = registerOutput<String>('hostedZone');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpc = registerOutput<String>('vpc');
+  }
+
+  /// Creates a typed reference to an existing [PrivateDnsNamespace] resource.
+  PrivateDnsNamespace.reference(String urn)
+    : super(
+        'aws:servicediscovery/privateDnsNamespace:PrivateDnsNamespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    hostedZone = registerOutput<String>('hostedZone');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpc = registerOutput<String>('vpc');
   }
 }

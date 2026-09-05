@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RelayAuthentication {
   /// No authentication is required to connect to the SMTP server.
-  final pulumi.Input<Map<String, dynamic>>? noAuthentication;
+  final pulumi.Input<Map<String, dynamic>?>? noAuthentication;
   /// ARN of the Secrets Manager secret containing the SMTP credentials.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [RelayAuthentication].
   /// [noAuthentication] No authentication is required to connect to the SMTP server.

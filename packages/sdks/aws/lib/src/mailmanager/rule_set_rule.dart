@@ -7,13 +7,13 @@ import 'rule_set_rule_unless.dart';
 
 class RuleSetRule {
   /// One or more actions to execute when all conditions match. Between 1 and 10 actions are supported. Each action must contain exactly one action configuration. See `action` Block.
-  final pulumi.Input<List<RuleSetRuleAction>>? actions;
+  final pulumi.Input<List<RuleSetRuleAction>?>? actions;
   /// One or more conditions that must all evaluate to true for the rule to match. Up to 10 conditions are supported. See `condition` Block.
-  final pulumi.Input<List<RuleSetRuleCondition>>? conditions;
+  final pulumi.Input<List<RuleSetRuleCondition>?>? conditions;
   /// Name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more conditions that prevent the rule from matching when any evaluates to true. Up to 10 conditions are supported. See `condition` Block.
-  final pulumi.Input<List<RuleSetRuleUnless>>? unlesses;
+  final pulumi.Input<List<RuleSetRuleUnless>?>? unlesses;
 
   /// Creates a new [RuleSetRule].
   /// [actions] One or more actions to execute when all conditions match. Between 1 and 10 actions are supported. Each action must contain exactly one action configuration. See `action` Block.

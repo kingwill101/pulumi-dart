@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkmanager_get_connections_get_connections_args_doc}
 class GetConnectionsArgs {
   /// ID of the device of the connections to retrieve.
-  final pulumi.Input<String>? deviceId;
+  final pulumi.Input<String?>? deviceId;
   /// ID of the Global Network of the connections to retrieve.
   final pulumi.Input<String> globalNetworkId;
   /// Restricts the list to the connections with these tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetConnectionsArgs].
   /// [deviceId] ID of the device of the connections to retrieve.

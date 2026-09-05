@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartitionStorageDescriptorColumn {
   /// Free-form text comment.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   final pulumi.Input<String> name;
   /// The datatype of data in the Column.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PartitionStorageDescriptorColumn].
   /// [comment] Free-form text comment.

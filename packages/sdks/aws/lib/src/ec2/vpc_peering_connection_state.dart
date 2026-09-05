@@ -7,31 +7,31 @@ import 'vpc_peering_connection_requester.dart';
 /// Input properties used for looking up and filtering VpcPeeringConnection resources.
 class VpcPeeringConnectionState {
   /// The status of the VPC Peering Connection request.
-  final pulumi.Input<String>? acceptStatus;
+  final pulumi.Input<String?>? acceptStatus;
   /// An optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that accepts
   /// the peering connection (a maximum of one).
-  final pulumi.Input<VpcPeeringConnectionAccepter>? accepter;
+  final pulumi.Input<VpcPeeringConnectionAccepter?>? accepter;
   /// Accept the peering (both VPCs need to be in the same AWS account and region).
-  final pulumi.Input<bool>? autoAccept;
+  final pulumi.Input<bool?>? autoAccept;
   /// The AWS account ID of the target peer VPC.
   /// Defaults to the account ID the AWS provider is currently connected to, so must be managed if connecting cross-account.
-  final pulumi.Input<String>? peerOwnerId;
+  final pulumi.Input<String?>? peerOwnerId;
   /// The region of the accepter VPC of the VPC Peering Connection. `autoAccept` must be `false`,
   /// and use the `aws.ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
-  final pulumi.Input<String>? peerRegion;
+  final pulumi.Input<String?>? peerRegion;
   /// The ID of the target VPC with which you are creating the VPC Peering Connection.
-  final pulumi.Input<String>? peerVpcId;
+  final pulumi.Input<String?>? peerVpcId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests
   /// the peering connection (a maximum of one).
-  final pulumi.Input<VpcPeeringConnectionRequester>? requester;
+  final pulumi.Input<VpcPeeringConnectionRequester?>? requester;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The ID of the requester VPC.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcPeeringConnectionState].
   /// [acceptStatus] The status of the VPC Peering Connection request.

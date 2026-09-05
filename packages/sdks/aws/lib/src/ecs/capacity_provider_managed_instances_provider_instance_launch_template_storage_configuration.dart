@@ -20,7 +20,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfi
 
   factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration(
-      storageSizeGib: pulumi.Input.fromValue(map['storageSizeGib'] as int),
+      storageSizeGib: pulumi.Input.fromValue((map['storageSizeGib'] as num).toInt()),
     );
   }
 }

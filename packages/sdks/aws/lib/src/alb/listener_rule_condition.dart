@@ -10,19 +10,19 @@ import 'listener_rule_condition_source_ip.dart';
 
 class ListenerRuleCondition {
   /// Host header patterns to match. Host Header block fields documented below.
-  final pulumi.Input<ListenerRuleConditionHostHeader>? hostHeader;
+  final pulumi.Input<ListenerRuleConditionHostHeader?>? hostHeader;
   /// HTTP headers to match. HTTP Header block fields documented below.
-  final pulumi.Input<ListenerRuleConditionHttpHeader>? httpHeader;
+  final pulumi.Input<ListenerRuleConditionHttpHeader?>? httpHeader;
   /// Contains a single `values` item which is a list of HTTP request methods or verbs to match. Maximum size is 40 characters. Only allowed characters are A-Z, hyphen (-) and underscore (\_). Comparison is case sensitive. Wildcards are not supported. Only one needs to match for the condition to be satisfied. AWS recommends that GET and HEAD requests are routed in the same way because the response to a HEAD request may be cached.
-  final pulumi.Input<ListenerRuleConditionHttpRequestMethod>? httpRequestMethod;
+  final pulumi.Input<ListenerRuleConditionHttpRequestMethod?>? httpRequestMethod;
   /// Path patterns to match against the request URL. Path Pattern block fields documented below.
-  final pulumi.Input<ListenerRuleConditionPathPattern>? pathPattern;
+  final pulumi.Input<ListenerRuleConditionPathPattern?>? pathPattern;
   /// Query strings to match. Query String block fields documented below.
-  final pulumi.Input<List<ListenerRuleConditionQueryString>>? queryStrings;
+  final pulumi.Input<List<ListenerRuleConditionQueryString>?>? queryStrings;
   /// Source IP address to match. For ALB, use `values` to specify CIDR ranges. For NLB, use `ipAddressType` to match the IP address type (`ipv4` or `ipv6`). Source IP block fields documented below.
   ///
   /// &gt; **NOTE::** Exactly one of `hostHeader`, `httpHeader`, `httpRequestMethod`, `pathPattern`, `queryString` or `sourceIp` must be set per condition.
-  final pulumi.Input<ListenerRuleConditionSourceIp>? sourceIp;
+  final pulumi.Input<ListenerRuleConditionSourceIp?>? sourceIp;
 
   /// Creates a new [ListenerRuleCondition].
   /// [hostHeader] Host header patterns to match. Host Header block fields documented below.

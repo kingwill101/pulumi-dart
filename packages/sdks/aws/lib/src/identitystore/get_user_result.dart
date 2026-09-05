@@ -11,42 +11,42 @@ import 'get_user_phone_number.dart';
 /// Result data returned by getUser.
 class GetUserResult {
   /// List of details about the user's address.
-  final List<GetUserAddress> addresses;
+  final List<GetUserAddress>? addresses;
   final GetUserAlternateIdentifier? alternateIdentifier;
   /// The name that is typically displayed when the user is referenced.
-  final String displayName;
+  final String? displayName;
   /// List of details about the user's email.
-  final List<GetUserEmail> emails;
+  final List<GetUserEmail>? emails;
   /// List of identifiers issued to this resource by an external identity provider.
-  final List<GetUserExternalId> externalIds;
+  final List<GetUserExternalId>? externalIds;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String identityStoreId;
+  final String? id;
+  final String? identityStoreId;
   /// The user's geographical region or location.
-  final String locale;
+  final String? locale;
   /// Details about the user's full name.
-  final List<GetUserName> names;
+  final List<GetUserName>? names;
   /// An alternate name for the user.
-  final String nickname;
+  final String? nickname;
   /// List of details about the user's phone number.
-  final List<GetUserPhoneNumber> phoneNumbers;
+  final List<GetUserPhoneNumber>? phoneNumbers;
   /// The preferred language of the user.
-  final String preferredLanguage;
+  final String? preferredLanguage;
   /// An URL that may be associated with the user.
-  final String profileUrl;
+  final String? profileUrl;
   /// The region of the address.
-  final String region;
+  final String? region;
   /// The user's time zone.
-  final String timezone;
+  final String? timezone;
   /// The user's title.
-  final String title;
-  final String userId;
+  final String? title;
+  final String? userId;
   /// User's user name value.
-  final String userName;
+  final String? userName;
   /// The current status of the user account.
-  final String userStatus;
+  final String? userStatus;
   /// The user type.
-  final String userType;
+  final String? userType;
 
   /// Creates a new [GetUserResult].
   /// [addresses] List of details about the user's address.
@@ -55,7 +55,7 @@ class GetUserResult {
   /// [emails] List of details about the user's email.
   /// [externalIds] List of identifiers issued to this resource by an external identity provider.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [identityStoreId] Required.
+  /// [identityStoreId] Optional.
   /// [locale] The user's geographical region or location.
   /// [names] Details about the user's full name.
   /// [nickname] An alternate name for the user.
@@ -65,80 +65,80 @@ class GetUserResult {
   /// [region] The region of the address.
   /// [timezone] The user's time zone.
   /// [title] The user's title.
-  /// [userId] Required.
+  /// [userId] Optional.
   /// [userName] User's user name value.
   /// [userStatus] The current status of the user account.
   /// [userType] The user type.
   const GetUserResult({
-    required this.addresses,
+    this.addresses,
     this.alternateIdentifier,
-    required this.displayName,
-    required this.emails,
-    required this.externalIds,
-    required this.id,
-    required this.identityStoreId,
-    required this.locale,
-    required this.names,
-    required this.nickname,
-    required this.phoneNumbers,
-    required this.preferredLanguage,
-    required this.profileUrl,
-    required this.region,
-    required this.timezone,
-    required this.title,
-    required this.userId,
-    required this.userName,
-    required this.userStatus,
-    required this.userType,
+    this.displayName,
+    this.emails,
+    this.externalIds,
+    this.id,
+    this.identityStoreId,
+    this.locale,
+    this.names,
+    this.nickname,
+    this.phoneNumbers,
+    this.preferredLanguage,
+    this.profileUrl,
+    this.region,
+    this.timezone,
+    this.title,
+    this.userId,
+    this.userName,
+    this.userStatus,
+    this.userType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses': pulumi.Input.encodeList<GetUserAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
+      'addresses': ?(() { final guardedValue = addresses; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserAddress, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'alternateIdentifier': ?alternateIdentifier?.toMap(),
-      'displayName': displayName,
-      'emails': pulumi.Input.encodeList<GetUserEmail, Map<String, dynamic>>(emails, (value) => value.toMap()),
-      'externalIds': pulumi.Input.encodeList<GetUserExternalId, Map<String, dynamic>>(externalIds, (value) => value.toMap()),
-      'id': id,
-      'identityStoreId': identityStoreId,
-      'locale': locale,
-      'names': pulumi.Input.encodeList<GetUserName, Map<String, dynamic>>(names, (value) => value.toMap()),
-      'nickname': nickname,
-      'phoneNumbers': pulumi.Input.encodeList<GetUserPhoneNumber, Map<String, dynamic>>(phoneNumbers, (value) => value.toMap()),
-      'preferredLanguage': preferredLanguage,
-      'profileUrl': profileUrl,
-      'region': region,
-      'timezone': timezone,
-      'title': title,
-      'userId': userId,
-      'userName': userName,
-      'userStatus': userStatus,
-      'userType': userType,
+      'displayName': ?displayName,
+      'emails': ?(() { final guardedValue = emails; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserEmail, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'externalIds': ?(() { final guardedValue = externalIds; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserExternalId, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identityStoreId': ?identityStoreId,
+      'locale': ?locale,
+      'names': ?(() { final guardedValue = names; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserName, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nickname': ?nickname,
+      'phoneNumbers': ?(() { final guardedValue = phoneNumbers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserPhoneNumber, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'preferredLanguage': ?preferredLanguage,
+      'profileUrl': ?profileUrl,
+      'region': ?region,
+      'timezone': ?timezone,
+      'title': ?title,
+      'userId': ?userId,
+      'userName': ?userName,
+      'userStatus': ?userStatus,
+      'userType': ?userType,
     };
   }
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      addresses: pulumi.Input.decodeList<GetUserAddress>(map['addresses']!, (value) => GetUserAddress.fromMap((value as Map).cast<String, dynamic>())),
+      addresses: (() { final guardedValue = map['addresses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserAddress>(guardedValue, (value) => GetUserAddress.fromMap((value as Map).cast<String, dynamic>())); })(),
       alternateIdentifier: (() { final guardedValue = map['alternateIdentifier']; if (guardedValue == null) return null; return GetUserAlternateIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      displayName: map['displayName'] as String,
-      emails: pulumi.Input.decodeList<GetUserEmail>(map['emails']!, (value) => GetUserEmail.fromMap((value as Map).cast<String, dynamic>())),
-      externalIds: pulumi.Input.decodeList<GetUserExternalId>(map['externalIds']!, (value) => GetUserExternalId.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identityStoreId: map['identityStoreId'] as String,
-      locale: map['locale'] as String,
-      names: pulumi.Input.decodeList<GetUserName>(map['names']!, (value) => GetUserName.fromMap((value as Map).cast<String, dynamic>())),
-      nickname: map['nickname'] as String,
-      phoneNumbers: pulumi.Input.decodeList<GetUserPhoneNumber>(map['phoneNumbers']!, (value) => GetUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>())),
-      preferredLanguage: map['preferredLanguage'] as String,
-      profileUrl: map['profileUrl'] as String,
-      region: map['region'] as String,
-      timezone: map['timezone'] as String,
-      title: map['title'] as String,
-      userId: map['userId'] as String,
-      userName: map['userName'] as String,
-      userStatus: map['userStatus'] as String,
-      userType: map['userType'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      emails: (() { final guardedValue = map['emails']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserEmail>(guardedValue, (value) => GetUserEmail.fromMap((value as Map).cast<String, dynamic>())); })(),
+      externalIds: (() { final guardedValue = map['externalIds']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserExternalId>(guardedValue, (value) => GetUserExternalId.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityStoreId: (() { final guardedValue = map['identityStoreId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserName>(guardedValue, (value) => GetUserName.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nickname: (() { final guardedValue = map['nickname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      phoneNumbers: (() { final guardedValue = map['phoneNumbers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserPhoneNumber>(guardedValue, (value) => GetUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>())); })(),
+      preferredLanguage: (() { final guardedValue = map['preferredLanguage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      profileUrl: (() { final guardedValue = map['profileUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userStatus: (() { final guardedValue = map['userStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userType: (() { final guardedValue = map['userType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

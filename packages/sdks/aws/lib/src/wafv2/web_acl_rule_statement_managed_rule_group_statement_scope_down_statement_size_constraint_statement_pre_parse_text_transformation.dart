@@ -25,7 +25,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstrai
 
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementPreParseTextTransformation.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementPreParseTextTransformation(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

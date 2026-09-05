@@ -6,7 +6,7 @@ import 'gateway_route_spec_http_route_action_target.dart';
 
 class GatewayRouteSpecHttpRouteAction {
   /// Gateway route action to rewrite. See `spec.http2_route.action.rewrite` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttpRouteActionRewrite>? rewrite;
+  final pulumi.Input<GatewayRouteSpecHttpRouteActionRewrite?>? rewrite;
   /// Target that traffic is routed to when a request matches the gateway route. See `spec.http2_route.action.target` Block for details.
   final pulumi.Input<GatewayRouteSpecHttpRouteActionTarget> target;
 

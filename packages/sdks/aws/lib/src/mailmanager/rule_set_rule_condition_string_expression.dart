@@ -5,7 +5,7 @@ import 'rule_set_rule_condition_string_expression_evaluate.dart';
 
 class RuleSetRuleConditionStringExpression {
   /// Left-hand operand of the expression. Exactly one of `analysis`, `attribute`, `clientCertificateAttribute`, or `mimeHeaderAttribute` must be configured.
-  final pulumi.Input<RuleSetRuleConditionStringExpressionEvaluate>? evaluate;
+  final pulumi.Input<RuleSetRuleConditionStringExpressionEvaluate?>? evaluate;
   /// String matching operator. Valid values are `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, and `CONTAINS`.
   final pulumi.Input<String> operator;
   /// List of strings against which the selected operand is evaluated. Between 1 and 10 values are supported, each up to 4096 characters.

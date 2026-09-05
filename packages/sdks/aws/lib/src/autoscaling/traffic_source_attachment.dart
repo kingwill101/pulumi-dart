@@ -17,11 +17,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.autoscaling.TrafficSourceAttachment("example", {
-///     autoscalingGroupName: exampleAwsAutoscalingGroup.id,
 ///     trafficSource: {
 ///         identifier: exampleAwsLbTargetGroup.arn,
 ///         type: "elbv2",
 ///     },
+///     autoscalingGroupName: exampleAwsAutoscalingGroup.id,
 /// });
 /// ```
 /// ```python
@@ -29,11 +29,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.autoscaling.TrafficSourceAttachment("example",
-///     autoscaling_group_name=example_aws_autoscaling_group["id"],
 ///     traffic_source={
 ///         "identifier": example_aws_lb_target_group["arn"],
 ///         "type": "elbv2",
-///     })
+///     },
+///     autoscaling_group_name=example_aws_autoscaling_group["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,12 +45,12 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// {
 ///     var example = new Aws.AutoScaling.TrafficSourceAttachment("example", new()
 ///     {
-///         AutoscalingGroupName = exampleAwsAutoscalingGroup.Id,
 ///         TrafficSource = new Aws.AutoScaling.Inputs.TrafficSourceAttachmentTrafficSourceArgs
 ///         {
 ///             Identifier = exampleAwsLbTargetGroup.Arn,
 ///             Type = "elbv2",
 ///         },
+///         AutoscalingGroupName = exampleAwsAutoscalingGroup.Id,
 ///     });
 ///
 /// });
@@ -66,11 +66,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := autoscaling.NewTrafficSourceAttachment(ctx, "example", &autoscaling.TrafficSourceAttachmentArgs{
-/// 			AutoscalingGroupName: pulumi.Any(exampleAwsAutoscalingGroup.Id),
 /// 			TrafficSource: &autoscaling.TrafficSourceAttachmentTrafficSourceArgs{
 /// 				Identifier: pulumi.Any(exampleAwsLbTargetGroup.Arn),
 /// 				Type:       pulumi.String("elbv2"),
 /// 			},
+/// 			AutoscalingGroupName: pulumi.Any(exampleAwsAutoscalingGroup.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,11 +89,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// }
 ///
 /// resource "aws_autoscaling_trafficsourceattachment" "example" {
-///   autoscaling_group_name = exampleAwsAutoscalingGroup.id
 ///   traffic_source = {
 ///     identifier = exampleAwsLbTargetGroup.arn
 ///     type       = "elbv2"
 ///   }
+///   autoscaling_group_name = exampleAwsAutoscalingGroup.id
 /// }
 /// ```
 /// ```java
@@ -119,11 +119,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrafficSourceAttachment("example", TrafficSourceAttachmentArgs.builder()
-///             .autoscalingGroupName(exampleAwsAutoscalingGroup.id())
 ///             .trafficSource(TrafficSourceAttachmentTrafficSourceArgs.builder()
 ///                 .identifier(exampleAwsLbTargetGroup.arn())
 ///                 .type("elbv2")
 ///                 .build())
+///             .autoscalingGroupName(exampleAwsAutoscalingGroup.id())
 ///             .build());
 ///
 ///     }
@@ -134,10 +134,10 @@ import 'traffic_source_attachment_traffic_source.dart';
 ///   example:
 ///     type: aws:autoscaling:TrafficSourceAttachment
 ///     properties:
-///       autoscalingGroupName: ${exampleAwsAutoscalingGroup.id}
 ///       trafficSource:
 ///         identifier: ${exampleAwsLbTargetGroup.arn}
 ///         type: elbv2
+///       autoscalingGroupName: ${exampleAwsAutoscalingGroup.id}
 /// ```
 ///
 ///
@@ -168,7 +168,7 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
           'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
@@ -180,11 +180,12 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficSourceAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficSourceAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -198,6 +199,20 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    region = registerOutput<String>('region');
+    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficSourceAttachmentTrafficSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TrafficSourceAttachment] resource.
+  TrafficSourceAttachment.reference(String urn)
+    : super(
+        'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
     trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficSourceAttachmentTrafficSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

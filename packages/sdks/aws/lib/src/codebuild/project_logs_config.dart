@@ -6,9 +6,9 @@ import 'project_logs_config_s3_logs.dart';
 
 class ProjectLogsConfig {
   /// Configuration block. Detailed below.
-  final pulumi.Input<ProjectLogsConfigCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<ProjectLogsConfigCloudwatchLogs?>? cloudwatchLogs;
   /// Configuration block. Detailed below.
-  final pulumi.Input<ProjectLogsConfigS3Logs>? s3Logs;
+  final pulumi.Input<ProjectLogsConfigS3Logs?>? s3Logs;
 
   /// Creates a new [ProjectLogsConfig].
   /// [cloudwatchLogs] Configuration block. Detailed below.

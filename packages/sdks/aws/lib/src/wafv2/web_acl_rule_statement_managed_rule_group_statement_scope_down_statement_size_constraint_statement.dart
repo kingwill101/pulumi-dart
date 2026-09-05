@@ -8,11 +8,11 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstrai
   /// Operator to use to compare the request part to the size setting. Valid values: `EQ`, `NE`, `LE`, `LT`, `GE`, `GT`.
   final pulumi.Input<String> comparisonOperator;
   /// Part of the web request that you want WAF to inspect. See Field to Match below.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch?>? fieldToMatch;
   /// Size, in bytes, to compare to the request part, after any transformations.
   final pulumi.Input<int> size;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement].
   /// [comparisonOperator] Operator to use to compare the request part to the size setting. Valid values: `EQ`, `NE`, `LE`, `LT`, `GE`, `GT`.
@@ -39,7 +39,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstrai
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement(
       comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       fieldToMatch: (() { final guardedValue = map['fieldToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       textTransformations: (() { final guardedValue = map['textTransformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation>(guardedValue, (value) => WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

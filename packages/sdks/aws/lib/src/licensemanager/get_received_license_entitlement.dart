@@ -46,7 +46,7 @@ class GetReceivedLicenseEntitlement {
   factory GetReceivedLicenseEntitlement.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseEntitlement(
       allowCheckIn: pulumi.Input.fromValue(map['allowCheckIn'] as bool),
-      maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
+      maxCount: pulumi.Input.fromValue((map['maxCount'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       overage: pulumi.Input.fromValue(map['overage'] as bool),
       unit: pulumi.Input.fromValue(map['unit'] as String),

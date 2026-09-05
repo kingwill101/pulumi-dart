@@ -1,10 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_domain_association_args.dart';
+import 'custom_domain_association_certificate_validation_record.dart';
 import 'custom_domain_association_state.dart';
 
 /// Manages an App Runner Custom Domain association.
 ///
-/// &gt; **NOTE:** After creation, you must use the information in the `certificateValidationRecords` attribute to add CNAME records to your Domain Name System (DNS). For each mapped domain name, add a mapping to the target App Runner subdomain (found in the `dnsTarget` attribute) and one or more certificate validation records. App Runner then performs DNS validation to verify that you own or control the domain name you associated. App Runner tracks domain validity in a certificate stored in AWS Certificate Manager (ACM).
+/// &gt; **NOTE:** After creation, you must use the information in the `certificateValidationRecords` attribute to add CNAME records to your DNS. For each mapped domain name, add a mapping to the target App Runner subdomain (found in the `dnsTarget` attribute) and one or more certificate validation records. App Runner then performs DNS validation to verify that you own or control the domain name you associated. App Runner tracks domain validity in a certificate stored in AWS Certificate Manager (ACM).
 ///
 /// ## Example Usage
 ///
@@ -125,7 +126,7 @@ import 'custom_domain_association_state.dart';
 /// ```
 class CustomDomainAssociation extends pulumi.CustomResource {
   /// Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificateValidationRecords;
+  late final pulumi.Output<List<CustomDomainAssociationCertificateValidationRecord>> certificateValidationRecords;
   /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
   late final pulumi.Output<String> dnsTarget;
   /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
@@ -151,9 +152,9 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           'aws:apprunner/customDomainAssociation:CustomDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    certificateValidationRecords = registerOutput<List<Map<String, dynamic>>>('certificateValidationRecords');
+    certificateValidationRecords = registerOutput<List<CustomDomainAssociationCertificateValidationRecord>>('certificateValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(guardedValue, (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     dnsTarget = registerOutput<String>('dnsTarget');
     domainName = registerOutput<String>('domainName');
     enableWwwSubdomain = registerOutput<bool?>('enableWwwSubdomain');
@@ -167,11 +168,12 @@ class CustomDomainAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDomainAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDomainAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -185,7 +187,25 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificateValidationRecords = registerOutput<List<Map<String, dynamic>>>('certificateValidationRecords');
+    certificateValidationRecords = registerOutput<List<CustomDomainAssociationCertificateValidationRecord>>('certificateValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(guardedValue, (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsTarget = registerOutput<String>('dnsTarget');
+    domainName = registerOutput<String>('domainName');
+    enableWwwSubdomain = registerOutput<bool?>('enableWwwSubdomain');
+    region = registerOutput<String>('region');
+    serviceArn = registerOutput<String>('serviceArn');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [CustomDomainAssociation] resource.
+  CustomDomainAssociation.reference(String urn)
+    : super(
+        'aws:apprunner/customDomainAssociation:CustomDomainAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateValidationRecords = registerOutput<List<CustomDomainAssociationCertificateValidationRecord>>('certificateValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(guardedValue, (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     dnsTarget = registerOutput<String>('dnsTarget');
     domainName = registerOutput<String>('domainName');
     enableWwwSubdomain = registerOutput<bool?>('enableWwwSubdomain');

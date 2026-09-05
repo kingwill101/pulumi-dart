@@ -18,15 +18,17 @@ import 'table_replica_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.Table("example", {
+///     attributes: [{
+///         name: "BrodoBaggins",
+///         type: "S",
+///     }],
 ///     name: "TestTable",
 ///     hashKey: "BrodoBaggins",
 ///     billingMode: "PAY_PER_REQUEST",
 ///     streamEnabled: true,
 ///     streamViewType: "NEW_AND_OLD_IMAGES",
-///     attributes: [{
-///         name: "BrodoBaggins",
-///         type: "S",
-///     }],
+/// }, {
+///     ignoreChanges: ["replicas"],
 /// });
 /// const exampleTableReplica = new aws.dynamodb.TableReplica("example", {
 ///     globalTableArn: example.arn,
@@ -41,15 +43,16 @@ import 'table_replica_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.Table("example",
+///     attributes=[{
+///         "name": "BrodoBaggins",
+///         "type": "S",
+///     }],
 ///     name="TestTable",
 ///     hash_key="BrodoBaggins",
 ///     billing_mode="PAY_PER_REQUEST",
 ///     stream_enabled=True,
 ///     stream_view_type="NEW_AND_OLD_IMAGES",
-///     attributes=[{
-///         "name": "BrodoBaggins",
-///         "type": "S",
-///     }])
+///     opts = pulumi.ResourceOptions(ignore_changes=["replicas"]))
 /// example_table_replica = aws.dynamodb.TableReplica("example",
 ///     global_table_arn=example.arn,
 ///     tags={
@@ -67,11 +70,6 @@ import 'table_replica_state.dart';
 /// {
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "TestTable",
-///         HashKey = "BrodoBaggins",
-///         BillingMode = "PAY_PER_REQUEST",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -79,6 +77,17 @@ import 'table_replica_state.dart';
 ///                 Name = "BrodoBaggins",
 ///                 Type = "S",
 ///             },
+///         },
+///         Name = "TestTable",
+///         HashKey = "BrodoBaggins",
+///         BillingMode = "PAY_PER_REQUEST",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "replicas",
 ///         },
 ///     });
 ///
@@ -105,18 +114,20 @@ import 'table_replica_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:           pulumi.String("TestTable"),
-/// 			HashKey:        pulumi.String("BrodoBaggins"),
-/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("BrodoBaggins"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
-/// 		})
+/// 			Name:           pulumi.String("TestTable"),
+/// 			HashKey:        pulumi.String("BrodoBaggins"),
+/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"replicas",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -144,15 +155,18 @@ import 'table_replica_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
+///   lifecycle {
+///     ignore_changes = [replicas]
+///   }
+///   attributes {
+///     name = "BrodoBaggins"
+///     type = "S"
+///   }
 ///   name             = "TestTable"
 ///   hash_key         = "BrodoBaggins"
 ///   billing_mode     = "PAY_PER_REQUEST"
 ///   stream_enabled   = true
 ///   stream_view_type = "NEW_AND_OLD_IMAGES"
-///   attributes {
-///     name = "BrodoBaggins"
-///     type = "S"
-///   }
 /// }
 /// resource "aws_dynamodb_tablereplica" "example" {
 ///   global_table_arn = aws_dynamodb_table.example.arn
@@ -173,6 +187,7 @@ import 'table_replica_state.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.TableReplica;
 /// import com.pulumi.aws.dynamodb.TableReplicaArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -187,16 +202,18 @@ import 'table_replica_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
+///             .attributes(TableAttributeArgs.builder()
+///                 .name("BrodoBaggins")
+///                 .type("S")
+///                 .build())
 ///             .name("TestTable")
 ///             .hashKey("BrodoBaggins")
 ///             .billingMode("PAY_PER_REQUEST")
 ///             .streamEnabled(true)
 ///             .streamViewType("NEW_AND_OLD_IMAGES")
-///             .attributes(TableAttributeArgs.builder()
-///                 .name("BrodoBaggins")
-///                 .type("S")
-///                 .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("replicas")
+///                 .build());
 ///
 ///         var exampleTableReplica = new TableReplica("exampleTableReplica", TableReplicaArgs.builder()
 ///             .globalTableArn(example.arn())
@@ -214,14 +231,17 @@ import 'table_replica_state.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
+///       attributes:
+///         - name: BrodoBaggins
+///           type: S
 ///       name: TestTable
 ///       hashKey: BrodoBaggins
 ///       billingMode: PAY_PER_REQUEST
 ///       streamEnabled: true
 ///       streamViewType: NEW_AND_OLD_IMAGES
-///       attributes:
-///         - name: BrodoBaggins
-///           type: S
+///     options:
+///       ignoreChanges:
+///         - replicas
 ///   exampleTableReplica:
 ///     type: aws:dynamodb:TableReplica
 ///     name: example
@@ -276,7 +296,7 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
           'aws:dynamodb/tableReplica:TableReplica',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
@@ -285,8 +305,8 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
     pointInTimeRecovery = registerOutput<bool?>('pointInTimeRecovery');
     region = registerOutput<String>('region');
     tableClassOverride = registerOutput<String?>('tableClassOverride');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [TableReplicaDynamodb] resource's state with the given [name] and [id].
@@ -294,11 +314,12 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableReplicaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TableReplicaDynamodb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -319,7 +340,27 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
     pointInTimeRecovery = registerOutput<bool?>('pointInTimeRecovery');
     region = registerOutput<String>('region');
     tableClassOverride = registerOutput<String?>('tableClassOverride');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TableReplicaDynamodb] resource.
+  TableReplicaDynamodb.reference(String urn)
+    : super(
+        'aws:dynamodb/tableReplica:TableReplica',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    globalTableArn = registerOutput<String>('globalTableArn');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    pointInTimeRecovery = registerOutput<bool?>('pointInTimeRecovery');
+    region = registerOutput<String>('region');
+    tableClassOverride = registerOutput<String?>('tableClassOverride');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

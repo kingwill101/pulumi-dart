@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterConfigurationManagedStorageConfiguration {
-  /// AWS Key Management Service key ARN for the Fargate ephemeral storage.
-  final pulumi.Input<String>? fargateEphemeralStorageKmsKeyId;
-  /// AWS Key Management Service key ARN to encrypt the managed storage.
-  final pulumi.Input<String>? kmsKeyId;
+  /// KMS key ARN for the Fargate ephemeral storage.
+  final pulumi.Input<String?>? fargateEphemeralStorageKmsKeyId;
+  /// KMS key ARN to encrypt the managed storage.
+  final pulumi.Input<String?>? kmsKeyId;
 
   /// Creates a new [ClusterConfigurationManagedStorageConfiguration].
-  /// [fargateEphemeralStorageKmsKeyId] AWS Key Management Service key ARN for the Fargate ephemeral storage.
-  /// [kmsKeyId] AWS Key Management Service key ARN to encrypt the managed storage.
+  /// [fargateEphemeralStorageKmsKeyId] KMS key ARN for the Fargate ephemeral storage.
+  /// [kmsKeyId] KMS key ARN to encrypt the managed storage.
   const ClusterConfigurationManagedStorageConfiguration({
     this.fargateEphemeralStorageKmsKeyId,
     this.kmsKeyId,

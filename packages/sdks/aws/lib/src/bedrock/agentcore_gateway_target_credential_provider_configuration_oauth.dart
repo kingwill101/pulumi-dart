@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// Map of custom parameters to include in OAuth requests.
-  final pulumi.Input<Map<String, String>>? customParameters;
+  final pulumi.Input<Map<String, String>?>? customParameters;
   /// The URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
-  final pulumi.Input<String>? defaultReturnUrl;
+  final pulumi.Input<String?>? defaultReturnUrl;
   /// The OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
-  final pulumi.Input<String>? grantType;
+  final pulumi.Input<String?>? grantType;
   /// ARN of the Oauth credential provider for OAuth authentication.
   final pulumi.Input<String> providerArn;
   /// Set of OAuth scopes to request.

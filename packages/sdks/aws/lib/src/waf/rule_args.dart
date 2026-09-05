@@ -11,11 +11,11 @@ class RuleArgs {
   /// The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.
   final pulumi.Input<String> metricName;
   /// The name or description of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The objects to include in a rule (documented below).
-  final pulumi.Input<List<RulePredicate>>? predicates;
+  final pulumi.Input<List<RulePredicate>?>? predicates;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RuleArgs].
   /// [metricName] The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.

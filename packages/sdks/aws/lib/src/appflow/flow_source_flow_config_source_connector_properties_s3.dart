@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String> bucketPrefix;
   /// When you use Amazon S3 as the source, configuration format that you provide for the flow input data. See the `source_flow_config.source_connector_properties.s3.s3_input_format_config` Block for details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig>? s3InputFormatConfig;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig?>? s3InputFormatConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesS3].
   /// [bucketName] Required.

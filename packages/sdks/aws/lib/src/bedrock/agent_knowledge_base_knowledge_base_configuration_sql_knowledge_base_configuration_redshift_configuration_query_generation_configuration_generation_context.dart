@@ -6,9 +6,9 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext {
   /// Information about example queries to help the query engine generate appropriate SQL queries. See `curatedQuery` block for details.
-  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery>>? curatedQueries;
+  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery>?>? curatedQueries;
   /// Information about a table in the database. See `table` block for details.
-  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable>>? tables;
+  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable>?>? tables;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext].
   /// [curatedQueries] Information about example queries to help the query engine generate appropriate SQL queries. See `curatedQuery` block for details.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsBotLocaleVoiceSettings {
   /// Indicates the type of Amazon Polly voice that Amazon Lex should use for voice interaction with the user. Valid values are `standard` and `neural`. If not specified, the default is `standard`.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Identifier of the Amazon Polly voice to use.
   final pulumi.Input<String> voiceId;
 

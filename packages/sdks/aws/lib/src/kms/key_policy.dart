@@ -252,7 +252,7 @@ import 'key_policy_state.dart';
 class KeyPolicy extends pulumi.CustomResource {
   /// A flag to indicate whether to bypass the key policy lockout safety check.
   /// Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately. If this value is set, and the resource is destroyed, a warning will be shown, and the resource will be removed from state.
-  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS Key Management Service Developer Guide_.
+  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS KMS Developer Guide_.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
   /// The ID of the KMS Key to attach the policy.
   late final pulumi.Output<String> keyId;
@@ -275,7 +275,7 @@ class KeyPolicy extends pulumi.CustomResource {
           'aws:kms/keyPolicy:KeyPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
     keyId = registerOutput<String>('keyId');
@@ -288,11 +288,12 @@ class KeyPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,6 +307,21 @@ class KeyPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    keyId = registerOutput<String>('keyId');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [KeyPolicy] resource.
+  KeyPolicy.reference(String urn)
+    : super(
+        'aws:kms/keyPolicy:KeyPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
     keyId = registerOutput<String>('keyId');
     policy = registerOutput<String>('policy');

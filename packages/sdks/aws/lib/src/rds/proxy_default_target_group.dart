@@ -17,7 +17,7 @@ import 'proxy_default_target_group_state.dart';
 /// $ pulumi import aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup example example
 /// ```
 class ProxyDefaultTargetGroup extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) representing the target group.
+  /// ARN representing the target group.
   late final pulumi.Output<String> arn;
   /// The settings that determine the size and behavior of the connection pool for the target group.
   late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig> connectionPoolConfig;
@@ -40,7 +40,7 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
           'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -54,11 +54,12 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProxyDefaultTargetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProxyDefaultTargetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -72,6 +73,22 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dbProxyName = registerOutput<String>('dbProxyName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ProxyDefaultTargetGroup] resource.
+  ProxyDefaultTargetGroup.reference(String urn)
+    : super(
+        'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dbProxyName = registerOutput<String>('dbProxyName');

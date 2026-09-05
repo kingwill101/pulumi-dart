@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomRoutingAcceleratorIpSet {
   /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// The type of IP addresses included in this IP set.
-  final pulumi.Input<String>? ipFamily;
+  final pulumi.Input<String?>? ipFamily;
 
   /// Creates a new [CustomRoutingAcceleratorIpSet].
   /// [ipAddresses] The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.

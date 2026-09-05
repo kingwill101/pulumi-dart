@@ -116,10 +116,10 @@ import 'group_state.dart';
 ///
 /// const testKey = new aws.kms.Key("test_key", {description: "KMS key for Verified Access Group test"});
 /// const test = new aws.verifiedaccess.Group("test", {
-///     verifiedaccessInstanceId: testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId,
 ///     sseConfiguration: {
 ///         kmsKeyArn: testKey.arn,
 ///     },
+///     verifiedaccessInstanceId: testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId,
 /// });
 /// ```
 /// ```python
@@ -128,10 +128,10 @@ import 'group_state.dart';
 ///
 /// test_key = aws.kms.Key("test_key", description="KMS key for Verified Access Group test")
 /// test = aws.verifiedaccess.Group("test",
-///     verifiedaccess_instance_id=test_aws_verifiedaccess_instance_trust_provider_attachment["verifiedaccessInstanceId"],
 ///     sse_configuration={
 ///         "kms_key_arn": test_key.arn,
-///     })
+///     },
+///     verifiedaccess_instance_id=test_aws_verifiedaccess_instance_trust_provider_attachment["verifiedaccessInstanceId"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -148,11 +148,11 @@ import 'group_state.dart';
 ///
 ///     var test = new Aws.VerifiedAccess.Group("test", new()
 ///     {
-///         VerifiedaccessInstanceId = testAwsVerifiedaccessInstanceTrustProviderAttachment.VerifiedaccessInstanceId,
 ///         SseConfiguration = new Aws.VerifiedAccess.Inputs.GroupSseConfigurationArgs
 ///         {
 ///             KmsKeyArn = testKey.Arn,
 ///         },
+///         VerifiedaccessInstanceId = testAwsVerifiedaccessInstanceTrustProviderAttachment.VerifiedaccessInstanceId,
 ///     });
 ///
 /// });
@@ -175,10 +175,10 @@ import 'group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedaccess.NewGroup(ctx, "test", &verifiedaccess.GroupArgs{
-/// 			VerifiedaccessInstanceId: pulumi.Any(testAwsVerifiedaccessInstanceTrustProviderAttachment.VerifiedaccessInstanceId),
 /// 			SseConfiguration: &verifiedaccess.GroupSseConfigurationArgs{
 /// 				KmsKeyArn: testKey.Arn,
 /// 			},
+/// 			VerifiedaccessInstanceId: pulumi.Any(testAwsVerifiedaccessInstanceTrustProviderAttachment.VerifiedaccessInstanceId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -200,10 +200,10 @@ import 'group_state.dart';
 ///   description = "KMS key for Verified Access Group test"
 /// }
 /// resource "aws_verifiedaccess_group" "test" {
-///   verifiedaccess_instance_id = testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId
 ///   sse_configuration = {
 ///     kms_key_arn = aws_kms_key.test_key.arn
 ///   }
+///   verifiedaccess_instance_id = testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId
 /// }
 /// ```
 /// ```java
@@ -235,10 +235,10 @@ import 'group_state.dart';
 ///             .build());
 ///
 ///         var test = new Group("test", GroupArgs.builder()
-///             .verifiedaccessInstanceId(testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId())
 ///             .sseConfiguration(GroupSseConfigurationArgs.builder()
 ///                 .kmsKeyArn(testKey.arn())
 ///                 .build())
+///             .verifiedaccessInstanceId(testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId())
 ///             .build());
 ///
 ///     }
@@ -254,9 +254,9 @@ import 'group_state.dart';
 ///   test:
 ///     type: aws:verifiedaccess:Group
 ///     properties:
-///       verifiedaccessInstanceId: ${testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId}
 ///       sseConfiguration:
 ///         kmsKeyArn: ${testKey.arn}
+///       verifiedaccessInstanceId: ${testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId}
 /// ```
 class Group extends pulumi.CustomResource {
   /// Timestamp when the access group was created.
@@ -299,7 +299,7 @@ class Group extends pulumi.CustomResource {
           'aws:verifiedaccess/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionTime = registerOutput<String>('deletionTime');
@@ -309,8 +309,8 @@ class Group extends pulumi.CustomResource {
     policyDocument = registerOutput<String?>('policyDocument');
     region = registerOutput<String>('region');
     sseConfiguration = registerOutput<GroupSseConfiguration>('sseConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupSseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verifiedaccessGroupArn = registerOutput<String>('verifiedaccessGroupArn');
     verifiedaccessGroupId = registerOutput<String>('verifiedaccessGroupId');
     verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
@@ -321,11 +321,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -347,8 +348,32 @@ class Group extends pulumi.CustomResource {
     policyDocument = registerOutput<String?>('policyDocument');
     region = registerOutput<String>('region');
     sseConfiguration = registerOutput<GroupSseConfiguration>('sseConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupSseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verifiedaccessGroupArn = registerOutput<String>('verifiedaccessGroupArn');
+    verifiedaccessGroupId = registerOutput<String>('verifiedaccessGroupId');
+    verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'aws:verifiedaccess/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTime = registerOutput<String>('creationTime');
+    deletionTime = registerOutput<String>('deletionTime');
+    description = registerOutput<String>('description');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    owner = registerOutput<String>('owner');
+    policyDocument = registerOutput<String?>('policyDocument');
+    region = registerOutput<String>('region');
+    sseConfiguration = registerOutput<GroupSseConfiguration>('sseConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupSseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verifiedaccessGroupArn = registerOutput<String>('verifiedaccessGroupArn');
     verifiedaccessGroupId = registerOutput<String>('verifiedaccessGroupId');
     verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');

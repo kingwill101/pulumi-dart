@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectorySamlProperties {
   /// The relay state parameter name supported by the SAML 2.0 identity provider (IdP). Default `RelayState`.
-  final pulumi.Input<String>? relayStateParameterName;
+  final pulumi.Input<String?>? relayStateParameterName;
   /// Status of SAML 2.0 authentication. Default `DISABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The SAML 2.0 identity provider (IdP) user access URL.
-  final pulumi.Input<String>? userAccessUrl;
+  final pulumi.Input<String?>? userAccessUrl;
 
   /// Creates a new [DirectorySamlProperties].
   /// [relayStateParameterName] The relay state parameter name supported by the SAML 2.0 identity provider (IdP). Default `RelayState`.

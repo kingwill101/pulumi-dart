@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps {
   /// Maximum.
-  final pulumi.Input<int>? max;
+  final pulumi.Input<int?>? max;
   /// Minimum.
-  final pulumi.Input<int>? min;
+  final pulumi.Input<int?>? min;
 
   /// Creates a new [LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps].
   /// [max] Maximum.
@@ -25,8 +25,8 @@ class LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps {
 
   factory LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps(
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

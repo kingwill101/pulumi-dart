@@ -6,25 +6,25 @@ import 'snapshot_cluster_configuration.dart';
 /// Input properties used for looking up and filtering Snapshot resources.
 class SnapshotState {
   /// The ARN of the snapshot.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The configuration of the cluster from which the snapshot was taken.
-  final pulumi.Input<List<SnapshotClusterConfiguration>>? clusterConfigurations;
+  final pulumi.Input<List<SnapshotClusterConfiguration>?>? clusterConfigurations;
   /// Name of the MemoryDB cluster to take a snapshot of.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// ARN of the KMS key used to encrypt the snapshot at rest.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Indicates whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SnapshotState].
   /// [arn] The ARN of the snapshot.

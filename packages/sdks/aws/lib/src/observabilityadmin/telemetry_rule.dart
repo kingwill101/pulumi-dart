@@ -21,11 +21,11 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluation("example", {});
 /// const exampleTelemetryRule = new aws.observabilityadmin.TelemetryRule("example", {
-///     ruleName: "example-telemetry-rule",
 ///     rule: {
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EC2::VPC",
 ///     },
+///     ruleName: "example-telemetry-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -36,11 +36,11 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluation("example")
 /// example_telemetry_rule = aws.observabilityadmin.TelemetryRule("example",
-///     rule_name="example-telemetry-rule",
 ///     rule={
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EC2::VPC",
 ///     },
+///     rule_name="example-telemetry-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -55,12 +55,12 @@ import 'telemetry_rule_timeouts.dart';
 ///
 ///     var exampleTelemetryRule = new Aws.Observabilityadmin.TelemetryRule("example", new()
 ///     {
-///         RuleName = "example-telemetry-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleArgs
 ///         {
 ///             TelemetryType = "Logs",
 ///             ResourceType = "AWS::EC2::VPC",
 ///         },
+///         RuleName = "example-telemetry-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -86,11 +86,11 @@ import 'telemetry_rule_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRule(ctx, "example", &observabilityadmin.TelemetryRuleArgs{
-/// 			RuleName: pulumi.String("example-telemetry-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleRuleArgs{
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EC2::VPC"),
 /// 			},
+/// 			RuleName: pulumi.String("example-telemetry-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -114,11 +114,11 @@ import 'telemetry_rule_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrule" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluation.example]
-///   rule_name  = "example-telemetry-rule"
 ///   rule = {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EC2::VPC"
 ///   }
+///   rule_name = "example-telemetry-rule"
 /// }
 /// ```
 /// ```java
@@ -148,11 +148,11 @@ import 'telemetry_rule_timeouts.dart';
 ///         var example = new TelemetryEvaluation("example");
 ///
 ///         var exampleTelemetryRule = new TelemetryRule("exampleTelemetryRule", TelemetryRuleArgs.builder()
-///             .ruleName("example-telemetry-rule")
 ///             .rule(TelemetryRuleRuleArgs.builder()
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EC2::VPC")
 ///                 .build())
+///             .ruleName("example-telemetry-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -168,10 +168,10 @@ import 'telemetry_rule_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRule
 ///     name: example
 ///     properties:
-///       ruleName: example-telemetry-rule
 ///       rule:
 ///         telemetryType: Logs
 ///         resourceType: AWS::EC2::VPC
+///       ruleName: example-telemetry-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -187,23 +187,23 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluation("example", {});
 /// const exampleTelemetryRule = new aws.observabilityadmin.TelemetryRule("example", {
-///     ruleName: "vpc-flow-logs-rule",
 ///     rule: {
+///         destinationConfiguration: {
+///             vpcFlowLogParameters: {
+///                 trafficType: "ALL",
+///                 maxAggregationInterval: 60,
+///             },
+///             destinationType: "cloud-watch-logs",
+///             destinationPattern: "/aws/vpcflowlogs/<resourceId>",
+///             retentionInDays: 30,
+///         },
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EC2::VPC",
 ///         telemetrySourceTypes: ["VPC_FLOW_LOGS"],
 ///         allRegions: true,
 ///         allowFieldUpdates: true,
-///         destinationConfiguration: {
-///             destinationType: "cloud-watch-logs",
-///             destinationPattern: "/aws/vpcflowlogs/<resourceId>",
-///             retentionInDays: 30,
-///             vpcFlowLogParameters: {
-///                 trafficType: "ALL",
-///                 maxAggregationInterval: 60,
-///             },
-///         },
 ///     },
+///     ruleName: "vpc-flow-logs-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -214,23 +214,23 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluation("example")
 /// example_telemetry_rule = aws.observabilityadmin.TelemetryRule("example",
-///     rule_name="vpc-flow-logs-rule",
 ///     rule={
+///         "destination_configuration": {
+///             "vpc_flow_log_parameters": {
+///                 "traffic_type": "ALL",
+///                 "max_aggregation_interval": 60,
+///             },
+///             "destination_type": "cloud-watch-logs",
+///             "destination_pattern": "/aws/vpcflowlogs/<resourceId>",
+///             "retention_in_days": 30,
+///         },
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EC2::VPC",
 ///         "telemetry_source_types": ["VPC_FLOW_LOGS"],
 ///         "all_regions": True,
 ///         "allow_field_updates": True,
-///         "destination_configuration": {
-///             "destination_type": "cloud-watch-logs",
-///             "destination_pattern": "/aws/vpcflowlogs/<resourceId>",
-///             "retention_in_days": 30,
-///             "vpc_flow_log_parameters": {
-///                 "traffic_type": "ALL",
-///                 "max_aggregation_interval": 60,
-///             },
-///         },
 ///     },
+///     rule_name="vpc-flow-logs-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -245,9 +245,19 @@ import 'telemetry_rule_timeouts.dart';
 ///
 ///     var exampleTelemetryRule = new Aws.Observabilityadmin.TelemetryRule("example", new()
 ///     {
-///         RuleName = "vpc-flow-logs-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleArgs
 ///         {
+///             DestinationConfiguration = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationArgs
+///             {
+///                 VpcFlowLogParameters = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationVpcFlowLogParametersArgs
+///                 {
+///                     TrafficType = "ALL",
+///                     MaxAggregationInterval = 60,
+///                 },
+///                 DestinationType = "cloud-watch-logs",
+///                 DestinationPattern = "/aws/vpcflowlogs/<resourceId>",
+///                 RetentionInDays = 30,
+///             },
 ///             TelemetryType = "Logs",
 ///             ResourceType = "AWS::EC2::VPC",
 ///             TelemetrySourceTypes = new[]
@@ -256,18 +266,8 @@ import 'telemetry_rule_timeouts.dart';
 ///             },
 ///             AllRegions = true,
 ///             AllowFieldUpdates = true,
-///             DestinationConfiguration = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationArgs
-///             {
-///                 DestinationType = "cloud-watch-logs",
-///                 DestinationPattern = "/aws/vpcflowlogs/<resourceId>",
-///                 RetentionInDays = 30,
-///                 VpcFlowLogParameters = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationVpcFlowLogParametersArgs
-///                 {
-///                     TrafficType = "ALL",
-///                     MaxAggregationInterval = 60,
-///                 },
-///             },
 ///         },
+///         RuleName = "vpc-flow-logs-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -293,8 +293,16 @@ import 'telemetry_rule_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRule(ctx, "example", &observabilityadmin.TelemetryRuleArgs{
-/// 			RuleName: pulumi.String("vpc-flow-logs-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleRuleArgs{
+/// 				DestinationConfiguration: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationArgs{
+/// 					VpcFlowLogParameters: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationVpcFlowLogParametersArgs{
+/// 						TrafficType:            pulumi.String("ALL"),
+/// 						MaxAggregationInterval: pulumi.Int(60),
+/// 					},
+/// 					DestinationType:    pulumi.String("cloud-watch-logs"),
+/// 					DestinationPattern: pulumi.String("/aws/vpcflowlogs/<resourceId>"),
+/// 					RetentionInDays:    pulumi.Int(30),
+/// 				},
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EC2::VPC"),
 /// 				TelemetrySourceTypes: pulumi.StringArray{
@@ -302,16 +310,8 @@ import 'telemetry_rule_timeouts.dart';
 /// 				},
 /// 				AllRegions:        pulumi.Bool(true),
 /// 				AllowFieldUpdates: pulumi.Bool(true),
-/// 				DestinationConfiguration: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationArgs{
-/// 					DestinationType:    pulumi.String("cloud-watch-logs"),
-/// 					DestinationPattern: pulumi.String("/aws/vpcflowlogs/<resourceId>"),
-/// 					RetentionInDays:    pulumi.Int(30),
-/// 					VpcFlowLogParameters: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationVpcFlowLogParametersArgs{
-/// 						TrafficType:            pulumi.String("ALL"),
-/// 						MaxAggregationInterval: pulumi.Int(60),
-/// 					},
-/// 				},
 /// 			},
+/// 			RuleName: pulumi.String("vpc-flow-logs-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -335,23 +335,23 @@ import 'telemetry_rule_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrule" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluation.example]
-///   rule_name  = "vpc-flow-logs-rule"
 ///   rule = {
+///     destination_configuration = {
+///       vpc_flow_log_parameters = {
+///         traffic_type             = "ALL"
+///         max_aggregation_interval = 60
+///       }
+///       destination_type    = "cloud-watch-logs"
+///       destination_pattern = "/aws/vpcflowlogs/<resourceId>"
+///       retention_in_days   = 30
+///     }
 ///     telemetry_type         = "Logs"
 ///     resource_type          = "AWS::EC2::VPC"
 ///     telemetry_source_types = ["VPC_FLOW_LOGS"]
 ///     all_regions            = true
 ///     allow_field_updates    = true
-///     destination_configuration = {
-///       destination_type    = "cloud-watch-logs"
-///       destination_pattern = "/aws/vpcflowlogs/<resourceId>"
-///       retention_in_days   = 30
-///       vpc_flow_log_parameters = {
-///         traffic_type             = "ALL"
-///         max_aggregation_interval = 60
-///       }
-///     }
 ///   }
+///   rule_name = "vpc-flow-logs-rule"
 /// }
 /// ```
 /// ```java
@@ -383,23 +383,23 @@ import 'telemetry_rule_timeouts.dart';
 ///         var example = new TelemetryEvaluation("example");
 ///
 ///         var exampleTelemetryRule = new TelemetryRule("exampleTelemetryRule", TelemetryRuleArgs.builder()
-///             .ruleName("vpc-flow-logs-rule")
 ///             .rule(TelemetryRuleRuleArgs.builder()
+///                 .destinationConfiguration(TelemetryRuleRuleDestinationConfigurationArgs.builder()
+///                     .vpcFlowLogParameters(TelemetryRuleRuleDestinationConfigurationVpcFlowLogParametersArgs.builder()
+///                         .trafficType("ALL")
+///                         .maxAggregationInterval(60)
+///                         .build())
+///                     .destinationType("cloud-watch-logs")
+///                     .destinationPattern("/aws/vpcflowlogs/<resourceId>")
+///                     .retentionInDays(30)
+///                     .build())
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EC2::VPC")
 ///                 .telemetrySourceTypes("VPC_FLOW_LOGS")
 ///                 .allRegions(true)
 ///                 .allowFieldUpdates(true)
-///                 .destinationConfiguration(TelemetryRuleRuleDestinationConfigurationArgs.builder()
-///                     .destinationType("cloud-watch-logs")
-///                     .destinationPattern("/aws/vpcflowlogs/<resourceId>")
-///                     .retentionInDays(30)
-///                     .vpcFlowLogParameters(TelemetryRuleRuleDestinationConfigurationVpcFlowLogParametersArgs.builder()
-///                         .trafficType("ALL")
-///                         .maxAggregationInterval(60)
-///                         .build())
-///                     .build())
 ///                 .build())
+///             .ruleName("vpc-flow-logs-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -415,21 +415,21 @@ import 'telemetry_rule_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRule
 ///     name: example
 ///     properties:
-///       ruleName: vpc-flow-logs-rule
 ///       rule:
+///         destinationConfiguration:
+///           vpcFlowLogParameters:
+///             trafficType: ALL
+///             maxAggregationInterval: 60
+///           destinationType: cloud-watch-logs
+///           destinationPattern: /aws/vpcflowlogs/<resourceId>
+///           retentionInDays: 30
 ///         telemetryType: Logs
 ///         resourceType: AWS::EC2::VPC
 ///         telemetrySourceTypes:
 ///           - VPC_FLOW_LOGS
 ///         allRegions: true
 ///         allowFieldUpdates: true
-///         destinationConfiguration:
-///           destinationType: cloud-watch-logs
-///           destinationPattern: /aws/vpcflowlogs/<resourceId>
-///           retentionInDays: 30
-///           vpcFlowLogParameters:
-///             trafficType: ALL
-///             maxAggregationInterval: 60
+///       ruleName: vpc-flow-logs-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -445,7 +445,6 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluation("example", {});
 /// const exampleTelemetryRule = new aws.observabilityadmin.TelemetryRule("example", {
-///     ruleName: "multi-region-rule",
 ///     rule: {
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EKS::Cluster",
@@ -455,6 +454,7 @@ import 'telemetry_rule_timeouts.dart';
 ///             "eu-west-1",
 ///         ],
 ///     },
+///     ruleName: "multi-region-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -465,7 +465,6 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluation("example")
 /// example_telemetry_rule = aws.observabilityadmin.TelemetryRule("example",
-///     rule_name="multi-region-rule",
 ///     rule={
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EKS::Cluster",
@@ -475,6 +474,7 @@ import 'telemetry_rule_timeouts.dart';
 ///             "eu-west-1",
 ///         ],
 ///     },
+///     rule_name="multi-region-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -489,7 +489,6 @@ import 'telemetry_rule_timeouts.dart';
 ///
 ///     var exampleTelemetryRule = new Aws.Observabilityadmin.TelemetryRule("example", new()
 ///     {
-///         RuleName = "multi-region-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleArgs
 ///         {
 ///             TelemetryType = "Logs",
@@ -501,6 +500,7 @@ import 'telemetry_rule_timeouts.dart';
 ///                 "eu-west-1",
 ///             },
 ///         },
+///         RuleName = "multi-region-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -526,7 +526,6 @@ import 'telemetry_rule_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRule(ctx, "example", &observabilityadmin.TelemetryRuleArgs{
-/// 			RuleName: pulumi.String("multi-region-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleRuleArgs{
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EKS::Cluster"),
@@ -536,6 +535,7 @@ import 'telemetry_rule_timeouts.dart';
 /// 					pulumi.String("eu-west-1"),
 /// 				},
 /// 			},
+/// 			RuleName: pulumi.String("multi-region-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -559,12 +559,12 @@ import 'telemetry_rule_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrule" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluation.example]
-///   rule_name  = "multi-region-rule"
 ///   rule = {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EKS::Cluster"
 ///     regions        = ["us-east-1", "us-west-2", "eu-west-1"]
 ///   }
+///   rule_name = "multi-region-rule"
 /// }
 /// ```
 /// ```java
@@ -594,7 +594,6 @@ import 'telemetry_rule_timeouts.dart';
 ///         var example = new TelemetryEvaluation("example");
 ///
 ///         var exampleTelemetryRule = new TelemetryRule("exampleTelemetryRule", TelemetryRuleArgs.builder()
-///             .ruleName("multi-region-rule")
 ///             .rule(TelemetryRuleRuleArgs.builder()
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EKS::Cluster")
@@ -603,6 +602,7 @@ import 'telemetry_rule_timeouts.dart';
 ///                     "us-west-2",
 ///                     "eu-west-1")
 ///                 .build())
+///             .ruleName("multi-region-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -618,7 +618,6 @@ import 'telemetry_rule_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRule
 ///     name: example
 ///     properties:
-///       ruleName: multi-region-rule
 ///       rule:
 ///         telemetryType: Logs
 ///         resourceType: AWS::EKS::Cluster
@@ -626,6 +625,7 @@ import 'telemetry_rule_timeouts.dart';
 ///           - us-east-1
 ///           - us-west-2
 ///           - eu-west-1
+///       ruleName: multi-region-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -641,37 +641,37 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluation("example", {});
 /// const exampleTelemetryRule = new aws.observabilityadmin.TelemetryRule("example", {
-///     ruleName: "waf-logs-rule",
 ///     rule: {
-///         telemetryType: "Logs",
-///         resourceType: "AWS::WAFv2::WebACL",
 ///         destinationConfiguration: {
-///             destinationType: "cloud-watch-logs",
-///             destinationPattern: "aws-waf-logs-<resourceId>",
-///             retentionInDays: 30,
 ///             wafLoggingParameters: {
-///                 logType: "WAF_LOGS",
 ///                 loggingFilter: {
-///                     defaultBehavior: "KEEP",
 ///                     filters: [{
-///                         behavior: "DROP",
-///                         requirement: "MEETS_ANY",
 ///                         conditions: [{
 ///                             actionCondition: {
 ///                                 action: "ALLOW",
 ///                             },
 ///                         }],
+///                         behavior: "DROP",
+///                         requirement: "MEETS_ANY",
 ///                     }],
+///                     defaultBehavior: "KEEP",
 ///                 },
 ///                 redactedFields: [{
-///                     queryString: "",
 ///                     singleHeader: {
 ///                         name: "authorization",
 ///                     },
+///                     queryString: "",
 ///                 }],
+///                 logType: "WAF_LOGS",
 ///             },
+///             destinationType: "cloud-watch-logs",
+///             destinationPattern: "aws-waf-logs-<resourceId>",
+///             retentionInDays: 30,
 ///         },
+///         telemetryType: "Logs",
+///         resourceType: "AWS::WAFv2::WebACL",
 ///     },
+///     ruleName: "waf-logs-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -682,37 +682,37 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluation("example")
 /// example_telemetry_rule = aws.observabilityadmin.TelemetryRule("example",
-///     rule_name="waf-logs-rule",
 ///     rule={
-///         "telemetry_type": "Logs",
-///         "resource_type": "AWS::WAFv2::WebACL",
 ///         "destination_configuration": {
-///             "destination_type": "cloud-watch-logs",
-///             "destination_pattern": "aws-waf-logs-<resourceId>",
-///             "retention_in_days": 30,
 ///             "waf_logging_parameters": {
-///                 "log_type": "WAF_LOGS",
 ///                 "logging_filter": {
-///                     "default_behavior": "KEEP",
 ///                     "filters": [{
-///                         "behavior": "DROP",
-///                         "requirement": "MEETS_ANY",
 ///                         "conditions": [{
 ///                             "action_condition": {
 ///                                 "action": "ALLOW",
 ///                             },
 ///                         }],
+///                         "behavior": "DROP",
+///                         "requirement": "MEETS_ANY",
 ///                     }],
+///                     "default_behavior": "KEEP",
 ///                 },
 ///                 "redacted_fields": [{
-///                     "query_string": "",
 ///                     "single_header": {
 ///                         "name": "authorization",
 ///                     },
+///                     "query_string": "",
 ///                 }],
+///                 "log_type": "WAF_LOGS",
 ///             },
+///             "destination_type": "cloud-watch-logs",
+///             "destination_pattern": "aws-waf-logs-<resourceId>",
+///             "retention_in_days": 30,
 ///         },
+///         "telemetry_type": "Logs",
+///         "resource_type": "AWS::WAFv2::WebACL",
 ///     },
+///     rule_name="waf-logs-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -727,28 +727,18 @@ import 'telemetry_rule_timeouts.dart';
 ///
 ///     var exampleTelemetryRule = new Aws.Observabilityadmin.TelemetryRule("example", new()
 ///     {
-///         RuleName = "waf-logs-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleArgs
 ///         {
-///             TelemetryType = "Logs",
-///             ResourceType = "AWS::WAFv2::WebACL",
 ///             DestinationConfiguration = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationArgs
 ///             {
-///                 DestinationType = "cloud-watch-logs",
-///                 DestinationPattern = "aws-waf-logs-<resourceId>",
-///                 RetentionInDays = 30,
 ///                 WafLoggingParameters = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersArgs
 ///                 {
-///                     LogType = "WAF_LOGS",
 ///                     LoggingFilter = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterArgs
 ///                     {
-///                         DefaultBehavior = "KEEP",
 ///                         Filters = new[]
 ///                         {
 ///                             new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterArgs
 ///                             {
-///                                 Behavior = "DROP",
-///                                 Requirement = "MEETS_ANY",
 ///                                 Conditions = new[]
 ///                                 {
 ///                                     new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionArgs
@@ -759,23 +749,33 @@ import 'telemetry_rule_timeouts.dart';
 ///                                         },
 ///                                     },
 ///                                 },
+///                                 Behavior = "DROP",
+///                                 Requirement = "MEETS_ANY",
 ///                             },
 ///                         },
+///                         DefaultBehavior = "KEEP",
 ///                     },
 ///                     RedactedFields = new[]
 ///                     {
 ///                         new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldArgs
 ///                         {
-///                             QueryString = "",
 ///                             SingleHeader = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldSingleHeaderArgs
 ///                             {
 ///                                 Name = "authorization",
 ///                             },
+///                             QueryString = "",
 ///                         },
 ///                     },
+///                     LogType = "WAF_LOGS",
 ///                 },
+///                 DestinationType = "cloud-watch-logs",
+///                 DestinationPattern = "aws-waf-logs-<resourceId>",
+///                 RetentionInDays = 30,
 ///             },
+///             TelemetryType = "Logs",
+///             ResourceType = "AWS::WAFv2::WebACL",
 ///         },
+///         RuleName = "waf-logs-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -801,22 +801,12 @@ import 'telemetry_rule_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRule(ctx, "example", &observabilityadmin.TelemetryRuleArgs{
-/// 			RuleName: pulumi.String("waf-logs-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleRuleArgs{
-/// 				TelemetryType: pulumi.String("Logs"),
-/// 				ResourceType:  pulumi.String("AWS::WAFv2::WebACL"),
 /// 				DestinationConfiguration: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationArgs{
-/// 					DestinationType:    pulumi.String("cloud-watch-logs"),
-/// 					DestinationPattern: pulumi.String("aws-waf-logs-<resourceId>"),
-/// 					RetentionInDays:    pulumi.Int(30),
 /// 					WafLoggingParameters: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersArgs{
-/// 						LogType: pulumi.String("WAF_LOGS"),
 /// 						LoggingFilter: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterArgs{
-/// 							DefaultBehavior: pulumi.String("KEEP"),
 /// 							Filters: observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterArray{
 /// 								&observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterArgs{
-/// 									Behavior:    pulumi.String("DROP"),
-/// 									Requirement: pulumi.String("MEETS_ANY"),
 /// 									Conditions: observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionArray{
 /// 										&observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionArgs{
 /// 											ActionCondition: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionActionConditionArgs{
@@ -824,20 +814,30 @@ import 'telemetry_rule_timeouts.dart';
 /// 											},
 /// 										},
 /// 									},
+/// 									Behavior:    pulumi.String("DROP"),
+/// 									Requirement: pulumi.String("MEETS_ANY"),
 /// 								},
 /// 							},
+/// 							DefaultBehavior: pulumi.String("KEEP"),
 /// 						},
 /// 						RedactedFields: observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldArray{
 /// 							&observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldArgs{
-/// 								QueryString: pulumi.String(""),
 /// 								SingleHeader: &observabilityadmin.TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldSingleHeaderArgs{
 /// 									Name: pulumi.String("authorization"),
 /// 								},
+/// 								QueryString: pulumi.String(""),
 /// 							},
 /// 						},
+/// 						LogType: pulumi.String("WAF_LOGS"),
 /// 					},
+/// 					DestinationType:    pulumi.String("cloud-watch-logs"),
+/// 					DestinationPattern: pulumi.String("aws-waf-logs-<resourceId>"),
+/// 					RetentionInDays:    pulumi.Int(30),
 /// 				},
+/// 				TelemetryType: pulumi.String("Logs"),
+/// 				ResourceType:  pulumi.String("AWS::WAFv2::WebACL"),
 /// 			},
+/// 			RuleName: pulumi.String("waf-logs-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -861,37 +861,37 @@ import 'telemetry_rule_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrule" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluation.example]
-///   rule_name  = "waf-logs-rule"
 ///   rule = {
-///     telemetry_type = "Logs"
-///     resource_type  = "AWS::WAFv2::WebACL"
 ///     destination_configuration = {
-///       destination_type    = "cloud-watch-logs"
-///       destination_pattern = "aws-waf-logs-<resourceId>"
-///       retention_in_days   = 30
 ///       waf_logging_parameters = {
-///         log_type = "WAF_LOGS"
 ///         logging_filter = {
-///           default_behavior = "KEEP"
 ///           filters = [{
-///             "behavior"    = "DROP"
-///             "requirement" = "MEETS_ANY"
 ///             "conditions" = [{
 ///               "actionCondition" = {
 ///                 "action" = "ALLOW"
 ///               }
 ///             }]
+///             "behavior"    = "DROP"
+///             "requirement" = "MEETS_ANY"
 ///           }]
+///           default_behavior = "KEEP"
 ///         }
 ///         redacted_fields = [{
-///           "queryString" = ""
 ///           "singleHeader" = {
 ///             "name" = "authorization"
 ///           }
+///           "queryString" = ""
 ///         }]
+///         log_type = "WAF_LOGS"
 ///       }
+///       destination_type    = "cloud-watch-logs"
+///       destination_pattern = "aws-waf-logs-<resourceId>"
+///       retention_in_days   = 30
 ///     }
+///     telemetry_type = "Logs"
+///     resource_type  = "AWS::WAFv2::WebACL"
 ///   }
+///   rule_name = "waf-logs-rule"
 /// }
 /// ```
 /// ```java
@@ -929,37 +929,37 @@ import 'telemetry_rule_timeouts.dart';
 ///         var example = new TelemetryEvaluation("example");
 ///
 ///         var exampleTelemetryRule = new TelemetryRule("exampleTelemetryRule", TelemetryRuleArgs.builder()
-///             .ruleName("waf-logs-rule")
 ///             .rule(TelemetryRuleRuleArgs.builder()
-///                 .telemetryType("Logs")
-///                 .resourceType("AWS::WAFv2::WebACL")
 ///                 .destinationConfiguration(TelemetryRuleRuleDestinationConfigurationArgs.builder()
-///                     .destinationType("cloud-watch-logs")
-///                     .destinationPattern("aws-waf-logs-<resourceId>")
-///                     .retentionInDays(30)
 ///                     .wafLoggingParameters(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersArgs.builder()
-///                         .logType("WAF_LOGS")
 ///                         .loggingFilter(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterArgs.builder()
-///                             .defaultBehavior("KEEP")
 ///                             .filters(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterArgs.builder()
-///                                 .behavior("DROP")
-///                                 .requirement("MEETS_ANY")
 ///                                 .conditions(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionArgs.builder()
 ///                                     .actionCondition(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionActionConditionArgs.builder()
 ///                                         .action("ALLOW")
 ///                                         .build())
 ///                                     .build())
+///                                 .behavior("DROP")
+///                                 .requirement("MEETS_ANY")
 ///                                 .build())
+///                             .defaultBehavior("KEEP")
 ///                             .build())
 ///                         .redactedFields(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldArgs.builder()
-///                             .queryString("")
 ///                             .singleHeader(TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldSingleHeaderArgs.builder()
 ///                                 .name("authorization")
 ///                                 .build())
+///                             .queryString("")
 ///                             .build())
+///                         .logType("WAF_LOGS")
 ///                         .build())
+///                     .destinationType("cloud-watch-logs")
+///                     .destinationPattern("aws-waf-logs-<resourceId>")
+///                     .retentionInDays(30)
 ///                     .build())
+///                 .telemetryType("Logs")
+///                 .resourceType("AWS::WAFv2::WebACL")
 ///                 .build())
+///             .ruleName("waf-logs-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -975,28 +975,28 @@ import 'telemetry_rule_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRule
 ///     name: example
 ///     properties:
-///       ruleName: waf-logs-rule
 ///       rule:
-///         telemetryType: Logs
-///         resourceType: AWS::WAFv2::WebACL
 ///         destinationConfiguration:
+///           wafLoggingParameters:
+///             loggingFilter:
+///               filters:
+///                 - conditions:
+///                     - actionCondition:
+///                         action: ALLOW
+///                   behavior: DROP
+///                   requirement: MEETS_ANY
+///               defaultBehavior: KEEP
+///             redactedFields:
+///               - singleHeader:
+///                   name: authorization
+///                 queryString: ""
+///             logType: WAF_LOGS
 ///           destinationType: cloud-watch-logs
 ///           destinationPattern: aws-waf-logs-<resourceId>
 ///           retentionInDays: 30
-///           wafLoggingParameters:
-///             logType: WAF_LOGS
-///             loggingFilter:
-///               defaultBehavior: KEEP
-///               filters:
-///                 - behavior: DROP
-///                   requirement: MEETS_ANY
-///                   conditions:
-///                     - actionCondition:
-///                         action: ALLOW
-///             redactedFields:
-///               - queryString: ""
-///                 singleHeader:
-///                   name: authorization
+///         telemetryType: Logs
+///         resourceType: AWS::WAFv2::WebACL
+///       ruleName: waf-logs-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -1012,11 +1012,11 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluation("example", {});
 /// const exampleTelemetryRule = new aws.observabilityadmin.TelemetryRule("example", {
-///     ruleName: "tagged-rule",
 ///     rule: {
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EC2::VPC",
 ///     },
+///     ruleName: "tagged-rule",
 ///     tags: {
 ///         Environment: "production",
 ///         Purpose: "monitoring",
@@ -1031,11 +1031,11 @@ import 'telemetry_rule_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluation("example")
 /// example_telemetry_rule = aws.observabilityadmin.TelemetryRule("example",
-///     rule_name="tagged-rule",
 ///     rule={
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EC2::VPC",
 ///     },
+///     rule_name="tagged-rule",
 ///     tags={
 ///         "Environment": "production",
 ///         "Purpose": "monitoring",
@@ -1054,12 +1054,12 @@ import 'telemetry_rule_timeouts.dart';
 ///
 ///     var exampleTelemetryRule = new Aws.Observabilityadmin.TelemetryRule("example", new()
 ///     {
-///         RuleName = "tagged-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleRuleArgs
 ///         {
 ///             TelemetryType = "Logs",
 ///             ResourceType = "AWS::EC2::VPC",
 ///         },
+///         RuleName = "tagged-rule",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -1090,11 +1090,11 @@ import 'telemetry_rule_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRule(ctx, "example", &observabilityadmin.TelemetryRuleArgs{
-/// 			RuleName: pulumi.String("tagged-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleRuleArgs{
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EC2::VPC"),
 /// 			},
+/// 			RuleName: pulumi.String("tagged-rule"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Purpose":     pulumi.String("monitoring"),
@@ -1122,11 +1122,11 @@ import 'telemetry_rule_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrule" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluation.example]
-///   rule_name  = "tagged-rule"
 ///   rule = {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EC2::VPC"
 ///   }
+///   rule_name = "tagged-rule"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Purpose"     = "monitoring"
@@ -1160,11 +1160,11 @@ import 'telemetry_rule_timeouts.dart';
 ///         var example = new TelemetryEvaluation("example");
 ///
 ///         var exampleTelemetryRule = new TelemetryRule("exampleTelemetryRule", TelemetryRuleArgs.builder()
-///             .ruleName("tagged-rule")
 ///             .rule(TelemetryRuleRuleArgs.builder()
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EC2::VPC")
 ///                 .build())
+///             .ruleName("tagged-rule")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Purpose", "monitoring")
@@ -1184,10 +1184,10 @@ import 'telemetry_rule_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRule
 ///     name: example
 ///     properties:
-///       ruleName: tagged-rule
 ///       rule:
 ///         telemetryType: Logs
 ///         resourceType: AWS::EC2::VPC
+///       ruleName: tagged-rule
 ///       tags:
 ///         Environment: production
 ///         Purpose: monitoring
@@ -1245,14 +1245,14 @@ class TelemetryRule extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryRule:TelemetryRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     rule = registerOutput<TelemetryRuleRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TelemetryRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1261,11 +1261,12 @@ class TelemetryRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TelemetryRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TelemetryRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1283,8 +1284,26 @@ class TelemetryRule extends pulumi.CustomResource {
     rule = registerOutput<TelemetryRuleRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<TelemetryRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TelemetryRule] resource.
+  TelemetryRule.reference(String urn)
+    : super(
+        'aws:observabilityadmin/telemetryRule:TelemetryRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    rule = registerOutput<TelemetryRuleRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ruleArn = registerOutput<String>('ruleArn');
+    ruleName = registerOutput<String>('ruleName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TelemetryRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

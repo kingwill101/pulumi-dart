@@ -13,15 +13,15 @@ class WebAclArgs {
   /// Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.
   final pulumi.Input<WebAclDefaultAction> defaultAction;
   /// Configuration block to enable WAF logging. Detailed below.
-  final pulumi.Input<WebAclLoggingConfiguration>? loggingConfiguration;
+  final pulumi.Input<WebAclLoggingConfiguration?>? loggingConfiguration;
   /// The name or description for the Amazon CloudWatch metric of this web ACL.
   final pulumi.Input<String> metricName;
   /// The name or description of the web ACL.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
-  final pulumi.Input<List<WebAclRule>>? rules;
+  final pulumi.Input<List<WebAclRule>?>? rules;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WebAclArgs].
   /// [defaultAction] Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.

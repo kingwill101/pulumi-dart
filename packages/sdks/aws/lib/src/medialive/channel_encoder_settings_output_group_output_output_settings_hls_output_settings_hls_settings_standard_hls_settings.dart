@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_standard_hls_settings_m3u8_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings {
-  final pulumi.Input<String>? audioRenditionSets;
+  final pulumi.Input<String?>? audioRenditionSets;
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings> m3u8Settings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings].

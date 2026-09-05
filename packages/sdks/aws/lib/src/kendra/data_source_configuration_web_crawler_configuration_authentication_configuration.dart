@@ -5,7 +5,7 @@ import 'data_source_configuration_web_crawler_configuration_authentication_confi
 
 class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration {
   /// The list of configuration information that's required to connect to and crawl a website host using basic authentication credentials. The list includes the name and port number of the website host. Detailed below.
-  final pulumi.Input<List<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>>? basicAuthentications;
+  final pulumi.Input<List<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>?>? basicAuthentications;
 
   /// Creates a new [DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration].
   /// [basicAuthentications] The list of configuration information that's required to connect to and crawl a website host using basic authentication credentials. The list includes the name and port number of the website host. Detailed below.

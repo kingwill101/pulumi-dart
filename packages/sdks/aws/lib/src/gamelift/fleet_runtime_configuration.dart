@@ -5,11 +5,11 @@ import 'fleet_runtime_configuration_server_process.dart';
 
 class FleetRuntimeConfiguration {
   /// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
-  final pulumi.Input<int>? gameSessionActivationTimeoutSeconds;
+  final pulumi.Input<int?>? gameSessionActivationTimeoutSeconds;
   /// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
-  final pulumi.Input<int>? maxConcurrentGameSessionActivations;
+  final pulumi.Input<int?>? maxConcurrentGameSessionActivations;
   /// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
-  final pulumi.Input<List<FleetRuntimeConfigurationServerProcess>>? serverProcesses;
+  final pulumi.Input<List<FleetRuntimeConfigurationServerProcess>?>? serverProcesses;
 
   /// Creates a new [FleetRuntimeConfiguration].
   /// [gameSessionActivationTimeoutSeconds] Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
@@ -31,8 +31,8 @@ class FleetRuntimeConfiguration {
 
   factory FleetRuntimeConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetRuntimeConfiguration(
-      gameSessionActivationTimeoutSeconds: (() { final guardedValue = map['gameSessionActivationTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentGameSessionActivations: (() { final guardedValue = map['maxConcurrentGameSessionActivations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gameSessionActivationTimeoutSeconds: (() { final guardedValue = map['gameSessionActivationTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentGameSessionActivations: (() { final guardedValue = map['maxConcurrentGameSessionActivations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serverProcesses: (() { final guardedValue = map['serverProcesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FleetRuntimeConfigurationServerProcess>(guardedValue, (value) => FleetRuntimeConfigurationServerProcess.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

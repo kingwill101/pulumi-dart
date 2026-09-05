@@ -6,32 +6,32 @@ import 'group_sse_configuration.dart';
 /// Input properties used for looking up and filtering Group resources.
 class GroupState {
   /// Timestamp when the access group was created.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Timestamp when the access group was deleted.
-  final pulumi.Input<String>? deletionTime;
+  final pulumi.Input<String?>? deletionTime;
   /// Description of the verified access group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Timestamp when the access group was last updated.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// AWS account number owning this resource.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// The policy document that is associated with this resource.
-  final pulumi.Input<String>? policyDocument;
+  final pulumi.Input<String?>? policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block to use KMS keys for server-side encryption.
-  final pulumi.Input<GroupSseConfiguration>? sseConfiguration;
+  final pulumi.Input<GroupSseConfiguration?>? sseConfiguration;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of this verified acess group.
-  final pulumi.Input<String>? verifiedaccessGroupArn;
+  final pulumi.Input<String?>? verifiedaccessGroupArn;
   /// ID of this verified access group.
-  final pulumi.Input<String>? verifiedaccessGroupId;
+  final pulumi.Input<String?>? verifiedaccessGroupId;
   /// The id of the verified access instance this group is associated with.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? verifiedaccessInstanceId;
+  final pulumi.Input<String?>? verifiedaccessInstanceId;
 
   /// Creates a new [GroupState].
   /// [creationTime] Timestamp when the access group was created.

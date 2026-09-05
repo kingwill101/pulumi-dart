@@ -7,13 +7,13 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat {
-  final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable>>? inputVariables;
+  final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable>?>? inputVariables;
   /// A list of messages in the chat for the prompt. See Message for more information.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage>> messages;
   /// A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
-  final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem>>? systems;
+  final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem>?>? systems;
   /// Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration>? toolConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration?>? toolConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat].
   /// [inputVariables] Optional.

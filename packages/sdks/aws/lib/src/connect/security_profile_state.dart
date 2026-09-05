@@ -4,30 +4,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering SecurityProfile resources.
 class SecurityProfileState {
-  /// The Amazon Resource Name (ARN) of the Security Profile.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Security Profile.
+  final pulumi.Input<String?>? arn;
   /// Specifies the description of the Security Profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Specifies the name of the Security Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization resource identifier for the security profile.
-  final pulumi.Input<String>? organizationResourceId;
+  final pulumi.Input<String?>? organizationResourceId;
   /// Specifies a list of permissions assigned to the security profile.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The identifier for the Security Profile.
-  final pulumi.Input<String>? securityProfileId;
+  final pulumi.Input<String?>? securityProfileId;
   /// Tags to apply to the Security Profile. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SecurityProfileState].
-  /// [arn] The Amazon Resource Name (ARN) of the Security Profile.
+  /// [arn] ARN of the Security Profile.
   /// [description] Specifies the description of the Security Profile.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [name] Specifies the name of the Security Profile.

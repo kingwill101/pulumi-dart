@@ -8,24 +8,24 @@ import 'channel_encoder_settings_audio_description_remix_settings.dart';
 
 class ChannelEncoderSettingsAudioDescription {
   /// Advanced audio normalization settings. See Audio Normalization Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings>? audioNormalizationSettings;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings?>? audioNormalizationSettings;
   /// The name of the audio selector used as the source for this AudioDescription.
   final pulumi.Input<String> audioSelectorName;
   /// Applies only if audioTypeControl is useConfigured. The values for audioType are defined in ISO-IEC 13818-1.
-  final pulumi.Input<String>? audioType;
+  final pulumi.Input<String?>? audioType;
   /// Determined how audio type is determined.
-  final pulumi.Input<String>? audioTypeControl;
+  final pulumi.Input<String?>? audioTypeControl;
   /// Settings to configure one or more solutions that insert audio watermarks in the audio encode. See Audio Watermark Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings>? audioWatermarkSettings;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings?>? audioWatermarkSettings;
   /// Audio codec settings. See Audio Codec Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettings>? codecSettings;
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? languageCodeControl;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettings?>? codecSettings;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? languageCodeControl;
   /// The name of this audio description.
   final pulumi.Input<String> name;
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionRemixSettings>? remixSettings;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionRemixSettings?>? remixSettings;
   /// Stream name RTMP destinations (URLs of type rtmp://)
-  final pulumi.Input<String>? streamName;
+  final pulumi.Input<String?>? streamName;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescription].
   /// [audioNormalizationSettings] Advanced audio normalization settings. See Audio Normalization Settings for more details.

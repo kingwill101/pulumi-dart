@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AmiLaunchPermission resources.
 class AmiLaunchPermissionState {
   /// AWS account ID for the launch permission.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Name of the group for the launch permission. Valid values: `"all"`.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// ID of the AMI.
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? imageId;
   /// ARN of an organization for the launch permission.
-  final pulumi.Input<String>? organizationArn;
+  final pulumi.Input<String?>? organizationArn;
   /// ARN of an organizational unit for the launch permission.
-  final pulumi.Input<String>? organizationalUnitArn;
+  final pulumi.Input<String?>? organizationalUnitArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AmiLaunchPermissionState].
   /// [accountId] AWS account ID for the launch permission.

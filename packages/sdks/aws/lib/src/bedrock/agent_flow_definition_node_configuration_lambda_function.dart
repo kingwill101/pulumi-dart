@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationLambdaFunction {
-  /// The Amazon Resource Name (ARN) of the Lambda function to invoke.
+  /// ARN of the Lambda function to invoke.
   final pulumi.Input<String> lambdaArn;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationLambdaFunction].
-  /// [lambdaArn] The Amazon Resource Name (ARN) of the Lambda function to invoke.
+  /// [lambdaArn] ARN of the Lambda function to invoke.
   const AgentFlowDefinitionNodeConfigurationLambdaFunction({
     required this.lambdaArn,
   });

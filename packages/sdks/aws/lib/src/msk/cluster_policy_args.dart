@@ -7,15 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_msk_cluster_policy_cluster_policy_args_doc}
 class ClusterPolicyArgs {
-  /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+  /// ARN that uniquely identifies the cluster.
   final pulumi.Input<String> clusterArn;
   /// Resource policy for cluster.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ClusterPolicyArgs].
-  /// [clusterArn] The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+  /// [clusterArn] ARN that uniquely identifies the cluster.
   /// [policy] Resource policy for cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ClusterPolicyArgs({

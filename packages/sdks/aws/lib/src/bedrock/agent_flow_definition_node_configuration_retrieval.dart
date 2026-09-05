@@ -5,7 +5,7 @@ import 'agent_flow_definition_node_configuration_retrieval_service_configuration
 
 class AgentFlowDefinitionNodeConfigurationRetrieval {
   /// Contains configurations for the service to use for retrieving data to return as the output from the node. See Retrieval Service Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration>? serviceConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration?>? serviceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationRetrieval].
   /// [serviceConfiguration] Contains configurations for the service to use for retrieving data to return as the output from the node. See Retrieval Service Configuration for more information.

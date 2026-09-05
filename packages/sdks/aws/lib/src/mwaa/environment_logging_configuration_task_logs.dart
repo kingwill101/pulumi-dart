@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLoggingConfigurationTaskLogs {
-  final pulumi.Input<String>? cloudWatchLogGroupArn;
+  final pulumi.Input<String?>? cloudWatchLogGroupArn;
   /// Enabling or disabling the collection of logs
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
 
   /// Creates a new [EnvironmentLoggingConfigurationTaskLogs].
   /// [cloudWatchLogGroupArn] Optional.

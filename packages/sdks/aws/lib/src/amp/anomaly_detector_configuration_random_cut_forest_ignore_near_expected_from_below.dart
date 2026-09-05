@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelow {
   /// Absolute amount by which the observed value may exceed the expected value before being reported as an anomaly. Conflicts with `ratio`.
-  final pulumi.Input<double>? amount;
+  final pulumi.Input<double?>? amount;
   /// Ratio by which the observed value may exceed the expected value before being reported as an anomaly. Must be at least `0`. Conflicts with `amount`.
-  final pulumi.Input<double>? ratio;
+  final pulumi.Input<double?>? ratio;
 
   /// Creates a new [AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelow].
   /// [amount] Absolute amount by which the observed value may exceed the expected value before being reported as an anomaly. Conflicts with `ratio`.
@@ -25,8 +25,8 @@ class AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelow {
 
   factory AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelow.fromMap(Map<String, dynamic> map) {
     return AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelow(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      ratio: (() { final guardedValue = map['ratio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      ratio: (() { final guardedValue = map['ratio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

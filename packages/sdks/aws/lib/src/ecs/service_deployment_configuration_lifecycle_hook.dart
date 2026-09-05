@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceDeploymentConfigurationLifecycleHook {
   /// Custom parameters that Amazon ECS will pass to the hook target invocations (such as a Lambda function).
-  final pulumi.Input<String>? hookDetails;
+  final pulumi.Input<String?>? hookDetails;
   /// ARN of the Lambda function to invoke for the lifecycle hook.
   final pulumi.Input<String> hookTargetArn;
   /// Stages during the deployment when the hook should be invoked. Valid values: `RECONCILE_SERVICE`, `PRE_SCALE_UP`, `POST_SCALE_UP`, `TEST_TRAFFIC_SHIFT`, `POST_TEST_TRAFFIC_SHIFT`, `PRODUCTION_TRAFFIC_SHIFT`, `POST_PRODUCTION_TRAFFIC_SHIFT`.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism {
   /// The number of in-application streams to create.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism].
   /// [count] The number of in-application streams to create.
@@ -20,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPa
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

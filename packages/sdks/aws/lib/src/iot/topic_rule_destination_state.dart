@@ -6,19 +6,19 @@ import 'topic_rule_destination_vpc_configuration.dart';
 /// Input properties used for looking up and filtering TopicRuleDestination resources.
 class TopicRuleDestinationState {
   /// The ARN of the topic rule destination
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether or not to enable the destination. Default: `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
-  final pulumi.Input<TopicRuleDestinationVpcConfiguration>? vpcConfiguration;
+  final pulumi.Input<String?>? region;
+  /// Configuration of the VPC connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
+  final pulumi.Input<TopicRuleDestinationVpcConfiguration?>? vpcConfiguration;
 
   /// Creates a new [TopicRuleDestinationState].
   /// [arn] The ARN of the topic rule destination
   /// [enabled] Whether or not to enable the destination. Default: `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [vpcConfiguration] Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
+  /// [vpcConfiguration] Configuration of the VPC connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
   const TopicRuleDestinationState({
     this.arn,
     this.enabled,

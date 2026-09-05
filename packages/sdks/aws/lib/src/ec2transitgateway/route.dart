@@ -271,7 +271,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2transitgateway/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     blackhole = registerOutput<bool?>('blackhole');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
@@ -285,11 +285,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,6 +304,22 @@ class Route extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    blackhole = registerOutput<bool?>('blackhole');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    region = registerOutput<String>('region');
+    transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     blackhole = registerOutput<bool?>('blackhole');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     region = registerOutput<String>('region');

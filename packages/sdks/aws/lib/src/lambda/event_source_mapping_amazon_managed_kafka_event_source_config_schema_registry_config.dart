@@ -5,20 +5,20 @@ import 'event_source_mapping_amazon_managed_kafka_event_source_config_schema_reg
 import 'event_source_mapping_amazon_managed_kafka_event_source_config_schema_registry_config_schema_validation_config.dart';
 
 class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig {
-  /// Configuration block for authentication Lambda uses to access the schema registry.
-  final pulumi.Input<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>>? accessConfigs;
+  /// Configuration block for authentication Lambda uses to access the schema registry. See below.
+  final pulumi.Input<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>?>? accessConfigs;
   /// Record format that Lambda delivers to the function after schema validation. Valid values: `JSON`, `SOURCE`.
-  final pulumi.Input<String>? eventRecordFormat;
+  final pulumi.Input<String?>? eventRecordFormat;
   /// URI of the schema registry. For AWS Glue schema registries, use the ARN of the registry. For Confluent schema registries, use the registry URL.
-  final pulumi.Input<String>? schemaRegistryUri;
-  /// Repeatable block that defines schema validation settings. These specify the message attributes that Lambda should validate and filter using the schema registry.
-  final pulumi.Input<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>>? schemaValidationConfigs;
+  final pulumi.Input<String?>? schemaRegistryUri;
+  /// Repeatable block that defines schema validation settings. These specify the message attributes that Lambda should validate and filter using the schema registry. See below.
+  final pulumi.Input<List<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>?>? schemaValidationConfigs;
 
   /// Creates a new [EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig].
-  /// [accessConfigs] Configuration block for authentication Lambda uses to access the schema registry.
+  /// [accessConfigs] Configuration block for authentication Lambda uses to access the schema registry. See below.
   /// [eventRecordFormat] Record format that Lambda delivers to the function after schema validation. Valid values: `JSON`, `SOURCE`.
   /// [schemaRegistryUri] URI of the schema registry. For AWS Glue schema registries, use the ARN of the registry. For Confluent schema registries, use the registry URL.
-  /// [schemaValidationConfigs] Repeatable block that defines schema validation settings. These specify the message attributes that Lambda should validate and filter using the schema registry.
+  /// [schemaValidationConfigs] Repeatable block that defines schema validation settings. These specify the message attributes that Lambda should validate and filter using the schema registry. See below.
   const EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig({
     this.accessConfigs,
     this.eventRecordFormat,

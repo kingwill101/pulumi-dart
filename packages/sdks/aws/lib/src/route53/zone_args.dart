@@ -9,19 +9,19 @@ import 'zone_vpc.dart';
 /// {@macro pulumi_route53_zone_zone_args_doc}
 class ZoneArgs {
   /// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
-  final pulumi.Input<String>? delegationSetId;
+  final pulumi.Input<String?>? delegationSetId;
   /// Boolean to indicate whether to enable accelerated recovery for the hosted zone. Defaults to `false`. Once set, switching to `false` requires explicitly specifying `false` rather than removing the argument.
-  final pulumi.Input<bool>? enableAcceleratedRecovery;
+  final pulumi.Input<bool?>? enableAcceleratedRecovery;
   /// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// This is the name of the hosted zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-  final pulumi.Input<List<ZoneVpc>>? vpcs;
+  final pulumi.Input<List<ZoneVpc>?>? vpcs;
 
   /// Creates a new [ZoneArgs].
   /// [comment] A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
@@ -31,15 +31,15 @@ class ZoneArgs {
   /// [name] This is the name of the hosted zone.
   /// [tags] A mapping of tags to assign to the zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcs] Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-  const ZoneArgs({
-    this.comment,
+  ZoneArgs({
+    pulumi.Input<String?>? comment,
     this.delegationSetId,
     this.enableAcceleratedRecovery,
     this.forceDestroy,
     this.name,
     this.tags,
     this.vpcs,
-  });
+  }) : comment = comment ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

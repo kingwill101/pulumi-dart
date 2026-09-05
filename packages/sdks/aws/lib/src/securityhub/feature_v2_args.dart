@@ -12,7 +12,7 @@ class FeatureV2Args {
   /// Current enablement status of the feature. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> featureStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FeatureV2Args].
   /// [featureName] Name of the opt-in feature to enable. Valid values: `NETWORK_SCANNING`. Changing this forces a new resource to be created.

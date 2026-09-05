@@ -7,15 +7,15 @@ import 'pipe_log_configuration_s3_log_destination.dart';
 
 class PipeLogConfiguration {
   /// Amazon CloudWatch Logs logging configuration settings for the pipe. Detailed below.
-  final pulumi.Input<PipeLogConfigurationCloudwatchLogsLogDestination>? cloudwatchLogsLogDestination;
+  final pulumi.Input<PipeLogConfigurationCloudwatchLogsLogDestination?>? cloudwatchLogsLogDestination;
   /// Amazon Kinesis Data Firehose logging configuration settings for the pipe. Detailed below.
-  final pulumi.Input<PipeLogConfigurationFirehoseLogDestination>? firehoseLogDestination;
+  final pulumi.Input<PipeLogConfigurationFirehoseLogDestination?>? firehoseLogDestination;
   /// String list that specifies whether the execution data (specifically, the `payload`, `awsRequest`, and `awsResponse` fields) is included in the log messages for this pipe. This applies to all log destinations for the pipe. Valid values `ALL`.
-  final pulumi.Input<List<String>>? includeExecutionDatas;
+  final pulumi.Input<List<String>?>? includeExecutionDatas;
   /// The level of logging detail to include. Valid values `OFF`, `ERROR`, `INFO` and `TRACE`.
   final pulumi.Input<String> level;
   /// Amazon S3 logging configuration settings for the pipe. Detailed below.
-  final pulumi.Input<PipeLogConfigurationS3LogDestination>? s3LogDestination;
+  final pulumi.Input<PipeLogConfigurationS3LogDestination?>? s3LogDestination;
 
   /// Creates a new [PipeLogConfiguration].
   /// [cloudwatchLogsLogDestination] Amazon CloudWatch Logs logging configuration settings for the pipe. Detailed below.

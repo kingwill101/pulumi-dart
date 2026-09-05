@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionCacheBehaviorTrustedKeyGroups {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final pulumi.Input<bool>? enabled;
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<bool?>? enabled;
+  final pulumi.Input<List<String>?>? items;
 
   /// Creates a new [MultitenantDistributionCacheBehaviorTrustedKeyGroups].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.

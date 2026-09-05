@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSharesDataShare {
-  /// ARN (Amazon Resource Name) of the data share.
+  /// ARN of the data share.
   final pulumi.Input<String> dataShareArn;
   /// Identifier of a datashare to show its managing entity.
   final pulumi.Input<String> managedBy;
-  /// ARN (Amazon Resource Name) of the producer.
+  /// ARN of the producer.
   final pulumi.Input<String> producerArn;
 
   /// Creates a new [GetDataSharesDataShare].
-  /// [dataShareArn] ARN (Amazon Resource Name) of the data share.
+  /// [dataShareArn] ARN of the data share.
   /// [managedBy] Identifier of a datashare to show its managing entity.
-  /// [producerArn] ARN (Amazon Resource Name) of the producer.
+  /// [producerArn] ARN of the producer.
   const GetDataSharesDataShare({
     required this.dataShareArn,
     required this.managedBy,

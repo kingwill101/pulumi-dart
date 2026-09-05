@@ -122,7 +122,7 @@ import 'route_calculation_state.dart';
 /// $ pulumi import aws:location/routeCalculation:RouteCalculation example example
 /// ```
 class RouteCalculation extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across AWS.
+  /// ARN for the Route calculator resource. Use the ARN when you specify a resource across AWS.
   late final pulumi.Output<String> calculatorArn;
   /// The name of the route calculator resource.
   late final pulumi.Output<String> calculatorName;
@@ -155,7 +155,7 @@ class RouteCalculation extends pulumi.CustomResource {
           'aws:location/routeCalculation:RouteCalculation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     calculatorArn = registerOutput<String>('calculatorArn');
     calculatorName = registerOutput<String>('calculatorName');
@@ -163,8 +163,8 @@ class RouteCalculation extends pulumi.CustomResource {
     dataSource = registerOutput<String>('dataSource');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -173,11 +173,12 @@ class RouteCalculation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteCalculationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteCalculation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,8 +198,28 @@ class RouteCalculation extends pulumi.CustomResource {
     dataSource = registerOutput<String>('dataSource');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RouteCalculation] resource.
+  RouteCalculation.reference(String urn)
+    : super(
+        'aws:location/routeCalculation:RouteCalculation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    calculatorArn = registerOutput<String>('calculatorArn');
+    calculatorName = registerOutput<String>('calculatorName');
+    createTime = registerOutput<String>('createTime');
+    dataSource = registerOutput<String>('dataSource');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

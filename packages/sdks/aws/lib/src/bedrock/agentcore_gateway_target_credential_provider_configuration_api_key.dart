@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetCredentialProviderConfigurationApiKey {
   /// Location where the API key credential is provided. Valid values: `HEADER`, `QUERY_PARAMETER`.
-  final pulumi.Input<String>? credentialLocation;
+  final pulumi.Input<String?>? credentialLocation;
   /// Name of the parameter containing the API key credential.
-  final pulumi.Input<String>? credentialParameterName;
+  final pulumi.Input<String?>? credentialParameterName;
   /// Prefix to add to the API key credential value.
-  final pulumi.Input<String>? credentialPrefix;
+  final pulumi.Input<String?>? credentialPrefix;
   /// ARN of the OIDC provider for API key authentication.
   final pulumi.Input<String> providerArn;
 

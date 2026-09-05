@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
-  final pulumi.Input<String>? amazonBedrockRoleArn;
+  final pulumi.Input<String?>? amazonBedrockRoleArn;
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings].
   /// [amazonBedrockRoleArn] Optional.

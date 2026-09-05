@@ -12,13 +12,13 @@ class BucketIntelligentTieringConfigurationArgs {
   /// Name of the bucket this intelligent tiering configuration is associated with.
   final pulumi.Input<String> bucket;
   /// Bucket filter. The configuration only includes objects that meet the filter's criteria. See `filter` Block below.
-  final pulumi.Input<BucketIntelligentTieringConfigurationFilter>? filter;
+  final pulumi.Input<BucketIntelligentTieringConfigurationFilter?>? filter;
   /// Unique name used to identify the S3 Intelligent-Tiering configuration for the bucket.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the configuration. Valid values: `Enabled`, `Disabled`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// S3 Intelligent-Tiering storage class tiers of the configuration. See `tiering` Block below.
   final pulumi.Input<List<BucketIntelligentTieringConfigurationTiering>> tierings;
 

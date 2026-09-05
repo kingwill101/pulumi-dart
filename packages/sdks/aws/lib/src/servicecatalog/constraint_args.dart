@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicecatalog_constraint_constraint_args_doc}
 class ConstraintArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// Description of the constraint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Constraint parameters in JSON format. The syntax depends on the constraint type. See details below.
   final pulumi.Input<String> parameters;
   /// Portfolio identifier.
@@ -18,7 +18,7 @@ class ConstraintArgs {
   /// Product identifier.
   final pulumi.Input<String> productId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ///
   /// The following arguments are optional:

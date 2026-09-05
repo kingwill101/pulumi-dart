@@ -5,33 +5,33 @@ import 'global_cluster_global_cluster_member.dart';
 
 /// Input properties used for looking up and filtering GlobalCluster resources.
 class GlobalClusterState {
-  /// Global Cluster Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  /// Global Cluster ARN
+  final pulumi.Input<String?>? arn;
   /// Name for an automatically created database on cluster creation.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// Name of the database engine to be used for this DB cluster. The provider will only perform drift detection if a configuration value is provided. Current Valid values: `docdb`. Defaults to `docdb`. Conflicts with `sourceDbClusterIdentifier`.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Engine version of the global database. Upgrading the engine version will result in all cluster members being immediately updated and will.
   /// * **NOTE:** Upgrading major versions is not supported.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// The global cluster identifier.
-  final pulumi.Input<String>? globalClusterIdentifier;
+  final pulumi.Input<String?>? globalClusterIdentifier;
   /// Set of objects containing Global Cluster members.
-  final pulumi.Input<List<GlobalClusterGlobalClusterMember>>? globalClusterMembers;
+  final pulumi.Input<List<GlobalClusterGlobalClusterMember>?>? globalClusterMembers;
   /// AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
-  final pulumi.Input<String>? globalClusterResourceId;
+  final pulumi.Input<String?>? globalClusterResourceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value.
-  final pulumi.Input<String>? sourceDbClusterIdentifier;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? region;
+  /// ARN to use as the primary DB Cluster of the Global Cluster on creation. Pulumi cannot perform drift detection of this value.
+  final pulumi.Input<String?>? sourceDbClusterIdentifier;
+  final pulumi.Input<String?>? status;
   /// Specifies whether the DB cluster is encrypted. The default is `false` unless `sourceDbClusterIdentifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<bool>? storageEncrypted;
+  final pulumi.Input<bool?>? storageEncrypted;
 
   /// Creates a new [GlobalClusterState].
-  /// [arn] Global Cluster Amazon Resource Name (ARN)
+  /// [arn] Global Cluster ARN
   /// [databaseName] Name for an automatically created database on cluster creation.
   /// [deletionProtection] If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
   /// [engine] Name of the database engine to be used for this DB cluster. The provider will only perform drift detection if a configuration value is provided. Current Valid values: `docdb`. Defaults to `docdb`. Conflicts with `sourceDbClusterIdentifier`.
@@ -40,7 +40,7 @@ class GlobalClusterState {
   /// [globalClusterMembers] Set of objects containing Global Cluster members.
   /// [globalClusterResourceId] AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceDbClusterIdentifier] Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value.
+  /// [sourceDbClusterIdentifier] ARN to use as the primary DB Cluster of the Global Cluster on creation. Pulumi cannot perform drift detection of this value.
   /// [status] Optional.
   /// [storageEncrypted] Specifies whether the DB cluster is encrypted. The default is `false` unless `sourceDbClusterIdentifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   const GlobalClusterState({

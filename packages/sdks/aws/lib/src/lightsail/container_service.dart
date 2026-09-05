@@ -326,11 +326,11 @@ import 'container_service_state.dart';
 /// }});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [exampleContainerService.privateRegistryAccess.apply(privateRegistryAccess => privateRegistryAccess.ecrImagePullerRole?.principalArn)],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "ecr:BatchGetImage",
 ///             "ecr:GetDownloadUrlForLayer",
@@ -352,11 +352,11 @@ import 'container_service_state.dart';
 ///     },
 /// })
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [example_container_service.private_registry_access.ecr_image_puller_role.principal_arn],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "ecr:BatchGetImage",
 ///         "ecr:GetDownloadUrlForLayer",
@@ -391,7 +391,6 @@ import 'container_service_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -403,6 +402,7 @@ import 'container_service_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "ecr:BatchGetImage",
@@ -445,7 +445,6 @@ import 'container_service_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -456,6 +455,7 @@ import 'container_service_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("ecr:BatchGetImage"),
 /// 						pulumi.String("ecr:GetDownloadUrlForLayer"),
@@ -485,11 +485,11 @@ import 'container_service_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [aws_lightsail_containerservice.example.private_registry_access.ecr_image_puller_role.principal_arn]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"]
 ///   }
 /// }
@@ -545,11 +545,11 @@ import 'container_service_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(exampleContainerService.privateRegistryAccess().applyValue(_privateRegistryAccess -> _privateRegistryAccess.ecrImagePullerRole().principalArn()))
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "ecr:BatchGetImage",
 ///                     "ecr:GetDownloadUrlForLayer")
@@ -585,11 +585,11 @@ import 'container_service_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${exampleContainerService.privateRegistryAccess.ecrImagePullerRole.principalArn}
+///             effect: Allow
 ///             actions:
 ///               - ecr:BatchGetImage
 ///               - ecr:GetDownloadUrlForLayer
@@ -620,7 +620,7 @@ class ContainerService extends pulumi.CustomResource {
   late final pulumi.Output<String> powerId;
   /// Principal ARN of the container service. The principal ARN can be used to create a trust relationship between your standard AWS account and your Lightsail container service.
   late final pulumi.Output<String> principalArn;
-  /// Private domain name of the container service. The private domain name is accessible only by other resources within the default virtual private cloud (VPC) of your Lightsail account.
+  /// Private domain name of the container service. The private domain name is accessible only by other resources within the default VPC of your Lightsail account.
   late final pulumi.Output<String> privateDomainName;
   /// Configuration for the container service to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
   late final pulumi.Output<ContainerServicePrivateRegistryAccess> privateRegistryAccess;
@@ -655,7 +655,7 @@ class ContainerService extends pulumi.CustomResource {
           'aws:lightsail/containerService:ContainerService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
@@ -672,8 +672,8 @@ class ContainerService extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     scale = registerOutput<int>('scale');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
   }
 
@@ -682,11 +682,12 @@ class ContainerService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -715,8 +716,37 @@ class ContainerService extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     scale = registerOutput<int>('scale');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [ContainerService] resource.
+  ContainerService.reference(String urn)
+    : super(
+        'aws:lightsail/containerService:ContainerService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    createdAt = registerOutput<String>('createdAt');
+    isDisabled = registerOutput<bool?>('isDisabled');
+    this.name = registerOutput<String>('name');
+    power = registerOutput<String>('power');
+    powerId = registerOutput<String>('powerId');
+    principalArn = registerOutput<String>('principalArn');
+    privateDomainName = registerOutput<String>('privateDomainName');
+    privateRegistryAccess = registerOutput<ContainerServicePrivateRegistryAccess>('privateRegistryAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServicePrivateRegistryAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicDomainNames = registerOutput<ContainerServicePublicDomainNames?>('publicDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServicePublicDomainNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    scale = registerOutput<int>('scale');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
   }
 }

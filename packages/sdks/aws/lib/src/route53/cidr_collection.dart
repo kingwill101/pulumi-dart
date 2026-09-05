@@ -112,7 +112,7 @@ import 'cidr_collection_state.dart';
 /// $ pulumi import aws:route53/cidrCollection:CidrCollection example 9ac32814-3e67-0932-6048-8d779cc6f511
 /// ```
 class CidrCollection extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the CIDR collection.
+  /// ARN of the CIDR collection.
   late final pulumi.Output<String> arn;
   /// Unique name for the CIDR collection.
   late final pulumi.Output<String> name;
@@ -131,7 +131,7 @@ class CidrCollection extends pulumi.CustomResource {
           'aws:route53/cidrCollection:CidrCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
@@ -143,11 +143,12 @@ class CidrCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CidrCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CidrCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -161,6 +162,20 @@ class CidrCollection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [CidrCollection] resource.
+  CidrCollection.reference(String urn)
+    : super(
+        'aws:route53/cidrCollection:CidrCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     version = registerOutput<int>('version');

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_scheduler_schedule_group_schedule_group_args_doc}
 class ScheduleGroupArgs {
   /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ScheduleGroupArgs].
   /// [name] Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.

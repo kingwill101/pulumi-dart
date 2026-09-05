@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'geo_match_set_args.dart';
+import 'geo_match_set_geo_match_constraint.dart';
 import 'geo_match_set_state.dart';
 
 /// Provides a WAF Regional Geo Match Set Resource
@@ -12,7 +13,6 @@ import 'geo_match_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const geoMatchSet = new aws.wafregional.GeoMatchSet("geo_match_set", {
-///     name: "geo_match_set",
 ///     geoMatchConstraints: [
 ///         {
 ///             type: "Country",
@@ -23,6 +23,7 @@ import 'geo_match_set_state.dart';
 ///             value: "CA",
 ///         },
 ///     ],
+///     name: "geo_match_set",
 /// });
 /// ```
 /// ```python
@@ -30,7 +31,6 @@ import 'geo_match_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// geo_match_set = aws.wafregional.GeoMatchSet("geo_match_set",
-///     name="geo_match_set",
 ///     geo_match_constraints=[
 ///         {
 ///             "type": "Country",
@@ -40,7 +40,8 @@ import 'geo_match_set_state.dart';
 ///             "type": "Country",
 ///             "value": "CA",
 ///         },
-///     ])
+///     ],
+///     name="geo_match_set")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,7 +53,6 @@ import 'geo_match_set_state.dart';
 /// {
 ///     var geoMatchSet = new Aws.WafRegional.GeoMatchSet("geo_match_set", new()
 ///     {
-///         Name = "geo_match_set",
 ///         GeoMatchConstraints = new[]
 ///         {
 ///             new Aws.WafRegional.Inputs.GeoMatchSetGeoMatchConstraintArgs
@@ -66,6 +66,7 @@ import 'geo_match_set_state.dart';
 ///                 Value = "CA",
 ///             },
 ///         },
+///         Name = "geo_match_set",
 ///     });
 ///
 /// });
@@ -81,7 +82,6 @@ import 'geo_match_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafregional.NewGeoMatchSet(ctx, "geo_match_set", &wafregional.GeoMatchSetArgs{
-/// 			Name: pulumi.String("geo_match_set"),
 /// 			GeoMatchConstraints: wafregional.GeoMatchSetGeoMatchConstraintArray{
 /// 				&wafregional.GeoMatchSetGeoMatchConstraintArgs{
 /// 					Type:  pulumi.String("Country"),
@@ -92,6 +92,7 @@ import 'geo_match_set_state.dart';
 /// 					Value: pulumi.String("CA"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("geo_match_set"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +111,6 @@ import 'geo_match_set_state.dart';
 /// }
 ///
 /// resource "aws_wafregional_geomatchset" "geo_match_set" {
-///   name = "geo_match_set"
 ///   geo_match_constraints {
 ///     type  = "Country"
 ///     value = "US"
@@ -119,6 +119,7 @@ import 'geo_match_set_state.dart';
 ///     type  = "Country"
 ///     value = "CA"
 ///   }
+///   name = "geo_match_set"
 /// }
 /// ```
 /// ```java
@@ -144,7 +145,6 @@ import 'geo_match_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var geoMatchSet = new GeoMatchSet("geoMatchSet", GeoMatchSetArgs.builder()
-///             .name("geo_match_set")
 ///             .geoMatchConstraints(
 ///                 GeoMatchSetGeoMatchConstraintArgs.builder()
 ///                     .type("Country")
@@ -154,6 +154,7 @@ import 'geo_match_set_state.dart';
 ///                     .type("Country")
 ///                     .value("CA")
 ///                     .build())
+///             .name("geo_match_set")
 ///             .build());
 ///
 ///     }
@@ -165,12 +166,12 @@ import 'geo_match_set_state.dart';
 ///     type: aws:wafregional:GeoMatchSet
 ///     name: geo_match_set
 ///     properties:
-///       name: geo_match_set
 ///       geoMatchConstraints:
 ///         - type: Country
 ///           value: US
 ///         - type: Country
 ///           value: CA
+///       name: geo_match_set
 /// ```
 ///
 ///
@@ -183,7 +184,7 @@ import 'geo_match_set_state.dart';
 /// ```
 class GeoMatchSet extends pulumi.CustomResource {
   /// Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
-  late final pulumi.Output<List<Map<String, dynamic>>?> geoMatchConstraints;
+  late final pulumi.Output<List<GeoMatchSetGeoMatchConstraint>?> geoMatchConstraints;
   /// Name or description of the Geo Match Set.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -201,9 +202,9 @@ class GeoMatchSet extends pulumi.CustomResource {
           'aws:wafregional/geoMatchSet:GeoMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>('geoMatchConstraints');
+    geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(guardedValue, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }
@@ -213,11 +214,12 @@ class GeoMatchSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GeoMatchSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GeoMatchSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,7 +233,21 @@ class GeoMatchSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>('geoMatchConstraints');
+    geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(guardedValue, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [GeoMatchSet] resource.
+  GeoMatchSet.reference(String urn)
+    : super(
+        'aws:wafregional/geoMatchSet:GeoMatchSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(guardedValue, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }

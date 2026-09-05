@@ -14,18 +14,18 @@ import 'key_alias_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.paymentcryptography.Key("test", {
-///     exportable: true,
 ///     keyAttributes: [{
-///         keyAlgorithm: "TDES_3KEY",
-///         keyClass: "SYMMETRIC_KEY",
-///         keyUsage: "TR31_P0_PIN_ENCRYPTION_KEY",
 ///         keyModesOfUses: [{
 ///             decrypt: true,
 ///             encrypt: true,
 ///             wrap: true,
 ///             unwrap: true,
 ///         }],
+///         keyAlgorithm: "TDES_3KEY",
+///         keyClass: "SYMMETRIC_KEY",
+///         keyUsage: "TR31_P0_PIN_ENCRYPTION_KEY",
 ///     }],
+///     exportable: true,
 /// });
 /// const testKeyAlias = new aws.paymentcryptography.KeyAlias("test", {
 ///     aliasName: "alias/test-alias",
@@ -37,18 +37,18 @@ import 'key_alias_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.paymentcryptography.Key("test",
-///     exportable=True,
 ///     key_attributes=[{
-///         "key_algorithm": "TDES_3KEY",
-///         "key_class": "SYMMETRIC_KEY",
-///         "key_usage": "TR31_P0_PIN_ENCRYPTION_KEY",
 ///         "key_modes_of_uses": [{
 ///             "decrypt": True,
 ///             "encrypt": True,
 ///             "wrap": True,
 ///             "unwrap": True,
 ///         }],
-///     }])
+///         "key_algorithm": "TDES_3KEY",
+///         "key_class": "SYMMETRIC_KEY",
+///         "key_usage": "TR31_P0_PIN_ENCRYPTION_KEY",
+///     }],
+///     exportable=True)
 /// test_key_alias = aws.paymentcryptography.KeyAlias("test",
 ///     alias_name="alias/test-alias",
 ///     key_arn=test.arn)
@@ -63,14 +63,10 @@ import 'key_alias_state.dart';
 /// {
 ///     var test = new Aws.PaymentCryptography.Key("test", new()
 ///     {
-///         Exportable = true,
 ///         KeyAttributes = new[]
 ///         {
 ///             new Aws.PaymentCryptography.Inputs.KeyKeyAttributeArgs
 ///             {
-///                 KeyAlgorithm = "TDES_3KEY",
-///                 KeyClass = "SYMMETRIC_KEY",
-///                 KeyUsage = "TR31_P0_PIN_ENCRYPTION_KEY",
 ///                 KeyModesOfUses = new[]
 ///                 {
 ///                     new Aws.PaymentCryptography.Inputs.KeyKeyAttributeKeyModesOfUseArgs
@@ -81,8 +77,12 @@ import 'key_alias_state.dart';
 ///                         Unwrap = true,
 ///                     },
 ///                 },
+///                 KeyAlgorithm = "TDES_3KEY",
+///                 KeyClass = "SYMMETRIC_KEY",
+///                 KeyUsage = "TR31_P0_PIN_ENCRYPTION_KEY",
 ///             },
 ///         },
+///         Exportable = true,
 ///     });
 ///
 ///     var testKeyAlias = new Aws.PaymentCryptography.KeyAlias("test", new()
@@ -104,12 +104,8 @@ import 'key_alias_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := paymentcryptography.NewKey(ctx, "test", &paymentcryptography.KeyArgs{
-/// 			Exportable: pulumi.Bool(true),
 /// 			KeyAttributes: paymentcryptography.KeyKeyAttributeArray{
 /// 				&paymentcryptography.KeyKeyAttributeArgs{
-/// 					KeyAlgorithm: pulumi.String("TDES_3KEY"),
-/// 					KeyClass:     pulumi.String("SYMMETRIC_KEY"),
-/// 					KeyUsage:     pulumi.String("TR31_P0_PIN_ENCRYPTION_KEY"),
 /// 					KeyModesOfUses: paymentcryptography.KeyKeyAttributeKeyModesOfUseArray{
 /// 						&paymentcryptography.KeyKeyAttributeKeyModesOfUseArgs{
 /// 							Decrypt: pulumi.Bool(true),
@@ -118,8 +114,12 @@ import 'key_alias_state.dart';
 /// 							Unwrap:  pulumi.Bool(true),
 /// 						},
 /// 					},
+/// 					KeyAlgorithm: pulumi.String("TDES_3KEY"),
+/// 					KeyClass:     pulumi.String("SYMMETRIC_KEY"),
+/// 					KeyUsage:     pulumi.String("TR31_P0_PIN_ENCRYPTION_KEY"),
 /// 				},
 /// 			},
+/// 			Exportable: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,18 +145,18 @@ import 'key_alias_state.dart';
 /// }
 ///
 /// resource "aws_paymentcryptography_key" "test" {
-///   exportable = true
 ///   key_attributes {
-///     key_algorithm = "TDES_3KEY"
-///     key_class     = "SYMMETRIC_KEY"
-///     key_usage     = "TR31_P0_PIN_ENCRYPTION_KEY"
 ///     key_modes_of_uses {
 ///       decrypt = true
 ///       encrypt = true
 ///       wrap    = true
 ///       unwrap  = true
 ///     }
+///     key_algorithm = "TDES_3KEY"
+///     key_class     = "SYMMETRIC_KEY"
+///     key_usage     = "TR31_P0_PIN_ENCRYPTION_KEY"
 ///   }
+///   exportable = true
 /// }
 /// resource "aws_paymentcryptography_keyalias" "test" {
 ///   alias_name = "alias/test-alias"
@@ -189,18 +189,18 @@ import 'key_alias_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Key("test", KeyArgs.builder()
-///             .exportable(true)
 ///             .keyAttributes(KeyKeyAttributeArgs.builder()
-///                 .keyAlgorithm("TDES_3KEY")
-///                 .keyClass("SYMMETRIC_KEY")
-///                 .keyUsage("TR31_P0_PIN_ENCRYPTION_KEY")
 ///                 .keyModesOfUses(KeyKeyAttributeKeyModesOfUseArgs.builder()
 ///                     .decrypt(true)
 ///                     .encrypt(true)
 ///                     .wrap(true)
 ///                     .unwrap(true)
 ///                     .build())
+///                 .keyAlgorithm("TDES_3KEY")
+///                 .keyClass("SYMMETRIC_KEY")
+///                 .keyUsage("TR31_P0_PIN_ENCRYPTION_KEY")
 ///                 .build())
+///             .exportable(true)
 ///             .build());
 ///
 ///         var testKeyAlias = new KeyAlias("testKeyAlias", KeyAliasArgs.builder()
@@ -216,16 +216,16 @@ import 'key_alias_state.dart';
 ///   test:
 ///     type: aws:paymentcryptography:Key
 ///     properties:
-///       exportable: true
 ///       keyAttributes:
-///         - keyAlgorithm: TDES_3KEY
-///           keyClass: SYMMETRIC_KEY
-///           keyUsage: TR31_P0_PIN_ENCRYPTION_KEY
-///           keyModesOfUses:
+///         - keyModesOfUses:
 ///             - decrypt: true
 ///               encrypt: true
 ///               wrap: true
 ///               unwrap: true
+///           keyAlgorithm: TDES_3KEY
+///           keyClass: SYMMETRIC_KEY
+///           keyUsage: TR31_P0_PIN_ENCRYPTION_KEY
+///       exportable: true
 ///   testKeyAlias:
 ///     type: aws:paymentcryptography:KeyAlias
 ///     name: test
@@ -264,7 +264,7 @@ class KeyAlias extends pulumi.CustomResource {
           'aws:paymentcryptography/keyAlias:KeyAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aliasName = registerOutput<String>('aliasName');
     keyArn = registerOutput<String?>('keyArn');
@@ -276,11 +276,12 @@ class KeyAlias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyAliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyAlias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,6 +295,20 @@ class KeyAlias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aliasName = registerOutput<String>('aliasName');
+    keyArn = registerOutput<String?>('keyArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [KeyAlias] resource.
+  KeyAlias.reference(String urn)
+    : super(
+        'aws:paymentcryptography/keyAlias:KeyAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     aliasName = registerOutput<String>('aliasName');
     keyArn = registerOutput<String?>('keyArn');
     region = registerOutput<String>('region');

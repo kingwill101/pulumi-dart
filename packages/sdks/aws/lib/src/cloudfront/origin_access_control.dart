@@ -174,7 +174,7 @@ class OriginAccessControl extends pulumi.CustomResource {
           'aws:cloudfront/originAccessControl:OriginAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -190,11 +190,12 @@ class OriginAccessControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OriginAccessControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OriginAccessControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,6 +209,24 @@ class OriginAccessControl extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    originAccessControlOriginType = registerOutput<String>('originAccessControlOriginType');
+    signingBehavior = registerOutput<String>('signingBehavior');
+    signingProtocol = registerOutput<String>('signingProtocol');
+  }
+
+  /// Creates a typed reference to an existing [OriginAccessControl] resource.
+  OriginAccessControl.reference(String urn)
+    : super(
+        'aws:cloudfront/originAccessControl:OriginAccessControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');

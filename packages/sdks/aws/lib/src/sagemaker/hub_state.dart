@@ -5,27 +5,27 @@ import 'hub_s3_storage_config.dart';
 
 /// Input properties used for looking up and filtering Hub resources.
 class HubState {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Hub.
-  final pulumi.Input<String>? arn;
+  /// ARN assigned by AWS to this Hub.
+  final pulumi.Input<String?>? arn;
   /// A description of the hub.
-  final pulumi.Input<String>? hubDescription;
+  final pulumi.Input<String?>? hubDescription;
   /// The display name of the hub.
-  final pulumi.Input<String>? hubDisplayName;
+  final pulumi.Input<String?>? hubDisplayName;
   /// The name of the hub.
-  final pulumi.Input<String>? hubName;
+  final pulumi.Input<String?>? hubName;
   /// The searchable keywords for the hub.
-  final pulumi.Input<List<String>>? hubSearchKeywords;
+  final pulumi.Input<List<String>?>? hubSearchKeywords;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
-  final pulumi.Input<HubS3StorageConfig>? s3StorageConfig;
+  final pulumi.Input<HubS3StorageConfig?>? s3StorageConfig;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [HubState].
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Hub.
+  /// [arn] ARN assigned by AWS to this Hub.
   /// [hubDescription] A description of the hub.
   /// [hubDisplayName] The display name of the hub.
   /// [hubName] The name of the hub.

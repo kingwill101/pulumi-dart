@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterOutpostConfigControlPlanePlacement {
   /// Name of the placement group for the Kubernetes control plane instances. This setting can't be changed after cluster creation.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// Placement group spread level for control plane instances. Valid values: `host`, `rack`.
-  final pulumi.Input<String>? spreadLevel;
+  final pulumi.Input<String?>? spreadLevel;
 
   /// Creates a new [ClusterOutpostConfigControlPlanePlacement].
   /// [groupName] Name of the placement group for the Kubernetes control plane instances. This setting can't be changed after cluster creation.

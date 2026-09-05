@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RecoveryGroup resources.
 class RecoveryGroupState {
   /// ARN of the recovery group
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// List of cell arns to add as nested fault domains within this recovery group
-  final pulumi.Input<List<String>>? cells;
+  final pulumi.Input<List<String>?>? cells;
   /// A unique name describing the recovery group.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? recoveryGroupName;
+  final pulumi.Input<String?>? recoveryGroupName;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RecoveryGroupState].
   /// [arn] ARN of the recovery group

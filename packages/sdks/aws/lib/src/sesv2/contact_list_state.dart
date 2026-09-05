@@ -5,27 +5,28 @@ import 'contact_list_topic.dart';
 
 /// Input properties used for looking up and filtering ContactList resources.
 class ContactListState {
-  final pulumi.Input<String>? arn;
+  /// ARN of the contact list.
+  final pulumi.Input<String?>? arn;
   /// Name of the contact list.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? contactListName;
+  final pulumi.Input<String?>? contactListName;
   /// Timestamp noting when the contact list was created in ISO 8601 format.
-  final pulumi.Input<String>? createdTimestamp;
+  final pulumi.Input<String?>? createdTimestamp;
   /// Description of what the contact list is about.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Timestamp noting the last time the contact list was updated in ISO 8601 format.
-  final pulumi.Input<String>? lastUpdatedTimestamp;
+  final pulumi.Input<String?>? lastUpdatedTimestamp;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the contact list. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration block(s) with topic for the contact list. Detailed below.
-  final pulumi.Input<List<ContactListTopic>>? topics;
+  final pulumi.Input<List<ContactListTopic>?>? topics;
 
   /// Creates a new [ContactListState].
-  /// [arn] Optional.
+  /// [arn] ARN of the contact list.
   /// [contactListName] Name of the contact list.
   /// [createdTimestamp] Timestamp noting when the contact list was created in ISO 8601 format.
   /// [description] Description of what the contact list is about.

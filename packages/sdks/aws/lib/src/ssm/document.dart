@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_args.dart';
+import 'document_attachments_source.dart';
+import 'document_parameter.dart';
 import 'document_state.dart';
 
 /// Provides an SSM Document resource
@@ -436,12 +438,14 @@ import 'document_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ssm.Document("test", {
-///     name: "test_document",
-///     documentType: "Package",
 ///     attachmentsSources: [{
 ///         key: "SourceUrl",
 ///         values: [`s3://${objectBucket.bucket}/test.zip`],
 ///     }],
+///     name: "test_document",
+///     documentType: "Package",
+/// }, {
+///     ignoreChanges: ["attachmentsSources"],
 /// });
 /// ```
 /// ```python
@@ -449,12 +453,13 @@ import 'document_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ssm.Document("test",
-///     name="test_document",
-///     document_type="Package",
 ///     attachments_sources=[{
 ///         "key": "SourceUrl",
 ///         "values": [f"s3://{object_bucket['bucket']}/test.zip"],
-///     }])
+///     }],
+///     name="test_document",
+///     document_type="Package",
+///     opts = pulumi.ResourceOptions(ignore_changes=["attachmentsSources"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -466,8 +471,6 @@ import 'document_state.dart';
 /// {
 ///     var test = new Aws.Ssm.Document("test", new()
 ///     {
-///         Name = "test_document",
-///         DocumentType = "Package",
 ///         AttachmentsSources = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.DocumentAttachmentsSourceArgs
@@ -478,6 +481,14 @@ import 'document_state.dart';
 ///                     $"s3://{objectBucket.Bucket}/test.zip",
 ///                 },
 ///             },
+///         },
+///         Name = "test_document",
+///         DocumentType = "Package",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "attachmentsSources",
 ///         },
 ///     });
 ///
@@ -494,8 +505,6 @@ import 'document_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewDocument(ctx, "test", &ssm.DocumentArgs{
-/// 			Name:         pulumi.String("test_document"),
-/// 			DocumentType: pulumi.String("Package"),
 /// 			AttachmentsSources: ssm.DocumentAttachmentsSourceArray{
 /// 				&ssm.DocumentAttachmentsSourceArgs{
 /// 					Key: pulumi.String("SourceUrl"),
@@ -504,7 +513,11 @@ import 'document_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 		})
+/// 			Name:         pulumi.String("test_document"),
+/// 			DocumentType: pulumi.String("Package"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"attachmentsSources",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -522,12 +535,15 @@ import 'document_state.dart';
 /// }
 ///
 /// resource "aws_ssm_document" "test" {
-///   name          = "test_document"
-///   document_type = "Package"
+///   lifecycle {
+///     ignore_changes = [attachmentsSources]
+///   }
 ///   attachments_sources {
 ///     key    = "SourceUrl"
 ///     values = ["s3://${objectBucket.bucket}/test.zip"]
 ///   }
+///   name          = "test_document"
+///   document_type = "Package"
 /// }
 /// ```
 /// ```java
@@ -539,6 +555,7 @@ import 'document_state.dart';
 /// import com.pulumi.aws.ssm.Document;
 /// import com.pulumi.aws.ssm.DocumentArgs;
 /// import com.pulumi.aws.ssm.inputs.DocumentAttachmentsSourceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -553,13 +570,15 @@ import 'document_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Document("test", DocumentArgs.builder()
-///             .name("test_document")
-///             .documentType("Package")
 ///             .attachmentsSources(DocumentAttachmentsSourceArgs.builder()
 ///                 .key("SourceUrl")
 ///                 .values(String.format("s3://%s/test.zip", objectBucket.bucket()))
 ///                 .build())
-///             .build());
+///             .name("test_document")
+///             .documentType("Package")
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("attachmentsSources")
+///                 .build());
 ///
 ///     }
 /// }
@@ -569,18 +588,21 @@ import 'document_state.dart';
 ///   test:
 ///     type: aws:ssm:Document
 ///     properties:
-///       name: test_document
-///       documentType: Package
 ///       attachmentsSources:
 ///         - key: SourceUrl
 ///           values:
 ///             - s3://${objectBucket.bucket}/test.zip
+///       name: test_document
+///       documentType: Package
+///     options:
+///       ignoreChanges:
+///         - attachmentsSources
 /// ```
 class Document extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the document.
+  /// ARN of the document.
   late final pulumi.Output<String> arn;
   /// One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attachmentsSources;
+  late final pulumi.Output<List<DocumentAttachmentsSource>?> attachmentsSources;
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   late final pulumi.Output<String> content;
   /// The date the document was created.
@@ -606,7 +628,7 @@ class Document extends pulumi.CustomResource {
   /// The Amazon Web Services user that created the document.
   late final pulumi.Output<String> owner;
   /// One or more configuration blocks describing the parameters for the document. See `parameter` block below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<DocumentParameter>> parameters;
   /// Additional permissions to attach to the document. See Permissions below for details.
   late final pulumi.Output<Map<String, String>?> permissions;
   /// The list of operating system (OS) platforms compatible with this SSM document. Valid values: `Windows`, `Linux`, `MacOS`.
@@ -638,10 +660,10 @@ class Document extends pulumi.CustomResource {
           'aws:ssm/document:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    attachmentsSources = registerOutput<List<Map<String, dynamic>>?>('attachmentsSources');
+    attachmentsSources = registerOutput<List<DocumentAttachmentsSource>?>('attachmentsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAttachmentsSource>(guardedValue, (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>())); });
     content = registerOutput<String>('content');
     createdDate = registerOutput<String>('createdDate');
     defaultVersion = registerOutput<String>('defaultVersion');
@@ -654,14 +676,14 @@ class Document extends pulumi.CustomResource {
     latestVersion = registerOutput<String>('latestVersion');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
-    permissions = registerOutput<Map<String, String>?>('permissions');
-    platformTypes = registerOutput<List<String>>('platformTypes');
+    parameters = registerOutput<List<DocumentParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentParameter>(guardedValue, (value) => DocumentParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    permissions = registerOutput<Map<String, String>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    platformTypes = registerOutput<List<String>>('platformTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     schemaVersion = registerOutput<String>('schemaVersion');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetType = registerOutput<String?>('targetType');
     versionName = registerOutput<String?>('versionName');
   }
@@ -671,11 +693,12 @@ class Document extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Document._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -690,7 +713,7 @@ class Document extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    attachmentsSources = registerOutput<List<Map<String, dynamic>>?>('attachmentsSources');
+    attachmentsSources = registerOutput<List<DocumentAttachmentsSource>?>('attachmentsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAttachmentsSource>(guardedValue, (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>())); });
     content = registerOutput<String>('content');
     createdDate = registerOutput<String>('createdDate');
     defaultVersion = registerOutput<String>('defaultVersion');
@@ -703,14 +726,49 @@ class Document extends pulumi.CustomResource {
     latestVersion = registerOutput<String>('latestVersion');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
-    permissions = registerOutput<Map<String, String>?>('permissions');
-    platformTypes = registerOutput<List<String>>('platformTypes');
+    parameters = registerOutput<List<DocumentParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentParameter>(guardedValue, (value) => DocumentParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    permissions = registerOutput<Map<String, String>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    platformTypes = registerOutput<List<String>>('platformTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     schemaVersion = registerOutput<String>('schemaVersion');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetType = registerOutput<String?>('targetType');
+    versionName = registerOutput<String?>('versionName');
+  }
+
+  /// Creates a typed reference to an existing [Document] resource.
+  Document.reference(String urn)
+    : super(
+        'aws:ssm/document:Document',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachmentsSources = registerOutput<List<DocumentAttachmentsSource>?>('attachmentsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAttachmentsSource>(guardedValue, (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>())); });
+    content = registerOutput<String>('content');
+    createdDate = registerOutput<String>('createdDate');
+    defaultVersion = registerOutput<String>('defaultVersion');
+    description = registerOutput<String>('description');
+    documentFormat = registerOutput<String?>('documentFormat');
+    documentType = registerOutput<String>('documentType');
+    documentVersion = registerOutput<String>('documentVersion');
+    hash = registerOutput<String>('hash');
+    hashType = registerOutput<String>('hashType');
+    latestVersion = registerOutput<String>('latestVersion');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    parameters = registerOutput<List<DocumentParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentParameter>(guardedValue, (value) => DocumentParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    permissions = registerOutput<Map<String, String>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    platformTypes = registerOutput<List<String>>('platformTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetType = registerOutput<String?>('targetType');
     versionName = registerOutput<String?>('versionName');
   }

@@ -12,16 +12,16 @@ class QuicksetupConfigurationManagerArgs {
   /// Definition of the Quick Setup configuration that the configuration manager deploys. See `configurationDefinition` below.
   final pulumi.Input<QuicksetupConfigurationManagerConfigurationDefinition> configurationDefinition;
   /// Description of the configuration manager.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration manager name.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<QuicksetupConfigurationManagerTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<QuicksetupConfigurationManagerTimeouts?>? timeouts;
 
   /// Creates a new [QuicksetupConfigurationManagerArgs].
   /// [configurationDefinition] Definition of the Quick Setup configuration that the configuration manager deploys. See `configurationDefinition` below.

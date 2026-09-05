@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceNetworkConfigurationIngressConfiguration {
   /// Whether your App Runner service is publicly accessible. To make the service publicly accessible set it to `true`. To make the service privately accessible, from only within an Amazon VPC, set it to `false`.
-  final pulumi.Input<bool>? isPubliclyAccessible;
+  final pulumi.Input<bool?>? isPubliclyAccessible;
 
   /// Creates a new [ServiceNetworkConfigurationIngressConfiguration].
   /// [isPubliclyAccessible] Whether your App Runner service is publicly accessible. To make the service publicly accessible set it to `true`. To make the service privately accessible, from only within an Amazon VPC, set it to `false`.

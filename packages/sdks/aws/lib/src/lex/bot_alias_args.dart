@@ -13,13 +13,13 @@ class BotAliasArgs {
   /// The version of the bot.
   final pulumi.Input<String> botVersion;
   /// The settings that determine how Amazon Lex uses conversation logs for the alias. Attributes are documented under conversation_logs.
-  final pulumi.Input<BotAliasConversationLogs>? conversationLogs;
+  final pulumi.Input<BotAliasConversationLogs?>? conversationLogs;
   /// A description of the alias. Must be less than or equal to 200 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BotAliasArgs].
   /// [botName] The name of the bot.

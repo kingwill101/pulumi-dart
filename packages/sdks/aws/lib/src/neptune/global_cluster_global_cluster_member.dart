@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalClusterGlobalClusterMember {
   /// ARN of member DB Cluster.
-  final pulumi.Input<String>? dbClusterArn;
+  final pulumi.Input<String?>? dbClusterArn;
   /// Whether the member is the primary DB Cluster.
-  final pulumi.Input<bool>? isWriter;
+  final pulumi.Input<bool?>? isWriter;
 
   /// Creates a new [GlobalClusterGlobalClusterMember].
   /// [dbClusterArn] ARN of member DB Cluster.

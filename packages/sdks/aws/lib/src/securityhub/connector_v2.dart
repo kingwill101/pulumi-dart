@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_v2_args.dart';
 import 'connector_v2_connector_provider.dart';
+import 'connector_v2_health.dart';
 import 'connector_v2_state.dart';
 
 /// Manages a Security Hub V2 connector.
@@ -23,12 +24,12 @@ import 'connector_v2_state.dart';
 ///     dependsOn: [example],
 /// });
 /// const exampleConnectorV2 = new aws.securityhub.ConnectorV2("example", {
-///     name: "jira-connector",
 ///     connectorProvider: {
 ///         jiraCloud: {
 ///             projectKey: "SEC",
 ///         },
 ///     },
+///     name: "jira-connector",
 /// }, {
 ///     dependsOn: [exampleAggregatorV2],
 /// });
@@ -42,12 +43,12 @@ import 'connector_v2_state.dart';
 /// example_aggregator_v2 = aws.securityhub.AggregatorV2("example", region_linking_mode="ALL_REGIONS",
 /// opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_connector_v2 = aws.securityhub.ConnectorV2("example",
-///     name="jira-connector",
 ///     connector_provider={
 ///         "jira_cloud": {
 ///             "project_key": "SEC",
 ///         },
 ///     },
+///     name="jira-connector",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aggregator_v2]))
 /// pulumi.export("authUrl", example_connector_v2.auth_url)
 /// ```
@@ -74,7 +75,6 @@ import 'connector_v2_state.dart';
 ///
 ///     var exampleConnectorV2 = new Aws.SecurityHub.ConnectorV2("example", new()
 ///     {
-///         Name = "jira-connector",
 ///         ConnectorProvider = new Aws.SecurityHub.Inputs.ConnectorV2ConnectorProviderArgs
 ///         {
 ///             JiraCloud = new Aws.SecurityHub.Inputs.ConnectorV2ConnectorProviderJiraCloudArgs
@@ -82,6 +82,7 @@ import 'connector_v2_state.dart';
 ///                 ProjectKey = "SEC",
 ///             },
 ///         },
+///         Name = "jira-connector",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -119,12 +120,12 @@ import 'connector_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleConnectorV2, err := securityhub.NewConnectorV2(ctx, "example", &securityhub.ConnectorV2Args{
-/// 			Name: pulumi.String("jira-connector"),
 /// 			ConnectorProvider: &securityhub.ConnectorV2ConnectorProviderArgs{
 /// 				JiraCloud: &securityhub.ConnectorV2ConnectorProviderJiraCloudArgs{
 /// 					ProjectKey: pulumi.String("SEC"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("jira-connector"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAggregatorV2,
 /// 		}))
@@ -153,12 +154,12 @@ import 'connector_v2_state.dart';
 /// }
 /// resource "aws_securityhub_connectorv2" "example" {
 ///   depends_on = [aws_securityhub_aggregatorv2.example]
-///   name       = "jira-connector"
 ///   connector_provider = {
 ///     jira_cloud = {
 ///       project_key = "SEC"
 ///     }
 ///   }
+///   name = "jira-connector"
 /// }
 /// output "authUrl" {
 ///   value = aws_securityhub_connectorv2.example.authUrl
@@ -200,12 +201,12 @@ import 'connector_v2_state.dart';
 ///                 .build());
 ///
 ///         var exampleConnectorV2 = new ConnectorV2("exampleConnectorV2", ConnectorV2Args.builder()
-///             .name("jira-connector")
 ///             .connectorProvider(ConnectorV2ConnectorProviderArgs.builder()
 ///                 .jiraCloud(ConnectorV2ConnectorProviderJiraCloudArgs.builder()
 ///                     .projectKey("SEC")
 ///                     .build())
 ///                 .build())
+///             .name("jira-connector")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAggregatorV2)
 ///                 .build());
@@ -230,10 +231,10 @@ import 'connector_v2_state.dart';
 ///     type: aws:securityhub:ConnectorV2
 ///     name: example
 ///     properties:
-///       name: jira-connector
 ///       connectorProvider:
 ///         jiraCloud:
 ///           projectKey: SEC
+///       name: jira-connector
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAggregatorV2}
@@ -250,14 +251,14 @@ import 'connector_v2_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securityhub.ConnectorV2("example", {
-///     name: "jira-connector",
-///     description: "Jira Cloud integration for security findings",
-///     kmsKeyArn: exampleAwsKmsKey.arn,
 ///     connectorProvider: {
 ///         jiraCloud: {
 ///             projectKey: "SEC",
 ///         },
 ///     },
+///     name: "jira-connector",
+///     description: "Jira Cloud integration for security findings",
+///     kmsKeyArn: exampleAwsKmsKey.arn,
 /// }, {
 ///     dependsOn: [exampleAwsSecurityhubAggregatorV2],
 /// });
@@ -267,14 +268,14 @@ import 'connector_v2_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securityhub.ConnectorV2("example",
-///     name="jira-connector",
-///     description="Jira Cloud integration for security findings",
-///     kms_key_arn=example_aws_kms_key["arn"],
 ///     connector_provider={
 ///         "jira_cloud": {
 ///             "project_key": "SEC",
 ///         },
 ///     },
+///     name="jira-connector",
+///     description="Jira Cloud integration for security findings",
+///     kms_key_arn=example_aws_kms_key["arn"],
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_securityhub_aggregator_v2]))
 /// ```
 /// ```csharp
@@ -287,9 +288,6 @@ import 'connector_v2_state.dart';
 /// {
 ///     var example = new Aws.SecurityHub.ConnectorV2("example", new()
 ///     {
-///         Name = "jira-connector",
-///         Description = "Jira Cloud integration for security findings",
-///         KmsKeyArn = exampleAwsKmsKey.Arn,
 ///         ConnectorProvider = new Aws.SecurityHub.Inputs.ConnectorV2ConnectorProviderArgs
 ///         {
 ///             JiraCloud = new Aws.SecurityHub.Inputs.ConnectorV2ConnectorProviderJiraCloudArgs
@@ -297,6 +295,9 @@ import 'connector_v2_state.dart';
 ///                 ProjectKey = "SEC",
 ///             },
 ///         },
+///         Name = "jira-connector",
+///         Description = "Jira Cloud integration for security findings",
+///         KmsKeyArn = exampleAwsKmsKey.Arn,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -318,14 +319,14 @@ import 'connector_v2_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securityhub.NewConnectorV2(ctx, "example", &securityhub.ConnectorV2Args{
-/// 			Name:        pulumi.String("jira-connector"),
-/// 			Description: pulumi.String("Jira Cloud integration for security findings"),
-/// 			KmsKeyArn:   pulumi.Any(exampleAwsKmsKey.Arn),
 /// 			ConnectorProvider: &securityhub.ConnectorV2ConnectorProviderArgs{
 /// 				JiraCloud: &securityhub.ConnectorV2ConnectorProviderJiraCloudArgs{
 /// 					ProjectKey: pulumi.String("SEC"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("jira-connector"),
+/// 			Description: pulumi.String("Jira Cloud integration for security findings"),
+/// 			KmsKeyArn:   pulumi.Any(exampleAwsKmsKey.Arn),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsSecurityhubAggregatorV2,
 /// 		}))
@@ -346,15 +347,15 @@ import 'connector_v2_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_connectorv2" "example" {
-///   depends_on  = [exampleAwsSecurityhubAggregatorV2]
-///   name        = "jira-connector"
-///   description = "Jira Cloud integration for security findings"
-///   kms_key_arn = exampleAwsKmsKey.arn
+///   depends_on = [exampleAwsSecurityhubAggregatorV2]
 ///   connector_provider = {
 ///     jira_cloud = {
 ///       project_key = "SEC"
 ///     }
 ///   }
+///   name        = "jira-connector"
+///   description = "Jira Cloud integration for security findings"
+///   kms_key_arn = exampleAwsKmsKey.arn
 /// }
 /// ```
 /// ```java
@@ -382,14 +383,14 @@ import 'connector_v2_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConnectorV2("example", ConnectorV2Args.builder()
-///             .name("jira-connector")
-///             .description("Jira Cloud integration for security findings")
-///             .kmsKeyArn(exampleAwsKmsKey.arn())
 ///             .connectorProvider(ConnectorV2ConnectorProviderArgs.builder()
 ///                 .jiraCloud(ConnectorV2ConnectorProviderJiraCloudArgs.builder()
 ///                     .projectKey("SEC")
 ///                     .build())
 ///                 .build())
+///             .name("jira-connector")
+///             .description("Jira Cloud integration for security findings")
+///             .kmsKeyArn(exampleAwsKmsKey.arn())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecurityhubAggregatorV2)
 ///                 .build());
@@ -402,12 +403,12 @@ import 'connector_v2_state.dart';
 ///   example:
 ///     type: aws:securityhub:ConnectorV2
 ///     properties:
-///       name: jira-connector
-///       description: Jira Cloud integration for security findings
-///       kmsKeyArn: ${exampleAwsKmsKey.arn}
 ///       connectorProvider:
 ///         jiraCloud:
 ///           projectKey: SEC
+///       name: jira-connector
+///       description: Jira Cloud integration for security findings
+///       kmsKeyArn: ${exampleAwsKmsKey.arn}
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsSecurityhubAggregatorV2}
@@ -443,7 +444,7 @@ class ConnectorV2 extends pulumi.CustomResource {
   /// A description of the connector.
   late final pulumi.Output<String?> description;
   /// Current health status. See `health` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> healths;
+  late final pulumi.Output<List<ConnectorV2Health>> healths;
   /// ARN of KMS key for connector encryption.
   late final pulumi.Output<String?> kmsKeyArn;
   /// The name of the connector.
@@ -467,18 +468,18 @@ class ConnectorV2 extends pulumi.CustomResource {
           'aws:securityhub/connectorV2:ConnectorV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectorId = registerOutput<String>('connectorId');
     connectorProvider = registerOutput<ConnectorV2ConnectorProvider>('connectorProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorV2ConnectorProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    healths = registerOutput<List<Map<String, dynamic>>>('healths');
+    healths = registerOutput<List<ConnectorV2Health>>('healths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectorV2Health>(guardedValue, (value) => ConnectorV2Health.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ConnectorV2] resource's state with the given [name] and [id].
@@ -486,11 +487,12 @@ class ConnectorV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectorV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectorV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -508,11 +510,32 @@ class ConnectorV2 extends pulumi.CustomResource {
     connectorId = registerOutput<String>('connectorId');
     connectorProvider = registerOutput<ConnectorV2ConnectorProvider>('connectorProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorV2ConnectorProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    healths = registerOutput<List<Map<String, dynamic>>>('healths');
+    healths = registerOutput<List<ConnectorV2Health>>('healths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectorV2Health>(guardedValue, (value) => ConnectorV2Health.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ConnectorV2] resource.
+  ConnectorV2.reference(String urn)
+    : super(
+        'aws:securityhub/connectorV2:ConnectorV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    connectorId = registerOutput<String>('connectorId');
+    connectorProvider = registerOutput<ConnectorV2ConnectorProvider>('connectorProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorV2ConnectorProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    healths = registerOutput<List<ConnectorV2Health>>('healths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectorV2Health>(guardedValue, (value) => ConnectorV2Health.fromMap((value as Map).cast<String, dynamic>())); });
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

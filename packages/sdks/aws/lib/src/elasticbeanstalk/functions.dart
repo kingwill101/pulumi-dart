@@ -147,6 +147,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticbeanstalk/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Use this data source to get the ID of an [elastic beanstalk hosted zone](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region).
 ///
 /// ## Example Usage
@@ -253,6 +264,17 @@ Future<GetHostedZoneResult> getHostedZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostedZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetHostedZoneResult> getHostedZoneOutput(
+  GetHostedZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticbeanstalk/getHostedZone:getHostedZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostedZoneResult.fromMap);
 }
 
 /// Use this data source to get the name of a elastic beanstalk solution stack.
@@ -378,4 +400,15 @@ Future<GetSolutionStackResult> getSolutionStack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSolutionStackResult.fromMap(result);
+}
+
+pulumi.Output<GetSolutionStackResult> getSolutionStackOutput(
+  GetSolutionStackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticbeanstalk/getSolutionStack:getSolutionStack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionStackResult.fromMap);
 }

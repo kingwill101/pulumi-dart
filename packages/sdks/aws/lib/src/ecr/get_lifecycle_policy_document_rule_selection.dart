@@ -8,13 +8,13 @@ class GetLifecyclePolicyDocumentRuleSelection {
   /// Specify a count type to apply to the images. If `countType` is set to `imageCountMoreThan`, you also specify `countNumber` to create a rule that sets a limit on the number of images that exist in your repository. If `countType` is set to `sinceImagePushed`, `sinceImagePulled`, or `sinceImageTransitioned`, you also specify `countUnit` and `countNumber` to specify a time limit on the images that exist in your repository.
   final pulumi.Input<String> countType;
   /// Specify a count unit of `days` to indicate that as the unit of time, in addition to `countNumber`, which is the number of days.
-  final pulumi.Input<String>? countUnit;
+  final pulumi.Input<String?>? countUnit;
   /// The rule will only select images of this storage class. When using a `countType` of `imageCountMoreThan`, `sinceImagePushed`, or `sinceImagePulled`, the only supported value is `standard`. When using a `countType` of `sinceImageTransitioned`, this is required, and the only supported value is `archive`. If you omit this, the value of `standard` will be used.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// You must specify a comma-separated list of image tag patterns that may contain wildcards (\*) on which to take action with your lifecycle policy. For example, if your images are tagged as `prod`, `prod1`, `prod2`, and so on, you would use the tag pattern list `["prod\*"]` to specify all of them. If you specify multiple tags, only the images with all specified tags are selected. There is a maximum limit of four wildcards (\*) per string. For example, `["*test*1*2*3", "test*1*2*3*"]` is valid but `["test*1*2*3*4*5*6"]` is invalid.
-  final pulumi.Input<List<String>>? tagPatternLists;
+  final pulumi.Input<List<String>?>? tagPatternLists;
   /// You must specify a comma-separated list of image tag prefixes on which to take action with your lifecycle policy. For example, if your images are tagged as `prod`, `prod1`, `prod2`, and so on, you would use the tag prefix "prod" to specify all of them. If you specify multiple tags, only images with all specified tags are selected.
-  final pulumi.Input<List<String>>? tagPrefixLists;
+  final pulumi.Input<List<String>?>? tagPrefixLists;
   /// Determines whether the lifecycle policy rule that you are adding specifies a tag for an image. Acceptable options are `tagged`, `untagged`, or `any`. If you specify `any`, then all images have the rule evaluated against them. If you specify `tagged`, then you must also specify a `tagPrefixList` value or a `tagPatternList` value. If you specify `untagged`, then you must omit both `tagPrefixList` and `tagPatternList`.
   final pulumi.Input<String> tagStatus;
 
@@ -50,7 +50,7 @@ class GetLifecyclePolicyDocumentRuleSelection {
 
   factory GetLifecyclePolicyDocumentRuleSelection.fromMap(Map<String, dynamic> map) {
     return GetLifecyclePolicyDocumentRuleSelection(
-      countNumber: pulumi.Input.fromValue(map['countNumber'] as int),
+      countNumber: pulumi.Input.fromValue((map['countNumber'] as num).toInt()),
       countType: pulumi.Input.fromValue(map['countType'] as String),
       countUnit: (() { final guardedValue = map['countUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -16,9 +16,9 @@ import 'web_acl_association_state.dart';
 class WebAclAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer, an Amazon API Gateway stage (REST only, HTTP is unsupported), an Amazon Cognito User Pool, an Amazon AppSync GraphQL API, an Amazon App Runner service, an AWS Amplify application, an Amazon Bedrock AgentCore Gateway, or an Amazon Verified Access instance.
+  /// ARN of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer, an Amazon API Gateway stage (REST only, HTTP is unsupported), an Amazon Cognito User Pool, an Amazon AppSync GraphQL API, an Amazon App Runner service, an AWS Amplify application, an Amazon Bedrock AgentCore Gateway, or an Amazon Verified Access instance.
   late final pulumi.Output<String> resourceArn;
-  /// The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
+  /// ARN of the Web ACL that you want to associate with the resource.
   late final pulumi.Output<String> webAclArn;
 
   /// Creates a new [WebAclAssociation].
@@ -33,7 +33,7 @@ class WebAclAssociation extends pulumi.CustomResource {
           'aws:wafv2/webAclAssociation:WebAclAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -45,11 +45,12 @@ class WebAclAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAclAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -63,6 +64,20 @@ class WebAclAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    webAclArn = registerOutput<String>('webAclArn');
+  }
+
+  /// Creates a typed reference to an existing [WebAclAssociation] resource.
+  WebAclAssociation.reference(String urn)
+    : super(
+        'aws:wafv2/webAclAssociation:WebAclAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     webAclArn = registerOutput<String>('webAclArn');

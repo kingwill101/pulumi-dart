@@ -5,11 +5,11 @@ import 'opt_in_resource_data_table_with_columns_column_wildcard.dart';
 
 class OptInResourceDataTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// List of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
-  final pulumi.Input<List<String>>? columnNames;
+  final pulumi.Input<List<String>?>? columnNames;
   /// Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required. See `columnWildcard` Block for more details.
-  final pulumi.Input<OptInResourceDataTableWithColumnsColumnWildcard>? columnWildcard;
+  final pulumi.Input<OptInResourceDataTableWithColumnsColumnWildcard?>? columnWildcard;
   /// Name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
   final pulumi.Input<String> databaseName;
   /// Name of the table.

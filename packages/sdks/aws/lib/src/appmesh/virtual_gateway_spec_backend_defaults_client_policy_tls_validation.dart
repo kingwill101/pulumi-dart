@@ -5,13 +5,13 @@ import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_subje
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_trust.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
-  /// SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
+  /// SANs for a virtual gateway's listener's TLS validation context.
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames?>? subjectAlternativeNames;
   /// TLS validation context trust.
   final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust> trust;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation].
-  /// [subjectAlternativeNames] SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
+  /// [subjectAlternativeNames] SANs for a virtual gateway's listener's TLS validation context.
   /// [trust] TLS validation context trust.
   const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation({
     this.subjectAlternativeNames,

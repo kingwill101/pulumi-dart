@@ -5,7 +5,7 @@ import 'web_acl_rule_statement.dart';
 
 class WebAclRuleStatementNotStatement {
   /// Single statement to negate. Exactly one statement must be specified.
-  final pulumi.Input<WebAclRuleStatement>? statement;
+  final pulumi.Input<WebAclRuleStatement?>? statement;
 
   /// Creates a new [WebAclRuleStatementNotStatement].
   /// [statement] Single statement to negate. Exactly one statement must be specified.

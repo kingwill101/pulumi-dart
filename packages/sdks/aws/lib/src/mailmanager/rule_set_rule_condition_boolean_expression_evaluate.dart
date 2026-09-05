@@ -6,11 +6,11 @@ import 'rule_set_rule_condition_boolean_expression_evaluate_is_in_address_list.d
 
 class RuleSetRuleConditionBooleanExpressionEvaluate {
   /// Add On result to evaluate. See `analysis` Block.
-  final pulumi.Input<RuleSetRuleConditionBooleanExpressionEvaluateAnalysis>? analysis;
+  final pulumi.Input<RuleSetRuleConditionBooleanExpressionEvaluateAnalysis?>? analysis;
   /// Email authentication attribute to evaluate. Valid values are `SPF` and `DKIM`.
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
   /// Address-list membership expression.
-  final pulumi.Input<RuleSetRuleConditionBooleanExpressionEvaluateIsInAddressList>? isInAddressList;
+  final pulumi.Input<RuleSetRuleConditionBooleanExpressionEvaluateIsInAddressList?>? isInAddressList;
 
   /// Creates a new [RuleSetRuleConditionBooleanExpressionEvaluate].
   /// [analysis] Add On result to evaluate. See `analysis` Block.

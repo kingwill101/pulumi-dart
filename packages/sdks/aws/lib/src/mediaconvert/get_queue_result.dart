@@ -4,51 +4,51 @@
 /// Result data returned by getQueue.
 class GetQueueResult {
   /// The Arn of the queue.
-  final String arn;
-  final String id;
+  final String? arn;
+  final String? id;
   /// The same as `id`.
-  final String name;
-  final String region;
+  final String? name;
+  final String? region;
   /// The status of the queue.
-  final String status;
+  final String? status;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetQueueResult].
   /// [arn] The Arn of the queue.
-  /// [id] Required.
+  /// [id] Optional.
   /// [name] The same as `id`.
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] The status of the queue.
   /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const GetQueueResult({
-    required this.arn,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.status,
-    required this.tags,
+    this.arn,
+    this.id,
+    this.name,
+    this.region,
+    this.status,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'name': name,
-      'region': region,
-      'status': status,
-      'tags': tags,
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'status': ?status,
+      'tags': ?tags,
     };
   }
 
   factory GetQueueResult.fromMap(Map<String, dynamic> map) {
     return GetQueueResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessSecurityConfigSamlOptions {
   /// Group attribute for this SAML integration.
-  final pulumi.Input<String>? groupAttribute;
+  final pulumi.Input<String?>? groupAttribute;
   /// XML IdP metadata file generated from your identity provider.
   final pulumi.Input<String> metadata;
   /// Session timeout, in minutes. Minimum is 5 minutes and maximum is 720 minutes (12 hours). Default is 60 minutes.
-  final pulumi.Input<int>? sessionTimeout;
+  final pulumi.Input<int?>? sessionTimeout;
   /// User attribute for this SAML integration.
-  final pulumi.Input<String>? userAttribute;
+  final pulumi.Input<String?>? userAttribute;
 
   /// Creates a new [ServerlessSecurityConfigSamlOptions].
   /// [groupAttribute] Group attribute for this SAML integration.
@@ -37,7 +37,7 @@ class ServerlessSecurityConfigSamlOptions {
     return ServerlessSecurityConfigSamlOptions(
       groupAttribute: (() { final guardedValue = map['groupAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: pulumi.Input.fromValue(map['metadata'] as String),
-      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       userAttribute: (() { final guardedValue = map['userAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

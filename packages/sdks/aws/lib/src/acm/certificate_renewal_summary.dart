@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateRenewalSummary {
   /// The status of ACM's managed renewal of the certificate
-  final pulumi.Input<String>? renewalStatus;
+  final pulumi.Input<String?>? renewalStatus;
   /// The reason that a renewal request was unsuccessful or is pending
-  final pulumi.Input<String>? renewalStatusReason;
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? renewalStatusReason;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [CertificateRenewalSummary].
   /// [renewalStatus] The status of ACM's managed renewal of the certificate

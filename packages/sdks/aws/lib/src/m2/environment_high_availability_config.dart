@@ -20,7 +20,7 @@ class EnvironmentHighAvailabilityConfig {
 
   factory EnvironmentHighAvailabilityConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentHighAvailabilityConfig(
-      desiredCapacity: pulumi.Input.fromValue(map['desiredCapacity'] as int),
+      desiredCapacity: pulumi.Input.fromValue((map['desiredCapacity'] as num).toInt()),
     );
   }
 }

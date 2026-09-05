@@ -161,7 +161,7 @@ import 'vpc_connector_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the App Runner VPC connector.
+/// - `arn` (String) ARN of the App Runner VPC connector.
 ///
 ///
 /// Using `pulumi import`, import App Runner vpc connector using the `arn`. For example:
@@ -201,15 +201,15 @@ class VpcConnector extends pulumi.CustomResource {
           'aws:apprunner/vpcConnector:VpcConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConnectorName = registerOutput<String>('vpcConnectorName');
     vpcConnectorRevision = registerOutput<int>('vpcConnectorRevision');
   }
@@ -219,11 +219,12 @@ class VpcConnector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcConnector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,11 +240,31 @@ class VpcConnector extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConnectorName = registerOutput<String>('vpcConnectorName');
+    vpcConnectorRevision = registerOutput<int>('vpcConnectorRevision');
+  }
+
+  /// Creates a typed reference to an existing [VpcConnector] resource.
+  VpcConnector.reference(String urn)
+    : super(
+        'aws:apprunner/vpcConnector:VpcConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConnectorName = registerOutput<String>('vpcConnectorName');
     vpcConnectorRevision = registerOutput<int>('vpcConnectorRevision');
   }

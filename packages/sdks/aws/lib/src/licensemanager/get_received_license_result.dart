@@ -11,38 +11,38 @@ import 'get_received_license_validity.dart';
 /// Result data returned by getReceivedLicense.
 class GetReceivedLicenseResult {
   /// Granted license beneficiary. This is in the form of the ARN of the root user of the account.
-  final String beneficiary;
+  final String? beneficiary;
   /// Configuration for consumption of the license. Detailed below
-  final List<GetReceivedLicenseConsumptionConfiguration> consumptionConfigurations;
+  final List<GetReceivedLicenseConsumptionConfiguration>? consumptionConfigurations;
   /// Creation time of the granted license in RFC 3339 format.
-  final String createTime;
+  final String? createTime;
   /// License entitlements. Detailed below
-  final List<GetReceivedLicenseEntitlement> entitlements;
+  final List<GetReceivedLicenseEntitlement>? entitlements;
   /// Home Region of the granted license.
-  final String homeRegion;
+  final String? homeRegion;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Granted license issuer. Detailed below
-  final List<GetReceivedLicenseIssuer> issuers;
-  /// Amazon Resource Name (ARN) of the license.
-  final String licenseArn;
+  final List<GetReceivedLicenseIssuer>? issuers;
+  /// ARN of the license.
+  final String? licenseArn;
   /// Granted license metadata. This is in the form of a set of all meta data. Detailed below
-  final List<GetReceivedLicenseLicenseMetadata> licenseMetadatas;
+  final List<GetReceivedLicenseLicenseMetadata>? licenseMetadatas;
   /// License name.
-  final String licenseName;
+  final String? licenseName;
   /// Product name.
   /// * `productSku ` - Product SKU.
-  final String productName;
-  final String productSku;
+  final String? productName;
+  final String? productSku;
   /// Granted license received metadata. Detailed below
-  final List<GetReceivedLicenseReceivedMetadata> receivedMetadatas;
-  final String region;
+  final List<GetReceivedLicenseReceivedMetadata>? receivedMetadatas;
+  final String? region;
   /// Granted license status.
-  final String status;
+  final String? status;
   /// Date and time range during which the granted license is valid, in ISO8601-UTC format. Detailed below
-  final List<GetReceivedLicenseValidity> validities;
+  final List<GetReceivedLicenseValidity>? validities;
   /// Version of the granted license.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetReceivedLicenseResult].
   /// [beneficiary] Granted license beneficiary. This is in the form of the ARN of the root user of the account.
@@ -52,77 +52,77 @@ class GetReceivedLicenseResult {
   /// [homeRegion] Home Region of the granted license.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [issuers] Granted license issuer. Detailed below
-  /// [licenseArn] Amazon Resource Name (ARN) of the license.
+  /// [licenseArn] ARN of the license.
   /// [licenseMetadatas] Granted license metadata. This is in the form of a set of all meta data. Detailed below
   /// [licenseName] License name.
   /// [productName] Product name.
-  /// [productSku] Required.
+  /// [productSku] Optional.
   /// [receivedMetadatas] Granted license received metadata. Detailed below
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] Granted license status.
   /// [validities] Date and time range during which the granted license is valid, in ISO8601-UTC format. Detailed below
   /// [version] Version of the granted license.
   const GetReceivedLicenseResult({
-    required this.beneficiary,
-    required this.consumptionConfigurations,
-    required this.createTime,
-    required this.entitlements,
-    required this.homeRegion,
-    required this.id,
-    required this.issuers,
-    required this.licenseArn,
-    required this.licenseMetadatas,
-    required this.licenseName,
-    required this.productName,
-    required this.productSku,
-    required this.receivedMetadatas,
-    required this.region,
-    required this.status,
-    required this.validities,
-    required this.version,
+    this.beneficiary,
+    this.consumptionConfigurations,
+    this.createTime,
+    this.entitlements,
+    this.homeRegion,
+    this.id,
+    this.issuers,
+    this.licenseArn,
+    this.licenseMetadatas,
+    this.licenseName,
+    this.productName,
+    this.productSku,
+    this.receivedMetadatas,
+    this.region,
+    this.status,
+    this.validities,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'beneficiary': beneficiary,
-      'consumptionConfigurations': pulumi.Input.encodeList<GetReceivedLicenseConsumptionConfiguration, Map<String, dynamic>>(consumptionConfigurations, (value) => value.toMap()),
-      'createTime': createTime,
-      'entitlements': pulumi.Input.encodeList<GetReceivedLicenseEntitlement, Map<String, dynamic>>(entitlements, (value) => value.toMap()),
-      'homeRegion': homeRegion,
-      'id': id,
-      'issuers': pulumi.Input.encodeList<GetReceivedLicenseIssuer, Map<String, dynamic>>(issuers, (value) => value.toMap()),
-      'licenseArn': licenseArn,
-      'licenseMetadatas': pulumi.Input.encodeList<GetReceivedLicenseLicenseMetadata, Map<String, dynamic>>(licenseMetadatas, (value) => value.toMap()),
-      'licenseName': licenseName,
-      'productName': productName,
-      'productSku': productSku,
-      'receivedMetadatas': pulumi.Input.encodeList<GetReceivedLicenseReceivedMetadata, Map<String, dynamic>>(receivedMetadatas, (value) => value.toMap()),
-      'region': region,
-      'status': status,
-      'validities': pulumi.Input.encodeList<GetReceivedLicenseValidity, Map<String, dynamic>>(validities, (value) => value.toMap()),
-      'version': version,
+      'beneficiary': ?beneficiary,
+      'consumptionConfigurations': ?(() { final guardedValue = consumptionConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReceivedLicenseConsumptionConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createTime': ?createTime,
+      'entitlements': ?(() { final guardedValue = entitlements; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReceivedLicenseEntitlement, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'homeRegion': ?homeRegion,
+      'id': ?id,
+      'issuers': ?(() { final guardedValue = issuers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReceivedLicenseIssuer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'licenseArn': ?licenseArn,
+      'licenseMetadatas': ?(() { final guardedValue = licenseMetadatas; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReceivedLicenseLicenseMetadata, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'licenseName': ?licenseName,
+      'productName': ?productName,
+      'productSku': ?productSku,
+      'receivedMetadatas': ?(() { final guardedValue = receivedMetadatas; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReceivedLicenseReceivedMetadata, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
+      'status': ?status,
+      'validities': ?(() { final guardedValue = validities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReceivedLicenseValidity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'version': ?version,
     };
   }
 
   factory GetReceivedLicenseResult.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseResult(
-      beneficiary: map['beneficiary'] as String,
-      consumptionConfigurations: pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfiguration>(map['consumptionConfigurations']!, (value) => GetReceivedLicenseConsumptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      entitlements: pulumi.Input.decodeList<GetReceivedLicenseEntitlement>(map['entitlements']!, (value) => GetReceivedLicenseEntitlement.fromMap((value as Map).cast<String, dynamic>())),
-      homeRegion: map['homeRegion'] as String,
-      id: map['id'] as String,
-      issuers: pulumi.Input.decodeList<GetReceivedLicenseIssuer>(map['issuers']!, (value) => GetReceivedLicenseIssuer.fromMap((value as Map).cast<String, dynamic>())),
-      licenseArn: map['licenseArn'] as String,
-      licenseMetadatas: pulumi.Input.decodeList<GetReceivedLicenseLicenseMetadata>(map['licenseMetadatas']!, (value) => GetReceivedLicenseLicenseMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      licenseName: map['licenseName'] as String,
-      productName: map['productName'] as String,
-      productSku: map['productSku'] as String,
-      receivedMetadatas: pulumi.Input.decodeList<GetReceivedLicenseReceivedMetadata>(map['receivedMetadatas']!, (value) => GetReceivedLicenseReceivedMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
-      status: map['status'] as String,
-      validities: pulumi.Input.decodeList<GetReceivedLicenseValidity>(map['validities']!, (value) => GetReceivedLicenseValidity.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] as String,
+      beneficiary: (() { final guardedValue = map['beneficiary']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      consumptionConfigurations: (() { final guardedValue = map['consumptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfiguration>(guardedValue, (value) => GetReceivedLicenseConsumptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      entitlements: (() { final guardedValue = map['entitlements']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReceivedLicenseEntitlement>(guardedValue, (value) => GetReceivedLicenseEntitlement.fromMap((value as Map).cast<String, dynamic>())); })(),
+      homeRegion: (() { final guardedValue = map['homeRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      issuers: (() { final guardedValue = map['issuers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReceivedLicenseIssuer>(guardedValue, (value) => GetReceivedLicenseIssuer.fromMap((value as Map).cast<String, dynamic>())); })(),
+      licenseArn: (() { final guardedValue = map['licenseArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      licenseMetadatas: (() { final guardedValue = map['licenseMetadatas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReceivedLicenseLicenseMetadata>(guardedValue, (value) => GetReceivedLicenseLicenseMetadata.fromMap((value as Map).cast<String, dynamic>())); })(),
+      licenseName: (() { final guardedValue = map['licenseName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productName: (() { final guardedValue = map['productName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productSku: (() { final guardedValue = map['productSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      receivedMetadatas: (() { final guardedValue = map['receivedMetadatas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReceivedLicenseReceivedMetadata>(guardedValue, (value) => GetReceivedLicenseReceivedMetadata.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validities: (() { final guardedValue = map['validities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReceivedLicenseValidity>(guardedValue, (value) => GetReceivedLicenseValidity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

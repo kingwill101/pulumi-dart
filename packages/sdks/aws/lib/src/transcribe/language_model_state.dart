@@ -6,22 +6,22 @@ import 'language_model_input_data_config.dart';
 /// Input properties used for looking up and filtering LanguageModel resources.
 class LanguageModelState {
   /// ARN of the LanguageModel.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of reference base model.
-  final pulumi.Input<String>? baseModelName;
+  final pulumi.Input<String?>? baseModelName;
   /// Input data configuration for the LanguageModel. See `inputDataConfig` Block for details.
-  final pulumi.Input<LanguageModelInputDataConfig>? inputDataConfig;
+  final pulumi.Input<LanguageModelInputDataConfig?>? inputDataConfig;
   /// Language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Model name.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the LanguageModel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [LanguageModelState].
   /// [arn] ARN of the LanguageModel.

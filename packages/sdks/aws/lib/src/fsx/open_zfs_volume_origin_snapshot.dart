@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenZfsVolumeOriginSnapshot {
   /// Specifies the strategy used when copying data from the snapshot to the new volume. Valid values are `CLONE`, `FULL_COPY`, `INCREMENTAL_COPY`.
   final pulumi.Input<String> copyStrategy;
-  /// The Amazon Resource Name (ARN) of the origin snapshot.
+  /// The ARN of the origin snapshot.
   final pulumi.Input<String> snapshotArn;
 
   /// Creates a new [OpenZfsVolumeOriginSnapshot].
   /// [copyStrategy] Specifies the strategy used when copying data from the snapshot to the new volume. Valid values are `CLONE`, `FULL_COPY`, `INCREMENTAL_COPY`.
-  /// [snapshotArn] The Amazon Resource Name (ARN) of the origin snapshot.
+  /// [snapshotArn] The ARN of the origin snapshot.
   const OpenZfsVolumeOriginSnapshot({
     required this.copyStrategy,
     required this.snapshotArn,

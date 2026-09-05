@@ -650,6 +650,11 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// // ...
 /// const sfnStateMachine = new aws.sfn.StateMachine("sfn_state_machine", {
+///     loggingConfiguration: {
+///         logDestination: `${logGroupForSfn.arn}:*`,
+///         includeExecutionData: true,
+///         level: "ERROR",
+///     },
 ///     name: "my-state-machine",
 ///     roleArn: iamForSfn.arn,
 ///     definition: `{
@@ -664,11 +669,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// `,
-///     loggingConfiguration: {
-///         logDestination: `${logGroupForSfn.arn}:*`,
-///         includeExecutionData: true,
-///         level: "ERROR",
-///     },
 /// });
 /// ```
 /// ```python
@@ -677,6 +677,11 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// # ...
 /// sfn_state_machine = aws.sfn.StateMachine("sfn_state_machine",
+///     logging_configuration={
+///         "log_destination": f"{log_group_for_sfn['arn']}:*",
+///         "include_execution_data": True,
+///         "level": "ERROR",
+///     },
 ///     name="my-state-machine",
 ///     role_arn=iam_for_sfn["arn"],
 ///     definition=f"""{{
@@ -690,12 +695,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }}
 ///   }}
 /// }}
-/// """,
-///     logging_configuration={
-///         "log_destination": f"{log_group_for_sfn['arn']}:*",
-///         "include_execution_data": True,
-///         "level": "ERROR",
-///     })
+/// """)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -708,6 +708,12 @@ import 'state_machine_tracing_configuration.dart';
 ///     // ...
 ///     var sfnStateMachine = new Aws.Sfn.StateMachine("sfn_state_machine", new()
 ///     {
+///         LoggingConfiguration = new Aws.Sfn.Inputs.StateMachineLoggingConfigurationArgs
+///         {
+///             LogDestination = $"{logGroupForSfn.Arn}:*",
+///             IncludeExecutionData = true,
+///             Level = "ERROR",
+///         },
 ///         Name = "my-state-machine",
 ///         RoleArn = iamForSfn.Arn,
 ///         Definition = @$"{{
@@ -722,12 +728,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }}
 /// }}
 /// ",
-///         LoggingConfiguration = new Aws.Sfn.Inputs.StateMachineLoggingConfigurationArgs
-///         {
-///             LogDestination = $"{logGroupForSfn.Arn}:*",
-///             IncludeExecutionData = true,
-///             Level = "ERROR",
-///         },
 ///     });
 ///
 /// });
@@ -744,6 +744,11 @@ import 'state_machine_tracing_configuration.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// ...
 /// 		_, err := sfn.NewStateMachine(ctx, "sfn_state_machine", &sfn.StateMachineArgs{
+/// 			LoggingConfiguration: &sfn.StateMachineLoggingConfigurationArgs{
+/// 				LogDestination:       pulumi.Sprintf("%v:*", logGroupForSfn.Arn),
+/// 				IncludeExecutionData: pulumi.Bool(true),
+/// 				Level:                pulumi.String("ERROR"),
+/// 			},
 /// 			Name:    pulumi.String("my-state-machine"),
 /// 			RoleArn: pulumi.Any(iamForSfn.Arn),
 /// 			Definition: pulumi.Sprintf(`{
@@ -758,11 +763,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// `, lambda.Arn),
-/// 			LoggingConfiguration: &sfn.StateMachineLoggingConfigurationArgs{
-/// 				LogDestination:       pulumi.Sprintf("%v:*", logGroupForSfn.Arn),
-/// 				IncludeExecutionData: pulumi.Bool(true),
-/// 				Level:                pulumi.String("ERROR"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -782,6 +782,11 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// # ...
 /// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   logging_configuration = {
+///     log_destination        ="${logGroupForSfn.arn}:*"
+///     include_execution_data = true
+///     level                  = "ERROR"
+///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
 ///   definition ="{
@@ -796,11 +801,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// "
-///   logging_configuration = {
-///     log_destination        ="${logGroupForSfn.arn}:*"
-///     include_execution_data = true
-///     level                  = "ERROR"
-///   }
 /// }
 /// ```
 /// ```java
@@ -827,6 +827,11 @@ import 'state_machine_tracing_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
+///             .loggingConfiguration(StateMachineLoggingConfigurationArgs.builder()
+///                 .logDestination(String.format("%s:*", logGroupForSfn.arn()))
+///                 .includeExecutionData(true)
+///                 .level("ERROR")
+///                 .build())
 ///             .name("my-state-machine")
 ///             .roleArn(iamForSfn.arn())
 ///             .definition("""
@@ -842,11 +847,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// ", lambda.arn()))
-///             .loggingConfiguration(StateMachineLoggingConfigurationArgs.builder()
-///                 .logDestination(String.format("%s:*", logGroupForSfn.arn()))
-///                 .includeExecutionData(true)
-///                 .level("ERROR")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -859,6 +859,10 @@ import 'state_machine_tracing_configuration.dart';
 ///     type: aws:sfn:StateMachine
 ///     name: sfn_state_machine
 ///     properties:
+///       loggingConfiguration:
+///         logDestination: ${logGroupForSfn.arn}:*
+///         includeExecutionData: true
+///         level: ERROR
 ///       name: my-state-machine
 ///       roleArn: ${iamForSfn.arn}
 ///       definition: |
@@ -873,10 +877,6 @@ import 'state_machine_tracing_configuration.dart';
 ///             }
 ///           }
 ///         }
-///       loggingConfiguration:
-///         logDestination: ${logGroupForSfn.arn}:*
-///         includeExecutionData: true
-///         level: ERROR
 /// ```
 ///
 ///
@@ -891,6 +891,11 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// // ...
 /// const sfnStateMachine = new aws.sfn.StateMachine("sfn_state_machine", {
+///     encryptionConfiguration: {
+///         kmsKeyId: kmsKeyForSfn.arn,
+///         type: "CUSTOMER_MANAGED_KMS_KEY",
+///         kmsDataKeyReusePeriodSeconds: 900,
+///     },
 ///     name: "my-state-machine",
 ///     roleArn: iamForSfn.arn,
 ///     definition: `{
@@ -905,11 +910,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// `,
-///     encryptionConfiguration: {
-///         kmsKeyId: kmsKeyForSfn.arn,
-///         type: "CUSTOMER_MANAGED_KMS_KEY",
-///         kmsDataKeyReusePeriodSeconds: 900,
-///     },
 /// });
 /// ```
 /// ```python
@@ -918,6 +918,11 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// # ...
 /// sfn_state_machine = aws.sfn.StateMachine("sfn_state_machine",
+///     encryption_configuration={
+///         "kms_key_id": kms_key_for_sfn["arn"],
+///         "type": "CUSTOMER_MANAGED_KMS_KEY",
+///         "kms_data_key_reuse_period_seconds": 900,
+///     },
 ///     name="my-state-machine",
 ///     role_arn=iam_for_sfn["arn"],
 ///     definition=f"""{{
@@ -931,12 +936,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }}
 ///   }}
 /// }}
-/// """,
-///     encryption_configuration={
-///         "kms_key_id": kms_key_for_sfn["arn"],
-///         "type": "CUSTOMER_MANAGED_KMS_KEY",
-///         "kms_data_key_reuse_period_seconds": 900,
-///     })
+/// """)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -949,6 +949,12 @@ import 'state_machine_tracing_configuration.dart';
 ///     // ...
 ///     var sfnStateMachine = new Aws.Sfn.StateMachine("sfn_state_machine", new()
 ///     {
+///         EncryptionConfiguration = new Aws.Sfn.Inputs.StateMachineEncryptionConfigurationArgs
+///         {
+///             KmsKeyId = kmsKeyForSfn.Arn,
+///             Type = "CUSTOMER_MANAGED_KMS_KEY",
+///             KmsDataKeyReusePeriodSeconds = 900,
+///         },
 ///         Name = "my-state-machine",
 ///         RoleArn = iamForSfn.Arn,
 ///         Definition = @$"{{
@@ -963,12 +969,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }}
 /// }}
 /// ",
-///         EncryptionConfiguration = new Aws.Sfn.Inputs.StateMachineEncryptionConfigurationArgs
-///         {
-///             KmsKeyId = kmsKeyForSfn.Arn,
-///             Type = "CUSTOMER_MANAGED_KMS_KEY",
-///             KmsDataKeyReusePeriodSeconds = 900,
-///         },
 ///     });
 ///
 /// });
@@ -985,6 +985,11 @@ import 'state_machine_tracing_configuration.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// ...
 /// 		_, err := sfn.NewStateMachine(ctx, "sfn_state_machine", &sfn.StateMachineArgs{
+/// 			EncryptionConfiguration: &sfn.StateMachineEncryptionConfigurationArgs{
+/// 				KmsKeyId:                     pulumi.Any(kmsKeyForSfn.Arn),
+/// 				Type:                         pulumi.String("CUSTOMER_MANAGED_KMS_KEY"),
+/// 				KmsDataKeyReusePeriodSeconds: pulumi.Int(900),
+/// 			},
 /// 			Name:    pulumi.String("my-state-machine"),
 /// 			RoleArn: pulumi.Any(iamForSfn.Arn),
 /// 			Definition: pulumi.Sprintf(`{
@@ -999,11 +1004,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// `, lambda.Arn),
-/// 			EncryptionConfiguration: &sfn.StateMachineEncryptionConfigurationArgs{
-/// 				KmsKeyId:                     pulumi.Any(kmsKeyForSfn.Arn),
-/// 				Type:                         pulumi.String("CUSTOMER_MANAGED_KMS_KEY"),
-/// 				KmsDataKeyReusePeriodSeconds: pulumi.Int(900),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1023,6 +1023,11 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// # ...
 /// resource "aws_sfn_statemachine" "sfn_state_machine" {
+///   encryption_configuration = {
+///     kms_key_id                        = kmsKeyForSfn.arn
+///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
+///     kms_data_key_reuse_period_seconds = 900
+///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
 ///   definition ="{
@@ -1037,11 +1042,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// "
-///   encryption_configuration = {
-///     kms_key_id                        = kmsKeyForSfn.arn
-///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
-///     kms_data_key_reuse_period_seconds = 900
-///   }
 /// }
 /// ```
 /// ```java
@@ -1068,6 +1068,11 @@ import 'state_machine_tracing_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
+///             .encryptionConfiguration(StateMachineEncryptionConfigurationArgs.builder()
+///                 .kmsKeyId(kmsKeyForSfn.arn())
+///                 .type("CUSTOMER_MANAGED_KMS_KEY")
+///                 .kmsDataKeyReusePeriodSeconds(900)
+///                 .build())
 ///             .name("my-state-machine")
 ///             .roleArn(iamForSfn.arn())
 ///             .definition("""
@@ -1083,11 +1088,6 @@ import 'state_machine_tracing_configuration.dart';
 ///   }
 /// }
 /// ", lambda.arn()))
-///             .encryptionConfiguration(StateMachineEncryptionConfigurationArgs.builder()
-///                 .kmsKeyId(kmsKeyForSfn.arn())
-///                 .type("CUSTOMER_MANAGED_KMS_KEY")
-///                 .kmsDataKeyReusePeriodSeconds(900)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -1100,6 +1100,10 @@ import 'state_machine_tracing_configuration.dart';
 ///     type: aws:sfn:StateMachine
 ///     name: sfn_state_machine
 ///     properties:
+///       encryptionConfiguration:
+///         kmsKeyId: ${kmsKeyForSfn.arn}
+///         type: CUSTOMER_MANAGED_KMS_KEY
+///         kmsDataKeyReusePeriodSeconds: 900
 ///       name: my-state-machine
 ///       roleArn: ${iamForSfn.arn}
 ///       definition: |
@@ -1114,10 +1118,6 @@ import 'state_machine_tracing_configuration.dart';
 ///             }
 ///           }
 ///         }
-///       encryptionConfiguration:
-///         kmsKeyId: ${kmsKeyForSfn.arn}
-///         type: CUSTOMER_MANAGED_KMS_KEY
-///         kmsDataKeyReusePeriodSeconds: 900
 /// ```
 ///
 ///
@@ -1156,7 +1156,7 @@ class StateMachine extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> revisionId;
-  /// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
+  /// ARN of the IAM role to use for this state machine.
   late final pulumi.Output<String> roleArn;
   /// The ARN of the state machine version.
   late final pulumi.Output<String> stateMachineVersionArn;
@@ -1184,7 +1184,7 @@ class StateMachine extends pulumi.CustomResource {
           'aws:sfn/stateMachine:StateMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');
@@ -1200,8 +1200,8 @@ class StateMachine extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     stateMachineVersionArn = registerOutput<String>('stateMachineVersionArn');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tracingConfiguration = registerOutput<StateMachineTracingConfiguration>('tracingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateMachineTracingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String?>('type');
     versionDescription = registerOutput<String>('versionDescription');
@@ -1212,11 +1212,12 @@ class StateMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StateMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StateMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1244,8 +1245,38 @@ class StateMachine extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     stateMachineVersionArn = registerOutput<String>('stateMachineVersionArn');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tracingConfiguration = registerOutput<StateMachineTracingConfiguration>('tracingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateMachineTracingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String?>('type');
+    versionDescription = registerOutput<String>('versionDescription');
+  }
+
+  /// Creates a typed reference to an existing [StateMachine] resource.
+  StateMachine.reference(String urn)
+    : super(
+        'aws:sfn/stateMachine:StateMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationDate = registerOutput<String>('creationDate');
+    definition = registerOutput<String>('definition');
+    description = registerOutput<String>('description');
+    encryptionConfiguration = registerOutput<StateMachineEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateMachineEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingConfiguration = registerOutput<StateMachineLoggingConfiguration>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateMachineLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    publish = registerOutput<bool?>('publish');
+    region = registerOutput<String>('region');
+    revisionId = registerOutput<String>('revisionId');
+    roleArn = registerOutput<String>('roleArn');
+    stateMachineVersionArn = registerOutput<String>('stateMachineVersionArn');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tracingConfiguration = registerOutput<StateMachineTracingConfiguration>('tracingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateMachineTracingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String?>('type');
     versionDescription = registerOutput<String>('versionDescription');

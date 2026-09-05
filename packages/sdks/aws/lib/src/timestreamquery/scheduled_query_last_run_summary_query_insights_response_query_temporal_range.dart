@@ -5,7 +5,7 @@ import 'scheduled_query_last_run_summary_query_insights_response_query_temporal_
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange {
   /// Insights into the most sub-optimal performing table on the temporal axis:
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>>? maxes;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>?>? maxes;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:

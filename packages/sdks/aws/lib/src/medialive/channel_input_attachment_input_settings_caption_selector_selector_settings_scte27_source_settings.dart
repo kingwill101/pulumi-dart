@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings {
-  final pulumi.Input<String>? ocrLanguage;
-  final pulumi.Input<int>? pid;
+  final pulumi.Input<String?>? ocrLanguage;
+  final pulumi.Input<int?>? pid;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings].
   /// [ocrLanguage] Optional.
@@ -24,7 +24,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27So
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings(
       ocrLanguage: (() { final guardedValue = map['ocrLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pid: (() { final guardedValue = map['pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pid: (() { final guardedValue = map['pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

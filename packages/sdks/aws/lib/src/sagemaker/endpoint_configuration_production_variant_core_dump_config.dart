@@ -6,7 +6,7 @@ class EndpointConfigurationProductionVariantCoreDumpConfig {
   /// S3 bucket to send the core dump to.
   final pulumi.Input<String> destinationS3Uri;
   /// KMS key that SageMaker AI uses to encrypt the core dump data at rest using S3 server-side encryption.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
 
   /// Creates a new [EndpointConfigurationProductionVariantCoreDumpConfig].
   /// [destinationS3Uri] S3 bucket to send the core dump to.

@@ -6,9 +6,9 @@ import 'evaluation_job_evaluation_config_human.dart';
 
 class EvaluationJobEvaluationConfig {
   /// Configuration for an automated evaluation job that computes metrics. See `automated` Block below.
-  final pulumi.Input<EvaluationJobEvaluationConfigAutomated>? automated;
+  final pulumi.Input<EvaluationJobEvaluationConfigAutomated?>? automated;
   /// Configuration for an evaluation job that uses human workers. See `human` Block below.
-  final pulumi.Input<EvaluationJobEvaluationConfigHuman>? human;
+  final pulumi.Input<EvaluationJobEvaluationConfigHuman?>? human;
 
   /// Creates a new [EvaluationJobEvaluationConfig].
   /// [automated] Configuration for an automated evaluation job that computes metrics. See `automated` Block below.

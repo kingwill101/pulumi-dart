@@ -6,33 +6,33 @@ import 'access_grant_grantee.dart';
 
 /// Input properties used for looking up and filtering AccessGrant resources.
 class AccessGrantState {
-  /// Amazon Resource Name (ARN) of the S3 Access Grant.
-  final pulumi.Input<String>? accessGrantArn;
+  /// ARN of the S3 Access Grant.
+  final pulumi.Input<String?>? accessGrantArn;
   /// Unique ID of the S3 Access Grant.
-  final pulumi.Input<String>? accessGrantId;
+  final pulumi.Input<String?>? accessGrantId;
   /// See `accessGrantsLocationConfiguration` Block below for more details.
-  final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration>? accessGrantsLocationConfiguration;
+  final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration?>? accessGrantsLocationConfiguration;
   /// ID of the S3 Access Grants location to with the access grant is giving access.
-  final pulumi.Input<String>? accessGrantsLocationId;
+  final pulumi.Input<String?>? accessGrantsLocationId;
   /// AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Access grant's scope.
-  final pulumi.Input<String>? grantScope;
+  final pulumi.Input<String?>? grantScope;
   /// See `grantee` Block below for more details.
-  final pulumi.Input<AccessGrantGrantee>? grantee;
+  final pulumi.Input<AccessGrantGrantee?>? grantee;
   /// Access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
-  final pulumi.Input<String>? permission;
+  final pulumi.Input<String?>? permission;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
-  final pulumi.Input<String>? s3PrefixType;
+  final pulumi.Input<String?>? s3PrefixType;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AccessGrantState].
-  /// [accessGrantArn] Amazon Resource Name (ARN) of the S3 Access Grant.
+  /// [accessGrantArn] ARN of the S3 Access Grant.
   /// [accessGrantId] Unique ID of the S3 Access Grant.
   /// [accessGrantsLocationConfiguration] See `accessGrantsLocationConfiguration` Block below for more details.
   /// [accessGrantsLocationId] ID of the S3 Access Grants location to with the access grant is giving access.

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GatewayAssociationProposal resources.
 class GatewayAssociationProposalState {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
-  final pulumi.Input<List<String>>? allowedPrefixes;
+  final pulumi.Input<List<String>?>? allowedPrefixes;
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
-  final pulumi.Input<String>? associatedGatewayId;
+  final pulumi.Input<String?>? associatedGatewayId;
   /// The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
-  final pulumi.Input<String>? associatedGatewayOwnerAccountId;
+  final pulumi.Input<String?>? associatedGatewayOwnerAccountId;
   /// The type of the associated gateway, `transitGateway` or `virtualPrivateGateway`.
-  final pulumi.Input<String>? associatedGatewayType;
+  final pulumi.Input<String?>? associatedGatewayType;
   /// Direct Connect Gateway identifier.
-  final pulumi.Input<String>? dxGatewayId;
+  final pulumi.Input<String?>? dxGatewayId;
   /// AWS Account identifier of the Direct Connect Gateway's owner.
-  final pulumi.Input<String>? dxGatewayOwnerAccountId;
+  final pulumi.Input<String?>? dxGatewayOwnerAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GatewayAssociationProposalState].
   /// [allowedPrefixes] VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.

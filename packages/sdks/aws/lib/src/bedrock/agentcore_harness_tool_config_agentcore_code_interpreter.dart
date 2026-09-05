@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreHarnessToolConfigAgentcoreCodeInterpreter {
   /// ARN of the AgentCore code interpreter resource.
-  final pulumi.Input<String>? codeInterpreterArn;
+  final pulumi.Input<String?>? codeInterpreterArn;
 
   /// Creates a new [AgentcoreHarnessToolConfigAgentcoreCodeInterpreter].
   /// [codeInterpreterArn] ARN of the AgentCore code interpreter resource.

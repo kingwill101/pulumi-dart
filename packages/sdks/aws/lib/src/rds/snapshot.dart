@@ -220,7 +220,7 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> availabilityZone;
   /// The DB Instance Identifier from which to take the snapshot.
   late final pulumi.Output<String> dbInstanceIdentifier;
-  /// The Amazon Resource Name (ARN) for the DB snapshot.
+  /// ARN for the DB snapshot.
   late final pulumi.Output<String> dbSnapshotArn;
   /// The Identifier for the snapshot.
   late final pulumi.Output<String> dbSnapshotIdentifier;
@@ -271,7 +271,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:rds/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');
@@ -287,14 +287,14 @@ class Snapshot extends pulumi.CustomResource {
     optionGroupName = registerOutput<String>('optionGroupName');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
-    sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
+    sharedAccounts = registerOutput<List<String>?>('sharedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotType = registerOutput<String>('snapshotType');
     sourceDbSnapshotIdentifier = registerOutput<String>('sourceDbSnapshotIdentifier');
     sourceRegion = registerOutput<String>('sourceRegion');
     status = registerOutput<String>('status');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -303,11 +303,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,14 +336,48 @@ class Snapshot extends pulumi.CustomResource {
     optionGroupName = registerOutput<String>('optionGroupName');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
-    sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
+    sharedAccounts = registerOutput<List<String>?>('sharedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotType = registerOutput<String>('snapshotType');
     sourceDbSnapshotIdentifier = registerOutput<String>('sourceDbSnapshotIdentifier');
     sourceRegion = registerOutput<String>('sourceRegion');
     status = registerOutput<String>('status');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'aws:rds/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatedStorage = registerOutput<int>('allocatedStorage');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
+    dbSnapshotArn = registerOutput<String>('dbSnapshotArn');
+    dbSnapshotIdentifier = registerOutput<String>('dbSnapshotIdentifier');
+    encrypted = registerOutput<bool>('encrypted');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    iops = registerOutput<int>('iops');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    licenseModel = registerOutput<String>('licenseModel');
+    optionGroupName = registerOutput<String>('optionGroupName');
+    port = registerOutput<int>('port');
+    region = registerOutput<String>('region');
+    sharedAccounts = registerOutput<List<String>?>('sharedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotType = registerOutput<String>('snapshotType');
+    sourceDbSnapshotIdentifier = registerOutput<String>('sourceDbSnapshotIdentifier');
+    sourceRegion = registerOutput<String>('sourceRegion');
+    status = registerOutput<String>('status');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

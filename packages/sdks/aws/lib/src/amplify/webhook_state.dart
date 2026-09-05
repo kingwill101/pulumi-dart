@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Webhook resources.
 class WebhookState {
   /// Unique ID for an Amplify app.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// ARN for the webhook.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name for a branch that is part of the Amplify app.
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// Description for a webhook.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// URL of the webhook.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [WebhookState].
   /// [appId] Unique ID for an Amplify app.

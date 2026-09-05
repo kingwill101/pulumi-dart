@@ -150,7 +150,7 @@ class VpcEndpointSubnetAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');
@@ -162,11 +162,12 @@ class VpcEndpointSubnetAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointSubnetAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpointSubnetAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -180,6 +181,20 @@ class VpcEndpointSubnetAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpointSubnetAssociation] resource.
+  VpcEndpointSubnetAssociation.reference(String urn)
+    : super(
+        'aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');

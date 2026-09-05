@@ -7,13 +7,13 @@ import 'v2models_intent_confirmation_setting_failure_conditional_conditional_bra
 
 class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranch {
   /// Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondition>? condition;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchCondition?>? condition;
   /// Name of the branch.
   final pulumi.Input<String> name;
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalConditionalBranch].
   /// [condition] Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.

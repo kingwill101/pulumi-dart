@@ -35,10 +35,10 @@ class GetServerlessCollectionGroupCapacityLimit {
 
   factory GetServerlessCollectionGroupCapacityLimit.fromMap(Map<String, dynamic> map) {
     return GetServerlessCollectionGroupCapacityLimit(
-      maxIndexingCapacityInOcu: pulumi.Input.fromValue(map['maxIndexingCapacityInOcu'] as double),
-      maxSearchCapacityInOcu: pulumi.Input.fromValue(map['maxSearchCapacityInOcu'] as double),
-      minIndexingCapacityInOcu: pulumi.Input.fromValue(map['minIndexingCapacityInOcu'] as double),
-      minSearchCapacityInOcu: pulumi.Input.fromValue(map['minSearchCapacityInOcu'] as double),
+      maxIndexingCapacityInOcu: pulumi.Input.fromValue((map['maxIndexingCapacityInOcu'] as num).toDouble()),
+      maxSearchCapacityInOcu: pulumi.Input.fromValue((map['maxSearchCapacityInOcu'] as num).toDouble()),
+      minIndexingCapacityInOcu: pulumi.Input.fromValue((map['minIndexingCapacityInOcu'] as num).toDouble()),
+      minSearchCapacityInOcu: pulumi.Input.fromValue((map['minSearchCapacityInOcu'] as num).toDouble()),
     );
   }
 }

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigatewayv2_get_apis_get_apis_args_doc}
 class GetApisArgs {
   /// API name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// API protocol.
-  final pulumi.Input<String>? protocolType;
+  final pulumi.Input<String?>? protocolType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired APIs.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetApisArgs].
   /// [name] API name.

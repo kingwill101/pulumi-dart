@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupOnlineStoreConfigSecurityConfig {
-  /// The ID of the AWS Key Management Service (AWS KMS) key that SageMaker AI Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
-  final pulumi.Input<String>? kmsKeyId;
+  /// ID of the KMS key that SageMaker AI Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
+  final pulumi.Input<String?>? kmsKeyId;
 
   /// Creates a new [FeatureGroupOnlineStoreConfigSecurityConfig].
-  /// [kmsKeyId] The ID of the AWS Key Management Service (AWS KMS) key that SageMaker AI Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
+  /// [kmsKeyId] ID of the KMS key that SageMaker AI Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
   const FeatureGroupOnlineStoreConfigSecurityConfig({
     this.kmsKeyId,
   });

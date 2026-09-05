@@ -5,7 +5,7 @@ import 'listener_default_action_forward_target_group.dart';
 
 class ListenerDefaultActionForward {
   /// One or more target group blocks. See `targetGroups` Block below.
-  final pulumi.Input<List<ListenerDefaultActionForwardTargetGroup>>? targetGroups;
+  final pulumi.Input<List<ListenerDefaultActionForwardTargetGroup>?>? targetGroups;
 
   /// Creates a new [ListenerDefaultActionForward].
   /// [targetGroups] One or more target group blocks. See `targetGroups` Block below.

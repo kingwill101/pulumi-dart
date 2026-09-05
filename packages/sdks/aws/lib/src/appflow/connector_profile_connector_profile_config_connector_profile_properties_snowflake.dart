@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake {
   /// Name of the account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Name of the Amazon S3 bucket associated with Snowflake.
   final pulumi.Input<String> bucketName;
   /// Bucket path that refers to the Amazon S3 bucket associated with Snowflake.
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketPrefix;
   /// Snowflake Private Link service name to be used for private data transfers.
-  final pulumi.Input<String>? privateLinkServiceName;
+  final pulumi.Input<String?>? privateLinkServiceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `&lt;Database&gt;.&lt;Schema&gt;.&lt;Stage Name&gt;`.
   final pulumi.Input<String> stage;
   /// Name of the Snowflake warehouse.

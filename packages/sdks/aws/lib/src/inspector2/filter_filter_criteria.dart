@@ -50,97 +50,97 @@ import 'filter_filter_criteria_vulnerable_package.dart';
 
 class FilterFilterCriteria {
   /// (Optional) The AWS account ID in which the finding was generated. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaAwsAccountId>>? awsAccountIds;
+  final pulumi.Input<List<FilterFilterCriteriaAwsAccountId>?>? awsAccountIds;
   /// (Optional) The project name in a code repository. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaCodeRepositoryProjectName>>? codeRepositoryProjectNames;
+  final pulumi.Input<List<FilterFilterCriteriaCodeRepositoryProjectName>?>? codeRepositoryProjectNames;
   /// (Optional) The repository provider type (such as GitHub, GitLab, etc.) Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaCodeRepositoryProviderType>>? codeRepositoryProviderTypes;
+  final pulumi.Input<List<FilterFilterCriteriaCodeRepositoryProviderType>?>? codeRepositoryProviderTypes;
   /// (Optional) The ID of the component. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaCodeVulnerabilityDetectorName>>? codeVulnerabilityDetectorNames;
+  final pulumi.Input<List<FilterFilterCriteriaCodeVulnerabilityDetectorName>?>? codeVulnerabilityDetectorNames;
   /// (Optional) The ID of the component. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaCodeVulnerabilityDetectorTag>>? codeVulnerabilityDetectorTags;
+  final pulumi.Input<List<FilterFilterCriteriaCodeVulnerabilityDetectorTag>?>? codeVulnerabilityDetectorTags;
   /// (Optional) The ID of the component. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaCodeVulnerabilityFilePath>>? codeVulnerabilityFilePaths;
+  final pulumi.Input<List<FilterFilterCriteriaCodeVulnerabilityFilePath>?>? codeVulnerabilityFilePaths;
   /// (Optional) The ID of the component. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaComponentId>>? componentIds;
+  final pulumi.Input<List<FilterFilterCriteriaComponentId>?>? componentIds;
   /// (Optional) The type of the component. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaComponentType>>? componentTypes;
-  /// (Optional) The ID of the Amazon Machine Image (AMI). Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEc2InstanceImageId>>? ec2InstanceImageIds;
+  final pulumi.Input<List<FilterFilterCriteriaComponentType>?>? componentTypes;
+  /// (Optional) ID of the AMI. Documented below.
+  final pulumi.Input<List<FilterFilterCriteriaEc2InstanceImageId>?>? ec2InstanceImageIds;
   /// (Optional) The ID of the subnet. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEc2InstanceSubnetId>>? ec2InstanceSubnetIds;
+  final pulumi.Input<List<FilterFilterCriteriaEc2InstanceSubnetId>?>? ec2InstanceSubnetIds;
   /// (Optional) The ID of the VPC. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEc2InstanceVpcId>>? ec2InstanceVpcIds;
+  final pulumi.Input<List<FilterFilterCriteriaEc2InstanceVpcId>?>? ec2InstanceVpcIds;
   /// (Optional) The architecture of the ECR image. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageArchitecture>>? ecrImageArchitectures;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageArchitecture>?>? ecrImageArchitectures;
   /// (Optional) The SHA256 hash of the ECR image. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageHash>>? ecrImageHashes;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageHash>?>? ecrImageHashes;
   /// (Optional)  The number of the ECR images in use. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageInUseCount>>? ecrImageInUseCounts;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageInUseCount>?>? ecrImageInUseCounts;
   /// (Optional) The date range when an ECR image was last used in an ECS cluster task or EKS cluster pod. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageLastInUseAt>>? ecrImageLastInUseAts;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageLastInUseAt>?>? ecrImageLastInUseAts;
   /// (Optional) The date range when the image was pushed. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImagePushedAt>>? ecrImagePushedAts;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImagePushedAt>?>? ecrImagePushedAts;
   /// (Optional) The registry of the ECR image. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageRegistry>>? ecrImageRegistries;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageRegistry>?>? ecrImageRegistries;
   /// (Optional) The name of the ECR repository. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageRepositoryName>>? ecrImageRepositoryNames;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageRepositoryName>?>? ecrImageRepositoryNames;
   /// (Optional) The tags associated with the ECR image. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEcrImageTag>>? ecrImageTags;
+  final pulumi.Input<List<FilterFilterCriteriaEcrImageTag>?>? ecrImageTags;
   /// (Optional) EPSS (Exploit Prediction Scoring System) Score of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaEpssScore>>? epssScores;
+  final pulumi.Input<List<FilterFilterCriteriaEpssScore>?>? epssScores;
   /// (Optional) Availability of exploits. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaExploitAvailable>>? exploitAvailables;
+  final pulumi.Input<List<FilterFilterCriteriaExploitAvailable>?>? exploitAvailables;
   /// (Optional) The ARN of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaFindingArn>>? findingArns;
+  final pulumi.Input<List<FilterFilterCriteriaFindingArn>?>? findingArns;
   /// (Optional) The status of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaFindingStatus>>? findingStatuses;
+  final pulumi.Input<List<FilterFilterCriteriaFindingStatus>?>? findingStatuses;
   /// (Optional) The type of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaFindingType>>? findingTypes;
+  final pulumi.Input<List<FilterFilterCriteriaFindingType>?>? findingTypes;
   /// (Optional) When the finding was first observed. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaFirstObservedAt>>? firstObservedAts;
+  final pulumi.Input<List<FilterFilterCriteriaFirstObservedAt>?>? firstObservedAts;
   /// (Optional) Availability of the fix. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaFixAvailable>>? fixAvailables;
+  final pulumi.Input<List<FilterFilterCriteriaFixAvailable>?>? fixAvailables;
   /// (Optional) The Inspector score given to the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaInspectorScore>>? inspectorScores;
+  final pulumi.Input<List<FilterFilterCriteriaInspectorScore>?>? inspectorScores;
   /// (Optional) Lambda execution role ARN. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionExecutionRoleArn>>? lambdaFunctionExecutionRoleArns;
+  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionExecutionRoleArn>?>? lambdaFunctionExecutionRoleArns;
   /// (Optional) Last modified timestamp of the lambda function. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionLastModifiedAt>>? lambdaFunctionLastModifiedAts;
+  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionLastModifiedAt>?>? lambdaFunctionLastModifiedAts;
   /// (Optional) Lambda function layers. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionLayer>>? lambdaFunctionLayers;
+  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionLayer>?>? lambdaFunctionLayers;
   /// (Optional) Lambda function name. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionName>>? lambdaFunctionNames;
+  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionName>?>? lambdaFunctionNames;
   /// (Optional) Lambda function runtime. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionRuntime>>? lambdaFunctionRuntimes;
+  final pulumi.Input<List<FilterFilterCriteriaLambdaFunctionRuntime>?>? lambdaFunctionRuntimes;
   /// (Optional) When the finding was last observed. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaLastObservedAt>>? lastObservedAts;
+  final pulumi.Input<List<FilterFilterCriteriaLastObservedAt>?>? lastObservedAts;
   /// (Optional) The network protocol of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaNetworkProtocol>>? networkProtocols;
+  final pulumi.Input<List<FilterFilterCriteriaNetworkProtocol>?>? networkProtocols;
   /// (Optional) The port range of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaPortRange>>? portRanges;
+  final pulumi.Input<List<FilterFilterCriteriaPortRange>?>? portRanges;
   /// (Optional) Related vulnerabilities. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaRelatedVulnerability>>? relatedVulnerabilities;
+  final pulumi.Input<List<FilterFilterCriteriaRelatedVulnerability>?>? relatedVulnerabilities;
   /// (Optional) The ID of the resource. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaResourceId>>? resourceIds;
+  final pulumi.Input<List<FilterFilterCriteriaResourceId>?>? resourceIds;
   /// (Optional) The tags of the resource. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaResourceTag>>? resourceTags;
+  final pulumi.Input<List<FilterFilterCriteriaResourceTag>?>? resourceTags;
   /// (Optional) The type of the resource. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaResourceType>>? resourceTypes;
+  final pulumi.Input<List<FilterFilterCriteriaResourceType>?>? resourceTypes;
   /// (Optional) The severity of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaSeverity>>? severities;
+  final pulumi.Input<List<FilterFilterCriteriaSeverity>?>? severities;
   /// (Optional) The title of the finding. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaTitle>>? titles;
+  final pulumi.Input<List<FilterFilterCriteriaTitle>?>? titles;
   /// (Optional) When the finding was last updated. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaUpdatedAt>>? updatedAts;
+  final pulumi.Input<List<FilterFilterCriteriaUpdatedAt>?>? updatedAts;
   /// (Optional) The severity as reported by the vendor. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaVendorSeverity>>? vendorSeverities;
+  final pulumi.Input<List<FilterFilterCriteriaVendorSeverity>?>? vendorSeverities;
   /// (Optional) The ID of the vulnerability. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaVulnerabilityId>>? vulnerabilityIds;
+  final pulumi.Input<List<FilterFilterCriteriaVulnerabilityId>?>? vulnerabilityIds;
   /// (Optional) The source of the vulnerability. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaVulnerabilitySource>>? vulnerabilitySources;
+  final pulumi.Input<List<FilterFilterCriteriaVulnerabilitySource>?>? vulnerabilitySources;
   /// (Optional) Details about vulnerable packages. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaVulnerablePackage>>? vulnerablePackages;
+  final pulumi.Input<List<FilterFilterCriteriaVulnerablePackage>?>? vulnerablePackages;
 
   /// Creates a new [FilterFilterCriteria].
   /// [awsAccountIds] (Optional) The AWS account ID in which the finding was generated. Documented below.
@@ -151,7 +151,7 @@ class FilterFilterCriteria {
   /// [codeVulnerabilityFilePaths] (Optional) The ID of the component. Documented below.
   /// [componentIds] (Optional) The ID of the component. Documented below.
   /// [componentTypes] (Optional) The type of the component. Documented below.
-  /// [ec2InstanceImageIds] (Optional) The ID of the Amazon Machine Image (AMI). Documented below.
+  /// [ec2InstanceImageIds] (Optional) ID of the AMI. Documented below.
   /// [ec2InstanceSubnetIds] (Optional) The ID of the subnet. Documented below.
   /// [ec2InstanceVpcIds] (Optional) The ID of the VPC. Documented below.
   /// [ecrImageArchitectures] (Optional) The architecture of the ECR image. Documented below.

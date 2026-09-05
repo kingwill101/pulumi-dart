@@ -21,8 +21,6 @@ import 'table_ttl.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.keyspaces.Table("example", {
-///     keyspaceName: exampleAwsKeyspacesKeyspace.name,
-///     tableName: "my_table",
 ///     schemaDefinition: {
 ///         columns: [{
 ///             name: "Message",
@@ -32,6 +30,8 @@ import 'table_ttl.dart';
 ///             name: "Message",
 ///         }],
 ///     },
+///     keyspaceName: exampleAwsKeyspacesKeyspace.name,
+///     tableName: "my_table",
 /// });
 /// ```
 /// ```python
@@ -39,8 +39,6 @@ import 'table_ttl.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.keyspaces.Table("example",
-///     keyspace_name=example_aws_keyspaces_keyspace["name"],
-///     table_name="my_table",
 ///     schema_definition={
 ///         "columns": [{
 ///             "name": "Message",
@@ -49,7 +47,9 @@ import 'table_ttl.dart';
 ///         "partition_keys": [{
 ///             "name": "Message",
 ///         }],
-///     })
+///     },
+///     keyspace_name=example_aws_keyspaces_keyspace["name"],
+///     table_name="my_table")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,8 +61,6 @@ import 'table_ttl.dart';
 /// {
 ///     var example = new Aws.Keyspaces.Table("example", new()
 ///     {
-///         KeyspaceName = exampleAwsKeyspacesKeyspace.Name,
-///         TableName = "my_table",
 ///         SchemaDefinition = new Aws.Keyspaces.Inputs.TableSchemaDefinitionArgs
 ///         {
 ///             Columns = new[]
@@ -81,6 +79,8 @@ import 'table_ttl.dart';
 ///                 },
 ///             },
 ///         },
+///         KeyspaceName = exampleAwsKeyspacesKeyspace.Name,
+///         TableName = "my_table",
 ///     });
 ///
 /// });
@@ -96,8 +96,6 @@ import 'table_ttl.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := keyspaces.NewTable(ctx, "example", &keyspaces.TableArgs{
-/// 			KeyspaceName: pulumi.Any(exampleAwsKeyspacesKeyspace.Name),
-/// 			TableName:    pulumi.String("my_table"),
 /// 			SchemaDefinition: &keyspaces.TableSchemaDefinitionArgs{
 /// 				Columns: keyspaces.TableSchemaDefinitionColumnArray{
 /// 					&keyspaces.TableSchemaDefinitionColumnArgs{
@@ -111,6 +109,8 @@ import 'table_ttl.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			KeyspaceName: pulumi.Any(exampleAwsKeyspacesKeyspace.Name),
+/// 			TableName:    pulumi.String("my_table"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -129,8 +129,6 @@ import 'table_ttl.dart';
 /// }
 ///
 /// resource "aws_keyspaces_table" "example" {
-///   keyspace_name = exampleAwsKeyspacesKeyspace.name
-///   table_name    = "my_table"
 ///   schema_definition = {
 ///     columns = [{
 ///       "name" = "Message"
@@ -140,6 +138,8 @@ import 'table_ttl.dart';
 ///       "name" = "Message"
 ///     }]
 ///   }
+///   keyspace_name = exampleAwsKeyspacesKeyspace.name
+///   table_name    = "my_table"
 /// }
 /// ```
 /// ```java
@@ -167,8 +167,6 @@ import 'table_ttl.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .keyspaceName(exampleAwsKeyspacesKeyspace.name())
-///             .tableName("my_table")
 ///             .schemaDefinition(TableSchemaDefinitionArgs.builder()
 ///                 .columns(TableSchemaDefinitionColumnArgs.builder()
 ///                     .name("Message")
@@ -178,6 +176,8 @@ import 'table_ttl.dart';
 ///                     .name("Message")
 ///                     .build())
 ///                 .build())
+///             .keyspaceName(exampleAwsKeyspacesKeyspace.name())
+///             .tableName("my_table")
 ///             .build());
 ///
 ///     }
@@ -188,14 +188,14 @@ import 'table_ttl.dart';
 ///   example:
 ///     type: aws:keyspaces:Table
 ///     properties:
-///       keyspaceName: ${exampleAwsKeyspacesKeyspace.name}
-///       tableName: my_table
 ///       schemaDefinition:
 ///         columns:
 ///           - name: Message
 ///             type: ASCII
 ///         partitionKeys:
 ///           - name: Message
+///       keyspaceName: ${exampleAwsKeyspacesKeyspace.name}
+///       tableName: my_table
 /// ```
 ///
 ///
@@ -250,7 +250,7 @@ class Table extends pulumi.CustomResource {
           'aws:keyspaces/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacitySpecification = registerOutput<TableCapacitySpecification>('capacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -263,8 +263,8 @@ class Table extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schemaDefinition = registerOutput<TableSchemaDefinition>('schemaDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<TableTtl?>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -273,11 +273,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,8 +303,33 @@ class Table extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schemaDefinition = registerOutput<TableSchemaDefinition>('schemaDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<TableTtl?>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'aws:keyspaces/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capacitySpecification = registerOutput<TableCapacitySpecification>('capacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientSideTimestamps = registerOutput<TableClientSideTimestamps?>('clientSideTimestamps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableClientSideTimestamps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    comment = registerOutput<TableComment>('comment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableComment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
+    encryptionSpecification = registerOutput<TableEncryptionSpecification>('encryptionSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableEncryptionSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyspaceName = registerOutput<String>('keyspaceName');
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    schemaDefinition = registerOutput<TableSchemaDefinition>('schemaDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String>('tableName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<TableTtl?>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

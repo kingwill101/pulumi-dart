@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_group_args.dart';
+import 'security_group_egress.dart';
+import 'security_group_ingress.dart';
 import 'security_group_state.dart';
 
 /// Provides a security group resource.
@@ -831,13 +833,18 @@ import 'security_group_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.ec2.SecurityGroup("example", {name: "izizavle"});
+/// const example = new aws.ec2.SecurityGroup("example", {name: "izizavle"}, {
+///     customTimeouts: {
+///         "delete": "2m",
+///     },
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.ec2.SecurityGroup("example", name="izizavle")
+/// example = aws.ec2.SecurityGroup("example", name="izizavle",
+/// opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(delete="2m")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -866,7 +873,7 @@ import 'security_group_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
 /// 			Name: pulumi.String("izizavle"),
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Delete: "2m"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -884,6 +891,9 @@ import 'security_group_state.dart';
 /// }
 ///
 /// resource "aws_ec2_securitygroup" "example" {
+///   timeouts {
+///     delete = "2m"
+///   }
 ///   name = "izizavle"
 /// }
 /// ```
@@ -895,6 +905,8 @@ import 'security_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -910,7 +922,11 @@ import 'security_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new SecurityGroup("example", SecurityGroupArgs.builder()
 ///             .name("izizavle")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .delete(CustomTimeouts.parseTimeoutString("2m"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -921,6 +937,9 @@ import 'security_group_state.dart';
 ///     type: aws:ec2:SecurityGroup
 ///     properties:
 ///       name: izizavle
+///     options:
+///       customTimeouts:
+///         delete: 2m
 /// ```
 ///
 ///
@@ -951,8 +970,8 @@ import 'security_group_state.dart';
 /// const exampleProvisioner0 = new command.local.Command("exampleProvisioner0", {
 ///     create: "true",
 ///     update: "true",
-///     "delete": `            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
-///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${tags.workaround2} --remove-security-group-ids ${id}
+///     "delete": `            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${example.tags?.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${example.tags?.workaround2} --remove-security-group-ids ${example.id}
 /// `,
 /// }, {
 ///     dependsOn: [example],
@@ -985,8 +1004,8 @@ import 'security_group_state.dart';
 /// example_provisioner0 = command.local.Command("exampleProvisioner0",
 ///     create=true,
 ///     update=true,
-///     delete=f            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values={tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
-///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${{ENDPOINT_ID}} --add-security-group-ids {tags.workaround2} --remove-security-group-ids {id}
+///     delete=f            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values={example.tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${{ENDPOINT_ID}} --add-security-group-ids {example.tags.workaround2} --remove-security-group-ids {example.id}
 /// ,
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_resource = null.Resource("example", triggers={
@@ -1027,8 +1046,8 @@ import 'security_group_state.dart';
 ///     {
 ///         Create = "true",
 ///         Update = "true",
-///         Delete = @$"            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \""Name=tag:Name,Values={tags.Workaround1}\"" --query \""VpcEndpoints[0].VpcEndpointId\"" --output text` &&
-///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${{ENDPOINT_ID}} --add-security-group-ids {tags.Workaround2} --remove-security-group-ids {id}
+///         Delete = @$"            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \""Name=tag:Name,Values={example.Tags?.Workaround1}\"" --query \""VpcEndpoints[0].VpcEndpointId\"" --output text` &&
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${{ENDPOINT_ID}} --add-security-group-ids {example.Tags?.Workaround2} --remove-security-group-ids {example.Id}
 /// ",
 ///     }, new CustomResourceOptions
 ///     {
@@ -1098,7 +1117,7 @@ import 'security_group_state.dart';
 /// 		_, err = local.NewCommand(ctx, "exampleProvisioner0", &local.CommandArgs{
 /// 			Create: "true",
 /// 			Update: "true",
-/// 			Delete: fmt.Sprintf("            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \\\"Name=tag:Name,Values=%v\\\" --query \\\"VpcEndpoints[0].VpcEndpointId\\\" --output text` &&\n            aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids %v --remove-security-group-ids %v\n", tags.Workaround1, tags.Workaround2, id),
+/// 			Delete: pulumi.Sprintf("            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \\\"Name=tag:Name,Values=%v\\\" --query \\\"VpcEndpoints[0].VpcEndpointId\\\" --output text` &&\n            aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids %v --remove-security-group-ids %v\n", example.Tags.Workaround1, example.Tags.Workaround2, example.ID()),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -1162,8 +1181,8 @@ import 'security_group_state.dart';
 ///   depends_on = [aws_ec2_securitygroup.example]
 ///   create     = "true"
 ///   update     = "true"
-///   delete     ="            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
-///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${tags.workaround2} --remove-security-group-ids ${id}
+///   delete     ="            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${aws_ec2_securitygroup.example.tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${aws_ec2_securitygroup.example.tags.workaround2} --remove-security-group-ids ${aws_ec2_securitygroup.example.id}
 /// "
 /// }
 /// resource "null_resource" "example" {
@@ -1225,7 +1244,7 @@ import 'security_group_state.dart';
 ///             .delete("""
 ///             ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=%s\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
 ///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids %s --remove-security-group-ids %s
-/// ", tags.workaround1(),tags.workaround2(),id))
+/// ", example.tags().workaround1(),example.tags().workaround2(),example.id()))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(Arrays.asList(example))
 ///                 .build());
@@ -1263,8 +1282,8 @@ import 'security_group_state.dart';
 ///       create: 'true'
 ///       update: 'true'
 ///       delete: |2
-///                     ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
-///                     aws ec2 modify-vpc-endpoint --vpc-endpoint-id $${ENDPOINT_ID} --add-security-group-ids ${tags.workaround2} --remove-security-group-ids ${id}
+///                     ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${example.tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
+///                     aws ec2 modify-vpc-endpoint --vpc-endpoint-id $${ENDPOINT_ID} --add-security-group-ids ${example.tags.workaround2} --remove-security-group-ids ${example.id}
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -1322,9 +1341,9 @@ class SecurityGroup extends pulumi.CustomResource {
   /// Security group description. Defaults to `Managed by Pulumi`. Cannot be `""`. **NOTE**: This field maps to the AWS `GroupDescription` attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use `tags`.
   late final pulumi.Output<String> description;
   /// Configuration block for egress rules. Can be specified multiple times for each egress rule. Each egress block supports fields documented below. This argument is processed in attribute-as-blocks mode.
-  late final pulumi.Output<List<Map<String, dynamic>>> egress;
+  late final pulumi.Output<List<SecurityGroupEgress>> egress;
   /// Configuration block for ingress rules. Can be specified multiple times for each ingress rule. Each ingress block supports fields documented below. This argument is processed in attribute-as-blocks mode.
-  late final pulumi.Output<List<Map<String, dynamic>>> ingress;
+  late final pulumi.Output<List<SecurityGroupIngress>> ingress;
   /// Name of the security group. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
@@ -1353,20 +1372,20 @@ class SecurityGroup extends pulumi.CustomResource {
   }) : super(
           'aws:ec2/securityGroup:SecurityGroup',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? SecurityGroupArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    egress = registerOutput<List<Map<String, dynamic>>>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
+    egress = registerOutput<List<SecurityGroupEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGroupEgress>(guardedValue, (value) => SecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<SecurityGroupIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGroupIngress>(guardedValue, (value) => SecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -1375,11 +1394,12 @@ class SecurityGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1395,15 +1415,38 @@ class SecurityGroup extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    egress = registerOutput<List<Map<String, dynamic>>>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
+    egress = registerOutput<List<SecurityGroupEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGroupEgress>(guardedValue, (value) => SecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<SecurityGroupIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGroupIngress>(guardedValue, (value) => SecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGroup] resource.
+  SecurityGroup.reference(String urn)
+    : super(
+        'aws:ec2/securityGroup:SecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    egress = registerOutput<List<SecurityGroupEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGroupEgress>(guardedValue, (value) => SecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<SecurityGroupIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGroupIngress>(guardedValue, (value) => SecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

@@ -13,28 +13,28 @@ import 'preset_video_watermark.dart';
 /// {@macro pulumi_elastictranscoder_preset_preset_args_doc}
 class PresetArgs {
   /// Audio parameters object (documented below).
-  final pulumi.Input<PresetAudio>? audio;
+  final pulumi.Input<PresetAudio?>? audio;
   /// Codec options for the audio parameters (documented below)
-  final pulumi.Input<PresetAudioCodecOptions>? audioCodecOptions;
+  final pulumi.Input<PresetAudioCodecOptions?>? audioCodecOptions;
   /// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
   final pulumi.Input<String> container;
   /// A description of the preset (maximum 255 characters)
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the preset. (maximum 40 characters)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Thumbnail parameters object (documented below)
-  final pulumi.Input<PresetThumbnails>? thumbnails;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<PresetThumbnails?>? thumbnails;
+  final pulumi.Input<String?>? type;
   /// Video parameters object (documented below)
-  final pulumi.Input<PresetVideo>? video;
+  final pulumi.Input<PresetVideo?>? video;
   /// Codec options for the video parameters
   ///
   /// See ["Create Preset"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-preset.html) in the AWS docs for reference.
-  final pulumi.Input<Map<String, String>>? videoCodecOptions;
+  final pulumi.Input<Map<String, String>?>? videoCodecOptions;
   /// Watermark parameters for the video parameters (documented below)
-  final pulumi.Input<List<PresetVideoWatermark>>? videoWatermarks;
+  final pulumi.Input<List<PresetVideoWatermark>?>? videoWatermarks;
 
   /// Creates a new [PresetArgs].
   /// [audio] Audio parameters object (documented below).

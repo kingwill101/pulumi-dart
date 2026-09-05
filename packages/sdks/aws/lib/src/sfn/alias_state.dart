@@ -5,21 +5,21 @@ import 'alias_routing_configuration.dart';
 
 /// Input properties used for looking up and filtering Alias resources.
 class AliasState {
-  /// The Amazon Resource Name (ARN) identifying your state machine alias.
-  final pulumi.Input<String>? arn;
+  /// ARN identifying your state machine alias.
+  final pulumi.Input<String?>? arn;
   /// The date the state machine alias was created.
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name for the alias you are creating.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The StateMachine alias' route configuration settings. Fields documented below
-  final pulumi.Input<List<AliasRoutingConfiguration>>? routingConfigurations;
+  final pulumi.Input<List<AliasRoutingConfiguration>?>? routingConfigurations;
 
   /// Creates a new [AliasState].
-  /// [arn] The Amazon Resource Name (ARN) identifying your state machine alias.
+  /// [arn] ARN identifying your state machine alias.
   /// [creationDate] The date the state machine alias was created.
   /// [description] Description of the alias.
   /// [name] Name for the alias you are creating.

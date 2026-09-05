@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleEvaluationMode {
   /// The mode of an evaluation.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [RuleEvaluationMode].
   /// [mode] The mode of an evaluation.

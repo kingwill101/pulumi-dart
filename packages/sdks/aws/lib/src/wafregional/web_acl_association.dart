@@ -16,24 +16,22 @@ import 'web_acl_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ipset = new aws.wafregional.IpSet("ipset", {
-///     name: "tfIPSet",
 ///     ipSetDescriptors: [{
 ///         type: "IPV4",
 ///         value: "192.0.7.0/24",
 ///     }],
+///     name: "tfIPSet",
 /// });
 /// const foo = new aws.wafregional.Rule("foo", {
-///     name: "tfWAFRule",
-///     metricName: "tfWAFRule",
 ///     predicates: [{
 ///         dataId: ipset.id,
 ///         negated: false,
 ///         type: "IPMatch",
 ///     }],
+///     name: "tfWAFRule",
+///     metricName: "tfWAFRule",
 /// });
 /// const fooWebAcl = new aws.wafregional.WebAcl("foo", {
-///     name: "foo",
-///     metricName: "foo",
 ///     defaultAction: {
 ///         type: "ALLOW",
 ///     },
@@ -44,6 +42,8 @@ import 'web_acl_association_state.dart';
 ///         priority: 1,
 ///         ruleId: foo.id,
 ///     }],
+///     name: "foo",
+///     metricName: "foo",
 /// });
 /// const fooVpc = new aws.ec2.Vpc("foo", {cidrBlock: "10.1.0.0/16"});
 /// const available = aws.getAvailabilityZones({});
@@ -74,22 +74,20 @@ import 'web_acl_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// ipset = aws.wafregional.IpSet("ipset",
-///     name="tfIPSet",
 ///     ip_set_descriptors=[{
 ///         "type": "IPV4",
 ///         "value": "192.0.7.0/24",
-///     }])
+///     }],
+///     name="tfIPSet")
 /// foo = aws.wafregional.Rule("foo",
-///     name="tfWAFRule",
-///     metric_name="tfWAFRule",
 ///     predicates=[{
 ///         "data_id": ipset.id,
 ///         "negated": False,
 ///         "type": "IPMatch",
-///     }])
+///     }],
+///     name="tfWAFRule",
+///     metric_name="tfWAFRule")
 /// foo_web_acl = aws.wafregional.WebAcl("foo",
-///     name="foo",
-///     metric_name="foo",
 ///     default_action={
 ///         "type": "ALLOW",
 ///     },
@@ -99,7 +97,9 @@ import 'web_acl_association_state.dart';
 ///         },
 ///         "priority": 1,
 ///         "rule_id": foo.id,
-///     }])
+///     }],
+///     name="foo",
+///     metric_name="foo")
 /// foo_vpc = aws.ec2.Vpc("foo", cidr_block="10.1.0.0/16")
 /// available = aws.get_availability_zones()
 /// foo_subnet = aws.ec2.Subnet("foo",
@@ -130,7 +130,6 @@ import 'web_acl_association_state.dart';
 /// {
 ///     var ipset = new Aws.WafRegional.IpSet("ipset", new()
 ///     {
-///         Name = "tfIPSet",
 ///         IpSetDescriptors = new[]
 ///         {
 ///             new Aws.WafRegional.Inputs.IpSetIpSetDescriptorArgs
@@ -139,12 +138,11 @@ import 'web_acl_association_state.dart';
 ///                 Value = "192.0.7.0/24",
 ///             },
 ///         },
+///         Name = "tfIPSet",
 ///     });
 ///
 ///     var foo = new Aws.WafRegional.Rule("foo", new()
 ///     {
-///         Name = "tfWAFRule",
-///         MetricName = "tfWAFRule",
 ///         Predicates = new[]
 ///         {
 ///             new Aws.WafRegional.Inputs.RulePredicateArgs
@@ -154,12 +152,12 @@ import 'web_acl_association_state.dart';
 ///                 Type = "IPMatch",
 ///             },
 ///         },
+///         Name = "tfWAFRule",
+///         MetricName = "tfWAFRule",
 ///     });
 ///
 ///     var fooWebAcl = new Aws.WafRegional.WebAcl("foo", new()
 ///     {
-///         Name = "foo",
-///         MetricName = "foo",
 ///         DefaultAction = new Aws.WafRegional.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Type = "ALLOW",
@@ -176,6 +174,8 @@ import 'web_acl_association_state.dart';
 ///                 RuleId = foo.Id,
 ///             },
 ///         },
+///         Name = "foo",
+///         MetricName = "foo",
 ///     });
 ///
 ///     var fooVpc = new Aws.Ec2.Vpc("foo", new()
@@ -231,20 +231,18 @@ import 'web_acl_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ipset, err := wafregional.NewIpSet(ctx, "ipset", &wafregional.IpSetArgs{
-/// 			Name: pulumi.String("tfIPSet"),
 /// 			IpSetDescriptors: wafregional.IpSetIpSetDescriptorArray{
 /// 				&wafregional.IpSetIpSetDescriptorArgs{
 /// 					Type:  pulumi.String("IPV4"),
 /// 					Value: pulumi.String("192.0.7.0/24"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tfIPSet"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		foo, err := wafregional.NewRule(ctx, "foo", &wafregional.RuleArgs{
-/// 			Name:       pulumi.String("tfWAFRule"),
-/// 			MetricName: pulumi.String("tfWAFRule"),
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
 /// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
@@ -252,13 +250,13 @@ import 'web_acl_association_state.dart';
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("tfWAFRule"),
+/// 			MetricName: pulumi.String("tfWAFRule"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		fooWebAcl, err := wafregional.NewWebAcl(ctx, "foo", &wafregional.WebAclArgs{
-/// 			Name:       pulumi.String("foo"),
-/// 			MetricName: pulumi.String("foo"),
 /// 			DefaultAction: &wafregional.WebAclDefaultActionArgs{
 /// 				Type: pulumi.String("ALLOW"),
 /// 			},
@@ -271,6 +269,8 @@ import 'web_acl_association_state.dart';
 /// 					RuleId:   foo.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("foo"),
+/// 			MetricName: pulumi.String("foo"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -335,24 +335,22 @@ import 'web_acl_association_state.dart';
 /// }
 ///
 /// resource "aws_wafregional_ipset" "ipset" {
-///   name = "tfIPSet"
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
 ///   }
+///   name = "tfIPSet"
 /// }
 /// resource "aws_wafregional_rule" "foo" {
-///   name        = "tfWAFRule"
-///   metric_name = "tfWAFRule"
 ///   predicates {
 ///     data_id = aws_wafregional_ipset.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
 /// }
 /// resource "aws_wafregional_webacl" "foo" {
-///   name        = "foo"
-///   metric_name = "foo"
 ///   default_action = {
 ///     type = "ALLOW"
 ///   }
@@ -363,6 +361,8 @@ import 'web_acl_association_state.dart';
 ///     priority = 1
 ///     rule_id  = aws_wafregional_rule.foo.id
 ///   }
+///   name        = "foo"
+///   metric_name = "foo"
 /// }
 /// resource "aws_ec2_vpc" "foo" {
 ///   cidr_block = "10.1.0.0/16"
@@ -427,26 +427,24 @@ import 'web_acl_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ipset = new IpSet("ipset", IpSetArgs.builder()
-///             .name("tfIPSet")
 ///             .ipSetDescriptors(IpSetIpSetDescriptorArgs.builder()
 ///                 .type("IPV4")
 ///                 .value("192.0.7.0/24")
 ///                 .build())
+///             .name("tfIPSet")
 ///             .build());
 ///
 ///         var foo = new Rule("foo", RuleArgs.builder()
-///             .name("tfWAFRule")
-///             .metricName("tfWAFRule")
 ///             .predicates(RulePredicateArgs.builder()
 ///                 .dataId(ipset.id())
 ///                 .negated(false)
 ///                 .type("IPMatch")
 ///                 .build())
+///             .name("tfWAFRule")
+///             .metricName("tfWAFRule")
 ///             .build());
 ///
 ///         var fooWebAcl = new WebAcl("fooWebAcl", WebAclArgs.builder()
-///             .name("foo")
-///             .metricName("foo")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .type("ALLOW")
 ///                 .build())
@@ -457,6 +455,8 @@ import 'web_acl_association_state.dart';
 ///                 .priority(1)
 ///                 .ruleId(foo.id())
 ///                 .build())
+///             .name("foo")
+///             .metricName("foo")
 ///             .build());
 ///
 ///         var fooVpc = new Vpc("fooVpc", VpcArgs.builder()
@@ -498,25 +498,23 @@ import 'web_acl_association_state.dart';
 ///   ipset:
 ///     type: aws:wafregional:IpSet
 ///     properties:
-///       name: tfIPSet
 ///       ipSetDescriptors:
 ///         - type: IPV4
 ///           value: 192.0.7.0/24
+///       name: tfIPSet
 ///   foo:
 ///     type: aws:wafregional:Rule
 ///     properties:
-///       name: tfWAFRule
-///       metricName: tfWAFRule
 ///       predicates:
 ///         - dataId: ${ipset.id}
 ///           negated: false
 ///           type: IPMatch
+///       name: tfWAFRule
+///       metricName: tfWAFRule
 ///   fooWebAcl:
 ///     type: aws:wafregional:WebAcl
 ///     name: foo
 ///     properties:
-///       name: foo
-///       metricName: foo
 ///       defaultAction:
 ///         type: ALLOW
 ///       rules:
@@ -524,6 +522,8 @@ import 'web_acl_association_state.dart';
 ///             type: BLOCK
 ///           priority: 1
 ///           ruleId: ${foo.id}
+///       name: foo
+///       metricName: foo
 ///   fooVpc:
 ///     type: aws:ec2:Vpc
 ///     name: foo
@@ -591,7 +591,7 @@ class WebAclAssociation extends pulumi.CustomResource {
           'aws:wafregional/webAclAssociation:WebAclAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -603,11 +603,12 @@ class WebAclAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAclAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -621,6 +622,20 @@ class WebAclAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    webAclId = registerOutput<String>('webAclId');
+  }
+
+  /// Creates a typed reference to an existing [WebAclAssociation] resource.
+  WebAclAssociation.reference(String urn)
+    : super(
+        'aws:wafregional/webAclAssociation:WebAclAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     webAclId = registerOutput<String>('webAclId');

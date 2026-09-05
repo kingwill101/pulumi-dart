@@ -6,33 +6,33 @@ import 'get_rest_api_endpoint_configuration.dart';
 /// Result data returned by getRestApi.
 class GetRestApiResult {
   /// Source of the API key for requests.
-  final String apiKeySource;
+  final String? apiKeySource;
   /// ARN of the REST API.
-  final String arn;
+  final String? arn;
   /// List of binary media types supported by the REST API.
-  final List<String> binaryMediaTypes;
+  final List<String>? binaryMediaTypes;
   /// Description of the REST API.
-  final String description;
+  final String? description;
   /// Endpoint access mode for the REST API.
-  final String endpointAccessMode;
+  final String? endpointAccessMode;
   /// Endpoint configuration of this REST API showing the endpoint types of the API. See below.
-  final List<GetRestApiEndpointConfiguration> endpointConfigurations;
+  final List<GetRestApiEndpointConfiguration>? endpointConfigurations;
   /// Execution ARN part to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
-  final String executionArn;
+  final String? executionArn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Minimum response size to compress for the REST API.
-  final String minimumCompressionSize;
-  final String name;
+  final String? minimumCompressionSize;
+  final String? name;
   /// JSON formatted policy document that controls access to the API Gateway.
-  final String policy;
-  final String region;
+  final String? policy;
+  final String? region;
   /// Set to the ID of the API Gateway Resource on the found REST API where the route matches '/'.
-  final String rootResourceId;
+  final String? rootResourceId;
   /// TLS version + cipher suite for the REST API's default execute-api endpoint.
-  final String securityPolicy;
+  final String? securityPolicy;
   /// Key-value map of resource tags.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetRestApiResult].
   /// [apiKeySource] Source of the API key for requests.
@@ -44,67 +44,67 @@ class GetRestApiResult {
   /// [executionArn] Execution ARN part to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [minimumCompressionSize] Minimum response size to compress for the REST API.
-  /// [name] Required.
+  /// [name] Optional.
   /// [policy] JSON formatted policy document that controls access to the API Gateway.
-  /// [region] Required.
+  /// [region] Optional.
   /// [rootResourceId] Set to the ID of the API Gateway Resource on the found REST API where the route matches '/'.
   /// [securityPolicy] TLS version + cipher suite for the REST API's default execute-api endpoint.
   /// [tags] Key-value map of resource tags.
   const GetRestApiResult({
-    required this.apiKeySource,
-    required this.arn,
-    required this.binaryMediaTypes,
-    required this.description,
-    required this.endpointAccessMode,
-    required this.endpointConfigurations,
-    required this.executionArn,
-    required this.id,
-    required this.minimumCompressionSize,
-    required this.name,
-    required this.policy,
-    required this.region,
-    required this.rootResourceId,
-    required this.securityPolicy,
-    required this.tags,
+    this.apiKeySource,
+    this.arn,
+    this.binaryMediaTypes,
+    this.description,
+    this.endpointAccessMode,
+    this.endpointConfigurations,
+    this.executionArn,
+    this.id,
+    this.minimumCompressionSize,
+    this.name,
+    this.policy,
+    this.region,
+    this.rootResourceId,
+    this.securityPolicy,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKeySource': apiKeySource,
-      'arn': arn,
-      'binaryMediaTypes': binaryMediaTypes,
-      'description': description,
-      'endpointAccessMode': endpointAccessMode,
-      'endpointConfigurations': pulumi.Input.encodeList<GetRestApiEndpointConfiguration, Map<String, dynamic>>(endpointConfigurations, (value) => value.toMap()),
-      'executionArn': executionArn,
-      'id': id,
-      'minimumCompressionSize': minimumCompressionSize,
-      'name': name,
-      'policy': policy,
-      'region': region,
-      'rootResourceId': rootResourceId,
-      'securityPolicy': securityPolicy,
-      'tags': tags,
+      'apiKeySource': ?apiKeySource,
+      'arn': ?arn,
+      'binaryMediaTypes': ?binaryMediaTypes,
+      'description': ?description,
+      'endpointAccessMode': ?endpointAccessMode,
+      'endpointConfigurations': ?(() { final guardedValue = endpointConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRestApiEndpointConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'executionArn': ?executionArn,
+      'id': ?id,
+      'minimumCompressionSize': ?minimumCompressionSize,
+      'name': ?name,
+      'policy': ?policy,
+      'region': ?region,
+      'rootResourceId': ?rootResourceId,
+      'securityPolicy': ?securityPolicy,
+      'tags': ?tags,
     };
   }
 
   factory GetRestApiResult.fromMap(Map<String, dynamic> map) {
     return GetRestApiResult(
-      apiKeySource: map['apiKeySource'] as String,
-      arn: map['arn'] as String,
-      binaryMediaTypes: (map['binaryMediaTypes'] as List).cast<String>(),
-      description: map['description'] as String,
-      endpointAccessMode: map['endpointAccessMode'] as String,
-      endpointConfigurations: pulumi.Input.decodeList<GetRestApiEndpointConfiguration>(map['endpointConfigurations']!, (value) => GetRestApiEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      executionArn: map['executionArn'] as String,
-      id: map['id'] as String,
-      minimumCompressionSize: map['minimumCompressionSize'] as String,
-      name: map['name'] as String,
-      policy: map['policy'] as String,
-      region: map['region'] as String,
-      rootResourceId: map['rootResourceId'] as String,
-      securityPolicy: map['securityPolicy'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      apiKeySource: (() { final guardedValue = map['apiKeySource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      binaryMediaTypes: (() { final guardedValue = map['binaryMediaTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointAccessMode: (() { final guardedValue = map['endpointAccessMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointConfigurations: (() { final guardedValue = map['endpointConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRestApiEndpointConfiguration>(guardedValue, (value) => GetRestApiEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      executionArn: (() { final guardedValue = map['executionArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      minimumCompressionSize: (() { final guardedValue = map['minimumCompressionSize']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rootResourceId: (() { final guardedValue = map['rootResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

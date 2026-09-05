@@ -507,7 +507,7 @@ class UserPoolUICustomization extends pulumi.CustomResource {
           'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clientId = registerOutput<String?>('clientId');
     creationDate = registerOutput<String>('creationDate');
@@ -525,11 +525,12 @@ class UserPoolUICustomization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPoolUICustomizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPoolUICustomization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -543,6 +544,26 @@ class UserPoolUICustomization extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clientId = registerOutput<String?>('clientId');
+    creationDate = registerOutput<String>('creationDate');
+    css = registerOutput<String?>('css');
+    cssVersion = registerOutput<String>('cssVersion');
+    imageFile = registerOutput<String?>('imageFile');
+    imageUrl = registerOutput<String>('imageUrl');
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    region = registerOutput<String>('region');
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [UserPoolUICustomization] resource.
+  UserPoolUICustomization.reference(String urn)
+    : super(
+        'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clientId = registerOutput<String?>('clientId');
     creationDate = registerOutput<String>('creationDate');
     css = registerOutput<String?>('css');

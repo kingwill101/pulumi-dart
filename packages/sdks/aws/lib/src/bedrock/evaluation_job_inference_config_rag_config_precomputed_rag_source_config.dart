@@ -6,9 +6,9 @@ import 'evaluation_job_inference_config_rag_config_precomputed_rag_source_config
 
 class EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfig {
   /// Configuration for retrieval with response generation. See `retrieveAndGenerateSourceConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfigRetrieveAndGenerateSourceConfig>? retrieveAndGenerateSourceConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfigRetrieveAndGenerateSourceConfig?>? retrieveAndGenerateSourceConfig;
   /// Configuration for retrieval only. See `retrieveSourceConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfigRetrieveSourceConfig>? retrieveSourceConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfigRetrieveSourceConfig?>? retrieveSourceConfig;
 
   /// Creates a new [EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfig].
   /// [retrieveAndGenerateSourceConfig] Configuration for retrieval with response generation. See `retrieveAndGenerateSourceConfig` Block below.

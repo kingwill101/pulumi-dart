@@ -5,7 +5,7 @@ import 'user_profile_user_settings_jupyter_lab_app_settings_app_lifecycle_manage
 
 class UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings?>? idleSettings;
 
   /// Creates a new [UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.

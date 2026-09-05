@@ -11,29 +11,29 @@ class ProjectSecondaryArtifact {
   /// objects. This property allows you to give the bucket owner access to these objects. Valid values are `NONE`,
   /// `READ_ONLY`, and `FULL`. The CodeBuild service role must have the `s3:PutBucketAcl` permission. This permission allows
   /// CodeBuild to modify the access control list for the bucket.
-  final pulumi.Input<String>? bucketOwnerAccess;
+  final pulumi.Input<String?>? bucketOwnerAccess;
   /// Whether to disable encrypting output artifacts. If `type` is set to `NO_ARTIFACTS`,
   /// this value is ignored. Defaults to `false`.
-  final pulumi.Input<bool>? encryptionDisabled;
+  final pulumi.Input<bool?>? encryptionDisabled;
   /// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or
   /// `NO_ARTIFACTS`, this value is ignored if specified. If `type` is set to `S3`, this is the name of the output bucket.
   /// If `path` is not specified, `location` can specify the path of the output artifact in the output bucket.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the project. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS`, this value is ignored
   /// if specified. If `type` is set to `S3`, this is the name of the output artifact object.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace to use in storing build artifacts. If `type` is set to `CODEPIPELINE` or
   /// `NO_ARTIFACTS`, this value is ignored if specified. If `type` is set to `S3`, valid values are `BUILD_ID` or `NONE`.
-  final pulumi.Input<String>? namespaceType;
+  final pulumi.Input<String?>? namespaceType;
   /// Whether a name specified in the build specification overrides the artifact name.
-  final pulumi.Input<bool>? overrideArtifactName;
+  final pulumi.Input<bool?>? overrideArtifactName;
   /// Type of build output artifact to create. If `type` is set to `CODEPIPELINE` or
   /// `NO_ARTIFACTS`, this value is ignored if specified. If `type` is set to `S3`, valid values are `NONE` or `ZIP`.
-  final pulumi.Input<String>? packaging;
+  final pulumi.Input<String?>? packaging;
   /// Along with `namespaceType` and `name`, the pattern that AWS CodeBuild uses to name and store the
   /// output artifact. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS`, this value is ignored if specified. If `type`
   /// is set to `S3`, this is the path to the output artifact.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Build output artifact's type. Valid values `CODEPIPELINE`, `NO_ARTIFACTS`, and `S3`.
   final pulumi.Input<String> type;
 

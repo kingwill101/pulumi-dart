@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_card_export_job_args.dart';
+import 'model_card_export_job_export_artifact.dart';
 import 'model_card_export_job_output_config.dart';
 import 'model_card_export_job_state.dart';
 import 'model_card_export_job_timeouts.dart';
@@ -16,11 +17,11 @@ import 'model_card_export_job_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.ModelCardExportJob("example", {
-///     modelCardExportJobName: "my-model-card-export-job",
-///     modelCardName: exampleAwsSagemakerModelCard.modelCardName,
 ///     outputConfig: {
 ///         s3OutputPath: `s3://${test.example}/`,
 ///     },
+///     modelCardExportJobName: "my-model-card-export-job",
+///     modelCardName: exampleAwsSagemakerModelCard.modelCardName,
 /// });
 /// ```
 /// ```python
@@ -28,11 +29,11 @@ import 'model_card_export_job_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.ModelCardExportJob("example",
-///     model_card_export_job_name="my-model-card-export-job",
-///     model_card_name=example_aws_sagemaker_model_card["modelCardName"],
 ///     output_config={
 ///         "s3_output_path": f"s3://{test['example']}/",
-///     })
+///     },
+///     model_card_export_job_name="my-model-card-export-job",
+///     model_card_name=example_aws_sagemaker_model_card["modelCardName"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,12 +45,12 @@ import 'model_card_export_job_timeouts.dart';
 /// {
 ///     var example = new Aws.Sagemaker.ModelCardExportJob("example", new()
 ///     {
-///         ModelCardExportJobName = "my-model-card-export-job",
-///         ModelCardName = exampleAwsSagemakerModelCard.ModelCardName,
 ///         OutputConfig = new Aws.Sagemaker.Inputs.ModelCardExportJobOutputConfigArgs
 ///         {
 ///             S3OutputPath = $"s3://{test.Example}/",
 ///         },
+///         ModelCardExportJobName = "my-model-card-export-job",
+///         ModelCardName = exampleAwsSagemakerModelCard.ModelCardName,
 ///     });
 ///
 /// });
@@ -65,11 +66,11 @@ import 'model_card_export_job_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewModelCardExportJob(ctx, "example", &sagemaker.ModelCardExportJobArgs{
-/// 			ModelCardExportJobName: pulumi.String("my-model-card-export-job"),
-/// 			ModelCardName:          pulumi.Any(exampleAwsSagemakerModelCard.ModelCardName),
 /// 			OutputConfig: &sagemaker.ModelCardExportJobOutputConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/", test.Example),
 /// 			},
+/// 			ModelCardExportJobName: pulumi.String("my-model-card-export-job"),
+/// 			ModelCardName:          pulumi.Any(exampleAwsSagemakerModelCard.ModelCardName),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -88,11 +89,11 @@ import 'model_card_export_job_timeouts.dart';
 /// }
 ///
 /// resource "aws_sagemaker_modelcardexportjob" "example" {
-///   model_card_export_job_name = "my-model-card-export-job"
-///   model_card_name            = exampleAwsSagemakerModelCard.modelCardName
 ///   output_config = {
 ///     s3_output_path ="s3://${test.example}/"
 ///   }
+///   model_card_export_job_name = "my-model-card-export-job"
+///   model_card_name            = exampleAwsSagemakerModelCard.modelCardName
 /// }
 /// ```
 /// ```java
@@ -118,11 +119,11 @@ import 'model_card_export_job_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ModelCardExportJob("example", ModelCardExportJobArgs.builder()
-///             .modelCardExportJobName("my-model-card-export-job")
-///             .modelCardName(exampleAwsSagemakerModelCard.modelCardName())
 ///             .outputConfig(ModelCardExportJobOutputConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/", test.example()))
 ///                 .build())
+///             .modelCardExportJobName("my-model-card-export-job")
+///             .modelCardName(exampleAwsSagemakerModelCard.modelCardName())
 ///             .build());
 ///
 ///     }
@@ -133,10 +134,10 @@ import 'model_card_export_job_timeouts.dart';
 ///   example:
 ///     type: aws:sagemaker:ModelCardExportJob
 ///     properties:
-///       modelCardExportJobName: my-model-card-export-job
-///       modelCardName: ${exampleAwsSagemakerModelCard.modelCardName}
 ///       outputConfig:
 ///         s3OutputPath: s3://${test.example}/
+///       modelCardExportJobName: my-model-card-export-job
+///       modelCardName: ${exampleAwsSagemakerModelCard.modelCardName}
 /// ```
 ///
 ///
@@ -149,8 +150,8 @@ import 'model_card_export_job_timeouts.dart';
 /// ```
 class ModelCardExportJob extends pulumi.CustomResource {
   /// Exported model card artifacts.
-  late final pulumi.Output<List<Map<String, dynamic>>> exportArtifacts;
-  /// The Amazon Resource Name (ARN) of the model card export job.
+  late final pulumi.Output<List<ModelCardExportJobExportArtifact>> exportArtifacts;
+  /// ARN of the model card export job.
   late final pulumi.Output<String> modelCardExportJobArn;
   /// Name of the model card export job.
   late final pulumi.Output<String> modelCardExportJobName;
@@ -175,9 +176,9 @@ class ModelCardExportJob extends pulumi.CustomResource {
           'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    exportArtifacts = registerOutput<List<Map<String, dynamic>>>('exportArtifacts');
+    exportArtifacts = registerOutput<List<ModelCardExportJobExportArtifact>>('exportArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(guardedValue, (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>())); });
     modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');
     modelCardExportJobName = registerOutput<String>('modelCardExportJobName');
     modelCardName = registerOutput<String>('modelCardName');
@@ -192,11 +193,12 @@ class ModelCardExportJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModelCardExportJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ModelCardExportJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,7 +212,26 @@ class ModelCardExportJob extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    exportArtifacts = registerOutput<List<Map<String, dynamic>>>('exportArtifacts');
+    exportArtifacts = registerOutput<List<ModelCardExportJobExportArtifact>>('exportArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(guardedValue, (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>())); });
+    modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');
+    modelCardExportJobName = registerOutput<String>('modelCardExportJobName');
+    modelCardName = registerOutput<String>('modelCardName');
+    modelCardVersion = registerOutput<int>('modelCardVersion');
+    outputConfig = registerOutput<ModelCardExportJobOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardExportJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<ModelCardExportJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardExportJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ModelCardExportJob] resource.
+  ModelCardExportJob.reference(String urn)
+    : super(
+        'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    exportArtifacts = registerOutput<List<ModelCardExportJobExportArtifact>>('exportArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(guardedValue, (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>())); });
     modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');
     modelCardExportJobName = registerOutput<String>('modelCardExportJobName');
     modelCardName = registerOutput<String>('modelCardName');

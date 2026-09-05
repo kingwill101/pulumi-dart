@@ -5,7 +5,7 @@ import 'cluster_broker_node_group_info_storage_info_ebs_storage_info.dart';
 
 class ClusterBrokerNodeGroupInfoStorageInfo {
   /// A block that contains EBS volume information. See storageInfo ebs_storage_info Argument Reference below.
-  final pulumi.Input<ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo>? ebsStorageInfo;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo?>? ebsStorageInfo;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoStorageInfo].
   /// [ebsStorageInfo] A block that contains EBS volume information. See storageInfo ebs_storage_info Argument Reference below.

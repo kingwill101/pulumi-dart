@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ami_copy_args.dart';
+import 'ami_copy_ebs_block_device.dart';
+import 'ami_copy_ephemeral_block_device.dart';
 import 'ami_copy_state.dart';
 
-/// The "AMI copy" resource allows duplication of an Amazon Machine Image (AMI),
+/// The "AMI copy" resource allows duplication of an AMI,
 /// including cross-region copies.
 ///
 /// If the source AMI has associated EBS snapshots, those will also be duplicated
@@ -153,7 +155,7 @@ class AmiCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> architecture;
   /// ARN of the AMI.
   late final pulumi.Output<String> arn;
-  /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
+  /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the EC2 User Guide.
   late final pulumi.Output<String> bootMode;
   /// Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   late final pulumi.Output<String?> deprecationTime;
@@ -164,14 +166,14 @@ class AmiCopy extends pulumi.CustomResource {
   late final pulumi.Output<String?> destinationOutpostArn;
   /// Nested block describing an EBS block device that should be
   /// attached to created instances. The structure of this block is described below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ebsBlockDevices;
+  late final pulumi.Output<List<AmiCopyEbsBlockDevice>> ebsBlockDevices;
   /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   late final pulumi.Output<bool> enaSupport;
   /// Whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
   late final pulumi.Output<bool?> encrypted;
   /// Nested block describing an ephemeral block device that
   /// should be attached to created instances. The structure of this block is described below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ephemeralBlockDevices;
+  late final pulumi.Output<List<AmiCopyEphemeralBlockDevice>> ephemeralBlockDevices;
   late final pulumi.Output<String> hypervisor;
   /// Path to an S3 object containing an image manifest, e.g., created
   /// by the `ec2-upload-bundle` command in the EC2 command line tools.
@@ -214,7 +216,7 @@ class AmiCopy extends pulumi.CustomResource {
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
+  /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the EC2 User Guide.
   late final pulumi.Output<String> tpmSupport;
   /// Base64 representation of the non-volatile UEFI variable store.
   late final pulumi.Output<String> uefiData;
@@ -236,7 +238,7 @@ class AmiCopy extends pulumi.CustomResource {
           'aws:ec2/amiCopy:AmiCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     arn = registerOutput<String>('arn');
@@ -244,10 +246,10 @@ class AmiCopy extends pulumi.CustomResource {
     deprecationTime = registerOutput<String?>('deprecationTime');
     description = registerOutput<String?>('description');
     destinationOutpostArn = registerOutput<String?>('destinationOutpostArn');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<AmiCopyEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AmiCopyEbsBlockDevice>(guardedValue, (value) => AmiCopyEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     enaSupport = registerOutput<bool>('enaSupport');
     encrypted = registerOutput<bool?>('encrypted');
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<AmiCopyEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AmiCopyEphemeralBlockDevice>(guardedValue, (value) => AmiCopyEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     hypervisor = registerOutput<String>('hypervisor');
     imageLocation = registerOutput<String>('imageLocation');
     imageOwnerAlias = registerOutput<String>('imageOwnerAlias');
@@ -269,8 +271,8 @@ class AmiCopy extends pulumi.CustomResource {
     sourceAmiId = registerOutput<String>('sourceAmiId');
     sourceAmiRegion = registerOutput<String>('sourceAmiRegion');
     sriovNetSupport = registerOutput<String>('sriovNetSupport');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tpmSupport = registerOutput<String>('tpmSupport');
     uefiData = registerOutput<String>('uefiData');
     usageOperation = registerOutput<String>('usageOperation');
@@ -282,11 +284,12 @@ class AmiCopy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AmiCopyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AmiCopy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,10 +309,10 @@ class AmiCopy extends pulumi.CustomResource {
     deprecationTime = registerOutput<String?>('deprecationTime');
     description = registerOutput<String?>('description');
     destinationOutpostArn = registerOutput<String?>('destinationOutpostArn');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<AmiCopyEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AmiCopyEbsBlockDevice>(guardedValue, (value) => AmiCopyEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     enaSupport = registerOutput<bool>('enaSupport');
     encrypted = registerOutput<bool?>('encrypted');
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<AmiCopyEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AmiCopyEphemeralBlockDevice>(guardedValue, (value) => AmiCopyEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     hypervisor = registerOutput<String>('hypervisor');
     imageLocation = registerOutput<String>('imageLocation');
     imageOwnerAlias = registerOutput<String>('imageOwnerAlias');
@@ -331,8 +334,56 @@ class AmiCopy extends pulumi.CustomResource {
     sourceAmiId = registerOutput<String>('sourceAmiId');
     sourceAmiRegion = registerOutput<String>('sourceAmiRegion');
     sriovNetSupport = registerOutput<String>('sriovNetSupport');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tpmSupport = registerOutput<String>('tpmSupport');
+    uefiData = registerOutput<String>('uefiData');
+    usageOperation = registerOutput<String>('usageOperation');
+    virtualizationType = registerOutput<String>('virtualizationType');
+  }
+
+  /// Creates a typed reference to an existing [AmiCopy] resource.
+  AmiCopy.reference(String urn)
+    : super(
+        'aws:ec2/amiCopy:AmiCopy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    architecture = registerOutput<String>('architecture');
+    arn = registerOutput<String>('arn');
+    bootMode = registerOutput<String>('bootMode');
+    deprecationTime = registerOutput<String?>('deprecationTime');
+    description = registerOutput<String?>('description');
+    destinationOutpostArn = registerOutput<String?>('destinationOutpostArn');
+    ebsBlockDevices = registerOutput<List<AmiCopyEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AmiCopyEbsBlockDevice>(guardedValue, (value) => AmiCopyEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    enaSupport = registerOutput<bool>('enaSupport');
+    encrypted = registerOutput<bool?>('encrypted');
+    ephemeralBlockDevices = registerOutput<List<AmiCopyEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AmiCopyEphemeralBlockDevice>(guardedValue, (value) => AmiCopyEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    hypervisor = registerOutput<String>('hypervisor');
+    imageLocation = registerOutput<String>('imageLocation');
+    imageOwnerAlias = registerOutput<String>('imageOwnerAlias');
+    imageType = registerOutput<String>('imageType');
+    imdsSupport = registerOutput<String>('imdsSupport');
+    kernelId = registerOutput<String>('kernelId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    lastLaunchedTime = registerOutput<String>('lastLaunchedTime');
+    manageEbsSnapshots = registerOutput<bool>('manageEbsSnapshots');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    platform = registerOutput<String>('platform');
+    platformDetails = registerOutput<String>('platformDetails');
+    public = registerOutput<bool>('public');
+    ramdiskId = registerOutput<String>('ramdiskId');
+    region = registerOutput<String>('region');
+    rootDeviceName = registerOutput<String>('rootDeviceName');
+    rootSnapshotId = registerOutput<String>('rootSnapshotId');
+    sourceAmiId = registerOutput<String>('sourceAmiId');
+    sourceAmiRegion = registerOutput<String>('sourceAmiRegion');
+    sriovNetSupport = registerOutput<String>('sriovNetSupport');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tpmSupport = registerOutput<String>('tpmSupport');
     uefiData = registerOutput<String>('uefiData');
     usageOperation = registerOutput<String>('usageOperation');

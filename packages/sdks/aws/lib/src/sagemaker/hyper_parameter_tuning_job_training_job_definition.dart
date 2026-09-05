@@ -17,39 +17,39 @@ class HyperParameterTuningJobTrainingJobDefinition {
   /// Algorithm settings. See `algorithmSpecification`.
   final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecification> algorithmSpecification;
   /// Checkpoint output location. See `checkpointConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionCheckpointConfig>? checkpointConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionCheckpointConfig?>? checkpointConfig;
   /// Name for this definition.
-  final pulumi.Input<String>? definitionName;
+  final pulumi.Input<String?>? definitionName;
   /// Whether to encrypt traffic between containers.
-  final pulumi.Input<bool>? enableInterContainerTrafficEncryption;
+  final pulumi.Input<bool?>? enableInterContainerTrafficEncryption;
   /// Whether to use managed spot training.
-  final pulumi.Input<bool>? enableManagedSpotTraining;
+  final pulumi.Input<bool?>? enableManagedSpotTraining;
   /// Whether to isolate network access for containers.
-  final pulumi.Input<bool>? enableNetworkIsolation;
+  final pulumi.Input<bool?>? enableNetworkIsolation;
   /// Map of environment variables.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Hyperparameter ranges for this definition. See `parameterRanges`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRanges>? hyperParameterRanges;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRanges?>? hyperParameterRanges;
   /// Tuning resource settings. See `hyperParameterTuningResourceConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfig>? hyperParameterTuningResourceConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfig?>? hyperParameterTuningResourceConfig;
   /// Input data channels. See `inputDataConfig`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionInputDataConfig>>? inputDataConfigs;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionInputDataConfig>?>? inputDataConfigs;
   /// Output data settings. See `outputDataConfig`.
   final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionOutputDataConfig> outputDataConfig;
   /// Training resources. See `resourceConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionResourceConfig>? resourceConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionResourceConfig?>? resourceConfig;
   /// Retry settings. See `retryStrategy`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionRetryStrategy>>? retryStrategies;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionRetryStrategy>?>? retryStrategies;
   /// IAM role ARN used by SageMaker AI.
   final pulumi.Input<String> roleArn;
   /// Map of fixed hyperparameters.
-  final pulumi.Input<Map<String, String>>? staticHyperParameters;
+  final pulumi.Input<Map<String, String>?>? staticHyperParameters;
   /// Stopping settings. See `stoppingCondition`.
   final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionStoppingCondition> stoppingCondition;
   /// Objective for this training definition. See `tuningObjective`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionTuningObjective>? tuningObjective;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionTuningObjective?>? tuningObjective;
   /// VPC settings. See `vpcConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionVpcConfig>? vpcConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionVpcConfig?>? vpcConfig;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinition].
   /// [algorithmSpecification] Algorithm settings. See `algorithmSpecification`.

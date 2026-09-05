@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceDataSyncS3DestinationDestinationDataSharing {
   /// Data sharing type.
   /// Only `Organization` is supported.
-  final pulumi.Input<String>? destinationDataSharingType;
+  final pulumi.Input<String?>? destinationDataSharingType;
 
   /// Creates a new [ResourceDataSyncS3DestinationDestinationDataSharing].
   /// [destinationDataSharingType] Data sharing type.

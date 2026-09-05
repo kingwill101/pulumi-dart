@@ -5,9 +5,9 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics {
   /// Whether prefix-level storage metrics are enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Selection criteria. See `selectionCriteria` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria>? selectionCriteria;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria?>? selectionCriteria;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics].
   /// [enabled] Whether prefix-level storage metrics are enabled.

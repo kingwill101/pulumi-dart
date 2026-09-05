@@ -7,11 +7,11 @@ import 'virtual_node_spec_listener_tls_certificate_sds.dart';
 
 class VirtualNodeSpecListenerTlsCertificate {
   /// AWS Certificate Manager (ACM) certificate. See `spec.listener.tls.certificate.acm` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTlsCertificateAcm>? acm;
+  final pulumi.Input<VirtualNodeSpecListenerTlsCertificateAcm?>? acm;
   /// File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTlsCertificateFile>? file;
+  final pulumi.Input<VirtualNodeSpecListenerTlsCertificateFile?>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTlsCertificateSds>? sds;
+  final pulumi.Input<VirtualNodeSpecListenerTlsCertificateSds?>? sds;
 
   /// Creates a new [VirtualNodeSpecListenerTlsCertificate].
   /// [acm] AWS Certificate Manager (ACM) certificate. See `spec.listener.tls.certificate.acm` Block for details.

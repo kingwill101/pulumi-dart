@@ -14,15 +14,15 @@ class DefaultNetworkAclArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> defaultNetworkAclId;
   /// Configuration block for an egress rule. Detailed below.
-  final pulumi.Input<List<DefaultNetworkAclEgress>>? egress;
+  final pulumi.Input<List<DefaultNetworkAclEgress>?>? egress;
   /// Configuration block for an ingress rule. Detailed below.
-  final pulumi.Input<List<DefaultNetworkAclIngress>>? ingress;
+  final pulumi.Input<List<DefaultNetworkAclIngress>?>? ingress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DefaultNetworkAclArgs].
   /// [defaultNetworkAclId] Network ACL ID to manage. This attribute is exported from `aws.ec2.Vpc`, or manually found via the AWS Console.

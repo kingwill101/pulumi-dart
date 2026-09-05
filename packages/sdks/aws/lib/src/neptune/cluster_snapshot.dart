@@ -128,7 +128,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> availabilityZones;
   /// The DB Cluster Identifier from which to take the snapshot.
   late final pulumi.Output<String> dbClusterIdentifier;
-  /// The Amazon Resource Name (ARN) for the DB Cluster Snapshot.
+  /// ARN for the DB Cluster Snapshot.
   late final pulumi.Output<String> dbClusterSnapshotArn;
   /// The Identifier for the snapshot.
   late final pulumi.Output<String> dbClusterSnapshotIdentifier;
@@ -165,10 +165,10 @@ class ClusterSnapshot extends pulumi.CustomResource {
           'aws:neptune/clusterSnapshot:ClusterSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
     dbClusterSnapshotArn = registerOutput<String>('dbClusterSnapshotArn');
     dbClusterSnapshotIdentifier = registerOutput<String>('dbClusterSnapshotIdentifier');
@@ -190,11 +190,12 @@ class ClusterSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,7 +210,34 @@ class ClusterSnapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
+    dbClusterSnapshotArn = registerOutput<String>('dbClusterSnapshotArn');
+    dbClusterSnapshotIdentifier = registerOutput<String>('dbClusterSnapshotIdentifier');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    licenseModel = registerOutput<String>('licenseModel');
+    port = registerOutput<int>('port');
+    region = registerOutput<String>('region');
+    snapshotType = registerOutput<String>('snapshotType');
+    sourceDbClusterSnapshotArn = registerOutput<String>('sourceDbClusterSnapshotArn');
+    status = registerOutput<String>('status');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [ClusterSnapshot] resource.
+  ClusterSnapshot.reference(String urn)
+    : super(
+        'aws:neptune/clusterSnapshot:ClusterSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatedStorage = registerOutput<int>('allocatedStorage');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
     dbClusterSnapshotArn = registerOutput<String>('dbClusterSnapshotArn');
     dbClusterSnapshotIdentifier = registerOutput<String>('dbClusterSnapshotIdentifier');

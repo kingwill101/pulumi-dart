@@ -4,34 +4,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering VpcConnection resources.
 class VpcConnectionState {
-  /// Amazon Resource Name (ARN) of the VPC connection.
-  final pulumi.Input<String>? arn;
+  /// ARN of the VPC connection.
+  final pulumi.Input<String?>? arn;
   /// The authentication type for the client VPC connection. Specify one of these auth type strings: SASL_IAM, SASL_SCRAM, or TLS.
-  final pulumi.Input<String>? authentication;
+  final pulumi.Input<String?>? authentication;
   /// The list of subnets in the client VPC to connect to.
-  final pulumi.Input<List<String>>? clientSubnets;
+  final pulumi.Input<List<String>?>? clientSubnets;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The security groups to attach to the ENIs for the broker nodes.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The Amazon Resource Name (ARN) of the cluster.
-  final pulumi.Input<String>? targetClusterArn;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// ARN of the cluster.
+  final pulumi.Input<String?>? targetClusterArn;
   /// The VPC ID of the remote client.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcConnectionState].
-  /// [arn] Amazon Resource Name (ARN) of the VPC connection.
+  /// [arn] ARN of the VPC connection.
   /// [authentication] The authentication type for the client VPC connection. Specify one of these auth type strings: SASL_IAM, SASL_SCRAM, or TLS.
   /// [clientSubnets] The list of subnets in the client VPC to connect to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroups] The security groups to attach to the ENIs for the broker nodes.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [targetClusterArn] The Amazon Resource Name (ARN) of the cluster.
+  /// [targetClusterArn] ARN of the cluster.
   /// [vpcId] The VPC ID of the remote client.
   const VpcConnectionState({
     this.arn,

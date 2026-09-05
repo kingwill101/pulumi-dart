@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PermissionsDataLocation {
-  /// Amazon Resource Name (ARN) that uniquely identifies the data location resource.
+  /// ARN that uniquely identifies the data location resource.
   ///
   /// The following argument is optional:
   final pulumi.Input<String> arn;
   /// Identifier for the Data Catalog where the location is registered with Lake Formation. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
 
   /// Creates a new [PermissionsDataLocation].
-  /// [arn] Amazon Resource Name (ARN) that uniquely identifies the data location resource.
+  /// [arn] ARN that uniquely identifies the data location resource.
   /// [catalogId] Identifier for the Data Catalog where the location is registered with Lake Formation. By default, it is the account ID of the caller.
   const PermissionsDataLocation({
     required this.arn,

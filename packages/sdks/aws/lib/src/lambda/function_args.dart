@@ -20,89 +20,89 @@ import 'function_vpc_config.dart';
 /// {@macro pulumi_lambda_function_function_args_doc}
 class FunctionArgs {
   /// Instruction set architecture for your Lambda function. Valid values are `["x8664"]` and `["arm64"]`. Default is `["x8664"]`. Removing this attribute, function's architecture stays the same.
-  final pulumi.Input<List<String>>? architectures;
+  final pulumi.Input<List<String>?>? architectures;
   /// Configuration block for Lambda Capacity Provider. See below.
-  final pulumi.Input<FunctionCapacityProviderConfig>? capacityProviderConfig;
+  final pulumi.Input<FunctionCapacityProviderConfig?>? capacityProviderConfig;
   /// Path to the function's deployment package within the local filesystem. Conflicts with `imageUri` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   final pulumi.Input<dynamic>? code;
   /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `sourceCodeHash` argument instead.
-  final pulumi.Input<String>? codeSha256;
+  final pulumi.Input<String?>? codeSha256;
   /// ARN of a code-signing configuration to enable code signing for this function.
-  final pulumi.Input<String>? codeSigningConfigArn;
+  final pulumi.Input<String?>? codeSigningConfigArn;
   /// Configuration block for dead letter queue. See below.
-  final pulumi.Input<FunctionDeadLetterConfig>? deadLetterConfig;
+  final pulumi.Input<FunctionDeadLetterConfig?>? deadLetterConfig;
   /// Description of what your Lambda Function does.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block for durable function settings. See below. `durableConfig` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
-  final pulumi.Input<FunctionDurableConfig>? durableConfig;
+  final pulumi.Input<FunctionDurableConfig?>? durableConfig;
   /// Configuration block for environment variables. See below.
-  final pulumi.Input<FunctionEnvironment>? environment;
+  final pulumi.Input<FunctionEnvironment?>? environment;
   /// Amount of ephemeral storage (`/tmp`) to allocate for the Lambda Function. See below.
-  final pulumi.Input<FunctionEphemeralStorage>? ephemeralStorage;
+  final pulumi.Input<FunctionEphemeralStorage?>? ephemeralStorage;
   /// Configuration block for EFS or S3 Files file system. See below.
-  final pulumi.Input<FunctionFileSystemConfig>? fileSystemConfig;
+  final pulumi.Input<FunctionFileSystemConfig?>? fileSystemConfig;
   /// Function entry point in your code. Required if `packageType` is `Zip`.
-  final pulumi.Input<String>? handler;
+  final pulumi.Input<String?>? handler;
   /// Container image configuration values. See below.
-  final pulumi.Input<FunctionImageConfig>? imageConfig;
+  final pulumi.Input<FunctionImageConfig?>? imageConfig;
   /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
-  final pulumi.Input<String>? imageUri;
-  /// ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? imageUri;
+  /// ARN of the KMS key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
+  final pulumi.Input<String?>? kmsKeyArn;
   /// List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
-  final pulumi.Input<List<String>>? layers;
+  final pulumi.Input<List<String>?>? layers;
   /// Configuration block for advanced logging settings. See below.
-  final pulumi.Input<FunctionLoggingConfig>? loggingConfig;
+  final pulumi.Input<FunctionLoggingConfig?>? loggingConfig;
   /// Amount of memory in MB your Lambda Function can use at runtime. Valid value between 128 MB to 32,768 MB (32 GB), in 1 MB increments. Defaults to 128.
-  final pulumi.Input<int>? memorySize;
+  final pulumi.Input<int?>? memorySize;
   /// Unique name for your Lambda Function.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Lambda deployment package type. Valid values are `Zip` and `Image`. Defaults to `Zip`.
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
-  final pulumi.Input<bool>? publish;
+  final pulumi.Input<bool?>? publish;
   /// Whether to publish to a alias or version number. Omit for regular version publishing. Option is `LATEST_PUBLISHED`.
-  final pulumi.Input<String>? publishTo;
+  final pulumi.Input<String?>? publishTo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is `false`.
-  final pulumi.Input<bool>? replaceSecurityGroupsOnDestroy;
+  final pulumi.Input<bool?>? replaceSecurityGroupsOnDestroy;
   /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replaceSecurityGroupsOnDestroy` is `true`.
-  final pulumi.Input<List<String>>? replacementSecurityGroupIds;
+  final pulumi.Input<List<String>?>? replacementSecurityGroupIds;
   /// Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
-  final pulumi.Input<int>? reservedConcurrentExecutions;
+  final pulumi.Input<int?>? reservedConcurrentExecutions;
   /// ARN of the function's execution role. The role provides the function's identity and access to AWS services and resources.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> role;
   /// Identifier of the function's runtime. Required if `packageType` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<dynamic>? runtime;
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `imageUri`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
-  final pulumi.Input<String>? s3Bucket;
+  final pulumi.Input<String?>? s3Bucket;
   /// S3 key of an object containing the function's deployment package. Required if `s3Bucket` is set.
-  final pulumi.Input<String>? s3Key;
+  final pulumi.Input<String?>? s3Key;
   /// Object version containing the function's deployment package. Conflicts with `filename` and `imageUri`.
-  final pulumi.Input<String>? s3ObjectVersion;
+  final pulumi.Input<String?>? s3ObjectVersion;
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Configuration block for snap start settings. See below.
-  final pulumi.Input<FunctionSnapStart>? snapStart;
+  final pulumi.Input<FunctionSnapStart?>? snapStart;
   /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `codeSha256` argument instead.
-  final pulumi.Input<String>? sourceCodeHash;
-  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
-  final pulumi.Input<String>? sourceKmsKeyArn;
+  final pulumi.Input<String?>? sourceCodeHash;
+  /// ARN of the KMS key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
+  final pulumi.Input<String?>? sourceKmsKeyArn;
   /// Key-value map of tags for the Lambda function. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block for Tenancy. See below.
-  final pulumi.Input<FunctionTenancyConfig>? tenancyConfig;
+  final pulumi.Input<FunctionTenancyConfig?>? tenancyConfig;
   /// Amount of time your Lambda Function has to run in seconds. Defaults to 3. Valid between 1 and 900.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// Configuration block for X-Ray tracing. See below.
-  final pulumi.Input<FunctionTracingConfig>? tracingConfig;
+  final pulumi.Input<FunctionTracingConfig?>? tracingConfig;
   /// Whether to apply resource level timeout values while retrying eventually consistent API operations. By default the provider uses a 5 minute timeout to allow for propagation in the Lambda service. When set to `true`, this default value is replaced with the configurable resource timeouts. Increased timeout values may be useful in highly active accounts, or regions where propagation delays are inconsistent.
-  final pulumi.Input<bool>? useResourceTimeoutForPropagation;
+  final pulumi.Input<bool?>? useResourceTimeoutForPropagation;
   /// Configuration block for VPC. See below.
-  final pulumi.Input<FunctionVpcConfig>? vpcConfig;
+  final pulumi.Input<FunctionVpcConfig?>? vpcConfig;
 
   /// Creates a new [FunctionArgs].
   /// [architectures] Instruction set architecture for your Lambda function. Valid values are `["x8664"]` and `["arm64"]`. Default is `["x8664"]`. Removing this attribute, function's architecture stays the same.
@@ -119,7 +119,7 @@ class FunctionArgs {
   /// [handler] Function entry point in your code. Required if `packageType` is `Zip`.
   /// [imageConfig] Container image configuration values. See below.
   /// [imageUri] ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
-  /// [kmsKeyArn] ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
+  /// [kmsKeyArn] ARN of the KMS key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
   /// [layers] List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
   /// [loggingConfig] Configuration block for advanced logging settings. See below.
   /// [memorySize] Amount of memory in MB your Lambda Function can use at runtime. Valid value between 128 MB to 32,768 MB (32 GB), in 1 MB increments. Defaults to 128.
@@ -139,7 +139,7 @@ class FunctionArgs {
   /// [skipDestroy] Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`.
   /// [snapStart] Configuration block for snap start settings. See below.
   /// [sourceCodeHash] User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `codeSha256` argument instead.
-  /// [sourceKmsKeyArn] ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
+  /// [sourceKmsKeyArn] ARN of the KMS key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
   /// [tags] Key-value map of tags for the Lambda function. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tenancyConfig] Configuration block for Tenancy. See below.
   /// [timeout] Amount of time your Lambda Function has to run in seconds. Defaults to 3. Valid between 1 and 900.
@@ -255,7 +255,7 @@ class FunctionArgs {
       kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       layers: (() { final guardedValue = map['layers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memorySize: (() { final guardedValue = map['memorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memorySize: (() { final guardedValue = map['memorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       packageType: (() { final guardedValue = map['packageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publish: (() { final guardedValue = map['publish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -263,9 +263,9 @@ class FunctionArgs {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replaceSecurityGroupsOnDestroy: (() { final guardedValue = map['replaceSecurityGroupsOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       replacementSecurityGroupIds: (() { final guardedValue = map['replacementSecurityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      reservedConcurrentExecutions: (() { final guardedValue = map['reservedConcurrentExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      reservedConcurrentExecutions: (() { final guardedValue = map['reservedConcurrentExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       role: pulumi.Input.fromValue(map['role'] as String),
-      runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       s3Bucket: (() { final guardedValue = map['s3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Key: (() { final guardedValue = map['s3Key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3ObjectVersion: (() { final guardedValue = map['s3ObjectVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -275,7 +275,7 @@ class FunctionArgs {
       sourceKmsKeyArn: (() { final guardedValue = map['sourceKmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tenancyConfig: (() { final guardedValue = map['tenancyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tracingConfig: (() { final guardedValue = map['tracingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       useResourceTimeoutForPropagation: (() { final guardedValue = map['useResourceTimeoutForPropagation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vpcConfig: (() { final guardedValue = map['vpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

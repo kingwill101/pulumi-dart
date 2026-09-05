@@ -5,32 +5,32 @@ import 'volume_copy_timeouts.dart';
 
 /// Input properties used for looking up and filtering VolumeCopy resources.
 class VolumeCopyState {
-  /// Amazon Resource Name (ARN) of the copied EBS volume.
-  final pulumi.Input<String>? arn;
+  /// ARN of the copied EBS volume.
+  final pulumi.Input<String?>? arn;
   /// Availability Zone for the copied volume.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Provisioned IOPS for the copied volume. Use only with volume types that support provisioned IOPS, such as `gp3`.
-  final pulumi.Input<int>? iops;
+  final pulumi.Input<int?>? iops;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration. This must match the Region of the source EBS volume referenced by `sourceVolumeId`.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Size of the copied volume, in GiB.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// ID of the source EBS volume to copy. Changing this value forces replacement of the resource.
-  final pulumi.Input<String>? sourceVolumeId;
+  final pulumi.Input<String?>? sourceVolumeId;
   /// A map of tags to assign to the copied volume. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Throughput for the copied volume, in MiB/s. Valid only when `volumeType` is `gp3`.
-  final pulumi.Input<int>? throughput;
-  final pulumi.Input<VolumeCopyTimeouts>? timeouts;
+  final pulumi.Input<int?>? throughput;
+  final pulumi.Input<VolumeCopyTimeouts?>? timeouts;
   /// Type of the copied EBS volume. Valid values include `gp2`, `gp3`, `io1`, `io2`, `sc1`, `st1`, and `standard`.
   ///
   /// &gt; **NOTE:** When changing the `size`, `iops` or `type` of a volume, there are [considerations](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html) to be aware of.
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
 
   /// Creates a new [VolumeCopyState].
-  /// [arn] Amazon Resource Name (ARN) of the copied EBS volume.
+  /// [arn] ARN of the copied EBS volume.
   /// [availabilityZone] Availability Zone for the copied volume.
   /// [iops] Provisioned IOPS for the copied volume. Use only with volume types that support provisioned IOPS, such as `gp3`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration. This must match the Region of the source EBS volume referenced by `sourceVolumeId`.
@@ -75,13 +75,13 @@ class VolumeCopyState {
     return VolumeCopyState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceVolumeId: (() { final guardedValue = map['sourceVolumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

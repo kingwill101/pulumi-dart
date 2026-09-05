@@ -5,40 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Agent resources.
 class AgentState {
   /// DataSync Agent activation key during resource creation. Conflicts with `ipAddress`. If an `ipAddress` is provided instead, the provider will retrieve the `activationKey` as part of the resource creation.
-  final pulumi.Input<String>? activationKey;
-  /// Amazon Resource Name (ARN) of the DataSync Agent.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? activationKey;
+  /// ARN of the DataSync Agent.
+  final pulumi.Input<String?>? arn;
   /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. DataSync Agent must be accessible on port 80 from where the provider is running.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Name of the DataSync Agent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activationKey`.
-  final pulumi.Input<String>? privateLinkEndpoint;
+  final pulumi.Input<String?>? privateLinkEndpoint;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARNs of the security groups used to protect your data transfer task subnets.
-  final pulumi.Input<List<String>>? securityGroupArns;
-  /// The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
-  final pulumi.Input<List<String>>? subnetArns;
+  final pulumi.Input<List<String>?>? securityGroupArns;
+  /// ARNs of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
+  final pulumi.Input<List<String>?>? subnetArns;
   /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// ID of the VPC endpoint that the agent has access to.
+  final pulumi.Input<String?>? vpcEndpointId;
 
   /// Creates a new [AgentState].
   /// [activationKey] DataSync Agent activation key during resource creation. Conflicts with `ipAddress`. If an `ipAddress` is provided instead, the provider will retrieve the `activationKey` as part of the resource creation.
-  /// [arn] Amazon Resource Name (ARN) of the DataSync Agent.
+  /// [arn] ARN of the DataSync Agent.
   /// [ipAddress] DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. DataSync Agent must be accessible on port 80 from where the provider is running.
   /// [name] Name of the DataSync Agent.
   /// [privateLinkEndpoint] The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activationKey`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupArns] The ARNs of the security groups used to protect your data transfer task subnets.
-  /// [subnetArns] The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
+  /// [subnetArns] ARNs of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [vpcEndpointId] The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
+  /// [vpcEndpointId] ID of the VPC endpoint that the agent has access to.
   const AgentState({
     this.activationKey,
     this.arn,

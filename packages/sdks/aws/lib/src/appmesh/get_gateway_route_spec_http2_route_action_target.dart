@@ -24,7 +24,7 @@ class GetGatewayRouteSpecHttp2RouteActionTarget {
 
   factory GetGatewayRouteSpecHttp2RouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteActionTarget(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       virtualServices: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService>(map['virtualServices']!, (value) => GetGatewayRouteSpecHttp2RouteActionTargetVirtualService.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

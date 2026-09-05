@@ -9,7 +9,7 @@ class MembershipDefaultResultConfiguration {
   /// - `output_configuration.s3.bucket` - (Required) - The name of the S3 bucket where the query results will be stored.
   /// - `output_configuration.s3.result_format` - (Required) - The format of the query results. Valid values are `PARQUET` and `CSV`.
   /// - `output_configuration.s3.key_prefix` - (Optional) - The prefix used for the query results.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [MembershipDefaultResultConfiguration].
   /// [outputConfiguration] Required.

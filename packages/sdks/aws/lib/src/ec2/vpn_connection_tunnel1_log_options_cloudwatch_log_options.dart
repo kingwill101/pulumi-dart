@@ -4,24 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
   /// Enable or disable BGP logging feature. The default is `false`.
-  final pulumi.Input<bool>? bgpLogEnabled;
-  /// The Amazon Resource Name (ARN) of the CloudWatch log group to send BGP logs to.
-  final pulumi.Input<String>? bgpLogGroupArn;
+  final pulumi.Input<bool?>? bgpLogEnabled;
+  /// ARN of the CloudWatch log group to send BGP logs to.
+  final pulumi.Input<String?>? bgpLogGroupArn;
   /// Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
-  final pulumi.Input<String>? bgpLogOutputFormat;
+  final pulumi.Input<String?>? bgpLogOutputFormat;
   /// Enable or disable VPN tunnel logging feature. The default is `false`.
-  final pulumi.Input<bool>? logEnabled;
-  /// The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
-  final pulumi.Input<String>? logGroupArn;
+  final pulumi.Input<bool?>? logEnabled;
+  /// ARN of the CloudWatch log group to send logs to.
+  final pulumi.Input<String?>? logGroupArn;
   /// Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
-  final pulumi.Input<String>? logOutputFormat;
+  final pulumi.Input<String?>? logOutputFormat;
 
   /// Creates a new [VpnConnectionTunnel1LogOptionsCloudwatchLogOptions].
   /// [bgpLogEnabled] Enable or disable BGP logging feature. The default is `false`.
-  /// [bgpLogGroupArn] The Amazon Resource Name (ARN) of the CloudWatch log group to send BGP logs to.
+  /// [bgpLogGroupArn] ARN of the CloudWatch log group to send BGP logs to.
   /// [bgpLogOutputFormat] Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   /// [logEnabled] Enable or disable VPN tunnel logging feature. The default is `false`.
-  /// [logGroupArn] The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
+  /// [logGroupArn] ARN of the CloudWatch log group to send logs to.
   /// [logOutputFormat] Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   const VpnConnectionTunnel1LogOptionsCloudwatchLogOptions({
     this.bgpLogEnabled,

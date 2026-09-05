@@ -134,7 +134,7 @@ import 'policy_table_state.dart';
 /// $ pulumi import aws:ec2transitgateway/policyTable:PolicyTable example tgw-rtb-12345678
 /// ```
 class PolicyTable extends pulumi.CustomResource {
-  /// EC2 Transit Gateway Policy Table Amazon Resource Name (ARN).
+  /// EC2 Transit Gateway Policy Table ARN.
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -159,13 +159,13 @@ class PolicyTable extends pulumi.CustomResource {
           'aws:ec2transitgateway/policyTable:PolicyTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 
@@ -174,11 +174,12 @@ class PolicyTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,8 +196,25 @@ class PolicyTable extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [PolicyTable] resource.
+  PolicyTable.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/policyTable:PolicyTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

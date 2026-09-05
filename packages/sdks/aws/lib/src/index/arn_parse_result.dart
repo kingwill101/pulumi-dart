@@ -3,43 +3,43 @@
 
 /// Result data returned by arnParse.
 class ArnParseResult {
-  final String accountId;
-  final String partition;
-  final String region;
-  final String resource;
-  final String service;
+  final String? accountId;
+  final String? partition;
+  final String? region;
+  final String? resource;
+  final String? service;
 
   /// Creates a new [ArnParseResult].
-  /// [accountId] Required.
-  /// [partition] Required.
-  /// [region] Required.
-  /// [resource] Required.
-  /// [service] Required.
+  /// [accountId] Optional.
+  /// [partition] Optional.
+  /// [region] Optional.
+  /// [resource] Optional.
+  /// [service] Optional.
   const ArnParseResult({
-    required this.accountId,
-    required this.partition,
-    required this.region,
-    required this.resource,
-    required this.service,
+    this.accountId,
+    this.partition,
+    this.region,
+    this.resource,
+    this.service,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountId': accountId,
-      'partition': partition,
-      'region': region,
-      'resource': resource,
-      'service': service,
+      'accountId': ?accountId,
+      'partition': ?partition,
+      'region': ?region,
+      'resource': ?resource,
+      'service': ?service,
     };
   }
 
   factory ArnParseResult.fromMap(Map<String, dynamic> map) {
     return ArnParseResult(
-      accountId: map['accountId'] as String,
-      partition: map['partition'] as String,
-      region: map['region'] as String,
-      resource: map['resource'] as String,
-      service: map['service'] as String,
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

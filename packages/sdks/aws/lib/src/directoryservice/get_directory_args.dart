@@ -10,9 +10,9 @@ class GetDirectoryArgs {
   /// ID of the directory.
   final pulumi.Input<String> directoryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags assigned to the directory/connector.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDirectoryArgs].
   /// [directoryId] ID of the directory.

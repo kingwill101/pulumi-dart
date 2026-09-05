@@ -124,6 +124,17 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
   return GetDataLakeSettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
+  GetDataLakeSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lakeformation/getDataLakeSettings:getDataLakeSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataLakeSettingsResult.fromMap);
+}
+
 /// Get permissions for a principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3. Permissions are granted to a principal, in a Data Catalog, relative to a Lake Formation resource, which includes the Data Catalog, databases, tables, LF-tags, and LF-tag policies. For more information, see [Security and Access Control to Metadata and Data in Lake Formation](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
 ///
 /// &gt; **NOTE:** This data source deals with explicitly granted permissions. Lake Formation grants implicit permissions to data lake administrators, database creators, and table creators. For more information, see [Implicit Lake Formation Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/implicit-permissions.html).
@@ -138,20 +149,20 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = aws.lakeformation.getPermissions({
-///     principal: workflowRole.arn,
 ///     dataLocation: {
 ///         arn: testAwsLakeformationResource.arn,
 ///     },
+///     principal: workflowRole.arn,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.lakeformation.get_permissions(principal=workflow_role["arn"],
-///     data_location={
+/// test = aws.lakeformation.get_permissions(data_location={
 ///         "arn": test_aws_lakeformation_resource["arn"],
-///     })
+///     },
+///     principal=workflow_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -163,11 +174,11 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// {
 ///     var test = Aws.LakeFormation.GetPermissions.Invoke(new()
 ///     {
-///         Principal = workflowRole.Arn,
 ///         DataLocation = new Aws.LakeFormation.Inputs.GetPermissionsDataLocationInputArgs
 ///         {
 ///             Arn = testAwsLakeformationResource.Arn,
 ///         },
+///         Principal = workflowRole.Arn,
 ///     });
 ///
 /// });
@@ -183,10 +194,10 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.LookupPermissions(ctx, &lakeformation.LookupPermissionsArgs{
-/// 			Principal: workflowRole.Arn,
 /// 			DataLocation: lakeformation.GetPermissionsDataLocation{
 /// 				Arn: testAwsLakeformationResource.Arn,
 /// 			},
+/// 			Principal: workflowRole.Arn,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -205,10 +216,10 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// }
 ///
 /// data "aws_lakeformation_getpermissions" "test" {
-///   principal = workflowRole.arn
 ///   data_location = {
 ///     arn = testAwsLakeformationResource.arn
 ///   }
+///   principal = workflowRole.arn
 /// }
 /// ```
 /// ```java
@@ -234,10 +245,10 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = LakeformationFunctions.getPermissions(GetPermissionsArgs.builder()
-///             .principal(workflowRole.arn())
 ///             .dataLocation(GetPermissionsDataLocationArgs.builder()
 ///                 .arn(testAwsLakeformationResource.arn())
 ///                 .build())
+///             .principal(workflowRole.arn())
 ///             .build());
 ///
 ///     }
@@ -249,9 +260,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///     fn::invoke:
 ///       function: aws:lakeformation:getPermissions
 ///       arguments:
-///         principal: ${workflowRole.arn}
 ///         dataLocation:
 ///           arn: ${testAwsLakeformationResource.arn}
+///         principal: ${workflowRole.arn}
 /// ```
 ///
 ///
@@ -263,22 +274,22 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = aws.lakeformation.getPermissions({
-///     principal: workflowRole.arn,
 ///     database: {
 ///         name: testAwsGlueCatalogDatabase.name,
 ///         catalogId: "110376042874",
 ///     },
+///     principal: workflowRole.arn,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.lakeformation.get_permissions(principal=workflow_role["arn"],
-///     database={
+/// test = aws.lakeformation.get_permissions(database={
 ///         "name": test_aws_glue_catalog_database["name"],
 ///         "catalog_id": "110376042874",
-///     })
+///     },
+///     principal=workflow_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -290,12 +301,12 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// {
 ///     var test = Aws.LakeFormation.GetPermissions.Invoke(new()
 ///     {
-///         Principal = workflowRole.Arn,
 ///         Database = new Aws.LakeFormation.Inputs.GetPermissionsDatabaseInputArgs
 ///         {
 ///             Name = testAwsGlueCatalogDatabase.Name,
 ///             CatalogId = "110376042874",
 ///         },
+///         Principal = workflowRole.Arn,
 ///     });
 ///
 /// });
@@ -311,11 +322,11 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.LookupPermissions(ctx, &lakeformation.LookupPermissionsArgs{
-/// 			Principal: workflowRole.Arn,
 /// 			Database: lakeformation.GetPermissionsDatabase{
 /// 				Name:      testAwsGlueCatalogDatabase.Name,
 /// 				CatalogId: "110376042874",
 /// 			},
+/// 			Principal: workflowRole.Arn,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -334,11 +345,11 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// }
 ///
 /// data "aws_lakeformation_getpermissions" "test" {
-///   principal = workflowRole.arn
 ///   database = {
 ///     name       = testAwsGlueCatalogDatabase.name
 ///     catalog_id = "110376042874"
 ///   }
+///   principal = workflowRole.arn
 /// }
 /// ```
 /// ```java
@@ -364,11 +375,11 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = LakeformationFunctions.getPermissions(GetPermissionsArgs.builder()
-///             .principal(workflowRole.arn())
 ///             .database(GetPermissionsDatabaseArgs.builder()
 ///                 .name(testAwsGlueCatalogDatabase.name())
 ///                 .catalogId("110376042874")
 ///                 .build())
+///             .principal(workflowRole.arn())
 ///             .build());
 ///
 ///     }
@@ -380,10 +391,10 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///     fn::invoke:
 ///       function: aws:lakeformation:getPermissions
 ///       arguments:
-///         principal: ${workflowRole.arn}
 ///         database:
 ///           name: ${testAwsGlueCatalogDatabase.name}
 ///           catalogId: '110376042874'
+///         principal: ${workflowRole.arn}
 /// ```
 ///
 ///
@@ -395,9 +406,7 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = aws.lakeformation.getPermissions({
-///     principal: workflowRole.arn,
 ///     lfTagPolicy: {
-///         resourceType: "DATABASE",
 ///         expressions: [
 ///             {
 ///                 key: "Team",
@@ -411,16 +420,16 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///                 ],
 ///             },
 ///         ],
+///         resourceType: "DATABASE",
 ///     },
+///     principal: workflowRole.arn,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.lakeformation.get_permissions(principal=workflow_role["arn"],
-///     lf_tag_policy={
-///         "resource_type": "DATABASE",
+/// test = aws.lakeformation.get_permissions(lf_tag_policy={
 ///         "expressions": [
 ///             {
 ///                 "key": "Team",
@@ -434,7 +443,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///                 ],
 ///             },
 ///         ],
-///     })
+///         "resource_type": "DATABASE",
+///     },
+///     principal=workflow_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -446,10 +457,8 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// {
 ///     var test = Aws.LakeFormation.GetPermissions.Invoke(new()
 ///     {
-///         Principal = workflowRole.Arn,
 ///         LfTagPolicy = new Aws.LakeFormation.Inputs.GetPermissionsLfTagPolicyInputArgs
 ///         {
-///             ResourceType = "DATABASE",
 ///             Expressions = new[]
 ///             {
 ///                 new Aws.LakeFormation.Inputs.GetPermissionsLfTagPolicyExpressionInputArgs
@@ -470,7 +479,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///                     },
 ///                 },
 ///             },
+///             ResourceType = "DATABASE",
 ///         },
+///         Principal = workflowRole.Arn,
 ///     });
 ///
 /// });
@@ -486,9 +497,7 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.LookupPermissions(ctx, &lakeformation.LookupPermissionsArgs{
-/// 			Principal: workflowRole.Arn,
 /// 			LfTagPolicy: lakeformation.GetPermissionsLfTagPolicy{
-/// 				ResourceType: "DATABASE",
 /// 				Expressions: []lakeformation.GetPermissionsLfTagPolicyExpression{
 /// 					{
 /// 						Key: "Team",
@@ -504,7 +513,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// 						},
 /// 					},
 /// 				},
+/// 				ResourceType: "DATABASE",
 /// 			},
+/// 			Principal: workflowRole.Arn,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -523,9 +534,7 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 /// }
 ///
 /// data "aws_lakeformation_getpermissions" "test" {
-///   principal = workflowRole.arn
 ///   lf_tag_policy = {
-///     resource_type = "DATABASE"
 ///     expressions = [{
 ///       "key"    = "Team"
 ///       "values" = ["Sales"]
@@ -533,7 +542,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///       "key"    = "Environment"
 ///       "values" = ["Dev", "Production"]
 ///     }]
+///     resource_type = "DATABASE"
 ///   }
+///   principal = workflowRole.arn
 /// }
 /// ```
 /// ```java
@@ -560,9 +571,7 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = LakeformationFunctions.getPermissions(GetPermissionsArgs.builder()
-///             .principal(workflowRole.arn())
 ///             .lfTagPolicy(GetPermissionsLfTagPolicyArgs.builder()
-///                 .resourceType("DATABASE")
 ///                 .expressions(
 ///                     GetPermissionsLfTagPolicyExpressionArgs.builder()
 ///                         .key("Team")
@@ -574,7 +583,9 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///                             "Dev",
 ///                             "Production")
 ///                         .build())
+///                 .resourceType("DATABASE")
 ///                 .build())
+///             .principal(workflowRole.arn())
 ///             .build());
 ///
 ///     }
@@ -586,9 +597,7 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///     fn::invoke:
 ///       function: aws:lakeformation:getPermissions
 ///       arguments:
-///         principal: ${workflowRole.arn}
 ///         lfTagPolicy:
-///           resourceType: DATABASE
 ///           expressions:
 ///             - key: Team
 ///               values:
@@ -597,6 +606,8 @@ Future<GetDataLakeSettingsResult> getDataLakeSettings(
 ///               values:
 ///                 - Dev
 ///                 - Production
+///           resourceType: DATABASE
+///         principal: ${workflowRole.arn}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_lakeformation_get_permissions_get_permissions_args_doc}
 /// [options] Invoke options controlling this call.
@@ -611,6 +622,17 @@ Future<GetPermissionsResult> getPermissions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPermissionsResult.fromMap(result);
+}
+
+pulumi.Output<GetPermissionsResult> getPermissionsOutput(
+  GetPermissionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lakeformation/getPermissions:getPermissions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPermissionsResult.fromMap);
 }
 
 /// Provides details about a Lake Formation resource.
@@ -729,4 +751,15 @@ Future<GetResourceResult> getResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceResult> getResourceOutput(
+  GetResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lakeformation/getResource:getResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceResult.fromMap);
 }

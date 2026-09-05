@@ -166,7 +166,7 @@ class AuthorizationRule extends pulumi.CustomResource {
           'aws:ec2clientvpn/authorizationRule:AuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessGroupId = registerOutput<String?>('accessGroupId');
     authorizeAllGroups = registerOutput<bool?>('authorizeAllGroups');
@@ -181,11 +181,12 @@ class AuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,6 +200,23 @@ class AuthorizationRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessGroupId = registerOutput<String?>('accessGroupId');
+    authorizeAllGroups = registerOutput<bool?>('authorizeAllGroups');
+    clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    targetNetworkCidr = registerOutput<String>('targetNetworkCidr');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizationRule] resource.
+  AuthorizationRule.reference(String urn)
+    : super(
+        'aws:ec2clientvpn/authorizationRule:AuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessGroupId = registerOutput<String?>('accessGroupId');
     authorizeAllGroups = registerOutput<bool?>('authorizeAllGroups');
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_rule_copy_action_lifecycle.dart';
 
 class PlanRuleCopyAction {
-  /// An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
+  /// ARN that uniquely identifies the destination backup vault for the copied backup.
   final pulumi.Input<String> destinationVaultArn;
   /// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-  final pulumi.Input<PlanRuleCopyActionLifecycle>? lifecycle;
+  final pulumi.Input<PlanRuleCopyActionLifecycle?>? lifecycle;
 
   /// Creates a new [PlanRuleCopyAction].
-  /// [destinationVaultArn] An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
+  /// [destinationVaultArn] ARN that uniquely identifies the destination backup vault for the copied backup.
   /// [lifecycle] The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
   const PlanRuleCopyAction({
     required this.destinationVaultArn,

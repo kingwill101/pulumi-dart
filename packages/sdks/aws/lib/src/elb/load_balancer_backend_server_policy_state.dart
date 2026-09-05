@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LoadBalancerBackendServerPolicy resources.
 class LoadBalancerBackendServerPolicyState {
   /// The instance port to apply the policy to.
-  final pulumi.Input<int>? instancePort;
+  final pulumi.Input<int?>? instancePort;
   /// The load balancer to attach the policy to.
-  final pulumi.Input<String>? loadBalancerName;
+  final pulumi.Input<String?>? loadBalancerName;
   /// List of Policy Names to apply to the backend server.
-  final pulumi.Input<List<String>>? policyNames;
+  final pulumi.Input<List<String>?>? policyNames;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LoadBalancerBackendServerPolicyState].
   /// [instancePort] The instance port to apply the policy to.
@@ -36,7 +36,7 @@ class LoadBalancerBackendServerPolicyState {
 
   factory LoadBalancerBackendServerPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServerPolicyState(
-      instancePort: (() { final guardedValue = map['instancePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instancePort: (() { final guardedValue = map['instancePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       loadBalancerName: (() { final guardedValue = map['loadBalancerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyNames: (() { final guardedValue = map['policyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

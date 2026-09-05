@@ -34,14 +34,14 @@ import 'function_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.Function("example", {
-///     name: "example_container_function",
-///     role: exampleAwsIamRole.arn,
-///     packageType: "Image",
-///     imageUri: `${exampleAwsEcrRepository.repositoryUrl}:latest`,
 ///     imageConfig: {
 ///         entryPoints: ["/lambda-entrypoint.sh"],
 ///         commands: ["app.handler"],
 ///     },
+///     name: "example_container_function",
+///     role: exampleAwsIamRole.arn,
+///     packageType: "Image",
+///     imageUri: `${exampleAwsEcrRepository.repositoryUrl}:latest`,
 ///     memorySize: 512,
 ///     timeout: 30,
 ///     architectures: ["arm64"],
@@ -52,14 +52,14 @@ import 'function_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.Function("example",
-///     name="example_container_function",
-///     role=example_aws_iam_role["arn"],
-///     package_type="Image",
-///     image_uri=f"{example_aws_ecr_repository['repositoryUrl']}:latest",
 ///     image_config={
 ///         "entry_points": ["/lambda-entrypoint.sh"],
 ///         "commands": ["app.handler"],
 ///     },
+///     name="example_container_function",
+///     role=example_aws_iam_role["arn"],
+///     package_type="Image",
+///     image_uri=f"{example_aws_ecr_repository['repositoryUrl']}:latest",
 ///     memory_size=512,
 ///     timeout=30,
 ///     architectures=["arm64"])
@@ -74,10 +74,6 @@ import 'function_vpc_config.dart';
 /// {
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
-///         Name = "example_container_function",
-///         Role = exampleAwsIamRole.Arn,
-///         PackageType = "Image",
-///         ImageUri = $"{exampleAwsEcrRepository.RepositoryUrl}:latest",
 ///         ImageConfig = new Aws.Lambda.Inputs.FunctionImageConfigArgs
 ///         {
 ///             EntryPoints = new[]
@@ -89,6 +85,10 @@ import 'function_vpc_config.dart';
 ///                 "app.handler",
 ///             },
 ///         },
+///         Name = "example_container_function",
+///         Role = exampleAwsIamRole.Arn,
+///         PackageType = "Image",
+///         ImageUri = $"{exampleAwsEcrRepository.RepositoryUrl}:latest",
 ///         MemorySize = 512,
 ///         Timeout = 30,
 ///         Architectures = new[]
@@ -110,10 +110,6 @@ import 'function_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Name:        pulumi.String("example_container_function"),
-/// 			Role:        pulumi.Any(exampleAwsIamRole.Arn),
-/// 			PackageType: pulumi.String("Image"),
-/// 			ImageUri:    pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
 /// 			ImageConfig: &lambda.FunctionImageConfigArgs{
 /// 				EntryPoints: pulumi.StringArray{
 /// 					pulumi.String("/lambda-entrypoint.sh"),
@@ -122,8 +118,12 @@ import 'function_vpc_config.dart';
 /// 					pulumi.String("app.handler"),
 /// 				},
 /// 			},
-/// 			MemorySize: pulumi.Int(512),
-/// 			Timeout:    pulumi.Int(30),
+/// 			Name:        pulumi.String("example_container_function"),
+/// 			Role:        pulumi.Any(exampleAwsIamRole.Arn),
+/// 			PackageType: pulumi.String("Image"),
+/// 			ImageUri:    pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
+/// 			MemorySize:  pulumi.Int(512),
+/// 			Timeout:     pulumi.Int(30),
 /// 			Architectures: pulumi.StringArray{
 /// 				pulumi.String("arm64"),
 /// 			},
@@ -145,14 +145,14 @@ import 'function_vpc_config.dart';
 /// }
 ///
 /// resource "aws_lambda_function" "example" {
-///   name         = "example_container_function"
-///   role         = exampleAwsIamRole.arn
-///   package_type = "Image"
-///   image_uri    ="${exampleAwsEcrRepository.repositoryUrl}:latest"
 ///   image_config = {
 ///     entry_points = ["/lambda-entrypoint.sh"]
 ///     commands     = ["app.handler"]
 ///   }
+///   name          = "example_container_function"
+///   role          = exampleAwsIamRole.arn
+///   package_type  = "Image"
+///   image_uri     ="${exampleAwsEcrRepository.repositoryUrl}:latest"
 ///   memory_size   = 512
 ///   timeout       = 30
 ///   architectures = ["arm64"] # Graviton support for better price/performance
@@ -181,14 +181,14 @@ import 'function_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Function("example", FunctionArgs.builder()
-///             .name("example_container_function")
-///             .role(exampleAwsIamRole.arn())
-///             .packageType("Image")
-///             .imageUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
 ///             .imageConfig(FunctionImageConfigArgs.builder()
 ///                 .entryPoints("/lambda-entrypoint.sh")
 ///                 .commands("app.handler")
 ///                 .build())
+///             .name("example_container_function")
+///             .role(exampleAwsIamRole.arn())
+///             .packageType("Image")
+///             .imageUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
 ///             .memorySize(512)
 ///             .timeout(30)
 ///             .architectures("arm64")
@@ -202,15 +202,15 @@ import 'function_vpc_config.dart';
 ///   example:
 ///     type: aws:lambda:Function
 ///     properties:
-///       name: example_container_function
-///       role: ${exampleAwsIamRole.arn}
-///       packageType: Image
-///       imageUri: ${exampleAwsEcrRepository.repositoryUrl}:latest
 ///       imageConfig:
 ///         entryPoints:
 ///           - /lambda-entrypoint.sh
 ///         commands:
 ///           - app.handler
+///       name: example_container_function
+///       role: ${exampleAwsIamRole.arn}
+///       packageType: Image
+///       imageUri: ${exampleAwsEcrRepository.repositoryUrl}:latest
 ///       memorySize: 512
 ///       timeout: 30
 ///       architectures: # Graviton support for better price/performance
@@ -243,15 +243,15 @@ import 'function_vpc_config.dart';
 /// });
 /// // Function using the layer
 /// const exampleFunction = new aws.lambda.Function("example", {
+///     tracingConfig: {
+///         mode: "Active",
+///     },
 ///     code: new pulumi.asset.FileArchive("function.zip"),
 ///     name: "example_layered_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
 ///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     layers: [example.arn],
-///     tracingConfig: {
-///         mode: "Active",
-///     },
 /// });
 /// ```
 /// ```python
@@ -273,15 +273,15 @@ import 'function_vpc_config.dart';
 ///     ])
 /// # Function using the layer
 /// example_function = aws.lambda_.Function("example",
+///     tracing_config={
+///         "mode": "Active",
+///     },
 ///     code=pulumi.FileArchive("function.zip"),
 ///     name="example_layered_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
 ///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
-///     layers=[example.arn],
-///     tracing_config={
-///         "mode": "Active",
-///     })
+///     layers=[example.arn])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -312,6 +312,10 @@ import 'function_vpc_config.dart';
 ///     // Function using the layer
 ///     var exampleFunction = new Aws.Lambda.Function("example", new()
 ///     {
+///         TracingConfig = new Aws.Lambda.Inputs.FunctionTracingConfigArgs
+///         {
+///             Mode = "Active",
+///         },
 ///         Code = new FileArchive("function.zip"),
 ///         Name = "example_layered_function",
 ///         Role = exampleAwsIamRole.Arn,
@@ -320,10 +324,6 @@ import 'function_vpc_config.dart';
 ///         Layers = new[]
 ///         {
 ///             example.Arn,
-///         },
-///         TracingConfig = new Aws.Lambda.Inputs.FunctionTracingConfigArgs
-///         {
-///             Mode = "Active",
 ///         },
 ///     });
 ///
@@ -358,6 +358,9 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		// Function using the layer
 /// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
+/// 			TracingConfig: &lambda.FunctionTracingConfigArgs{
+/// 				Mode: pulumi.String("Active"),
+/// 			},
 /// 			Code:    pulumi.NewFileArchive("function.zip"),
 /// 			Name:    pulumi.String("example_layered_function"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
@@ -365,9 +368,6 @@ import 'function_vpc_config.dart';
 /// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			Layers: pulumi.StringArray{
 /// 				example.Arn,
-/// 			},
-/// 			TracingConfig: &lambda.FunctionTracingConfigArgs{
-/// 				Mode: pulumi.String("Active"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -396,15 +396,15 @@ import 'function_vpc_config.dart';
 /// }
 /// # Function using the layer
 /// resource "aws_lambda_function" "example" {
+///   tracing_config = {
+///     mode = "Active"
+///   }
 ///   code    = fileArchive("function.zip")
 ///   name    = "example_layered_function"
 ///   role    = exampleAwsIamRole.arn
 ///   handler = "index.handler"
 ///   runtime = "nodejs24.x"
 ///   layers  = [aws_lambda_layerversion.example.arn]
-///   tracing_config = {
-///     mode = "Active"
-///   }
 /// }
 /// ```
 /// ```java
@@ -447,15 +447,15 @@ import 'function_vpc_config.dart';
 ///
 ///         // Function using the layer
 ///         var exampleFunction = new Function("exampleFunction", FunctionArgs.builder()
+///             .tracingConfig(FunctionTracingConfigArgs.builder()
+///                 .mode("Active")
+///                 .build())
 ///             .code(new FileArchive("function.zip"))
 ///             .name("example_layered_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
 ///             .runtime("nodejs24.x")
 ///             .layers(example.arn())
-///             .tracingConfig(FunctionTracingConfigArgs.builder()
-///                 .mode("Active")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -482,6 +482,8 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     name: example
 ///     properties:
+///       tracingConfig:
+///         mode: Active
 ///       code:
 ///         fn::fileArchive: function.zip
 ///       name: example_layered_function
@@ -490,8 +492,6 @@ import 'function_vpc_config.dart';
 ///       runtime: nodejs24.x
 ///       layers:
 ///         - ${example.arn}
-///       tracingConfig:
-///         mode: Active
 /// ```
 ///
 ///
@@ -503,13 +503,6 @@ import 'function_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.Function("example", {
-///     code: new pulumi.asset.FileArchive("function.zip"),
-///     name: "example_vpc_function",
-///     role: exampleAwsIamRole.arn,
-///     handler: "app.handler",
-///     runtime: aws.lambda.Runtime.Python3d12,
-///     memorySize: 1024,
-///     timeout: 30,
 ///     vpcConfig: {
 ///         subnetIds: [
 ///             examplePrivate1.id,
@@ -524,6 +517,13 @@ import 'function_vpc_config.dart';
 ///     snapStart: {
 ///         applyOn: "PublishedVersions",
 ///     },
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: "example_vpc_function",
+///     role: exampleAwsIamRole.arn,
+///     handler: "app.handler",
+///     runtime: aws.lambda.Runtime.Python3d12,
+///     memorySize: 1024,
+///     timeout: 30,
 /// });
 /// ```
 /// ```python
@@ -531,13 +531,6 @@ import 'function_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.Function("example",
-///     code=pulumi.FileArchive("function.zip"),
-///     name="example_vpc_function",
-///     role=example_aws_iam_role["arn"],
-///     handler="app.handler",
-///     runtime=aws.lambda_.Runtime.PYTHON3D12,
-///     memory_size=1024,
-///     timeout=30,
 ///     vpc_config={
 ///         "subnet_ids": [
 ///             example_private1["id"],
@@ -551,7 +544,14 @@ import 'function_vpc_config.dart';
 ///     },
 ///     snap_start={
 ///         "apply_on": "PublishedVersions",
-///     })
+///     },
+///     code=pulumi.FileArchive("function.zip"),
+///     name="example_vpc_function",
+///     role=example_aws_iam_role["arn"],
+///     handler="app.handler",
+///     runtime=aws.lambda_.Runtime.PYTHON3D12,
+///     memory_size=1024,
+///     timeout=30)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -563,13 +563,6 @@ import 'function_vpc_config.dart';
 /// {
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = "example_vpc_function",
-///         Role = exampleAwsIamRole.Arn,
-///         Handler = "app.handler",
-///         Runtime = Aws.Lambda.Runtime.Python3d12,
-///         MemorySize = 1024,
-///         Timeout = 30,
 ///         VpcConfig = new Aws.Lambda.Inputs.FunctionVpcConfigArgs
 ///         {
 ///             SubnetIds = new[]
@@ -591,6 +584,13 @@ import 'function_vpc_config.dart';
 ///         {
 ///             ApplyOn = "PublishedVersions",
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = "example_vpc_function",
+///         Role = exampleAwsIamRole.Arn,
+///         Handler = "app.handler",
+///         Runtime = Aws.Lambda.Runtime.Python3d12,
+///         MemorySize = 1024,
+///         Timeout = 30,
 ///     });
 ///
 /// });
@@ -606,13 +606,6 @@ import 'function_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Code:       pulumi.NewFileArchive("function.zip"),
-/// 			Name:       pulumi.String("example_vpc_function"),
-/// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Handler:    pulumi.String("app.handler"),
-/// 			Runtime:    pulumi.String(lambda.RuntimePython3d12),
-/// 			MemorySize: pulumi.Int(1024),
-/// 			Timeout:    pulumi.Int(30),
 /// 			VpcConfig: &lambda.FunctionVpcConfigArgs{
 /// 				SubnetIds: pulumi.StringArray{
 /// 					examplePrivate1.Id,
@@ -629,6 +622,13 @@ import 'function_vpc_config.dart';
 /// 			SnapStart: &lambda.FunctionSnapStartArgs{
 /// 				ApplyOn: pulumi.String("PublishedVersions"),
 /// 			},
+/// 			Code:       pulumi.NewFileArchive("function.zip"),
+/// 			Name:       pulumi.String("example_vpc_function"),
+/// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Handler:    pulumi.String("app.handler"),
+/// 			Runtime:    pulumi.String(lambda.RuntimePython3d12),
+/// 			MemorySize: pulumi.Int(1024),
+/// 			Timeout:    pulumi.Int(30),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -647,13 +647,6 @@ import 'function_vpc_config.dart';
 /// }
 ///
 /// resource "aws_lambda_function" "example" {
-///   code        = fileArchive("function.zip")
-///   name        = "example_vpc_function"
-///   role        = exampleAwsIamRole.arn
-///   handler     = "app.handler"
-///   runtime     = "python3.12"
-///   memory_size = 1024
-///   timeout     = 30
 ///   vpc_config = {
 ///     subnet_ids                  = [examplePrivate1.id, examplePrivate2.id]
 ///     security_group_ids          = [exampleLambda.id]
@@ -666,6 +659,13 @@ import 'function_vpc_config.dart';
 ///   snap_start = {
 ///     apply_on = "PublishedVersions"
 ///   }
+///   code        = fileArchive("function.zip")
+///   name        = "example_vpc_function"
+///   role        = exampleAwsIamRole.arn
+///   handler     = "app.handler"
+///   runtime     = "python3.12"
+///   memory_size = 1024
+///   timeout     = 30
 /// }
 /// ```
 /// ```java
@@ -694,13 +694,6 @@ import 'function_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Function("example", FunctionArgs.builder()
-///             .code(new FileArchive("function.zip"))
-///             .name("example_vpc_function")
-///             .role(exampleAwsIamRole.arn())
-///             .handler("app.handler")
-///             .runtime("python3.12")
-///             .memorySize(1024)
-///             .timeout(30)
 ///             .vpcConfig(FunctionVpcConfigArgs.builder()
 ///                 .subnetIds(
 ///                     examplePrivate1.id(),
@@ -714,6 +707,13 @@ import 'function_vpc_config.dart';
 ///             .snapStart(FunctionSnapStartArgs.builder()
 ///                 .applyOn("PublishedVersions")
 ///                 .build())
+///             .code(new FileArchive("function.zip"))
+///             .name("example_vpc_function")
+///             .role(exampleAwsIamRole.arn())
+///             .handler("app.handler")
+///             .runtime("python3.12")
+///             .memorySize(1024)
+///             .timeout(30)
 ///             .build());
 ///
 ///     }
@@ -724,14 +724,6 @@ import 'function_vpc_config.dart';
 ///   example:
 ///     type: aws:lambda:Function
 ///     properties:
-///       code:
-///         fn::fileArchive: function.zip
-///       name: example_vpc_function
-///       role: ${exampleAwsIamRole.arn}
-///       handler: app.handler
-///       runtime: python3.12
-///       memorySize: 1024
-///       timeout: 30
 ///       vpcConfig:
 ///         subnetIds:
 ///           - ${examplePrivate1.id}
@@ -743,6 +735,14 @@ import 'function_vpc_config.dart';
 ///         size: 5120
 ///       snapStart:
 ///         applyOn: PublishedVersions
+///       code:
+///         fn::fileArchive: function.zip
+///       name: example_vpc_function
+///       role: ${exampleAwsIamRole.arn}
+///       handler: app.handler
+///       runtime: python3.12
+///       memorySize: 1024
+///       timeout: 30
 /// ```
 ///
 ///
@@ -777,27 +777,22 @@ import 'function_vpc_config.dart';
 /// }
 /// // Access point for Lambda
 /// const exampleAccessPoint = new aws.efs.AccessPoint("example", {
-///     fileSystemId: example.id,
 ///     rootDirectory: {
-///         path: "/lambda",
 ///         creationInfo: {
 ///             ownerGid: 1000,
 ///             ownerUid: 1000,
 ///             permissions: "755",
 ///         },
+///         path: "/lambda",
 ///     },
 ///     posixUser: {
 ///         gid: 1000,
 ///         uid: 1000,
 ///     },
+///     fileSystemId: example.id,
 /// });
 /// // Lambda function with EFS
 /// const exampleFunction = new aws.lambda.Function("example", {
-///     code: new pulumi.asset.FileArchive("function.zip"),
-///     name: "example_efs_function",
-///     role: exampleAwsIamRole.arn,
-///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     vpcConfig: {
 ///         subnetIds: subnetIds,
 ///         securityGroupIds: [lambda.id],
@@ -806,6 +801,11 @@ import 'function_vpc_config.dart';
 ///         arn: exampleAccessPoint.arn,
 ///         localMountPath: "/mnt/data",
 ///     },
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: "example_efs_function",
+///     role: exampleAwsIamRole.arn,
+///     handler: "index.handler",
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// }, {
 ///     dependsOn: [exampleMountTarget],
 /// });
@@ -838,26 +838,21 @@ import 'function_vpc_config.dart';
 ///         security_groups=[efs["id"]]))
 /// # Access point for Lambda
 /// example_access_point = aws.efs.AccessPoint("example",
-///     file_system_id=example.id,
 ///     root_directory={
-///         "path": "/lambda",
 ///         "creation_info": {
 ///             "owner_gid": 1000,
 ///             "owner_uid": 1000,
 ///             "permissions": "755",
 ///         },
+///         "path": "/lambda",
 ///     },
 ///     posix_user={
 ///         "gid": 1000,
 ///         "uid": 1000,
-///     })
+///     },
+///     file_system_id=example.id)
 /// # Lambda function with EFS
 /// example_function = aws.lambda_.Function("example",
-///     code=pulumi.FileArchive("function.zip"),
-///     name="example_efs_function",
-///     role=example_aws_iam_role["arn"],
-///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     vpc_config={
 ///         "subnet_ids": subnet_ids,
 ///         "security_group_ids": [lambda_["id"]],
@@ -866,6 +861,11 @@ import 'function_vpc_config.dart';
 ///         "arn": example_access_point.arn,
 ///         "local_mount_path": "/mnt/data",
 ///     },
+///     code=pulumi.FileArchive("function.zip"),
+///     name="example_efs_function",
+///     role=example_aws_iam_role["arn"],
+///     handler="index.handler",
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     opts = pulumi.ResourceOptions(depends_on=[example_mount_target]))
 /// ```
 /// ```csharp
@@ -911,32 +911,27 @@ import 'function_vpc_config.dart';
 ///     // Access point for Lambda
 ///     var exampleAccessPoint = new Aws.Efs.AccessPoint("example", new()
 ///     {
-///         FileSystemId = example.Id,
 ///         RootDirectory = new Aws.Efs.Inputs.AccessPointRootDirectoryArgs
 ///         {
-///             Path = "/lambda",
 ///             CreationInfo = new Aws.Efs.Inputs.AccessPointRootDirectoryCreationInfoArgs
 ///             {
 ///                 OwnerGid = 1000,
 ///                 OwnerUid = 1000,
 ///                 Permissions = "755",
 ///             },
+///             Path = "/lambda",
 ///         },
 ///         PosixUser = new Aws.Efs.Inputs.AccessPointPosixUserArgs
 ///         {
 ///             Gid = 1000,
 ///             Uid = 1000,
 ///         },
+///         FileSystemId = example.Id,
 ///     });
 ///
 ///     // Lambda function with EFS
 ///     var exampleFunction = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = "example_efs_function",
-///         Role = exampleAwsIamRole.Arn,
-///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         VpcConfig = new Aws.Lambda.Inputs.FunctionVpcConfigArgs
 ///         {
 ///             SubnetIds = subnetIds,
@@ -950,6 +945,11 @@ import 'function_vpc_config.dart';
 ///             Arn = exampleAccessPoint.Arn,
 ///             LocalMountPath = "/mnt/data",
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = "example_efs_function",
+///         Role = exampleAwsIamRole.Arn,
+///         Handler = "index.handler",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1000,7 +1000,7 @@ import 'function_vpc_config.dart';
 /// 			val0 := index
 /// 			__res, err := efs.NewMountTarget(ctx, fmt.Sprintf("example-%v", key0), &efs.MountTargetArgs{
 /// 				FileSystemId: example.ID().ToIDOutput().ToStringOutput(),
-/// 				SubnetId:     pulumi.String(subnetIds[val0]),
+/// 				SubnetId:     subnetIds[val0],
 /// 				SecurityGroups: pulumi.StringArray{
 /// 					efs.Id,
 /// 				},
@@ -1012,30 +1012,25 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		// Access point for Lambda
 /// 		exampleAccessPoint, err := efs.NewAccessPoint(ctx, "example", &efs.AccessPointArgs{
-/// 			FileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RootDirectory: &efs.AccessPointRootDirectoryArgs{
-/// 				Path: pulumi.String("/lambda"),
 /// 				CreationInfo: &efs.AccessPointRootDirectoryCreationInfoArgs{
 /// 					OwnerGid:    pulumi.Int(1000),
 /// 					OwnerUid:    pulumi.Int(1000),
 /// 					Permissions: pulumi.String("755"),
 /// 				},
+/// 				Path: pulumi.String("/lambda"),
 /// 			},
 /// 			PosixUser: &efs.AccessPointPosixUserArgs{
 /// 				Gid: pulumi.Int(1000),
 /// 				Uid: pulumi.Int(1000),
 /// 			},
+/// 			FileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Lambda function with EFS
 /// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Code:    pulumi.NewFileArchive("function.zip"),
-/// 			Name:    pulumi.String("example_efs_function"),
-/// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			VpcConfig: &lambda.FunctionVpcConfigArgs{
 /// 				SubnetIds: subnetIds,
 /// 				SecurityGroupIds: pulumi.StringArray{
@@ -1046,6 +1041,11 @@ import 'function_vpc_config.dart';
 /// 				Arn:            exampleAccessPoint.Arn,
 /// 				LocalMountPath: pulumi.String("/mnt/data"),
 /// 			},
+/// 			Code:    pulumi.NewFileArchive("function.zip"),
+/// 			Name:    pulumi.String("example_efs_function"),
+/// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Handler: pulumi.String("index.handler"),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleMountTarget,
 /// 		}))
@@ -1081,28 +1081,23 @@ import 'function_vpc_config.dart';
 /// }
 /// # Access point for Lambda
 /// resource "aws_efs_accesspoint" "example" {
-///   file_system_id = aws_efs_filesystem.example.id
 ///   root_directory = {
-///     path = "/lambda"
 ///     creation_info = {
 ///       owner_gid   = 1000
 ///       owner_uid   = 1000
 ///       permissions = "755"
 ///     }
+///     path = "/lambda"
 ///   }
 ///   posix_user = {
 ///     gid = 1000
 ///     uid = 1000
 ///   }
+///   file_system_id = aws_efs_filesystem.example.id
 /// }
 /// # Lambda function with EFS
 /// resource "aws_lambda_function" "example" {
 ///   depends_on = [aws_efs_mounttarget.example]
-///   code       = fileArchive("function.zip")
-///   name       = "example_efs_function"
-///   role       = exampleAwsIamRole.arn
-///   handler    = "index.handler"
-///   runtime    = "nodejs24.x"
 ///   vpc_config = {
 ///     subnet_ids         = var.subnetIds
 ///     security_group_ids = [lambda.id]
@@ -1111,10 +1106,15 @@ import 'function_vpc_config.dart';
 ///     arn              = aws_efs_accesspoint.example.arn
 ///     local_mount_path = "/mnt/data"
 ///   }
+///   code    = fileArchive("function.zip")
+///   name    = "example_efs_function"
+///   role    = exampleAwsIamRole.arn
+///   handler = "index.handler"
+///   runtime = "nodejs24.x"
 /// }
 /// # Example subnet IDs (replace with your actual subnet IDs)
 /// variable "subnetIds" {
-///   type        = list(string)
+///   type        = list(optional(string))
 ///   default     = ["subnet-12345678", "subnet-87654321"]
 ///   description = "List of subnet IDs for EFS mount targets"
 /// }
@@ -1176,28 +1176,23 @@ import 'function_vpc_config.dart';
 /// }
 ///         // Access point for Lambda
 ///         var exampleAccessPoint = new AccessPoint("exampleAccessPoint", AccessPointArgs.builder()
-///             .fileSystemId(example.id())
 ///             .rootDirectory(AccessPointRootDirectoryArgs.builder()
-///                 .path("/lambda")
 ///                 .creationInfo(AccessPointRootDirectoryCreationInfoArgs.builder()
 ///                     .ownerGid(1000)
 ///                     .ownerUid(1000)
 ///                     .permissions("755")
 ///                     .build())
+///                 .path("/lambda")
 ///                 .build())
 ///             .posixUser(AccessPointPosixUserArgs.builder()
 ///                 .gid(1000)
 ///                 .uid(1000)
 ///                 .build())
+///             .fileSystemId(example.id())
 ///             .build());
 ///
 ///         // Lambda function with EFS
 ///         var exampleFunction = new Function("exampleFunction", FunctionArgs.builder()
-///             .code(new FileArchive("function.zip"))
-///             .name("example_efs_function")
-///             .role(exampleAwsIamRole.arn())
-///             .handler("index.handler")
-///             .runtime("nodejs24.x")
 ///             .vpcConfig(FunctionVpcConfigArgs.builder()
 ///                 .subnetIds(subnetIds)
 ///                 .securityGroupIds(lambda.id())
@@ -1206,6 +1201,11 @@ import 'function_vpc_config.dart';
 ///                 .arn(exampleAccessPoint.arn())
 ///                 .localMountPath("/mnt/data")
 ///                 .build())
+///             .code(new FileArchive("function.zip"))
+///             .name("example_efs_function")
+///             .role(exampleAwsIamRole.arn())
+///             .handler("index.handler")
+///             .runtime("nodejs24.x")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleMountTarget)
 ///                 .build());
@@ -1229,10 +1229,10 @@ import 'function_vpc_config.dart';
 ///     bucketNamespace: "account-regional",
 /// });
 /// const lambdaFileSystemBucketVersioning = new aws.s3.BucketVersioning("lambda_file_system", {
-///     bucket: lambdaFileSystem.bucket,
 ///     versioningConfiguration: {
 ///         status: "Enabled",
 ///     },
+///     bucket: lambdaFileSystem.bucket,
 /// });
 /// const forLambda = new aws.s3.FilesFileSystem("for_lambda", {
 ///     bucket: lambdaFileSystem.arn,
@@ -1241,19 +1241,19 @@ import 'function_vpc_config.dart';
 ///     dependsOn: [lambdaFileSystemBucketVersioning],
 /// });
 /// const forLambdaFilesAccessPoint = new aws.s3.FilesAccessPoint("for_lambda", {
-///     fileSystemId: forLambda.id,
+///     posixUsers: [{
+///         gid: 1000,
+///         uid: 1000,
+///     }],
 ///     rootDirectories: [{
-///         path: "/lambda",
 ///         creationPermissions: [{
 ///             ownerGid: 1000,
 ///             ownerUid: 1000,
 ///             permissions: "755",
 ///         }],
+///         path: "/lambda",
 ///     }],
-///     posixUsers: [{
-///         gid: 1000,
-///         uid: 1000,
-///     }],
+///     fileSystemId: forLambda.id,
 /// });
 /// const s3filesMountTargets = new aws.ec2.SecurityGroup("s3files_mount_targets", {
 ///     name: "example-s3files-mount-targets-sg",
@@ -1278,11 +1278,6 @@ import 'function_vpc_config.dart';
 ///     referencedSecurityGroupId: s3filesMountTargets.id,
 /// });
 /// const example = new aws.lambda.Function("example", {
-///     code: new pulumi.asset.FileArchive("function.zip"),
-///     name: "example_s3files_function",
-///     role: iamForLambda.arn,
-///     handler: "exports.example",
-///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     vpcConfig: {
 ///         subnetIds: [subnetForLambdaAz1.id],
 ///         securityGroupIds: [lambdaS3files.id],
@@ -1291,6 +1286,11 @@ import 'function_vpc_config.dart';
 ///         arn: forLambdaFilesAccessPoint.arn,
 ///         localMountPath: "/mnt/s3files",
 ///     },
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: "example_s3files_function",
+///     role: iamForLambda.arn,
+///     handler: "exports.example",
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// }, {
 ///     dependsOn: [forLambdaAwsS3filesMountTarget],
 /// });
@@ -1305,28 +1305,28 @@ import 'function_vpc_config.dart';
 ///     bucket=f"example-{current.account_id}-{current_get_region.name}-an",
 ///     bucket_namespace="account-regional")
 /// lambda_file_system_bucket_versioning = aws.s3.BucketVersioning("lambda_file_system",
-///     bucket=lambda_file_system.bucket,
 ///     versioning_configuration={
 ///         "status": "Enabled",
-///     })
+///     },
+///     bucket=lambda_file_system.bucket)
 /// for_lambda = aws.s3.FilesFileSystem("for_lambda",
 ///     bucket=lambda_file_system.arn,
 ///     role_arn=s3files["arn"],
 ///     opts = pulumi.ResourceOptions(depends_on=[lambda_file_system_bucket_versioning]))
 /// for_lambda_files_access_point = aws.s3.FilesAccessPoint("for_lambda",
-///     file_system_id=for_lambda.id,
+///     posix_users=[{
+///         "gid": 1000,
+///         "uid": 1000,
+///     }],
 ///     root_directories=[{
-///         "path": "/lambda",
 ///         "creation_permissions": [{
 ///             "owner_gid": 1000,
 ///             "owner_uid": 1000,
 ///             "permissions": "755",
 ///         }],
+///         "path": "/lambda",
 ///     }],
-///     posix_users=[{
-///         "gid": 1000,
-///         "uid": 1000,
-///     }])
+///     file_system_id=for_lambda.id)
 /// s3files_mount_targets = aws.ec2.SecurityGroup("s3files_mount_targets",
 ///     name="example-s3files-mount-targets-sg",
 ///     vpc_id=vpc_for_lambda["id"])
@@ -1346,11 +1346,6 @@ import 'function_vpc_config.dart';
 ///     to_port=2049,
 ///     referenced_security_group_id=s3files_mount_targets.id)
 /// example = aws.lambda_.Function("example",
-///     code=pulumi.FileArchive("function.zip"),
-///     name="example_s3files_function",
-///     role=iam_for_lambda["arn"],
-///     handler="exports.example",
-///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     vpc_config={
 ///         "subnet_ids": [subnet_for_lambda_az1["id"]],
 ///         "security_group_ids": [lambda_s3files.id],
@@ -1359,6 +1354,11 @@ import 'function_vpc_config.dart';
 ///         "arn": for_lambda_files_access_point.arn,
 ///         "local_mount_path": "/mnt/s3files",
 ///     },
+///     code=pulumi.FileArchive("function.zip"),
+///     name="example_s3files_function",
+///     role=iam_for_lambda["arn"],
+///     handler="exports.example",
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     opts = pulumi.ResourceOptions(depends_on=[for_lambda_aws_s3files_mount_target]))
 /// ```
 /// ```csharp
@@ -1386,11 +1386,11 @@ import 'function_vpc_config.dart';
 ///
 ///     var lambdaFileSystemBucketVersioning = new Aws.S3.BucketVersioning("lambda_file_system", new()
 ///     {
-///         Bucket = lambdaFileSystem.BucketName,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Enabled",
 ///         },
+///         Bucket = lambdaFileSystem.BucketName,
 ///     });
 ///
 ///     var forLambda = new Aws.S3.FilesFileSystem("for_lambda", new()
@@ -1407,12 +1407,18 @@ import 'function_vpc_config.dart';
 ///
 ///     var forLambdaFilesAccessPoint = new Aws.S3.FilesAccessPoint("for_lambda", new()
 ///     {
-///         FileSystemId = forLambda.Id,
+///         PosixUsers = new[]
+///         {
+///             new Aws.S3.Inputs.FilesAccessPointPosixUserArgs
+///             {
+///                 Gid = 1000,
+///                 Uid = 1000,
+///             },
+///         },
 ///         RootDirectories = new[]
 ///         {
 ///             new Aws.S3.Inputs.FilesAccessPointRootDirectoryArgs
 ///             {
-///                 Path = "/lambda",
 ///                 CreationPermissions = new[]
 ///                 {
 ///                     new Aws.S3.Inputs.FilesAccessPointRootDirectoryCreationPermissionArgs
@@ -1422,16 +1428,10 @@ import 'function_vpc_config.dart';
 ///                         Permissions = "755",
 ///                     },
 ///                 },
+///                 Path = "/lambda",
 ///             },
 ///         },
-///         PosixUsers = new[]
-///         {
-///             new Aws.S3.Inputs.FilesAccessPointPosixUserArgs
-///             {
-///                 Gid = 1000,
-///                 Uid = 1000,
-///             },
-///         },
+///         FileSystemId = forLambda.Id,
 ///     });
 ///
 ///     var s3filesMountTargets = new Aws.Ec2.SecurityGroup("s3files_mount_targets", new()
@@ -1466,11 +1466,6 @@ import 'function_vpc_config.dart';
 ///
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = "example_s3files_function",
-///         Role = iamForLambda.Arn,
-///         Handler = "exports.example",
-///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         VpcConfig = new Aws.Lambda.Inputs.FunctionVpcConfigArgs
 ///         {
 ///             SubnetIds = new[]
@@ -1487,6 +1482,11 @@ import 'function_vpc_config.dart';
 ///             Arn = forLambdaFilesAccessPoint.Arn,
 ///             LocalMountPath = "/mnt/s3files",
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = "example_s3files_function",
+///         Role = iamForLambda.Arn,
+///         Handler = "exports.example",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1527,10 +1527,10 @@ import 'function_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		lambdaFileSystemBucketVersioning, err := s3.NewBucketVersioning(ctx, "lambda_file_system", &s3.BucketVersioningArgs{
-/// 			Bucket: lambdaFileSystem.Bucket,
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
+/// 			Bucket: lambdaFileSystem.Bucket,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1545,10 +1545,14 @@ import 'function_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		forLambdaFilesAccessPoint, err := s3.NewFilesAccessPoint(ctx, "for_lambda", &s3.FilesAccessPointArgs{
-/// 			FileSystemId: forLambda.ID().ToIDOutput().ToStringOutput(),
+/// 			PosixUsers: s3.FilesAccessPointPosixUserArray{
+/// 				&s3.FilesAccessPointPosixUserArgs{
+/// 					Gid: pulumi.Int(1000),
+/// 					Uid: pulumi.Int(1000),
+/// 				},
+/// 			},
 /// 			RootDirectories: s3.FilesAccessPointRootDirectoryArray{
 /// 				&s3.FilesAccessPointRootDirectoryArgs{
-/// 					Path: pulumi.String("/lambda"),
 /// 					CreationPermissions: s3.FilesAccessPointRootDirectoryCreationPermissionArray{
 /// 						&s3.FilesAccessPointRootDirectoryCreationPermissionArgs{
 /// 							OwnerGid:    pulumi.Int(1000),
@@ -1556,14 +1560,10 @@ import 'function_vpc_config.dart';
 /// 							Permissions: pulumi.String("755"),
 /// 						},
 /// 					},
+/// 					Path: pulumi.String("/lambda"),
 /// 				},
 /// 			},
-/// 			PosixUsers: s3.FilesAccessPointPosixUserArray{
-/// 				&s3.FilesAccessPointPosixUserArgs{
-/// 					Gid: pulumi.Int(1000),
-/// 					Uid: pulumi.Int(1000),
-/// 				},
-/// 			},
+/// 			FileSystemId: forLambda.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1603,11 +1603,6 @@ import 'function_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Code:    pulumi.NewFileArchive("function.zip"),
-/// 			Name:    pulumi.String("example_s3files_function"),
-/// 			Role:    pulumi.Any(iamForLambda.Arn),
-/// 			Handler: pulumi.String("exports.example"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			VpcConfig: &lambda.FunctionVpcConfigArgs{
 /// 				SubnetIds: pulumi.StringArray{
 /// 					subnetForLambdaAz1.Id,
@@ -1620,6 +1615,11 @@ import 'function_vpc_config.dart';
 /// 				Arn:            forLambdaFilesAccessPoint.Arn,
 /// 				LocalMountPath: pulumi.String("/mnt/s3files"),
 /// 			},
+/// 			Code:    pulumi.NewFileArchive("function.zip"),
+/// 			Name:    pulumi.String("example_s3files_function"),
+/// 			Role:    pulumi.Any(iamForLambda.Arn),
+/// 			Handler: pulumi.String("exports.example"),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			forLambdaAwsS3filesMountTarget,
 /// 		}))
@@ -1649,10 +1649,10 @@ import 'function_vpc_config.dart';
 ///   bucket_namespace = "account-regional"
 /// }
 /// resource "aws_s3_bucketversioning" "lambda_file_system" {
-///   bucket = aws_s3_bucket.lambda_file_system.bucket
 ///   versioning_configuration = {
 ///     status = "Enabled"
 ///   }
+///   bucket = aws_s3_bucket.lambda_file_system.bucket
 /// }
 /// resource "aws_s3_filesfilesystem" "for_lambda" {
 ///   depends_on = [aws_s3_bucketversioning.lambda_file_system]
@@ -1660,19 +1660,19 @@ import 'function_vpc_config.dart';
 ///   role_arn   = s3files.arn
 /// }
 /// resource "aws_s3_filesaccesspoint" "for_lambda" {
-///   file_system_id = aws_s3_filesfilesystem.for_lambda.id
+///   posix_users {
+///     gid = 1000
+///     uid = 1000
+///   }
 ///   root_directories {
-///     path = "/lambda"
 ///     creation_permissions {
 ///       owner_gid   = 1000
 ///       owner_uid   = 1000
 ///       permissions = "755"
 ///     }
+///     path = "/lambda"
 ///   }
-///   posix_users {
-///     gid = 1000
-///     uid = 1000
-///   }
+///   file_system_id = aws_s3_filesfilesystem.for_lambda.id
 /// }
 /// resource "aws_ec2_securitygroup" "s3files_mount_targets" {
 ///   name   = "example-s3files-mount-targets-sg"
@@ -1698,11 +1698,6 @@ import 'function_vpc_config.dart';
 /// }
 /// resource "aws_lambda_function" "example" {
 ///   depends_on = [forLambdaAwsS3filesMountTarget]
-///   code       = fileArchive("function.zip")
-///   name       = "example_s3files_function"
-///   role       = iamForLambda.arn
-///   handler    = "exports.example"
-///   runtime    = "nodejs24.x"
 ///   vpc_config = {
 ///     subnet_ids         = [subnetForLambdaAz1.id]
 ///     security_group_ids = [aws_ec2_securitygroup.lambda_s3files.id]
@@ -1711,6 +1706,11 @@ import 'function_vpc_config.dart';
 ///     arn              = aws_s3_filesaccesspoint.for_lambda.arn
 ///     local_mount_path = "/mnt/s3files"
 ///   }
+///   code    = fileArchive("function.zip")
+///   name    = "example_s3files_function"
+///   role    = iamForLambda.arn
+///   handler = "exports.example"
+///   runtime = "nodejs24.x"
 /// }
 /// ```
 /// ```java
@@ -1731,9 +1731,9 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.s3.FilesFileSystemArgs;
 /// import com.pulumi.aws.s3.FilesAccessPoint;
 /// import com.pulumi.aws.s3.FilesAccessPointArgs;
+/// import com.pulumi.aws.s3.inputs.FilesAccessPointPosixUserArgs;
 /// import com.pulumi.aws.s3.inputs.FilesAccessPointRootDirectoryArgs;
 /// import com.pulumi.aws.s3.inputs.FilesAccessPointRootDirectoryCreationPermissionArgs;
-/// import com.pulumi.aws.s3.inputs.FilesAccessPointPosixUserArgs;
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.vpc.SecurityGroupIngressRule;
@@ -1771,10 +1771,10 @@ import 'function_vpc_config.dart';
 ///             .build());
 ///
 ///         var lambdaFileSystemBucketVersioning = new BucketVersioning("lambdaFileSystemBucketVersioning", BucketVersioningArgs.builder()
-///             .bucket(lambdaFileSystem.bucket())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
+///             .bucket(lambdaFileSystem.bucket())
 ///             .build());
 ///
 ///         var forLambda = new FilesFileSystem("forLambda", FilesFileSystemArgs.builder()
@@ -1785,19 +1785,19 @@ import 'function_vpc_config.dart';
 ///                 .build());
 ///
 ///         var forLambdaFilesAccessPoint = new FilesAccessPoint("forLambdaFilesAccessPoint", FilesAccessPointArgs.builder()
-///             .fileSystemId(forLambda.id())
+///             .posixUsers(FilesAccessPointPosixUserArgs.builder()
+///                 .gid(1000)
+///                 .uid(1000)
+///                 .build())
 ///             .rootDirectories(FilesAccessPointRootDirectoryArgs.builder()
-///                 .path("/lambda")
 ///                 .creationPermissions(FilesAccessPointRootDirectoryCreationPermissionArgs.builder()
 ///                     .ownerGid(1000)
 ///                     .ownerUid(1000)
 ///                     .permissions("755")
 ///                     .build())
+///                 .path("/lambda")
 ///                 .build())
-///             .posixUsers(FilesAccessPointPosixUserArgs.builder()
-///                 .gid(1000)
-///                 .uid(1000)
-///                 .build())
+///             .fileSystemId(forLambda.id())
 ///             .build());
 ///
 ///         var s3filesMountTargets = new SecurityGroup("s3filesMountTargets", SecurityGroupArgs.builder()
@@ -1827,11 +1827,6 @@ import 'function_vpc_config.dart';
 ///             .build());
 ///
 ///         var example = new Function("example", FunctionArgs.builder()
-///             .code(new FileArchive("function.zip"))
-///             .name("example_s3files_function")
-///             .role(iamForLambda.arn())
-///             .handler("exports.example")
-///             .runtime("nodejs24.x")
 ///             .vpcConfig(FunctionVpcConfigArgs.builder()
 ///                 .subnetIds(subnetForLambdaAz1.id())
 ///                 .securityGroupIds(lambdaS3files.id())
@@ -1840,6 +1835,11 @@ import 'function_vpc_config.dart';
 ///                 .arn(forLambdaFilesAccessPoint.arn())
 ///                 .localMountPath("/mnt/s3files")
 ///                 .build())
+///             .code(new FileArchive("function.zip"))
+///             .name("example_s3files_function")
+///             .role(iamForLambda.arn())
+///             .handler("exports.example")
+///             .runtime("nodejs24.x")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(forLambdaAwsS3filesMountTarget)
 ///                 .build());
@@ -1859,9 +1859,9 @@ import 'function_vpc_config.dart';
 ///     type: aws:s3:BucketVersioning
 ///     name: lambda_file_system
 ///     properties:
-///       bucket: ${lambdaFileSystem.bucket}
 ///       versioningConfiguration:
 ///         status: Enabled
+///       bucket: ${lambdaFileSystem.bucket}
 ///   forLambda:
 ///     type: aws:s3:FilesFileSystem
 ///     name: for_lambda
@@ -1875,16 +1875,16 @@ import 'function_vpc_config.dart';
 ///     type: aws:s3:FilesAccessPoint
 ///     name: for_lambda
 ///     properties:
-///       fileSystemId: ${forLambda.id}
-///       rootDirectories:
-///         - path: /lambda
-///           creationPermissions:
-///             - ownerGid: 1000
-///               ownerUid: 1000
-///               permissions: '755'
 ///       posixUsers:
 ///         - gid: 1000
 ///           uid: 1000
+///       rootDirectories:
+///         - creationPermissions:
+///             - ownerGid: 1000
+///               ownerUid: 1000
+///               permissions: '755'
+///           path: /lambda
+///       fileSystemId: ${forLambda.id}
 ///   s3filesMountTargets:
 ///     type: aws:ec2:SecurityGroup
 ///     name: s3files_mount_targets
@@ -1918,12 +1918,6 @@ import 'function_vpc_config.dart';
 ///   example:
 ///     type: aws:lambda:Function
 ///     properties:
-///       code:
-///         fn::fileArchive: function.zip
-///       name: example_s3files_function
-///       role: ${iamForLambda.arn}
-///       handler: exports.example
-///       runtime: nodejs24.x
 ///       vpcConfig:
 ///         subnetIds:
 ///           - ${subnetForLambdaAz1.id}
@@ -1932,6 +1926,12 @@ import 'function_vpc_config.dart';
 ///       fileSystemConfig:
 ///         arn: ${forLambdaFilesAccessPoint.arn}
 ///         localMountPath: /mnt/s3files
+///       code:
+///         fn::fileArchive: function.zip
+///       name: example_s3files_function
+///       role: ${iamForLambda.arn}
+///       handler: exports.example
+///       runtime: nodejs24.x
 ///     options:
 ///       dependsOn:
 ///         - ${forLambdaAwsS3filesMountTarget}
@@ -1963,16 +1963,16 @@ import 'function_vpc_config.dart';
 ///     },
 /// });
 /// const exampleFunction = new aws.lambda.Function("example", {
-///     code: new pulumi.asset.FileArchive("function.zip"),
-///     name: "example_function",
-///     role: exampleAwsIamRole.arn,
-///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     loggingConfig: {
 ///         logFormat: "JSON",
 ///         applicationLogLevel: "INFO",
 ///         systemLogLevel: "WARN",
 ///     },
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: "example_function",
+///     role: exampleAwsIamRole.arn,
+///     handler: "index.handler",
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -1989,16 +1989,16 @@ import 'function_vpc_config.dart';
 ///         "Application": "example",
 ///     })
 /// example_function = aws.lambda_.Function("example",
-///     code=pulumi.FileArchive("function.zip"),
-///     name="example_function",
-///     role=example_aws_iam_role["arn"],
-///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     logging_config={
 ///         "log_format": "JSON",
 ///         "application_log_level": "INFO",
 ///         "system_log_level": "WARN",
 ///     },
+///     code=pulumi.FileArchive("function.zip"),
+///     name="example_function",
+///     role=example_aws_iam_role["arn"],
+///     handler="index.handler",
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -2022,17 +2022,17 @@ import 'function_vpc_config.dart';
 ///
 ///     var exampleFunction = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = "example_function",
-///         Role = exampleAwsIamRole.Arn,
-///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         LoggingConfig = new Aws.Lambda.Inputs.FunctionLoggingConfigArgs
 ///         {
 ///             LogFormat = "JSON",
 ///             ApplicationLogLevel = "INFO",
 ///             SystemLogLevel = "WARN",
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = "example_function",
+///         Role = exampleAwsIamRole.Arn,
+///         Handler = "index.handler",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -2066,16 +2066,16 @@ import 'function_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Code:    pulumi.NewFileArchive("function.zip"),
-/// 			Name:    pulumi.String("example_function"),
-/// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			LoggingConfig: &lambda.FunctionLoggingConfigArgs{
 /// 				LogFormat:           pulumi.String("JSON"),
 /// 				ApplicationLogLevel: pulumi.String("INFO"),
 /// 				SystemLogLevel:      pulumi.String("WARN"),
 /// 			},
+/// 			Code:    pulumi.NewFileArchive("function.zip"),
+/// 			Name:    pulumi.String("example_function"),
+/// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Handler: pulumi.String("index.handler"),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -2105,16 +2105,16 @@ import 'function_vpc_config.dart';
 /// }
 /// resource "aws_lambda_function" "example" {
 ///   depends_on = [aws_cloudwatch_loggroup.example]
-///   code       = fileArchive("function.zip")
-///   name       = "example_function"
-///   role       = exampleAwsIamRole.arn
-///   handler    = "index.handler"
-///   runtime    = "nodejs24.x"
 ///   logging_config = {
 ///     log_format            = "JSON"
 ///     application_log_level = "INFO"
 ///     system_log_level      = "WARN"
 ///   }
+///   code    = fileArchive("function.zip")
+///   name    = "example_function"
+///   role    = exampleAwsIamRole.arn
+///   handler = "index.handler"
+///   runtime = "nodejs24.x"
 /// }
 /// ```
 /// ```java
@@ -2153,16 +2153,16 @@ import 'function_vpc_config.dart';
 ///             .build());
 ///
 ///         var exampleFunction = new Function("exampleFunction", FunctionArgs.builder()
-///             .code(new FileArchive("function.zip"))
-///             .name("example_function")
-///             .role(exampleAwsIamRole.arn())
-///             .handler("index.handler")
-///             .runtime("nodejs24.x")
 ///             .loggingConfig(FunctionLoggingConfigArgs.builder()
 ///                 .logFormat("JSON")
 ///                 .applicationLogLevel("INFO")
 ///                 .systemLogLevel("WARN")
 ///                 .build())
+///             .code(new FileArchive("function.zip"))
+///             .name("example_function")
+///             .role(exampleAwsIamRole.arn())
+///             .handler("index.handler")
+///             .runtime("nodejs24.x")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -2184,16 +2184,16 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     name: example
 ///     properties:
+///       loggingConfig:
+///         logFormat: JSON
+///         applicationLogLevel: INFO
+///         systemLogLevel: WARN
 ///       code:
 ///         fn::fileArchive: function.zip
 ///       name: example_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
 ///       runtime: nodejs24.x
-///       loggingConfig:
-///         logFormat: JSON
-///         applicationLogLevel: INFO
-///         systemLogLevel: WARN
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -2237,12 +2237,12 @@ import 'function_vpc_config.dart';
 /// });
 /// const logsAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["logs.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
+///         effect: "Allow",
 ///     }],
 /// });
 /// const logsLogExport = new aws.iam.Role("logs_log_export", {
@@ -2268,15 +2268,15 @@ import 'function_vpc_config.dart';
 ///     roleArn: logsLogExport.arn,
 /// });
 /// const logExport = new aws.lambda.Function("log_export", {
+///     loggingConfig: {
+///         logFormat: "Text",
+///         logGroup: _export.name,
+///     },
 ///     name: lambdaFunctionName,
 ///     handler: "index.lambda_handler",
 ///     runtime: aws.lambda.Runtime.Python3d13,
 ///     role: example.arn,
 ///     code: new pulumi.asset.FileArchive("function.zip"),
-///     loggingConfig: {
-///         logFormat: "Text",
-///         logGroup: _export.name,
-///     },
 /// }, {
 ///     dependsOn: [_export],
 /// });
@@ -2291,12 +2291,12 @@ import 'function_vpc_config.dart';
 ///     name=f"/aws/lambda/{lambda_function_name}",
 ///     log_group_class="DELIVERY")
 /// logs_assume_role = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["logs.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
+///     "effect": "Allow",
 /// }])
 /// logs_log_export = aws.iam.Role("logs_log_export",
 ///     name=f"{lambda_function_name}-lambda-log-export-role",
@@ -2316,15 +2316,15 @@ import 'function_vpc_config.dart';
 ///     destination_arn=lambda_log_export_bucket.arn,
 ///     role_arn=logs_log_export.arn)
 /// log_export = aws.lambda_.Function("log_export",
+///     logging_config={
+///         "log_format": "Text",
+///         "log_group": export.name,
+///     },
 ///     name=lambda_function_name,
 ///     handler="index.lambda_handler",
 ///     runtime=aws.lambda_.Runtime.PYTHON3D13,
 ///     role=example["arn"],
 ///     code=pulumi.FileArchive("function.zip"),
-///     logging_config={
-///         "log_format": "Text",
-///         "log_group": export.name,
-///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[export]))
 /// ```
 /// ```csharp
@@ -2354,11 +2354,6 @@ import 'function_vpc_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -2370,6 +2365,11 @@ import 'function_vpc_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
+///                 },
+///                 Effect = "Allow",
 ///             },
 ///         },
 ///     });
@@ -2416,16 +2416,16 @@ import 'function_vpc_config.dart';
 ///
 ///     var logExport = new Aws.Lambda.Function("log_export", new()
 ///     {
-///         Name = lambdaFunctionName,
-///         Handler = "index.lambda_handler",
-///         Runtime = Aws.Lambda.Runtime.Python3d13,
-///         Role = example.Arn,
-///         Code = new FileArchive("function.zip"),
 ///         LoggingConfig = new Aws.Lambda.Inputs.FunctionLoggingConfigArgs
 ///         {
 ///             LogFormat = "Text",
 ///             LogGroup = export.Name,
 ///         },
+///         Name = lambdaFunctionName,
+///         Handler = "index.lambda_handler",
+///         Runtime = Aws.Lambda.Runtime.Python3d13,
+///         Role = example.Arn,
+///         Code = new FileArchive("function.zip"),
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -2468,10 +2468,6 @@ import 'function_vpc_config.dart';
 /// 		logsAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -2480,6 +2476,10 @@ import 'function_vpc_config.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -2526,15 +2526,15 @@ import 'function_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunction(ctx, "log_export", &lambda.FunctionArgs{
+/// 			LoggingConfig: &lambda.FunctionLoggingConfigArgs{
+/// 				LogFormat: pulumi.String("Text"),
+/// 				LogGroup:  export.Name,
+/// 			},
 /// 			Name:    pulumi.String(lambdaFunctionName),
 /// 			Handler: pulumi.String("index.lambda_handler"),
 /// 			Runtime: pulumi.String(lambda.RuntimePython3d13),
 /// 			Role:    pulumi.Any(example.Arn),
 /// 			Code:    pulumi.NewFileArchive("function.zip"),
-/// 			LoggingConfig: &lambda.FunctionLoggingConfigArgs{
-/// 				LogFormat: pulumi.String("Text"),
-/// 				LogGroup:  export.Name,
-/// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			export,
 /// 		}))
@@ -2556,12 +2556,12 @@ import 'function_vpc_config.dart';
 ///
 /// data "aws_iam_getpolicydocument" "logsAssumeRole" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     effect  = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["logs.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "lambdaLogExport" {
@@ -2596,15 +2596,15 @@ import 'function_vpc_config.dart';
 /// }
 /// resource "aws_lambda_function" "log_export" {
 ///   depends_on = [aws_cloudwatch_loggroup.export]
-///   name       = local.lambdaFunctionName
-///   handler    = "index.lambda_handler"
-///   runtime    = "python3.13"
-///   role       = example.arn
-///   code       = fileArchive("function.zip")
 ///   logging_config = {
 ///     log_format = "Text"
 ///     log_group  = aws_cloudwatch_loggroup.export.name
 ///   }
+///   name    = local.lambdaFunctionName
+///   handler = "index.lambda_handler"
+///   runtime = "python3.13"
+///   role    = example.arn
+///   code    = fileArchive("function.zip")
 /// }
 /// locals {
 ///   lambdaFunctionName = "lambda-log-export-example"
@@ -2661,12 +2661,12 @@ import 'function_vpc_config.dart';
 ///
 ///         final var logsAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("logs.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
+///                 .effect("Allow")
 ///                 .build())
 ///             .build());
 ///
@@ -2697,15 +2697,15 @@ import 'function_vpc_config.dart';
 ///             .build());
 ///
 ///         var logExport = new Function("logExport", FunctionArgs.builder()
+///             .loggingConfig(FunctionLoggingConfigArgs.builder()
+///                 .logFormat("Text")
+///                 .logGroup(export.name())
+///                 .build())
 ///             .name(lambdaFunctionName)
 ///             .handler("index.lambda_handler")
 ///             .runtime("python3.13")
 ///             .role(example.arn())
 ///             .code(new FileArchive("function.zip"))
-///             .loggingConfig(FunctionLoggingConfigArgs.builder()
-///                 .logFormat("Text")
-///                 .logGroup(export.name())
-///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(export)
 ///                 .build());
@@ -2750,15 +2750,15 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     name: log_export
 ///     properties:
+///       loggingConfig:
+///         logFormat: Text
+///         logGroup: ${export.name}
 ///       name: ${lambdaFunctionName}
 ///       handler: index.lambda_handler
 ///       runtime: python3.13
 ///       role: ${example.arn}
 ///       code:
 ///         fn::fileArchive: function.zip
-///       loggingConfig:
-///         logFormat: Text
-///         logGroup: ${export.name}
 ///     options:
 ///       dependsOn:
 ///         - ${export}
@@ -2769,13 +2769,13 @@ import 'function_vpc_config.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - logs.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
+///             effect: Allow
 ///   lambdaLogExport:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -2798,20 +2798,17 @@ import 'function_vpc_config.dart';
 ///
 /// // Main Lambda function
 /// const example = new aws.lambda.Function("example", {
+///     deadLetterConfig: {
+///         targetArn: dlq.arn,
+///     },
 ///     code: new pulumi.asset.FileArchive("function.zip"),
 ///     name: "example_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
 ///     runtime: aws.lambda.Runtime.NodeJS24dX,
-///     deadLetterConfig: {
-///         targetArn: dlq.arn,
-///     },
 /// });
 /// // Event invoke configuration for retries
 /// const exampleFunctionEventInvokeConfig = new aws.lambda.FunctionEventInvokeConfig("example", {
-///     functionName: example.name,
-///     maximumEventAgeInSeconds: 60,
-///     maximumRetryAttempts: 2,
 ///     destinationConfig: {
 ///         onFailure: {
 ///             destination: dlq.arn,
@@ -2820,6 +2817,9 @@ import 'function_vpc_config.dart';
 ///             destination: success.arn,
 ///         },
 ///     },
+///     functionName: example.name,
+///     maximumEventAgeInSeconds: 60,
+///     maximumRetryAttempts: 2,
 /// });
 /// ```
 /// ```python
@@ -2828,19 +2828,16 @@ import 'function_vpc_config.dart';
 ///
 /// # Main Lambda function
 /// example = aws.lambda_.Function("example",
+///     dead_letter_config={
+///         "target_arn": dlq["arn"],
+///     },
 ///     code=pulumi.FileArchive("function.zip"),
 ///     name="example_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
-///     dead_letter_config={
-///         "target_arn": dlq["arn"],
-///     })
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// # Event invoke configuration for retries
 /// example_function_event_invoke_config = aws.lambda_.FunctionEventInvokeConfig("example",
-///     function_name=example.name,
-///     maximum_event_age_in_seconds=60,
-///     maximum_retry_attempts=2,
 ///     destination_config={
 ///         "on_failure": {
 ///             "destination": dlq["arn"],
@@ -2848,7 +2845,10 @@ import 'function_vpc_config.dart';
 ///         "on_success": {
 ///             "destination": success["arn"],
 ///         },
-///     })
+///     },
+///     function_name=example.name,
+///     maximum_event_age_in_seconds=60,
+///     maximum_retry_attempts=2)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2861,23 +2861,20 @@ import 'function_vpc_config.dart';
 ///     // Main Lambda function
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
+///         DeadLetterConfig = new Aws.Lambda.Inputs.FunctionDeadLetterConfigArgs
+///         {
+///             TargetArn = dlq.Arn,
+///         },
 ///         Code = new FileArchive("function.zip"),
 ///         Name = "example_function",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
 ///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
-///         DeadLetterConfig = new Aws.Lambda.Inputs.FunctionDeadLetterConfigArgs
-///         {
-///             TargetArn = dlq.Arn,
-///         },
 ///     });
 ///
 ///     // Event invoke configuration for retries
 ///     var exampleFunctionEventInvokeConfig = new Aws.Lambda.FunctionEventInvokeConfig("example", new()
 ///     {
-///         FunctionName = example.Name,
-///         MaximumEventAgeInSeconds = 60,
-///         MaximumRetryAttempts = 2,
 ///         DestinationConfig = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs
@@ -2889,6 +2886,9 @@ import 'function_vpc_config.dart';
 ///                 Destination = success.Arn,
 ///             },
 ///         },
+///         FunctionName = example.Name,
+///         MaximumEventAgeInSeconds = 60,
+///         MaximumRetryAttempts = 2,
 ///     });
 ///
 /// });
@@ -2905,23 +2905,20 @@ import 'function_vpc_config.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Main Lambda function
 /// 		example, err := lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
+/// 			DeadLetterConfig: &lambda.FunctionDeadLetterConfigArgs{
+/// 				TargetArn: pulumi.Any(dlq.Arn),
+/// 			},
 /// 			Code:    pulumi.NewFileArchive("function.zip"),
 /// 			Name:    pulumi.String("example_function"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler: pulumi.String("index.handler"),
 /// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
-/// 			DeadLetterConfig: &lambda.FunctionDeadLetterConfigArgs{
-/// 				TargetArn: pulumi.Any(dlq.Arn),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Event invoke configuration for retries
 /// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-/// 			FunctionName:             example.Name,
-/// 			MaximumEventAgeInSeconds: pulumi.Int(60),
-/// 			MaximumRetryAttempts:     pulumi.Int(2),
 /// 			DestinationConfig: &lambda.FunctionEventInvokeConfigDestinationConfigArgs{
 /// 				OnFailure: &lambda.FunctionEventInvokeConfigDestinationConfigOnFailureArgs{
 /// 					Destination: pulumi.Any(dlq.Arn),
@@ -2930,6 +2927,9 @@ import 'function_vpc_config.dart';
 /// 					Destination: pulumi.Any(success.Arn),
 /// 				},
 /// 			},
+/// 			FunctionName:             example.Name,
+/// 			MaximumEventAgeInSeconds: pulumi.Int(60),
+/// 			MaximumRetryAttempts:     pulumi.Int(2),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2949,20 +2949,17 @@ import 'function_vpc_config.dart';
 ///
 /// # Main Lambda function
 /// resource "aws_lambda_function" "example" {
+///   dead_letter_config = {
+///     target_arn = dlq.arn
+///   }
 ///   code    = fileArchive("function.zip")
 ///   name    = "example_function"
 ///   role    = exampleAwsIamRole.arn
 ///   handler = "index.handler"
 ///   runtime = "nodejs24.x"
-///   dead_letter_config = {
-///     target_arn = dlq.arn
-///   }
 /// }
 /// # Event invoke configuration for retries
 /// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   function_name                = aws_lambda_function.example.name
-///   maximum_event_age_in_seconds = 60
-///   maximum_retry_attempts       = 2
 ///   destination_config = {
 ///     on_failure = {
 ///       destination = dlq.arn
@@ -2971,6 +2968,9 @@ import 'function_vpc_config.dart';
 ///       destination = success.arn
 ///     }
 ///   }
+///   function_name                = aws_lambda_function.example.name
+///   maximum_event_age_in_seconds = 60
+///   maximum_retry_attempts       = 2
 /// }
 /// ```
 /// ```java
@@ -3003,21 +3003,18 @@ import 'function_vpc_config.dart';
 ///     public static void stack(Context ctx) {
 ///         // Main Lambda function
 ///         var example = new Function("example", FunctionArgs.builder()
+///             .deadLetterConfig(FunctionDeadLetterConfigArgs.builder()
+///                 .targetArn(dlq.arn())
+///                 .build())
 ///             .code(new FileArchive("function.zip"))
 ///             .name("example_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
 ///             .runtime("nodejs24.x")
-///             .deadLetterConfig(FunctionDeadLetterConfigArgs.builder()
-///                 .targetArn(dlq.arn())
-///                 .build())
 ///             .build());
 ///
 ///         // Event invoke configuration for retries
 ///         var exampleFunctionEventInvokeConfig = new FunctionEventInvokeConfig("exampleFunctionEventInvokeConfig", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(example.name())
-///             .maximumEventAgeInSeconds(60)
-///             .maximumRetryAttempts(2)
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
 ///                     .destination(dlq.arn())
@@ -3026,6 +3023,9 @@ import 'function_vpc_config.dart';
 ///                     .destination(success.arn())
 ///                     .build())
 ///                 .build())
+///             .functionName(example.name())
+///             .maximumEventAgeInSeconds(60)
+///             .maximumRetryAttempts(2)
 ///             .build());
 ///
 ///     }
@@ -3037,27 +3037,27 @@ import 'function_vpc_config.dart';
 ///   example:
 ///     type: aws:lambda:Function
 ///     properties:
+///       deadLetterConfig:
+///         targetArn: ${dlq.arn}
 ///       code:
 ///         fn::fileArchive: function.zip
 ///       name: example_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
 ///       runtime: nodejs24.x
-///       deadLetterConfig:
-///         targetArn: ${dlq.arn}
 ///   # Event invoke configuration for retries
 ///   exampleFunctionEventInvokeConfig:
 ///     type: aws:lambda:FunctionEventInvokeConfig
 ///     name: example
 ///     properties:
-///       functionName: ${example.name}
-///       maximumEventAgeInSeconds: 60
-///       maximumRetryAttempts: 2
 ///       destinationConfig:
 ///         onFailure:
 ///           destination: ${dlq.arn}
 ///         onSuccess:
 ///           destination: ${success.arn}
+///       functionName: ${example.name}
+///       maximumEventAgeInSeconds: 60
+///       maximumRetryAttempts: 2
 /// ```
 ///
 ///
@@ -3119,16 +3119,16 @@ import 'function_vpc_config.dart';
 /// });
 /// // Lambda function with logging
 /// const exampleFunction = new aws.lambda.Function("example", {
-///     code: new pulumi.asset.FileArchive("function.zip"),
-///     name: functionName,
-///     role: exampleRole.arn,
-///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     loggingConfig: {
 ///         logFormat: "JSON",
 ///         applicationLogLevel: "INFO",
 ///         systemLogLevel: "WARN",
 ///     },
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: functionName,
+///     role: exampleRole.arn,
+///     handler: "index.handler",
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// }, {
 ///     dependsOn: [
 ///         lambdaLogs,
@@ -3190,16 +3190,16 @@ import 'function_vpc_config.dart';
 ///     policy_arn=lambda_logging.arn)
 /// # Lambda function with logging
 /// example_function = aws.lambda_.Function("example",
-///     code=pulumi.FileArchive("function.zip"),
-///     name=function_name,
-///     role=example_role.arn,
-///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     logging_config={
 ///         "log_format": "JSON",
 ///         "application_log_level": "INFO",
 ///         "system_log_level": "WARN",
 ///     },
+///     code=pulumi.FileArchive("function.zip"),
+///     name=function_name,
+///     role=example_role.arn,
+///     handler="index.handler",
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             lambda_logs,
 ///             example,
@@ -3290,17 +3290,17 @@ import 'function_vpc_config.dart';
 ///     // Lambda function with logging
 ///     var exampleFunction = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = functionName,
-///         Role = exampleRole.Arn,
-///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         LoggingConfig = new Aws.Lambda.Inputs.FunctionLoggingConfigArgs
 ///         {
 ///             LogFormat = "JSON",
 ///             ApplicationLogLevel = "INFO",
 ///             SystemLogLevel = "WARN",
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = functionName,
+///         Role = exampleRole.Arn,
+///         Handler = "index.handler",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -3409,16 +3409,16 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		// Lambda function with logging
 /// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Code:    pulumi.NewFileArchive("function.zip"),
-/// 			Name:    pulumi.String(functionName),
-/// 			Role:    exampleRole.Arn,
-/// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			LoggingConfig: &lambda.FunctionLoggingConfigArgs{
 /// 				LogFormat:           pulumi.String("JSON"),
 /// 				ApplicationLogLevel: pulumi.String("INFO"),
 /// 				SystemLogLevel:      pulumi.String("WARN"),
 /// 			},
+/// 			Code:    pulumi.NewFileArchive("function.zip"),
+/// 			Name:    pulumi.String(functionName),
+/// 			Role:    exampleRole.Arn,
+/// 			Handler: pulumi.String("index.handler"),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			lambdaLogs,
 /// 			example,
@@ -3484,16 +3484,16 @@ import 'function_vpc_config.dart';
 /// # Lambda function with logging
 /// resource "aws_lambda_function" "example" {
 ///   depends_on = [aws_iam_rolepolicyattachment.lambda_logs, aws_cloudwatch_loggroup.example]
-///   code       = fileArchive("function.zip")
-///   name       = var.functionName
-///   role       = aws_iam_role.example.arn
-///   handler    = "index.handler"
-///   runtime    = "nodejs24.x"
 ///   logging_config = {
 ///     log_format            = "JSON"
 ///     application_log_level = "INFO"
 ///     system_log_level      = "WARN"
 ///   }
+///   code    = fileArchive("function.zip")
+///   name    = var.functionName
+///   role    = aws_iam_role.example.arn
+///   handler = "index.handler"
+///   runtime = "nodejs24.x"
 /// }
 /// # Function name variable
 /// variable "functionName" {
@@ -3591,16 +3591,16 @@ import 'function_vpc_config.dart';
 ///
 ///         // Lambda function with logging
 ///         var exampleFunction = new Function("exampleFunction", FunctionArgs.builder()
-///             .code(new FileArchive("function.zip"))
-///             .name(functionName)
-///             .role(exampleRole.arn())
-///             .handler("index.handler")
-///             .runtime("nodejs24.x")
 ///             .loggingConfig(FunctionLoggingConfigArgs.builder()
 ///                 .logFormat("JSON")
 ///                 .applicationLogLevel("INFO")
 ///                 .systemLogLevel("WARN")
 ///                 .build())
+///             .code(new FileArchive("function.zip"))
+///             .name(functionName)
+///             .role(exampleRole.arn())
+///             .handler("index.handler")
+///             .runtime("nodejs24.x")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     lambdaLogs,
@@ -3671,16 +3671,16 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     name: example
 ///     properties:
+///       loggingConfig:
+///         logFormat: JSON
+///         applicationLogLevel: INFO
+///         systemLogLevel: WARN
 ///       code:
 ///         fn::fileArchive: function.zip
 ///       name: ${functionName}
 ///       role: ${exampleRole.arn}
 ///       handler: index.handler
 ///       runtime: nodejs24.x
-///       loggingConfig:
-///         logFormat: JSON
-///         applicationLogLevel: INFO
-///         systemLogLevel: WARN
 ///     options:
 ///       dependsOn:
 ///         - ${lambdaLogs}
@@ -3698,13 +3698,6 @@ import 'function_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.Function("example", {
-///     code: new pulumi.asset.FileArchive("function.zip"),
-///     name: "example_durable_function",
-///     role: exampleAwsIamRole.arn,
-///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS24dX,
-///     memorySize: 512,
-///     timeout: 30,
 ///     durableConfig: {
 ///         executionTimeout: 3600,
 ///         retentionPeriod: 7,
@@ -3714,9 +3707,20 @@ import 'function_vpc_config.dart';
 ///             DURABLE_MODE: "enabled",
 ///         },
 ///     },
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: "example_durable_function",
+///     role: exampleAwsIamRole.arn,
+///     handler: "index.handler",
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
+///     memorySize: 512,
+///     timeout: 30,
 ///     tags: {
 ///         Environment: "production",
 ///         Type: "durable",
+///     },
+/// }, {
+///     customTimeouts: {
+///         "delete": "60m",
 ///     },
 /// });
 /// ```
@@ -3725,13 +3729,6 @@ import 'function_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.Function("example",
-///     code=pulumi.FileArchive("function.zip"),
-///     name="example_durable_function",
-///     role=example_aws_iam_role["arn"],
-///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
-///     memory_size=512,
-///     timeout=30,
 ///     durable_config={
 ///         "execution_timeout": 3600,
 ///         "retention_period": 7,
@@ -3741,10 +3738,18 @@ import 'function_vpc_config.dart';
 ///             "DURABLE_MODE": "enabled",
 ///         },
 ///     },
+///     code=pulumi.FileArchive("function.zip"),
+///     name="example_durable_function",
+///     role=example_aws_iam_role["arn"],
+///     handler="index.handler",
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
+///     memory_size=512,
+///     timeout=30,
 ///     tags={
 ///         "Environment": "production",
 ///         "Type": "durable",
-///     })
+///     },
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(delete="60m")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -3756,13 +3761,6 @@ import 'function_vpc_config.dart';
 /// {
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = "example_durable_function",
-///         Role = exampleAwsIamRole.Arn,
-///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
-///         MemorySize = 512,
-///         Timeout = 30,
 ///         DurableConfig = new Aws.Lambda.Inputs.FunctionDurableConfigArgs
 ///         {
 ///             ExecutionTimeout = 3600,
@@ -3775,6 +3773,13 @@ import 'function_vpc_config.dart';
 ///                 { "DURABLE_MODE", "enabled" },
 ///             },
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = "example_durable_function",
+///         Role = exampleAwsIamRole.Arn,
+///         Handler = "index.handler",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
+///         MemorySize = 512,
+///         Timeout = 30,
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -3795,13 +3800,6 @@ import 'function_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
-/// 			Code:       pulumi.NewFileArchive("function.zip"),
-/// 			Name:       pulumi.String("example_durable_function"),
-/// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Handler:    pulumi.String("index.handler"),
-/// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS24dX),
-/// 			MemorySize: pulumi.Int(512),
-/// 			Timeout:    pulumi.Int(30),
 /// 			DurableConfig: &lambda.FunctionDurableConfigArgs{
 /// 				ExecutionTimeout: pulumi.Int(3600),
 /// 				RetentionPeriod:  pulumi.Int(7),
@@ -3811,11 +3809,18 @@ import 'function_vpc_config.dart';
 /// 					"DURABLE_MODE": pulumi.String("enabled"),
 /// 				},
 /// 			},
+/// 			Code:       pulumi.NewFileArchive("function.zip"),
+/// 			Name:       pulumi.String("example_durable_function"),
+/// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Handler:    pulumi.String("index.handler"),
+/// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS24dX),
+/// 			MemorySize: pulumi.Int(512),
+/// 			Timeout:    pulumi.Int(30),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Type":        pulumi.String("durable"),
 /// 			},
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Delete: "60m"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -3833,14 +3838,9 @@ import 'function_vpc_config.dart';
 /// }
 ///
 /// resource "aws_lambda_function" "example" {
-///   code        = fileArchive("function.zip")
-///   name        = "example_durable_function"
-///   role        = exampleAwsIamRole.arn
-///   handler     = "index.handler"
-///   runtime     = "nodejs24.x"
-///   memory_size = 512
-///   timeout     = 30
-///   # Durable function configuration for long-running processes
+///   timeouts {
+///     delete = "60m"
+///   }
 ///   durable_config = {
 ///     execution_timeout = 3600
 ///     retention_period  = 7
@@ -3853,6 +3853,14 @@ import 'function_vpc_config.dart';
 ///       "DURABLE_MODE" = "enabled"
 ///     }
 ///   }
+///   code        = fileArchive("function.zip")
+///   name        = "example_durable_function"
+///   role        = exampleAwsIamRole.arn
+///   handler     = "index.handler"
+///   runtime     = "nodejs24.x"
+///   memory_size = 512
+///   timeout     = 30
+///   # Durable function configuration for long-running processes
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Type"        = "durable"
@@ -3870,6 +3878,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionDurableConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEnvironmentArgs;
 /// import com.pulumi.asset.FileArchive;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3884,13 +3894,6 @@ import 'function_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Function("example", FunctionArgs.builder()
-///             .code(new FileArchive("function.zip"))
-///             .name("example_durable_function")
-///             .role(exampleAwsIamRole.arn())
-///             .handler("index.handler")
-///             .runtime("nodejs24.x")
-///             .memorySize(512)
-///             .timeout(30)
 ///             .durableConfig(FunctionDurableConfigArgs.builder()
 ///                 .executionTimeout(3600)
 ///                 .retentionPeriod(7)
@@ -3898,11 +3901,22 @@ import 'function_vpc_config.dart';
 ///             .environment(FunctionEnvironmentArgs.builder()
 ///                 .variables(Map.of("DURABLE_MODE", "enabled"))
 ///                 .build())
+///             .code(new FileArchive("function.zip"))
+///             .name("example_durable_function")
+///             .role(exampleAwsIamRole.arn())
+///             .handler("index.handler")
+///             .runtime("nodejs24.x")
+///             .memorySize(512)
+///             .timeout(30)
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Type", "durable")
 ///             ))
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .delete(CustomTimeouts.parseTimeoutString("60m"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -3912,6 +3926,12 @@ import 'function_vpc_config.dart';
 ///   example:
 ///     type: aws:lambda:Function
 ///     properties:
+///       durableConfig:
+///         executionTimeout: 3600
+///         retentionPeriod: 7
+///       environment:
+///         variables:
+///           DURABLE_MODE: enabled
 ///       code:
 ///         fn::fileArchive: function.zip
 ///       name: example_durable_function
@@ -3920,15 +3940,12 @@ import 'function_vpc_config.dart';
 ///       runtime: nodejs24.x
 ///       memorySize: 512
 ///       timeout: 30 # Durable function configuration for long-running processes
-///       durableConfig:
-///         executionTimeout: 3600
-///         retentionPeriod: 7
-///       environment:
-///         variables:
-///           DURABLE_MODE: enabled
 ///       tags:
 ///         Environment: production
 ///         Type: durable
+///     options:
+///       customTimeouts:
+///         delete: 60m
 /// ```
 ///
 ///
@@ -3940,7 +3957,6 @@ import 'function_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleCapacityProvider = new aws.lambda.CapacityProvider("example", {
-///     name: "example",
 ///     vpcConfig: {
 ///         subnetIds: [exampleAwsSubnet.id],
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
@@ -3948,8 +3964,14 @@ import 'function_vpc_config.dart';
 ///     permissionsConfig: {
 ///         capacityProviderOperatorRoleArn: exampleAwsIamRole.arn,
 ///     },
+///     name: "example",
 /// });
 /// const example = new aws.lambda.Function("example", {
+///     capacityProviderConfig: {
+///         lambdaManagedInstancesCapacityProviderConfig: {
+///             capacityProviderArn: exampleCapacityProvider.arn,
+///         },
+///     },
 ///     code: new pulumi.asset.FileArchive("function.zip"),
 ///     name: "example",
 ///     role: exampleAwsIamRole.arn,
@@ -3957,11 +3979,6 @@ import 'function_vpc_config.dart';
 ///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     memorySize: 2048,
 ///     publish: true,
-///     capacityProviderConfig: {
-///         lambdaManagedInstancesCapacityProviderConfig: {
-///             capacityProviderArn: exampleCapacityProvider.arn,
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -3969,27 +3986,27 @@ import 'function_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example_capacity_provider = aws.lambda_.CapacityProvider("example",
-///     name="example",
 ///     vpc_config={
 ///         "subnet_ids": [example_aws_subnet["id"]],
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///     },
 ///     permissions_config={
 ///         "capacity_provider_operator_role_arn": example_aws_iam_role["arn"],
-///     })
+///     },
+///     name="example")
 /// example = aws.lambda_.Function("example",
+///     capacity_provider_config={
+///         "lambda_managed_instances_capacity_provider_config": {
+///             "capacity_provider_arn": example_capacity_provider.arn,
+///         },
+///     },
 ///     code=pulumi.FileArchive("function.zip"),
 ///     name="example",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
 ///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     memory_size=2048,
-///     publish=True,
-///     capacity_provider_config={
-///         "lambda_managed_instances_capacity_provider_config": {
-///             "capacity_provider_arn": example_capacity_provider.arn,
-///         },
-///     })
+///     publish=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -4001,7 +4018,6 @@ import 'function_vpc_config.dart';
 /// {
 ///     var exampleCapacityProvider = new Aws.Lambda.CapacityProvider("example", new()
 ///     {
-///         Name = "example",
 ///         VpcConfig = new Aws.Lambda.Inputs.CapacityProviderVpcConfigArgs
 ///         {
 ///             SubnetIds = new[]
@@ -4017,17 +4033,11 @@ import 'function_vpc_config.dart';
 ///         {
 ///             CapacityProviderOperatorRoleArn = exampleAwsIamRole.Arn,
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
-///         Code = new FileArchive("function.zip"),
-///         Name = "example",
-///         Role = exampleAwsIamRole.Arn,
-///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
-///         MemorySize = 2048,
-///         Publish = true,
 ///         CapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigArgs
 ///         {
 ///             LambdaManagedInstancesCapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs
@@ -4035,6 +4045,13 @@ import 'function_vpc_config.dart';
 ///                 CapacityProviderArn = exampleCapacityProvider.Arn,
 ///             },
 ///         },
+///         Code = new FileArchive("function.zip"),
+///         Name = "example",
+///         Role = exampleAwsIamRole.Arn,
+///         Handler = "index.handler",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
+///         MemorySize = 2048,
+///         Publish = true,
 ///     });
 ///
 /// });
@@ -4050,7 +4067,6 @@ import 'function_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleCapacityProvider, err := lambda.NewCapacityProvider(ctx, "example", &lambda.CapacityProviderArgs{
-/// 			Name: pulumi.String("example"),
 /// 			VpcConfig: &lambda.CapacityProviderVpcConfigArgs{
 /// 				SubnetIds: pulumi.StringArray{
 /// 					exampleAwsSubnet.Id,
@@ -4062,11 +4078,17 @@ import 'function_vpc_config.dart';
 /// 			PermissionsConfig: &lambda.CapacityProviderPermissionsConfigArgs{
 /// 				CapacityProviderOperatorRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
+/// 			CapacityProviderConfig: &lambda.FunctionCapacityProviderConfigArgs{
+/// 				LambdaManagedInstancesCapacityProviderConfig: &lambda.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs{
+/// 					CapacityProviderArn: exampleCapacityProvider.Arn,
+/// 				},
+/// 			},
 /// 			Code:       pulumi.NewFileArchive("function.zip"),
 /// 			Name:       pulumi.String("example"),
 /// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
@@ -4074,11 +4096,6 @@ import 'function_vpc_config.dart';
 /// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			MemorySize: pulumi.Int(2048),
 /// 			Publish:    pulumi.Bool(true),
-/// 			CapacityProviderConfig: &lambda.FunctionCapacityProviderConfigArgs{
-/// 				LambdaManagedInstancesCapacityProviderConfig: &lambda.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs{
-/// 					CapacityProviderArn: exampleCapacityProvider.Arn,
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4097,6 +4114,11 @@ import 'function_vpc_config.dart';
 /// }
 ///
 /// resource "aws_lambda_function" "example" {
+///   capacity_provider_config = {
+///     lambda_managed_instances_capacity_provider_config = {
+///       capacity_provider_arn = aws_lambda_capacityprovider.example.arn
+///     }
+///   }
 ///   code        = fileArchive("function.zip")
 ///   name        = "example"
 ///   role        = exampleAwsIamRole.arn
@@ -4104,14 +4126,8 @@ import 'function_vpc_config.dart';
 ///   runtime     = "nodejs24.x"
 ///   memory_size = 2048
 ///   publish     = true
-///   capacity_provider_config = {
-///     lambda_managed_instances_capacity_provider_config = {
-///       capacity_provider_arn = aws_lambda_capacityprovider.example.arn
-///     }
-///   }
 /// }
 /// resource "aws_lambda_capacityprovider" "example" {
-///   name = "example"
 ///   vpc_config = {
 ///     subnet_ids         = [exampleAwsSubnet.id]
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
@@ -4119,6 +4135,7 @@ import 'function_vpc_config.dart';
 ///   permissions_config = {
 ///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -4150,7 +4167,6 @@ import 'function_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleCapacityProvider = new CapacityProvider("exampleCapacityProvider", CapacityProviderArgs.builder()
-///             .name("example")
 ///             .vpcConfig(CapacityProviderVpcConfigArgs.builder()
 ///                 .subnetIds(exampleAwsSubnet.id())
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
@@ -4158,9 +4174,15 @@ import 'function_vpc_config.dart';
 ///             .permissionsConfig(CapacityProviderPermissionsConfigArgs.builder()
 ///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var example = new Function("example", FunctionArgs.builder()
+///             .capacityProviderConfig(FunctionCapacityProviderConfigArgs.builder()
+///                 .lambdaManagedInstancesCapacityProviderConfig(FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs.builder()
+///                     .capacityProviderArn(exampleCapacityProvider.arn())
+///                     .build())
+///                 .build())
 ///             .code(new FileArchive("function.zip"))
 ///             .name("example")
 ///             .role(exampleAwsIamRole.arn())
@@ -4168,11 +4190,6 @@ import 'function_vpc_config.dart';
 ///             .runtime("nodejs24.x")
 ///             .memorySize(2048)
 ///             .publish(true)
-///             .capacityProviderConfig(FunctionCapacityProviderConfigArgs.builder()
-///                 .lambdaManagedInstancesCapacityProviderConfig(FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs.builder()
-///                     .capacityProviderArn(exampleCapacityProvider.arn())
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -4183,6 +4200,9 @@ import 'function_vpc_config.dart';
 ///   example:
 ///     type: aws:lambda:Function
 ///     properties:
+///       capacityProviderConfig:
+///         lambdaManagedInstancesCapacityProviderConfig:
+///           capacityProviderArn: ${exampleCapacityProvider.arn}
 ///       code:
 ///         fn::fileArchive: function.zip
 ///       name: example
@@ -4191,14 +4211,10 @@ import 'function_vpc_config.dart';
 ///       runtime: nodejs24.x
 ///       memorySize: 2048
 ///       publish: true
-///       capacityProviderConfig:
-///         lambdaManagedInstancesCapacityProviderConfig:
-///           capacityProviderArn: ${exampleCapacityProvider.arn}
 ///   exampleCapacityProvider:
 ///     type: aws:lambda:CapacityProvider
 ///     name: example
 ///     properties:
-///       name: example
 ///       vpcConfig:
 ///         subnetIds:
 ///           - ${exampleAwsSubnet.id}
@@ -4206,6 +4222,7 @@ import 'function_vpc_config.dart';
 ///           - ${exampleAwsSecurityGroup.id}
 ///       permissionsConfig:
 ///         capacityProviderOperatorRoleArn: ${exampleAwsIamRole.arn}
+///       name: example
 /// ```
 ///
 ///
@@ -4268,7 +4285,7 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String?> imageUri;
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String> invokeArn;
-  /// ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
+  /// ARN of the KMS key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Date this resource was last modified.
   late final pulumi.Output<String> lastModified;
@@ -4324,7 +4341,7 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceCodeHash;
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int> sourceCodeSize;
-  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
+  /// ARN of the KMS key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
   late final pulumi.Output<String?> sourceKmsKeyArn;
   /// Key-value map of tags for the Lambda function. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -4355,9 +4372,9 @@ class FunctionType extends pulumi.CustomResource {
           'aws:lambda/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    architectures = registerOutput<List<String>>('architectures');
+    architectures = registerOutput<List<String>>('architectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>('capacityProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionCapacityProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<dynamic>('code');
@@ -4375,7 +4392,7 @@ class FunctionType extends pulumi.CustomResource {
     invokeArn = registerOutput<String>('invokeArn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     lastModified = registerOutput<String>('lastModified');
-    layers = registerOutput<List<String>?>('layers');
+    layers = registerOutput<List<String>?>('layers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingConfig = registerOutput<FunctionLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memorySize = registerOutput<int?>('memorySize');
     this.name = registerOutput<String>('name');
@@ -4386,7 +4403,7 @@ class FunctionType extends pulumi.CustomResource {
     qualifiedInvokeArn = registerOutput<String>('qualifiedInvokeArn');
     region = registerOutput<String>('region');
     replaceSecurityGroupsOnDestroy = registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
-    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds');
+    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     reservedConcurrentExecutions = registerOutput<int?>('reservedConcurrentExecutions');
     responseStreamingInvokeArn = registerOutput<String>('responseStreamingInvokeArn');
     role = registerOutput<String>('role');
@@ -4401,8 +4418,8 @@ class FunctionType extends pulumi.CustomResource {
     sourceCodeHash = registerOutput<String>('sourceCodeHash');
     sourceCodeSize = registerOutput<int>('sourceCodeSize');
     sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
     tracingConfig = registerOutput<FunctionTracingConfig>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -4416,11 +4433,12 @@ class FunctionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4434,7 +4452,7 @@ class FunctionType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    architectures = registerOutput<List<String>>('architectures');
+    architectures = registerOutput<List<String>>('architectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>('capacityProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionCapacityProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<dynamic>('code');
@@ -4452,7 +4470,7 @@ class FunctionType extends pulumi.CustomResource {
     invokeArn = registerOutput<String>('invokeArn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     lastModified = registerOutput<String>('lastModified');
-    layers = registerOutput<List<String>?>('layers');
+    layers = registerOutput<List<String>?>('layers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingConfig = registerOutput<FunctionLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memorySize = registerOutput<int?>('memorySize');
     this.name = registerOutput<String>('name');
@@ -4463,7 +4481,7 @@ class FunctionType extends pulumi.CustomResource {
     qualifiedInvokeArn = registerOutput<String>('qualifiedInvokeArn');
     region = registerOutput<String>('region');
     replaceSecurityGroupsOnDestroy = registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
-    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds');
+    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     reservedConcurrentExecutions = registerOutput<int?>('reservedConcurrentExecutions');
     responseStreamingInvokeArn = registerOutput<String>('responseStreamingInvokeArn');
     role = registerOutput<String>('role');
@@ -4478,8 +4496,71 @@ class FunctionType extends pulumi.CustomResource {
     sourceCodeHash = registerOutput<String>('sourceCodeHash');
     sourceCodeSize = registerOutput<int>('sourceCodeSize');
     sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<int?>('timeout');
+    tracingConfig = registerOutput<FunctionTracingConfig>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
+    version = registerOutput<String>('version');
+    vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FunctionType] resource.
+  FunctionType.reference(String urn)
+    : super(
+        'aws:lambda/function:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    architectures = registerOutput<List<String>>('architectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>('capacityProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionCapacityProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    code = registerOutput<dynamic>('code');
+    codeSha256 = registerOutput<String>('codeSha256');
+    codeSigningConfigArn = registerOutput<String?>('codeSigningConfigArn');
+    deadLetterConfig = registerOutput<FunctionDeadLetterConfig?>('deadLetterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionDeadLetterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    durableConfig = registerOutput<FunctionDurableConfig?>('durableConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionDurableConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environment = registerOutput<FunctionEnvironment?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ephemeralStorage = registerOutput<FunctionEphemeralStorage>('ephemeralStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEphemeralStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileSystemConfig = registerOutput<FunctionFileSystemConfig?>('fileSystemConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionFileSystemConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    handler = registerOutput<String?>('handler');
+    imageConfig = registerOutput<FunctionImageConfig?>('imageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageUri = registerOutput<String?>('imageUri');
+    invokeArn = registerOutput<String>('invokeArn');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    lastModified = registerOutput<String>('lastModified');
+    layers = registerOutput<List<String>?>('layers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loggingConfig = registerOutput<FunctionLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memorySize = registerOutput<int?>('memorySize');
+    this.name = registerOutput<String>('name');
+    packageType = registerOutput<String?>('packageType');
+    publish = registerOutput<bool?>('publish');
+    publishTo = registerOutput<String?>('publishTo');
+    qualifiedArn = registerOutput<String>('qualifiedArn');
+    qualifiedInvokeArn = registerOutput<String>('qualifiedInvokeArn');
+    region = registerOutput<String>('region');
+    replaceSecurityGroupsOnDestroy = registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
+    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    reservedConcurrentExecutions = registerOutput<int?>('reservedConcurrentExecutions');
+    responseStreamingInvokeArn = registerOutput<String>('responseStreamingInvokeArn');
+    role = registerOutput<String>('role');
+    runtime = registerOutput<String?>('runtime');
+    s3Bucket = registerOutput<String?>('s3Bucket');
+    s3Key = registerOutput<String?>('s3Key');
+    s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    signingJobArn = registerOutput<String>('signingJobArn');
+    signingProfileVersionArn = registerOutput<String>('signingProfileVersionArn');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    snapStart = registerOutput<FunctionSnapStart?>('snapStart', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionSnapStart.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceCodeHash = registerOutput<String>('sourceCodeHash');
+    sourceCodeSize = registerOutput<int>('sourceCodeSize');
+    sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
     tracingConfig = registerOutput<FunctionTracingConfig>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

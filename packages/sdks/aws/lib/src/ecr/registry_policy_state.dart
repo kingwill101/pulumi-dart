@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegistryPolicy resources.
 class RegistryPolicyState {
   /// The policy document. This is a JSON formatted string.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<dynamic>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The registry ID where the registry was created.
-  final pulumi.Input<String>? registryId;
+  final pulumi.Input<String?>? registryId;
 
   /// Creates a new [RegistryPolicyState].
   /// [policy] The policy document. This is a JSON formatted string.
@@ -31,7 +31,7 @@ class RegistryPolicyState {
 
   factory RegistryPolicyState.fromMap(Map<String, dynamic> map) {
     return RegistryPolicyState(
-      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryId: (() { final guardedValue = map['registryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

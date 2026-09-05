@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesMetadata {
   /// Key-value pairs used to identify, sort, and organize kubernetes resources.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesMetadata].
   /// [labels] Key-value pairs used to identify, sort, and organize kubernetes resources.

@@ -7,27 +7,27 @@ import 'webhook_filter.dart';
 /// Input properties used for looking up and filtering Webhook resources.
 class WebhookState {
   /// The CodePipeline webhook's ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
-  final pulumi.Input<String>? authentication;
+  final pulumi.Input<String?>? authentication;
   /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
-  final pulumi.Input<WebhookAuthenticationConfiguration>? authenticationConfiguration;
+  final pulumi.Input<WebhookAuthenticationConfiguration?>? authenticationConfiguration;
   /// One or more `filter` blocks. Filter blocks are documented below.
-  final pulumi.Input<List<WebhookFilter>>? filters;
+  final pulumi.Input<List<WebhookFilter>?>? filters;
   /// The name of the webhook.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
-  final pulumi.Input<String>? targetAction;
+  final pulumi.Input<String?>? targetAction;
   /// The name of the pipeline.
-  final pulumi.Input<String>? targetPipeline;
+  final pulumi.Input<String?>? targetPipeline;
   /// The CodePipeline webhook's URL. POST events to this endpoint to trigger the target.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [WebhookState].
   /// [arn] The CodePipeline webhook's ARN.

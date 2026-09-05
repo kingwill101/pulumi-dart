@@ -7,11 +7,11 @@ import 'budget_filter_expression_not_or_tags.dart';
 
 class BudgetFilterExpressionNotOr {
   /// (Optional) A Cost Category Filter block.
-  final pulumi.Input<BudgetFilterExpressionNotOrCostCategories>? costCategories;
+  final pulumi.Input<BudgetFilterExpressionNotOrCostCategories?>? costCategories;
   /// (Optional) A Dimension Filter block.
-  final pulumi.Input<BudgetFilterExpressionNotOrDimensions>? dimensions;
+  final pulumi.Input<BudgetFilterExpressionNotOrDimensions?>? dimensions;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<BudgetFilterExpressionNotOrTags>? tags;
+  final pulumi.Input<BudgetFilterExpressionNotOrTags?>? tags;
 
   /// Creates a new [BudgetFilterExpressionNotOr].
   /// [costCategories] (Optional) A Cost Category Filter block.

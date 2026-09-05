@@ -6,7 +6,7 @@ class ApplicationMaximumCapacity {
   /// The maximum allowed CPU for an application.
   final pulumi.Input<String> cpu;
   /// The maximum allowed disk for an application.
-  final pulumi.Input<String>? disk;
+  final pulumi.Input<String?>? disk;
   /// The maximum allowed resources for an application.
   final pulumi.Input<String> memory;
 

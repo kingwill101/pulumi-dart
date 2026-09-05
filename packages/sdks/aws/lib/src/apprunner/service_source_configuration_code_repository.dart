@@ -6,13 +6,13 @@ import 'service_source_configuration_code_repository_source_code_version.dart';
 
 class ServiceSourceConfigurationCodeRepository {
   /// Configuration for building and running the service from a source code repository. See `codeConfiguration` below.
-  final pulumi.Input<ServiceSourceConfigurationCodeRepositoryCodeConfiguration>? codeConfiguration;
+  final pulumi.Input<ServiceSourceConfigurationCodeRepositoryCodeConfiguration?>? codeConfiguration;
   /// Location of the repository that contains the source code.
   final pulumi.Input<String> repositoryUrl;
   /// Version that should be used within the source code repository. See `sourceCodeVersion` below.
   final pulumi.Input<ServiceSourceConfigurationCodeRepositorySourceCodeVersion> sourceCodeVersion;
   /// Path of the directory that stores source code and configuration files. The build and start commands also execute from here. The path is absolute from root and, if not specified, defaults to the repository root.
-  final pulumi.Input<String>? sourceDirectory;
+  final pulumi.Input<String?>? sourceDirectory;
 
   /// Creates a new [ServiceSourceConfigurationCodeRepository].
   /// [codeConfiguration] Configuration for building and running the service from a source code repository. See `codeConfiguration` below.

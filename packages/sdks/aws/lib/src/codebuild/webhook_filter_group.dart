@@ -5,7 +5,7 @@ import 'webhook_filter_group_filter.dart';
 
 class WebhookFilterGroup {
   /// A webhook filter for the group. See filter for details.
-  final pulumi.Input<List<WebhookFilterGroupFilter>>? filters;
+  final pulumi.Input<List<WebhookFilterGroupFilter>?>? filters;
 
   /// Creates a new [WebhookFilterGroup].
   /// [filters] A webhook filter for the group. See filter for details.

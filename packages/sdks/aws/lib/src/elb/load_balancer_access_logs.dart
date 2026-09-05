@@ -6,11 +6,11 @@ class LoadBalancerAccessLogs {
   /// The S3 bucket name to store the logs in.
   final pulumi.Input<String> bucket;
   /// The S3 bucket prefix. Logs are stored in the root if not configured.
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketPrefix;
   /// Boolean to enable / disable `accessLogs`. Default is `true`
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The publishing interval in minutes. Valid values: `5` and `60`. Default: `60`
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
 
   /// Creates a new [LoadBalancerAccessLogs].
   /// [bucket] The S3 bucket name to store the logs in.
@@ -38,7 +38,7 @@ class LoadBalancerAccessLogs {
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       bucketPrefix: (() { final guardedValue = map['bucketPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

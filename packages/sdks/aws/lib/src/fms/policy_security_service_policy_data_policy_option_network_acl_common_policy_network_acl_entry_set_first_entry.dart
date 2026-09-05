@@ -6,15 +6,15 @@ import 'policy_security_service_policy_data_policy_option_network_acl_common_pol
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry {
   /// IPv4 network range to allow or deny, in CIDR notation.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// Whether Firewall Manager creates an egress rule. If `false`, Firewall Manager creates an ingress rule.
   final pulumi.Input<bool> egress;
   /// ICMP protocol configuration specifying the ICMP type and code. See the `icmpTypeCode` block.
-  final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode>>? icmpTypeCodes;
+  final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode>?>? icmpTypeCodes;
   /// IPv6 network range to allow or deny, in CIDR notation.
-  final pulumi.Input<String>? ipv6CidrBlock;
+  final pulumi.Input<String?>? ipv6CidrBlock;
   /// Port range configuration for the rule. See the `portRange` block.
-  final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange>>? portRanges;
+  final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange>?>? portRanges;
   /// Protocol number. A value of `-1` means all protocols.
   final pulumi.Input<String> protocol;
   /// Whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.

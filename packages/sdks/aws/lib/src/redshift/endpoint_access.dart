@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_access_args.dart';
 import 'endpoint_access_state.dart';
+import 'endpoint_access_vpc_endpoint.dart';
 
 /// Creates a new Amazon Redshift endpoint access.
 ///
@@ -144,7 +145,7 @@ class EndpointAccess extends pulumi.CustomResource {
   /// The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint.
   late final pulumi.Output<String> subnetGroupName;
   /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy. See details below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpcEndpoints;
+  late final pulumi.Output<List<EndpointAccessVpcEndpoint>> vpcEndpoints;
   /// The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
 
@@ -160,7 +161,7 @@ class EndpointAccess extends pulumi.CustomResource {
           'aws:redshift/endpointAccess:EndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
@@ -169,8 +170,8 @@ class EndpointAccess extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    vpcEndpoints = registerOutput<List<Map<String, dynamic>>>('vpcEndpoints');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcEndpoints = registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(guardedValue, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [EndpointAccess] resource's state with the given [name] and [id].
@@ -178,11 +179,12 @@ class EndpointAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -203,7 +205,27 @@ class EndpointAccess extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    vpcEndpoints = registerOutput<List<Map<String, dynamic>>>('vpcEndpoints');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcEndpoints = registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(guardedValue, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointAccess] resource.
+  EndpointAccess.reference(String urn)
+    : super(
+        'aws:redshift/endpointAccess:EndpointAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    endpointName = registerOutput<String>('endpointName');
+    port = registerOutput<int>('port');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    subnetGroupName = registerOutput<String>('subnetGroupName');
+    vpcEndpoints = registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(guardedValue, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

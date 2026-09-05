@@ -9,13 +9,13 @@ import 'get_hosts_filter.dart';
 /// {@macro pulumi_ec2_get_hosts_get_hosts_args_doc}
 class GetHostsArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeHosts.html) for supported filters. Detailed below.
-  final pulumi.Input<List<GetHostsFilter>>? filters;
+  final pulumi.Input<List<GetHostsFilter>?>? filters;
   /// ARN of the AWS Outpost. Filters results client-side to only include hosts allocated on this Outpost.
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<String?>? outpostArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired Dedicated Hosts.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetHostsArgs].
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeHosts.html) for supported filters. Detailed below.

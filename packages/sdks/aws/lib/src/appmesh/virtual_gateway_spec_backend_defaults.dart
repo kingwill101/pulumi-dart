@@ -5,7 +5,7 @@ import 'virtual_gateway_spec_backend_defaults_client_policy.dart';
 
 class VirtualGatewaySpecBackendDefaults {
   /// Default client policy for virtual gateway backends. See `clientPolicy` Block for details.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicy>? clientPolicy;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicy?>? clientPolicy;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaults].
   /// [clientPolicy] Default client policy for virtual gateway backends. See `clientPolicy` Block for details.

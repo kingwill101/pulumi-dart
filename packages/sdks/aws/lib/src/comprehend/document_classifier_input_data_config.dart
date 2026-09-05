@@ -7,18 +7,18 @@ class DocumentClassifierInputDataConfig {
   /// List of training datasets produced by Amazon SageMaker AI Ground Truth.
   /// Used if `dataFormat` is `AUGMENTED_MANIFEST`.
   /// See the `augmentedManifests` Configuration Block section below.
-  final pulumi.Input<List<DocumentClassifierInputDataConfigAugmentedManifest>>? augmentedManifests;
+  final pulumi.Input<List<DocumentClassifierInputDataConfigAugmentedManifest>?>? augmentedManifests;
   /// The format for the training data.
   /// One of `COMPREHEND_CSV` or `AUGMENTED_MANIFEST`.
-  final pulumi.Input<String>? dataFormat;
+  final pulumi.Input<String?>? dataFormat;
   /// Delimiter between labels when training a multi-label classifier.
   /// Valid values are `|`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `*`, `-`, `_`, `+`, `=`, `\`, `:`, `;`, `&gt;`, `?`, `/`, `&lt;space&gt;`, and `&lt;tab&gt;`.
   /// Default is `|`.
-  final pulumi.Input<String>? labelDelimiter;
+  final pulumi.Input<String?>? labelDelimiter;
   /// Location of training documents.
   /// Used if `dataFormat` is `COMPREHEND_CSV`.
-  final pulumi.Input<String>? s3Uri;
-  final pulumi.Input<String>? testS3Uri;
+  final pulumi.Input<String?>? s3Uri;
+  final pulumi.Input<String?>? testS3Uri;
 
   /// Creates a new [DocumentClassifierInputDataConfig].
   /// [augmentedManifests] List of training datasets produced by Amazon SageMaker AI Ground Truth.

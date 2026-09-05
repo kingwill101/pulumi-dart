@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_lake_settings_args.dart';
+import 'data_lake_settings_create_database_default_permission.dart';
+import 'data_lake_settings_create_table_default_permission.dart';
 import 'data_lake_settings_state.dart';
 
 /// Manages Lake Formation principals designated as data lake administrators and lists of principal permission entries for default create database and default create table permissions.
@@ -133,10 +135,6 @@ import 'data_lake_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lakeformation.DataLakeSettings("example", {
-///     admins: [
-///         test.arn,
-///         testAwsIamRole.arn,
-///     ],
 ///     createDatabaseDefaultPermissions: [{
 ///         permissions: [
 ///             "SELECT",
@@ -149,6 +147,10 @@ import 'data_lake_settings_state.dart';
 ///         permissions: ["ALL"],
 ///         principal: testAwsIamRole.arn,
 ///     }],
+///     admins: [
+///         test.arn,
+///         testAwsIamRole.arn,
+///     ],
 /// });
 /// ```
 /// ```python
@@ -156,10 +158,6 @@ import 'data_lake_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lakeformation.DataLakeSettings("example",
-///     admins=[
-///         test["arn"],
-///         test_aws_iam_role["arn"],
-///     ],
 ///     create_database_default_permissions=[{
 ///         "permissions": [
 ///             "SELECT",
@@ -171,7 +169,11 @@ import 'data_lake_settings_state.dart';
 ///     create_table_default_permissions=[{
 ///         "permissions": ["ALL"],
 ///         "principal": test_aws_iam_role["arn"],
-///     }])
+///     }],
+///     admins=[
+///         test["arn"],
+///         test_aws_iam_role["arn"],
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -183,11 +185,6 @@ import 'data_lake_settings_state.dart';
 /// {
 ///     var example = new Aws.LakeFormation.DataLakeSettings("example", new()
 ///     {
-///         Admins = new[]
-///         {
-///             test.Arn,
-///             testAwsIamRole.Arn,
-///         },
 ///         CreateDatabaseDefaultPermissions = new[]
 ///         {
 ///             new Aws.LakeFormation.Inputs.DataLakeSettingsCreateDatabaseDefaultPermissionArgs
@@ -212,6 +209,11 @@ import 'data_lake_settings_state.dart';
 ///                 Principal = testAwsIamRole.Arn,
 ///             },
 ///         },
+///         Admins = new[]
+///         {
+///             test.Arn,
+///             testAwsIamRole.Arn,
+///         },
 ///     });
 ///
 /// });
@@ -227,10 +229,6 @@ import 'data_lake_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewDataLakeSettings(ctx, "example", &lakeformation.DataLakeSettingsArgs{
-/// 			Admins: pulumi.StringArray{
-/// 				test.Arn,
-/// 				testAwsIamRole.Arn,
-/// 			},
 /// 			CreateDatabaseDefaultPermissions: lakeformation.DataLakeSettingsCreateDatabaseDefaultPermissionArray{
 /// 				&lakeformation.DataLakeSettingsCreateDatabaseDefaultPermissionArgs{
 /// 					Permissions: pulumi.StringArray{
@@ -248,6 +246,10 @@ import 'data_lake_settings_state.dart';
 /// 					},
 /// 					Principal: pulumi.Any(testAwsIamRole.Arn),
 /// 				},
+/// 			},
+/// 			Admins: pulumi.StringArray{
+/// 				test.Arn,
+/// 				testAwsIamRole.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -267,7 +269,6 @@ import 'data_lake_settings_state.dart';
 /// }
 ///
 /// resource "aws_lakeformation_datalakesettings" "example" {
-///   admins = [test.arn, testAwsIamRole.arn]
 ///   create_database_default_permissions {
 ///     permissions = ["SELECT", "ALTER", "DROP"]
 ///     principal   = test.arn
@@ -276,6 +277,7 @@ import 'data_lake_settings_state.dart';
 ///     permissions = ["ALL"]
 ///     principal   = testAwsIamRole.arn
 ///   }
+///   admins = [test.arn, testAwsIamRole.arn]
 /// }
 /// ```
 /// ```java
@@ -302,9 +304,6 @@ import 'data_lake_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataLakeSettings("example", DataLakeSettingsArgs.builder()
-///             .admins(
-///                 test.arn(),
-///                 testAwsIamRole.arn())
 ///             .createDatabaseDefaultPermissions(DataLakeSettingsCreateDatabaseDefaultPermissionArgs.builder()
 ///                 .permissions(
 ///                     "SELECT",
@@ -316,6 +315,9 @@ import 'data_lake_settings_state.dart';
 ///                 .permissions("ALL")
 ///                 .principal(testAwsIamRole.arn())
 ///                 .build())
+///             .admins(
+///                 test.arn(),
+///                 testAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -326,9 +328,6 @@ import 'data_lake_settings_state.dart';
 ///   example:
 ///     type: aws:lakeformation:DataLakeSettings
 ///     properties:
-///       admins:
-///         - ${test.arn}
-///         - ${testAwsIamRole.arn}
 ///       createDatabaseDefaultPermissions:
 ///         - permissions:
 ///             - SELECT
@@ -339,6 +338,9 @@ import 'data_lake_settings_state.dart';
 ///         - permissions:
 ///             - ALL
 ///           principal: ${testAwsIamRole.arn}
+///       admins:
+///         - ${test.arn}
+///         - ${testAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -350,10 +352,6 @@ import 'data_lake_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lakeformation.DataLakeSettings("example", {
-///     admins: [
-///         test.arn,
-///         testAwsIamRole.arn,
-///     ],
 ///     createDatabaseDefaultPermissions: [{
 ///         permissions: [
 ///             "SELECT",
@@ -366,6 +364,10 @@ import 'data_lake_settings_state.dart';
 ///         permissions: ["ALL"],
 ///         principal: testAwsIamRole.arn,
 ///     }],
+///     admins: [
+///         test.arn,
+///         testAwsIamRole.arn,
+///     ],
 ///     allowExternalDataFiltering: true,
 ///     externalDataFilteringAllowLists: [
 ///         current.accountId,
@@ -380,10 +382,6 @@ import 'data_lake_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lakeformation.DataLakeSettings("example",
-///     admins=[
-///         test["arn"],
-///         test_aws_iam_role["arn"],
-///     ],
 ///     create_database_default_permissions=[{
 ///         "permissions": [
 ///             "SELECT",
@@ -396,6 +394,10 @@ import 'data_lake_settings_state.dart';
 ///         "permissions": ["ALL"],
 ///         "principal": test_aws_iam_role["arn"],
 ///     }],
+///     admins=[
+///         test["arn"],
+///         test_aws_iam_role["arn"],
+///     ],
 ///     allow_external_data_filtering=True,
 ///     external_data_filtering_allow_lists=[
 ///         current["accountId"],
@@ -414,11 +416,6 @@ import 'data_lake_settings_state.dart';
 /// {
 ///     var example = new Aws.LakeFormation.DataLakeSettings("example", new()
 ///     {
-///         Admins = new[]
-///         {
-///             test.Arn,
-///             testAwsIamRole.Arn,
-///         },
 ///         CreateDatabaseDefaultPermissions = new[]
 ///         {
 ///             new Aws.LakeFormation.Inputs.DataLakeSettingsCreateDatabaseDefaultPermissionArgs
@@ -442,6 +439,11 @@ import 'data_lake_settings_state.dart';
 ///                 },
 ///                 Principal = testAwsIamRole.Arn,
 ///             },
+///         },
+///         Admins = new[]
+///         {
+///             test.Arn,
+///             testAwsIamRole.Arn,
 ///         },
 ///         AllowExternalDataFiltering = true,
 ///         ExternalDataFilteringAllowLists = new[]
@@ -469,10 +471,6 @@ import 'data_lake_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewDataLakeSettings(ctx, "example", &lakeformation.DataLakeSettingsArgs{
-/// 			Admins: pulumi.StringArray{
-/// 				test.Arn,
-/// 				testAwsIamRole.Arn,
-/// 			},
 /// 			CreateDatabaseDefaultPermissions: lakeformation.DataLakeSettingsCreateDatabaseDefaultPermissionArray{
 /// 				&lakeformation.DataLakeSettingsCreateDatabaseDefaultPermissionArgs{
 /// 					Permissions: pulumi.StringArray{
@@ -490,6 +488,10 @@ import 'data_lake_settings_state.dart';
 /// 					},
 /// 					Principal: pulumi.Any(testAwsIamRole.Arn),
 /// 				},
+/// 			},
+/// 			Admins: pulumi.StringArray{
+/// 				test.Arn,
+/// 				testAwsIamRole.Arn,
 /// 			},
 /// 			AllowExternalDataFiltering: pulumi.Bool(true),
 /// 			ExternalDataFilteringAllowLists: pulumi.StringArray{
@@ -518,7 +520,6 @@ import 'data_lake_settings_state.dart';
 /// }
 ///
 /// resource "aws_lakeformation_datalakesettings" "example" {
-///   admins = [test.arn, testAwsIamRole.arn]
 ///   create_database_default_permissions {
 ///     permissions = ["SELECT", "ALTER", "DROP"]
 ///     principal   = test.arn
@@ -527,6 +528,7 @@ import 'data_lake_settings_state.dart';
 ///     permissions = ["ALL"]
 ///     principal   = testAwsIamRole.arn
 ///   }
+///   admins                                = [test.arn, testAwsIamRole.arn]
 ///   allow_external_data_filtering         = true
 ///   external_data_filtering_allow_lists   = [current.accountId, thirdParty.accountId]
 ///   authorized_session_tag_value_lists    = ["Amazon EMR"]
@@ -557,9 +559,6 @@ import 'data_lake_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataLakeSettings("example", DataLakeSettingsArgs.builder()
-///             .admins(
-///                 test.arn(),
-///                 testAwsIamRole.arn())
 ///             .createDatabaseDefaultPermissions(DataLakeSettingsCreateDatabaseDefaultPermissionArgs.builder()
 ///                 .permissions(
 ///                     "SELECT",
@@ -571,6 +570,9 @@ import 'data_lake_settings_state.dart';
 ///                 .permissions("ALL")
 ///                 .principal(testAwsIamRole.arn())
 ///                 .build())
+///             .admins(
+///                 test.arn(),
+///                 testAwsIamRole.arn())
 ///             .allowExternalDataFiltering(true)
 ///             .externalDataFilteringAllowLists(
 ///                 current.accountId(),
@@ -587,9 +589,6 @@ import 'data_lake_settings_state.dart';
 ///   example:
 ///     type: aws:lakeformation:DataLakeSettings
 ///     properties:
-///       admins:
-///         - ${test.arn}
-///         - ${testAwsIamRole.arn}
 ///       createDatabaseDefaultPermissions:
 ///         - permissions:
 ///             - SELECT
@@ -600,6 +599,9 @@ import 'data_lake_settings_state.dart';
 ///         - permissions:
 ///             - ALL
 ///           principal: ${testAwsIamRole.arn}
+///       admins:
+///         - ${test.arn}
+///         - ${testAwsIamRole.arn}
 ///       allowExternalDataFiltering: true
 ///       externalDataFilteringAllowLists:
 ///         - ${current.accountId}
@@ -732,9 +734,9 @@ class DataLakeSettings extends pulumi.CustomResource {
   /// Identifier for the Data Catalog. By default, the account ID.
   late final pulumi.Output<String?> catalogId;
   /// Up to three configuration blocks of principal permissions for default create database permissions. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> createDatabaseDefaultPermissions;
+  late final pulumi.Output<List<DataLakeSettingsCreateDatabaseDefaultPermission>> createDatabaseDefaultPermissions;
   /// Up to three configuration blocks of principal permissions for default create table permissions. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> createTableDefaultPermissions;
+  late final pulumi.Output<List<DataLakeSettingsCreateTableDefaultPermission>> createTableDefaultPermissions;
   /// A list of the account IDs of Amazon Web Services accounts with Amazon EMR clusters that are to perform data filtering.
   late final pulumi.Output<List<String>> externalDataFilteringAllowLists;
   /// Key-value map of additional configuration. Valid values for the `CROSS_ACCOUNT_VERSION` key are `"1"`, `"2"`, `"3"`, or `"4"`. `SET_CONTEXT` is also returned with a value of `TRUE`. In a fresh account, prior to configuring, `CROSS_ACCOUNT_VERSION` is `"1"`. Destroying this resource sets the `CROSS_ACCOUNT_VERSION` to `"1"`.
@@ -760,20 +762,20 @@ class DataLakeSettings extends pulumi.CustomResource {
           'aws:lakeformation/dataLakeSettings:DataLakeSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    admins = registerOutput<List<String>>('admins');
+    admins = registerOutput<List<String>>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');
     allowFullTableExternalDataAccess = registerOutput<bool?>('allowFullTableExternalDataAccess');
-    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists');
+    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     catalogId = registerOutput<String?>('catalogId');
-    createDatabaseDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createDatabaseDefaultPermissions');
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
-    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists');
-    parameters = registerOutput<Map<String, String>>('parameters');
-    readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins');
+    createDatabaseDefaultPermissions = registerOutput<List<DataLakeSettingsCreateDatabaseDefaultPermission>>('createDatabaseDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeSettingsCreateDatabaseDefaultPermission>(guardedValue, (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    createTableDefaultPermissions = registerOutput<List<DataLakeSettingsCreateTableDefaultPermission>>('createTableDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(guardedValue, (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners');
+    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [DataLakeSettings] resource's state with the given [name] and [id].
@@ -781,11 +783,12 @@ class DataLakeSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataLakeSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataLakeSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -799,17 +802,40 @@ class DataLakeSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    admins = registerOutput<List<String>>('admins');
+    admins = registerOutput<List<String>>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');
     allowFullTableExternalDataAccess = registerOutput<bool?>('allowFullTableExternalDataAccess');
-    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists');
+    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     catalogId = registerOutput<String?>('catalogId');
-    createDatabaseDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createDatabaseDefaultPermissions');
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
-    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists');
-    parameters = registerOutput<Map<String, String>>('parameters');
-    readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins');
+    createDatabaseDefaultPermissions = registerOutput<List<DataLakeSettingsCreateDatabaseDefaultPermission>>('createDatabaseDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeSettingsCreateDatabaseDefaultPermission>(guardedValue, (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    createTableDefaultPermissions = registerOutput<List<DataLakeSettingsCreateTableDefaultPermission>>('createTableDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(guardedValue, (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners');
+    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataLakeSettings] resource.
+  DataLakeSettings.reference(String urn)
+    : super(
+        'aws:lakeformation/dataLakeSettings:DataLakeSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    admins = registerOutput<List<String>>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');
+    allowFullTableExternalDataAccess = registerOutput<bool?>('allowFullTableExternalDataAccess');
+    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    catalogId = registerOutput<String?>('catalogId');
+    createDatabaseDefaultPermissions = registerOutput<List<DataLakeSettingsCreateDatabaseDefaultPermission>>('createDatabaseDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeSettingsCreateDatabaseDefaultPermission>(guardedValue, (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    createTableDefaultPermissions = registerOutput<List<DataLakeSettingsCreateTableDefaultPermission>>('createTableDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(guardedValue, (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

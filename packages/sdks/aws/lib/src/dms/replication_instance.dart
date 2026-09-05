@@ -22,11 +22,11 @@ import 'replication_instance_state.dart';
 /// //  * dms-access-for-endpoint
 /// const dmsAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             identifiers: ["dms.amazonaws.com"],
 ///             type: "Service",
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const dms_access_for_endpoint = new aws.iam.Role("dms-access-for-endpoint", {
@@ -90,11 +90,11 @@ import 'replication_instance_state.dart';
 /// #  * dms-cloudwatch-logs-role
 /// #  * dms-access-for-endpoint
 /// dms_assume_role = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "identifiers": ["dms.amazonaws.com"],
 ///         "type": "Service",
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// dms_access_for_endpoint = aws.iam.Role("dms-access-for-endpoint",
 ///     assume_role_policy=dms_assume_role.json,
@@ -158,10 +158,6 @@ import 'replication_instance_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -172,6 +168,10 @@ import 'replication_instance_state.dart';
 ///                         },
 ///                         Type = "Service",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -268,9 +268,6 @@ import 'replication_instance_state.dart';
 /// 		dmsAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: []string{
@@ -278,6 +275,9 @@ import 'replication_instance_state.dart';
 /// 							},
 /// 							Type: "Service",
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -370,11 +370,11 @@ import 'replication_instance_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "dmsAssumeRole" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       identifiers = ["dms.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -467,11 +467,11 @@ import 'replication_instance_state.dart';
 ///         //  * dms-access-for-endpoint
 ///         final var dmsAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("dms.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -600,12 +600,12 @@ import 'replication_instance_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - identifiers:
 ///                   - dms.amazonaws.com
 ///                 type: Service
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -633,7 +633,7 @@ class ReplicationInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> engineVersion;
   /// Configuration block for settings required for Kerberos authentication. See below.
   late final pulumi.Output<ReplicationInstanceKerberosAuthenticationSettings?> kerberosAuthenticationSettings;
-  /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
   late final pulumi.Output<String> kmsKeyArn;
   /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availabilityZone` parameter if the `multiAz` parameter is set to `true`.
   late final pulumi.Output<bool> multiAz;
@@ -645,7 +645,7 @@ class ReplicationInstance extends pulumi.CustomResource {
   late final pulumi.Output<bool> publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the replication instance.
+  /// ARN of the replication instance.
   late final pulumi.Output<String> replicationInstanceArn;
   /// The compute and memory capacity of the replication instance as specified by the replication instance class. See [AWS DMS User Guide](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.Types.html) for available instance sizes and advice on which one to choose.
   late final pulumi.Output<String> replicationInstanceClass;
@@ -676,7 +676,7 @@ class ReplicationInstance extends pulumi.CustomResource {
           'aws:dms/replicationInstance:ReplicationInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
@@ -695,12 +695,12 @@ class ReplicationInstance extends pulumi.CustomResource {
     replicationInstanceArn = registerOutput<String>('replicationInstanceArn');
     replicationInstanceClass = registerOutput<String>('replicationInstanceClass');
     replicationInstanceId = registerOutput<String>('replicationInstanceId');
-    replicationInstancePrivateIps = registerOutput<List<String>>('replicationInstancePrivateIps');
-    replicationInstancePublicIps = registerOutput<List<String>>('replicationInstancePublicIps');
+    replicationInstancePrivateIps = registerOutput<List<String>>('replicationInstancePrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replicationInstancePublicIps = registerOutput<List<String>>('replicationInstancePublicIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ReplicationInstance] resource's state with the given [name] and [id].
@@ -708,11 +708,12 @@ class ReplicationInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -743,11 +744,45 @@ class ReplicationInstance extends pulumi.CustomResource {
     replicationInstanceArn = registerOutput<String>('replicationInstanceArn');
     replicationInstanceClass = registerOutput<String>('replicationInstanceClass');
     replicationInstanceId = registerOutput<String>('replicationInstanceId');
-    replicationInstancePrivateIps = registerOutput<List<String>>('replicationInstancePrivateIps');
-    replicationInstancePublicIps = registerOutput<List<String>>('replicationInstancePublicIps');
+    replicationInstancePrivateIps = registerOutput<List<String>>('replicationInstancePrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replicationInstancePublicIps = registerOutput<List<String>>('replicationInstancePublicIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ReplicationInstance] resource.
+  ReplicationInstance.reference(String urn)
+    : super(
+        'aws:dms/replicationInstance:ReplicationInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatedStorage = registerOutput<int>('allocatedStorage');
+    allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
+    applyImmediately = registerOutput<bool?>('applyImmediately');
+    autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    dnsNameServers = registerOutput<String?>('dnsNameServers');
+    engineVersion = registerOutput<String>('engineVersion');
+    kerberosAuthenticationSettings = registerOutput<ReplicationInstanceKerberosAuthenticationSettings?>('kerberosAuthenticationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationInstanceKerberosAuthenticationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    multiAz = registerOutput<bool>('multiAz');
+    networkType = registerOutput<String>('networkType');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    replicationInstanceArn = registerOutput<String>('replicationInstanceArn');
+    replicationInstanceClass = registerOutput<String>('replicationInstanceClass');
+    replicationInstanceId = registerOutput<String>('replicationInstanceId');
+    replicationInstancePrivateIps = registerOutput<List<String>>('replicationInstancePrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replicationInstancePublicIps = registerOutput<List<String>>('replicationInstancePublicIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

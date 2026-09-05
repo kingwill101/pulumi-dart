@@ -23,7 +23,7 @@ class GetGatewayRouteSpecGrpcRouteMatch {
 
   factory GetGatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteMatch(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }

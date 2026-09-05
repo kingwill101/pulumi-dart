@@ -217,7 +217,7 @@ class Webhook extends pulumi.CustomResource {
           'aws:amplify/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
@@ -232,11 +232,12 @@ class Webhook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebhookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Webhook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,6 +251,23 @@ class Webhook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    branchName = registerOutput<String>('branchName');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'aws:amplify/webhook:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
     branchName = registerOutput<String>('branchName');

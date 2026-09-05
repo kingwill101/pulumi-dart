@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_configuration_template_args.dart';
+import 'replication_configuration_template_pit_policy.dart';
 import 'replication_configuration_template_state.dart';
 import 'replication_configuration_template_timeouts.dart';
 
@@ -17,17 +18,6 @@ import 'replication_configuration_template_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.drs.ReplicationConfigurationTemplate("example", {
-///     associateDefaultSecurityGroup: false,
-///     bandwidthThrottling: 12,
-///     createPublicIp: false,
-///     dataPlaneRouting: "PRIVATE_IP",
-///     defaultLargeStagingDiskType: "GP2",
-///     ebsEncryption: "DEFAULT",
-///     ebsEncryptionKeyArn: "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-///     replicationServerInstanceType: "t3.small",
-///     replicationServersSecurityGroupsIds: exampleAwsSecurityGroup.map(__item => __item.id),
-///     stagingAreaSubnetId: exampleAwsSubnet.id,
-///     useDedicatedReplicationServer: false,
 ///     pitPolicies: [
 ///         {
 ///             enabled: true,
@@ -51,6 +41,17 @@ import 'replication_configuration_template_timeouts.dart';
 ///             ruleId: 3,
 ///         },
 ///     ],
+///     associateDefaultSecurityGroup: false,
+///     bandwidthThrottling: 12,
+///     createPublicIp: false,
+///     dataPlaneRouting: "PRIVATE_IP",
+///     defaultLargeStagingDiskType: "GP2",
+///     ebsEncryption: "DEFAULT",
+///     ebsEncryptionKeyArn: "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+///     replicationServerInstanceType: "t3.small",
+///     replicationServersSecurityGroupsIds: exampleAwsSecurityGroup.map(__item => __item.id),
+///     stagingAreaSubnetId: exampleAwsSubnet.id,
+///     useDedicatedReplicationServer: false,
 /// });
 /// ```
 /// ```python
@@ -58,17 +59,6 @@ import 'replication_configuration_template_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.drs.ReplicationConfigurationTemplate("example",
-///     associate_default_security_group=False,
-///     bandwidth_throttling=12,
-///     create_public_ip=False,
-///     data_plane_routing="PRIVATE_IP",
-///     default_large_staging_disk_type="GP2",
-///     ebs_encryption="DEFAULT",
-///     ebs_encryption_key_arn="arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-///     replication_server_instance_type="t3.small",
-///     replication_servers_security_groups_ids=[__item["id"] for __item in example_aws_security_group],
-///     staging_area_subnet_id=example_aws_subnet["id"],
-///     use_dedicated_replication_server=False,
 ///     pit_policies=[
 ///         {
 ///             "enabled": True,
@@ -91,7 +81,18 @@ import 'replication_configuration_template_timeouts.dart';
 ///             "units": "DAY",
 ///             "rule_id": 3,
 ///         },
-///     ])
+///     ],
+///     associate_default_security_group=False,
+///     bandwidth_throttling=12,
+///     create_public_ip=False,
+///     data_plane_routing="PRIVATE_IP",
+///     default_large_staging_disk_type="GP2",
+///     ebs_encryption="DEFAULT",
+///     ebs_encryption_key_arn="arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+///     replication_server_instance_type="t3.small",
+///     replication_servers_security_groups_ids=[__item["id"] for __item in example_aws_security_group],
+///     staging_area_subnet_id=example_aws_subnet["id"],
+///     use_dedicated_replication_server=False)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -103,17 +104,6 @@ import 'replication_configuration_template_timeouts.dart';
 /// {
 ///     var example = new Aws.Drs.ReplicationConfigurationTemplate("example", new()
 ///     {
-///         AssociateDefaultSecurityGroup = false,
-///         BandwidthThrottling = 12,
-///         CreatePublicIp = false,
-///         DataPlaneRouting = "PRIVATE_IP",
-///         DefaultLargeStagingDiskType = "GP2",
-///         EbsEncryption = "DEFAULT",
-///         EbsEncryptionKeyArn = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-///         ReplicationServerInstanceType = "t3.small",
-///         ReplicationServersSecurityGroupsIds = exampleAwsSecurityGroup.Select(__item => __item.Id).ToList(),
-///         StagingAreaSubnetId = exampleAwsSubnet.Id,
-///         UseDedicatedReplicationServer = false,
 ///         PitPolicies = new[]
 ///         {
 ///             new Aws.Drs.Inputs.ReplicationConfigurationTemplatePitPolicyArgs
@@ -141,6 +131,17 @@ import 'replication_configuration_template_timeouts.dart';
 ///                 RuleId = 3,
 ///             },
 ///         },
+///         AssociateDefaultSecurityGroup = false,
+///         BandwidthThrottling = 12,
+///         CreatePublicIp = false,
+///         DataPlaneRouting = "PRIVATE_IP",
+///         DefaultLargeStagingDiskType = "GP2",
+///         EbsEncryption = "DEFAULT",
+///         EbsEncryptionKeyArn = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+///         ReplicationServerInstanceType = "t3.small",
+///         ReplicationServersSecurityGroupsIds = exampleAwsSecurityGroup.Select(__item => __item.Id).ToList(),
+///         StagingAreaSubnetId = exampleAwsSubnet.Id,
+///         UseDedicatedReplicationServer = false,
 ///     });
 ///
 /// });
@@ -159,17 +160,6 @@ import 'replication_configuration_template_timeouts.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := drs.NewReplicationConfigurationTemplate(ctx, "example", &drs.ReplicationConfigurationTemplateArgs{
-/// AssociateDefaultSecurityGroup: pulumi.Bool(false),
-/// BandwidthThrottling: pulumi.Int(12),
-/// CreatePublicIp: pulumi.Bool(false),
-/// DataPlaneRouting: pulumi.String("PRIVATE_IP"),
-/// DefaultLargeStagingDiskType: pulumi.String("GP2"),
-/// EbsEncryption: pulumi.String("DEFAULT"),
-/// EbsEncryptionKeyArn: pulumi.String("arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"),
-/// ReplicationServerInstanceType: pulumi.String("t3.small"),
-/// ReplicationServersSecurityGroupsIds: toPulumiArray(splat0),
-/// StagingAreaSubnetId: pulumi.Any(exampleAwsSubnet.Id),
-/// UseDedicatedReplicationServer: pulumi.Bool(false),
 /// PitPolicies: drs.ReplicationConfigurationTemplatePitPolicyArray{
 /// &drs.ReplicationConfigurationTemplatePitPolicyArgs{
 /// Enabled: pulumi.Bool(true),
@@ -193,6 +183,17 @@ import 'replication_configuration_template_timeouts.dart';
 /// RuleId: pulumi.Int(3),
 /// },
 /// },
+/// AssociateDefaultSecurityGroup: pulumi.Bool(false),
+/// BandwidthThrottling: pulumi.Int(12),
+/// CreatePublicIp: pulumi.Bool(false),
+/// DataPlaneRouting: pulumi.String("PRIVATE_IP"),
+/// DefaultLargeStagingDiskType: pulumi.String("GP2"),
+/// EbsEncryption: pulumi.String("DEFAULT"),
+/// EbsEncryptionKeyArn: pulumi.String("arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"),
+/// ReplicationServerInstanceType: pulumi.String("t3.small"),
+/// ReplicationServersSecurityGroupsIds: toPulumiArray(splat0),
+/// StagingAreaSubnetId: pulumi.Any(exampleAwsSubnet.Id),
+/// UseDedicatedReplicationServer: pulumi.Bool(false),
 /// })
 /// if err != nil {
 /// return err
@@ -218,17 +219,6 @@ import 'replication_configuration_template_timeouts.dart';
 /// }
 ///
 /// resource "aws_drs_replicationconfigurationtemplate" "example" {
-///   associate_default_security_group        = false
-///   bandwidth_throttling                    = 12
-///   create_public_ip                        = false
-///   data_plane_routing                      = "PRIVATE_IP"
-///   default_large_staging_disk_type         = "GP2"
-///   ebs_encryption                          = "DEFAULT"
-///   ebs_encryption_key_arn                  = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-///   replication_server_instance_type        = "t3.small"
-///   replication_servers_security_groups_ids = exampleAwsSecurityGroup[*].id
-///   staging_area_subnet_id                  = exampleAwsSubnet.id
-///   use_dedicated_replication_server        = false
 ///   pit_policies {
 ///     enabled            = true
 ///     interval           = 10
@@ -250,6 +240,17 @@ import 'replication_configuration_template_timeouts.dart';
 ///     units              = "DAY"
 ///     rule_id            = 3
 ///   }
+///   associate_default_security_group        = false
+///   bandwidth_throttling                    = 12
+///   create_public_ip                        = false
+///   data_plane_routing                      = "PRIVATE_IP"
+///   default_large_staging_disk_type         = "GP2"
+///   ebs_encryption                          = "DEFAULT"
+///   ebs_encryption_key_arn                  = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+///   replication_server_instance_type        = "t3.small"
+///   replication_servers_security_groups_ids = exampleAwsSecurityGroup[*].id
+///   staging_area_subnet_id                  = exampleAwsSubnet.id
+///   use_dedicated_replication_server        = false
 /// }
 /// ```
 /// ```java
@@ -275,17 +276,6 @@ import 'replication_configuration_template_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ReplicationConfigurationTemplate("example", ReplicationConfigurationTemplateArgs.builder()
-///             .associateDefaultSecurityGroup(false)
-///             .bandwidthThrottling(12)
-///             .createPublicIp(false)
-///             .dataPlaneRouting("PRIVATE_IP")
-///             .defaultLargeStagingDiskType("GP2")
-///             .ebsEncryption("DEFAULT")
-///             .ebsEncryptionKeyArn("arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab")
-///             .replicationServerInstanceType("t3.small")
-///             .replicationServersSecurityGroupsIds(exampleAwsSecurityGroup.stream().map(element -> element.id()).collect(toList()))
-///             .stagingAreaSubnetId(exampleAwsSubnet.id())
-///             .useDedicatedReplicationServer(false)
 ///             .pitPolicies(
 ///                 ReplicationConfigurationTemplatePitPolicyArgs.builder()
 ///                     .enabled(true)
@@ -308,6 +298,17 @@ import 'replication_configuration_template_timeouts.dart';
 ///                     .units("DAY")
 ///                     .ruleId(3)
 ///                     .build())
+///             .associateDefaultSecurityGroup(false)
+///             .bandwidthThrottling(12)
+///             .createPublicIp(false)
+///             .dataPlaneRouting("PRIVATE_IP")
+///             .defaultLargeStagingDiskType("GP2")
+///             .ebsEncryption("DEFAULT")
+///             .ebsEncryptionKeyArn("arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab")
+///             .replicationServerInstanceType("t3.small")
+///             .replicationServersSecurityGroupsIds(exampleAwsSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+///             .stagingAreaSubnetId(exampleAwsSubnet.id())
+///             .useDedicatedReplicationServer(false)
 ///             .build());
 ///
 ///     }
@@ -342,7 +343,7 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
   /// ARN of the EBS encryption key to be used during replication.
   late final pulumi.Output<String?> ebsEncryptionKeyArn;
   /// Configuration block for Point in time (PIT) policy to manage snapshots taken during replication. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> pitPolicies;
+  late final pulumi.Output<List<ReplicationConfigurationTemplatePitPolicy>?> pitPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Instance type to be used for the replication server.
@@ -375,7 +376,7 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
           'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associateDefaultSecurityGroup = registerOutput<bool>('associateDefaultSecurityGroup');
@@ -386,14 +387,14 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     defaultLargeStagingDiskType = registerOutput<String>('defaultLargeStagingDiskType');
     ebsEncryption = registerOutput<String>('ebsEncryption');
     ebsEncryptionKeyArn = registerOutput<String?>('ebsEncryptionKeyArn');
-    pitPolicies = registerOutput<List<Map<String, dynamic>>?>('pitPolicies');
+    pitPolicies = registerOutput<List<ReplicationConfigurationTemplatePitPolicy>?>('pitPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(guardedValue, (value) => ReplicationConfigurationTemplatePitPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     replicationServerInstanceType = registerOutput<String>('replicationServerInstanceType');
-    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds');
+    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     stagingAreaSubnetId = registerOutput<String>('stagingAreaSubnetId');
-    stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationTemplateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     useDedicatedReplicationServer = registerOutput<bool>('useDedicatedReplicationServer');
   }
@@ -403,11 +404,12 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationConfigurationTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationConfigurationTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -430,14 +432,44 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     defaultLargeStagingDiskType = registerOutput<String>('defaultLargeStagingDiskType');
     ebsEncryption = registerOutput<String>('ebsEncryption');
     ebsEncryptionKeyArn = registerOutput<String?>('ebsEncryptionKeyArn');
-    pitPolicies = registerOutput<List<Map<String, dynamic>>?>('pitPolicies');
+    pitPolicies = registerOutput<List<ReplicationConfigurationTemplatePitPolicy>?>('pitPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(guardedValue, (value) => ReplicationConfigurationTemplatePitPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     replicationServerInstanceType = registerOutput<String>('replicationServerInstanceType');
-    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds');
+    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     stagingAreaSubnetId = registerOutput<String>('stagingAreaSubnetId');
-    stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationTemplateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useDedicatedReplicationServer = registerOutput<bool>('useDedicatedReplicationServer');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationConfigurationTemplate] resource.
+  ReplicationConfigurationTemplate.reference(String urn)
+    : super(
+        'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associateDefaultSecurityGroup = registerOutput<bool>('associateDefaultSecurityGroup');
+    autoReplicateNewDisks = registerOutput<bool>('autoReplicateNewDisks');
+    bandwidthThrottling = registerOutput<int>('bandwidthThrottling');
+    createPublicIp = registerOutput<bool>('createPublicIp');
+    dataPlaneRouting = registerOutput<String>('dataPlaneRouting');
+    defaultLargeStagingDiskType = registerOutput<String>('defaultLargeStagingDiskType');
+    ebsEncryption = registerOutput<String>('ebsEncryption');
+    ebsEncryptionKeyArn = registerOutput<String?>('ebsEncryptionKeyArn');
+    pitPolicies = registerOutput<List<ReplicationConfigurationTemplatePitPolicy>?>('pitPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(guardedValue, (value) => ReplicationConfigurationTemplatePitPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    replicationServerInstanceType = registerOutput<String>('replicationServerInstanceType');
+    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    stagingAreaSubnetId = registerOutput<String>('stagingAreaSubnetId');
+    stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationTemplateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     useDedicatedReplicationServer = registerOutput<bool>('useDedicatedReplicationServer');
   }

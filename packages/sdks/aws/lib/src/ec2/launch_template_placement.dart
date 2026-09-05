@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplatePlacement {
   /// The affinity setting for an instance on a Dedicated Host.
-  final pulumi.Input<String>? affinity;
+  final pulumi.Input<String?>? affinity;
   /// The Availability Zone for the instance.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The ID of the placement group for the instance. Conflicts with `groupName`.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the placement group for the instance. Conflicts with `groupId`.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// The ID of the Dedicated Host for the instance.
-  final pulumi.Input<String>? hostId;
+  final pulumi.Input<String?>? hostId;
   /// The ARN of the Host Resource Group in which to launch instances.
-  final pulumi.Input<String>? hostResourceGroupArn;
+  final pulumi.Input<String?>? hostResourceGroupArn;
   /// The number of the partition the instance should launch in. Valid only if the placement group strategy is set to partition.
-  final pulumi.Input<int>? partitionNumber;
+  final pulumi.Input<int?>? partitionNumber;
   /// Reserved for future use.
-  final pulumi.Input<String>? spreadDomain;
+  final pulumi.Input<String?>? spreadDomain;
   /// The tenancy of the instance (if the instance is running in a VPC). Can be `default`, `dedicated`, or `host`.
-  final pulumi.Input<String>? tenancy;
+  final pulumi.Input<String?>? tenancy;
 
   /// Creates a new [LaunchTemplatePlacement].
   /// [affinity] The affinity setting for an instance on a Dedicated Host.
@@ -66,7 +66,7 @@ class LaunchTemplatePlacement {
       groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostId: (() { final guardedValue = map['hostId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostResourceGroupArn: (() { final guardedValue = map['hostResourceGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionNumber: (() { final guardedValue = map['partitionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partitionNumber: (() { final guardedValue = map['partitionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       spreadDomain: (() { final guardedValue = map['spreadDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenancy: (() { final guardedValue = map['tenancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

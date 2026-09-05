@@ -9,11 +9,11 @@ import 'key_registration_key_registration.dart';
 /// {@macro pulumi_quicksight_key_registration_key_registration_args_doc}
 class KeyRegistrationArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Registered keys. See key_registration.
   final pulumi.Input<List<KeyRegistrationKeyRegistration>> keyRegistrations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [KeyRegistrationArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

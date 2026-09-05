@@ -10,13 +10,13 @@ class EndpointAccessArgs {
   /// The name of the endpoint.
   final pulumi.Input<String> endpointName;
   /// The owner Amazon Web Services account for the Amazon Redshift Serverless workgroup.
-  final pulumi.Input<String>? ownerAccount;
+  final pulumi.Input<String?>? ownerAccount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// An array of VPC subnet IDs to associate with the endpoint.
   final pulumi.Input<List<String>> subnetIds;
   /// An array of security group IDs to associate with the workgroup.
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
   /// The name of the workgroup.
   final pulumi.Input<String> workgroupName;
 

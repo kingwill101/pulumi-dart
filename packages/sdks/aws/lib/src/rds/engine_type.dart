@@ -1,4 +1,6 @@
-enum EngineType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EngineType implements pulumi.PulumiEnum<String> {
   aurora("aurora"),
   auroraMysql("aurora-mysql"),
   auroraPostgresql("aurora-postgresql"),
@@ -6,6 +8,7 @@ enum EngineType {
   postgres("postgres");
 
   const EngineType(this.wireValue);
+  @override
   final String wireValue;
 
   static EngineType fromValue(String value) {

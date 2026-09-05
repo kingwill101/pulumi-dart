@@ -10,27 +10,27 @@ import 'collaboration_member.dart';
 /// {@macro pulumi_cleanrooms_collaboration_collaboration_args_doc}
 class CollaborationArgs {
   /// Analytics engine used by the collaboration. Valid values are `CLEAN_ROOMS_SQL` (deprecated) and `SPARK`.
-  final pulumi.Input<String>? analyticsEngine;
+  final pulumi.Input<String?>? analyticsEngine;
   /// Name for the member record for the collaboration creator.
   final pulumi.Input<String> creatorDisplayName;
   /// List of member abilities for the creator of the collaboration. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-creatorMemberAbilities).
   final pulumi.Input<List<String>> creatorMemberAbilities;
   /// Collection of settings which determine how the [c3r client](https://docs.aws.amazon.com/clean-rooms/latest/userguide/crypto-computing.html) will encrypt data for use within this collaboration. See below.
-  final pulumi.Input<CollaborationDataEncryptionMetadata>? dataEncryptionMetadata;
+  final pulumi.Input<CollaborationDataEncryptionMetadata?>? dataEncryptionMetadata;
   /// Description for a collaboration.
   final pulumi.Input<String> description;
   /// Additional members of the collaboration which will be invited to join the collaboration. See below.
-  final pulumi.Input<List<CollaborationMember>>? members;
+  final pulumi.Input<List<CollaborationMember>?>? members;
   /// Name of the collaboration.  Collaboration names do not need to be unique.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether members of the collaboration can enable query logs within their own memberships. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-queryLogStatus).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> queryLogStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key value pairs which tag the collaboration.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CollaborationArgs].
   /// [analyticsEngine] Analytics engine used by the collaboration. Valid values are `CLEAN_ROOMS_SQL` (deprecated) and `SPARK`.

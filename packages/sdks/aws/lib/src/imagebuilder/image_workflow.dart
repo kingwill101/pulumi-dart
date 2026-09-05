@@ -5,12 +5,12 @@ import 'image_workflow_parameter.dart';
 
 class ImageWorkflow {
   /// The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
-  final pulumi.Input<String>? onFailure;
+  final pulumi.Input<String?>? onFailure;
   /// The parallel group in which to run a test Workflow.
-  final pulumi.Input<String>? parallelGroup;
+  final pulumi.Input<String?>? parallelGroup;
   /// Configuration block for the workflow parameters. Detailed below.
-  final pulumi.Input<List<ImageWorkflowParameter>>? parameters;
-  /// Amazon Resource Name (ARN) of the Image Builder Workflow.
+  final pulumi.Input<List<ImageWorkflowParameter>?>? parameters;
+  /// ARN of the Image Builder Workflow.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> workflowArn;
@@ -19,7 +19,7 @@ class ImageWorkflow {
   /// [onFailure] The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
   /// [parallelGroup] The parallel group in which to run a test Workflow.
   /// [parameters] Configuration block for the workflow parameters. Detailed below.
-  /// [workflowArn] Amazon Resource Name (ARN) of the Image Builder Workflow.
+  /// [workflowArn] ARN of the Image Builder Workflow.
   const ImageWorkflow({
     this.onFailure,
     this.parallelGroup,

@@ -15,11 +15,11 @@ import 'target_group_attachment_target.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.TargetGroupAttachment("example", {
-///     targetGroupIdentifier: exampleAwsVpclatticeTargetGroup.id,
 ///     target: {
 ///         id: exampleAwsLb.arn,
 ///         port: 80,
 ///     },
+///     targetGroupIdentifier: exampleAwsVpclatticeTargetGroup.id,
 /// });
 /// ```
 /// ```python
@@ -27,11 +27,11 @@ import 'target_group_attachment_target.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.TargetGroupAttachment("example",
-///     target_group_identifier=example_aws_vpclattice_target_group["id"],
 ///     target={
 ///         "id": example_aws_lb["arn"],
 ///         "port": 80,
-///     })
+///     },
+///     target_group_identifier=example_aws_vpclattice_target_group["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,12 +43,12 @@ import 'target_group_attachment_target.dart';
 /// {
 ///     var example = new Aws.VpcLattice.TargetGroupAttachment("example", new()
 ///     {
-///         TargetGroupIdentifier = exampleAwsVpclatticeTargetGroup.Id,
 ///         Target = new Aws.VpcLattice.Inputs.TargetGroupAttachmentTargetArgs
 ///         {
 ///             Id = exampleAwsLb.Arn,
 ///             Port = 80,
 ///         },
+///         TargetGroupIdentifier = exampleAwsVpclatticeTargetGroup.Id,
 ///     });
 ///
 /// });
@@ -64,11 +64,11 @@ import 'target_group_attachment_target.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewTargetGroupAttachment(ctx, "example", &vpclattice.TargetGroupAttachmentArgs{
-/// 			TargetGroupIdentifier: pulumi.Any(exampleAwsVpclatticeTargetGroup.Id),
 /// 			Target: &vpclattice.TargetGroupAttachmentTargetArgs{
 /// 				Id:   pulumi.Any(exampleAwsLb.Arn),
 /// 				Port: pulumi.Int(80),
 /// 			},
+/// 			TargetGroupIdentifier: pulumi.Any(exampleAwsVpclatticeTargetGroup.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,11 +87,11 @@ import 'target_group_attachment_target.dart';
 /// }
 ///
 /// resource "aws_vpclattice_targetgroupattachment" "example" {
-///   target_group_identifier = exampleAwsVpclatticeTargetGroup.id
 ///   target = {
 ///     id   = exampleAwsLb.arn
 ///     port = 80
 ///   }
+///   target_group_identifier = exampleAwsVpclatticeTargetGroup.id
 /// }
 /// ```
 /// ```java
@@ -117,11 +117,11 @@ import 'target_group_attachment_target.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroupAttachment("example", TargetGroupAttachmentArgs.builder()
-///             .targetGroupIdentifier(exampleAwsVpclatticeTargetGroup.id())
 ///             .target(TargetGroupAttachmentTargetArgs.builder()
 ///                 .id(exampleAwsLb.arn())
 ///                 .port(80)
 ///                 .build())
+///             .targetGroupIdentifier(exampleAwsVpclatticeTargetGroup.id())
 ///             .build());
 ///
 ///     }
@@ -132,17 +132,17 @@ import 'target_group_attachment_target.dart';
 ///   example:
 ///     type: aws:vpclattice:TargetGroupAttachment
 ///     properties:
-///       targetGroupIdentifier: ${exampleAwsVpclatticeTargetGroup.id}
 ///       target:
 ///         id: ${exampleAwsLb.arn}
 ///         port: 80
+///       targetGroupIdentifier: ${exampleAwsVpclatticeTargetGroup.id}
 /// ```
 class TargetGroupAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Target to register with the target group. See `target` Block for details.
   late final pulumi.Output<TargetGroupAttachmentTarget> target;
-  /// ID or Amazon Resource Name (ARN) of the target group.
+  /// ID or ARN of the target group.
   late final pulumi.Output<String> targetGroupIdentifier;
 
   /// Creates a new [TargetGroupAttachment].
@@ -157,7 +157,7 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           'aws:vpclattice/targetGroupAttachment:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     target = registerOutput<TargetGroupAttachmentTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupAttachmentTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -169,11 +169,12 @@ class TargetGroupAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetGroupAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetGroupAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,6 +188,20 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    target = registerOutput<TargetGroupAttachmentTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupAttachmentTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetGroupIdentifier = registerOutput<String>('targetGroupIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [TargetGroupAttachment] resource.
+  TargetGroupAttachment.reference(String urn)
+    : super(
+        'aws:vpclattice/targetGroupAttachment:TargetGroupAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     target = registerOutput<TargetGroupAttachmentTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupAttachmentTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetGroupIdentifier = registerOutput<String>('targetGroupIdentifier');

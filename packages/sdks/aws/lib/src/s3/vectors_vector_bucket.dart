@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vectors_vector_bucket_args.dart';
+import 'vectors_vector_bucket_encryption_configuration.dart';
 import 'vectors_vector_bucket_state.dart';
 
 /// Resource for managing an Amazon S3 Vectors Vector Bucket.
@@ -114,11 +115,11 @@ import 'vectors_vector_bucket_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.VectorsVectorBucket("example", {
-///     vectorBucketName: "example-bucket",
 ///     encryptionConfigurations: [{
 ///         sseType: "aws:kms",
 ///         kmsKeyArn: exampleAwsKmsKey.arn,
 ///     }],
+///     vectorBucketName: "example-bucket",
 /// });
 /// ```
 /// ```python
@@ -126,11 +127,11 @@ import 'vectors_vector_bucket_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.VectorsVectorBucket("example",
-///     vector_bucket_name="example-bucket",
 ///     encryption_configurations=[{
 ///         "sse_type": "aws:kms",
 ///         "kms_key_arn": example_aws_kms_key["arn"],
-///     }])
+///     }],
+///     vector_bucket_name="example-bucket")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -142,7 +143,6 @@ import 'vectors_vector_bucket_state.dart';
 /// {
 ///     var example = new Aws.S3.VectorsVectorBucket("example", new()
 ///     {
-///         VectorBucketName = "example-bucket",
 ///         EncryptionConfigurations = new[]
 ///         {
 ///             new Aws.S3.Inputs.VectorsVectorBucketEncryptionConfigurationArgs
@@ -151,6 +151,7 @@ import 'vectors_vector_bucket_state.dart';
 ///                 KmsKeyArn = exampleAwsKmsKey.Arn,
 ///             },
 ///         },
+///         VectorBucketName = "example-bucket",
 ///     });
 ///
 /// });
@@ -166,13 +167,13 @@ import 'vectors_vector_bucket_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewVectorsVectorBucket(ctx, "example", &s3.VectorsVectorBucketArgs{
-/// 			VectorBucketName: pulumi.String("example-bucket"),
 /// 			EncryptionConfigurations: s3.VectorsVectorBucketEncryptionConfigurationArray{
 /// 				&s3.VectorsVectorBucketEncryptionConfigurationArgs{
 /// 					SseType:   pulumi.String("aws:kms"),
 /// 					KmsKeyArn: pulumi.Any(exampleAwsKmsKey.Arn),
 /// 				},
 /// 			},
+/// 			VectorBucketName: pulumi.String("example-bucket"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -191,11 +192,11 @@ import 'vectors_vector_bucket_state.dart';
 /// }
 ///
 /// resource "aws_s3_vectorsvectorbucket" "example" {
-///   vector_bucket_name = "example-bucket"
 ///   encryption_configurations {
 ///     sse_type    = "aws:kms"
 ///     kms_key_arn = exampleAwsKmsKey.arn
 ///   }
+///   vector_bucket_name = "example-bucket"
 /// }
 /// ```
 /// ```java
@@ -221,11 +222,11 @@ import 'vectors_vector_bucket_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VectorsVectorBucket("example", VectorsVectorBucketArgs.builder()
-///             .vectorBucketName("example-bucket")
 ///             .encryptionConfigurations(VectorsVectorBucketEncryptionConfigurationArgs.builder()
 ///                 .sseType("aws:kms")
 ///                 .kmsKeyArn(exampleAwsKmsKey.arn())
 ///                 .build())
+///             .vectorBucketName("example-bucket")
 ///             .build());
 ///
 ///     }
@@ -236,10 +237,10 @@ import 'vectors_vector_bucket_state.dart';
 ///   example:
 ///     type: aws:s3:VectorsVectorBucket
 ///     properties:
-///       vectorBucketName: example-bucket
 ///       encryptionConfigurations:
 ///         - sseType: aws:kms
 ///           kmsKeyArn: ${exampleAwsKmsKey.arn}
+///       vectorBucketName: example-bucket
 /// ```
 ///
 ///
@@ -261,7 +262,7 @@ class VectorsVectorBucket extends pulumi.CustomResource {
   /// Date and time when the vector bucket was created.
   late final pulumi.Output<String> creationTime;
   /// Encryption configuration for the vector bucket. See `encryptionConfiguration` below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigurations;
+  late final pulumi.Output<List<VectorsVectorBucketEncryptionConfiguration>> encryptionConfigurations;
   /// Boolean that indicates all indexes and vectors should be deleted from the vector bucket *when the vector bucket is destroyed* so that the vector bucket can be destroyed without error. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the vector bucket or destroying the vector bucket, this flag will not work.
   late final pulumi.Output<bool> forceDestroy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -289,14 +290,14 @@ class VectorsVectorBucket extends pulumi.CustomResource {
           'aws:s3/vectorsVectorBucket:VectorsVectorBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<VectorsVectorBucketEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(guardedValue, (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool>('forceDestroy');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vectorBucketArn = registerOutput<String>('vectorBucketArn');
     vectorBucketName = registerOutput<String>('vectorBucketName');
   }
@@ -306,11 +307,12 @@ class VectorsVectorBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VectorsVectorBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VectorsVectorBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,11 +327,30 @@ class VectorsVectorBucket extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTime = registerOutput<String>('creationTime');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<VectorsVectorBucketEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(guardedValue, (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool>('forceDestroy');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vectorBucketArn = registerOutput<String>('vectorBucketArn');
+    vectorBucketName = registerOutput<String>('vectorBucketName');
+  }
+
+  /// Creates a typed reference to an existing [VectorsVectorBucket] resource.
+  VectorsVectorBucket.reference(String urn)
+    : super(
+        'aws:s3/vectorsVectorBucket:VectorsVectorBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTime = registerOutput<String>('creationTime');
+    encryptionConfigurations = registerOutput<List<VectorsVectorBucketEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(guardedValue, (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDestroy = registerOutput<bool>('forceDestroy');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vectorBucketArn = registerOutput<String>('vectorBucketArn');
     vectorBucketName = registerOutput<String>('vectorBucketName');
   }

@@ -19,22 +19,22 @@ import 'flow_source_flow_config_source_connector_properties_veeva.dart';
 import 'flow_source_flow_config_source_connector_properties_zendesk.dart';
 
 class FlowSourceFlowConfigSourceConnectorProperties {
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesAmplitude>? amplitude;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector>? customConnector;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDatadog>? datadog;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDynatrace>? dynatrace;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics>? googleAnalytics;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesInforNexus>? inforNexus;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesMarketo>? marketo;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3>? s3;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSalesforce>? salesforce;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoData>? sapoData;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesServiceNow>? serviceNow;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSingular>? singular;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSlack>? slack;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro>? trendmicro;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesVeeva>? veeva;
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesZendesk>? zendesk;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesAmplitude?>? amplitude;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector?>? customConnector;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDatadog?>? datadog;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDynatrace?>? dynatrace;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics?>? googleAnalytics;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesInforNexus?>? inforNexus;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesMarketo?>? marketo;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3?>? s3;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSalesforce?>? salesforce;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoData?>? sapoData;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesServiceNow?>? serviceNow;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSingular?>? singular;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSlack?>? slack;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro?>? trendmicro;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesVeeva?>? veeva;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesZendesk?>? zendesk;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorProperties].
   /// [amplitude] Optional.

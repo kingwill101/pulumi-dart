@@ -6,13 +6,13 @@ class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
   /// AWS secret store ARN for database credentials.
   final pulumi.Input<String> awsSecretStoreArn;
   /// Logical database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Amazon RDS cluster identifier.
   final pulumi.Input<String> dbClusterIdentifier;
   /// AWS Region for RDS HTTP endpoint. Defaults to current region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Logical schema name.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [DataSourceRelationalDatabaseConfigHttpEndpointConfig].
   /// [awsSecretStoreArn] AWS secret store ARN for database credentials.

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointRdsOptions {
-  final pulumi.Input<int>? port;
-  final pulumi.Input<String>? protocol;
-  final pulumi.Input<String>? rdsDbClusterArn;
-  final pulumi.Input<String>? rdsDbInstanceArn;
-  final pulumi.Input<String>? rdsDbProxyArn;
-  final pulumi.Input<String>? rdsEndpoint;
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<int?>? port;
+  final pulumi.Input<String?>? protocol;
+  final pulumi.Input<String?>? rdsDbClusterArn;
+  final pulumi.Input<String?>? rdsDbInstanceArn;
+  final pulumi.Input<String?>? rdsDbProxyArn;
+  final pulumi.Input<String?>? rdsEndpoint;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [EndpointRdsOptions].
   /// [port] Optional.
@@ -43,7 +43,7 @@ class EndpointRdsOptions {
 
   factory EndpointRdsOptions.fromMap(Map<String, dynamic> map) {
     return EndpointRdsOptions(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rdsDbClusterArn: (() { final guardedValue = map['rdsDbClusterArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rdsDbInstanceArn: (() { final guardedValue = map['rdsDbInstanceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

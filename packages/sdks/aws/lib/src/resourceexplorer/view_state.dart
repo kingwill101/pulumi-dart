@@ -6,27 +6,27 @@ import 'view_included_property.dart';
 
 /// Input properties used for looking up and filtering View resources.
 class ViewState {
-  /// Amazon Resource Name (ARN) of the Resource Explorer view.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Resource Explorer view.
+  final pulumi.Input<String?>? arn;
   /// Specifies whether the view is the [_default view_](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views-about.html#manage-views-about-default) for the AWS Region. Default: `false`.
-  final pulumi.Input<bool>? defaultView;
+  final pulumi.Input<bool?>? defaultView;
   /// Specifies which resources are included in the results of queries made using this view. See Filters below for more details.
-  final pulumi.Input<ViewFilters>? filters;
+  final pulumi.Input<ViewFilters?>? filters;
   /// Optional fields to be included in search results from this view. See Included Properties below for more details.
-  final pulumi.Input<List<ViewIncludedProperty>>? includedProperties;
+  final pulumi.Input<List<ViewIncludedProperty>?>? includedProperties;
   /// The name of the view. The name must be no more than 64 characters long, and can include letters, digits, and the dash (-) character. The name must be unique within its AWS Region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The root ARN of the account, an organizational unit (OU), or an organization ARN. If left empty, the default is account.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ViewState].
-  /// [arn] Amazon Resource Name (ARN) of the Resource Explorer view.
+  /// [arn] ARN of the Resource Explorer view.
   /// [defaultView] Specifies whether the view is the [_default view_](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views-about.html#manage-views-about-default) for the AWS Region. Default: `false`.
   /// [filters] Specifies which resources are included in the results of queries made using this view. See Filters below for more details.
   /// [includedProperties] Optional fields to be included in search results from this view. See Included Properties below for more details.

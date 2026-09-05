@@ -8,13 +8,13 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `customPayload`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload>? customPayload;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload?>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard?>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plainTextMessage`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage?>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage?>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `customPayload`.

@@ -116,7 +116,7 @@ import 'project_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm project.
+/// - `arn` (String) ARN of the Device Farm project.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Projects using their ARN. For example:
@@ -125,7 +125,7 @@ import 'project_state.dart';
 /// $ pulumi import aws:devicefarm/project:Project example arn:aws:devicefarm:us-west-2:123456789012:project:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class Project extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this project
+  /// ARN of this project
   late final pulumi.Output<String> arn;
   /// Sets the execution timeout value (in minutes) for a project. All test runs in this project use the specified execution timeout value unless overridden when scheduling a run.
   late final pulumi.Output<int?> defaultJobTimeoutMinutes;
@@ -150,14 +150,14 @@ class Project extends pulumi.CustomResource {
           'aws:devicefarm/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultJobTimeoutMinutes = registerOutput<int?>('defaultJobTimeoutMinutes');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -165,11 +165,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,7 +188,24 @@ class Project extends pulumi.CustomResource {
     defaultJobTimeoutMinutes = registerOutput<int?>('defaultJobTimeoutMinutes');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'aws:devicefarm/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultJobTimeoutMinutes = registerOutput<int?>('defaultJobTimeoutMinutes');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

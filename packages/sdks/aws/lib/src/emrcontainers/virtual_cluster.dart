@@ -16,13 +16,13 @@ import 'virtual_cluster_state.dart';
 ///
 /// const example = new aws.emrcontainers.VirtualCluster("example", {
 ///     containerProvider: {
-///         id: exampleAwsEksCluster.name,
-///         type: "EKS",
 ///         info: {
 ///             eksInfo: {
 ///                 namespace: "default",
 ///             },
 ///         },
+///         id: exampleAwsEksCluster.name,
+///         type: "EKS",
 ///     },
 ///     name: "example",
 /// });
@@ -33,13 +33,13 @@ import 'virtual_cluster_state.dart';
 ///
 /// example = aws.emrcontainers.VirtualCluster("example",
 ///     container_provider={
-///         "id": example_aws_eks_cluster["name"],
-///         "type": "EKS",
 ///         "info": {
 ///             "eks_info": {
 ///                 "namespace": "default",
 ///             },
 ///         },
+///         "id": example_aws_eks_cluster["name"],
+///         "type": "EKS",
 ///     },
 ///     name="example")
 /// ```
@@ -55,8 +55,6 @@ import 'virtual_cluster_state.dart';
 ///     {
 ///         ContainerProvider = new Aws.EmrContainers.Inputs.VirtualClusterContainerProviderArgs
 ///         {
-///             Id = exampleAwsEksCluster.Name,
-///             Type = "EKS",
 ///             Info = new Aws.EmrContainers.Inputs.VirtualClusterContainerProviderInfoArgs
 ///             {
 ///                 EksInfo = new Aws.EmrContainers.Inputs.VirtualClusterContainerProviderInfoEksInfoArgs
@@ -64,6 +62,8 @@ import 'virtual_cluster_state.dart';
 ///                     Namespace = "default",
 ///                 },
 ///             },
+///             Id = exampleAwsEksCluster.Name,
+///             Type = "EKS",
 ///         },
 ///         Name = "example",
 ///     });
@@ -82,13 +82,13 @@ import 'virtual_cluster_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := emrcontainers.NewVirtualCluster(ctx, "example", &emrcontainers.VirtualClusterArgs{
 /// 			ContainerProvider: &emrcontainers.VirtualClusterContainerProviderArgs{
-/// 				Id:   pulumi.Any(exampleAwsEksCluster.Name),
-/// 				Type: pulumi.String("EKS"),
 /// 				Info: &emrcontainers.VirtualClusterContainerProviderInfoArgs{
 /// 					EksInfo: &emrcontainers.VirtualClusterContainerProviderInfoEksInfoArgs{
 /// 						Namespace: pulumi.String("default"),
 /// 					},
 /// 				},
+/// 				Id:   pulumi.Any(exampleAwsEksCluster.Name),
+/// 				Type: pulumi.String("EKS"),
 /// 			},
 /// 			Name: pulumi.String("example"),
 /// 		})
@@ -110,13 +110,13 @@ import 'virtual_cluster_state.dart';
 ///
 /// resource "aws_emrcontainers_virtualcluster" "example" {
 ///   container_provider = {
-///     id   = exampleAwsEksCluster.name
-///     type = "EKS"
 ///     info = {
 ///       eks_info = {
 ///         namespace = "default"
 ///       }
 ///     }
+///     id   = exampleAwsEksCluster.name
+///     type = "EKS"
 ///   }
 ///   name = "example"
 /// }
@@ -147,13 +147,13 @@ import 'virtual_cluster_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VirtualCluster("example", VirtualClusterArgs.builder()
 ///             .containerProvider(VirtualClusterContainerProviderArgs.builder()
-///                 .id(exampleAwsEksCluster.name())
-///                 .type("EKS")
 ///                 .info(VirtualClusterContainerProviderInfoArgs.builder()
 ///                     .eksInfo(VirtualClusterContainerProviderInfoEksInfoArgs.builder()
 ///                         .namespace("default")
 ///                         .build())
 ///                     .build())
+///                 .id(exampleAwsEksCluster.name())
+///                 .type("EKS")
 ///                 .build())
 ///             .name("example")
 ///             .build());
@@ -167,11 +167,11 @@ import 'virtual_cluster_state.dart';
 ///     type: aws:emrcontainers:VirtualCluster
 ///     properties:
 ///       containerProvider:
-///         id: ${exampleAwsEksCluster.name}
-///         type: EKS
 ///         info:
 ///           eksInfo:
 ///             namespace: default
+///         id: ${exampleAwsEksCluster.name}
+///         type: EKS
 ///       name: example
 /// ```
 ///
@@ -209,14 +209,14 @@ class VirtualCluster extends pulumi.CustomResource {
           'aws:emrcontainers/virtualCluster:VirtualCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterContainerProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualCluster] resource's state with the given [name] and [id].
@@ -224,11 +224,12 @@ class VirtualCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -246,7 +247,24 @@ class VirtualCluster extends pulumi.CustomResource {
     containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterContainerProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualCluster] resource.
+  VirtualCluster.reference(String urn)
+    : super(
+        'aws:emrcontainers/virtualCluster:VirtualCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterContainerProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

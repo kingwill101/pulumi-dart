@@ -361,10 +361,10 @@ class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
           'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
-    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
+    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
     timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -375,11 +375,12 @@ class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedPolicyAttachmentsExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedPolicyAttachmentsExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -394,7 +395,23 @@ class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
-    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
+    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ManagedPolicyAttachmentsExclusive] resource.
+  ManagedPolicyAttachmentsExclusive.reference(String urn)
+    : super(
+        'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    instanceArn = registerOutput<String>('instanceArn');
+    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
     timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

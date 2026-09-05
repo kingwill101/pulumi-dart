@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QuicksetupConfigurationManagerConfigurationDefinition {
-  final pulumi.Input<String>? id;
-  final pulumi.Input<String>? localDeploymentAdministrationRoleArn;
+  final pulumi.Input<String?>? id;
+  final pulumi.Input<String?>? localDeploymentAdministrationRoleArn;
   /// Name of the IAM role used to deploy local configurations.
-  final pulumi.Input<String>? localDeploymentExecutionRoleName;
+  final pulumi.Input<String?>? localDeploymentExecutionRoleName;
   /// Parameters for the configuration definition type. Parameters for configuration definitions vary based the configuration type. See the [AWS API documentation](https://docs.aws.amazon.com/quick-setup/latest/APIReference/API_ConfigurationDefinitionInput.html) for a complete list of parameters for each configuration type.
   final pulumi.Input<Map<String, String>> parameters;
   /// Type of the Quick Setup configuration.
   final pulumi.Input<String> type;
   /// Version of the Quick Setup type to use.
-  final pulumi.Input<String>? typeVersion;
+  final pulumi.Input<String?>? typeVersion;
 
   /// Creates a new [QuicksetupConfigurationManagerConfigurationDefinition].
   /// [id] Optional.

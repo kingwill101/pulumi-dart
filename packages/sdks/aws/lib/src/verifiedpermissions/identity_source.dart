@@ -24,13 +24,13 @@ import 'identity_source_state.dart';
 ///     explicitAuthFlows: ["ADMIN_NO_SRP_AUTH"],
 /// });
 /// const exampleIdentitySource = new aws.verifiedpermissions.IdentitySource("example", {
-///     policyStoreId: example.id,
 ///     configuration: {
 ///         cognitoUserPoolConfiguration: {
 ///             userPoolArn: exampleUserPool.arn,
 ///             clientIds: [exampleUserPoolClient.id],
 ///         },
 ///     },
+///     policyStoreId: example.id,
 /// });
 /// ```
 /// ```python
@@ -46,13 +46,13 @@ import 'identity_source_state.dart';
 ///     user_pool_id=example_user_pool.id,
 ///     explicit_auth_flows=["ADMIN_NO_SRP_AUTH"])
 /// example_identity_source = aws.verifiedpermissions.IdentitySource("example",
-///     policy_store_id=example.id,
 ///     configuration={
 ///         "cognito_user_pool_configuration": {
 ///             "user_pool_arn": example_user_pool.arn,
 ///             "client_ids": [example_user_pool_client.id],
 ///         },
-///     })
+///     },
+///     policy_store_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -87,7 +87,6 @@ import 'identity_source_state.dart';
 ///
 ///     var exampleIdentitySource = new Aws.VerifiedPermissions.IdentitySource("example", new()
 ///     {
-///         PolicyStoreId = example.Id,
 ///         Configuration = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationArgs
 ///         {
 ///             CognitoUserPoolConfiguration = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationCognitoUserPoolConfigurationArgs
@@ -99,6 +98,7 @@ import 'identity_source_state.dart';
 ///                 },
 ///             },
 ///         },
+///         PolicyStoreId = example.Id,
 ///     });
 ///
 /// });
@@ -139,7 +139,6 @@ import 'identity_source_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedpermissions.NewIdentitySource(ctx, "example", &verifiedpermissions.IdentitySourceArgs{
-/// 			PolicyStoreId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Configuration: &verifiedpermissions.IdentitySourceConfigurationArgs{
 /// 				CognitoUserPoolConfiguration: &verifiedpermissions.IdentitySourceConfigurationCognitoUserPoolConfigurationArgs{
 /// 					UserPoolArn: exampleUserPool.Arn,
@@ -148,6 +147,7 @@ import 'identity_source_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			PolicyStoreId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -179,13 +179,13 @@ import 'identity_source_state.dart';
 ///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 /// }
 /// resource "aws_verifiedpermissions_identitysource" "example" {
-///   policy_store_id = aws_verifiedpermissions_policystore.example.id
 ///   configuration = {
 ///     cognito_user_pool_configuration = {
 ///       user_pool_arn = aws_cognito_userpool.example.arn
 ///       client_ids    = [aws_cognito_userpoolclient.example.id]
 ///     }
 ///   }
+///   policy_store_id = aws_verifiedpermissions_policystore.example.id
 /// }
 /// ```
 /// ```java
@@ -235,13 +235,13 @@ import 'identity_source_state.dart';
 ///             .build());
 ///
 ///         var exampleIdentitySource = new IdentitySource("exampleIdentitySource", IdentitySourceArgs.builder()
-///             .policyStoreId(example.id())
 ///             .configuration(IdentitySourceConfigurationArgs.builder()
 ///                 .cognitoUserPoolConfiguration(IdentitySourceConfigurationCognitoUserPoolConfigurationArgs.builder()
 ///                     .userPoolArn(exampleUserPool.arn())
 ///                     .clientIds(exampleUserPoolClient.id())
 ///                     .build())
 ///                 .build())
+///             .policyStoreId(example.id())
 ///             .build());
 ///
 ///     }
@@ -271,12 +271,12 @@ import 'identity_source_state.dart';
 ///     type: aws:verifiedpermissions:IdentitySource
 ///     name: example
 ///     properties:
-///       policyStoreId: ${example.id}
 ///       configuration:
 ///         cognitoUserPoolConfiguration:
 ///           userPoolArn: ${exampleUserPool.arn}
 ///           clientIds:
 ///             - ${exampleUserPoolClient.id}
+///       policyStoreId: ${example.id}
 /// ```
 ///
 ///
@@ -291,23 +291,23 @@ import 'identity_source_state.dart';
 ///     mode: "STRICT",
 /// }});
 /// const exampleIdentitySource = new aws.verifiedpermissions.IdentitySource("example", {
-///     policyStoreId: example.id,
 ///     configuration: {
 ///         openIdConnectConfiguration: {
-///             issuer: "https://auth.example.com",
 ///             tokenSelection: {
 ///                 accessTokenOnly: {
 ///                     audiences: ["https://myapp.example.com"],
 ///                     principalIdClaim: "sub",
 ///                 },
 ///             },
-///             entityIdPrefix: "MyOIDCProvider",
 ///             groupConfiguration: {
 ///                 groupClaim: "groups",
 ///                 groupEntityType: "MyCorp::UserGroup",
 ///             },
+///             issuer: "https://auth.example.com",
+///             entityIdPrefix: "MyOIDCProvider",
 ///         },
 ///     },
+///     policyStoreId: example.id,
 ///     principalEntityType: "MyCorp::User",
 /// });
 /// ```
@@ -319,23 +319,23 @@ import 'identity_source_state.dart';
 ///     "mode": "STRICT",
 /// })
 /// example_identity_source = aws.verifiedpermissions.IdentitySource("example",
-///     policy_store_id=example.id,
 ///     configuration={
 ///         "open_id_connect_configuration": {
-///             "issuer": "https://auth.example.com",
 ///             "token_selection": {
 ///                 "access_token_only": {
 ///                     "audiences": ["https://myapp.example.com"],
 ///                     "principal_id_claim": "sub",
 ///                 },
 ///             },
-///             "entity_id_prefix": "MyOIDCProvider",
 ///             "group_configuration": {
 ///                 "group_claim": "groups",
 ///                 "group_entity_type": "MyCorp::UserGroup",
 ///             },
+///             "issuer": "https://auth.example.com",
+///             "entity_id_prefix": "MyOIDCProvider",
 ///         },
 ///     },
+///     policy_store_id=example.id,
 ///     principal_entity_type="MyCorp::User")
 /// ```
 /// ```csharp
@@ -356,12 +356,10 @@ import 'identity_source_state.dart';
 ///
 ///     var exampleIdentitySource = new Aws.VerifiedPermissions.IdentitySource("example", new()
 ///     {
-///         PolicyStoreId = example.Id,
 ///         Configuration = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationArgs
 ///         {
 ///             OpenIdConnectConfiguration = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationOpenIdConnectConfigurationArgs
 ///             {
-///                 Issuer = "https://auth.example.com",
 ///                 TokenSelection = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionArgs
 ///                 {
 ///                     AccessTokenOnly = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnlyArgs
@@ -373,14 +371,16 @@ import 'identity_source_state.dart';
 ///                         PrincipalIdClaim = "sub",
 ///                     },
 ///                 },
-///                 EntityIdPrefix = "MyOIDCProvider",
 ///                 GroupConfiguration = new Aws.VerifiedPermissions.Inputs.IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfigurationArgs
 ///                 {
 ///                     GroupClaim = "groups",
 ///                     GroupEntityType = "MyCorp::UserGroup",
 ///                 },
+///                 Issuer = "https://auth.example.com",
+///                 EntityIdPrefix = "MyOIDCProvider",
 ///             },
 ///         },
+///         PolicyStoreId = example.Id,
 ///         PrincipalEntityType = "MyCorp::User",
 ///     });
 ///
@@ -405,10 +405,8 @@ import 'identity_source_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedpermissions.NewIdentitySource(ctx, "example", &verifiedpermissions.IdentitySourceArgs{
-/// 			PolicyStoreId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Configuration: &verifiedpermissions.IdentitySourceConfigurationArgs{
 /// 				OpenIdConnectConfiguration: &verifiedpermissions.IdentitySourceConfigurationOpenIdConnectConfigurationArgs{
-/// 					Issuer: pulumi.String("https://auth.example.com"),
 /// 					TokenSelection: &verifiedpermissions.IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionArgs{
 /// 						AccessTokenOnly: &verifiedpermissions.IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnlyArgs{
 /// 							Audiences: pulumi.StringArray{
@@ -417,13 +415,15 @@ import 'identity_source_state.dart';
 /// 							PrincipalIdClaim: pulumi.String("sub"),
 /// 						},
 /// 					},
-/// 					EntityIdPrefix: pulumi.String("MyOIDCProvider"),
 /// 					GroupConfiguration: &verifiedpermissions.IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfigurationArgs{
 /// 						GroupClaim:      pulumi.String("groups"),
 /// 						GroupEntityType: pulumi.String("MyCorp::UserGroup"),
 /// 					},
+/// 					Issuer:         pulumi.String("https://auth.example.com"),
+/// 					EntityIdPrefix: pulumi.String("MyOIDCProvider"),
 /// 				},
 /// 			},
+/// 			PolicyStoreId:       example.ID().ToIDOutput().ToStringOutput(),
 /// 			PrincipalEntityType: pulumi.String("MyCorp::User"),
 /// 		})
 /// 		if err != nil {
@@ -448,23 +448,23 @@ import 'identity_source_state.dart';
 ///   }
 /// }
 /// resource "aws_verifiedpermissions_identitysource" "example" {
-///   policy_store_id = aws_verifiedpermissions_policystore.example.id
 ///   configuration = {
 ///     open_id_connect_configuration = {
-///       issuer = "https://auth.example.com"
 ///       token_selection = {
 ///         access_token_only = {
 ///           audiences          = ["https://myapp.example.com"]
 ///           principal_id_claim = "sub"
 ///         }
 ///       }
-///       entity_id_prefix = "MyOIDCProvider"
 ///       group_configuration = {
 ///         group_claim       = "groups"
 ///         group_entity_type = "MyCorp::UserGroup"
 ///       }
+///       issuer           = "https://auth.example.com"
+///       entity_id_prefix = "MyOIDCProvider"
 ///     }
 ///   }
+///   policy_store_id       = aws_verifiedpermissions_policystore.example.id
 ///   principal_entity_type = "MyCorp::User"
 /// }
 /// ```
@@ -504,23 +504,23 @@ import 'identity_source_state.dart';
 ///             .build());
 ///
 ///         var exampleIdentitySource = new IdentitySource("exampleIdentitySource", IdentitySourceArgs.builder()
-///             .policyStoreId(example.id())
 ///             .configuration(IdentitySourceConfigurationArgs.builder()
 ///                 .openIdConnectConfiguration(IdentitySourceConfigurationOpenIdConnectConfigurationArgs.builder()
-///                     .issuer("https://auth.example.com")
 ///                     .tokenSelection(IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionArgs.builder()
 ///                         .accessTokenOnly(IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnlyArgs.builder()
 ///                             .audiences("https://myapp.example.com")
 ///                             .principalIdClaim("sub")
 ///                             .build())
 ///                         .build())
-///                     .entityIdPrefix("MyOIDCProvider")
 ///                     .groupConfiguration(IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfigurationArgs.builder()
 ///                         .groupClaim("groups")
 ///                         .groupEntityType("MyCorp::UserGroup")
 ///                         .build())
+///                     .issuer("https://auth.example.com")
+///                     .entityIdPrefix("MyOIDCProvider")
 ///                     .build())
 ///                 .build())
+///             .policyStoreId(example.id())
 ///             .principalEntityType("MyCorp::User")
 ///             .build());
 ///
@@ -538,19 +538,19 @@ import 'identity_source_state.dart';
 ///     type: aws:verifiedpermissions:IdentitySource
 ///     name: example
 ///     properties:
-///       policyStoreId: ${example.id}
 ///       configuration:
 ///         openIdConnectConfiguration:
-///           issuer: https://auth.example.com
 ///           tokenSelection:
 ///             accessTokenOnly:
 ///               audiences:
 ///                 - https://myapp.example.com
 ///               principalIdClaim: sub
-///           entityIdPrefix: MyOIDCProvider
 ///           groupConfiguration:
 ///             groupClaim: groups
 ///             groupEntityType: MyCorp::UserGroup
+///           issuer: https://auth.example.com
+///           entityIdPrefix: MyOIDCProvider
+///       policyStoreId: ${example.id}
 ///       principalEntityType: MyCorp::User
 /// ```
 ///
@@ -584,7 +584,7 @@ class IdentitySource extends pulumi.CustomResource {
           'aws:verifiedpermissions/identitySource:IdentitySource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyStoreId = registerOutput<String>('policyStoreId');
@@ -597,11 +597,12 @@ class IdentitySource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentitySourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentitySource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -615,6 +616,21 @@ class IdentitySource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyStoreId = registerOutput<String>('policyStoreId');
+    principalEntityType = registerOutput<String>('principalEntityType');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [IdentitySource] resource.
+  IdentitySource.reference(String urn)
+    : super(
+        'aws:verifiedpermissions/identitySource:IdentitySource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyStoreId = registerOutput<String>('policyStoreId');
     principalEntityType = registerOutput<String>('principalEntityType');

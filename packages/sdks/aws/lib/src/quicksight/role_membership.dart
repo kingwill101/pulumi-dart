@@ -151,7 +151,7 @@ class RoleMembership extends pulumi.CustomResource {
           'aws:quicksight/roleMembership:RoleMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     memberName = registerOutput<String>('memberName');
@@ -165,11 +165,12 @@ class RoleMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoleMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -183,6 +184,22 @@ class RoleMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    memberName = registerOutput<String>('memberName');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [RoleMembership] resource.
+  RoleMembership.reference(String urn)
+    : super(
+        'aws:quicksight/roleMembership:RoleMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     memberName = registerOutput<String>('memberName');
     namespace = registerOutput<String>('namespace');

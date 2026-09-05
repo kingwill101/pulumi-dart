@@ -6,9 +6,9 @@ import 'fleet_launch_template_config_override.dart';
 
 class FleetLaunchTemplateConfig {
   /// Nested argument containing EC2 Launch Template to use. Defined below.
-  final pulumi.Input<FleetLaunchTemplateConfigLaunchTemplateSpecification>? launchTemplateSpecification;
+  final pulumi.Input<FleetLaunchTemplateConfigLaunchTemplateSpecification?>? launchTemplateSpecification;
   /// Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
-  final pulumi.Input<List<FleetLaunchTemplateConfigOverride>>? overrides;
+  final pulumi.Input<List<FleetLaunchTemplateConfigOverride>?>? overrides;
 
   /// Creates a new [FleetLaunchTemplateConfig].
   /// [launchTemplateSpecification] Nested argument containing EC2 Launch Template to use. Defined below.

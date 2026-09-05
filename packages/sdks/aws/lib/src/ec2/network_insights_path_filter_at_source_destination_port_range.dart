@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsPathFilterAtSourceDestinationPortRange {
   /// The first port in the range.
-  final pulumi.Input<int>? fromPort;
+  final pulumi.Input<int?>? fromPort;
   /// The last port in the range.
-  final pulumi.Input<int>? toPort;
+  final pulumi.Input<int?>? toPort;
 
   /// Creates a new [NetworkInsightsPathFilterAtSourceDestinationPortRange].
   /// [fromPort] The first port in the range.
@@ -25,8 +25,8 @@ class NetworkInsightsPathFilterAtSourceDestinationPortRange {
 
   factory NetworkInsightsPathFilterAtSourceDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathFilterAtSourceDestinationPortRange(
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

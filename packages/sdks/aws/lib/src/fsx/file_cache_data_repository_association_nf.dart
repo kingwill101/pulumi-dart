@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileCacheDataRepositoryAssociationNf {
   /// Up to 2 IP addresses of DNS servers used to resolve the NFS file system domain name.
-  final pulumi.Input<List<String>>? dnsIps;
+  final pulumi.Input<List<String>?>? dnsIps;
   /// Version of the NFS protocol of the NFS data repository. The only supported value is `NFS3`.
   final pulumi.Input<String> version;
 

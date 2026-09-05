@@ -5,7 +5,7 @@ import 'agentcore_browser_certificate_location_secrets_manager.dart';
 
 class AgentcoreBrowserCertificateLocation {
   /// AWS Secrets Manager location of the certificate. See `secretsManager` below.
-  final pulumi.Input<AgentcoreBrowserCertificateLocationSecretsManager>? secretsManager;
+  final pulumi.Input<AgentcoreBrowserCertificateLocationSecretsManager?>? secretsManager;
 
   /// Creates a new [AgentcoreBrowserCertificateLocation].
   /// [secretsManager] AWS Secrets Manager location of the certificate. See `secretsManager` below.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_quicksight_ingestion_ingestion_args_doc}
 class IngestionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// ID of the dataset used in the ingestion.
   final pulumi.Input<String> dataSetId;
   /// ID for the ingestion.
@@ -18,7 +18,7 @@ class IngestionArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> ingestionType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [IngestionArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

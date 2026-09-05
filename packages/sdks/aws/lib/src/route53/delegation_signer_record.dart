@@ -80,12 +80,12 @@ import 'delegation_signer_record_timeouts.dart';
 ///     dependsOn: [exampleKeySigningKey],
 /// });
 /// const exampleDelegationSignerRecord = new aws.route53domains.DelegationSignerRecord("example", {
-///     domainName: "example.com",
 ///     signingAttributes: {
 ///         algorithm: exampleKeySigningKey.signingAlgorithmType,
 ///         flags: exampleKeySigningKey.flag,
 ///         publicKey: exampleKeySigningKey.publicKey,
 ///     },
+///     domainName: "example.com",
 /// });
 /// ```
 /// ```python
@@ -155,12 +155,12 @@ import 'delegation_signer_record_timeouts.dart';
 /// example_hosted_zone_dns_sec = aws.route53.HostedZoneDnsSec("example", hosted_zone_id=example_key_signing_key.hosted_zone_id,
 /// opts = pulumi.ResourceOptions(depends_on=[example_key_signing_key]))
 /// example_delegation_signer_record = aws.route53domains.DelegationSignerRecord("example",
-///     domain_name="example.com",
 ///     signing_attributes={
 ///         "algorithm": example_key_signing_key.signing_algorithm_type,
 ///         "flags": example_key_signing_key.flag,
 ///         "public_key": example_key_signing_key.public_key,
-///     })
+///     },
+///     domain_name="example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -268,13 +268,13 @@ import 'delegation_signer_record_timeouts.dart';
 ///
 ///     var exampleDelegationSignerRecord = new Aws.Route53Domains.DelegationSignerRecord("example", new()
 ///     {
-///         DomainName = "example.com",
 ///         SigningAttributes = new Aws.Route53Domains.Inputs.DelegationSignerRecordSigningAttributesArgs
 ///         {
 ///             Algorithm = exampleKeySigningKey.SigningAlgorithmType,
 ///             Flags = exampleKeySigningKey.Flag,
 ///             PublicKey = exampleKeySigningKey.PublicKey,
 ///         },
+///         DomainName = "example.com",
 ///     });
 ///
 /// });
@@ -384,12 +384,12 @@ import 'delegation_signer_record_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53domains.NewDelegationSignerRecord(ctx, "example", &route53domains.DelegationSignerRecordArgs{
-/// 			DomainName: pulumi.String("example.com"),
 /// 			SigningAttributes: &route53domains.DelegationSignerRecordSigningAttributesArgs{
 /// 				Algorithm: exampleKeySigningKey.SigningAlgorithmType,
 /// 				Flags:     exampleKeySigningKey.Flag,
 /// 				PublicKey: exampleKeySigningKey.PublicKey,
 /// 			},
+/// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -469,12 +469,12 @@ import 'delegation_signer_record_timeouts.dart';
 ///   hosted_zone_id = aws_route53_keysigningkey.example.hosted_zone_id
 /// }
 /// resource "aws_route53domains_delegationsignerrecord" "example" {
-///   domain_name = "example.com"
 ///   signing_attributes = {
 ///     algorithm  = aws_route53_keysigningkey.example.signing_algorithm_type
 ///     flags      = aws_route53_keysigningkey.example.flag
 ///     public_key = aws_route53_keysigningkey.example.public_key
 ///   }
+///   domain_name = "example.com"
 /// }
 /// ```
 /// ```java
@@ -587,12 +587,12 @@ import 'delegation_signer_record_timeouts.dart';
 ///                 .build());
 ///
 ///         var exampleDelegationSignerRecord = new DelegationSignerRecord("exampleDelegationSignerRecord", DelegationSignerRecordArgs.builder()
-///             .domainName("example.com")
 ///             .signingAttributes(DelegationSignerRecordSigningAttributesArgs.builder()
 ///                 .algorithm(exampleKeySigningKey.signingAlgorithmType())
 ///                 .flags(exampleKeySigningKey.flag())
 ///                 .publicKey(exampleKeySigningKey.publicKey())
 ///                 .build())
+///             .domainName("example.com")
 ///             .build());
 ///
 ///     }
@@ -663,11 +663,11 @@ import 'delegation_signer_record_timeouts.dart';
 ///     type: aws:route53domains:DelegationSignerRecord
 ///     name: example
 ///     properties:
-///       domainName: example.com
 ///       signingAttributes:
 ///         algorithm: ${exampleKeySigningKey.signingAlgorithmType}
 ///         flags: ${exampleKeySigningKey.flag}
 ///         publicKey: ${exampleKeySigningKey.publicKey}
+///       domainName: example.com
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -704,7 +704,7 @@ class DelegationSignerRecord extends pulumi.CustomResource {
           'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dnssecKeyId = registerOutput<String>('dnssecKeyId');
     domainName = registerOutput<String>('domainName');
@@ -717,11 +717,12 @@ class DelegationSignerRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DelegationSignerRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DelegationSignerRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -735,6 +736,21 @@ class DelegationSignerRecord extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dnssecKeyId = registerOutput<String>('dnssecKeyId');
+    domainName = registerOutput<String>('domainName');
+    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DelegationSignerRecord] resource.
+  DelegationSignerRecord.reference(String urn)
+    : super(
+        'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dnssecKeyId = registerOutput<String>('dnssecKeyId');
     domainName = registerOutput<String>('domainName');
     signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

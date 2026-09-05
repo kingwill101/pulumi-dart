@@ -3,41 +3,41 @@
 
 /// Result data returned by getEmailIdentity.
 class GetEmailIdentityResult {
-  /// The ARN of the email identity.
-  final String arn;
+  /// ARN of the email identity.
+  final String? arn;
   /// Email identity.
-  final String email;
+  final String? email;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
 
   /// Creates a new [GetEmailIdentityResult].
-  /// [arn] The ARN of the email identity.
+  /// [arn] ARN of the email identity.
   /// [email] Email identity.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   const GetEmailIdentityResult({
-    required this.arn,
-    required this.email,
-    required this.id,
-    required this.region,
+    this.arn,
+    this.email,
+    this.id,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'email': email,
-      'id': id,
-      'region': region,
+      'arn': ?arn,
+      'email': ?email,
+      'id': ?id,
+      'region': ?region,
     };
   }
 
   factory GetEmailIdentityResult.fromMap(Map<String, dynamic> map) {
     return GetEmailIdentityResult(
-      arn: map['arn'] as String,
-      email: map['email'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

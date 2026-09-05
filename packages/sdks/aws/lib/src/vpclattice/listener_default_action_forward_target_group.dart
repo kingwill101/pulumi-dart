@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerDefaultActionForwardTargetGroup {
-  /// ID or Amazon Resource Name (ARN) of the target group.
-  final pulumi.Input<String>? targetGroupIdentifier;
+  /// ID or ARN of the target group.
+  final pulumi.Input<String?>? targetGroupIdentifier;
   /// Weight that controls how requests are distributed to the target group. Only required if you specify multiple target groups for a forward action. For example, if you specify two target groups, one with a weight of 10 and the other with a weight of 20, the target group with a weight of 20 receives twice as many requests as the other target group. See [Listener rules](https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules) in the AWS documentation for additional examples. Default: `100`.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [ListenerDefaultActionForwardTargetGroup].
-  /// [targetGroupIdentifier] ID or Amazon Resource Name (ARN) of the target group.
+  /// [targetGroupIdentifier] ID or ARN of the target group.
   /// [weight] Weight that controls how requests are distributed to the target group. Only required if you specify multiple target groups for a forward action. For example, if you specify two target groups, one with a weight of 10 and the other with a weight of 20, the target group with a weight of 20 receives twice as many requests as the other target group. See [Listener rules](https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules) in the AWS documentation for additional examples. Default: `100`.
   const ListenerDefaultActionForwardTargetGroup({
     this.targetGroupIdentifier,
@@ -26,7 +26,7 @@ class ListenerDefaultActionForwardTargetGroup {
   factory ListenerDefaultActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForwardTargetGroup(
       targetGroupIdentifier: (() { final guardedValue = map['targetGroupIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

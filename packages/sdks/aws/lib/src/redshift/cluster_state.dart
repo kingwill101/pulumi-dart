@@ -6,148 +6,148 @@ import 'cluster_cluster_node.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// If true , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default is `true`.
-  final pulumi.Input<bool>? allowVersionUpgrade;
+  final pulumi.Input<bool?>? allowVersionUpgrade;
   /// Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
-  final pulumi.Input<bool>? applyImmediately;
+  final pulumi.Input<bool?>? applyImmediately;
   /// The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored.
   /// No longer supported by the AWS API.
   /// Always returns `auto`.
-  final pulumi.Input<String>? aquaConfigurationStatus;
-  /// Amazon Resource Name (ARN) of cluster
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? aquaConfigurationStatus;
+  /// ARN of cluster
+  final pulumi.Input<String?>? arn;
   /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
-  final pulumi.Input<int>? automatedSnapshotRetentionPeriod;
+  final pulumi.Input<int?>? automatedSnapshotRetentionPeriod;
   /// The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency. Can only be changed if `availabilityZoneRelocationEnabled` is `true`.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// If true, the cluster can be relocated to another availabity zone, either automatically by AWS or when requested. Default is `false`. Available for use on clusters from the RA3 instance family.
-  final pulumi.Input<bool>? availabilityZoneRelocationEnabled;
+  final pulumi.Input<bool?>? availabilityZoneRelocationEnabled;
   /// The Cluster Identifier. Must be a lower case string.
-  final pulumi.Input<String>? clusterIdentifier;
-  /// The namespace Amazon Resource Name (ARN) of the cluster
-  final pulumi.Input<String>? clusterNamespaceArn;
+  final pulumi.Input<String?>? clusterIdentifier;
+  /// Namespace ARN of the cluster
+  final pulumi.Input<String?>? clusterNamespaceArn;
   /// The nodes in the cluster. Cluster node blocks are documented below
-  final pulumi.Input<List<ClusterClusterNode>>? clusterNodes;
+  final pulumi.Input<List<ClusterClusterNode>?>? clusterNodes;
   /// The name of the parameter group to be associated with this cluster.
-  final pulumi.Input<String>? clusterParameterGroupName;
+  final pulumi.Input<String?>? clusterParameterGroupName;
   /// The public key for the cluster
-  final pulumi.Input<String>? clusterPublicKey;
+  final pulumi.Input<String?>? clusterPublicKey;
   /// The specific revision number of the database in the cluster
-  final pulumi.Input<String>? clusterRevisionNumber;
-  /// The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).
-  final pulumi.Input<String>? clusterSubnetGroupName;
+  final pulumi.Input<String?>? clusterRevisionNumber;
+  /// Name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside VPC.
+  final pulumi.Input<String?>? clusterSubnetGroupName;
   /// The cluster type to use. Either `single-node` or `multi-node`.
-  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<String?>? clusterType;
   /// The version of the Amazon Redshift engine software that you want to deploy on the cluster.
   /// The version selected runs on all the nodes in the cluster.
-  final pulumi.Input<String>? clusterVersion;
+  final pulumi.Input<String?>? clusterVersion;
   /// The name of the first database to be created when the cluster is created.
   /// If you do not provide a name, Amazon Redshift will create a default database called `dev`.
-  final pulumi.Input<String>? databaseName;
-  /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
-  final pulumi.Input<String>? defaultIamRoleArn;
+  final pulumi.Input<String?>? databaseName;
+  /// ARN for the IAM role that was set as default for the cluster when the cluster was created.
+  final pulumi.Input<String?>? defaultIamRoleArn;
   /// The DNS name of the cluster
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// The Elastic IP (EIP) address for the cluster.
-  final pulumi.Input<String>? elasticIp;
+  final pulumi.Input<String?>? elasticIp;
   /// If true , the data in the cluster is encrypted at rest.
   /// Default is `true`.
-  final pulumi.Input<String>? encrypted;
+  final pulumi.Input<String?>? encrypted;
   /// The connection endpoint
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// If true , enhanced VPC routing is enabled.
-  final pulumi.Input<bool>? enhancedVpcRouting;
+  final pulumi.Input<bool?>? enhancedVpcRouting;
   /// The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skipFinalSnapshot` must be false.
-  final pulumi.Input<String>? finalSnapshotIdentifier;
+  final pulumi.Input<String?>? finalSnapshotIdentifier;
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
-  final pulumi.Input<List<String>>? iamRoles;
+  final pulumi.Input<List<String>?>? iamRoles;
   /// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the MaintenanceTrack value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of  a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks. Default value is `current`.
-  final pulumi.Input<String>? maintenanceTrackName;
+  final pulumi.Input<String?>? maintenanceTrackName;
   /// Whether to use AWS SecretsManager to manage the cluster admin credentials.
   /// Conflicts with `masterPassword` and `masterPasswordWo`.
   /// One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
-  final pulumi.Input<bool>? manageMasterPassword;
+  final pulumi.Input<bool?>? manageMasterPassword;
   /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. Valid values are between `-1` and `3653`. Default value is `-1`.
-  final pulumi.Input<int>? manualSnapshotRetentionPeriod;
+  final pulumi.Input<int?>? manualSnapshotRetentionPeriod;
   /// Password for the master DB user.
   /// Conflicts with `manageMasterPassword` and `masterPasswordWo`.
   /// One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   /// Note that this may show up in logs, and it will be stored in the state file.
   /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
-  final pulumi.Input<String>? masterPassword;
+  final pulumi.Input<String?>? masterPassword;
   /// ARN of the cluster admin credentials secret
-  final pulumi.Input<String>? masterPasswordSecretArn;
+  final pulumi.Input<String?>? masterPasswordSecretArn;
   /// ID of the KMS key used to encrypt the cluster admin credentials secret.
-  final pulumi.Input<String>? masterPasswordSecretKmsKeyId;
+  final pulumi.Input<String?>? masterPasswordSecretKmsKeyId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Password for the master DB user.
   /// Conflicts with `manageMasterPassword` and `masterPassword`.
   /// One of `masterPasswordWo`, `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   /// Note that this may show up in logs.
   /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
-  final pulumi.Input<String>? masterPasswordWo;
+  final pulumi.Input<String?>? masterPasswordWo;
   /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
-  final pulumi.Input<int>? masterPasswordWoVersion;
+  final pulumi.Input<int?>? masterPasswordWoVersion;
   /// Username for the master DB user.
-  final pulumi.Input<String>? masterUsername;
+  final pulumi.Input<String?>? masterUsername;
   /// Specifies if the Redshift cluster is multi-AZ.
-  final pulumi.Input<bool>? multiAz;
+  final pulumi.Input<bool?>? multiAz;
   /// The node type to be provisioned for the cluster.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node. Default is 1.
-  final pulumi.Input<int>? numberOfNodes;
+  final pulumi.Input<int?>? numberOfNodes;
   /// The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.
-  final pulumi.Input<String>? ownerAccount;
+  final pulumi.Input<String?>? ownerAccount;
   /// The port number on which the cluster accepts incoming connections. Valid values are between `1115` and `65535`.
   /// The cluster is accessible only via the JDBC and ODBC connection strings.
   /// Part of the connection string requires the port on which the cluster will listen for incoming connections.
   /// Default port is `5439`.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The weekly time range (in UTC) during which automated cluster maintenance can occur.
   /// Format: ddd:hh24:mi-ddd:hh24:mi
-  final pulumi.Input<String>? preferredMaintenanceWindow;
+  final pulumi.Input<String?>? preferredMaintenanceWindow;
   /// If true, the cluster can be accessed from a public network. Default is `false`.
-  final pulumi.Input<bool>? publiclyAccessible;
+  final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If true , a final cluster snapshot is not created. If false , a final cluster snapshot is created before the cluster is deleted. Default is false.
-  final pulumi.Input<bool>? skipFinalSnapshot;
+  final pulumi.Input<bool?>? skipFinalSnapshot;
   /// The ARN of the snapshot from which to create the new cluster. Conflicts with `snapshotIdentifier`.
-  final pulumi.Input<String>? snapshotArn;
+  final pulumi.Input<String?>? snapshotArn;
   /// The name of the cluster the source snapshot was created from.
-  final pulumi.Input<String>? snapshotClusterIdentifier;
+  final pulumi.Input<String?>? snapshotClusterIdentifier;
   /// The name of the snapshot from which to create the new cluster.  Conflicts with `snapshotArn`.
-  final pulumi.Input<String>? snapshotIdentifier;
+  final pulumi.Input<String?>? snapshotIdentifier;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](http://docs.aws.amazon.com/cli/latest/reference/redshift/index.html#cli-aws-redshift).
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  /// A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// List of VPC security groups to be associated with the cluster.
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
 
   /// Creates a new [ClusterState].
   /// [allowVersionUpgrade] If true , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default is `true`.
   /// [applyImmediately] Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   /// [aquaConfigurationStatus] The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored.
-  /// [arn] Amazon Resource Name (ARN) of cluster
+  /// [arn] ARN of cluster
   /// [automatedSnapshotRetentionPeriod] The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
   /// [availabilityZone] The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency. Can only be changed if `availabilityZoneRelocationEnabled` is `true`.
   /// [availabilityZoneRelocationEnabled] If true, the cluster can be relocated to another availabity zone, either automatically by AWS or when requested. Default is `false`. Available for use on clusters from the RA3 instance family.
   /// [clusterIdentifier] The Cluster Identifier. Must be a lower case string.
-  /// [clusterNamespaceArn] The namespace Amazon Resource Name (ARN) of the cluster
+  /// [clusterNamespaceArn] Namespace ARN of the cluster
   /// [clusterNodes] The nodes in the cluster. Cluster node blocks are documented below
   /// [clusterParameterGroupName] The name of the parameter group to be associated with this cluster.
   /// [clusterPublicKey] The public key for the cluster
   /// [clusterRevisionNumber] The specific revision number of the database in the cluster
-  /// [clusterSubnetGroupName] The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).
+  /// [clusterSubnetGroupName] Name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside VPC.
   /// [clusterType] The cluster type to use. Either `single-node` or `multi-node`.
   /// [clusterVersion] The version of the Amazon Redshift engine software that you want to deploy on the cluster.
   /// [databaseName] The name of the first database to be created when the cluster is created.
-  /// [defaultIamRoleArn] The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
+  /// [defaultIamRoleArn] ARN for the IAM role that was set as default for the cluster when the cluster was created.
   /// [dnsName] The DNS name of the cluster
   /// [elasticIp] The Elastic IP (EIP) address for the cluster.
   /// [encrypted] If true , the data in the cluster is encrypted at rest.
@@ -179,7 +179,7 @@ class ClusterState {
   /// [snapshotIdentifier] The name of the snapshot from which to create the new cluster.  Conflicts with `snapshotArn`.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [vpcSecurityGroupIds] A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+  /// [vpcSecurityGroupIds] List of VPC security groups to be associated with the cluster.
   const ClusterState({
     this.allowVersionUpgrade,
     this.applyImmediately,
@@ -294,7 +294,7 @@ class ClusterState {
       applyImmediately: (() { final guardedValue = map['applyImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       aquaConfigurationStatus: (() { final guardedValue = map['aquaConfigurationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      automatedSnapshotRetentionPeriod: (() { final guardedValue = map['automatedSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      automatedSnapshotRetentionPeriod: (() { final guardedValue = map['automatedSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityZoneRelocationEnabled: (() { final guardedValue = map['availabilityZoneRelocationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clusterIdentifier: (() { final guardedValue = map['clusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -318,18 +318,18 @@ class ClusterState {
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceTrackName: (() { final guardedValue = map['maintenanceTrackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       manageMasterPassword: (() { final guardedValue = map['manageMasterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      manualSnapshotRetentionPeriod: (() { final guardedValue = map['manualSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      manualSnapshotRetentionPeriod: (() { final guardedValue = map['manualSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       masterPassword: (() { final guardedValue = map['masterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPasswordSecretArn: (() { final guardedValue = map['masterPasswordSecretArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPasswordSecretKmsKeyId: (() { final guardedValue = map['masterPasswordSecretKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPasswordWo: (() { final guardedValue = map['masterPasswordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      masterPasswordWoVersion: (() { final guardedValue = map['masterPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      masterPasswordWoVersion: (() { final guardedValue = map['masterPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       masterUsername: (() { final guardedValue = map['masterUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiAz: (() { final guardedValue = map['multiAz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ownerAccount: (() { final guardedValue = map['ownerAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       preferredMaintenanceWindow: (() { final guardedValue = map['preferredMaintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publiclyAccessible: (() { final guardedValue = map['publiclyAccessible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

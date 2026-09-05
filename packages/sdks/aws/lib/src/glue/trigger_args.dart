@@ -13,27 +13,27 @@ class TriggerArgs {
   /// List of actions initiated by this trigger when it fires. See Actions Below.
   final pulumi.Input<List<TriggerAction>> actions;
   /// A description of the new trigger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Start the trigger. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires. See Event Batching Condition.
-  final pulumi.Input<List<TriggerEventBatchingCondition>>? eventBatchingConditions;
+  final pulumi.Input<List<TriggerEventBatchingCondition>?>? eventBatchingConditions;
   /// The name of the trigger.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A predicate to specify when the new trigger should fire. Required when trigger type is `CONDITIONAL`. See Predicate Below.
-  final pulumi.Input<TriggerPredicate>? predicate;
+  final pulumi.Input<TriggerPredicate?>? predicate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A cron expression used to specify the schedule. [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html)
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// Set to true to start `SCHEDULED` and `CONDITIONAL` triggers when created. True is not supported for `ON_DEMAND` triggers.
-  final pulumi.Input<bool>? startOnCreation;
+  final pulumi.Input<bool?>? startOnCreation;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of trigger. Valid values are `CONDITIONAL`, `EVENT`, `ON_DEMAND`, and `SCHEDULED`.
   final pulumi.Input<String> type;
   /// A workflow to which the trigger should be associated to. Every workflow graph (DAG) needs a starting trigger (`ON_DEMAND` or `SCHEDULED` type) and can contain multiple additional `CONDITIONAL` triggers.
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [TriggerArgs].
   /// [actions] List of actions initiated by this trigger when it fires. See Actions Below.

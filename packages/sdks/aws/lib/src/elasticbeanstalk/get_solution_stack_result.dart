@@ -4,44 +4,44 @@
 /// Result data returned by getSolutionStack.
 class GetSolutionStackResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final bool? mostRecent;
   /// Name of the solution stack.
-  final String name;
-  final String nameRegex;
-  final String region;
+  final String? name;
+  final String? nameRegex;
+  final String? region;
 
   /// Creates a new [GetSolutionStackResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [mostRecent] Optional.
   /// [name] Name of the solution stack.
-  /// [nameRegex] Required.
-  /// [region] Required.
+  /// [nameRegex] Optional.
+  /// [region] Optional.
   const GetSolutionStackResult({
-    required this.id,
+    this.id,
     this.mostRecent,
-    required this.name,
-    required this.nameRegex,
-    required this.region,
+    this.name,
+    this.nameRegex,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'mostRecent': ?mostRecent,
-      'name': name,
-      'nameRegex': nameRegex,
-      'region': region,
+      'name': ?name,
+      'nameRegex': ?nameRegex,
+      'region': ?region,
     };
   }
 
   factory GetSolutionStackResult.fromMap(Map<String, dynamic> map) {
     return GetSolutionStackResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
-      nameRegex: map['nameRegex'] as String,
-      region: map['region'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

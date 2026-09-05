@@ -6,28 +6,28 @@ import 'configured_table_table_reference.dart';
 /// Input properties used for looking up and filtering ConfiguredTable resources.
 class ConfiguredTableState {
   /// The columns of the references table which will be included in the configured table.
-  final pulumi.Input<List<String>>? allowedColumns;
+  final pulumi.Input<List<String>?>? allowedColumns;
   /// The analysis method for the configured table. The only valid value is currently `DIRECT_QUERY`.
-  final pulumi.Input<String>? analysisMethod;
+  final pulumi.Input<String?>? analysisMethod;
   /// The ARN of the configured table.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The date and time the configured table was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// A description for the configured table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the configured table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A reference to the AWS Glue table which will be used to create the configured table.
   /// * `table_reference.database_name` - (Required - Forces new resource) - The name of the AWS Glue database which contains the table.
   /// * `table_reference.table_name` - (Required - Forces new resource) - The name of the AWS Glue table which will be used to create the configured table.
-  final pulumi.Input<ConfiguredTableTableReference>? tableReference;
+  final pulumi.Input<ConfiguredTableTableReference?>? tableReference;
   /// Key value pairs which tag the configured table.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The date and time the configured table was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ConfiguredTableState].
   /// [allowedColumns] The columns of the references table which will be included in the configured table.

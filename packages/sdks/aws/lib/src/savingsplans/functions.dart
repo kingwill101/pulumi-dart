@@ -16,22 +16,22 @@ import 'get_savings_plan_result.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.savingsplans.getOfferings({
-///     productType: "EC2",
 ///     filters: [{
 ///         name: "region",
 ///         values: ["us-west-2"],
 ///     }],
+///     productType: "EC2",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.savingsplans.get_offerings(product_type="EC2",
-///     filters=[{
+/// example = aws.savingsplans.get_offerings(filters=[{
 ///         "name": "region",
 ///         "values": ["us-west-2"],
-///     }])
+///     }],
+///     product_type="EC2")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,7 +43,6 @@ import 'get_savings_plan_result.dart';
 /// {
 ///     var example = Aws.SavingsPlans.GetOfferings.Invoke(new()
 ///     {
-///         ProductType = "EC2",
 ///         Filters = new[]
 ///         {
 ///             new Aws.SavingsPlans.Inputs.GetOfferingsFilterInputArgs
@@ -55,6 +54,7 @@ import 'get_savings_plan_result.dart';
 ///                 },
 ///             },
 ///         },
+///         ProductType = "EC2",
 ///     });
 ///
 /// });
@@ -70,7 +70,6 @@ import 'get_savings_plan_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := savingsplans.GetOfferings(ctx, &savingsplans.GetOfferingsArgs{
-/// 			ProductType: pulumi.StringRef("EC2"),
 /// 			Filters: []savingsplans.GetOfferingsFilter{
 /// 				{
 /// 					Name: "region",
@@ -79,6 +78,7 @@ import 'get_savings_plan_result.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ProductType: pulumi.StringRef("EC2"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -97,11 +97,11 @@ import 'get_savings_plan_result.dart';
 /// }
 ///
 /// data "aws_savingsplans_getofferings" "example" {
-///   product_type = "EC2"
 ///   filters {
 ///     name   = "region"
 ///     values = ["us-west-2"]
 ///   }
+///   product_type = "EC2"
 /// }
 /// ```
 /// ```java
@@ -127,11 +127,11 @@ import 'get_savings_plan_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = SavingsplansFunctions.getOfferings(GetOfferingsArgs.builder()
-///             .productType("EC2")
 ///             .filters(GetOfferingsFilterArgs.builder()
 ///                 .name("region")
 ///                 .values("us-west-2")
 ///                 .build())
+///             .productType("EC2")
 ///             .build());
 ///
 ///     }
@@ -143,11 +143,11 @@ import 'get_savings_plan_result.dart';
 ///     fn::invoke:
 ///       function: aws:savingsplans:getOfferings
 ///       arguments:
-///         productType: EC2
 ///         filters:
 ///           - name: region
 ///             values:
 ///               - us-west-2
+///         productType: EC2
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_savingsplans_get_offerings_get_offerings_args_doc}
 /// [options] Invoke options controlling this call.
@@ -162,6 +162,17 @@ Future<GetOfferingsResult> getOfferings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOfferingsResult.fromMap(result);
+}
+
+pulumi.Output<GetOfferingsResult> getOfferingsOutput(
+  GetOfferingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:savingsplans/getOfferings:getOfferings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOfferingsResult.fromMap);
 }
 
 /// Use this data source to get information on an existing AWS Savings Plan.
@@ -294,4 +305,15 @@ Future<GetSavingsPlanResult> getSavingsPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSavingsPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetSavingsPlanResult> getSavingsPlanOutput(
+  GetSavingsPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:savingsplans/getSavingsPlan:getSavingsPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSavingsPlanResult.fromMap);
 }

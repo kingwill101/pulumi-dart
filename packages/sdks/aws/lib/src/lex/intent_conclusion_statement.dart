@@ -5,7 +5,7 @@ import 'intent_conclusion_statement_message.dart';
 
 class IntentConclusionStatement {
   final pulumi.Input<List<IntentConclusionStatementMessage>> messages;
-  final pulumi.Input<String>? responseCard;
+  final pulumi.Input<String?>? responseCard;
 
   /// Creates a new [IntentConclusionStatement].
   /// [messages] Required.

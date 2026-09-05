@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vpclattice_get_service_network_get_service_network_args_doc}
 class GetServiceNetworkArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the service network.
   final pulumi.Input<String> serviceNetworkIdentifier;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetServiceNetworkArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

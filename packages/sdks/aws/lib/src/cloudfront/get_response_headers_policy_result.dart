@@ -10,23 +10,23 @@ import 'get_response_headers_policy_server_timing_headers_config.dart';
 /// Result data returned by getResponseHeadersPolicy.
 class GetResponseHeadersPolicyResult {
   /// The response headers policy ARN.
-  final String arn;
+  final String? arn;
   /// Comment to describe the response headers policy. The comment cannot be longer than 128 characters.
-  final String comment;
+  final String? comment;
   /// Configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
-  final List<GetResponseHeadersPolicyCorsConfig> corsConfigs;
+  final List<GetResponseHeadersPolicyCorsConfig>? corsConfigs;
   /// Object that contains an attribute `items` that contains a list of Custom Headers. See Custom Header for more information.
-  final List<GetResponseHeadersPolicyCustomHeadersConfig> customHeadersConfigs;
+  final List<GetResponseHeadersPolicyCustomHeadersConfig>? customHeadersConfigs;
   /// Current version of the response headers policy.
-  final String etag;
-  final String id;
-  final String name;
+  final String? etag;
+  final String? id;
+  final String? name;
   /// Object that contains an attribute `items` that contains a list of Remove Headers. See Remove Header for more information.
-  final List<GetResponseHeadersPolicyRemoveHeadersConfig> removeHeadersConfigs;
+  final List<GetResponseHeadersPolicyRemoveHeadersConfig>? removeHeadersConfigs;
   /// A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.
-  final List<GetResponseHeadersPolicySecurityHeadersConfig> securityHeadersConfigs;
+  final List<GetResponseHeadersPolicySecurityHeadersConfig>? securityHeadersConfigs;
   /// (Optional) Configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront. See Server Timing Headers Config for more information.
-  final List<GetResponseHeadersPolicyServerTimingHeadersConfig> serverTimingHeadersConfigs;
+  final List<GetResponseHeadersPolicyServerTimingHeadersConfig>? serverTimingHeadersConfigs;
 
   /// Creates a new [GetResponseHeadersPolicyResult].
   /// [arn] The response headers policy ARN.
@@ -34,51 +34,51 @@ class GetResponseHeadersPolicyResult {
   /// [corsConfigs] Configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
   /// [customHeadersConfigs] Object that contains an attribute `items` that contains a list of Custom Headers. See Custom Header for more information.
   /// [etag] Current version of the response headers policy.
-  /// [id] Required.
-  /// [name] Required.
+  /// [id] Optional.
+  /// [name] Optional.
   /// [removeHeadersConfigs] Object that contains an attribute `items` that contains a list of Remove Headers. See Remove Header for more information.
   /// [securityHeadersConfigs] A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.
   /// [serverTimingHeadersConfigs] (Optional) Configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront. See Server Timing Headers Config for more information.
   const GetResponseHeadersPolicyResult({
-    required this.arn,
-    required this.comment,
-    required this.corsConfigs,
-    required this.customHeadersConfigs,
-    required this.etag,
-    required this.id,
-    required this.name,
-    required this.removeHeadersConfigs,
-    required this.securityHeadersConfigs,
-    required this.serverTimingHeadersConfigs,
+    this.arn,
+    this.comment,
+    this.corsConfigs,
+    this.customHeadersConfigs,
+    this.etag,
+    this.id,
+    this.name,
+    this.removeHeadersConfigs,
+    this.securityHeadersConfigs,
+    this.serverTimingHeadersConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'comment': comment,
-      'corsConfigs': pulumi.Input.encodeList<GetResponseHeadersPolicyCorsConfig, Map<String, dynamic>>(corsConfigs, (value) => value.toMap()),
-      'customHeadersConfigs': pulumi.Input.encodeList<GetResponseHeadersPolicyCustomHeadersConfig, Map<String, dynamic>>(customHeadersConfigs, (value) => value.toMap()),
-      'etag': etag,
-      'id': id,
-      'name': name,
-      'removeHeadersConfigs': pulumi.Input.encodeList<GetResponseHeadersPolicyRemoveHeadersConfig, Map<String, dynamic>>(removeHeadersConfigs, (value) => value.toMap()),
-      'securityHeadersConfigs': pulumi.Input.encodeList<GetResponseHeadersPolicySecurityHeadersConfig, Map<String, dynamic>>(securityHeadersConfigs, (value) => value.toMap()),
-      'serverTimingHeadersConfigs': pulumi.Input.encodeList<GetResponseHeadersPolicyServerTimingHeadersConfig, Map<String, dynamic>>(serverTimingHeadersConfigs, (value) => value.toMap()),
+      'arn': ?arn,
+      'comment': ?comment,
+      'corsConfigs': ?(() { final guardedValue = corsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResponseHeadersPolicyCorsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'customHeadersConfigs': ?(() { final guardedValue = customHeadersConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResponseHeadersPolicyCustomHeadersConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'etag': ?etag,
+      'id': ?id,
+      'name': ?name,
+      'removeHeadersConfigs': ?(() { final guardedValue = removeHeadersConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResponseHeadersPolicyRemoveHeadersConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'securityHeadersConfigs': ?(() { final guardedValue = securityHeadersConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResponseHeadersPolicySecurityHeadersConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'serverTimingHeadersConfigs': ?(() { final guardedValue = serverTimingHeadersConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResponseHeadersPolicyServerTimingHeadersConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetResponseHeadersPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicyResult(
-      arn: map['arn'] as String,
-      comment: map['comment'] as String,
-      corsConfigs: pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfig>(map['corsConfigs']!, (value) => GetResponseHeadersPolicyCorsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      customHeadersConfigs: pulumi.Input.decodeList<GetResponseHeadersPolicyCustomHeadersConfig>(map['customHeadersConfigs']!, (value) => GetResponseHeadersPolicyCustomHeadersConfig.fromMap((value as Map).cast<String, dynamic>())),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      removeHeadersConfigs: pulumi.Input.decodeList<GetResponseHeadersPolicyRemoveHeadersConfig>(map['removeHeadersConfigs']!, (value) => GetResponseHeadersPolicyRemoveHeadersConfig.fromMap((value as Map).cast<String, dynamic>())),
-      securityHeadersConfigs: pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfig>(map['securityHeadersConfigs']!, (value) => GetResponseHeadersPolicySecurityHeadersConfig.fromMap((value as Map).cast<String, dynamic>())),
-      serverTimingHeadersConfigs: pulumi.Input.decodeList<GetResponseHeadersPolicyServerTimingHeadersConfig>(map['serverTimingHeadersConfigs']!, (value) => GetResponseHeadersPolicyServerTimingHeadersConfig.fromMap((value as Map).cast<String, dynamic>())),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      corsConfigs: (() { final guardedValue = map['corsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfig>(guardedValue, (value) => GetResponseHeadersPolicyCorsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      customHeadersConfigs: (() { final guardedValue = map['customHeadersConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResponseHeadersPolicyCustomHeadersConfig>(guardedValue, (value) => GetResponseHeadersPolicyCustomHeadersConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      removeHeadersConfigs: (() { final guardedValue = map['removeHeadersConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResponseHeadersPolicyRemoveHeadersConfig>(guardedValue, (value) => GetResponseHeadersPolicyRemoveHeadersConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      securityHeadersConfigs: (() { final guardedValue = map['securityHeadersConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfig>(guardedValue, (value) => GetResponseHeadersPolicySecurityHeadersConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      serverTimingHeadersConfigs: (() { final guardedValue = map['serverTimingHeadersConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResponseHeadersPolicyServerTimingHeadersConfig>(guardedValue, (value) => GetResponseHeadersPolicyServerTimingHeadersConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

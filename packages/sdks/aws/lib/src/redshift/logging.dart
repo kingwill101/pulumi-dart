@@ -299,12 +299,12 @@ class Logging extends pulumi.CustomResource {
           'aws:redshift/logging:Logging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucketName = registerOutput<String?>('bucketName');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     logDestinationType = registerOutput<String?>('logDestinationType');
-    logExports = registerOutput<List<String>?>('logExports');
+    logExports = registerOutput<List<String>?>('logExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
   }
@@ -314,11 +314,12 @@ class Logging extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoggingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Logging._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,7 +336,24 @@ class Logging extends pulumi.CustomResource {
     bucketName = registerOutput<String?>('bucketName');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     logDestinationType = registerOutput<String?>('logDestinationType');
-    logExports = registerOutput<List<String>?>('logExports');
+    logExports = registerOutput<List<String>?>('logExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
+  }
+
+  /// Creates a typed reference to an existing [Logging] resource.
+  Logging.reference(String urn)
+    : super(
+        'aws:redshift/logging:Logging',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketName = registerOutput<String?>('bucketName');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    logDestinationType = registerOutput<String?>('logDestinationType');
+    logExports = registerOutput<List<String>?>('logExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
   }

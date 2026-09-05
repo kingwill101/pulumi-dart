@@ -6,13 +6,13 @@ import 'algorithm_validation_specification_validation_profiles_training_job_defi
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSource {
   /// List of JSON attribute names to select from the input data.
-  final pulumi.Input<List<String>>? attributeNames;
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceHubAccessConfig>? hubAccessConfig;
+  final pulumi.Input<List<String>?>? attributeNames;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceHubAccessConfig?>? hubAccessConfig;
   /// Instance group names associated with the data source.
-  final pulumi.Input<List<String>>? instanceGroupNames;
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
+  final pulumi.Input<List<String>?>? instanceGroupNames;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceModelAccessConfig?>? modelAccessConfig;
   /// Distribution type for S3 data. Allowed values are: `FullyReplicated` and `ShardedByS3Key`.
-  final pulumi.Input<String>? s3DataDistributionType;
+  final pulumi.Input<String?>? s3DataDistributionType;
   final pulumi.Input<String> s3DataType;
   final pulumi.Input<String> s3Uri;
 

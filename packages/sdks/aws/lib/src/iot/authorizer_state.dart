@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Authorizer resources.
 class AuthorizerState {
   /// The ARN of the authorizer.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The ARN of the authorizer's Lambda function.
-  final pulumi.Input<String>? authorizerFunctionArn;
+  final pulumi.Input<String?>? authorizerFunctionArn;
   /// Specifies whether the HTTP caching is enabled or not. Default: `false`.
-  final pulumi.Input<bool>? enableCachingForHttp;
+  final pulumi.Input<bool?>? enableCachingForHttp;
   /// The name of the authorizer.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies whether AWS IoT validates the token signature in an authorization request. Default: `false`.
-  final pulumi.Input<bool>? signingDisabled;
+  final pulumi.Input<bool?>? signingDisabled;
   /// The status of Authorizer request at creation. Valid values: `ACTIVE`, `INACTIVE`. Default: `ACTIVE`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
-  final pulumi.Input<String>? tokenKeyName;
+  final pulumi.Input<String?>? tokenKeyName;
   /// The public keys used to verify the digital signature returned by your custom authentication service. This value is required if signing is enabled in your authorizer.
-  final pulumi.Input<Map<String, String>>? tokenSigningPublicKeys;
+  final pulumi.Input<Map<String, String>?>? tokenSigningPublicKeys;
 
   /// Creates a new [AuthorizerState].
   /// [arn] The ARN of the authorizer.

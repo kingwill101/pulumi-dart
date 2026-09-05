@@ -37,8 +37,8 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
       deletionCharacter: pulumi.Input.fromValue(map['deletionCharacter'] as String),
       endCharacter: pulumi.Input.fromValue(map['endCharacter'] as String),
-      endTimeoutMs: pulumi.Input.fromValue(map['endTimeoutMs'] as int),
-      maxLength: pulumi.Input.fromValue(map['maxLength'] as int),
+      endTimeoutMs: pulumi.Input.fromValue((map['endTimeoutMs'] as num).toInt()),
+      maxLength: pulumi.Input.fromValue((map['maxLength'] as num).toInt()),
     );
   }
 }

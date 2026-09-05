@@ -8,13 +8,13 @@ import 'v2models_intent_confirmation_setting_declination_conditional_default_bra
 
 class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `customPayload`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload>? customPayload;
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload?>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard?>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plainTextMessage`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage?>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage?>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `customPayload`.

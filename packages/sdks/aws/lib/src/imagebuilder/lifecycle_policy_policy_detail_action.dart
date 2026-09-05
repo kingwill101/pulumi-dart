@@ -5,7 +5,7 @@ import 'lifecycle_policy_policy_detail_action_include_resources.dart';
 
 class LifecyclePolicyPolicyDetailAction {
   /// Specifies the resources that the lifecycle policy applies to. Detailed below.
-  final pulumi.Input<LifecyclePolicyPolicyDetailActionIncludeResources>? includeResources;
+  final pulumi.Input<LifecyclePolicyPolicyDetailActionIncludeResources?>? includeResources;
   /// Specifies the lifecycle action to take. Valid values: `DELETE`, `DEPRECATE` or `DISABLE`.
   ///
   /// The following arguments are optional:

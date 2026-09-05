@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AlternativeContact resources.
 class AlternativeContactState {
   /// ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Type of the alternate contact. Allowed values are: `BILLING`, `OPERATIONS`, `SECURITY`.
-  final pulumi.Input<String>? alternateContactType;
+  final pulumi.Input<String?>? alternateContactType;
   /// An email address for the alternate contact.
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// Name of the alternate contact.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Phone number for the alternate contact.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
   /// Title for the alternate contact.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [AlternativeContactState].
   /// [accountId] ID of the target account when managing member accounts. Will manage current user's account by default if omitted.

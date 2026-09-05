@@ -6,9 +6,9 @@ class UserSettingsCookieSynchronizationConfigurationBlocklist {
   /// Domain of the cookie.
   final pulumi.Input<String> domain;
   /// Name of the cookie.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path of the cookie.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [UserSettingsCookieSynchronizationConfigurationBlocklist].
   /// [domain] Domain of the cookie.

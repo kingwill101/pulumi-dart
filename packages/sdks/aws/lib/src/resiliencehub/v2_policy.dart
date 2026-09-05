@@ -20,10 +20,10 @@ import 'v2_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2Policy("example", {
-///     name: "example-policy",
 ///     availabilitySlo: {
 ///         target: 99.9,
 ///     },
+///     name: "example-policy",
 /// });
 /// ```
 /// ```python
@@ -31,10 +31,10 @@ import 'v2_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2Policy("example",
-///     name="example-policy",
 ///     availability_slo={
 ///         "target": 99.9,
-///     })
+///     },
+///     name="example-policy")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,11 +46,11 @@ import 'v2_policy_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2Policy("example", new()
 ///     {
-///         Name = "example-policy",
 ///         AvailabilitySlo = new Aws.ResilienceHub.Inputs.V2PolicyAvailabilitySloArgs
 ///         {
 ///             Target = 99.9,
 ///         },
+///         Name = "example-policy",
 ///     });
 ///
 /// });
@@ -66,10 +66,10 @@ import 'v2_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2Policy(ctx, "example", &resiliencehub.V2PolicyArgs{
-/// 			Name: pulumi.String("example-policy"),
 /// 			AvailabilitySlo: &resiliencehub.V2PolicyAvailabilitySloArgs{
 /// 				Target: pulumi.Float64(99.9),
 /// 			},
+/// 			Name: pulumi.String("example-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -88,10 +88,10 @@ import 'v2_policy_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2policy" "example" {
-///   name = "example-policy"
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
+///   name = "example-policy"
 /// }
 /// ```
 /// ```java
@@ -117,10 +117,10 @@ import 'v2_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2Policy("example", V2PolicyArgs.builder()
-///             .name("example-policy")
 ///             .availabilitySlo(V2PolicyAvailabilitySloArgs.builder()
 ///                 .target(99.9)
 ///                 .build())
+///             .name("example-policy")
 ///             .build());
 ///
 ///     }
@@ -131,9 +131,9 @@ import 'v2_policy_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2Policy
 ///     properties:
-///       name: example-policy
 ///       availabilitySlo:
 ///         target: 99.9
+///       name: example-policy
 /// ```
 ///
 ///
@@ -145,8 +145,6 @@ import 'v2_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2Policy("example", {
-///     name: "example-policy",
-///     description: "Policy with multi-AZ and data recovery targets",
 ///     availabilitySlo: {
 ///         target: 99.99,
 ///     },
@@ -158,6 +156,8 @@ import 'v2_policy_state.dart';
 ///         rpoInMinutes: 5,
 ///         rtoInMinutes: 10,
 ///     },
+///     name: "example-policy",
+///     description: "Policy with multi-AZ and data recovery targets",
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -168,8 +168,6 @@ import 'v2_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2Policy("example",
-///     name="example-policy",
-///     description="Policy with multi-AZ and data recovery targets",
 ///     availability_slo={
 ///         "target": 99.99,
 ///     },
@@ -181,6 +179,8 @@ import 'v2_policy_state.dart';
 ///         "rpo_in_minutes": 5,
 ///         "rto_in_minutes": 10,
 ///     },
+///     name="example-policy",
+///     description="Policy with multi-AZ and data recovery targets",
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -195,8 +195,6 @@ import 'v2_policy_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2Policy("example", new()
 ///     {
-///         Name = "example-policy",
-///         Description = "Policy with multi-AZ and data recovery targets",
 ///         AvailabilitySlo = new Aws.ResilienceHub.Inputs.V2PolicyAvailabilitySloArgs
 ///         {
 ///             Target = 99.99,
@@ -211,6 +209,8 @@ import 'v2_policy_state.dart';
 ///             RpoInMinutes = 5,
 ///             RtoInMinutes = 10,
 ///         },
+///         Name = "example-policy",
+///         Description = "Policy with multi-AZ and data recovery targets",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -230,8 +230,6 @@ import 'v2_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2Policy(ctx, "example", &resiliencehub.V2PolicyArgs{
-/// 			Name:        pulumi.String("example-policy"),
-/// 			Description: pulumi.String("Policy with multi-AZ and data recovery targets"),
 /// 			AvailabilitySlo: &resiliencehub.V2PolicyAvailabilitySloArgs{
 /// 				Target: pulumi.Float64(99.99),
 /// 			},
@@ -243,6 +241,8 @@ import 'v2_policy_state.dart';
 /// 				RpoInMinutes:             pulumi.Int(5),
 /// 				RtoInMinutes:             pulumi.Int(10),
 /// 			},
+/// 			Name:        pulumi.String("example-policy"),
+/// 			Description: pulumi.String("Policy with multi-AZ and data recovery targets"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -264,8 +264,6 @@ import 'v2_policy_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2policy" "example" {
-///   name        = "example-policy"
-///   description = "Policy with multi-AZ and data recovery targets"
 ///   availability_slo = {
 ///     target = 99.99
 ///   }
@@ -277,6 +275,8 @@ import 'v2_policy_state.dart';
 ///     rpo_in_minutes             = 5
 ///     rto_in_minutes             = 10
 ///   }
+///   name        = "example-policy"
+///   description = "Policy with multi-AZ and data recovery targets"
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -307,8 +307,6 @@ import 'v2_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2Policy("example", V2PolicyArgs.builder()
-///             .name("example-policy")
-///             .description("Policy with multi-AZ and data recovery targets")
 ///             .availabilitySlo(V2PolicyAvailabilitySloArgs.builder()
 ///                 .target(99.99)
 ///                 .build())
@@ -320,6 +318,8 @@ import 'v2_policy_state.dart';
 ///                 .rpoInMinutes(5)
 ///                 .rtoInMinutes(10)
 ///                 .build())
+///             .name("example-policy")
+///             .description("Policy with multi-AZ and data recovery targets")
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -331,8 +331,6 @@ import 'v2_policy_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2Policy
 ///     properties:
-///       name: example-policy
-///       description: Policy with multi-AZ and data recovery targets
 ///       availabilitySlo:
 ///         target: 99.99
 ///       dataRecovery:
@@ -341,6 +339,8 @@ import 'v2_policy_state.dart';
 ///         disasterRecoveryApproach: ACTIVE_ACTIVE
 ///         rpoInMinutes: 5
 ///         rtoInMinutes: 10
+///       name: example-policy
+///       description: Policy with multi-AZ and data recovery targets
 ///       tags:
 ///         Environment: production
 /// ```
@@ -354,7 +354,6 @@ import 'v2_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2Policy("example", {
-///     name: "example-multi-region-policy",
 ///     availabilitySlo: {
 ///         target: 99.95,
 ///     },
@@ -363,6 +362,7 @@ import 'v2_policy_state.dart';
 ///         rpoInMinutes: 15,
 ///         rtoInMinutes: 30,
 ///     },
+///     name: "example-multi-region-policy",
 /// });
 /// ```
 /// ```python
@@ -370,7 +370,6 @@ import 'v2_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2Policy("example",
-///     name="example-multi-region-policy",
 ///     availability_slo={
 ///         "target": 99.95,
 ///     },
@@ -378,7 +377,8 @@ import 'v2_policy_state.dart';
 ///         "disaster_recovery_approach": "ACTIVE_PASSIVE",
 ///         "rpo_in_minutes": 15,
 ///         "rto_in_minutes": 30,
-///     })
+///     },
+///     name="example-multi-region-policy")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -390,7 +390,6 @@ import 'v2_policy_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2Policy("example", new()
 ///     {
-///         Name = "example-multi-region-policy",
 ///         AvailabilitySlo = new Aws.ResilienceHub.Inputs.V2PolicyAvailabilitySloArgs
 ///         {
 ///             Target = 99.95,
@@ -401,6 +400,7 @@ import 'v2_policy_state.dart';
 ///             RpoInMinutes = 15,
 ///             RtoInMinutes = 30,
 ///         },
+///         Name = "example-multi-region-policy",
 ///     });
 ///
 /// });
@@ -416,7 +416,6 @@ import 'v2_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2Policy(ctx, "example", &resiliencehub.V2PolicyArgs{
-/// 			Name: pulumi.String("example-multi-region-policy"),
 /// 			AvailabilitySlo: &resiliencehub.V2PolicyAvailabilitySloArgs{
 /// 				Target: pulumi.Float64(99.95),
 /// 			},
@@ -425,6 +424,7 @@ import 'v2_policy_state.dart';
 /// 				RpoInMinutes:             pulumi.Int(15),
 /// 				RtoInMinutes:             pulumi.Int(30),
 /// 			},
+/// 			Name: pulumi.String("example-multi-region-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -443,7 +443,6 @@ import 'v2_policy_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2policy" "example" {
-///   name = "example-multi-region-policy"
 ///   availability_slo = {
 ///     target = 99.95
 ///   }
@@ -452,6 +451,7 @@ import 'v2_policy_state.dart';
 ///     rpo_in_minutes             = 15
 ///     rto_in_minutes             = 30
 ///   }
+///   name = "example-multi-region-policy"
 /// }
 /// ```
 /// ```java
@@ -478,7 +478,6 @@ import 'v2_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2Policy("example", V2PolicyArgs.builder()
-///             .name("example-multi-region-policy")
 ///             .availabilitySlo(V2PolicyAvailabilitySloArgs.builder()
 ///                 .target(99.95)
 ///                 .build())
@@ -487,6 +486,7 @@ import 'v2_policy_state.dart';
 ///                 .rpoInMinutes(15)
 ///                 .rtoInMinutes(30)
 ///                 .build())
+///             .name("example-multi-region-policy")
 ///             .build());
 ///
 ///     }
@@ -497,13 +497,13 @@ import 'v2_policy_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2Policy
 ///     properties:
-///       name: example-multi-region-policy
 ///       availabilitySlo:
 ///         target: 99.95
 ///       multiRegion:
 ///         disasterRecoveryApproach: ACTIVE_PASSIVE
 ///         rpoInMinutes: 15
 ///         rtoInMinutes: 30
+///       name: example-multi-region-policy
 /// ```
 ///
 ///
@@ -513,7 +513,7 @@ import 'v2_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Resilience Hub V2 Policy.
+/// - `arn` (String) ARN of the Resilience Hub V2 Policy.
 ///
 ///
 /// Using `pulumi import`, import Resilience Hub V2 Policy using the `arn`. For example:
@@ -559,7 +559,7 @@ class V2Policy extends pulumi.CustomResource {
           'aws:resiliencehub/v2Policy:V2Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilitySlo = registerOutput<V2PolicyAvailabilitySlo?>('availabilitySlo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyAvailabilitySlo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -570,8 +570,8 @@ class V2Policy extends pulumi.CustomResource {
     multiRegion = registerOutput<V2PolicyMultiRegion?>('multiRegion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyMultiRegion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [V2Policy] resource's state with the given [name] and [id].
@@ -579,11 +579,12 @@ class V2Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -606,7 +607,29 @@ class V2Policy extends pulumi.CustomResource {
     multiRegion = registerOutput<V2PolicyMultiRegion?>('multiRegion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyMultiRegion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [V2Policy] resource.
+  V2Policy.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2Policy:V2Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilitySlo = registerOutput<V2PolicyAvailabilitySlo?>('availabilitySlo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyAvailabilitySlo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataRecovery = registerOutput<V2PolicyDataRecovery?>('dataRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyDataRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    multiAz = registerOutput<V2PolicyMultiAz?>('multiAz', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyMultiAz.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiRegion = registerOutput<V2PolicyMultiRegion?>('multiRegion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyMultiRegion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

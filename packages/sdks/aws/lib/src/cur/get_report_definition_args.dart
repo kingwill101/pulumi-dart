@@ -10,7 +10,7 @@ class GetReportDefinitionArgs {
   /// Name of the report definition to match.
   final pulumi.Input<String> reportName;
   /// Map of key-value pairs assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetReportDefinitionArgs].
   /// [reportName] Name of the report definition to match.

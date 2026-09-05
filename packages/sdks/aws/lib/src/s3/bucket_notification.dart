@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_notification_args.dart';
+import 'bucket_notification_lambda_function.dart';
+import 'bucket_notification_queue.dart';
 import 'bucket_notification_state.dart';
+import 'bucket_notification_topic.dart';
 
 /// Manages a S3 Bucket Notification Configuration. For additional information, see the [Configuring S3 Event Notifications section in the Amazon S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
 ///
@@ -20,18 +23,18 @@ import 'bucket_notification_state.dart';
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "your-bucket-name"});
 /// const topic = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "Service",
-///             identifiers: ["s3.amazonaws.com"],
-///         }],
-///         actions: ["SNS:Publish"],
-///         resources: ["arn:aws:sns:*:*:s3-event-notification-topic"],
 ///         conditions: [{
 ///             test: "ArnLike",
 ///             variable: "aws:SourceArn",
 ///             values: [bucket.arn],
 ///         }],
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["s3.amazonaws.com"],
+///         }],
+///         effect: "Allow",
+///         actions: ["SNS:Publish"],
+///         resources: ["arn:aws:sns:*:*:s3-event-notification-topic"],
 ///     }],
 /// });
 /// const topicTopic = new aws.sns.Topic("topic", {
@@ -39,12 +42,12 @@ import 'bucket_notification_state.dart';
 ///     policy: topic.json,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
-///     bucket: bucket.id,
 ///     topics: [{
 ///         topicArn: topicTopic.arn,
 ///         events: ["s3:ObjectCreated:*"],
 ///         filterSuffix: ".log",
 ///     }],
+///     bucket: bucket.id,
 /// });
 /// ```
 /// ```python
@@ -53,29 +56,29 @@ import 'bucket_notification_state.dart';
 ///
 /// bucket = aws.s3.Bucket("bucket", bucket="your-bucket-name")
 /// topic = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "Service",
-///         "identifiers": ["s3.amazonaws.com"],
-///     }],
-///     "actions": ["SNS:Publish"],
-///     "resources": ["arn:aws:sns:*:*:s3-event-notification-topic"],
 ///     "conditions": [{
 ///         "test": "ArnLike",
 ///         "variable": "aws:SourceArn",
 ///         "values": [bucket.arn],
 ///     }],
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["s3.amazonaws.com"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["SNS:Publish"],
+///     "resources": ["arn:aws:sns:*:*:s3-event-notification-topic"],
 /// }])
 /// topic_topic = aws.sns.Topic("topic",
 ///     name="s3-event-notification-topic",
 ///     policy=topic.json)
 /// bucket_notification = aws.s3.BucketNotification("bucket_notification",
-///     bucket=bucket.id,
 ///     topics=[{
 ///         "topic_arn": topic_topic.arn,
 ///         "events": ["s3:ObjectCreated:*"],
 ///         "filter_suffix": ".log",
-///     }])
+///     }],
+///     bucket=bucket.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -96,26 +99,6 @@ import 'bucket_notification_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "s3.amazonaws.com",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "SNS:Publish",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:sns:*:*:s3-event-notification-topic",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -127,6 +110,26 @@ import 'bucket_notification_state.dart';
 ///                             bucket.Arn,
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "s3.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "SNS:Publish",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:sns:*:*:s3-event-notification-topic",
 ///                 },
 ///             },
 ///         },
@@ -140,7 +143,6 @@ import 'bucket_notification_state.dart';
 ///
 ///     var bucketNotification = new Aws.S3.BucketNotification("bucket_notification", new()
 ///     {
-///         Bucket = bucket.Id,
 ///         Topics = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketNotificationTopicArgs
@@ -153,6 +155,7 @@ import 'bucket_notification_state.dart';
 ///                 FilterSuffix = ".log",
 ///             },
 ///         },
+///         Bucket = bucket.Id,
 ///     });
 ///
 /// });
@@ -178,21 +181,6 @@ import 'bucket_notification_state.dart';
 /// 		topic := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("Service"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("s3.amazonaws.com"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SNS:Publish"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						pulumi.String("arn:aws:sns:*:*:s3-event-notification-topic"),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("ArnLike"),
@@ -201,6 +189,21 @@ import 'bucket_notification_state.dart';
 /// 								bucket.Arn,
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("s3.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Publish"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						pulumi.String("arn:aws:sns:*:*:s3-event-notification-topic"),
 /// 					},
 /// 				},
 /// 			},
@@ -213,7 +216,6 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Topics: s3.BucketNotificationTopicArray{
 /// 				&s3.BucketNotificationTopicArgs{
 /// 					TopicArn: topicTopic.Arn,
@@ -223,6 +225,7 @@ import 'bucket_notification_state.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -242,18 +245,18 @@ import 'bucket_notification_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "topic" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "Service"
-///       identifiers = ["s3.amazonaws.com"]
-///     }
-///     actions   = ["SNS:Publish"]
-///     resources = ["arn:aws:sns:*:*:s3-event-notification-topic"]
 ///     conditions {
 ///       test     = "ArnLike"
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_s3_bucket.bucket.arn]
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["s3.amazonaws.com"]
+///     }
+///     effect    = "Allow"
+///     actions   = ["SNS:Publish"]
+///     resources = ["arn:aws:sns:*:*:s3-event-notification-topic"]
 ///   }
 /// }
 ///
@@ -265,12 +268,12 @@ import 'bucket_notification_state.dart';
 ///   bucket = "your-bucket-name"
 /// }
 /// resource "aws_s3_bucketnotification" "bucket_notification" {
-///   bucket = aws_s3_bucket.bucket.id
 ///   topics {
 ///     topic_arn     = aws_sns_topic.topic.arn
 ///     events        = ["s3:ObjectCreated:*"]
 ///     filter_suffix = ".log"
 ///   }
+///   bucket = aws_s3_bucket.bucket.id
 /// }
 /// ```
 /// ```java
@@ -284,8 +287,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.Topic;
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
@@ -310,18 +313,18 @@ import 'bucket_notification_state.dart';
 ///
 ///         final var topic = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Service")
-///                     .identifiers("s3.amazonaws.com")
-///                     .build())
-///                 .actions("SNS:Publish")
-///                 .resources("arn:aws:sns:*:*:s3-event-notification-topic")
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("ArnLike")
 ///                     .variable("aws:SourceArn")
 ///                     .values(bucket.arn())
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("s3.amazonaws.com")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("SNS:Publish")
+///                 .resources("arn:aws:sns:*:*:s3-event-notification-topic")
 ///                 .build())
 ///             .build());
 ///
@@ -331,12 +334,12 @@ import 'bucket_notification_state.dart';
 ///             .build());
 ///
 ///         var bucketNotification = new BucketNotification("bucketNotification", BucketNotificationArgs.builder()
-///             .bucket(bucket.id())
 ///             .topics(BucketNotificationTopicArgs.builder()
 ///                 .topicArn(topicTopic.arn())
 ///                 .events("s3:ObjectCreated:*")
 ///                 .filterSuffix(".log")
 ///                 .build())
+///             .bucket(bucket.id())
 ///             .build());
 ///
 ///     }
@@ -358,32 +361,32 @@ import 'bucket_notification_state.dart';
 ///     type: aws:s3:BucketNotification
 ///     name: bucket_notification
 ///     properties:
-///       bucket: ${bucket.id}
 ///       topics:
 ///         - topicArn: ${topicTopic.arn}
 ///           events:
 ///             - s3:ObjectCreated:*
 ///           filterSuffix: .log
+///       bucket: ${bucket.id}
 /// variables:
 ///   topic:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - s3.amazonaws.com
-///             actions:
-///               - SNS:Publish
-///             resources:
-///               - arn:aws:sns:*:*:s3-event-notification-topic
-///             conditions:
+///           - conditions:
 ///               - test: ArnLike
 ///                 variable: aws:SourceArn
 ///                 values:
 ///                   - ${bucket.arn}
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - s3.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - SNS:Publish
+///             resources:
+///               - arn:aws:sns:*:*:s3-event-notification-topic
 /// ```
 ///
 ///
@@ -397,18 +400,18 @@ import 'bucket_notification_state.dart';
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "your-bucket-name"});
 /// const queue = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "*",
-///             identifiers: ["*"],
-///         }],
-///         actions: ["sqs:SendMessage"],
-///         resources: ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 ///         conditions: [{
 ///             test: "ArnEquals",
 ///             variable: "aws:SourceArn",
 ///             values: [bucket.arn],
 ///         }],
+///         principals: [{
+///             type: "*",
+///             identifiers: ["*"],
+///         }],
+///         effect: "Allow",
+///         actions: ["sqs:SendMessage"],
+///         resources: ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 ///     }],
 /// });
 /// const queueQueue = new aws.sqs.Queue("queue", {
@@ -416,12 +419,12 @@ import 'bucket_notification_state.dart';
 ///     policy: queue.json,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
-///     bucket: bucket.id,
 ///     queues: [{
 ///         queueArn: queueQueue.arn,
 ///         events: ["s3:ObjectCreated:*"],
 ///         filterSuffix: ".log",
 ///     }],
+///     bucket: bucket.id,
 /// });
 /// ```
 /// ```python
@@ -430,29 +433,29 @@ import 'bucket_notification_state.dart';
 ///
 /// bucket = aws.s3.Bucket("bucket", bucket="your-bucket-name")
 /// queue = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "*",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": ["sqs:SendMessage"],
-///     "resources": ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 ///     "conditions": [{
 ///         "test": "ArnEquals",
 ///         "variable": "aws:SourceArn",
 ///         "values": [bucket.arn],
 ///     }],
+///     "principals": [{
+///         "type": "*",
+///         "identifiers": ["*"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["sqs:SendMessage"],
+///     "resources": ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 /// }])
 /// queue_queue = aws.sqs.Queue("queue",
 ///     name="s3-event-notification-queue",
 ///     policy=queue.json)
 /// bucket_notification = aws.s3.BucketNotification("bucket_notification",
-///     bucket=bucket.id,
 ///     queues=[{
 ///         "queue_arn": queue_queue.arn,
 ///         "events": ["s3:ObjectCreated:*"],
 ///         "filter_suffix": ".log",
-///     }])
+///     }],
+///     bucket=bucket.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -473,26 +476,6 @@ import 'bucket_notification_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "*",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "sqs:SendMessage",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:sqs:*:*:s3-event-notification-queue",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -504,6 +487,26 @@ import 'bucket_notification_state.dart';
 ///                             bucket.Arn,
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "*",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sqs:SendMessage",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:sqs:*:*:s3-event-notification-queue",
 ///                 },
 ///             },
 ///         },
@@ -517,7 +520,6 @@ import 'bucket_notification_state.dart';
 ///
 ///     var bucketNotification = new Aws.S3.BucketNotification("bucket_notification", new()
 ///     {
-///         Bucket = bucket.Id,
 ///         Queues = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketNotificationQueueArgs
@@ -530,6 +532,7 @@ import 'bucket_notification_state.dart';
 ///                 FilterSuffix = ".log",
 ///             },
 ///         },
+///         Bucket = bucket.Id,
 ///     });
 ///
 /// });
@@ -555,21 +558,6 @@ import 'bucket_notification_state.dart';
 /// 		queue := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("*"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("sqs:SendMessage"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						pulumi.String("arn:aws:sqs:*:*:s3-event-notification-queue"),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("ArnEquals"),
@@ -578,6 +566,21 @@ import 'bucket_notification_state.dart';
 /// 								bucket.Arn,
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("*"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("sqs:SendMessage"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						pulumi.String("arn:aws:sqs:*:*:s3-event-notification-queue"),
 /// 					},
 /// 				},
 /// 			},
@@ -590,7 +593,6 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Queues: s3.BucketNotificationQueueArray{
 /// 				&s3.BucketNotificationQueueArgs{
 /// 					QueueArn: queueQueue.Arn,
@@ -600,6 +602,7 @@ import 'bucket_notification_state.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -619,18 +622,18 @@ import 'bucket_notification_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "queue" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "*"
-///       identifiers = ["*"]
-///     }
-///     actions   = ["sqs:SendMessage"]
-///     resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
 ///     conditions {
 ///       test     = "ArnEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_s3_bucket.bucket.arn]
 ///     }
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     effect    = "Allow"
+///     actions   = ["sqs:SendMessage"]
+///     resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
 ///   }
 /// }
 ///
@@ -642,12 +645,12 @@ import 'bucket_notification_state.dart';
 ///   bucket = "your-bucket-name"
 /// }
 /// resource "aws_s3_bucketnotification" "bucket_notification" {
-///   bucket = aws_s3_bucket.bucket.id
 ///   queues {
 ///     queue_arn     = aws_sqs_queue.queue.arn
 ///     events        = ["s3:ObjectCreated:*"]
 ///     filter_suffix = ".log"
 ///   }
+///   bucket = aws_s3_bucket.bucket.id
 /// }
 /// ```
 /// ```java
@@ -661,8 +664,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
@@ -687,18 +690,18 @@ import 'bucket_notification_state.dart';
 ///
 ///         final var queue = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("*")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions("sqs:SendMessage")
-///                 .resources("arn:aws:sqs:*:*:s3-event-notification-queue")
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("ArnEquals")
 ///                     .variable("aws:SourceArn")
 ///                     .values(bucket.arn())
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("*")
+///                     .identifiers("*")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("sqs:SendMessage")
+///                 .resources("arn:aws:sqs:*:*:s3-event-notification-queue")
 ///                 .build())
 ///             .build());
 ///
@@ -708,12 +711,12 @@ import 'bucket_notification_state.dart';
 ///             .build());
 ///
 ///         var bucketNotification = new BucketNotification("bucketNotification", BucketNotificationArgs.builder()
-///             .bucket(bucket.id())
 ///             .queues(BucketNotificationQueueArgs.builder()
 ///                 .queueArn(queueQueue.arn())
 ///                 .events("s3:ObjectCreated:*")
 ///                 .filterSuffix(".log")
 ///                 .build())
+///             .bucket(bucket.id())
 ///             .build());
 ///
 ///     }
@@ -735,32 +738,32 @@ import 'bucket_notification_state.dart';
 ///     type: aws:s3:BucketNotification
 ///     name: bucket_notification
 ///     properties:
-///       bucket: ${bucket.id}
 ///       queues:
 ///         - queueArn: ${queueQueue.arn}
 ///           events:
 ///             - s3:ObjectCreated:*
 ///           filterSuffix: .log
+///       bucket: ${bucket.id}
 /// variables:
 ///   queue:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: '*'
-///                 identifiers:
-///                   - '*'
-///             actions:
-///               - sqs:SendMessage
-///             resources:
-///               - arn:aws:sqs:*:*:s3-event-notification-queue
-///             conditions:
+///           - conditions:
 ///               - test: ArnEquals
 ///                 variable: aws:SourceArn
 ///                 values:
 ///                   - ${bucket.arn}
+///             principals:
+///               - type: '*'
+///                 identifiers:
+///                   - '*'
+///             effect: Allow
+///             actions:
+///               - sqs:SendMessage
+///             resources:
+///               - arn:aws:sqs:*:*:s3-event-notification-queue
 /// ```
 ///
 ///
@@ -773,11 +776,11 @@ import 'bucket_notification_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["lambda.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -801,13 +804,13 @@ import 'bucket_notification_state.dart';
 ///     sourceArn: bucket.arn,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
-///     bucket: bucket.id,
 ///     lambdaFunctions: [{
 ///         lambdaFunctionArn: func.arn,
 ///         events: ["s3:ObjectCreated:*"],
 ///         filterPrefix: "AWSLogs/",
 ///         filterSuffix: ".log",
 ///     }],
+///     bucket: bucket.id,
 /// }, {
 ///     dependsOn: [allowBucket],
 /// });
@@ -817,11 +820,11 @@ import 'bucket_notification_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["lambda.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// iam_for_lambda = aws.iam.Role("iam_for_lambda",
@@ -841,13 +844,13 @@ import 'bucket_notification_state.dart';
 ///     principal="s3.amazonaws.com",
 ///     source_arn=bucket.arn)
 /// bucket_notification = aws.s3.BucketNotification("bucket_notification",
-///     bucket=bucket.id,
 ///     lambda_functions=[{
 ///         "lambda_function_arn": func.arn,
 ///         "events": ["s3:ObjectCreated:*"],
 ///         "filter_prefix": "AWSLogs/",
 ///         "filter_suffix": ".log",
 ///     }],
+///     bucket=bucket.id,
 ///     opts = pulumi.ResourceOptions(depends_on=[allow_bucket]))
 /// ```
 /// ```csharp
@@ -864,7 +867,6 @@ import 'bucket_notification_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -876,6 +878,7 @@ import 'bucket_notification_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -915,7 +918,6 @@ import 'bucket_notification_state.dart';
 ///
 ///     var bucketNotification = new Aws.S3.BucketNotification("bucket_notification", new()
 ///     {
-///         Bucket = bucket.Id,
 ///         LambdaFunctions = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketNotificationLambdaFunctionArgs
@@ -929,6 +931,7 @@ import 'bucket_notification_state.dart';
 ///                 FilterSuffix = ".log",
 ///             },
 ///         },
+///         Bucket = bucket.Id,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -954,7 +957,6 @@ import 'bucket_notification_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -963,6 +965,7 @@ import 'bucket_notification_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -1006,7 +1009,6 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			LambdaFunctions: s3.BucketNotificationLambdaFunctionArray{
 /// 				&s3.BucketNotificationLambdaFunctionArgs{
 /// 					LambdaFunctionArn: _func.Arn,
@@ -1017,6 +1019,7 @@ import 'bucket_notification_state.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			allowBucket,
 /// 		}))
@@ -1038,11 +1041,11 @@ import 'bucket_notification_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -1070,13 +1073,13 @@ import 'bucket_notification_state.dart';
 /// }
 /// resource "aws_s3_bucketnotification" "bucket_notification" {
 ///   depends_on = [aws_lambda_permission.allow_bucket]
-///   bucket     = aws_s3_bucket.bucket.id
 ///   lambda_functions {
 ///     lambda_function_arn = aws_lambda_function.func.arn
 ///     events              = ["s3:ObjectCreated:*"]
 ///     filter_prefix       = "AWSLogs/"
 ///     filter_suffix       = ".log"
 ///   }
+///   bucket = aws_s3_bucket.bucket.id
 /// }
 /// ```
 /// ```java
@@ -1117,11 +1120,11 @@ import 'bucket_notification_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("lambda.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -1152,13 +1155,13 @@ import 'bucket_notification_state.dart';
 ///             .build());
 ///
 ///         var bucketNotification = new BucketNotification("bucketNotification", BucketNotificationArgs.builder()
-///             .bucket(bucket.id())
 ///             .lambdaFunctions(BucketNotificationLambdaFunctionArgs.builder()
 ///                 .lambdaFunctionArn(func.arn())
 ///                 .events("s3:ObjectCreated:*")
 ///                 .filterPrefix("AWSLogs/")
 ///                 .filterSuffix(".log")
 ///                 .build())
+///             .bucket(bucket.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(allowBucket)
 ///                 .build());
@@ -1200,13 +1203,13 @@ import 'bucket_notification_state.dart';
 ///     type: aws:s3:BucketNotification
 ///     name: bucket_notification
 ///     properties:
-///       bucket: ${bucket.id}
 ///       lambdaFunctions:
 ///         - lambdaFunctionArn: ${func.arn}
 ///           events:
 ///             - s3:ObjectCreated:*
 ///           filterPrefix: AWSLogs/
 ///           filterSuffix: .log
+///       bucket: ${bucket.id}
 ///     options:
 ///       dependsOn:
 ///         - ${allowBucket}
@@ -1216,11 +1219,11 @@ import 'bucket_notification_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - lambda.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -1235,11 +1238,11 @@ import 'bucket_notification_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["lambda.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -1276,7 +1279,6 @@ import 'bucket_notification_state.dart';
 ///     sourceArn: bucket.arn,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
-///     bucket: bucket.id,
 ///     lambdaFunctions: [
 ///         {
 ///             lambdaFunctionArn: func1.arn,
@@ -1291,6 +1293,7 @@ import 'bucket_notification_state.dart';
 ///             filterSuffix: ".log",
 ///         },
 ///     ],
+///     bucket: bucket.id,
 /// }, {
 ///     dependsOn: [
 ///         allowBucket1,
@@ -1303,11 +1306,11 @@ import 'bucket_notification_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["lambda.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// iam_for_lambda = aws.iam.Role("iam_for_lambda",
@@ -1338,7 +1341,6 @@ import 'bucket_notification_state.dart';
 ///     principal="s3.amazonaws.com",
 ///     source_arn=bucket.arn)
 /// bucket_notification = aws.s3.BucketNotification("bucket_notification",
-///     bucket=bucket.id,
 ///     lambda_functions=[
 ///         {
 ///             "lambda_function_arn": func1.arn,
@@ -1353,6 +1355,7 @@ import 'bucket_notification_state.dart';
 ///             "filter_suffix": ".log",
 ///         },
 ///     ],
+///     bucket=bucket.id,
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             allow_bucket1,
 ///             allow_bucket2,
@@ -1372,7 +1375,6 @@ import 'bucket_notification_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1384,6 +1386,7 @@ import 'bucket_notification_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -1440,7 +1443,6 @@ import 'bucket_notification_state.dart';
 ///
 ///     var bucketNotification = new Aws.S3.BucketNotification("bucket_notification", new()
 ///     {
-///         Bucket = bucket.Id,
 ///         LambdaFunctions = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketNotificationLambdaFunctionArgs
@@ -1464,6 +1466,7 @@ import 'bucket_notification_state.dart';
 ///                 FilterSuffix = ".log",
 ///             },
 ///         },
+///         Bucket = bucket.Id,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1490,7 +1493,6 @@ import 'bucket_notification_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -1499,6 +1501,7 @@ import 'bucket_notification_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -1561,7 +1564,6 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			LambdaFunctions: s3.BucketNotificationLambdaFunctionArray{
 /// 				&s3.BucketNotificationLambdaFunctionArgs{
 /// 					LambdaFunctionArn: func1.Arn,
@@ -1580,6 +1582,7 @@ import 'bucket_notification_state.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			allowBucket1,
 /// 			allowBucket2,
@@ -1602,11 +1605,11 @@ import 'bucket_notification_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -1647,7 +1650,6 @@ import 'bucket_notification_state.dart';
 /// }
 /// resource "aws_s3_bucketnotification" "bucket_notification" {
 ///   depends_on = [aws_lambda_permission.allow_bucket1, aws_lambda_permission.allow_bucket2]
-///   bucket     = aws_s3_bucket.bucket.id
 ///   lambda_functions {
 ///     lambda_function_arn = aws_lambda_function.func1.arn
 ///     events              = ["s3:ObjectCreated:*"]
@@ -1660,6 +1662,7 @@ import 'bucket_notification_state.dart';
 ///     filter_prefix       = "OtherLogs/"
 ///     filter_suffix       = ".log"
 ///   }
+///   bucket = aws_s3_bucket.bucket.id
 /// }
 /// ```
 /// ```java
@@ -1700,11 +1703,11 @@ import 'bucket_notification_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("lambda.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -1750,7 +1753,6 @@ import 'bucket_notification_state.dart';
 ///             .build());
 ///
 ///         var bucketNotification = new BucketNotification("bucketNotification", BucketNotificationArgs.builder()
-///             .bucket(bucket.id())
 ///             .lambdaFunctions(
 ///                 BucketNotificationLambdaFunctionArgs.builder()
 ///                     .lambdaFunctionArn(func1.arn())
@@ -1764,6 +1766,7 @@ import 'bucket_notification_state.dart';
 ///                     .filterPrefix("OtherLogs/")
 ///                     .filterSuffix(".log")
 ///                     .build())
+///             .bucket(bucket.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     allowBucket1,
@@ -1824,7 +1827,6 @@ import 'bucket_notification_state.dart';
 ///     type: aws:s3:BucketNotification
 ///     name: bucket_notification
 ///     properties:
-///       bucket: ${bucket.id}
 ///       lambdaFunctions:
 ///         - lambdaFunctionArn: ${func1.arn}
 ///           events:
@@ -1836,6 +1838,7 @@ import 'bucket_notification_state.dart';
 ///             - s3:ObjectCreated:*
 ///           filterPrefix: OtherLogs/
 ///           filterSuffix: .log
+///       bucket: ${bucket.id}
 ///     options:
 ///       dependsOn:
 ///         - ${allowBucket1}
@@ -1846,11 +1849,11 @@ import 'bucket_notification_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - lambda.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -1866,18 +1869,18 @@ import 'bucket_notification_state.dart';
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "your-bucket-name"});
 /// const queue = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "*",
-///             identifiers: ["*"],
-///         }],
-///         actions: ["sqs:SendMessage"],
-///         resources: ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 ///         conditions: [{
 ///             test: "ArnEquals",
 ///             variable: "aws:SourceArn",
 ///             values: [bucket.arn],
 ///         }],
+///         principals: [{
+///             type: "*",
+///             identifiers: ["*"],
+///         }],
+///         effect: "Allow",
+///         actions: ["sqs:SendMessage"],
+///         resources: ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 ///     }],
 /// });
 /// const queueQueue = new aws.sqs.Queue("queue", {
@@ -1885,7 +1888,6 @@ import 'bucket_notification_state.dart';
 ///     policy: queue.json,
 /// });
 /// const bucketNotification = new aws.s3.BucketNotification("bucket_notification", {
-///     bucket: bucket.id,
 ///     queues: [
 ///         {
 ///             id: "image-upload-event",
@@ -1900,6 +1902,7 @@ import 'bucket_notification_state.dart';
 ///             filterPrefix: "videos/",
 ///         },
 ///     ],
+///     bucket: bucket.id,
 /// });
 /// ```
 /// ```python
@@ -1908,24 +1911,23 @@ import 'bucket_notification_state.dart';
 ///
 /// bucket = aws.s3.Bucket("bucket", bucket="your-bucket-name")
 /// queue = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "*",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": ["sqs:SendMessage"],
-///     "resources": ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 ///     "conditions": [{
 ///         "test": "ArnEquals",
 ///         "variable": "aws:SourceArn",
 ///         "values": [bucket.arn],
 ///     }],
+///     "principals": [{
+///         "type": "*",
+///         "identifiers": ["*"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["sqs:SendMessage"],
+///     "resources": ["arn:aws:sqs:*:*:s3-event-notification-queue"],
 /// }])
 /// queue_queue = aws.sqs.Queue("queue",
 ///     name="s3-event-notification-queue",
 ///     policy=queue.json)
 /// bucket_notification = aws.s3.BucketNotification("bucket_notification",
-///     bucket=bucket.id,
 ///     queues=[
 ///         {
 ///             "id": "image-upload-event",
@@ -1939,7 +1941,8 @@ import 'bucket_notification_state.dart';
 ///             "events": ["s3:ObjectCreated:*"],
 ///             "filter_prefix": "videos/",
 ///         },
-///     ])
+///     ],
+///     bucket=bucket.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1960,26 +1963,6 @@ import 'bucket_notification_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "*",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "sqs:SendMessage",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:sqs:*:*:s3-event-notification-queue",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -1991,6 +1974,26 @@ import 'bucket_notification_state.dart';
 ///                             bucket.Arn,
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "*",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sqs:SendMessage",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:sqs:*:*:s3-event-notification-queue",
 ///                 },
 ///             },
 ///         },
@@ -2004,7 +2007,6 @@ import 'bucket_notification_state.dart';
 ///
 ///     var bucketNotification = new Aws.S3.BucketNotification("bucket_notification", new()
 ///     {
-///         Bucket = bucket.Id,
 ///         Queues = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketNotificationQueueArgs
@@ -2028,6 +2030,7 @@ import 'bucket_notification_state.dart';
 ///                 FilterPrefix = "videos/",
 ///             },
 ///         },
+///         Bucket = bucket.Id,
 ///     });
 ///
 /// });
@@ -2053,21 +2056,6 @@ import 'bucket_notification_state.dart';
 /// 		queue := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("*"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("sqs:SendMessage"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						pulumi.String("arn:aws:sqs:*:*:s3-event-notification-queue"),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("ArnEquals"),
@@ -2076,6 +2064,21 @@ import 'bucket_notification_state.dart';
 /// 								bucket.Arn,
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("*"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("sqs:SendMessage"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						pulumi.String("arn:aws:sqs:*:*:s3-event-notification-queue"),
 /// 					},
 /// 				},
 /// 			},
@@ -2088,7 +2091,6 @@ import 'bucket_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "bucket_notification", &s3.BucketNotificationArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Queues: s3.BucketNotificationQueueArray{
 /// 				&s3.BucketNotificationQueueArgs{
 /// 					Id:       pulumi.String("image-upload-event"),
@@ -2107,6 +2109,7 @@ import 'bucket_notification_state.dart';
 /// 					FilterPrefix: pulumi.String("videos/"),
 /// 				},
 /// 			},
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2126,18 +2129,18 @@ import 'bucket_notification_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "queue" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "*"
-///       identifiers = ["*"]
-///     }
-///     actions   = ["sqs:SendMessage"]
-///     resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
 ///     conditions {
 ///       test     = "ArnEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_s3_bucket.bucket.arn]
 ///     }
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     effect    = "Allow"
+///     actions   = ["sqs:SendMessage"]
+///     resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
 ///   }
 /// }
 ///
@@ -2149,7 +2152,6 @@ import 'bucket_notification_state.dart';
 ///   bucket = "your-bucket-name"
 /// }
 /// resource "aws_s3_bucketnotification" "bucket_notification" {
-///   bucket = aws_s3_bucket.bucket.id
 ///   queues {
 ///     id            = "image-upload-event"
 ///     queue_arn     = aws_sqs_queue.queue.arn
@@ -2162,6 +2164,7 @@ import 'bucket_notification_state.dart';
 ///     events        = ["s3:ObjectCreated:*"]
 ///     filter_prefix = "videos/"
 ///   }
+///   bucket = aws_s3_bucket.bucket.id
 /// }
 /// ```
 /// ```java
@@ -2175,8 +2178,8 @@ import 'bucket_notification_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sqs.Queue;
 /// import com.pulumi.aws.sqs.QueueArgs;
 /// import com.pulumi.aws.s3.BucketNotification;
@@ -2201,18 +2204,18 @@ import 'bucket_notification_state.dart';
 ///
 ///         final var queue = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("*")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions("sqs:SendMessage")
-///                 .resources("arn:aws:sqs:*:*:s3-event-notification-queue")
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("ArnEquals")
 ///                     .variable("aws:SourceArn")
 ///                     .values(bucket.arn())
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("*")
+///                     .identifiers("*")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("sqs:SendMessage")
+///                 .resources("arn:aws:sqs:*:*:s3-event-notification-queue")
 ///                 .build())
 ///             .build());
 ///
@@ -2222,7 +2225,6 @@ import 'bucket_notification_state.dart';
 ///             .build());
 ///
 ///         var bucketNotification = new BucketNotification("bucketNotification", BucketNotificationArgs.builder()
-///             .bucket(bucket.id())
 ///             .queues(
 ///                 BucketNotificationQueueArgs.builder()
 ///                     .id("image-upload-event")
@@ -2236,6 +2238,7 @@ import 'bucket_notification_state.dart';
 ///                     .events("s3:ObjectCreated:*")
 ///                     .filterPrefix("videos/")
 ///                     .build())
+///             .bucket(bucket.id())
 ///             .build());
 ///
 ///     }
@@ -2257,7 +2260,6 @@ import 'bucket_notification_state.dart';
 ///     type: aws:s3:BucketNotification
 ///     name: bucket_notification
 ///     properties:
-///       bucket: ${bucket.id}
 ///       queues:
 ///         - id: image-upload-event
 ///           queueArn: ${queueQueue.arn}
@@ -2269,26 +2271,27 @@ import 'bucket_notification_state.dart';
 ///           events:
 ///             - s3:ObjectCreated:*
 ///           filterPrefix: videos/
+///       bucket: ${bucket.id}
 /// variables:
 ///   queue:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: '*'
-///                 identifiers:
-///                   - '*'
-///             actions:
-///               - sqs:SendMessage
-///             resources:
-///               - arn:aws:sqs:*:*:s3-event-notification-queue
-///             conditions:
+///           - conditions:
 ///               - test: ArnEquals
 ///                 variable: aws:SourceArn
 ///                 values:
 ///                   - ${bucket.arn}
+///             principals:
+///               - type: '*'
+///                 identifiers:
+///                   - '*'
+///             effect: Allow
+///             actions:
+///               - sqs:SendMessage
+///             resources:
+///               - arn:aws:sqs:*:*:s3-event-notification-queue
 /// ```
 ///
 ///
@@ -2901,13 +2904,13 @@ class BucketNotification extends pulumi.CustomResource {
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
   late final pulumi.Output<bool?> eventbridge;
   /// Notification configuration to a Lambda Function. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lambdaFunctions;
+  late final pulumi.Output<List<BucketNotificationLambdaFunction>?> lambdaFunctions;
   /// Notification configuration to SQS Queue. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> queues;
+  late final pulumi.Output<List<BucketNotificationQueue>?> queues;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Notification configuration to SNS Topic. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> topics;
+  late final pulumi.Output<List<BucketNotificationTopic>?> topics;
 
   /// Creates a new [BucketNotification].
   /// [name] The Pulumi resource name.
@@ -2921,14 +2924,14 @@ class BucketNotification extends pulumi.CustomResource {
           'aws:s3/bucketNotification:BucketNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     eventbridge = registerOutput<bool?>('eventbridge');
-    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>('lambdaFunctions');
-    queues = registerOutput<List<Map<String, dynamic>>?>('queues');
+    lambdaFunctions = registerOutput<List<BucketNotificationLambdaFunction>?>('lambdaFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationLambdaFunction>(guardedValue, (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>())); });
+    queues = registerOutput<List<BucketNotificationQueue>?>('queues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationQueue>(guardedValue, (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
+    topics = registerOutput<List<BucketNotificationTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationTopic>(guardedValue, (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [BucketNotification] resource's state with the given [name] and [id].
@@ -2936,11 +2939,12 @@ class BucketNotification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketNotificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketNotification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2956,9 +2960,26 @@ class BucketNotification extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     eventbridge = registerOutput<bool?>('eventbridge');
-    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>('lambdaFunctions');
-    queues = registerOutput<List<Map<String, dynamic>>?>('queues');
+    lambdaFunctions = registerOutput<List<BucketNotificationLambdaFunction>?>('lambdaFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationLambdaFunction>(guardedValue, (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>())); });
+    queues = registerOutput<List<BucketNotificationQueue>?>('queues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationQueue>(guardedValue, (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
+    topics = registerOutput<List<BucketNotificationTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationTopic>(guardedValue, (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BucketNotification] resource.
+  BucketNotification.reference(String urn)
+    : super(
+        'aws:s3/bucketNotification:BucketNotification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    eventbridge = registerOutput<bool?>('eventbridge');
+    lambdaFunctions = registerOutput<List<BucketNotificationLambdaFunction>?>('lambdaFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationLambdaFunction>(guardedValue, (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>())); });
+    queues = registerOutput<List<BucketNotificationQueue>?>('queues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationQueue>(guardedValue, (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    topics = registerOutput<List<BucketNotificationTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketNotificationTopic>(guardedValue, (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

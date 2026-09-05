@@ -8,15 +8,15 @@ import 'resiliency_policy_policy_software.dart';
 
 class ResiliencyPolicyPolicy {
   /// Specifies Availability Zone failure policy. See `policy.az`
-  final pulumi.Input<ResiliencyPolicyPolicyAz>? az;
+  final pulumi.Input<ResiliencyPolicyPolicyAz?>? az;
   /// Specifies Infrastructure failure policy. See `policy.hardware`
-  final pulumi.Input<ResiliencyPolicyPolicyHardware>? hardware;
+  final pulumi.Input<ResiliencyPolicyPolicyHardware?>? hardware;
   /// Specifies Region failure policy. `policy.region`
-  final pulumi.Input<ResiliencyPolicyPolicyRegion>? region;
+  final pulumi.Input<ResiliencyPolicyPolicyRegion?>? region;
   /// Specifies Application failure policy. See `policy.software`
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ResiliencyPolicyPolicySoftware>? software;
+  final pulumi.Input<ResiliencyPolicyPolicySoftware?>? software;
 
   /// Creates a new [ResiliencyPolicyPolicy].
   /// [az] Specifies Availability Zone failure policy. See `policy.az`

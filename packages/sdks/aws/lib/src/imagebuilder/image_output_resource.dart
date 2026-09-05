@@ -5,13 +5,13 @@ import 'image_output_resource_ami.dart';
 import 'image_output_resource_container.dart';
 
 class ImageOutputResource {
-  /// Set of objects with each Amazon Machine Image (AMI) created.
-  final pulumi.Input<List<ImageOutputResourceAmi>>? amis;
+  /// Set of objects with each AMI created.
+  final pulumi.Input<List<ImageOutputResourceAmi>?>? amis;
   /// Set of objects with each container image created and stored in the output repository.
-  final pulumi.Input<List<ImageOutputResourceContainer>>? containers;
+  final pulumi.Input<List<ImageOutputResourceContainer>?>? containers;
 
   /// Creates a new [ImageOutputResource].
-  /// [amis] Set of objects with each Amazon Machine Image (AMI) created.
+  /// [amis] Set of objects with each AMI created.
   /// [containers] Set of objects with each container image created and stored in the output repository.
   const ImageOutputResource({
     this.amis,

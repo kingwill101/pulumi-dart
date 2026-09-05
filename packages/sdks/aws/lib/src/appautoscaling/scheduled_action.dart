@@ -22,15 +22,15 @@ import 'scheduled_action_state.dart';
 ///     serviceNamespace: "dynamodb",
 /// });
 /// const dynamodbScheduledAction = new aws.appautoscaling.ScheduledAction("dynamodb", {
+///     scalableTargetAction: {
+///         minCapacity: 1,
+///         maxCapacity: 200,
+///     },
 ///     name: "dynamodb",
 ///     serviceNamespace: dynamodb.serviceNamespace,
 ///     resourceId: dynamodb.resourceId,
 ///     scalableDimension: dynamodb.scalableDimension,
 ///     schedule: "at(2006-01-02T15:04:05)",
-///     scalableTargetAction: {
-///         minCapacity: 1,
-///         maxCapacity: 200,
-///     },
 /// });
 /// ```
 /// ```python
@@ -44,15 +44,15 @@ import 'scheduled_action_state.dart';
 ///     scalable_dimension="dynamodb:table:ReadCapacityUnits",
 ///     service_namespace="dynamodb")
 /// dynamodb_scheduled_action = aws.appautoscaling.ScheduledAction("dynamodb",
+///     scalable_target_action={
+///         "min_capacity": 1,
+///         "max_capacity": 200,
+///     },
 ///     name="dynamodb",
 ///     service_namespace=dynamodb.service_namespace,
 ///     resource_id=dynamodb.resource_id,
 ///     scalable_dimension=dynamodb.scalable_dimension,
-///     schedule="at(2006-01-02T15:04:05)",
-///     scalable_target_action={
-///         "min_capacity": 1,
-///         "max_capacity": 200,
-///     })
+///     schedule="at(2006-01-02T15:04:05)")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -73,16 +73,16 @@ import 'scheduled_action_state.dart';
 ///
 ///     var dynamodbScheduledAction = new Aws.AppAutoScaling.ScheduledAction("dynamodb", new()
 ///     {
-///         Name = "dynamodb",
-///         ServiceNamespace = dynamodb.ServiceNamespace,
-///         ResourceId = dynamodb.ResourceId,
-///         ScalableDimension = dynamodb.ScalableDimension,
-///         Schedule = "at(2006-01-02T15:04:05)",
 ///         ScalableTargetAction = new Aws.AppAutoScaling.Inputs.ScheduledActionScalableTargetActionArgs
 ///         {
 ///             MinCapacity = 1,
 ///             MaxCapacity = 200,
 ///         },
+///         Name = "dynamodb",
+///         ServiceNamespace = dynamodb.ServiceNamespace,
+///         ResourceId = dynamodb.ResourceId,
+///         ScalableDimension = dynamodb.ScalableDimension,
+///         Schedule = "at(2006-01-02T15:04:05)",
 ///     });
 ///
 /// });
@@ -108,15 +108,15 @@ import 'scheduled_action_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appautoscaling.NewScheduledAction(ctx, "dynamodb", &appautoscaling.ScheduledActionArgs{
+/// 			ScalableTargetAction: &appautoscaling.ScheduledActionScalableTargetActionArgs{
+/// 				MinCapacity: pulumi.Int(1),
+/// 				MaxCapacity: pulumi.Int(200),
+/// 			},
 /// 			Name:              pulumi.String("dynamodb"),
 /// 			ServiceNamespace:  dynamodb.ServiceNamespace,
 /// 			ResourceId:        dynamodb.ResourceId,
 /// 			ScalableDimension: dynamodb.ScalableDimension,
 /// 			Schedule:          pulumi.String("at(2006-01-02T15:04:05)"),
-/// 			ScalableTargetAction: &appautoscaling.ScheduledActionScalableTargetActionArgs{
-/// 				MinCapacity: pulumi.Int(1),
-/// 				MaxCapacity: pulumi.Int(200),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,15 +142,15 @@ import 'scheduled_action_state.dart';
 ///   service_namespace  = "dynamodb"
 /// }
 /// resource "aws_appautoscaling_scheduledaction" "dynamodb" {
+///   scalable_target_action = {
+///     min_capacity = 1
+///     max_capacity = 200
+///   }
 ///   name               = "dynamodb"
 ///   service_namespace  = aws_appautoscaling_target.dynamodb.service_namespace
 ///   resource_id        = aws_appautoscaling_target.dynamodb.resource_id
 ///   scalable_dimension = aws_appautoscaling_target.dynamodb.scalable_dimension
 ///   schedule           = "at(2006-01-02T15:04:05)"
-///   scalable_target_action = {
-///     min_capacity = 1
-///     max_capacity = 200
-///   }
 /// }
 /// ```
 /// ```java
@@ -186,15 +186,15 @@ import 'scheduled_action_state.dart';
 ///             .build());
 ///
 ///         var dynamodbScheduledAction = new ScheduledAction("dynamodbScheduledAction", ScheduledActionArgs.builder()
+///             .scalableTargetAction(ScheduledActionScalableTargetActionArgs.builder()
+///                 .minCapacity(1)
+///                 .maxCapacity(200)
+///                 .build())
 ///             .name("dynamodb")
 ///             .serviceNamespace(dynamodb.serviceNamespace())
 ///             .resourceId(dynamodb.resourceId())
 ///             .scalableDimension(dynamodb.scalableDimension())
 ///             .schedule("at(2006-01-02T15:04:05)")
-///             .scalableTargetAction(ScheduledActionScalableTargetActionArgs.builder()
-///                 .minCapacity(1)
-///                 .maxCapacity(200)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -214,14 +214,14 @@ import 'scheduled_action_state.dart';
 ///     type: aws:appautoscaling:ScheduledAction
 ///     name: dynamodb
 ///     properties:
+///       scalableTargetAction:
+///         minCapacity: 1
+///         maxCapacity: 200
 ///       name: dynamodb
 ///       serviceNamespace: ${dynamodb.serviceNamespace}
 ///       resourceId: ${dynamodb.resourceId}
 ///       scalableDimension: ${dynamodb.scalableDimension}
 ///       schedule: at(2006-01-02T15:04:05)
-///       scalableTargetAction:
-///         minCapacity: 1
-///         maxCapacity: 200
 /// ```
 ///
 ///
@@ -240,15 +240,15 @@ import 'scheduled_action_state.dart';
 ///     serviceNamespace: "ecs",
 /// });
 /// const ecsScheduledAction = new aws.appautoscaling.ScheduledAction("ecs", {
+///     scalableTargetAction: {
+///         minCapacity: 1,
+///         maxCapacity: 10,
+///     },
 ///     name: "ecs",
 ///     serviceNamespace: ecs.serviceNamespace,
 ///     resourceId: ecs.resourceId,
 ///     scalableDimension: ecs.scalableDimension,
 ///     schedule: "at(2006-01-02T15:04:05)",
-///     scalableTargetAction: {
-///         minCapacity: 1,
-///         maxCapacity: 10,
-///     },
 /// });
 /// ```
 /// ```python
@@ -262,15 +262,15 @@ import 'scheduled_action_state.dart';
 ///     scalable_dimension="ecs:service:DesiredCount",
 ///     service_namespace="ecs")
 /// ecs_scheduled_action = aws.appautoscaling.ScheduledAction("ecs",
+///     scalable_target_action={
+///         "min_capacity": 1,
+///         "max_capacity": 10,
+///     },
 ///     name="ecs",
 ///     service_namespace=ecs.service_namespace,
 ///     resource_id=ecs.resource_id,
 ///     scalable_dimension=ecs.scalable_dimension,
-///     schedule="at(2006-01-02T15:04:05)",
-///     scalable_target_action={
-///         "min_capacity": 1,
-///         "max_capacity": 10,
-///     })
+///     schedule="at(2006-01-02T15:04:05)")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -291,16 +291,16 @@ import 'scheduled_action_state.dart';
 ///
 ///     var ecsScheduledAction = new Aws.AppAutoScaling.ScheduledAction("ecs", new()
 ///     {
-///         Name = "ecs",
-///         ServiceNamespace = ecs.ServiceNamespace,
-///         ResourceId = ecs.ResourceId,
-///         ScalableDimension = ecs.ScalableDimension,
-///         Schedule = "at(2006-01-02T15:04:05)",
 ///         ScalableTargetAction = new Aws.AppAutoScaling.Inputs.ScheduledActionScalableTargetActionArgs
 ///         {
 ///             MinCapacity = 1,
 ///             MaxCapacity = 10,
 ///         },
+///         Name = "ecs",
+///         ServiceNamespace = ecs.ServiceNamespace,
+///         ResourceId = ecs.ResourceId,
+///         ScalableDimension = ecs.ScalableDimension,
+///         Schedule = "at(2006-01-02T15:04:05)",
 ///     });
 ///
 /// });
@@ -326,15 +326,15 @@ import 'scheduled_action_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appautoscaling.NewScheduledAction(ctx, "ecs", &appautoscaling.ScheduledActionArgs{
+/// 			ScalableTargetAction: &appautoscaling.ScheduledActionScalableTargetActionArgs{
+/// 				MinCapacity: pulumi.Int(1),
+/// 				MaxCapacity: pulumi.Int(10),
+/// 			},
 /// 			Name:              pulumi.String("ecs"),
 /// 			ServiceNamespace:  ecs.ServiceNamespace,
 /// 			ResourceId:        ecs.ResourceId,
 /// 			ScalableDimension: ecs.ScalableDimension,
 /// 			Schedule:          pulumi.String("at(2006-01-02T15:04:05)"),
-/// 			ScalableTargetAction: &appautoscaling.ScheduledActionScalableTargetActionArgs{
-/// 				MinCapacity: pulumi.Int(1),
-/// 				MaxCapacity: pulumi.Int(10),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -360,15 +360,15 @@ import 'scheduled_action_state.dart';
 ///   service_namespace  = "ecs"
 /// }
 /// resource "aws_appautoscaling_scheduledaction" "ecs" {
+///   scalable_target_action = {
+///     min_capacity = 1
+///     max_capacity = 10
+///   }
 ///   name               = "ecs"
 ///   service_namespace  = aws_appautoscaling_target.ecs.service_namespace
 ///   resource_id        = aws_appautoscaling_target.ecs.resource_id
 ///   scalable_dimension = aws_appautoscaling_target.ecs.scalable_dimension
 ///   schedule           = "at(2006-01-02T15:04:05)"
-///   scalable_target_action = {
-///     min_capacity = 1
-///     max_capacity = 10
-///   }
 /// }
 /// ```
 /// ```java
@@ -404,15 +404,15 @@ import 'scheduled_action_state.dart';
 ///             .build());
 ///
 ///         var ecsScheduledAction = new ScheduledAction("ecsScheduledAction", ScheduledActionArgs.builder()
+///             .scalableTargetAction(ScheduledActionScalableTargetActionArgs.builder()
+///                 .minCapacity(1)
+///                 .maxCapacity(10)
+///                 .build())
 ///             .name("ecs")
 ///             .serviceNamespace(ecs.serviceNamespace())
 ///             .resourceId(ecs.resourceId())
 ///             .scalableDimension(ecs.scalableDimension())
 ///             .schedule("at(2006-01-02T15:04:05)")
-///             .scalableTargetAction(ScheduledActionScalableTargetActionArgs.builder()
-///                 .minCapacity(1)
-///                 .maxCapacity(10)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -432,14 +432,14 @@ import 'scheduled_action_state.dart';
 ///     type: aws:appautoscaling:ScheduledAction
 ///     name: ecs
 ///     properties:
+///       scalableTargetAction:
+///         minCapacity: 1
+///         maxCapacity: 10
 ///       name: ecs
 ///       serviceNamespace: ${ecs.serviceNamespace}
 ///       resourceId: ${ecs.resourceId}
 ///       scalableDimension: ${ecs.scalableDimension}
 ///       schedule: at(2006-01-02T15:04:05)
-///       scalableTargetAction:
-///         minCapacity: 1
-///         maxCapacity: 10
 /// ```
 class ScheduledAction extends pulumi.CustomResource {
   /// ARN of the scheduled action.
@@ -477,7 +477,7 @@ class ScheduledAction extends pulumi.CustomResource {
           'aws:appautoscaling/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endTime = registerOutput<String?>('endTime');
@@ -497,11 +497,12 @@ class ScheduledAction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledActionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledAction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -515,6 +516,28 @@ class ScheduledAction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    endTime = registerOutput<String?>('endTime');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    scalableDimension = registerOutput<String>('scalableDimension');
+    scalableTargetAction = registerOutput<ScheduledActionScalableTargetAction>('scalableTargetAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledActionScalableTargetAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<String>('schedule');
+    serviceNamespace = registerOutput<String>('serviceNamespace');
+    startTime = registerOutput<String?>('startTime');
+    timezone = registerOutput<String?>('timezone');
+  }
+
+  /// Creates a typed reference to an existing [ScheduledAction] resource.
+  ScheduledAction.reference(String urn)
+    : super(
+        'aws:appautoscaling/scheduledAction:ScheduledAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     endTime = registerOutput<String?>('endTime');
     this.name = registerOutput<String>('name');

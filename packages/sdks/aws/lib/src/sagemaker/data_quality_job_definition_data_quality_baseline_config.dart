@@ -6,9 +6,9 @@ import 'data_quality_job_definition_data_quality_baseline_config_statistics_reso
 
 class DataQualityJobDefinitionDataQualityBaselineConfig {
   /// The constraints resource for a monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource>? constraintsResource;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource?>? constraintsResource;
   /// The statistics resource for a monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource>? statisticsResource;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource?>? statisticsResource;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfig].
   /// [constraintsResource] The constraints resource for a monitoring job. Fields are documented below.

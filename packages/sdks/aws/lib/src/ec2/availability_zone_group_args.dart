@@ -12,7 +12,7 @@ class AvailabilityZoneGroupArgs {
   /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
   final pulumi.Input<String> optInStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AvailabilityZoneGroupArgs].
   /// [groupName] Name of the Availability Zone Group.

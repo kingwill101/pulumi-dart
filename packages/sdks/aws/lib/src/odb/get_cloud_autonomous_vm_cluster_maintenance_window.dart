@@ -43,7 +43,7 @@ class GetCloudAutonomousVmClusterMaintenanceWindow {
     return GetCloudAutonomousVmClusterMaintenanceWindow(
       daysOfWeeks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(map['daysOfWeeks']!, (value) => GetCloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))),
       hoursOfDays: pulumi.Input.fromValue((map['hoursOfDays'] as List).cast<int>()),
-      leadTimeInWeeks: pulumi.Input.fromValue(map['leadTimeInWeeks'] as int),
+      leadTimeInWeeks: pulumi.Input.fromValue((map['leadTimeInWeeks'] as num).toInt()),
       months: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindowMonth>(map['months']!, (value) => GetCloudAutonomousVmClusterMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))),
       preference: pulumi.Input.fromValue(map['preference'] as String),
       weeksOfMonths: pulumi.Input.fromValue((map['weeksOfMonths'] as List).cast<int>()),

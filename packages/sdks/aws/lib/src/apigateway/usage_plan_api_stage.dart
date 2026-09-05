@@ -11,7 +11,7 @@ class UsagePlanApiStage {
   /// The following arguments are optional:
   final pulumi.Input<String> stage;
   /// Throttling limits applied to the API stage. See `throttle` Block below.
-  final pulumi.Input<List<UsagePlanApiStageThrottle>>? throttles;
+  final pulumi.Input<List<UsagePlanApiStageThrottle>?>? throttles;
 
   /// Creates a new [UsagePlanApiStage].
   /// [apiId] API ID of the associated API stage in a usage plan.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PeeringAttachmentOptions {
   /// Indicates whether dynamic routing is enabled or disabled.. Supports `enable` and `disable`.
-  final pulumi.Input<String>? dynamicRouting;
+  final pulumi.Input<String?>? dynamicRouting;
 
   /// Creates a new [PeeringAttachmentOptions].
   /// [dynamicRouting] Indicates whether dynamic routing is enabled or disabled.. Supports `enable` and `disable`.

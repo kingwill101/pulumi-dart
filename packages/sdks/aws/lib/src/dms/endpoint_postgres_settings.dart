@@ -4,41 +4,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointPostgresSettings {
   /// For use with change data capture (CDC) only, this attribute has AWS DMS bypass foreign keys and user triggers to reduce the time it takes to bulk load data.
-  final pulumi.Input<String>? afterConnectScript;
+  final pulumi.Input<String?>? afterConnectScript;
   /// Specifies the authentication method. Valid values: `password`, `iam`.
-  final pulumi.Input<String>? authenticationMethod;
+  final pulumi.Input<String?>? authenticationMethod;
   /// The Babelfish for Aurora PostgreSQL database name for the endpoint.
-  final pulumi.Input<String>? babelfishDatabaseName;
+  final pulumi.Input<String?>? babelfishDatabaseName;
   /// To capture DDL events, AWS DMS creates various artifacts in the PostgreSQL database when the task starts.
-  final pulumi.Input<bool>? captureDdls;
+  final pulumi.Input<bool?>? captureDdls;
   /// Specifies the default behavior of the replication's handling of PostgreSQL- compatible endpoints that require some additional configuration, such as Babelfish endpoints.
-  final pulumi.Input<String>? databaseMode;
+  final pulumi.Input<String?>? databaseMode;
   /// Sets the schema in which the operational DDL database artifacts are created. Default is `public`.
-  final pulumi.Input<String>? ddlArtifactsSchema;
+  final pulumi.Input<String?>? ddlArtifactsSchema;
   /// Sets the client statement timeout for the PostgreSQL instance, in seconds. Default value is `60`.
-  final pulumi.Input<int>? executeTimeout;
+  final pulumi.Input<int?>? executeTimeout;
   /// When set to `true`, this value causes a task to fail if the actual size of a LOB column is greater than the specified `LobMaxSize`. Default is `false`.
-  final pulumi.Input<bool>? failTasksOnLobTruncation;
+  final pulumi.Input<bool?>? failTasksOnLobTruncation;
   /// The write-ahead log (WAL) heartbeat feature mimics a dummy transaction. By doing this, it prevents idle logical replication slots from holding onto old WAL logs, which can result in storage full situations on the source.
-  final pulumi.Input<bool>? heartbeatEnable;
+  final pulumi.Input<bool?>? heartbeatEnable;
   /// Sets the WAL heartbeat frequency (in minutes). Default value is `5`.
-  final pulumi.Input<int>? heartbeatFrequency;
+  final pulumi.Input<int?>? heartbeatFrequency;
   /// Sets the schema in which the heartbeat artifacts are created. Default value is `public`.
-  final pulumi.Input<String>? heartbeatSchema;
+  final pulumi.Input<String?>? heartbeatSchema;
   /// You can use PostgreSQL endpoint settings to map a boolean as a boolean from your PostgreSQL source to a Amazon Redshift target. Default value is `false`.
-  final pulumi.Input<bool>? mapBooleanAsBoolean;
+  final pulumi.Input<bool?>? mapBooleanAsBoolean;
   /// Optional When true, DMS migrates JSONB values as CLOB.
-  final pulumi.Input<bool>? mapJsonbAsClob;
+  final pulumi.Input<bool?>? mapJsonbAsClob;
   /// Specifies how DMS maps LONG VARCHAR values. Valid values are `wstring`, `clob`, and `nclob`.
-  final pulumi.Input<String>? mapLongVarcharAs;
+  final pulumi.Input<String?>? mapLongVarcharAs;
   /// Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
-  final pulumi.Input<int>? maxFileSize;
+  final pulumi.Input<int?>? maxFileSize;
   /// Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
-  final pulumi.Input<String>? pluginName;
+  final pulumi.Input<String?>? pluginName;
   /// Specifies the IAM role to use to authenticate the connection.
-  final pulumi.Input<String>? serviceAccessRoleArn;
+  final pulumi.Input<String?>? serviceAccessRoleArn;
   /// Sets the name of a previously created logical replication slot for a CDC load of the PostgreSQL source instance.
-  final pulumi.Input<String>? slotName;
+  final pulumi.Input<String?>? slotName;
 
   /// Creates a new [EndpointPostgresSettings].
   /// [afterConnectScript] For use with change data capture (CDC) only, this attribute has AWS DMS bypass foreign keys and user triggers to reduce the time it takes to bulk load data.
@@ -111,15 +111,15 @@ class EndpointPostgresSettings {
       captureDdls: (() { final guardedValue = map['captureDdls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       databaseMode: (() { final guardedValue = map['databaseMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ddlArtifactsSchema: (() { final guardedValue = map['ddlArtifactsSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      executeTimeout: (() { final guardedValue = map['executeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      executeTimeout: (() { final guardedValue = map['executeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       failTasksOnLobTruncation: (() { final guardedValue = map['failTasksOnLobTruncation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       heartbeatEnable: (() { final guardedValue = map['heartbeatEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      heartbeatFrequency: (() { final guardedValue = map['heartbeatFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      heartbeatFrequency: (() { final guardedValue = map['heartbeatFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       heartbeatSchema: (() { final guardedValue = map['heartbeatSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mapBooleanAsBoolean: (() { final guardedValue = map['mapBooleanAsBoolean']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mapJsonbAsClob: (() { final guardedValue = map['mapJsonbAsClob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mapLongVarcharAs: (() { final guardedValue = map['mapLongVarcharAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxFileSize: (() { final guardedValue = map['maxFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxFileSize: (() { final guardedValue = map['maxFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pluginName: (() { final guardedValue = map['pluginName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccessRoleArn: (() { final guardedValue = map['serviceAccessRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       slotName: (() { final guardedValue = map['slotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

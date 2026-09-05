@@ -6,27 +6,27 @@ import 'data_protection_settings_inline_redaction_configuration.dart';
 /// Input properties used for looking up and filtering DataProtectionSettings resources.
 class DataProtectionSettingsState {
   /// Additional encryption context for the data protection settings.
-  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>?>? additionalEncryptionContext;
   /// List of web portal ARNs that this data protection settings resource is associated with.
-  final pulumi.Input<List<String>>? associatedPortalArns;
+  final pulumi.Input<List<String>?>? associatedPortalArns;
   /// ARN of the customer managed KMS key.
-  final pulumi.Input<String>? customerManagedKey;
+  final pulumi.Input<String?>? customerManagedKey;
   /// ARN of the data protection settings resource.
-  final pulumi.Input<String>? dataProtectionSettingsArn;
+  final pulumi.Input<String?>? dataProtectionSettingsArn;
   /// The description of the data protection settings.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the data protection settings.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The inline redaction configuration of the data protection settings. Detailed below.
-  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration>? inlineRedactionConfiguration;
+  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration?>? inlineRedactionConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [DataProtectionSettingsState].
   /// [additionalEncryptionContext] Additional encryption context for the data protection settings.

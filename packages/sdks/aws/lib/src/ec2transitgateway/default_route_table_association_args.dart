@@ -9,8 +9,8 @@ import 'default_route_table_association_timeouts.dart';
 /// {@macro pulumi_ec2transitgateway_default_route_table_association_default_route_table_association_args_doc}
 class DefaultRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<DefaultRouteTableAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<DefaultRouteTableAssociationTimeouts?>? timeouts;
   /// ID of the Transit Gateway to change the default association route table on.
   final pulumi.Input<String> transitGatewayId;
   /// ID of the Transit Gateway Route Table to be made the default association route table.

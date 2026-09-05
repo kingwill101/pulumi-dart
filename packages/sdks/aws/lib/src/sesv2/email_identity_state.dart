@@ -6,39 +6,39 @@ import 'email_identity_dkim_signing_attributes.dart';
 /// Input properties used for looking up and filtering EmailIdentity resources.
 class EmailIdentityState {
   /// ARN of the Email Identity.
-  final pulumi.Input<String>? arn;
-  /// The configuration set to use by default when sending from this identity. Note that any configuration set defined in the email sending request takes precedence.
-  final pulumi.Input<String>? configurationSetName;
-  /// The configuration of the DKIM authentication settings for an email domain identity.
-  final pulumi.Input<EmailIdentityDkimSigningAttributes>? dkimSigningAttributes;
-  /// The email address or domain to verify.
+  final pulumi.Input<String?>? arn;
+  /// Configuration set to use by default when sending from this identity. Any configuration set defined in the email sending request takes precedence.
+  final pulumi.Input<String?>? configurationSetName;
+  /// Configuration block for the DKIM authentication settings for an email domain identity. See `dkimSigningAttributes` Block below.
+  final pulumi.Input<EmailIdentityDkimSigningAttributes?>? dkimSigningAttributes;
+  /// Email address or domain to verify.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? emailIdentity;
-  /// The email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? emailIdentity;
+  /// Email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
+  final pulumi.Input<String?>? identityType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
-  final pulumi.Input<String>? verificationStatus;
-  /// Specifies whether or not the identity is verified.
-  final pulumi.Input<bool>? verifiedForSendingStatus;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// Verification status of the identity. One of `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
+  final pulumi.Input<String?>? verificationStatus;
+  /// Whether the identity is verified.
+  final pulumi.Input<bool?>? verifiedForSendingStatus;
 
   /// Creates a new [EmailIdentityState].
   /// [arn] ARN of the Email Identity.
-  /// [configurationSetName] The configuration set to use by default when sending from this identity. Note that any configuration set defined in the email sending request takes precedence.
-  /// [dkimSigningAttributes] The configuration of the DKIM authentication settings for an email domain identity.
-  /// [emailIdentity] The email address or domain to verify.
-  /// [identityType] The email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
+  /// [configurationSetName] Configuration set to use by default when sending from this identity. Any configuration set defined in the email sending request takes precedence.
+  /// [dkimSigningAttributes] Configuration block for the DKIM authentication settings for an email domain identity. See `dkimSigningAttributes` Block below.
+  /// [emailIdentity] Email address or domain to verify.
+  /// [identityType] Email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [verificationStatus] The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
-  /// [verifiedForSendingStatus] Specifies whether or not the identity is verified.
+  /// [verificationStatus] Verification status of the identity. One of `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
+  /// [verifiedForSendingStatus] Whether the identity is verified.
   const EmailIdentityState({
     this.arn,
     this.configurationSetName,

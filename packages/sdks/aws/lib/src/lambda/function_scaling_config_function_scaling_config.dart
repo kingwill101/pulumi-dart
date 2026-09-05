@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionScalingConfigFunctionScalingConfig {
   /// Maximum number of execution environments that can be provisioned for the function.
-  final pulumi.Input<int>? maxExecutionEnvironments;
+  final pulumi.Input<int?>? maxExecutionEnvironments;
   /// Minimum number of execution environments to maintain for the function.
-  final pulumi.Input<int>? minExecutionEnvironments;
+  final pulumi.Input<int?>? minExecutionEnvironments;
 
   /// Creates a new [FunctionScalingConfigFunctionScalingConfig].
   /// [maxExecutionEnvironments] Maximum number of execution environments that can be provisioned for the function.
@@ -25,8 +25,8 @@ class FunctionScalingConfigFunctionScalingConfig {
 
   factory FunctionScalingConfigFunctionScalingConfig.fromMap(Map<String, dynamic> map) {
     return FunctionScalingConfigFunctionScalingConfig(
-      maxExecutionEnvironments: (() { final guardedValue = map['maxExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minExecutionEnvironments: (() { final guardedValue = map['minExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxExecutionEnvironments: (() { final guardedValue = map['maxExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minExecutionEnvironments: (() { final guardedValue = map['minExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

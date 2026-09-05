@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterParameterGroupParameter {
   /// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-  final pulumi.Input<String>? applyMethod;
+  final pulumi.Input<String?>? applyMethod;
   /// The name of the DocumentDB parameter.
   final pulumi.Input<String> name;
   /// The value of the DocumentDB parameter.

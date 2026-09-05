@@ -26,7 +26,7 @@ class GetUserPoolClientRefreshTokenRotation {
   factory GetUserPoolClientRefreshTokenRotation.fromMap(Map<String, dynamic> map) {
     return GetUserPoolClientRefreshTokenRotation(
       feature: pulumi.Input.fromValue(map['feature'] as String),
-      retryGracePeriodSeconds: pulumi.Input.fromValue(map['retryGracePeriodSeconds'] as int),
+      retryGracePeriodSeconds: pulumi.Input.fromValue((map['retryGracePeriodSeconds'] as num).toInt()),
     );
   }
 }

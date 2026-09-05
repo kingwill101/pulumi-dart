@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'experience_args.dart';
 import 'experience_configuration.dart';
+import 'experience_endpoint.dart';
 import 'experience_state.dart';
 
 /// Resource for managing an AWS Kendra Experience.
@@ -15,10 +16,6 @@ import 'experience_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Experience("example", {
-///     indexId: exampleAwsKendraIndex.id,
-///     description: "My Kendra Experience",
-///     name: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     configuration: {
 ///         contentSourceConfiguration: {
 ///             directPutContent: true,
@@ -28,6 +25,10 @@ import 'experience_state.dart';
 ///             identityAttributeName: "12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245",
 ///         },
 ///     },
+///     indexId: exampleAwsKendraIndex.id,
+///     description: "My Kendra Experience",
+///     name: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -35,10 +36,6 @@ import 'experience_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Experience("example",
-///     index_id=example_aws_kendra_index["id"],
-///     description="My Kendra Experience",
-///     name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     configuration={
 ///         "content_source_configuration": {
 ///             "direct_put_content": True,
@@ -47,7 +44,11 @@ import 'experience_state.dart';
 ///         "user_identity_configuration": {
 ///             "identity_attribute_name": "12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245",
 ///         },
-///     })
+///     },
+///     index_id=example_aws_kendra_index["id"],
+///     description="My Kendra Experience",
+///     name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,10 +60,6 @@ import 'experience_state.dart';
 /// {
 ///     var example = new Aws.Kendra.Experience("example", new()
 ///     {
-///         IndexId = exampleAwsKendraIndex.Id,
-///         Description = "My Kendra Experience",
-///         Name = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         Configuration = new Aws.Kendra.Inputs.ExperienceConfigurationArgs
 ///         {
 ///             ContentSourceConfiguration = new Aws.Kendra.Inputs.ExperienceConfigurationContentSourceConfigurationArgs
@@ -78,6 +75,10 @@ import 'experience_state.dart';
 ///                 IdentityAttributeName = "12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245",
 ///             },
 ///         },
+///         IndexId = exampleAwsKendraIndex.Id,
+///         Description = "My Kendra Experience",
+///         Name = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -93,10 +94,6 @@ import 'experience_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewExperience(ctx, "example", &kendra.ExperienceArgs{
-/// 			IndexId:     pulumi.Any(exampleAwsKendraIndex.Id),
-/// 			Description: pulumi.String("My Kendra Experience"),
-/// 			Name:        pulumi.String("example"),
-/// 			RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Configuration: &kendra.ExperienceConfigurationArgs{
 /// 				ContentSourceConfiguration: &kendra.ExperienceConfigurationContentSourceConfigurationArgs{
 /// 					DirectPutContent: pulumi.Bool(true),
@@ -108,6 +105,10 @@ import 'experience_state.dart';
 /// 					IdentityAttributeName: pulumi.String("12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245"),
 /// 				},
 /// 			},
+/// 			IndexId:     pulumi.Any(exampleAwsKendraIndex.Id),
+/// 			Description: pulumi.String("My Kendra Experience"),
+/// 			Name:        pulumi.String("example"),
+/// 			RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -126,10 +127,6 @@ import 'experience_state.dart';
 /// }
 ///
 /// resource "aws_kendra_experience" "example" {
-///   index_id    = exampleAwsKendraIndex.id
-///   description = "My Kendra Experience"
-///   name        = "example"
-///   role_arn    = exampleAwsIamRole.arn
 ///   configuration = {
 ///     content_source_configuration = {
 ///       direct_put_content = true
@@ -139,6 +136,10 @@ import 'experience_state.dart';
 ///       identity_attribute_name = "12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245"
 ///     }
 ///   }
+///   index_id    = exampleAwsKendraIndex.id
+///   description = "My Kendra Experience"
+///   name        = "example"
+///   role_arn    = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -166,10 +167,6 @@ import 'experience_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Experience("example", ExperienceArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
-///             .description("My Kendra Experience")
-///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .configuration(ExperienceConfigurationArgs.builder()
 ///                 .contentSourceConfiguration(ExperienceConfigurationContentSourceConfigurationArgs.builder()
 ///                     .directPutContent(true)
@@ -179,6 +176,10 @@ import 'experience_state.dart';
 ///                     .identityAttributeName("12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245")
 ///                     .build())
 ///                 .build())
+///             .indexId(exampleAwsKendraIndex.id())
+///             .description("My Kendra Experience")
+///             .name("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -189,10 +190,6 @@ import 'experience_state.dart';
 ///   example:
 ///     type: aws:kendra:Experience
 ///     properties:
-///       indexId: ${exampleAwsKendraIndex.id}
-///       description: My Kendra Experience
-///       name: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       configuration:
 ///         contentSourceConfiguration:
 ///           directPutContent: true
@@ -200,6 +197,10 @@ import 'experience_state.dart';
 ///             - ${exampleAwsKendraFaq.faqId}
 ///         userIdentityConfiguration:
 ///           identityAttributeName: 12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245
+///       indexId: ${exampleAwsKendraIndex.id}
+///       description: My Kendra Experience
+///       name: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -220,7 +221,7 @@ class Experience extends pulumi.CustomResource {
   /// A description for your Amazon Kendra experience.
   late final pulumi.Output<String?> description;
   /// Shows the endpoint URLs for your Amazon Kendra experiences. The URLs are unique and fully hosted by AWS.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<ExperienceEndpoint>> endpoints;
   /// The unique identifier of the experience.
   late final pulumi.Output<String> experienceId;
   /// The identifier of the index for your Amazon Kendra experience.
@@ -229,7 +230,7 @@ class Experience extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of a role with permission to access `Query API`, `QuerySuggestions API`, `SubmitFeedback API`, and `AWS SSO` that stores your user and group information. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+  /// ARN of a role with permission to access `Query API`, `QuerySuggestions API`, `SubmitFeedback API`, and `AWS SSO` that stores your user and group information. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
@@ -248,12 +249,12 @@ class Experience extends pulumi.CustomResource {
           'aws:kendra/experience:Experience',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ExperienceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperienceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<ExperienceEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperienceEndpoint>(guardedValue, (value) => ExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     experienceId = registerOutput<String>('experienceId');
     indexId = registerOutput<String>('indexId');
     this.name = registerOutput<String>('name');
@@ -267,11 +268,12 @@ class Experience extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExperienceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Experience._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,7 +290,28 @@ class Experience extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ExperienceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperienceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<ExperienceEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperienceEndpoint>(guardedValue, (value) => ExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    experienceId = registerOutput<String>('experienceId');
+    indexId = registerOutput<String>('indexId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [Experience] resource.
+  Experience.reference(String urn)
+    : super(
+        'aws:kendra/experience:Experience',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<ExperienceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperienceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    endpoints = registerOutput<List<ExperienceEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperienceEndpoint>(guardedValue, (value) => ExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     experienceId = registerOutput<String>('experienceId');
     indexId = registerOutput<String>('indexId');
     this.name = registerOutput<String>('name');

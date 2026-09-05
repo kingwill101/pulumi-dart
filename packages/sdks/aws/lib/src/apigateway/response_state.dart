@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Response resources.
 class ResponseState {
   /// Region where this resource will be managed. See the [AWS Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for supported values. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of parameters (paths, query strings and headers) of the Gateway Response.
-  final pulumi.Input<Map<String, String>>? responseParameters;
+  final pulumi.Input<Map<String, String>?>? responseParameters;
   /// Map of templates used to transform the response body.
-  final pulumi.Input<Map<String, String>>? responseTemplates;
+  final pulumi.Input<Map<String, String>?>? responseTemplates;
   /// Response type of the associated GatewayResponse. See the [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html) for supported values.
-  final pulumi.Input<String>? responseType;
+  final pulumi.Input<String?>? responseType;
   /// String identifier of the associated REST API.
-  final pulumi.Input<String>? restApiId;
+  final pulumi.Input<String?>? restApiId;
   /// HTTP status code of the Gateway Response.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
 
   /// Creates a new [ResponseState].
   /// [region] Region where this resource will be managed. See the [AWS Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for supported values. Defaults to the Region set in the provider configuration.

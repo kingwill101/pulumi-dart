@@ -8,13 +8,13 @@ import 'table_schema_definition_static_column.dart';
 
 class TableSchemaDefinition {
   /// The columns that are part of the clustering key of the table.
-  final pulumi.Input<List<TableSchemaDefinitionClusteringKey>>? clusteringKeys;
+  final pulumi.Input<List<TableSchemaDefinitionClusteringKey>?>? clusteringKeys;
   /// The regular columns of the table.
   final pulumi.Input<List<TableSchemaDefinitionColumn>> columns;
   /// The columns that are part of the partition key of the table .
   final pulumi.Input<List<TableSchemaDefinitionPartitionKey>> partitionKeys;
   /// The columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition.
-  final pulumi.Input<List<TableSchemaDefinitionStaticColumn>>? staticColumns;
+  final pulumi.Input<List<TableSchemaDefinitionStaticColumn>?>? staticColumns;
 
   /// Creates a new [TableSchemaDefinition].
   /// [clusteringKeys] The columns that are part of the clustering key of the table.

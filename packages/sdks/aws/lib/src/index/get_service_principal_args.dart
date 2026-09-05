@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_service_principal_get_service_principal_args_doc}
 class GetServicePrincipalArgs {
   /// Region you'd like the SPN for. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the service you want to generate a Service Principal Name for.
   final pulumi.Input<String> serviceName;
 

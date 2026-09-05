@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering VoiceConnector resources.
 class VoiceConnectorState {
-  /// ARN (Amazon Resource Name) of the Amazon Chime Voice Connector.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Amazon Chime Voice Connector.
+  final pulumi.Input<String?>? arn;
   /// The AWS Region in which the Amazon Chime Voice Connector is created. Default value: `us-east-1`
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// The name of the Amazon Chime Voice Connector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The outbound host name for the Amazon Chime Voice Connector.
-  final pulumi.Input<String>? outboundHostName;
+  final pulumi.Input<String?>? outboundHostName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// When enabled, requires encryption for the Amazon Chime Voice Connector.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<bool>? requireEncryption;
+  final pulumi.Input<bool?>? requireEncryption;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VoiceConnectorState].
-  /// [arn] ARN (Amazon Resource Name) of the Amazon Chime Voice Connector.
+  /// [arn] ARN of the Amazon Chime Voice Connector.
   /// [awsRegion] The AWS Region in which the Amazon Chime Voice Connector is created. Default value: `us-east-1`
   /// [name] The name of the Amazon Chime Voice Connector.
   /// [outboundHostName] The outbound host name for the Amazon Chime Voice Connector.

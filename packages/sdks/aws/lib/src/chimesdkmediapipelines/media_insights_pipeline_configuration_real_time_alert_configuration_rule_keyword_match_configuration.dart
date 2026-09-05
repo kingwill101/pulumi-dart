@@ -6,7 +6,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMat
   /// Collection of keywords to match.
   final pulumi.Input<List<String>> keywords;
   /// Negate the rule.
-  final pulumi.Input<bool>? negate;
+  final pulumi.Input<bool?>? negate;
   /// Rule name.
   final pulumi.Input<String> ruleName;
 

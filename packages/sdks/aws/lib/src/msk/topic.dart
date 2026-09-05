@@ -191,7 +191,7 @@ import 'topic_timeouts.dart';
 ///
 /// #### Required
 ///
-/// * `clusterArn` (String) Amazon Resource Name (ARN) that uniquely identifies MSK Cluster.
+/// * `clusterArn` (String) ARN that uniquely identifies MSK Cluster.
 /// * `name` (String) Name of Topic.
 ///
 /// #### Optional
@@ -208,7 +208,7 @@ import 'topic_timeouts.dart';
 class Topic extends pulumi.CustomResource {
   /// ARN of the Topic.
   late final pulumi.Output<String> arn;
-  /// Amazon Resource Name (ARN) that uniquely identifies MSK Cluster.
+  /// ARN that uniquely identifies MSK Cluster.
   late final pulumi.Output<String> clusterArn;
   /// Explicit configured Kafka configuration in JSON format for Topic.
   late final pulumi.Output<String?> configs;
@@ -238,7 +238,7 @@ class Topic extends pulumi.CustomResource {
           'aws:msk/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');
@@ -256,11 +256,12 @@ class Topic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Topic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,6 +275,26 @@ class Topic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    clusterArn = registerOutput<String>('clusterArn');
+    configs = registerOutput<String?>('configs');
+    configsActual = registerOutput<String>('configsActual');
+    this.name = registerOutput<String>('name');
+    partitionCount = registerOutput<int>('partitionCount');
+    region = registerOutput<String>('region');
+    replicationFactor = registerOutput<int>('replicationFactor');
+    timeouts = registerOutput<TopicTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'aws:msk/topic:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');
     configs = registerOutput<String?>('configs');

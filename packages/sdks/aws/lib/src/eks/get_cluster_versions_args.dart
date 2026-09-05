@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterVersionsArgs {
   /// Type of clusters to filter by.
   /// Currently, the only valid value is `eks`.
-  final pulumi.Input<String>? clusterType;
-  final pulumi.Input<List<String>>? clusterVersionsOnlies;
+  final pulumi.Input<String?>? clusterType;
+  final pulumi.Input<List<String>?>? clusterVersionsOnlies;
   /// Whether to show only the default versions of Kubernetes supported by EKS.
-  final pulumi.Input<bool>? defaultOnly;
+  final pulumi.Input<bool?>? defaultOnly;
   /// Whether to include all kubernetes versions in the response.
-  final pulumi.Input<bool>? includeAll;
+  final pulumi.Input<bool?>? includeAll;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the EKS cluster versions to list.
   /// Valid values are `STANDARD_SUPPORT` or `UNSUPPORTED` or `EXTENDED_SUPPORT`.
-  final pulumi.Input<String>? versionStatus;
+  final pulumi.Input<String?>? versionStatus;
 
   /// Creates a new [GetClusterVersionsArgs].
   /// [clusterType] Type of clusters to filter by.

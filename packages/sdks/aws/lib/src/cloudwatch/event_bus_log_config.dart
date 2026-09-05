@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventBusLogConfig {
   /// Whether EventBridge include detailed event information in the records it generates. Valid values are `NONE` and `FULL`.
-  final pulumi.Input<String>? includeDetail;
+  final pulumi.Input<String?>? includeDetail;
   /// Level of logging detail to include. Valid values are `OFF`, `ERROR`, `INFO`, and `TRACE`.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
 
   /// Creates a new [EventBusLogConfig].
   /// [includeDetail] Whether EventBridge include detailed event information in the records it generates. Valid values are `NONE` and `FULL`.

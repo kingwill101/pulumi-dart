@@ -6,22 +6,22 @@ import 'project_timeouts.dart';
 /// Input properties used for looking up and filtering Project resources.
 class ProjectState {
   /// ARN of the Project.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Specify if automatic retraining should occur. Valid values are `ENABLED` or `DISABLED`. Must be set when `feature` is `CONTENT_MODERATION`, but do not set otherwise.
-  final pulumi.Input<String>? autoUpdate;
+  final pulumi.Input<String?>? autoUpdate;
   /// Specify the feature being customized. Valid values are `CONTENT_MODERATION` or `CUSTOM_LABELS`. Defaults to `CUSTOM_LABELS`.
-  final pulumi.Input<String>? feature;
+  final pulumi.Input<String?>? feature;
   /// Desired name of the project.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ProjectTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ProjectTimeouts?>? timeouts;
 
   /// Creates a new [ProjectState].
   /// [arn] ARN of the Project.

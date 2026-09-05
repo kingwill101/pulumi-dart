@@ -7,10 +7,10 @@ import 'channel_encoder_settings_video_description_codec_settings_h265_settings.
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettings {
   /// Frame capture settings. See Frame Capture Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings>? frameCaptureSettings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings?>? frameCaptureSettings;
   /// H264 settings. See H264 Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings>? h264Settings;
-  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings>? h265Settings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings?>? h264Settings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings?>? h265Settings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettings].
   /// [frameCaptureSettings] Frame capture settings. See Frame Capture Settings for more details.

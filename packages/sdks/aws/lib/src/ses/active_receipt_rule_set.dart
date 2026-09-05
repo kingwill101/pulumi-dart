@@ -112,11 +112,11 @@ import 'active_receipt_rule_set_state.dart';
 /// $ pulumi import aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet my_rule_set my_rule_set_name
 /// ```
 class ActiveReceiptRuleSet extends pulumi.CustomResource {
-  /// The SES receipt rule set ARN.
+  /// SES receipt rule set ARN.
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The name of the rule set
+  /// Name of the rule set
   late final pulumi.Output<String> ruleSetName;
 
   /// Creates a new [ActiveReceiptRuleSet].
@@ -131,7 +131,7 @@ class ActiveReceiptRuleSet extends pulumi.CustomResource {
           'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
@@ -143,11 +143,12 @@ class ActiveReceiptRuleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActiveReceiptRuleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActiveReceiptRuleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -161,6 +162,20 @@ class ActiveReceiptRuleSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
+  }
+
+  /// Creates a typed reference to an existing [ActiveReceiptRuleSet] resource.
+  ActiveReceiptRuleSet.reference(String urn)
+    : super(
+        'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     ruleSetName = registerOutput<String>('ruleSetName');

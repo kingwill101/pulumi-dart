@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretSecret {
-  final pulumi.Input<Map<String, String>>? context;
-  final pulumi.Input<List<String>>? grantTokens;
+  final pulumi.Input<Map<String, String>?>? context;
+  final pulumi.Input<List<String>?>? grantTokens;
   final pulumi.Input<String> name;
   final pulumi.Input<String> payload;
 

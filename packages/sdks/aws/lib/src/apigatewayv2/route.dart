@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_args.dart';
+import 'route_request_parameter.dart';
 import 'route_state.dart';
 
 /// Manages an Amazon API Gateway Version 2 route.
@@ -412,7 +413,7 @@ class Route extends pulumi.CustomResource {
   /// Request models for the route. Supported only for WebSocket APIs.
   late final pulumi.Output<Map<String, String>?> requestModels;
   /// Request parameters for the route. Supported only for WebSocket APIs. See `requestParameter` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> requestParameters;
+  late final pulumi.Output<List<RouteRequestParameter>?> requestParameters;
   /// Route key for the route. For HTTP APIs, the route key can be either `$default`, or a combination of an HTTP method and resource path, for example, `GET /pets`.
   late final pulumi.Output<String> routeKey;
   /// [Route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
@@ -432,18 +433,18 @@ class Route extends pulumi.CustomResource {
           'aws:apigatewayv2/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
-    authorizationScopes = registerOutput<List<String>?>('authorizationScopes');
+    authorizationScopes = registerOutput<List<String>?>('authorizationScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authorizationType = registerOutput<String?>('authorizationType');
     authorizerId = registerOutput<String?>('authorizerId');
     modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
     operationName = registerOutput<String?>('operationName');
     region = registerOutput<String>('region');
-    requestModels = registerOutput<Map<String, String>?>('requestModels');
-    requestParameters = registerOutput<List<Map<String, dynamic>>?>('requestParameters');
+    requestModels = registerOutput<Map<String, String>?>('requestModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestParameters = registerOutput<List<RouteRequestParameter>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteRequestParameter>(guardedValue, (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>())); });
     routeKey = registerOutput<String>('routeKey');
     routeResponseSelectionExpression = registerOutput<String?>('routeResponseSelectionExpression');
     target = registerOutput<String?>('target');
@@ -454,11 +455,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -474,14 +476,38 @@ class Route extends pulumi.CustomResource {
         ) {
     apiId = registerOutput<String>('apiId');
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
-    authorizationScopes = registerOutput<List<String>?>('authorizationScopes');
+    authorizationScopes = registerOutput<List<String>?>('authorizationScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authorizationType = registerOutput<String?>('authorizationType');
     authorizerId = registerOutput<String?>('authorizerId');
     modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
     operationName = registerOutput<String?>('operationName');
     region = registerOutput<String>('region');
-    requestModels = registerOutput<Map<String, String>?>('requestModels');
-    requestParameters = registerOutput<List<Map<String, dynamic>>?>('requestParameters');
+    requestModels = registerOutput<Map<String, String>?>('requestModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestParameters = registerOutput<List<RouteRequestParameter>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteRequestParameter>(guardedValue, (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    routeKey = registerOutput<String>('routeKey');
+    routeResponseSelectionExpression = registerOutput<String?>('routeResponseSelectionExpression');
+    target = registerOutput<String?>('target');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'aws:apigatewayv2/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
+    authorizationScopes = registerOutput<List<String>?>('authorizationScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authorizationType = registerOutput<String?>('authorizationType');
+    authorizerId = registerOutput<String?>('authorizerId');
+    modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
+    operationName = registerOutput<String?>('operationName');
+    region = registerOutput<String>('region');
+    requestModels = registerOutput<Map<String, String>?>('requestModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestParameters = registerOutput<List<RouteRequestParameter>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteRequestParameter>(guardedValue, (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>())); });
     routeKey = registerOutput<String>('routeKey');
     routeResponseSelectionExpression = registerOutput<String?>('routeResponseSelectionExpression');
     target = registerOutput<String?>('target');

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CanaryTimeline {
   /// Date and time the canary was created.
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// Date and time the canary was most recently modified.
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// Date and time that the canary's most recent run started.
-  final pulumi.Input<String>? lastStarted;
+  final pulumi.Input<String?>? lastStarted;
   /// Date and time that the canary's most recent run ended.
-  final pulumi.Input<String>? lastStopped;
+  final pulumi.Input<String?>? lastStopped;
 
   /// Creates a new [CanaryTimeline].
   /// [created] Date and time the canary was created.

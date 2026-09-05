@@ -10,11 +10,11 @@ class V2ServiceFunctionArgs {
   /// Criticality level of the service function. Valid values: `PRIMARY`, `SUPPLEMENTAL`.
   final pulumi.Input<String> criticality;
   /// Description of the service function.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the service function.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the service this function belongs to. Changing this value requires creating a new resource.
   ///
   /// The following arguments are optional:

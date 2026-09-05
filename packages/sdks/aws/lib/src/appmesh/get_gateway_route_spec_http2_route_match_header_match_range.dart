@@ -23,8 +23,8 @@ class GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange {
 
   factory GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange(
-      end: pulumi.Input.fromValue(map['end'] as int),
-      start: pulumi.Input.fromValue(map['start'] as int),
+      end: pulumi.Input.fromValue((map['end'] as num).toInt()),
+      start: pulumi.Input.fromValue((map['start'] as num).toInt()),
     );
   }
 }

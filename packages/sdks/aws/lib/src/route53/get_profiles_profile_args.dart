@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_get_profiles_profile_get_profiles_profile_args_doc}
 class GetProfilesProfileArgs {
   /// ID of the Profile. One of `name` or `id` must be specified.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the Profile. One of `name` or `id` must be specified.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetProfilesProfileArgs].
   /// [id] ID of the Profile. One of `name` or `id` must be specified.

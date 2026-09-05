@@ -187,7 +187,7 @@ class VoiceConnectorLogging extends pulumi.CustomResource {
           'aws:chime/voiceConnectorLogging:VoiceConnectorLogging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     enableMediaMetricLogs = registerOutput<bool?>('enableMediaMetricLogs');
     enableSipLogs = registerOutput<bool?>('enableSipLogs');
@@ -200,11 +200,12 @@ class VoiceConnectorLogging extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorLoggingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnectorLogging._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -218,6 +219,21 @@ class VoiceConnectorLogging extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enableMediaMetricLogs = registerOutput<bool?>('enableMediaMetricLogs');
+    enableSipLogs = registerOutput<bool?>('enableSipLogs');
+    region = registerOutput<String>('region');
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnectorLogging] resource.
+  VoiceConnectorLogging.reference(String urn)
+    : super(
+        'aws:chime/voiceConnectorLogging:VoiceConnectorLogging',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enableMediaMetricLogs = registerOutput<bool?>('enableMediaMetricLogs');
     enableSipLogs = registerOutput<bool?>('enableSipLogs');
     region = registerOutput<String>('region');

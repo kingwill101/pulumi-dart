@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EndpointPrivateDns resources.
 class EndpointPrivateDnsState {
   /// Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.
-  final pulumi.Input<bool>? privateDnsEnabled;
+  final pulumi.Input<bool?>? privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// VPC endpoint identifier.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
 
   /// Creates a new [EndpointPrivateDnsState].
   /// [privateDnsEnabled] Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.

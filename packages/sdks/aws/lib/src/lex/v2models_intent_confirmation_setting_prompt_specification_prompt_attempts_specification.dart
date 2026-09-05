@@ -7,15 +7,15 @@ import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempt
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification {
   /// Whether the user can interrupt a speech prompt attempt from the bot.
-  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<bool?>? allowInterrupt;
   /// Configuration block for the allowed input types of the prompt attempt. See `allowedInputTypes`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes>? allowedInputTypes;
+  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes?>? allowedInputTypes;
   /// Configuration block for settings on audio and DTMF input. See `audioAndDtmfInputSpecification`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification>? audioAndDtmfInputSpecification;
+  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification?>? audioAndDtmfInputSpecification;
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final pulumi.Input<String> mapBlockKey;
   /// Configuration block for the settings on text input. See `textInputSpecification`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification>? textInputSpecification;
+  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification?>? textInputSpecification;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification].
   /// [allowInterrupt] Whether the user can interrupt a speech prompt attempt from the bot.

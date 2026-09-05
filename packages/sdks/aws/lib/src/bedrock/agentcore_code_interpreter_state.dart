@@ -8,28 +8,28 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreCodeInterpreter resources.
 class AgentcoreCodeInterpreterState {
   /// Certificates to install in the code interpreter. Between 1 and 200 blocks are supported. See `certificate` below.
-  final pulumi.Input<List<AgentcoreCodeInterpreterCertificate>>? certificates;
+  final pulumi.Input<List<AgentcoreCodeInterpreterCertificate>?>? certificates;
   /// ARN of the Code Interpreter.
-  final pulumi.Input<String>? codeInterpreterArn;
+  final pulumi.Input<String?>? codeInterpreterArn;
   /// Unique identifier of the Code Interpreter.
-  final pulumi.Input<String>? codeInterpreterId;
+  final pulumi.Input<String?>? codeInterpreterId;
   /// Description of the code interpreter.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Name of the code interpreter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration for the code interpreter. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreCodeInterpreterNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<AgentcoreCodeInterpreterNetworkConfiguration?>? networkConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcoreCodeInterpreterTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcoreCodeInterpreterTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreCodeInterpreterState].
   /// [certificates] Certificates to install in the code interpreter. Between 1 and 200 blocks are supported. See `certificate` below.

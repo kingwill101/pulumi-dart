@@ -149,6 +149,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getConnection:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// Provides details about existing Network Manager connections.
 ///
 /// ## Example Usage
@@ -286,6 +297,17 @@ Future<GetConnectionsResult> getConnections(
   return GetConnectionsResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionsResult> getConnectionsOutput(
+  GetConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getConnections:getConnections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionsResult.fromMap);
+}
+
 /// Provides details about an AWS Network Manager Core Network.
 ///
 /// ## Example Usage
@@ -406,6 +428,17 @@ Future<GetCoreNetworkResult> getCoreNetwork(
   return GetCoreNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetCoreNetworkResult> getCoreNetworkOutput(
+  GetCoreNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getCoreNetwork:getCoreNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCoreNetworkResult.fromMap);
+}
+
 /// Generates a Core Network policy document in JSON format for use with resources that expect core network policy documents such as `awsccNetworkmanagerCoreNetwork`. It follows the API definition from the [core-network-policy documentation](https://docs.aws.amazon.com/vpc/latest/cloudwan/cloudwan-policies-json.html).
 ///
 /// Using this data source to generate policy documents is *optional*. It is also valid to use literal JSON strings in your configuration or to use the `file` interpolation function to read a raw JSON policy document from a file.
@@ -422,9 +455,37 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = aws.networkmanager.getCoreNetworkPolicyDocument({
+///     attachmentPolicies: [
+///         {
+///             action: {
+///                 associationMethod: "constant",
+///                 segment: "shared",
+///             },
+///             conditions: [{
+///                 type: "tag-value",
+///                 operator: "equals",
+///                 key: "segment",
+///                 value: "shared",
+///             }],
+///             ruleNumber: 100,
+///             conditionLogic: "or",
+///         },
+///         {
+///             action: {
+///                 associationMethod: "constant",
+///                 segment: "prod",
+///             },
+///             conditions: [{
+///                 type: "tag-value",
+///                 operator: "equals",
+///                 key: "segment",
+///                 value: "prod",
+///             }],
+///             ruleNumber: 200,
+///             conditionLogic: "or",
+///         },
+///     ],
 ///     coreNetworkConfigurations: [{
-///         vpnEcmpSupport: false,
-///         asnRanges: ["64512-64555"],
 ///         edgeLocations: [
 ///             {
 ///                 location: "us-east-1",
@@ -435,6 +496,14 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///                 asn: "64513",
 ///             },
 ///         ],
+///         vpnEcmpSupport: false,
+///         asnRanges: ["64512-64555"],
+///     }],
+///     segmentActions: [{
+///         action: "share",
+///         mode: "attachment-route",
+///         segment: "shared",
+///         shareWiths: ["*"],
 ///     }],
 ///     segments: [
 ///         {
@@ -448,51 +517,43 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///             requireAttachmentAcceptance: true,
 ///         },
 ///     ],
-///     segmentActions: [{
-///         action: "share",
-///         mode: "attachment-route",
-///         segment: "shared",
-///         shareWiths: ["*"],
-///     }],
-///     attachmentPolicies: [
-///         {
-///             ruleNumber: 100,
-///             conditionLogic: "or",
-///             conditions: [{
-///                 type: "tag-value",
-///                 operator: "equals",
-///                 key: "segment",
-///                 value: "shared",
-///             }],
-///             action: {
-///                 associationMethod: "constant",
-///                 segment: "shared",
-///             },
-///         },
-///         {
-///             ruleNumber: 200,
-///             conditionLogic: "or",
-///             conditions: [{
-///                 type: "tag-value",
-///                 operator: "equals",
-///                 key: "segment",
-///                 value: "prod",
-///             }],
-///             action: {
-///                 associationMethod: "constant",
-///                 segment: "prod",
-///             },
-///         },
-///     ],
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.networkmanager.get_core_network_policy_document(core_network_configurations=[{
-///         "vpn_ecmp_support": False,
-///         "asn_ranges": ["64512-64555"],
+/// test = aws.networkmanager.get_core_network_policy_document(attachment_policies=[
+///         {
+///             "action": {
+///                 "association_method": "constant",
+///                 "segment": "shared",
+///             },
+///             "conditions": [{
+///                 "type": "tag-value",
+///                 "operator": "equals",
+///                 "key": "segment",
+///                 "value": "shared",
+///             }],
+///             "rule_number": 100,
+///             "condition_logic": "or",
+///         },
+///         {
+///             "action": {
+///                 "association_method": "constant",
+///                 "segment": "prod",
+///             },
+///             "conditions": [{
+///                 "type": "tag-value",
+///                 "operator": "equals",
+///                 "key": "segment",
+///                 "value": "prod",
+///             }],
+///             "rule_number": 200,
+///             "condition_logic": "or",
+///         },
+///     ],
+///     core_network_configurations=[{
 ///         "edge_locations": [
 ///             {
 ///                 "location": "us-east-1",
@@ -503,6 +564,14 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///                 "asn": "64513",
 ///             },
 ///         ],
+///         "vpn_ecmp_support": False,
+///         "asn_ranges": ["64512-64555"],
+///     }],
+///     segment_actions=[{
+///         "action": "share",
+///         "mode": "attachment-route",
+///         "segment": "shared",
+///         "share_withs": ["*"],
 ///     }],
 ///     segments=[
 ///         {
@@ -514,42 +583,6 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///             "name": "prod",
 ///             "description": "Segment for prod services",
 ///             "require_attachment_acceptance": True,
-///         },
-///     ],
-///     segment_actions=[{
-///         "action": "share",
-///         "mode": "attachment-route",
-///         "segment": "shared",
-///         "share_withs": ["*"],
-///     }],
-///     attachment_policies=[
-///         {
-///             "rule_number": 100,
-///             "condition_logic": "or",
-///             "conditions": [{
-///                 "type": "tag-value",
-///                 "operator": "equals",
-///                 "key": "segment",
-///                 "value": "shared",
-///             }],
-///             "action": {
-///                 "association_method": "constant",
-///                 "segment": "shared",
-///             },
-///         },
-///         {
-///             "rule_number": 200,
-///             "condition_logic": "or",
-///             "conditions": [{
-///                 "type": "tag-value",
-///                 "operator": "equals",
-///                 "key": "segment",
-///                 "value": "prod",
-///             }],
-///             "action": {
-///                 "association_method": "constant",
-///                 "segment": "prod",
-///             },
 ///         },
 ///     ])
 /// ```
@@ -563,15 +596,53 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// {
 ///     var test = Aws.NetworkManager.GetCoreNetworkPolicyDocument.Invoke(new()
 ///     {
+///         AttachmentPolicies = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyInputArgs
+///             {
+///                 Action = new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionInputArgs
+///                 {
+///                     AssociationMethod = "constant",
+///                     Segment = "shared",
+///                 },
+///                 Conditions = new[]
+///                 {
+///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionInputArgs
+///                     {
+///                         Type = "tag-value",
+///                         Operator = "equals",
+///                         Key = "segment",
+///                         Value = "shared",
+///                     },
+///                 },
+///                 RuleNumber = 100,
+///                 ConditionLogic = "or",
+///             },
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyInputArgs
+///             {
+///                 Action = new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionInputArgs
+///                 {
+///                     AssociationMethod = "constant",
+///                     Segment = "prod",
+///                 },
+///                 Conditions = new[]
+///                 {
+///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionInputArgs
+///                     {
+///                         Type = "tag-value",
+///                         Operator = "equals",
+///                         Key = "segment",
+///                         Value = "prod",
+///                     },
+///                 },
+///                 RuleNumber = 200,
+///                 ConditionLogic = "or",
+///             },
+///         },
 ///         CoreNetworkConfigurations = new[]
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 VpnEcmpSupport = false,
-///                 AsnRanges = new[]
-///                 {
-///                     "64512-64555",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -584,6 +655,24 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///                         Location = "eu-central-1",
 ///                         Asn = "64513",
 ///                     },
+///                 },
+///                 VpnEcmpSupport = false,
+///                 AsnRanges = new[]
+///                 {
+///                     "64512-64555",
+///                 },
+///             },
+///         },
+///         SegmentActions = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentActionInputArgs
+///             {
+///                 Action = "share",
+///                 Mode = "attachment-route",
+///                 Segment = "shared",
+///                 ShareWiths = new[]
+///                 {
+///                     "*",
 ///                 },
 ///             },
 ///         },
@@ -602,62 +691,6 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///                 RequireAttachmentAcceptance = true,
 ///             },
 ///         },
-///         SegmentActions = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentActionInputArgs
-///             {
-///                 Action = "share",
-///                 Mode = "attachment-route",
-///                 Segment = "shared",
-///                 ShareWiths = new[]
-///                 {
-///                     "*",
-///                 },
-///             },
-///         },
-///         AttachmentPolicies = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyInputArgs
-///             {
-///                 RuleNumber = 100,
-///                 ConditionLogic = "or",
-///                 Conditions = new[]
-///                 {
-///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionInputArgs
-///                     {
-///                         Type = "tag-value",
-///                         Operator = "equals",
-///                         Key = "segment",
-///                         Value = "shared",
-///                     },
-///                 },
-///                 Action = new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionInputArgs
-///                 {
-///                     AssociationMethod = "constant",
-///                     Segment = "shared",
-///                 },
-///             },
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyInputArgs
-///             {
-///                 RuleNumber = 200,
-///                 ConditionLogic = "or",
-///                 Conditions = new[]
-///                 {
-///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionInputArgs
-///                     {
-///                         Type = "tag-value",
-///                         Operator = "equals",
-///                         Key = "segment",
-///                         Value = "prod",
-///                     },
-///                 },
-///                 Action = new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionInputArgs
-///                 {
-///                     AssociationMethod = "constant",
-///                     Segment = "prod",
-///                 },
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -673,12 +706,42 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.GetCoreNetworkPolicyDocument(ctx, &networkmanager.GetCoreNetworkPolicyDocumentArgs{
+/// 			AttachmentPolicies: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicy{
+/// 				{
+/// 					Action: {
+/// 						AssociationMethod: pulumi.StringRef("constant"),
+/// 						Segment:           pulumi.StringRef("shared"),
+/// 					},
+/// 					Conditions: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicyCondition{
+/// 						{
+/// 							Type:     "tag-value",
+/// 							Operator: pulumi.StringRef("equals"),
+/// 							Key:      pulumi.StringRef("segment"),
+/// 							Value:    pulumi.StringRef("shared"),
+/// 						},
+/// 					},
+/// 					RuleNumber:     100,
+/// 					ConditionLogic: pulumi.StringRef("or"),
+/// 				},
+/// 				{
+/// 					Action: {
+/// 						AssociationMethod: pulumi.StringRef("constant"),
+/// 						Segment:           pulumi.StringRef("prod"),
+/// 					},
+/// 					Conditions: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicyCondition{
+/// 						{
+/// 							Type:     "tag-value",
+/// 							Operator: pulumi.StringRef("equals"),
+/// 							Key:      pulumi.StringRef("segment"),
+/// 							Value:    pulumi.StringRef("prod"),
+/// 						},
+/// 					},
+/// 					RuleNumber:     200,
+/// 					ConditionLogic: pulumi.StringRef("or"),
+/// 				},
+/// 			},
 /// 			CoreNetworkConfigurations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfiguration{
 /// 				{
-/// 					VpnEcmpSupport: pulumi.BoolRef(false),
-/// 					AsnRanges: []string{
-/// 						"64512-64555",
-/// 					},
 /// 					EdgeLocations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation{
 /// 						{
 /// 							Location: "us-east-1",
@@ -688,6 +751,20 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// 							Location: "eu-central-1",
 /// 							Asn:      pulumi.StringRef("64513"),
 /// 						},
+/// 					},
+/// 					VpnEcmpSupport: pulumi.BoolRef(false),
+/// 					AsnRanges: []string{
+/// 						"64512-64555",
+/// 					},
+/// 				},
+/// 			},
+/// 			SegmentActions: []networkmanager.GetCoreNetworkPolicyDocumentSegmentAction{
+/// 				{
+/// 					Action:  "share",
+/// 					Mode:    pulumi.StringRef("attachment-route"),
+/// 					Segment: "shared",
+/// 					ShareWiths: []string{
+/// 						"*",
 /// 					},
 /// 				},
 /// 			},
@@ -701,50 +778,6 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// 					Name:                        "prod",
 /// 					Description:                 pulumi.StringRef("Segment for prod services"),
 /// 					RequireAttachmentAcceptance: pulumi.BoolRef(true),
-/// 				},
-/// 			},
-/// 			SegmentActions: []networkmanager.GetCoreNetworkPolicyDocumentSegmentAction{
-/// 				{
-/// 					Action:  "share",
-/// 					Mode:    pulumi.StringRef("attachment-route"),
-/// 					Segment: "shared",
-/// 					ShareWiths: []string{
-/// 						"*",
-/// 					},
-/// 				},
-/// 			},
-/// 			AttachmentPolicies: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicy{
-/// 				{
-/// 					RuleNumber:     100,
-/// 					ConditionLogic: pulumi.StringRef("or"),
-/// 					Conditions: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicyCondition{
-/// 						{
-/// 							Type:     "tag-value",
-/// 							Operator: pulumi.StringRef("equals"),
-/// 							Key:      pulumi.StringRef("segment"),
-/// 							Value:    pulumi.StringRef("shared"),
-/// 						},
-/// 					},
-/// 					Action: {
-/// 						AssociationMethod: pulumi.StringRef("constant"),
-/// 						Segment:           pulumi.StringRef("shared"),
-/// 					},
-/// 				},
-/// 				{
-/// 					RuleNumber:     200,
-/// 					ConditionLogic: pulumi.StringRef("or"),
-/// 					Conditions: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicyCondition{
-/// 						{
-/// 							Type:     "tag-value",
-/// 							Operator: pulumi.StringRef("equals"),
-/// 							Key:      pulumi.StringRef("segment"),
-/// 							Value:    pulumi.StringRef("prod"),
-/// 						},
-/// 					},
-/// 					Action: {
-/// 						AssociationMethod: pulumi.StringRef("constant"),
-/// 						Segment:           pulumi.StringRef("prod"),
-/// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -765,9 +798,35 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// }
 ///
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "test" {
+///   attachment_policies {
+///     action = {
+///       association_method = "constant"
+///       segment            = "shared"
+///     }
+///     conditions {
+///       type     = "tag-value"
+///       operator = "equals"
+///       key      = "segment"
+///       value    = "shared"
+///     }
+///     rule_number     = 100
+///     condition_logic = "or"
+///   }
+///   attachment_policies {
+///     action = {
+///       association_method = "constant"
+///       segment            = "prod"
+///     }
+///     conditions {
+///       type     = "tag-value"
+///       operator = "equals"
+///       key      = "segment"
+///       value    = "prod"
+///     }
+///     rule_number     = 200
+///     condition_logic = "or"
+///   }
 ///   core_network_configurations {
-///     vpn_ecmp_support = false
-///     asn_ranges       = ["64512-64555"]
 ///     edge_locations {
 ///       location = "us-east-1"
 ///       asn      = 64512
@@ -776,6 +835,14 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///       location = "eu-central-1"
 ///       asn      = 64513
 ///     }
+///     vpn_ecmp_support = false
+///     asn_ranges       = ["64512-64555"]
+///   }
+///   segment_actions {
+///     action      = "share"
+///     mode        = "attachment-route"
+///     segment     = "shared"
+///     share_withs = ["*"]
 ///   }
 ///   segments {
 ///     name                          = "shared"
@@ -787,40 +854,6 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///     description                   = "Segment for prod services"
 ///     require_attachment_acceptance = true
 ///   }
-///   segment_actions {
-///     action      = "share"
-///     mode        = "attachment-route"
-///     segment     = "shared"
-///     share_withs = ["*"]
-///   }
-///   attachment_policies {
-///     rule_number     = 100
-///     condition_logic = "or"
-///     conditions {
-///       type     = "tag-value"
-///       operator = "equals"
-///       key      = "segment"
-///       value    = "shared"
-///     }
-///     action = {
-///       association_method = "constant"
-///       segment            = "shared"
-///     }
-///   }
-///   attachment_policies {
-///     rule_number     = 200
-///     condition_logic = "or"
-///     conditions {
-///       type     = "tag-value"
-///       operator = "equals"
-///       key      = "segment"
-///       value    = "prod"
-///     }
-///     action = {
-///       association_method = "constant"
-///       segment            = "prod"
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -831,13 +864,13 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -852,9 +885,36 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
+///             .attachmentPolicies(
+///                 GetCoreNetworkPolicyDocumentAttachmentPolicyArgs.builder()
+///                     .action(GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs.builder()
+///                         .associationMethod("constant")
+///                         .segment("shared")
+///                         .build())
+///                     .conditions(GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs.builder()
+///                         .type("tag-value")
+///                         .operator("equals")
+///                         .key("segment")
+///                         .value("shared")
+///                         .build())
+///                     .ruleNumber(100)
+///                     .conditionLogic("or")
+///                     .build(),
+///                 GetCoreNetworkPolicyDocumentAttachmentPolicyArgs.builder()
+///                     .action(GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs.builder()
+///                         .associationMethod("constant")
+///                         .segment("prod")
+///                         .build())
+///                     .conditions(GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs.builder()
+///                         .type("tag-value")
+///                         .operator("equals")
+///                         .key("segment")
+///                         .value("prod")
+///                         .build())
+///                     .ruleNumber(200)
+///                     .conditionLogic("or")
+///                     .build())
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .vpnEcmpSupport(false)
-///                 .asnRanges("64512-64555")
 ///                 .edgeLocations(
 ///                     GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                         .location("us-east-1")
@@ -864,6 +924,14 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///                         .location("eu-central-1")
 ///                         .asn("64513")
 ///                         .build())
+///                 .vpnEcmpSupport(false)
+///                 .asnRanges("64512-64555")
+///                 .build())
+///             .segmentActions(GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
+///                 .action("share")
+///                 .mode("attachment-route")
+///                 .segment("shared")
+///                 .shareWiths("*")
 ///                 .build())
 ///             .segments(
 ///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
@@ -876,41 +944,6 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///                     .description("Segment for prod services")
 ///                     .requireAttachmentAcceptance(true)
 ///                     .build())
-///             .segmentActions(GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
-///                 .action("share")
-///                 .mode("attachment-route")
-///                 .segment("shared")
-///                 .shareWiths("*")
-///                 .build())
-///             .attachmentPolicies(
-///                 GetCoreNetworkPolicyDocumentAttachmentPolicyArgs.builder()
-///                     .ruleNumber(100)
-///                     .conditionLogic("or")
-///                     .conditions(GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs.builder()
-///                         .type("tag-value")
-///                         .operator("equals")
-///                         .key("segment")
-///                         .value("shared")
-///                         .build())
-///                     .action(GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs.builder()
-///                         .associationMethod("constant")
-///                         .segment("shared")
-///                         .build())
-///                     .build(),
-///                 GetCoreNetworkPolicyDocumentAttachmentPolicyArgs.builder()
-///                     .ruleNumber(200)
-///                     .conditionLogic("or")
-///                     .conditions(GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs.builder()
-///                         .type("tag-value")
-///                         .operator("equals")
-///                         .key("segment")
-///                         .value("prod")
-///                         .build())
-///                     .action(GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs.builder()
-///                         .associationMethod("constant")
-///                         .segment("prod")
-///                         .build())
-///                     .build())
 ///             .build());
 ///
 ///     }
@@ -922,15 +955,42 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///     fn::invoke:
 ///       function: aws:networkmanager:getCoreNetworkPolicyDocument
 ///       arguments:
+///         attachmentPolicies:
+///           - action:
+///               associationMethod: constant
+///               segment: shared
+///             conditions:
+///               - type: tag-value
+///                 operator: equals
+///                 key: segment
+///                 value: shared
+///             ruleNumber: 100
+///             conditionLogic: or
+///           - action:
+///               associationMethod: constant
+///               segment: prod
+///             conditions:
+///               - type: tag-value
+///                 operator: equals
+///                 key: segment
+///                 value: prod
+///             ruleNumber: 200
+///             conditionLogic: or
 ///         coreNetworkConfigurations:
-///           - vpnEcmpSupport: false
-///             asnRanges:
-///               - 64512-64555
-///             edgeLocations:
+///           - edgeLocations:
 ///               - location: us-east-1
 ///                 asn: 64512
 ///               - location: eu-central-1
 ///                 asn: 64513
+///             vpnEcmpSupport: false
+///             asnRanges:
+///               - 64512-64555
+///         segmentActions:
+///           - action: share
+///             mode: attachment-route
+///             segment: shared
+///             shareWiths:
+///               - '*'
 ///         segments:
 ///           - name: shared
 ///             description: Segment for shared services
@@ -938,33 +998,6 @@ Future<GetCoreNetworkResult> getCoreNetwork(
 ///           - name: prod
 ///             description: Segment for prod services
 ///             requireAttachmentAcceptance: true
-///         segmentActions:
-///           - action: share
-///             mode: attachment-route
-///             segment: shared
-///             shareWiths:
-///               - '*'
-///         attachmentPolicies:
-///           - ruleNumber: 100
-///             conditionLogic: or
-///             conditions:
-///               - type: tag-value
-///                 operator: equals
-///                 key: segment
-///                 value: shared
-///             action:
-///               associationMethod: constant
-///               segment: shared
-///           - ruleNumber: 200
-///             conditionLogic: or
-///             conditions:
-///               - type: tag-value
-///                 operator: equals
-///                 key: segment
-///                 value: prod
-///             action:
-///               associationMethod: constant
-///               segment: prod
 /// ```
 ///
 ///
@@ -1058,6 +1091,17 @@ Future<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocument(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCoreNetworkPolicyDocumentResult.fromMap(result);
+}
+
+pulumi.Output<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocumentOutput(
+  GetCoreNetworkPolicyDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getCoreNetworkPolicyDocument:getCoreNetworkPolicyDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCoreNetworkPolicyDocumentResult.fromMap);
 }
 
 /// Provides details about an existing Network Manager device.
@@ -1183,6 +1227,17 @@ Future<GetDeviceResult> getDevice(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeviceResult.fromMap(result);
+}
+
+pulumi.Output<GetDeviceResult> getDeviceOutput(
+  GetDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getDevice:getDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceResult.fromMap);
 }
 
 /// Provides details about existing Network Manager devices.
@@ -1322,6 +1377,17 @@ Future<GetDevicesResult> getDevices(
   return GetDevicesResult.fromMap(result);
 }
 
+pulumi.Output<GetDevicesResult> getDevicesOutput(
+  GetDevicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getDevices:getDevices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevicesResult.fromMap);
+}
+
 /// Provides details about an existing Network Manager global network.
 ///
 /// ## Example Usage
@@ -1438,6 +1504,17 @@ Future<GetGlobalNetworkResult> getGlobalNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalNetworkResult> getGlobalNetworkOutput(
+  GetGlobalNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getGlobalNetwork:getGlobalNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalNetworkResult.fromMap);
 }
 
 /// Provides details about existing Network Manager global networks.
@@ -1570,6 +1647,17 @@ Future<GetGlobalNetworksResult> getGlobalNetworks(
   return GetGlobalNetworksResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalNetworksResult> getGlobalNetworksOutput(
+  GetGlobalNetworksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getGlobalNetworks:getGlobalNetworks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalNetworksResult.fromMap);
+}
+
 /// Provides details about an existing Network Manager link.
 ///
 /// ## Example Usage
@@ -1693,6 +1781,17 @@ Future<GetLinkResult> getLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetLinkResult> getLinkOutput(
+  GetLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getLink:getLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkResult.fromMap);
 }
 
 /// Provides details about existing Network Manager links.
@@ -1832,6 +1931,17 @@ Future<GetLinksResult> getLinks(
   return GetLinksResult.fromMap(result);
 }
 
+pulumi.Output<GetLinksResult> getLinksOutput(
+  GetLinksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getLinks:getLinks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinksResult.fromMap);
+}
+
 /// Provides details about an existing Network Manager site.
 ///
 /// ## Example Usage
@@ -1955,6 +2065,17 @@ Future<GetSiteResult> getSite(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSiteResult.fromMap(result);
+}
+
+pulumi.Output<GetSiteResult> getSiteOutput(
+  GetSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getSite:getSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteResult.fromMap);
 }
 
 /// Provides details about existing Network Manager sites.
@@ -2092,4 +2213,15 @@ Future<GetSitesResult> getSites(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSitesResult.fromMap(result);
+}
+
+pulumi.Output<GetSitesResult> getSitesOutput(
+  GetSitesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkmanager/getSites:getSites',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSitesResult.fromMap);
 }

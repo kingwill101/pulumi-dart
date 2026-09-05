@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloud9_environment_ec2_environment_ec2_args_doc}
 class EnvironmentEC2Args {
   /// The number of minutes until the running instance is shut down after the environment has last been used.
-  final pulumi.Input<int>? automaticStopTimeMinutes;
+  final pulumi.Input<int?>? automaticStopTimeMinutes;
   /// The connection type used for connecting to an Amazon EC2 environment. Valid values are `CONNECT_SSH` and `CONNECT_SSM`. For more information please refer [AWS documentation for Cloud9](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html).
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// The description of the environment.
-  final pulumi.Input<String>? description;
-  /// The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. Valid values are
+  final pulumi.Input<String?>? description;
+  /// Identifier for the AMI that's used to create the EC2 instance. Valid values are
   /// * `amazonlinux-2-x86_64`
   /// * `amazonlinux-2023-x86_64`
   /// * `ubuntu-18.04-x86_64`
@@ -26,21 +26,21 @@ class EnvironmentEC2Args {
   /// The type of instance to connect to the environment, e.g., `t2.micro`.
   final pulumi.Input<String> instanceType;
   /// The name of the environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-  final pulumi.Input<String>? ownerArn;
+  final pulumi.Input<String?>? ownerArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentEC2Args].
   /// [automaticStopTimeMinutes] The number of minutes until the running instance is shut down after the environment has last been used.
   /// [connectionType] The connection type used for connecting to an Amazon EC2 environment. Valid values are `CONNECT_SSH` and `CONNECT_SSM`. For more information please refer [AWS documentation for Cloud9](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html).
   /// [description] The description of the environment.
-  /// [imageId] The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. Valid values are
+  /// [imageId] Identifier for the AMI that's used to create the EC2 instance. Valid values are
   /// [instanceType] The type of instance to connect to the environment, e.g., `t2.micro`.
   /// [name] The name of the environment.
   /// [ownerArn] The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
@@ -77,7 +77,7 @@ class EnvironmentEC2Args {
 
   factory EnvironmentEC2Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentEC2Args(
-      automaticStopTimeMinutes: (() { final guardedValue = map['automaticStopTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      automaticStopTimeMinutes: (() { final guardedValue = map['automaticStopTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),

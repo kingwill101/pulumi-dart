@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CanaryArtifactConfigS3Encryption {
   /// The encryption method to use for artifacts created by this canary. Valid values are: `SSE_S3` and `SSE_KMS`.
-  final pulumi.Input<String>? encryptionMode;
+  final pulumi.Input<String?>? encryptionMode;
   /// The ARN of the customer-managed KMS key to use, if you specify `SSE_KMS` for `encryptionMode`.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [CanaryArtifactConfigS3Encryption].
   /// [encryptionMode] The encryption method to use for artifacts created by this canary. Valid values are: `SSE_S3` and `SSE_KMS`.

@@ -6,11 +6,11 @@ import 'v2models_intent_initial_response_setting_next_step_intent.dart';
 
 class V2modelsIntentInitialResponseSettingNextStep {
   /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingNextStepDialogAction>? dialogAction;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingNextStepDialogAction?>? dialogAction;
   /// Configuration block for override settings to configure the intent state. See `intent`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingNextStepIntent>? intent;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingNextStepIntent?>? intent;
   /// Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
-  final pulumi.Input<Map<String, String>>? sessionAttributes;
+  final pulumi.Input<Map<String, String>?>? sessionAttributes;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingNextStep].
   /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.

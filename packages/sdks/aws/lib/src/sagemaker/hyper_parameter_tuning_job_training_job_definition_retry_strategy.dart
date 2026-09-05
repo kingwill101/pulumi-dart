@@ -20,7 +20,7 @@ class HyperParameterTuningJobTrainingJobDefinitionRetryStrategy {
 
   factory HyperParameterTuningJobTrainingJobDefinitionRetryStrategy.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionRetryStrategy(
-      maximumRetryAttempts: pulumi.Input.fromValue(map['maximumRetryAttempts'] as int),
+      maximumRetryAttempts: pulumi.Input.fromValue((map['maximumRetryAttempts'] as num).toInt()),
     );
   }
 }

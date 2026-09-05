@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_group_feature_definition_collection_config_vector_config.dart';
 
 class FeatureGroupFeatureDefinitionCollectionConfig {
-  final pulumi.Input<FeatureGroupFeatureDefinitionCollectionConfigVectorConfig>? vectorConfig;
+  final pulumi.Input<FeatureGroupFeatureDefinitionCollectionConfigVectorConfig?>? vectorConfig;
 
   /// Creates a new [FeatureGroupFeatureDefinitionCollectionConfig].
   /// [vectorConfig] Optional.

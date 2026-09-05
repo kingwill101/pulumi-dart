@@ -19,7 +19,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification(
-      startTimeoutMs: pulumi.Input.fromValue(map['startTimeoutMs'] as int),
+      startTimeoutMs: pulumi.Input.fromValue((map['startTimeoutMs'] as num).toInt()),
     );
   }
 }

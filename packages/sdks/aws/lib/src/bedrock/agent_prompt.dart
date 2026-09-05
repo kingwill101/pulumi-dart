@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_prompt_args.dart';
 import 'agent_prompt_state.dart';
+import 'agent_prompt_variant.dart';
 
 /// Resource for managing an AWS Bedrock Agents Prompt.
 ///
@@ -124,21 +125,14 @@ import 'agent_prompt_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentPrompt("example", {
-///     name: "MakePlaylist",
-///     description: "My first prompt.",
-///     defaultVariant: "Variant1",
 ///     variants: [{
-///         name: "Variant1",
-///         modelId: "amazon.titan-text-express-v1",
 ///         inferenceConfiguration: {
 ///             text: {
 ///                 temperature: 0.8,
 ///             },
 ///         },
-///         templateType: "TEXT",
 ///         templateConfiguration: {
 ///             text: {
-///                 text: "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.",
 ///                 inputVariables: [
 ///                     {
 ///                         name: "genre",
@@ -147,9 +141,16 @@ import 'agent_prompt_state.dart';
 ///                         name: "number",
 ///                     },
 ///                 ],
+///                 text: "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.",
 ///             },
 ///         },
+///         name: "Variant1",
+///         modelId: "amazon.titan-text-express-v1",
+///         templateType: "TEXT",
 ///     }],
+///     name: "MakePlaylist",
+///     description: "My first prompt.",
+///     defaultVariant: "Variant1",
 /// });
 /// ```
 /// ```python
@@ -157,21 +158,14 @@ import 'agent_prompt_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentPrompt("example",
-///     name="MakePlaylist",
-///     description="My first prompt.",
-///     default_variant="Variant1",
 ///     variants=[{
-///         "name": "Variant1",
-///         "model_id": "amazon.titan-text-express-v1",
 ///         "inference_configuration": {
 ///             "text": {
 ///                 "temperature": 0.8,
 ///             },
 ///         },
-///         "template_type": "TEXT",
 ///         "template_configuration": {
 ///             "text": {
-///                 "text": "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.",
 ///                 "input_variables": [
 ///                     {
 ///                         "name": "genre",
@@ -180,9 +174,16 @@ import 'agent_prompt_state.dart';
 ///                         "name": "number",
 ///                     },
 ///                 ],
+///                 "text": "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.",
 ///             },
 ///         },
-///     }])
+///         "name": "Variant1",
+///         "model_id": "amazon.titan-text-express-v1",
+///         "template_type": "TEXT",
+///     }],
+///     name="MakePlaylist",
+///     description="My first prompt.",
+///     default_variant="Variant1")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -194,15 +195,10 @@ import 'agent_prompt_state.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentPrompt("example", new()
 ///     {
-///         Name = "MakePlaylist",
-///         Description = "My first prompt.",
-///         DefaultVariant = "Variant1",
 ///         Variants = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentPromptVariantArgs
 ///             {
-///                 Name = "Variant1",
-///                 ModelId = "amazon.titan-text-express-v1",
 ///                 InferenceConfiguration = new Aws.Bedrock.Inputs.AgentPromptVariantInferenceConfigurationArgs
 ///                 {
 ///                     Text = new Aws.Bedrock.Inputs.AgentPromptVariantInferenceConfigurationTextArgs
@@ -210,12 +206,10 @@ import 'agent_prompt_state.dart';
 ///                         Temperature = 0.8,
 ///                     },
 ///                 },
-///                 TemplateType = "TEXT",
 ///                 TemplateConfiguration = new Aws.Bedrock.Inputs.AgentPromptVariantTemplateConfigurationArgs
 ///                 {
 ///                     Text = new Aws.Bedrock.Inputs.AgentPromptVariantTemplateConfigurationTextArgs
 ///                     {
-///                         Text = "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.",
 ///                         InputVariables = new[]
 ///                         {
 ///                             new Aws.Bedrock.Inputs.AgentPromptVariantTemplateConfigurationTextInputVariableArgs
@@ -227,10 +221,17 @@ import 'agent_prompt_state.dart';
 ///                                 Name = "number",
 ///                             },
 ///                         },
+///                         Text = "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.",
 ///                     },
 ///                 },
+///                 Name = "Variant1",
+///                 ModelId = "amazon.titan-text-express-v1",
+///                 TemplateType = "TEXT",
 ///             },
 ///         },
+///         Name = "MakePlaylist",
+///         Description = "My first prompt.",
+///         DefaultVariant = "Variant1",
 ///     });
 ///
 /// });
@@ -246,22 +247,15 @@ import 'agent_prompt_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentPrompt(ctx, "example", &bedrock.AgentPromptArgs{
-/// 			Name:           pulumi.String("MakePlaylist"),
-/// 			Description:    pulumi.String("My first prompt."),
-/// 			DefaultVariant: pulumi.String("Variant1"),
 /// 			Variants: bedrock.AgentPromptVariantArray{
 /// 				&bedrock.AgentPromptVariantArgs{
-/// 					Name:    pulumi.String("Variant1"),
-/// 					ModelId: pulumi.String("amazon.titan-text-express-v1"),
 /// 					InferenceConfiguration: &bedrock.AgentPromptVariantInferenceConfigurationArgs{
 /// 						Text: &bedrock.AgentPromptVariantInferenceConfigurationTextArgs{
 /// 							Temperature: pulumi.Float64(0.8),
 /// 						},
 /// 					},
-/// 					TemplateType: pulumi.String("TEXT"),
 /// 					TemplateConfiguration: &bedrock.AgentPromptVariantTemplateConfigurationArgs{
 /// 						Text: &bedrock.AgentPromptVariantTemplateConfigurationTextArgs{
-/// 							Text: pulumi.String("Make me a {{genre}} playlist consisting of the following number of songs: {{number}}."),
 /// 							InputVariables: bedrock.AgentPromptVariantTemplateConfigurationTextInputVariableArray{
 /// 								&bedrock.AgentPromptVariantTemplateConfigurationTextInputVariableArgs{
 /// 									Name: pulumi.String("genre"),
@@ -270,10 +264,17 @@ import 'agent_prompt_state.dart';
 /// 									Name: pulumi.String("number"),
 /// 								},
 /// 							},
+/// 							Text: pulumi.String("Make me a {{genre}} playlist consisting of the following number of songs: {{number}}."),
 /// 						},
 /// 					},
+/// 					Name:         pulumi.String("Variant1"),
+/// 					ModelId:      pulumi.String("amazon.titan-text-express-v1"),
+/// 					TemplateType: pulumi.String("TEXT"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("MakePlaylist"),
+/// 			Description:    pulumi.String("My first prompt."),
+/// 			DefaultVariant: pulumi.String("Variant1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -292,29 +293,29 @@ import 'agent_prompt_state.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentprompt" "example" {
-///   name            = "MakePlaylist"
-///   description     = "My first prompt."
-///   default_variant = "Variant1"
 ///   variants {
-///     name     = "Variant1"
-///     model_id = "amazon.titan-text-express-v1"
 ///     inference_configuration = {
 ///       text = {
 ///         temperature = 0.8
 ///       }
 ///     }
-///     template_type = "TEXT"
 ///     template_configuration = {
 ///       text = {
-///         text = "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}."
 ///         input_variables = [{
 ///           "name" = "genre"
 ///           }, {
 ///           "name" = "number"
 ///         }]
+///         text = "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}."
 ///       }
 ///     }
+///     name          = "Variant1"
+///     model_id      = "amazon.titan-text-express-v1"
+///     template_type = "TEXT"
 ///   }
+///   name            = "MakePlaylist"
+///   description     = "My first prompt."
+///   default_variant = "Variant1"
 /// }
 /// ```
 /// ```java
@@ -345,21 +346,14 @@ import 'agent_prompt_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentPrompt("example", AgentPromptArgs.builder()
-///             .name("MakePlaylist")
-///             .description("My first prompt.")
-///             .defaultVariant("Variant1")
 ///             .variants(AgentPromptVariantArgs.builder()
-///                 .name("Variant1")
-///                 .modelId("amazon.titan-text-express-v1")
 ///                 .inferenceConfiguration(AgentPromptVariantInferenceConfigurationArgs.builder()
 ///                     .text(AgentPromptVariantInferenceConfigurationTextArgs.builder()
 ///                         .temperature(0.8)
 ///                         .build())
 ///                     .build())
-///                 .templateType("TEXT")
 ///                 .templateConfiguration(AgentPromptVariantTemplateConfigurationArgs.builder()
 ///                     .text(AgentPromptVariantTemplateConfigurationTextArgs.builder()
-///                         .text("Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.")
 ///                         .inputVariables(
 ///                             AgentPromptVariantTemplateConfigurationTextInputVariableArgs.builder()
 ///                                 .name("genre")
@@ -367,9 +361,16 @@ import 'agent_prompt_state.dart';
 ///                             AgentPromptVariantTemplateConfigurationTextInputVariableArgs.builder()
 ///                                 .name("number")
 ///                                 .build())
+///                         .text("Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.")
 ///                         .build())
 ///                     .build())
+///                 .name("Variant1")
+///                 .modelId("amazon.titan-text-express-v1")
+///                 .templateType("TEXT")
 ///                 .build())
+///             .name("MakePlaylist")
+///             .description("My first prompt.")
+///             .defaultVariant("Variant1")
 ///             .build());
 ///
 ///     }
@@ -380,22 +381,22 @@ import 'agent_prompt_state.dart';
 ///   example:
 ///     type: aws:bedrock:AgentPrompt
 ///     properties:
-///       name: MakePlaylist
-///       description: My first prompt.
-///       defaultVariant: Variant1
 ///       variants:
-///         - name: Variant1
-///           modelId: amazon.titan-text-express-v1
-///           inferenceConfiguration:
+///         - inferenceConfiguration:
 ///             text:
 ///               temperature: 0.8
-///           templateType: TEXT
 ///           templateConfiguration:
 ///             text:
-///               text: 'Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.'
 ///               inputVariables:
 ///                 - name: genre
 ///                 - name: number
+///               text: 'Make me a {{genre}} playlist consisting of the following number of songs: {{number}}.'
+///           name: Variant1
+///           modelId: amazon.titan-text-express-v1
+///           templateType: TEXT
+///       name: MakePlaylist
+///       description: My first prompt.
+///       defaultVariant: Variant1
 /// ```
 ///
 ///
@@ -407,11 +408,11 @@ import 'agent_prompt_state.dart';
 /// $ pulumi import aws:bedrock/agentPrompt:AgentPrompt example 1A2BC3DEFG
 /// ```
 class AgentPrompt extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the prompt.
+  /// ARN of the prompt.
   late final pulumi.Output<String> arn;
   /// Time at which the prompt was created.
   late final pulumi.Output<String> createdAt;
-  /// Amazon Resource Name (ARN) of the KMS key that you encrypted the prompt with.
+  /// ARN of the KMS key that you encrypted the prompt with.
   late final pulumi.Output<String?> customerEncryptionKeyArn;
   /// Name of the default variant for your prompt.
   late final pulumi.Output<String?> defaultVariant;
@@ -430,7 +431,7 @@ class AgentPrompt extends pulumi.CustomResource {
   /// Time at which the prompt was last updated.
   late final pulumi.Output<String> updatedAt;
   /// A list of objects, each containing details about a variant of the prompt. See Variant for more information.
-  late final pulumi.Output<List<Map<String, dynamic>>?> variants;
+  late final pulumi.Output<List<AgentPromptVariant>?> variants;
   /// Version of the prompt. When you create a prompt, the version created is the `DRAFT` version.
   late final pulumi.Output<String> version;
 
@@ -446,7 +447,7 @@ class AgentPrompt extends pulumi.CustomResource {
           'aws:bedrock/agentPrompt:AgentPrompt',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -455,10 +456,10 @@ class AgentPrompt extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
-    variants = registerOutput<List<Map<String, dynamic>>?>('variants');
+    variants = registerOutput<List<AgentPromptVariant>?>('variants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentPromptVariant>(guardedValue, (value) => AgentPromptVariant.fromMap((value as Map).cast<String, dynamic>())); });
     version = registerOutput<String>('version');
   }
 
@@ -467,11 +468,12 @@ class AgentPrompt extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentPromptState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentPrompt._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,10 +494,33 @@ class AgentPrompt extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
-    variants = registerOutput<List<Map<String, dynamic>>?>('variants');
+    variants = registerOutput<List<AgentPromptVariant>?>('variants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentPromptVariant>(guardedValue, (value) => AgentPromptVariant.fromMap((value as Map).cast<String, dynamic>())); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [AgentPrompt] resource.
+  AgentPrompt.reference(String urn)
+    : super(
+        'aws:bedrock/agentPrompt:AgentPrompt',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    customerEncryptionKeyArn = registerOutput<String?>('customerEncryptionKeyArn');
+    defaultVariant = registerOutput<String?>('defaultVariant');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updatedAt = registerOutput<String>('updatedAt');
+    variants = registerOutput<List<AgentPromptVariant>?>('variants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentPromptVariant>(guardedValue, (value) => AgentPromptVariant.fromMap((value as Map).cast<String, dynamic>())); });
     version = registerOutput<String>('version');
   }
 }

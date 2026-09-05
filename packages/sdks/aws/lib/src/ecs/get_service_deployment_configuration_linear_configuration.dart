@@ -26,7 +26,7 @@ class GetServiceDeploymentConfigurationLinearConfiguration {
   factory GetServiceDeploymentConfigurationLinearConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationLinearConfiguration(
       stepBakeTimeInMinutes: pulumi.Input.fromValue(map['stepBakeTimeInMinutes'] as String),
-      stepPercent: pulumi.Input.fromValue(map['stepPercent'] as double),
+      stepPercent: pulumi.Input.fromValue((map['stepPercent'] as num).toDouble()),
     );
   }
 }

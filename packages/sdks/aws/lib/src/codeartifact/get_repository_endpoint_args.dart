@@ -10,11 +10,11 @@ class GetRepositoryEndpointArgs {
   /// Name of the domain that contains the repository.
   final pulumi.Input<String> domain;
   /// Account number of the AWS account that owns the domain.
-  final pulumi.Input<String>? domainOwner;
+  final pulumi.Input<String?>? domainOwner;
   /// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
   final pulumi.Input<String> format;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the repository.
   final pulumi.Input<String> repository;
 

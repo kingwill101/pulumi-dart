@@ -7,19 +7,19 @@ import 'bucket_v2_replication_configuration_rule_source_selection_criteria.dart'
 
 class BucketV2ReplicationConfigurationRule {
   /// Whether delete markers are replicated. The only valid value is `Enabled`. To disable, omit this argument. This argument is only valid with V2 replication configurations (i.e., when `filter` is used).
-  final pulumi.Input<String>? deleteMarkerReplicationStatus;
+  final pulumi.Input<String?>? deleteMarkerReplicationStatus;
   /// Destination for the rule. See `destination` Block below for details.
   final pulumi.Input<List<BucketV2ReplicationConfigurationRuleDestination>> destinations;
   /// Filter that identifies subset of objects to which the replication rule applies. See `filter` Block below for details.
-  final pulumi.Input<List<BucketV2ReplicationConfigurationRuleFilter>>? filters;
+  final pulumi.Input<List<BucketV2ReplicationConfigurationRuleFilter>?>? filters;
   /// Unique identifier for the rule. Must be less than or equal to 255 characters in length.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Object keyname prefix identifying one or more objects to which the rule applies. Must be less than or equal to 1024 characters in length.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Priority associated with the rule. Priority should only be set if `filter` is configured. If not provided, defaults to `0`. Priority must be unique between multiple rules.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Special object selection criteria. See `sourceSelectionCriteria` Block below for details.
-  final pulumi.Input<List<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>>? sourceSelectionCriterias;
+  final pulumi.Input<List<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>?>? sourceSelectionCriterias;
   /// Status of the rule. Either `Enabled` or `Disabled`. The rule is ignored if status is not Enabled.
   final pulumi.Input<String> status;
 
@@ -63,7 +63,7 @@ class BucketV2ReplicationConfigurationRule {
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleFilter>(guardedValue, (value) => BucketV2ReplicationConfigurationRuleFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceSelectionCriterias: (() { final guardedValue = map['sourceSelectionCriterias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>(guardedValue, (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap((value as Map).cast<String, dynamic>()))); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

@@ -5,7 +5,7 @@ import 'intent_rejection_statement_message.dart';
 
 class IntentRejectionStatement {
   final pulumi.Input<List<IntentRejectionStatementMessage>> messages;
-  final pulumi.Input<String>? responseCard;
+  final pulumi.Input<String?>? responseCard;
 
   /// Creates a new [IntentRejectionStatement].
   /// [messages] Required.

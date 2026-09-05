@@ -300,15 +300,15 @@ import 'instance_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lightsail.Instance("example", {
-///     name: "example",
-///     availabilityZone: "us-east-1b",
-///     blueprintId: "amazon_linux_2",
-///     bundleId: "nano_3_0",
 ///     addOn: {
 ///         type: "AutoSnapshot",
 ///         snapshotTime: "06:00",
 ///         status: "Enabled",
 ///     },
+///     name: "example",
+///     availabilityZone: "us-east-1b",
+///     blueprintId: "amazon_linux_2",
+///     bundleId: "nano_3_0",
 ///     tags: {
 ///         foo: "bar",
 ///     },
@@ -319,15 +319,15 @@ import 'instance_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lightsail.Instance("example",
-///     name="example",
-///     availability_zone="us-east-1b",
-///     blueprint_id="amazon_linux_2",
-///     bundle_id="nano_3_0",
 ///     add_on={
 ///         "type": "AutoSnapshot",
 ///         "snapshot_time": "06:00",
 ///         "status": "Enabled",
 ///     },
+///     name="example",
+///     availability_zone="us-east-1b",
+///     blueprint_id="amazon_linux_2",
+///     bundle_id="nano_3_0",
 ///     tags={
 ///         "foo": "bar",
 ///     })
@@ -342,16 +342,16 @@ import 'instance_state.dart';
 /// {
 ///     var example = new Aws.LightSail.Instance("example", new()
 ///     {
-///         Name = "example",
-///         AvailabilityZone = "us-east-1b",
-///         BlueprintId = "amazon_linux_2",
-///         BundleId = "nano_3_0",
 ///         AddOn = new Aws.LightSail.Inputs.InstanceAddOnArgs
 ///         {
 ///             Type = "AutoSnapshot",
 ///             SnapshotTime = "06:00",
 ///             Status = "Enabled",
 ///         },
+///         Name = "example",
+///         AvailabilityZone = "us-east-1b",
+///         BlueprintId = "amazon_linux_2",
+///         BundleId = "nano_3_0",
 ///         Tags =
 ///         {
 ///             { "foo", "bar" },
@@ -371,15 +371,15 @@ import 'instance_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lightsail.NewInstance(ctx, "example", &lightsail.InstanceArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			AvailabilityZone: pulumi.String("us-east-1b"),
-/// 			BlueprintId:      pulumi.String("amazon_linux_2"),
-/// 			BundleId:         pulumi.String("nano_3_0"),
 /// 			AddOn: &lightsail.InstanceAddOnArgs{
 /// 				Type:         pulumi.String("AutoSnapshot"),
 /// 				SnapshotTime: pulumi.String("06:00"),
 /// 				Status:       pulumi.String("Enabled"),
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			AvailabilityZone: pulumi.String("us-east-1b"),
+/// 			BlueprintId:      pulumi.String("amazon_linux_2"),
+/// 			BundleId:         pulumi.String("nano_3_0"),
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -401,15 +401,15 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_instance" "example" {
-///   name              = "example"
-///   availability_zone = "us-east-1b"
-///   blueprint_id      = "amazon_linux_2"
-///   bundle_id         = "nano_3_0"
 ///   add_on = {
 ///     type          = "AutoSnapshot"
 ///     snapshot_time = "06:00"
 ///     status        = "Enabled"
 ///   }
+///   name              = "example"
+///   availability_zone = "us-east-1b"
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
 ///   tags = {
 ///     "foo" = "bar"
 ///   }
@@ -438,15 +438,15 @@ import 'instance_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Instance("example", InstanceArgs.builder()
-///             .name("example")
-///             .availabilityZone("us-east-1b")
-///             .blueprintId("amazon_linux_2")
-///             .bundleId("nano_3_0")
 ///             .addOn(InstanceAddOnArgs.builder()
 ///                 .type("AutoSnapshot")
 ///                 .snapshotTime("06:00")
 ///                 .status("Enabled")
 ///                 .build())
+///             .name("example")
+///             .availabilityZone("us-east-1b")
+///             .blueprintId("amazon_linux_2")
+///             .bundleId("nano_3_0")
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -458,14 +458,14 @@ import 'instance_state.dart';
 ///   example:
 ///     type: aws:lightsail:Instance
 ///     properties:
-///       name: example
-///       availabilityZone: us-east-1b
-///       blueprintId: amazon_linux_2
-///       bundleId: nano_3_0
 ///       addOn:
 ///         type: AutoSnapshot
 ///         snapshotTime: 06:00
 ///         status: Enabled
+///       name: example
+///       availabilityZone: us-east-1b
+///       blueprintId: amazon_linux_2
+///       bundleId: nano_3_0
 ///       tags:
 ///         foo: bar
 /// ```
@@ -534,7 +534,7 @@ class Instance extends pulumi.CustomResource {
           'aws:lightsail/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addOn = registerOutput<InstanceAddOn?>('addOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAddOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -544,7 +544,7 @@ class Instance extends pulumi.CustomResource {
     cpuCount = registerOutput<int>('cpuCount');
     createdAt = registerOutput<String>('createdAt');
     ipAddressType = registerOutput<String?>('ipAddressType');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isStaticIp = registerOutput<bool>('isStaticIp');
     keyPairName = registerOutput<String?>('keyPairName');
     this.name = registerOutput<String>('name');
@@ -552,8 +552,8 @@ class Instance extends pulumi.CustomResource {
     publicIpAddress = registerOutput<String>('publicIpAddress');
     ramSize = registerOutput<double>('ramSize');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userData = registerOutput<String?>('userData');
     username = registerOutput<String>('username');
   }
@@ -563,11 +563,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -589,7 +590,7 @@ class Instance extends pulumi.CustomResource {
     cpuCount = registerOutput<int>('cpuCount');
     createdAt = registerOutput<String>('createdAt');
     ipAddressType = registerOutput<String?>('ipAddressType');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isStaticIp = registerOutput<bool>('isStaticIp');
     keyPairName = registerOutput<String?>('keyPairName');
     this.name = registerOutput<String>('name');
@@ -597,8 +598,39 @@ class Instance extends pulumi.CustomResource {
     publicIpAddress = registerOutput<String>('publicIpAddress');
     ramSize = registerOutput<double>('ramSize');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userData = registerOutput<String?>('userData');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'aws:lightsail/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addOn = registerOutput<InstanceAddOn?>('addOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAddOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    blueprintId = registerOutput<String>('blueprintId');
+    bundleId = registerOutput<String>('bundleId');
+    cpuCount = registerOutput<int>('cpuCount');
+    createdAt = registerOutput<String>('createdAt');
+    ipAddressType = registerOutput<String?>('ipAddressType');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    isStaticIp = registerOutput<bool>('isStaticIp');
+    keyPairName = registerOutput<String?>('keyPairName');
+    this.name = registerOutput<String>('name');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    publicIpAddress = registerOutput<String>('publicIpAddress');
+    ramSize = registerOutput<double>('ramSize');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userData = registerOutput<String?>('userData');
     username = registerOutput<String>('username');
   }

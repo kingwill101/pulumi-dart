@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RouteCalculation resources.
 class RouteCalculationState {
-  /// The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across AWS.
-  final pulumi.Input<String>? calculatorArn;
+  /// ARN for the Route calculator resource. Use the ARN when you specify a resource across AWS.
+  final pulumi.Input<String?>? calculatorArn;
   /// The name of the route calculator resource.
-  final pulumi.Input<String>? calculatorName;
+  final pulumi.Input<String?>? calculatorName;
   /// The timestamp for when the route calculator resource was created in ISO 8601 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Specifies the data provider of traffic and road network data.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// The optional description for the route calculator resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the route calculator. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The timestamp for when the route calculator resource was last update in ISO 8601.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [RouteCalculationState].
-  /// [calculatorArn] The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across AWS.
+  /// [calculatorArn] ARN for the Route calculator resource. Use the ARN when you specify a resource across AWS.
   /// [calculatorName] The name of the route calculator resource.
   /// [createTime] The timestamp for when the route calculator resource was created in ISO 8601 format.
   /// [dataSource] Specifies the data provider of traffic and road network data.

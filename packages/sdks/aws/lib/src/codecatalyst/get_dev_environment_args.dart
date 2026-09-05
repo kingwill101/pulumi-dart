@@ -9,20 +9,20 @@ import 'get_dev_environment_repository.dart';
 /// {@macro pulumi_codecatalyst_get_dev_environment_get_dev_environment_args_doc}
 class GetDevEnvironmentArgs {
   /// The user-specified alias for the Dev Environment.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// The system-generated unique ID of the user who created the Dev Environment.
-  final pulumi.Input<String>? creatorId;
+  final pulumi.Input<String?>? creatorId;
   /// - (Required) The system-generated unique ID of the Dev Environment for which you want to view information. To retrieve a list of Dev Environment IDs, use [ListDevEnvironments](https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListDevEnvironments.html).
   final pulumi.Input<String> envId;
   /// The name of the project in the space.
   final pulumi.Input<String> projectName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The source repository that contains the branch to clone into the Dev Environment.
-  final pulumi.Input<List<GetDevEnvironmentRepository>>? repositories;
+  final pulumi.Input<List<GetDevEnvironmentRepository>?>? repositories;
   /// The name of the space.
   final pulumi.Input<String> spaceName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDevEnvironmentArgs].
   /// [alias] The user-specified alias for the Dev Environment.

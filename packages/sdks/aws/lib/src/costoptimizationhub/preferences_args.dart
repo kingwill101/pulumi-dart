@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_costoptimizationhub_preferences_preferences_args_doc}
 class PreferencesArgs {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
-  final pulumi.Input<String>? memberAccountDiscountVisibility;
+  final pulumi.Input<String?>? memberAccountDiscountVisibility;
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
-  final pulumi.Input<String>? savingsEstimationMode;
+  final pulumi.Input<String?>? savingsEstimationMode;
 
   /// Creates a new [PreferencesArgs].
   /// [memberAccountDiscountVisibility] Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.

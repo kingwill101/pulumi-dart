@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow {
   /// Custom request handling configuration. See Custom Request Handling below.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllowCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllowCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow].
   /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.

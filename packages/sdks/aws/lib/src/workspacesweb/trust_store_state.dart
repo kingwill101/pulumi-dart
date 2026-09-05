@@ -6,17 +6,17 @@ import 'trust_store_certificate.dart';
 /// Input properties used for looking up and filtering TrustStore resources.
 class TrustStoreState {
   /// List of ARNs of the web portals associated with the trust store.
-  final pulumi.Input<List<String>>? associatedPortalArns;
+  final pulumi.Input<List<String>?>? associatedPortalArns;
   /// Set of certificates to include in the trust store. See Certificate below.
-  final pulumi.Input<List<TrustStoreCertificate>>? certificates;
+  final pulumi.Input<List<TrustStoreCertificate>?>? certificates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the trust store.
-  final pulumi.Input<String>? trustStoreArn;
+  final pulumi.Input<String?>? trustStoreArn;
 
   /// Creates a new [TrustStoreState].
   /// [associatedPortalArns] List of ARNs of the web portals associated with the trust store.

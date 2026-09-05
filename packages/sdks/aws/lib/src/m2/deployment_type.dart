@@ -165,7 +165,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:m2/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     applicationVersion = registerOutput<int>('applicationVersion');
@@ -182,11 +182,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,6 +201,25 @@ class DeploymentType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    applicationVersion = registerOutput<int>('applicationVersion');
+    deploymentId = registerOutput<String>('deploymentId');
+    environmentId = registerOutput<String>('environmentId');
+    forceStop = registerOutput<bool?>('forceStop');
+    region = registerOutput<String>('region');
+    start = registerOutput<bool>('start');
+    timeouts = registerOutput<DeploymentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'aws:m2/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     applicationVersion = registerOutput<int>('applicationVersion');
     deploymentId = registerOutput<String>('deploymentId');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig {
   /// Whether Amazon AppFlow aggregates the flow records into a single file, or leaves them unaggregated. Valid values are `None` and `SingleFile`.
-  final pulumi.Input<String>? aggregationType;
+  final pulumi.Input<String?>? aggregationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig].
   /// [aggregationType] Whether Amazon AppFlow aggregates the flow records into a single file, or leaves them unaggregated. Valid values are `None` and `SingleFile`.

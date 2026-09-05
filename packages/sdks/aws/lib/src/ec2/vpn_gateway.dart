@@ -137,7 +137,7 @@ import 'vpn_gateway_state.dart';
 class VpnGateway extends pulumi.CustomResource {
   /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
   late final pulumi.Output<String> amazonSideAsn;
-  /// Amazon Resource Name (ARN) of the VPN Gateway.
+  /// ARN of the VPN Gateway.
   late final pulumi.Output<String> arn;
   /// The Availability Zone for the virtual private gateway.
   late final pulumi.Output<String?> availabilityZone;
@@ -162,14 +162,14 @@ class VpnGateway extends pulumi.CustomResource {
           'aws:ec2/vpnGateway:VpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String?>('availabilityZone');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -178,11 +178,12 @@ class VpnGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,8 +201,26 @@ class VpnGateway extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String?>('availabilityZone');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpnGateway] resource.
+  VpnGateway.reference(String urn)
+    : super(
+        'aws:ec2/vpnGateway:VpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

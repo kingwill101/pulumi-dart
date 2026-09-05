@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegisteredDomainNameServer {
   /// Glue IP addresses of a name server. The list can contain only one IPv4 and one IPv6 address.
-  final pulumi.Input<List<String>>? glueIps;
+  final pulumi.Input<List<String>?>? glueIps;
   /// The fully qualified host name of the name server.
   final pulumi.Input<String> name;
 

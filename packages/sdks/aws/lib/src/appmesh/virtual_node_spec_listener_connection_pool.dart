@@ -8,13 +8,13 @@ import 'virtual_node_spec_listener_connection_pool_tcp.dart';
 
 class VirtualNodeSpecListenerConnectionPool {
   /// Timeouts for gRPC listeners. See `spec.listener.timeout.grpc` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerConnectionPoolGrpc>? grpc;
+  final pulumi.Input<VirtualNodeSpecListenerConnectionPoolGrpc?>? grpc;
   /// Timeouts for HTTP2 listeners. See `spec.listener.timeout.http2` Block for details.
-  final pulumi.Input<List<VirtualNodeSpecListenerConnectionPoolHttp2>>? http2s;
+  final pulumi.Input<List<VirtualNodeSpecListenerConnectionPoolHttp2>?>? http2s;
   /// Timeouts for HTTP listeners. See `spec.listener.timeout.http` Block for details.
-  final pulumi.Input<List<VirtualNodeSpecListenerConnectionPoolHttp>>? https;
+  final pulumi.Input<List<VirtualNodeSpecListenerConnectionPoolHttp>?>? https;
   /// Timeouts for TCP listeners. See `spec.listener.timeout.tcp` Block for details.
-  final pulumi.Input<List<VirtualNodeSpecListenerConnectionPoolTcp>>? tcps;
+  final pulumi.Input<List<VirtualNodeSpecListenerConnectionPoolTcp>?>? tcps;
 
   /// Creates a new [VirtualNodeSpecListenerConnectionPool].
   /// [grpc] Timeouts for gRPC listeners. See `spec.listener.timeout.grpc` Block for details.

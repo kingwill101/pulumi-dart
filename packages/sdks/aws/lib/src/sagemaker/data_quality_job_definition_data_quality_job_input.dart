@@ -6,9 +6,9 @@ import 'data_quality_job_definition_data_quality_job_input_endpoint_input.dart';
 
 class DataQualityJobDefinitionDataQualityJobInput {
   /// Input object for the batch transform job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInput>? batchTransformInput;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInput?>? batchTransformInput;
   /// Input object for the endpoint. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputEndpointInput>? endpointInput;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputEndpointInput?>? endpointInput;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInput].
   /// [batchTransformInput] Input object for the batch transform job. Fields are documented below.

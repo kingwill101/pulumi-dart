@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskExcludes {
   /// The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
-  final pulumi.Input<String>? filterType;
+  final pulumi.Input<String?>? filterType;
   /// A single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for example: `/folder1|/folder2`
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TaskExcludes].
   /// [filterType] The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.

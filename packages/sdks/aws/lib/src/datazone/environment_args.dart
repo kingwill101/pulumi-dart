@@ -10,19 +10,19 @@ import 'environment_user_parameter.dart';
 /// {@macro pulumi_datazone_environment_environment_args_doc}
 class EnvironmentArgs {
   /// The ID of the Amazon Web Services account where the environment exists
-  final pulumi.Input<String>? accountIdentifier;
+  final pulumi.Input<String?>? accountIdentifier;
   /// The Amazon Web Services region where the environment exists.
-  final pulumi.Input<String>? accountRegion;
+  final pulumi.Input<String?>? accountRegion;
   /// The blueprint with which the environment is created.
-  final pulumi.Input<String>? blueprintIdentifier;
+  final pulumi.Input<String?>? blueprintIdentifier;
   /// The description of the environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the domain where the environment exists.
   final pulumi.Input<String> domainIdentifier;
   /// The business glossary terms that can be used in this environment.
-  final pulumi.Input<List<String>>? glossaryTerms;
+  final pulumi.Input<List<String>?>? glossaryTerms;
   /// The name of the environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the profile with which the environment is created.
   final pulumi.Input<String> profileIdentifier;
   /// The ID of the project where the environment exists.
@@ -30,12 +30,12 @@ class EnvironmentArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> projectIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<EnvironmentTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<EnvironmentTimeouts?>? timeouts;
   /// The user parameters that are used in the environment.
   /// See User Parameters for more information.
   /// Changing these values recreates the resource.
-  final pulumi.Input<List<EnvironmentUserParameter>>? userParameters;
+  final pulumi.Input<List<EnvironmentUserParameter>?>? userParameters;
 
   /// Creates a new [EnvironmentArgs].
   /// [accountIdentifier] The ID of the Amazon Web Services account where the environment exists

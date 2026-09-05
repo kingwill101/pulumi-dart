@@ -12,14 +12,14 @@ class GetInstancesArgs {
   /// If multiple `filter` blocks are provided, they all must be true.
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html).
   /// See `filter` Block below.
-  final pulumi.Input<List<GetInstancesFilter>>? filters;
+  final pulumi.Input<List<GetInstancesFilter>?>? filters;
   /// List of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
-  final pulumi.Input<List<String>>? instanceStateNames;
+  final pulumi.Input<List<String>?>? instanceStateNames;
   /// Map of tags, each pair of which must
   /// exactly match a pair on desired instances.
-  final pulumi.Input<Map<String, String>>? instanceTags;
+  final pulumi.Input<Map<String, String>?>? instanceTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetInstancesArgs].
   /// [filters] One or more filters to apply to the search.

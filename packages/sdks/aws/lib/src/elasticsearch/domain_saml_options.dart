@@ -16,29 +16,29 @@ import 'domain_saml_options_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.elasticsearch.Domain("example", {
-///     domainName: "example",
-///     elasticsearchVersion: "1.5",
 ///     clusterConfig: {
 ///         instanceType: "r4.large.elasticsearch",
 ///     },
 ///     snapshotOptions: {
 ///         automatedSnapshotStartHour: 23,
 ///     },
+///     domainName: "example",
+///     elasticsearchVersion: "1.5",
 ///     tags: {
 ///         Domain: "TestDomain",
 ///     },
 /// });
 /// const exampleDomainSamlOptions = new aws.elasticsearch.DomainSamlOptions("example", {
-///     domainName: example.domainName,
 ///     samlOptions: {
-///         enabled: true,
 ///         idp: {
 ///             entityId: "https://example.com",
 ///             metadataContent: std.file({
 ///                 input: "./saml-metadata.xml",
 ///             }).then(invoke => invoke.result),
 ///         },
+///         enabled: true,
 ///     },
+///     domainName: example.domainName,
 /// });
 /// ```
 /// ```python
@@ -47,26 +47,26 @@ import 'domain_saml_options_state.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.elasticsearch.Domain("example",
-///     domain_name="example",
-///     elasticsearch_version="1.5",
 ///     cluster_config={
 ///         "instance_type": "r4.large.elasticsearch",
 ///     },
 ///     snapshot_options={
 ///         "automated_snapshot_start_hour": 23,
 ///     },
+///     domain_name="example",
+///     elasticsearch_version="1.5",
 ///     tags={
 ///         "Domain": "TestDomain",
 ///     })
 /// example_domain_saml_options = aws.elasticsearch.DomainSamlOptions("example",
-///     domain_name=example.domain_name,
 ///     saml_options={
-///         "enabled": True,
 ///         "idp": {
 ///             "entity_id": "https://example.com",
 ///             "metadata_content": std.file(input="./saml-metadata.xml").result,
 ///         },
-///     })
+///         "enabled": True,
+///     },
+///     domain_name=example.domain_name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -79,8 +79,6 @@ import 'domain_saml_options_state.dart';
 /// {
 ///     var example = new Aws.ElasticSearch.Domain("example", new()
 ///     {
-///         DomainName = "example",
-///         ElasticsearchVersion = "1.5",
 ///         ClusterConfig = new Aws.ElasticSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceType = "r4.large.elasticsearch",
@@ -89,6 +87,8 @@ import 'domain_saml_options_state.dart';
 ///         {
 ///             AutomatedSnapshotStartHour = 23,
 ///         },
+///         DomainName = "example",
+///         ElasticsearchVersion = "1.5",
 ///         Tags =
 ///         {
 ///             { "Domain", "TestDomain" },
@@ -97,10 +97,8 @@ import 'domain_saml_options_state.dart';
 ///
 ///     var exampleDomainSamlOptions = new Aws.ElasticSearch.DomainSamlOptions("example", new()
 ///     {
-///         DomainName = example.DomainName,
 ///         SamlOptions = new Aws.ElasticSearch.Inputs.DomainSamlOptionsSamlOptionsArgs
 ///         {
-///             Enabled = true,
 ///             Idp = new Aws.ElasticSearch.Inputs.DomainSamlOptionsSamlOptionsIdpArgs
 ///             {
 ///                 EntityId = "https://example.com",
@@ -109,7 +107,9 @@ import 'domain_saml_options_state.dart';
 ///                     Input = "./saml-metadata.xml",
 ///                 }).Apply(invoke => invoke.Result),
 ///             },
+///             Enabled = true,
 ///         },
+///         DomainName = example.DomainName,
 ///     });
 ///
 /// });
@@ -126,14 +126,14 @@ import 'domain_saml_options_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
-/// 			DomainName:           pulumi.String("example"),
-/// 			ElasticsearchVersion: pulumi.String("1.5"),
 /// 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 /// 				InstanceType: pulumi.String("r4.large.elasticsearch"),
 /// 			},
 /// 			SnapshotOptions: &elasticsearch.DomainSnapshotOptionsArgs{
 /// 				AutomatedSnapshotStartHour: pulumi.Int(23),
 /// 			},
+/// 			DomainName:           pulumi.String("example"),
+/// 			ElasticsearchVersion: pulumi.String("1.5"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Domain": pulumi.String("TestDomain"),
 /// 			},
@@ -148,14 +148,14 @@ import 'domain_saml_options_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = elasticsearch.NewDomainSamlOptions(ctx, "example", &elasticsearch.DomainSamlOptionsArgs{
-/// 			DomainName: example.DomainName,
 /// 			SamlOptions: &elasticsearch.DomainSamlOptionsSamlOptionsArgs{
-/// 				Enabled: pulumi.Bool(true),
 /// 				Idp: &elasticsearch.DomainSamlOptionsSamlOptionsIdpArgs{
 /// 					EntityId:        pulumi.String("https://example.com"),
 /// 					MetadataContent: pulumi.String(invokeFile.Result),
 /// 				},
+/// 				Enabled: pulumi.Bool(true),
 /// 			},
+/// 			DomainName: example.DomainName,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -177,27 +177,27 @@ import 'domain_saml_options_state.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "example" {
-///   domain_name           = "example"
-///   elasticsearch_version = "1.5"
 ///   cluster_config = {
 ///     instance_type = "r4.large.elasticsearch"
 ///   }
 ///   snapshot_options = {
 ///     automated_snapshot_start_hour = 23
 ///   }
+///   domain_name           = "example"
+///   elasticsearch_version = "1.5"
 ///   tags = {
 ///     "Domain" = "TestDomain"
 ///   }
 /// }
 /// resource "aws_elasticsearch_domainsamloptions" "example" {
-///   domain_name = aws_elasticsearch_domain.example.domain_name
 ///   saml_options = {
-///     enabled = true
 ///     idp = {
 ///       entity_id        = "https://example.com"
 ///       metadata_content = file("./saml-metadata.xml")
 ///     }
+///     enabled = true
 ///   }
+///   domain_name = aws_elasticsearch_domain.example.domain_name
 /// }
 /// ```
 /// ```java
@@ -230,28 +230,28 @@ import 'domain_saml_options_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
-///             .domainName("example")
-///             .elasticsearchVersion("1.5")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceType("r4.large.elasticsearch")
 ///                 .build())
 ///             .snapshotOptions(DomainSnapshotOptionsArgs.builder()
 ///                 .automatedSnapshotStartHour(23)
 ///                 .build())
+///             .domainName("example")
+///             .elasticsearchVersion("1.5")
 ///             .tags(Map.of("Domain", "TestDomain"))
 ///             .build());
 ///
 ///         var exampleDomainSamlOptions = new DomainSamlOptions("exampleDomainSamlOptions", DomainSamlOptionsArgs.builder()
-///             .domainName(example.domainName())
 ///             .samlOptions(DomainSamlOptionsSamlOptionsArgs.builder()
-///                 .enabled(true)
 ///                 .idp(DomainSamlOptionsSamlOptionsIdpArgs.builder()
 ///                     .entityId("https://example.com")
 ///                     .metadataContent(StdFunctions.file(FileArgs.builder()
 ///                         .input("./saml-metadata.xml")
 ///                         .build()).result())
 ///                     .build())
+///                 .enabled(true)
 ///                 .build())
+///             .domainName(example.domainName())
 ///             .build());
 ///
 ///     }
@@ -262,21 +262,19 @@ import 'domain_saml_options_state.dart';
 ///   example:
 ///     type: aws:elasticsearch:Domain
 ///     properties:
-///       domainName: example
-///       elasticsearchVersion: '1.5'
 ///       clusterConfig:
 ///         instanceType: r4.large.elasticsearch
 ///       snapshotOptions:
 ///         automatedSnapshotStartHour: 23
+///       domainName: example
+///       elasticsearchVersion: '1.5'
 ///       tags:
 ///         Domain: TestDomain
 ///   exampleDomainSamlOptions:
 ///     type: aws:elasticsearch:DomainSamlOptions
 ///     name: example
 ///     properties:
-///       domainName: ${example.domainName}
 ///       samlOptions:
-///         enabled: true
 ///         idp:
 ///           entityId: https://example.com
 ///           metadataContent:
@@ -285,6 +283,8 @@ import 'domain_saml_options_state.dart';
 ///               arguments:
 ///                 input: ./saml-metadata.xml
 ///               return: result
+///         enabled: true
+///       domainName: ${example.domainName}
 /// ```
 ///
 ///
@@ -317,7 +317,7 @@ class DomainSamlOptions extends pulumi.CustomResource {
           'aws:elasticsearch/domainSamlOptions:DomainSamlOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
@@ -329,11 +329,12 @@ class DomainSamlOptions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainSamlOptionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainSamlOptions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -347,6 +348,20 @@ class DomainSamlOptions extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
+    samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>('samlOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSamlOptionsSamlOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DomainSamlOptions] resource.
+  DomainSamlOptions.reference(String urn)
+    : super(
+        'aws:elasticsearch/domainSamlOptions:DomainSamlOptions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
     samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>('samlOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSamlOptionsSamlOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

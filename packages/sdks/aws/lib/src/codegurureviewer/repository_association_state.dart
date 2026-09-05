@@ -7,38 +7,38 @@ import 'repository_association_s3_repository_detail.dart';
 
 /// Input properties used for looking up and filtering RepositoryAssociation resources.
 class RepositoryAssociationState {
-  /// The Amazon Resource Name (ARN) identifying the repository association.
-  final pulumi.Input<String>? arn;
+  /// ARN identifying the repository association.
+  final pulumi.Input<String?>? arn;
   /// The ID of the repository association.
-  final pulumi.Input<String>? associationId;
-  /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
-  final pulumi.Input<String>? connectionArn;
+  final pulumi.Input<String?>? associationId;
+  /// ARN of an AWS CodeStar Connections connection.
+  final pulumi.Input<String?>? connectionArn;
   /// An object describing the KMS key to asssociate. Block is documented below.
-  final pulumi.Input<RepositoryAssociationKmsKeyDetails>? kmsKeyDetails;
+  final pulumi.Input<RepositoryAssociationKmsKeyDetails?>? kmsKeyDetails;
   /// The name of the repository.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The owner of the repository.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// The provider type of the repository association.
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<String?>? providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `githubEnterpriseServer`, or `s3Bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `githubEnterpriseServer`) the connection must be in `Available` status prior to creating this resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<RepositoryAssociationRepository>? repository;
-  final pulumi.Input<List<RepositoryAssociationS3RepositoryDetail>>? s3RepositoryDetails;
+  final pulumi.Input<RepositoryAssociationRepository?>? repository;
+  final pulumi.Input<List<RepositoryAssociationS3RepositoryDetail>?>? s3RepositoryDetails;
   /// The state of the repository association.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A description of why the repository association is in the current state.
-  final pulumi.Input<String>? stateReason;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? stateReason;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RepositoryAssociationState].
-  /// [arn] The Amazon Resource Name (ARN) identifying the repository association.
+  /// [arn] ARN identifying the repository association.
   /// [associationId] The ID of the repository association.
-  /// [connectionArn] The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
+  /// [connectionArn] ARN of an AWS CodeStar Connections connection.
   /// [kmsKeyDetails] An object describing the KMS key to asssociate. Block is documented below.
   /// [name] The name of the repository.
   /// [owner] The owner of the repository.

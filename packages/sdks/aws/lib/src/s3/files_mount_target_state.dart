@@ -6,34 +6,34 @@ import 'files_mount_target_timeouts.dart';
 /// Input properties used for looking up and filtering FilesMountTarget resources.
 class FilesMountTargetState {
   /// Availability Zone ID.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// File system ID. Changing this value forces replacement.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// IP address type.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// IPv4 address.
-  final pulumi.Input<String>? ipv4Address;
+  final pulumi.Input<String?>? ipv4Address;
   /// IPv6 address.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
   /// Network interface ID.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// AWS account ID of the owner.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Security group IDs.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// Mount target status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Status message.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// Subnet ID. Changing this value forces replacement.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? subnetId;
-  final pulumi.Input<FilesMountTargetTimeouts>? timeouts;
+  final pulumi.Input<String?>? subnetId;
+  final pulumi.Input<FilesMountTargetTimeouts?>? timeouts;
   /// VPC ID.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [FilesMountTargetState].
   /// [availabilityZoneId] Availability Zone ID.

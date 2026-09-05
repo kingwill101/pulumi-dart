@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfig {
   /// Maximum number of tokens to generate in the model response. Must be at least 1.
-  final pulumi.Input<int>? maxTokens;
+  final pulumi.Input<int?>? maxTokens;
   /// List of sequences that cause the model to stop generating tokens.
-  final pulumi.Input<List<String>>? stopSequences;
+  final pulumi.Input<List<String>?>? stopSequences;
   /// Temperature value that controls randomness. Range 0–1.
-  final pulumi.Input<double>? temperature;
+  final pulumi.Input<double?>? temperature;
   /// Top-p sampling parameter. Range 0–1.
-  final pulumi.Input<double>? topP;
+  final pulumi.Input<double?>? topP;
 
   /// Creates a new [AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfig].
   /// [maxTokens] Maximum number of tokens to generate in the model response. Must be at least 1.
@@ -35,10 +35,10 @@ class AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorMod
 
   factory AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfig(
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       stopSequences: (() { final guardedValue = map['stopSequences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

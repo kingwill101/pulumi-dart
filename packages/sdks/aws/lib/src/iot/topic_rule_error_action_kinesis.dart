@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionKinesis {
   /// The partition key.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// The ARN of the IAM role that grants access to the Amazon Kinesis stream.
   final pulumi.Input<String> roleArn;
   /// The name of the Amazon Kinesis stream.

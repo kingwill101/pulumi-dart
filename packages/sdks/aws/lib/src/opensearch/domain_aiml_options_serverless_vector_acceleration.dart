@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAimlOptionsServerlessVectorAcceleration {
   /// Enables GPU-accelerated vector search for improved performance on vector workloads.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DomainAimlOptionsServerlessVectorAcceleration].
   /// [enabled] Enables GPU-accelerated vector search for improved performance on vector workloads.

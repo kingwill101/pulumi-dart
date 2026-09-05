@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceInstanceMarketOptionsSpotOptions {
   /// The behavior when a Spot Instance is interrupted. Valid values include `hibernate`, `stop`, `terminate` . The default is `terminate`.
-  final pulumi.Input<String>? instanceInterruptionBehavior;
+  final pulumi.Input<String?>? instanceInterruptionBehavior;
   /// The maximum hourly price that you're willing to pay for a Spot Instance.
-  final pulumi.Input<String>? maxPrice;
+  final pulumi.Input<String?>? maxPrice;
   /// The Spot Instance request type. Valid values include `one-time`, `persistent`. Persistent Spot Instance requests are only supported when the instance interruption behavior is either hibernate or stop. The default is `one-time`.
-  final pulumi.Input<String>? spotInstanceType;
+  final pulumi.Input<String?>? spotInstanceType;
   /// The end date of the request, in UTC format (YYYY-MM-DDTHH:MM:SSZ). Supported only for persistent requests.
-  final pulumi.Input<String>? validUntil;
+  final pulumi.Input<String?>? validUntil;
 
   /// Creates a new [InstanceInstanceMarketOptionsSpotOptions].
   /// [instanceInterruptionBehavior] The behavior when a Spot Instance is interrupted. Valid values include `hibernate`, `stop`, `terminate` . The default is `terminate`.

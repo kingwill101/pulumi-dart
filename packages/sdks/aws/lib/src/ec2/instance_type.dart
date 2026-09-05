@@ -1,4 +1,6 @@
-enum InstanceType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum InstanceType implements pulumi.PulumiEnum<String> {
   a12XLarge("a1.2xlarge"),
   a14XLarge("a1.4xlarge"),
   a1Large("a1.large"),
@@ -855,6 +857,7 @@ enum InstanceType {
   z1dXLarge("z1d.xlarge");
 
   const InstanceType(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceType fromValue(String value) {

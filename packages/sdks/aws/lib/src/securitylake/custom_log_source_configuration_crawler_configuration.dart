@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomLogSourceConfigurationCrawlerConfiguration {
-  /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to be used by the AWS Glue crawler.
+  /// The ARN of the AWS Identity and Access Management (IAM) role to be used by the AWS Glue crawler.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [CustomLogSourceConfigurationCrawlerConfiguration].
-  /// [roleArn] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to be used by the AWS Glue crawler.
+  /// [roleArn] The ARN of the AWS Identity and Access Management (IAM) role to be used by the AWS Glue crawler.
   const CustomLogSourceConfigurationCrawlerConfiguration({
     required this.roleArn,
   });

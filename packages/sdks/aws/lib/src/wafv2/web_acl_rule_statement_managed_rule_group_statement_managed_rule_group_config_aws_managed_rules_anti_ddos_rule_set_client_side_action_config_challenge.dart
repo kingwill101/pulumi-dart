@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_anti_ddos_rule_set_client_side_action_config_challenge_exempt_uri_regular_expression.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge {
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>>? exemptUriRegularExpressions;
-  final pulumi.Input<String>? sensitivity;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>?>? exemptUriRegularExpressions;
+  final pulumi.Input<String?>? sensitivity;
   final pulumi.Input<String> usageOfAction;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge].

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_s3_control_access_grants_location_access_grants_location_args_doc}
 class AccessGrantsLocationArgs {
   /// AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// ARN of the IAM role that S3 Access Grants should use when fulfilling runtime access requests to the location.
   final pulumi.Input<String> iamRoleArn;
   /// Default S3 URI `s3://` or the URI to a custom location, a specific bucket or prefix.
   final pulumi.Input<String> locationScope;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccessGrantsLocationArgs].
   /// [accountId] AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.

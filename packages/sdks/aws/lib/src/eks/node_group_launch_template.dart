@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupLaunchTemplate {
   /// Identifier of the EC2 Launch Template. Conflicts with `name`.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the EC2 Launch Template. Conflicts with `id`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// EC2 Launch Template version number. While the API accepts values like `$Default` and `$Latest`, the API will convert the value to the associated version number (e.g., `1`) on read and the provider will show a difference on next plan. Using the `defaultVersion` or `latestVersion` attribute of the `aws.ec2.LaunchTemplate` resource or data source is recommended for this argument.
   final pulumi.Input<String> version;
 

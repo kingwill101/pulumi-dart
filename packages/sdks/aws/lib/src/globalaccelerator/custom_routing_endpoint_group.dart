@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_routing_endpoint_group_args.dart';
+import 'custom_routing_endpoint_group_destination_configuration.dart';
+import 'custom_routing_endpoint_group_endpoint_configuration.dart';
 import 'custom_routing_endpoint_group_state.dart';
 
 /// Provides a Global Accelerator custom routing endpoint group.
@@ -12,7 +14,6 @@ import 'custom_routing_endpoint_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.globalaccelerator.CustomRoutingEndpointGroup("example", {
-///     listenerArn: exampleAwsGlobalacceleratorCustomRoutingListener.arn,
 ///     destinationConfigurations: [{
 ///         fromPort: 80,
 ///         toPort: 8080,
@@ -21,6 +22,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///     endpointConfigurations: [{
 ///         endpointId: exampleAwsSubnet.id,
 ///     }],
+///     listenerArn: exampleAwsGlobalacceleratorCustomRoutingListener.arn,
 /// });
 /// ```
 /// ```python
@@ -28,7 +30,6 @@ import 'custom_routing_endpoint_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.globalaccelerator.CustomRoutingEndpointGroup("example",
-///     listener_arn=example_aws_globalaccelerator_custom_routing_listener["arn"],
 ///     destination_configurations=[{
 ///         "from_port": 80,
 ///         "to_port": 8080,
@@ -36,7 +37,8 @@ import 'custom_routing_endpoint_group_state.dart';
 ///     }],
 ///     endpoint_configurations=[{
 ///         "endpoint_id": example_aws_subnet["id"],
-///     }])
+///     }],
+///     listener_arn=example_aws_globalaccelerator_custom_routing_listener["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,7 +50,6 @@ import 'custom_routing_endpoint_group_state.dart';
 /// {
 ///     var example = new Aws.GlobalAccelerator.CustomRoutingEndpointGroup("example", new()
 ///     {
-///         ListenerArn = exampleAwsGlobalacceleratorCustomRoutingListener.Arn,
 ///         DestinationConfigurations = new[]
 ///         {
 ///             new Aws.GlobalAccelerator.Inputs.CustomRoutingEndpointGroupDestinationConfigurationArgs
@@ -68,6 +69,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///                 EndpointId = exampleAwsSubnet.Id,
 ///             },
 ///         },
+///         ListenerArn = exampleAwsGlobalacceleratorCustomRoutingListener.Arn,
 ///     });
 ///
 /// });
@@ -83,7 +85,6 @@ import 'custom_routing_endpoint_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := globalaccelerator.NewCustomRoutingEndpointGroup(ctx, "example", &globalaccelerator.CustomRoutingEndpointGroupArgs{
-/// 			ListenerArn: pulumi.Any(exampleAwsGlobalacceleratorCustomRoutingListener.Arn),
 /// 			DestinationConfigurations: globalaccelerator.CustomRoutingEndpointGroupDestinationConfigurationArray{
 /// 				&globalaccelerator.CustomRoutingEndpointGroupDestinationConfigurationArgs{
 /// 					FromPort: pulumi.Int(80),
@@ -98,6 +99,7 @@ import 'custom_routing_endpoint_group_state.dart';
 /// 					EndpointId: pulumi.Any(exampleAwsSubnet.Id),
 /// 				},
 /// 			},
+/// 			ListenerArn: pulumi.Any(exampleAwsGlobalacceleratorCustomRoutingListener.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,7 +118,6 @@ import 'custom_routing_endpoint_group_state.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_customroutingendpointgroup" "example" {
-///   listener_arn = exampleAwsGlobalacceleratorCustomRoutingListener.arn
 ///   destination_configurations {
 ///     from_port = 80
 ///     to_port   = 8080
@@ -125,6 +126,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///   endpoint_configurations {
 ///     endpoint_id = exampleAwsSubnet.id
 ///   }
+///   listener_arn = exampleAwsGlobalacceleratorCustomRoutingListener.arn
 /// }
 /// ```
 /// ```java
@@ -151,7 +153,6 @@ import 'custom_routing_endpoint_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomRoutingEndpointGroup("example", CustomRoutingEndpointGroupArgs.builder()
-///             .listenerArn(exampleAwsGlobalacceleratorCustomRoutingListener.arn())
 ///             .destinationConfigurations(CustomRoutingEndpointGroupDestinationConfigurationArgs.builder()
 ///                 .fromPort(80)
 ///                 .toPort(8080)
@@ -160,6 +161,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///             .endpointConfigurations(CustomRoutingEndpointGroupEndpointConfigurationArgs.builder()
 ///                 .endpointId(exampleAwsSubnet.id())
 ///                 .build())
+///             .listenerArn(exampleAwsGlobalacceleratorCustomRoutingListener.arn())
 ///             .build());
 ///
 ///     }
@@ -170,7 +172,6 @@ import 'custom_routing_endpoint_group_state.dart';
 ///   example:
 ///     type: aws:globalaccelerator:CustomRoutingEndpointGroup
 ///     properties:
-///       listenerArn: ${exampleAwsGlobalacceleratorCustomRoutingListener.arn}
 ///       destinationConfigurations:
 ///         - fromPort: 80
 ///           toPort: 8080
@@ -178,6 +179,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///             - TCP
 ///       endpointConfigurations:
 ///         - endpointId: ${exampleAwsSubnet.id}
+///       listenerArn: ${exampleAwsGlobalacceleratorCustomRoutingListener.arn}
 /// ```
 ///
 ///
@@ -187,7 +189,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Global Accelerator custom routing endpoint group.
+/// - `arn` (String) ARN of the Global Accelerator custom routing endpoint group.
 ///
 ///
 /// Using `pulumi import`, import Global Accelerator custom routing endpoint groups using the `id`. For example:
@@ -196,15 +198,15 @@ import 'custom_routing_endpoint_group_state.dart';
 /// $ pulumi import aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup example arn:aws:globalaccelerator::111111111111:accelerator/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/listener/xxxxxxx/endpoint-group/xxxxxxxx
 /// ```
 class CustomRoutingEndpointGroup extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the custom routing endpoint group.
+  /// ARN of the custom routing endpoint group.
   late final pulumi.Output<String> arn;
   /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinationConfigurations;
+  late final pulumi.Output<List<CustomRoutingEndpointGroupDestinationConfiguration>> destinationConfigurations;
   /// The list of endpoint objects. Fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> endpointConfigurations;
+  late final pulumi.Output<List<CustomRoutingEndpointGroupEndpointConfiguration>?> endpointConfigurations;
   /// The name of the AWS Region where the custom routing endpoint group is located.
   late final pulumi.Output<String> endpointGroupRegion;
-  /// The Amazon Resource Name (ARN) of the custom routing listener.
+  /// ARN of the custom routing listener.
   late final pulumi.Output<String> listenerArn;
 
   /// Creates a new [CustomRoutingEndpointGroup].
@@ -219,11 +221,11 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    destinationConfigurations = registerOutput<List<Map<String, dynamic>>>('destinationConfigurations');
-    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>('endpointConfigurations');
+    destinationConfigurations = registerOutput<List<CustomRoutingEndpointGroupDestinationConfiguration>>('destinationConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    endpointConfigurations = registerOutput<List<CustomRoutingEndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     listenerArn = registerOutput<String>('listenerArn');
   }
@@ -233,11 +235,12 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomRoutingEndpointGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomRoutingEndpointGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,8 +255,24 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    destinationConfigurations = registerOutput<List<Map<String, dynamic>>>('destinationConfigurations');
-    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>('endpointConfigurations');
+    destinationConfigurations = registerOutput<List<CustomRoutingEndpointGroupDestinationConfiguration>>('destinationConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    endpointConfigurations = registerOutput<List<CustomRoutingEndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    listenerArn = registerOutput<String>('listenerArn');
+  }
+
+  /// Creates a typed reference to an existing [CustomRoutingEndpointGroup] resource.
+  CustomRoutingEndpointGroup.reference(String urn)
+    : super(
+        'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destinationConfigurations = registerOutput<List<CustomRoutingEndpointGroupDestinationConfiguration>>('destinationConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    endpointConfigurations = registerOutput<List<CustomRoutingEndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     listenerArn = registerOutput<String>('listenerArn');
   }

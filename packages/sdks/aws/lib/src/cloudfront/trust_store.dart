@@ -16,7 +16,6 @@ import 'trust_store_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.TrustStore("example", {
-///     name: "example-trust-store",
 ///     caCertificatesBundleSource: {
 ///         caCertificatesBundleS3Location: {
 ///             bucket: "example-bucket",
@@ -24,6 +23,7 @@ import 'trust_store_timeouts.dart';
 ///             region: "us-east-1",
 ///         },
 ///     },
+///     name: "example-trust-store",
 /// });
 /// ```
 /// ```python
@@ -31,14 +31,14 @@ import 'trust_store_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.TrustStore("example",
-///     name="example-trust-store",
 ///     ca_certificates_bundle_source={
 ///         "ca_certificates_bundle_s3_location": {
 ///             "bucket": "example-bucket",
 ///             "key": "ca-certificates.pem",
 ///             "region": "us-east-1",
 ///         },
-///     })
+///     },
+///     name="example-trust-store")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,7 +50,6 @@ import 'trust_store_timeouts.dart';
 /// {
 ///     var example = new Aws.CloudFront.TrustStore("example", new()
 ///     {
-///         Name = "example-trust-store",
 ///         CaCertificatesBundleSource = new Aws.CloudFront.Inputs.TrustStoreCaCertificatesBundleSourceArgs
 ///         {
 ///             CaCertificatesBundleS3Location = new Aws.CloudFront.Inputs.TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs
@@ -60,6 +59,7 @@ import 'trust_store_timeouts.dart';
 ///                 Region = "us-east-1",
 ///             },
 ///         },
+///         Name = "example-trust-store",
 ///     });
 ///
 /// });
@@ -75,7 +75,6 @@ import 'trust_store_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewTrustStore(ctx, "example", &cloudfront.TrustStoreArgs{
-/// 			Name: pulumi.String("example-trust-store"),
 /// 			CaCertificatesBundleSource: &cloudfront.TrustStoreCaCertificatesBundleSourceArgs{
 /// 				CaCertificatesBundleS3Location: &cloudfront.TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs{
 /// 					Bucket: pulumi.String("example-bucket"),
@@ -83,6 +82,7 @@ import 'trust_store_timeouts.dart';
 /// 					Region: pulumi.String("us-east-1"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-trust-store"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -101,7 +101,6 @@ import 'trust_store_timeouts.dart';
 /// }
 ///
 /// resource "aws_cloudfront_truststore" "example" {
-///   name = "example-trust-store"
 ///   ca_certificates_bundle_source = {
 ///     ca_certificates_bundle_s3_location = {
 ///       bucket = "example-bucket"
@@ -109,6 +108,7 @@ import 'trust_store_timeouts.dart';
 ///       region = "us-east-1"
 ///     }
 ///   }
+///   name = "example-trust-store"
 /// }
 /// ```
 /// ```java
@@ -135,7 +135,6 @@ import 'trust_store_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrustStore("example", TrustStoreArgs.builder()
-///             .name("example-trust-store")
 ///             .caCertificatesBundleSource(TrustStoreCaCertificatesBundleSourceArgs.builder()
 ///                 .caCertificatesBundleS3Location(TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs.builder()
 ///                     .bucket("example-bucket")
@@ -143,6 +142,7 @@ import 'trust_store_timeouts.dart';
 ///                     .region("us-east-1")
 ///                     .build())
 ///                 .build())
+///             .name("example-trust-store")
 ///             .build());
 ///
 ///     }
@@ -153,12 +153,12 @@ import 'trust_store_timeouts.dart';
 ///   example:
 ///     type: aws:cloudfront:TrustStore
 ///     properties:
-///       name: example-trust-store
 ///       caCertificatesBundleSource:
 ///         caCertificatesBundleS3Location:
 ///           bucket: example-bucket
 ///           key: ca-certificates.pem
 ///           region: us-east-1
+///       name: example-trust-store
 /// ```
 ///
 ///
@@ -170,7 +170,6 @@ import 'trust_store_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.TrustStore("example", {
-///     name: "example-trust-store",
 ///     caCertificatesBundleSource: {
 ///         caCertificatesBundleS3Location: {
 ///             bucket: "example-bucket",
@@ -179,6 +178,7 @@ import 'trust_store_timeouts.dart';
 ///             version: "abc123",
 ///         },
 ///     },
+///     name: "example-trust-store",
 /// });
 /// ```
 /// ```python
@@ -186,7 +186,6 @@ import 'trust_store_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.TrustStore("example",
-///     name="example-trust-store",
 ///     ca_certificates_bundle_source={
 ///         "ca_certificates_bundle_s3_location": {
 ///             "bucket": "example-bucket",
@@ -194,7 +193,8 @@ import 'trust_store_timeouts.dart';
 ///             "region": "us-east-1",
 ///             "version": "abc123",
 ///         },
-///     })
+///     },
+///     name="example-trust-store")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -206,7 +206,6 @@ import 'trust_store_timeouts.dart';
 /// {
 ///     var example = new Aws.CloudFront.TrustStore("example", new()
 ///     {
-///         Name = "example-trust-store",
 ///         CaCertificatesBundleSource = new Aws.CloudFront.Inputs.TrustStoreCaCertificatesBundleSourceArgs
 ///         {
 ///             CaCertificatesBundleS3Location = new Aws.CloudFront.Inputs.TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs
@@ -217,6 +216,7 @@ import 'trust_store_timeouts.dart';
 ///                 Version = "abc123",
 ///             },
 ///         },
+///         Name = "example-trust-store",
 ///     });
 ///
 /// });
@@ -232,7 +232,6 @@ import 'trust_store_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewTrustStore(ctx, "example", &cloudfront.TrustStoreArgs{
-/// 			Name: pulumi.String("example-trust-store"),
 /// 			CaCertificatesBundleSource: &cloudfront.TrustStoreCaCertificatesBundleSourceArgs{
 /// 				CaCertificatesBundleS3Location: &cloudfront.TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs{
 /// 					Bucket:  pulumi.String("example-bucket"),
@@ -241,6 +240,7 @@ import 'trust_store_timeouts.dart';
 /// 					Version: pulumi.String("abc123"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-trust-store"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -259,7 +259,6 @@ import 'trust_store_timeouts.dart';
 /// }
 ///
 /// resource "aws_cloudfront_truststore" "example" {
-///   name = "example-trust-store"
 ///   ca_certificates_bundle_source = {
 ///     ca_certificates_bundle_s3_location = {
 ///       bucket  = "example-bucket"
@@ -268,6 +267,7 @@ import 'trust_store_timeouts.dart';
 ///       version = "abc123"
 ///     }
 ///   }
+///   name = "example-trust-store"
 /// }
 /// ```
 /// ```java
@@ -294,7 +294,6 @@ import 'trust_store_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrustStore("example", TrustStoreArgs.builder()
-///             .name("example-trust-store")
 ///             .caCertificatesBundleSource(TrustStoreCaCertificatesBundleSourceArgs.builder()
 ///                 .caCertificatesBundleS3Location(TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs.builder()
 ///                     .bucket("example-bucket")
@@ -303,6 +302,7 @@ import 'trust_store_timeouts.dart';
 ///                     .version("abc123")
 ///                     .build())
 ///                 .build())
+///             .name("example-trust-store")
 ///             .build());
 ///
 ///     }
@@ -313,13 +313,13 @@ import 'trust_store_timeouts.dart';
 ///   example:
 ///     type: aws:cloudfront:TrustStore
 ///     properties:
-///       name: example-trust-store
 ///       caCertificatesBundleSource:
 ///         caCertificatesBundleS3Location:
 ///           bucket: example-bucket
 ///           key: ca-certificates.pem
 ///           region: us-east-1
 ///           version: abc123
+///       name: example-trust-store
 /// ```
 ///
 ///
@@ -361,15 +361,15 @@ class TrustStore extends pulumi.CustomResource {
           'aws:cloudfront/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     caCertificatesBundleSource = registerOutput<TrustStoreCaCertificatesBundleSource>('caCertificatesBundleSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreCaCertificatesBundleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TrustStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -378,11 +378,12 @@ class TrustStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -401,8 +402,27 @@ class TrustStore extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<TrustStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TrustStore] resource.
+  TrustStore.reference(String urn)
+    : super(
+        'aws:cloudfront/trustStore:TrustStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    caCertificatesBundleSource = registerOutput<TrustStoreCaCertificatesBundleSource>('caCertificatesBundleSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreCaCertificatesBundleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TrustStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

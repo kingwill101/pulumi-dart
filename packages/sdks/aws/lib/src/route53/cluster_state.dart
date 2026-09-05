@@ -6,21 +6,21 @@ import 'cluster_cluster_endpoint.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// ARN of the cluster
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// List of 5 endpoints in 5 regions that can be used to talk to the cluster. See below.
-  final pulumi.Input<List<ClusterClusterEndpoint>>? clusterEndpoints;
+  final pulumi.Input<List<ClusterClusterEndpoint>?>? clusterEndpoints;
   /// Unique name describing the cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network type of cluster. Valid values are `IPV4` and `DUALSTACK`. Defaults to `IPV4`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// Status of cluster. `PENDING` when it is being created, `PENDING_DELETION` when it is being deleted and `DEPLOYED` otherwise.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ClusterState].
   /// [arn] ARN of the cluster

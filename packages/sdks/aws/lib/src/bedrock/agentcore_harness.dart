@@ -1,11 +1,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_harness_args.dart';
 import 'agentcore_harness_authorizer_configuration.dart';
+import 'agentcore_harness_environment.dart';
+import 'agentcore_harness_environment_actual.dart';
 import 'agentcore_harness_environment_artifact.dart';
 import 'agentcore_harness_memory.dart';
+import 'agentcore_harness_memory_actual.dart';
 import 'agentcore_harness_model.dart';
+import 'agentcore_harness_skill.dart';
 import 'agentcore_harness_state.dart';
+import 'agentcore_harness_system_prompt.dart';
 import 'agentcore_harness_timeouts.dart';
+import 'agentcore_harness_tool.dart';
+import 'agentcore_harness_truncation.dart';
 
 /// Manages an AWS Bedrock AgentCore Harness. A Harness is a managed agent loop that wraps model configuration, tools, skills, memory, and compute environment into a single deployable unit.
 ///
@@ -20,12 +27,12 @@ import 'agentcore_harness_timeouts.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["bedrock-agentcore.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const example = new aws.iam.Role("example", {
@@ -47,8 +54,6 @@ import 'agentcore_harness_timeouts.dart';
 ///     }),
 /// });
 /// const exampleAgentcoreHarness = new aws.bedrock.AgentcoreHarness("example", {
-///     harnessName: "example_harness",
-///     executionRoleArn: example.arn,
 ///     model: {
 ///         bedrockModelConfig: {
 ///             modelId: "anthropic.claude-sonnet-4-20250514",
@@ -57,6 +62,8 @@ import 'agentcore_harness_timeouts.dart';
 ///     systemPrompts: [{
 ///         text: "You are a helpful assistant.",
 ///     }],
+///     harnessName: "example_harness",
+///     executionRoleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -65,12 +72,12 @@ import 'agentcore_harness_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["bedrock-agentcore.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
 ///     name="bedrock-agentcore-harness-role",
@@ -89,8 +96,6 @@ import 'agentcore_harness_timeouts.dart';
 ///         }],
 ///     }))
 /// example_agentcore_harness = aws.bedrock.AgentcoreHarness("example",
-///     harness_name="example_harness",
-///     execution_role_arn=example.arn,
 ///     model={
 ///         "bedrock_model_config": {
 ///             "model_id": "anthropic.claude-sonnet-4-20250514",
@@ -98,7 +103,9 @@ import 'agentcore_harness_timeouts.dart';
 ///     },
 ///     system_prompts=[{
 ///         "text": "You are a helpful assistant.",
-///     }])
+///     }],
+///     harness_name="example_harness",
+///     execution_role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -115,11 +122,6 @@ import 'agentcore_harness_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -130,6 +132,11 @@ import 'agentcore_harness_timeouts.dart';
 ///                             "bedrock-agentcore.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -165,8 +172,6 @@ import 'agentcore_harness_timeouts.dart';
 ///
 ///     var exampleAgentcoreHarness = new Aws.Bedrock.AgentcoreHarness("example", new()
 ///     {
-///         HarnessName = "example_harness",
-///         ExecutionRoleArn = example.Arn,
 ///         Model = new Aws.Bedrock.Inputs.AgentcoreHarnessModelArgs
 ///         {
 ///             BedrockModelConfig = new Aws.Bedrock.Inputs.AgentcoreHarnessModelBedrockModelConfigArgs
@@ -181,6 +186,8 @@ import 'agentcore_harness_timeouts.dart';
 ///                 Text = "You are a helpful assistant.",
 ///             },
 ///         },
+///         HarnessName = "example_harness",
+///         ExecutionRoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -201,10 +208,6 @@ import 'agentcore_harness_timeouts.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -212,6 +215,10 @@ import 'agentcore_harness_timeouts.dart';
 /// 								"bedrock-agentcore.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -251,8 +258,6 @@ import 'agentcore_harness_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreHarness(ctx, "example", &bedrock.AgentcoreHarnessArgs{
-/// 			HarnessName:      pulumi.String("example_harness"),
-/// 			ExecutionRoleArn: example.Arn,
 /// 			Model: &bedrock.AgentcoreHarnessModelArgs{
 /// 				BedrockModelConfig: &bedrock.AgentcoreHarnessModelBedrockModelConfigArgs{
 /// 					ModelId: pulumi.String("anthropic.claude-sonnet-4-20250514"),
@@ -263,6 +268,8 @@ import 'agentcore_harness_timeouts.dart';
 /// 					Text: pulumi.String("You are a helpful assistant."),
 /// 				},
 /// 			},
+/// 			HarnessName:      pulumi.String("example_harness"),
+/// 			ExecutionRoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -282,12 +289,12 @@ import 'agentcore_harness_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -307,8 +314,6 @@ import 'agentcore_harness_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_bedrock_agentcoreharness" "example" {
-///   harness_name       = "example_harness"
-///   execution_role_arn = aws_iam_role.example.arn
 ///   model = {
 ///     bedrock_model_config = {
 ///       model_id = "anthropic.claude-sonnet-4-20250514"
@@ -317,6 +322,8 @@ import 'agentcore_harness_timeouts.dart';
 ///   system_prompts {
 ///     text = "You are a helpful assistant."
 ///   }
+///   harness_name       = "example_harness"
+///   execution_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -354,12 +361,12 @@ import 'agentcore_harness_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("bedrock-agentcore.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -385,8 +392,6 @@ import 'agentcore_harness_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentcoreHarness = new AgentcoreHarness("exampleAgentcoreHarness", AgentcoreHarnessArgs.builder()
-///             .harnessName("example_harness")
-///             .executionRoleArn(example.arn())
 ///             .model(AgentcoreHarnessModelArgs.builder()
 ///                 .bedrockModelConfig(AgentcoreHarnessModelBedrockModelConfigArgs.builder()
 ///                     .modelId("anthropic.claude-sonnet-4-20250514")
@@ -395,6 +400,8 @@ import 'agentcore_harness_timeouts.dart';
 ///             .systemPrompts(AgentcoreHarnessSystemPromptArgs.builder()
 ///                 .text("You are a helpful assistant.")
 ///                 .build())
+///             .harnessName("example_harness")
+///             .executionRoleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -425,26 +432,26 @@ import 'agentcore_harness_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreHarness
 ///     name: example
 ///     properties:
-///       harnessName: example_harness
-///       executionRoleArn: ${example.arn}
 ///       model:
 ///         bedrockModelConfig:
 ///           modelId: anthropic.claude-sonnet-4-20250514
 ///       systemPrompts:
 ///         - text: You are a helpful assistant.
+///       harnessName: example_harness
+///       executionRoleArn: ${example.arn}
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - bedrock-agentcore.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -456,8 +463,6 @@ import 'agentcore_harness_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreHarness("example", {
-///     harnessName: "example_with_tools",
-///     executionRoleArn: exampleAwsIamRole.arn,
 ///     model: {
 ///         bedrockModelConfig: {
 ///             modelId: "anthropic.claude-sonnet-4-20250514",
@@ -468,13 +473,7 @@ import 'agentcore_harness_timeouts.dart';
 ///     systemPrompts: [{
 ///         text: "You are a coding assistant.",
 ///     }],
-///     allowedTools: ["*"],
-///     maxIterations: 10,
-///     maxTokens: 4096,
-///     timeoutSeconds: 300,
 ///     tools: [{
-///         type: "inline_function",
-///         name: "get_weather",
 ///         config: {
 ///             inlineFunction: {
 ///                 description: "Get the current weather for a location",
@@ -490,15 +489,23 @@ import 'agentcore_harness_timeouts.dart';
 ///                 }),
 ///             },
 ///         },
+///         type: "inline_function",
+///         name: "get_weather",
 ///     }],
 ///     truncations: [{
-///         strategy: "sliding_window",
 ///         config: [{
 ///             slidingWindow: [{
 ///                 messagesCount: 50,
 ///             }],
 ///         }],
+///         strategy: "sliding_window",
 ///     }],
+///     harnessName: "example_with_tools",
+///     executionRoleArn: exampleAwsIamRole.arn,
+///     allowedTools: ["*"],
+///     maxIterations: 10,
+///     maxTokens: 4096,
+///     timeoutSeconds: 300,
 /// });
 /// ```
 /// ```python
@@ -507,8 +514,6 @@ import 'agentcore_harness_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreHarness("example",
-///     harness_name="example_with_tools",
-///     execution_role_arn=example_aws_iam_role["arn"],
 ///     model={
 ///         "bedrock_model_config": {
 ///             "model_id": "anthropic.claude-sonnet-4-20250514",
@@ -519,13 +524,7 @@ import 'agentcore_harness_timeouts.dart';
 ///     system_prompts=[{
 ///         "text": "You are a coding assistant.",
 ///     }],
-///     allowed_tools=["*"],
-///     max_iterations=10,
-///     max_tokens=4096,
-///     timeout_seconds=300,
 ///     tools=[{
-///         "type": "inline_function",
-///         "name": "get_weather",
 ///         "config": {
 ///             "inline_function": {
 ///                 "description": "Get the current weather for a location",
@@ -541,15 +540,23 @@ import 'agentcore_harness_timeouts.dart';
 ///                 }),
 ///             },
 ///         },
+///         "type": "inline_function",
+///         "name": "get_weather",
 ///     }],
 ///     truncations=[{
-///         "strategy": "sliding_window",
 ///         "config": [{
 ///             "slidingWindow": [{
 ///                 "messagesCount": 50,
 ///             }],
 ///         }],
-///     }])
+///         "strategy": "sliding_window",
+///     }],
+///     harness_name="example_with_tools",
+///     execution_role_arn=example_aws_iam_role["arn"],
+///     allowed_tools=["*"],
+///     max_iterations=10,
+///     max_tokens=4096,
+///     timeout_seconds=300)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -562,8 +569,6 @@ import 'agentcore_harness_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreHarness("example", new()
 ///     {
-///         HarnessName = "example_with_tools",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
 ///         Model = new Aws.Bedrock.Inputs.AgentcoreHarnessModelArgs
 ///         {
 ///             BedrockModelConfig = new Aws.Bedrock.Inputs.AgentcoreHarnessModelBedrockModelConfigArgs
@@ -580,19 +585,10 @@ import 'agentcore_harness_timeouts.dart';
 ///                 Text = "You are a coding assistant.",
 ///             },
 ///         },
-///         AllowedTools = new[]
-///         {
-///             "*",
-///         },
-///         MaxIterations = 10,
-///         MaxTokens = 4096,
-///         TimeoutSeconds = 300,
 ///         Tools = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreHarnessToolArgs
 ///             {
-///                 Type = "inline_function",
-///                 Name = "get_weather",
 ///                 Config = new Aws.Bedrock.Inputs.AgentcoreHarnessToolConfigArgs
 ///                 {
 ///                     InlineFunction = new Aws.Bedrock.Inputs.AgentcoreHarnessToolConfigInlineFunctionArgs
@@ -616,13 +612,14 @@ import 'agentcore_harness_timeouts.dart';
 ///                         }),
 ///                     },
 ///                 },
+///                 Type = "inline_function",
+///                 Name = "get_weather",
 ///             },
 ///         },
 ///         Truncations = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreHarnessTruncationArgs
 ///             {
-///                 Strategy = "sliding_window",
 ///                 Config = new[]
 ///                 {
 ///
@@ -636,8 +633,18 @@ import 'agentcore_harness_timeouts.dart';
 ///                         } },
 ///                     },
 ///                 },
+///                 Strategy = "sliding_window",
 ///             },
 ///         },
+///         HarnessName = "example_with_tools",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         AllowedTools = new[]
+///         {
+///             "*",
+///         },
+///         MaxIterations = 10,
+///         MaxTokens = 4096,
+///         TimeoutSeconds = 300,
 ///     });
 ///
 /// });
@@ -671,8 +678,6 @@ import 'agentcore_harness_timeouts.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = bedrock.NewAgentcoreHarness(ctx, "example", &bedrock.AgentcoreHarnessArgs{
-/// 			HarnessName:      pulumi.String("example_with_tools"),
-/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Model: &bedrock.AgentcoreHarnessModelArgs{
 /// 				BedrockModelConfig: &bedrock.AgentcoreHarnessModelBedrockModelConfigArgs{
 /// 					ModelId:     pulumi.String("anthropic.claude-sonnet-4-20250514"),
@@ -685,27 +690,20 @@ import 'agentcore_harness_timeouts.dart';
 /// 					Text: pulumi.String("You are a coding assistant."),
 /// 				},
 /// 			},
-/// 			AllowedTools: pulumi.StringArray{
-/// 				pulumi.String("*"),
-/// 			},
-/// 			MaxIterations:  pulumi.Int(10),
-/// 			MaxTokens:      pulumi.Int(4096),
-/// 			TimeoutSeconds: pulumi.Int(300),
 /// 			Tools: bedrock.AgentcoreHarnessToolArray{
 /// 				&bedrock.AgentcoreHarnessToolArgs{
-/// 					Type: pulumi.String("inline_function"),
-/// 					Name: pulumi.String("get_weather"),
 /// 					Config: &bedrock.AgentcoreHarnessToolConfigArgs{
 /// 						InlineFunction: &bedrock.AgentcoreHarnessToolConfigInlineFunctionArgs{
 /// 							Description: pulumi.String("Get the current weather for a location"),
 /// 							InputSchema: pulumi.String(json0),
 /// 						},
 /// 					},
+/// 					Type: pulumi.String("inline_function"),
+/// 					Name: pulumi.String("get_weather"),
 /// 				},
 /// 			},
 /// 			Truncations: bedrock.AgentcoreHarnessTruncationArray{
 /// 				&bedrock.AgentcoreHarnessTruncationArgs{
-/// 					Strategy: pulumi.String("sliding_window"),
 /// 					Config: []map[string][]map[string]int{
 /// 						{
 /// 							"slidingWindow": []map[string]int{
@@ -715,8 +713,17 @@ import 'agentcore_harness_timeouts.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Strategy: pulumi.String("sliding_window"),
 /// 				},
 /// 			},
+/// 			HarnessName:      pulumi.String("example_with_tools"),
+/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			AllowedTools: pulumi.StringArray{
+/// 				pulumi.String("*"),
+/// 			},
+/// 			MaxIterations:  pulumi.Int(10),
+/// 			MaxTokens:      pulumi.Int(4096),
+/// 			TimeoutSeconds: pulumi.Int(300),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -735,8 +742,6 @@ import 'agentcore_harness_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreharness" "example" {
-///   harness_name       = "example_with_tools"
-///   execution_role_arn = exampleAwsIamRole.arn
 ///   model = {
 ///     bedrock_model_config = {
 ///       model_id    = "anthropic.claude-sonnet-4-20250514"
@@ -747,13 +752,7 @@ import 'agentcore_harness_timeouts.dart';
 ///   system_prompts {
 ///     text = "You are a coding assistant."
 ///   }
-///   allowed_tools   = ["*"]
-///   max_iterations  = 10
-///   max_tokens      = 4096
-///   timeout_seconds = 300
 ///   tools {
-///     type = "inline_function"
-///     name = "get_weather"
 ///     config = {
 ///       inline_function = {
 ///         description = "Get the current weather for a location"
@@ -769,15 +768,23 @@ import 'agentcore_harness_timeouts.dart';
 ///         })
 ///       }
 ///     }
+///     type = "inline_function"
+///     name = "get_weather"
 ///   }
 ///   truncations {
-///     strategy = "sliding_window"
 ///     config = [{
 ///       "slidingWindow" = [{
 ///         "messagesCount" = 50
 ///       }]
 ///     }]
+///     strategy = "sliding_window"
 ///   }
+///   harness_name       = "example_with_tools"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   allowed_tools      = ["*"]
+///   max_iterations     = 10
+///   max_tokens         = 4096
+///   timeout_seconds    = 300
 /// }
 /// ```
 /// ```java
@@ -810,8 +817,6 @@ import 'agentcore_harness_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreHarness("example", AgentcoreHarnessArgs.builder()
-///             .harnessName("example_with_tools")
-///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .model(AgentcoreHarnessModelArgs.builder()
 ///                 .bedrockModelConfig(AgentcoreHarnessModelBedrockModelConfigArgs.builder()
 ///                     .modelId("anthropic.claude-sonnet-4-20250514")
@@ -822,13 +827,7 @@ import 'agentcore_harness_timeouts.dart';
 ///             .systemPrompts(AgentcoreHarnessSystemPromptArgs.builder()
 ///                 .text("You are a coding assistant.")
 ///                 .build())
-///             .allowedTools("*")
-///             .maxIterations(10)
-///             .maxTokens(4096)
-///             .timeoutSeconds(300)
 ///             .tools(AgentcoreHarnessToolArgs.builder()
-///                 .type("inline_function")
-///                 .name("get_weather")
 ///                 .config(AgentcoreHarnessToolConfigArgs.builder()
 ///                     .inlineFunction(AgentcoreHarnessToolConfigInlineFunctionArgs.builder()
 ///                         .description("Get the current weather for a location")
@@ -845,11 +844,19 @@ import 'agentcore_harness_timeouts.dart';
 ///                             )))
 ///                         .build())
 ///                     .build())
+///                 .type("inline_function")
+///                 .name("get_weather")
 ///                 .build())
 ///             .truncations(AgentcoreHarnessTruncationArgs.builder()
-///                 .strategy("sliding_window")
 ///                 .config(Arrays.asList(Map.of("slidingWindow", Arrays.asList(Map.of("messagesCount", 50)))))
+///                 .strategy("sliding_window")
 ///                 .build())
+///             .harnessName("example_with_tools")
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .allowedTools("*")
+///             .maxIterations(10)
+///             .maxTokens(4096)
+///             .timeoutSeconds(300)
 ///             .build());
 ///
 ///     }
@@ -860,8 +867,6 @@ import 'agentcore_harness_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreHarness
 ///     properties:
-///       harnessName: example_with_tools
-///       executionRoleArn: ${exampleAwsIamRole.arn}
 ///       model:
 ///         bedrockModelConfig:
 ///           modelId: anthropic.claude-sonnet-4-20250514
@@ -869,15 +874,8 @@ import 'agentcore_harness_timeouts.dart';
 ///           topP: 0.9
 ///       systemPrompts:
 ///         - text: You are a coding assistant.
-///       allowedTools:
-///         - '*'
-///       maxIterations: 10
-///       maxTokens: 4096
-///       timeoutSeconds: 300
 ///       tools:
-///         - type: inline_function
-///           name: get_weather
-///           config:
+///         - config:
 ///             inlineFunction:
 ///               description: Get the current weather for a location
 ///               inputSchema:
@@ -889,11 +887,20 @@ import 'agentcore_harness_timeouts.dart';
 ///                       description: City name
 ///                   required:
 ///                     - location
+///           type: inline_function
+///           name: get_weather
 ///       truncations:
-///         - strategy: sliding_window
-///           config:
+///         - config:
 ///             - slidingWindow:
 ///                 - messagesCount: 50
+///           strategy: sliding_window
+///       harnessName: example_with_tools
+///       executionRoleArn: ${exampleAwsIamRole.arn}
+///       allowedTools:
+///         - '*'
+///       maxIterations: 10
+///       maxTokens: 4096
+///       timeoutSeconds: 300
 /// ```
 ///
 ///
@@ -905,16 +912,11 @@ import 'agentcore_harness_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreHarness("example", {
-///     harnessName: "my_harness",
-///     executionRoleArn: exampleAwsIamRole.arn,
 ///     model: {
 ///         bedrockModelConfig: {
 ///             modelId: "anthropic.claude-sonnet-4-20250514",
 ///         },
 ///     },
-///     systemPrompts: [{
-///         text: "You are a helpful assistant.",
-///     }],
 ///     memory: {
 ///         managedMemoryConfiguration: {
 ///             eventExpiryDuration: 14,
@@ -924,6 +926,11 @@ import 'agentcore_harness_timeouts.dart';
 ///             ],
 ///         },
 ///     },
+///     systemPrompts: [{
+///         text: "You are a helpful assistant.",
+///     }],
+///     harnessName: "my_harness",
+///     executionRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -931,16 +938,11 @@ import 'agentcore_harness_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreHarness("example",
-///     harness_name="my_harness",
-///     execution_role_arn=example_aws_iam_role["arn"],
 ///     model={
 ///         "bedrock_model_config": {
 ///             "model_id": "anthropic.claude-sonnet-4-20250514",
 ///         },
 ///     },
-///     system_prompts=[{
-///         "text": "You are a helpful assistant.",
-///     }],
 ///     memory={
 ///         "managed_memory_configuration": {
 ///             "event_expiry_duration": 14,
@@ -949,7 +951,12 @@ import 'agentcore_harness_timeouts.dart';
 ///                 "SUMMARIZATION",
 ///             ],
 ///         },
-///     })
+///     },
+///     system_prompts=[{
+///         "text": "You are a helpful assistant.",
+///     }],
+///     harness_name="my_harness",
+///     execution_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -961,20 +968,11 @@ import 'agentcore_harness_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreHarness("example", new()
 ///     {
-///         HarnessName = "my_harness",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
 ///         Model = new Aws.Bedrock.Inputs.AgentcoreHarnessModelArgs
 ///         {
 ///             BedrockModelConfig = new Aws.Bedrock.Inputs.AgentcoreHarnessModelBedrockModelConfigArgs
 ///             {
 ///                 ModelId = "anthropic.claude-sonnet-4-20250514",
-///             },
-///         },
-///         SystemPrompts = new[]
-///         {
-///             new Aws.Bedrock.Inputs.AgentcoreHarnessSystemPromptArgs
-///             {
-///                 Text = "You are a helpful assistant.",
 ///             },
 ///         },
 ///         Memory = new Aws.Bedrock.Inputs.AgentcoreHarnessMemoryArgs
@@ -989,6 +987,15 @@ import 'agentcore_harness_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         SystemPrompts = new[]
+///         {
+///             new Aws.Bedrock.Inputs.AgentcoreHarnessSystemPromptArgs
+///             {
+///                 Text = "You are a helpful assistant.",
+///             },
+///         },
+///         HarnessName = "my_harness",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1004,16 +1011,9 @@ import 'agentcore_harness_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreHarness(ctx, "example", &bedrock.AgentcoreHarnessArgs{
-/// 			HarnessName:      pulumi.String("my_harness"),
-/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Model: &bedrock.AgentcoreHarnessModelArgs{
 /// 				BedrockModelConfig: &bedrock.AgentcoreHarnessModelBedrockModelConfigArgs{
 /// 					ModelId: pulumi.String("anthropic.claude-sonnet-4-20250514"),
-/// 				},
-/// 			},
-/// 			SystemPrompts: bedrock.AgentcoreHarnessSystemPromptArray{
-/// 				&bedrock.AgentcoreHarnessSystemPromptArgs{
-/// 					Text: pulumi.String("You are a helpful assistant."),
 /// 				},
 /// 			},
 /// 			Memory: &bedrock.AgentcoreHarnessMemoryArgs{
@@ -1025,6 +1025,13 @@ import 'agentcore_harness_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			SystemPrompts: bedrock.AgentcoreHarnessSystemPromptArray{
+/// 				&bedrock.AgentcoreHarnessSystemPromptArgs{
+/// 					Text: pulumi.String("You are a helpful assistant."),
+/// 				},
+/// 			},
+/// 			HarnessName:      pulumi.String("my_harness"),
+/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1043,15 +1050,10 @@ import 'agentcore_harness_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreharness" "example" {
-///   harness_name       = "my_harness"
-///   execution_role_arn = exampleAwsIamRole.arn
 ///   model = {
 ///     bedrock_model_config = {
 ///       model_id = "anthropic.claude-sonnet-4-20250514"
 ///     }
-///   }
-///   system_prompts {
-///     text = "You are a helpful assistant."
 ///   }
 ///   memory = {
 ///     managed_memory_configuration = {
@@ -1059,6 +1061,11 @@ import 'agentcore_harness_timeouts.dart';
 ///       strategies            = ["SEMANTIC", "SUMMARIZATION"]
 ///     }
 ///   }
+///   system_prompts {
+///     text = "You are a helpful assistant."
+///   }
+///   harness_name       = "my_harness"
+///   execution_role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1071,9 +1078,9 @@ import 'agentcore_harness_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreHarnessArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreHarnessModelArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreHarnessModelBedrockModelConfigArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreHarnessSystemPromptArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreHarnessMemoryArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreHarnessMemoryManagedMemoryConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreHarnessSystemPromptArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1088,15 +1095,10 @@ import 'agentcore_harness_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreHarness("example", AgentcoreHarnessArgs.builder()
-///             .harnessName("my_harness")
-///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .model(AgentcoreHarnessModelArgs.builder()
 ///                 .bedrockModelConfig(AgentcoreHarnessModelBedrockModelConfigArgs.builder()
 ///                     .modelId("anthropic.claude-sonnet-4-20250514")
 ///                     .build())
-///                 .build())
-///             .systemPrompts(AgentcoreHarnessSystemPromptArgs.builder()
-///                 .text("You are a helpful assistant.")
 ///                 .build())
 ///             .memory(AgentcoreHarnessMemoryArgs.builder()
 ///                 .managedMemoryConfiguration(AgentcoreHarnessMemoryManagedMemoryConfigurationArgs.builder()
@@ -1106,6 +1108,11 @@ import 'agentcore_harness_timeouts.dart';
 ///                         "SUMMARIZATION")
 ///                     .build())
 ///                 .build())
+///             .systemPrompts(AgentcoreHarnessSystemPromptArgs.builder()
+///                 .text("You are a helpful assistant.")
+///                 .build())
+///             .harnessName("my_harness")
+///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1116,19 +1123,19 @@ import 'agentcore_harness_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreHarness
 ///     properties:
-///       harnessName: my_harness
-///       executionRoleArn: ${exampleAwsIamRole.arn}
 ///       model:
 ///         bedrockModelConfig:
 ///           modelId: anthropic.claude-sonnet-4-20250514
-///       systemPrompts:
-///         - text: You are a helpful assistant.
 ///       memory:
 ///         managedMemoryConfiguration:
 ///           eventExpiryDuration: 14
 ///           strategies:
 ///             - SEMANTIC
 ///             - SUMMARIZATION
+///       systemPrompts:
+///         - text: You are a helpful assistant.
+///       harnessName: my_harness
+///       executionRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1159,13 +1166,13 @@ class AgentcoreHarness extends pulumi.CustomResource {
   /// Authorization configuration for authenticating requests. See `authorizerConfiguration` Block below.
   late final pulumi.Output<AgentcoreHarnessAuthorizerConfiguration?> authorizerConfiguration;
   /// Actual deployed environment configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> environmentActuals;
+  late final pulumi.Output<List<AgentcoreHarnessEnvironmentActual>> environmentActuals;
   /// Environment artifact configuration. See `environmentArtifact` Block below.
   late final pulumi.Output<AgentcoreHarnessEnvironmentArtifact?> environmentArtifact;
   /// Map of environment variables.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
   /// Compute environment configuration. See `environment` Block below.If not specified, configured values can be found in `environmentActual`. Clearing this value will leave the environment configuration as is, but Terraform will not track changes.
-  late final pulumi.Output<List<Map<String, dynamic>>?> environments;
+  late final pulumi.Output<List<AgentcoreHarnessEnvironment>?> environments;
   /// ARN of the IAM role that the harness assumes to access AWS services.
   late final pulumi.Output<String> executionRoleArn;
   /// Unique identifier of the Harness.
@@ -1179,7 +1186,7 @@ class AgentcoreHarness extends pulumi.CustomResource {
   /// Memory configuration. See `memory` Block below. If not specified, configured values can be found in `memoryActual`. Clearing this value will reset the memory configuration to default values.
   late final pulumi.Output<AgentcoreHarnessMemory?> memory;
   /// Actual deployed memory configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> memoryActuals;
+  late final pulumi.Output<List<AgentcoreHarnessMemoryActual>> memoryActuals;
   /// Model configuration for the harness. See `model` Block below.
   ///
   /// The following arguments are optional:
@@ -1187,9 +1194,9 @@ class AgentcoreHarness extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Skill configurations. See `skill` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> skills;
+  late final pulumi.Output<List<AgentcoreHarnessSkill>?> skills;
   /// System prompt blocks for the harness. See `systemPrompt` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> systemPrompts;
+  late final pulumi.Output<List<AgentcoreHarnessSystemPrompt>?> systemPrompts;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -1198,9 +1205,9 @@ class AgentcoreHarness extends pulumi.CustomResource {
   late final pulumi.Output<int> timeoutSeconds;
   late final pulumi.Output<AgentcoreHarnessTimeouts?> timeouts;
   /// Tool configurations. See `tool` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tools;
+  late final pulumi.Output<List<AgentcoreHarnessTool>?> tools;
   /// Truncation configuration for conversation history. See `truncation` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> truncations;
+  late final pulumi.Output<List<AgentcoreHarnessTruncation>> truncations;
 
   /// Creates a new [AgentcoreHarness].
   /// [name] The Pulumi resource name.
@@ -1214,32 +1221,33 @@ class AgentcoreHarness extends pulumi.CustomResource {
           'aws:bedrock/agentcoreHarness:AgentcoreHarness',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['environmentVariables'],
         ) {
-    allowedTools = registerOutput<List<String>>('allowedTools');
+    allowedTools = registerOutput<List<String>>('allowedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     authorizerConfiguration = registerOutput<AgentcoreHarnessAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    environmentActuals = registerOutput<List<Map<String, dynamic>>>('environmentActuals');
+    environmentActuals = registerOutput<List<AgentcoreHarnessEnvironmentActual>>('environmentActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessEnvironmentActual>(guardedValue, (value) => AgentcoreHarnessEnvironmentActual.fromMap((value as Map).cast<String, dynamic>())); });
     environmentArtifact = registerOutput<AgentcoreHarnessEnvironmentArtifact?>('environmentArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessEnvironmentArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    environments = registerOutput<List<Map<String, dynamic>>?>('environments');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    environments = registerOutput<List<AgentcoreHarnessEnvironment>?>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessEnvironment>(guardedValue, (value) => AgentcoreHarnessEnvironment.fromMap((value as Map).cast<String, dynamic>())); });
     executionRoleArn = registerOutput<String>('executionRoleArn');
     harnessId = registerOutput<String>('harnessId');
     harnessName = registerOutput<String>('harnessName');
     maxIterations = registerOutput<int>('maxIterations');
     maxTokens = registerOutput<int?>('maxTokens');
     memory = registerOutput<AgentcoreHarnessMemory?>('memory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    memoryActuals = registerOutput<List<Map<String, dynamic>>>('memoryActuals');
+    memoryActuals = registerOutput<List<AgentcoreHarnessMemoryActual>>('memoryActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<AgentcoreHarnessModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    skills = registerOutput<List<Map<String, dynamic>>?>('skills');
-    systemPrompts = registerOutput<List<Map<String, dynamic>>?>('systemPrompts');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    skills = registerOutput<List<AgentcoreHarnessSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>())); });
+    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>?>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutSeconds = registerOutput<int>('timeoutSeconds');
     timeouts = registerOutput<AgentcoreHarnessTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tools = registerOutput<List<Map<String, dynamic>>?>('tools');
-    truncations = registerOutput<List<Map<String, dynamic>>>('truncations');
+    tools = registerOutput<List<AgentcoreHarnessTool>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessTool>(guardedValue, (value) => AgentcoreHarnessTool.fromMap((value as Map).cast<String, dynamic>())); });
+    truncations = registerOutput<List<AgentcoreHarnessTruncation>>('truncations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessTruncation>(guardedValue, (value) => AgentcoreHarnessTruncation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AgentcoreHarness] resource's state with the given [name] and [id].
@@ -1247,11 +1255,12 @@ class AgentcoreHarness extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreHarnessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreHarness._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1265,29 +1274,65 @@ class AgentcoreHarness extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedTools = registerOutput<List<String>>('allowedTools');
+    allowedTools = registerOutput<List<String>>('allowedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     authorizerConfiguration = registerOutput<AgentcoreHarnessAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    environmentActuals = registerOutput<List<Map<String, dynamic>>>('environmentActuals');
+    environmentActuals = registerOutput<List<AgentcoreHarnessEnvironmentActual>>('environmentActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessEnvironmentActual>(guardedValue, (value) => AgentcoreHarnessEnvironmentActual.fromMap((value as Map).cast<String, dynamic>())); });
     environmentArtifact = registerOutput<AgentcoreHarnessEnvironmentArtifact?>('environmentArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessEnvironmentArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    environments = registerOutput<List<Map<String, dynamic>>?>('environments');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    environments = registerOutput<List<AgentcoreHarnessEnvironment>?>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessEnvironment>(guardedValue, (value) => AgentcoreHarnessEnvironment.fromMap((value as Map).cast<String, dynamic>())); });
     executionRoleArn = registerOutput<String>('executionRoleArn');
     harnessId = registerOutput<String>('harnessId');
     harnessName = registerOutput<String>('harnessName');
     maxIterations = registerOutput<int>('maxIterations');
     maxTokens = registerOutput<int?>('maxTokens');
     memory = registerOutput<AgentcoreHarnessMemory?>('memory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    memoryActuals = registerOutput<List<Map<String, dynamic>>>('memoryActuals');
+    memoryActuals = registerOutput<List<AgentcoreHarnessMemoryActual>>('memoryActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<AgentcoreHarnessModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    skills = registerOutput<List<Map<String, dynamic>>?>('skills');
-    systemPrompts = registerOutput<List<Map<String, dynamic>>?>('systemPrompts');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    skills = registerOutput<List<AgentcoreHarnessSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>())); });
+    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>?>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutSeconds = registerOutput<int>('timeoutSeconds');
     timeouts = registerOutput<AgentcoreHarnessTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tools = registerOutput<List<Map<String, dynamic>>?>('tools');
-    truncations = registerOutput<List<Map<String, dynamic>>>('truncations');
+    tools = registerOutput<List<AgentcoreHarnessTool>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessTool>(guardedValue, (value) => AgentcoreHarnessTool.fromMap((value as Map).cast<String, dynamic>())); });
+    truncations = registerOutput<List<AgentcoreHarnessTruncation>>('truncations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessTruncation>(guardedValue, (value) => AgentcoreHarnessTruncation.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreHarness] resource.
+  AgentcoreHarness.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreHarness:AgentcoreHarness',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['environmentVariables'],
+        isResourceReference: true,
+      ) {
+    allowedTools = registerOutput<List<String>>('allowedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    authorizerConfiguration = registerOutput<AgentcoreHarnessAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentActuals = registerOutput<List<AgentcoreHarnessEnvironmentActual>>('environmentActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessEnvironmentActual>(guardedValue, (value) => AgentcoreHarnessEnvironmentActual.fromMap((value as Map).cast<String, dynamic>())); });
+    environmentArtifact = registerOutput<AgentcoreHarnessEnvironmentArtifact?>('environmentArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessEnvironmentArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    environments = registerOutput<List<AgentcoreHarnessEnvironment>?>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessEnvironment>(guardedValue, (value) => AgentcoreHarnessEnvironment.fromMap((value as Map).cast<String, dynamic>())); });
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    harnessId = registerOutput<String>('harnessId');
+    harnessName = registerOutput<String>('harnessName');
+    maxIterations = registerOutput<int>('maxIterations');
+    maxTokens = registerOutput<int?>('maxTokens');
+    memory = registerOutput<AgentcoreHarnessMemory?>('memory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memoryActuals = registerOutput<List<AgentcoreHarnessMemoryActual>>('memoryActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>())); });
+    model = registerOutput<AgentcoreHarnessModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    skills = registerOutput<List<AgentcoreHarnessSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>())); });
+    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>?>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutSeconds = registerOutput<int>('timeoutSeconds');
+    timeouts = registerOutput<AgentcoreHarnessTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tools = registerOutput<List<AgentcoreHarnessTool>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessTool>(guardedValue, (value) => AgentcoreHarnessTool.fromMap((value as Map).cast<String, dynamic>())); });
+    truncations = registerOutput<List<AgentcoreHarnessTruncation>>('truncations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessTruncation>(guardedValue, (value) => AgentcoreHarnessTruncation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

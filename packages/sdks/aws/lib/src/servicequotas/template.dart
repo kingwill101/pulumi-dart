@@ -171,7 +171,7 @@ class Template extends pulumi.CustomResource {
           'aws:servicequotas/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsRegion = registerOutput<String>('awsRegion');
     globalQuota = registerOutput<bool>('globalQuota');
@@ -189,11 +189,12 @@ class Template extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Template._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,6 +208,26 @@ class Template extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsRegion = registerOutput<String>('awsRegion');
+    globalQuota = registerOutput<bool>('globalQuota');
+    quotaCode = registerOutput<String>('quotaCode');
+    quotaName = registerOutput<String>('quotaName');
+    region = registerOutput<String>('region');
+    serviceCode = registerOutput<String>('serviceCode');
+    serviceName = registerOutput<String>('serviceName');
+    unit = registerOutput<String>('unit');
+    value = registerOutput<double>('value');
+  }
+
+  /// Creates a typed reference to an existing [Template] resource.
+  Template.reference(String urn)
+    : super(
+        'aws:servicequotas/template:Template',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsRegion = registerOutput<String>('awsRegion');
     globalQuota = registerOutput<bool>('globalQuota');
     quotaCode = registerOutput<String>('quotaCode');

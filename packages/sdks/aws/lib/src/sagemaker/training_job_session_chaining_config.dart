@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobSessionChainingConfig {
   /// Whether to enable session tag chaining for the training job.
-  final pulumi.Input<bool>? enableSessionTagChaining;
+  final pulumi.Input<bool?>? enableSessionTagChaining;
 
   /// Creates a new [TrainingJobSessionChainingConfig].
   /// [enableSessionTagChaining] Whether to enable session tag chaining for the training job.

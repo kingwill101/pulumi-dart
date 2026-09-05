@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_firewall_policy_policy_variables_rule_variable.dart';
 
 class FirewallPolicyFirewallPolicyPolicyVariables {
-  final pulumi.Input<List<FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable>>? ruleVariables;
+  final pulumi.Input<List<FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable>?>? ruleVariables;
 
   /// Creates a new [FirewallPolicyFirewallPolicyPolicyVariables].
   /// [ruleVariables] Optional.

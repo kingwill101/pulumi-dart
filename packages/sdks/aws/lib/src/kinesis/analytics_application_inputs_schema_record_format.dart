@@ -6,9 +6,9 @@ import 'analytics_application_inputs_schema_record_format_mapping_parameters.dar
 class AnalyticsApplicationInputsSchemaRecordFormat {
   /// The Mapping Information for the record format.
   /// See Mapping Parameters below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsSchemaRecordFormatMappingParameters>? mappingParameters;
+  final pulumi.Input<AnalyticsApplicationInputsSchemaRecordFormatMappingParameters?>? mappingParameters;
   /// The type of Record Format. Can be `CSV` or `JSON`.
-  final pulumi.Input<String>? recordFormatType;
+  final pulumi.Input<String?>? recordFormatType;
 
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormat].
   /// [mappingParameters] The Mapping Information for the record format.

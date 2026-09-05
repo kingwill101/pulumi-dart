@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_args.dart';
+import 'plan_stage.dart';
 import 'plan_state.dart';
 
 /// Resource for managing an AWS SSM Contact Plan.
@@ -14,10 +15,10 @@ import 'plan_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssmcontacts.Plan("example", {
-///     contactId: "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     stages: [{
 ///         durationInMinutes: 1,
 ///     }],
+///     contactId: "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 /// });
 /// ```
 /// ```python
@@ -25,10 +26,10 @@ import 'plan_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssmcontacts.Plan("example",
-///     contact_id="arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     stages=[{
 ///         "duration_in_minutes": 1,
-///     }])
+///     }],
+///     contact_id="arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -40,7 +41,6 @@ import 'plan_state.dart';
 /// {
 ///     var example = new Aws.SsmContacts.Plan("example", new()
 ///     {
-///         ContactId = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///         Stages = new[]
 ///         {
 ///             new Aws.SsmContacts.Inputs.PlanStageArgs
@@ -48,6 +48,7 @@ import 'plan_state.dart';
 ///                 DurationInMinutes = 1,
 ///             },
 ///         },
+///         ContactId = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     });
 ///
 /// });
@@ -63,12 +64,12 @@ import 'plan_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssmcontacts.NewPlan(ctx, "example", &ssmcontacts.PlanArgs{
-/// 			ContactId: pulumi.String("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"),
 /// 			Stages: ssmcontacts.PlanStageArray{
 /// 				&ssmcontacts.PlanStageArgs{
 /// 					DurationInMinutes: pulumi.Int(1),
 /// 				},
 /// 			},
+/// 			ContactId: pulumi.String("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,10 +88,10 @@ import 'plan_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_plan" "example" {
-///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
 ///   stages {
 ///     duration_in_minutes = 1
 ///   }
+///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
 /// }
 /// ```
 /// ```java
@@ -116,10 +117,10 @@ import 'plan_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Plan("example", PlanArgs.builder()
-///             .contactId("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias")
 ///             .stages(PlanStageArgs.builder()
 ///                 .durationInMinutes(1)
 ///                 .build())
+///             .contactId("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias")
 ///             .build());
 ///
 ///     }
@@ -130,9 +131,9 @@ import 'plan_state.dart';
 ///   example:
 ///     type: aws:ssmcontacts:Plan
 ///     properties:
-///       contactId: arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias
 ///       stages:
 ///         - durationInMinutes: 1
+///       contactId: arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias
 /// ```
 ///
 ///
@@ -148,10 +149,10 @@ import 'plan_state.dart';
 ///     type: "PERSONAL",
 /// });
 /// const plan = new aws.ssmcontacts.Plan("plan", {
-///     contactId: contact.arn,
 ///     stages: [{
 ///         durationInMinutes: 1,
 ///     }],
+///     contactId: contact.arn,
 /// });
 /// ```
 /// ```python
@@ -162,10 +163,10 @@ import 'plan_state.dart';
 ///     alias="alias",
 ///     type="PERSONAL")
 /// plan = aws.ssmcontacts.Plan("plan",
-///     contact_id=contact.arn,
 ///     stages=[{
 ///         "duration_in_minutes": 1,
-///     }])
+///     }],
+///     contact_id=contact.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -183,7 +184,6 @@ import 'plan_state.dart';
 ///
 ///     var plan = new Aws.SsmContacts.Plan("plan", new()
 ///     {
-///         ContactId = contact.Arn,
 ///         Stages = new[]
 ///         {
 ///             new Aws.SsmContacts.Inputs.PlanStageArgs
@@ -191,6 +191,7 @@ import 'plan_state.dart';
 ///                 DurationInMinutes = 1,
 ///             },
 ///         },
+///         ContactId = contact.Arn,
 ///     });
 ///
 /// });
@@ -213,12 +214,12 @@ import 'plan_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssmcontacts.NewPlan(ctx, "plan", &ssmcontacts.PlanArgs{
-/// 			ContactId: contact.Arn,
 /// 			Stages: ssmcontacts.PlanStageArray{
 /// 				&ssmcontacts.PlanStageArgs{
 /// 					DurationInMinutes: pulumi.Int(1),
 /// 				},
 /// 			},
+/// 			ContactId: contact.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -241,10 +242,10 @@ import 'plan_state.dart';
 ///   type  = "PERSONAL"
 /// }
 /// resource "aws_ssmcontacts_plan" "plan" {
-///   contact_id = aws_ssmcontacts_contact.contact.arn
 ///   stages {
 ///     duration_in_minutes = 1
 ///   }
+///   contact_id = aws_ssmcontacts_contact.contact.arn
 /// }
 /// ```
 /// ```java
@@ -277,10 +278,10 @@ import 'plan_state.dart';
 ///             .build());
 ///
 ///         var plan = new Plan("plan", PlanArgs.builder()
-///             .contactId(contact.arn())
 ///             .stages(PlanStageArgs.builder()
 ///                 .durationInMinutes(1)
 ///                 .build())
+///             .contactId(contact.arn())
 ///             .build());
 ///
 ///     }
@@ -296,9 +297,9 @@ import 'plan_state.dart';
 ///   plan:
 ///     type: aws:ssmcontacts:Plan
 ///     properties:
-///       contactId: ${contact.arn}
 ///       stages:
 ///         - durationInMinutes: 1
+///       contactId: ${contact.arn}
 /// ```
 ///
 ///
@@ -322,9 +323,7 @@ import 'plan_state.dart';
 ///     type: "PERSONAL",
 /// });
 /// const test = new aws.ssmcontacts.Plan("test", {
-///     contactId: escalationPlan.arn,
 ///     stages: [{
-///         durationInMinutes: 0,
 ///         targets: [
 ///             {
 ///                 contactTargetInfo: {
@@ -345,7 +344,9 @@ import 'plan_state.dart';
 ///                 },
 ///             },
 ///         ],
+///         durationInMinutes: 0,
 ///     }],
+///     contactId: escalationPlan.arn,
 /// });
 /// ```
 /// ```python
@@ -362,9 +363,7 @@ import 'plan_state.dart';
 ///     alias="alias",
 ///     type="PERSONAL")
 /// test = aws.ssmcontacts.Plan("test",
-///     contact_id=escalation_plan.arn,
 ///     stages=[{
-///         "duration_in_minutes": 0,
 ///         "targets": [
 ///             {
 ///                 "contact_target_info": {
@@ -385,7 +384,9 @@ import 'plan_state.dart';
 ///                 },
 ///             },
 ///         ],
-///     }])
+///         "duration_in_minutes": 0,
+///     }],
+///     contact_id=escalation_plan.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -415,12 +416,10 @@ import 'plan_state.dart';
 ///
 ///     var test = new Aws.SsmContacts.Plan("test", new()
 ///     {
-///         ContactId = escalationPlan.Arn,
 ///         Stages = new[]
 ///         {
 ///             new Aws.SsmContacts.Inputs.PlanStageArgs
 ///             {
-///                 DurationInMinutes = 0,
 ///                 Targets = new[]
 ///                 {
 ///                     new Aws.SsmContacts.Inputs.PlanStageTargetArgs
@@ -448,8 +447,10 @@ import 'plan_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 DurationInMinutes = 0,
 ///             },
 ///         },
+///         ContactId = escalationPlan.Arn,
 ///     });
 ///
 /// });
@@ -486,10 +487,8 @@ import 'plan_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssmcontacts.NewPlan(ctx, "test", &ssmcontacts.PlanArgs{
-/// 			ContactId: escalationPlan.Arn,
 /// 			Stages: ssmcontacts.PlanStageArray{
 /// 				&ssmcontacts.PlanStageArgs{
-/// 					DurationInMinutes: pulumi.Int(0),
 /// 					Targets: ssmcontacts.PlanStageTargetArray{
 /// 						&ssmcontacts.PlanStageTargetArgs{
 /// 							ContactTargetInfo: &ssmcontacts.PlanStageTargetContactTargetInfoArgs{
@@ -510,8 +509,10 @@ import 'plan_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					DurationInMinutes: pulumi.Int(0),
 /// 				},
 /// 			},
+/// 			ContactId: escalationPlan.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -542,9 +543,7 @@ import 'plan_state.dart';
 ///   type  = "PERSONAL"
 /// }
 /// resource "aws_ssmcontacts_plan" "test" {
-///   contact_id = aws_ssmcontacts_contact.escalation_plan.arn
 ///   stages {
-///     duration_in_minutes = 0
 ///     targets {
 ///       contact_target_info = {
 ///         is_essential = false
@@ -563,7 +562,9 @@ import 'plan_state.dart';
 ///         contact_channel_id        = channel.arn
 ///       }
 ///     }
+///     duration_in_minutes = 0
 ///   }
+///   contact_id = aws_ssmcontacts_contact.escalation_plan.arn
 /// }
 /// ```
 /// ```java
@@ -609,9 +610,7 @@ import 'plan_state.dart';
 ///             .build());
 ///
 ///         var test = new Plan("test", PlanArgs.builder()
-///             .contactId(escalationPlan.arn())
 ///             .stages(PlanStageArgs.builder()
-///                 .durationInMinutes(0)
 ///                 .targets(
 ///                     PlanStageTargetArgs.builder()
 ///                         .contactTargetInfo(PlanStageTargetContactTargetInfoArgs.builder()
@@ -631,7 +630,9 @@ import 'plan_state.dart';
 ///                             .contactChannelId(channel.arn())
 ///                             .build())
 ///                         .build())
+///                 .durationInMinutes(0)
 ///                 .build())
+///             .contactId(escalationPlan.arn())
 ///             .build());
 ///
 ///     }
@@ -660,10 +661,8 @@ import 'plan_state.dart';
 ///   test:
 ///     type: aws:ssmcontacts:Plan
 ///     properties:
-///       contactId: ${escalationPlan.arn}
 ///       stages:
-///         - durationInMinutes: 0
-///           targets:
+///         - targets:
 ///             - contactTargetInfo:
 ///                 isEssential: false
 ///                 contactId: ${contactOne.arn}
@@ -673,6 +672,8 @@ import 'plan_state.dart';
 ///             - channelTargetInfo:
 ///                 retryIntervalInMinutes: 2
 ///                 contactChannelId: ${channel.arn}
+///           durationInMinutes: 0
+///       contactId: ${escalationPlan.arn}
 /// ```
 ///
 ///
@@ -684,12 +685,12 @@ import 'plan_state.dart';
 /// $ pulumi import aws:ssmcontacts/plan:Plan example {ARNValue}
 /// ```
 class Plan extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the contact or escalation plan.
+  /// The ARN of the contact or escalation plan.
   late final pulumi.Output<String> contactId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> stages;
+  late final pulumi.Output<List<PlanStage>> stages;
 
   /// Creates a new [Plan].
   /// [name] The Pulumi resource name.
@@ -703,11 +704,11 @@ class Plan extends pulumi.CustomResource {
           'aws:ssmcontacts/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     contactId = registerOutput<String>('contactId');
     region = registerOutput<String>('region');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
+    stages = registerOutput<List<PlanStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanStage>(guardedValue, (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Plan] resource's state with the given [name] and [id].
@@ -715,11 +716,12 @@ class Plan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Plan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -735,6 +737,20 @@ class Plan extends pulumi.CustomResource {
         ) {
     contactId = registerOutput<String>('contactId');
     region = registerOutput<String>('region');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
+    stages = registerOutput<List<PlanStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanStage>(guardedValue, (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Plan] resource.
+  Plan.reference(String urn)
+    : super(
+        'aws:ssmcontacts/plan:Plan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contactId = registerOutput<String>('contactId');
+    region = registerOutput<String>('region');
+    stages = registerOutput<List<PlanStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanStage>(guardedValue, (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

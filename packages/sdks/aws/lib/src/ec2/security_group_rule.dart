@@ -660,13 +660,13 @@ class SecurityGroupRule extends pulumi.CustomResource {
           'aws:ec2/securityGroupRule:SecurityGroupRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
+    cidrBlocks = registerOutput<List<String>?>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     fromPort = registerOutput<int>('fromPort');
-    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
-    prefixListIds = registerOutput<List<String>?>('prefixListIds');
+    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    prefixListIds = registerOutput<List<String>?>('prefixListIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
@@ -682,11 +682,12 @@ class SecurityGroupRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGroupRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGroupRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -700,11 +701,35 @@ class SecurityGroupRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
+    cidrBlocks = registerOutput<List<String>?>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     fromPort = registerOutput<int>('fromPort');
-    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
-    prefixListIds = registerOutput<List<String>?>('prefixListIds');
+    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    prefixListIds = registerOutput<List<String>?>('prefixListIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    self = registerOutput<bool?>('self');
+    sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
+    toPort = registerOutput<int>('toPort');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGroupRule] resource.
+  SecurityGroupRule.reference(String urn)
+    : super(
+        'aws:ec2/securityGroupRule:SecurityGroupRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidrBlocks = registerOutput<List<String>?>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    fromPort = registerOutput<int>('fromPort');
+    ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    prefixListIds = registerOutput<List<String>?>('prefixListIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');

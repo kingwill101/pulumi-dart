@@ -41,9 +41,9 @@ class GetDomainEbsOption {
   factory GetDomainEbsOption.fromMap(Map<String, dynamic> map) {
     return GetDomainEbsOption(
       ebsEnabled: pulumi.Input.fromValue(map['ebsEnabled'] as bool),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
-      throughput: pulumi.Input.fromValue(map['throughput'] as int),
-      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
+      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

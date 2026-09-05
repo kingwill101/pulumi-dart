@@ -5,15 +5,15 @@ import 'scheduled_query_target_configuration_timestream_configuration_mixed_meas
 
 class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping {
   /// Refers to the value of measureName in a result row. This field is required if `measureNameColumn` is provided.
-  final pulumi.Input<String>? measureName;
+  final pulumi.Input<String?>? measureName;
   /// Type of the value that is to be read from `sourceColumn`. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `MULTI`.
   final pulumi.Input<String> measureValueType;
   /// Configuration block for attribute mappings for `MULTI` value measures. Required when `measureValueType` is `MULTI`. See below.
-  final pulumi.Input<List<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping>>? multiMeasureAttributeMappings;
+  final pulumi.Input<List<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping>?>? multiMeasureAttributeMappings;
   /// Source column from which measure-value is to be read for result materialization.
-  final pulumi.Input<String>? sourceColumn;
+  final pulumi.Input<String?>? sourceColumn;
   /// Target measure name to be used. If not provided, the target measure name by default is `measureName`, if provided, or `sourceColumn` otherwise.
-  final pulumi.Input<String>? targetMeasureName;
+  final pulumi.Input<String?>? targetMeasureName;
 
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping].
   /// [measureName] Refers to the value of measureName in a result row. This field is required if `measureNameColumn` is provided.

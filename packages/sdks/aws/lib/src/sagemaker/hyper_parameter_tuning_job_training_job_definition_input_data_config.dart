@@ -8,17 +8,17 @@ class HyperParameterTuningJobTrainingJobDefinitionInputDataConfig {
   /// Input channel name.
   final pulumi.Input<String> channelName;
   /// Compression type.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// Content type string.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Data source settings. See `dataSource`.
   final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSource> dataSource;
   /// Input mode.
-  final pulumi.Input<String>? inputMode;
+  final pulumi.Input<String?>? inputMode;
   /// Record wrapper format.
-  final pulumi.Input<String>? recordWrapperType;
+  final pulumi.Input<String?>? recordWrapperType;
   /// Shuffling settings. See `shuffleConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigShuffleConfig>? shuffleConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigShuffleConfig?>? shuffleConfig;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionInputDataConfig].
   /// [channelName] Input channel name.

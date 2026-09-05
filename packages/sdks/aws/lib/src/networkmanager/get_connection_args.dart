@@ -12,7 +12,7 @@ class GetConnectionArgs {
   /// ID of the Global Network of the connection to retrieve.
   final pulumi.Input<String> globalNetworkId;
   /// Key-value tags for the connection.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetConnectionArgs].
   /// [connectionId] ID of the specific connection to retrieve.

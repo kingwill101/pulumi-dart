@@ -136,6 +136,17 @@ Future<GetContactsRotationResult> getContactsRotation(
   return GetContactsRotationResult.fromMap(result);
 }
 
+pulumi.Output<GetContactsRotationResult> getContactsRotationOutput(
+  GetContactsRotationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getContactsRotation:getContactsRotation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactsRotationResult.fromMap);
+}
+
 /// Gets the contents of the specified Systems Manager document.
 ///
 /// ## Example Usage
@@ -387,6 +398,17 @@ Future<GetDocumentResult> getDocument(
   return GetDocumentResult.fromMap(result);
 }
 
+pulumi.Output<GetDocumentResult> getDocumentOutput(
+  GetDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getDocument:getDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDocumentResult.fromMap);
+}
+
 /// Use this data source to get the instance IDs of SSM managed instances.
 ///
 /// ## Example Usage
@@ -538,6 +560,17 @@ Future<GetInstancesResult> getInstances(
   return GetInstancesResult.fromMap(result);
 }
 
+pulumi.Output<GetInstancesResult> getInstancesOutput(
+  GetInstancesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getInstances:getInstances',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstancesResult.fromMap);
+}
+
 /// Use this data source to get the window IDs of SSM maintenance windows.
 ///
 /// ## Example Usage
@@ -687,6 +720,17 @@ Future<GetMaintenanceWindowsResult> getMaintenanceWindows(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMaintenanceWindowsResult.fromMap(result);
+}
+
+pulumi.Output<GetMaintenanceWindowsResult> getMaintenanceWindowsOutput(
+  GetMaintenanceWindowsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getMaintenanceWindows:getMaintenanceWindows',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMaintenanceWindowsResult.fromMap);
 }
 
 /// Provides an SSM Parameter data source.
@@ -915,6 +959,17 @@ Future<GetParameterResult> getParameter(
   return GetParameterResult.fromMap(result);
 }
 
+pulumi.Output<GetParameterResult> getParameterOutput(
+  GetParameterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getParameter:getParameter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParameterResult.fromMap);
+}
+
 /// Use this data source to get information about one or more System Manager parameters in a specific hierarchy.
 ///
 /// ## Example Usage
@@ -1034,6 +1089,17 @@ Future<GetParametersByPathResult> getParametersByPath(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetParametersByPathResult.fromMap(result);
+}
+
+pulumi.Output<GetParametersByPathResult> getParametersByPathOutput(
+  GetParametersByPathArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getParametersByPath:getParametersByPath',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParametersByPathResult.fromMap);
 }
 
 /// Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
@@ -1292,6 +1358,17 @@ Future<GetPatchBaselineResult> getPatchBaseline(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPatchBaselineResult.fromMap(result);
+}
+
+pulumi.Output<GetPatchBaselineResult> getPatchBaselineOutput(
+  GetPatchBaselineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getPatchBaseline:getPatchBaseline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPatchBaselineResult.fromMap);
 }
 
 /// Data source for retrieving AWS SSM (Systems Manager) Patch Baselines.
@@ -1576,4 +1653,15 @@ Future<GetPatchBaselinesResult> getPatchBaselines(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPatchBaselinesResult.fromMap(result);
+}
+
+pulumi.Output<GetPatchBaselinesResult> getPatchBaselinesOutput(
+  GetPatchBaselinesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssm/getPatchBaselines:getPatchBaselines',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPatchBaselinesResult.fromMap);
 }

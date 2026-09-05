@@ -10,39 +10,39 @@ import 'serverless_cache_timeouts.dart';
 /// {@macro pulumi_elasticache_serverless_cache_serverless_cache_args_doc}
 class ServerlessCacheArgs {
   /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
-  final pulumi.Input<ServerlessCacheCacheUsageLimits>? cacheUsageLimits;
+  final pulumi.Input<ServerlessCacheCacheUsageLimits?>? cacheUsageLimits;
   /// The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to `0`.
-  final pulumi.Input<String>? dailySnapshotTime;
+  final pulumi.Input<String?>? dailySnapshotTime;
   /// User-provided description for the serverless cache. The default is NULL.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis` or `valkey`.
   final pulumi.Input<String> engine;
   /// ARN of the customer managed key for encrypting the data at rest. If no KMS key is provided, a default service key is used.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The version of the cache engine that will be used to create the serverless cache.
   /// See [Describe Cache Engine Versions](https://docs.aws.amazon.com/cli/latest/reference/elasticache/describe-cache-engine-versions.html) in the AWS Documentation for supported versions.
-  final pulumi.Input<String>? majorEngineVersion;
+  final pulumi.Input<String?>? majorEngineVersion;
   /// The Cluster name which serves as a unique identifier to the serverless cache
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// IP protocol version used by the serverless cache. Valid values are `ipv4`, `ipv6`, or `dualStack`. `ipv6` is only supported with IPv6-only subnets. If not specified, defaults to `ipv4`, unless all provided subnets are IPv6-only, in which case it defaults to `ipv6`.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of the one or more VPC security groups to be associated with the serverless cache. The security group will authorize traffic access for the VPC end-point (private-link). If no other information is given this will be the VPC’s Default Security Group that is associated with the cluster VPC end-point.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// The list of ARN(s) of the snapshot that the new serverless cache will be created from. Only supported for engine types `"redis"` or `"valkey"`.
-  final pulumi.Input<List<String>>? snapshotArnsToRestores;
+  final pulumi.Input<List<String>?>? snapshotArnsToRestores;
   /// The number of snapshots that will be retained for the serverless cache that is being created. As new snapshots beyond this limit are added, the oldest snapshots will be deleted on a rolling basis. Only supported for engine types `"redis"` or `"valkey"`.
-  final pulumi.Input<int>? snapshotRetentionLimit;
+  final pulumi.Input<int?>? snapshotRetentionLimit;
   /// A list of the identifiers of the subnets where the VPC endpoint for the serverless cache will be deployed. All the subnetIds must belong to the same VPC.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ServerlessCacheTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ServerlessCacheTimeouts?>? timeouts;
   /// The identifier of the UserGroup to be associated with the serverless cache. Available for Redis and Valkey. Default is NULL.
-  final pulumi.Input<String>? userGroupId;
+  final pulumi.Input<String?>? userGroupId;
 
   /// Creates a new [ServerlessCacheArgs].
   /// [cacheUsageLimits] Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
@@ -114,7 +114,7 @@ class ServerlessCacheArgs {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       snapshotArnsToRestores: (() { final guardedValue = map['snapshotArnsToRestores']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerlessCacheTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

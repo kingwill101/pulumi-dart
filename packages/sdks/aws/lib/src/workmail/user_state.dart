@@ -5,63 +5,63 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering User resources.
 class UserState {
   /// City where the user is located.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// Company associated with the user.
-  final pulumi.Input<String>? company;
+  final pulumi.Input<String?>? company;
   /// Country where the user is located.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// Department associated with the user.
-  final pulumi.Input<String>? department;
+  final pulumi.Input<String?>? department;
   /// Timestamp when the user was disabled from WorkMail use.
-  final pulumi.Input<String>? disabledDate;
+  final pulumi.Input<String?>? disabledDate;
   /// Display name of the user.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Primary email address used to register the user with WorkMail. Changing this value forces replacement.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Timestamp when the user was enabled for WorkMail use.
-  final pulumi.Input<String>? enabledDate;
+  final pulumi.Input<String?>? enabledDate;
   /// First name of the user.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Whether to hide the user from the global address list. Defaults to `false`.
-  final pulumi.Input<bool>? hiddenFromGlobalAddressList;
+  final pulumi.Input<bool?>? hiddenFromGlobalAddressList;
   /// Identity store ID from IAM Identity Center associated with the user.
-  final pulumi.Input<String>? identityProviderIdentityStoreId;
+  final pulumi.Input<String?>? identityProviderIdentityStoreId;
   /// User ID from IAM Identity Center associated with the user.
-  final pulumi.Input<String>? identityProviderUserId;
+  final pulumi.Input<String?>? identityProviderUserId;
   /// Initials of the user.
-  final pulumi.Input<String>? initials;
+  final pulumi.Input<String?>? initials;
   /// Job title of the user.
-  final pulumi.Input<String>? jobTitle;
+  final pulumi.Input<String?>? jobTitle;
   /// Last name of the user.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// Timestamp when the mailbox was removed for the user.
-  final pulumi.Input<String>? mailboxDeprovisionedDate;
+  final pulumi.Input<String?>? mailboxDeprovisionedDate;
   /// Timestamp when the mailbox was created for the user.
-  final pulumi.Input<String>? mailboxProvisionedDate;
+  final pulumi.Input<String?>? mailboxProvisionedDate;
   /// Username of the user.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Office where the user is located.
-  final pulumi.Input<String>? office;
+  final pulumi.Input<String?>? office;
   /// Identifier of the WorkMail organization where the user is managed.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// Password to set for the user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current WorkMail state of the user.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Street address of the user.
-  final pulumi.Input<String>? street;
+  final pulumi.Input<String?>? street;
   /// Telephone number of the user.
-  final pulumi.Input<String>? telephone;
+  final pulumi.Input<String?>? telephone;
   /// Identifier of the user.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// Role assigned to the user. Valid values are `USER`, `REMOTE_USER`, `RESOURCE`, and `SYSTEM_USER`.
-  final pulumi.Input<String>? userRole;
+  final pulumi.Input<String?>? userRole;
   /// ZIP or postal code of the user.
-  final pulumi.Input<String>? zipCode;
+  final pulumi.Input<String?>? zipCode;
 
   /// Creates a new [UserState].
   /// [city] City where the user is located.

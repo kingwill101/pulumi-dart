@@ -12,35 +12,35 @@ import 'fleet_runtime_configuration.dart';
 /// {@macro pulumi_gamelift_fleet_fleet_args_doc}
 class FleetArgs {
   /// ID of the GameLift Build to be deployed on the fleet. Conflicts with `scriptId`.
-  final pulumi.Input<String>? buildId;
+  final pulumi.Input<String?>? buildId;
   /// Prompts GameLift to generate a TLS/SSL certificate for the fleet. See certificate_configuration.
-  final pulumi.Input<FleetCertificateConfiguration>? certificateConfiguration;
+  final pulumi.Input<FleetCertificateConfiguration?>? certificateConfiguration;
   /// Human-readable description of the fleet.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-  final pulumi.Input<List<FleetEc2InboundPermission>>? ec2InboundPermissions;
+  final pulumi.Input<List<FleetEc2InboundPermission>?>? ec2InboundPermissions;
   /// Name of an EC2 instance typeE.g., `t2.micro`
   final pulumi.Input<String> ec2InstanceType;
   /// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
-  final pulumi.Input<String>? fleetType;
+  final pulumi.Input<String?>? fleetType;
   /// ARN of an IAM role that instances in the fleet can assume.
-  final pulumi.Input<String>? instanceRoleArn;
+  final pulumi.Input<String?>? instanceRoleArn;
   /// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-  final pulumi.Input<List<String>>? metricGroups;
+  final pulumi.Input<List<String>?>? metricGroups;
   /// The name of the fleet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Game session protection policy to apply to all instances in this fleetE.g., `FullProtection`. Defaults to `NoProtection`.
-  final pulumi.Input<String>? newGameSessionProtectionPolicy;
+  final pulumi.Input<String?>? newGameSessionProtectionPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-  final pulumi.Input<FleetResourceCreationLimitPolicy>? resourceCreationLimitPolicy;
+  final pulumi.Input<FleetResourceCreationLimitPolicy?>? resourceCreationLimitPolicy;
   /// Instructions for launching server processes on each instance in the fleet. See below.
-  final pulumi.Input<FleetRuntimeConfiguration>? runtimeConfiguration;
+  final pulumi.Input<FleetRuntimeConfiguration?>? runtimeConfiguration;
   /// ID of the GameLift Script to be deployed on the fleet. Conflicts with `buildId`.
-  final pulumi.Input<String>? scriptId;
+  final pulumi.Input<String?>? scriptId;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FleetArgs].
   /// [buildId] ID of the GameLift Build to be deployed on the fleet. Conflicts with `scriptId`.

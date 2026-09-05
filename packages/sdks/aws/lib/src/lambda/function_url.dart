@@ -127,10 +127,6 @@ import 'function_url_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.FunctionUrl("example", {
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     qualifier: "my_alias",
-///     authorizationType: "AWS_IAM",
-///     invokeMode: "RESPONSE_STREAM",
 ///     cors: {
 ///         allowCredentials: true,
 ///         allowOrigins: ["https://example.com"],
@@ -148,6 +144,10 @@ import 'function_url_state.dart';
 ///         ],
 ///         maxAge: 86400,
 ///     },
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     qualifier: "my_alias",
+///     authorizationType: "AWS_IAM",
+///     invokeMode: "RESPONSE_STREAM",
 /// });
 /// ```
 /// ```python
@@ -155,10 +155,6 @@ import 'function_url_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.FunctionUrl("example",
-///     function_name=example_aws_lambda_function["functionName"],
-///     qualifier="my_alias",
-///     authorization_type="AWS_IAM",
-///     invoke_mode="RESPONSE_STREAM",
 ///     cors={
 ///         "allow_credentials": True,
 ///         "allow_origins": ["https://example.com"],
@@ -175,7 +171,11 @@ import 'function_url_state.dart';
 ///             "date",
 ///         ],
 ///         "max_age": 86400,
-///     })
+///     },
+///     function_name=example_aws_lambda_function["functionName"],
+///     qualifier="my_alias",
+///     authorization_type="AWS_IAM",
+///     invoke_mode="RESPONSE_STREAM")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -187,10 +187,6 @@ import 'function_url_state.dart';
 /// {
 ///     var example = new Aws.Lambda.FunctionUrl("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         Qualifier = "my_alias",
-///         AuthorizationType = "AWS_IAM",
-///         InvokeMode = "RESPONSE_STREAM",
 ///         Cors = new Aws.Lambda.Inputs.FunctionUrlCorsArgs
 ///         {
 ///             AllowCredentials = true,
@@ -215,6 +211,10 @@ import 'function_url_state.dart';
 ///             },
 ///             MaxAge = 86400,
 ///         },
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         Qualifier = "my_alias",
+///         AuthorizationType = "AWS_IAM",
+///         InvokeMode = "RESPONSE_STREAM",
 ///     });
 ///
 /// });
@@ -230,10 +230,6 @@ import 'function_url_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewFunctionUrl(ctx, "example", &lambda.FunctionUrlArgs{
-/// 			FunctionName:      pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			Qualifier:         pulumi.String("my_alias"),
-/// 			AuthorizationType: pulumi.String("AWS_IAM"),
-/// 			InvokeMode:        pulumi.String("RESPONSE_STREAM"),
 /// 			Cors: &lambda.FunctionUrlCorsArgs{
 /// 				AllowCredentials: pulumi.Bool(true),
 /// 				AllowOrigins: pulumi.StringArray{
@@ -253,6 +249,10 @@ import 'function_url_state.dart';
 /// 				},
 /// 				MaxAge: pulumi.Int(86400),
 /// 			},
+/// 			FunctionName:      pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			Qualifier:         pulumi.String("my_alias"),
+/// 			AuthorizationType: pulumi.String("AWS_IAM"),
+/// 			InvokeMode:        pulumi.String("RESPONSE_STREAM"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -271,10 +271,6 @@ import 'function_url_state.dart';
 /// }
 ///
 /// resource "aws_lambda_functionurl" "example" {
-///   function_name      = exampleAwsLambdaFunction.functionName
-///   qualifier          = "my_alias"
-///   authorization_type = "AWS_IAM"
-///   invoke_mode        = "RESPONSE_STREAM"
 ///   cors = {
 ///     allow_credentials = true
 ///     allow_origins     = ["https://example.com"]
@@ -283,6 +279,10 @@ import 'function_url_state.dart';
 ///     expose_headers    = ["keep-alive", "date"]
 ///     max_age           = 86400
 ///   }
+///   function_name      = exampleAwsLambdaFunction.functionName
+///   qualifier          = "my_alias"
+///   authorization_type = "AWS_IAM"
+///   invoke_mode        = "RESPONSE_STREAM"
 /// }
 /// ```
 /// ```java
@@ -308,10 +308,6 @@ import 'function_url_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FunctionUrl("example", FunctionUrlArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .qualifier("my_alias")
-///             .authorizationType("AWS_IAM")
-///             .invokeMode("RESPONSE_STREAM")
 ///             .cors(FunctionUrlCorsArgs.builder()
 ///                 .allowCredentials(true)
 ///                 .allowOrigins("https://example.com")
@@ -326,6 +322,10 @@ import 'function_url_state.dart';
 ///                     "date")
 ///                 .maxAge(86400)
 ///                 .build())
+///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .qualifier("my_alias")
+///             .authorizationType("AWS_IAM")
+///             .invokeMode("RESPONSE_STREAM")
 ///             .build());
 ///
 ///     }
@@ -336,10 +336,6 @@ import 'function_url_state.dart';
 ///   example:
 ///     type: aws:lambda:FunctionUrl
 ///     properties:
-///       functionName: ${exampleAwsLambdaFunction.functionName}
-///       qualifier: my_alias
-///       authorizationType: AWS_IAM
-///       invokeMode: RESPONSE_STREAM
 ///       cors:
 ///         allowCredentials: true
 ///         allowOrigins:
@@ -354,6 +350,10 @@ import 'function_url_state.dart';
 ///           - keep-alive
 ///           - date
 ///         maxAge: 86400
+///       functionName: ${exampleAwsLambdaFunction.functionName}
+///       qualifier: my_alias
+///       authorizationType: AWS_IAM
+///       invokeMode: RESPONSE_STREAM
 /// ```
 ///
 ///
@@ -398,7 +398,7 @@ class FunctionUrl extends pulumi.CustomResource {
           'aws:lambda/functionUrl:FunctionUrl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     authorizationType = registerOutput<String>('authorizationType');
     cors = registerOutput<FunctionUrlCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -416,11 +416,12 @@ class FunctionUrl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionUrlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionUrl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,6 +435,26 @@ class FunctionUrl extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authorizationType = registerOutput<String>('authorizationType');
+    cors = registerOutput<FunctionUrlCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    functionUrl = registerOutput<String>('functionUrl');
+    invokeMode = registerOutput<String?>('invokeMode');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+    urlId = registerOutput<String>('urlId');
+  }
+
+  /// Creates a typed reference to an existing [FunctionUrl] resource.
+  FunctionUrl.reference(String urn)
+    : super(
+        'aws:lambda/functionUrl:FunctionUrl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authorizationType = registerOutput<String>('authorizationType');
     cors = registerOutput<FunctionUrlCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionArn = registerOutput<String>('functionArn');

@@ -208,17 +208,17 @@ class VocabularyFilter extends pulumi.CustomResource {
           'aws:transcribe/vocabularyFilter:VocabularyFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     downloadUri = registerOutput<String>('downloadUri');
     languageCode = registerOutput<String>('languageCode');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vocabularyFilterFileUri = registerOutput<String?>('vocabularyFilterFileUri');
     vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
-    words = registerOutput<List<String>?>('words');
+    words = registerOutput<List<String>?>('words', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [VocabularyFilter] resource's state with the given [name] and [id].
@@ -226,11 +226,12 @@ class VocabularyFilter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VocabularyFilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VocabularyFilter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,10 +249,30 @@ class VocabularyFilter extends pulumi.CustomResource {
     downloadUri = registerOutput<String>('downloadUri');
     languageCode = registerOutput<String>('languageCode');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vocabularyFilterFileUri = registerOutput<String?>('vocabularyFilterFileUri');
     vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
-    words = registerOutput<List<String>?>('words');
+    words = registerOutput<List<String>?>('words', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VocabularyFilter] resource.
+  VocabularyFilter.reference(String urn)
+    : super(
+        'aws:transcribe/vocabularyFilter:VocabularyFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    downloadUri = registerOutput<String>('downloadUri');
+    languageCode = registerOutput<String>('languageCode');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vocabularyFilterFileUri = registerOutput<String?>('vocabularyFilterFileUri');
+    vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
+    words = registerOutput<List<String>?>('words', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

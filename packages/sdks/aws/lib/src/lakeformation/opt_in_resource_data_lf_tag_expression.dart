@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataLfTagExpression {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Name of the LF-Tag expression to grant permissions on.
   final pulumi.Input<String> name;
 

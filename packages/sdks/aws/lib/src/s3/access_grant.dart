@@ -23,8 +23,6 @@ import 'access_grant_state.dart';
 ///     dependsOn: [example],
 /// });
 /// const exampleAccessGrant = new aws.s3control.AccessGrant("example", {
-///     accessGrantsLocationId: exampleAccessGrantsLocation.accessGrantsLocationId,
-///     permission: "READ",
 ///     accessGrantsLocationConfiguration: {
 ///         s3SubPrefix: "prefixB*",
 ///     },
@@ -32,6 +30,8 @@ import 'access_grant_state.dart';
 ///         granteeType: "IAM",
 ///         granteeIdentifier: exampleAwsIamUser.arn,
 ///     },
+///     accessGrantsLocationId: exampleAccessGrantsLocation.accessGrantsLocationId,
+///     permission: "READ",
 /// });
 /// ```
 /// ```python
@@ -44,15 +44,15 @@ import 'access_grant_state.dart';
 ///     location_scope=f"s3://{example_aws_s3_bucket['bucket']}/prefixA*",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_access_grant = aws.s3control.AccessGrant("example",
-///     access_grants_location_id=example_access_grants_location.access_grants_location_id,
-///     permission="READ",
 ///     access_grants_location_configuration={
 ///         "s3_sub_prefix": "prefixB*",
 ///     },
 ///     grantee={
 ///         "grantee_type": "IAM",
 ///         "grantee_identifier": example_aws_iam_user["arn"],
-///     })
+///     },
+///     access_grants_location_id=example_access_grants_location.access_grants_location_id,
+///     permission="READ")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,8 +78,6 @@ import 'access_grant_state.dart';
 ///
 ///     var exampleAccessGrant = new Aws.S3Control.AccessGrant("example", new()
 ///     {
-///         AccessGrantsLocationId = exampleAccessGrantsLocation.AccessGrantsLocationId,
-///         Permission = "READ",
 ///         AccessGrantsLocationConfiguration = new Aws.S3Control.Inputs.AccessGrantAccessGrantsLocationConfigurationArgs
 ///         {
 ///             S3SubPrefix = "prefixB*",
@@ -89,6 +87,8 @@ import 'access_grant_state.dart';
 ///             GranteeType = "IAM",
 ///             GranteeIdentifier = exampleAwsIamUser.Arn,
 ///         },
+///         AccessGrantsLocationId = exampleAccessGrantsLocation.AccessGrantsLocationId,
+///         Permission = "READ",
 ///     });
 ///
 /// });
@@ -117,8 +117,6 @@ import 'access_grant_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3control.NewAccessGrant(ctx, "example", &s3control.AccessGrantArgs{
-/// 			AccessGrantsLocationId: exampleAccessGrantsLocation.AccessGrantsLocationId,
-/// 			Permission:             pulumi.String("READ"),
 /// 			AccessGrantsLocationConfiguration: &s3control.AccessGrantAccessGrantsLocationConfigurationArgs{
 /// 				S3SubPrefix: pulumi.String("prefixB*"),
 /// 			},
@@ -126,6 +124,8 @@ import 'access_grant_state.dart';
 /// 				GranteeType:       pulumi.String("IAM"),
 /// 				GranteeIdentifier: pulumi.Any(exampleAwsIamUser.Arn),
 /// 			},
+/// 			AccessGrantsLocationId: exampleAccessGrantsLocation.AccessGrantsLocationId,
+/// 			Permission:             pulumi.String("READ"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -151,8 +151,6 @@ import 'access_grant_state.dart';
 ///   location_scope ="s3://${exampleAwsS3Bucket.bucket}/prefixA*"
 /// }
 /// resource "aws_s3control_accessgrant" "example" {
-///   access_grants_location_id = aws_s3control_accessgrantslocation.example.access_grants_location_id
-///   permission                = "READ"
 ///   access_grants_location_configuration = {
 ///     s3_sub_prefix = "prefixB*"
 ///   }
@@ -160,6 +158,8 @@ import 'access_grant_state.dart';
 ///     grantee_type       = "IAM"
 ///     grantee_identifier = exampleAwsIamUser.arn
 ///   }
+///   access_grants_location_id = aws_s3control_accessgrantslocation.example.access_grants_location_id
+///   permission                = "READ"
 /// }
 /// ```
 /// ```java
@@ -199,8 +199,6 @@ import 'access_grant_state.dart';
 ///                 .build());
 ///
 ///         var exampleAccessGrant = new AccessGrant("exampleAccessGrant", AccessGrantArgs.builder()
-///             .accessGrantsLocationId(exampleAccessGrantsLocation.accessGrantsLocationId())
-///             .permission("READ")
 ///             .accessGrantsLocationConfiguration(AccessGrantAccessGrantsLocationConfigurationArgs.builder()
 ///                 .s3SubPrefix("prefixB*")
 ///                 .build())
@@ -208,6 +206,8 @@ import 'access_grant_state.dart';
 ///                 .granteeType("IAM")
 ///                 .granteeIdentifier(exampleAwsIamUser.arn())
 ///                 .build())
+///             .accessGrantsLocationId(exampleAccessGrantsLocation.accessGrantsLocationId())
+///             .permission("READ")
 ///             .build());
 ///
 ///     }
@@ -230,13 +230,13 @@ import 'access_grant_state.dart';
 ///     type: aws:s3control:AccessGrant
 ///     name: example
 ///     properties:
-///       accessGrantsLocationId: ${exampleAccessGrantsLocation.accessGrantsLocationId}
-///       permission: READ
 ///       accessGrantsLocationConfiguration:
 ///         s3SubPrefix: prefixB*
 ///       grantee:
 ///         granteeType: IAM
 ///         granteeIdentifier: ${exampleAwsIamUser.arn}
+///       accessGrantsLocationId: ${exampleAccessGrantsLocation.accessGrantsLocationId}
+///       permission: READ
 /// ```
 ///
 ///
@@ -248,7 +248,7 @@ import 'access_grant_state.dart';
 /// $ pulumi import aws:s3control/accessGrant:AccessGrant example 123456789012,04549c5e-2f3c-4a07-824d-2cafe720aa22
 /// ```
 class AccessGrant extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the S3 Access Grant.
+  /// ARN of the S3 Access Grant.
   late final pulumi.Output<String> accessGrantArn;
   /// Unique ID of the S3 Access Grant.
   late final pulumi.Output<String> accessGrantId;
@@ -285,7 +285,7 @@ class AccessGrant extends pulumi.CustomResource {
           'aws:s3control/accessGrant:AccessGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessGrantArn = registerOutput<String>('accessGrantArn');
     accessGrantId = registerOutput<String>('accessGrantId');
@@ -297,8 +297,8 @@ class AccessGrant extends pulumi.CustomResource {
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
     s3PrefixType = registerOutput<String?>('s3PrefixType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccessGrant] resource's state with the given [name] and [id].
@@ -306,11 +306,12 @@ class AccessGrant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessGrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessGrant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,7 +335,30 @@ class AccessGrant extends pulumi.CustomResource {
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
     s3PrefixType = registerOutput<String?>('s3PrefixType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccessGrant] resource.
+  AccessGrant.reference(String urn)
+    : super(
+        'aws:s3control/accessGrant:AccessGrant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessGrantArn = registerOutput<String>('accessGrantArn');
+    accessGrantId = registerOutput<String>('accessGrantId');
+    accessGrantsLocationConfiguration = registerOutput<AccessGrantAccessGrantsLocationConfiguration?>('accessGrantsLocationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessGrantAccessGrantsLocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    accessGrantsLocationId = registerOutput<String>('accessGrantsLocationId');
+    accountId = registerOutput<String>('accountId');
+    grantScope = registerOutput<String>('grantScope');
+    grantee = registerOutput<AccessGrantGrantee>('grantee', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessGrantGrantee.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    permission = registerOutput<String>('permission');
+    region = registerOutput<String>('region');
+    s3PrefixType = registerOutput<String?>('s3PrefixType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -4,40 +4,40 @@
 /// Result data returned by getActiveReceiptRuleSet.
 class GetActiveReceiptRuleSetResult {
   /// SES receipt rule set ARN.
-  final String arn;
+  final String? arn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// Name of the rule set
-  final String ruleSetName;
+  final String? ruleSetName;
 
   /// Creates a new [GetActiveReceiptRuleSetResult].
   /// [arn] SES receipt rule set ARN.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [ruleSetName] Name of the rule set
   const GetActiveReceiptRuleSetResult({
-    required this.arn,
-    required this.id,
-    required this.region,
-    required this.ruleSetName,
+    this.arn,
+    this.id,
+    this.region,
+    this.ruleSetName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'region': region,
-      'ruleSetName': ruleSetName,
+      'arn': ?arn,
+      'id': ?id,
+      'region': ?region,
+      'ruleSetName': ?ruleSetName,
     };
   }
 
   factory GetActiveReceiptRuleSetResult.fromMap(Map<String, dynamic> map) {
     return GetActiveReceiptRuleSetResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
-      ruleSetName: map['ruleSetName'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ruleSetName: (() { final guardedValue = map['ruleSetName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

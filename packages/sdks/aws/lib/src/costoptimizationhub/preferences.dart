@@ -230,7 +230,7 @@ class Preferences extends pulumi.CustomResource {
           'aws:costoptimizationhub/preferences:Preferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
     savingsEstimationMode = registerOutput<String>('savingsEstimationMode');
@@ -241,11 +241,12 @@ class Preferences extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreferencesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Preferences._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,6 +260,19 @@ class Preferences extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
+    savingsEstimationMode = registerOutput<String>('savingsEstimationMode');
+  }
+
+  /// Creates a typed reference to an existing [Preferences] resource.
+  Preferences.reference(String urn)
+    : super(
+        'aws:costoptimizationhub/preferences:Preferences',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
     savingsEstimationMode = registerOutput<String>('savingsEstimationMode');
   }

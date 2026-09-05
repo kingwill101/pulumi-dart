@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ZoneAssociation resources.
 class ZoneAssociationState {
   /// The account ID of the account that created the hosted zone.
-  final pulumi.Input<String>? owningAccount;
+  final pulumi.Input<String?>? owningAccount;
   /// The VPC to associate with the private hosted zone.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
   /// The VPC's region. Defaults to the region of the AWS provider.
-  final pulumi.Input<String>? vpcRegion;
+  final pulumi.Input<String?>? vpcRegion;
   /// The private hosted zone to associate.
-  final pulumi.Input<String>? zoneId;
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [ZoneAssociationState].
   /// [owningAccount] The account ID of the account that created the hosted zone.

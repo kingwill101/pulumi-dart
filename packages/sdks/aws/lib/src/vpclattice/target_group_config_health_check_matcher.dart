@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetGroupConfigHealthCheckMatcher {
   /// HTTP codes to use when checking for a successful response from a target.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TargetGroupConfigHealthCheckMatcher].
   /// [value] HTTP codes to use when checking for a successful response from a target.

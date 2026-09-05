@@ -13,11 +13,11 @@ class GetSnapshotsResult {
   final List<GetSnapshotsFilter>? filters;
   final bool? includePublic;
   final bool? includeShared;
-  final String region;
+  final String? region;
   /// Type of the DB snapshot.
   final String? snapshotType;
   /// List of snapshots.
-  final List<GetSnapshotsSnapshot> snapshots;
+  final List<GetSnapshotsSnapshot>? snapshots;
 
   /// Creates a new [GetSnapshotsResult].
   /// [dbInstanceIdentifier] Identifier of the DB instance from which the snapshot was taken.
@@ -25,7 +25,7 @@ class GetSnapshotsResult {
   /// [filters] Optional.
   /// [includePublic] Optional.
   /// [includeShared] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [snapshotType] Type of the DB snapshot.
   /// [snapshots] List of snapshots.
   const GetSnapshotsResult({
@@ -34,9 +34,9 @@ class GetSnapshotsResult {
     this.filters,
     this.includePublic,
     this.includeShared,
-    required this.region,
+    this.region,
     this.snapshotType,
-    required this.snapshots,
+    this.snapshots,
   });
 
   Map<String, dynamic> toMap() {
@@ -46,9 +46,9 @@ class GetSnapshotsResult {
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSnapshotsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'includePublic': ?includePublic,
       'includeShared': ?includeShared,
-      'region': region,
+      'region': ?region,
       'snapshotType': ?snapshotType,
-      'snapshots': pulumi.Input.encodeList<GetSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
+      'snapshots': ?(() { final guardedValue = snapshots; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSnapshotsSnapshot, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -59,9 +59,9 @@ class GetSnapshotsResult {
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotsFilter>(guardedValue, (value) => GetSnapshotsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       includePublic: (() { final guardedValue = map['includePublic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       includeShared: (() { final guardedValue = map['includeShared']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(map['snapshots']!, (value) => GetSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
+      snapshots: (() { final guardedValue = map['snapshots']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotsSnapshot>(guardedValue, (value) => GetSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

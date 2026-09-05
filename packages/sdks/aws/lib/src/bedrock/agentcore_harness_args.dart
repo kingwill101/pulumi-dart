@@ -18,44 +18,44 @@ import 'agentcore_harness_truncation.dart';
 /// {@macro pulumi_bedrock_agentcore_harness_agentcore_harness_args_doc}
 class AgentcoreHarnessArgs {
   /// List of tool names allowed for the harness. Use `["*"]` to allow all tools.
-  final pulumi.Input<List<String>>? allowedTools;
+  final pulumi.Input<List<String>?>? allowedTools;
   /// Authorization configuration for authenticating requests. See `authorizerConfiguration` Block below.
-  final pulumi.Input<AgentcoreHarnessAuthorizerConfiguration>? authorizerConfiguration;
+  final pulumi.Input<AgentcoreHarnessAuthorizerConfiguration?>? authorizerConfiguration;
   /// Environment artifact configuration. See `environmentArtifact` Block below.
-  final pulumi.Input<AgentcoreHarnessEnvironmentArtifact>? environmentArtifact;
+  final pulumi.Input<AgentcoreHarnessEnvironmentArtifact?>? environmentArtifact;
   /// Map of environment variables.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// Compute environment configuration. See `environment` Block below.If not specified, configured values can be found in `environmentActual`. Clearing this value will leave the environment configuration as is, but Terraform will not track changes.
-  final pulumi.Input<List<AgentcoreHarnessEnvironment>>? environments;
+  final pulumi.Input<List<AgentcoreHarnessEnvironment>?>? environments;
   /// ARN of the IAM role that the harness assumes to access AWS services.
   final pulumi.Input<String> executionRoleArn;
   /// Name of the harness. Must be 1-40 characters, alphanumeric and underscores only.
   final pulumi.Input<String> harnessName;
   /// Maximum number of iterations the agent loop can perform.
-  final pulumi.Input<int>? maxIterations;
+  final pulumi.Input<int?>? maxIterations;
   /// Maximum number of tokens in the model response.
-  final pulumi.Input<int>? maxTokens;
+  final pulumi.Input<int?>? maxTokens;
   /// Memory configuration. See `memory` Block below. If not specified, configured values can be found in `memoryActual`. Clearing this value will reset the memory configuration to default values.
-  final pulumi.Input<AgentcoreHarnessMemory>? memory;
+  final pulumi.Input<AgentcoreHarnessMemory?>? memory;
   /// Model configuration for the harness. See `model` Block below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AgentcoreHarnessModel> model;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Skill configurations. See `skill` Block below.
-  final pulumi.Input<List<AgentcoreHarnessSkill>>? skills;
+  final pulumi.Input<List<AgentcoreHarnessSkill>?>? skills;
   /// System prompt blocks for the harness. See `systemPrompt` Block below.
-  final pulumi.Input<List<AgentcoreHarnessSystemPrompt>>? systemPrompts;
+  final pulumi.Input<List<AgentcoreHarnessSystemPrompt>?>? systemPrompts;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Timeout in seconds for the harness execution.
-  final pulumi.Input<int>? timeoutSeconds;
-  final pulumi.Input<AgentcoreHarnessTimeouts>? timeouts;
+  final pulumi.Input<int?>? timeoutSeconds;
+  final pulumi.Input<AgentcoreHarnessTimeouts?>? timeouts;
   /// Tool configurations. See `tool` Block below.
-  final pulumi.Input<List<AgentcoreHarnessTool>>? tools;
+  final pulumi.Input<List<AgentcoreHarnessTool>?>? tools;
   /// Truncation configuration for conversation history. See `truncation` Block below.
-  final pulumi.Input<List<AgentcoreHarnessTruncation>>? truncations;
+  final pulumi.Input<List<AgentcoreHarnessTruncation>?>? truncations;
 
   /// Creates a new [AgentcoreHarnessArgs].
   /// [allowedTools] List of tool names allowed for the harness. Use `["*"]` to allow all tools.
@@ -132,15 +132,15 @@ class AgentcoreHarnessArgs {
       environments: (() { final guardedValue = map['environments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessEnvironment>(guardedValue, (value) => AgentcoreHarnessEnvironment.fromMap((value as Map).cast<String, dynamic>()))); })(),
       executionRoleArn: pulumi.Input.fromValue(map['executionRoleArn'] as String),
       harnessName: pulumi.Input.fromValue(map['harnessName'] as String),
-      maxIterations: (() { final guardedValue = map['maxIterations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxIterations: (() { final guardedValue = map['maxIterations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       model: pulumi.Input.fromValue(AgentcoreHarnessModel.fromMap((map['model']! as Map).cast<String, dynamic>())),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skills: (() { final guardedValue = map['skills']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>()))); })(),
       systemPrompts: (() { final guardedValue = map['systemPrompts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreHarnessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tools: (() { final guardedValue = map['tools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessTool>(guardedValue, (value) => AgentcoreHarnessTool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       truncations: (() { final guardedValue = map['truncations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessTruncation>(guardedValue, (value) => AgentcoreHarnessTruncation.fromMap((value as Map).cast<String, dynamic>()))); })(),

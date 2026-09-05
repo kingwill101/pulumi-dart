@@ -179,3 +179,14 @@ Future<GetApplicationResult> getApplication(
   );
   return GetApplicationResult.fromMap(result);
 }
+
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:serverlessrepository/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}

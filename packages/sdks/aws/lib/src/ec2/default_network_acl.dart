@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_network_acl_args.dart';
+import 'default_network_acl_egress.dart';
+import 'default_network_acl_ingress.dart';
 import 'default_network_acl_state.dart';
 
 /// Provides a resource to manage a VPC's default network ACL. This resource can manage the default network ACL of the default or a non-default VPC.
@@ -25,15 +27,6 @@ import 'default_network_acl_state.dart';
 ///
 /// const mainvpc = new aws.ec2.Vpc("mainvpc", {cidrBlock: "10.1.0.0/16"});
 /// const _default = new aws.ec2.DefaultNetworkAcl("default", {
-///     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
-///     ingress: [{
-///         protocol: "-1",
-///         ruleNo: 100,
-///         action: "allow",
-///         cidrBlock: "0.0.0.0/0",
-///         fromPort: 0,
-///         toPort: 0,
-///     }],
 ///     egress: [{
 ///         protocol: "-1",
 ///         ruleNo: 100,
@@ -42,6 +35,15 @@ import 'default_network_acl_state.dart';
 ///         fromPort: 0,
 ///         toPort: 0,
 ///     }],
+///     ingress: [{
+///         protocol: "-1",
+///         ruleNo: 100,
+///         action: "allow",
+///         cidrBlock: "0.0.0.0/0",
+///         fromPort: 0,
+///         toPort: 0,
+///     }],
+///     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
 /// });
 /// ```
 /// ```python
@@ -50,7 +52,14 @@ import 'default_network_acl_state.dart';
 ///
 /// mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
 /// default = aws.ec2.DefaultNetworkAcl("default",
-///     default_network_acl_id=mainvpc.default_network_acl_id,
+///     egress=[{
+///         "protocol": "-1",
+///         "rule_no": 100,
+///         "action": "allow",
+///         "cidr_block": "0.0.0.0/0",
+///         "from_port": 0,
+///         "to_port": 0,
+///     }],
 ///     ingress=[{
 ///         "protocol": "-1",
 ///         "rule_no": 100,
@@ -59,14 +68,7 @@ import 'default_network_acl_state.dart';
 ///         "from_port": 0,
 ///         "to_port": 0,
 ///     }],
-///     egress=[{
-///         "protocol": "-1",
-///         "rule_no": 100,
-///         "action": "allow",
-///         "cidr_block": "0.0.0.0/0",
-///         "from_port": 0,
-///         "to_port": 0,
-///     }])
+///     default_network_acl_id=mainvpc.default_network_acl_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -83,19 +85,6 @@ import 'default_network_acl_state.dart';
 ///
 ///     var @default = new Aws.Ec2.DefaultNetworkAcl("default", new()
 ///     {
-///         DefaultNetworkAclId = mainvpc.DefaultNetworkAclId,
-///         Ingress = new[]
-///         {
-///             new Aws.Ec2.Inputs.DefaultNetworkAclIngressArgs
-///             {
-///                 Protocol = "-1",
-///                 RuleNo = 100,
-///                 Action = "allow",
-///                 CidrBlock = "0.0.0.0/0",
-///                 FromPort = 0,
-///                 ToPort = 0,
-///             },
-///         },
 ///         Egress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.DefaultNetworkAclEgressArgs
@@ -108,6 +97,19 @@ import 'default_network_acl_state.dart';
 ///                 ToPort = 0,
 ///             },
 ///         },
+///         Ingress = new[]
+///         {
+///             new Aws.Ec2.Inputs.DefaultNetworkAclIngressArgs
+///             {
+///                 Protocol = "-1",
+///                 RuleNo = 100,
+///                 Action = "allow",
+///                 CidrBlock = "0.0.0.0/0",
+///                 FromPort = 0,
+///                 ToPort = 0,
+///             },
+///         },
+///         DefaultNetworkAclId = mainvpc.DefaultNetworkAclId,
 ///     });
 ///
 /// });
@@ -129,17 +131,6 @@ import 'default_network_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewDefaultNetworkAcl(ctx, "default", &ec2.DefaultNetworkAclArgs{
-/// 			DefaultNetworkAclId: mainvpc.DefaultNetworkAclId,
-/// 			Ingress: ec2.DefaultNetworkAclIngressArray{
-/// 				&ec2.DefaultNetworkAclIngressArgs{
-/// 					Protocol:  pulumi.String("-1"),
-/// 					RuleNo:    pulumi.Int(100),
-/// 					Action:    pulumi.String("allow"),
-/// 					CidrBlock: pulumi.String("0.0.0.0/0"),
-/// 					FromPort:  pulumi.Int(0),
-/// 					ToPort:    pulumi.Int(0),
-/// 				},
-/// 			},
 /// 			Egress: ec2.DefaultNetworkAclEgressArray{
 /// 				&ec2.DefaultNetworkAclEgressArgs{
 /// 					Protocol:  pulumi.String("-1"),
@@ -150,6 +141,17 @@ import 'default_network_acl_state.dart';
 /// 					ToPort:    pulumi.Int(0),
 /// 				},
 /// 			},
+/// 			Ingress: ec2.DefaultNetworkAclIngressArray{
+/// 				&ec2.DefaultNetworkAclIngressArgs{
+/// 					Protocol:  pulumi.String("-1"),
+/// 					RuleNo:    pulumi.Int(100),
+/// 					Action:    pulumi.String("allow"),
+/// 					CidrBlock: pulumi.String("0.0.0.0/0"),
+/// 					FromPort:  pulumi.Int(0),
+/// 					ToPort:    pulumi.Int(0),
+/// 				},
+/// 			},
+/// 			DefaultNetworkAclId: mainvpc.DefaultNetworkAclId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -171,15 +173,6 @@ import 'default_network_acl_state.dart';
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_defaultnetworkacl" "default" {
-///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
-///   ingress {
-///     protocol   = -1
-///     rule_no    = 100
-///     action     = "allow"
-///     cidr_block = "0.0.0.0/0"
-///     from_port  = 0
-///     to_port    = 0
-///   }
 ///   egress {
 ///     protocol   = -1
 ///     rule_no    = 100
@@ -188,6 +181,15 @@ import 'default_network_acl_state.dart';
 ///     from_port  = 0
 ///     to_port    = 0
 ///   }
+///   ingress {
+///     protocol   = -1
+///     rule_no    = 100
+///     action     = "allow"
+///     cidr_block = "0.0.0.0/0"
+///     from_port  = 0
+///     to_port    = 0
+///   }
+///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
 /// }
 /// ```
 /// ```java
@@ -200,8 +202,8 @@ import 'default_network_acl_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.DefaultNetworkAcl;
 /// import com.pulumi.aws.ec2.DefaultNetworkAclArgs;
-/// import com.pulumi.aws.ec2.inputs.DefaultNetworkAclIngressArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultNetworkAclEgressArgs;
+/// import com.pulumi.aws.ec2.inputs.DefaultNetworkAclIngressArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -220,15 +222,6 @@ import 'default_network_acl_state.dart';
 ///             .build());
 ///
 ///         var default_ = new DefaultNetworkAcl("default", DefaultNetworkAclArgs.builder()
-///             .defaultNetworkAclId(mainvpc.defaultNetworkAclId())
-///             .ingress(DefaultNetworkAclIngressArgs.builder()
-///                 .protocol("-1")
-///                 .ruleNo(100)
-///                 .action("allow")
-///                 .cidrBlock("0.0.0.0/0")
-///                 .fromPort(0)
-///                 .toPort(0)
-///                 .build())
 ///             .egress(DefaultNetworkAclEgressArgs.builder()
 ///                 .protocol("-1")
 ///                 .ruleNo(100)
@@ -237,6 +230,15 @@ import 'default_network_acl_state.dart';
 ///                 .fromPort(0)
 ///                 .toPort(0)
 ///                 .build())
+///             .ingress(DefaultNetworkAclIngressArgs.builder()
+///                 .protocol("-1")
+///                 .ruleNo(100)
+///                 .action("allow")
+///                 .cidrBlock("0.0.0.0/0")
+///                 .fromPort(0)
+///                 .toPort(0)
+///                 .build())
+///             .defaultNetworkAclId(mainvpc.defaultNetworkAclId())
 ///             .build());
 ///
 ///     }
@@ -251,14 +253,6 @@ import 'default_network_acl_state.dart';
 ///   default:
 ///     type: aws:ec2:DefaultNetworkAcl
 ///     properties:
-///       defaultNetworkAclId: ${mainvpc.defaultNetworkAclId}
-///       ingress:
-///         - protocol: -1
-///           ruleNo: 100
-///           action: allow
-///           cidrBlock: 0.0.0.0/0
-///           fromPort: 0
-///           toPort: 0
 ///       egress:
 ///         - protocol: -1
 ///           ruleNo: 100
@@ -266,6 +260,14 @@ import 'default_network_acl_state.dart';
 ///           cidrBlock: 0.0.0.0/0
 ///           fromPort: 0
 ///           toPort: 0
+///       ingress:
+///         - protocol: -1
+///           ruleNo: 100
+///           action: allow
+///           cidrBlock: 0.0.0.0/0
+///           fromPort: 0
+///           toPort: 0
+///       defaultNetworkAclId: ${mainvpc.defaultNetworkAclId}
 /// ```
 ///
 ///
@@ -280,7 +282,6 @@ import 'default_network_acl_state.dart';
 ///
 /// const mainvpc = new aws.ec2.Vpc("mainvpc", {cidrBlock: "10.1.0.0/16"});
 /// const _default = new aws.ec2.DefaultNetworkAcl("default", {
-///     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
 ///     ingress: [{
 ///         protocol: "-1",
 ///         ruleNo: 100,
@@ -289,6 +290,7 @@ import 'default_network_acl_state.dart';
 ///         fromPort: 0,
 ///         toPort: 0,
 ///     }],
+///     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
 /// });
 /// ```
 /// ```python
@@ -297,7 +299,6 @@ import 'default_network_acl_state.dart';
 ///
 /// mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
 /// default = aws.ec2.DefaultNetworkAcl("default",
-///     default_network_acl_id=mainvpc.default_network_acl_id,
 ///     ingress=[{
 ///         "protocol": "-1",
 ///         "rule_no": 100,
@@ -305,7 +306,8 @@ import 'default_network_acl_state.dart';
 ///         "cidr_block": mainvpc_aws_default_vpc["cidrBlock"],
 ///         "from_port": 0,
 ///         "to_port": 0,
-///     }])
+///     }],
+///     default_network_acl_id=mainvpc.default_network_acl_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -322,7 +324,6 @@ import 'default_network_acl_state.dart';
 ///
 ///     var @default = new Aws.Ec2.DefaultNetworkAcl("default", new()
 ///     {
-///         DefaultNetworkAclId = mainvpc.DefaultNetworkAclId,
 ///         Ingress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.DefaultNetworkAclIngressArgs
@@ -335,6 +336,7 @@ import 'default_network_acl_state.dart';
 ///                 ToPort = 0,
 ///             },
 ///         },
+///         DefaultNetworkAclId = mainvpc.DefaultNetworkAclId,
 ///     });
 ///
 /// });
@@ -356,7 +358,6 @@ import 'default_network_acl_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewDefaultNetworkAcl(ctx, "default", &ec2.DefaultNetworkAclArgs{
-/// 			DefaultNetworkAclId: mainvpc.DefaultNetworkAclId,
 /// 			Ingress: ec2.DefaultNetworkAclIngressArray{
 /// 				&ec2.DefaultNetworkAclIngressArgs{
 /// 					Protocol:  pulumi.String("-1"),
@@ -367,6 +368,7 @@ import 'default_network_acl_state.dart';
 /// 					ToPort:    pulumi.Int(0),
 /// 				},
 /// 			},
+/// 			DefaultNetworkAclId: mainvpc.DefaultNetworkAclId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -388,7 +390,6 @@ import 'default_network_acl_state.dart';
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_defaultnetworkacl" "default" {
-///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
 ///   ingress {
 ///     protocol   = -1
 ///     rule_no    = 100
@@ -397,6 +398,7 @@ import 'default_network_acl_state.dart';
 ///     from_port  = 0
 ///     to_port    = 0
 ///   }
+///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
 /// }
 /// ```
 /// ```java
@@ -428,7 +430,6 @@ import 'default_network_acl_state.dart';
 ///             .build());
 ///
 ///         var default_ = new DefaultNetworkAcl("default", DefaultNetworkAclArgs.builder()
-///             .defaultNetworkAclId(mainvpc.defaultNetworkAclId())
 ///             .ingress(DefaultNetworkAclIngressArgs.builder()
 ///                 .protocol("-1")
 ///                 .ruleNo(100)
@@ -437,6 +438,7 @@ import 'default_network_acl_state.dart';
 ///                 .fromPort(0)
 ///                 .toPort(0)
 ///                 .build())
+///             .defaultNetworkAclId(mainvpc.defaultNetworkAclId())
 ///             .build());
 ///
 ///     }
@@ -451,7 +453,6 @@ import 'default_network_acl_state.dart';
 ///   default:
 ///     type: aws:ec2:DefaultNetworkAcl
 ///     properties:
-///       defaultNetworkAclId: ${mainvpc.defaultNetworkAclId}
 ///       ingress:
 ///         - protocol: -1
 ///           ruleNo: 100
@@ -459,6 +460,7 @@ import 'default_network_acl_state.dart';
 ///           cidrBlock: ${mainvpcAwsDefaultVpc.cidrBlock}
 ///           fromPort: 0
 ///           toPort: 0
+///       defaultNetworkAclId: ${mainvpc.defaultNetworkAclId}
 /// ```
 ///
 ///
@@ -605,13 +607,15 @@ import 'default_network_acl_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const _default = new aws.ec2.DefaultNetworkAcl("default", {});
+/// const _default = new aws.ec2.DefaultNetworkAcl("default", {}, {
+///     ignoreChanges: ["subnetIds"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// default = aws.ec2.DefaultNetworkAcl("default")
+/// default = aws.ec2.DefaultNetworkAcl("default", opts = pulumi.ResourceOptions(ignore_changes=["subnetIds"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -621,7 +625,15 @@ import 'default_network_acl_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var @default = new Aws.Ec2.DefaultNetworkAcl("default");
+///     var @default = new Aws.Ec2.DefaultNetworkAcl("default", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "subnetIds",
+///         },
+///     });
 ///
 /// });
 /// ```
@@ -635,7 +647,9 @@ import 'default_network_acl_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := ec2.NewDefaultNetworkAcl(ctx, "default", nil)
+/// 		_, err := ec2.NewDefaultNetworkAcl(ctx, "default", nil, pulumi.IgnoreChanges([]string{
+/// 			"subnetIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -653,6 +667,9 @@ import 'default_network_acl_state.dart';
 /// }
 ///
 /// resource "aws_ec2_defaultnetworkacl" "default" {
+///   lifecycle {
+///     ignore_changes = [subnetIds]
+///   }
 /// }
 /// ```
 /// ```java
@@ -662,6 +679,8 @@ import 'default_network_acl_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DefaultNetworkAcl;
+/// import com.pulumi.aws.ec2.DefaultNetworkAclArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -675,7 +694,9 @@ import 'default_network_acl_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var default_ = new DefaultNetworkAcl("default");
+///         var default_ = new DefaultNetworkAcl("default", DefaultNetworkAclArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("subnetIds")
+///             .build());
 ///
 ///     }
 /// }
@@ -684,6 +705,9 @@ import 'default_network_acl_state.dart';
 /// resources:
 ///   default:
 ///     type: aws:ec2:DefaultNetworkAcl
+///     options:
+///       ignoreChanges:
+///         - subnetIds
 /// ```
 ///
 ///
@@ -706,9 +730,9 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> defaultNetworkAclId;
   /// Configuration block for an egress rule. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> egress;
+  late final pulumi.Output<List<DefaultNetworkAclEgress>?> egress;
   /// Configuration block for an ingress rule. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ingress;
+  late final pulumi.Output<List<DefaultNetworkAclIngress>?> ingress;
   /// ID of the AWS account that owns the Default Network ACL
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -734,17 +758,17 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
           'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
-    egress = registerOutput<List<Map<String, dynamic>>?>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>?>('ingress');
+    egress = registerOutput<List<DefaultNetworkAclEgress>?>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultNetworkAclEgress>(guardedValue, (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<DefaultNetworkAclIngress>?>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultNetworkAclIngress>(guardedValue, (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>?>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -753,11 +777,12 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultNetworkAclState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultNetworkAcl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -773,13 +798,34 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
-    egress = registerOutput<List<Map<String, dynamic>>?>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>?>('ingress');
+    egress = registerOutput<List<DefaultNetworkAclEgress>?>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultNetworkAclEgress>(guardedValue, (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<DefaultNetworkAclIngress>?>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultNetworkAclIngress>(guardedValue, (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>?>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [DefaultNetworkAcl] resource.
+  DefaultNetworkAcl.reference(String urn)
+    : super(
+        'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
+    egress = registerOutput<List<DefaultNetworkAclEgress>?>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultNetworkAclEgress>(guardedValue, (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<DefaultNetworkAclIngress>?>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultNetworkAclIngress>(guardedValue, (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>())); });
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

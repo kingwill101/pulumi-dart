@@ -10,7 +10,7 @@ class RolePolicyAttachmentArgs {
   /// The ARN of the policy you want to apply
   final pulumi.Input<String> policyArn;
   /// The name of the IAM role to which the policy should be applied
-  final pulumi.Input<String> role;
+  final pulumi.Input<dynamic> role;
 
   /// Creates a new [RolePolicyAttachmentArgs].
   /// [policyArn] The ARN of the policy you want to apply
@@ -30,7 +30,7 @@ class RolePolicyAttachmentArgs {
   factory RolePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentArgs(
       policyArn: pulumi.Input.fromValue(map['policyArn'] as String),
-      role: pulumi.Input.fromValue(map['role'] as String),
+      role: pulumi.Input.fromValue(map['role']),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsParameters {
   /// Indicates whether to exclude the root volume from snapshots created using CreateSnapshots. The default is `false`.
-  final pulumi.Input<bool>? excludeBootVolume;
+  final pulumi.Input<bool?>? excludeBootVolume;
   /// Map specifies whether to exclude volumes that have specific tags.
-  final pulumi.Input<Map<String, String>>? excludeDataVolumeTags;
+  final pulumi.Input<Map<String, String>?>? excludeDataVolumeTags;
   /// Applies to AMI lifecycle policies only. Indicates whether targeted instances are rebooted when the lifecycle policy runs. `true` indicates that targeted instances are not rebooted when the policy runs. `false` indicates that target instances are rebooted when the policy runs. The default is `true` (instances are not rebooted).
-  final pulumi.Input<bool>? noReboot;
+  final pulumi.Input<bool?>? noReboot;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsParameters].
   /// [excludeBootVolume] Indicates whether to exclude the root volume from snapshots created using CreateSnapshots. The default is `false`.

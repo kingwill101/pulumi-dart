@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobHumanTaskConfigUiConfig {
   /// ARN of the worker task template used to render the worker UI and tools for labeling job tasks.
-  final pulumi.Input<String>? humanTaskUiArn;
+  final pulumi.Input<String?>? humanTaskUiArn;
   /// S3 bucket location of the UI template, or worker task template.
-  final pulumi.Input<String>? uiTemplateS3Uri;
+  final pulumi.Input<String?>? uiTemplateS3Uri;
 
   /// Creates a new [LabelingJobHumanTaskConfigUiConfig].
   /// [humanTaskUiArn] ARN of the worker task template used to render the worker UI and tools for labeling job tasks.

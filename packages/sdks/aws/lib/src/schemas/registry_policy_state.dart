@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegistryPolicy resources.
 class RegistryPolicyState {
   /// Resource Policy for EventBridge Schema Registry
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of EventBridge Schema Registry
-  final pulumi.Input<String>? registryName;
+  final pulumi.Input<String?>? registryName;
 
   /// Creates a new [RegistryPolicyState].
   /// [policy] Resource Policy for EventBridge Schema Registry

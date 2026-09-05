@@ -312,7 +312,7 @@ class Repository extends pulumi.CustomResource {
           'aws:codecommit/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloneUrlHttp = registerOutput<String>('cloneUrlHttp');
@@ -323,8 +323,8 @@ class Repository extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     repositoryId = registerOutput<String>('repositoryId');
     repositoryName = registerOutput<String>('repositoryName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -332,11 +332,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,7 +360,29 @@ class Repository extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     repositoryId = registerOutput<String>('repositoryId');
     repositoryName = registerOutput<String>('repositoryName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'aws:codecommit/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cloneUrlHttp = registerOutput<String>('cloneUrlHttp');
+    cloneUrlSsh = registerOutput<String>('cloneUrlSsh');
+    defaultBranch = registerOutput<String?>('defaultBranch');
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    region = registerOutput<String>('region');
+    repositoryId = registerOutput<String>('repositoryId');
+    repositoryName = registerOutput<String>('repositoryName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

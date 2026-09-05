@@ -5,7 +5,7 @@ import 'evaluation_job_evaluation_config_automated_dataset_metric_config_dataset
 
 class EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDataset {
   /// Location of a custom prompt dataset. See `datasetLocation` Block below.
-  final pulumi.Input<EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDatasetDatasetLocation>? datasetLocation;
+  final pulumi.Input<EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDatasetDatasetLocation?>? datasetLocation;
   /// Name of a built-in prompt dataset, for example `Builtin.Bold`, or a label for a custom prompt dataset.
   final pulumi.Input<String> name;
 

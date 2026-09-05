@@ -5,9 +5,9 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_baseline_statistics_resource.dart';
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline {
-  final pulumi.Input<String>? baseliningJobName;
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource>? constraintsResource;
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource>? statisticsResource;
+  final pulumi.Input<String?>? baseliningJobName;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource?>? constraintsResource;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource?>? statisticsResource;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline].
   /// [baseliningJobName] Optional.

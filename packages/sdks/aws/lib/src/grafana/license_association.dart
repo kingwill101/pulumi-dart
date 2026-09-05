@@ -330,7 +330,7 @@ class LicenseAssociation extends pulumi.CustomResource {
           'aws:grafana/licenseAssociation:LicenseAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     freeTrialExpiration = registerOutput<String>('freeTrialExpiration');
     grafanaToken = registerOutput<String?>('grafanaToken');
@@ -345,11 +345,12 @@ class LicenseAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicenseAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicenseAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -363,6 +364,23 @@ class LicenseAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    freeTrialExpiration = registerOutput<String>('freeTrialExpiration');
+    grafanaToken = registerOutput<String?>('grafanaToken');
+    licenseExpiration = registerOutput<String>('licenseExpiration');
+    licenseType = registerOutput<String>('licenseType');
+    region = registerOutput<String>('region');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [LicenseAssociation] resource.
+  LicenseAssociation.reference(String urn)
+    : super(
+        'aws:grafana/licenseAssociation:LicenseAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     freeTrialExpiration = registerOutput<String>('freeTrialExpiration');
     grafanaToken = registerOutput<String?>('grafanaToken');
     licenseExpiration = registerOutput<String>('licenseExpiration');

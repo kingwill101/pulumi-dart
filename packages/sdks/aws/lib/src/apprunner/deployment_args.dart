@@ -9,14 +9,14 @@ import 'deployment_timeouts.dart';
 /// {@macro pulumi_apprunner_deployment_deployment_args_doc}
 class DeploymentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
+  final pulumi.Input<String?>? region;
+  /// ARN of the App Runner service to start the deployment for.
   final pulumi.Input<String> serviceArn;
-  final pulumi.Input<DeploymentTimeouts>? timeouts;
+  final pulumi.Input<DeploymentTimeouts?>? timeouts;
 
   /// Creates a new [DeploymentArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceArn] Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
+  /// [serviceArn] ARN of the App Runner service to start the deployment for.
   /// [timeouts] Optional.
   const DeploymentArgs({
     this.region,

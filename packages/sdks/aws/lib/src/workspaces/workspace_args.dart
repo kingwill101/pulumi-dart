@@ -13,19 +13,19 @@ class WorkspaceArgs {
   /// The ID of the directory for the WorkSpace.
   final pulumi.Input<String> directoryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Indicates whether the data stored on the root volume is encrypted.
-  final pulumi.Input<bool>? rootVolumeEncryptionEnabled;
+  final pulumi.Input<bool?>? rootVolumeEncryptionEnabled;
   /// The tags for the WorkSpace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   final pulumi.Input<String> userName;
   /// Indicates whether the data stored on the user volume is encrypted.
-  final pulumi.Input<bool>? userVolumeEncryptionEnabled;
+  final pulumi.Input<bool?>? userVolumeEncryptionEnabled;
   /// The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
-  final pulumi.Input<String>? volumeEncryptionKey;
+  final pulumi.Input<String?>? volumeEncryptionKey;
   /// The WorkSpace properties.
-  final pulumi.Input<WorkspaceWorkspaceProperties>? workspaceProperties;
+  final pulumi.Input<WorkspaceWorkspaceProperties?>? workspaceProperties;
 
   /// Creates a new [WorkspaceArgs].
   /// [bundleId] The ID of the bundle for the WorkSpace.

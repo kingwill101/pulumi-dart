@@ -45,7 +45,7 @@ class GetTaskDefinitionVolumeEfsVolumeConfiguration {
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
       rootDirectory: pulumi.Input.fromValue(map['rootDirectory'] as String),
       transitEncryption: pulumi.Input.fromValue(map['transitEncryption'] as String),
-      transitEncryptionPort: pulumi.Input.fromValue(map['transitEncryptionPort'] as int),
+      transitEncryptionPort: pulumi.Input.fromValue((map['transitEncryptionPort'] as num).toInt()),
     );
   }
 }

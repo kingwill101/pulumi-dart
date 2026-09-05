@@ -8,26 +8,26 @@ import 'replicator_replication_info_list.dart';
 /// Input properties used for looking up and filtering Replicator resources.
 class ReplicatorState {
   /// ARN of the Replicator.
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<String>? currentVersion;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<String?>? currentVersion;
   /// A summary description of the replicator.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of Kafka clusters which are targets of the replicator.
-  final pulumi.Input<List<ReplicatorKafkaCluster>>? kafkaClusters;
+  final pulumi.Input<List<ReplicatorKafkaCluster>?>? kafkaClusters;
   /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
-  final pulumi.Input<ReplicatorLogDelivery>? logDelivery;
+  final pulumi.Input<ReplicatorLogDelivery?>? logDelivery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
-  final pulumi.Input<ReplicatorReplicationInfoList>? replicationInfoList;
+  final pulumi.Input<ReplicatorReplicationInfoList?>? replicationInfoList;
   /// The name of the replicator.
-  final pulumi.Input<String>? replicatorName;
+  final pulumi.Input<String?>? replicatorName;
   /// The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
-  final pulumi.Input<String>? serviceExecutionRoleArn;
+  final pulumi.Input<String?>? serviceExecutionRoleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ReplicatorState].
   /// [arn] ARN of the Replicator.

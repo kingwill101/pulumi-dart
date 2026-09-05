@@ -10,13 +10,13 @@ class ProfileArgs {
   /// AS2 name as defined in RFC 4130. For inbound transfers this is the AS2 From Header for the AS2 messages sent from the partner. For outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. This ID cannot include spaces.
   final pulumi.Input<String> as2Id;
   /// List of certificate IDs from the imported certificate operation.
-  final pulumi.Input<List<String>>? certificateIds;
+  final pulumi.Input<List<String>?>? certificateIds;
   /// Profile type. Valid values are `LOCAL` or `PARTNER`.
   final pulumi.Input<String> profileType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProfileArgs].
   /// [as2Id] AS2 name as defined in RFC 4130. For inbound transfers this is the AS2 From Header for the AS2 messages sent from the partner. For outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. This ID cannot include spaces.

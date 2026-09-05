@@ -7,33 +7,33 @@ import 'connection_physical_connection_requirements.dart';
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
   /// ARN of the Glue Connection.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Map of key-value pairs used as connection properties specific to the Athena compute environment.
-  final pulumi.Input<Map<String, String>>? athenaProperties;
+  final pulumi.Input<Map<String, String>?>? athenaProperties;
   /// Configuration block for authentication options. See `authenticationConfiguration` below.
-  final pulumi.Input<ConnectionAuthenticationConfiguration>? authenticationConfiguration;
+  final pulumi.Input<ConnectionAuthenticationConfiguration?>? authenticationConfiguration;
   /// ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Map of key-value pairs used as parameters for this connection. For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/connection-properties.html).
-  final pulumi.Input<Map<String, String>>? connectionProperties;
+  final pulumi.Input<Map<String, String>?>? connectionProperties;
   /// Type of the connection. Valid values: `AZURECOSMOS`, `AZURESQL`, `BIGQUERY`, `CUSTOM`, `DYNAMODB`, `JDBC`, `KAFKA`, `MARKETPLACE`, `MONGODB`, `NETWORK`, `OPENSEARCH`, `SNOWFLAKE`. Defaults to `JDBC`. Some connection types require the `SparkProperties` property with a JSON document that contains the actual connection properties. For specific examples, refer to Example Usage.
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// Description of the connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of criteria that can be used in selecting this connection.
-  final pulumi.Input<List<String>>? matchCriterias;
+  final pulumi.Input<List<String>?>? matchCriterias;
   /// Name of the connection.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of physical connection requirements, such as VPC and SecurityGroup. See `physicalConnectionRequirements` below.
-  final pulumi.Input<ConnectionPhysicalConnectionRequirements>? physicalConnectionRequirements;
+  final pulumi.Input<ConnectionPhysicalConnectionRequirements?>? physicalConnectionRequirements;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ConnectionState].
   /// [arn] ARN of the Glue Connection.

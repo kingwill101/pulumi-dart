@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// See https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_NotificationConfiguration.html
-enum NotificationType {
+enum NotificationType implements pulumi.PulumiEnum<String> {
   instanceLaunch("autoscaling:EC2_INSTANCE_LAUNCH"),
   instanceTerminate("autoscaling:EC2_INSTANCE_TERMINATE"),
   instanceLaunchError("autoscaling:EC2_INSTANCE_LAUNCH_ERROR"),
@@ -7,6 +9,7 @@ enum NotificationType {
   testNotification("autoscaling:TEST_NOTIFICATION");
 
   const NotificationType(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationType fromValue(String value) {

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_set_args.dart';
+import 'resource_set_resource.dart';
 import 'resource_set_state.dart';
 
 /// Provides an AWS Route 53 Recovery Readiness Resource Set.
@@ -12,11 +13,11 @@ import 'resource_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.route53recoveryreadiness.ResourceSet("example", {
-///     resourceSetName: my_cw_alarm_set,
-///     resourceSetType: "AWS::CloudWatch::Alarm",
 ///     resources: [{
 ///         resourceArn: exampleAwsCloudwatchMetricAlarm.arn,
 ///     }],
+///     resourceSetName: my_cw_alarm_set,
+///     resourceSetType: "AWS::CloudWatch::Alarm",
 /// });
 /// ```
 /// ```python
@@ -24,11 +25,11 @@ import 'resource_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.route53recoveryreadiness.ResourceSet("example",
-///     resource_set_name=my_cw_alarm_set,
-///     resource_set_type="AWS::CloudWatch::Alarm",
 ///     resources=[{
 ///         "resource_arn": example_aws_cloudwatch_metric_alarm["arn"],
-///     }])
+///     }],
+///     resource_set_name=my_cw_alarm_set,
+///     resource_set_type="AWS::CloudWatch::Alarm")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -40,8 +41,6 @@ import 'resource_set_state.dart';
 /// {
 ///     var example = new Aws.Route53RecoveryReadiness.ResourceSet("example", new()
 ///     {
-///         ResourceSetName = my_cw_alarm_set,
-///         ResourceSetType = "AWS::CloudWatch::Alarm",
 ///         Resources = new[]
 ///         {
 ///             new Aws.Route53RecoveryReadiness.Inputs.ResourceSetResourceArgs
@@ -49,6 +48,8 @@ import 'resource_set_state.dart';
 ///                 ResourceArn = exampleAwsCloudwatchMetricAlarm.Arn,
 ///             },
 ///         },
+///         ResourceSetName = my_cw_alarm_set,
+///         ResourceSetType = "AWS::CloudWatch::Alarm",
 ///     });
 ///
 /// });
@@ -64,13 +65,13 @@ import 'resource_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53recoveryreadiness.NewResourceSet(ctx, "example", &route53recoveryreadiness.ResourceSetArgs{
-/// 			ResourceSetName: pulumi.Any(my_cw_alarm_set),
-/// 			ResourceSetType: pulumi.String("AWS::CloudWatch::Alarm"),
 /// 			Resources: route53recoveryreadiness.ResourceSetResourceArray{
 /// 				&route53recoveryreadiness.ResourceSetResourceArgs{
 /// 					ResourceArn: pulumi.Any(exampleAwsCloudwatchMetricAlarm.Arn),
 /// 				},
 /// 			},
+/// 			ResourceSetName: pulumi.Any(my_cw_alarm_set),
+/// 			ResourceSetType: pulumi.String("AWS::CloudWatch::Alarm"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,11 +90,11 @@ import 'resource_set_state.dart';
 /// }
 ///
 /// resource "aws_route53recoveryreadiness_resourceset" "example" {
-///   resource_set_name = my-cw-alarm-set
-///   resource_set_type = "AWS::CloudWatch::Alarm"
 ///   resources {
 ///     resource_arn = exampleAwsCloudwatchMetricAlarm.arn
 ///   }
+///   resource_set_name = my-cw-alarm-set
+///   resource_set_type = "AWS::CloudWatch::Alarm"
 /// }
 /// ```
 /// ```java
@@ -119,11 +120,11 @@ import 'resource_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceSet("example", ResourceSetArgs.builder()
-///             .resourceSetName(my_cw_alarm_set)
-///             .resourceSetType("AWS::CloudWatch::Alarm")
 ///             .resources(ResourceSetResourceArgs.builder()
 ///                 .resourceArn(exampleAwsCloudwatchMetricAlarm.arn())
 ///                 .build())
+///             .resourceSetName(my_cw_alarm_set)
+///             .resourceSetType("AWS::CloudWatch::Alarm")
 ///             .build());
 ///
 ///     }
@@ -134,10 +135,10 @@ import 'resource_set_state.dart';
 ///   example:
 ///     type: aws:route53recoveryreadiness:ResourceSet
 ///     properties:
-///       resourceSetName: ${["my-cw-alarm-set"]}
-///       resourceSetType: AWS::CloudWatch::Alarm
 ///       resources:
 ///         - resourceArn: ${exampleAwsCloudwatchMetricAlarm.arn}
+///       resourceSetName: ${["my-cw-alarm-set"]}
+///       resourceSetType: AWS::CloudWatch::Alarm
 /// ```
 ///
 ///
@@ -159,7 +160,7 @@ class ResourceSet extends pulumi.CustomResource {
   /// List of resources to add to this resource set. See below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<ResourceSetResource>> resources;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -177,14 +178,14 @@ class ResourceSet extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/resourceSet:ResourceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     resourceSetName = registerOutput<String>('resourceSetName');
     resourceSetType = registerOutput<String>('resourceSetType');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    resources = registerOutput<List<ResourceSetResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSetResource>(guardedValue, (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResourceSet] resource's state with the given [name] and [id].
@@ -192,11 +193,12 @@ class ResourceSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,8 +215,25 @@ class ResourceSet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     resourceSetName = registerOutput<String>('resourceSetName');
     resourceSetType = registerOutput<String>('resourceSetType');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    resources = registerOutput<List<ResourceSetResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSetResource>(guardedValue, (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceSet] resource.
+  ResourceSet.reference(String urn)
+    : super(
+        'aws:route53recoveryreadiness/resourceSet:ResourceSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    resourceSetName = registerOutput<String>('resourceSetName');
+    resourceSetType = registerOutput<String>('resourceSetType');
+    resources = registerOutput<List<ResourceSetResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSetResource>(guardedValue, (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -26,7 +26,7 @@ class ResponseHeadersPolicyServerTimingHeadersConfig {
   factory ResponseHeadersPolicyServerTimingHeadersConfig.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyServerTimingHeadersConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      samplingRate: pulumi.Input.fromValue(map['samplingRate'] as double),
+      samplingRate: pulumi.Input.fromValue((map['samplingRate'] as num).toDouble()),
     );
   }
 }

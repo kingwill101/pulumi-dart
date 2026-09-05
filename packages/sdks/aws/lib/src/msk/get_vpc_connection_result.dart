@@ -3,70 +3,70 @@
 
 /// Result data returned by getVpcConnection.
 class GetVpcConnectionResult {
-  final String arn;
+  final String? arn;
   /// The authentication type for the client VPC Connection.
-  final String authentication;
+  final String? authentication;
   /// The list of subnets in the client VPC.
-  final List<String> clientSubnets;
+  final List<String>? clientSubnets;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// The security groups attached to the ENIs for the broker nodes.
-  final List<String> securityGroups;
+  final List<String>? securityGroups;
   /// Map of key-value pairs assigned to the VPC Connection.
-  final Map<String, String> tags;
-  /// The Amazon Resource Name (ARN) of the cluster.
-  final String targetClusterArn;
+  final Map<String, String>? tags;
+  /// ARN of the cluster.
+  final String? targetClusterArn;
   /// The VPC ID of the remote client.
-  final String vpcId;
+  final String? vpcId;
 
   /// Creates a new [GetVpcConnectionResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [authentication] The authentication type for the client VPC Connection.
   /// [clientSubnets] The list of subnets in the client VPC.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [securityGroups] The security groups attached to the ENIs for the broker nodes.
   /// [tags] Map of key-value pairs assigned to the VPC Connection.
-  /// [targetClusterArn] The Amazon Resource Name (ARN) of the cluster.
+  /// [targetClusterArn] ARN of the cluster.
   /// [vpcId] The VPC ID of the remote client.
   const GetVpcConnectionResult({
-    required this.arn,
-    required this.authentication,
-    required this.clientSubnets,
-    required this.id,
-    required this.region,
-    required this.securityGroups,
-    required this.tags,
-    required this.targetClusterArn,
-    required this.vpcId,
+    this.arn,
+    this.authentication,
+    this.clientSubnets,
+    this.id,
+    this.region,
+    this.securityGroups,
+    this.tags,
+    this.targetClusterArn,
+    this.vpcId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'authentication': authentication,
-      'clientSubnets': clientSubnets,
-      'id': id,
-      'region': region,
-      'securityGroups': securityGroups,
-      'tags': tags,
-      'targetClusterArn': targetClusterArn,
-      'vpcId': vpcId,
+      'arn': ?arn,
+      'authentication': ?authentication,
+      'clientSubnets': ?clientSubnets,
+      'id': ?id,
+      'region': ?region,
+      'securityGroups': ?securityGroups,
+      'tags': ?tags,
+      'targetClusterArn': ?targetClusterArn,
+      'vpcId': ?vpcId,
     };
   }
 
   factory GetVpcConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetVpcConnectionResult(
-      arn: map['arn'] as String,
-      authentication: map['authentication'] as String,
-      clientSubnets: (map['clientSubnets'] as List).cast<String>(),
-      id: map['id'] as String,
-      region: map['region'] as String,
-      securityGroups: (map['securityGroups'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      targetClusterArn: map['targetClusterArn'] as String,
-      vpcId: map['vpcId'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientSubnets: (() { final guardedValue = map['clientSubnets']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityGroups: (() { final guardedValue = map['securityGroups']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      targetClusterArn: (() { final guardedValue = map['targetClusterArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,17 +9,17 @@ import 'distribution_configuration_distribution.dart';
 /// {@macro pulumi_imagebuilder_distribution_configuration_distribution_configuration_args_doc}
 class DistributionConfigurationArgs {
   /// Description of the distribution configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more configuration blocks with distribution settings. Detailed below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<DistributionConfigurationDistribution>> distributions;
   /// Name of the distribution configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the distribution configuration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DistributionConfigurationArgs].
   /// [description] Description of the distribution configuration.

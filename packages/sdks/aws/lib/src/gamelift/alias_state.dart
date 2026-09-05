@@ -6,19 +6,19 @@ import 'alias_routing_strategy.dart';
 /// Input properties used for looking up and filtering Alias resources.
 class AliasState {
   /// Alias ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the alias.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the fleet and/or routing type to use for the alias.
-  final pulumi.Input<AliasRoutingStrategy>? routingStrategy;
+  final pulumi.Input<AliasRoutingStrategy?>? routingStrategy;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AliasState].
   /// [arn] Alias ARN.

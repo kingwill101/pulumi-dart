@@ -8,7 +8,7 @@ class RoutingRuleActionInvokeApi {
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final pulumi.Input<String> stage;
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
-  final pulumi.Input<bool>? stripBasePath;
+  final pulumi.Input<bool?>? stripBasePath;
 
   /// Creates a new [RoutingRuleActionInvokeApi].
   /// [apiId] Action to invoke a stage of a target API. Only REST APIs are supported.

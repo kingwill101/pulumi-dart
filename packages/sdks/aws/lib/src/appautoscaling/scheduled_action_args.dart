@@ -9,11 +9,11 @@ import 'scheduled_action_scalable_target_action.dart';
 /// {@macro pulumi_appautoscaling_scheduled_action_scheduled_action_args_doc}
 class ScheduledActionArgs {
   /// Date and time for the scheduled action to end in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Name of the scheduled action.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the resource associated with the scheduled action. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html)
   final pulumi.Input<String> resourceId;
   /// Scalable dimension. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: ecs:service:DesiredCount
@@ -25,9 +25,9 @@ class ScheduledActionArgs {
   /// Namespace of the AWS service. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: ecs
   final pulumi.Input<String> serviceNamespace;
   /// Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `startTime` and `endTime`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
 
   /// Creates a new [ScheduledActionArgs].
   /// [endTime] Date and time for the scheduled action to end in RFC 3339 format. The timezone is not affected by the setting of `timezone`.

@@ -8,61 +8,61 @@ import 'provisioned_product_stack_set_provisioning_preferences.dart';
 /// Input properties used for looking up and filtering ProvisionedProduct resources.
 class ProvisionedProductState {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// ARN of the provisioned product.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Set of CloudWatch dashboards that were created when provisioning the product.
-  final pulumi.Input<List<String>>? cloudwatchDashboardNames;
+  final pulumi.Input<List<String>?>? cloudwatchDashboardNames;
   /// Time when the provisioned product was created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// _Only applies to deleting._ If set to `true`, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources. The default value is `false`.
-  final pulumi.Input<bool>? ignoreErrors;
+  final pulumi.Input<bool?>? ignoreErrors;
   /// Record identifier of the last request performed on this provisioned product of the following types: `ProvisionedProduct`, `UpdateProvisionedProduct`, `ExecuteProvisionedProductPlan`, `TerminateProvisionedProduct`.
-  final pulumi.Input<String>? lastProvisioningRecordId;
+  final pulumi.Input<String?>? lastProvisioningRecordId;
   /// Record identifier of the last request performed on this provisioned product.
-  final pulumi.Input<String>? lastRecordId;
+  final pulumi.Input<String?>? lastRecordId;
   /// Record identifier of the last successful request performed on this provisioned product of the following types: `ProvisionedProduct`, `UpdateProvisionedProduct`, `ExecuteProvisionedProductPlan`, `TerminateProvisionedProduct`.
-  final pulumi.Input<String>? lastSuccessfulProvisioningRecordId;
+  final pulumi.Input<String?>? lastSuccessfulProvisioningRecordId;
   /// ARN of the launch role associated with the provisioned product.
-  final pulumi.Input<String>? launchRoleArn;
+  final pulumi.Input<String?>? launchRoleArn;
   /// User-friendly name of the provisioned product.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
-  final pulumi.Input<List<String>>? notificationArns;
+  final pulumi.Input<List<String>?>? notificationArns;
   /// The set of outputs for the product created.
-  final pulumi.Input<List<ProvisionedProductOutput>>? outputs;
+  final pulumi.Input<List<ProvisionedProductOutput>?>? outputs;
   /// Path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use `aws.servicecatalog.getLaunchPaths`. When required, you must provide `pathId` or `pathName`, but not both.
-  final pulumi.Input<String>? pathId;
+  final pulumi.Input<String?>? pathId;
   /// Name of the path. You must provide `pathId` or `pathName`, but not both.
-  final pulumi.Input<String>? pathName;
+  final pulumi.Input<String?>? pathName;
   /// Product identifier. For example, `prod-abcdzk7xy33qa`. You must provide `productId` or `productName`, but not both.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// Name of the product. You must provide `productId` or `productName`, but not both.
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
   /// Identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`. You must provide the `provisioningArtifactId` or `provisioningArtifactName`, but not both.
-  final pulumi.Input<String>? provisioningArtifactId;
+  final pulumi.Input<String?>? provisioningArtifactId;
   /// Name of the provisioning artifact. You must provide the `provisioningArtifactId` or `provisioningArtifactName`, but not both.
-  final pulumi.Input<String>? provisioningArtifactName;
+  final pulumi.Input<String?>? provisioningArtifactName;
   /// Configuration block with parameters specified by the administrator that are required for provisioning the product. See `provisioningParameters` Block for details.
-  final pulumi.Input<List<ProvisionedProductProvisioningParameter>>? provisioningParameters;
+  final pulumi.Input<List<ProvisionedProductProvisioningParameter>?>? provisioningParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// _Only applies to deleting._ Whether to delete the Service Catalog provisioned product but leave the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is `false`.
-  final pulumi.Input<bool>? retainPhysicalResources;
+  final pulumi.Input<bool?>? retainPhysicalResources;
   /// Configuration block with information about the provisioning preferences for a stack set. See `stackSetProvisioningPreferences` Block for details.
-  final pulumi.Input<ProvisionedProductStackSetProvisioningPreferences>? stackSetProvisioningPreferences;
+  final pulumi.Input<ProvisionedProductStackSetProvisioningPreferences?>? stackSetProvisioningPreferences;
   /// Current status of the provisioned product. See meanings below.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Current status message of the provisioned product.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// Tags to apply to the provisioned product. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of provisioned product. Valid values are `CFN_STACK` and `CFN_STACKSET`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ProvisionedProductState].
   /// [acceptLanguage] Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.

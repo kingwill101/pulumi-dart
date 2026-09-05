@@ -12,11 +12,11 @@ class SnapshotArgs {
   /// The Identifier for the snapshot.
   final pulumi.Input<String> dbSnapshotIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
-  final pulumi.Input<List<String>>? sharedAccounts;
+  final pulumi.Input<List<String>?>? sharedAccounts;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SnapshotArgs].
   /// [dbInstanceIdentifier] The DB Instance Identifier from which to take the snapshot.

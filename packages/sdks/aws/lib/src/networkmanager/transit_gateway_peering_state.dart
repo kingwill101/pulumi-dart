@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TransitGatewayPeering resources.
 class TransitGatewayPeeringState {
   /// Peering ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ARN of the core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// ID of a core network.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// Edge location for the peer.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// ID of the account owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Type of peering. This will be `TRANSIT_GATEWAY`.
-  final pulumi.Input<String>? peeringType;
+  final pulumi.Input<String?>? peeringType;
   /// Resource ARN of the peer.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// Key-value tags for the peering. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the transit gateway for the peering request.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transitGatewayArn;
+  final pulumi.Input<String?>? transitGatewayArn;
   /// ID of the transit gateway peering attachment.
-  final pulumi.Input<String>? transitGatewayPeeringAttachmentId;
+  final pulumi.Input<String?>? transitGatewayPeeringAttachmentId;
 
   /// Creates a new [TransitGatewayPeeringState].
   /// [arn] Peering ARN.

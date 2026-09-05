@@ -229,7 +229,7 @@ class BucketResourceAccess extends pulumi.CustomResource {
           'aws:lightsail/bucketResourceAccess:BucketResourceAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     region = registerOutput<String>('region');
@@ -241,11 +241,12 @@ class BucketResourceAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketResourceAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketResourceAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,6 +260,20 @@ class BucketResourceAccess extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucketName = registerOutput<String>('bucketName');
+    region = registerOutput<String>('region');
+    resourceName = registerOutput<String>('resourceName');
+  }
+
+  /// Creates a typed reference to an existing [BucketResourceAccess] resource.
+  BucketResourceAccess.reference(String urn)
+    : super(
+        'aws:lightsail/bucketResourceAccess:BucketResourceAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucketName = registerOutput<String>('bucketName');
     region = registerOutput<String>('region');
     resourceName = registerOutput<String>('resourceName');

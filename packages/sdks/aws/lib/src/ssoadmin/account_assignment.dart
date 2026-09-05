@@ -19,13 +19,13 @@ import 'account_assignment_state.dart';
 ///     name: "AWSReadOnlyAccess",
 /// }));
 /// const exampleGetGroup = example.then(example => aws.identitystore.getGroup({
-///     identityStoreId: example.identityStoreIds?.[0],
 ///     alternateIdentifier: {
 ///         uniqueAttribute: {
 ///             attributePath: "DisplayName",
 ///             attributeValue: "ExampleGroup",
 ///         },
 ///     },
+///     identityStoreId: example.identityStoreIds?.[0],
 /// }));
 /// const exampleAccountAssignment = new aws.ssoadmin.AccountAssignment("example", {
 ///     instanceArn: example.then(example => example.arns?.[0]),
@@ -43,13 +43,13 @@ import 'account_assignment_state.dart';
 /// example = aws.ssoadmin.get_instances()
 /// example_get_permission_set = aws.ssoadmin.get_permission_set(instance_arn=example.arns[0],
 ///     name="AWSReadOnlyAccess")
-/// example_get_group = aws.identitystore.get_group(identity_store_id=example.identity_store_ids[0],
-///     alternate_identifier={
+/// example_get_group = aws.identitystore.get_group(alternate_identifier={
 ///         "unique_attribute": {
 ///             "attribute_path": "DisplayName",
 ///             "attribute_value": "ExampleGroup",
 ///         },
-///     })
+///     },
+///     identity_store_id=example.identity_store_ids[0])
 /// example_account_assignment = aws.ssoadmin.AccountAssignment("example",
 ///     instance_arn=example.arns[0],
 ///     permission_set_arn=example_get_permission_set.arn,
@@ -76,7 +76,6 @@ import 'account_assignment_state.dart';
 ///
 ///     var exampleGetGroup = Aws.IdentityStore.GetGroup.Invoke(new()
 ///     {
-///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///         AlternateIdentifier = new Aws.IdentityStore.Inputs.GetGroupAlternateIdentifierInputArgs
 ///         {
 ///             UniqueAttribute = new Aws.IdentityStore.Inputs.GetGroupAlternateIdentifierUniqueAttributeInputArgs
@@ -85,6 +84,7 @@ import 'account_assignment_state.dart';
 ///                 AttributeValue = "ExampleGroup",
 ///             },
 ///         },
+///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///     });
 ///
 ///     var exampleAccountAssignment = new Aws.SsoAdmin.AccountAssignment("example", new()
@@ -122,13 +122,13 @@ import 'account_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleGetGroup, err := identitystore.LookupGroup(ctx, &identitystore.LookupGroupArgs{
-/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 			AlternateIdentifier: identitystore.GetGroupAlternateIdentifier{
 /// 				UniqueAttribute: identitystore.GetGroupAlternateIdentifierUniqueAttribute{
 /// 					AttributePath:  "DisplayName",
 /// 					AttributeValue: "ExampleGroup",
 /// 				},
 /// 			},
+/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -164,13 +164,13 @@ import 'account_assignment_state.dart';
 ///   name         = "AWSReadOnlyAccess"
 /// }
 /// data "aws_identitystore_getgroup" "exampleGetGroup" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 ///   alternate_identifier = {
 ///     unique_attribute = {
 ///       attribute_path  = "DisplayName"
 ///       attribute_value = "ExampleGroup"
 ///     }
 ///   }
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 /// }
 ///
 /// resource "aws_ssoadmin_accountassignment" "example" {
@@ -219,13 +219,13 @@ import 'account_assignment_state.dart';
 ///             .build());
 ///
 ///         final var exampleGetGroup = IdentitystoreFunctions.getGroup(GetGroupArgs.builder()
-///             .identityStoreId(example.identityStoreIds()[0])
 ///             .alternateIdentifier(GetGroupAlternateIdentifierArgs.builder()
 ///                 .uniqueAttribute(GetGroupAlternateIdentifierUniqueAttributeArgs.builder()
 ///                     .attributePath("DisplayName")
 ///                     .attributeValue("ExampleGroup")
 ///                     .build())
 ///                 .build())
+///             .identityStoreId(example.identityStoreIds()[0])
 ///             .build());
 ///
 ///         var exampleAccountAssignment = new AccountAssignment("exampleAccountAssignment", AccountAssignmentArgs.builder()
@@ -267,11 +267,11 @@ import 'account_assignment_state.dart';
 ///     fn::invoke:
 ///       function: aws:identitystore:getGroup
 ///       arguments:
-///         identityStoreId: ${example.identityStoreIds[0]}
 ///         alternateIdentifier:
 ///           uniqueAttribute:
 ///             attributePath: DisplayName
 ///             attributeValue: ExampleGroup
+///         identityStoreId: ${example.identityStoreIds[0]}
 /// ```
 ///
 ///
@@ -606,9 +606,9 @@ import 'account_assignment_state.dart';
 /// $ pulumi import aws:ssoadmin/accountAssignment:AccountAssignment example f81d4fae-7dec-11d0-a765-00a0c91e6bf6,GROUP,1234567890,AWS_ACCOUNT,arn:aws:sso:::permissionSet/ssoins-0123456789abcdef/ps-0123456789abcdef,arn:aws:sso:::instance/ssoins-0123456789abcdef
 /// ```
 class AccountAssignment extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the SSO Instance.
+  /// ARN of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
-  /// The Amazon Resource Name (ARN) of the Permission Set that the admin wants to grant the principal access to.
+  /// ARN of the Permission Set that the admin wants to grant the principal access to.
   late final pulumi.Output<String> permissionSetArn;
   /// An identifier for an object in SSO, such as a user or group. PrincipalIds are GUIDs (For example, `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`).
   late final pulumi.Output<String> principalId;
@@ -633,7 +633,7 @@ class AccountAssignment extends pulumi.CustomResource {
           'aws:ssoadmin/accountAssignment:AccountAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
@@ -649,11 +649,12 @@ class AccountAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -667,6 +668,24 @@ class AccountAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    region = registerOutput<String>('region');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
+  }
+
+  /// Creates a typed reference to an existing [AccountAssignment] resource.
+  AccountAssignment.reference(String urn)
+    : super(
+        'aws:ssoadmin/accountAssignment:AccountAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     principalId = registerOutput<String>('principalId');

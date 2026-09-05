@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'statement_args.dart';
+import 'statement_parameter.dart';
 import 'statement_state.dart';
 
 /// Executes a Redshift Data Statement.
@@ -261,7 +262,7 @@ class Statement extends pulumi.CustomResource {
   late final pulumi.Output<String> database;
   /// The database user name.
   late final pulumi.Output<String?> dbUser;
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<StatementParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The name or ARN of the secret that enables access to the database.
@@ -289,12 +290,12 @@ class Statement extends pulumi.CustomResource {
           'aws:redshiftdata/statement:Statement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String?>('clusterIdentifier');
     database = registerOutput<String>('database');
     dbUser = registerOutput<String?>('dbUser');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<StatementParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatementParameter>(guardedValue, (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     secretArn = registerOutput<String?>('secretArn');
     sql = registerOutput<String>('sql');
@@ -308,11 +309,12 @@ class Statement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StatementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Statement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,7 +331,28 @@ class Statement extends pulumi.CustomResource {
     clusterIdentifier = registerOutput<String?>('clusterIdentifier');
     database = registerOutput<String>('database');
     dbUser = registerOutput<String?>('dbUser');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<StatementParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatementParameter>(guardedValue, (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    secretArn = registerOutput<String?>('secretArn');
+    sql = registerOutput<String>('sql');
+    statementName = registerOutput<String?>('statementName');
+    withEvent = registerOutput<bool?>('withEvent');
+    workgroupName = registerOutput<String?>('workgroupName');
+  }
+
+  /// Creates a typed reference to an existing [Statement] resource.
+  Statement.reference(String urn)
+    : super(
+        'aws:redshiftdata/statement:Statement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterIdentifier = registerOutput<String?>('clusterIdentifier');
+    database = registerOutput<String>('database');
+    dbUser = registerOutput<String?>('dbUser');
+    parameters = registerOutput<List<StatementParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatementParameter>(guardedValue, (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     secretArn = registerOutput<String?>('secretArn');
     sql = registerOutput<String>('sql');

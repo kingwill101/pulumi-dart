@@ -258,7 +258,7 @@ class PreparedStatement extends pulumi.CustomResource {
           'aws:athena/preparedStatement:PreparedStatement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -272,11 +272,12 @@ class PreparedStatement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreparedStatementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PreparedStatement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,22 @@ class PreparedStatement extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    queryStatement = registerOutput<String>('queryStatement');
+    region = registerOutput<String>('region');
+    workgroup = registerOutput<String>('workgroup');
+  }
+
+  /// Creates a typed reference to an existing [PreparedStatement] resource.
+  PreparedStatement.reference(String urn)
+    : super(
+        'aws:athena/preparedStatement:PreparedStatement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     queryStatement = registerOutput<String>('queryStatement');

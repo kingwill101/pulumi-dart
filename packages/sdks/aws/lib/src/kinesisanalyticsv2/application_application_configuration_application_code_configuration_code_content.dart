@@ -5,9 +5,9 @@ import 'application_application_configuration_application_code_configuration_cod
 
 class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent {
   /// Information about the Amazon S3 bucket containing the application code.
-  final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation>? s3ContentLocation;
+  final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation?>? s3ContentLocation;
   /// The text-format code for the application.
-  final pulumi.Input<String>? textContent;
+  final pulumi.Input<String?>? textContent;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent].
   /// [s3ContentLocation] Information about the Amazon S3 bucket containing the application code.

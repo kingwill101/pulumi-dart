@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PhoneNumberStatus {
   /// The status message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PhoneNumberStatus].
   /// [message] The status message.

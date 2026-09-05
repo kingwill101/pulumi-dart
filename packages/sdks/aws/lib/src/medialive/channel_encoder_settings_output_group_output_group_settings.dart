@@ -11,16 +11,16 @@ import 'channel_encoder_settings_output_group_output_group_settings_udp_group_se
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettings {
   /// Archive group settings. See Archive Group Settings for more details.
-  final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting>>? archiveGroupSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings>? frameCaptureGroupSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings>? hlsGroupSettings;
+  final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting>?>? archiveGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings?>? frameCaptureGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings?>? hlsGroupSettings;
   /// Media package group settings. See Media Package Group Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings>? mediaPackageGroupSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings>? msSmoothGroupSettings;
-  final pulumi.Input<Map<String, dynamic>>? multiplexGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings?>? mediaPackageGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings?>? msSmoothGroupSettings;
+  final pulumi.Input<Map<String, dynamic>?>? multiplexGroupSettings;
   /// RTMP group settings. See RTMP Group Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings>? rtmpGroupSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings>? udpGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings?>? rtmpGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings?>? udpGroupSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettings].
   /// [archiveGroupSettings] Archive group settings. See Archive Group Settings for more details.

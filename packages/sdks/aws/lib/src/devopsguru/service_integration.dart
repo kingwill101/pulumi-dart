@@ -410,7 +410,7 @@ class ServiceIntegration extends pulumi.CustomResource {
           'aws:devopsguru/serviceIntegration:ServiceIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationKmsServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationLogsAnomalyDetection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -423,11 +423,12 @@ class ServiceIntegration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceIntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceIntegration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -441,6 +442,21 @@ class ServiceIntegration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationKmsServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationLogsAnomalyDetection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationOpsCenter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ServiceIntegration] resource.
+  ServiceIntegration.reference(String urn)
+    : super(
+        'aws:devopsguru/serviceIntegration:ServiceIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationKmsServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationLogsAnomalyDetection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationOpsCenter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -5,9 +5,9 @@ import 'channel_encoder_settings_avail_blanking_avail_blanking_image.dart';
 
 class ChannelEncoderSettingsAvailBlanking {
   /// Blanking image to be used. See Avail Blanking Image for more details.
-  final pulumi.Input<ChannelEncoderSettingsAvailBlankingAvailBlankingImage>? availBlankingImage;
+  final pulumi.Input<ChannelEncoderSettingsAvailBlankingAvailBlankingImage?>? availBlankingImage;
   /// When set to enabled, causes video, audio and captions to be blanked when insertion metadata is added.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ChannelEncoderSettingsAvailBlanking].
   /// [availBlankingImage] Blanking image to be used. See Avail Blanking Image for more details.

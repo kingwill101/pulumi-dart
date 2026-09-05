@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_macie2_account_account_args_doc}
 class AccountArgs {
   /// Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events). Valid values are `FIFTEEN_MINUTES`, `ONE_HOUR` or `SIX_HOURS`.
-  final pulumi.Input<String>? findingPublishingFrequency;
+  final pulumi.Input<String?>? findingPublishingFrequency;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AccountArgs].
   /// [findingPublishingFrequency] Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events). Valid values are `FIFTEEN_MINUTES`, `ONE_HOUR` or `SIX_HOURS`.

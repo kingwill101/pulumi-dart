@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleAddHeaderAction {
-  /// The name of the header to add
+  /// Name of the header to add.
   final pulumi.Input<String> headerName;
-  /// The value of the header to add
+  /// Value of the header to add.
   final pulumi.Input<String> headerValue;
-  /// The position of the action in the receipt rule
+  /// Position of the action in the receipt rule.
   final pulumi.Input<int> position;
 
   /// Creates a new [ReceiptRuleAddHeaderAction].
-  /// [headerName] The name of the header to add
-  /// [headerValue] The value of the header to add
-  /// [position] The position of the action in the receipt rule
+  /// [headerName] Name of the header to add.
+  /// [headerValue] Value of the header to add.
+  /// [position] Position of the action in the receipt rule.
   const ReceiptRuleAddHeaderAction({
     required this.headerName,
     required this.headerValue,
@@ -32,7 +32,7 @@ class ReceiptRuleAddHeaderAction {
     return ReceiptRuleAddHeaderAction(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
-      position: pulumi.Input.fromValue(map['position'] as int),
+      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
     );
   }
 }

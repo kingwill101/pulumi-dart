@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionVgwTelemetry {
   /// The number of accepted routes.
-  final pulumi.Input<int>? acceptedRouteCount;
-  /// The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
-  final pulumi.Input<String>? certificateArn;
+  final pulumi.Input<int?>? acceptedRouteCount;
+  /// ARN of the VPN tunnel endpoint certificate.
+  final pulumi.Input<String?>? certificateArn;
   /// The date and time of the last change in status.
-  final pulumi.Input<String>? lastStatusChange;
+  final pulumi.Input<String?>? lastStatusChange;
   /// The Internet-routable IP address of the virtual private gateway's outside interface.
-  final pulumi.Input<String>? outsideIpAddress;
+  final pulumi.Input<String?>? outsideIpAddress;
   /// The status of the VPN tunnel.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// If an error occurs, a description of the error.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
 
   /// Creates a new [VpnConnectionVgwTelemetry].
   /// [acceptedRouteCount] The number of accepted routes.
-  /// [certificateArn] The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
+  /// [certificateArn] ARN of the VPN tunnel endpoint certificate.
   /// [lastStatusChange] The date and time of the last change in status.
   /// [outsideIpAddress] The Internet-routable IP address of the virtual private gateway's outside interface.
   /// [status] The status of the VPN tunnel.
@@ -45,7 +45,7 @@ class VpnConnectionVgwTelemetry {
 
   factory VpnConnectionVgwTelemetry.fromMap(Map<String, dynamic> map) {
     return VpnConnectionVgwTelemetry(
-      acceptedRouteCount: (() { final guardedValue = map['acceptedRouteCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceptedRouteCount: (() { final guardedValue = map['acceptedRouteCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       certificateArn: (() { final guardedValue = map['certificateArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastStatusChange: (() { final guardedValue = map['lastStatusChange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outsideIpAddress: (() { final guardedValue = map['outsideIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

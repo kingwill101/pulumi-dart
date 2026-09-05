@@ -5,19 +5,19 @@ import 'hyper_parameter_tuning_job_training_job_definition_hyper_parameter_tunin
 
 class HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfig {
   /// Allocation strategy for tuning resources.
-  final pulumi.Input<String>? allocationStrategy;
+  final pulumi.Input<String?>? allocationStrategy;
   /// Per-instance-type resource settings. See `instanceConfigs`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig>>? instanceConfigs;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig>?>? instanceConfigs;
   /// Number of training instances.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Training instance type.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// KMS key ID for volume encryption.
-  final pulumi.Input<String>? volumeKmsKeyId;
+  final pulumi.Input<String?>? volumeKmsKeyId;
   /// Volume size in GB.
   ///
   /// Do not set `instanceCount`, `instanceType`, or `volumeSizeInGb` when `instanceConfigs` is set.
-  final pulumi.Input<int>? volumeSizeInGb;
+  final pulumi.Input<int?>? volumeSizeInGb;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfig].
   /// [allocationStrategy] Allocation strategy for tuning resources.
@@ -50,10 +50,10 @@ class HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceCo
     return HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfig(
       allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceConfigs: (() { final guardedValue = map['instanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig>(guardedValue, (value) => HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeKmsKeyId: (() { final guardedValue = map['volumeKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

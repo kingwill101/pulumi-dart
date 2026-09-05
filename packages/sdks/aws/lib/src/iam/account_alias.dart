@@ -129,7 +129,7 @@ class AccountAlias extends pulumi.CustomResource {
           'aws:iam/accountAlias:AccountAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountAlias = registerOutput<String>('accountAlias');
   }
@@ -139,11 +139,12 @@ class AccountAlias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountAliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountAlias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -157,6 +158,18 @@ class AccountAlias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountAlias = registerOutput<String>('accountAlias');
+  }
+
+  /// Creates a typed reference to an existing [AccountAlias] resource.
+  AccountAlias.reference(String urn)
+    : super(
+        'aws:iam/accountAlias:AccountAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountAlias = registerOutput<String>('accountAlias');
   }
 }

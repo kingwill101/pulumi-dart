@@ -16,47 +16,47 @@ class EndpointArgs {
   /// Information about the authentication method to be used to authenticate clients. See `authenticationOptions` Block Reference below for details.
   final pulumi.Input<List<EndpointAuthenticationOption>> authenticationOptions;
   /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `trafficIpAddressType` is set to `ipv6`, it must not be specified. Otherwise, it is required.
-  final pulumi.Input<String>? clientCidrBlock;
+  final pulumi.Input<String?>? clientCidrBlock;
   /// The options for managing connection authorization for new client connections. See `clientConnectOptions` Block Reference below for details.
-  final pulumi.Input<EndpointClientConnectOptions>? clientConnectOptions;
+  final pulumi.Input<EndpointClientConnectOptions?>? clientConnectOptions;
   /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. See `clientLoginBannerOptions` Block Reference below for details.
-  final pulumi.Input<EndpointClientLoginBannerOptions>? clientLoginBannerOptions;
+  final pulumi.Input<EndpointClientLoginBannerOptions?>? clientLoginBannerOptions;
   /// Options for enforce administrator defined routes on devices connected through the VPN. See `clientRouteEnforcementOptions` Block Reference below for details.
-  final pulumi.Input<EndpointClientRouteEnforcementOptions>? clientRouteEnforcementOptions;
+  final pulumi.Input<EndpointClientRouteEnforcementOptions?>? clientRouteEnforcementOptions;
   /// Information about the client connection logging options. See `connectionLogOptions` Block Reference below for details.
   final pulumi.Input<EndpointConnectionLogOptions> connectionLogOptions;
   /// A brief description of the Client VPN endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether the client VPN session is disconnected after the maximum `sessionTimeoutHours` is reached. If `true`, users are prompted to reconnect client VPN. If `false`, client VPN attempts to reconnect automatically. The default value is `false`.
-  final pulumi.Input<bool>? disconnectOnSessionTimeout;
+  final pulumi.Input<bool?>? disconnectOnSessionTimeout;
   /// Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can have up to two DNS servers. If no DNS server is specified, the DNS address of the connecting device is used.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// IP address type for the Client VPN endpoint. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`.
-  final pulumi.Input<String>? endpointIpAddressType;
+  final pulumi.Input<String?>? endpointIpAddressType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups. Conflicts with `transitGatewayConfiguration`.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Specify whether to enable the self-service portal for the Client VPN endpoint. Values can be `enabled` or `disabled`. Default value is `disabled`.
-  final pulumi.Input<String>? selfServicePortal;
+  final pulumi.Input<String?>? selfServicePortal;
   /// The ARN of the ACM server certificate.
   final pulumi.Input<String> serverCertificateArn;
   /// The maximum session duration is a trigger by which end-users are required to re-authenticate prior to establishing a VPN session. Default value is `24` - Valid values: `8 | 10 | 12 | 24`
-  final pulumi.Input<int>? sessionTimeoutHours;
+  final pulumi.Input<int?>? sessionTimeoutHours;
   /// Indicates whether split-tunnel is enabled on VPN endpoint. Default value is `false`.
-  final pulumi.Input<bool>? splitTunnel;
+  final pulumi.Input<bool?>? splitTunnel;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// IP address type for traffic within the Client VPN tunnel. Valid values are `ipv4`, `ipv6`, or `dual-stack`. Defaults to `ipv4`. When it is set to `ipv6`, `clientCidrBlock` must not be specified.
-  final pulumi.Input<String>? trafficIpAddressType;
+  final pulumi.Input<String?>? trafficIpAddressType;
   /// Configuration block for associating the Client VPN endpoint with a Transit Gateway. Conflicts with `vpcId` and `securityGroupIds`. See `transitGatewayConfiguration` Block Reference below for details.
-  final pulumi.Input<EndpointTransitGatewayConfiguration>? transitGatewayConfiguration;
+  final pulumi.Input<EndpointTransitGatewayConfiguration?>? transitGatewayConfiguration;
   /// The transport protocol to be used by the VPN session. Default value is `udp`.
-  final pulumi.Input<String>? transportProtocol;
+  final pulumi.Input<String?>? transportProtocol;
   /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied. Conflicts with `transitGatewayConfiguration`.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
   /// The port number for the Client VPN endpoint. Valid values are `443` and `1194`. Default value is `443`.
-  final pulumi.Input<int>? vpnPort;
+  final pulumi.Input<int?>? vpnPort;
 
   /// Creates a new [EndpointArgs].
   /// [authenticationOptions] Information about the authentication method to be used to authenticate clients. See `authenticationOptions` Block Reference below for details.
@@ -149,14 +149,14 @@ class EndpointArgs {
       securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       selfServicePortal: (() { final guardedValue = map['selfServicePortal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverCertificateArn: pulumi.Input.fromValue(map['serverCertificateArn'] as String),
-      sessionTimeoutHours: (() { final guardedValue = map['sessionTimeoutHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionTimeoutHours: (() { final guardedValue = map['sessionTimeoutHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       splitTunnel: (() { final guardedValue = map['splitTunnel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       trafficIpAddressType: (() { final guardedValue = map['trafficIpAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transitGatewayConfiguration: (() { final guardedValue = map['transitGatewayConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vpnPort: (() { final guardedValue = map['vpnPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vpnPort: (() { final guardedValue = map['vpnPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

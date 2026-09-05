@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder {
   /// The redaction placeholder text that will replace the redacted text in session for the custom text redaction placeholder type.
-  final pulumi.Input<String>? redactionPlaceHolderText;
+  final pulumi.Input<String?>? redactionPlaceHolderText;
   /// The redaction placeholder type that will replace the redacted text in session. Currently, only `CustomText` is supported.
   final pulumi.Input<String> redactionPlaceHolderType;
 

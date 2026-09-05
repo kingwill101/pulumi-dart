@@ -10,17 +10,17 @@ import 'anomaly_subscription_threshold_expression_tags.dart';
 
 class AnomalySubscriptionThresholdExpression {
   /// Return results that match both Dimension objects.
-  final pulumi.Input<List<AnomalySubscriptionThresholdExpressionAnd>>? ands;
+  final pulumi.Input<List<AnomalySubscriptionThresholdExpressionAnd>?>? ands;
   /// Configuration block for the filter that's based on  values. See Cost Category below.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionCostCategory>? costCategory;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionCostCategory?>? costCategory;
   /// Configuration block for the specific Dimension to use for.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionDimension>? dimension;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionDimension?>? dimension;
   /// Return results that do not match the Dimension object.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionNot>? not;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionNot?>? not;
   /// Return results that match either Dimension object.
-  final pulumi.Input<List<AnomalySubscriptionThresholdExpressionOr>>? ors;
+  final pulumi.Input<List<AnomalySubscriptionThresholdExpressionOr>?>? ors;
   /// Configuration block for the specific Tag to use for. See Tags below.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionTags>? tags;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionTags?>? tags;
 
   /// Creates a new [AnomalySubscriptionThresholdExpression].
   /// [ands] Return results that match both Dimension objects.

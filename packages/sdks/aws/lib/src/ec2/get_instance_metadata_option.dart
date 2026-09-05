@@ -42,7 +42,7 @@ class GetInstanceMetadataOption {
     return GetInstanceMetadataOption(
       httpEndpoint: pulumi.Input.fromValue(map['httpEndpoint'] as String),
       httpProtocolIpv6: pulumi.Input.fromValue(map['httpProtocolIpv6'] as String),
-      httpPutResponseHopLimit: pulumi.Input.fromValue(map['httpPutResponseHopLimit'] as int),
+      httpPutResponseHopLimit: pulumi.Input.fromValue((map['httpPutResponseHopLimit'] as num).toInt()),
       httpTokens: pulumi.Input.fromValue(map['httpTokens'] as String),
       instanceMetadataTags: pulumi.Input.fromValue(map['instanceMetadataTags'] as String),
     );

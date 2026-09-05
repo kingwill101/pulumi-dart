@@ -9,8 +9,8 @@ import 'get_log_data_protection_policy_document_statement.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cloudwatch_get_log_data_protection_policy_document_get_log_data_protection_policy_document_args_doc}
 class GetLogDataProtectionPolicyDocumentArgs {
-  final pulumi.Input<GetLogDataProtectionPolicyDocumentConfiguration>? configuration;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<GetLogDataProtectionPolicyDocumentConfiguration?>? configuration;
+  final pulumi.Input<String?>? description;
   /// The name of the data protection policy document.
   final pulumi.Input<String> name;
   /// Configures the data protection policy.
@@ -19,7 +19,7 @@ class GetLogDataProtectionPolicyDocumentArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<GetLogDataProtectionPolicyDocumentStatement>> statements;
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentArgs].
   /// [configuration] Optional.

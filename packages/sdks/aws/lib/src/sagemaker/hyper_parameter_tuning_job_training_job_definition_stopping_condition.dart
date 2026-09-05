@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperParameterTuningJobTrainingJobDefinitionStoppingCondition {
   /// Maximum pending time in seconds.
-  final pulumi.Input<int>? maxPendingTimeInSeconds;
+  final pulumi.Input<int?>? maxPendingTimeInSeconds;
   /// Maximum runtime in seconds.
-  final pulumi.Input<int>? maxRuntimeInSeconds;
+  final pulumi.Input<int?>? maxRuntimeInSeconds;
   /// Maximum wait time in seconds.
-  final pulumi.Input<int>? maxWaitTimeInSeconds;
+  final pulumi.Input<int?>? maxWaitTimeInSeconds;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionStoppingCondition].
   /// [maxPendingTimeInSeconds] Maximum pending time in seconds.
@@ -30,9 +30,9 @@ class HyperParameterTuningJobTrainingJobDefinitionStoppingCondition {
 
   factory HyperParameterTuningJobTrainingJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionStoppingCondition(
-      maxPendingTimeInSeconds: (() { final guardedValue = map['maxPendingTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxWaitTimeInSeconds: (() { final guardedValue = map['maxWaitTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPendingTimeInSeconds: (() { final guardedValue = map['maxPendingTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxWaitTimeInSeconds: (() { final guardedValue = map['maxWaitTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

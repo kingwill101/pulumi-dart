@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricStreamExcludeFilter {
   /// An array that defines the metrics you want to exclude for this metric namespace
-  final pulumi.Input<List<String>>? metricNames;
+  final pulumi.Input<List<String>?>? metricNames;
   /// Name of the metric namespace in the filter.
   final pulumi.Input<String> namespace;
 

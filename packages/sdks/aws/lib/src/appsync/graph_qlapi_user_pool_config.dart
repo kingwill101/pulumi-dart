@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GraphQLApiUserPoolConfig {
   /// Regular expression for validating the incoming Amazon Cognito User Pool app client ID.
-  final pulumi.Input<String>? appIdClientRegex;
+  final pulumi.Input<String?>? appIdClientRegex;
   /// AWS region in which the user pool was created.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// Action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
   final pulumi.Input<String> defaultAction;
   /// User pool ID.

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Namespace resources.
 class NamespaceState {
   /// Date and time when the namespace was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Account ID of the account that created the namespace.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Name of the namespace. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Account ID of the account that owns the namespace.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN referencing the Table Bucket that contains this Namespace.
-  final pulumi.Input<String>? tableBucketArn;
+  final pulumi.Input<String?>? tableBucketArn;
 
   /// Creates a new [NamespaceState].
   /// [createdAt] Date and time when the namespace was created.

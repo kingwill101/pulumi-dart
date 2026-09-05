@@ -5,7 +5,7 @@ import 'theme_configuration_sheet_tile_border.dart';
 
 class ThemeConfigurationSheetTile {
   /// The border around a tile. See border.
-  final pulumi.Input<ThemeConfigurationSheetTileBorder>? border;
+  final pulumi.Input<ThemeConfigurationSheetTileBorder?>? border;
 
   /// Creates a new [ThemeConfigurationSheetTile].
   /// [border] The border around a tile. See border.

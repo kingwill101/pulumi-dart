@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMetricPairSpecification {
   final pulumi.Input<String> predefinedMetricType;
-  final pulumi.Input<String>? resourceLabel;
+  final pulumi.Input<String?>? resourceLabel;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMetricPairSpecification].
   /// [predefinedMetricType] Required.

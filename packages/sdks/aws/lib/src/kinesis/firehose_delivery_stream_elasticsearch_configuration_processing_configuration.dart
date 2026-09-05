@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_elasticsearch_configuration_processing_configur
 
 class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final pulumi.Input<List<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor>>? processors;
+  final pulumi.Input<List<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.

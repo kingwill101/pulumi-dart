@@ -19,10 +19,10 @@ import 'v2_input_source_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2InputSource("example", {
-///     serviceArn: exampleAwsResiliencehubv2Service.arn,
 ///     resourceConfiguration: {
 ///         cfnStackArn: "arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123",
 ///     },
+///     serviceArn: exampleAwsResiliencehubv2Service.arn,
 /// });
 /// ```
 /// ```python
@@ -30,10 +30,10 @@ import 'v2_input_source_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2InputSource("example",
-///     service_arn=example_aws_resiliencehubv2_service["arn"],
 ///     resource_configuration={
 ///         "cfn_stack_arn": "arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123",
-///     })
+///     },
+///     service_arn=example_aws_resiliencehubv2_service["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,11 +45,11 @@ import 'v2_input_source_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2InputSource("example", new()
 ///     {
-///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
 ///         ResourceConfiguration = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationArgs
 ///         {
 ///             CfnStackArn = "arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123",
 ///         },
+///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
 ///     });
 ///
 /// });
@@ -65,10 +65,10 @@ import 'v2_input_source_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2InputSource(ctx, "example", &resiliencehub.V2InputSourceArgs{
-/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
 /// 			ResourceConfiguration: &resiliencehub.V2InputSourceResourceConfigurationArgs{
 /// 				CfnStackArn: pulumi.String("arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123"),
 /// 			},
+/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,10 +87,10 @@ import 'v2_input_source_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2inputsource" "example" {
-///   service_arn = exampleAwsResiliencehubv2Service.arn
 ///   resource_configuration = {
 ///     cfn_stack_arn = "arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123"
 ///   }
+///   service_arn = exampleAwsResiliencehubv2Service.arn
 /// }
 /// ```
 /// ```java
@@ -116,10 +116,10 @@ import 'v2_input_source_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2InputSource("example", V2InputSourceArgs.builder()
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
 ///             .resourceConfiguration(V2InputSourceResourceConfigurationArgs.builder()
 ///                 .cfnStackArn("arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123")
 ///                 .build())
+///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
 ///             .build());
 ///
 ///     }
@@ -130,9 +130,9 @@ import 'v2_input_source_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2InputSource
 ///     properties:
-///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
 ///       resourceConfiguration:
 ///         cfnStackArn: arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123
+///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
 /// ```
 ///
 ///
@@ -144,10 +144,10 @@ import 'v2_input_source_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2InputSource("example", {
-///     serviceArn: exampleAwsResiliencehubv2Service.arn,
 ///     resourceConfiguration: {
 ///         tfStateFileUrl: "s3://my-bucket/terraform.tfstate",
 ///     },
+///     serviceArn: exampleAwsResiliencehubv2Service.arn,
 /// });
 /// ```
 /// ```python
@@ -155,10 +155,10 @@ import 'v2_input_source_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2InputSource("example",
-///     service_arn=example_aws_resiliencehubv2_service["arn"],
 ///     resource_configuration={
 ///         "tf_state_file_url": "s3://my-bucket/terraform.tfstate",
-///     })
+///     },
+///     service_arn=example_aws_resiliencehubv2_service["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -170,11 +170,11 @@ import 'v2_input_source_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2InputSource("example", new()
 ///     {
-///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
 ///         ResourceConfiguration = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationArgs
 ///         {
 ///             TfStateFileUrl = "s3://my-bucket/terraform.tfstate",
 ///         },
+///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
 ///     });
 ///
 /// });
@@ -190,10 +190,10 @@ import 'v2_input_source_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2InputSource(ctx, "example", &resiliencehub.V2InputSourceArgs{
-/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
 /// 			ResourceConfiguration: &resiliencehub.V2InputSourceResourceConfigurationArgs{
 /// 				TfStateFileUrl: pulumi.String("s3://my-bucket/terraform.tfstate"),
 /// 			},
+/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -212,10 +212,10 @@ import 'v2_input_source_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2inputsource" "example" {
-///   service_arn = exampleAwsResiliencehubv2Service.arn
 ///   resource_configuration = {
 ///     tf_state_file_url = "s3://my-bucket/terraform.tfstate"
 ///   }
+///   service_arn = exampleAwsResiliencehubv2Service.arn
 /// }
 /// ```
 /// ```java
@@ -241,10 +241,10 @@ import 'v2_input_source_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2InputSource("example", V2InputSourceArgs.builder()
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
 ///             .resourceConfiguration(V2InputSourceResourceConfigurationArgs.builder()
 ///                 .tfStateFileUrl("s3://my-bucket/terraform.tfstate")
 ///                 .build())
+///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
 ///             .build());
 ///
 ///     }
@@ -255,9 +255,9 @@ import 'v2_input_source_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2InputSource
 ///     properties:
-///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
 ///       resourceConfiguration:
 ///         tfStateFileUrl: s3://my-bucket/terraform.tfstate
+///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
 /// ```
 ///
 ///
@@ -269,7 +269,6 @@ import 'v2_input_source_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2InputSource("example", {
-///     serviceArn: exampleAwsResiliencehubv2Service.arn,
 ///     resourceConfiguration: {
 ///         eks: {
 ///             clusterArn: "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
@@ -279,6 +278,7 @@ import 'v2_input_source_state.dart';
 ///             ],
 ///         },
 ///     },
+///     serviceArn: exampleAwsResiliencehubv2Service.arn,
 /// });
 /// ```
 /// ```python
@@ -286,7 +286,6 @@ import 'v2_input_source_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2InputSource("example",
-///     service_arn=example_aws_resiliencehubv2_service["arn"],
 ///     resource_configuration={
 ///         "eks": {
 ///             "cluster_arn": "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
@@ -295,7 +294,8 @@ import 'v2_input_source_state.dart';
 ///                 "production",
 ///             ],
 ///         },
-///     })
+///     },
+///     service_arn=example_aws_resiliencehubv2_service["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -307,7 +307,6 @@ import 'v2_input_source_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2InputSource("example", new()
 ///     {
-///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
 ///         ResourceConfiguration = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationArgs
 ///         {
 ///             Eks = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationEksArgs
@@ -320,6 +319,7 @@ import 'v2_input_source_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
 ///     });
 ///
 /// });
@@ -335,7 +335,6 @@ import 'v2_input_source_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2InputSource(ctx, "example", &resiliencehub.V2InputSourceArgs{
-/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
 /// 			ResourceConfiguration: &resiliencehub.V2InputSourceResourceConfigurationArgs{
 /// 				Eks: &resiliencehub.V2InputSourceResourceConfigurationEksArgs{
 /// 					ClusterArn: pulumi.String("arn:aws:eks:us-west-2:123456789012:cluster/my-cluster"),
@@ -345,6 +344,7 @@ import 'v2_input_source_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -363,13 +363,13 @@ import 'v2_input_source_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2inputsource" "example" {
-///   service_arn = exampleAwsResiliencehubv2Service.arn
 ///   resource_configuration = {
 ///     eks = {
 ///       cluster_arn = "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster"
 ///       namespaces  = ["default", "production"]
 ///     }
 ///   }
+///   service_arn = exampleAwsResiliencehubv2Service.arn
 /// }
 /// ```
 /// ```java
@@ -396,7 +396,6 @@ import 'v2_input_source_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2InputSource("example", V2InputSourceArgs.builder()
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
 ///             .resourceConfiguration(V2InputSourceResourceConfigurationArgs.builder()
 ///                 .eks(V2InputSourceResourceConfigurationEksArgs.builder()
 ///                     .clusterArn("arn:aws:eks:us-west-2:123456789012:cluster/my-cluster")
@@ -405,6 +404,7 @@ import 'v2_input_source_state.dart';
 ///                         "production")
 ///                     .build())
 ///                 .build())
+///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
 ///             .build());
 ///
 ///     }
@@ -415,13 +415,13 @@ import 'v2_input_source_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2InputSource
 ///     properties:
-///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
 ///       resourceConfiguration:
 ///         eks:
 ///           clusterArn: arn:aws:eks:us-west-2:123456789012:cluster/my-cluster
 ///           namespaces:
 ///             - default
 ///             - production
+///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
 /// ```
 ///
 ///
@@ -469,7 +469,7 @@ class V2InputSource extends pulumi.CustomResource {
           'aws:resiliencehub/v2InputSource:V2InputSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     inputSourceId = registerOutput<String>('inputSourceId');
     region = registerOutput<String>('region');
@@ -482,11 +482,12 @@ class V2InputSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2InputSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2InputSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -500,6 +501,21 @@ class V2InputSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    inputSourceId = registerOutput<String>('inputSourceId');
+    region = registerOutput<String>('region');
+    resourceConfiguration = registerOutput<V2InputSourceResourceConfiguration>('resourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2InputSourceResourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceArn = registerOutput<String>('serviceArn');
+  }
+
+  /// Creates a typed reference to an existing [V2InputSource] resource.
+  V2InputSource.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2InputSource:V2InputSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     inputSourceId = registerOutput<String>('inputSourceId');
     region = registerOutput<String>('region');
     resourceConfiguration = registerOutput<V2InputSourceResourceConfiguration>('resourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2InputSourceResourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -8,13 +8,13 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `customPayload`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageCustomPayload>? customPayload;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageCustomPayload?>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageImageResponseCard?>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plainTextMessage`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessagePlainTextMessage?>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessageSsmlMessage?>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `customPayload`.

@@ -6,15 +6,15 @@ import 'managed_scaling_policy_compute_limit.dart';
 /// Input properties used for looking up and filtering ManagedScalingPolicy resources.
 class ManagedScalingPolicyState {
   /// ID of the EMR cluster
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// Configuration block with compute limit settings. Described below.
-  final pulumi.Input<List<ManagedScalingPolicyComputeLimit>>? computeLimits;
+  final pulumi.Input<List<ManagedScalingPolicyComputeLimit>?>? computeLimits;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the scaling strategy. When set to `ADVANCED`, the `utilizationPerformanceIndex` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
-  final pulumi.Input<String>? scalingStrategy;
+  final pulumi.Input<String?>? scalingStrategy;
   /// Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scalingStrategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
-  final pulumi.Input<int>? utilizationPerformanceIndex;
+  final pulumi.Input<int?>? utilizationPerformanceIndex;
 
   /// Creates a new [ManagedScalingPolicyState].
   /// [clusterId] ID of the EMR cluster
@@ -46,7 +46,7 @@ class ManagedScalingPolicyState {
       computeLimits: (() { final guardedValue = map['computeLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(guardedValue, (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scalingStrategy: (() { final guardedValue = map['scalingStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      utilizationPerformanceIndex: (() { final guardedValue = map['utilizationPerformanceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      utilizationPerformanceIndex: (() { final guardedValue = map['utilizationPerformanceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

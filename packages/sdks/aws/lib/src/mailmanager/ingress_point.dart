@@ -141,14 +141,14 @@ import 'ingress_point_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mailmanager.IngressPoint("example", {
-///     name: "example",
-///     type: "AUTH",
-///     ruleSetId: exampleAwsMailmanagerRuleSet.id,
-///     trafficPolicyId: exampleAwsMailmanagerTrafficPolicy.id,
 ///     ingressPointConfiguration: {
 ///         smtpPasswordWo: smtpPassword,
 ///         smtpPasswordWoVersion: 1,
 ///     },
+///     name: "example",
+///     type: "AUTH",
+///     ruleSetId: exampleAwsMailmanagerRuleSet.id,
+///     trafficPolicyId: exampleAwsMailmanagerTrafficPolicy.id,
 /// });
 /// ```
 /// ```python
@@ -156,14 +156,14 @@ import 'ingress_point_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mailmanager.IngressPoint("example",
-///     name="example",
-///     type="AUTH",
-///     rule_set_id=example_aws_mailmanager_rule_set["id"],
-///     traffic_policy_id=example_aws_mailmanager_traffic_policy["id"],
 ///     ingress_point_configuration={
 ///         "smtp_password_wo": smtp_password,
 ///         "smtp_password_wo_version": 1,
-///     })
+///     },
+///     name="example",
+///     type="AUTH",
+///     rule_set_id=example_aws_mailmanager_rule_set["id"],
+///     traffic_policy_id=example_aws_mailmanager_traffic_policy["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -175,15 +175,15 @@ import 'ingress_point_timeouts.dart';
 /// {
 ///     var example = new Aws.MailManager.IngressPoint("example", new()
 ///     {
-///         Name = "example",
-///         Type = "AUTH",
-///         RuleSetId = exampleAwsMailmanagerRuleSet.Id,
-///         TrafficPolicyId = exampleAwsMailmanagerTrafficPolicy.Id,
 ///         IngressPointConfiguration = new Aws.MailManager.Inputs.IngressPointIngressPointConfigurationArgs
 ///         {
 ///             SmtpPasswordWo = smtpPassword,
 ///             SmtpPasswordWoVersion = 1,
 ///         },
+///         Name = "example",
+///         Type = "AUTH",
+///         RuleSetId = exampleAwsMailmanagerRuleSet.Id,
+///         TrafficPolicyId = exampleAwsMailmanagerTrafficPolicy.Id,
 ///     });
 ///
 /// });
@@ -199,14 +199,14 @@ import 'ingress_point_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := mailmanager.NewIngressPoint(ctx, "example", &mailmanager.IngressPointArgs{
-/// 			Name:            pulumi.String("example"),
-/// 			Type:            pulumi.String("AUTH"),
-/// 			RuleSetId:       pulumi.Any(exampleAwsMailmanagerRuleSet.Id),
-/// 			TrafficPolicyId: pulumi.Any(exampleAwsMailmanagerTrafficPolicy.Id),
 /// 			IngressPointConfiguration: &mailmanager.IngressPointIngressPointConfigurationArgs{
 /// 				SmtpPasswordWo:        pulumi.Any(smtpPassword),
 /// 				SmtpPasswordWoVersion: pulumi.Int(1),
 /// 			},
+/// 			Name:            pulumi.String("example"),
+/// 			Type:            pulumi.String("AUTH"),
+/// 			RuleSetId:       pulumi.Any(exampleAwsMailmanagerRuleSet.Id),
+/// 			TrafficPolicyId: pulumi.Any(exampleAwsMailmanagerTrafficPolicy.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -225,14 +225,14 @@ import 'ingress_point_timeouts.dart';
 /// }
 ///
 /// resource "aws_mailmanager_ingresspoint" "example" {
-///   name              = "example"
-///   type              = "AUTH"
-///   rule_set_id       = exampleAwsMailmanagerRuleSet.id
-///   traffic_policy_id = exampleAwsMailmanagerTrafficPolicy.id
 ///   ingress_point_configuration = {
 ///     smtp_password_wo         = smtpPassword
 ///     smtp_password_wo_version = 1
 ///   }
+///   name              = "example"
+///   type              = "AUTH"
+///   rule_set_id       = exampleAwsMailmanagerRuleSet.id
+///   traffic_policy_id = exampleAwsMailmanagerTrafficPolicy.id
 /// }
 /// ```
 /// ```java
@@ -258,14 +258,14 @@ import 'ingress_point_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IngressPoint("example", IngressPointArgs.builder()
-///             .name("example")
-///             .type("AUTH")
-///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
-///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
 ///             .ingressPointConfiguration(IngressPointIngressPointConfigurationArgs.builder()
 ///                 .smtpPasswordWo(smtpPassword)
 ///                 .smtpPasswordWoVersion(1)
 ///                 .build())
+///             .name("example")
+///             .type("AUTH")
+///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
+///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
 ///             .build());
 ///
 ///     }
@@ -276,13 +276,13 @@ import 'ingress_point_timeouts.dart';
 ///   example:
 ///     type: aws:mailmanager:IngressPoint
 ///     properties:
+///       ingressPointConfiguration:
+///         smtpPasswordWo: ${smtpPassword}
+///         smtpPasswordWoVersion: 1
 ///       name: example
 ///       type: AUTH
 ///       ruleSetId: ${exampleAwsMailmanagerRuleSet.id}
 ///       trafficPolicyId: ${exampleAwsMailmanagerTrafficPolicy.id}
-///       ingressPointConfiguration:
-///         smtpPasswordWo: ${smtpPassword}
-///         smtpPasswordWoVersion: 1
 /// ```
 ///
 ///
@@ -294,15 +294,15 @@ import 'ingress_point_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mailmanager.IngressPoint("example", {
-///     name: "example",
-///     type: "OPEN",
-///     ruleSetId: exampleAwsMailmanagerRuleSet.id,
-///     trafficPolicyId: exampleAwsMailmanagerTrafficPolicy.id,
 ///     networkConfiguration: {
 ///         privateNetworkConfiguration: {
 ///             vpcEndpointId: exampleAwsVpcEndpoint.id,
 ///         },
 ///     },
+///     name: "example",
+///     type: "OPEN",
+///     ruleSetId: exampleAwsMailmanagerRuleSet.id,
+///     trafficPolicyId: exampleAwsMailmanagerTrafficPolicy.id,
 /// });
 /// ```
 /// ```python
@@ -310,15 +310,15 @@ import 'ingress_point_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mailmanager.IngressPoint("example",
-///     name="example",
-///     type="OPEN",
-///     rule_set_id=example_aws_mailmanager_rule_set["id"],
-///     traffic_policy_id=example_aws_mailmanager_traffic_policy["id"],
 ///     network_configuration={
 ///         "private_network_configuration": {
 ///             "vpc_endpoint_id": example_aws_vpc_endpoint["id"],
 ///         },
-///     })
+///     },
+///     name="example",
+///     type="OPEN",
+///     rule_set_id=example_aws_mailmanager_rule_set["id"],
+///     traffic_policy_id=example_aws_mailmanager_traffic_policy["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -330,10 +330,6 @@ import 'ingress_point_timeouts.dart';
 /// {
 ///     var example = new Aws.MailManager.IngressPoint("example", new()
 ///     {
-///         Name = "example",
-///         Type = "OPEN",
-///         RuleSetId = exampleAwsMailmanagerRuleSet.Id,
-///         TrafficPolicyId = exampleAwsMailmanagerTrafficPolicy.Id,
 ///         NetworkConfiguration = new Aws.MailManager.Inputs.IngressPointNetworkConfigurationArgs
 ///         {
 ///             PrivateNetworkConfiguration = new Aws.MailManager.Inputs.IngressPointNetworkConfigurationPrivateNetworkConfigurationArgs
@@ -341,6 +337,10 @@ import 'ingress_point_timeouts.dart';
 ///                 VpcEndpointId = exampleAwsVpcEndpoint.Id,
 ///             },
 ///         },
+///         Name = "example",
+///         Type = "OPEN",
+///         RuleSetId = exampleAwsMailmanagerRuleSet.Id,
+///         TrafficPolicyId = exampleAwsMailmanagerTrafficPolicy.Id,
 ///     });
 ///
 /// });
@@ -356,15 +356,15 @@ import 'ingress_point_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := mailmanager.NewIngressPoint(ctx, "example", &mailmanager.IngressPointArgs{
-/// 			Name:            pulumi.String("example"),
-/// 			Type:            pulumi.String("OPEN"),
-/// 			RuleSetId:       pulumi.Any(exampleAwsMailmanagerRuleSet.Id),
-/// 			TrafficPolicyId: pulumi.Any(exampleAwsMailmanagerTrafficPolicy.Id),
 /// 			NetworkConfiguration: &mailmanager.IngressPointNetworkConfigurationArgs{
 /// 				PrivateNetworkConfiguration: &mailmanager.IngressPointNetworkConfigurationPrivateNetworkConfigurationArgs{
 /// 					VpcEndpointId: pulumi.Any(exampleAwsVpcEndpoint.Id),
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("example"),
+/// 			Type:            pulumi.String("OPEN"),
+/// 			RuleSetId:       pulumi.Any(exampleAwsMailmanagerRuleSet.Id),
+/// 			TrafficPolicyId: pulumi.Any(exampleAwsMailmanagerTrafficPolicy.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -383,15 +383,15 @@ import 'ingress_point_timeouts.dart';
 /// }
 ///
 /// resource "aws_mailmanager_ingresspoint" "example" {
-///   name              = "example"
-///   type              = "OPEN"
-///   rule_set_id       = exampleAwsMailmanagerRuleSet.id
-///   traffic_policy_id = exampleAwsMailmanagerTrafficPolicy.id
 ///   network_configuration = {
 ///     private_network_configuration = {
 ///       vpc_endpoint_id = exampleAwsVpcEndpoint.id
 ///     }
 ///   }
+///   name              = "example"
+///   type              = "OPEN"
+///   rule_set_id       = exampleAwsMailmanagerRuleSet.id
+///   traffic_policy_id = exampleAwsMailmanagerTrafficPolicy.id
 /// }
 /// ```
 /// ```java
@@ -418,15 +418,15 @@ import 'ingress_point_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IngressPoint("example", IngressPointArgs.builder()
-///             .name("example")
-///             .type("OPEN")
-///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
-///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
 ///             .networkConfiguration(IngressPointNetworkConfigurationArgs.builder()
 ///                 .privateNetworkConfiguration(IngressPointNetworkConfigurationPrivateNetworkConfigurationArgs.builder()
 ///                     .vpcEndpointId(exampleAwsVpcEndpoint.id())
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .type("OPEN")
+///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
+///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
 ///             .build());
 ///
 ///     }
@@ -437,13 +437,13 @@ import 'ingress_point_timeouts.dart';
 ///   example:
 ///     type: aws:mailmanager:IngressPoint
 ///     properties:
+///       networkConfiguration:
+///         privateNetworkConfiguration:
+///           vpcEndpointId: ${exampleAwsVpcEndpoint.id}
 ///       name: example
 ///       type: OPEN
 ///       ruleSetId: ${exampleAwsMailmanagerRuleSet.id}
 ///       trafficPolicyId: ${exampleAwsMailmanagerTrafficPolicy.id}
-///       networkConfiguration:
-///         privateNetworkConfiguration:
-///           vpcEndpointId: ${exampleAwsVpcEndpoint.id}
 /// ```
 ///
 ///
@@ -513,7 +513,7 @@ class IngressPoint extends pulumi.CustomResource {
           'aws:mailmanager/ingressPoint:IngressPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aRecord = registerOutput<String>('aRecord');
     arn = registerOutput<String>('arn');
@@ -525,8 +525,8 @@ class IngressPoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleSetId = registerOutput<String>('ruleSetId');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngressPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsPolicy = registerOutput<String>('tlsPolicy');
     trafficPolicyId = registerOutput<String>('trafficPolicyId');
@@ -538,11 +538,12 @@ class IngressPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IngressPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IngressPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -566,8 +567,35 @@ class IngressPoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleSetId = registerOutput<String>('ruleSetId');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<IngressPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsPolicy = registerOutput<String>('tlsPolicy');
+    trafficPolicyId = registerOutput<String>('trafficPolicyId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IngressPoint] resource.
+  IngressPoint.reference(String urn)
+    : super(
+        'aws:mailmanager/ingressPoint:IngressPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aRecord = registerOutput<String>('aRecord');
+    arn = registerOutput<String>('arn');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    ingressPointConfiguration = registerOutput<IngressPointIngressPointConfiguration?>('ingressPointConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointIngressPointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<IngressPointNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    ruleSetId = registerOutput<String>('ruleSetId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngressPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsPolicy = registerOutput<String>('tlsPolicy');
     trafficPolicyId = registerOutput<String>('trafficPolicyId');

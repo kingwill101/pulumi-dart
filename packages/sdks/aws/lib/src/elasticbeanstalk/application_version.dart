@@ -292,7 +292,7 @@ class ApplicationVersion extends pulumi.CustomResource {
           'aws:elasticbeanstalk/applicationVersion:ApplicationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     application = registerOutput<String>('application');
     arn = registerOutput<String>('arn');
@@ -303,8 +303,8 @@ class ApplicationVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     process = registerOutput<bool?>('process');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ApplicationVersion] resource's state with the given [name] and [id].
@@ -312,11 +312,12 @@ class ApplicationVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -339,7 +340,29 @@ class ApplicationVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     process = registerOutput<bool?>('process');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationVersion] resource.
+  ApplicationVersion.reference(String urn)
+    : super(
+        'aws:elasticbeanstalk/applicationVersion:ApplicationVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    application = registerOutput<String>('application');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    description = registerOutput<String?>('description');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    key = registerOutput<String>('key');
+    this.name = registerOutput<String>('name');
+    process = registerOutput<bool?>('process');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

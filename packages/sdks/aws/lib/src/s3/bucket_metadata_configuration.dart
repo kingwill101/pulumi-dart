@@ -16,7 +16,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketMetadataConfiguration("example", {
-///     bucket: exampleAwsS3Bucket.bucket,
 ///     metadataConfiguration: {
 ///         inventoryTableConfiguration: {
 ///             configurationState: "ENABLED",
@@ -28,6 +27,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///             },
 ///         },
 ///     },
+///     bucket: exampleAwsS3Bucket.bucket,
 /// });
 /// ```
 /// ```python
@@ -35,7 +35,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketMetadataConfiguration("example",
-///     bucket=example_aws_s3_bucket["bucket"],
 ///     metadata_configuration={
 ///         "inventory_table_configuration": {
 ///             "configuration_state": "ENABLED",
@@ -46,7 +45,8 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///                 "expiration": "ENABLED",
 ///             },
 ///         },
-///     })
+///     },
+///     bucket=example_aws_s3_bucket["bucket"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,7 +58,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.BucketMetadataConfiguration("example", new()
 ///     {
-///         Bucket = exampleAwsS3Bucket.Bucket,
 ///         MetadataConfiguration = new Aws.S3.Inputs.BucketMetadataConfigurationMetadataConfigurationArgs
 ///         {
 ///             InventoryTableConfiguration = new Aws.S3.Inputs.BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationArgs
@@ -74,6 +73,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = exampleAwsS3Bucket.Bucket,
 ///     });
 ///
 /// });
@@ -89,7 +89,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketMetadataConfiguration(ctx, "example", &s3.BucketMetadataConfigurationArgs{
-/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Bucket),
 /// 			MetadataConfiguration: &s3.BucketMetadataConfigurationMetadataConfigurationArgs{
 /// 				InventoryTableConfiguration: &s3.BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationArgs{
 /// 					ConfigurationState: pulumi.String("ENABLED"),
@@ -101,6 +100,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Bucket),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -119,7 +119,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_bucketmetadataconfiguration" "example" {
-///   bucket = exampleAwsS3Bucket.bucket
 ///   metadata_configuration = {
 ///     inventory_table_configuration = {
 ///       configuration_state = "ENABLED"
@@ -131,6 +130,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///       }
 ///     }
 ///   }
+///   bucket = exampleAwsS3Bucket.bucket
 /// }
 /// ```
 /// ```java
@@ -159,7 +159,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketMetadataConfiguration("example", BucketMetadataConfigurationArgs.builder()
-///             .bucket(exampleAwsS3Bucket.bucket())
 ///             .metadataConfiguration(BucketMetadataConfigurationMetadataConfigurationArgs.builder()
 ///                 .inventoryTableConfiguration(BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationArgs.builder()
 ///                     .configurationState("ENABLED")
@@ -171,6 +170,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .bucket(exampleAwsS3Bucket.bucket())
 ///             .build());
 ///
 ///     }
@@ -181,7 +181,6 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:s3:BucketMetadataConfiguration
 ///     properties:
-///       bucket: ${exampleAwsS3Bucket.bucket}
 ///       metadataConfiguration:
 ///         inventoryTableConfiguration:
 ///           configurationState: ENABLED
@@ -189,6 +188,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///           recordExpiration:
 ///             days: 7
 ///             expiration: ENABLED
+///       bucket: ${exampleAwsS3Bucket.bucket}
 /// ```
 ///
 ///
@@ -236,7 +236,7 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
           'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
@@ -250,11 +250,12 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketMetadataConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketMetadataConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,6 +269,22 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    metadataConfiguration = registerOutput<BucketMetadataConfigurationMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BucketMetadataConfiguration] resource.
+  BucketMetadataConfiguration.reference(String urn)
+    : super(
+        'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     metadataConfiguration = registerOutput<BucketMetadataConfigurationMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

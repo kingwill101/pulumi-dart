@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ecr_repository_policy_repository_policy_args_doc}
 class RepositoryPolicyArgs {
   /// The policy document. This is a JSON formatted string.
-  final pulumi.Input<String> policy;
+  final pulumi.Input<dynamic> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the repository to apply the policy.
   final pulumi.Input<String> repository;
 
@@ -34,7 +34,7 @@ class RepositoryPolicyArgs {
 
   factory RepositoryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryPolicyArgs(
-      policy: pulumi.Input.fromValue(map['policy'] as String),
+      policy: pulumi.Input.fromValue(map['policy']),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repository: pulumi.Input.fromValue(map['repository'] as String),
     );

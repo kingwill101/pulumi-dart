@@ -24,7 +24,7 @@ class GetBucketReplicationConfigurationRule {
   final pulumi.Input<int> priority;
   /// Configuration block that specifies special object selection criteria. See `sourceSelectionCriteria` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleSourceSelectionCriteria>> sourceSelectionCriterias;
-  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRule].
@@ -36,7 +36,7 @@ class GetBucketReplicationConfigurationRule {
   /// [prefix] Object key name prefix that identifies the subset of objects to which the rule applies.
   /// [priority] Priority associated with the rule.
   /// [sourceSelectionCriterias] Configuration block that specifies special object selection criteria. See `sourceSelectionCriteria` Block below.
-  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   const GetBucketReplicationConfigurationRule({
     required this.deleteMarkerReplications,
     required this.destinations,
@@ -71,7 +71,7 @@ class GetBucketReplicationConfigurationRule {
       filters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleFilter>(map['filters']!, (value) => GetBucketReplicationConfigurationRuleFilter.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       sourceSelectionCriterias: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleSourceSelectionCriteria>(map['sourceSelectionCriterias']!, (value) => GetBucketReplicationConfigurationRuleSourceSelectionCriteria.fromMap((value as Map).cast<String, dynamic>()))),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

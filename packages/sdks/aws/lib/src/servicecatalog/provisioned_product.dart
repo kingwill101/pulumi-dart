@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'provisioned_product_args.dart';
+import 'provisioned_product_output.dart';
+import 'provisioned_product_provisioning_parameter.dart';
 import 'provisioned_product_stack_set_provisioning_preferences.dart';
 import 'provisioned_product_state.dart';
 
@@ -21,13 +23,13 @@ import 'provisioned_product_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.servicecatalog.ProvisionedProduct("example", {
-///     name: "example",
-///     productName: "Example product",
-///     provisioningArtifactName: "Example version",
 ///     provisioningParameters: [{
 ///         key: "foo",
 ///         value: "bar",
 ///     }],
+///     name: "example",
+///     productName: "Example product",
+///     provisioningArtifactName: "Example version",
 ///     tags: {
 ///         foo: "bar",
 ///     },
@@ -38,13 +40,13 @@ import 'provisioned_product_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.servicecatalog.ProvisionedProduct("example",
-///     name="example",
-///     product_name="Example product",
-///     provisioning_artifact_name="Example version",
 ///     provisioning_parameters=[{
 ///         "key": "foo",
 ///         "value": "bar",
 ///     }],
+///     name="example",
+///     product_name="Example product",
+///     provisioning_artifact_name="Example version",
 ///     tags={
 ///         "foo": "bar",
 ///     })
@@ -59,9 +61,6 @@ import 'provisioned_product_state.dart';
 /// {
 ///     var example = new Aws.ServiceCatalog.ProvisionedProduct("example", new()
 ///     {
-///         Name = "example",
-///         ProductName = "Example product",
-///         ProvisioningArtifactName = "Example version",
 ///         ProvisioningParameters = new[]
 ///         {
 ///             new Aws.ServiceCatalog.Inputs.ProvisionedProductProvisioningParameterArgs
@@ -70,6 +69,9 @@ import 'provisioned_product_state.dart';
 ///                 Value = "bar",
 ///             },
 ///         },
+///         Name = "example",
+///         ProductName = "Example product",
+///         ProvisioningArtifactName = "Example version",
 ///         Tags =
 ///         {
 ///             { "foo", "bar" },
@@ -89,15 +91,15 @@ import 'provisioned_product_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := servicecatalog.NewProvisionedProduct(ctx, "example", &servicecatalog.ProvisionedProductArgs{
-/// 			Name:                     pulumi.String("example"),
-/// 			ProductName:              pulumi.String("Example product"),
-/// 			ProvisioningArtifactName: pulumi.String("Example version"),
 /// 			ProvisioningParameters: servicecatalog.ProvisionedProductProvisioningParameterArray{
 /// 				&servicecatalog.ProvisionedProductProvisioningParameterArgs{
 /// 					Key:   pulumi.String("foo"),
 /// 					Value: pulumi.String("bar"),
 /// 				},
 /// 			},
+/// 			Name:                     pulumi.String("example"),
+/// 			ProductName:              pulumi.String("Example product"),
+/// 			ProvisioningArtifactName: pulumi.String("Example version"),
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -119,13 +121,13 @@ import 'provisioned_product_state.dart';
 /// }
 ///
 /// resource "aws_servicecatalog_provisionedproduct" "example" {
-///   name                       = "example"
-///   product_name               = "Example product"
-///   provisioning_artifact_name = "Example version"
 ///   provisioning_parameters {
 ///     key   = "foo"
 ///     value = "bar"
 ///   }
+///   name                       = "example"
+///   product_name               = "Example product"
+///   provisioning_artifact_name = "Example version"
 ///   tags = {
 ///     "foo" = "bar"
 ///   }
@@ -154,13 +156,13 @@ import 'provisioned_product_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ProvisionedProduct("example", ProvisionedProductArgs.builder()
-///             .name("example")
-///             .productName("Example product")
-///             .provisioningArtifactName("Example version")
 ///             .provisioningParameters(ProvisionedProductProvisioningParameterArgs.builder()
 ///                 .key("foo")
 ///                 .value("bar")
 ///                 .build())
+///             .name("example")
+///             .productName("Example product")
+///             .provisioningArtifactName("Example version")
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -172,12 +174,12 @@ import 'provisioned_product_state.dart';
 ///   example:
 ///     type: aws:servicecatalog:ProvisionedProduct
 ///     properties:
-///       name: example
-///       productName: Example product
-///       provisioningArtifactName: Example version
 ///       provisioningParameters:
 ///         - key: foo
 ///           value: bar
+///       name: example
+///       productName: Example product
+///       provisioningArtifactName: Example version
 ///       tags:
 ///         foo: bar
 /// ```
@@ -216,7 +218,7 @@ class ProvisionedProduct extends pulumi.CustomResource {
   /// Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
   late final pulumi.Output<List<String>?> notificationArns;
   /// The set of outputs for the product created.
-  late final pulumi.Output<List<Map<String, dynamic>>> outputs;
+  late final pulumi.Output<List<ProvisionedProductOutput>> outputs;
   /// Path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use `aws.servicecatalog.getLaunchPaths`. When required, you must provide `pathId` or `pathName`, but not both.
   late final pulumi.Output<String> pathId;
   /// Name of the path. You must provide `pathId` or `pathName`, but not both.
@@ -230,7 +232,7 @@ class ProvisionedProduct extends pulumi.CustomResource {
   /// Name of the provisioning artifact. You must provide the `provisioningArtifactId` or `provisioningArtifactName`, but not both.
   late final pulumi.Output<String?> provisioningArtifactName;
   /// Configuration block with parameters specified by the administrator that are required for provisioning the product. See `provisioningParameters` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> provisioningParameters;
+  late final pulumi.Output<List<ProvisionedProductProvisioningParameter>?> provisioningParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// _Only applies to deleting._ Whether to delete the Service Catalog provisioned product but leave the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is `false`.
@@ -260,11 +262,11 @@ class ProvisionedProduct extends pulumi.CustomResource {
           'aws:servicecatalog/provisionedProduct:ProvisionedProduct',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     arn = registerOutput<String>('arn');
-    cloudwatchDashboardNames = registerOutput<List<String>>('cloudwatchDashboardNames');
+    cloudwatchDashboardNames = registerOutput<List<String>>('cloudwatchDashboardNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdTime = registerOutput<String>('createdTime');
     ignoreErrors = registerOutput<bool?>('ignoreErrors');
     lastProvisioningRecordId = registerOutput<String>('lastProvisioningRecordId');
@@ -272,22 +274,22 @@ class ProvisionedProduct extends pulumi.CustomResource {
     lastSuccessfulProvisioningRecordId = registerOutput<String>('lastSuccessfulProvisioningRecordId');
     launchRoleArn = registerOutput<String>('launchRoleArn');
     this.name = registerOutput<String>('name');
-    notificationArns = registerOutput<List<String>?>('notificationArns');
-    outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
+    notificationArns = registerOutput<List<String>?>('notificationArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputs = registerOutput<List<ProvisionedProductOutput>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProvisionedProductOutput>(guardedValue, (value) => ProvisionedProductOutput.fromMap((value as Map).cast<String, dynamic>())); });
     pathId = registerOutput<String>('pathId');
     pathName = registerOutput<String?>('pathName');
     productId = registerOutput<String>('productId');
     productName = registerOutput<String?>('productName');
     provisioningArtifactId = registerOutput<String>('provisioningArtifactId');
     provisioningArtifactName = registerOutput<String?>('provisioningArtifactName');
-    provisioningParameters = registerOutput<List<Map<String, dynamic>>?>('provisioningParameters');
+    provisioningParameters = registerOutput<List<ProvisionedProductProvisioningParameter>?>('provisioningParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(guardedValue, (value) => ProvisionedProductProvisioningParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     retainPhysicalResources = registerOutput<bool?>('retainPhysicalResources');
     stackSetProvisioningPreferences = registerOutput<ProvisionedProductStackSetProvisioningPreferences?>('stackSetProvisioningPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedProductStackSetProvisioningPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -296,11 +298,12 @@ class ProvisionedProduct extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisionedProductState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisionedProduct._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -316,7 +319,7 @@ class ProvisionedProduct extends pulumi.CustomResource {
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     arn = registerOutput<String>('arn');
-    cloudwatchDashboardNames = registerOutput<List<String>>('cloudwatchDashboardNames');
+    cloudwatchDashboardNames = registerOutput<List<String>>('cloudwatchDashboardNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdTime = registerOutput<String>('createdTime');
     ignoreErrors = registerOutput<bool?>('ignoreErrors');
     lastProvisioningRecordId = registerOutput<String>('lastProvisioningRecordId');
@@ -324,22 +327,60 @@ class ProvisionedProduct extends pulumi.CustomResource {
     lastSuccessfulProvisioningRecordId = registerOutput<String>('lastSuccessfulProvisioningRecordId');
     launchRoleArn = registerOutput<String>('launchRoleArn');
     this.name = registerOutput<String>('name');
-    notificationArns = registerOutput<List<String>?>('notificationArns');
-    outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
+    notificationArns = registerOutput<List<String>?>('notificationArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputs = registerOutput<List<ProvisionedProductOutput>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProvisionedProductOutput>(guardedValue, (value) => ProvisionedProductOutput.fromMap((value as Map).cast<String, dynamic>())); });
     pathId = registerOutput<String>('pathId');
     pathName = registerOutput<String?>('pathName');
     productId = registerOutput<String>('productId');
     productName = registerOutput<String?>('productName');
     provisioningArtifactId = registerOutput<String>('provisioningArtifactId');
     provisioningArtifactName = registerOutput<String?>('provisioningArtifactName');
-    provisioningParameters = registerOutput<List<Map<String, dynamic>>?>('provisioningParameters');
+    provisioningParameters = registerOutput<List<ProvisionedProductProvisioningParameter>?>('provisioningParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(guardedValue, (value) => ProvisionedProductProvisioningParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     retainPhysicalResources = registerOutput<bool?>('retainPhysicalResources');
     stackSetProvisioningPreferences = registerOutput<ProvisionedProductStackSetProvisioningPreferences?>('stackSetProvisioningPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedProductStackSetProvisioningPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProvisionedProduct] resource.
+  ProvisionedProduct.reference(String urn)
+    : super(
+        'aws:servicecatalog/provisionedProduct:ProvisionedProduct',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    arn = registerOutput<String>('arn');
+    cloudwatchDashboardNames = registerOutput<List<String>>('cloudwatchDashboardNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdTime = registerOutput<String>('createdTime');
+    ignoreErrors = registerOutput<bool?>('ignoreErrors');
+    lastProvisioningRecordId = registerOutput<String>('lastProvisioningRecordId');
+    lastRecordId = registerOutput<String>('lastRecordId');
+    lastSuccessfulProvisioningRecordId = registerOutput<String>('lastSuccessfulProvisioningRecordId');
+    launchRoleArn = registerOutput<String>('launchRoleArn');
+    this.name = registerOutput<String>('name');
+    notificationArns = registerOutput<List<String>?>('notificationArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputs = registerOutput<List<ProvisionedProductOutput>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProvisionedProductOutput>(guardedValue, (value) => ProvisionedProductOutput.fromMap((value as Map).cast<String, dynamic>())); });
+    pathId = registerOutput<String>('pathId');
+    pathName = registerOutput<String?>('pathName');
+    productId = registerOutput<String>('productId');
+    productName = registerOutput<String?>('productName');
+    provisioningArtifactId = registerOutput<String>('provisioningArtifactId');
+    provisioningArtifactName = registerOutput<String?>('provisioningArtifactName');
+    provisioningParameters = registerOutput<List<ProvisionedProductProvisioningParameter>?>('provisioningParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(guardedValue, (value) => ProvisionedProductProvisioningParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    retainPhysicalResources = registerOutput<bool?>('retainPhysicalResources');
+    stackSetProvisioningPreferences = registerOutput<ProvisionedProductStackSetProvisioningPreferences?>('stackSetProvisioningPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedProductStackSetProvisioningPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

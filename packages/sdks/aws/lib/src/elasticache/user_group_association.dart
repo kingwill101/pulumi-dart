@@ -24,6 +24,8 @@ import 'user_group_association_state.dart';
 ///     engine: "REDIS",
 ///     userGroupId: "userGroupId",
 ///     userIds: [_default.userId],
+/// }, {
+///     ignoreChanges: ["userIds"],
 /// });
 /// const exampleUser = new aws.elasticache.User("example", {
 ///     userId: "exampleUserID",
@@ -50,7 +52,8 @@ import 'user_group_association_state.dart';
 /// example = aws.elasticache.UserGroup("example",
 ///     engine="REDIS",
 ///     user_group_id="userGroupId",
-///     user_ids=[default.user_id])
+///     user_ids=[default.user_id],
+///     opts = pulumi.ResourceOptions(ignore_changes=["userIds"]))
 /// example_user = aws.elasticache.User("example",
 ///     user_id="exampleUserID",
 ///     user_name="exampleuser",
@@ -88,6 +91,12 @@ import 'user_group_association_state.dart';
 ///         UserIds = new[]
 ///         {
 ///             @default.UserId,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "userIds",
 ///         },
 ///     });
 ///
@@ -139,7 +148,9 @@ import 'user_group_association_state.dart';
 /// 			UserIds: pulumi.StringArray{
 /// 				_default.UserId,
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"userIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -183,6 +194,9 @@ import 'user_group_association_state.dart';
 ///   passwords     = ["password123456789"]
 /// }
 /// resource "aws_elasticache_usergroup" "example" {
+///   lifecycle {
+///     ignore_changes = [userIds]
+///   }
 ///   engine        = "REDIS"
 ///   user_group_id = "userGroupId"
 ///   user_ids      = [aws_elasticache_user.default.user_id]
@@ -211,6 +225,7 @@ import 'user_group_association_state.dart';
 /// import com.pulumi.aws.elasticache.UserGroupArgs;
 /// import com.pulumi.aws.elasticache.UserGroupAssociation;
 /// import com.pulumi.aws.elasticache.UserGroupAssociationArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -236,7 +251,9 @@ import 'user_group_association_state.dart';
 ///             .engine("REDIS")
 ///             .userGroupId("userGroupId")
 ///             .userIds(default_.userId())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("userIds")
+///                 .build());
 ///
 ///         var exampleUser = new User("exampleUser", UserArgs.builder()
 ///             .userId("exampleUserID")
@@ -272,6 +289,9 @@ import 'user_group_association_state.dart';
 ///       userGroupId: userGroupId
 ///       userIds:
 ///         - ${default.userId}
+///     options:
+///       ignoreChanges:
+///         - userIds
 ///   exampleUser:
 ///     type: aws:elasticache:User
 ///     name: example
@@ -318,7 +338,7 @@ class UserGroupAssociation extends pulumi.CustomResource {
           'aws:elasticache/userGroupAssociation:UserGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     userGroupId = registerOutput<String>('userGroupId');
@@ -330,11 +350,12 @@ class UserGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -348,6 +369,20 @@ class UserGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    userGroupId = registerOutput<String>('userGroupId');
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [UserGroupAssociation] resource.
+  UserGroupAssociation.reference(String urn)
+    : super(
+        'aws:elasticache/userGroupAssociation:UserGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     userGroupId = registerOutput<String>('userGroupId');
     userId = registerOutput<String>('userId');

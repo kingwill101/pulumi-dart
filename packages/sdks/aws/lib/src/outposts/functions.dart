@@ -32,6 +32,17 @@ Future<GetAssetResult> getAsset(
   return GetAssetResult.fromMap(result);
 }
 
+pulumi.Output<GetAssetResult> getAssetOutput(
+  GetAssetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getAsset:getAsset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssetResult.fromMap);
+}
+
 /// Information about hardware assets in an Outpost.
 ///
 /// ## Example Usage
@@ -384,6 +395,17 @@ Future<GetAssetsResult> getAssets(
   return GetAssetsResult.fromMap(result);
 }
 
+pulumi.Output<GetAssetsResult> getAssetsOutput(
+  GetAssetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getAssets:getAssets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssetsResult.fromMap);
+}
+
 /// Provides details about an Outposts Outpost.
 ///
 /// ## Example Usage
@@ -500,6 +522,17 @@ Future<GetOutpostResult> getOutpost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOutpostResult.fromMap(result);
+}
+
+pulumi.Output<GetOutpostResult> getOutpostOutput(
+  GetOutpostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getOutpost:getOutpost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutpostResult.fromMap);
 }
 
 /// Information about single Outpost Instance Type.
@@ -674,6 +707,17 @@ Future<GetOutpostInstanceTypeResult> getOutpostInstanceType(
   return GetOutpostInstanceTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetOutpostInstanceTypeResult> getOutpostInstanceTypeOutput(
+  GetOutpostInstanceTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getOutpostInstanceType:getOutpostInstanceType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutpostInstanceTypeResult.fromMap);
+}
+
 /// Information about Outposts Instance Types.
 ///
 /// ## Example Usage
@@ -790,6 +834,17 @@ Future<GetOutpostInstanceTypesResult> getOutpostInstanceTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOutpostInstanceTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetOutpostInstanceTypesResult> getOutpostInstanceTypesOutput(
+  GetOutpostInstanceTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getOutpostInstanceTypes:getOutpostInstanceTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutpostInstanceTypesResult.fromMap);
 }
 
 /// Provides details about multiple Outposts.
@@ -910,6 +965,17 @@ Future<GetOutpostsResult> getOutposts(
   return GetOutpostsResult.fromMap(result);
 }
 
+pulumi.Output<GetOutpostsResult> getOutpostsOutput(
+  GetOutpostsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getOutposts:getOutposts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutpostsResult.fromMap);
+}
+
 /// Provides details about an Outposts Site.
 ///
 /// ## Example Usage
@@ -1028,6 +1094,17 @@ Future<GetSiteResult> getSite(
   return GetSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetSiteResult> getSiteOutput(
+  GetSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getSite:getSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteResult.fromMap);
+}
+
 /// Provides details about multiple Outposts Sites.
 ///
 /// ## Example Usage
@@ -1134,4 +1211,15 @@ Future<GetSitesResult> getSites(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSitesResult.fromMap(result);
+}
+
+pulumi.Output<GetSitesResult> getSitesOutput(
+  GetSitesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:outposts/getSites:getSites',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSitesResult.fromMap);
 }

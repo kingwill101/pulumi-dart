@@ -6,27 +6,27 @@ import 'connection_function_connection_function_config.dart';
 /// Input properties used for looking up and filtering ConnectionFunction resources.
 class ConnectionFunctionState {
   /// ARN of the connection function.
-  final pulumi.Input<String>? connectionFunctionArn;
+  final pulumi.Input<String?>? connectionFunctionArn;
   /// Code for the connection function. Maximum length is 40960 characters.
-  final pulumi.Input<String>? connectionFunctionCode;
+  final pulumi.Input<String?>? connectionFunctionCode;
   /// Configuration information for the connection function. See `connectionFunctionConfig` below.
-  final pulumi.Input<ConnectionFunctionConnectionFunctionConfig>? connectionFunctionConfig;
+  final pulumi.Input<ConnectionFunctionConnectionFunctionConfig?>? connectionFunctionConfig;
   /// ETag of the connection function.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// ETag of the function's LIVE stage. Will be empty if the function has not been published.
-  final pulumi.Input<String>? liveStageEtag;
+  final pulumi.Input<String?>? liveStageEtag;
   /// Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
-  final pulumi.Input<bool>? publish;
+  final pulumi.Input<bool?>? publish;
   /// Status of the connection function.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ConnectionFunctionState].
   /// [connectionFunctionArn] ARN of the connection function.

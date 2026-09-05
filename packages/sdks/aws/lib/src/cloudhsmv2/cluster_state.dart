@@ -6,29 +6,29 @@ import 'cluster_cluster_certificate.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// The list of cluster certificates.
-  final pulumi.Input<List<ClusterClusterCertificate>>? clusterCertificates;
+  final pulumi.Input<List<ClusterClusterCertificate>?>? clusterCertificates;
   /// The id of the CloudHSM cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The state of the CloudHSM cluster.
-  final pulumi.Input<String>? clusterState;
+  final pulumi.Input<String?>? clusterState;
   /// The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
-  final pulumi.Input<String>? hsmType;
+  final pulumi.Input<String?>? hsmType;
   /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsmType` is `hsm2m.medium`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the security group associated with the CloudHSM cluster.
-  final pulumi.Input<String>? securityGroupId;
+  final pulumi.Input<String?>? securityGroupId;
   /// ID of Cloud HSM v2 cluster backup to be restored.
-  final pulumi.Input<String>? sourceBackupIdentifier;
+  final pulumi.Input<String?>? sourceBackupIdentifier;
   /// The IDs of subnets in which cluster will operate.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The id of the VPC that the CloudHSM cluster resides in.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ClusterState].
   /// [clusterCertificates] The list of cluster certificates.

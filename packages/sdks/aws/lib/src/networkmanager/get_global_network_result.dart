@@ -4,46 +4,46 @@
 /// Result data returned by getGlobalNetwork.
 class GetGlobalNetworkResult {
   /// ARN of the global network.
-  final String arn;
+  final String? arn;
   /// Description of the global network.
-  final String description;
-  final String globalNetworkId;
+  final String? description;
+  final String? globalNetworkId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Map of resource tags.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetGlobalNetworkResult].
   /// [arn] ARN of the global network.
   /// [description] Description of the global network.
-  /// [globalNetworkId] Required.
+  /// [globalNetworkId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [tags] Map of resource tags.
   const GetGlobalNetworkResult({
-    required this.arn,
-    required this.description,
-    required this.globalNetworkId,
-    required this.id,
-    required this.tags,
+    this.arn,
+    this.description,
+    this.globalNetworkId,
+    this.id,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'globalNetworkId': globalNetworkId,
-      'id': id,
-      'tags': tags,
+      'arn': ?arn,
+      'description': ?description,
+      'globalNetworkId': ?globalNetworkId,
+      'id': ?id,
+      'tags': ?tags,
     };
   }
 
   factory GetGlobalNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      globalNetworkId: map['globalNetworkId'] as String,
-      id: map['id'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      globalNetworkId: (() { final guardedValue = map['globalNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

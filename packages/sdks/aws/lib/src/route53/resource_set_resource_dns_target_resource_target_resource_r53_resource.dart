@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceSetResourceDnsTargetResourceTargetResourceR53Resource {
   /// Domain name that is targeted.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Resource record set ID that is targeted.
-  final pulumi.Input<String>? recordSetId;
+  final pulumi.Input<String?>? recordSetId;
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResourceR53Resource].
   /// [domainName] Domain name that is targeted.

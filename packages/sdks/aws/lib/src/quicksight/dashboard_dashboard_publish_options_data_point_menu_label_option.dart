@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardDashboardPublishOptionsDataPointMenuLabelOption {
   /// Availability status. Possibles values: ENABLED, DISABLED.
-  final pulumi.Input<String>? availabilityStatus;
+  final pulumi.Input<String?>? availabilityStatus;
 
   /// Creates a new [DashboardDashboardPublishOptionsDataPointMenuLabelOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.

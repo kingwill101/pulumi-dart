@@ -12,20 +12,20 @@ import 'user_profile_user_settings_canvas_app_settings_workspace_settings.dart';
 
 class UserProfileUserSettingsCanvasAppSettings {
   /// The model deployment settings for the SageMaker AI Canvas application. See Direct Deploy Settings below.
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings>? directDeploySettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings?>? directDeploySettings;
   /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emrServerlessSettings` Block below.
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings>? emrServerlessSettings;
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings>? generativeAiSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings?>? emrServerlessSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings?>? generativeAiSettings;
   /// The settings for connecting to an external data source with OAuth. See Identity Provider OAuth Settings below.
-  final pulumi.Input<List<UserProfileUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>>? identityProviderOauthSettings;
+  final pulumi.Input<List<UserProfileUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>?>? identityProviderOauthSettings;
   /// The settings for document querying. See Kendra Settings below.
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsKendraSettings>? kendraSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsKendraSettings?>? kendraSettings;
   /// The model registry settings for the SageMaker AI Canvas application. See Model Register Settings below.
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings>? modelRegisterSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings?>? modelRegisterSettings;
   /// Time series forecast settings for the Canvas app. See Time Series Forecasting Settings below.
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings>? timeSeriesForecastingSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings?>? timeSeriesForecastingSettings;
   /// The workspace settings for the SageMaker AI Canvas application. See Workspace Settings below.
-  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsWorkspaceSettings>? workspaceSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsWorkspaceSettings?>? workspaceSettings;
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettings].
   /// [directDeploySettings] The model deployment settings for the SageMaker AI Canvas application. See Direct Deploy Settings below.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CostAllocationTag resources.
 class CostAllocationTagState {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The key for the cost allocation tag.
-  final pulumi.Input<String>? tagKey;
+  final pulumi.Input<String?>? tagKey;
   /// The type of cost allocation tag.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CostAllocationTagState].
   /// [status] The status of a cost allocation tag. Valid values are `Active` and `Inactive`.

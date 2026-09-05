@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementOrStatement {
   /// List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatement>>? statements;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatement>?>? statements;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementOrStatement].
   /// [statements] List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.

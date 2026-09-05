@@ -7,17 +7,17 @@ import 'service_service_connect_configuration_service_tls.dart';
 
 class ServiceServiceConnectConfigurationService {
   /// List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `clientAlias` with one `port` should be specified. See below.
-  final pulumi.Input<List<ServiceServiceConnectConfigurationServiceClientAlias>>? clientAlias;
+  final pulumi.Input<List<ServiceServiceConnectConfigurationServiceClientAlias>?>? clientAlias;
   /// Name of the new AWS Cloud Map service that Amazon ECS creates for this Amazon ECS service.
-  final pulumi.Input<String>? discoveryName;
+  final pulumi.Input<String?>? discoveryName;
   /// Port number for the Service Connect proxy to listen on.
-  final pulumi.Input<int>? ingressPortOverride;
+  final pulumi.Input<int?>? ingressPortOverride;
   /// Name of one of the `portMappings` from all the containers in the task definition of this Amazon ECS service.
   final pulumi.Input<String> portName;
   /// Configuration timeouts for Service Connect
-  final pulumi.Input<ServiceServiceConnectConfigurationServiceTimeout>? timeout;
-  /// Configuration for enabling Transport Layer Security (TLS)
-  final pulumi.Input<ServiceServiceConnectConfigurationServiceTls>? tls;
+  final pulumi.Input<ServiceServiceConnectConfigurationServiceTimeout?>? timeout;
+  /// Configuration for enabling TLS
+  final pulumi.Input<ServiceServiceConnectConfigurationServiceTls?>? tls;
 
   /// Creates a new [ServiceServiceConnectConfigurationService].
   /// [clientAlias] List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `clientAlias` with one `port` should be specified. See below.
@@ -25,7 +25,7 @@ class ServiceServiceConnectConfigurationService {
   /// [ingressPortOverride] Port number for the Service Connect proxy to listen on.
   /// [portName] Name of one of the `portMappings` from all the containers in the task definition of this Amazon ECS service.
   /// [timeout] Configuration timeouts for Service Connect
-  /// [tls] Configuration for enabling Transport Layer Security (TLS)
+  /// [tls] Configuration for enabling TLS
   const ServiceServiceConnectConfigurationService({
     this.clientAlias,
     this.discoveryName,
@@ -50,7 +50,7 @@ class ServiceServiceConnectConfigurationService {
     return ServiceServiceConnectConfigurationService(
       clientAlias: (() { final guardedValue = map['clientAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAlias>(guardedValue, (value) => ServiceServiceConnectConfigurationServiceClientAlias.fromMap((value as Map).cast<String, dynamic>()))); })(),
       discoveryName: (() { final guardedValue = map['discoveryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ingressPortOverride: (() { final guardedValue = map['ingressPortOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ingressPortOverride: (() { final guardedValue = map['ingressPortOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       portName: pulumi.Input.fromValue(map['portName'] as String),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceServiceConnectConfigurationServiceTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceServiceConnectConfigurationServiceTls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

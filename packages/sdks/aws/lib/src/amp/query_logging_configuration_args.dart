@@ -12,8 +12,8 @@ class QueryLoggingConfigurationArgs {
   /// Configuration block for the logging destinations. See `destinations`.
   final pulumi.Input<List<QueryLoggingConfigurationDestination>> destinations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<QueryLoggingConfigurationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<QueryLoggingConfigurationTimeouts?>? timeouts;
   /// The ID of the AMP workspace for which to configure query logging.
   ///
   /// The following arguments are optional:

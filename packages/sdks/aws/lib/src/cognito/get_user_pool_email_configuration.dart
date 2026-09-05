@@ -11,7 +11,7 @@ class GetUserPoolEmailConfiguration {
   final pulumi.Input<String> from;
   /// - Reply-to email address.
   final pulumi.Input<String> replyToEmailAddress;
-  /// - Source Amazon Resource Name (ARN) for emails.
+  /// - Source ARN for emails.
   final pulumi.Input<String> sourceArn;
 
   /// Creates a new [GetUserPoolEmailConfiguration].
@@ -19,7 +19,7 @@ class GetUserPoolEmailConfiguration {
   /// [emailSendingAccount] - Email sending account.
   /// [from] - Email sender address.
   /// [replyToEmailAddress] - Reply-to email address.
-  /// [sourceArn] - Source Amazon Resource Name (ARN) for emails.
+  /// [sourceArn] - Source ARN for emails.
   const GetUserPoolEmailConfiguration({
     required this.configurationSet,
     required this.emailSendingAccount,

@@ -3,6 +3,7 @@ import 'budget_action_action_threshold.dart';
 import 'budget_action_args.dart';
 import 'budget_action_definition.dart';
 import 'budget_action_state.dart';
+import 'budget_action_subscriber.dart';
 
 /// Provides a budget action resource. Budget actions are cost savings controls that run either automatically on your behalf or by using a workflow approval process.
 ///
@@ -28,11 +29,11 @@ import 'budget_action_state.dart';
 /// const current = aws.getPartition({});
 /// const assumeRole = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: [`budgets.${current.dnsSuffix}`],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// }));
@@ -49,11 +50,6 @@ import 'budget_action_state.dart';
 ///     timeUnit: "MONTHLY",
 /// });
 /// const exampleBudgetAction = new aws.budgets.BudgetAction("example", {
-///     budgetName: exampleBudget.name,
-///     actionType: "APPLY_IAM_POLICY",
-///     approvalModel: "AUTOMATIC",
-///     notificationType: "ACTUAL",
-///     executionRoleArn: exampleRole.arn,
 ///     actionThreshold: {
 ///         actionThresholdType: "ABSOLUTE_VALUE",
 ///         actionThresholdValue: 100,
@@ -68,6 +64,11 @@ import 'budget_action_state.dart';
 ///         address: "example@example.example",
 ///         subscriptionType: "EMAIL",
 ///     }],
+///     budgetName: exampleBudget.name,
+///     actionType: "APPLY_IAM_POLICY",
+///     approvalModel: "AUTOMATIC",
+///     notificationType: "ACTUAL",
+///     executionRoleArn: exampleRole.arn,
 ///     tags: {
 ///         Tag1: "Value1",
 ///         Tag2: "Value2",
@@ -89,11 +90,11 @@ import 'budget_action_state.dart';
 ///     policy=example.json)
 /// current = aws.get_partition()
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": [f"budgets.{current.dns_suffix}"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
@@ -107,11 +108,6 @@ import 'budget_action_state.dart';
 ///     time_period_start="2006-01-02_15:04",
 ///     time_unit="MONTHLY")
 /// example_budget_action = aws.budgets.BudgetAction("example",
-///     budget_name=example_budget.name,
-///     action_type="APPLY_IAM_POLICY",
-///     approval_model="AUTOMATIC",
-///     notification_type="ACTUAL",
-///     execution_role_arn=example_role.arn,
 ///     action_threshold={
 ///         "action_threshold_type": "ABSOLUTE_VALUE",
 ///         "action_threshold_value": float(100),
@@ -126,6 +122,11 @@ import 'budget_action_state.dart';
 ///         "address": "example@example.example",
 ///         "subscription_type": "EMAIL",
 ///     }],
+///     budget_name=example_budget.name,
+///     action_type="APPLY_IAM_POLICY",
+///     approval_model="AUTOMATIC",
+///     notification_type="ACTUAL",
+///     execution_role_arn=example_role.arn,
 ///     tags={
 ///         "Tag1": "Value1",
 ///         "Tag2": "Value2",
@@ -173,7 +174,6 @@ import 'budget_action_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -185,6 +185,7 @@ import 'budget_action_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -211,11 +212,6 @@ import 'budget_action_state.dart';
 ///
 ///     var exampleBudgetAction = new Aws.Budgets.BudgetAction("example", new()
 ///     {
-///         BudgetName = exampleBudget.Name,
-///         ActionType = "APPLY_IAM_POLICY",
-///         ApprovalModel = "AUTOMATIC",
-///         NotificationType = "ACTUAL",
-///         ExecutionRoleArn = exampleRole.Arn,
 ///         ActionThreshold = new Aws.Budgets.Inputs.BudgetActionActionThresholdArgs
 ///         {
 ///             ActionThresholdType = "ABSOLUTE_VALUE",
@@ -240,6 +236,11 @@ import 'budget_action_state.dart';
 ///                 SubscriptionType = "EMAIL",
 ///             },
 ///         },
+///         BudgetName = exampleBudget.Name,
+///         ActionType = "APPLY_IAM_POLICY",
+///         ApprovalModel = "AUTOMATIC",
+///         NotificationType = "ACTUAL",
+///         ExecutionRoleArn = exampleRole.Arn,
 ///         Tags =
 ///         {
 ///             { "Tag1", "Value1" },
@@ -294,7 +295,6 @@ import 'budget_action_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -303,6 +303,7 @@ import 'budget_action_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -331,11 +332,6 @@ import 'budget_action_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = budgets.NewBudgetAction(ctx, "example", &budgets.BudgetActionArgs{
-/// 			BudgetName:       exampleBudget.Name,
-/// 			ActionType:       pulumi.String("APPLY_IAM_POLICY"),
-/// 			ApprovalModel:    pulumi.String("AUTOMATIC"),
-/// 			NotificationType: pulumi.String("ACTUAL"),
-/// 			ExecutionRoleArn: exampleRole.Arn,
 /// 			ActionThreshold: &budgets.BudgetActionActionThresholdArgs{
 /// 				ActionThresholdType:  pulumi.String("ABSOLUTE_VALUE"),
 /// 				ActionThresholdValue: pulumi.Float64(100),
@@ -354,6 +350,11 @@ import 'budget_action_state.dart';
 /// 					SubscriptionType: pulumi.String("EMAIL"),
 /// 				},
 /// 			},
+/// 			BudgetName:       exampleBudget.Name,
+/// 			ActionType:       pulumi.String("APPLY_IAM_POLICY"),
+/// 			ApprovalModel:    pulumi.String("AUTOMATIC"),
+/// 			NotificationType: pulumi.String("ACTUAL"),
+/// 			ExecutionRoleArn: exampleRole.Arn,
 /// 			Tags: pulumi.StringMap{
 /// 				"Tag1": pulumi.String("Value1"),
 /// 				"Tag2": pulumi.String("Value2"),
@@ -386,21 +387,16 @@ import 'budget_action_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["budgets.${data.aws_getpartition.current.dns_suffix}"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
 /// resource "aws_budgets_budgetaction" "example" {
-///   budget_name        = aws_budgets_budget.example.name
-///   action_type        = "APPLY_IAM_POLICY"
-///   approval_model     = "AUTOMATIC"
-///   notification_type  = "ACTUAL"
-///   execution_role_arn = aws_iam_role.example.arn
 ///   action_threshold = {
 ///     action_threshold_type  = "ABSOLUTE_VALUE"
 ///     action_threshold_value = 100
@@ -415,6 +411,11 @@ import 'budget_action_state.dart';
 ///     address           = "example@example.example"
 ///     subscription_type = "EMAIL"
 ///   }
+///   budget_name        = aws_budgets_budget.example.name
+///   action_type        = "APPLY_IAM_POLICY"
+///   approval_model     = "AUTOMATIC"
+///   notification_type  = "ACTUAL"
+///   execution_role_arn = aws_iam_role.example.arn
 ///   tags = {
 ///     "Tag1" = "Value1"
 ///     "Tag2" = "Value2"
@@ -494,11 +495,11 @@ import 'budget_action_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers(String.format("budgets.%s", current.dnsSuffix()))
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -518,11 +519,6 @@ import 'budget_action_state.dart';
 ///             .build());
 ///
 ///         var exampleBudgetAction = new BudgetAction("exampleBudgetAction", BudgetActionArgs.builder()
-///             .budgetName(exampleBudget.name())
-///             .actionType("APPLY_IAM_POLICY")
-///             .approvalModel("AUTOMATIC")
-///             .notificationType("ACTUAL")
-///             .executionRoleArn(exampleRole.arn())
 ///             .actionThreshold(BudgetActionActionThresholdArgs.builder()
 ///                 .actionThresholdType("ABSOLUTE_VALUE")
 ///                 .actionThresholdValue(100.0)
@@ -537,6 +533,11 @@ import 'budget_action_state.dart';
 ///                 .address("example@example.example")
 ///                 .subscriptionType("EMAIL")
 ///                 .build())
+///             .budgetName(exampleBudget.name())
+///             .actionType("APPLY_IAM_POLICY")
+///             .approvalModel("AUTOMATIC")
+///             .notificationType("ACTUAL")
+///             .executionRoleArn(exampleRole.arn())
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Tag1", "Value1"),
 ///                 Map.entry("Tag2", "Value2")
@@ -552,11 +553,6 @@ import 'budget_action_state.dart';
 ///     type: aws:budgets:BudgetAction
 ///     name: example
 ///     properties:
-///       budgetName: ${exampleBudget.name}
-///       actionType: APPLY_IAM_POLICY
-///       approvalModel: AUTOMATIC
-///       notificationType: ACTUAL
-///       executionRoleArn: ${exampleRole.arn}
 ///       actionThreshold:
 ///         actionThresholdType: ABSOLUTE_VALUE
 ///         actionThresholdValue: 100
@@ -568,6 +564,11 @@ import 'budget_action_state.dart';
 ///       subscribers:
 ///         - address: example@example.example
 ///           subscriptionType: EMAIL
+///       budgetName: ${exampleBudget.name}
+///       actionType: APPLY_IAM_POLICY
+///       approvalModel: AUTOMATIC
+///       notificationType: ACTUAL
+///       executionRoleArn: ${exampleRole.arn}
 ///       tags:
 ///         Tag1: Value1
 ///         Tag2: Value2
@@ -614,11 +615,11 @@ import 'budget_action_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - budgets.${current.dnsSuffix}
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -655,7 +656,7 @@ class BudgetAction extends pulumi.CustomResource {
   /// The status of the budget action.
   late final pulumi.Output<String> status;
   /// A list of subscribers. See Subscriber.
-  late final pulumi.Output<List<Map<String, dynamic>>> subscribers;
+  late final pulumi.Output<List<BudgetActionSubscriber>> subscribers;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -673,7 +674,7 @@ class BudgetAction extends pulumi.CustomResource {
           'aws:budgets/budgetAction:BudgetAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     actionId = registerOutput<String>('actionId');
@@ -686,9 +687,9 @@ class BudgetAction extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     notificationType = registerOutput<String>('notificationType');
     status = registerOutput<String>('status');
-    subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subscribers = registerOutput<List<BudgetActionSubscriber>>('subscribers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetActionSubscriber>(guardedValue, (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [BudgetAction] resource's state with the given [name] and [id].
@@ -696,11 +697,12 @@ class BudgetAction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BudgetActionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BudgetAction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -725,8 +727,33 @@ class BudgetAction extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     notificationType = registerOutput<String>('notificationType');
     status = registerOutput<String>('status');
-    subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subscribers = registerOutput<List<BudgetActionSubscriber>>('subscribers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetActionSubscriber>(guardedValue, (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BudgetAction] resource.
+  BudgetAction.reference(String urn)
+    : super(
+        'aws:budgets/budgetAction:BudgetAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    actionId = registerOutput<String>('actionId');
+    actionThreshold = registerOutput<BudgetActionActionThreshold>('actionThreshold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetActionActionThreshold.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    actionType = registerOutput<String>('actionType');
+    approvalModel = registerOutput<String>('approvalModel');
+    arn = registerOutput<String>('arn');
+    budgetName = registerOutput<String>('budgetName');
+    definition = registerOutput<BudgetActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    notificationType = registerOutput<String>('notificationType');
+    status = registerOutput<String>('status');
+    subscribers = registerOutput<List<BudgetActionSubscriber>>('subscribers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetActionSubscriber>(guardedValue, (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

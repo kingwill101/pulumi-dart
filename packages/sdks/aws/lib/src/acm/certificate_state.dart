@@ -9,49 +9,49 @@ import 'certificate_validation_option.dart';
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
   /// ARN of the certificate
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<String>? certificateAuthorityArn;
-  final pulumi.Input<String>? certificateBody;
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<String?>? certificateAuthorityArn;
+  final pulumi.Input<String?>? certificateBody;
+  final pulumi.Input<String?>? certificateChain;
   /// Domain to be validated
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Set of domain validation objects which can be used to complete certificate validation.
   /// Can have more than one element, e.g., if SANs are defined.
   /// Only set if `DNS`-validation was used.
-  final pulumi.Input<List<CertificateDomainValidationOption>>? domainValidationOptions;
-  final pulumi.Input<String>? earlyRenewalDuration;
-  final pulumi.Input<String>? keyAlgorithm;
+  final pulumi.Input<List<CertificateDomainValidationOption>?>? domainValidationOptions;
+  final pulumi.Input<String?>? earlyRenewalDuration;
+  final pulumi.Input<String?>? keyAlgorithm;
   /// Expiration date and time of the certificate.
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// Start of the validity period of the certificate.
-  final pulumi.Input<String>? notBefore;
-  final pulumi.Input<CertificateOptions>? options;
+  final pulumi.Input<String?>? notBefore;
+  final pulumi.Input<CertificateOptions?>? options;
   /// `true` if a Private certificate eligible for managed renewal is within the `earlyRenewalDuration` period.
-  final pulumi.Input<bool>? pendingRenewal;
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<bool?>? pendingRenewal;
+  final pulumi.Input<String?>? privateKey;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  final pulumi.Input<String>? privateKeyWo;
-  final pulumi.Input<int>? privateKeyWoVersion;
+  final pulumi.Input<String?>? privateKeyWo;
+  final pulumi.Input<int?>? privateKeyWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the certificate is eligible for managed renewal.
-  final pulumi.Input<String>? renewalEligibility;
+  final pulumi.Input<String?>? renewalEligibility;
   /// Contains information about the status of ACM's [managed renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for the certificate.
-  final pulumi.Input<List<CertificateRenewalSummary>>? renewalSummaries;
+  final pulumi.Input<List<CertificateRenewalSummary>?>? renewalSummaries;
   /// Status of the certificate.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Source of the certificate.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// List of addresses that received a validation email. Only set if `EMAIL` validation was used.
-  final pulumi.Input<List<String>>? validationEmails;
-  final pulumi.Input<String>? validationMethod;
-  final pulumi.Input<List<CertificateValidationOption>>? validationOptions;
+  final pulumi.Input<List<String>?>? validationEmails;
+  final pulumi.Input<String?>? validationMethod;
+  final pulumi.Input<List<CertificateValidationOption>?>? validationOptions;
 
   /// Creates a new [CertificateState].
   /// [arn] ARN of the certificate
@@ -156,7 +156,7 @@ class CertificateState {
       pendingRenewal: (() { final guardedValue = map['pendingRenewal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKeyWo: (() { final guardedValue = map['privateKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       renewalEligibility: (() { final guardedValue = map['renewalEligibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       renewalSummaries: (() { final guardedValue = map['renewalSummaries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateRenewalSummary>(guardedValue, (value) => CertificateRenewalSummary.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -15,16 +15,16 @@ class AnomalyDetectorArgs {
   /// Configuration block for the anomaly detector algorithm. See `configuration` below.
   final pulumi.Input<AnomalyDetectorConfiguration> configuration;
   /// Interval in seconds at which the anomaly detector evaluates data.
-  final pulumi.Input<int>? evaluationIntervalInSeconds;
+  final pulumi.Input<int?>? evaluationIntervalInSeconds;
   /// Map of label key-value pairs used to scope the anomaly detector to specific time series.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configuration block for the action to take when data is missing. See `missingDataAction` below.
   final pulumi.Input<AnomalyDetectorMissingDataAction> missingDataAction;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AnomalyDetectorTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AnomalyDetectorTimeouts?>? timeouts;
   /// ID of the AMP workspace in which to create the anomaly detector.
   ///
   /// The following arguments are optional:
@@ -70,7 +70,7 @@ class AnomalyDetectorArgs {
     return AnomalyDetectorArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
       configuration: pulumi.Input.fromValue(AnomalyDetectorConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
-      evaluationIntervalInSeconds: (() { final guardedValue = map['evaluationIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationIntervalInSeconds: (() { final guardedValue = map['evaluationIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       missingDataAction: pulumi.Input.fromValue(AnomalyDetectorMissingDataAction.fromMap((map['missingDataAction']! as Map).cast<String, dynamic>())),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

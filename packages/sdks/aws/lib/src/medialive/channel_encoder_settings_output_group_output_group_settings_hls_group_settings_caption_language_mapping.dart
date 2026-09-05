@@ -28,7 +28,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping(
-      captionChannel: pulumi.Input.fromValue(map['captionChannel'] as int),
+      captionChannel: pulumi.Input.fromValue((map['captionChannel'] as num).toInt()),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       languageDescription: pulumi.Input.fromValue(map['languageDescription'] as String),
     );

@@ -112,7 +112,7 @@ import 'resolver_firewall_domain_list_state.dart';
 /// $ pulumi import aws:route53/resolverFirewallDomainList:ResolverFirewallDomainList example rslvr-fdl-0123456789abcdef
 /// ```
 class ResolverFirewallDomainList extends pulumi.CustomResource {
-  /// The ARN (Amazon Resource Name) of the domain list.
+  /// ARN of the domain list.
   late final pulumi.Output<String> arn;
   /// A array of domains for the firewall domain list.
   late final pulumi.Output<List<String>?> domains;
@@ -137,14 +137,14 @@ class ResolverFirewallDomainList extends pulumi.CustomResource {
           'aws:route53/resolverFirewallDomainList:ResolverFirewallDomainList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    domains = registerOutput<List<String>?>('domains');
+    domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResolverFirewallDomainList] resource's state with the given [name] and [id].
@@ -152,11 +152,12 @@ class ResolverFirewallDomainList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverFirewallDomainListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverFirewallDomainList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,10 +172,27 @@ class ResolverFirewallDomainList extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    domains = registerOutput<List<String>?>('domains');
+    domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResolverFirewallDomainList] resource.
+  ResolverFirewallDomainList.reference(String urn)
+    : super(
+        'aws:route53/resolverFirewallDomainList:ResolverFirewallDomainList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

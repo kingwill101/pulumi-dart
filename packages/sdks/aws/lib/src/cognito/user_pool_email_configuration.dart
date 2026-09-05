@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolEmailConfiguration {
   /// Email configuration set name from SES.
-  final pulumi.Input<String>? configurationSet;
+  final pulumi.Input<String?>? configurationSet;
   /// Email delivery method to use. `COGNITO_DEFAULT` for the default email functionality built into Cognito or `DEVELOPER` to use your Amazon SES configuration. Required to be `DEVELOPER` if `fromEmailAddress` is set.
-  final pulumi.Input<String>? emailSendingAccount;
+  final pulumi.Input<String?>? emailSendingAccount;
   /// Sender’s email address or sender’s display name with their email address (e.g., `john@example.com`, `John Smith &lt;john@example.com&gt;` or `\"John Smith Ph.D.\" &lt;john@example.com&gt;`). Escaped double quotes are required around display names that contain certain characters as specified in [RFC 5322](https://tools.ietf.org/html/rfc5322).
-  final pulumi.Input<String>? fromEmailAddress;
+  final pulumi.Input<String?>? fromEmailAddress;
   /// REPLY-TO email address.
-  final pulumi.Input<String>? replyToEmailAddress;
+  final pulumi.Input<String?>? replyToEmailAddress;
   /// ARN of the SES verified email identity to use. Required if `emailSendingAccount` is set to `DEVELOPER`.
-  final pulumi.Input<String>? sourceArn;
+  final pulumi.Input<String?>? sourceArn;
 
   /// Creates a new [UserPoolEmailConfiguration].
   /// [configurationSet] Email configuration set name from SES.

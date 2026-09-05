@@ -5,7 +5,7 @@ import 'experiment_template_experiment_report_configuration_outputs_s3_configura
 
 class ExperimentTemplateExperimentReportConfigurationOutputs {
   /// Data sources for the experiment report. See below.
-  final pulumi.Input<ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration>? s3Configuration;
+  final pulumi.Input<ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration?>? s3Configuration;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationOutputs].
   /// [s3Configuration] Data sources for the experiment report. See below.

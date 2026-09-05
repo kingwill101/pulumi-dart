@@ -5,11 +5,11 @@ import 'telemetry_rule_for_organization_rule_destination_configuration_waf_loggi
 
 class TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilter {
   /// Action to take for matching log records. Valid values: `KEEP`, `DROP`.
-  final pulumi.Input<String>? behavior;
+  final pulumi.Input<String?>? behavior;
   /// Conditions that determine if a log record matches this filter. See `conditions` below.
-  final pulumi.Input<List<TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterCondition>>? conditions;
+  final pulumi.Input<List<TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterCondition>?>? conditions;
   /// Whether the log record must meet all conditions or any condition. Valid values: `MEETS_ALL`, `MEETS_ANY`.
-  final pulumi.Input<String>? requirement;
+  final pulumi.Input<String?>? requirement;
 
   /// Creates a new [TelemetryRuleForOrganizationRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilter].
   /// [behavior] Action to take for matching log records. Valid values: `KEEP`, `DROP`.

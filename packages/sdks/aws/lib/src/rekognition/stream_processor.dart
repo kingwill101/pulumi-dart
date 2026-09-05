@@ -4,6 +4,7 @@ import 'stream_processor_data_sharing_preference.dart';
 import 'stream_processor_input.dart';
 import 'stream_processor_notification_channel.dart';
 import 'stream_processor_output.dart';
+import 'stream_processor_regions_of_interest.dart';
 import 'stream_processor_settings.dart';
 import 'stream_processor_state.dart';
 import 'stream_processor_timeouts.dart';
@@ -32,7 +33,6 @@ import 'stream_processor_timeouts.dart';
 ///     mediaType: "video/h264",
 /// });
 /// const exampleRole = new aws.iam.Role("example", {
-///     name: "example-role",
 ///     inlinePolicies: [{
 ///         name: "Rekognition-Access",
 ///         policy: pulumi.jsonStringify({
@@ -59,6 +59,7 @@ import 'stream_processor_timeouts.dart';
 ///             ],
 ///         }),
 ///     }],
+///     name: "example-role",
 ///     assumeRolePolicy: JSON.stringify({
 ///         Version: "2012-10-17",
 ///         Statement: [{
@@ -71,8 +72,6 @@ import 'stream_processor_timeouts.dart';
 ///     }),
 /// });
 /// const exampleStreamProcessor = new aws.rekognition.StreamProcessor("example", {
-///     roleArn: exampleRole.arn,
-///     name: "example-processor",
 ///     dataSharingPreference: {
 ///         optIn: false,
 ///     },
@@ -97,6 +96,8 @@ import 'stream_processor_timeouts.dart';
 ///     notificationChannel: {
 ///         snsTopicArn: exampleTopic.arn,
 ///     },
+///     roleArn: exampleRole.arn,
+///     name: "example-processor",
 /// });
 /// ```
 /// ```python
@@ -112,7 +113,6 @@ import 'stream_processor_timeouts.dart';
 ///     device_name="kinesis-video-device-name",
 ///     media_type="video/h264")
 /// example_role = aws.iam.Role("example",
-///     name="example-role",
 ///     inline_policies=[{
 ///         "name": "Rekognition-Access",
 ///         "policy": pulumi.Output.json_dumps({
@@ -139,6 +139,7 @@ import 'stream_processor_timeouts.dart';
 ///             ],
 ///         }),
 ///     }],
+///     name="example-role",
 ///     assume_role_policy=json.dumps({
 ///         "Version": "2012-10-17",
 ///         "Statement": [{
@@ -150,8 +151,6 @@ import 'stream_processor_timeouts.dart';
 ///         }],
 ///     }))
 /// example_stream_processor = aws.rekognition.StreamProcessor("example",
-///     role_arn=example_role.arn,
-///     name="example-processor",
 ///     data_sharing_preference={
 ///         "opt_in": False,
 ///     },
@@ -175,7 +174,9 @@ import 'stream_processor_timeouts.dart';
 ///     },
 ///     notification_channel={
 ///         "sns_topic_arn": example_topic.arn,
-///     })
+///     },
+///     role_arn=example_role.arn,
+///     name="example-processor")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -206,7 +207,6 @@ import 'stream_processor_timeouts.dart';
 ///
 ///     var exampleRole = new Aws.Iam.Role("example", new()
 ///     {
-///         Name = "example-role",
 ///         InlinePolicies = new[]
 ///         {
 ///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
@@ -258,6 +258,7 @@ import 'stream_processor_timeouts.dart';
 ///                 })),
 ///             },
 ///         },
+///         Name = "example-role",
 ///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///         {
 ///             ["Version"] = "2012-10-17",
@@ -278,8 +279,6 @@ import 'stream_processor_timeouts.dart';
 ///
 ///     var exampleStreamProcessor = new Aws.Rekognition.StreamProcessor("example", new()
 ///     {
-///         RoleArn = exampleRole.Arn,
-///         Name = "example-processor",
 ///         DataSharingPreference = new Aws.Rekognition.Inputs.StreamProcessorDataSharingPreferenceArgs
 ///         {
 ///             OptIn = false,
@@ -313,6 +312,8 @@ import 'stream_processor_timeouts.dart';
 ///         {
 ///             SnsTopicArn = exampleTopic.Arn,
 ///         },
+///         RoleArn = exampleRole.Arn,
+///         Name = "example-processor",
 ///     });
 ///
 /// });
@@ -372,7 +373,6 @@ import 'stream_processor_timeouts.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleRole, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// 			Name: pulumi.String("example-role"),
 /// 			InlinePolicies: iam.RoleInlinePolicyArray{
 /// 				&iam.RoleInlinePolicyArgs{
 /// 					Name: pulumi.String("Rekognition-Access"),
@@ -422,14 +422,13 @@ import 'stream_processor_timeouts.dart';
 /// 					}).(pulumi.StringOutput),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example-role"),
 /// 			AssumeRolePolicy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = rekognition.NewStreamProcessor(ctx, "example", &rekognition.StreamProcessorArgs{
-/// 			RoleArn: exampleRole.Arn,
-/// 			Name:    pulumi.String("example-processor"),
 /// 			DataSharingPreference: &rekognition.StreamProcessorDataSharingPreferenceArgs{
 /// 				OptIn: pulumi.Bool(false),
 /// 			},
@@ -454,6 +453,8 @@ import 'stream_processor_timeouts.dart';
 /// 			NotificationChannel: &rekognition.StreamProcessorNotificationChannelArgs{
 /// 				SnsTopicArn: exampleTopic.Arn,
 /// 			},
+/// 			RoleArn: exampleRole.Arn,
+/// 			Name:    pulumi.String("example-processor"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -484,7 +485,6 @@ import 'stream_processor_timeouts.dart';
 ///   media_type              = "video/h264"
 /// }
 /// resource "aws_iam_role" "example" {
-///   name = "example-role"
 ///   inline_policies {
 ///     name = "Rekognition-Access"
 ///     policy = jsonencode({
@@ -504,6 +504,7 @@ import 'stream_processor_timeouts.dart';
 ///       }]
 ///     })
 ///   }
+///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
@@ -516,8 +517,6 @@ import 'stream_processor_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_rekognition_streamprocessor" "example" {
-///   role_arn = aws_iam_role.example.arn
-///   name     = "example-processor"
 ///   data_sharing_preference = {
 ///     opt_in = false
 ///   }
@@ -539,6 +538,8 @@ import 'stream_processor_timeouts.dart';
 ///   notification_channel = {
 ///     sns_topic_arn = aws_sns_topic.example.arn
 ///   }
+///   role_arn = aws_iam_role.example.arn
+///   name     = "example-processor"
 /// }
 /// ```
 /// ```java
@@ -596,7 +597,6 @@ import 'stream_processor_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleRole = new Role("exampleRole", RoleArgs.builder()
-///             .name("example-role")
 ///             .inlinePolicies(RoleInlinePolicyArgs.builder()
 ///                 .name("Rekognition-Access")
 ///                 .policy(Output.tuple(example.arn(), exampleTopic.arn(), exampleVideoStream.arn()).applyValue(values -> {
@@ -629,6 +629,7 @@ import 'stream_processor_timeouts.dart';
 ///                         ));
 ///                 }))
 ///                 .build())
+///             .name("example-role")
 ///             .assumeRolePolicy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -643,8 +644,6 @@ import 'stream_processor_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleStreamProcessor = new StreamProcessor("exampleStreamProcessor", StreamProcessorArgs.builder()
-///             .roleArn(exampleRole.arn())
-///             .name("example-processor")
 ///             .dataSharingPreference(StreamProcessorDataSharingPreferenceArgs.builder()
 ///                 .optIn(false)
 ///                 .build())
@@ -668,6 +667,8 @@ import 'stream_processor_timeouts.dart';
 ///             .notificationChannel(StreamProcessorNotificationChannelArgs.builder()
 ///                 .snsTopicArn(exampleTopic.arn())
 ///                 .build())
+///             .roleArn(exampleRole.arn())
+///             .name("example-processor")
 ///             .build());
 ///
 ///     }
@@ -696,7 +697,6 @@ import 'stream_processor_timeouts.dart';
 ///     type: aws:iam:Role
 ///     name: example
 ///     properties:
-///       name: example-role
 ///       inlinePolicies:
 ///         - name: Rekognition-Access
 ///           policy:
@@ -719,6 +719,7 @@ import 'stream_processor_timeouts.dart';
 ///                   Effect: Allow
 ///                   Resource:
 ///                     - ${exampleVideoStream.arn}
+///       name: example-role
 ///       assumeRolePolicy:
 ///         fn::toJSON:
 ///           Version: 2012-10-17
@@ -731,8 +732,6 @@ import 'stream_processor_timeouts.dart';
 ///     type: aws:rekognition:StreamProcessor
 ///     name: example
 ///     properties:
-///       roleArn: ${exampleRole.arn}
-///       name: example-processor
 ///       dataSharingPreference:
 ///         optIn: false
 ///       output:
@@ -748,6 +747,8 @@ import 'stream_processor_timeouts.dart';
 ///           arn: ${exampleVideoStream.arn}
 ///       notificationChannel:
 ///         snsTopicArn: ${exampleTopic.arn}
+///       roleArn: ${exampleRole.arn}
+///       name: example-processor
 /// ```
 ///
 ///
@@ -769,7 +770,6 @@ import 'stream_processor_timeouts.dart';
 ///     shardCount: 1,
 /// });
 /// const exampleRole = new aws.iam.Role("example", {
-///     name: "example-role",
 ///     inlinePolicies: [{
 ///         name: "Rekognition-Access",
 ///         policy: pulumi.jsonStringify({
@@ -791,6 +791,7 @@ import 'stream_processor_timeouts.dart';
 ///             ],
 ///         }),
 ///     }],
+///     name: "example-role",
 ///     assumeRolePolicy: JSON.stringify({
 ///         Version: "2012-10-17",
 ///         Statement: [{
@@ -804,10 +805,23 @@ import 'stream_processor_timeouts.dart';
 /// });
 /// const exampleCollection = new aws.rekognition.Collection("example", {collectionId: "example-collection"});
 /// const exampleStreamProcessor = new aws.rekognition.StreamProcessor("example", {
-///     roleArn: exampleRole.arn,
-///     name: "example-processor",
 ///     dataSharingPreference: {
 ///         optIn: false,
+///     },
+///     input: {
+///         kinesisVideoStream: {
+///             arn: example.arn,
+///         },
+///     },
+///     output: {
+///         kinesisDataStream: {
+///             arn: exampleStream.arn,
+///         },
+///     },
+///     settings: {
+///         faceSearch: {
+///             collectionId: exampleCollection.id,
+///         },
 ///     },
 ///     regionsOfInterests: [{
 ///         polygons: [
@@ -825,21 +839,8 @@ import 'stream_processor_timeouts.dart';
 ///             },
 ///         ],
 ///     }],
-///     input: {
-///         kinesisVideoStream: {
-///             arn: example.arn,
-///         },
-///     },
-///     output: {
-///         kinesisDataStream: {
-///             arn: exampleStream.arn,
-///         },
-///     },
-///     settings: {
-///         faceSearch: {
-///             collectionId: exampleCollection.id,
-///         },
-///     },
+///     roleArn: exampleRole.arn,
+///     name: "example-processor",
 /// });
 /// ```
 /// ```python
@@ -856,7 +857,6 @@ import 'stream_processor_timeouts.dart';
 ///     name="pulumi-kinesis-example",
 ///     shard_count=1)
 /// example_role = aws.iam.Role("example",
-///     name="example-role",
 ///     inline_policies=[{
 ///         "name": "Rekognition-Access",
 ///         "policy": pulumi.Output.json_dumps({
@@ -878,6 +878,7 @@ import 'stream_processor_timeouts.dart';
 ///             ],
 ///         }),
 ///     }],
+///     name="example-role",
 ///     assume_role_policy=json.dumps({
 ///         "Version": "2012-10-17",
 ///         "Statement": [{
@@ -890,10 +891,23 @@ import 'stream_processor_timeouts.dart';
 ///     }))
 /// example_collection = aws.rekognition.Collection("example", collection_id="example-collection")
 /// example_stream_processor = aws.rekognition.StreamProcessor("example",
-///     role_arn=example_role.arn,
-///     name="example-processor",
 ///     data_sharing_preference={
 ///         "opt_in": False,
+///     },
+///     input={
+///         "kinesis_video_stream": {
+///             "arn": example.arn,
+///         },
+///     },
+///     output={
+///         "kinesis_data_stream": {
+///             "arn": example_stream.arn,
+///         },
+///     },
+///     settings={
+///         "face_search": {
+///             "collection_id": example_collection.id,
+///         },
 ///     },
 ///     regions_of_interests=[{
 ///         "polygons": [
@@ -911,21 +925,8 @@ import 'stream_processor_timeouts.dart';
 ///             },
 ///         ],
 ///     }],
-///     input={
-///         "kinesis_video_stream": {
-///             "arn": example.arn,
-///         },
-///     },
-///     output={
-///         "kinesis_data_stream": {
-///             "arn": example_stream.arn,
-///         },
-///     },
-///     settings={
-///         "face_search": {
-///             "collection_id": example_collection.id,
-///         },
-///     })
+///     role_arn=example_role.arn,
+///     name="example-processor")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -952,7 +953,6 @@ import 'stream_processor_timeouts.dart';
 ///
 ///     var exampleRole = new Aws.Iam.Role("example", new()
 ///     {
-///         Name = "example-role",
 ///         InlinePolicies = new[]
 ///         {
 ///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
@@ -992,6 +992,7 @@ import 'stream_processor_timeouts.dart';
 ///                 })),
 ///             },
 ///         },
+///         Name = "example-role",
 ///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///         {
 ///             ["Version"] = "2012-10-17",
@@ -1017,11 +1018,30 @@ import 'stream_processor_timeouts.dart';
 ///
 ///     var exampleStreamProcessor = new Aws.Rekognition.StreamProcessor("example", new()
 ///     {
-///         RoleArn = exampleRole.Arn,
-///         Name = "example-processor",
 ///         DataSharingPreference = new Aws.Rekognition.Inputs.StreamProcessorDataSharingPreferenceArgs
 ///         {
 ///             OptIn = false,
+///         },
+///         Input = new Aws.Rekognition.Inputs.StreamProcessorInputArgs
+///         {
+///             KinesisVideoStream = new Aws.Rekognition.Inputs.StreamProcessorInputKinesisVideoStreamArgs
+///             {
+///                 Arn = example.Arn,
+///             },
+///         },
+///         Output = new Aws.Rekognition.Inputs.StreamProcessorOutputArgs
+///         {
+///             KinesisDataStream = new Aws.Rekognition.Inputs.StreamProcessorOutputKinesisDataStreamArgs
+///             {
+///                 Arn = exampleStream.Arn,
+///             },
+///         },
+///         Settings = new Aws.Rekognition.Inputs.StreamProcessorSettingsArgs
+///         {
+///             FaceSearch = new Aws.Rekognition.Inputs.StreamProcessorSettingsFaceSearchArgs
+///             {
+///                 CollectionId = exampleCollection.Id,
+///             },
 ///         },
 ///         RegionsOfInterests = new[]
 ///         {
@@ -1047,27 +1067,8 @@ import 'stream_processor_timeouts.dart';
 ///                 },
 ///             },
 ///         },
-///         Input = new Aws.Rekognition.Inputs.StreamProcessorInputArgs
-///         {
-///             KinesisVideoStream = new Aws.Rekognition.Inputs.StreamProcessorInputKinesisVideoStreamArgs
-///             {
-///                 Arn = example.Arn,
-///             },
-///         },
-///         Output = new Aws.Rekognition.Inputs.StreamProcessorOutputArgs
-///         {
-///             KinesisDataStream = new Aws.Rekognition.Inputs.StreamProcessorOutputKinesisDataStreamArgs
-///             {
-///                 Arn = exampleStream.Arn,
-///             },
-///         },
-///         Settings = new Aws.Rekognition.Inputs.StreamProcessorSettingsArgs
-///         {
-///             FaceSearch = new Aws.Rekognition.Inputs.StreamProcessorSettingsFaceSearchArgs
-///             {
-///                 CollectionId = exampleCollection.Id,
-///             },
-///         },
+///         RoleArn = exampleRole.Arn,
+///         Name = "example-processor",
 ///     });
 ///
 /// });
@@ -1119,7 +1120,6 @@ import 'stream_processor_timeouts.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleRole, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// 			Name: pulumi.String("example-role"),
 /// 			InlinePolicies: iam.RoleInlinePolicyArray{
 /// 				&iam.RoleInlinePolicyArgs{
 /// 					Name: pulumi.String("Rekognition-Access"),
@@ -1159,6 +1159,7 @@ import 'stream_processor_timeouts.dart';
 /// 					}).(pulumi.StringOutput),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example-role"),
 /// 			AssumeRolePolicy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -1171,10 +1172,23 @@ import 'stream_processor_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = rekognition.NewStreamProcessor(ctx, "example", &rekognition.StreamProcessorArgs{
-/// 			RoleArn: exampleRole.Arn,
-/// 			Name:    pulumi.String("example-processor"),
 /// 			DataSharingPreference: &rekognition.StreamProcessorDataSharingPreferenceArgs{
 /// 				OptIn: pulumi.Bool(false),
+/// 			},
+/// 			Input: &rekognition.StreamProcessorInputTypeArgs{
+/// 				KinesisVideoStream: &rekognition.StreamProcessorInputKinesisVideoStreamArgs{
+/// 					Arn: example.Arn,
+/// 				},
+/// 			},
+/// 			Output: &rekognition.StreamProcessorOutputTypeArgs{
+/// 				KinesisDataStream: &rekognition.StreamProcessorOutputKinesisDataStreamArgs{
+/// 					Arn: exampleStream.Arn,
+/// 				},
+/// 			},
+/// 			Settings: &rekognition.StreamProcessorSettingsArgs{
+/// 				FaceSearch: &rekognition.StreamProcessorSettingsFaceSearchArgs{
+/// 					CollectionId: exampleCollection.ID().ToIDOutput().ToStringOutput(),
+/// 				},
 /// 			},
 /// 			RegionsOfInterests: rekognition.StreamProcessorRegionsOfInterestArray{
 /// 				&rekognition.StreamProcessorRegionsOfInterestArgs{
@@ -1194,21 +1208,8 @@ import 'stream_processor_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Input: &rekognition.StreamProcessorInputTypeArgs{
-/// 				KinesisVideoStream: &rekognition.StreamProcessorInputKinesisVideoStreamArgs{
-/// 					Arn: example.Arn,
-/// 				},
-/// 			},
-/// 			Output: &rekognition.StreamProcessorOutputTypeArgs{
-/// 				KinesisDataStream: &rekognition.StreamProcessorOutputKinesisDataStreamArgs{
-/// 					Arn: exampleStream.Arn,
-/// 				},
-/// 			},
-/// 			Settings: &rekognition.StreamProcessorSettingsArgs{
-/// 				FaceSearch: &rekognition.StreamProcessorSettingsFaceSearchArgs{
-/// 					CollectionId: exampleCollection.ID().ToIDOutput().ToStringOutput(),
-/// 				},
-/// 			},
+/// 			RoleArn: exampleRole.Arn,
+/// 			Name:    pulumi.String("example-processor"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1237,7 +1238,6 @@ import 'stream_processor_timeouts.dart';
 ///   shard_count = 1
 /// }
 /// resource "aws_iam_role" "example" {
-///   name = "example-role"
 ///   inline_policies {
 ///     name = "Rekognition-Access"
 ///     policy = jsonencode({
@@ -1253,6 +1253,7 @@ import 'stream_processor_timeouts.dart';
 ///       }]
 ///     })
 ///   }
+///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
@@ -1268,24 +1269,8 @@ import 'stream_processor_timeouts.dart';
 ///   collection_id = "example-collection"
 /// }
 /// resource "aws_rekognition_streamprocessor" "example" {
-///   role_arn = aws_iam_role.example.arn
-///   name     = "example-processor"
 ///   data_sharing_preference = {
 ///     opt_in = false
-///   }
-///   regions_of_interests {
-///     polygons {
-///       x = 0.5
-///       y = 0.5
-///     }
-///     polygons {
-///       x = 0.5
-///       y = 0.5
-///     }
-///     polygons {
-///       x = 0.5
-///       y = 0.5
-///     }
 ///   }
 ///   input = {
 ///     kinesis_video_stream = {
@@ -1302,6 +1287,22 @@ import 'stream_processor_timeouts.dart';
 ///       collection_id = aws_rekognition_collection.example.id
 ///     }
 ///   }
+///   regions_of_interests {
+///     polygons {
+///       x = 0.5
+///       y = 0.5
+///     }
+///     polygons {
+///       x = 0.5
+///       y = 0.5
+///     }
+///     polygons {
+///       x = 0.5
+///       y = 0.5
+///     }
+///   }
+///   role_arn = aws_iam_role.example.arn
+///   name     = "example-processor"
 /// }
 /// ```
 /// ```java
@@ -1322,14 +1323,14 @@ import 'stream_processor_timeouts.dart';
 /// import com.pulumi.aws.rekognition.StreamProcessor;
 /// import com.pulumi.aws.rekognition.StreamProcessorArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorDataSharingPreferenceArgs;
-/// import com.pulumi.aws.rekognition.inputs.StreamProcessorRegionsOfInterestArgs;
-/// import com.pulumi.aws.rekognition.inputs.StreamProcessorRegionsOfInterestPolygonArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorInputArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorInputKinesisVideoStreamArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorOutputArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorOutputKinesisDataStreamArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorSettingsArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorSettingsFaceSearchArgs;
+/// import com.pulumi.aws.rekognition.inputs.StreamProcessorRegionsOfInterestArgs;
+/// import com.pulumi.aws.rekognition.inputs.StreamProcessorRegionsOfInterestPolygonArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1357,7 +1358,6 @@ import 'stream_processor_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleRole = new Role("exampleRole", RoleArgs.builder()
-///             .name("example-role")
 ///             .inlinePolicies(RoleInlinePolicyArgs.builder()
 ///                 .name("Rekognition-Access")
 ///                 .policy(Output.tuple(example.arn(), exampleStream.arn()).applyValue(values -> {
@@ -1384,6 +1384,7 @@ import 'stream_processor_timeouts.dart';
 ///                         ));
 ///                 }))
 ///                 .build())
+///             .name("example-role")
 ///             .assumeRolePolicy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -1402,25 +1403,8 @@ import 'stream_processor_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleStreamProcessor = new StreamProcessor("exampleStreamProcessor", StreamProcessorArgs.builder()
-///             .roleArn(exampleRole.arn())
-///             .name("example-processor")
 ///             .dataSharingPreference(StreamProcessorDataSharingPreferenceArgs.builder()
 ///                 .optIn(false)
-///                 .build())
-///             .regionsOfInterests(StreamProcessorRegionsOfInterestArgs.builder()
-///                 .polygons(
-///                     StreamProcessorRegionsOfInterestPolygonArgs.builder()
-///                         .x(0.5)
-///                         .y(0.5)
-///                         .build(),
-///                     StreamProcessorRegionsOfInterestPolygonArgs.builder()
-///                         .x(0.5)
-///                         .y(0.5)
-///                         .build(),
-///                     StreamProcessorRegionsOfInterestPolygonArgs.builder()
-///                         .x(0.5)
-///                         .y(0.5)
-///                         .build())
 ///                 .build())
 ///             .input(StreamProcessorInputArgs.builder()
 ///                 .kinesisVideoStream(StreamProcessorInputKinesisVideoStreamArgs.builder()
@@ -1437,6 +1421,23 @@ import 'stream_processor_timeouts.dart';
 ///                     .collectionId(exampleCollection.id())
 ///                     .build())
 ///                 .build())
+///             .regionsOfInterests(StreamProcessorRegionsOfInterestArgs.builder()
+///                 .polygons(
+///                     StreamProcessorRegionsOfInterestPolygonArgs.builder()
+///                         .x(0.5)
+///                         .y(0.5)
+///                         .build(),
+///                     StreamProcessorRegionsOfInterestPolygonArgs.builder()
+///                         .x(0.5)
+///                         .y(0.5)
+///                         .build(),
+///                     StreamProcessorRegionsOfInterestPolygonArgs.builder()
+///                         .x(0.5)
+///                         .y(0.5)
+///                         .build())
+///                 .build())
+///             .roleArn(exampleRole.arn())
+///             .name("example-processor")
 ///             .build());
 ///
 ///     }
@@ -1461,7 +1462,6 @@ import 'stream_processor_timeouts.dart';
 ///     type: aws:iam:Role
 ///     name: example
 ///     properties:
-///       name: example-role
 ///       inlinePolicies:
 ///         - name: Rekognition-Access
 ///           policy:
@@ -1479,6 +1479,7 @@ import 'stream_processor_timeouts.dart';
 ///                   Effect: Allow
 ///                   Resource:
 ///                     - ${exampleStream.arn}
+///       name: example-role
 ///       assumeRolePolicy:
 ///         fn::toJSON:
 ///           Version: 2012-10-17
@@ -1496,18 +1497,8 @@ import 'stream_processor_timeouts.dart';
 ///     type: aws:rekognition:StreamProcessor
 ///     name: example
 ///     properties:
-///       roleArn: ${exampleRole.arn}
-///       name: example-processor
 ///       dataSharingPreference:
 ///         optIn: false
-///       regionsOfInterests:
-///         - polygons:
-///             - x: 0.5
-///               y: 0.5
-///             - x: 0.5
-///               y: 0.5
-///             - x: 0.5
-///               y: 0.5
 ///       input:
 ///         kinesisVideoStream:
 ///           arn: ${example.arn}
@@ -1517,6 +1508,16 @@ import 'stream_processor_timeouts.dart';
 ///       settings:
 ///         faceSearch:
 ///           collectionId: ${exampleCollection.id}
+///       regionsOfInterests:
+///         - polygons:
+///             - x: 0.5
+///               y: 0.5
+///             - x: 0.5
+///               y: 0.5
+///             - x: 0.5
+///               y: 0.5
+///       roleArn: ${exampleRole.arn}
+///       name: example-processor
 /// ```
 ///
 ///
@@ -1557,7 +1558,7 @@ class StreamProcessor extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Locations in the frames where Amazon Rekognition checks for objects or people. See `regionsOfInterest`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> regionsOfInterests;
+  late final pulumi.Output<List<StreamProcessorRegionsOfInterest>?> regionsOfInterests;
   /// Amazon Resource Number (ARN) of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions for a Kinesis stream. It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a label detection stream processor. This is required for both face search and label detection stream processors.
   late final pulumi.Output<String> roleArn;
   /// Input parameters used in a streaming video analyzed by a stream processor. See `settings`.
@@ -1584,7 +1585,7 @@ class StreamProcessor extends pulumi.CustomResource {
           'aws:rekognition/streamProcessor:StreamProcessor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataSharingPreference = registerOutput<StreamProcessorDataSharingPreference?>('dataSharingPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorDataSharingPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1594,12 +1595,12 @@ class StreamProcessor extends pulumi.CustomResource {
     notificationChannel = registerOutput<StreamProcessorNotificationChannel?>('notificationChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorNotificationChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     output = registerOutput<StreamProcessorOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    regionsOfInterests = registerOutput<List<Map<String, dynamic>>?>('regionsOfInterests');
+    regionsOfInterests = registerOutput<List<StreamProcessorRegionsOfInterest>?>('regionsOfInterests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(guardedValue, (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>())); });
     roleArn = registerOutput<String>('roleArn');
     settings = registerOutput<StreamProcessorSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streamProcessorArn = registerOutput<String>('streamProcessorArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<StreamProcessorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1608,11 +1609,12 @@ class StreamProcessor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamProcessorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StreamProcessor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1634,12 +1636,38 @@ class StreamProcessor extends pulumi.CustomResource {
     notificationChannel = registerOutput<StreamProcessorNotificationChannel?>('notificationChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorNotificationChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     output = registerOutput<StreamProcessorOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    regionsOfInterests = registerOutput<List<Map<String, dynamic>>?>('regionsOfInterests');
+    regionsOfInterests = registerOutput<List<StreamProcessorRegionsOfInterest>?>('regionsOfInterests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(guardedValue, (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>())); });
     roleArn = registerOutput<String>('roleArn');
     settings = registerOutput<StreamProcessorSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streamProcessorArn = registerOutput<String>('streamProcessorArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<StreamProcessorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [StreamProcessor] resource.
+  StreamProcessor.reference(String urn)
+    : super(
+        'aws:rekognition/streamProcessor:StreamProcessor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataSharingPreference = registerOutput<StreamProcessorDataSharingPreference?>('dataSharingPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorDataSharingPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    input = registerOutput<StreamProcessorInput>('input', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    notificationChannel = registerOutput<StreamProcessorNotificationChannel?>('notificationChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorNotificationChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    output = registerOutput<StreamProcessorOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    regionsOfInterests = registerOutput<List<StreamProcessorRegionsOfInterest>?>('regionsOfInterests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(guardedValue, (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>())); });
+    roleArn = registerOutput<String>('roleArn');
+    settings = registerOutput<StreamProcessorSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    streamProcessorArn = registerOutput<String>('streamProcessorArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<StreamProcessorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

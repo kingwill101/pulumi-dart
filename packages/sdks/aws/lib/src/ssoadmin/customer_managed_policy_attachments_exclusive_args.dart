@@ -10,7 +10,7 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// {@macro pulumi_ssoadmin_customer_managed_policy_attachments_exclusive_customer_managed_policy_attachments_exclusive_args_doc}
 class CustomerManagedPolicyAttachmentsExclusiveArgs {
   /// Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
-  final pulumi.Input<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>>? customerManagedPolicyReferences;
+  final pulumi.Input<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>? customerManagedPolicyReferences;
   /// ARN of the SSO Instance.
   final pulumi.Input<String> instanceArn;
   /// ARN of the Permission Set.
@@ -18,8 +18,8 @@ class CustomerManagedPolicyAttachmentsExclusiveArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> permissionSetArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<CustomerManagedPolicyAttachmentsExclusiveTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>? timeouts;
 
   /// Creates a new [CustomerManagedPolicyAttachmentsExclusiveArgs].
   /// [customerManagedPolicyReferences] Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.

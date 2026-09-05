@@ -168,13 +168,14 @@ class BaiduChannel extends pulumi.CustomResource {
           'aws:pinpoint/baiduChannel:BaiduChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['apiKey', 'secretKey'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
-    secretKey = registerOutput<String>('secretKey');
+    secretKey = registerOutput<String>('secretKey', isSecret: true);
   }
 
   /// Gets an existing [BaiduChannel] resource's state with the given [name] and [id].
@@ -182,11 +183,12 @@ class BaiduChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BaiduChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BaiduChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,10 +202,27 @@ class BaiduChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
-    secretKey = registerOutput<String>('secretKey');
+    secretKey = registerOutput<String>('secretKey', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [BaiduChannel] resource.
+  BaiduChannel.reference(String urn)
+    : super(
+        'aws:pinpoint/baiduChannel:BaiduChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey', 'secretKey'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
+    region = registerOutput<String>('region');
+    secretKey = registerOutput<String>('secretKey', isSecret: true);
   }
 }

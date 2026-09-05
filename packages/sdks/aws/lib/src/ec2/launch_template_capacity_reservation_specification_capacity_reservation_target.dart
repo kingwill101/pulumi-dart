@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget {
   /// The ID of the Capacity Reservation in which to run the instance.
-  final pulumi.Input<String>? capacityReservationId;
+  final pulumi.Input<String?>? capacityReservationId;
   /// The ARN of the Capacity Reservation resource group in which to run the instance.
-  final pulumi.Input<String>? capacityReservationResourceGroupArn;
+  final pulumi.Input<String?>? capacityReservationResourceGroupArn;
 
   /// Creates a new [LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationId] The ID of the Capacity Reservation in which to run the instance.

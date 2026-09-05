@@ -230,10 +230,10 @@ class VoiceConnectorTermination extends pulumi.CustomResource {
           'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    callingRegions = registerOutput<List<String>>('callingRegions');
-    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
+    callingRegions = registerOutput<List<String>>('callingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cpsLimit = registerOutput<int?>('cpsLimit');
     defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
     disabled = registerOutput<bool?>('disabled');
@@ -246,11 +246,12 @@ class VoiceConnectorTermination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorTerminationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnectorTermination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,8 +265,26 @@ class VoiceConnectorTermination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    callingRegions = registerOutput<List<String>>('callingRegions');
-    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
+    callingRegions = registerOutput<List<String>>('callingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cpsLimit = registerOutput<int?>('cpsLimit');
+    defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
+    disabled = registerOutput<bool?>('disabled');
+    region = registerOutput<String>('region');
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnectorTermination] resource.
+  VoiceConnectorTermination.reference(String urn)
+    : super(
+        'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    callingRegions = registerOutput<List<String>>('callingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cpsLimit = registerOutput<int?>('cpsLimit');
     defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
     disabled = registerOutput<bool?>('disabled');

@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerLdapServerMetadata {
   /// List of fully qualified domain names of the LDAP server and optional failover server.
-  final pulumi.Input<List<String>>? hosts;
+  final pulumi.Input<List<String>?>? hosts;
   /// Fully qualified name of the directory to search for a user's groups.
-  final pulumi.Input<String>? roleBase;
+  final pulumi.Input<String?>? roleBase;
   /// LDAP attribute that identifies the group name attribute in the object returned from the group membership query.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// Search criteria for groups.
-  final pulumi.Input<String>? roleSearchMatching;
+  final pulumi.Input<String?>? roleSearchMatching;
   /// Whether the directory search scope is the entire sub-tree.
-  final pulumi.Input<bool>? roleSearchSubtree;
+  final pulumi.Input<bool?>? roleSearchSubtree;
   /// Service account password.
-  final pulumi.Input<String>? serviceAccountPassword;
+  final pulumi.Input<String?>? serviceAccountPassword;
   /// Service account username.
-  final pulumi.Input<String>? serviceAccountUsername;
+  final pulumi.Input<String?>? serviceAccountUsername;
   /// Fully qualified name of the directory where you want to search for users.
-  final pulumi.Input<String>? userBase;
+  final pulumi.Input<String?>? userBase;
   /// Name of the LDAP attribute for the user group membership.
-  final pulumi.Input<String>? userRoleName;
+  final pulumi.Input<String?>? userRoleName;
   /// Search criteria for users.
-  final pulumi.Input<String>? userSearchMatching;
+  final pulumi.Input<String?>? userSearchMatching;
   /// Whether the directory search scope is the entire sub-tree.
-  final pulumi.Input<bool>? userSearchSubtree;
+  final pulumi.Input<bool?>? userSearchSubtree;
 
   /// Creates a new [BrokerLdapServerMetadata].
   /// [hosts] List of fully qualified domain names of the LDAP server and optional failover server.

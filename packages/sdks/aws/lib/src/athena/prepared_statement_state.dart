@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PreparedStatement resources.
 class PreparedStatementState {
   /// Brief explanation of prepared statement. Maximum length of 1024.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the prepared statement. Maximum length of 256.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The query string for the prepared statement.
-  final pulumi.Input<String>? queryStatement;
+  final pulumi.Input<String?>? queryStatement;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the workgroup to which the prepared statement belongs.
-  final pulumi.Input<String>? workgroup;
+  final pulumi.Input<String?>? workgroup;
 
   /// Creates a new [PreparedStatementState].
   /// [description] Brief explanation of prepared statement. Maximum length of 1024.

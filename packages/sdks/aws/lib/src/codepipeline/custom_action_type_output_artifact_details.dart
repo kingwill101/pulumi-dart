@@ -25,8 +25,8 @@ class CustomActionTypeOutputArtifactDetails {
 
   factory CustomActionTypeOutputArtifactDetails.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeOutputArtifactDetails(
-      maximumCount: pulumi.Input.fromValue(map['maximumCount'] as int),
-      minimumCount: pulumi.Input.fromValue(map['minimumCount'] as int),
+      maximumCount: pulumi.Input.fromValue((map['maximumCount'] as num).toInt()),
+      minimumCount: pulumi.Input.fromValue((map['minimumCount'] as num).toInt()),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMasterUserSecret {
   /// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
-  final pulumi.Input<String>? kmsKeyId;
-  final pulumi.Input<String>? secretArn;
-  final pulumi.Input<String>? secretStatus;
+  final pulumi.Input<String?>? kmsKeyId;
+  final pulumi.Input<String?>? secretArn;
+  final pulumi.Input<String?>? secretStatus;
 
   /// Creates a new [ClusterMasterUserSecret].
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.

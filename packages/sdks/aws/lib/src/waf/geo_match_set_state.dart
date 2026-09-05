@@ -5,15 +5,15 @@ import 'geo_match_set_geo_match_constraint.dart';
 
 /// Input properties used for looking up and filtering GeoMatchSet resources.
 class GeoMatchSetState {
-  /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  /// ARN
+  final pulumi.Input<String?>? arn;
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
-  final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>>? geoMatchConstraints;
+  final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>?>? geoMatchConstraints;
   /// The name or description of the GeoMatchSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GeoMatchSetState].
-  /// [arn] Amazon Resource Name (ARN)
+  /// [arn] ARN
   /// [geoMatchConstraints] The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
   /// [name] The name or description of the GeoMatchSet.
   const GeoMatchSetState({

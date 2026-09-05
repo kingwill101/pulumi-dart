@@ -48,9 +48,9 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainerSecurityContext {
       allowPrivilegeEscalation: pulumi.Input.fromValue(map['allowPrivilegeEscalation'] as bool),
       privileged: pulumi.Input.fromValue(map['privileged'] as bool),
       readOnlyRootFileSystem: pulumi.Input.fromValue(map['readOnlyRootFileSystem'] as bool),
-      runAsGroup: pulumi.Input.fromValue(map['runAsGroup'] as int),
+      runAsGroup: pulumi.Input.fromValue((map['runAsGroup'] as num).toInt()),
       runAsNonRoot: pulumi.Input.fromValue(map['runAsNonRoot'] as bool),
-      runAsUser: pulumi.Input.fromValue(map['runAsUser'] as int),
+      runAsUser: pulumi.Input.fromValue((map['runAsUser'] as num).toInt()),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_rate_based_statement_custom_key_query_string_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementCustomKeyQueryString {
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyQueryString].
   /// [textTransformations] Optional.

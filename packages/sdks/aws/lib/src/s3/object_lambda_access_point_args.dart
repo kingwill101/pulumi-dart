@@ -9,13 +9,13 @@ import 'object_lambda_access_point_configuration.dart';
 /// {@macro pulumi_s3_control_object_lambda_access_point_object_lambda_access_point_args_doc}
 class ObjectLambdaAccessPointArgs {
   /// AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Configuration block containing details about the Object Lambda Access Point. See `configuration` Block below for more details.
   final pulumi.Input<ObjectLambdaAccessPointConfiguration> configuration;
   /// Name for this Object Lambda Access Point.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ObjectLambdaAccessPointArgs].
   /// [accountId] AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.

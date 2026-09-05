@@ -16,15 +16,15 @@ class EnvironmentBlueprintConfigurationArgs {
   /// ID of the Environment Blueprint
   final pulumi.Input<String> environmentBlueprintId;
   /// A map of global parameters to configure for the blueprint across all regions.
-  final pulumi.Input<Map<String, String>>? globalParameters;
+  final pulumi.Input<Map<String, String>?>? globalParameters;
   /// ARN of the manage access role with which this blueprint is created.
-  final pulumi.Input<String>? manageAccessRoleArn;
+  final pulumi.Input<String?>? manageAccessRoleArn;
   /// ARN of the provisioning role with which this blueprint is created.
-  final pulumi.Input<String>? provisioningRoleArn;
+  final pulumi.Input<String?>? provisioningRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Parameters for each region in which the blueprint is enabled
-  final pulumi.Input<Map<String, Map<String, String>>>? regionalParameters;
+  final pulumi.Input<Map<String, Map<String, String>>?>? regionalParameters;
 
   /// Creates a new [EnvironmentBlueprintConfigurationArgs].
   /// [domainId] ID of the Domain.
@@ -68,7 +68,7 @@ class EnvironmentBlueprintConfigurationArgs {
       manageAccessRoleArn: (() { final guardedValue = map['manageAccessRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningRoleArn: (() { final guardedValue = map['provisioningRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      regionalParameters: (() { final guardedValue = map['regionalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, Map<String, String>>()); })(),
+      regionalParameters: (() { final guardedValue = map['regionalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
     );
   }
 }

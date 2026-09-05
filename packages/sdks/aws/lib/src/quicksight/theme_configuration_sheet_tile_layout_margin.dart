@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationSheetTileLayoutMargin {
   /// This Boolean value controls whether to display sheet margins.
-  final pulumi.Input<bool>? show;
+  final pulumi.Input<bool?>? show;
 
   /// Creates a new [ThemeConfigurationSheetTileLayoutMargin].
   /// [show] This Boolean value controls whether to display sheet margins.

@@ -5,13 +5,13 @@ import 'snapshot_import_disk_container_user_bucket.dart';
 
 class SnapshotImportDiskContainer {
   /// The description of the disk image being imported.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The format of the disk image being imported. One of `VHD` or `VMDK`.
   final pulumi.Input<String> format;
   /// The URL to the Amazon S3-based disk image being imported. It can either be a https URL (https://..) or an Amazon S3 URL (s3://..). One of `url` or `userBucket` must be set.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The Amazon S3 bucket for the disk image. One of `url` or `userBucket` must be set. Detailed below.
-  final pulumi.Input<SnapshotImportDiskContainerUserBucket>? userBucket;
+  final pulumi.Input<SnapshotImportDiskContainerUserBucket?>? userBucket;
 
   /// Creates a new [SnapshotImportDiskContainer].
   /// [description] The description of the disk image being imported.

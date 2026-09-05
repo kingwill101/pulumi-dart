@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'event_data_store_advanced_event_selector.dart';
 import 'event_data_store_args.dart';
 import 'event_data_store_state.dart';
 
@@ -129,7 +130,6 @@ import 'event_data_store_state.dart';
 ///     name: "not-important-dynamodb-table",
 /// });
 /// const example = new aws.cloudtrail.EventDataStore("example", {advancedEventSelectors: [{
-///     name: "Log all DynamoDB PutEvent actions for a specific DynamoDB table",
 ///     fieldSelectors: [
 ///         {
 ///             field: "eventCategory",
@@ -148,6 +148,7 @@ import 'event_data_store_state.dart';
 ///             equals: [table.then(table => table.arn)],
 ///         },
 ///     ],
+///     name: "Log all DynamoDB PutEvent actions for a specific DynamoDB table",
 /// }]});
 /// ```
 /// ```python
@@ -156,7 +157,6 @@ import 'event_data_store_state.dart';
 ///
 /// table = aws.dynamodb.get_table(name="not-important-dynamodb-table")
 /// example = aws.cloudtrail.EventDataStore("example", advanced_event_selectors=[{
-///     "name": "Log all DynamoDB PutEvent actions for a specific DynamoDB table",
 ///     "field_selectors": [
 ///         {
 ///             "field": "eventCategory",
@@ -175,6 +175,7 @@ import 'event_data_store_state.dart';
 ///             "equals": [table.arn],
 ///         },
 ///     ],
+///     "name": "Log all DynamoDB PutEvent actions for a specific DynamoDB table",
 /// }])
 /// ```
 /// ```csharp
@@ -196,7 +197,6 @@ import 'event_data_store_state.dart';
 ///         {
 ///             new Aws.CloudTrail.Inputs.EventDataStoreAdvancedEventSelectorArgs
 ///             {
-///                 Name = "Log all DynamoDB PutEvent actions for a specific DynamoDB table",
 ///                 FieldSelectors = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.EventDataStoreAdvancedEventSelectorFieldSelectorArgs
@@ -232,6 +232,7 @@ import 'event_data_store_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Log all DynamoDB PutEvent actions for a specific DynamoDB table",
 ///             },
 ///         },
 ///     });
@@ -258,7 +259,6 @@ import 'event_data_store_state.dart';
 /// 		_, err = cloudtrail.NewEventDataStore(ctx, "example", &cloudtrail.EventDataStoreArgs{
 /// 			AdvancedEventSelectors: cloudtrail.EventDataStoreAdvancedEventSelectorArray{
 /// 				&cloudtrail.EventDataStoreAdvancedEventSelectorArgs{
-/// 					Name: pulumi.String("Log all DynamoDB PutEvent actions for a specific DynamoDB table"),
 /// 					FieldSelectors: cloudtrail.EventDataStoreAdvancedEventSelectorFieldSelectorArray{
 /// 						&cloudtrail.EventDataStoreAdvancedEventSelectorFieldSelectorArgs{
 /// 							Field: pulumi.String("eventCategory"),
@@ -285,6 +285,7 @@ import 'event_data_store_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Log all DynamoDB PutEvent actions for a specific DynamoDB table"),
 /// 				},
 /// 			},
 /// 		})
@@ -310,7 +311,6 @@ import 'event_data_store_state.dart';
 ///
 /// resource "aws_cloudtrail_eventdatastore" "example" {
 ///   advanced_event_selectors {
-///     name = "Log all DynamoDB PutEvent actions for a specific DynamoDB table"
 ///     field_selectors {
 ///       field  = "eventCategory"
 ///       equals = ["Data"]
@@ -327,6 +327,7 @@ import 'event_data_store_state.dart';
 ///       field  = "resources.ARN"
 ///       equals = [data.aws_dynamodb_gettable.table.arn]
 ///     }
+///     name = "Log all DynamoDB PutEvent actions for a specific DynamoDB table"
 ///   }
 /// }
 /// ```
@@ -361,7 +362,6 @@ import 'event_data_store_state.dart';
 ///
 ///         var example = new EventDataStore("example", EventDataStoreArgs.builder()
 ///             .advancedEventSelectors(EventDataStoreAdvancedEventSelectorArgs.builder()
-///                 .name("Log all DynamoDB PutEvent actions for a specific DynamoDB table")
 ///                 .fieldSelectors(
 ///                     EventDataStoreAdvancedEventSelectorFieldSelectorArgs.builder()
 ///                         .field("eventCategory")
@@ -379,6 +379,7 @@ import 'event_data_store_state.dart';
 ///                         .field("resources.ARN")
 ///                         .equals(table.arn())
 ///                         .build())
+///                 .name("Log all DynamoDB PutEvent actions for a specific DynamoDB table")
 ///                 .build())
 ///             .build());
 ///
@@ -391,8 +392,7 @@ import 'event_data_store_state.dart';
 ///     type: aws:cloudtrail:EventDataStore
 ///     properties:
 ///       advancedEventSelectors:
-///         - name: Log all DynamoDB PutEvent actions for a specific DynamoDB table
-///           fieldSelectors:
+///         - fieldSelectors:
 ///             - field: eventCategory
 ///               equals:
 ///                 - Data
@@ -405,6 +405,7 @@ import 'event_data_store_state.dart';
 ///             - field: resources.ARN
 ///               equals:
 ///                 - ${table.arn}
+///           name: Log all DynamoDB PutEvent actions for a specific DynamoDB table
 /// variables:
 ///   table:
 ///     fn::invoke:
@@ -420,7 +421,7 @@ import 'event_data_store_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CloudTrail event data store.
+/// - `arn` (String) ARN of the CloudTrail event data store.
 ///
 ///
 /// Using `pulumi import`, import event data stores using their `arn`. For example:
@@ -430,7 +431,7 @@ import 'event_data_store_state.dart';
 /// ```
 class EventDataStore extends pulumi.CustomResource {
   /// The advanced event selectors to use to select the events for the data store. For more information about how to use advanced event selectors, see [Log events by using advanced event selectors](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced) in the CloudTrail User Guide.
-  late final pulumi.Output<List<Map<String, dynamic>>> advancedEventSelectors;
+  late final pulumi.Output<List<EventDataStoreAdvancedEventSelector>> advancedEventSelectors;
   /// ARN of the event data store.
   late final pulumi.Output<String> arn;
   /// The billing mode for the event data store. The valid values are `EXTENDABLE_RETENTION_PRICING` and `FIXED_RETENTION_PRICING`. Defaults to `EXTENDABLE_RETENTION_PRICING`.
@@ -468,9 +469,9 @@ class EventDataStore extends pulumi.CustomResource {
           'aws:cloudtrail/eventDataStore:EventDataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    advancedEventSelectors = registerOutput<List<Map<String, dynamic>>>('advancedEventSelectors');
+    advancedEventSelectors = registerOutput<List<EventDataStoreAdvancedEventSelector>>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(guardedValue, (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     billingMode = registerOutput<String?>('billingMode');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -480,8 +481,8 @@ class EventDataStore extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retentionPeriod = registerOutput<int?>('retentionPeriod');
     suspend = registerOutput<String?>('suspend');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationProtectionEnabled = registerOutput<bool?>('terminationProtectionEnabled');
   }
 
@@ -490,11 +491,12 @@ class EventDataStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventDataStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventDataStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -508,7 +510,7 @@ class EventDataStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    advancedEventSelectors = registerOutput<List<Map<String, dynamic>>>('advancedEventSelectors');
+    advancedEventSelectors = registerOutput<List<EventDataStoreAdvancedEventSelector>>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(guardedValue, (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     billingMode = registerOutput<String?>('billingMode');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -518,8 +520,32 @@ class EventDataStore extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retentionPeriod = registerOutput<int?>('retentionPeriod');
     suspend = registerOutput<String?>('suspend');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminationProtectionEnabled = registerOutput<bool?>('terminationProtectionEnabled');
+  }
+
+  /// Creates a typed reference to an existing [EventDataStore] resource.
+  EventDataStore.reference(String urn)
+    : super(
+        'aws:cloudtrail/eventDataStore:EventDataStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedEventSelectors = registerOutput<List<EventDataStoreAdvancedEventSelector>>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(guardedValue, (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    billingMode = registerOutput<String?>('billingMode');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    multiRegionEnabled = registerOutput<bool?>('multiRegionEnabled');
+    this.name = registerOutput<String>('name');
+    organizationEnabled = registerOutput<bool?>('organizationEnabled');
+    region = registerOutput<String>('region');
+    retentionPeriod = registerOutput<int?>('retentionPeriod');
+    suspend = registerOutput<String?>('suspend');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationProtectionEnabled = registerOutput<bool?>('terminationProtectionEnabled');
   }
 }

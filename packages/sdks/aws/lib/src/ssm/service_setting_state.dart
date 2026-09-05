@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServiceSetting resources.
 class ServiceSettingState {
   /// ARN of the service setting.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
-  final pulumi.Input<String>? settingId;
+  final pulumi.Input<String?>? settingId;
   /// Value of the service setting.
-  final pulumi.Input<String>? settingValue;
+  final pulumi.Input<String?>? settingValue;
   /// Status of the service setting. Value can be `Default`, `Customized` or `PendingUpdate`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ServiceSettingState].
   /// [arn] ARN of the service setting.

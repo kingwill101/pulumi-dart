@@ -5,7 +5,7 @@ import 'pipeline_definition_pipeline_object_field.dart';
 
 class PipelineDefinitionPipelineObject {
   /// Configuration block for Key-value pairs that define the properties of the object. See below
-  final pulumi.Input<List<PipelineDefinitionPipelineObjectField>>? fields;
+  final pulumi.Input<List<PipelineDefinitionPipelineObjectField>?>? fields;
   /// ID of the object.
   final pulumi.Input<String> id;
   /// ARN of the storage connector.

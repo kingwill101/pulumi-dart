@@ -5,7 +5,7 @@ import 'route_spec_tcp_route_timeout_idle.dart';
 
 class RouteSpecTcpRouteTimeout {
   /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.tcp_route.timeout.idle` Block for details.
-  final pulumi.Input<RouteSpecTcpRouteTimeoutIdle>? idle;
+  final pulumi.Input<RouteSpecTcpRouteTimeoutIdle?>? idle;
 
   /// Creates a new [RouteSpecTcpRouteTimeout].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.tcp_route.timeout.idle` Block for details.

@@ -6,15 +6,15 @@ import 'domain_advanced_security_options_master_user_options.dart';
 
 class DomainAdvancedSecurityOptions {
   /// Whether Anonymous auth is enabled. Enables fine-grained access control on an existing domain. Ignored unless `advancedSecurityOptions` are enabled. _Can only be enabled on an existing domain._
-  final pulumi.Input<bool>? anonymousAuthEnabled;
+  final pulumi.Input<bool?>? anonymousAuthEnabled;
   /// Whether advanced security is enabled.
   final pulumi.Input<bool> enabled;
   /// Whether the internal user database is enabled. Default is `false`.
-  final pulumi.Input<bool>? internalUserDatabaseEnabled;
+  final pulumi.Input<bool?>? internalUserDatabaseEnabled;
   /// Configuration block for JWT authentication. Requires OpenSearch 2.11 or later. Detailed below.
-  final pulumi.Input<DomainAdvancedSecurityOptionsJwtOptions>? jwtOptions;
+  final pulumi.Input<DomainAdvancedSecurityOptionsJwtOptions?>? jwtOptions;
   /// Configuration block for the main user. Detailed below.
-  final pulumi.Input<DomainAdvancedSecurityOptionsMasterUserOptions>? masterUserOptions;
+  final pulumi.Input<DomainAdvancedSecurityOptionsMasterUserOptions?>? masterUserOptions;
 
   /// Creates a new [DomainAdvancedSecurityOptions].
   /// [anonymousAuthEnabled] Whether Anonymous auth is enabled. Enables fine-grained access control on an existing domain. Ignored unless `advancedSecurityOptions` are enabled. _Can only be enabled on an existing domain._

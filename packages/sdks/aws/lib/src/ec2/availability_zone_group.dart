@@ -143,7 +143,7 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
           'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     groupName = registerOutput<String>('groupName');
     optInStatus = registerOutput<String>('optInStatus');
@@ -155,11 +155,12 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AvailabilityZoneGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AvailabilityZoneGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -173,6 +174,20 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    groupName = registerOutput<String>('groupName');
+    optInStatus = registerOutput<String>('optInStatus');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AvailabilityZoneGroup] resource.
+  AvailabilityZoneGroup.reference(String urn)
+    : super(
+        'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     groupName = registerOutput<String>('groupName');
     optInStatus = registerOutput<String>('optInStatus');
     region = registerOutput<String>('region');

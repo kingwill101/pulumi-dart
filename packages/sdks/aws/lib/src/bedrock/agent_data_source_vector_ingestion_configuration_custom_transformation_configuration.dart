@@ -6,9 +6,9 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration {
   /// The intermediate storage for custom transformation.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage>? intermediateStorage;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage?>? intermediateStorage;
   /// A custom processing step for documents moving through the data source ingestion pipeline.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation>? transformation;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation?>? transformation;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration].
   /// [intermediateStorage] The intermediate storage for custom transformation.

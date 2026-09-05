@@ -15,7 +15,9 @@ import 'tag_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.secretsmanager.Secret("test", {name: "example-secret"});
+/// const test = new aws.secretsmanager.Secret("test", {name: "example-secret"}, {
+///     ignoreChanges: ["tags"],
+/// });
 /// const testTag = new aws.secretsmanager.Tag("test", {
 ///     secretId: test.id,
 ///     key: "ExampleKey",
@@ -26,7 +28,8 @@ import 'tag_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.secretsmanager.Secret("test", name="example-secret")
+/// test = aws.secretsmanager.Secret("test", name="example-secret",
+/// opts = pulumi.ResourceOptions(ignore_changes=["tags"]))
 /// test_tag = aws.secretsmanager.Tag("test",
 ///     secret_id=test.id,
 ///     key="ExampleKey",
@@ -43,6 +46,12 @@ import 'tag_state.dart';
 ///     var test = new Aws.SecretsManager.Secret("test", new()
 ///     {
 ///         Name = "example-secret",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "tags",
+///         },
 ///     });
 ///
 ///     var testTag = new Aws.SecretsManager.Tag("test", new()
@@ -66,7 +75,9 @@ import 'tag_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := secretsmanager.NewSecret(ctx, "test", &secretsmanager.SecretArgs{
 /// 			Name: pulumi.String("example-secret"),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"tags",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -92,6 +103,9 @@ import 'tag_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "test" {
+///   lifecycle {
+///     ignore_changes = [tags]
+///   }
 ///   name = "example-secret"
 /// }
 /// resource "aws_secretsmanager_tag" "test" {
@@ -110,6 +124,7 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.secretsmanager.SecretArgs;
 /// import com.pulumi.aws.secretsmanager.Tag;
 /// import com.pulumi.aws.secretsmanager.TagArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -125,7 +140,9 @@ import 'tag_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new Secret("test", SecretArgs.builder()
 ///             .name("example-secret")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("tags")
+///                 .build());
 ///
 ///         var testTag = new Tag("testTag", TagArgs.builder()
 ///             .secretId(test.id())
@@ -142,6 +159,9 @@ import 'tag_state.dart';
 ///     type: aws:secretsmanager:Secret
 ///     properties:
 ///       name: example-secret
+///     options:
+///       ignoreChanges:
+///         - tags
 ///   testTag:
 ///     type: aws:secretsmanager:Tag
 ///     name: test
@@ -181,7 +201,7 @@ class Tag extends pulumi.CustomResource {
           'aws:secretsmanager/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
@@ -194,11 +214,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -212,6 +233,21 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    secretId = registerOutput<String>('secretId');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'aws:secretsmanager/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
     secretId = registerOutput<String>('secretId');

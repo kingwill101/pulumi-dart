@@ -5,9 +5,9 @@ import 'event_data_store_advanced_event_selector_field_selector.dart';
 
 class EventDataStoreAdvancedEventSelector {
   /// Specifies the selector statements in an advanced event selector. Fields documented below.
-  final pulumi.Input<List<EventDataStoreAdvancedEventSelectorFieldSelector>>? fieldSelectors;
+  final pulumi.Input<List<EventDataStoreAdvancedEventSelectorFieldSelector>?>? fieldSelectors;
   /// Specifies the name of the advanced event selector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EventDataStoreAdvancedEventSelector].
   /// [fieldSelectors] Specifies the selector statements in an advanced event selector. Fields documented below.

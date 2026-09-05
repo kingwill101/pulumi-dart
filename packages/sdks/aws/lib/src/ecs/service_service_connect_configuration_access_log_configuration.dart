@@ -10,7 +10,7 @@ class ServiceServiceConnectConfigurationAccessLogConfiguration {
   /// &gt; **NOTE:** Access logs are delivered to the destination log group specified in the `logConfiguration` block. You must configure `logConfiguration` to enable access logs.
   ///
   /// &gt; **SECURITY WARNING:** When `includeQueryParameters` is set to `ENABLED`, query parameters (which may contain sensitive data such as request IDs, tokens, or session identifiers) will be included in access logs.
-  final pulumi.Input<String>? includeQueryParameters;
+  final pulumi.Input<String?>? includeQueryParameters;
 
   /// Creates a new [ServiceServiceConnectConfigurationAccessLogConfiguration].
   /// [format] Format for Service Connect access log output. Valid values: `TEXT`, `JSON`. See [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-envoy-access-logs.html) for format details.

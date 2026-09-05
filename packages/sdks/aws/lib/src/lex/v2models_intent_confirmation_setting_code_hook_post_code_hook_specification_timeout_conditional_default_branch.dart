@@ -6,9 +6,9 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.

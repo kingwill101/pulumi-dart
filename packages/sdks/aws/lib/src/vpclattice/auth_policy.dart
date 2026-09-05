@@ -280,7 +280,7 @@ class AuthPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
+  /// ID or ARN of the service network or service for which the policy is created.
   late final pulumi.Output<String> resourceIdentifier;
   /// State of the auth policy. The auth policy is only active when the auth type is set to `AWS_IAM`. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is `NONE`, then, any auth policy you provide will remain inactive.
   late final pulumi.Output<String?> state;
@@ -297,7 +297,7 @@ class AuthPolicy extends pulumi.CustomResource {
           'aws:vpclattice/authPolicy:AuthPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -310,11 +310,12 @@ class AuthPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,5 +333,20 @@ class AuthPolicy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceIdentifier = registerOutput<String>('resourceIdentifier');
     this.state = registerOutput<String?>('state');
+  }
+
+  /// Creates a typed reference to an existing [AuthPolicy] resource.
+  AuthPolicy.reference(String urn)
+    : super(
+        'aws:vpclattice/authPolicy:AuthPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceIdentifier = registerOutput<String>('resourceIdentifier');
+    state = registerOutput<String?>('state');
   }
 }

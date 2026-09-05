@@ -5,11 +5,11 @@ import 'v2models_intent_confirmation_setting_confirmation_response_message_group
 
 class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCard {
   /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCardButton>>? buttons;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCardButton>?>? buttons;
   /// URL of an image to display on the response card. The image URL must be publicly available so that the platform displaying the response card has access to the image.
-  final pulumi.Input<String>? imageUrl;
+  final pulumi.Input<String?>? imageUrl;
   /// Subtitle to display on the response card. The format of the subtitle is determined by the platform displaying the response card.
-  final pulumi.Input<String>? subtitle;
+  final pulumi.Input<String?>? subtitle;
   /// Title to display on the response card. The format of the title is determined by the platform displaying the response card.
   final pulumi.Input<String> title;
 

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_bucket_replication_configuration_rule_destination_replication_time_time.dart';
 
 class GetBucketReplicationConfigurationRuleDestinationReplicationTime {
-  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   final pulumi.Input<String> status;
   /// Configuration block that specifies the time by which replication should be complete for all objects and operations on objects. See `time` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>> times;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationReplicationTime].
-  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   /// [times] Configuration block that specifies the time by which replication should be complete for all objects and operations on objects. See `time` Block below.
   const GetBucketReplicationConfigurationRuleDestinationReplicationTime({
     required this.status,

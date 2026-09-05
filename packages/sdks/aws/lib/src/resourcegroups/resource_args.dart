@@ -10,7 +10,7 @@ class ResourceArgs {
   /// Name or ARN of the resource group to add resources to.
   final pulumi.Input<String> groupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the resource to be added to the group.
   final pulumi.Input<String> resourceArn;
 

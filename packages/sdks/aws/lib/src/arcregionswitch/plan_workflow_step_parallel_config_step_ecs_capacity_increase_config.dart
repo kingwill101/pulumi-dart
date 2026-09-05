@@ -8,13 +8,13 @@ class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig {
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `containerInsightsMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
   /// ECS service configuration. See `service` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>>? services;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>?>? services;
   /// Target capacity percentage.
-  final pulumi.Input<int>? targetPercent;
+  final pulumi.Input<int?>? targetPercent;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
   /// Ungraceful behavior configuration. See `workflow.step.ecs_capacity_increase_config.ungraceful` Block for details.
-  final pulumi.Input<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful>? ungraceful;
+  final pulumi.Input<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful?>? ungraceful;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig].
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `containerInsightsMaxInLast24Hours`.
@@ -44,8 +44,8 @@ class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig {
     return PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig(
       capacityMonitoringApproach: pulumi.Input.fromValue(map['capacityMonitoringApproach'] as String),
       services: (() { final guardedValue = map['services']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetPercent: (() { final guardedValue = map['targetPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetPercent: (() { final guardedValue = map['targetPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ungraceful: (() { final guardedValue = map['ungraceful']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

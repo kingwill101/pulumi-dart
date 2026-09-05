@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogCreateDatabaseDefaultPermissionPrincipal {
   /// Identifier for the Lake Formation principal.
-  final pulumi.Input<String>? dataLakePrincipalIdentifier;
+  final pulumi.Input<String?>? dataLakePrincipalIdentifier;
 
   /// Creates a new [CatalogCreateDatabaseDefaultPermissionPrincipal].
   /// [dataLakePrincipalIdentifier] Identifier for the Lake Formation principal.

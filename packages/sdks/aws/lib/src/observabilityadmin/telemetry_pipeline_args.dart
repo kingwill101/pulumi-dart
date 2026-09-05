@@ -14,12 +14,12 @@ class TelemetryPipelineArgs {
   /// The following arguments are optional:
   final pulumi.Input<TelemetryPipelineConfiguration> configuration;
   /// Name of the telemetry pipeline. Must be between 3 and 28 characters, start with a lowercase letter, and contain only lowercase letters, digits, and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<TelemetryPipelineTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<TelemetryPipelineTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryPipelineArgs].
   /// [configuration] Configuration block for the telemetry pipeline. See `configuration` below.

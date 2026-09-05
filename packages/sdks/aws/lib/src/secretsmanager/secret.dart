@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_args.dart';
+import 'secret_replica.dart';
 import 'secret_state.dart';
 
 /// Provides a resource to manage AWS Secrets Manager secret metadata. To manage secret rotation, see the `aws.secretsmanager.SecretRotation` resource. To manage a secret value, see the `aws.secretsmanager.SecretVersion` resource.
@@ -224,10 +225,10 @@ import 'secret_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Secrets Manager secret.
+/// - `arn` (String) ARN of the Secrets Manager secret.
 ///
 ///
-/// Using `pulumi import`, import `aws.secretsmanager.Secret` using the secret Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.secretsmanager.Secret` using the secret ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:secretsmanager/secret:Secret example arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
@@ -252,7 +253,7 @@ class Secret extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block to support secret replication. See details below.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<SecretReplica>> replicas;
   /// Key-value map of user-defined tags that are attached to the secret. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -272,7 +273,7 @@ class Secret extends pulumi.CustomResource {
           'aws:secretsmanager/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -283,9 +284,9 @@ class Secret extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    replicas = registerOutput<List<SecretReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 
@@ -294,11 +295,12 @@ class Secret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Secret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,9 +323,33 @@ class Secret extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    replicas = registerOutput<List<SecretReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Secret] resource.
+  Secret.reference(String urn)
+    : super(
+        'aws:secretsmanager/secret:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    forceOverwriteReplicaSecret = registerOutput<bool?>('forceOverwriteReplicaSecret');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    policy = registerOutput<String>('policy');
+    recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<SecretReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 }

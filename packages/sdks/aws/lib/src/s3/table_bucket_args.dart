@@ -10,19 +10,19 @@ import 'table_bucket_maintenance_configuration.dart';
 /// {@macro pulumi_s3_tables_table_bucket_table_bucket_args_doc}
 class TableBucketArgs {
   /// Encryption configuration for the table bucket. See `encryptionConfiguration` below.
-  final pulumi.Input<TableBucketEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<TableBucketEncryptionConfiguration?>? encryptionConfiguration;
   /// Whether all tables and namespaces within the table bucket should be deleted *when the table bucket is destroyed* so that the table bucket can be destroyed without error. These tables and namespaces are *not* recoverable. This only deletes tables and namespaces when the table bucket is destroyed, *not* when setting this parameter to `true`. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the table bucket or destroying the table bucket, this flag will not work. Additionally when importing a table bucket, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Maintenance configuration for the table bucket. See `maintenanceConfiguration` below.
-  final pulumi.Input<TableBucketMaintenanceConfiguration>? maintenanceConfiguration;
+  final pulumi.Input<TableBucketMaintenanceConfiguration?>? maintenanceConfiguration;
   /// Name of the table bucket. Must be between 3 and 63 characters in length. Can consist of lowercase letters, numbers, and hyphens, and must begin and end with a lowercase letter or number. A full list of bucket naming rules can be found in the [S3 Tables documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-naming.html#table-buckets-naming-rules).
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TableBucketArgs].
   /// [encryptionConfiguration] Encryption configuration for the table bucket. See `encryptionConfiguration` below.

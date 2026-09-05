@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workgroup_args.dart';
+import 'workgroup_config_parameter.dart';
+import 'workgroup_endpoint.dart';
 import 'workgroup_price_performance_target.dart';
 import 'workgroup_state.dart';
 
@@ -123,15 +125,15 @@ import 'workgroup_state.dart';
 /// $ pulumi import aws:redshiftserverless/workgroup:Workgroup example example
 /// ```
 class Workgroup extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Redshift Serverless Workgroup.
+  /// ARN of the Redshift Serverless Workgroup.
   late final pulumi.Output<String> arn;
   /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).
   late final pulumi.Output<int> baseCapacity;
   /// An array of parameters to set for more control over a serverless database. See `Config Parameter` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> configParameters;
+  late final pulumi.Output<List<WorkgroupConfigParameter>> configParameters;
   /// The endpoint that is created from the workgroup. See `Endpoint` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
-  /// The value that specifies whether to turn on enhanced virtual private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC instead of over the internet.
+  late final pulumi.Output<List<WorkgroupEndpoint>> endpoints;
+  /// Value that specifies whether to turn on enhanced VPC routing, which forces Amazon Redshift Serverless to route traffic through your VPC instead of over the internet.
   late final pulumi.Output<bool?> enhancedVpcRouting;
   /// The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve queries, specified in Redshift Processing Units (RPUs).
   late final pulumi.Output<int?> maxCapacity;
@@ -174,12 +176,12 @@ class Workgroup extends pulumi.CustomResource {
           'aws:redshiftserverless/workgroup:Workgroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baseCapacity = registerOutput<int>('baseCapacity');
-    configParameters = registerOutput<List<Map<String, dynamic>>>('configParameters');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    configParameters = registerOutput<List<WorkgroupConfigParameter>>('configParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkgroupConfigParameter>(guardedValue, (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    endpoints = registerOutput<List<WorkgroupEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkgroupEndpoint>(guardedValue, (value) => WorkgroupEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     enhancedVpcRouting = registerOutput<bool?>('enhancedVpcRouting');
     maxCapacity = registerOutput<int?>('maxCapacity');
     namespaceName = registerOutput<String>('namespaceName');
@@ -187,10 +189,10 @@ class Workgroup extends pulumi.CustomResource {
     pricePerformanceTarget = registerOutput<WorkgroupPricePerformanceTarget>('pricePerformanceTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkgroupPricePerformanceTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackName = registerOutput<String>('trackName');
     workgroupId = registerOutput<String>('workgroupId');
     workgroupName = registerOutput<String>('workgroupName');
@@ -201,11 +203,12 @@ class Workgroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkgroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workgroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,8 +224,8 @@ class Workgroup extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     baseCapacity = registerOutput<int>('baseCapacity');
-    configParameters = registerOutput<List<Map<String, dynamic>>>('configParameters');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    configParameters = registerOutput<List<WorkgroupConfigParameter>>('configParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkgroupConfigParameter>(guardedValue, (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    endpoints = registerOutput<List<WorkgroupEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkgroupEndpoint>(guardedValue, (value) => WorkgroupEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     enhancedVpcRouting = registerOutput<bool?>('enhancedVpcRouting');
     maxCapacity = registerOutput<int?>('maxCapacity');
     namespaceName = registerOutput<String>('namespaceName');
@@ -230,10 +233,39 @@ class Workgroup extends pulumi.CustomResource {
     pricePerformanceTarget = registerOutput<WorkgroupPricePerformanceTarget>('pricePerformanceTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkgroupPricePerformanceTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trackName = registerOutput<String>('trackName');
+    workgroupId = registerOutput<String>('workgroupId');
+    workgroupName = registerOutput<String>('workgroupName');
+  }
+
+  /// Creates a typed reference to an existing [Workgroup] resource.
+  Workgroup.reference(String urn)
+    : super(
+        'aws:redshiftserverless/workgroup:Workgroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    baseCapacity = registerOutput<int>('baseCapacity');
+    configParameters = registerOutput<List<WorkgroupConfigParameter>>('configParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkgroupConfigParameter>(guardedValue, (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    endpoints = registerOutput<List<WorkgroupEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkgroupEndpoint>(guardedValue, (value) => WorkgroupEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    enhancedVpcRouting = registerOutput<bool?>('enhancedVpcRouting');
+    maxCapacity = registerOutput<int?>('maxCapacity');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    pricePerformanceTarget = registerOutput<WorkgroupPricePerformanceTarget>('pricePerformanceTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkgroupPricePerformanceTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackName = registerOutput<String>('trackName');
     workgroupId = registerOutput<String>('workgroupId');
     workgroupName = registerOutput<String>('workgroupName');

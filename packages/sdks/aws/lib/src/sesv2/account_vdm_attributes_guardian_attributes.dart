@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountVdmAttributesGuardianAttributes {
-  /// Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? optimizedSharedDelivery;
+  /// Status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
+  final pulumi.Input<String?>? optimizedSharedDelivery;
 
   /// Creates a new [AccountVdmAttributesGuardianAttributes].
-  /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
+  /// [optimizedSharedDelivery] Status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
   const AccountVdmAttributesGuardianAttributes({
     this.optimizedSharedDelivery,
   });

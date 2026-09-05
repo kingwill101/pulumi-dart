@@ -20,7 +20,6 @@ import 'classifier_xml_classifier.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Classifier("example", {
-///     name: "example",
 ///     csvClassifier: {
 ///         allowSingleColumn: false,
 ///         containsHeader: "PRESENT",
@@ -32,6 +31,7 @@ import 'classifier_xml_classifier.dart';
 ///         ],
 ///         quoteSymbol: "'",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -39,7 +39,6 @@ import 'classifier_xml_classifier.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Classifier("example",
-///     name="example",
 ///     csv_classifier={
 ///         "allow_single_column": False,
 ///         "contains_header": "PRESENT",
@@ -50,7 +49,8 @@ import 'classifier_xml_classifier.dart';
 ///             "example2",
 ///         ],
 ///         "quote_symbol": "'",
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,7 +62,6 @@ import 'classifier_xml_classifier.dart';
 /// {
 ///     var example = new Aws.Glue.Classifier("example", new()
 ///     {
-///         Name = "example",
 ///         CsvClassifier = new Aws.Glue.Inputs.ClassifierCsvClassifierArgs
 ///         {
 ///             AllowSingleColumn = false,
@@ -76,6 +75,7 @@ import 'classifier_xml_classifier.dart';
 ///             },
 ///             QuoteSymbol = "'",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -91,7 +91,6 @@ import 'classifier_xml_classifier.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-/// 			Name: pulumi.String("example"),
 /// 			CsvClassifier: &glue.ClassifierCsvClassifierArgs{
 /// 				AllowSingleColumn:    pulumi.Bool(false),
 /// 				ContainsHeader:       pulumi.String("PRESENT"),
@@ -103,6 +102,7 @@ import 'classifier_xml_classifier.dart';
 /// 				},
 /// 				QuoteSymbol: pulumi.String("'"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,7 +121,6 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   name = "example"
 ///   csv_classifier = {
 ///     allow_single_column    = false
 ///     contains_header        = "PRESENT"
@@ -130,6 +129,7 @@ import 'classifier_xml_classifier.dart';
 ///     headers                = ["example1", "example2"]
 ///     quote_symbol           = "'"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -155,7 +155,6 @@ import 'classifier_xml_classifier.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Classifier("example", ClassifierArgs.builder()
-///             .name("example")
 ///             .csvClassifier(ClassifierCsvClassifierArgs.builder()
 ///                 .allowSingleColumn(false)
 ///                 .containsHeader("PRESENT")
@@ -166,6 +165,7 @@ import 'classifier_xml_classifier.dart';
 ///                     "example2")
 ///                 .quoteSymbol("'")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -176,7 +176,6 @@ import 'classifier_xml_classifier.dart';
 ///   example:
 ///     type: aws:glue:Classifier
 ///     properties:
-///       name: example
 ///       csvClassifier:
 ///         allowSingleColumn: false
 ///         containsHeader: PRESENT
@@ -186,6 +185,7 @@ import 'classifier_xml_classifier.dart';
 ///           - example1
 ///           - example2
 ///         quoteSymbol: ''''
+///       name: example
 /// ```
 ///
 ///
@@ -197,11 +197,11 @@ import 'classifier_xml_classifier.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Classifier("example", {
-///     name: "example",
 ///     grokClassifier: {
 ///         classification: "example",
 ///         grokPattern: "example",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -209,11 +209,11 @@ import 'classifier_xml_classifier.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Classifier("example",
-///     name="example",
 ///     grok_classifier={
 ///         "classification": "example",
 ///         "grok_pattern": "example",
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -225,12 +225,12 @@ import 'classifier_xml_classifier.dart';
 /// {
 ///     var example = new Aws.Glue.Classifier("example", new()
 ///     {
-///         Name = "example",
 ///         GrokClassifier = new Aws.Glue.Inputs.ClassifierGrokClassifierArgs
 ///         {
 ///             Classification = "example",
 ///             GrokPattern = "example",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -246,11 +246,11 @@ import 'classifier_xml_classifier.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-/// 			Name: pulumi.String("example"),
 /// 			GrokClassifier: &glue.ClassifierGrokClassifierArgs{
 /// 				Classification: pulumi.String("example"),
 /// 				GrokPattern:    pulumi.String("example"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -269,11 +269,11 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   name = "example"
 ///   grok_classifier = {
 ///     classification = "example"
 ///     grok_pattern   = "example"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -299,11 +299,11 @@ import 'classifier_xml_classifier.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Classifier("example", ClassifierArgs.builder()
-///             .name("example")
 ///             .grokClassifier(ClassifierGrokClassifierArgs.builder()
 ///                 .classification("example")
 ///                 .grokPattern("example")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -314,10 +314,10 @@ import 'classifier_xml_classifier.dart';
 ///   example:
 ///     type: aws:glue:Classifier
 ///     properties:
-///       name: example
 ///       grokClassifier:
 ///         classification: example
 ///         grokPattern: example
+///       name: example
 /// ```
 ///
 ///
@@ -329,10 +329,10 @@ import 'classifier_xml_classifier.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Classifier("example", {
-///     name: "example",
 ///     jsonClassifier: {
 ///         jsonPath: "example",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -340,10 +340,10 @@ import 'classifier_xml_classifier.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Classifier("example",
-///     name="example",
 ///     json_classifier={
 ///         "json_path": "example",
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -355,11 +355,11 @@ import 'classifier_xml_classifier.dart';
 /// {
 ///     var example = new Aws.Glue.Classifier("example", new()
 ///     {
-///         Name = "example",
 ///         JsonClassifier = new Aws.Glue.Inputs.ClassifierJsonClassifierArgs
 ///         {
 ///             JsonPath = "example",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -375,10 +375,10 @@ import 'classifier_xml_classifier.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-/// 			Name: pulumi.String("example"),
 /// 			JsonClassifier: &glue.ClassifierJsonClassifierArgs{
 /// 				JsonPath: pulumi.String("example"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -397,10 +397,10 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   name = "example"
 ///   json_classifier = {
 ///     json_path = "example"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -426,10 +426,10 @@ import 'classifier_xml_classifier.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Classifier("example", ClassifierArgs.builder()
-///             .name("example")
 ///             .jsonClassifier(ClassifierJsonClassifierArgs.builder()
 ///                 .jsonPath("example")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -440,9 +440,9 @@ import 'classifier_xml_classifier.dart';
 ///   example:
 ///     type: aws:glue:Classifier
 ///     properties:
-///       name: example
 ///       jsonClassifier:
 ///         jsonPath: example
+///       name: example
 /// ```
 ///
 ///
@@ -454,11 +454,11 @@ import 'classifier_xml_classifier.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Classifier("example", {
-///     name: "example",
 ///     xmlClassifier: {
 ///         classification: "example",
 ///         rowTag: "example",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -466,11 +466,11 @@ import 'classifier_xml_classifier.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Classifier("example",
-///     name="example",
 ///     xml_classifier={
 ///         "classification": "example",
 ///         "row_tag": "example",
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -482,12 +482,12 @@ import 'classifier_xml_classifier.dart';
 /// {
 ///     var example = new Aws.Glue.Classifier("example", new()
 ///     {
-///         Name = "example",
 ///         XmlClassifier = new Aws.Glue.Inputs.ClassifierXmlClassifierArgs
 ///         {
 ///             Classification = "example",
 ///             RowTag = "example",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -503,11 +503,11 @@ import 'classifier_xml_classifier.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-/// 			Name: pulumi.String("example"),
 /// 			XmlClassifier: &glue.ClassifierXmlClassifierArgs{
 /// 				Classification: pulumi.String("example"),
 /// 				RowTag:         pulumi.String("example"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -526,11 +526,11 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   name = "example"
 ///   xml_classifier = {
 ///     classification = "example"
 ///     row_tag        = "example"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -556,11 +556,11 @@ import 'classifier_xml_classifier.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Classifier("example", ClassifierArgs.builder()
-///             .name("example")
 ///             .xmlClassifier(ClassifierXmlClassifierArgs.builder()
 ///                 .classification("example")
 ///                 .rowTag("example")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -571,10 +571,10 @@ import 'classifier_xml_classifier.dart';
 ///   example:
 ///     type: aws:glue:Classifier
 ///     properties:
-///       name: example
 ///       xmlClassifier:
 ///         classification: example
 ///         rowTag: example
+///       name: example
 /// ```
 ///
 ///
@@ -611,7 +611,7 @@ class Classifier extends pulumi.CustomResource {
           'aws:glue/classifier:Classifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -626,11 +626,12 @@ class Classifier extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClassifierState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Classifier._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -644,6 +645,23 @@ class Classifier extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jsonClassifier = registerOutput<ClassifierJsonClassifier?>('jsonClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierJsonClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    xmlClassifier = registerOutput<ClassifierXmlClassifier?>('xmlClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierXmlClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Classifier] resource.
+  Classifier.reference(String urn)
+    : super(
+        'aws:glue/classifier:Classifier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jsonClassifier = registerOutput<ClassifierJsonClassifier?>('jsonClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierJsonClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });

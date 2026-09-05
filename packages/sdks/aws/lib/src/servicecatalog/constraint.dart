@@ -205,7 +205,7 @@ class Constraint extends pulumi.CustomResource {
           'aws:servicecatalog/constraint:Constraint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     description = registerOutput<String>('description');
@@ -223,11 +223,12 @@ class Constraint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConstraintState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Constraint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,6 +242,26 @@ class Constraint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    description = registerOutput<String>('description');
+    owner = registerOutput<String>('owner');
+    parameters = registerOutput<String>('parameters');
+    portfolioId = registerOutput<String>('portfolioId');
+    productId = registerOutput<String>('productId');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Constraint] resource.
+  Constraint.reference(String urn)
+    : super(
+        'aws:servicecatalog/constraint:Constraint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     description = registerOutput<String>('description');
     owner = registerOutput<String>('owner');

@@ -20,7 +20,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig(
-      maxPageSize: pulumi.Input.fromValue(map['maxPageSize'] as int),
+      maxPageSize: pulumi.Input.fromValue((map['maxPageSize'] as num).toInt()),
     );
   }
 }

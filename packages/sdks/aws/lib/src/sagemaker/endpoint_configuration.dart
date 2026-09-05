@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_configuration_args.dart';
 import 'endpoint_configuration_async_inference_config.dart';
 import 'endpoint_configuration_data_capture_config.dart';
+import 'endpoint_configuration_production_variant.dart';
+import 'endpoint_configuration_shadow_production_variant.dart';
 import 'endpoint_configuration_state.dart';
 
 /// Provides a SageMaker AI endpoint configuration resource.
@@ -35,11 +37,11 @@ class EndpointConfiguration extends pulumi.CustomResource {
   /// Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// List each model that you want to host at this endpoint. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> productionVariants;
+  late final pulumi.Output<List<EndpointConfigurationProductionVariant>> productionVariants;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `productionVariants`. If you use this field, you can only specify one variant for `productionVariants` and one variant for `shadowProductionVariants`. See below (same arguments as `productionVariants`).
-  late final pulumi.Output<List<Map<String, dynamic>>?> shadowProductionVariants;
+  late final pulumi.Output<List<EndpointConfigurationShadowProductionVariant>?> shadowProductionVariants;
   /// Mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -57,7 +59,7 @@ class EndpointConfiguration extends pulumi.CustomResource {
           'aws:sagemaker/endpointConfiguration:EndpointConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     asyncInferenceConfig = registerOutput<EndpointConfigurationAsyncInferenceConfig?>('asyncInferenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointConfigurationAsyncInferenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -66,11 +68,11 @@ class EndpointConfiguration extends pulumi.CustomResource {
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    productionVariants = registerOutput<List<Map<String, dynamic>>>('productionVariants');
+    productionVariants = registerOutput<List<EndpointConfigurationProductionVariant>>('productionVariants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(guardedValue, (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    shadowProductionVariants = registerOutput<List<Map<String, dynamic>>?>('shadowProductionVariants');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    shadowProductionVariants = registerOutput<List<EndpointConfigurationShadowProductionVariant>?>('shadowProductionVariants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(guardedValue, (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EndpointConfiguration] resource's state with the given [name] and [id].
@@ -78,11 +80,12 @@ class EndpointConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -103,10 +106,33 @@ class EndpointConfiguration extends pulumi.CustomResource {
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    productionVariants = registerOutput<List<Map<String, dynamic>>>('productionVariants');
+    productionVariants = registerOutput<List<EndpointConfigurationProductionVariant>>('productionVariants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(guardedValue, (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    shadowProductionVariants = registerOutput<List<Map<String, dynamic>>?>('shadowProductionVariants');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    shadowProductionVariants = registerOutput<List<EndpointConfigurationShadowProductionVariant>?>('shadowProductionVariants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(guardedValue, (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointConfiguration] resource.
+  EndpointConfiguration.reference(String urn)
+    : super(
+        'aws:sagemaker/endpointConfiguration:EndpointConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    asyncInferenceConfig = registerOutput<EndpointConfigurationAsyncInferenceConfig?>('asyncInferenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointConfigurationAsyncInferenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataCaptureConfig = registerOutput<EndpointConfigurationDataCaptureConfig?>('dataCaptureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointConfigurationDataCaptureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    productionVariants = registerOutput<List<EndpointConfigurationProductionVariant>>('productionVariants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(guardedValue, (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    shadowProductionVariants = registerOutput<List<EndpointConfigurationShadowProductionVariant>?>('shadowProductionVariants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(guardedValue, (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

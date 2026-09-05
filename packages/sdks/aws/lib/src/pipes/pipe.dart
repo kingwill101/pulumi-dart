@@ -609,11 +609,6 @@ import 'pipe_target_parameters.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.pipes.Pipe("example", {
-///     name: "example-pipe",
-///     roleArn: exampleAwsIamRole.arn,
-///     source: source.arn,
-///     target: target.arn,
-///     enrichment: exampleAwsCloudwatchEventApiDestination.arn,
 ///     enrichmentParameters: {
 ///         httpParameters: {
 ///             pathParameterValues: "example-path-param",
@@ -627,6 +622,11 @@ import 'pipe_target_parameters.dart';
 ///             },
 ///         },
 ///     },
+///     name: "example-pipe",
+///     roleArn: exampleAwsIamRole.arn,
+///     source: source.arn,
+///     target: target.arn,
+///     enrichment: exampleAwsCloudwatchEventApiDestination.arn,
 /// });
 /// ```
 /// ```python
@@ -634,11 +634,6 @@ import 'pipe_target_parameters.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.pipes.Pipe("example",
-///     name="example-pipe",
-///     role_arn=example_aws_iam_role["arn"],
-///     source=source["arn"],
-///     target=target["arn"],
-///     enrichment=example_aws_cloudwatch_event_api_destination["arn"],
 ///     enrichment_parameters={
 ///         "http_parameters": {
 ///             "path_parameter_values": "example-path-param",
@@ -651,7 +646,12 @@ import 'pipe_target_parameters.dart';
 ///                 "second-example-query-string": "second-example-value",
 ///             },
 ///         },
-///     })
+///     },
+///     name="example-pipe",
+///     role_arn=example_aws_iam_role["arn"],
+///     source=source["arn"],
+///     target=target["arn"],
+///     enrichment=example_aws_cloudwatch_event_api_destination["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -663,11 +663,6 @@ import 'pipe_target_parameters.dart';
 /// {
 ///     var example = new Aws.Pipes.Pipe("example", new()
 ///     {
-///         Name = "example-pipe",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         Source = source.Arn,
-///         Target = target.Arn,
-///         Enrichment = exampleAwsCloudwatchEventApiDestination.Arn,
 ///         EnrichmentParameters = new Aws.Pipes.Inputs.PipeEnrichmentParametersArgs
 ///         {
 ///             HttpParameters = new Aws.Pipes.Inputs.PipeEnrichmentParametersHttpParametersArgs
@@ -685,6 +680,11 @@ import 'pipe_target_parameters.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-pipe",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         Source = source.Arn,
+///         Target = target.Arn,
+///         Enrichment = exampleAwsCloudwatchEventApiDestination.Arn,
 ///     });
 ///
 /// });
@@ -700,11 +700,6 @@ import 'pipe_target_parameters.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := pipes.NewPipe(ctx, "example", &pipes.PipeArgs{
-/// 			Name:       pulumi.String("example-pipe"),
-/// 			RoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Source:     pulumi.Any(source.Arn),
-/// 			Target:     pulumi.Any(target.Arn),
-/// 			Enrichment: pulumi.Any(exampleAwsCloudwatchEventApiDestination.Arn),
 /// 			EnrichmentParameters: &pipes.PipeEnrichmentParametersArgs{
 /// 				HttpParameters: &pipes.PipeEnrichmentParametersHttpParametersArgs{
 /// 					PathParameterValues: pulumi.String("example-path-param"),
@@ -718,6 +713,11 @@ import 'pipe_target_parameters.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("example-pipe"),
+/// 			RoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Source:     pulumi.Any(source.Arn),
+/// 			Target:     pulumi.Any(target.Arn),
+/// 			Enrichment: pulumi.Any(exampleAwsCloudwatchEventApiDestination.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -736,11 +736,6 @@ import 'pipe_target_parameters.dart';
 /// }
 ///
 /// resource "aws_pipes_pipe" "example" {
-///   name       = "example-pipe"
-///   role_arn   = exampleAwsIamRole.arn
-///   source     = source.arn
-///   target     = target.arn
-///   enrichment = exampleAwsCloudwatchEventApiDestination.arn
 ///   enrichment_parameters = {
 ///     http_parameters = {
 ///       path_parameter_values = "example-path-param"
@@ -754,6 +749,11 @@ import 'pipe_target_parameters.dart';
 ///       }
 ///     }
 ///   }
+///   name       = "example-pipe"
+///   role_arn   = exampleAwsIamRole.arn
+///   source     = source.arn
+///   target     = target.arn
+///   enrichment = exampleAwsCloudwatchEventApiDestination.arn
 /// }
 /// ```
 /// ```java
@@ -780,11 +780,6 @@ import 'pipe_target_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Pipe("example", PipeArgs.builder()
-///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(source.arn())
-///             .target(target.arn())
-///             .enrichment(exampleAwsCloudwatchEventApiDestination.arn())
 ///             .enrichmentParameters(PipeEnrichmentParametersArgs.builder()
 ///                 .httpParameters(PipeEnrichmentParametersHttpParametersArgs.builder()
 ///                     .pathParameterValues("example-path-param")
@@ -798,6 +793,11 @@ import 'pipe_target_parameters.dart';
 ///                     ))
 ///                     .build())
 ///                 .build())
+///             .name("example-pipe")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .source(source.arn())
+///             .target(target.arn())
+///             .enrichment(exampleAwsCloudwatchEventApiDestination.arn())
 ///             .build());
 ///
 ///     }
@@ -808,11 +808,6 @@ import 'pipe_target_parameters.dart';
 ///   example:
 ///     type: aws:pipes:Pipe
 ///     properties:
-///       name: example-pipe
-///       roleArn: ${exampleAwsIamRole.arn}
-///       source: ${source.arn}
-///       target: ${target.arn}
-///       enrichment: ${exampleAwsCloudwatchEventApiDestination.arn}
 ///       enrichmentParameters:
 ///         httpParameters:
 ///           pathParameterValues: example-path-param
@@ -822,6 +817,11 @@ import 'pipe_target_parameters.dart';
 ///           queryStringParameters:
 ///             example-query-string: example-value
 ///             second-example-query-string: second-example-value
+///       name: example-pipe
+///       roleArn: ${exampleAwsIamRole.arn}
+///       source: ${source.arn}
+///       target: ${target.arn}
+///       enrichment: ${exampleAwsCloudwatchEventApiDestination.arn}
 /// ```
 ///
 ///
@@ -833,10 +833,6 @@ import 'pipe_target_parameters.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.pipes.Pipe("example", {
-///     name: "example-pipe",
-///     roleArn: exampleAwsIamRole.arn,
-///     source: source.arn,
-///     target: target.arn,
 ///     sourceParameters: {
 ///         filterCriteria: {
 ///             filters: [{
@@ -846,6 +842,10 @@ import 'pipe_target_parameters.dart';
 ///             }],
 ///         },
 ///     },
+///     name: "example-pipe",
+///     roleArn: exampleAwsIamRole.arn,
+///     source: source.arn,
+///     target: target.arn,
 /// });
 /// ```
 /// ```python
@@ -854,10 +854,6 @@ import 'pipe_target_parameters.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.pipes.Pipe("example",
-///     name="example-pipe",
-///     role_arn=example_aws_iam_role["arn"],
-///     source=source["arn"],
-///     target=target["arn"],
 ///     source_parameters={
 ///         "filter_criteria": {
 ///             "filters": [{
@@ -866,7 +862,11 @@ import 'pipe_target_parameters.dart';
 ///                 }),
 ///             }],
 ///         },
-///     })
+///     },
+///     name="example-pipe",
+///     role_arn=example_aws_iam_role["arn"],
+///     source=source["arn"],
+///     target=target["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -879,10 +879,6 @@ import 'pipe_target_parameters.dart';
 /// {
 ///     var example = new Aws.Pipes.Pipe("example", new()
 ///     {
-///         Name = "example-pipe",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         Source = source.Arn,
-///         Target = target.Arn,
 ///         SourceParameters = new Aws.Pipes.Inputs.PipeSourceParametersArgs
 ///         {
 ///             FilterCriteria = new Aws.Pipes.Inputs.PipeSourceParametersFilterCriteriaArgs
@@ -902,6 +898,10 @@ import 'pipe_target_parameters.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-pipe",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         Source = source.Arn,
+///         Target = target.Arn,
 ///     });
 ///
 /// });
@@ -928,10 +928,6 @@ import 'pipe_target_parameters.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = pipes.NewPipe(ctx, "example", &pipes.PipeArgs{
-/// 			Name:    pulumi.String("example-pipe"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Source:  pulumi.Any(source.Arn),
-/// 			Target:  pulumi.Any(target.Arn),
 /// 			SourceParameters: &pipes.PipeSourceParametersArgs{
 /// 				FilterCriteria: &pipes.PipeSourceParametersFilterCriteriaArgs{
 /// 					Filters: pipes.PipeSourceParametersFilterCriteriaFilterArray{
@@ -941,6 +937,10 @@ import 'pipe_target_parameters.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example-pipe"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Source:  pulumi.Any(source.Arn),
+/// 			Target:  pulumi.Any(target.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -959,10 +959,6 @@ import 'pipe_target_parameters.dart';
 /// }
 ///
 /// resource "aws_pipes_pipe" "example" {
-///   name     = "example-pipe"
-///   role_arn = exampleAwsIamRole.arn
-///   source   = source.arn
-///   target   = target.arn
 ///   source_parameters = {
 ///     filter_criteria = {
 ///       filters = [{
@@ -972,6 +968,10 @@ import 'pipe_target_parameters.dart';
 ///       }]
 ///     }
 ///   }
+///   name     = "example-pipe"
+///   role_arn = exampleAwsIamRole.arn
+///   source   = source.arn
+///   target   = target.arn
 /// }
 /// ```
 /// ```java
@@ -1000,10 +1000,6 @@ import 'pipe_target_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Pipe("example", PipeArgs.builder()
-///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(source.arn())
-///             .target(target.arn())
 ///             .sourceParameters(PipeSourceParametersArgs.builder()
 ///                 .filterCriteria(PipeSourceParametersFilterCriteriaArgs.builder()
 ///                     .filters(PipeSourceParametersFilterCriteriaFilterArgs.builder()
@@ -1014,6 +1010,10 @@ import 'pipe_target_parameters.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example-pipe")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .source(source.arn())
+///             .target(target.arn())
 ///             .build());
 ///
 ///     }
@@ -1024,10 +1024,6 @@ import 'pipe_target_parameters.dart';
 ///   example:
 ///     type: aws:pipes:Pipe
 ///     properties:
-///       name: example-pipe
-///       roleArn: ${exampleAwsIamRole.arn}
-///       source: ${source.arn}
-///       target: ${target.arn}
 ///       sourceParameters:
 ///         filterCriteria:
 ///           filters:
@@ -1035,6 +1031,10 @@ import 'pipe_target_parameters.dart';
 ///                 fn::toJSON:
 ///                   source:
 ///                     - event-source
+///       name: example-pipe
+///       roleArn: ${exampleAwsIamRole.arn}
+///       source: ${source.arn}
+///       target: ${target.arn}
 /// ```
 ///
 ///
@@ -1047,17 +1047,17 @@ import 'pipe_target_parameters.dart';
 ///
 /// const example = new aws.cloudwatch.LogGroup("example", {name: "example-pipe-target"});
 /// const examplePipe = new aws.pipes.Pipe("example", {
+///     logConfiguration: {
+///         cloudwatchLogsLogDestination: {
+///             logGroupArn: targetAwsCloudwatchLogGroup.arn,
+///         },
+///         includeExecutionDatas: ["ALL"],
+///         level: "INFO",
+///     },
 ///     name: "example-pipe",
 ///     roleArn: exampleAwsIamRole.arn,
 ///     source: sourceAwsSqsQueue.arn,
 ///     target: targetAwsSqsQueue.arn,
-///     logConfiguration: {
-///         includeExecutionDatas: ["ALL"],
-///         level: "INFO",
-///         cloudwatchLogsLogDestination: {
-///             logGroupArn: targetAwsCloudwatchLogGroup.arn,
-///         },
-///     },
 /// }, {
 ///     dependsOn: [
 ///         source,
@@ -1071,17 +1071,17 @@ import 'pipe_target_parameters.dart';
 ///
 /// example = aws.cloudwatch.LogGroup("example", name="example-pipe-target")
 /// example_pipe = aws.pipes.Pipe("example",
+///     log_configuration={
+///         "cloudwatch_logs_log_destination": {
+///             "log_group_arn": target_aws_cloudwatch_log_group["arn"],
+///         },
+///         "include_execution_datas": ["ALL"],
+///         "level": "INFO",
+///     },
 ///     name="example-pipe",
 ///     role_arn=example_aws_iam_role["arn"],
 ///     source=source_aws_sqs_queue["arn"],
 ///     target=target_aws_sqs_queue["arn"],
-///     log_configuration={
-///         "include_execution_datas": ["ALL"],
-///         "level": "INFO",
-///         "cloudwatch_logs_log_destination": {
-///             "log_group_arn": target_aws_cloudwatch_log_group["arn"],
-///         },
-///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             source,
 ///             target,
@@ -1102,22 +1102,22 @@ import 'pipe_target_parameters.dart';
 ///
 ///     var examplePipe = new Aws.Pipes.Pipe("example", new()
 ///     {
-///         Name = "example-pipe",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         Source = sourceAwsSqsQueue.Arn,
-///         Target = targetAwsSqsQueue.Arn,
 ///         LogConfiguration = new Aws.Pipes.Inputs.PipeLogConfigurationArgs
 ///         {
+///             CloudwatchLogsLogDestination = new Aws.Pipes.Inputs.PipeLogConfigurationCloudwatchLogsLogDestinationArgs
+///             {
+///                 LogGroupArn = targetAwsCloudwatchLogGroup.Arn,
+///             },
 ///             IncludeExecutionDatas = new[]
 ///             {
 ///                 "ALL",
 ///             },
 ///             Level = "INFO",
-///             CloudwatchLogsLogDestination = new Aws.Pipes.Inputs.PipeLogConfigurationCloudwatchLogsLogDestinationArgs
-///             {
-///                 LogGroupArn = targetAwsCloudwatchLogGroup.Arn,
-///             },
 ///         },
+///         Name = "example-pipe",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         Source = sourceAwsSqsQueue.Arn,
+///         Target = targetAwsSqsQueue.Arn,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1147,19 +1147,19 @@ import 'pipe_target_parameters.dart';
 /// 			return err
 /// 		}
 /// 		_, err = pipes.NewPipe(ctx, "example", &pipes.PipeArgs{
-/// 			Name:    pulumi.String("example-pipe"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Source:  pulumi.Any(sourceAwsSqsQueue.Arn),
-/// 			Target:  pulumi.Any(targetAwsSqsQueue.Arn),
 /// 			LogConfiguration: &pipes.PipeLogConfigurationArgs{
+/// 				CloudwatchLogsLogDestination: &pipes.PipeLogConfigurationCloudwatchLogsLogDestinationArgs{
+/// 					LogGroupArn: pulumi.Any(targetAwsCloudwatchLogGroup.Arn),
+/// 				},
 /// 				IncludeExecutionDatas: pulumi.StringArray{
 /// 					pulumi.String("ALL"),
 /// 				},
 /// 				Level: pulumi.String("INFO"),
-/// 				CloudwatchLogsLogDestination: &pipes.PipeLogConfigurationCloudwatchLogsLogDestinationArgs{
-/// 					LogGroupArn: pulumi.Any(targetAwsCloudwatchLogGroup.Arn),
-/// 				},
 /// 			},
+/// 			Name:    pulumi.String("example-pipe"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Source:  pulumi.Any(sourceAwsSqsQueue.Arn),
+/// 			Target:  pulumi.Any(targetAwsSqsQueue.Arn),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			source,
 /// 			target,
@@ -1185,17 +1185,17 @@ import 'pipe_target_parameters.dart';
 /// }
 /// resource "aws_pipes_pipe" "example" {
 ///   depends_on = [source, target]
-///   name       = "example-pipe"
-///   role_arn   = exampleAwsIamRole.arn
-///   source     = sourceAwsSqsQueue.arn
-///   target     = targetAwsSqsQueue.arn
 ///   log_configuration = {
-///     include_execution_datas = ["ALL"]
-///     level                   = "INFO"
 ///     cloudwatch_logs_log_destination = {
 ///       log_group_arn = targetAwsCloudwatchLogGroup.arn
 ///     }
+///     include_execution_datas = ["ALL"]
+///     level                   = "INFO"
 ///   }
+///   name     = "example-pipe"
+///   role_arn = exampleAwsIamRole.arn
+///   source   = sourceAwsSqsQueue.arn
+///   target   = targetAwsSqsQueue.arn
 /// }
 /// ```
 /// ```java
@@ -1229,17 +1229,17 @@ import 'pipe_target_parameters.dart';
 ///             .build());
 ///
 ///         var examplePipe = new Pipe("examplePipe", PipeArgs.builder()
+///             .logConfiguration(PipeLogConfigurationArgs.builder()
+///                 .cloudwatchLogsLogDestination(PipeLogConfigurationCloudwatchLogsLogDestinationArgs.builder()
+///                     .logGroupArn(targetAwsCloudwatchLogGroup.arn())
+///                     .build())
+///                 .includeExecutionDatas("ALL")
+///                 .level("INFO")
+///                 .build())
 ///             .name("example-pipe")
 ///             .roleArn(exampleAwsIamRole.arn())
 ///             .source(sourceAwsSqsQueue.arn())
 ///             .target(targetAwsSqsQueue.arn())
-///             .logConfiguration(PipeLogConfigurationArgs.builder()
-///                 .includeExecutionDatas("ALL")
-///                 .level("INFO")
-///                 .cloudwatchLogsLogDestination(PipeLogConfigurationCloudwatchLogsLogDestinationArgs.builder()
-///                     .logGroupArn(targetAwsCloudwatchLogGroup.arn())
-///                     .build())
-///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     source,
@@ -1259,16 +1259,16 @@ import 'pipe_target_parameters.dart';
 ///     type: aws:pipes:Pipe
 ///     name: example
 ///     properties:
+///       logConfiguration:
+///         cloudwatchLogsLogDestination:
+///           logGroupArn: ${targetAwsCloudwatchLogGroup.arn}
+///         includeExecutionDatas:
+///           - ALL
+///         level: INFO
 ///       name: example-pipe
 ///       roleArn: ${exampleAwsIamRole.arn}
 ///       source: ${sourceAwsSqsQueue.arn}
 ///       target: ${targetAwsSqsQueue.arn}
-///       logConfiguration:
-///         includeExecutionDatas:
-///           - ALL
-///         level: INFO
-///         cloudwatchLogsLogDestination:
-///           logGroupArn: ${targetAwsCloudwatchLogGroup.arn}
 ///     options:
 ///       dependsOn:
 ///         - ${source}
@@ -1284,10 +1284,6 @@ import 'pipe_target_parameters.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.pipes.Pipe("example", {
-///     name: "example-pipe",
-///     roleArn: exampleAwsIamRole.arn,
-///     source: source.arn,
-///     target: target.arn,
 ///     sourceParameters: {
 ///         sqsQueueParameters: {
 ///             batchSize: 1,
@@ -1300,6 +1296,10 @@ import 'pipe_target_parameters.dart';
 ///             messageGroupId: "example-group",
 ///         },
 ///     },
+///     name: "example-pipe",
+///     roleArn: exampleAwsIamRole.arn,
+///     source: source.arn,
+///     target: target.arn,
 /// });
 /// ```
 /// ```python
@@ -1307,10 +1307,6 @@ import 'pipe_target_parameters.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.pipes.Pipe("example",
-///     name="example-pipe",
-///     role_arn=example_aws_iam_role["arn"],
-///     source=source["arn"],
-///     target=target["arn"],
 ///     source_parameters={
 ///         "sqs_queue_parameters": {
 ///             "batch_size": 1,
@@ -1322,7 +1318,11 @@ import 'pipe_target_parameters.dart';
 ///             "message_deduplication_id": "example-dedupe",
 ///             "message_group_id": "example-group",
 ///         },
-///     })
+///     },
+///     name="example-pipe",
+///     role_arn=example_aws_iam_role["arn"],
+///     source=source["arn"],
+///     target=target["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1334,10 +1334,6 @@ import 'pipe_target_parameters.dart';
 /// {
 ///     var example = new Aws.Pipes.Pipe("example", new()
 ///     {
-///         Name = "example-pipe",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         Source = source.Arn,
-///         Target = target.Arn,
 ///         SourceParameters = new Aws.Pipes.Inputs.PipeSourceParametersArgs
 ///         {
 ///             SqsQueueParameters = new Aws.Pipes.Inputs.PipeSourceParametersSqsQueueParametersArgs
@@ -1354,6 +1350,10 @@ import 'pipe_target_parameters.dart';
 ///                 MessageGroupId = "example-group",
 ///             },
 ///         },
+///         Name = "example-pipe",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         Source = source.Arn,
+///         Target = target.Arn,
 ///     });
 ///
 /// });
@@ -1369,10 +1369,6 @@ import 'pipe_target_parameters.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := pipes.NewPipe(ctx, "example", &pipes.PipeArgs{
-/// 			Name:    pulumi.String("example-pipe"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Source:  pulumi.Any(source.Arn),
-/// 			Target:  pulumi.Any(target.Arn),
 /// 			SourceParameters: &pipes.PipeSourceParametersArgs{
 /// 				SqsQueueParameters: &pipes.PipeSourceParametersSqsQueueParametersArgs{
 /// 					BatchSize:                      pulumi.Int(1),
@@ -1385,6 +1381,10 @@ import 'pipe_target_parameters.dart';
 /// 					MessageGroupId:         pulumi.String("example-group"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example-pipe"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Source:  pulumi.Any(source.Arn),
+/// 			Target:  pulumi.Any(target.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1403,10 +1403,6 @@ import 'pipe_target_parameters.dart';
 /// }
 ///
 /// resource "aws_pipes_pipe" "example" {
-///   name     = "example-pipe"
-///   role_arn = exampleAwsIamRole.arn
-///   source   = source.arn
-///   target   = target.arn
 ///   source_parameters = {
 ///     sqs_queue_parameters = {
 ///       batch_size                         = 1
@@ -1419,6 +1415,10 @@ import 'pipe_target_parameters.dart';
 ///       message_group_id         = "example-group"
 ///     }
 ///   }
+///   name     = "example-pipe"
+///   role_arn = exampleAwsIamRole.arn
+///   source   = source.arn
+///   target   = target.arn
 /// }
 /// ```
 /// ```java
@@ -1447,10 +1447,6 @@ import 'pipe_target_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Pipe("example", PipeArgs.builder()
-///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(source.arn())
-///             .target(target.arn())
 ///             .sourceParameters(PipeSourceParametersArgs.builder()
 ///                 .sqsQueueParameters(PipeSourceParametersSqsQueueParametersArgs.builder()
 ///                     .batchSize(1)
@@ -1463,6 +1459,10 @@ import 'pipe_target_parameters.dart';
 ///                     .messageGroupId("example-group")
 ///                     .build())
 ///                 .build())
+///             .name("example-pipe")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .source(source.arn())
+///             .target(target.arn())
 ///             .build());
 ///
 ///     }
@@ -1473,10 +1473,6 @@ import 'pipe_target_parameters.dart';
 ///   example:
 ///     type: aws:pipes:Pipe
 ///     properties:
-///       name: example-pipe
-///       roleArn: ${exampleAwsIamRole.arn}
-///       source: ${source.arn}
-///       target: ${target.arn}
 ///       sourceParameters:
 ///         sqsQueueParameters:
 ///           batchSize: 1
@@ -1485,6 +1481,10 @@ import 'pipe_target_parameters.dart';
 ///         sqsQueueParameters:
 ///           messageDeduplicationId: example-dedupe
 ///           messageGroupId: example-group
+///       name: example-pipe
+///       roleArn: ${exampleAwsIamRole.arn}
+///       source: ${source.arn}
+///       target: ${target.arn}
 /// ```
 ///
 ///
@@ -1506,7 +1506,7 @@ class Pipe extends pulumi.CustomResource {
   late final pulumi.Output<String?> enrichment;
   /// Parameters to configure enrichment for your pipe. Detailed below.
   late final pulumi.Output<PipeEnrichmentParameters?> enrichmentParameters;
-  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
+  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key ARN, KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
   late final pulumi.Output<String?> kmsKeyIdentifier;
   /// Logging configuration settings for the pipe. Detailed below.
   late final pulumi.Output<PipeLogConfiguration?> logConfiguration;
@@ -1518,7 +1518,7 @@ class Pipe extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ARN of the role that allows the pipe to send data to the target.
   late final pulumi.Output<String> roleArn;
-  /// Source resource of the pipe. This field typically requires an ARN (Amazon Resource Name). However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
+  /// Source resource of the pipe. This field typically requires an ARN. However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
   late final pulumi.Output<String> source;
   /// Parameters to configure a source for the pipe. Detailed below.
   late final pulumi.Output<PipeSourceParameters> sourceParameters;
@@ -1545,7 +1545,7 @@ class Pipe extends pulumi.CustomResource {
           'aws:pipes/pipe:Pipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -1560,8 +1560,8 @@ class Pipe extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     source = registerOutput<String>('source');
     sourceParameters = registerOutput<PipeSourceParameters>('sourceParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeSourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     target = registerOutput<String>('target');
     targetParameters = registerOutput<PipeTargetParameters?>('targetParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeTargetParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1571,11 +1571,12 @@ class Pipe extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipe._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1602,8 +1603,36 @@ class Pipe extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     source = registerOutput<String>('source');
     sourceParameters = registerOutput<PipeSourceParameters>('sourceParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeSourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    target = registerOutput<String>('target');
+    targetParameters = registerOutput<PipeTargetParameters?>('targetParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeTargetParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Pipe] resource.
+  Pipe.reference(String urn)
+    : super(
+        'aws:pipes/pipe:Pipe',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    desiredState = registerOutput<String?>('desiredState');
+    enrichment = registerOutput<String?>('enrichment');
+    enrichmentParameters = registerOutput<PipeEnrichmentParameters?>('enrichmentParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeEnrichmentParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    logConfiguration = registerOutput<PipeLogConfiguration?>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    source = registerOutput<String>('source');
+    sourceParameters = registerOutput<PipeSourceParameters>('sourceParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeSourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     target = registerOutput<String>('target');
     targetParameters = registerOutput<PipeTargetParameters?>('targetParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipeTargetParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

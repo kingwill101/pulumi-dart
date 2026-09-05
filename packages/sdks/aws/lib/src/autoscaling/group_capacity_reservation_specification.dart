@@ -5,9 +5,9 @@ import 'group_capacity_reservation_specification_capacity_reservation_target.dar
 
 class GroupCapacityReservationSpecification {
   /// Capacity Reservation preference helps you use Capacity Reservations efficiently by prioritizing reserved capacity in a Capacity Reservation before using On-Demand capacity. Valid values are `default`, `capacity-reservations-only`, `capacity-reservations-first` and `none`. Default is `default`.
-  final pulumi.Input<String>? capacityReservationPreference;
+  final pulumi.Input<String?>? capacityReservationPreference;
   /// Describes a target Capacity Reservation or Capacity Reservation resource group.
-  final pulumi.Input<GroupCapacityReservationSpecificationCapacityReservationTarget>? capacityReservationTarget;
+  final pulumi.Input<GroupCapacityReservationSpecificationCapacityReservationTarget?>? capacityReservationTarget;
 
   /// Creates a new [GroupCapacityReservationSpecification].
   /// [capacityReservationPreference] Capacity Reservation preference helps you use Capacity Reservations efficiently by prioritizing reserved capacity in a Capacity Reservation before using On-Demand capacity. Valid values are `default`, `capacity-reservations-only`, `capacity-reservations-first` and `none`. Default is `default`.

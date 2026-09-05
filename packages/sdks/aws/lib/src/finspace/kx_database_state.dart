@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering KxDatabase resources.
 class KxDatabaseState {
-  /// Amazon Resource Name (ARN) identifier of the KX database.
-  final pulumi.Input<String>? arn;
+  /// ARN identifier of the KX database.
+  final pulumi.Input<String?>? arn;
   /// Timestamp at which the databse is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  final pulumi.Input<String>? createdTimestamp;
+  final pulumi.Input<String?>? createdTimestamp;
   /// Description of the KX database.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier for the KX environment.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Last timestamp at which the database was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  final pulumi.Input<String>? lastModifiedTimestamp;
+  final pulumi.Input<String?>? lastModifiedTimestamp;
   /// Name of the KX database.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [KxDatabaseState].
-  /// [arn] Amazon Resource Name (ARN) identifier of the KX database.
+  /// [arn] ARN identifier of the KX database.
   /// [createdTimestamp] Timestamp at which the databse is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   /// [description] Description of the KX database.
   /// [environmentId] Unique identifier for the KX environment.

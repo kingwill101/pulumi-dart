@@ -197,7 +197,7 @@ import 'custom_data_identifier_state.dart';
 /// $ pulumi import aws:macie/customDataIdentifier:CustomDataIdentifier example abcd1
 /// ```
 class CustomDataIdentifier extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the custom data identifier.
+  /// ARN of the custom data identifier.
   late final pulumi.Output<String> arn;
   /// The date and time, in UTC and extended RFC 3339 format, when the Amazon Macie account was created.
   late final pulumi.Output<String> createdAt;
@@ -234,20 +234,20 @@ class CustomDataIdentifier extends pulumi.CustomResource {
           'aws:macie/customDataIdentifier:CustomDataIdentifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    ignoreWords = registerOutput<List<String>?>('ignoreWords');
-    keywords = registerOutput<List<String>?>('keywords');
+    ignoreWords = registerOutput<List<String>?>('ignoreWords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keywords = registerOutput<List<String>?>('keywords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maximumMatchDistance = registerOutput<int>('maximumMatchDistance');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     regex = registerOutput<String?>('regex');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CustomDataIdentifier] resource's state with the given [name] and [id].
@@ -255,11 +255,12 @@ class CustomDataIdentifier extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDataIdentifierState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDataIdentifier._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,14 +277,37 @@ class CustomDataIdentifier extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    ignoreWords = registerOutput<List<String>?>('ignoreWords');
-    keywords = registerOutput<List<String>?>('keywords');
+    ignoreWords = registerOutput<List<String>?>('ignoreWords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keywords = registerOutput<List<String>?>('keywords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maximumMatchDistance = registerOutput<int>('maximumMatchDistance');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     regex = registerOutput<String?>('regex');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomDataIdentifier] resource.
+  CustomDataIdentifier.reference(String urn)
+    : super(
+        'aws:macie/customDataIdentifier:CustomDataIdentifier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    ignoreWords = registerOutput<List<String>?>('ignoreWords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keywords = registerOutput<List<String>?>('keywords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    maximumMatchDistance = registerOutput<int>('maximumMatchDistance');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    regex = registerOutput<String?>('regex');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

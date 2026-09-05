@@ -6,14 +6,14 @@ import 'get_prefix_list_filter.dart';
 /// Result data returned by getPrefixList.
 class GetPrefixListResult {
   /// List of CIDR blocks for the AWS service associated with the prefix list.
-  final List<String> cidrBlocks;
+  final List<String>? cidrBlocks;
   final List<GetPrefixListFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the selected prefix list.
-  final String name;
+  final String? name;
   final String? prefixListId;
-  final String region;
+  final String? region;
 
   /// Creates a new [GetPrefixListResult].
   /// [cidrBlocks] List of CIDR blocks for the AWS service associated with the prefix list.
@@ -21,35 +21,35 @@ class GetPrefixListResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the selected prefix list.
   /// [prefixListId] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   const GetPrefixListResult({
-    required this.cidrBlocks,
+    this.cidrBlocks,
     this.filters,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.prefixListId,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks': cidrBlocks,
+      'cidrBlocks': ?cidrBlocks,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPrefixListFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'prefixListId': ?prefixListId,
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetPrefixListResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListResult(
-      cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
+      cidrBlocks: (() { final guardedValue = map['cidrBlocks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPrefixListFilter>(guardedValue, (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       prefixListId: (() { final guardedValue = map['prefixListId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

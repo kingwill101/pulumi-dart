@@ -3,6 +3,7 @@ import 'classification_job_args.dart';
 import 'classification_job_s3_job_definition.dart';
 import 'classification_job_schedule_frequency.dart';
 import 'classification_job_state.dart';
+import 'classification_job_user_paused_detail.dart';
 
 /// Provides a resource to manage an [AWS Macie Classification Job](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html).
 ///
@@ -15,14 +16,14 @@ import 'classification_job_state.dart';
 ///
 /// const test = new aws.macie2.Account("test", {});
 /// const testClassificationJob = new aws.macie2.ClassificationJob("test", {
-///     jobType: "ONE_TIME",
-///     name: "NAME OF THE CLASSIFICATION JOB",
 ///     s3JobDefinition: {
 ///         bucketDefinitions: [{
 ///             accountId: "ACCOUNT ID",
 ///             buckets: ["S3 BUCKET NAME"],
 ///         }],
 ///     },
+///     jobType: "ONE_TIME",
+///     name: "NAME OF THE CLASSIFICATION JOB",
 /// }, {
 ///     dependsOn: [test],
 /// });
@@ -33,14 +34,14 @@ import 'classification_job_state.dart';
 ///
 /// test = aws.macie2.Account("test")
 /// test_classification_job = aws.macie2.ClassificationJob("test",
-///     job_type="ONE_TIME",
-///     name="NAME OF THE CLASSIFICATION JOB",
 ///     s3_job_definition={
 ///         "bucket_definitions": [{
 ///             "account_id": "ACCOUNT ID",
 ///             "buckets": ["S3 BUCKET NAME"],
 ///         }],
 ///     },
+///     job_type="ONE_TIME",
+///     name="NAME OF THE CLASSIFICATION JOB",
 ///     opts = pulumi.ResourceOptions(depends_on=[test]))
 /// ```
 /// ```csharp
@@ -55,8 +56,6 @@ import 'classification_job_state.dart';
 ///
 ///     var testClassificationJob = new Aws.Macie2.ClassificationJob("test", new()
 ///     {
-///         JobType = "ONE_TIME",
-///         Name = "NAME OF THE CLASSIFICATION JOB",
 ///         S3JobDefinition = new Aws.Macie2.Inputs.ClassificationJobS3JobDefinitionArgs
 ///         {
 ///             BucketDefinitions = new[]
@@ -71,6 +70,8 @@ import 'classification_job_state.dart';
 ///                 },
 ///             },
 ///         },
+///         JobType = "ONE_TIME",
+///         Name = "NAME OF THE CLASSIFICATION JOB",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -96,8 +97,6 @@ import 'classification_job_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = macie2.NewClassificationJob(ctx, "test", &macie2.ClassificationJobArgs{
-/// 			JobType: pulumi.String("ONE_TIME"),
-/// 			Name:    pulumi.String("NAME OF THE CLASSIFICATION JOB"),
 /// 			S3JobDefinition: &macie2.ClassificationJobS3JobDefinitionArgs{
 /// 				BucketDefinitions: macie2.ClassificationJobS3JobDefinitionBucketDefinitionArray{
 /// 					&macie2.ClassificationJobS3JobDefinitionBucketDefinitionArgs{
@@ -108,6 +107,8 @@ import 'classification_job_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			JobType: pulumi.String("ONE_TIME"),
+/// 			Name:    pulumi.String("NAME OF THE CLASSIFICATION JOB"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			test,
 /// 		}))
@@ -131,14 +132,14 @@ import 'classification_job_state.dart';
 /// }
 /// resource "aws_macie2_classificationjob" "test" {
 ///   depends_on = [aws_macie2_account.test]
-///   job_type   = "ONE_TIME"
-///   name       = "NAME OF THE CLASSIFICATION JOB"
 ///   s3_job_definition = {
 ///     bucket_definitions = [{
 ///       "accountId" = "ACCOUNT ID"
 ///       "buckets"   = ["S3 BUCKET NAME"]
 ///     }]
 ///   }
+///   job_type = "ONE_TIME"
+///   name     = "NAME OF THE CLASSIFICATION JOB"
 /// }
 /// ```
 /// ```java
@@ -169,14 +170,14 @@ import 'classification_job_state.dart';
 ///         var test = new Account("test");
 ///
 ///         var testClassificationJob = new ClassificationJob("testClassificationJob", ClassificationJobArgs.builder()
-///             .jobType("ONE_TIME")
-///             .name("NAME OF THE CLASSIFICATION JOB")
 ///             .s3JobDefinition(ClassificationJobS3JobDefinitionArgs.builder()
 ///                 .bucketDefinitions(ClassificationJobS3JobDefinitionBucketDefinitionArgs.builder()
 ///                     .accountId("ACCOUNT ID")
 ///                     .buckets("S3 BUCKET NAME")
 ///                     .build())
 ///                 .build())
+///             .jobType("ONE_TIME")
+///             .name("NAME OF THE CLASSIFICATION JOB")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(test)
 ///                 .build());
@@ -192,13 +193,13 @@ import 'classification_job_state.dart';
 ///     type: aws:macie2:ClassificationJob
 ///     name: test
 ///     properties:
-///       jobType: ONE_TIME
-///       name: NAME OF THE CLASSIFICATION JOB
 ///       s3JobDefinition:
 ///         bucketDefinitions:
 ///           - accountId: ACCOUNT ID
 ///             buckets:
 ///               - S3 BUCKET NAME
+///       jobType: ONE_TIME
+///       name: NAME OF THE CLASSIFICATION JOB
 ///     options:
 ///       dependsOn:
 ///         - ${test}
@@ -244,7 +245,7 @@ class ClassificationJob extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If the current status of the job is `USER_PAUSED`, specifies when the job was paused and when the job or job run will expire and be canceled if it isn't resumed. This value is present only if the value for `job-status` is `USER_PAUSED`.
-  late final pulumi.Output<List<Map<String, dynamic>>> userPausedDetails;
+  late final pulumi.Output<List<ClassificationJobUserPausedDetail>> userPausedDetails;
 
   /// Creates a new [ClassificationJob].
   /// [name] The Pulumi resource name.
@@ -258,10 +259,10 @@ class ClassificationJob extends pulumi.CustomResource {
           'aws:macie2/classificationJob:ClassificationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds');
+    customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     initialRun = registerOutput<bool?>('initialRun');
     jobArn = registerOutput<String>('jobArn');
@@ -274,9 +275,9 @@ class ClassificationJob extends pulumi.CustomResource {
     s3JobDefinition = registerOutput<ClassificationJobS3JobDefinition>('s3JobDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationJobS3JobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     samplingPercentage = registerOutput<int>('samplingPercentage');
     scheduleFrequency = registerOutput<ClassificationJobScheduleFrequency>('scheduleFrequency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationJobScheduleFrequency.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userPausedDetails = registerOutput<List<Map<String, dynamic>>>('userPausedDetails');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userPausedDetails = registerOutput<List<ClassificationJobUserPausedDetail>>('userPausedDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClassificationJobUserPausedDetail>(guardedValue, (value) => ClassificationJobUserPausedDetail.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ClassificationJob] resource's state with the given [name] and [id].
@@ -284,11 +285,12 @@ class ClassificationJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClassificationJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClassificationJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,7 +305,7 @@ class ClassificationJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds');
+    customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     initialRun = registerOutput<bool?>('initialRun');
     jobArn = registerOutput<String>('jobArn');
@@ -316,8 +318,36 @@ class ClassificationJob extends pulumi.CustomResource {
     s3JobDefinition = registerOutput<ClassificationJobS3JobDefinition>('s3JobDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationJobS3JobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     samplingPercentage = registerOutput<int>('samplingPercentage');
     scheduleFrequency = registerOutput<ClassificationJobScheduleFrequency>('scheduleFrequency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationJobScheduleFrequency.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userPausedDetails = registerOutput<List<Map<String, dynamic>>>('userPausedDetails');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userPausedDetails = registerOutput<List<ClassificationJobUserPausedDetail>>('userPausedDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClassificationJobUserPausedDetail>(guardedValue, (value) => ClassificationJobUserPausedDetail.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ClassificationJob] resource.
+  ClassificationJob.reference(String urn)
+    : super(
+        'aws:macie2/classificationJob:ClassificationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    initialRun = registerOutput<bool?>('initialRun');
+    jobArn = registerOutput<String>('jobArn');
+    jobId = registerOutput<String>('jobId');
+    jobStatus = registerOutput<String>('jobStatus');
+    jobType = registerOutput<String>('jobType');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    s3JobDefinition = registerOutput<ClassificationJobS3JobDefinition>('s3JobDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationJobS3JobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    samplingPercentage = registerOutput<int>('samplingPercentage');
+    scheduleFrequency = registerOutput<ClassificationJobScheduleFrequency>('scheduleFrequency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationJobScheduleFrequency.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userPausedDetails = registerOutput<List<ClassificationJobUserPausedDetail>>('userPausedDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClassificationJobUserPausedDetail>(guardedValue, (value) => ClassificationJobUserPausedDetail.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

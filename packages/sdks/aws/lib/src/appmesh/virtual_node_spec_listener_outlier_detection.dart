@@ -39,8 +39,8 @@ class VirtualNodeSpecListenerOutlierDetection {
     return VirtualNodeSpecListenerOutlierDetection(
       baseEjectionDuration: pulumi.Input.fromValue(VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration.fromMap((map['baseEjectionDuration']! as Map).cast<String, dynamic>())),
       interval: pulumi.Input.fromValue(VirtualNodeSpecListenerOutlierDetectionInterval.fromMap((map['interval']! as Map).cast<String, dynamic>())),
-      maxEjectionPercent: pulumi.Input.fromValue(map['maxEjectionPercent'] as int),
-      maxServerErrors: pulumi.Input.fromValue(map['maxServerErrors'] as int),
+      maxEjectionPercent: pulumi.Input.fromValue((map['maxEjectionPercent'] as num).toInt()),
+      maxServerErrors: pulumi.Input.fromValue((map['maxServerErrors'] as num).toInt()),
     );
   }
 }

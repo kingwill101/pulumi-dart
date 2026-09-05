@@ -20,7 +20,7 @@ class PoolCapacity {
 
   factory PoolCapacity.fromMap(Map<String, dynamic> map) {
     return PoolCapacity(
-      desiredUserSessions: pulumi.Input.fromValue(map['desiredUserSessions'] as int),
+      desiredUserSessions: pulumi.Input.fromValue((map['desiredUserSessions'] as num).toInt()),
     );
   }
 }

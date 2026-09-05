@@ -5,7 +5,7 @@ import 'agentcore_code_interpreter_certificate_location_secrets_manager.dart';
 
 class AgentcoreCodeInterpreterCertificateLocation {
   /// AWS Secrets Manager location of the certificate. See `secretsManager` below.
-  final pulumi.Input<AgentcoreCodeInterpreterCertificateLocationSecretsManager>? secretsManager;
+  final pulumi.Input<AgentcoreCodeInterpreterCertificateLocationSecretsManager?>? secretsManager;
 
   /// Creates a new [AgentcoreCodeInterpreterCertificateLocation].
   /// [secretsManager] AWS Secrets Manager location of the certificate. See `secretsManager` below.

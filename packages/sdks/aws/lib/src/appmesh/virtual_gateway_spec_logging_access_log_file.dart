@@ -5,7 +5,7 @@ import 'virtual_gateway_spec_logging_access_log_file_format.dart';
 
 class VirtualGatewaySpecLoggingAccessLogFile {
   /// Specified format for the logs. See `format` Block for details.
-  final pulumi.Input<VirtualGatewaySpecLoggingAccessLogFileFormat>? format;
+  final pulumi.Input<VirtualGatewaySpecLoggingAccessLogFileFormat?>? format;
   final pulumi.Input<String> path;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFile].

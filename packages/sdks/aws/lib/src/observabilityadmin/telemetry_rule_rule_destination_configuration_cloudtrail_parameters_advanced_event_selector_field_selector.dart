@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelectorFieldSelector {
   /// Match if the field value ends with one of the specified values.
-  final pulumi.Input<List<String>>? endsWiths;
+  final pulumi.Input<List<String>?>? endsWiths;
   /// Match if the field value equals one of the specified values.
-  final pulumi.Input<List<String>>? equals;
+  final pulumi.Input<List<String>?>? equals;
   /// Name of the field to use for selection.
   final pulumi.Input<String> field;
   /// Match if the field value does not end with one of the specified values.
-  final pulumi.Input<List<String>>? notEndsWiths;
+  final pulumi.Input<List<String>?>? notEndsWiths;
   /// Match if the field value does not equal any of the specified values.
-  final pulumi.Input<List<String>>? notEquals;
+  final pulumi.Input<List<String>?>? notEquals;
   /// Match if the field value does not start with any of the specified values.
-  final pulumi.Input<List<String>>? notStartsWiths;
+  final pulumi.Input<List<String>?>? notStartsWiths;
   /// Match if the field value starts with one of the specified values.
-  final pulumi.Input<List<String>>? startsWiths;
+  final pulumi.Input<List<String>?>? startsWiths;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelectorFieldSelector].
   /// [endsWiths] Match if the field value ends with one of the specified values.

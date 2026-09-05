@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PresetVideoWatermark {
   /// The horizontal position of the watermark unless you specify a nonzero value for `horzontalOffset`.
-  final pulumi.Input<String>? horizontalAlign;
+  final pulumi.Input<String?>? horizontalAlign;
   /// The amount by which you want the horizontal position of the watermark to be offset from the position specified by `horizontalAlign`.
-  final pulumi.Input<String>? horizontalOffset;
+  final pulumi.Input<String?>? horizontalOffset;
   /// A unique identifier for the settings for one watermark. The value of Id can be up to 40 characters long. You can specify settings for up to four watermarks.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The maximum height of the watermark.
-  final pulumi.Input<String>? maxHeight;
+  final pulumi.Input<String?>? maxHeight;
   /// The maximum width of the watermark.
-  final pulumi.Input<String>? maxWidth;
+  final pulumi.Input<String?>? maxWidth;
   /// A percentage that indicates how much you want a watermark to obscure the video in the location where it appears.
-  final pulumi.Input<String>? opacity;
+  final pulumi.Input<String?>? opacity;
   /// A value that controls scaling of the watermark. Valid values are: `Fit`, `Stretch`, `ShrinkToFit`
-  final pulumi.Input<String>? sizingPolicy;
+  final pulumi.Input<String?>? sizingPolicy;
   /// A value that determines how Elastic Transcoder interprets values that you specified for `video_watermarks.horizontal_offset`, `video_watermarks.vertical_offset`, `video_watermarks.max_width`, and `video_watermarks.max_height`. Valid values are `Content` and `Frame`.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// The vertical position of the watermark unless you specify a nonzero value for `verticalAlign`. Valid values are `Top`, `Bottom`, `Center`.
-  final pulumi.Input<String>? verticalAlign;
+  final pulumi.Input<String?>? verticalAlign;
   /// The amount by which you want the vertical position of the watermark to be offset from the position specified by `verticalAlign`
-  final pulumi.Input<String>? verticalOffset;
+  final pulumi.Input<String?>? verticalOffset;
 
   /// Creates a new [PresetVideoWatermark].
   /// [horizontalAlign] The horizontal position of the watermark unless you specify a nonzero value for `horzontalOffset`.

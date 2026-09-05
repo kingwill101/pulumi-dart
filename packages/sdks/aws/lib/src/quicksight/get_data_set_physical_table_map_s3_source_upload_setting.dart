@@ -38,7 +38,7 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
       containsHeader: pulumi.Input.fromValue(map['containsHeader'] as bool),
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
       format: pulumi.Input.fromValue(map['format'] as String),
-      startFromRow: pulumi.Input.fromValue(map['startFromRow'] as int),
+      startFromRow: pulumi.Input.fromValue((map['startFromRow'] as num).toInt()),
       textQualifier: pulumi.Input.fromValue(map['textQualifier'] as String),
     );
   }

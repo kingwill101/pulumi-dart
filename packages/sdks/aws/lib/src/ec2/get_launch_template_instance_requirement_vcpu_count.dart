@@ -23,8 +23,8 @@ class GetLaunchTemplateInstanceRequirementVcpuCount {
 
   factory GetLaunchTemplateInstanceRequirementVcpuCount.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementVcpuCount(
-      max: pulumi.Input.fromValue(map['max'] as int),
-      min: pulumi.Input.fromValue(map['min'] as int),
+      max: pulumi.Input.fromValue((map['max'] as num).toInt()),
+      min: pulumi.Input.fromValue((map['min'] as num).toInt()),
     );
   }
 }

@@ -7,11 +7,11 @@ import 'scheduled_action_target_action_resume_cluster.dart';
 
 class ScheduledActionTargetAction {
   /// An action that runs a `PauseCluster` API operation. Documented below.
-  final pulumi.Input<ScheduledActionTargetActionPauseCluster>? pauseCluster;
+  final pulumi.Input<ScheduledActionTargetActionPauseCluster?>? pauseCluster;
   /// An action that runs a `ResizeCluster` API operation. Documented below.
-  final pulumi.Input<ScheduledActionTargetActionResizeCluster>? resizeCluster;
+  final pulumi.Input<ScheduledActionTargetActionResizeCluster?>? resizeCluster;
   /// An action that runs a `ResumeCluster` API operation. Documented below.
-  final pulumi.Input<ScheduledActionTargetActionResumeCluster>? resumeCluster;
+  final pulumi.Input<ScheduledActionTargetActionResumeCluster?>? resumeCluster;
 
   /// Creates a new [ScheduledActionTargetAction].
   /// [pauseCluster] An action that runs a `PauseCluster` API operation. Documented below.

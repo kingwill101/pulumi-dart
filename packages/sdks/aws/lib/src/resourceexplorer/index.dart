@@ -111,7 +111,7 @@ import 'index_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Resource Explorer index.
+/// - `arn` (String) ARN of the Resource Explorer index.
 ///
 ///
 /// Using `pulumi import`, import Resource Explorer indexes using the `arn`. For example:
@@ -120,7 +120,7 @@ import 'index_timeouts.dart';
 /// $ pulumi import aws:resourceexplorer/index:Index example arn:aws:resource-explorer-2:us-east-1:123456789012:index/6047ac4e-207e-4487-9bcf-cb53bb0ff5cc
 /// ```
 class Index extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Resource Explorer index.
+  /// ARN of the Resource Explorer index.
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -144,12 +144,12 @@ class Index extends pulumi.CustomResource {
           'aws:resourceexplorer/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IndexTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
@@ -159,11 +159,12 @@ class Index extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Index._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -179,8 +180,25 @@ class Index extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<IndexTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Index] resource.
+  Index.reference(String urn)
+    : super(
+        'aws:resourceexplorer/index:Index',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IndexTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

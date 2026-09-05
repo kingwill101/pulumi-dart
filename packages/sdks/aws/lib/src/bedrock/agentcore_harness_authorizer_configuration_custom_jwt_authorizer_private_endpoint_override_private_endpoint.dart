@@ -6,9 +6,9 @@ import 'agentcore_harness_authorizer_configuration_custom_jwt_authorizer_private
 
 class AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint {
   /// Managed VPC resource configuration. See `managedVpcResource` Block below.
-  final pulumi.Input<AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource>? managedVpcResource;
+  final pulumi.Input<AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource?>? managedVpcResource;
   /// Self-managed VPC Lattice resource configuration. See `selfManagedLatticeResource` Block below.
-  final pulumi.Input<AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource>? selfManagedLatticeResource;
+  final pulumi.Input<AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource?>? selfManagedLatticeResource;
 
   /// Creates a new [AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint].
   /// [managedVpcResource] Managed VPC resource configuration. See `managedVpcResource` Block below.

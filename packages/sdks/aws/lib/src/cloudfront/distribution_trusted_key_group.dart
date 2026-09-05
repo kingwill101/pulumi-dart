@@ -5,9 +5,9 @@ import 'distribution_trusted_key_group_item.dart';
 
 class DistributionTrustedKeyGroup {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// List of nested attributes for each trusted signer
-  final pulumi.Input<List<DistributionTrustedKeyGroupItem>>? items;
+  final pulumi.Input<List<DistributionTrustedKeyGroupItem>?>? items;
 
   /// Creates a new [DistributionTrustedKeyGroup].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.

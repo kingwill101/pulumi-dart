@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_lambda_provisioned_concurrency_config_provisioned_concurrency_config_args_doc}
 class ProvisionedConcurrencyConfigArgs {
-  /// Name or Amazon Resource Name (ARN) of the Lambda Function.
+  /// Name or ARN of the Lambda Function.
   final pulumi.Input<String> functionName;
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
   final pulumi.Input<int> provisionedConcurrentExecutions;
@@ -16,12 +16,12 @@ class ProvisionedConcurrencyConfigArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
 
   /// Creates a new [ProvisionedConcurrencyConfigArgs].
-  /// [functionName] Name or Amazon Resource Name (ARN) of the Lambda Function.
+  /// [functionName] Name or ARN of the Lambda Function.
   /// [provisionedConcurrentExecutions] Amount of capacity to allocate. Must be greater than or equal to 1.
   /// [qualifier] Lambda Function version or Lambda Alias name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -47,7 +47,7 @@ class ProvisionedConcurrencyConfigArgs {
   factory ProvisionedConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigArgs(
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
-      provisionedConcurrentExecutions: pulumi.Input.fromValue(map['provisionedConcurrentExecutions'] as int),
+      provisionedConcurrentExecutions: pulumi.Input.fromValue((map['provisionedConcurrentExecutions'] as num).toInt()),
       qualifier: pulumi.Input.fromValue(map['qualifier'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

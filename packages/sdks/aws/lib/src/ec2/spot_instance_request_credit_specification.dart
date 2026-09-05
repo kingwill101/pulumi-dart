@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpotInstanceRequestCreditSpecification {
   /// Credit option for CPU usage. Valid values include `standard` or `unlimited`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-  final pulumi.Input<String>? cpuCredits;
+  final pulumi.Input<String?>? cpuCredits;
 
   /// Creates a new [SpotInstanceRequestCreditSpecification].
   /// [cpuCredits] Credit option for CPU usage. Valid values include `standard` or `unlimited`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.

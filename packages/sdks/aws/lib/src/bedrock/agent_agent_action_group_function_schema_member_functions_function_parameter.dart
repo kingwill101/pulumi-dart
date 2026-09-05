@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
   /// Description of the parameter. Helps the foundation model determine how to elicit the parameters from the user.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the parameter.
   ///
   /// **Note:** The argument name `mapBlockKey` may seem out of context, but is necessary for backward compatibility reasons in the provider.
   final pulumi.Input<String> mapBlockKey;
   /// Whether the parameter is required for the agent to complete the function for action group invocation.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Data type of the parameter. Valid values: `string`, `number`, `integer`, `boolean`, `array`.
   final pulumi.Input<String> type;
 

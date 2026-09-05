@@ -355,19 +355,19 @@ class VpcDhcpOptions extends pulumi.CustomResource {
           'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String?>('domainName');
-    domainNameServers = registerOutput<List<String>?>('domainNameServers');
+    domainNameServers = registerOutput<List<String>?>('domainNameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipv6AddressPreferredLeaseTime = registerOutput<String?>('ipv6AddressPreferredLeaseTime');
-    netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers');
+    netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     netbiosNodeType = registerOutput<String?>('netbiosNodeType');
-    ntpServers = registerOutput<List<String>?>('ntpServers');
+    ntpServers = registerOutput<List<String>?>('ntpServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VpcDhcpOptions] resource's state with the given [name] and [id].
@@ -375,11 +375,12 @@ class VpcDhcpOptions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcDhcpOptionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcDhcpOptions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -395,14 +396,36 @@ class VpcDhcpOptions extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String?>('domainName');
-    domainNameServers = registerOutput<List<String>?>('domainNameServers');
+    domainNameServers = registerOutput<List<String>?>('domainNameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipv6AddressPreferredLeaseTime = registerOutput<String?>('ipv6AddressPreferredLeaseTime');
-    netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers');
+    netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     netbiosNodeType = registerOutput<String?>('netbiosNodeType');
-    ntpServers = registerOutput<List<String>?>('ntpServers');
+    ntpServers = registerOutput<List<String>?>('ntpServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcDhcpOptions] resource.
+  VpcDhcpOptions.reference(String urn)
+    : super(
+        'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    domainName = registerOutput<String?>('domainName');
+    domainNameServers = registerOutput<List<String>?>('domainNameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6AddressPreferredLeaseTime = registerOutput<String?>('ipv6AddressPreferredLeaseTime');
+    netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    netbiosNodeType = registerOutput<String?>('netbiosNodeType');
+    ntpServers = registerOutput<List<String>?>('ntpServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

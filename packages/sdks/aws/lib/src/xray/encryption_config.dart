@@ -116,12 +116,12 @@ import 'encryption_config_state.dart';
 /// const current = aws.getCallerIdentity({});
 /// const example = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "Enable IAM User Permissions",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [`arn:aws:iam::${current.accountId}:root`],
 ///         }],
+///         sid: "Enable IAM User Permissions",
+///         effect: "Allow",
 ///         actions: ["kms:*"],
 ///         resources: ["*"],
 ///     }],
@@ -142,12 +142,12 @@ import 'encryption_config_state.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "Enable IAM User Permissions",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [f"arn:aws:iam::{current.account_id}:root"],
 ///     }],
+///     "sid": "Enable IAM User Permissions",
+///     "effect": "Allow",
 ///     "actions": ["kms:*"],
 ///     "resources": ["*"],
 /// }])
@@ -175,8 +175,6 @@ import 'encryption_config_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "Enable IAM User Permissions",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -188,6 +186,8 @@ import 'encryption_config_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "Enable IAM User Permissions",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "kms:*",
@@ -237,8 +237,6 @@ import 'encryption_config_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("Enable IAM User Permissions"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -247,6 +245,8 @@ import 'encryption_config_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("Enable IAM User Permissions"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"kms:*",
 /// 					},
@@ -291,12 +291,12 @@ import 'encryption_config_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "Enable IAM User Permissions"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
 ///     }
+///     sid       = "Enable IAM User Permissions"
+///     effect    = "Allow"
 ///     actions   = ["kms:*"]
 ///     resources = ["*"]
 ///   }
@@ -346,12 +346,12 @@ import 'encryption_config_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("Enable IAM User Permissions")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(String.format("arn:aws:iam::%s:root", current.accountId()))
 ///                     .build())
+///                 .sid("Enable IAM User Permissions")
+///                 .effect("Allow")
 ///                 .actions("kms:*")
 ///                 .resources("*")
 ///                 .build())
@@ -396,12 +396,12 @@ import 'encryption_config_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: Enable IAM User Permissions
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - arn:aws:iam::${current.accountId}:root
+///             sid: Enable IAM User Permissions
+///             effect: Allow
 ///             actions:
 ///               - kms:*
 ///             resources:
@@ -444,7 +444,7 @@ class EncryptionConfig extends pulumi.CustomResource {
           'aws:xray/encryptionConfig:EncryptionConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     keyId = registerOutput<String?>('keyId');
     region = registerOutput<String>('region');
@@ -456,11 +456,12 @@ class EncryptionConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EncryptionConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EncryptionConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -474,6 +475,20 @@ class EncryptionConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyId = registerOutput<String?>('keyId');
+    region = registerOutput<String>('region');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EncryptionConfig] resource.
+  EncryptionConfig.reference(String urn)
+    : super(
+        'aws:xray/encryptionConfig:EncryptionConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyId = registerOutput<String?>('keyId');
     region = registerOutput<String>('region');
     type = registerOutput<String>('type');

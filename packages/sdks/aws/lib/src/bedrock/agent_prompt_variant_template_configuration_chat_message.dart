@@ -5,7 +5,7 @@ import 'agent_prompt_variant_template_configuration_chat_message_content.dart';
 
 class AgentPromptVariantTemplateConfigurationChatMessage {
   /// Contains the content for the message you pass to, or receive from a model. See [Message Content] for more information.
-  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatMessageContent>? content;
+  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatMessageContent?>? content;
   /// The role that the message belongs to.
   final pulumi.Input<String> role;
 

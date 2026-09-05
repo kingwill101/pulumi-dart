@@ -12,70 +12,70 @@ import 'get_permissions_table_with_columns.dart';
 class GetPermissionsResult {
   final String? catalogId;
   final bool? catalogResource;
-  final GetPermissionsDataCellsFilter dataCellsFilter;
-  final GetPermissionsDataLocation dataLocation;
-  final GetPermissionsDatabase database;
+  final GetPermissionsDataCellsFilter? dataCellsFilter;
+  final GetPermissionsDataLocation? dataLocation;
+  final GetPermissionsDatabase? database;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final GetPermissionsLfTag lfTag;
-  final GetPermissionsLfTagPolicy lfTagPolicy;
+  final String? id;
+  final GetPermissionsLfTag? lfTag;
+  final GetPermissionsLfTagPolicy? lfTagPolicy;
   /// List of permissions granted to the principal. For details on permissions, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
-  final List<String> permissions;
+  final List<String>? permissions;
   /// Subset of `permissions` which the principal can pass.
-  final List<String> permissionsWithGrantOptions;
-  final String principal;
-  final String region;
-  final GetPermissionsTable table;
-  final GetPermissionsTableWithColumns tableWithColumns;
+  final List<String>? permissionsWithGrantOptions;
+  final String? principal;
+  final String? region;
+  final GetPermissionsTable? table;
+  final GetPermissionsTableWithColumns? tableWithColumns;
 
   /// Creates a new [GetPermissionsResult].
   /// [catalogId] Optional.
   /// [catalogResource] Optional.
-  /// [dataCellsFilter] Required.
-  /// [dataLocation] Required.
-  /// [database] Required.
+  /// [dataCellsFilter] Optional.
+  /// [dataLocation] Optional.
+  /// [database] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [lfTag] Required.
-  /// [lfTagPolicy] Required.
+  /// [lfTag] Optional.
+  /// [lfTagPolicy] Optional.
   /// [permissions] List of permissions granted to the principal. For details on permissions, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   /// [permissionsWithGrantOptions] Subset of `permissions` which the principal can pass.
-  /// [principal] Required.
-  /// [region] Required.
-  /// [table] Required.
-  /// [tableWithColumns] Required.
+  /// [principal] Optional.
+  /// [region] Optional.
+  /// [table] Optional.
+  /// [tableWithColumns] Optional.
   const GetPermissionsResult({
     this.catalogId,
     this.catalogResource,
-    required this.dataCellsFilter,
-    required this.dataLocation,
-    required this.database,
-    required this.id,
-    required this.lfTag,
-    required this.lfTagPolicy,
-    required this.permissions,
-    required this.permissionsWithGrantOptions,
-    required this.principal,
-    required this.region,
-    required this.table,
-    required this.tableWithColumns,
+    this.dataCellsFilter,
+    this.dataLocation,
+    this.database,
+    this.id,
+    this.lfTag,
+    this.lfTagPolicy,
+    this.permissions,
+    this.permissionsWithGrantOptions,
+    this.principal,
+    this.region,
+    this.table,
+    this.tableWithColumns,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'catalogId': ?catalogId,
       'catalogResource': ?catalogResource,
-      'dataCellsFilter': dataCellsFilter.toMap(),
-      'dataLocation': dataLocation.toMap(),
-      'database': database.toMap(),
-      'id': id,
-      'lfTag': lfTag.toMap(),
-      'lfTagPolicy': lfTagPolicy.toMap(),
-      'permissions': permissions,
-      'permissionsWithGrantOptions': permissionsWithGrantOptions,
-      'principal': principal,
-      'region': region,
-      'table': table.toMap(),
-      'tableWithColumns': tableWithColumns.toMap(),
+      'dataCellsFilter': ?dataCellsFilter?.toMap(),
+      'dataLocation': ?dataLocation?.toMap(),
+      'database': ?database?.toMap(),
+      'id': ?id,
+      'lfTag': ?lfTag?.toMap(),
+      'lfTagPolicy': ?lfTagPolicy?.toMap(),
+      'permissions': ?permissions,
+      'permissionsWithGrantOptions': ?permissionsWithGrantOptions,
+      'principal': ?principal,
+      'region': ?region,
+      'table': ?table?.toMap(),
+      'tableWithColumns': ?tableWithColumns?.toMap(),
     };
   }
 
@@ -83,18 +83,18 @@ class GetPermissionsResult {
     return GetPermissionsResult(
       catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       catalogResource: (() { final guardedValue = map['catalogResource']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      dataCellsFilter: GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter']! as Map).cast<String, dynamic>()),
-      dataLocation: GetPermissionsDataLocation.fromMap((map['dataLocation']! as Map).cast<String, dynamic>()),
-      database: GetPermissionsDatabase.fromMap((map['database']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      lfTag: GetPermissionsLfTag.fromMap((map['lfTag']! as Map).cast<String, dynamic>()),
-      lfTagPolicy: GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy']! as Map).cast<String, dynamic>()),
-      permissions: (map['permissions'] as List).cast<String>(),
-      permissionsWithGrantOptions: (map['permissionsWithGrantOptions'] as List).cast<String>(),
-      principal: map['principal'] as String,
-      region: map['region'] as String,
-      table: GetPermissionsTable.fromMap((map['table']! as Map).cast<String, dynamic>()),
-      tableWithColumns: GetPermissionsTableWithColumns.fromMap((map['tableWithColumns']! as Map).cast<String, dynamic>()),
+      dataCellsFilter: (() { final guardedValue = map['dataCellsFilter']; if (guardedValue == null) return null; return GetPermissionsDataCellsFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      dataLocation: (() { final guardedValue = map['dataLocation']; if (guardedValue == null) return null; return GetPermissionsDataLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return GetPermissionsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lfTag: (() { final guardedValue = map['lfTag']; if (guardedValue == null) return null; return GetPermissionsLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lfTagPolicy: (() { final guardedValue = map['lfTagPolicy']; if (guardedValue == null) return null; return GetPermissionsLfTagPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      permissionsWithGrantOptions: (() { final guardedValue = map['permissionsWithGrantOptions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      principal: (() { final guardedValue = map['principal']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      table: (() { final guardedValue = map['table']; if (guardedValue == null) return null; return GetPermissionsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tableWithColumns: (() { final guardedValue = map['tableWithColumns']; if (guardedValue == null) return null; return GetPermissionsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

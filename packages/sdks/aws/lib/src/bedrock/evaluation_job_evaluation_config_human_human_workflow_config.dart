@@ -6,7 +6,7 @@ class EvaluationJobEvaluationConfigHumanHumanWorkflowConfig {
   /// ARN of the Amazon SageMaker AI flow definition.
   final pulumi.Input<String> flowDefinitionArn;
   /// Instructions for the flow definition.
-  final pulumi.Input<String>? instructions;
+  final pulumi.Input<String?>? instructions;
 
   /// Creates a new [EvaluationJobEvaluationConfigHumanHumanWorkflowConfig].
   /// [flowDefinitionArn] ARN of the Amazon SageMaker AI flow definition.

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PermissionsTable {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Name of the database for the table. Unique to a Data Catalog.
   final pulumi.Input<String> databaseName;
   /// Name of the table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to use a wildcard representing every table under a database. Defaults to `false`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<bool>? wildcard;
+  final pulumi.Input<bool?>? wildcard;
 
   /// Creates a new [PermissionsTable].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.

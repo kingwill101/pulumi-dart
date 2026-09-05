@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchExecution {
   /// The date and time that the launch ended.
-  final pulumi.Input<String>? endedTime;
+  final pulumi.Input<String?>? endedTime;
   /// The date and time that the launch started.
-  final pulumi.Input<String>? startedTime;
+  final pulumi.Input<String?>? startedTime;
 
   /// Creates a new [LaunchExecution].
   /// [endedTime] The date and time that the launch ended.

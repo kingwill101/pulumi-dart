@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride {
   /// The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// The Elastic Inference accelerator type to use.
-  final pulumi.Input<String>? deviceType;
+  final pulumi.Input<String?>? deviceType;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride].
   /// [deviceName] The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.

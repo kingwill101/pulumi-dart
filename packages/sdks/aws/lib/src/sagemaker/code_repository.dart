@@ -15,10 +15,10 @@ import 'code_repository_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.CodeRepository("example", {
-///     codeRepositoryName: "example",
 ///     gitConfig: {
 ///         repositoryUrl: "https://github.com/github/docs.git",
 ///     },
+///     codeRepositoryName: "example",
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'code_repository_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.CodeRepository("example",
-///     code_repository_name="example",
 ///     git_config={
 ///         "repository_url": "https://github.com/github/docs.git",
-///     })
+///     },
+///     code_repository_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,11 +41,11 @@ import 'code_repository_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.CodeRepository("example", new()
 ///     {
-///         CodeRepositoryName = "example",
 ///         GitConfig = new Aws.Sagemaker.Inputs.CodeRepositoryGitConfigArgs
 ///         {
 ///             RepositoryUrl = "https://github.com/github/docs.git",
 ///         },
+///         CodeRepositoryName = "example",
 ///     });
 ///
 /// });
@@ -61,10 +61,10 @@ import 'code_repository_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewCodeRepository(ctx, "example", &sagemaker.CodeRepositoryArgs{
-/// 			CodeRepositoryName: pulumi.String("example"),
 /// 			GitConfig: &sagemaker.CodeRepositoryGitConfigArgs{
 /// 				RepositoryUrl: pulumi.String("https://github.com/github/docs.git"),
 /// 			},
+/// 			CodeRepositoryName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,10 +83,10 @@ import 'code_repository_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_coderepository" "example" {
-///   code_repository_name = "example"
 ///   git_config = {
 ///     repository_url = "https://github.com/github/docs.git"
 ///   }
+///   code_repository_name = "example"
 /// }
 /// ```
 /// ```java
@@ -112,10 +112,10 @@ import 'code_repository_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CodeRepository("example", CodeRepositoryArgs.builder()
-///             .codeRepositoryName("example")
 ///             .gitConfig(CodeRepositoryGitConfigArgs.builder()
 ///                 .repositoryUrl("https://github.com/github/docs.git")
 ///                 .build())
+///             .codeRepositoryName("example")
 ///             .build());
 ///
 ///     }
@@ -126,9 +126,9 @@ import 'code_repository_state.dart';
 ///   example:
 ///     type: aws:sagemaker:CodeRepository
 ///     properties:
-///       codeRepositoryName: example
 ///       gitConfig:
 ///         repositoryUrl: https://github.com/github/docs.git
+///       codeRepositoryName: example
 /// ```
 ///
 ///
@@ -148,11 +148,11 @@ import 'code_repository_state.dart';
 ///     }),
 /// });
 /// const exampleCodeRepository = new aws.sagemaker.CodeRepository("example", {
-///     codeRepositoryName: "example",
 ///     gitConfig: {
 ///         repositoryUrl: "https://github.com/github/docs.git",
 ///         secretArn: example.arn,
 ///     },
+///     codeRepositoryName: "example",
 /// }, {
 ///     dependsOn: [exampleSecretVersion],
 /// });
@@ -170,11 +170,11 @@ import 'code_repository_state.dart';
 ///         "password": "example",
 ///     }))
 /// example_code_repository = aws.sagemaker.CodeRepository("example",
-///     code_repository_name="example",
 ///     git_config={
 ///         "repository_url": "https://github.com/github/docs.git",
 ///         "secret_arn": example.arn,
 ///     },
+///     code_repository_name="example",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_secret_version]))
 /// ```
 /// ```csharp
@@ -203,12 +203,12 @@ import 'code_repository_state.dart';
 ///
 ///     var exampleCodeRepository = new Aws.Sagemaker.CodeRepository("example", new()
 ///     {
-///         CodeRepositoryName = "example",
 ///         GitConfig = new Aws.Sagemaker.Inputs.CodeRepositoryGitConfigArgs
 ///         {
 ///             RepositoryUrl = "https://github.com/github/docs.git",
 ///             SecretArn = example.Arn,
 ///         },
+///         CodeRepositoryName = "example",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -254,11 +254,11 @@ import 'code_repository_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewCodeRepository(ctx, "example", &sagemaker.CodeRepositoryArgs{
-/// 			CodeRepositoryName: pulumi.String("example"),
 /// 			GitConfig: &sagemaker.CodeRepositoryGitConfigArgs{
 /// 				RepositoryUrl: pulumi.String("https://github.com/github/docs.git"),
 /// 				SecretArn:     example.Arn,
 /// 			},
+/// 			CodeRepositoryName: pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleSecretVersion,
 /// 		}))
@@ -289,12 +289,12 @@ import 'code_repository_state.dart';
 ///   })
 /// }
 /// resource "aws_sagemaker_coderepository" "example" {
-///   depends_on           = [aws_secretsmanager_secretversion.example]
-///   code_repository_name = "example"
+///   depends_on = [aws_secretsmanager_secretversion.example]
 ///   git_config = {
 ///     repository_url = "https://github.com/github/docs.git"
 ///     secret_arn     = aws_secretsmanager_secret.example.arn
 ///   }
+///   code_repository_name = "example"
 /// }
 /// ```
 /// ```java
@@ -339,11 +339,11 @@ import 'code_repository_state.dart';
 ///             .build());
 ///
 ///         var exampleCodeRepository = new CodeRepository("exampleCodeRepository", CodeRepositoryArgs.builder()
-///             .codeRepositoryName("example")
 ///             .gitConfig(CodeRepositoryGitConfigArgs.builder()
 ///                 .repositoryUrl("https://github.com/github/docs.git")
 ///                 .secretArn(example.arn())
 ///                 .build())
+///             .codeRepositoryName("example")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleSecretVersion)
 ///                 .build());
@@ -370,10 +370,10 @@ import 'code_repository_state.dart';
 ///     type: aws:sagemaker:CodeRepository
 ///     name: example
 ///     properties:
-///       codeRepositoryName: example
 ///       gitConfig:
 ///         repositoryUrl: https://github.com/github/docs.git
 ///         secretArn: ${example.arn}
+///       codeRepositoryName: example
 ///     options:
 ///       dependsOn:
 ///         - ${exampleSecretVersion}
@@ -388,7 +388,7 @@ import 'code_repository_state.dart';
 /// $ pulumi import aws:sagemaker/codeRepository:CodeRepository test_code_repository my-code-repo
 /// ```
 class CodeRepository extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Code Repository.
+  /// ARN assigned by AWS to this Code Repository.
   late final pulumi.Output<String> arn;
   /// The name of the Code Repository (must be unique).
   late final pulumi.Output<String> codeRepositoryName;
@@ -413,14 +413,14 @@ class CodeRepository extends pulumi.CustomResource {
           'aws:sagemaker/codeRepository:CodeRepository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     codeRepositoryName = registerOutput<String>('codeRepositoryName');
     gitConfig = registerOutput<CodeRepositoryGitConfig>('gitConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeRepositoryGitConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CodeRepository] resource's state with the given [name] and [id].
@@ -428,11 +428,12 @@ class CodeRepository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CodeRepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CodeRepository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -450,7 +451,24 @@ class CodeRepository extends pulumi.CustomResource {
     codeRepositoryName = registerOutput<String>('codeRepositoryName');
     gitConfig = registerOutput<CodeRepositoryGitConfig>('gitConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeRepositoryGitConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CodeRepository] resource.
+  CodeRepository.reference(String urn)
+    : super(
+        'aws:sagemaker/codeRepository:CodeRepository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    codeRepositoryName = registerOutput<String>('codeRepositoryName');
+    gitConfig = registerOutput<CodeRepositoryGitConfig>('gitConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeRepositoryGitConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

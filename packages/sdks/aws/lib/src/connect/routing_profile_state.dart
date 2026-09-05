@@ -6,32 +6,32 @@ import 'routing_profile_queue_config.dart';
 
 /// Input properties used for looking up and filtering RoutingProfile resources.
 class RoutingProfileState {
-  /// Amazon Resource Name (ARN) of the Routing Profile.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Routing Profile.
+  final pulumi.Input<String?>? arn;
   /// Specifies the default outbound queue for the Routing Profile.
-  final pulumi.Input<String>? defaultOutboundQueueId;
+  final pulumi.Input<String?>? defaultOutboundQueueId;
   /// Specifies the description of the Routing Profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
-  final pulumi.Input<List<RoutingProfileMediaConcurrency>>? mediaConcurrencies;
+  final pulumi.Input<List<RoutingProfileMediaConcurrency>?>? mediaConcurrencies;
   /// Specifies the name of the Routing Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
-  final pulumi.Input<List<RoutingProfileQueueConfig>>? queueConfigs;
+  final pulumi.Input<List<RoutingProfileQueueConfig>?>? queueConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier for the Routing Profile.
-  final pulumi.Input<String>? routingProfileId;
+  final pulumi.Input<String?>? routingProfileId;
   /// Tags to apply to the Routing Profile. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RoutingProfileState].
-  /// [arn] Amazon Resource Name (ARN) of the Routing Profile.
+  /// [arn] ARN of the Routing Profile.
   /// [defaultOutboundQueueId] Specifies the default outbound queue for the Routing Profile.
   /// [description] Specifies the description of the Routing Profile.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.

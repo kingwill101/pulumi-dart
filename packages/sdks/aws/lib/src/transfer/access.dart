@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_args.dart';
+import 'access_home_directory_mapping.dart';
 import 'access_posix_profile.dart';
 import 'access_state.dart';
 
@@ -141,14 +142,14 @@ import 'access_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.transfer.Access("test", {
-///     externalId: "S-1-1-12-1234567890-123456789-1234567890-1234",
-///     serverId: testAwsTransferServer.id,
-///     role: testAwsIamRole.arn,
-///     homeDirectory: `/${testAwsEfsFileSystem.id}/`,
 ///     posixProfile: {
 ///         gid: 1000,
 ///         uid: 1000,
 ///     },
+///     externalId: "S-1-1-12-1234567890-123456789-1234567890-1234",
+///     serverId: testAwsTransferServer.id,
+///     role: testAwsIamRole.arn,
+///     homeDirectory: `/${testAwsEfsFileSystem.id}/`,
 /// });
 /// ```
 /// ```python
@@ -156,14 +157,14 @@ import 'access_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.transfer.Access("test",
-///     external_id="S-1-1-12-1234567890-123456789-1234567890-1234",
-///     server_id=test_aws_transfer_server["id"],
-///     role=test_aws_iam_role["arn"],
-///     home_directory=f"/{test_aws_efs_file_system['id']}/",
 ///     posix_profile={
 ///         "gid": 1000,
 ///         "uid": 1000,
-///     })
+///     },
+///     external_id="S-1-1-12-1234567890-123456789-1234567890-1234",
+///     server_id=test_aws_transfer_server["id"],
+///     role=test_aws_iam_role["arn"],
+///     home_directory=f"/{test_aws_efs_file_system['id']}/")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -175,15 +176,15 @@ import 'access_state.dart';
 /// {
 ///     var test = new Aws.Transfer.Access("test", new()
 ///     {
-///         ExternalId = "S-1-1-12-1234567890-123456789-1234567890-1234",
-///         ServerId = testAwsTransferServer.Id,
-///         Role = testAwsIamRole.Arn,
-///         HomeDirectory = $"/{testAwsEfsFileSystem.Id}/",
 ///         PosixProfile = new Aws.Transfer.Inputs.AccessPosixProfileArgs
 ///         {
 ///             Gid = 1000,
 ///             Uid = 1000,
 ///         },
+///         ExternalId = "S-1-1-12-1234567890-123456789-1234567890-1234",
+///         ServerId = testAwsTransferServer.Id,
+///         Role = testAwsIamRole.Arn,
+///         HomeDirectory = $"/{testAwsEfsFileSystem.Id}/",
 ///     });
 ///
 /// });
@@ -199,14 +200,14 @@ import 'access_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewAccess(ctx, "test", &transfer.AccessArgs{
-/// 			ExternalId:    pulumi.String("S-1-1-12-1234567890-123456789-1234567890-1234"),
-/// 			ServerId:      pulumi.Any(testAwsTransferServer.Id),
-/// 			Role:          pulumi.Any(testAwsIamRole.Arn),
-/// 			HomeDirectory: pulumi.Sprintf("/%v/", testAwsEfsFileSystem.Id),
 /// 			PosixProfile: &transfer.AccessPosixProfileArgs{
 /// 				Gid: pulumi.Int(1000),
 /// 				Uid: pulumi.Int(1000),
 /// 			},
+/// 			ExternalId:    pulumi.String("S-1-1-12-1234567890-123456789-1234567890-1234"),
+/// 			ServerId:      pulumi.Any(testAwsTransferServer.Id),
+/// 			Role:          pulumi.Any(testAwsIamRole.Arn),
+/// 			HomeDirectory: pulumi.Sprintf("/%v/", testAwsEfsFileSystem.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -225,14 +226,14 @@ import 'access_state.dart';
 /// }
 ///
 /// resource "aws_transfer_access" "test" {
-///   external_id    = "S-1-1-12-1234567890-123456789-1234567890-1234"
-///   server_id      = testAwsTransferServer.id
-///   role           = testAwsIamRole.arn
-///   home_directory ="/${testAwsEfsFileSystem.id}/"
 ///   posix_profile = {
 ///     gid = 1000
 ///     uid = 1000
 ///   }
+///   external_id    = "S-1-1-12-1234567890-123456789-1234567890-1234"
+///   server_id      = testAwsTransferServer.id
+///   role           = testAwsIamRole.arn
+///   home_directory ="/${testAwsEfsFileSystem.id}/"
 /// }
 /// ```
 /// ```java
@@ -258,14 +259,14 @@ import 'access_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Access("test", AccessArgs.builder()
-///             .externalId("S-1-1-12-1234567890-123456789-1234567890-1234")
-///             .serverId(testAwsTransferServer.id())
-///             .role(testAwsIamRole.arn())
-///             .homeDirectory(String.format("/%s/", testAwsEfsFileSystem.id()))
 ///             .posixProfile(AccessPosixProfileArgs.builder()
 ///                 .gid(1000)
 ///                 .uid(1000)
 ///                 .build())
+///             .externalId("S-1-1-12-1234567890-123456789-1234567890-1234")
+///             .serverId(testAwsTransferServer.id())
+///             .role(testAwsIamRole.arn())
+///             .homeDirectory(String.format("/%s/", testAwsEfsFileSystem.id()))
 ///             .build());
 ///
 ///     }
@@ -276,13 +277,13 @@ import 'access_state.dart';
 ///   test:
 ///     type: aws:transfer:Access
 ///     properties:
+///       posixProfile:
+///         gid: 1000
+///         uid: 1000
 ///       externalId: S-1-1-12-1234567890-123456789-1234567890-1234
 ///       serverId: ${testAwsTransferServer.id}
 ///       role: ${testAwsIamRole.arn}
 ///       homeDirectory: /${testAwsEfsFileSystem.id}/
-///       posixProfile:
-///         gid: 1000
-///         uid: 1000
 /// ```
 ///
 ///
@@ -299,7 +300,7 @@ class Access extends pulumi.CustomResource {
   /// Landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
   late final pulumi.Output<String?> homeDirectory;
   /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See `homeDirectoryMappings` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> homeDirectoryMappings;
+  late final pulumi.Output<List<AccessHomeDirectoryMapping>?> homeDirectoryMappings;
   /// Type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
   late final pulumi.Output<String?> homeDirectoryType;
   /// IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
@@ -308,7 +309,7 @@ class Access extends pulumi.CustomResource {
   late final pulumi.Output<AccessPosixProfile?> posixProfile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
+  /// ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
   late final pulumi.Output<String?> role;
   /// Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
@@ -325,11 +326,11 @@ class Access extends pulumi.CustomResource {
           'aws:transfer/access:Access',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     externalId = registerOutput<String>('externalId');
     homeDirectory = registerOutput<String?>('homeDirectory');
-    homeDirectoryMappings = registerOutput<List<Map<String, dynamic>>?>('homeDirectoryMappings');
+    homeDirectoryMappings = registerOutput<List<AccessHomeDirectoryMapping>?>('homeDirectoryMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessHomeDirectoryMapping>(guardedValue, (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>())); });
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
     posixProfile = registerOutput<AccessPosixProfile?>('posixProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPosixProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -343,11 +344,12 @@ class Access extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Access._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -363,7 +365,27 @@ class Access extends pulumi.CustomResource {
         ) {
     externalId = registerOutput<String>('externalId');
     homeDirectory = registerOutput<String?>('homeDirectory');
-    homeDirectoryMappings = registerOutput<List<Map<String, dynamic>>?>('homeDirectoryMappings');
+    homeDirectoryMappings = registerOutput<List<AccessHomeDirectoryMapping>?>('homeDirectoryMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessHomeDirectoryMapping>(guardedValue, (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    homeDirectoryType = registerOutput<String?>('homeDirectoryType');
+    policy = registerOutput<String?>('policy');
+    posixProfile = registerOutput<AccessPosixProfile?>('posixProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPosixProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    role = registerOutput<String?>('role');
+    serverId = registerOutput<String>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [Access] resource.
+  Access.reference(String urn)
+    : super(
+        'aws:transfer/access:Access',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    externalId = registerOutput<String>('externalId');
+    homeDirectory = registerOutput<String?>('homeDirectory');
+    homeDirectoryMappings = registerOutput<List<AccessHomeDirectoryMapping>?>('homeDirectoryMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessHomeDirectoryMapping>(guardedValue, (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>())); });
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
     posixProfile = registerOutput<AccessPosixProfile?>('posixProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPosixProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

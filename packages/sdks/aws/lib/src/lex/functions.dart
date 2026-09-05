@@ -133,6 +133,17 @@ Future<GetBotResult> getBot(
   return GetBotResult.fromMap(result);
 }
 
+pulumi.Output<GetBotResult> getBotOutput(
+  GetBotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lex/getBot:getBot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBotResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Lex Bot Alias.
 ///
 /// ## Example Usage
@@ -256,6 +267,17 @@ Future<GetBotAliasResult> getBotAlias(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBotAliasResult.fromMap(result);
+}
+
+pulumi.Output<GetBotAliasResult> getBotAliasOutput(
+  GetBotAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lex/getBotAlias:getBotAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBotAliasResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Lex Intent.
@@ -383,6 +405,17 @@ Future<GetIntentResult> getIntent(
   return GetIntentResult.fromMap(result);
 }
 
+pulumi.Output<GetIntentResult> getIntentOutput(
+  GetIntentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lex/getIntent:getIntent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntentResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Lex Slot Type.
 ///
 /// ## Example Usage
@@ -506,4 +539,15 @@ Future<GetSlotTypeResult> getSlotType(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSlotTypeResult.fromMap(result);
+}
+
+pulumi.Output<GetSlotTypeResult> getSlotTypeOutput(
+  GetSlotTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lex/getSlotType:getSlotType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSlotTypeResult.fromMap);
 }

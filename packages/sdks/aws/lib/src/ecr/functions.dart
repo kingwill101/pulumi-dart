@@ -126,6 +126,17 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
   return GetAuthorizationTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
+  GetAuthorizationTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getAuthorizationToken:getAuthorizationToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizationTokenResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecr_get_credentials_get_credentials_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCredentialsResult> getCredentials(
@@ -139,6 +150,17 @@ Future<GetCredentialsResult> getCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<GetCredentialsResult> getCredentialsOutput(
+  GetCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getCredentials:getCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialsResult.fromMap);
 }
 
 /// The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
@@ -266,6 +288,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// The ECR Images data source allows the list of images in a specified repository to be retrieved.
 ///
 /// ## Example Usage
@@ -350,6 +383,17 @@ Future<GetImagesResult> getImages(
   return GetImagesResult.fromMap(result);
 }
 
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
+}
+
 /// Generates an ECR lifecycle policy document in JSON format. Can be used with resources such as the `aws.ecr.LifecyclePolicy` resource.
 ///
 /// &gt; For more information about building AWS ECR lifecycle policy documents, see the [AWS ECR Lifecycle Policy Document Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
@@ -363,14 +407,14 @@ Future<GetImagesResult> getImages(
 ///
 /// const example = aws.ecr.getLifecyclePolicyDocument({
 ///     rules: [{
-///         priority: 1,
-///         description: "This is a test.",
 ///         selection: {
 ///             tagStatus: "tagged",
 ///             tagPrefixLists: ["prod"],
 ///             countType: "imageCountMoreThan",
 ///             countNumber: 100,
 ///         },
+///         priority: 1,
+///         description: "This is a test.",
 ///     }],
 /// });
 /// const exampleLifecyclePolicy = new aws.ecr.LifecyclePolicy("example", {
@@ -383,14 +427,14 @@ Future<GetImagesResult> getImages(
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecr.get_lifecycle_policy_document(rules=[{
-///     "priority": 1,
-///     "description": "This is a test.",
 ///     "selection": {
 ///         "tag_status": "tagged",
 ///         "tag_prefix_lists": ["prod"],
 ///         "count_type": "imageCountMoreThan",
 ///         "count_number": 100,
 ///     },
+///     "priority": 1,
+///     "description": "This is a test.",
 /// }])
 /// example_lifecycle_policy = aws.ecr.LifecyclePolicy("example",
 ///     repository=example_aws_ecr_repository["name"],
@@ -410,8 +454,6 @@ Future<GetImagesResult> getImages(
 ///         {
 ///             new Aws.Ecr.Inputs.GetLifecyclePolicyDocumentRuleInputArgs
 ///             {
-///                 Priority = 1,
-///                 Description = "This is a test.",
 ///                 Selection = new Aws.Ecr.Inputs.GetLifecyclePolicyDocumentRuleSelectionInputArgs
 ///                 {
 ///                     TagStatus = "tagged",
@@ -422,6 +464,8 @@ Future<GetImagesResult> getImages(
 ///                     CountType = "imageCountMoreThan",
 ///                     CountNumber = 100,
 ///                 },
+///                 Priority = 1,
+///                 Description = "This is a test.",
 ///             },
 ///         },
 ///     });
@@ -447,8 +491,6 @@ Future<GetImagesResult> getImages(
 /// 		example, err := ecr.GetLifecyclePolicyDocument(ctx, &ecr.GetLifecyclePolicyDocumentArgs{
 /// 			Rules: []ecr.GetLifecyclePolicyDocumentRule{
 /// 				{
-/// 					Priority:    1,
-/// 					Description: pulumi.StringRef("This is a test."),
 /// 					Selection: {
 /// 						TagStatus: "tagged",
 /// 						TagPrefixLists: []string{
@@ -457,6 +499,8 @@ Future<GetImagesResult> getImages(
 /// 						CountType:   "imageCountMoreThan",
 /// 						CountNumber: 100,
 /// 					},
+/// 					Priority:    1,
+/// 					Description: pulumi.StringRef("This is a test."),
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -485,14 +529,14 @@ Future<GetImagesResult> getImages(
 ///
 /// data "aws_ecr_getlifecyclepolicydocument" "example" {
 ///   rules {
-///     priority    = 1
-///     description = "This is a test."
 ///     selection = {
 ///       tag_status       = "tagged"
 ///       tag_prefix_lists = ["prod"]
 ///       count_type       = "imageCountMoreThan"
 ///       count_number     = 100
 ///     }
+///     priority    = 1
+///     description = "This is a test."
 ///   }
 /// }
 ///
@@ -528,14 +572,14 @@ Future<GetImagesResult> getImages(
 ///     public static void stack(Context ctx) {
 ///         final var example = EcrFunctions.getLifecyclePolicyDocument(GetLifecyclePolicyDocumentArgs.builder()
 ///             .rules(GetLifecyclePolicyDocumentRuleArgs.builder()
-///                 .priority(1)
-///                 .description("This is a test.")
 ///                 .selection(GetLifecyclePolicyDocumentRuleSelectionArgs.builder()
 ///                     .tagStatus("tagged")
 ///                     .tagPrefixLists("prod")
 ///                     .countType("imageCountMoreThan")
 ///                     .countNumber(100)
 ///                     .build())
+///                 .priority(1)
+///                 .description("This is a test.")
 ///                 .build())
 ///             .build());
 ///
@@ -561,14 +605,14 @@ Future<GetImagesResult> getImages(
 ///       function: aws:ecr:getLifecyclePolicyDocument
 ///       arguments:
 ///         rules:
-///           - priority: 1
-///             description: This is a test.
-///             selection:
+///           - selection:
 ///               tagStatus: tagged
 ///               tagPrefixLists:
 ///                 - prod
 ///               countType: imageCountMoreThan
 ///               countNumber: 100
+///             priority: 1
+///             description: This is a test.
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecr_get_lifecycle_policy_document_get_lifecycle_policy_document_args_doc}
 /// [options] Invoke options controlling this call.
@@ -583,6 +627,17 @@ Future<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocument(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLifecyclePolicyDocumentResult.fromMap(result);
+}
+
+pulumi.Output<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocumentOutput(
+  GetLifecyclePolicyDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getLifecyclePolicyDocument:getLifecyclePolicyDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLifecyclePolicyDocumentResult.fromMap);
 }
 
 /// The ECR Pull Through Cache Rule data source allows the upstream registry URL and registry ID to be retrieved for a Pull Through Cache Rule.
@@ -703,6 +758,17 @@ Future<GetPullThroughCacheRuleResult> getPullThroughCacheRule(
   return GetPullThroughCacheRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetPullThroughCacheRuleResult> getPullThroughCacheRuleOutput(
+  GetPullThroughCacheRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getPullThroughCacheRule:getPullThroughCacheRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPullThroughCacheRuleResult.fromMap);
+}
+
 /// Data source for providing information on AWS ECR (Elastic Container Registry) Repositories.
 ///
 /// ## Example Usage
@@ -811,6 +877,17 @@ Future<GetRepositoriesResult> getRepositories(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoriesResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
+  GetRepositoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getRepositories:getRepositories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoriesResult.fromMap);
 }
 
 /// The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
@@ -931,6 +1008,17 @@ Future<GetRepositoryResult> getRepository(
   return GetRepositoryResult.fromMap(result);
 }
 
+pulumi.Output<GetRepositoryResult> getRepositoryOutput(
+  GetRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getRepository:getRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryResult.fromMap);
+}
+
 /// The ECR Repository Creation Template data source allows the template details to be retrieved for a Repository Creation Template.
 ///
 /// ## Example Usage
@@ -1047,4 +1135,15 @@ Future<GetRepositoryCreationTemplateResult> getRepositoryCreationTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryCreationTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryCreationTemplateResult> getRepositoryCreationTemplateOutput(
+  GetRepositoryCreationTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecr/getRepositoryCreationTemplate:getRepositoryCreationTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryCreationTemplateResult.fromMap);
 }

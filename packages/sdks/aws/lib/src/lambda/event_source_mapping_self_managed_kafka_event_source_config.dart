@@ -5,9 +5,9 @@ import 'event_source_mapping_self_managed_kafka_event_source_config_schema_regis
 
 class EventSourceMappingSelfManagedKafkaEventSourceConfig {
   /// Kafka consumer group ID between 1 and 200 characters for use when creating this event source mapping. If one is not specified, this value will be automatically generated. See [SelfManagedKafkaEventSourceConfig Syntax](https://docs.aws.amazon.com/lambda/latest/dg/API_SelfManagedKafkaEventSourceConfig.html).
-  final pulumi.Input<String>? consumerGroupId;
+  final pulumi.Input<String?>? consumerGroupId;
   /// Block for a Kafka schema registry setting. See below.
-  final pulumi.Input<EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfig>? schemaRegistryConfig;
+  final pulumi.Input<EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfig?>? schemaRegistryConfig;
 
   /// Creates a new [EventSourceMappingSelfManagedKafkaEventSourceConfig].
   /// [consumerGroupId] Kafka consumer group ID between 1 and 200 characters for use when creating this event source mapping. If one is not specified, this value will be automatically generated. See [SelfManagedKafkaEventSourceConfig Syntax](https://docs.aws.amazon.com/lambda/latest/dg/API_SelfManagedKafkaEventSourceConfig.html).

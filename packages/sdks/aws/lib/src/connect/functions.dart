@@ -44,20 +44,20 @@ import 'get_vocabulary_result.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.connect.getBotAssociation({
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     lexBot: {
 ///         name: "Test",
 ///     },
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.connect.get_bot_association(instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     lex_bot={
+/// example = aws.connect.get_bot_association(lex_bot={
 ///         "name": "Test",
-///     })
+///     },
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -69,11 +69,11 @@ import 'get_vocabulary_result.dart';
 /// {
 ///     var example = Aws.Connect.GetBotAssociation.Invoke(new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///         LexBot = new Aws.Connect.Inputs.GetBotAssociationLexBotInputArgs
 ///         {
 ///             Name = "Test",
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     });
 ///
 /// });
@@ -89,10 +89,10 @@ import 'get_vocabulary_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.LookupBotAssociation(ctx, &connect.LookupBotAssociationArgs{
-/// 			InstanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 /// 			LexBot: connect.GetBotAssociationLexBot{
 /// 				Name: "Test",
 /// 			},
+/// 			InstanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -111,10 +111,10 @@ import 'get_vocabulary_result.dart';
 /// }
 ///
 /// data "aws_connect_getbotassociation" "example" {
-///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   lex_bot = {
 ///     name = "Test"
 ///   }
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 /// }
 /// ```
 /// ```java
@@ -140,10 +140,10 @@ import 'get_vocabulary_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ConnectFunctions.getBotAssociation(GetBotAssociationArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
 ///             .lexBot(GetBotAssociationLexBotArgs.builder()
 ///                 .name("Test")
 ///                 .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
 ///             .build());
 ///
 ///     }
@@ -155,9 +155,9 @@ import 'get_vocabulary_result.dart';
 ///     fn::invoke:
 ///       function: aws:connect:getBotAssociation
 ///       arguments:
-///         instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 ///         lexBot:
 ///           name: Test
+///         instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_connect_get_bot_association_get_bot_association_args_doc}
 /// [options] Invoke options controlling this call.
@@ -172,6 +172,17 @@ Future<GetBotAssociationResult> getBotAssociation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBotAssociationResult.fromMap(result);
+}
+
+pulumi.Output<GetBotAssociationResult> getBotAssociationOutput(
+  GetBotAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getBotAssociation:getBotAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBotAssociationResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect Contact Flow.
@@ -411,6 +422,17 @@ Future<GetContactFlowResult> getContactFlow(
   return GetContactFlowResult.fromMap(result);
 }
 
+pulumi.Output<GetContactFlowResult> getContactFlowOutput(
+  GetContactFlowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getContactFlow:getContactFlow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactFlowResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect Contact Flow Module.
 ///
 /// ## Example Usage
@@ -646,6 +668,17 @@ Future<GetContactFlowModuleResult> getContactFlowModule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContactFlowModuleResult.fromMap(result);
+}
+
+pulumi.Output<GetContactFlowModuleResult> getContactFlowModuleOutput(
+  GetContactFlowModuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getContactFlowModule:getContactFlowModule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactFlowModuleResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect Hours of Operation.
@@ -885,6 +918,17 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
   return GetHoursOfOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetHoursOfOperationResult> getHoursOfOperationOutput(
+  GetHoursOfOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getHoursOfOperation:getHoursOfOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHoursOfOperationResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect Instance.
 ///
 /// ## Example Usage
@@ -1108,6 +1152,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getInstance:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect Instance Storage Config.
 ///
 /// ## Example Usage
@@ -1240,6 +1295,17 @@ Future<GetInstanceStorageConfigResult> getInstanceStorageConfig(
   return GetInstanceStorageConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceStorageConfigResult> getInstanceStorageConfigOutput(
+  GetInstanceStorageConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getInstanceStorageConfig:getInstanceStorageConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceStorageConfigResult.fromMap);
+}
+
 /// Provides details about a specific Connect Lambda Function Association.
 ///
 /// ## Example Usage
@@ -1363,6 +1429,17 @@ Future<GetLambdaFunctionAssociationResult> getLambdaFunctionAssociation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLambdaFunctionAssociationResult.fromMap(result);
+}
+
+pulumi.Output<GetLambdaFunctionAssociationResult> getLambdaFunctionAssociationOutput(
+  GetLambdaFunctionAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getLambdaFunctionAssociation:getLambdaFunctionAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLambdaFunctionAssociationResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect Prompt.
@@ -1490,6 +1567,17 @@ Future<GetPromptResult> getPrompt(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPromptResult.fromMap(result);
+}
+
+pulumi.Output<GetPromptResult> getPromptOutput(
+  GetPromptArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getPrompt:getPrompt',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPromptResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect Queue.
@@ -1729,6 +1817,17 @@ Future<GetQueueResult> getQueue(
   return GetQueueResult.fromMap(result);
 }
 
+pulumi.Output<GetQueueResult> getQueueOutput(
+  GetQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getQueue:getQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect Quick Connect.
 ///
 /// ## Example Usage
@@ -1964,6 +2063,17 @@ Future<GetQuickConnectResult> getQuickConnect(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQuickConnectResult.fromMap(result);
+}
+
+pulumi.Output<GetQuickConnectResult> getQuickConnectOutput(
+  GetQuickConnectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getQuickConnect:getQuickConnect',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQuickConnectResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect Routing Profile.
@@ -2203,6 +2313,17 @@ Future<GetRoutingProfileResult> getRoutingProfile(
   return GetRoutingProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetRoutingProfileResult> getRoutingProfileOutput(
+  GetRoutingProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getRoutingProfile:getRoutingProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutingProfileResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect Security Profile.
 ///
 /// ## Example Usage
@@ -2438,6 +2559,17 @@ Future<GetSecurityProfileResult> getSecurityProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityProfileResult> getSecurityProfileOutput(
+  GetSecurityProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getSecurityProfile:getSecurityProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityProfileResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect User.
@@ -2677,6 +2809,17 @@ Future<GetUserResult> getUser(
   return GetUserResult.fromMap(result);
 }
 
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect User Hierarchy Group.
 ///
 /// ## Example Usage
@@ -2914,6 +3057,17 @@ Future<GetUserHierarchyGroupResult> getUserHierarchyGroup(
   return GetUserHierarchyGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetUserHierarchyGroupResult> getUserHierarchyGroupOutput(
+  GetUserHierarchyGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getUserHierarchyGroup:getUserHierarchyGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserHierarchyGroupResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Connect User Hierarchy Structure
 ///
 /// ## Example Usage
@@ -3030,6 +3184,17 @@ Future<GetUserHierarchyStructureResult> getUserHierarchyStructure(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserHierarchyStructureResult.fromMap(result);
+}
+
+pulumi.Output<GetUserHierarchyStructureResult> getUserHierarchyStructureOutput(
+  GetUserHierarchyStructureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getUserHierarchyStructure:getUserHierarchyStructure',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserHierarchyStructureResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Connect Vocabulary.
@@ -3267,4 +3432,15 @@ Future<GetVocabularyResult> getVocabulary(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVocabularyResult.fromMap(result);
+}
+
+pulumi.Output<GetVocabularyResult> getVocabularyOutput(
+  GetVocabularyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:connect/getVocabulary:getVocabulary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVocabularyResult.fromMap);
 }

@@ -377,7 +377,7 @@ class PolicyAttachment extends pulumi.CustomResource {
           'aws:organizations/policyAttachment:PolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policyId = registerOutput<String>('policyId');
     skipDestroy = registerOutput<bool?>('skipDestroy');
@@ -389,11 +389,12 @@ class PolicyAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -407,6 +408,20 @@ class PolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policyId = registerOutput<String>('policyId');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    targetId = registerOutput<String>('targetId');
+  }
+
+  /// Creates a typed reference to an existing [PolicyAttachment] resource.
+  PolicyAttachment.reference(String urn)
+    : super(
+        'aws:organizations/policyAttachment:PolicyAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policyId = registerOutput<String>('policyId');
     skipDestroy = registerOutput<bool?>('skipDestroy');
     targetId = registerOutput<String>('targetId');

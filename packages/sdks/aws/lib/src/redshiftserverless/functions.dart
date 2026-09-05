@@ -124,6 +124,17 @@ Future<GetCredentialsResult> getCredentials(
   return GetCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<GetCredentialsResult> getCredentialsOutput(
+  GetCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshiftserverless/getCredentials:getCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialsResult.fromMap);
+}
+
 /// Data source for managing an AWS Redshift Serverless Namespace.
 ///
 /// ## Example Usage
@@ -240,6 +251,17 @@ Future<GetNamespaceResult> getNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshiftserverless/getNamespace:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
 }
 
 /// Data source for managing an AWS Redshift Serverless Workgroup.
@@ -360,4 +382,15 @@ Future<GetWorkgroupResult> getWorkgroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkgroupResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkgroupResult> getWorkgroupOutput(
+  GetWorkgroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:redshiftserverless/getWorkgroup:getWorkgroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkgroupResult.fromMap);
 }

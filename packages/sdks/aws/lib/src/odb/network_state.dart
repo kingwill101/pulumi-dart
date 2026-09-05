@@ -7,77 +7,77 @@ import 'network_timeouts.dart';
 
 /// Input properties used for looking up and filtering Network resources.
 class NetworkState {
-  /// Amazon Resource Name (ARN) of the odb network resource.
-  final pulumi.Input<String>? arn;
+  /// ARN of the odb network resource.
+  final pulumi.Input<String?>? arn;
   /// Name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure `availabilityZone` maps correctly with `availabilityZoneId`.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? backupSubnetCidr;
+  final pulumi.Input<String?>? backupSubnetCidr;
   /// CIDR notation for the network resource. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? clientSubnetCidr;
+  final pulumi.Input<String?>? clientSubnetCidr;
   /// Date and time when the ODB network was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// List of regions enabled for cross-region restore in the ODB network.
-  final pulumi.Input<List<String>>? crossRegionS3RestoreSourcesAccesses;
+  final pulumi.Input<List<String>?>? crossRegionS3RestoreSourcesAccesses;
   /// Name of the custom domain that the network is located. `customDomainName` and `defaultDnsPrefix` both can't be given. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? customDomainName;
+  final pulumi.Input<String?>? customDomainName;
   /// Default DNS prefix for the network resource. Changing this will force terraform to create new resource.
-  final pulumi.Input<String>? defaultDnsPrefix;
+  final pulumi.Input<String?>? defaultDnsPrefix;
   /// If set to true deletes associated OCI resources. Default false.
-  final pulumi.Input<bool>? deleteAssociatedResources;
+  final pulumi.Input<bool?>? deleteAssociatedResources;
   /// User-friendly name for the odb network. Changing this will force terraform to create a new resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// List of EC2 placement group IDs associated with the ODB network.
-  final pulumi.Input<List<String>>? ec2PlacementGroupIds;
+  final pulumi.Input<List<String>?>? ec2PlacementGroupIds;
   /// Configuration for KMS access from the ODB network.
-  final pulumi.Input<String>? kmsAccess;
+  final pulumi.Input<String?>? kmsAccess;
   /// Endpoint policy for KMS access from the ODB network.
-  final pulumi.Input<String>? kmsPolicyDocument;
+  final pulumi.Input<String?>? kmsPolicyDocument;
   /// Managed services configuration for the ODB network. See `managedServices` Block below.
-  final pulumi.Input<List<NetworkManagedService>>? managedServices;
+  final pulumi.Input<List<NetworkManagedService>?>? managedServices;
   /// DNS resolver endpoints in OCI for forwarding DNS queries for the `ociPrivateZone` domain. See `ociDnsForwardingConfigs` Block below.
-  final pulumi.Input<List<NetworkOciDnsForwardingConfig>>? ociDnsForwardingConfigs;
+  final pulumi.Input<List<NetworkOciDnsForwardingConfig>?>? ociDnsForwardingConfigs;
   /// Unique identifier of the OCI network anchor for the ODB network.
-  final pulumi.Input<String>? ociNetworkAnchorId;
+  final pulumi.Input<String?>? ociNetworkAnchorId;
   /// URL of the OCI network anchor for the ODB network.
-  final pulumi.Input<String>? ociNetworkAnchorUrl;
+  final pulumi.Input<String?>? ociNetworkAnchorUrl;
   /// Name of the OCI resource anchor for the ODB network.
-  final pulumi.Input<String>? ociResourceAnchorName;
+  final pulumi.Input<String?>? ociResourceAnchorName;
   /// Unique identifier Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
-  final pulumi.Input<String>? ociVcnId;
+  final pulumi.Input<String?>? ociVcnId;
   /// URL of the OCI VCN for the ODB network.
-  final pulumi.Input<String>? ociVcnUrl;
+  final pulumi.Input<String?>? ociVcnUrl;
   /// List of CIDR ranges from the peered VPC that are allowed access to the ODB network. See the [ODB network peering documentation](https://docs.aws.amazon.com/odb/latest/UserGuide/network-peering.html) for more information.
-  final pulumi.Input<List<String>>? peeredCidrs;
+  final pulumi.Input<List<String>?>? peeredCidrs;
   /// Amount of progress made on the current operation on the ODB network, expressed as a percentage.
-  final pulumi.Input<double>? percentProgress;
+  final pulumi.Input<double?>? percentProgress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for Amazon S3 access from the ODB network.
-  final pulumi.Input<String>? s3Access;
+  final pulumi.Input<String?>? s3Access;
   /// Endpoint policy for Amazon S3 access from the ODB network.
-  final pulumi.Input<String>? s3PolicyDocument;
+  final pulumi.Input<String?>? s3PolicyDocument;
   /// Status of the Zero-ETL access.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Additional information about the current status of the ODB network.
-  final pulumi.Input<String>? statusReason;
+  final pulumi.Input<String?>? statusReason;
   /// Configuration for STS access from the ODB network.
-  final pulumi.Input<String>? stsAccess;
+  final pulumi.Input<String?>? stsAccess;
   /// Endpoint policy for STS access from the ODB network.
-  final pulumi.Input<String>? stsPolicyDocument;
+  final pulumi.Input<String?>? stsPolicyDocument;
   /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<NetworkTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<NetworkTimeouts?>? timeouts;
   /// Configuration for Zero-ETL access from the ODB network.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? zeroEtlAccess;
+  final pulumi.Input<String?>? zeroEtlAccess;
 
   /// Creates a new [NetworkState].
-  /// [arn] Amazon Resource Name (ARN) of the odb network resource.
+  /// [arn] ARN of the odb network resource.
   /// [availabilityZone] Name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure `availabilityZone` maps correctly with `availabilityZoneId`.
   /// [availabilityZoneId] AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
   /// [backupSubnetCidr] CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
@@ -211,7 +211,7 @@ class NetworkState {
       ociVcnId: (() { final guardedValue = map['ociVcnId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ociVcnUrl: (() { final guardedValue = map['ociVcnUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peeredCidrs: (() { final guardedValue = map['peeredCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Access: (() { final guardedValue = map['s3Access']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3PolicyDocument: (() { final guardedValue = map['s3PolicyDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

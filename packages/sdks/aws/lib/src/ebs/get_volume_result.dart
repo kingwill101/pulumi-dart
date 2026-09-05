@@ -6,40 +6,40 @@ import 'get_volume_filter.dart';
 /// Result data returned by getVolume.
 class GetVolumeResult {
   /// Volume ARN (e.g., arn:aws:ec2:us-east-1:123456789012:volume/vol-59fcb34e).
-  final String arn;
+  final String? arn;
   /// Availability zone where the EBS volume exists.
-  final String availabilityZone;
+  final String? availabilityZone;
   /// Timestamp when volume creation was initiated.
-  final String createTime;
+  final String? createTime;
   /// Whether the disk is encrypted.
-  final bool encrypted;
+  final bool? encrypted;
   final List<GetVolumeFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Amount of IOPS for the disk.
-  final int iops;
+  final int? iops;
   /// ARN for the KMS encryption key.
-  final String kmsKeyId;
+  final String? kmsKeyId;
   final bool? mostRecent;
   /// (Optional) Specifies whether Amazon EBS Multi-Attach is enabled.
-  final bool multiAttachEnabled;
+  final bool? multiAttachEnabled;
   /// ARN of the Outpost.
-  final String outpostArn;
-  final String region;
+  final String? outpostArn;
+  final String? region;
   /// Size of the drive in GiBs.
-  final int size;
+  final int? size;
   /// Snapshot_id the EBS volume is based off.
-  final String snapshotId;
+  final String? snapshotId;
   /// Map of tags for the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Throughput that the volume supports, in MiB/s.
-  final int throughput;
+  final int? throughput;
   /// Volume ID (e.g., vol-59fcb34e).
-  final String volumeId;
+  final String? volumeId;
   /// EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume.
-  final int volumeInitializationRate;
+  final int? volumeInitializationRate;
   /// Type of EBS volume.
-  final String volumeType;
+  final String? volumeType;
 
   /// Creates a new [GetVolumeResult].
   /// [arn] Volume ARN (e.g., arn:aws:ec2:us-east-1:123456789012:volume/vol-59fcb34e).
@@ -53,7 +53,7 @@ class GetVolumeResult {
   /// [mostRecent] Optional.
   /// [multiAttachEnabled] (Optional) Specifies whether Amazon EBS Multi-Attach is enabled.
   /// [outpostArn] ARN of the Outpost.
-  /// [region] Required.
+  /// [region] Optional.
   /// [size] Size of the drive in GiBs.
   /// [snapshotId] Snapshot_id the EBS volume is based off.
   /// [tags] Map of tags for the resource.
@@ -62,72 +62,72 @@ class GetVolumeResult {
   /// [volumeInitializationRate] EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume.
   /// [volumeType] Type of EBS volume.
   const GetVolumeResult({
-    required this.arn,
-    required this.availabilityZone,
-    required this.createTime,
-    required this.encrypted,
+    this.arn,
+    this.availabilityZone,
+    this.createTime,
+    this.encrypted,
     this.filters,
-    required this.id,
-    required this.iops,
-    required this.kmsKeyId,
+    this.id,
+    this.iops,
+    this.kmsKeyId,
     this.mostRecent,
-    required this.multiAttachEnabled,
-    required this.outpostArn,
-    required this.region,
-    required this.size,
-    required this.snapshotId,
-    required this.tags,
-    required this.throughput,
-    required this.volumeId,
-    required this.volumeInitializationRate,
-    required this.volumeType,
+    this.multiAttachEnabled,
+    this.outpostArn,
+    this.region,
+    this.size,
+    this.snapshotId,
+    this.tags,
+    this.throughput,
+    this.volumeId,
+    this.volumeInitializationRate,
+    this.volumeType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'availabilityZone': availabilityZone,
-      'createTime': createTime,
-      'encrypted': encrypted,
+      'arn': ?arn,
+      'availabilityZone': ?availabilityZone,
+      'createTime': ?createTime,
+      'encrypted': ?encrypted,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVolumeFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'iops': iops,
-      'kmsKeyId': kmsKeyId,
+      'id': ?id,
+      'iops': ?iops,
+      'kmsKeyId': ?kmsKeyId,
       'mostRecent': ?mostRecent,
-      'multiAttachEnabled': multiAttachEnabled,
-      'outpostArn': outpostArn,
-      'region': region,
-      'size': size,
-      'snapshotId': snapshotId,
-      'tags': tags,
-      'throughput': throughput,
-      'volumeId': volumeId,
-      'volumeInitializationRate': volumeInitializationRate,
-      'volumeType': volumeType,
+      'multiAttachEnabled': ?multiAttachEnabled,
+      'outpostArn': ?outpostArn,
+      'region': ?region,
+      'size': ?size,
+      'snapshotId': ?snapshotId,
+      'tags': ?tags,
+      'throughput': ?throughput,
+      'volumeId': ?volumeId,
+      'volumeInitializationRate': ?volumeInitializationRate,
+      'volumeType': ?volumeType,
     };
   }
 
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
-      arn: map['arn'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      createTime: map['createTime'] as String,
-      encrypted: map['encrypted'] as bool,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVolumeFilter>(guardedValue, (value) => GetVolumeFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      iops: map['iops'] as int,
-      kmsKeyId: map['kmsKeyId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      multiAttachEnabled: map['multiAttachEnabled'] as bool,
-      outpostArn: map['outpostArn'] as String,
-      region: map['region'] as String,
-      size: map['size'] as int,
-      snapshotId: map['snapshotId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      throughput: map['throughput'] as int,
-      volumeId: map['volumeId'] as String,
-      volumeInitializationRate: map['volumeInitializationRate'] as int,
-      volumeType: map['volumeType'] as String,
+      multiAttachEnabled: (() { final guardedValue = map['multiAttachEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      outpostArn: (() { final guardedValue = map['outpostArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumeInitializationRate: (() { final guardedValue = map['volumeInitializationRate']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

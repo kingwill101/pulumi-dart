@@ -491,7 +491,7 @@ class ResolverFirewallRule extends pulumi.CustomResource {
           'aws:route53/resolverFirewallRule:ResolverFirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     blockOverrideDnsType = registerOutput<String?>('blockOverrideDnsType');
@@ -515,11 +515,12 @@ class ResolverFirewallRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverFirewallRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverFirewallRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -533,6 +534,32 @@ class ResolverFirewallRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    blockOverrideDnsType = registerOutput<String?>('blockOverrideDnsType');
+    blockOverrideDomain = registerOutput<String?>('blockOverrideDomain');
+    blockOverrideTtl = registerOutput<int?>('blockOverrideTtl');
+    blockResponse = registerOutput<String?>('blockResponse');
+    confidenceThreshold = registerOutput<String?>('confidenceThreshold');
+    dnsThreatProtection = registerOutput<String?>('dnsThreatProtection');
+    firewallDomainListId = registerOutput<String?>('firewallDomainListId');
+    firewallDomainRedirectionAction = registerOutput<String?>('firewallDomainRedirectionAction');
+    firewallRuleGroupId = registerOutput<String>('firewallRuleGroupId');
+    firewallThreatProtectionId = registerOutput<String>('firewallThreatProtectionId');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    qType = registerOutput<String?>('qType');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ResolverFirewallRule] resource.
+  ResolverFirewallRule.reference(String urn)
+    : super(
+        'aws:route53/resolverFirewallRule:ResolverFirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     blockOverrideDnsType = registerOutput<String?>('blockOverrideDnsType');
     blockOverrideDomain = registerOutput<String?>('blockOverrideDomain');

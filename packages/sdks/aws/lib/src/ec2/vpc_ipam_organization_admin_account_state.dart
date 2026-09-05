@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcIpamOrganizationAdminAccount resources.
 class VpcIpamOrganizationAdminAccountState {
   /// The Organizations ARN for the delegate account.
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<String>? delegatedAdminAccountId;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<String?>? delegatedAdminAccountId;
   /// The Organizations email for the delegate account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The Organizations name for the delegate account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The AWS service principal.
-  final pulumi.Input<String>? servicePrincipal;
+  final pulumi.Input<String?>? servicePrincipal;
 
   /// Creates a new [VpcIpamOrganizationAdminAccountState].
   /// [arn] The Organizations ARN for the delegate account.

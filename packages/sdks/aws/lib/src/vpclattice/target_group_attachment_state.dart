@@ -6,16 +6,16 @@ import 'target_group_attachment_target.dart';
 /// Input properties used for looking up and filtering TargetGroupAttachment resources.
 class TargetGroupAttachmentState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Target to register with the target group. See `target` Block for details.
-  final pulumi.Input<TargetGroupAttachmentTarget>? target;
-  /// ID or Amazon Resource Name (ARN) of the target group.
-  final pulumi.Input<String>? targetGroupIdentifier;
+  final pulumi.Input<TargetGroupAttachmentTarget?>? target;
+  /// ID or ARN of the target group.
+  final pulumi.Input<String?>? targetGroupIdentifier;
 
   /// Creates a new [TargetGroupAttachmentState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [target] Target to register with the target group. See `target` Block for details.
-  /// [targetGroupIdentifier] ID or Amazon Resource Name (ARN) of the target group.
+  /// [targetGroupIdentifier] ID or ARN of the target group.
   const TargetGroupAttachmentState({
     this.region,
     this.target,

@@ -24,7 +24,7 @@ class GetRouteSpecHttp2RouteTimeoutIdle {
   factory GetRouteSpecHttp2RouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteTimeoutIdle(
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

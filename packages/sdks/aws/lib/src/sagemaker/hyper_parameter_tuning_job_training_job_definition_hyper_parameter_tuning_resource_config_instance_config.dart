@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig {
   /// Number of instances.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Instance type.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Volume size in GB.
-  final pulumi.Input<int>? volumeSizeInGb;
+  final pulumi.Input<int?>? volumeSizeInGb;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig].
   /// [instanceCount] Number of instances.
@@ -30,9 +30,9 @@ class HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceCo
 
   factory HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionHyperParameterTuningResourceConfigInstanceConfig(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

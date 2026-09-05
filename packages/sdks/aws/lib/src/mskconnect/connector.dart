@@ -5,6 +5,7 @@ import 'connector_kafka_cluster.dart';
 import 'connector_kafka_cluster_client_authentication.dart';
 import 'connector_kafka_cluster_encryption_in_transit.dart';
 import 'connector_log_delivery.dart';
+import 'connector_plugin.dart';
 import 'connector_state.dart';
 import 'connector_worker_configuration.dart';
 
@@ -20,29 +21,21 @@ import 'connector_worker_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mskconnect.Connector("example", {
-///     name: "example",
-///     kafkaconnectVersion: "2.7.1",
 ///     capacity: {
 ///         autoscaling: {
-///             mcuCount: 1,
-///             minWorkerCount: 1,
-///             maxWorkerCount: 2,
 ///             scaleInPolicy: {
 ///                 cpuUtilizationPercentage: 20,
 ///             },
 ///             scaleOutPolicy: {
 ///                 cpuUtilizationPercentage: 80,
 ///             },
+///             mcuCount: 1,
+///             minWorkerCount: 1,
+///             maxWorkerCount: 2,
 ///         },
-///     },
-///     connectorConfiguration: {
-///         "connector.class": "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector",
-///         "tasks.max": "1",
-///         topics: "example",
 ///     },
 ///     kafkaCluster: {
 ///         apacheKafkaCluster: {
-///             bootstrapServers: exampleAwsMskCluster.bootstrapBrokersTls,
 ///             vpc: {
 ///                 securityGroups: [exampleAwsSecurityGroup.id],
 ///                 subnets: [
@@ -51,6 +44,7 @@ import 'connector_worker_configuration.dart';
 ///                     example3.id,
 ///                 ],
 ///             },
+///             bootstrapServers: exampleAwsMskCluster.bootstrapBrokersTls,
 ///         },
 ///     },
 ///     kafkaClusterClientAuthentication: {
@@ -65,6 +59,13 @@ import 'connector_worker_configuration.dart';
 ///             revision: Number(exampleAwsMskconnectCustomPlugin.latestRevision),
 ///         },
 ///     }],
+///     name: "example",
+///     kafkaconnectVersion: "2.7.1",
+///     connectorConfiguration: {
+///         "connector.class": "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector",
+///         "tasks.max": "1",
+///         topics: "example",
+///     },
 ///     serviceExecutionRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
@@ -73,29 +74,21 @@ import 'connector_worker_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mskconnect.Connector("example",
-///     name="example",
-///     kafkaconnect_version="2.7.1",
 ///     capacity={
 ///         "autoscaling": {
-///             "mcu_count": 1,
-///             "min_worker_count": 1,
-///             "max_worker_count": 2,
 ///             "scale_in_policy": {
 ///                 "cpu_utilization_percentage": 20,
 ///             },
 ///             "scale_out_policy": {
 ///                 "cpu_utilization_percentage": 80,
 ///             },
+///             "mcu_count": 1,
+///             "min_worker_count": 1,
+///             "max_worker_count": 2,
 ///         },
-///     },
-///     connector_configuration={
-///         "connector.class": "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector",
-///         "tasks.max": "1",
-///         "topics": "example",
 ///     },
 ///     kafka_cluster={
 ///         "apache_kafka_cluster": {
-///             "bootstrap_servers": example_aws_msk_cluster["bootstrapBrokersTls"],
 ///             "vpc": {
 ///                 "security_groups": [example_aws_security_group["id"]],
 ///                 "subnets": [
@@ -104,6 +97,7 @@ import 'connector_worker_configuration.dart';
 ///                     example3["id"],
 ///                 ],
 ///             },
+///             "bootstrap_servers": example_aws_msk_cluster["bootstrapBrokersTls"],
 ///         },
 ///     },
 ///     kafka_cluster_client_authentication={
@@ -118,6 +112,13 @@ import 'connector_worker_configuration.dart';
 ///             "revision": int(example_aws_mskconnect_custom_plugin["latestRevision"]),
 ///         },
 ///     }],
+///     name="example",
+///     kafkaconnect_version="2.7.1",
+///     connector_configuration={
+///         "connector.class": "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector",
+///         "tasks.max": "1",
+///         "topics": "example",
+///     },
 ///     service_execution_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
@@ -130,15 +131,10 @@ import 'connector_worker_configuration.dart';
 /// {
 ///     var example = new Aws.MskConnect.Connector("example", new()
 ///     {
-///         Name = "example",
-///         KafkaconnectVersion = "2.7.1",
 ///         Capacity = new Aws.MskConnect.Inputs.ConnectorCapacityArgs
 ///         {
 ///             Autoscaling = new Aws.MskConnect.Inputs.ConnectorCapacityAutoscalingArgs
 ///             {
-///                 McuCount = 1,
-///                 MinWorkerCount = 1,
-///                 MaxWorkerCount = 2,
 ///                 ScaleInPolicy = new Aws.MskConnect.Inputs.ConnectorCapacityAutoscalingScaleInPolicyArgs
 ///                 {
 ///                     CpuUtilizationPercentage = 20,
@@ -147,19 +143,15 @@ import 'connector_worker_configuration.dart';
 ///                 {
 ///                     CpuUtilizationPercentage = 80,
 ///                 },
+///                 McuCount = 1,
+///                 MinWorkerCount = 1,
+///                 MaxWorkerCount = 2,
 ///             },
-///         },
-///         ConnectorConfiguration =
-///         {
-///             { "connector.class", "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector" },
-///             { "tasks.max", "1" },
-///             { "topics", "example" },
 ///         },
 ///         KafkaCluster = new Aws.MskConnect.Inputs.ConnectorKafkaClusterArgs
 ///         {
 ///             ApacheKafkaCluster = new Aws.MskConnect.Inputs.ConnectorKafkaClusterApacheKafkaClusterArgs
 ///             {
-///                 BootstrapServers = exampleAwsMskCluster.BootstrapBrokersTls,
 ///                 Vpc = new Aws.MskConnect.Inputs.ConnectorKafkaClusterApacheKafkaClusterVpcArgs
 ///                 {
 ///                     SecurityGroups = new[]
@@ -173,6 +165,7 @@ import 'connector_worker_configuration.dart';
 ///                         example3.Id,
 ///                     },
 ///                 },
+///                 BootstrapServers = exampleAwsMskCluster.BootstrapBrokersTls,
 ///             },
 ///         },
 ///         KafkaClusterClientAuthentication = new Aws.MskConnect.Inputs.ConnectorKafkaClusterClientAuthenticationArgs
@@ -194,6 +187,14 @@ import 'connector_worker_configuration.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         KafkaconnectVersion = "2.7.1",
+///         ConnectorConfiguration =
+///         {
+///             { "connector.class", "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector" },
+///             { "tasks.max", "1" },
+///             { "topics", "example" },
+///         },
 ///         ServiceExecutionRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
@@ -210,29 +211,21 @@ import 'connector_worker_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := mskconnect.NewConnector(ctx, "example", &mskconnect.ConnectorArgs{
-/// 			Name:                pulumi.String("example"),
-/// 			KafkaconnectVersion: pulumi.String("2.7.1"),
 /// 			Capacity: &mskconnect.ConnectorCapacityArgs{
 /// 				Autoscaling: &mskconnect.ConnectorCapacityAutoscalingArgs{
-/// 					McuCount:       pulumi.Int(1),
-/// 					MinWorkerCount: pulumi.Int(1),
-/// 					MaxWorkerCount: pulumi.Int(2),
 /// 					ScaleInPolicy: &mskconnect.ConnectorCapacityAutoscalingScaleInPolicyArgs{
 /// 						CpuUtilizationPercentage: pulumi.Int(20),
 /// 					},
 /// 					ScaleOutPolicy: &mskconnect.ConnectorCapacityAutoscalingScaleOutPolicyArgs{
 /// 						CpuUtilizationPercentage: pulumi.Int(80),
 /// 					},
+/// 					McuCount:       pulumi.Int(1),
+/// 					MinWorkerCount: pulumi.Int(1),
+/// 					MaxWorkerCount: pulumi.Int(2),
 /// 				},
-/// 			},
-/// 			ConnectorConfiguration: pulumi.StringMap{
-/// 				"connector.class": pulumi.String("com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"),
-/// 				"tasks.max":       pulumi.String("1"),
-/// 				"topics":          pulumi.String("example"),
 /// 			},
 /// 			KafkaCluster: &mskconnect.ConnectorKafkaClusterArgs{
 /// 				ApacheKafkaCluster: &mskconnect.ConnectorKafkaClusterApacheKafkaClusterArgs{
-/// 					BootstrapServers: pulumi.Any(exampleAwsMskCluster.BootstrapBrokersTls),
 /// 					Vpc: &mskconnect.ConnectorKafkaClusterApacheKafkaClusterVpcArgs{
 /// 						SecurityGroups: pulumi.StringArray{
 /// 							exampleAwsSecurityGroup.Id,
@@ -243,6 +236,7 @@ import 'connector_worker_configuration.dart';
 /// 							example3.Id,
 /// 						},
 /// 					},
+/// 					BootstrapServers: pulumi.Any(exampleAwsMskCluster.BootstrapBrokersTls),
 /// 				},
 /// 			},
 /// 			KafkaClusterClientAuthentication: &mskconnect.ConnectorKafkaClusterClientAuthenticationArgs{
@@ -258,6 +252,13 @@ import 'connector_worker_configuration.dart';
 /// 						Revision: pulumi.Any(exampleAwsMskconnectCustomPlugin.LatestRevision),
 /// 					},
 /// 				},
+/// 			},
+/// 			Name:                pulumi.String("example"),
+/// 			KafkaconnectVersion: pulumi.String("2.7.1"),
+/// 			ConnectorConfiguration: pulumi.StringMap{
+/// 				"connector.class": pulumi.String("com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"),
+/// 				"tasks.max":       pulumi.String("1"),
+/// 				"topics":          pulumi.String("example"),
 /// 			},
 /// 			ServiceExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
@@ -278,33 +279,26 @@ import 'connector_worker_configuration.dart';
 /// }
 ///
 /// resource "aws_mskconnect_connector" "example" {
-///   name                 = "example"
-///   kafkaconnect_version = "2.7.1"
 ///   capacity = {
 ///     autoscaling = {
-///       mcu_count        = 1
-///       min_worker_count = 1
-///       max_worker_count = 2
 ///       scale_in_policy = {
 ///         cpu_utilization_percentage = 20
 ///       }
 ///       scale_out_policy = {
 ///         cpu_utilization_percentage = 80
 ///       }
+///       mcu_count        = 1
+///       min_worker_count = 1
+///       max_worker_count = 2
 ///     }
-///   }
-///   connector_configuration = {
-///     "connector.class" = "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"
-///     "tasks.max"       = "1"
-///     "topics"          = "example"
 ///   }
 ///   kafka_cluster = {
 ///     apache_kafka_cluster = {
-///       bootstrap_servers = exampleAwsMskCluster.bootstrapBrokersTls
 ///       vpc = {
 ///         security_groups = [exampleAwsSecurityGroup.id]
 ///         subnets         = [example1.id, example2.id, example3.id]
 ///       }
+///       bootstrap_servers = exampleAwsMskCluster.bootstrapBrokersTls
 ///     }
 ///   }
 ///   kafka_cluster_client_authentication = {
@@ -318,6 +312,13 @@ import 'connector_worker_configuration.dart';
 ///       arn      = exampleAwsMskconnectCustomPlugin.arn
 ///       revision = exampleAwsMskconnectCustomPlugin.latestRevision
 ///     }
+///   }
+///   name                 = "example"
+///   kafkaconnect_version = "2.7.1"
+///   connector_configuration = {
+///     "connector.class" = "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"
+///     "tasks.max"       = "1"
+///     "topics"          = "example"
 ///   }
 ///   service_execution_role_arn = exampleAwsIamRole.arn
 /// }
@@ -355,29 +356,21 @@ import 'connector_worker_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connector("example", ConnectorArgs.builder()
-///             .name("example")
-///             .kafkaconnectVersion("2.7.1")
 ///             .capacity(ConnectorCapacityArgs.builder()
 ///                 .autoscaling(ConnectorCapacityAutoscalingArgs.builder()
-///                     .mcuCount(1)
-///                     .minWorkerCount(1)
-///                     .maxWorkerCount(2)
 ///                     .scaleInPolicy(ConnectorCapacityAutoscalingScaleInPolicyArgs.builder()
 ///                         .cpuUtilizationPercentage(20)
 ///                         .build())
 ///                     .scaleOutPolicy(ConnectorCapacityAutoscalingScaleOutPolicyArgs.builder()
 ///                         .cpuUtilizationPercentage(80)
 ///                         .build())
+///                     .mcuCount(1)
+///                     .minWorkerCount(1)
+///                     .maxWorkerCount(2)
 ///                     .build())
 ///                 .build())
-///             .connectorConfiguration(Map.ofEntries(
-///                 Map.entry("connector.class", "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"),
-///                 Map.entry("tasks.max", "1"),
-///                 Map.entry("topics", "example")
-///             ))
 ///             .kafkaCluster(ConnectorKafkaClusterArgs.builder()
 ///                 .apacheKafkaCluster(ConnectorKafkaClusterApacheKafkaClusterArgs.builder()
-///                     .bootstrapServers(exampleAwsMskCluster.bootstrapBrokersTls())
 ///                     .vpc(ConnectorKafkaClusterApacheKafkaClusterVpcArgs.builder()
 ///                         .securityGroups(exampleAwsSecurityGroup.id())
 ///                         .subnets(
@@ -385,6 +378,7 @@ import 'connector_worker_configuration.dart';
 ///                             example2.id(),
 ///                             example3.id())
 ///                         .build())
+///                     .bootstrapServers(exampleAwsMskCluster.bootstrapBrokersTls())
 ///                     .build())
 ///                 .build())
 ///             .kafkaClusterClientAuthentication(ConnectorKafkaClusterClientAuthenticationArgs.builder()
@@ -399,6 +393,13 @@ import 'connector_worker_configuration.dart';
 ///                     .revision(exampleAwsMskconnectCustomPlugin.latestRevision())
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .kafkaconnectVersion("2.7.1")
+///             .connectorConfiguration(Map.ofEntries(
+///                 Map.entry("connector.class", "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"),
+///                 Map.entry("tasks.max", "1"),
+///                 Map.entry("topics", "example")
+///             ))
 ///             .serviceExecutionRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
@@ -410,24 +411,17 @@ import 'connector_worker_configuration.dart';
 ///   example:
 ///     type: aws:mskconnect:Connector
 ///     properties:
-///       name: example
-///       kafkaconnectVersion: 2.7.1
 ///       capacity:
 ///         autoscaling:
-///           mcuCount: 1
-///           minWorkerCount: 1
-///           maxWorkerCount: 2
 ///           scaleInPolicy:
 ///             cpuUtilizationPercentage: 20
 ///           scaleOutPolicy:
 ///             cpuUtilizationPercentage: 80
-///       connectorConfiguration:
-///         connector.class: com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector
-///         tasks.max: '1'
-///         topics: example
+///           mcuCount: 1
+///           minWorkerCount: 1
+///           maxWorkerCount: 2
 ///       kafkaCluster:
 ///         apacheKafkaCluster:
-///           bootstrapServers: ${exampleAwsMskCluster.bootstrapBrokersTls}
 ///           vpc:
 ///             securityGroups:
 ///               - ${exampleAwsSecurityGroup.id}
@@ -435,6 +429,7 @@ import 'connector_worker_configuration.dart';
 ///               - ${example1.id}
 ///               - ${example2.id}
 ///               - ${example3.id}
+///           bootstrapServers: ${exampleAwsMskCluster.bootstrapBrokersTls}
 ///       kafkaClusterClientAuthentication:
 ///         authenticationType: NONE
 ///       kafkaClusterEncryptionInTransit:
@@ -443,6 +438,12 @@ import 'connector_worker_configuration.dart';
 ///         - customPlugin:
 ///             arn: ${exampleAwsMskconnectCustomPlugin.arn}
 ///             revision: ${exampleAwsMskconnectCustomPlugin.latestRevision}
+///       name: example
+///       kafkaconnectVersion: 2.7.1
+///       connectorConfiguration:
+///         connector.class: com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector
+///         tasks.max: '1'
+///         topics: example
 ///       serviceExecutionRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
@@ -455,7 +456,7 @@ import 'connector_worker_configuration.dart';
 /// $ pulumi import aws:mskconnect/connector:Connector example 'arn:aws:kafkaconnect:eu-central-1:123456789012:connector/example/264edee4-17a3-412e-bd76-6681cfc93805-3'
 /// ```
 class Connector extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the connector.
+  /// ARN of the connector.
   late final pulumi.Output<String> arn;
   /// Information about the capacity allocated to the connector. See `capacity` Block for details.
   late final pulumi.Output<ConnectorCapacity> capacity;
@@ -476,10 +477,10 @@ class Connector extends pulumi.CustomResource {
   /// The name of the connector.
   late final pulumi.Output<String> name;
   /// Specifies which plugins to use for the connector. See `plugin` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> plugins;
+  late final pulumi.Output<List<ConnectorPlugin>> plugins;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
+  /// ARN of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceExecutionRoleArn;
@@ -504,11 +505,11 @@ class Connector extends pulumi.CustomResource {
           'aws:mskconnect/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<ConnectorCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectorConfiguration = registerOutput<Map<String, String>>('connectorConfiguration');
+    connectorConfiguration = registerOutput<Map<String, String>>('connectorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kafkaClusterClientAuthentication = registerOutput<ConnectorKafkaClusterClientAuthentication>('kafkaClusterClientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -516,11 +517,11 @@ class Connector extends pulumi.CustomResource {
     kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
     logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    plugins = registerOutput<List<Map<String, dynamic>>>('plugins');
+    plugins = registerOutput<List<ConnectorPlugin>>('plugins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectorPlugin>(guardedValue, (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
     workerConfiguration = registerOutput<ConnectorWorkerConfiguration?>('workerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorWorkerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -530,11 +531,12 @@ class Connector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -550,7 +552,7 @@ class Connector extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<ConnectorCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectorConfiguration = registerOutput<Map<String, String>>('connectorConfiguration');
+    connectorConfiguration = registerOutput<Map<String, String>>('connectorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kafkaClusterClientAuthentication = registerOutput<ConnectorKafkaClusterClientAuthentication>('kafkaClusterClientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -558,11 +560,39 @@ class Connector extends pulumi.CustomResource {
     kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
     logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    plugins = registerOutput<List<Map<String, dynamic>>>('plugins');
+    plugins = registerOutput<List<ConnectorPlugin>>('plugins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectorPlugin>(guardedValue, (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+    workerConfiguration = registerOutput<ConnectorWorkerConfiguration?>('workerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorWorkerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'aws:mskconnect/connector:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capacity = registerOutput<ConnectorCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorConfiguration = registerOutput<Map<String, String>>('connectorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String?>('description');
+    kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaClusterClientAuthentication = registerOutput<ConnectorKafkaClusterClientAuthentication>('kafkaClusterClientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaClusterEncryptionInTransit = registerOutput<ConnectorKafkaClusterEncryptionInTransit>('kafkaClusterEncryptionInTransit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorKafkaClusterEncryptionInTransit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
+    logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    plugins = registerOutput<List<ConnectorPlugin>>('plugins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectorPlugin>(guardedValue, (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
     workerConfiguration = registerOutput<ConnectorWorkerConfiguration?>('workerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorWorkerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

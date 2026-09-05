@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'records_exclusive_args.dart';
+import 'records_exclusive_resource_record_set.dart';
 import 'records_exclusive_state.dart';
 import 'records_exclusive_timeouts.dart';
 
@@ -25,11 +26,7 @@ import 'records_exclusive_timeouts.dart';
 ///     forceDestroy: true,
 /// });
 /// const test = new aws.route53.RecordsExclusive("test", {
-///     zoneId: testAwsRoute53Zone.zoneId,
 ///     resourceRecordSets: [{
-///         name: "subdomain.example.com",
-///         type: "A",
-///         ttl: 30,
 ///         resourceRecords: [
 ///             {
 ///                 value: "127.0.0.1",
@@ -38,7 +35,11 @@ import 'records_exclusive_timeouts.dart';
 ///                 value: "127.0.0.27",
 ///             },
 ///         ],
+///         name: "subdomain.example.com",
+///         type: "A",
+///         ttl: 30,
 ///     }],
+///     zoneId: testAwsRoute53Zone.zoneId,
 /// });
 /// ```
 /// ```python
@@ -49,11 +50,7 @@ import 'records_exclusive_timeouts.dart';
 ///     name="example.com",
 ///     force_destroy=True)
 /// test = aws.route53.RecordsExclusive("test",
-///     zone_id=test_aws_route53_zone["zoneId"],
 ///     resource_record_sets=[{
-///         "name": "subdomain.example.com",
-///         "type": "A",
-///         "ttl": 30,
 ///         "resource_records": [
 ///             {
 ///                 "value": "127.0.0.1",
@@ -62,7 +59,11 @@ import 'records_exclusive_timeouts.dart';
 ///                 "value": "127.0.0.27",
 ///             },
 ///         ],
-///     }])
+///         "name": "subdomain.example.com",
+///         "type": "A",
+///         "ttl": 30,
+///     }],
+///     zone_id=test_aws_route53_zone["zoneId"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -80,14 +81,10 @@ import 'records_exclusive_timeouts.dart';
 ///
 ///     var test = new Aws.Route53.RecordsExclusive("test", new()
 ///     {
-///         ZoneId = testAwsRoute53Zone.ZoneId,
 ///         ResourceRecordSets = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordsExclusiveResourceRecordSetArgs
 ///             {
-///                 Name = "subdomain.example.com",
-///                 Type = "A",
-///                 Ttl = 30,
 ///                 ResourceRecords = new[]
 ///                 {
 ///                     new Aws.Route53.Inputs.RecordsExclusiveResourceRecordSetResourceRecordArgs
@@ -99,8 +96,12 @@ import 'records_exclusive_timeouts.dart';
 ///                         Value = "127.0.0.27",
 ///                     },
 ///                 },
+///                 Name = "subdomain.example.com",
+///                 Type = "A",
+///                 Ttl = 30,
 ///             },
 ///         },
+///         ZoneId = testAwsRoute53Zone.ZoneId,
 ///     });
 ///
 /// });
@@ -123,12 +124,8 @@ import 'records_exclusive_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecordsExclusive(ctx, "test", &route53.RecordsExclusiveArgs{
-/// 			ZoneId: pulumi.Any(testAwsRoute53Zone.ZoneId),
 /// 			ResourceRecordSets: route53.RecordsExclusiveResourceRecordSetArray{
 /// 				&route53.RecordsExclusiveResourceRecordSetArgs{
-/// 					Name: pulumi.String("subdomain.example.com"),
-/// 					Type: pulumi.String("A"),
-/// 					Ttl:  pulumi.Int(30),
 /// 					ResourceRecords: route53.RecordsExclusiveResourceRecordSetResourceRecordArray{
 /// 						&route53.RecordsExclusiveResourceRecordSetResourceRecordArgs{
 /// 							Value: pulumi.String("127.0.0.1"),
@@ -137,8 +134,12 @@ import 'records_exclusive_timeouts.dart';
 /// 							Value: pulumi.String("127.0.0.27"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("subdomain.example.com"),
+/// 					Type: pulumi.String("A"),
+/// 					Ttl:  pulumi.Int(30),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.Any(testAwsRoute53Zone.ZoneId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -161,18 +162,18 @@ import 'records_exclusive_timeouts.dart';
 ///   force_destroy = true
 /// }
 /// resource "aws_route53_recordsexclusive" "test" {
-///   zone_id = testAwsRoute53Zone.zoneId
 ///   resource_record_sets {
-///     name = "subdomain.example.com"
-///     type = "A"
-///     ttl  = "30"
 ///     resource_records {
 ///       value = "127.0.0.1"
 ///     }
 ///     resource_records {
 ///       value = "127.0.0.27"
 ///     }
+///     name = "subdomain.example.com"
+///     type = "A"
+///     ttl  = "30"
 ///   }
+///   zone_id = testAwsRoute53Zone.zoneId
 /// }
 /// ```
 /// ```java
@@ -206,11 +207,7 @@ import 'records_exclusive_timeouts.dart';
 ///             .build());
 ///
 ///         var test = new RecordsExclusive("test", RecordsExclusiveArgs.builder()
-///             .zoneId(testAwsRoute53Zone.zoneId())
 ///             .resourceRecordSets(RecordsExclusiveResourceRecordSetArgs.builder()
-///                 .name("subdomain.example.com")
-///                 .type("A")
-///                 .ttl(30)
 ///                 .resourceRecords(
 ///                     RecordsExclusiveResourceRecordSetResourceRecordArgs.builder()
 ///                         .value("127.0.0.1")
@@ -218,7 +215,11 @@ import 'records_exclusive_timeouts.dart';
 ///                     RecordsExclusiveResourceRecordSetResourceRecordArgs.builder()
 ///                         .value("127.0.0.27")
 ///                         .build())
+///                 .name("subdomain.example.com")
+///                 .type("A")
+///                 .ttl(30)
 ///                 .build())
+///             .zoneId(testAwsRoute53Zone.zoneId())
 ///             .build());
 ///
 ///     }
@@ -234,14 +235,14 @@ import 'records_exclusive_timeouts.dart';
 ///   test:
 ///     type: aws:route53:RecordsExclusive
 ///     properties:
-///       zoneId: ${testAwsRoute53Zone.zoneId}
 ///       resourceRecordSets:
-///         - name: subdomain.example.com
-///           type: A
-///           ttl: '30'
-///           resourceRecords:
+///         - resourceRecords:
 ///             - value: 127.0.0.1
 ///             - value: 127.0.0.27
+///           name: subdomain.example.com
+///           type: A
+///           ttl: '30'
+///       zoneId: ${testAwsRoute53Zone.zoneId}
 /// ```
 ///
 ///
@@ -359,7 +360,7 @@ import 'records_exclusive_timeouts.dart';
 class RecordsExclusive extends pulumi.CustomResource {
   /// A list of all resource record sets associated with the hosted zone.
   /// See `resourceRecordSet` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceRecordSets;
+  late final pulumi.Output<List<RecordsExclusiveResourceRecordSet>?> resourceRecordSets;
   late final pulumi.Output<RecordsExclusiveTimeouts?> timeouts;
   /// ID of the hosted zone containing the resource record sets.
   ///
@@ -378,9 +379,9 @@ class RecordsExclusive extends pulumi.CustomResource {
           'aws:route53/recordsExclusive:RecordsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>('resourceRecordSets');
+    resourceRecordSets = registerOutput<List<RecordsExclusiveResourceRecordSet>?>('resourceRecordSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(guardedValue, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
   }
@@ -390,11 +391,12 @@ class RecordsExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecordsExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RecordsExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -408,7 +410,21 @@ class RecordsExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>('resourceRecordSets');
+    resourceRecordSets = registerOutput<List<RecordsExclusiveResourceRecordSet>?>('resourceRecordSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(guardedValue, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [RecordsExclusive] resource.
+  RecordsExclusive.reference(String urn)
+    : super(
+        'aws:route53/recordsExclusive:RecordsExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    resourceRecordSets = registerOutput<List<RecordsExclusiveResourceRecordSet>?>('resourceRecordSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(guardedValue, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
   }

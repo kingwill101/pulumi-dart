@@ -6,57 +6,57 @@ import 'get_dedicated_ip_pool_dedicated_ip.dart';
 /// Result data returned by getDedicatedIpPool.
 class GetDedicatedIpPoolResult {
   /// ARN of the Dedicated IP Pool.
-  final String arn;
-  /// A list of objects describing the pool's dedicated IP's. See `dedicatedIps`.
-  final List<GetDedicatedIpPoolDedicatedIp> dedicatedIps;
+  final String? arn;
+  /// List of objects describing the pool's dedicated IP's. See `dedicatedIps`.
+  final List<GetDedicatedIpPoolDedicatedIp>? dedicatedIps;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String poolName;
-  final String region;
-  /// (Optional) IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`.
-  final String scalingMode;
-  /// A map of tags attached to the pool.
-  final Map<String, String> tags;
+  final String? id;
+  final String? poolName;
+  final String? region;
+  /// IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`.
+  final String? scalingMode;
+  /// Map of tags attached to the pool.
+  final Map<String, String>? tags;
 
   /// Creates a new [GetDedicatedIpPoolResult].
   /// [arn] ARN of the Dedicated IP Pool.
-  /// [dedicatedIps] A list of objects describing the pool's dedicated IP's. See `dedicatedIps`.
+  /// [dedicatedIps] List of objects describing the pool's dedicated IP's. See `dedicatedIps`.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [poolName] Required.
-  /// [region] Required.
-  /// [scalingMode] (Optional) IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`.
-  /// [tags] A map of tags attached to the pool.
+  /// [poolName] Optional.
+  /// [region] Optional.
+  /// [scalingMode] IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`.
+  /// [tags] Map of tags attached to the pool.
   const GetDedicatedIpPoolResult({
-    required this.arn,
-    required this.dedicatedIps,
-    required this.id,
-    required this.poolName,
-    required this.region,
-    required this.scalingMode,
-    required this.tags,
+    this.arn,
+    this.dedicatedIps,
+    this.id,
+    this.poolName,
+    this.region,
+    this.scalingMode,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'dedicatedIps': pulumi.Input.encodeList<GetDedicatedIpPoolDedicatedIp, Map<String, dynamic>>(dedicatedIps, (value) => value.toMap()),
-      'id': id,
-      'poolName': poolName,
-      'region': region,
-      'scalingMode': scalingMode,
-      'tags': tags,
+      'arn': ?arn,
+      'dedicatedIps': ?(() { final guardedValue = dedicatedIps; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDedicatedIpPoolDedicatedIp, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'poolName': ?poolName,
+      'region': ?region,
+      'scalingMode': ?scalingMode,
+      'tags': ?tags,
     };
   }
 
   factory GetDedicatedIpPoolResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolResult(
-      arn: map['arn'] as String,
-      dedicatedIps: pulumi.Input.decodeList<GetDedicatedIpPoolDedicatedIp>(map['dedicatedIps']!, (value) => GetDedicatedIpPoolDedicatedIp.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      poolName: map['poolName'] as String,
-      region: map['region'] as String,
-      scalingMode: map['scalingMode'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dedicatedIps: (() { final guardedValue = map['dedicatedIps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDedicatedIpPoolDedicatedIp>(guardedValue, (value) => GetDedicatedIpPoolDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scalingMode: (() { final guardedValue = map['scalingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

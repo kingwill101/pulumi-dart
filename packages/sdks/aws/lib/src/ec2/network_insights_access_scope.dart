@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_insights_access_scope_args.dart';
+import 'network_insights_access_scope_exclude_path.dart';
+import 'network_insights_access_scope_match_path.dart';
 import 'network_insights_access_scope_state.dart';
 
 /// Provides a Network Insights Access Scope resource.
@@ -214,13 +216,6 @@ import 'network_insights_access_scope_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.NetworkInsightsAccessScope("example", {
-///     matchPaths: [{
-///         source: {
-///             resourceStatement: {
-///                 resourceTypes: ["AWS::EC2::NetworkInterface"],
-///             },
-///         },
-///     }],
 ///     excludePaths: [{
 ///         source: {
 ///             resourceStatement: {
@@ -233,6 +228,13 @@ import 'network_insights_access_scope_state.dart';
 ///             },
 ///         }],
 ///     }],
+///     matchPaths: [{
+///         source: {
+///             resourceStatement: {
+///                 resourceTypes: ["AWS::EC2::NetworkInterface"],
+///             },
+///         },
+///     }],
 /// });
 /// ```
 /// ```python
@@ -240,13 +242,6 @@ import 'network_insights_access_scope_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.NetworkInsightsAccessScope("example",
-///     match_paths=[{
-///         "source": {
-///             "resource_statement": {
-///                 "resource_types": ["AWS::EC2::NetworkInterface"],
-///             },
-///         },
-///     }],
 ///     exclude_paths=[{
 ///         "source": {
 ///             "resource_statement": {
@@ -258,6 +253,13 @@ import 'network_insights_access_scope_state.dart';
 ///                 "resource_types": ["AWS::EC2::NatGateway"],
 ///             },
 ///         }],
+///     }],
+///     match_paths=[{
+///         "source": {
+///             "resource_statement": {
+///                 "resource_types": ["AWS::EC2::NetworkInterface"],
+///             },
+///         },
 ///     }])
 /// ```
 /// ```csharp
@@ -270,22 +272,6 @@ import 'network_insights_access_scope_state.dart';
 /// {
 ///     var example = new Aws.Ec2.NetworkInsightsAccessScope("example", new()
 ///     {
-///         MatchPaths = new[]
-///         {
-///             new Aws.Ec2.Inputs.NetworkInsightsAccessScopeMatchPathArgs
-///             {
-///                 Source = new Aws.Ec2.Inputs.NetworkInsightsAccessScopeMatchPathSourceArgs
-///                 {
-///                     ResourceStatement = new Aws.Ec2.Inputs.NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs
-///                     {
-///                         ResourceTypes = new[]
-///                         {
-///                             "AWS::EC2::NetworkInterface",
-///                         },
-///                     },
-///                 },
-///             },
-///         },
 ///         ExcludePaths = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.NetworkInsightsAccessScopeExcludePathArgs
@@ -315,6 +301,22 @@ import 'network_insights_access_scope_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MatchPaths = new[]
+///         {
+///             new Aws.Ec2.Inputs.NetworkInsightsAccessScopeMatchPathArgs
+///             {
+///                 Source = new Aws.Ec2.Inputs.NetworkInsightsAccessScopeMatchPathSourceArgs
+///                 {
+///                     ResourceStatement = new Aws.Ec2.Inputs.NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs
+///                     {
+///                         ResourceTypes = new[]
+///                         {
+///                             "AWS::EC2::NetworkInterface",
+///                         },
+///                     },
+///                 },
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -330,17 +332,6 @@ import 'network_insights_access_scope_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewNetworkInsightsAccessScope(ctx, "example", &ec2.NetworkInsightsAccessScopeArgs{
-/// 			MatchPaths: ec2.NetworkInsightsAccessScopeMatchPathArray{
-/// 				&ec2.NetworkInsightsAccessScopeMatchPathArgs{
-/// 					Source: &ec2.NetworkInsightsAccessScopeMatchPathSourceArgs{
-/// 						ResourceStatement: &ec2.NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs{
-/// 							ResourceTypes: pulumi.StringArray{
-/// 								pulumi.String("AWS::EC2::NetworkInterface"),
-/// 							},
-/// 						},
-/// 					},
-/// 				},
-/// 			},
 /// 			ExcludePaths: ec2.NetworkInsightsAccessScopeExcludePathArray{
 /// 				&ec2.NetworkInsightsAccessScopeExcludePathArgs{
 /// 					Source: &ec2.NetworkInsightsAccessScopeExcludePathSourceArgs{
@@ -356,6 +347,17 @@ import 'network_insights_access_scope_state.dart';
 /// 								ResourceTypes: pulumi.StringArray{
 /// 									pulumi.String("AWS::EC2::NatGateway"),
 /// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			MatchPaths: ec2.NetworkInsightsAccessScopeMatchPathArray{
+/// 				&ec2.NetworkInsightsAccessScopeMatchPathArgs{
+/// 					Source: &ec2.NetworkInsightsAccessScopeMatchPathSourceArgs{
+/// 						ResourceStatement: &ec2.NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs{
+/// 							ResourceTypes: pulumi.StringArray{
+/// 								pulumi.String("AWS::EC2::NetworkInterface"),
 /// 							},
 /// 						},
 /// 					},
@@ -379,13 +381,6 @@ import 'network_insights_access_scope_state.dart';
 /// }
 ///
 /// resource "aws_ec2_networkinsightsaccessscope" "example" {
-///   match_paths {
-///     source = {
-///       resource_statement = {
-///         resource_types = ["AWS::EC2::NetworkInterface"]
-///       }
-///     }
-///   }
 ///   exclude_paths {
 ///     source = {
 ///       resource_statement = {
@@ -395,6 +390,13 @@ import 'network_insights_access_scope_state.dart';
 ///     through_resources {
 ///       resource_statement = {
 ///         resource_types = ["AWS::EC2::NatGateway"]
+///       }
+///     }
+///   }
+///   match_paths {
+///     source = {
+///       resource_statement = {
+///         resource_types = ["AWS::EC2::NetworkInterface"]
 ///       }
 ///     }
 ///   }
@@ -408,14 +410,14 @@ import 'network_insights_access_scope_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NetworkInsightsAccessScope;
 /// import com.pulumi.aws.ec2.NetworkInsightsAccessScopeArgs;
-/// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeMatchPathArgs;
-/// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeMatchPathSourceArgs;
-/// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeExcludePathArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeExcludePathSourceArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeExcludePathSourceResourceStatementArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeExcludePathThroughResourceArgs;
 /// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeExcludePathThroughResourceResourceStatementArgs;
+/// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeMatchPathArgs;
+/// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeMatchPathSourceArgs;
+/// import com.pulumi.aws.ec2.inputs.NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -430,13 +432,6 @@ import 'network_insights_access_scope_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NetworkInsightsAccessScope("example", NetworkInsightsAccessScopeArgs.builder()
-///             .matchPaths(NetworkInsightsAccessScopeMatchPathArgs.builder()
-///                 .source(NetworkInsightsAccessScopeMatchPathSourceArgs.builder()
-///                     .resourceStatement(NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs.builder()
-///                         .resourceTypes("AWS::EC2::NetworkInterface")
-///                         .build())
-///                     .build())
-///                 .build())
 ///             .excludePaths(NetworkInsightsAccessScopeExcludePathArgs.builder()
 ///                 .source(NetworkInsightsAccessScopeExcludePathSourceArgs.builder()
 ///                     .resourceStatement(NetworkInsightsAccessScopeExcludePathSourceResourceStatementArgs.builder()
@@ -446,6 +441,13 @@ import 'network_insights_access_scope_state.dart';
 ///                 .throughResources(NetworkInsightsAccessScopeExcludePathThroughResourceArgs.builder()
 ///                     .resourceStatement(NetworkInsightsAccessScopeExcludePathThroughResourceResourceStatementArgs.builder()
 ///                         .resourceTypes("AWS::EC2::NatGateway")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .matchPaths(NetworkInsightsAccessScopeMatchPathArgs.builder()
+///                 .source(NetworkInsightsAccessScopeMatchPathSourceArgs.builder()
+///                     .resourceStatement(NetworkInsightsAccessScopeMatchPathSourceResourceStatementArgs.builder()
+///                         .resourceTypes("AWS::EC2::NetworkInterface")
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -459,11 +461,6 @@ import 'network_insights_access_scope_state.dart';
 ///   example:
 ///     type: aws:ec2:NetworkInsightsAccessScope
 ///     properties:
-///       matchPaths:
-///         - source:
-///             resourceStatement:
-///               resourceTypes:
-///                 - AWS::EC2::NetworkInterface
 ///       excludePaths:
 ///         - source:
 ///             resourceStatement:
@@ -473,6 +470,11 @@ import 'network_insights_access_scope_state.dart';
 ///             - resourceStatement:
 ///                 resourceTypes:
 ///                   - AWS::EC2::NatGateway
+///       matchPaths:
+///         - source:
+///             resourceStatement:
+///               resourceTypes:
+///                 - AWS::EC2::NetworkInterface
 /// ```
 ///
 ///
@@ -500,13 +502,13 @@ class NetworkInsightsAccessScope extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Set of access scope path statements to exclude.
   /// See `excludePaths` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> excludePaths;
+  late final pulumi.Output<List<NetworkInsightsAccessScopeExcludePath>?> excludePaths;
   /// Set of access scope path statements to match.
   /// At least one must be specified.
   /// See `matchPaths` below for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> matchPaths;
+  late final pulumi.Output<List<NetworkInsightsAccessScopeMatchPath>?> matchPaths;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
   /// Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -528,14 +530,14 @@ class NetworkInsightsAccessScope extends pulumi.CustomResource {
           'aws:ec2/networkInsightsAccessScope:NetworkInsightsAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    excludePaths = registerOutput<List<Map<String, dynamic>>?>('excludePaths');
-    matchPaths = registerOutput<List<Map<String, dynamic>>?>('matchPaths');
+    excludePaths = registerOutput<List<NetworkInsightsAccessScopeExcludePath>?>('excludePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeExcludePath>(guardedValue, (value) => NetworkInsightsAccessScopeExcludePath.fromMap((value as Map).cast<String, dynamic>())); });
+    matchPaths = registerOutput<List<NetworkInsightsAccessScopeMatchPath>?>('matchPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeMatchPath>(guardedValue, (value) => NetworkInsightsAccessScopeMatchPath.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkInsightsAccessScope] resource's state with the given [name] and [id].
@@ -543,11 +545,12 @@ class NetworkInsightsAccessScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInsightsAccessScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInsightsAccessScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -562,10 +565,27 @@ class NetworkInsightsAccessScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    excludePaths = registerOutput<List<Map<String, dynamic>>?>('excludePaths');
-    matchPaths = registerOutput<List<Map<String, dynamic>>?>('matchPaths');
+    excludePaths = registerOutput<List<NetworkInsightsAccessScopeExcludePath>?>('excludePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeExcludePath>(guardedValue, (value) => NetworkInsightsAccessScopeExcludePath.fromMap((value as Map).cast<String, dynamic>())); });
+    matchPaths = registerOutput<List<NetworkInsightsAccessScopeMatchPath>?>('matchPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeMatchPath>(guardedValue, (value) => NetworkInsightsAccessScopeMatchPath.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkInsightsAccessScope] resource.
+  NetworkInsightsAccessScope.reference(String urn)
+    : super(
+        'aws:ec2/networkInsightsAccessScope:NetworkInsightsAccessScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    excludePaths = registerOutput<List<NetworkInsightsAccessScopeExcludePath>?>('excludePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeExcludePath>(guardedValue, (value) => NetworkInsightsAccessScopeExcludePath.fromMap((value as Map).cast<String, dynamic>())); });
+    matchPaths = registerOutput<List<NetworkInsightsAccessScopeMatchPath>?>('matchPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeMatchPath>(guardedValue, (value) => NetworkInsightsAccessScopeMatchPath.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

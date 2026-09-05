@@ -20,7 +20,7 @@ class RecordWeightedRoutingPolicy {
 
   factory RecordWeightedRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordWeightedRoutingPolicy(
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

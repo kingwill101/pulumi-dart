@@ -30,8 +30,8 @@ class DelegationSignerRecordSigningAttributes {
 
   factory DelegationSignerRecordSigningAttributes.fromMap(Map<String, dynamic> map) {
     return DelegationSignerRecordSigningAttributes(
-      algorithm: pulumi.Input.fromValue(map['algorithm'] as int),
-      flags: pulumi.Input.fromValue(map['flags'] as int),
+      algorithm: pulumi.Input.fromValue((map['algorithm'] as num).toInt()),
+      flags: pulumi.Input.fromValue((map['flags'] as num).toInt()),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }

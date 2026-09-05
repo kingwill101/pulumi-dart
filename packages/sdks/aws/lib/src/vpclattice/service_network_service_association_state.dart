@@ -6,25 +6,25 @@ import 'service_network_service_association_dns_entry.dart';
 /// Input properties used for looking up and filtering ServiceNetworkServiceAssociation resources.
 class ServiceNetworkServiceAssociationState {
   /// ARN of the Association.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Account that created the association.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Custom domain name of the service.
-  final pulumi.Input<String>? customDomainName;
+  final pulumi.Input<String?>? customDomainName;
   /// DNS name of the service.
-  final pulumi.Input<List<ServiceNetworkServiceAssociationDnsEntry>>? dnsEntries;
+  final pulumi.Input<List<ServiceNetworkServiceAssociationDnsEntry>?>? dnsEntries;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID or Amazon Resource Identifier (ARN) of the service.
-  final pulumi.Input<String>? serviceIdentifier;
+  final pulumi.Input<String?>? serviceIdentifier;
   /// ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
-  final pulumi.Input<String>? serviceNetworkIdentifier;
+  final pulumi.Input<String?>? serviceNetworkIdentifier;
   /// Operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ServiceNetworkServiceAssociationState].
   /// [arn] ARN of the Association.

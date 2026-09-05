@@ -26,7 +26,7 @@ class GetClusterKubeSchedulerConfigNodeResourcesFitScoringStrategyResource {
   factory GetClusterKubeSchedulerConfigNodeResourcesFitScoringStrategyResource.fromMap(Map<String, dynamic> map) {
     return GetClusterKubeSchedulerConfigNodeResourcesFitScoringStrategyResource(
       name: pulumi.Input.fromValue(map['name'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

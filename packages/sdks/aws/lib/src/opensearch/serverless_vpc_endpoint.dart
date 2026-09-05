@@ -176,12 +176,12 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
           'aws:opensearch/serverlessVpcEndpoint:ServerlessVpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    subnetIds = registerOutput<List<String>>('subnetIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessVpcEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }
@@ -191,11 +191,12 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessVpcEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessVpcEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -211,8 +212,25 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    subnetIds = registerOutput<List<String>>('subnetIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessVpcEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [ServerlessVpcEndpoint] resource.
+  ServerlessVpcEndpoint.reference(String urn)
+    : super(
+        'aws:opensearch/serverlessVpcEndpoint:ServerlessVpcEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessVpcEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }

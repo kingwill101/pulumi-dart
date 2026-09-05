@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_log_source_args.dart';
+import 'custom_log_source_attribute.dart';
 import 'custom_log_source_configuration.dart';
+import 'custom_log_source_provider_detail.dart';
 import 'custom_log_source_state.dart';
 
 /// Resource for managing an AWS Security Lake Custom Log Source.
@@ -17,9 +19,6 @@ import 'custom_log_source_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.CustomLogSource("example", {
-///     sourceName: "example-name",
-///     sourceVersion: "1.0",
-///     eventClasses: ["FILE_ACTIVITY"],
 ///     configuration: {
 ///         crawlerConfiguration: {
 ///             roleArn: customLog.arn,
@@ -29,6 +28,9 @@ import 'custom_log_source_state.dart';
 ///             principal: "123456789012",
 ///         },
 ///     },
+///     sourceName: "example-name",
+///     sourceVersion: "1.0",
+///     eventClasses: ["FILE_ACTIVITY"],
 /// }, {
 ///     dependsOn: [exampleAwsSecuritylakeDataLake],
 /// });
@@ -38,9 +40,6 @@ import 'custom_log_source_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.CustomLogSource("example",
-///     source_name="example-name",
-///     source_version="1.0",
-///     event_classes=["FILE_ACTIVITY"],
 ///     configuration={
 ///         "crawler_configuration": {
 ///             "role_arn": custom_log["arn"],
@@ -50,6 +49,9 @@ import 'custom_log_source_state.dart';
 ///             "principal": "123456789012",
 ///         },
 ///     },
+///     source_name="example-name",
+///     source_version="1.0",
+///     event_classes=["FILE_ACTIVITY"],
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_securitylake_data_lake]))
 /// ```
 /// ```csharp
@@ -62,12 +64,6 @@ import 'custom_log_source_state.dart';
 /// {
 ///     var example = new Aws.SecurityLake.CustomLogSource("example", new()
 ///     {
-///         SourceName = "example-name",
-///         SourceVersion = "1.0",
-///         EventClasses = new[]
-///         {
-///             "FILE_ACTIVITY",
-///         },
 ///         Configuration = new Aws.SecurityLake.Inputs.CustomLogSourceConfigurationArgs
 ///         {
 ///             CrawlerConfiguration = new Aws.SecurityLake.Inputs.CustomLogSourceConfigurationCrawlerConfigurationArgs
@@ -79,6 +75,12 @@ import 'custom_log_source_state.dart';
 ///                 ExternalId = "example-id",
 ///                 Principal = "123456789012",
 ///             },
+///         },
+///         SourceName = "example-name",
+///         SourceVersion = "1.0",
+///         EventClasses = new[]
+///         {
+///             "FILE_ACTIVITY",
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -101,11 +103,6 @@ import 'custom_log_source_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewCustomLogSource(ctx, "example", &securitylake.CustomLogSourceArgs{
-/// 			SourceName:    pulumi.String("example-name"),
-/// 			SourceVersion: pulumi.String("1.0"),
-/// 			EventClasses: pulumi.StringArray{
-/// 				pulumi.String("FILE_ACTIVITY"),
-/// 			},
 /// 			Configuration: &securitylake.CustomLogSourceConfigurationArgs{
 /// 				CrawlerConfiguration: &securitylake.CustomLogSourceConfigurationCrawlerConfigurationArgs{
 /// 					RoleArn: pulumi.Any(customLog.Arn),
@@ -114,6 +111,11 @@ import 'custom_log_source_state.dart';
 /// 					ExternalId: pulumi.String("example-id"),
 /// 					Principal:  pulumi.String("123456789012"),
 /// 				},
+/// 			},
+/// 			SourceName:    pulumi.String("example-name"),
+/// 			SourceVersion: pulumi.String("1.0"),
+/// 			EventClasses: pulumi.StringArray{
+/// 				pulumi.String("FILE_ACTIVITY"),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsSecuritylakeDataLake,
@@ -135,10 +137,7 @@ import 'custom_log_source_state.dart';
 /// }
 ///
 /// resource "aws_securitylake_customlogsource" "example" {
-///   depends_on     = [exampleAwsSecuritylakeDataLake]
-///   source_name    = "example-name"
-///   source_version = "1.0"
-///   event_classes  = ["FILE_ACTIVITY"]
+///   depends_on = [exampleAwsSecuritylakeDataLake]
 ///   configuration = {
 ///     crawler_configuration = {
 ///       role_arn = customLog.arn
@@ -148,6 +147,9 @@ import 'custom_log_source_state.dart';
 ///       principal   = "123456789012"
 ///     }
 ///   }
+///   source_name    = "example-name"
+///   source_version = "1.0"
+///   event_classes  = ["FILE_ACTIVITY"]
 /// }
 /// ```
 /// ```java
@@ -176,9 +178,6 @@ import 'custom_log_source_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomLogSource("example", CustomLogSourceArgs.builder()
-///             .sourceName("example-name")
-///             .sourceVersion("1.0")
-///             .eventClasses("FILE_ACTIVITY")
 ///             .configuration(CustomLogSourceConfigurationArgs.builder()
 ///                 .crawlerConfiguration(CustomLogSourceConfigurationCrawlerConfigurationArgs.builder()
 ///                     .roleArn(customLog.arn())
@@ -188,6 +187,9 @@ import 'custom_log_source_state.dart';
 ///                     .principal("123456789012")
 ///                     .build())
 ///                 .build())
+///             .sourceName("example-name")
+///             .sourceVersion("1.0")
+///             .eventClasses("FILE_ACTIVITY")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecuritylakeDataLake)
 ///                 .build());
@@ -200,16 +202,16 @@ import 'custom_log_source_state.dart';
 ///   example:
 ///     type: aws:securitylake:CustomLogSource
 ///     properties:
-///       sourceName: example-name
-///       sourceVersion: '1.0'
-///       eventClasses:
-///         - FILE_ACTIVITY
 ///       configuration:
 ///         crawlerConfiguration:
 ///           roleArn: ${customLog.arn}
 ///         providerIdentity:
 ///           externalId: example-id
 ///           principal: '123456789012'
+///       sourceName: example-name
+///       sourceVersion: '1.0'
+///       eventClasses:
+///         - FILE_ACTIVITY
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsSecuritylakeDataLake}
@@ -225,13 +227,13 @@ import 'custom_log_source_state.dart';
 /// ```
 class CustomLogSource extends pulumi.CustomResource {
   /// The attributes of a third-party custom source.
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+  late final pulumi.Output<List<CustomLogSourceAttribute>> attributes;
   /// The configuration for the third-party custom source.
   late final pulumi.Output<CustomLogSourceConfiguration> configuration;
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
   late final pulumi.Output<List<String>?> eventClasses;
   /// The details of the log provider for a third-party custom source.
-  late final pulumi.Output<List<Map<String, dynamic>>> providerDetails;
+  late final pulumi.Output<List<CustomLogSourceProviderDetail>> providerDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Specify the name for a third-party custom source.
@@ -253,12 +255,12 @@ class CustomLogSource extends pulumi.CustomResource {
           'aws:securitylake/customLogSource:CustomLogSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<CustomLogSourceAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceAttribute>(guardedValue, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     configuration = registerOutput<CustomLogSourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLogSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    eventClasses = registerOutput<List<String>?>('eventClasses');
-    providerDetails = registerOutput<List<Map<String, dynamic>>>('providerDetails');
+    eventClasses = registerOutput<List<String>?>('eventClasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerDetails = registerOutput<List<CustomLogSourceProviderDetail>>('providerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceProviderDetail>(guardedValue, (value) => CustomLogSourceProviderDetail.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     sourceName = registerOutput<String>('sourceName');
     sourceVersion = registerOutput<String>('sourceVersion');
@@ -269,11 +271,12 @@ class CustomLogSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomLogSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomLogSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,10 +290,28 @@ class CustomLogSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<CustomLogSourceAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceAttribute>(guardedValue, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     configuration = registerOutput<CustomLogSourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLogSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    eventClasses = registerOutput<List<String>?>('eventClasses');
-    providerDetails = registerOutput<List<Map<String, dynamic>>>('providerDetails');
+    eventClasses = registerOutput<List<String>?>('eventClasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerDetails = registerOutput<List<CustomLogSourceProviderDetail>>('providerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceProviderDetail>(guardedValue, (value) => CustomLogSourceProviderDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    sourceName = registerOutput<String>('sourceName');
+    sourceVersion = registerOutput<String>('sourceVersion');
+  }
+
+  /// Creates a typed reference to an existing [CustomLogSource] resource.
+  CustomLogSource.reference(String urn)
+    : super(
+        'aws:securitylake/customLogSource:CustomLogSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<List<CustomLogSourceAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceAttribute>(guardedValue, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    configuration = registerOutput<CustomLogSourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLogSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventClasses = registerOutput<List<String>?>('eventClasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerDetails = registerOutput<List<CustomLogSourceProviderDetail>>('providerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceProviderDetail>(guardedValue, (value) => CustomLogSourceProviderDetail.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     sourceName = registerOutput<String>('sourceName');
     sourceVersion = registerOutput<String>('sourceVersion');

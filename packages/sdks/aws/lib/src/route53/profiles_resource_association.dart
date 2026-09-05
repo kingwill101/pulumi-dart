@@ -17,10 +17,10 @@ import 'profiles_resource_association_timeouts.dart';
 /// const example = new aws.route53.ProfilesProfile("example", {name: "example"});
 /// const exampleVpc = new aws.ec2.Vpc("example", {cidr: "10.0.0.0/16"});
 /// const exampleZone = new aws.route53.Zone("example", {
-///     name: "example.com",
 ///     vpcs: [{
 ///         vpcId: exampleVpc.id,
 ///     }],
+///     name: "example.com",
 /// });
 /// const exampleProfilesResourceAssociation = new aws.route53.ProfilesResourceAssociation("example", {
 ///     name: "example",
@@ -35,10 +35,10 @@ import 'profiles_resource_association_timeouts.dart';
 /// example = aws.route53.ProfilesProfile("example", name="example")
 /// example_vpc = aws.ec2.Vpc("example", cidr="10.0.0.0/16")
 /// example_zone = aws.route53.Zone("example",
-///     name="example.com",
 ///     vpcs=[{
 ///         "vpc_id": example_vpc.id,
-///     }])
+///     }],
+///     name="example.com")
 /// example_profiles_resource_association = aws.route53.ProfilesResourceAssociation("example",
 ///     name="example",
 ///     profile_id=example.id,
@@ -64,7 +64,6 @@ import 'profiles_resource_association_timeouts.dart';
 ///
 ///     var exampleZone = new Aws.Route53.Zone("example", new()
 ///     {
-///         Name = "example.com",
 ///         Vpcs = new[]
 ///         {
 ///             new Aws.Route53.Inputs.ZoneVpcArgs
@@ -72,6 +71,7 @@ import 'profiles_resource_association_timeouts.dart';
 ///                 VpcId = exampleVpc.Id,
 ///             },
 ///         },
+///         Name = "example.com",
 ///     });
 ///
 ///     var exampleProfilesResourceAssociation = new Aws.Route53.ProfilesResourceAssociation("example", new()
@@ -107,12 +107,12 @@ import 'profiles_resource_association_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		exampleZone, err := route53.NewZone(ctx, "example", &route53.ZoneArgs{
-/// 			Name: pulumi.String("example.com"),
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
 /// 					VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,10 +145,10 @@ import 'profiles_resource_association_timeouts.dart';
 ///   cidr = "10.0.0.0/16"
 /// }
 /// resource "aws_route53_zone" "example" {
-///   name = "example.com"
 ///   vpcs {
 ///     vpc_id = aws_ec2_vpc.example.id
 ///   }
+///   name = "example.com"
 /// }
 /// resource "aws_route53_profilesresourceassociation" "example" {
 ///   name         = "example"
@@ -193,10 +193,10 @@ import 'profiles_resource_association_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
-///             .name("example.com")
 ///             .vpcs(ZoneVpcArgs.builder()
 ///                 .vpcId(exampleVpc.id())
 ///                 .build())
+///             .name("example.com")
 ///             .build());
 ///
 ///         var exampleProfilesResourceAssociation = new ProfilesResourceAssociation("exampleProfilesResourceAssociation", ProfilesResourceAssociationArgs.builder()
@@ -223,9 +223,9 @@ import 'profiles_resource_association_timeouts.dart';
 ///     type: aws:route53:Zone
 ///     name: example
 ///     properties:
-///       name: example.com
 ///       vpcs:
 ///         - vpcId: ${exampleVpc.id}
+///       name: example.com
 ///   exampleProfilesResourceAssociation:
 ///     type: aws:route53:ProfilesResourceAssociation
 ///     name: example
@@ -275,7 +275,7 @@ class ProfilesResourceAssociation extends pulumi.CustomResource {
           'aws:route53/profilesResourceAssociation:ProfilesResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
@@ -294,11 +294,12 @@ class ProfilesResourceAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfilesResourceAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProfilesResourceAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -312,6 +313,27 @@ class ProfilesResourceAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    profileId = registerOutput<String>('profileId');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceProperties = registerOutput<String>('resourceProperties');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    timeouts = registerOutput<ProfilesResourceAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfilesResourceAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ProfilesResourceAssociation] resource.
+  ProfilesResourceAssociation.reference(String urn)
+    : super(
+        'aws:route53/profilesResourceAssociation:ProfilesResourceAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
     profileId = registerOutput<String>('profileId');

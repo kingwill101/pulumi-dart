@@ -45,7 +45,7 @@ class GetNetworkInsightsAnalysisExplanationAclRule {
       portRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanationAclRulePortRange>(map['portRanges']!, (value) => GetNetworkInsightsAnalysisExplanationAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       ruleAction: pulumi.Input.fromValue(map['ruleAction'] as String),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
     );
   }
 }

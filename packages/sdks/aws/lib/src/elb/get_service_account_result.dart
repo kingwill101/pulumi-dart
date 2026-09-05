@@ -4,34 +4,34 @@
 /// Result data returned by getServiceAccount.
 class GetServiceAccountResult {
   /// ARN of the AWS ELB service account in the selected Region.
-  final String arn;
+  final String? arn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
 
   /// Creates a new [GetServiceAccountResult].
   /// [arn] ARN of the AWS ELB service account in the selected Region.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   const GetServiceAccountResult({
-    required this.arn,
-    required this.id,
-    required this.region,
+    this.arn,
+    this.id,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'region': region,
+      'arn': ?arn,
+      'id': ?id,
+      'region': ?region,
     };
   }
 
   factory GetServiceAccountResult.fromMap(Map<String, dynamic> map) {
     return GetServiceAccountResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

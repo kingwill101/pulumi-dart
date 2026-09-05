@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
   /// CSV content type headers to capture. One of `csvContentTypes` or `jsonContentTypes` is required.
-  final pulumi.Input<List<String>>? csvContentTypes;
+  final pulumi.Input<List<String>?>? csvContentTypes;
   /// The JSON content type headers to capture. One of `jsonContentTypes` or `csvContentTypes` is required.
-  final pulumi.Input<List<String>>? jsonContentTypes;
+  final pulumi.Input<List<String>?>? jsonContentTypes;
 
   /// Creates a new [EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader].
   /// [csvContentTypes] CSV content type headers to capture. One of `csvContentTypes` or `jsonContentTypes` is required.

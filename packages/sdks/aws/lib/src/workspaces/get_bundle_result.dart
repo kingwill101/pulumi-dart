@@ -10,20 +10,20 @@ class GetBundleResult {
   /// The ID of the bundle.
   final String? bundleId;
   /// The compute type. See supported fields below.
-  final List<GetBundleComputeType> computeTypes;
+  final List<GetBundleComputeType>? computeTypes;
   /// The description of the bundle.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the compute type.
   final String? name;
   /// The owner of the bundle.
   final String? owner;
-  final String region;
+  final String? region;
   /// The root volume. See supported fields below.
-  final List<GetBundleRootStorage> rootStorages;
+  final List<GetBundleRootStorage>? rootStorages;
   /// The user storage. See supported fields below.
-  final List<GetBundleUserStorage> userStorages;
+  final List<GetBundleUserStorage>? userStorages;
 
   /// Creates a new [GetBundleResult].
   /// [bundleId] The ID of the bundle.
@@ -32,46 +32,46 @@ class GetBundleResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the compute type.
   /// [owner] The owner of the bundle.
-  /// [region] Required.
+  /// [region] Optional.
   /// [rootStorages] The root volume. See supported fields below.
   /// [userStorages] The user storage. See supported fields below.
   const GetBundleResult({
     this.bundleId,
-    required this.computeTypes,
-    required this.description,
-    required this.id,
+    this.computeTypes,
+    this.description,
+    this.id,
     this.name,
     this.owner,
-    required this.region,
-    required this.rootStorages,
-    required this.userStorages,
+    this.region,
+    this.rootStorages,
+    this.userStorages,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bundleId': ?bundleId,
-      'computeTypes': pulumi.Input.encodeList<GetBundleComputeType, Map<String, dynamic>>(computeTypes, (value) => value.toMap()),
-      'description': description,
-      'id': id,
+      'computeTypes': ?(() { final guardedValue = computeTypes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBundleComputeType, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'description': ?description,
+      'id': ?id,
       'name': ?name,
       'owner': ?owner,
-      'region': region,
-      'rootStorages': pulumi.Input.encodeList<GetBundleRootStorage, Map<String, dynamic>>(rootStorages, (value) => value.toMap()),
-      'userStorages': pulumi.Input.encodeList<GetBundleUserStorage, Map<String, dynamic>>(userStorages, (value) => value.toMap()),
+      'region': ?region,
+      'rootStorages': ?(() { final guardedValue = rootStorages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBundleRootStorage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'userStorages': ?(() { final guardedValue = userStorages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBundleUserStorage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetBundleResult.fromMap(Map<String, dynamic> map) {
     return GetBundleResult(
       bundleId: (() { final guardedValue = map['bundleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      computeTypes: pulumi.Input.decodeList<GetBundleComputeType>(map['computeTypes']!, (value) => GetBundleComputeType.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      id: map['id'] as String,
+      computeTypes: (() { final guardedValue = map['computeTypes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBundleComputeType>(guardedValue, (value) => GetBundleComputeType.fromMap((value as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
-      rootStorages: pulumi.Input.decodeList<GetBundleRootStorage>(map['rootStorages']!, (value) => GetBundleRootStorage.fromMap((value as Map).cast<String, dynamic>())),
-      userStorages: pulumi.Input.decodeList<GetBundleUserStorage>(map['userStorages']!, (value) => GetBundleUserStorage.fromMap((value as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rootStorages: (() { final guardedValue = map['rootStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBundleRootStorage>(guardedValue, (value) => GetBundleRootStorage.fromMap((value as Map).cast<String, dynamic>())); })(),
+      userStorages: (() { final guardedValue = map['userStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBundleUserStorage>(guardedValue, (value) => GetBundleUserStorage.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

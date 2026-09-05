@@ -8,13 +8,13 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `customPayload`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessageCustomPayload>? customPayload;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessageCustomPayload?>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `imageResponseCard`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard?>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plainTextMessage`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessagePlainTextMessage?>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssmlMessage`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessageSsmlMessage?>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `customPayload`.

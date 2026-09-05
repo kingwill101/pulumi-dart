@@ -5,15 +5,15 @@ import 'lifecycle_policy_policy_detail_exclusion_rules_amis_last_launched.dart';
 
 class LifecyclePolicyPolicyDetailExclusionRulesAmis {
   /// Configures whether public AMIs are excluded from the lifecycle action.
-  final pulumi.Input<bool>? isPublic;
+  final pulumi.Input<bool?>? isPublic;
   /// Specifies configuration details for Image Builder to exclude the most recent resources from lifecycle actions. Detailed below.
-  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched>? lastLaunched;
+  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched?>? lastLaunched;
   /// Configures AWS Regions that are excluded from the lifecycle action.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// Specifies AWS accounts whose resources are excluded from the lifecycle action.
-  final pulumi.Input<List<String>>? sharedAccounts;
+  final pulumi.Input<List<String>?>? sharedAccounts;
   /// Lists tags that should be excluded from lifecycle actions for the AMIs that have them.
-  final pulumi.Input<Map<String, String>>? tagMap;
+  final pulumi.Input<Map<String, String>?>? tagMap;
 
   /// Creates a new [LifecyclePolicyPolicyDetailExclusionRulesAmis].
   /// [isPublic] Configures whether public AMIs are excluded from the lifecycle action.

@@ -8,13 +8,13 @@ import 'application_monitoring_configuration_s3_monitoring_configuration.dart';
 
 class ApplicationMonitoringConfiguration {
   /// The Amazon CloudWatch configuration for monitoring logs.
-  final pulumi.Input<ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration>? cloudwatchLoggingConfiguration;
+  final pulumi.Input<ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration?>? cloudwatchLoggingConfiguration;
   /// The managed log persistence configuration for monitoring logs.
-  final pulumi.Input<ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration>? managedPersistenceMonitoringConfiguration;
+  final pulumi.Input<ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration?>? managedPersistenceMonitoringConfiguration;
   /// The Prometheus configuration for monitoring metrics.
-  final pulumi.Input<ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration>? prometheusMonitoringConfiguration;
+  final pulumi.Input<ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration?>? prometheusMonitoringConfiguration;
   /// The Amazon S3 configuration for monitoring log publishing.
-  final pulumi.Input<ApplicationMonitoringConfigurationS3MonitoringConfiguration>? s3MonitoringConfiguration;
+  final pulumi.Input<ApplicationMonitoringConfigurationS3MonitoringConfiguration?>? s3MonitoringConfiguration;
 
   /// Creates a new [ApplicationMonitoringConfiguration].
   /// [cloudwatchLoggingConfiguration] The Amazon CloudWatch configuration for monitoring logs.

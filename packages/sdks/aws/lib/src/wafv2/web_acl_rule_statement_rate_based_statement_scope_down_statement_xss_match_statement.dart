@@ -5,8 +5,8 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_xss_mat
 import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_xss_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement {
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch>? fieldToMatch;
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch?>? fieldToMatch;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement].
   /// [fieldToMatch] Optional.

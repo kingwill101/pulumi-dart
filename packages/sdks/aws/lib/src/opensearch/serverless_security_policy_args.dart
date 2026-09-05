@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_opensearch_serverless_security_policy_serverless_security_policy_args_doc}
 class ServerlessSecurityPolicyArgs {
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// JSON policy document to use as the content for the new policy
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of security policy. One of `encryption` or `network`.
   ///
   /// The following arguments are optional:

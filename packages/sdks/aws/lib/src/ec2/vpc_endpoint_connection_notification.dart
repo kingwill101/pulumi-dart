@@ -14,11 +14,11 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///
 /// const topic = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["vpce.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["SNS:Publish"],
 ///         resources: ["arn:aws:sns:*:*:vpce-notification-topic"],
 ///     }],
@@ -45,11 +45,11 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// import pulumi_aws as aws
 ///
 /// topic = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["vpce.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["SNS:Publish"],
 ///     "resources": ["arn:aws:sns:*:*:vpce-notification-topic"],
 /// }])
@@ -81,7 +81,6 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -93,6 +92,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "SNS:Publish",
@@ -148,7 +148,6 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// 		topic, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -157,6 +156,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"SNS:Publish",
 /// 					},
@@ -211,11 +211,11 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "topic" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["vpce.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["SNS:Publish"]
 ///     resources = ["arn:aws:sns:*:*:vpce-notification-topic"]
 ///   }
@@ -266,11 +266,11 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var topic = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("vpce.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("SNS:Publish")
 ///                 .resources("arn:aws:sns:*:*:vpce-notification-topic")
 ///                 .build())
@@ -326,11 +326,11 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - vpce.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - SNS:Publish
 ///             resources:
@@ -375,9 +375,9 @@ class VpcEndpointConnectionNotification extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    connectionEvents = registerOutput<List<String>>('connectionEvents');
+    connectionEvents = registerOutput<List<String>>('connectionEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionNotificationArn = registerOutput<String>('connectionNotificationArn');
     notificationType = registerOutput<String>('notificationType');
     region = registerOutput<String>('region');
@@ -391,11 +391,12 @@ class VpcEndpointConnectionNotification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointConnectionNotificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpointConnectionNotification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -409,11 +410,29 @@ class VpcEndpointConnectionNotification extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectionEvents = registerOutput<List<String>>('connectionEvents');
+    connectionEvents = registerOutput<List<String>>('connectionEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionNotificationArn = registerOutput<String>('connectionNotificationArn');
     notificationType = registerOutput<String>('notificationType');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    vpcEndpointId = registerOutput<String?>('vpcEndpointId');
+    vpcEndpointServiceId = registerOutput<String?>('vpcEndpointServiceId');
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpointConnectionNotification] resource.
+  VpcEndpointConnectionNotification.reference(String urn)
+    : super(
+        'aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectionEvents = registerOutput<List<String>>('connectionEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionNotificationArn = registerOutput<String>('connectionNotificationArn');
+    notificationType = registerOutput<String>('notificationType');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     vpcEndpointId = registerOutput<String?>('vpcEndpointId');
     vpcEndpointServiceId = registerOutput<String?>('vpcEndpointServiceId');
   }

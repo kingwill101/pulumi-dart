@@ -11,15 +11,15 @@ class ProfilingGroupArgs {
   /// Specifies whether profiling is enabled or disabled for the created profiling. See Agent Orchestration Config for more details.
   final pulumi.Input<ProfilingGroupAgentOrchestrationConfig> agentOrchestrationConfig;
   /// Compute platform of the profiling group.
-  final pulumi.Input<String>? computePlatform;
+  final pulumi.Input<String?>? computePlatform;
   /// Name of the profiling group.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProfilingGroupArgs].
   /// [agentOrchestrationConfig] Specifies whether profiling is enabled or disabled for the created profiling. See Agent Orchestration Config for more details.

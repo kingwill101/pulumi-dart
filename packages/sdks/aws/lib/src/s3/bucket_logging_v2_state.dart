@@ -7,19 +7,19 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// Input properties used for looking up and filtering BucketLoggingV2 resources.
 class BucketLoggingV2State {
   /// Name of the bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the bucket where you want Amazon S3 to store server access logs.
-  final pulumi.Input<String>? targetBucket;
+  final pulumi.Input<String?>? targetBucket;
   /// Set of configuration blocks with information for granting permissions. See below.
-  final pulumi.Input<List<BucketLoggingV2TargetGrant>>? targetGrants;
+  final pulumi.Input<List<BucketLoggingV2TargetGrant>?>? targetGrants;
   /// Amazon S3 key format for log objects. See below.
-  final pulumi.Input<BucketLoggingV2TargetObjectKeyFormat>? targetObjectKeyFormat;
+  final pulumi.Input<BucketLoggingV2TargetObjectKeyFormat?>? targetObjectKeyFormat;
   /// Prefix for all log object keys.
-  final pulumi.Input<String>? targetPrefix;
+  final pulumi.Input<String?>? targetPrefix;
 
   /// Creates a new [BucketLoggingV2State].
   /// [bucket] Name of the bucket.

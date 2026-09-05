@@ -9,21 +9,21 @@ import 'application_application_configuration_sql_application_configuration_inpu
 import 'application_application_configuration_sql_application_configuration_input_kinesis_streams_input.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
-  final pulumi.Input<List<String>>? inAppStreamNames;
-  final pulumi.Input<String>? inputId;
+  final pulumi.Input<List<String>?>? inAppStreamNames;
+  final pulumi.Input<String?>? inputId;
   /// Describes the number of in-application streams to create.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism>? inputParallelism;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism?>? inputParallelism;
   /// The input processing configuration for the input.
   /// An input processor transforms records as they are received from the stream, before the application's SQL code executes.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration>? inputProcessingConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration?>? inputProcessingConfiguration;
   /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema> inputSchema;
   /// The point at which the application starts processing records from the streaming source.
-  final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration>>? inputStartingPositionConfigurations;
+  final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration>?>? inputStartingPositionConfigurations;
   /// If the streaming source is a Kinesis Data Firehose delivery stream, identifies the delivery stream's ARN.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput>? kinesisFirehoseInput;
-  /// If the streaming source is a Kinesis data stream, identifies the stream's Amazon Resource Name (ARN).
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput>? kinesisStreamsInput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput?>? kinesisFirehoseInput;
+  /// If the streaming source is a Kinesis data stream, identifies the stream's ARN.
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput?>? kinesisStreamsInput;
   /// The name prefix to use when creating an in-application stream.
   final pulumi.Input<String> namePrefix;
 
@@ -35,7 +35,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
   /// [inputSchema] Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created.
   /// [inputStartingPositionConfigurations] The point at which the application starts processing records from the streaming source.
   /// [kinesisFirehoseInput] If the streaming source is a Kinesis Data Firehose delivery stream, identifies the delivery stream's ARN.
-  /// [kinesisStreamsInput] If the streaming source is a Kinesis data stream, identifies the stream's Amazon Resource Name (ARN).
+  /// [kinesisStreamsInput] If the streaming source is a Kinesis data stream, identifies the stream's ARN.
   /// [namePrefix] The name prefix to use when creating an in-application stream.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInput({
     this.inAppStreamNames,

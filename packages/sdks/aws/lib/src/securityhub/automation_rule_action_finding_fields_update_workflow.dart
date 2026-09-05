@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionFindingFieldsUpdateWorkflow {
   /// The status of the investigation into the finding. The allowed values are the following `NEW`, `NOTIFIED`, `RESOLVED` and `SUPPRESSED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateWorkflow].
   /// [status] The status of the investigation into the finding. The allowed values are the following `NEW`, `NOTIFIED`, `RESOLVED` and `SUPPRESSED`.

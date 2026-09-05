@@ -7,28 +7,28 @@ import 'pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerat
 
 class PipeTargetParametersEcsTaskParametersOverrides {
   /// One or more container overrides that are sent to a task. Detailed below.
-  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>>? containerOverrides;
+  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>?>? containerOverrides;
   /// The number of cpu units reserved for the container, instead of the default value from the task definition. You must also specify a container name.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// The ephemeral storage setting override for the task.  Detailed below.
-  final pulumi.Input<PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage>? ephemeralStorage;
-  /// The Amazon Resource Name (ARN) of the task execution IAM role override for the task.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage?>? ephemeralStorage;
+  /// ARN of the task execution IAM role override for the task.
+  final pulumi.Input<String?>? executionRoleArn;
   /// List of Elastic Inference accelerator overrides for the task. Detailed below.
-  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>>? inferenceAcceleratorOverrides;
+  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>?>? inferenceAcceleratorOverrides;
   /// The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
-  final pulumi.Input<String>? memory;
-  /// The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
-  final pulumi.Input<String>? taskRoleArn;
+  final pulumi.Input<String?>? memory;
+  /// ARN of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
+  final pulumi.Input<String?>? taskRoleArn;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverrides].
   /// [containerOverrides] One or more container overrides that are sent to a task. Detailed below.
   /// [cpu] The number of cpu units reserved for the container, instead of the default value from the task definition. You must also specify a container name.
   /// [ephemeralStorage] The ephemeral storage setting override for the task.  Detailed below.
-  /// [executionRoleArn] The Amazon Resource Name (ARN) of the task execution IAM role override for the task.
+  /// [executionRoleArn] ARN of the task execution IAM role override for the task.
   /// [inferenceAcceleratorOverrides] List of Elastic Inference accelerator overrides for the task. Detailed below.
   /// [memory] The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
-  /// [taskRoleArn] The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
+  /// [taskRoleArn] ARN of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
   const PipeTargetParametersEcsTaskParametersOverrides({
     this.containerOverrides,
     this.cpu,

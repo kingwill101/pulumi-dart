@@ -6,7 +6,7 @@ class UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig {
   /// The ID of your Amazon EFS file system.
   final pulumi.Input<String> fileSystemId;
   /// The path to the file system directory that is accessible in Amazon SageMaker AI Studio. Permitted users can access only this directory and below.
-  final pulumi.Input<String>? fileSystemPath;
+  final pulumi.Input<String?>? fileSystemPath;
 
   /// Creates a new [UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig].
   /// [fileSystemId] The ID of your Amazon EFS file system.

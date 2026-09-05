@@ -6,11 +6,11 @@ import 'cluster_client_authentication_tls.dart';
 
 class ClusterClientAuthentication {
   /// Configuration block for specifying SASL client authentication. See clientAuthentication sasl Argument Reference below.
-  final pulumi.Input<ClusterClientAuthenticationSasl>? sasl;
+  final pulumi.Input<ClusterClientAuthenticationSasl?>? sasl;
   /// Configuration block for specifying TLS client authentication. See clientAuthentication tls Argument Reference below.
-  final pulumi.Input<ClusterClientAuthenticationTls>? tls;
+  final pulumi.Input<ClusterClientAuthenticationTls?>? tls;
   /// Enables unauthenticated access.
-  final pulumi.Input<bool>? unauthenticated;
+  final pulumi.Input<bool?>? unauthenticated;
 
   /// Creates a new [ClusterClientAuthentication].
   /// [sasl] Configuration block for specifying SASL client authentication. See clientAuthentication sasl Argument Reference below.

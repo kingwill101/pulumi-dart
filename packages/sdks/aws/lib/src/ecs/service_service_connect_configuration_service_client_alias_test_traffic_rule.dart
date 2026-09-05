@@ -5,7 +5,7 @@ import 'service_service_connect_configuration_service_client_alias_test_traffic_
 
 class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule {
   /// Configuration block for header-based routing rules. See below.
-  final pulumi.Input<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader>? header;
+  final pulumi.Input<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader?>? header;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule].
   /// [header] Configuration block for header-based routing rules. See below.

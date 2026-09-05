@@ -5,7 +5,7 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCount {
   /// Custom handling for counted requests. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCount].
   /// [customRequestHandling] Custom handling for counted requests. See below.

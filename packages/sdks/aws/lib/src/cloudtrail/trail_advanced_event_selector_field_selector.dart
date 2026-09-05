@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrailAdvancedEventSelectorFieldSelector {
   /// A list of values that includes events that match the last few characters of the event record field specified as the value of `field`.
-  final pulumi.Input<List<String>>? endsWiths;
+  final pulumi.Input<List<String>?>? endsWiths;
   /// A list of values that includes events that match the exact value of the event record field specified as the value of `field`. This is the only valid operator that you can use with the `readOnly`, `eventCategory`, and `resources.type` fields.
-  final pulumi.Input<List<String>>? equals;
+  final pulumi.Input<List<String>?>? equals;
   /// Field in an event record on which to filter events to be logged. You can specify only the following values: `readOnly`, `eventSource`, `eventName`, `eventCategory`, `resources.type`, `resources.ARN`.
   final pulumi.Input<String> field;
   /// A list of values that excludes events that match the last few characters of the event record field specified as the value of `field`.
-  final pulumi.Input<List<String>>? notEndsWiths;
+  final pulumi.Input<List<String>?>? notEndsWiths;
   /// A list of values that excludes events that match the exact value of the event record field specified as the value of `field`.
-  final pulumi.Input<List<String>>? notEquals;
+  final pulumi.Input<List<String>?>? notEquals;
   /// A list of values that excludes events that match the first few characters of the event record field specified as the value of `field`.
-  final pulumi.Input<List<String>>? notStartsWiths;
+  final pulumi.Input<List<String>?>? notStartsWiths;
   /// A list of values that includes events that match the first few characters of the event record field specified as the value of `field`.
-  final pulumi.Input<List<String>>? startsWiths;
+  final pulumi.Input<List<String>?>? startsWiths;
 
   /// Creates a new [TrailAdvancedEventSelectorFieldSelector].
   /// [endsWiths] A list of values that includes events that match the last few characters of the event record field specified as the value of `field`.

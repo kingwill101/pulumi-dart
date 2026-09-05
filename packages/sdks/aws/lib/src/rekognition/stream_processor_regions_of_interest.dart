@@ -6,9 +6,9 @@ import 'stream_processor_regions_of_interest_polygon.dart';
 
 class StreamProcessorRegionsOfInterest {
   /// Box representing a region of interest on screen. Only 1 per region is allowed. See `boundingBox`.
-  final pulumi.Input<StreamProcessorRegionsOfInterestBoundingBox>? boundingBox;
+  final pulumi.Input<StreamProcessorRegionsOfInterestBoundingBox?>? boundingBox;
   /// Shape made up of up to 10 Point objects to define a region of interest. See `polygon`.
-  final pulumi.Input<List<StreamProcessorRegionsOfInterestPolygon>>? polygons;
+  final pulumi.Input<List<StreamProcessorRegionsOfInterestPolygon>?>? polygons;
 
   /// Creates a new [StreamProcessorRegionsOfInterest].
   /// [boundingBox] Box representing a region of interest on screen. Only 1 per region is allowed. See `boundingBox`.

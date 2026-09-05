@@ -159,16 +159,16 @@ import 'application_state.dart';
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleApplication = new aws.ssoadmin.Application("example", {
-///     name: "example",
-///     applicationProviderArn: "arn:aws:sso::aws:applicationProvider/custom",
-///     instanceArn: example.then(example => example.arns?.[0]),
 ///     portalOptions: {
-///         visibility: "ENABLED",
 ///         signInOptions: {
 ///             applicationUrl: "http://example.com",
 ///             origin: "APPLICATION",
 ///         },
+///         visibility: "ENABLED",
 ///     },
+///     name: "example",
+///     applicationProviderArn: "arn:aws:sso::aws:applicationProvider/custom",
+///     instanceArn: example.then(example => example.arns?.[0]),
 /// });
 /// ```
 /// ```python
@@ -177,16 +177,16 @@ import 'application_state.dart';
 ///
 /// example = aws.ssoadmin.get_instances()
 /// example_application = aws.ssoadmin.Application("example",
-///     name="example",
-///     application_provider_arn="arn:aws:sso::aws:applicationProvider/custom",
-///     instance_arn=example.arns[0],
 ///     portal_options={
-///         "visibility": "ENABLED",
 ///         "sign_in_options": {
 ///             "application_url": "http://example.com",
 ///             "origin": "APPLICATION",
 ///         },
-///     })
+///         "visibility": "ENABLED",
+///     },
+///     name="example",
+///     application_provider_arn="arn:aws:sso::aws:applicationProvider/custom",
+///     instance_arn=example.arns[0])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -200,18 +200,18 @@ import 'application_state.dart';
 ///
 ///     var exampleApplication = new Aws.SsoAdmin.Application("example", new()
 ///     {
-///         Name = "example",
-///         ApplicationProviderArn = "arn:aws:sso::aws:applicationProvider/custom",
-///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
 ///         PortalOptions = new Aws.SsoAdmin.Inputs.ApplicationPortalOptionsArgs
 ///         {
-///             Visibility = "ENABLED",
 ///             SignInOptions = new Aws.SsoAdmin.Inputs.ApplicationPortalOptionsSignInOptionsArgs
 ///             {
 ///                 ApplicationUrl = "http://example.com",
 ///                 Origin = "APPLICATION",
 ///             },
+///             Visibility = "ENABLED",
 ///         },
+///         Name = "example",
+///         ApplicationProviderArn = "arn:aws:sso::aws:applicationProvider/custom",
+///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
 ///     });
 ///
 /// });
@@ -231,16 +231,16 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssoadmin.NewApplication(ctx, "example", &ssoadmin.ApplicationArgs{
-/// 			Name:                   pulumi.String("example"),
-/// 			ApplicationProviderArn: pulumi.String("arn:aws:sso::aws:applicationProvider/custom"),
-/// 			InstanceArn:            pulumi.String(example.Arns[0]),
 /// 			PortalOptions: &ssoadmin.ApplicationPortalOptionsArgs{
-/// 				Visibility: pulumi.String("ENABLED"),
 /// 				SignInOptions: &ssoadmin.ApplicationPortalOptionsSignInOptionsArgs{
 /// 					ApplicationUrl: pulumi.String("http://example.com"),
 /// 					Origin:         pulumi.String("APPLICATION"),
 /// 				},
+/// 				Visibility: pulumi.String("ENABLED"),
 /// 			},
+/// 			Name:                   pulumi.String("example"),
+/// 			ApplicationProviderArn: pulumi.String("arn:aws:sso::aws:applicationProvider/custom"),
+/// 			InstanceArn:            pulumi.String(example.Arns[0]),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -262,16 +262,16 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_ssoadmin_application" "example" {
-///   name                     = "example"
-///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
-///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
 ///   portal_options = {
-///     visibility = "ENABLED"
 ///     sign_in_options = {
 ///       application_url = "http://example.com"
 ///       origin          = "APPLICATION"
 ///     }
+///     visibility = "ENABLED"
 ///   }
+///   name                     = "example"
+///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
+///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -303,16 +303,16 @@ import 'application_state.dart';
 ///             .build());
 ///
 ///         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
-///             .name("example")
-///             .applicationProviderArn("arn:aws:sso::aws:applicationProvider/custom")
-///             .instanceArn(example.arns()[0])
 ///             .portalOptions(ApplicationPortalOptionsArgs.builder()
-///                 .visibility("ENABLED")
 ///                 .signInOptions(ApplicationPortalOptionsSignInOptionsArgs.builder()
 ///                     .applicationUrl("http://example.com")
 ///                     .origin("APPLICATION")
 ///                     .build())
+///                 .visibility("ENABLED")
 ///                 .build())
+///             .name("example")
+///             .applicationProviderArn("arn:aws:sso::aws:applicationProvider/custom")
+///             .instanceArn(example.arns()[0])
 ///             .build());
 ///
 ///     }
@@ -324,14 +324,14 @@ import 'application_state.dart';
 ///     type: aws:ssoadmin:Application
 ///     name: example
 ///     properties:
-///       name: example
-///       applicationProviderArn: arn:aws:sso::aws:applicationProvider/custom
-///       instanceArn: ${example.arns[0]}
 ///       portalOptions:
-///         visibility: ENABLED
 ///         signInOptions:
 ///           applicationUrl: http://example.com
 ///           origin: APPLICATION
+///         visibility: ENABLED
+///       name: example
+///       applicationProviderArn: arn:aws:sso::aws:applicationProvider/custom
+///       instanceArn: ${example.arns[0]}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -346,7 +346,7 @@ import 'application_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the SSO application.
+/// - `arn` (String) ARN of the SSO application.
 ///
 /// #### Optional
 ///
@@ -400,7 +400,7 @@ class Application extends pulumi.CustomResource {
           'aws:ssoadmin/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationAccount = registerOutput<String>('applicationAccount');
     applicationArn = registerOutput<String>('applicationArn');
@@ -413,8 +413,8 @@ class Application extends pulumi.CustomResource {
     portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPortalOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -422,11 +422,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -451,7 +452,31 @@ class Application extends pulumi.CustomResource {
     portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPortalOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:ssoadmin/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationAccount = registerOutput<String>('applicationAccount');
+    applicationArn = registerOutput<String>('applicationArn');
+    applicationProviderArn = registerOutput<String>('applicationProviderArn');
+    arn = registerOutput<String>('arn');
+    clientToken = registerOutput<String?>('clientToken');
+    description = registerOutput<String?>('description');
+    instanceArn = registerOutput<String>('instanceArn');
+    this.name = registerOutput<String>('name');
+    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPortalOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

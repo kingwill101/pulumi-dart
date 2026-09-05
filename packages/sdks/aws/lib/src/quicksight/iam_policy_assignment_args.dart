@@ -15,15 +15,15 @@ class IamPolicyAssignmentArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> assignmentStatus;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Amazon QuickSight users, groups, or both to assign the policy to. See `identities` block.
-  final pulumi.Input<IamPolicyAssignmentIdentities>? identities;
+  final pulumi.Input<IamPolicyAssignmentIdentities?>? identities;
   /// Namespace that contains the assignment. Defaults to `default`.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// ARN of the IAM policy to apply to the Amazon QuickSight users and groups specified in this assignment.
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [IamPolicyAssignmentArgs].
   /// [assignmentName] Name of the assignment.

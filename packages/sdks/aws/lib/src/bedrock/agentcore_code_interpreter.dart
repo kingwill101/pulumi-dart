@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_code_interpreter_args.dart';
+import 'agentcore_code_interpreter_certificate.dart';
 import 'agentcore_code_interpreter_network_configuration.dart';
 import 'agentcore_code_interpreter_state.dart';
 import 'agentcore_code_interpreter_timeouts.dart';
@@ -16,11 +17,11 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreCodeInterpreter("example", {
-///     name: "example-code-interpreter",
-///     description: "Code interpreter for data analysis",
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
+///     name: "example-code-interpreter",
+///     description: "Code interpreter for data analysis",
 /// });
 /// ```
 /// ```python
@@ -28,11 +29,11 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreCodeInterpreter("example",
-///     name="example-code-interpreter",
-///     description="Code interpreter for data analysis",
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
-///     })
+///     },
+///     name="example-code-interpreter",
+///     description="Code interpreter for data analysis")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,12 +45,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreCodeInterpreter("example", new()
 ///     {
-///         Name = "example-code-interpreter",
-///         Description = "Code interpreter for data analysis",
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreCodeInterpreterNetworkConfigurationArgs
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
+///         Name = "example-code-interpreter",
+///         Description = "Code interpreter for data analysis",
 ///     });
 ///
 /// });
@@ -65,11 +66,11 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreCodeInterpreter(ctx, "example", &bedrock.AgentcoreCodeInterpreterArgs{
-/// 			Name:        pulumi.String("example-code-interpreter"),
-/// 			Description: pulumi.String("Code interpreter for data analysis"),
 /// 			NetworkConfiguration: &bedrock.AgentcoreCodeInterpreterNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
+/// 			Name:        pulumi.String("example-code-interpreter"),
+/// 			Description: pulumi.String("Code interpreter for data analysis"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -88,11 +89,11 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorecodeinterpreter" "example" {
-///   name        = "example-code-interpreter"
-///   description = "Code interpreter for data analysis"
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
+///   name        = "example-code-interpreter"
+///   description = "Code interpreter for data analysis"
 /// }
 /// ```
 /// ```java
@@ -118,11 +119,11 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreCodeInterpreter("example", AgentcoreCodeInterpreterArgs.builder()
-///             .name("example-code-interpreter")
-///             .description("Code interpreter for data analysis")
 ///             .networkConfiguration(AgentcoreCodeInterpreterNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
+///             .name("example-code-interpreter")
+///             .description("Code interpreter for data analysis")
 ///             .build());
 ///
 ///     }
@@ -133,10 +134,10 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreCodeInterpreter
 ///     properties:
-///       name: example-code-interpreter
-///       description: Code interpreter for data analysis
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
+///       name: example-code-interpreter
+///       description: Code interpreter for data analysis
 /// ```
 ///
 ///
@@ -149,12 +150,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["bedrock-agentcore.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const example = new aws.iam.Role("example", {
@@ -162,12 +163,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
 /// const exampleAgentcoreCodeInterpreter = new aws.bedrock.AgentcoreCodeInterpreter("example", {
-///     name: "example-code-interpreter",
-///     description: "Code interpreter with custom execution role",
-///     executionRoleArn: example.arn,
 ///     networkConfiguration: {
 ///         networkMode: "SANDBOX",
 ///     },
+///     name: "example-code-interpreter",
+///     description: "Code interpreter with custom execution role",
+///     executionRoleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -175,23 +176,23 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["bedrock-agentcore.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
 ///     name="bedrock-agentcore-code-interpreter-role",
 ///     assume_role_policy=assume_role.json)
 /// example_agentcore_code_interpreter = aws.bedrock.AgentcoreCodeInterpreter("example",
-///     name="example-code-interpreter",
-///     description="Code interpreter with custom execution role",
-///     execution_role_arn=example.arn,
 ///     network_configuration={
 ///         "network_mode": "SANDBOX",
-///     })
+///     },
+///     name="example-code-interpreter",
+///     description="Code interpreter with custom execution role",
+///     execution_role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -207,11 +208,6 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -222,6 +218,11 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///                             "bedrock-agentcore.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -235,13 +236,13 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///
 ///     var exampleAgentcoreCodeInterpreter = new Aws.Bedrock.AgentcoreCodeInterpreter("example", new()
 ///     {
-///         Name = "example-code-interpreter",
-///         Description = "Code interpreter with custom execution role",
-///         ExecutionRoleArn = example.Arn,
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreCodeInterpreterNetworkConfigurationArgs
 ///         {
 ///             NetworkMode = "SANDBOX",
 ///         },
+///         Name = "example-code-interpreter",
+///         Description = "Code interpreter with custom execution role",
+///         ExecutionRoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -260,10 +261,6 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -271,6 +268,10 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 								"bedrock-agentcore.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -286,12 +287,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreCodeInterpreter(ctx, "example", &bedrock.AgentcoreCodeInterpreterArgs{
-/// 			Name:             pulumi.String("example-code-interpreter"),
-/// 			Description:      pulumi.String("Code interpreter with custom execution role"),
-/// 			ExecutionRoleArn: example.Arn,
 /// 			NetworkConfiguration: &bedrock.AgentcoreCodeInterpreterNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("SANDBOX"),
 /// 			},
+/// 			Name:             pulumi.String("example-code-interpreter"),
+/// 			Description:      pulumi.String("Code interpreter with custom execution role"),
+/// 			ExecutionRoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -311,12 +312,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -325,12 +326,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
 /// }
 /// resource "aws_bedrock_agentcorecodeinterpreter" "example" {
-///   name               = "example-code-interpreter"
-///   description        = "Code interpreter with custom execution role"
-///   execution_role_arn = aws_iam_role.example.arn
 ///   network_configuration = {
 ///     network_mode = "SANDBOX"
 ///   }
+///   name               = "example-code-interpreter"
+///   description        = "Code interpreter with custom execution role"
+///   execution_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -363,12 +364,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("bedrock-agentcore.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -378,12 +379,12 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentcoreCodeInterpreter = new AgentcoreCodeInterpreter("exampleAgentcoreCodeInterpreter", AgentcoreCodeInterpreterArgs.builder()
-///             .name("example-code-interpreter")
-///             .description("Code interpreter with custom execution role")
-///             .executionRoleArn(example.arn())
 ///             .networkConfiguration(AgentcoreCodeInterpreterNetworkConfigurationArgs.builder()
 ///                 .networkMode("SANDBOX")
 ///                 .build())
+///             .name("example-code-interpreter")
+///             .description("Code interpreter with custom execution role")
+///             .executionRoleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -400,24 +401,24 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreCodeInterpreter
 ///     name: example
 ///     properties:
+///       networkConfiguration:
+///         networkMode: SANDBOX
 ///       name: example-code-interpreter
 ///       description: Code interpreter with custom execution role
 ///       executionRoleArn: ${example.arn}
-///       networkConfiguration:
-///         networkMode: SANDBOX
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - bedrock-agentcore.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -430,7 +431,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// ```
 class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   /// Certificates to install in the code interpreter. Between 1 and 200 blocks are supported. See `certificate` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+  late final pulumi.Output<List<AgentcoreCodeInterpreterCertificate>?> certificates;
   /// ARN of the Code Interpreter.
   late final pulumi.Output<String> codeInterpreterArn;
   /// Unique identifier of the Code Interpreter.
@@ -465,9 +466,9 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<AgentcoreCodeInterpreterCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreCodeInterpreterCertificate>(guardedValue, (value) => AgentcoreCodeInterpreterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
     codeInterpreterId = registerOutput<String>('codeInterpreterId');
     description = registerOutput<String?>('description');
@@ -475,8 +476,8 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -485,11 +486,12 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreCodeInterpreterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreCodeInterpreter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -503,7 +505,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<AgentcoreCodeInterpreterCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreCodeInterpreterCertificate>(guardedValue, (value) => AgentcoreCodeInterpreterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
     codeInterpreterId = registerOutput<String>('codeInterpreterId');
     description = registerOutput<String?>('description');
@@ -511,8 +513,30 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreCodeInterpreter] resource.
+  AgentcoreCodeInterpreter.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificates = registerOutput<List<AgentcoreCodeInterpreterCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreCodeInterpreterCertificate>(guardedValue, (value) => AgentcoreCodeInterpreterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
+    codeInterpreterId = registerOutput<String>('codeInterpreterId');
+    description = registerOutput<String?>('description');
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

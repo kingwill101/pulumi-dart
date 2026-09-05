@@ -5,8 +5,8 @@ import 'traffic_policy_policy_statement_condition_string_expression_evaluate_ana
 
 class TrafficPolicyPolicyStatementConditionStringExpressionEvaluate {
   /// Analysis result to evaluate. See `policy_statement.condition.string_expression.evaluate.analysis` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionStringExpressionEvaluateAnalysis>? analysis;
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionStringExpressionEvaluateAnalysis?>? analysis;
+  final pulumi.Input<String?>? attribute;
 
   /// Creates a new [TrafficPolicyPolicyStatementConditionStringExpressionEvaluate].
   /// [analysis] Analysis result to evaluate. See `policy_statement.condition.string_expression.evaluate.analysis` Block below.

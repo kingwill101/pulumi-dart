@@ -5,6 +5,7 @@ import 'preset_audio_codec_options.dart';
 import 'preset_state.dart';
 import 'preset_thumbnails.dart';
 import 'preset_video.dart';
+import 'preset_video_watermark.dart';
 
 /// Provides an Elastic Transcoder preset resource.
 ///
@@ -18,9 +19,6 @@ import 'preset_video.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const bar = new aws.elastictranscoder.Preset("bar", {
-///     container: "mp4",
-///     description: "Sample Preset",
-///     name: "sample_preset",
 ///     audio: {
 ///         audioPackingMode: "SingleTrack",
 ///         bitRate: "96",
@@ -44,12 +42,13 @@ import 'preset_video.dart';
 ///         paddingPolicy: "Pad",
 ///         sizingPolicy: "Fit",
 ///     },
-///     videoCodecOptions: {
-///         Profile: "main",
-///         Level: "2.2",
-///         MaxReferenceFrames: "3",
-///         InterlacedMode: "Progressive",
-///         ColorSpaceConversionMode: "None",
+///     thumbnails: {
+///         format: "png",
+///         interval: "120",
+///         maxWidth: "auto",
+///         maxHeight: "auto",
+///         paddingPolicy: "Pad",
+///         sizingPolicy: "Fit",
 ///     },
 ///     videoWatermarks: [{
 ///         id: "Test",
@@ -63,13 +62,15 @@ import 'preset_video.dart';
 ///         opacity: "55.5",
 ///         target: "Content",
 ///     }],
-///     thumbnails: {
-///         format: "png",
-///         interval: "120",
-///         maxWidth: "auto",
-///         maxHeight: "auto",
-///         paddingPolicy: "Pad",
-///         sizingPolicy: "Fit",
+///     container: "mp4",
+///     description: "Sample Preset",
+///     name: "sample_preset",
+///     videoCodecOptions: {
+///         Profile: "main",
+///         Level: "2.2",
+///         MaxReferenceFrames: "3",
+///         InterlacedMode: "Progressive",
+///         ColorSpaceConversionMode: "None",
 ///     },
 /// });
 /// ```
@@ -78,9 +79,6 @@ import 'preset_video.dart';
 /// import pulumi_aws as aws
 ///
 /// bar = aws.elastictranscoder.Preset("bar",
-///     container="mp4",
-///     description="Sample Preset",
-///     name="sample_preset",
 ///     audio={
 ///         "audio_packing_mode": "SingleTrack",
 ///         "bit_rate": "96",
@@ -104,12 +102,13 @@ import 'preset_video.dart';
 ///         "padding_policy": "Pad",
 ///         "sizing_policy": "Fit",
 ///     },
-///     video_codec_options={
-///         "Profile": "main",
-///         "Level": "2.2",
-///         "MaxReferenceFrames": "3",
-///         "InterlacedMode": "Progressive",
-///         "ColorSpaceConversionMode": "None",
+///     thumbnails={
+///         "format": "png",
+///         "interval": "120",
+///         "max_width": "auto",
+///         "max_height": "auto",
+///         "padding_policy": "Pad",
+///         "sizing_policy": "Fit",
 ///     },
 ///     video_watermarks=[{
 ///         "id": "Test",
@@ -123,13 +122,15 @@ import 'preset_video.dart';
 ///         "opacity": "55.5",
 ///         "target": "Content",
 ///     }],
-///     thumbnails={
-///         "format": "png",
-///         "interval": "120",
-///         "max_width": "auto",
-///         "max_height": "auto",
-///         "padding_policy": "Pad",
-///         "sizing_policy": "Fit",
+///     container="mp4",
+///     description="Sample Preset",
+///     name="sample_preset",
+///     video_codec_options={
+///         "Profile": "main",
+///         "Level": "2.2",
+///         "MaxReferenceFrames": "3",
+///         "InterlacedMode": "Progressive",
+///         "ColorSpaceConversionMode": "None",
 ///     })
 /// ```
 /// ```csharp
@@ -142,9 +143,6 @@ import 'preset_video.dart';
 /// {
 ///     var bar = new Aws.ElasticTranscoder.Preset("bar", new()
 ///     {
-///         Container = "mp4",
-///         Description = "Sample Preset",
-///         Name = "sample_preset",
 ///         Audio = new Aws.ElasticTranscoder.Inputs.PresetAudioArgs
 ///         {
 ///             AudioPackingMode = "SingleTrack",
@@ -171,13 +169,14 @@ import 'preset_video.dart';
 ///             PaddingPolicy = "Pad",
 ///             SizingPolicy = "Fit",
 ///         },
-///         VideoCodecOptions =
+///         Thumbnails = new Aws.ElasticTranscoder.Inputs.PresetThumbnailsArgs
 ///         {
-///             { "Profile", "main" },
-///             { "Level", "2.2" },
-///             { "MaxReferenceFrames", "3" },
-///             { "InterlacedMode", "Progressive" },
-///             { "ColorSpaceConversionMode", "None" },
+///             Format = "png",
+///             Interval = "120",
+///             MaxWidth = "auto",
+///             MaxHeight = "auto",
+///             PaddingPolicy = "Pad",
+///             SizingPolicy = "Fit",
 ///         },
 ///         VideoWatermarks = new[]
 ///         {
@@ -195,14 +194,16 @@ import 'preset_video.dart';
 ///                 Target = "Content",
 ///             },
 ///         },
-///         Thumbnails = new Aws.ElasticTranscoder.Inputs.PresetThumbnailsArgs
+///         Container = "mp4",
+///         Description = "Sample Preset",
+///         Name = "sample_preset",
+///         VideoCodecOptions =
 ///         {
-///             Format = "png",
-///             Interval = "120",
-///             MaxWidth = "auto",
-///             MaxHeight = "auto",
-///             PaddingPolicy = "Pad",
-///             SizingPolicy = "Fit",
+///             { "Profile", "main" },
+///             { "Level", "2.2" },
+///             { "MaxReferenceFrames", "3" },
+///             { "InterlacedMode", "Progressive" },
+///             { "ColorSpaceConversionMode", "None" },
 ///         },
 ///     });
 ///
@@ -219,9 +220,6 @@ import 'preset_video.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elastictranscoder.NewPreset(ctx, "bar", &elastictranscoder.PresetArgs{
-/// 			Container:   pulumi.String("mp4"),
-/// 			Description: pulumi.String("Sample Preset"),
-/// 			Name:        pulumi.String("sample_preset"),
 /// 			Audio: &elastictranscoder.PresetAudioArgs{
 /// 				AudioPackingMode: pulumi.String("SingleTrack"),
 /// 				BitRate:          pulumi.String("96"),
@@ -245,12 +243,13 @@ import 'preset_video.dart';
 /// 				PaddingPolicy:      pulumi.String("Pad"),
 /// 				SizingPolicy:       pulumi.String("Fit"),
 /// 			},
-/// 			VideoCodecOptions: pulumi.StringMap{
-/// 				"Profile":                  pulumi.String("main"),
-/// 				"Level":                    pulumi.String("2.2"),
-/// 				"MaxReferenceFrames":       pulumi.String("3"),
-/// 				"InterlacedMode":           pulumi.String("Progressive"),
-/// 				"ColorSpaceConversionMode": pulumi.String("None"),
+/// 			Thumbnails: &elastictranscoder.PresetThumbnailsArgs{
+/// 				Format:        pulumi.String("png"),
+/// 				Interval:      pulumi.String("120"),
+/// 				MaxWidth:      pulumi.String("auto"),
+/// 				MaxHeight:     pulumi.String("auto"),
+/// 				PaddingPolicy: pulumi.String("Pad"),
+/// 				SizingPolicy:  pulumi.String("Fit"),
 /// 			},
 /// 			VideoWatermarks: elastictranscoder.PresetVideoWatermarkArray{
 /// 				&elastictranscoder.PresetVideoWatermarkArgs{
@@ -266,13 +265,15 @@ import 'preset_video.dart';
 /// 					Target:           pulumi.String("Content"),
 /// 				},
 /// 			},
-/// 			Thumbnails: &elastictranscoder.PresetThumbnailsArgs{
-/// 				Format:        pulumi.String("png"),
-/// 				Interval:      pulumi.String("120"),
-/// 				MaxWidth:      pulumi.String("auto"),
-/// 				MaxHeight:     pulumi.String("auto"),
-/// 				PaddingPolicy: pulumi.String("Pad"),
-/// 				SizingPolicy:  pulumi.String("Fit"),
+/// 			Container:   pulumi.String("mp4"),
+/// 			Description: pulumi.String("Sample Preset"),
+/// 			Name:        pulumi.String("sample_preset"),
+/// 			VideoCodecOptions: pulumi.StringMap{
+/// 				"Profile":                  pulumi.String("main"),
+/// 				"Level":                    pulumi.String("2.2"),
+/// 				"MaxReferenceFrames":       pulumi.String("3"),
+/// 				"InterlacedMode":           pulumi.String("Progressive"),
+/// 				"ColorSpaceConversionMode": pulumi.String("None"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -292,9 +293,6 @@ import 'preset_video.dart';
 /// }
 ///
 /// resource "aws_elastictranscoder_preset" "bar" {
-///   container   = "mp4"
-///   description = "Sample Preset"
-///   name        = "sample_preset"
 ///   audio = {
 ///     audio_packing_mode = "SingleTrack"
 ///     bit_rate           = 96
@@ -318,12 +316,13 @@ import 'preset_video.dart';
 ///     padding_policy       = "Pad"
 ///     sizing_policy        = "Fit"
 ///   }
-///   video_codec_options = {
-///     "Profile"                  = "main"
-///     "Level"                    = "2.2"
-///     "MaxReferenceFrames"       = 3
-///     "InterlacedMode"           = "Progressive"
-///     "ColorSpaceConversionMode" = "None"
+///   thumbnails = {
+///     format         = "png"
+///     interval       = 120
+///     max_width      = "auto"
+///     max_height     = "auto"
+///     padding_policy = "Pad"
+///     sizing_policy  = "Fit"
 ///   }
 ///   video_watermarks {
 ///     id                = "Test"
@@ -337,13 +336,15 @@ import 'preset_video.dart';
 ///     opacity           = "55.5"
 ///     target            = "Content"
 ///   }
-///   thumbnails = {
-///     format         = "png"
-///     interval       = 120
-///     max_width      = "auto"
-///     max_height     = "auto"
-///     padding_policy = "Pad"
-///     sizing_policy  = "Fit"
+///   container   = "mp4"
+///   description = "Sample Preset"
+///   name        = "sample_preset"
+///   video_codec_options = {
+///     "Profile"                  = "main"
+///     "Level"                    = "2.2"
+///     "MaxReferenceFrames"       = 3
+///     "InterlacedMode"           = "Progressive"
+///     "ColorSpaceConversionMode" = "None"
 ///   }
 /// }
 /// ```
@@ -358,8 +359,8 @@ import 'preset_video.dart';
 /// import com.pulumi.aws.elastictranscoder.inputs.PresetAudioArgs;
 /// import com.pulumi.aws.elastictranscoder.inputs.PresetAudioCodecOptionsArgs;
 /// import com.pulumi.aws.elastictranscoder.inputs.PresetVideoArgs;
-/// import com.pulumi.aws.elastictranscoder.inputs.PresetVideoWatermarkArgs;
 /// import com.pulumi.aws.elastictranscoder.inputs.PresetThumbnailsArgs;
+/// import com.pulumi.aws.elastictranscoder.inputs.PresetVideoWatermarkArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -374,9 +375,6 @@ import 'preset_video.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bar = new Preset("bar", PresetArgs.builder()
-///             .container("mp4")
-///             .description("Sample Preset")
-///             .name("sample_preset")
 ///             .audio(PresetAudioArgs.builder()
 ///                 .audioPackingMode("SingleTrack")
 ///                 .bitRate("96")
@@ -400,13 +398,14 @@ import 'preset_video.dart';
 ///                 .paddingPolicy("Pad")
 ///                 .sizingPolicy("Fit")
 ///                 .build())
-///             .videoCodecOptions(Map.ofEntries(
-///                 Map.entry("Profile", "main"),
-///                 Map.entry("Level", "2.2"),
-///                 Map.entry("MaxReferenceFrames", "3"),
-///                 Map.entry("InterlacedMode", "Progressive"),
-///                 Map.entry("ColorSpaceConversionMode", "None")
-///             ))
+///             .thumbnails(PresetThumbnailsArgs.builder()
+///                 .format("png")
+///                 .interval("120")
+///                 .maxWidth("auto")
+///                 .maxHeight("auto")
+///                 .paddingPolicy("Pad")
+///                 .sizingPolicy("Fit")
+///                 .build())
 ///             .videoWatermarks(PresetVideoWatermarkArgs.builder()
 ///                 .id("Test")
 ///                 .maxWidth("20%")
@@ -419,14 +418,16 @@ import 'preset_video.dart';
 ///                 .opacity("55.5")
 ///                 .target("Content")
 ///                 .build())
-///             .thumbnails(PresetThumbnailsArgs.builder()
-///                 .format("png")
-///                 .interval("120")
-///                 .maxWidth("auto")
-///                 .maxHeight("auto")
-///                 .paddingPolicy("Pad")
-///                 .sizingPolicy("Fit")
-///                 .build())
+///             .container("mp4")
+///             .description("Sample Preset")
+///             .name("sample_preset")
+///             .videoCodecOptions(Map.ofEntries(
+///                 Map.entry("Profile", "main"),
+///                 Map.entry("Level", "2.2"),
+///                 Map.entry("MaxReferenceFrames", "3"),
+///                 Map.entry("InterlacedMode", "Progressive"),
+///                 Map.entry("ColorSpaceConversionMode", "None")
+///             ))
 ///             .build());
 ///
 ///     }
@@ -437,9 +438,6 @@ import 'preset_video.dart';
 ///   bar:
 ///     type: aws:elastictranscoder:Preset
 ///     properties:
-///       container: mp4
-///       description: Sample Preset
-///       name: sample_preset
 ///       audio:
 ///         audioPackingMode: SingleTrack
 ///         bitRate: 96
@@ -460,12 +458,13 @@ import 'preset_video.dart';
 ///         maxWidth: auto
 ///         paddingPolicy: Pad
 ///         sizingPolicy: Fit
-///       videoCodecOptions:
-///         Profile: main
-///         Level: '2.2'
-///         MaxReferenceFrames: 3
-///         InterlacedMode: Progressive
-///         ColorSpaceConversionMode: None
+///       thumbnails:
+///         format: png
+///         interval: 120
+///         maxWidth: auto
+///         maxHeight: auto
+///         paddingPolicy: Pad
+///         sizingPolicy: Fit
 ///       videoWatermarks:
 ///         - id: Test
 ///           maxWidth: 20%
@@ -477,13 +476,15 @@ import 'preset_video.dart';
 ///           verticalOffset: 10px
 ///           opacity: '55.5'
 ///           target: Content
-///       thumbnails:
-///         format: png
-///         interval: 120
-///         maxWidth: auto
-///         maxHeight: auto
-///         paddingPolicy: Pad
-///         sizingPolicy: Fit
+///       container: mp4
+///       description: Sample Preset
+///       name: sample_preset
+///       videoCodecOptions:
+///         Profile: main
+///         Level: '2.2'
+///         MaxReferenceFrames: 3
+///         InterlacedMode: Progressive
+///         ColorSpaceConversionMode: None
 /// ```
 ///
 ///
@@ -495,7 +496,7 @@ import 'preset_video.dart';
 /// $ pulumi import aws:elastictranscoder/preset:Preset basic_preset 1407981661351-cttk8b
 /// ```
 class Preset extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Elastic Transcoder Preset.
+  /// ARN of the Elastic Transcoder Preset.
   late final pulumi.Output<String> arn;
   /// Audio parameters object (documented below).
   late final pulumi.Output<PresetAudio?> audio;
@@ -519,7 +520,7 @@ class Preset extends pulumi.CustomResource {
   /// See ["Create Preset"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-preset.html) in the AWS docs for reference.
   late final pulumi.Output<Map<String, String>?> videoCodecOptions;
   /// Watermark parameters for the video parameters (documented below)
-  late final pulumi.Output<List<Map<String, dynamic>>?> videoWatermarks;
+  late final pulumi.Output<List<PresetVideoWatermark>?> videoWatermarks;
 
   /// Creates a new [Preset].
   /// [name] The Pulumi resource name.
@@ -533,7 +534,7 @@ class Preset extends pulumi.CustomResource {
           'aws:elastictranscoder/preset:Preset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     audio = registerOutput<PresetAudio?>('audio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudio.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -545,8 +546,8 @@ class Preset extends pulumi.CustomResource {
     thumbnails = registerOutput<PresetThumbnails?>('thumbnails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetThumbnails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     video = registerOutput<PresetVideo?>('video', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetVideo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions');
-    videoWatermarks = registerOutput<List<Map<String, dynamic>>?>('videoWatermarks');
+    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    videoWatermarks = registerOutput<List<PresetVideoWatermark>?>('videoWatermarks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PresetVideoWatermark>(guardedValue, (value) => PresetVideoWatermark.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Preset] resource's state with the given [name] and [id].
@@ -554,11 +555,12 @@ class Preset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PresetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Preset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -582,7 +584,30 @@ class Preset extends pulumi.CustomResource {
     thumbnails = registerOutput<PresetThumbnails?>('thumbnails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetThumbnails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     video = registerOutput<PresetVideo?>('video', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetVideo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions');
-    videoWatermarks = registerOutput<List<Map<String, dynamic>>?>('videoWatermarks');
+    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    videoWatermarks = registerOutput<List<PresetVideoWatermark>?>('videoWatermarks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PresetVideoWatermark>(guardedValue, (value) => PresetVideoWatermark.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Preset] resource.
+  Preset.reference(String urn)
+    : super(
+        'aws:elastictranscoder/preset:Preset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    audio = registerOutput<PresetAudio?>('audio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudio.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    audioCodecOptions = registerOutput<PresetAudioCodecOptions>('audioCodecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudioCodecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    container = registerOutput<String>('container');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    thumbnails = registerOutput<PresetThumbnails?>('thumbnails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetThumbnails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    video = registerOutput<PresetVideo?>('video', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetVideo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    videoWatermarks = registerOutput<List<PresetVideoWatermark>?>('videoWatermarks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PresetVideoWatermark>(guardedValue, (value) => PresetVideoWatermark.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

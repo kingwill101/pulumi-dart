@@ -224,7 +224,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:resourcegroups/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     groupArn = registerOutput<String>('groupArn');
     region = registerOutput<String>('region');
@@ -237,11 +237,12 @@ class ResourceType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,6 +256,21 @@ class ResourceType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    groupArn = registerOutput<String>('groupArn');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceType = registerOutput<String>('resourceType');
+  }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'aws:resourcegroups/resource:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     groupArn = registerOutput<String>('groupArn');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

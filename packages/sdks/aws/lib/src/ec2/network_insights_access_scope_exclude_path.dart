@@ -8,13 +8,13 @@ import 'network_insights_access_scope_exclude_path_through_resource.dart';
 class NetworkInsightsAccessScopeExcludePath {
   /// Path statement for the destination.
   /// See `source` and `destination` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathDestination>? destination;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathDestination?>? destination;
   /// Path statement for the source.
   /// See `source` and `destination` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathSource>? source;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathSource?>? source;
   /// Path statement for through resources.
   /// See `throughResources` below for details.
-  final pulumi.Input<List<NetworkInsightsAccessScopeExcludePathThroughResource>>? throughResources;
+  final pulumi.Input<List<NetworkInsightsAccessScopeExcludePathThroughResource>?>? throughResources;
 
   /// Creates a new [NetworkInsightsAccessScopeExcludePath].
   /// [destination] Path statement for the destination.

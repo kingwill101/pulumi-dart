@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ClusterPolicy resources.
 class ClusterPolicyState {
-  /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
-  final pulumi.Input<String>? clusterArn;
-  final pulumi.Input<String>? currentVersion;
+  /// ARN that uniquely identifies the cluster.
+  final pulumi.Input<String?>? clusterArn;
+  final pulumi.Input<String?>? currentVersion;
   /// Resource policy for cluster.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ClusterPolicyState].
-  /// [clusterArn] The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+  /// [clusterArn] ARN that uniquely identifies the cluster.
   /// [currentVersion] Optional.
   /// [policy] Resource policy for cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

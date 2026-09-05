@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OpenIdConnectProvider resources.
 class OpenIdConnectProviderState {
   /// ARN assigned by AWS for this provider.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// List of client IDs (audiences) that identify the application registered with the OpenID Connect provider. This is the value sent as the `clientId` parameter in OAuth requests.
-  final pulumi.Input<List<String>>? clientIdLists;
+  final pulumi.Input<List<String>?>? clientIdLists;
   /// Map of resource tags for the IAM OIDC provider. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// List of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). For certain OIDC identity providers (e.g., Auth0, GitHub, GitLab, Google, or those using an Amazon S3-hosted JWKS endpoint), AWS relies on its own library of trusted root certificate authorities (CAs) for validation instead of using any configured thumbprints. In these cases, any configured `thumbprintList` is retained in the configuration but not used for verification. For other IdPs, if no `thumbprintList` is provided, IAM automatically retrieves and uses the top intermediate CA thumbprint from the OIDC IdP server certificate. However, if a `thumbprintList` is initially configured and later removed, Terraform does not prompt IAM to retrieve a thumbprint the same way. Instead, it continues using the original thumbprint list from the initial configuration. This differs from the behavior when creating an `aws.iam.OpenIdConnectProvider` without a `thumbprintList`.
-  final pulumi.Input<List<String>>? thumbprintLists;
+  final pulumi.Input<List<String>?>? thumbprintLists;
   /// URL of the identity provider, corresponding to the `iss` claim.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [OpenIdConnectProviderState].
   /// [arn] ARN assigned by AWS for this provider.

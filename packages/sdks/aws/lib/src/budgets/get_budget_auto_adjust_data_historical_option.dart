@@ -25,8 +25,8 @@ class GetBudgetAutoAdjustDataHistoricalOption {
 
   factory GetBudgetAutoAdjustDataHistoricalOption.fromMap(Map<String, dynamic> map) {
     return GetBudgetAutoAdjustDataHistoricalOption(
-      budgetAdjustmentPeriod: pulumi.Input.fromValue(map['budgetAdjustmentPeriod'] as int),
-      lookbackAvailablePeriods: pulumi.Input.fromValue(map['lookbackAvailablePeriods'] as int),
+      budgetAdjustmentPeriod: pulumi.Input.fromValue((map['budgetAdjustmentPeriod'] as num).toInt()),
+      lookbackAvailablePeriods: pulumi.Input.fromValue((map['lookbackAvailablePeriods'] as num).toInt()),
     );
   }
 }

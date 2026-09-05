@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceWorkspaceProperties {
   /// The compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO`, `GENERALPURPOSE_4XLARGE`, `GENERALPURPOSE_8XLARGE`, `GRAPHICSPRO`, `GRAPHICS_G4DN`, `GRAPHICSPRO_G4DN`, `GRAPHICS_G6_XLARGE`, `GRAPHICS_G6_2XLARGE`, `GRAPHICS_G6_4XLARGE`, `GRAPHICS_G6_8XLARGE`, `GRAPHICS_G6_16XLARGE`, `GRAPHICS_GR6_4XLARGE`, `GRAPHICS_GR6_8XLARGE`, `GRAPHICS_G6F_LARGE`, `GRAPHICS_G6F_XLARGE`, `GRAPHICS_G6F_2XLARGE`, `GRAPHICS_G6F_4XLARGE`, and `GRAPHICS_GR6F_4XLARGE`.
-  final pulumi.Input<String>? computeTypeName;
+  final pulumi.Input<String?>? computeTypeName;
   /// The size of the root volume.
-  final pulumi.Input<int>? rootVolumeSizeGib;
+  final pulumi.Input<int?>? rootVolumeSizeGib;
   /// The running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
-  final pulumi.Input<String>? runningMode;
+  final pulumi.Input<String?>? runningMode;
   /// The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
-  final pulumi.Input<int>? runningModeAutoStopTimeoutInMinutes;
+  final pulumi.Input<int?>? runningModeAutoStopTimeoutInMinutes;
   /// The size of the user storage.
-  final pulumi.Input<int>? userVolumeSizeGib;
+  final pulumi.Input<int?>? userVolumeSizeGib;
 
   /// Creates a new [WorkspaceWorkspaceProperties].
   /// [computeTypeName] The compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO`, `GENERALPURPOSE_4XLARGE`, `GENERALPURPOSE_8XLARGE`, `GRAPHICSPRO`, `GRAPHICS_G4DN`, `GRAPHICSPRO_G4DN`, `GRAPHICS_G6_XLARGE`, `GRAPHICS_G6_2XLARGE`, `GRAPHICS_G6_4XLARGE`, `GRAPHICS_G6_8XLARGE`, `GRAPHICS_G6_16XLARGE`, `GRAPHICS_GR6_4XLARGE`, `GRAPHICS_GR6_8XLARGE`, `GRAPHICS_G6F_LARGE`, `GRAPHICS_G6F_XLARGE`, `GRAPHICS_G6F_2XLARGE`, `GRAPHICS_G6F_4XLARGE`, and `GRAPHICS_GR6F_4XLARGE`.
@@ -41,10 +41,10 @@ class WorkspaceWorkspaceProperties {
   factory WorkspaceWorkspaceProperties.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceProperties(
       computeTypeName: (() { final guardedValue = map['computeTypeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rootVolumeSizeGib: (() { final guardedValue = map['rootVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rootVolumeSizeGib: (() { final guardedValue = map['rootVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       runningMode: (() { final guardedValue = map['runningMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runningModeAutoStopTimeoutInMinutes: (() { final guardedValue = map['runningModeAutoStopTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      userVolumeSizeGib: (() { final guardedValue = map['userVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      runningModeAutoStopTimeoutInMinutes: (() { final guardedValue = map['runningModeAutoStopTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      userVolumeSizeGib: (() { final guardedValue = map['userVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

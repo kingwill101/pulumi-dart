@@ -13,19 +13,19 @@ class TargetArgs {
   /// Min capacity of the scalable target.
   final pulumi.Input<int> minCapacity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   final pulumi.Input<String> resourceId;
   /// ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   final pulumi.Input<String> scalableDimension;
   /// AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   final pulumi.Input<String> serviceNamespace;
   /// Whether the scaling activities for a scalable target are in a suspended state.
-  final pulumi.Input<TargetSuspendedState>? suspendedState;
+  final pulumi.Input<TargetSuspendedState?>? suspendedState;
   /// Map of tags to assign to the scalable target. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TargetArgs].
   /// [maxCapacity] Max capacity of the scalable target.
@@ -65,8 +65,8 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
+      maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toInt()),
+      minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toInt()),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
       roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

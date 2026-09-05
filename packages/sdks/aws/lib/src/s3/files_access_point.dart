@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'files_access_point_args.dart';
+import 'files_access_point_posix_user.dart';
+import 'files_access_point_root_directory.dart';
 import 'files_access_point_state.dart';
 import 'files_access_point_timeouts.dart';
 
@@ -13,11 +15,11 @@ import 'files_access_point_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.FilesAccessPoint("example", {
-///     fileSystemId: exampleAwsS3filesFileSystem.id,
 ///     posixUsers: [{
 ///         gid: 1001,
 ///         uid: 1001,
 ///     }],
+///     fileSystemId: exampleAwsS3filesFileSystem.id,
 /// });
 /// ```
 /// ```python
@@ -25,11 +27,11 @@ import 'files_access_point_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.FilesAccessPoint("example",
-///     file_system_id=example_aws_s3files_file_system["id"],
 ///     posix_users=[{
 ///         "gid": 1001,
 ///         "uid": 1001,
-///     }])
+///     }],
+///     file_system_id=example_aws_s3files_file_system["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,7 +43,6 @@ import 'files_access_point_timeouts.dart';
 /// {
 ///     var example = new Aws.S3.FilesAccessPoint("example", new()
 ///     {
-///         FileSystemId = exampleAwsS3filesFileSystem.Id,
 ///         PosixUsers = new[]
 ///         {
 ///             new Aws.S3.Inputs.FilesAccessPointPosixUserArgs
@@ -50,6 +51,7 @@ import 'files_access_point_timeouts.dart';
 ///                 Uid = 1001,
 ///             },
 ///         },
+///         FileSystemId = exampleAwsS3filesFileSystem.Id,
 ///     });
 ///
 /// });
@@ -65,13 +67,13 @@ import 'files_access_point_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewFilesAccessPoint(ctx, "example", &s3.FilesAccessPointArgs{
-/// 			FileSystemId: pulumi.Any(exampleAwsS3filesFileSystem.Id),
 /// 			PosixUsers: s3.FilesAccessPointPosixUserArray{
 /// 				&s3.FilesAccessPointPosixUserArgs{
 /// 					Gid: pulumi.Int(1001),
 /// 					Uid: pulumi.Int(1001),
 /// 				},
 /// 			},
+/// 			FileSystemId: pulumi.Any(exampleAwsS3filesFileSystem.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,11 +92,11 @@ import 'files_access_point_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_filesaccesspoint" "example" {
-///   file_system_id = exampleAwsS3filesFileSystem.id
 ///   posix_users {
 ///     gid = 1001
 ///     uid = 1001
 ///   }
+///   file_system_id = exampleAwsS3filesFileSystem.id
 /// }
 /// ```
 /// ```java
@@ -120,11 +122,11 @@ import 'files_access_point_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FilesAccessPoint("example", FilesAccessPointArgs.builder()
-///             .fileSystemId(exampleAwsS3filesFileSystem.id())
 ///             .posixUsers(FilesAccessPointPosixUserArgs.builder()
 ///                 .gid(1001)
 ///                 .uid(1001)
 ///                 .build())
+///             .fileSystemId(exampleAwsS3filesFileSystem.id())
 ///             .build());
 ///
 ///     }
@@ -135,10 +137,10 @@ import 'files_access_point_timeouts.dart';
 ///   example:
 ///     type: aws:s3:FilesAccessPoint
 ///     properties:
-///       fileSystemId: ${exampleAwsS3filesFileSystem.id}
 ///       posixUsers:
 ///         - gid: 1001
 ///           uid: 1001
+///       fileSystemId: ${exampleAwsS3filesFileSystem.id}
 /// ```
 ///
 ///
@@ -173,11 +175,11 @@ class FilesAccessPoint extends pulumi.CustomResource {
   /// POSIX user configuration. See `posixUser` below. Changing this value forces replacement.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> posixUsers;
+  late final pulumi.Output<List<FilesAccessPointPosixUser>?> posixUsers;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Root directory configuration. See `rootDirectory` below. Changing this value forces replacement.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rootDirectories;
+  late final pulumi.Output<List<FilesAccessPointRootDirectory>?> rootDirectories;
   /// Access point status.
   late final pulumi.Output<String> status;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -198,18 +200,18 @@ class FilesAccessPoint extends pulumi.CustomResource {
           'aws:s3/filesAccessPoint:FilesAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemId = registerOutput<String>('fileSystemId');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
-    posixUsers = registerOutput<List<Map<String, dynamic>>?>('posixUsers');
+    posixUsers = registerOutput<List<FilesAccessPointPosixUser>?>('posixUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesAccessPointPosixUser>(guardedValue, (value) => FilesAccessPointPosixUser.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    rootDirectories = registerOutput<List<Map<String, dynamic>>?>('rootDirectories');
+    rootDirectories = registerOutput<List<FilesAccessPointRootDirectory>?>('rootDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesAccessPointRootDirectory>(guardedValue, (value) => FilesAccessPointRootDirectory.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<FilesAccessPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesAccessPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -218,11 +220,12 @@ class FilesAccessPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilesAccessPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FilesAccessPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -240,12 +243,34 @@ class FilesAccessPoint extends pulumi.CustomResource {
     fileSystemId = registerOutput<String>('fileSystemId');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
-    posixUsers = registerOutput<List<Map<String, dynamic>>?>('posixUsers');
+    posixUsers = registerOutput<List<FilesAccessPointPosixUser>?>('posixUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesAccessPointPosixUser>(guardedValue, (value) => FilesAccessPointPosixUser.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    rootDirectories = registerOutput<List<Map<String, dynamic>>?>('rootDirectories');
+    rootDirectories = registerOutput<List<FilesAccessPointRootDirectory>?>('rootDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesAccessPointRootDirectory>(guardedValue, (value) => FilesAccessPointRootDirectory.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<FilesAccessPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesAccessPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FilesAccessPoint] resource.
+  FilesAccessPoint.reference(String urn)
+    : super(
+        'aws:s3/filesAccessPoint:FilesAccessPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    posixUsers = registerOutput<List<FilesAccessPointPosixUser>?>('posixUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesAccessPointPosixUser>(guardedValue, (value) => FilesAccessPointPosixUser.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    rootDirectories = registerOutput<List<FilesAccessPointRootDirectory>?>('rootDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesAccessPointRootDirectory>(guardedValue, (value) => FilesAccessPointRootDirectory.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<FilesAccessPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesAccessPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrafficMirrorFilterRuleSourcePortRange {
   /// Starting port of the range
-  final pulumi.Input<int>? fromPort;
+  final pulumi.Input<int?>? fromPort;
   /// Ending port of the range
-  final pulumi.Input<int>? toPort;
+  final pulumi.Input<int?>? toPort;
 
   /// Creates a new [TrafficMirrorFilterRuleSourcePortRange].
   /// [fromPort] Starting port of the range
@@ -25,8 +25,8 @@ class TrafficMirrorFilterRuleSourcePortRange {
 
   factory TrafficMirrorFilterRuleSourcePortRange.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterRuleSourcePortRange(
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

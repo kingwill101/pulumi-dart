@@ -9,12 +9,12 @@ import 'enrollment_status_timeouts.dart';
 /// {@macro pulumi_computeoptimizer_enrollment_status_enrollment_status_args_doc}
 class EnrollmentStatusArgs {
   /// Whether to enroll member accounts of the organization if the account is the management account of an organization. Default is `false`.
-  final pulumi.Input<bool>? includeMemberAccounts;
+  final pulumi.Input<bool?>? includeMemberAccounts;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The enrollment status of the account. Valid values: `Active`, `Inactive`.
   final pulumi.Input<String> status;
-  final pulumi.Input<EnrollmentStatusTimeouts>? timeouts;
+  final pulumi.Input<EnrollmentStatusTimeouts?>? timeouts;
 
   /// Creates a new [EnrollmentStatusArgs].
   /// [includeMemberAccounts] Whether to enroll member accounts of the organization if the account is the management account of an organization. Default is `false`.

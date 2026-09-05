@@ -20,7 +20,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig(
-      maxPageSize: pulumi.Input.fromValue(map['maxPageSize'] as int),
+      maxPageSize: pulumi.Input.fromValue((map['maxPageSize'] as num).toInt()),
     );
   }
 }

@@ -1,13 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_auto_termination_policy.dart';
+import 'cluster_bootstrap_action.dart';
 import 'cluster_core_instance_fleet.dart';
 import 'cluster_core_instance_group.dart';
 import 'cluster_ec2_attributes.dart';
 import 'cluster_kerberos_attributes.dart';
 import 'cluster_master_instance_fleet.dart';
 import 'cluster_master_instance_group.dart';
+import 'cluster_placement_group_config.dart';
 import 'cluster_state.dart';
+import 'cluster_step.dart';
 
 /// Provides an Elastic MapReduce Cluster, a web service that makes it easy to process large amounts of data efficiently. See [Amazon Elastic MapReduce Documentation](https://aws.amazon.com/documentation/elastic-mapreduce/) for more information.
 ///
@@ -21,18 +24,6 @@ import 'cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const cluster = new aws.emr.Cluster("cluster", {
-///     name: "emr-test-arn",
-///     releaseLabel: "emr-4.6.0",
-///     applications: ["Spark"],
-///     additionalInfo: `{
-///   \\"instanceAwsClientConfiguration\\": {
-///     \\"proxyPort\\": 8099,
-///     \\"proxyHost\\": \\"myproxy.example.com\\"
-///   }
-/// }
-/// `,
-///     terminationProtection: false,
-///     keepJobFlowAliveWhenNoSteps: true,
 ///     ec2Attributes: {
 ///         subnetId: main.id,
 ///         emrManagedMasterSecurityGroup: sg.id,
@@ -43,13 +34,13 @@ import 'cluster_state.dart';
 ///         instanceType: "m4.large",
 ///     },
 ///     coreInstanceGroup: {
-///         instanceType: "c4.large",
-///         instanceCount: 1,
 ///         ebsConfigs: [{
 ///             size: 40,
 ///             type: "gp2",
 ///             volumesPerInstance: 1,
 ///         }],
+///         instanceType: "c4.large",
+///         instanceCount: 1,
 ///         bidPrice: "0.30",
 ///         autoscalingPolicy: `{
 /// \\"Constraints\\": {
@@ -84,11 +75,6 @@ import 'cluster_state.dart';
 /// }
 /// `,
 ///     },
-///     ebsRootVolumeSize: 100,
-///     tags: {
-///         role: "rolename",
-///         env: "env",
-///     },
 ///     bootstrapActions: [{
 ///         path: "s3://elasticmapreduce/bootstrap-actions/run-if",
 ///         name: "runif",
@@ -97,6 +83,23 @@ import 'cluster_state.dart';
 ///             "echo running on master node",
 ///         ],
 ///     }],
+///     name: "emr-test-arn",
+///     releaseLabel: "emr-4.6.0",
+///     applications: ["Spark"],
+///     additionalInfo: `{
+///   \\"instanceAwsClientConfiguration\\": {
+///     \\"proxyPort\\": 8099,
+///     \\"proxyHost\\": \\"myproxy.example.com\\"
+///   }
+/// }
+/// `,
+///     terminationProtection: false,
+///     keepJobFlowAliveWhenNoSteps: true,
+///     ebsRootVolumeSize: 100,
+///     tags: {
+///         role: "rolename",
+///         env: "env",
+///     },
 ///     configurationsJson: `  [
 ///     {
 ///       \\"Classification\\": \\"hadoop-env\\",
@@ -132,18 +135,6 @@ import 'cluster_state.dart';
 /// import pulumi_aws as aws
 ///
 /// cluster = aws.emr.Cluster("cluster",
-///     name="emr-test-arn",
-///     release_label="emr-4.6.0",
-///     applications=["Spark"],
-///     additional_info="""{
-///   \"instanceAwsClientConfiguration\": {
-///     \"proxyPort\": 8099,
-///     \"proxyHost\": \"myproxy.example.com\"
-///   }
-/// }
-/// """,
-///     termination_protection=False,
-///     keep_job_flow_alive_when_no_steps=True,
 ///     ec2_attributes={
 ///         "subnet_id": main["id"],
 ///         "emr_managed_master_security_group": sg["id"],
@@ -154,13 +145,13 @@ import 'cluster_state.dart';
 ///         "instance_type": "m4.large",
 ///     },
 ///     core_instance_group={
-///         "instance_type": "c4.large",
-///         "instance_count": 1,
 ///         "ebs_configs": [{
 ///             "size": 40,
 ///             "type": "gp2",
 ///             "volumes_per_instance": 1,
 ///         }],
+///         "instance_type": "c4.large",
+///         "instance_count": 1,
 ///         "bid_price": "0.30",
 ///         "autoscaling_policy": """{
 /// \"Constraints\": {
@@ -195,11 +186,6 @@ import 'cluster_state.dart';
 /// }
 /// """,
 ///     },
-///     ebs_root_volume_size=100,
-///     tags={
-///         "role": "rolename",
-///         "env": "env",
-///     },
 ///     bootstrap_actions=[{
 ///         "path": "s3://elasticmapreduce/bootstrap-actions/run-if",
 ///         "name": "runif",
@@ -208,6 +194,23 @@ import 'cluster_state.dart';
 ///             "echo running on master node",
 ///         ],
 ///     }],
+///     name="emr-test-arn",
+///     release_label="emr-4.6.0",
+///     applications=["Spark"],
+///     additional_info="""{
+///   \"instanceAwsClientConfiguration\": {
+///     \"proxyPort\": 8099,
+///     \"proxyHost\": \"myproxy.example.com\"
+///   }
+/// }
+/// """,
+///     termination_protection=False,
+///     keep_job_flow_alive_when_no_steps=True,
+///     ebs_root_volume_size=100,
+///     tags={
+///         "role": "rolename",
+///         "env": "env",
+///     },
 ///     configurations_json="""  [
 ///     {
 ///       \"Classification\": \"hadoop-env\",
@@ -247,21 +250,6 @@ import 'cluster_state.dart';
 /// {
 ///     var cluster = new Aws.Emr.Cluster("cluster", new()
 ///     {
-///         Name = "emr-test-arn",
-///         ReleaseLabel = "emr-4.6.0",
-///         Applications = new[]
-///         {
-///             "Spark",
-///         },
-///         AdditionalInfo = @"{
-///   \""instanceAwsClientConfiguration\"": {
-///     \""proxyPort\"": 8099,
-///     \""proxyHost\"": \""myproxy.example.com\""
-///   }
-/// }
-/// ",
-///         TerminationProtection = false,
-///         KeepJobFlowAliveWhenNoSteps = true,
 ///         Ec2Attributes = new Aws.Emr.Inputs.ClusterEc2AttributesArgs
 ///         {
 ///             SubnetId = main.Id,
@@ -275,8 +263,6 @@ import 'cluster_state.dart';
 ///         },
 ///         CoreInstanceGroup = new Aws.Emr.Inputs.ClusterCoreInstanceGroupArgs
 ///         {
-///             InstanceType = "c4.large",
-///             InstanceCount = 1,
 ///             EbsConfigs = new[]
 ///             {
 ///                 new Aws.Emr.Inputs.ClusterCoreInstanceGroupEbsConfigArgs
@@ -286,6 +272,8 @@ import 'cluster_state.dart';
 ///                     VolumesPerInstance = 1,
 ///                 },
 ///             },
+///             InstanceType = "c4.large",
+///             InstanceCount = 1,
 ///             BidPrice = "0.30",
 ///             AutoscalingPolicy = @"{
 /// \""Constraints\"": {
@@ -320,12 +308,6 @@ import 'cluster_state.dart';
 /// }
 /// ",
 ///         },
-///         EbsRootVolumeSize = 100,
-///         Tags =
-///         {
-///             { "role", "rolename" },
-///             { "env", "env" },
-///         },
 ///         BootstrapActions = new[]
 ///         {
 ///             new Aws.Emr.Inputs.ClusterBootstrapActionArgs
@@ -338,6 +320,27 @@ import 'cluster_state.dart';
 ///                     "echo running on master node",
 ///                 },
 ///             },
+///         },
+///         Name = "emr-test-arn",
+///         ReleaseLabel = "emr-4.6.0",
+///         Applications = new[]
+///         {
+///             "Spark",
+///         },
+///         AdditionalInfo = @"{
+///   \""instanceAwsClientConfiguration\"": {
+///     \""proxyPort\"": 8099,
+///     \""proxyHost\"": \""myproxy.example.com\""
+///   }
+/// }
+/// ",
+///         TerminationProtection = false,
+///         KeepJobFlowAliveWhenNoSteps = true,
+///         EbsRootVolumeSize = 100,
+///         Tags =
+///         {
+///             { "role", "rolename" },
+///             { "env", "env" },
 ///         },
 ///         ConfigurationsJson = @"  [
 ///     {
@@ -382,20 +385,6 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
-/// 			Name:         pulumi.String("emr-test-arn"),
-/// 			ReleaseLabel: pulumi.String("emr-4.6.0"),
-/// 			Applications: pulumi.StringArray{
-/// 				pulumi.String("Spark"),
-/// 			},
-/// 			AdditionalInfo: pulumi.String(`{
-///   \"instanceAwsClientConfiguration\": {
-///     \"proxyPort\": 8099,
-///     \"proxyHost\": \"myproxy.example.com\"
-///   }
-/// }
-/// `),
-/// 			TerminationProtection:       pulumi.Bool(false),
-/// 			KeepJobFlowAliveWhenNoSteps: pulumi.Bool(true),
 /// 			Ec2Attributes: &emr.ClusterEc2AttributesArgs{
 /// 				SubnetId:                      pulumi.Any(main.Id),
 /// 				EmrManagedMasterSecurityGroup: pulumi.Any(sg.Id),
@@ -406,8 +395,6 @@ import 'cluster_state.dart';
 /// 				InstanceType: pulumi.String("m4.large"),
 /// 			},
 /// 			CoreInstanceGroup: &emr.ClusterCoreInstanceGroupArgs{
-/// 				InstanceType:  pulumi.String("c4.large"),
-/// 				InstanceCount: pulumi.Int(1),
 /// 				EbsConfigs: emr.ClusterCoreInstanceGroupEbsConfigArray{
 /// 					&emr.ClusterCoreInstanceGroupEbsConfigArgs{
 /// 						Size:               pulumi.Int(40),
@@ -415,7 +402,9 @@ import 'cluster_state.dart';
 /// 						VolumesPerInstance: pulumi.Int(1),
 /// 					},
 /// 				},
-/// 				BidPrice: pulumi.String("0.30"),
+/// 				InstanceType:  pulumi.String("c4.large"),
+/// 				InstanceCount: pulumi.Int(1),
+/// 				BidPrice:      pulumi.String("0.30"),
 /// 				AutoscalingPolicy: pulumi.String(`{
 /// \"Constraints\": {
 ///   \"MinCapacity\": 1,
@@ -449,11 +438,6 @@ import 'cluster_state.dart';
 /// }
 /// `),
 /// 			},
-/// 			EbsRootVolumeSize: pulumi.Int(100),
-/// 			Tags: pulumi.StringMap{
-/// 				"role": pulumi.String("rolename"),
-/// 				"env":  pulumi.String("env"),
-/// 			},
 /// 			BootstrapActions: emr.ClusterBootstrapActionArray{
 /// 				&emr.ClusterBootstrapActionArgs{
 /// 					Path: pulumi.String("s3://elasticmapreduce/bootstrap-actions/run-if"),
@@ -463,6 +447,25 @@ import 'cluster_state.dart';
 /// 						pulumi.String("echo running on master node"),
 /// 					},
 /// 				},
+/// 			},
+/// 			Name:         pulumi.String("emr-test-arn"),
+/// 			ReleaseLabel: pulumi.String("emr-4.6.0"),
+/// 			Applications: pulumi.StringArray{
+/// 				pulumi.String("Spark"),
+/// 			},
+/// 			AdditionalInfo: pulumi.String(`{
+///   \"instanceAwsClientConfiguration\": {
+///     \"proxyPort\": 8099,
+///     \"proxyHost\": \"myproxy.example.com\"
+///   }
+/// }
+/// `),
+/// 			TerminationProtection:       pulumi.Bool(false),
+/// 			KeepJobFlowAliveWhenNoSteps: pulumi.Bool(true),
+/// 			EbsRootVolumeSize:           pulumi.Int(100),
+/// 			Tags: pulumi.StringMap{
+/// 				"role": pulumi.String("rolename"),
+/// 				"env":  pulumi.String("env"),
 /// 			},
 /// 			ConfigurationsJson: pulumi.String(`  [
 ///     {
@@ -510,12 +513,6 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_emr_cluster" "cluster" {
-///   name                              = "emr-test-arn"
-///   release_label                     = "emr-4.6.0"
-///   applications                      = ["Spark"]
-///   additional_info                   = "{\n  \\\"instanceAwsClientConfiguration\\\": {\n    \\\"proxyPort\\\": 8099,\n    \\\"proxyHost\\\": \\\"myproxy.example.com\\\"\n  }\n}\n"
-///   termination_protection            = false
-///   keep_job_flow_alive_when_no_steps = true
 ///   ec2_attributes = {
 ///     subnet_id                         = main.id
 ///     emr_managed_master_security_group = sg.id
@@ -526,25 +523,31 @@ import 'cluster_state.dart';
 ///     instance_type = "m4.large"
 ///   }
 ///   core_instance_group = {
-///     instance_type  = "c4.large"
-///     instance_count = 1
 ///     ebs_configs = [{
 ///       "size"               = "40"
 ///       "type"               = "gp2"
 ///       "volumesPerInstance" = 1
 ///     }]
+///     instance_type      = "c4.large"
+///     instance_count     = 1
 ///     bid_price          = "0.30"
 ///     autoscaling_policy = "{\n\\\"Constraints\\\": {\n  \\\"MinCapacity\\\": 1,\n  \\\"MaxCapacity\\\": 2\n},\n\\\"Rules\\\": [\n  {\n    \\\"Name\\\": \\\"ScaleOutMemoryPercentage\\\",\n    \\\"Description\\\": \\\"Scale out if YARNMemoryAvailablePercentage is less than 15\\\",\n    \\\"Action\\\": {\n      \\\"SimpleScalingPolicyConfiguration\\\": {\n        \\\"AdjustmentType\\\": \\\"CHANGE_IN_CAPACITY\\\",\n        \\\"ScalingAdjustment\\\": 1,\n        \\\"CoolDown\\\": 300\n      }\n    },\n    \\\"Trigger\\\": {\n      \\\"CloudWatchAlarmDefinition\\\": {\n        \\\"ComparisonOperator\\\": \\\"LESS_THAN\\\",\n        \\\"EvaluationPeriods\\\": 1,\n        \\\"MetricName\\\": \\\"YARNMemoryAvailablePercentage\\\",\n        \\\"Namespace\\\": \\\"AWS/ElasticMapReduce\\\",\n        \\\"Period\\\": 300,\n        \\\"Statistic\\\": \\\"AVERAGE\\\",\n        \\\"Threshold\\\": 15.0,\n        \\\"Unit\\\": \\\"PERCENT\\\"\n      }\n    }\n  }\n]\n}\n"
-///   }
-///   ebs_root_volume_size = 100
-///   tags = {
-///     "role" = "rolename"
-///     "env"  = "env"
 ///   }
 ///   bootstrap_actions {
 ///     path = "s3://elasticmapreduce/bootstrap-actions/run-if"
 ///     name = "runif"
 ///     args = ["instance.isMaster=true", "echo running on master node"]
+///   }
+///   name                              = "emr-test-arn"
+///   release_label                     = "emr-4.6.0"
+///   applications                      = ["Spark"]
+///   additional_info                   = "{\n  \\\"instanceAwsClientConfiguration\\\": {\n    \\\"proxyPort\\\": 8099,\n    \\\"proxyHost\\\": \\\"myproxy.example.com\\\"\n  }\n}\n"
+///   termination_protection            = false
+///   keep_job_flow_alive_when_no_steps = true
+///   ebs_root_volume_size              = 100
+///   tags = {
+///     "role" = "rolename"
+///     "env"  = "env"
 ///   }
 ///   configurations_json = "  [\n    {\n      \\\"Classification\\\": \\\"hadoop-env\\\",\n      \\\"Configurations\\\": [\n        {\n          \\\"Classification\\\": \\\"export\\\",\n          \\\"Properties\\\": {\n            \\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n          }\n        }\n      ],\n      \\\"Properties\\\": {}\n    },\n    {\n      \\\"Classification\\\": \\\"spark-env\\\",\n      \\\"Configurations\\\": [\n        {\n          \\\"Classification\\\": \\\"export\\\",\n          \\\"Properties\\\": {\n            \\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n          }\n        }\n      ],\n      \\\"Properties\\\": {}\n    }\n  ]\n"
 ///   service_role        = iamEmrServiceRole.arn
@@ -577,19 +580,6 @@ import 'cluster_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cluster = new Cluster("cluster", ClusterArgs.builder()
-///             .name("emr-test-arn")
-///             .releaseLabel("emr-4.6.0")
-///             .applications("Spark")
-///             .additionalInfo("""
-/// {
-///   \"instanceAwsClientConfiguration\": {
-///     \"proxyPort\": 8099,
-///     \"proxyHost\": \"myproxy.example.com\"
-///   }
-/// }
-///             """)
-///             .terminationProtection(false)
-///             .keepJobFlowAliveWhenNoSteps(true)
 ///             .ec2Attributes(ClusterEc2AttributesArgs.builder()
 ///                 .subnetId(main.id())
 ///                 .emrManagedMasterSecurityGroup(sg.id())
@@ -600,13 +590,13 @@ import 'cluster_state.dart';
 ///                 .instanceType("m4.large")
 ///                 .build())
 ///             .coreInstanceGroup(ClusterCoreInstanceGroupArgs.builder()
-///                 .instanceType("c4.large")
-///                 .instanceCount(1)
 ///                 .ebsConfigs(ClusterCoreInstanceGroupEbsConfigArgs.builder()
 ///                     .size(40)
 ///                     .type("gp2")
 ///                     .volumesPerInstance(1)
 ///                     .build())
+///                 .instanceType("c4.large")
+///                 .instanceCount(1)
 ///                 .bidPrice("0.30")
 ///                 .autoscalingPolicy("""
 /// {
@@ -642,11 +632,6 @@ import 'cluster_state.dart';
 /// }
 ///                 """)
 ///                 .build())
-///             .ebsRootVolumeSize(100)
-///             .tags(Map.ofEntries(
-///                 Map.entry("role", "rolename"),
-///                 Map.entry("env", "env")
-///             ))
 ///             .bootstrapActions(ClusterBootstrapActionArgs.builder()
 ///                 .path("s3://elasticmapreduce/bootstrap-actions/run-if")
 ///                 .name("runif")
@@ -654,6 +639,24 @@ import 'cluster_state.dart';
 ///                     "instance.isMaster=true",
 ///                     "echo running on master node")
 ///                 .build())
+///             .name("emr-test-arn")
+///             .releaseLabel("emr-4.6.0")
+///             .applications("Spark")
+///             .additionalInfo("""
+/// {
+///   \"instanceAwsClientConfiguration\": {
+///     \"proxyPort\": 8099,
+///     \"proxyHost\": \"myproxy.example.com\"
+///   }
+/// }
+///             """)
+///             .terminationProtection(false)
+///             .keepJobFlowAliveWhenNoSteps(true)
+///             .ebsRootVolumeSize(100)
+///             .tags(Map.ofEntries(
+///                 Map.entry("role", "rolename"),
+///                 Map.entry("env", "env")
+///             ))
 ///             .configurationsJson("""
 ///   [
 ///     {
@@ -693,19 +696,6 @@ import 'cluster_state.dart';
 ///   cluster:
 ///     type: aws:emr:Cluster
 ///     properties:
-///       name: emr-test-arn
-///       releaseLabel: emr-4.6.0
-///       applications:
-///         - Spark
-///       additionalInfo: |
-///         {
-///           \"instanceAwsClientConfiguration\": {
-///             \"proxyPort\": 8099,
-///             \"proxyHost\": \"myproxy.example.com\"
-///           }
-///         }
-///       terminationProtection: false
-///       keepJobFlowAliveWhenNoSteps: true
 ///       ec2Attributes:
 ///         subnetId: ${main.id}
 ///         emrManagedMasterSecurityGroup: ${sg.id}
@@ -714,12 +704,12 @@ import 'cluster_state.dart';
 ///       masterInstanceGroup:
 ///         instanceType: m4.large
 ///       coreInstanceGroup:
-///         instanceType: c4.large
-///         instanceCount: 1
 ///         ebsConfigs:
 ///           - size: '40'
 ///             type: gp2
 ///             volumesPerInstance: 1
+///         instanceType: c4.large
+///         instanceCount: 1
 ///         bidPrice: '0.30'
 ///         autoscalingPolicy: |
 ///           {
@@ -753,16 +743,29 @@ import 'cluster_state.dart';
 ///             }
 ///           ]
 ///           }
-///       ebsRootVolumeSize: 100
-///       tags:
-///         role: rolename
-///         env: env
 ///       bootstrapActions:
 ///         - path: s3://elasticmapreduce/bootstrap-actions/run-if
 ///           name: runif
 ///           args:
 ///             - instance.isMaster=true
 ///             - echo running on master node
+///       name: emr-test-arn
+///       releaseLabel: emr-4.6.0
+///       applications:
+///         - Spark
+///       additionalInfo: |
+///         {
+///           \"instanceAwsClientConfiguration\": {
+///             \"proxyPort\": 8099,
+///             \"proxyHost\": \"myproxy.example.com\"
+///           }
+///         }
+///       terminationProtection: false
+///       keepJobFlowAliveWhenNoSteps: true
+///       ebsRootVolumeSize: 100
+///       tags:
+///         role: rolename
+///         env: env
 ///       configurationsJson: |2
 ///           [
 ///             {
@@ -813,38 +816,6 @@ import 'cluster_state.dart';
 ///         targetOnDemandCapacity: 1,
 ///     },
 ///     coreInstanceFleet: {
-///         instanceTypeConfigs: [
-///             {
-///                 bidPriceAsPercentageOfOnDemandPrice: 80,
-///                 ebsConfigs: [{
-///                     size: 100,
-///                     type: "gp2",
-///                     volumesPerInstance: 1,
-///                 }],
-///                 instanceType: "m3.xlarge",
-///                 weightedCapacity: 1,
-///             },
-///             {
-///                 bidPriceAsPercentageOfOnDemandPrice: 100,
-///                 ebsConfigs: [{
-///                     size: 100,
-///                     type: "gp2",
-///                     volumesPerInstance: 1,
-///                 }],
-///                 instanceType: "m4.xlarge",
-///                 weightedCapacity: 1,
-///             },
-///             {
-///                 bidPriceAsPercentageOfOnDemandPrice: 100,
-///                 ebsConfigs: [{
-///                     size: 100,
-///                     type: "gp2",
-///                     volumesPerInstance: 1,
-///                 }],
-///                 instanceType: "m4.2xlarge",
-///                 weightedCapacity: 2,
-///             },
-///         ],
 ///         launchSpecifications: {
 ///             spotSpecifications: [{
 ///                 allocationStrategy: "capacity-optimized",
@@ -853,35 +824,44 @@ import 'cluster_state.dart';
 ///                 timeoutDurationMinutes: 10,
 ///             }],
 ///         },
+///         instanceTypeConfigs: [
+///             {
+///                 ebsConfigs: [{
+///                     size: 100,
+///                     type: "gp2",
+///                     volumesPerInstance: 1,
+///                 }],
+///                 bidPriceAsPercentageOfOnDemandPrice: 80,
+///                 instanceType: "m3.xlarge",
+///                 weightedCapacity: 1,
+///             },
+///             {
+///                 ebsConfigs: [{
+///                     size: 100,
+///                     type: "gp2",
+///                     volumesPerInstance: 1,
+///                 }],
+///                 bidPriceAsPercentageOfOnDemandPrice: 100,
+///                 instanceType: "m4.xlarge",
+///                 weightedCapacity: 1,
+///             },
+///             {
+///                 ebsConfigs: [{
+///                     size: 100,
+///                     type: "gp2",
+///                     volumesPerInstance: 1,
+///                 }],
+///                 bidPriceAsPercentageOfOnDemandPrice: 100,
+///                 instanceType: "m4.2xlarge",
+///                 weightedCapacity: 2,
+///             },
+///         ],
 ///         name: "core fleet",
 ///         targetOnDemandCapacity: 2,
 ///         targetSpotCapacity: 2,
 ///     },
 /// });
 /// const task = new aws.emr.InstanceFleet("task", {
-///     clusterId: example.id,
-///     instanceTypeConfigs: [
-///         {
-///             bidPriceAsPercentageOfOnDemandPrice: 100,
-///             ebsConfigs: [{
-///                 size: 100,
-///                 type: "gp2",
-///                 volumesPerInstance: 1,
-///             }],
-///             instanceType: "m4.xlarge",
-///             weightedCapacity: 1,
-///         },
-///         {
-///             bidPriceAsPercentageOfOnDemandPrice: 100,
-///             ebsConfigs: [{
-///                 size: 100,
-///                 type: "gp2",
-///                 volumesPerInstance: 1,
-///             }],
-///             instanceType: "m4.2xlarge",
-///             weightedCapacity: 2,
-///         },
-///     ],
 ///     launchSpecifications: {
 ///         spotSpecifications: [{
 ///             allocationStrategy: "capacity-optimized",
@@ -890,6 +870,29 @@ import 'cluster_state.dart';
 ///             timeoutDurationMinutes: 10,
 ///         }],
 ///     },
+///     instanceTypeConfigs: [
+///         {
+///             ebsConfigs: [{
+///                 size: 100,
+///                 type: "gp2",
+///                 volumesPerInstance: 1,
+///             }],
+///             bidPriceAsPercentageOfOnDemandPrice: 100,
+///             instanceType: "m4.xlarge",
+///             weightedCapacity: 1,
+///         },
+///         {
+///             ebsConfigs: [{
+///                 size: 100,
+///                 type: "gp2",
+///                 volumesPerInstance: 1,
+///             }],
+///             bidPriceAsPercentageOfOnDemandPrice: 100,
+///             instanceType: "m4.2xlarge",
+///             weightedCapacity: 2,
+///         },
+///     ],
+///     clusterId: example.id,
 ///     name: "task fleet",
 ///     targetOnDemandCapacity: 1,
 ///     targetSpotCapacity: 1,
@@ -907,38 +910,6 @@ import 'cluster_state.dart';
 ///         "target_on_demand_capacity": 1,
 ///     },
 ///     core_instance_fleet={
-///         "instance_type_configs": [
-///             {
-///                 "bid_price_as_percentage_of_on_demand_price": float(80),
-///                 "ebs_configs": [{
-///                     "size": 100,
-///                     "type": "gp2",
-///                     "volumes_per_instance": 1,
-///                 }],
-///                 "instance_type": "m3.xlarge",
-///                 "weighted_capacity": 1,
-///             },
-///             {
-///                 "bid_price_as_percentage_of_on_demand_price": float(100),
-///                 "ebs_configs": [{
-///                     "size": 100,
-///                     "type": "gp2",
-///                     "volumes_per_instance": 1,
-///                 }],
-///                 "instance_type": "m4.xlarge",
-///                 "weighted_capacity": 1,
-///             },
-///             {
-///                 "bid_price_as_percentage_of_on_demand_price": float(100),
-///                 "ebs_configs": [{
-///                     "size": 100,
-///                     "type": "gp2",
-///                     "volumes_per_instance": 1,
-///                 }],
-///                 "instance_type": "m4.2xlarge",
-///                 "weighted_capacity": 2,
-///             },
-///         ],
 ///         "launch_specifications": {
 ///             "spot_specifications": [{
 ///                 "allocation_strategy": "capacity-optimized",
@@ -947,34 +918,43 @@ import 'cluster_state.dart';
 ///                 "timeout_duration_minutes": 10,
 ///             }],
 ///         },
+///         "instance_type_configs": [
+///             {
+///                 "ebs_configs": [{
+///                     "size": 100,
+///                     "type": "gp2",
+///                     "volumes_per_instance": 1,
+///                 }],
+///                 "bid_price_as_percentage_of_on_demand_price": float(80),
+///                 "instance_type": "m3.xlarge",
+///                 "weighted_capacity": 1,
+///             },
+///             {
+///                 "ebs_configs": [{
+///                     "size": 100,
+///                     "type": "gp2",
+///                     "volumes_per_instance": 1,
+///                 }],
+///                 "bid_price_as_percentage_of_on_demand_price": float(100),
+///                 "instance_type": "m4.xlarge",
+///                 "weighted_capacity": 1,
+///             },
+///             {
+///                 "ebs_configs": [{
+///                     "size": 100,
+///                     "type": "gp2",
+///                     "volumes_per_instance": 1,
+///                 }],
+///                 "bid_price_as_percentage_of_on_demand_price": float(100),
+///                 "instance_type": "m4.2xlarge",
+///                 "weighted_capacity": 2,
+///             },
+///         ],
 ///         "name": "core fleet",
 ///         "target_on_demand_capacity": 2,
 ///         "target_spot_capacity": 2,
 ///     })
 /// task = aws.emr.InstanceFleet("task",
-///     cluster_id=example.id,
-///     instance_type_configs=[
-///         {
-///             "bid_price_as_percentage_of_on_demand_price": float(100),
-///             "ebs_configs": [{
-///                 "size": 100,
-///                 "type": "gp2",
-///                 "volumes_per_instance": 1,
-///             }],
-///             "instance_type": "m4.xlarge",
-///             "weighted_capacity": 1,
-///         },
-///         {
-///             "bid_price_as_percentage_of_on_demand_price": float(100),
-///             "ebs_configs": [{
-///                 "size": 100,
-///                 "type": "gp2",
-///                 "volumes_per_instance": 1,
-///             }],
-///             "instance_type": "m4.2xlarge",
-///             "weighted_capacity": 2,
-///         },
-///     ],
 ///     launch_specifications={
 ///         "spot_specifications": [{
 ///             "allocation_strategy": "capacity-optimized",
@@ -983,6 +963,29 @@ import 'cluster_state.dart';
 ///             "timeout_duration_minutes": 10,
 ///         }],
 ///     },
+///     instance_type_configs=[
+///         {
+///             "ebs_configs": [{
+///                 "size": 100,
+///                 "type": "gp2",
+///                 "volumes_per_instance": 1,
+///             }],
+///             "bid_price_as_percentage_of_on_demand_price": float(100),
+///             "instance_type": "m4.xlarge",
+///             "weighted_capacity": 1,
+///         },
+///         {
+///             "ebs_configs": [{
+///                 "size": 100,
+///                 "type": "gp2",
+///                 "volumes_per_instance": 1,
+///             }],
+///             "bid_price_as_percentage_of_on_demand_price": float(100),
+///             "instance_type": "m4.2xlarge",
+///             "weighted_capacity": 2,
+///         },
+///     ],
+///     cluster_id=example.id,
 ///     name="task fleet",
 ///     target_on_demand_capacity=1,
 ///     target_spot_capacity=1)
@@ -1010,54 +1013,6 @@ import 'cluster_state.dart';
 ///         },
 ///         CoreInstanceFleet = new Aws.Emr.Inputs.ClusterCoreInstanceFleetArgs
 ///         {
-///             InstanceTypeConfigs = new[]
-///             {
-///                 new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs
-///                 {
-///                     BidPriceAsPercentageOfOnDemandPrice = 80,
-///                     EbsConfigs = new[]
-///                     {
-///                         new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs
-///                         {
-///                             Size = 100,
-///                             Type = "gp2",
-///                             VolumesPerInstance = 1,
-///                         },
-///                     },
-///                     InstanceType = "m3.xlarge",
-///                     WeightedCapacity = 1,
-///                 },
-///                 new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs
-///                 {
-///                     BidPriceAsPercentageOfOnDemandPrice = 100,
-///                     EbsConfigs = new[]
-///                     {
-///                         new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs
-///                         {
-///                             Size = 100,
-///                             Type = "gp2",
-///                             VolumesPerInstance = 1,
-///                         },
-///                     },
-///                     InstanceType = "m4.xlarge",
-///                     WeightedCapacity = 1,
-///                 },
-///                 new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs
-///                 {
-///                     BidPriceAsPercentageOfOnDemandPrice = 100,
-///                     EbsConfigs = new[]
-///                     {
-///                         new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs
-///                         {
-///                             Size = 100,
-///                             Type = "gp2",
-///                             VolumesPerInstance = 1,
-///                         },
-///                     },
-///                     InstanceType = "m4.2xlarge",
-///                     WeightedCapacity = 2,
-///                 },
-///             },
 ///             LaunchSpecifications = new Aws.Emr.Inputs.ClusterCoreInstanceFleetLaunchSpecificationsArgs
 ///             {
 ///                 SpotSpecifications = new[]
@@ -1071,6 +1026,54 @@ import 'cluster_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             InstanceTypeConfigs = new[]
+///             {
+///                 new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs
+///                 {
+///                     EbsConfigs = new[]
+///                     {
+///                         new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs
+///                         {
+///                             Size = 100,
+///                             Type = "gp2",
+///                             VolumesPerInstance = 1,
+///                         },
+///                     },
+///                     BidPriceAsPercentageOfOnDemandPrice = 80,
+///                     InstanceType = "m3.xlarge",
+///                     WeightedCapacity = 1,
+///                 },
+///                 new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs
+///                 {
+///                     EbsConfigs = new[]
+///                     {
+///                         new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs
+///                         {
+///                             Size = 100,
+///                             Type = "gp2",
+///                             VolumesPerInstance = 1,
+///                         },
+///                     },
+///                     BidPriceAsPercentageOfOnDemandPrice = 100,
+///                     InstanceType = "m4.xlarge",
+///                     WeightedCapacity = 1,
+///                 },
+///                 new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs
+///                 {
+///                     EbsConfigs = new[]
+///                     {
+///                         new Aws.Emr.Inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs
+///                         {
+///                             Size = 100,
+///                             Type = "gp2",
+///                             VolumesPerInstance = 1,
+///                         },
+///                     },
+///                     BidPriceAsPercentageOfOnDemandPrice = 100,
+///                     InstanceType = "m4.2xlarge",
+///                     WeightedCapacity = 2,
+///                 },
+///             },
 ///             Name = "core fleet",
 ///             TargetOnDemandCapacity = 2,
 ///             TargetSpotCapacity = 2,
@@ -1079,40 +1082,6 @@ import 'cluster_state.dart';
 ///
 ///     var task = new Aws.Emr.InstanceFleet("task", new()
 ///     {
-///         ClusterId = example.Id,
-///         InstanceTypeConfigs = new[]
-///         {
-///             new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigArgs
-///             {
-///                 BidPriceAsPercentageOfOnDemandPrice = 100,
-///                 EbsConfigs = new[]
-///                 {
-///                     new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs
-///                     {
-///                         Size = 100,
-///                         Type = "gp2",
-///                         VolumesPerInstance = 1,
-///                     },
-///                 },
-///                 InstanceType = "m4.xlarge",
-///                 WeightedCapacity = 1,
-///             },
-///             new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigArgs
-///             {
-///                 BidPriceAsPercentageOfOnDemandPrice = 100,
-///                 EbsConfigs = new[]
-///                 {
-///                     new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs
-///                     {
-///                         Size = 100,
-///                         Type = "gp2",
-///                         VolumesPerInstance = 1,
-///                     },
-///                 },
-///                 InstanceType = "m4.2xlarge",
-///                 WeightedCapacity = 2,
-///             },
-///         },
 ///         LaunchSpecifications = new Aws.Emr.Inputs.InstanceFleetLaunchSpecificationsArgs
 ///         {
 ///             SpotSpecifications = new[]
@@ -1126,6 +1095,40 @@ import 'cluster_state.dart';
 ///                 },
 ///             },
 ///         },
+///         InstanceTypeConfigs = new[]
+///         {
+///             new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigArgs
+///             {
+///                 EbsConfigs = new[]
+///                 {
+///                     new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs
+///                     {
+///                         Size = 100,
+///                         Type = "gp2",
+///                         VolumesPerInstance = 1,
+///                     },
+///                 },
+///                 BidPriceAsPercentageOfOnDemandPrice = 100,
+///                 InstanceType = "m4.xlarge",
+///                 WeightedCapacity = 1,
+///             },
+///             new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigArgs
+///             {
+///                 EbsConfigs = new[]
+///                 {
+///                     new Aws.Emr.Inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs
+///                     {
+///                         Size = 100,
+///                         Type = "gp2",
+///                         VolumesPerInstance = 1,
+///                     },
+///                 },
+///                 BidPriceAsPercentageOfOnDemandPrice = 100,
+///                 InstanceType = "m4.2xlarge",
+///                 WeightedCapacity = 2,
+///             },
+///         },
+///         ClusterId = example.Id,
 ///         Name = "task fleet",
 ///         TargetOnDemandCapacity = 1,
 ///         TargetSpotCapacity = 1,
@@ -1153,44 +1156,6 @@ import 'cluster_state.dart';
 /// 				TargetOnDemandCapacity: pulumi.Int(1),
 /// 			},
 /// 			CoreInstanceFleet: &emr.ClusterCoreInstanceFleetArgs{
-/// 				InstanceTypeConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigArray{
-/// 					&emr.ClusterCoreInstanceFleetInstanceTypeConfigArgs{
-/// 						BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(80),
-/// 						EbsConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArray{
-/// 							&emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs{
-/// 								Size:               pulumi.Int(100),
-/// 								Type:               pulumi.String("gp2"),
-/// 								VolumesPerInstance: pulumi.Int(1),
-/// 							},
-/// 						},
-/// 						InstanceType:     pulumi.String("m3.xlarge"),
-/// 						WeightedCapacity: pulumi.Int(1),
-/// 					},
-/// 					&emr.ClusterCoreInstanceFleetInstanceTypeConfigArgs{
-/// 						BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
-/// 						EbsConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArray{
-/// 							&emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs{
-/// 								Size:               pulumi.Int(100),
-/// 								Type:               pulumi.String("gp2"),
-/// 								VolumesPerInstance: pulumi.Int(1),
-/// 							},
-/// 						},
-/// 						InstanceType:     pulumi.String("m4.xlarge"),
-/// 						WeightedCapacity: pulumi.Int(1),
-/// 					},
-/// 					&emr.ClusterCoreInstanceFleetInstanceTypeConfigArgs{
-/// 						BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
-/// 						EbsConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArray{
-/// 							&emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs{
-/// 								Size:               pulumi.Int(100),
-/// 								Type:               pulumi.String("gp2"),
-/// 								VolumesPerInstance: pulumi.Int(1),
-/// 							},
-/// 						},
-/// 						InstanceType:     pulumi.String("m4.2xlarge"),
-/// 						WeightedCapacity: pulumi.Int(2),
-/// 					},
-/// 				},
 /// 				LaunchSpecifications: &emr.ClusterCoreInstanceFleetLaunchSpecificationsArgs{
 /// 					SpotSpecifications: emr.ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationArray{
 /// 						&emr.ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationArgs{
@@ -1199,6 +1164,44 @@ import 'cluster_state.dart';
 /// 							TimeoutAction:          pulumi.String("SWITCH_TO_ON_DEMAND"),
 /// 							TimeoutDurationMinutes: pulumi.Int(10),
 /// 						},
+/// 					},
+/// 				},
+/// 				InstanceTypeConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigArray{
+/// 					&emr.ClusterCoreInstanceFleetInstanceTypeConfigArgs{
+/// 						EbsConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArray{
+/// 							&emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs{
+/// 								Size:               pulumi.Int(100),
+/// 								Type:               pulumi.String("gp2"),
+/// 								VolumesPerInstance: pulumi.Int(1),
+/// 							},
+/// 						},
+/// 						BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(80),
+/// 						InstanceType:                        pulumi.String("m3.xlarge"),
+/// 						WeightedCapacity:                    pulumi.Int(1),
+/// 					},
+/// 					&emr.ClusterCoreInstanceFleetInstanceTypeConfigArgs{
+/// 						EbsConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArray{
+/// 							&emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs{
+/// 								Size:               pulumi.Int(100),
+/// 								Type:               pulumi.String("gp2"),
+/// 								VolumesPerInstance: pulumi.Int(1),
+/// 							},
+/// 						},
+/// 						BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
+/// 						InstanceType:                        pulumi.String("m4.xlarge"),
+/// 						WeightedCapacity:                    pulumi.Int(1),
+/// 					},
+/// 					&emr.ClusterCoreInstanceFleetInstanceTypeConfigArgs{
+/// 						EbsConfigs: emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArray{
+/// 							&emr.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs{
+/// 								Size:               pulumi.Int(100),
+/// 								Type:               pulumi.String("gp2"),
+/// 								VolumesPerInstance: pulumi.Int(1),
+/// 							},
+/// 						},
+/// 						BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
+/// 						InstanceType:                        pulumi.String("m4.2xlarge"),
+/// 						WeightedCapacity:                    pulumi.Int(2),
 /// 					},
 /// 				},
 /// 				Name:                   pulumi.String("core fleet"),
@@ -1210,33 +1213,6 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = emr.NewInstanceFleet(ctx, "task", &emr.InstanceFleetArgs{
-/// 			ClusterId: example.ID().ToIDOutput().ToStringOutput(),
-/// 			InstanceTypeConfigs: emr.InstanceFleetInstanceTypeConfigArray{
-/// 				&emr.InstanceFleetInstanceTypeConfigArgs{
-/// 					BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
-/// 					EbsConfigs: emr.InstanceFleetInstanceTypeConfigEbsConfigArray{
-/// 						&emr.InstanceFleetInstanceTypeConfigEbsConfigArgs{
-/// 							Size:               pulumi.Int(100),
-/// 							Type:               pulumi.String("gp2"),
-/// 							VolumesPerInstance: pulumi.Int(1),
-/// 						},
-/// 					},
-/// 					InstanceType:     pulumi.String("m4.xlarge"),
-/// 					WeightedCapacity: pulumi.Int(1),
-/// 				},
-/// 				&emr.InstanceFleetInstanceTypeConfigArgs{
-/// 					BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
-/// 					EbsConfigs: emr.InstanceFleetInstanceTypeConfigEbsConfigArray{
-/// 						&emr.InstanceFleetInstanceTypeConfigEbsConfigArgs{
-/// 							Size:               pulumi.Int(100),
-/// 							Type:               pulumi.String("gp2"),
-/// 							VolumesPerInstance: pulumi.Int(1),
-/// 						},
-/// 					},
-/// 					InstanceType:     pulumi.String("m4.2xlarge"),
-/// 					WeightedCapacity: pulumi.Int(2),
-/// 				},
-/// 			},
 /// 			LaunchSpecifications: &emr.InstanceFleetLaunchSpecificationsArgs{
 /// 				SpotSpecifications: emr.InstanceFleetLaunchSpecificationsSpotSpecificationArray{
 /// 					&emr.InstanceFleetLaunchSpecificationsSpotSpecificationArgs{
@@ -1247,6 +1223,33 @@ import 'cluster_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			InstanceTypeConfigs: emr.InstanceFleetInstanceTypeConfigArray{
+/// 				&emr.InstanceFleetInstanceTypeConfigArgs{
+/// 					EbsConfigs: emr.InstanceFleetInstanceTypeConfigEbsConfigArray{
+/// 						&emr.InstanceFleetInstanceTypeConfigEbsConfigArgs{
+/// 							Size:               pulumi.Int(100),
+/// 							Type:               pulumi.String("gp2"),
+/// 							VolumesPerInstance: pulumi.Int(1),
+/// 						},
+/// 					},
+/// 					BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
+/// 					InstanceType:                        pulumi.String("m4.xlarge"),
+/// 					WeightedCapacity:                    pulumi.Int(1),
+/// 				},
+/// 				&emr.InstanceFleetInstanceTypeConfigArgs{
+/// 					EbsConfigs: emr.InstanceFleetInstanceTypeConfigEbsConfigArray{
+/// 						&emr.InstanceFleetInstanceTypeConfigEbsConfigArgs{
+/// 							Size:               pulumi.Int(100),
+/// 							Type:               pulumi.String("gp2"),
+/// 							VolumesPerInstance: pulumi.Int(1),
+/// 						},
+/// 					},
+/// 					BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
+/// 					InstanceType:                        pulumi.String("m4.2xlarge"),
+/// 					WeightedCapacity:                    pulumi.Int(2),
+/// 				},
+/// 			},
+/// 			ClusterId:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                   pulumi.String("task fleet"),
 /// 			TargetOnDemandCapacity: pulumi.Int(1),
 /// 			TargetSpotCapacity:     pulumi.Int(1),
@@ -1275,34 +1278,6 @@ import 'cluster_state.dart';
 ///     target_on_demand_capacity = 1
 ///   }
 ///   core_instance_fleet = {
-///     instance_type_configs = [{
-///       "bidPriceAsPercentageOfOnDemandPrice" = 80
-///       "ebsConfigs" = [{
-///         "size"               = 100
-///         "type"               = "gp2"
-///         "volumesPerInstance" = 1
-///       }]
-///       "instanceType"     = "m3.xlarge"
-///       "weightedCapacity" = 1
-///       }, {
-///       "bidPriceAsPercentageOfOnDemandPrice" = 100
-///       "ebsConfigs" = [{
-///         "size"               = 100
-///         "type"               = "gp2"
-///         "volumesPerInstance" = 1
-///       }]
-///       "instanceType"     = "m4.xlarge"
-///       "weightedCapacity" = 1
-///       }, {
-///       "bidPriceAsPercentageOfOnDemandPrice" = 100
-///       "ebsConfigs" = [{
-///         "size"               = 100
-///         "type"               = "gp2"
-///         "volumesPerInstance" = 1
-///       }]
-///       "instanceType"     = "m4.2xlarge"
-///       "weightedCapacity" = 2
-///     }]
 ///     launch_specifications = {
 ///       spot_specifications = [{
 ///         "allocationStrategy"     = "capacity-optimized"
@@ -1311,33 +1286,40 @@ import 'cluster_state.dart';
 ///         "timeoutDurationMinutes" = 10
 ///       }]
 ///     }
+///     instance_type_configs = [{
+///       "ebsConfigs" = [{
+///         "size"               = 100
+///         "type"               = "gp2"
+///         "volumesPerInstance" = 1
+///       }]
+///       "bidPriceAsPercentageOfOnDemandPrice" = 80
+///       "instanceType"                        = "m3.xlarge"
+///       "weightedCapacity"                    = 1
+///       }, {
+///       "ebsConfigs" = [{
+///         "size"               = 100
+///         "type"               = "gp2"
+///         "volumesPerInstance" = 1
+///       }]
+///       "bidPriceAsPercentageOfOnDemandPrice" = 100
+///       "instanceType"                        = "m4.xlarge"
+///       "weightedCapacity"                    = 1
+///       }, {
+///       "ebsConfigs" = [{
+///         "size"               = 100
+///         "type"               = "gp2"
+///         "volumesPerInstance" = 1
+///       }]
+///       "bidPriceAsPercentageOfOnDemandPrice" = 100
+///       "instanceType"                        = "m4.2xlarge"
+///       "weightedCapacity"                    = 2
+///     }]
 ///     name                      = "core fleet"
 ///     target_on_demand_capacity = 2
 ///     target_spot_capacity      = 2
 ///   }
 /// }
 /// resource "aws_emr_instancefleet" "task" {
-///   cluster_id = aws_emr_cluster.example.id
-///   instance_type_configs {
-///     bid_price_as_percentage_of_on_demand_price = 100
-///     ebs_configs {
-///       size                 = 100
-///       type                 = "gp2"
-///       volumes_per_instance = 1
-///     }
-///     instance_type     = "m4.xlarge"
-///     weighted_capacity = 1
-///   }
-///   instance_type_configs {
-///     bid_price_as_percentage_of_on_demand_price = 100
-///     ebs_configs {
-///       size                 = 100
-///       type                 = "gp2"
-///       volumes_per_instance = 1
-///     }
-///     instance_type     = "m4.2xlarge"
-///     weighted_capacity = 2
-///   }
 ///   launch_specifications = {
 ///     spot_specifications = [{
 ///       "allocationStrategy"     = "capacity-optimized"
@@ -1346,6 +1328,27 @@ import 'cluster_state.dart';
 ///       "timeoutDurationMinutes" = 10
 ///     }]
 ///   }
+///   instance_type_configs {
+///     ebs_configs {
+///       size                 = 100
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
+///     bid_price_as_percentage_of_on_demand_price = 100
+///     instance_type                              = "m4.xlarge"
+///     weighted_capacity                          = 1
+///   }
+///   instance_type_configs {
+///     ebs_configs {
+///       size                 = 100
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
+///     bid_price_as_percentage_of_on_demand_price = 100
+///     instance_type                              = "m4.2xlarge"
+///     weighted_capacity                          = 2
+///   }
+///   cluster_id                = aws_emr_cluster.example.id
 ///   name                      = "task fleet"
 ///   target_on_demand_capacity = 1
 ///   target_spot_capacity      = 1
@@ -1362,16 +1365,16 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceFleetArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceFleetInstanceTypeConfigArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetArgs;
-/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs;
-/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetLaunchSpecificationsArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import com.pulumi.aws.emr.InstanceFleet;
 /// import com.pulumi.aws.emr.InstanceFleetArgs;
-/// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigArgs;
-/// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import com.pulumi.aws.emr.inputs.InstanceFleetLaunchSpecificationsArgs;
 /// import com.pulumi.aws.emr.inputs.InstanceFleetLaunchSpecificationsSpotSpecificationArgs;
+/// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigArgs;
+/// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1393,37 +1396,6 @@ import 'cluster_state.dart';
 ///                 .targetOnDemandCapacity(1)
 ///                 .build())
 ///             .coreInstanceFleet(ClusterCoreInstanceFleetArgs.builder()
-///                 .instanceTypeConfigs(
-///                     ClusterCoreInstanceFleetInstanceTypeConfigArgs.builder()
-///                         .bidPriceAsPercentageOfOnDemandPrice(80.0)
-///                         .ebsConfigs(ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
-///                             .size(100)
-///                             .type("gp2")
-///                             .volumesPerInstance(1)
-///                             .build())
-///                         .instanceType("m3.xlarge")
-///                         .weightedCapacity(1)
-///                         .build(),
-///                     ClusterCoreInstanceFleetInstanceTypeConfigArgs.builder()
-///                         .bidPriceAsPercentageOfOnDemandPrice(100.0)
-///                         .ebsConfigs(ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
-///                             .size(100)
-///                             .type("gp2")
-///                             .volumesPerInstance(1)
-///                             .build())
-///                         .instanceType("m4.xlarge")
-///                         .weightedCapacity(1)
-///                         .build(),
-///                     ClusterCoreInstanceFleetInstanceTypeConfigArgs.builder()
-///                         .bidPriceAsPercentageOfOnDemandPrice(100.0)
-///                         .ebsConfigs(ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
-///                             .size(100)
-///                             .type("gp2")
-///                             .volumesPerInstance(1)
-///                             .build())
-///                         .instanceType("m4.2xlarge")
-///                         .weightedCapacity(2)
-///                         .build())
 ///                 .launchSpecifications(ClusterCoreInstanceFleetLaunchSpecificationsArgs.builder()
 ///                     .spotSpecifications(ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationArgs.builder()
 ///                         .allocationStrategy("capacity-optimized")
@@ -1432,6 +1404,37 @@ import 'cluster_state.dart';
 ///                         .timeoutDurationMinutes(10)
 ///                         .build())
 ///                     .build())
+///                 .instanceTypeConfigs(
+///                     ClusterCoreInstanceFleetInstanceTypeConfigArgs.builder()
+///                         .ebsConfigs(ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
+///                             .size(100)
+///                             .type("gp2")
+///                             .volumesPerInstance(1)
+///                             .build())
+///                         .bidPriceAsPercentageOfOnDemandPrice(80.0)
+///                         .instanceType("m3.xlarge")
+///                         .weightedCapacity(1)
+///                         .build(),
+///                     ClusterCoreInstanceFleetInstanceTypeConfigArgs.builder()
+///                         .ebsConfigs(ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
+///                             .size(100)
+///                             .type("gp2")
+///                             .volumesPerInstance(1)
+///                             .build())
+///                         .bidPriceAsPercentageOfOnDemandPrice(100.0)
+///                         .instanceType("m4.xlarge")
+///                         .weightedCapacity(1)
+///                         .build(),
+///                     ClusterCoreInstanceFleetInstanceTypeConfigArgs.builder()
+///                         .ebsConfigs(ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
+///                             .size(100)
+///                             .type("gp2")
+///                             .volumesPerInstance(1)
+///                             .build())
+///                         .bidPriceAsPercentageOfOnDemandPrice(100.0)
+///                         .instanceType("m4.2xlarge")
+///                         .weightedCapacity(2)
+///                         .build())
 ///                 .name("core fleet")
 ///                 .targetOnDemandCapacity(2)
 ///                 .targetSpotCapacity(2)
@@ -1439,28 +1442,6 @@ import 'cluster_state.dart';
 ///             .build());
 ///
 ///         var task = new InstanceFleet("task", InstanceFleetArgs.builder()
-///             .clusterId(example.id())
-///             .instanceTypeConfigs(
-///                 InstanceFleetInstanceTypeConfigArgs.builder()
-///                     .bidPriceAsPercentageOfOnDemandPrice(100.0)
-///                     .ebsConfigs(InstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
-///                         .size(100)
-///                         .type("gp2")
-///                         .volumesPerInstance(1)
-///                         .build())
-///                     .instanceType("m4.xlarge")
-///                     .weightedCapacity(1)
-///                     .build(),
-///                 InstanceFleetInstanceTypeConfigArgs.builder()
-///                     .bidPriceAsPercentageOfOnDemandPrice(100.0)
-///                     .ebsConfigs(InstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
-///                         .size(100)
-///                         .type("gp2")
-///                         .volumesPerInstance(1)
-///                         .build())
-///                     .instanceType("m4.2xlarge")
-///                     .weightedCapacity(2)
-///                     .build())
 ///             .launchSpecifications(InstanceFleetLaunchSpecificationsArgs.builder()
 ///                 .spotSpecifications(InstanceFleetLaunchSpecificationsSpotSpecificationArgs.builder()
 ///                     .allocationStrategy("capacity-optimized")
@@ -1469,6 +1450,28 @@ import 'cluster_state.dart';
 ///                     .timeoutDurationMinutes(10)
 ///                     .build())
 ///                 .build())
+///             .instanceTypeConfigs(
+///                 InstanceFleetInstanceTypeConfigArgs.builder()
+///                     .ebsConfigs(InstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
+///                         .size(100)
+///                         .type("gp2")
+///                         .volumesPerInstance(1)
+///                         .build())
+///                     .bidPriceAsPercentageOfOnDemandPrice(100.0)
+///                     .instanceType("m4.xlarge")
+///                     .weightedCapacity(1)
+///                     .build(),
+///                 InstanceFleetInstanceTypeConfigArgs.builder()
+///                     .ebsConfigs(InstanceFleetInstanceTypeConfigEbsConfigArgs.builder()
+///                         .size(100)
+///                         .type("gp2")
+///                         .volumesPerInstance(1)
+///                         .build())
+///                     .bidPriceAsPercentageOfOnDemandPrice(100.0)
+///                     .instanceType("m4.2xlarge")
+///                     .weightedCapacity(2)
+///                     .build())
+///             .clusterId(example.id())
 ///             .name("task fleet")
 ///             .targetOnDemandCapacity(1)
 ///             .targetSpotCapacity(1)
@@ -1487,62 +1490,62 @@ import 'cluster_state.dart';
 ///           - instanceType: m4.xlarge
 ///         targetOnDemandCapacity: 1
 ///       coreInstanceFleet:
-///         instanceTypeConfigs:
-///           - bidPriceAsPercentageOfOnDemandPrice: 80
-///             ebsConfigs:
-///               - size: 100
-///                 type: gp2
-///                 volumesPerInstance: 1
-///             instanceType: m3.xlarge
-///             weightedCapacity: 1
-///           - bidPriceAsPercentageOfOnDemandPrice: 100
-///             ebsConfigs:
-///               - size: 100
-///                 type: gp2
-///                 volumesPerInstance: 1
-///             instanceType: m4.xlarge
-///             weightedCapacity: 1
-///           - bidPriceAsPercentageOfOnDemandPrice: 100
-///             ebsConfigs:
-///               - size: 100
-///                 type: gp2
-///                 volumesPerInstance: 1
-///             instanceType: m4.2xlarge
-///             weightedCapacity: 2
 ///         launchSpecifications:
 ///           spotSpecifications:
 ///             - allocationStrategy: capacity-optimized
 ///               blockDurationMinutes: 0
 ///               timeoutAction: SWITCH_TO_ON_DEMAND
 ///               timeoutDurationMinutes: 10
+///         instanceTypeConfigs:
+///           - ebsConfigs:
+///               - size: 100
+///                 type: gp2
+///                 volumesPerInstance: 1
+///             bidPriceAsPercentageOfOnDemandPrice: 80
+///             instanceType: m3.xlarge
+///             weightedCapacity: 1
+///           - ebsConfigs:
+///               - size: 100
+///                 type: gp2
+///                 volumesPerInstance: 1
+///             bidPriceAsPercentageOfOnDemandPrice: 100
+///             instanceType: m4.xlarge
+///             weightedCapacity: 1
+///           - ebsConfigs:
+///               - size: 100
+///                 type: gp2
+///                 volumesPerInstance: 1
+///             bidPriceAsPercentageOfOnDemandPrice: 100
+///             instanceType: m4.2xlarge
+///             weightedCapacity: 2
 ///         name: core fleet
 ///         targetOnDemandCapacity: 2
 ///         targetSpotCapacity: 2
 ///   task:
 ///     type: aws:emr:InstanceFleet
 ///     properties:
-///       clusterId: ${example.id}
-///       instanceTypeConfigs:
-///         - bidPriceAsPercentageOfOnDemandPrice: 100
-///           ebsConfigs:
-///             - size: 100
-///               type: gp2
-///               volumesPerInstance: 1
-///           instanceType: m4.xlarge
-///           weightedCapacity: 1
-///         - bidPriceAsPercentageOfOnDemandPrice: 100
-///           ebsConfigs:
-///             - size: 100
-///               type: gp2
-///               volumesPerInstance: 1
-///           instanceType: m4.2xlarge
-///           weightedCapacity: 2
 ///       launchSpecifications:
 ///         spotSpecifications:
 ///           - allocationStrategy: capacity-optimized
 ///             blockDurationMinutes: 0
 ///             timeoutAction: TERMINATE_CLUSTER
 ///             timeoutDurationMinutes: 10
+///       instanceTypeConfigs:
+///         - ebsConfigs:
+///             - size: 100
+///               type: gp2
+///               volumesPerInstance: 1
+///           bidPriceAsPercentageOfOnDemandPrice: 100
+///           instanceType: m4.xlarge
+///           weightedCapacity: 1
+///         - ebsConfigs:
+///             - size: 100
+///               type: gp2
+///               volumesPerInstance: 1
+///           bidPriceAsPercentageOfOnDemandPrice: 100
+///           instanceType: m4.2xlarge
+///           weightedCapacity: 2
+///       clusterId: ${example.id}
 ///       name: task fleet
 ///       targetOnDemandCapacity: 1
 ///       targetSpotCapacity: 1
@@ -1559,26 +1562,29 @@ import 'cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.emr.Cluster("example", {steps: [{
-///     actionOnFailure: "TERMINATE_CLUSTER",
-///     name: "Setup Hadoop Debugging",
 ///     hadoopJarStep: {
 ///         jar: "command-runner.jar",
 ///         args: ["state-pusher-script"],
 ///     },
-/// }]});
+///     actionOnFailure: "TERMINATE_CLUSTER",
+///     name: "Setup Hadoop Debugging",
+/// }]}, {
+///     ignoreChanges: ["steps"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
 /// example = aws.emr.Cluster("example", steps=[{
-///     "action_on_failure": "TERMINATE_CLUSTER",
-///     "name": "Setup Hadoop Debugging",
 ///     "hadoop_jar_step": {
 ///         "jar": "command-runner.jar",
 ///         "args": ["state-pusher-script"],
 ///     },
-/// }])
+///     "action_on_failure": "TERMINATE_CLUSTER",
+///     "name": "Setup Hadoop Debugging",
+/// }],
+/// opts = pulumi.ResourceOptions(ignore_changes=["steps"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1594,8 +1600,6 @@ import 'cluster_state.dart';
 ///         {
 ///             new Aws.Emr.Inputs.ClusterStepArgs
 ///             {
-///                 ActionOnFailure = "TERMINATE_CLUSTER",
-///                 Name = "Setup Hadoop Debugging",
 ///                 HadoopJarStep = new Aws.Emr.Inputs.ClusterStepHadoopJarStepArgs
 ///                 {
 ///                     Jar = "command-runner.jar",
@@ -1604,7 +1608,15 @@ import 'cluster_state.dart';
 ///                         "state-pusher-script",
 ///                     },
 ///                 },
+///                 ActionOnFailure = "TERMINATE_CLUSTER",
+///                 Name = "Setup Hadoop Debugging",
 ///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "steps",
 ///         },
 ///     });
 ///
@@ -1623,17 +1635,19 @@ import 'cluster_state.dart';
 /// 		_, err := emr.NewCluster(ctx, "example", &emr.ClusterArgs{
 /// 			Steps: emr.ClusterStepArray{
 /// 				&emr.ClusterStepArgs{
-/// 					ActionOnFailure: pulumi.String("TERMINATE_CLUSTER"),
-/// 					Name:            pulumi.String("Setup Hadoop Debugging"),
 /// 					HadoopJarStep: &emr.ClusterStepHadoopJarStepArgs{
 /// 						Jar: pulumi.String("command-runner.jar"),
 /// 						Args: pulumi.StringArray{
 /// 							pulumi.String("state-pusher-script"),
 /// 						},
 /// 					},
+/// 					ActionOnFailure: pulumi.String("TERMINATE_CLUSTER"),
+/// 					Name:            pulumi.String("Setup Hadoop Debugging"),
 /// 				},
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"steps",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -1651,13 +1665,16 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_emr_cluster" "example" {
+///   lifecycle {
+///     ignore_changes = [steps]
+///   }
 ///   steps {
-///     action_on_failure = "TERMINATE_CLUSTER"
-///     name              = "Setup Hadoop Debugging"
 ///     hadoop_jar_step = {
 ///       jar  = "command-runner.jar"
 ///       args = ["state-pusher-script"]
 ///     }
+///     action_on_failure = "TERMINATE_CLUSTER"
+///     name              = "Setup Hadoop Debugging"
 ///   }
 /// }
 /// ```
@@ -1671,6 +1688,7 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.emr.ClusterArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterStepArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterStepHadoopJarStepArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1686,14 +1704,16 @@ import 'cluster_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Cluster("example", ClusterArgs.builder()
 ///             .steps(ClusterStepArgs.builder()
-///                 .actionOnFailure("TERMINATE_CLUSTER")
-///                 .name("Setup Hadoop Debugging")
 ///                 .hadoopJarStep(ClusterStepHadoopJarStepArgs.builder()
 ///                     .jar("command-runner.jar")
 ///                     .args("state-pusher-script")
 ///                     .build())
+///                 .actionOnFailure("TERMINATE_CLUSTER")
+///                 .name("Setup Hadoop Debugging")
 ///                 .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("steps")
+///                 .build());
 ///
 ///     }
 /// }
@@ -1704,12 +1724,15 @@ import 'cluster_state.dart';
 ///     type: aws:emr:Cluster
 ///     properties:
 ///       steps:
-///         - actionOnFailure: TERMINATE_CLUSTER
-///           name: Setup Hadoop Debugging
-///           hadoopJarStep:
+///         - hadoopJarStep:
 ///             jar: command-runner.jar
 ///             args:
 ///               - state-pusher-script
+///           actionOnFailure: TERMINATE_CLUSTER
+///           name: Setup Hadoop Debugging
+///     options:
+///       ignoreChanges:
+///         - steps
 /// ```
 ///
 ///
@@ -1727,8 +1750,6 @@ import 'cluster_state.dart';
 /// // Map public IP on launch must be enabled for public (Internet accessible) subnets
 /// const example = new aws.ec2.Subnet("example", {mapPublicIpOnLaunch: true});
 /// const exampleCluster = new aws.emr.Cluster("example", {
-///     releaseLabel: "emr-5.24.1",
-///     terminationProtection: true,
 ///     ec2Attributes: {
 ///         subnetId: example.id,
 ///     },
@@ -1736,6 +1757,8 @@ import 'cluster_state.dart';
 ///         instanceCount: 3,
 ///     },
 ///     coreInstanceGroup: {},
+///     releaseLabel: "emr-5.24.1",
+///     terminationProtection: true,
 /// });
 /// ```
 /// ```python
@@ -1747,15 +1770,15 @@ import 'cluster_state.dart';
 /// # Map public IP on launch must be enabled for public (Internet accessible) subnets
 /// example = aws.ec2.Subnet("example", map_public_ip_on_launch=True)
 /// example_cluster = aws.emr.Cluster("example",
-///     release_label="emr-5.24.1",
-///     termination_protection=True,
 ///     ec2_attributes={
 ///         "subnet_id": example.id,
 ///     },
 ///     master_instance_group={
 ///         "instance_count": 3,
 ///     },
-///     core_instance_group={})
+///     core_instance_group={},
+///     release_label="emr-5.24.1",
+///     termination_protection=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1775,8 +1798,6 @@ import 'cluster_state.dart';
 ///
 ///     var exampleCluster = new Aws.Emr.Cluster("example", new()
 ///     {
-///         ReleaseLabel = "emr-5.24.1",
-///         TerminationProtection = true,
 ///         Ec2Attributes = new Aws.Emr.Inputs.ClusterEc2AttributesArgs
 ///         {
 ///             SubnetId = example.Id,
@@ -1786,6 +1807,8 @@ import 'cluster_state.dart';
 ///             InstanceCount = 3,
 ///         },
 ///         CoreInstanceGroup = null,
+///         ReleaseLabel = "emr-5.24.1",
+///         TerminationProtection = true,
 ///     });
 ///
 /// });
@@ -1811,15 +1834,15 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = emr.NewCluster(ctx, "example", &emr.ClusterArgs{
-/// 			ReleaseLabel:          pulumi.String("emr-5.24.1"),
-/// 			TerminationProtection: pulumi.Bool(true),
 /// 			Ec2Attributes: &emr.ClusterEc2AttributesArgs{
 /// 				SubnetId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			MasterInstanceGroup: &emr.ClusterMasterInstanceGroupArgs{
 /// 				InstanceCount: pulumi.Int(3),
 /// 			},
-/// 			CoreInstanceGroup: &emr.ClusterCoreInstanceGroupArgs{},
+/// 			CoreInstanceGroup:     &emr.ClusterCoreInstanceGroupArgs{},
+/// 			ReleaseLabel:          pulumi.String("emr-5.24.1"),
+/// 			TerminationProtection: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1844,8 +1867,6 @@ import 'cluster_state.dart';
 ///   map_public_ip_on_launch = true
 /// }
 /// resource "aws_emr_cluster" "example" {
-///   release_label          = "emr-5.24.1"
-///   termination_protection = true
 ///   ec2_attributes = {
 ///     subnet_id = aws_ec2_subnet.example.id
 ///   }
@@ -1855,7 +1876,9 @@ import 'cluster_state.dart';
 ///   }
 ///   # ... other configuration ...
 ///   # Master instance count must be set to 3
-///   core_instance_group = {}
+///   core_instance_group    = {}
+///   release_label          = "emr-5.24.1"
+///   termination_protection = true
 /// }
 /// ```
 /// ```java
@@ -1892,8 +1915,6 @@ import 'cluster_state.dart';
 ///             .build());
 ///
 ///         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
-///             .releaseLabel("emr-5.24.1")
-///             .terminationProtection(true)
 ///             .ec2Attributes(ClusterEc2AttributesArgs.builder()
 ///                 .subnetId(example.id())
 ///                 .build())
@@ -1902,6 +1923,8 @@ import 'cluster_state.dart';
 ///                 .build())
 ///             .coreInstanceGroup(ClusterCoreInstanceGroupArgs.builder()
 ///                 .build())
+///             .releaseLabel("emr-5.24.1")
+///             .terminationProtection(true)
 ///             .build());
 ///
 ///     }
@@ -1921,13 +1944,13 @@ import 'cluster_state.dart';
 ///     type: aws:emr:Cluster
 ///     name: example
 ///     properties:
-///       releaseLabel: emr-5.24.1
-///       terminationProtection: true
 ///       ec2Attributes:
 ///         subnetId: ${example.id}
 ///       masterInstanceGroup:
 ///         instanceCount: 3
 ///       coreInstanceGroup: {}
+///       releaseLabel: emr-5.24.1
+///       terminationProtection: true
 /// ```
 ///
 ///
@@ -1946,13 +1969,15 @@ import 'cluster_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.emr.Cluster("example", {});
+/// const example = new aws.emr.Cluster("example", {}, {
+///     ignoreChanges: ["kerberosAttributes"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.emr.Cluster("example")
+/// example = aws.emr.Cluster("example", opts = pulumi.ResourceOptions(ignore_changes=["kerberosAttributes"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1962,7 +1987,15 @@ import 'cluster_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Aws.Emr.Cluster("example");
+///     var example = new Aws.Emr.Cluster("example", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "kerberosAttributes",
+///         },
+///     });
 ///
 /// });
 /// ```
@@ -1976,7 +2009,9 @@ import 'cluster_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := emr.NewCluster(ctx, "example", nil)
+/// 		_, err := emr.NewCluster(ctx, "example", nil, pulumi.IgnoreChanges([]string{
+/// 			"kerberosAttributes",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -1994,6 +2029,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_emr_cluster" "example" {
+///   lifecycle {
+///     ignore_changes = [kerberosAttributes]
+///   }
 /// }
 /// ```
 /// ```java
@@ -2003,6 +2041,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.Cluster;
+/// import com.pulumi.aws.emr.ClusterArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2016,7 +2056,9 @@ import 'cluster_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new Cluster("example");
+///         var example = new Cluster("example", ClusterArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("kerberosAttributes")
+///             .build());
 ///
 ///     }
 /// }
@@ -2025,6 +2067,9 @@ import 'cluster_state.dart';
 /// resources:
 ///   example:
 ///     type: aws:emr:Cluster
+///     options:
+///       ignoreChanges:
+///         - kerberosAttributes
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// JSON string for selecting additional features such as adding proxy information. Note: Currently there is no API to retrieve the value of this argument after EMR cluster creation from provider, therefore the provider cannot detect drift from the actual EMR cluster if its value is changed outside the provider.
@@ -2038,7 +2083,7 @@ class Cluster extends pulumi.CustomResource {
   /// IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
   late final pulumi.Output<String?> autoscalingRole;
   /// Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> bootstrapActions;
+  late final pulumi.Output<List<ClusterBootstrapAction>?> bootstrapActions;
   late final pulumi.Output<String> clusterState;
   /// List of configurations supplied for the EMR cluster you are creating. Supply a configuration object for applications to override their default configuration. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
   late final pulumi.Output<String?> configurations;
@@ -2259,7 +2304,7 @@ class Cluster extends pulumi.CustomResource {
   /// Amazon Linux release for all nodes in a cluster launch RunJobFlow request. If not specified, Amazon EMR uses the latest validated Amazon Linux release for cluster launch.
   late final pulumi.Output<String?> osReleaseLabel;
   /// The specified placement group configuration for an Amazon EMR cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> placementGroupConfigs;
+  late final pulumi.Output<List<ClusterPlacementGroupConfig>?> placementGroupConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Release label for the Amazon EMR release.
@@ -2275,7 +2320,7 @@ class Cluster extends pulumi.CustomResource {
   /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `releaseLabel` 5.28.0 or greater (default is 1).
   late final pulumi.Output<int?> stepConcurrencyLevel;
   /// List of steps to run when creating the cluster. See below. It is highly recommended to utilize the lifecycle resource options block with `ignoreChanges` if other steps are being managed outside of this provider.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<ClusterStep>> steps;
   /// list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -2301,14 +2346,14 @@ class Cluster extends pulumi.CustomResource {
           'aws:emr/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     additionalInfo = registerOutput<String?>('additionalInfo');
-    applications = registerOutput<List<String>?>('applications');
+    applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     autoTerminationPolicy = registerOutput<ClusterAutoTerminationPolicy?>('autoTerminationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoTerminationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoscalingRole = registerOutput<String?>('autoscalingRole');
-    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>('bootstrapActions');
+    bootstrapActions = registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBootstrapAction>(guardedValue, (value) => ClusterBootstrapAction.fromMap((value as Map).cast<String, dynamic>())); });
     clusterState = registerOutput<String>('clusterState');
     configurations = registerOutput<String?>('configurations');
     configurationsJson = registerOutput<String?>('configurationsJson');
@@ -2319,7 +2364,7 @@ class Cluster extends pulumi.CustomResource {
     ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEc2Attributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keepJobFlowAliveWhenNoSteps = registerOutput<bool>('keepJobFlowAliveWhenNoSteps');
     kerberosAttributes = registerOutput<ClusterKerberosAttributes?>('kerberosAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKerberosAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    listStepsStates = registerOutput<List<String>?>('listStepsStates');
+    listStepsStates = registerOutput<List<String>?>('listStepsStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logEncryptionKmsKeyId = registerOutput<String?>('logEncryptionKmsKeyId');
     logUri = registerOutput<String?>('logUri');
     masterInstanceFleet = registerOutput<ClusterMasterInstanceFleet>('masterInstanceFleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterInstanceFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2327,16 +2372,16 @@ class Cluster extends pulumi.CustomResource {
     masterPublicDns = registerOutput<String>('masterPublicDns');
     this.name = registerOutput<String>('name');
     osReleaseLabel = registerOutput<String?>('osReleaseLabel');
-    placementGroupConfigs = registerOutput<List<Map<String, dynamic>>?>('placementGroupConfigs');
+    placementGroupConfigs = registerOutput<List<ClusterPlacementGroupConfig>?>('placementGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterPlacementGroupConfig>(guardedValue, (value) => ClusterPlacementGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     releaseLabel = registerOutput<String>('releaseLabel');
     scaleDownBehavior = registerOutput<String>('scaleDownBehavior');
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     serviceRole = registerOutput<String>('serviceRole');
     stepConcurrencyLevel = registerOutput<int?>('stepConcurrencyLevel');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    steps = registerOutput<List<ClusterStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStep>(guardedValue, (value) => ClusterStep.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationProtection = registerOutput<bool>('terminationProtection');
     unhealthyNodeReplacement = registerOutput<bool?>('unhealthyNodeReplacement');
     visibleToAllUsers = registerOutput<bool?>('visibleToAllUsers');
@@ -2347,11 +2392,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2366,11 +2412,11 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     additionalInfo = registerOutput<String?>('additionalInfo');
-    applications = registerOutput<List<String>?>('applications');
+    applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     autoTerminationPolicy = registerOutput<ClusterAutoTerminationPolicy?>('autoTerminationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoTerminationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoscalingRole = registerOutput<String?>('autoscalingRole');
-    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>('bootstrapActions');
+    bootstrapActions = registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBootstrapAction>(guardedValue, (value) => ClusterBootstrapAction.fromMap((value as Map).cast<String, dynamic>())); });
     clusterState = registerOutput<String>('clusterState');
     configurations = registerOutput<String?>('configurations');
     configurationsJson = registerOutput<String?>('configurationsJson');
@@ -2381,7 +2427,7 @@ class Cluster extends pulumi.CustomResource {
     ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEc2Attributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keepJobFlowAliveWhenNoSteps = registerOutput<bool>('keepJobFlowAliveWhenNoSteps');
     kerberosAttributes = registerOutput<ClusterKerberosAttributes?>('kerberosAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKerberosAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    listStepsStates = registerOutput<List<String>?>('listStepsStates');
+    listStepsStates = registerOutput<List<String>?>('listStepsStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logEncryptionKmsKeyId = registerOutput<String?>('logEncryptionKmsKeyId');
     logUri = registerOutput<String?>('logUri');
     masterInstanceFleet = registerOutput<ClusterMasterInstanceFleet>('masterInstanceFleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterInstanceFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2389,16 +2435,64 @@ class Cluster extends pulumi.CustomResource {
     masterPublicDns = registerOutput<String>('masterPublicDns');
     this.name = registerOutput<String>('name');
     osReleaseLabel = registerOutput<String?>('osReleaseLabel');
-    placementGroupConfigs = registerOutput<List<Map<String, dynamic>>?>('placementGroupConfigs');
+    placementGroupConfigs = registerOutput<List<ClusterPlacementGroupConfig>?>('placementGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterPlacementGroupConfig>(guardedValue, (value) => ClusterPlacementGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     releaseLabel = registerOutput<String>('releaseLabel');
     scaleDownBehavior = registerOutput<String>('scaleDownBehavior');
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     serviceRole = registerOutput<String>('serviceRole');
     stepConcurrencyLevel = registerOutput<int?>('stepConcurrencyLevel');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    steps = registerOutput<List<ClusterStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStep>(guardedValue, (value) => ClusterStep.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminationProtection = registerOutput<bool>('terminationProtection');
+    unhealthyNodeReplacement = registerOutput<bool?>('unhealthyNodeReplacement');
+    visibleToAllUsers = registerOutput<bool?>('visibleToAllUsers');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:emr/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalInfo = registerOutput<String?>('additionalInfo');
+    applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    autoTerminationPolicy = registerOutput<ClusterAutoTerminationPolicy?>('autoTerminationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoTerminationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoscalingRole = registerOutput<String?>('autoscalingRole');
+    bootstrapActions = registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBootstrapAction>(guardedValue, (value) => ClusterBootstrapAction.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterState = registerOutput<String>('clusterState');
+    configurations = registerOutput<String?>('configurations');
+    configurationsJson = registerOutput<String?>('configurationsJson');
+    coreInstanceFleet = registerOutput<ClusterCoreInstanceFleet>('coreInstanceFleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCoreInstanceFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    coreInstanceGroup = registerOutput<ClusterCoreInstanceGroup>('coreInstanceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCoreInstanceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customAmiId = registerOutput<String?>('customAmiId');
+    ebsRootVolumeSize = registerOutput<int?>('ebsRootVolumeSize');
+    ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEc2Attributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keepJobFlowAliveWhenNoSteps = registerOutput<bool>('keepJobFlowAliveWhenNoSteps');
+    kerberosAttributes = registerOutput<ClusterKerberosAttributes?>('kerberosAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKerberosAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    listStepsStates = registerOutput<List<String>?>('listStepsStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logEncryptionKmsKeyId = registerOutput<String?>('logEncryptionKmsKeyId');
+    logUri = registerOutput<String?>('logUri');
+    masterInstanceFleet = registerOutput<ClusterMasterInstanceFleet>('masterInstanceFleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterInstanceFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    masterInstanceGroup = registerOutput<ClusterMasterInstanceGroup>('masterInstanceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterInstanceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    masterPublicDns = registerOutput<String>('masterPublicDns');
+    this.name = registerOutput<String>('name');
+    osReleaseLabel = registerOutput<String?>('osReleaseLabel');
+    placementGroupConfigs = registerOutput<List<ClusterPlacementGroupConfig>?>('placementGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterPlacementGroupConfig>(guardedValue, (value) => ClusterPlacementGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    releaseLabel = registerOutput<String>('releaseLabel');
+    scaleDownBehavior = registerOutput<String>('scaleDownBehavior');
+    securityConfiguration = registerOutput<String?>('securityConfiguration');
+    serviceRole = registerOutput<String>('serviceRole');
+    stepConcurrencyLevel = registerOutput<int?>('stepConcurrencyLevel');
+    steps = registerOutput<List<ClusterStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStep>(guardedValue, (value) => ClusterStep.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationProtection = registerOutput<bool>('terminationProtection');
     unhealthyNodeReplacement = registerOutput<bool?>('unhealthyNodeReplacement');
     visibleToAllUsers = registerOutput<bool?>('visibleToAllUsers');

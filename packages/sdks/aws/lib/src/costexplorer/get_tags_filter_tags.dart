@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsFilterTags {
-  final pulumi.Input<String>? key;
-  final pulumi.Input<List<String>>? matchOptions;
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<String?>? key;
+  final pulumi.Input<List<String>?>? matchOptions;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GetTagsFilterTags].
   /// [key] Optional.

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mltransform_args.dart';
+import 'mltransform_input_record_table.dart';
 import 'mltransform_parameters.dart';
+import 'mltransform_schema.dart';
 import 'mltransform_state.dart';
 
 /// Provides a Glue ML Transform resource.
@@ -14,23 +16,20 @@ import 'mltransform_state.dart';
 ///
 /// const testCatalogDatabase = new aws.glue.CatalogDatabase("test", {name: "example"});
 /// const testCatalogTable = new aws.glue.CatalogTable("test", {
-///     name: "example",
-///     databaseName: testCatalogDatabase.name,
-///     owner: "my_owner",
-///     retention: 1,
-///     tableType: "VIRTUAL_VIEW",
-///     viewExpandedText: "view_expanded_text_1",
-///     viewOriginalText: "view_original_text_1",
 ///     storageDescriptor: {
-///         bucketColumns: ["bucket_column_1"],
-///         compressed: false,
-///         inputFormat: "SequenceFileInputFormat",
-///         location: "my_location",
-///         numberOfBuckets: 1,
-///         outputFormat: "SequenceFileInputFormat",
-///         storedAsSubDirectories: false,
-///         parameters: {
-///             param1: "param1_val",
+///         serDeInfo: {
+///             name: "ser_de_name",
+///             parameters: {
+///                 param1: "param_val_1",
+///             },
+///             serializationLibrary: "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe",
+///         },
+///         skewedInfo: {
+///             skewedColumnNames: ["my_column_1"],
+///             skewedColumnValueLocationMaps: {
+///                 my_column_1: "my_column_1_val_loc_map",
+///             },
+///             skewedColumnValues: ["skewed_val_1"],
 ///         },
 ///         columns: [
 ///             {
@@ -44,23 +43,19 @@ import 'mltransform_state.dart';
 ///                 comment: "my_column2_comment",
 ///             },
 ///         ],
-///         serDeInfo: {
-///             name: "ser_de_name",
-///             parameters: {
-///                 param1: "param_val_1",
-///             },
-///             serializationLibrary: "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe",
-///         },
 ///         sortColumns: [{
 ///             column: "my_column_1",
 ///             sortOrder: 1,
 ///         }],
-///         skewedInfo: {
-///             skewedColumnNames: ["my_column_1"],
-///             skewedColumnValueLocationMaps: {
-///                 my_column_1: "my_column_1_val_loc_map",
-///             },
-///             skewedColumnValues: ["skewed_val_1"],
+///         bucketColumns: ["bucket_column_1"],
+///         compressed: false,
+///         inputFormat: "SequenceFileInputFormat",
+///         location: "my_location",
+///         numberOfBuckets: 1,
+///         outputFormat: "SequenceFileInputFormat",
+///         storedAsSubDirectories: false,
+///         parameters: {
+///             param1: "param1_val",
 ///         },
 ///     },
 ///     partitionKeys: [
@@ -75,23 +70,30 @@ import 'mltransform_state.dart';
 ///             comment: "my_column_2_comment",
 ///         },
 ///     ],
+///     name: "example",
+///     databaseName: testCatalogDatabase.name,
+///     owner: "my_owner",
+///     retention: 1,
+///     tableType: "VIRTUAL_VIEW",
+///     viewExpandedText: "view_expanded_text_1",
+///     viewOriginalText: "view_original_text_1",
 ///     parameters: {
 ///         param1: "param1_val",
 ///     },
 /// });
 /// const test = new aws.glue.MLTransform("test", {
-///     name: "example",
-///     roleArn: testAwsIamRole.arn,
+///     parameters: {
+///         findMatchesParameters: {
+///             primaryKeyColumnName: "my_column_1",
+///         },
+///         transformType: "FIND_MATCHES",
+///     },
 ///     inputRecordTables: [{
 ///         databaseName: testCatalogTable.databaseName,
 ///         tableName: testCatalogTable.name,
 ///     }],
-///     parameters: {
-///         transformType: "FIND_MATCHES",
-///         findMatchesParameters: {
-///             primaryKeyColumnName: "my_column_1",
-///         },
-///     },
+///     name: "example",
+///     roleArn: testAwsIamRole.arn,
 /// }, {
 ///     dependsOn: [testAwsIamRolePolicyAttachment],
 /// });
@@ -102,23 +104,20 @@ import 'mltransform_state.dart';
 ///
 /// test_catalog_database = aws.glue.CatalogDatabase("test", name="example")
 /// test_catalog_table = aws.glue.CatalogTable("test",
-///     name="example",
-///     database_name=test_catalog_database.name,
-///     owner="my_owner",
-///     retention=1,
-///     table_type="VIRTUAL_VIEW",
-///     view_expanded_text="view_expanded_text_1",
-///     view_original_text="view_original_text_1",
 ///     storage_descriptor={
-///         "bucket_columns": ["bucket_column_1"],
-///         "compressed": False,
-///         "input_format": "SequenceFileInputFormat",
-///         "location": "my_location",
-///         "number_of_buckets": 1,
-///         "output_format": "SequenceFileInputFormat",
-///         "stored_as_sub_directories": False,
-///         "parameters": {
-///             "param1": "param1_val",
+///         "ser_de_info": {
+///             "name": "ser_de_name",
+///             "parameters": {
+///                 "param1": "param_val_1",
+///             },
+///             "serialization_library": "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe",
+///         },
+///         "skewed_info": {
+///             "skewed_column_names": ["my_column_1"],
+///             "skewed_column_value_location_maps": {
+///                 "my_column_1": "my_column_1_val_loc_map",
+///             },
+///             "skewed_column_values": ["skewed_val_1"],
 ///         },
 ///         "columns": [
 ///             {
@@ -132,23 +131,19 @@ import 'mltransform_state.dart';
 ///                 "comment": "my_column2_comment",
 ///             },
 ///         ],
-///         "ser_de_info": {
-///             "name": "ser_de_name",
-///             "parameters": {
-///                 "param1": "param_val_1",
-///             },
-///             "serialization_library": "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe",
-///         },
 ///         "sort_columns": [{
 ///             "column": "my_column_1",
 ///             "sort_order": 1,
 ///         }],
-///         "skewed_info": {
-///             "skewed_column_names": ["my_column_1"],
-///             "skewed_column_value_location_maps": {
-///                 "my_column_1": "my_column_1_val_loc_map",
-///             },
-///             "skewed_column_values": ["skewed_val_1"],
+///         "bucket_columns": ["bucket_column_1"],
+///         "compressed": False,
+///         "input_format": "SequenceFileInputFormat",
+///         "location": "my_location",
+///         "number_of_buckets": 1,
+///         "output_format": "SequenceFileInputFormat",
+///         "stored_as_sub_directories": False,
+///         "parameters": {
+///             "param1": "param1_val",
 ///         },
 ///     },
 ///     partition_keys=[
@@ -163,22 +158,29 @@ import 'mltransform_state.dart';
 ///             "comment": "my_column_2_comment",
 ///         },
 ///     ],
+///     name="example",
+///     database_name=test_catalog_database.name,
+///     owner="my_owner",
+///     retention=1,
+///     table_type="VIRTUAL_VIEW",
+///     view_expanded_text="view_expanded_text_1",
+///     view_original_text="view_original_text_1",
 ///     parameters={
 ///         "param1": "param1_val",
 ///     })
 /// test = aws.glue.MLTransform("test",
-///     name="example",
-///     role_arn=test_aws_iam_role["arn"],
+///     parameters={
+///         "find_matches_parameters": {
+///             "primary_key_column_name": "my_column_1",
+///         },
+///         "transform_type": "FIND_MATCHES",
+///     },
 ///     input_record_tables=[{
 ///         "database_name": test_catalog_table.database_name,
 ///         "table_name": test_catalog_table.name,
 ///     }],
-///     parameters={
-///         "transform_type": "FIND_MATCHES",
-///         "find_matches_parameters": {
-///             "primary_key_column_name": "my_column_1",
-///         },
-///     },
+///     name="example",
+///     role_arn=test_aws_iam_role["arn"],
 ///     opts = pulumi.ResourceOptions(depends_on=[test_aws_iam_role_policy_attachment]))
 /// ```
 /// ```csharp
@@ -196,28 +198,31 @@ import 'mltransform_state.dart';
 ///
 ///     var testCatalogTable = new Aws.Glue.CatalogTable("test", new()
 ///     {
-///         Name = "example",
-///         DatabaseName = testCatalogDatabase.Name,
-///         Owner = "my_owner",
-///         Retention = 1,
-///         TableType = "VIRTUAL_VIEW",
-///         ViewExpandedText = "view_expanded_text_1",
-///         ViewOriginalText = "view_original_text_1",
 ///         StorageDescriptor = new Aws.Glue.Inputs.CatalogTableStorageDescriptorArgs
 ///         {
-///             BucketColumns = new[]
+///             SerDeInfo = new Aws.Glue.Inputs.CatalogTableStorageDescriptorSerDeInfoArgs
 ///             {
-///                 "bucket_column_1",
+///                 Name = "ser_de_name",
+///                 Parameters =
+///                 {
+///                     { "param1", "param_val_1" },
+///                 },
+///                 SerializationLibrary = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe",
 ///             },
-///             Compressed = false,
-///             InputFormat = "SequenceFileInputFormat",
-///             Location = "my_location",
-///             NumberOfBuckets = 1,
-///             OutputFormat = "SequenceFileInputFormat",
-///             StoredAsSubDirectories = false,
-///             Parameters =
+///             SkewedInfo = new Aws.Glue.Inputs.CatalogTableStorageDescriptorSkewedInfoArgs
 ///             {
-///                 { "param1", "param1_val" },
+///                 SkewedColumnNames = new[]
+///                 {
+///                     "my_column_1",
+///                 },
+///                 SkewedColumnValueLocationMaps =
+///                 {
+///                     { "my_column_1", "my_column_1_val_loc_map" },
+///                 },
+///                 SkewedColumnValues = new[]
+///                 {
+///                     "skewed_val_1",
+///                 },
 ///             },
 ///             Columns = new[]
 ///             {
@@ -234,15 +239,6 @@ import 'mltransform_state.dart';
 ///                     Comment = "my_column2_comment",
 ///                 },
 ///             },
-///             SerDeInfo = new Aws.Glue.Inputs.CatalogTableStorageDescriptorSerDeInfoArgs
-///             {
-///                 Name = "ser_de_name",
-///                 Parameters =
-///                 {
-///                     { "param1", "param_val_1" },
-///                 },
-///                 SerializationLibrary = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe",
-///             },
 ///             SortColumns = new[]
 ///             {
 ///                 new Aws.Glue.Inputs.CatalogTableStorageDescriptorSortColumnArgs
@@ -251,20 +247,19 @@ import 'mltransform_state.dart';
 ///                     SortOrder = 1,
 ///                 },
 ///             },
-///             SkewedInfo = new Aws.Glue.Inputs.CatalogTableStorageDescriptorSkewedInfoArgs
+///             BucketColumns = new[]
 ///             {
-///                 SkewedColumnNames = new[]
-///                 {
-///                     "my_column_1",
-///                 },
-///                 SkewedColumnValueLocationMaps =
-///                 {
-///                     { "my_column_1", "my_column_1_val_loc_map" },
-///                 },
-///                 SkewedColumnValues = new[]
-///                 {
-///                     "skewed_val_1",
-///                 },
+///                 "bucket_column_1",
+///             },
+///             Compressed = false,
+///             InputFormat = "SequenceFileInputFormat",
+///             Location = "my_location",
+///             NumberOfBuckets = 1,
+///             OutputFormat = "SequenceFileInputFormat",
+///             StoredAsSubDirectories = false,
+///             Parameters =
+///             {
+///                 { "param1", "param1_val" },
 ///             },
 ///         },
 ///         PartitionKeys = new[]
@@ -282,6 +277,13 @@ import 'mltransform_state.dart';
 ///                 Comment = "my_column_2_comment",
 ///             },
 ///         },
+///         Name = "example",
+///         DatabaseName = testCatalogDatabase.Name,
+///         Owner = "my_owner",
+///         Retention = 1,
+///         TableType = "VIRTUAL_VIEW",
+///         ViewExpandedText = "view_expanded_text_1",
+///         ViewOriginalText = "view_original_text_1",
 ///         Parameters =
 ///         {
 ///             { "param1", "param1_val" },
@@ -290,8 +292,14 @@ import 'mltransform_state.dart';
 ///
 ///     var test = new Aws.Glue.MLTransform("test", new()
 ///     {
-///         Name = "example",
-///         RoleArn = testAwsIamRole.Arn,
+///         Parameters = new Aws.Glue.Inputs.MLTransformParametersArgs
+///         {
+///             FindMatchesParameters = new Aws.Glue.Inputs.MLTransformParametersFindMatchesParametersArgs
+///             {
+///                 PrimaryKeyColumnName = "my_column_1",
+///             },
+///             TransformType = "FIND_MATCHES",
+///         },
 ///         InputRecordTables = new[]
 ///         {
 ///             new Aws.Glue.Inputs.MLTransformInputRecordTableArgs
@@ -300,14 +308,8 @@ import 'mltransform_state.dart';
 ///                 TableName = testCatalogTable.Name,
 ///             },
 ///         },
-///         Parameters = new Aws.Glue.Inputs.MLTransformParametersArgs
-///         {
-///             TransformType = "FIND_MATCHES",
-///             FindMatchesParameters = new Aws.Glue.Inputs.MLTransformParametersFindMatchesParametersArgs
-///             {
-///                 PrimaryKeyColumnName = "my_column_1",
-///             },
-///         },
+///         Name = "example",
+///         RoleArn = testAwsIamRole.Arn,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -335,25 +337,24 @@ import 'mltransform_state.dart';
 /// 			return err
 /// 		}
 /// 		testCatalogTable, err := glue.NewCatalogTable(ctx, "test", &glue.CatalogTableArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			DatabaseName:     testCatalogDatabase.Name,
-/// 			Owner:            pulumi.String("my_owner"),
-/// 			Retention:        pulumi.Int(1),
-/// 			TableType:        pulumi.String("VIRTUAL_VIEW"),
-/// 			ViewExpandedText: pulumi.String("view_expanded_text_1"),
-/// 			ViewOriginalText: pulumi.String("view_original_text_1"),
 /// 			StorageDescriptor: &glue.CatalogTableStorageDescriptorArgs{
-/// 				BucketColumns: pulumi.StringArray{
-/// 					pulumi.String("bucket_column_1"),
+/// 				SerDeInfo: &glue.CatalogTableStorageDescriptorSerDeInfoArgs{
+/// 					Name: pulumi.String("ser_de_name"),
+/// 					Parameters: pulumi.StringMap{
+/// 						"param1": pulumi.String("param_val_1"),
+/// 					},
+/// 					SerializationLibrary: pulumi.String("org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"),
 /// 				},
-/// 				Compressed:             pulumi.Bool(false),
-/// 				InputFormat:            pulumi.String("SequenceFileInputFormat"),
-/// 				Location:               pulumi.String("my_location"),
-/// 				NumberOfBuckets:        pulumi.Int(1),
-/// 				OutputFormat:           pulumi.String("SequenceFileInputFormat"),
-/// 				StoredAsSubDirectories: pulumi.Bool(false),
-/// 				Parameters: pulumi.StringMap{
-/// 					"param1": pulumi.String("param1_val"),
+/// 				SkewedInfo: &glue.CatalogTableStorageDescriptorSkewedInfoArgs{
+/// 					SkewedColumnNames: pulumi.StringArray{
+/// 						pulumi.String("my_column_1"),
+/// 					},
+/// 					SkewedColumnValueLocationMaps: pulumi.StringMap{
+/// 						"my_column_1": pulumi.String("my_column_1_val_loc_map"),
+/// 					},
+/// 					SkewedColumnValues: pulumi.StringArray{
+/// 						pulumi.String("skewed_val_1"),
+/// 					},
 /// 				},
 /// 				Columns: glue.CatalogTableStorageDescriptorColumnArray{
 /// 					&glue.CatalogTableStorageDescriptorColumnArgs{
@@ -367,29 +368,23 @@ import 'mltransform_state.dart';
 /// 						Comment: pulumi.String("my_column2_comment"),
 /// 					},
 /// 				},
-/// 				SerDeInfo: &glue.CatalogTableStorageDescriptorSerDeInfoArgs{
-/// 					Name: pulumi.String("ser_de_name"),
-/// 					Parameters: pulumi.StringMap{
-/// 						"param1": pulumi.String("param_val_1"),
-/// 					},
-/// 					SerializationLibrary: pulumi.String("org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"),
-/// 				},
 /// 				SortColumns: glue.CatalogTableStorageDescriptorSortColumnArray{
 /// 					&glue.CatalogTableStorageDescriptorSortColumnArgs{
 /// 						Column:    pulumi.String("my_column_1"),
 /// 						SortOrder: pulumi.Int(1),
 /// 					},
 /// 				},
-/// 				SkewedInfo: &glue.CatalogTableStorageDescriptorSkewedInfoArgs{
-/// 					SkewedColumnNames: pulumi.StringArray{
-/// 						pulumi.String("my_column_1"),
-/// 					},
-/// 					SkewedColumnValueLocationMaps: pulumi.StringMap{
-/// 						"my_column_1": pulumi.String("my_column_1_val_loc_map"),
-/// 					},
-/// 					SkewedColumnValues: pulumi.StringArray{
-/// 						pulumi.String("skewed_val_1"),
-/// 					},
+/// 				BucketColumns: pulumi.StringArray{
+/// 					pulumi.String("bucket_column_1"),
+/// 				},
+/// 				Compressed:             pulumi.Bool(false),
+/// 				InputFormat:            pulumi.String("SequenceFileInputFormat"),
+/// 				Location:               pulumi.String("my_location"),
+/// 				NumberOfBuckets:        pulumi.Int(1),
+/// 				OutputFormat:           pulumi.String("SequenceFileInputFormat"),
+/// 				StoredAsSubDirectories: pulumi.Bool(false),
+/// 				Parameters: pulumi.StringMap{
+/// 					"param1": pulumi.String("param1_val"),
 /// 				},
 /// 			},
 /// 			PartitionKeys: glue.CatalogTablePartitionKeyArray{
@@ -404,6 +399,13 @@ import 'mltransform_state.dart';
 /// 					Comment: pulumi.String("my_column_2_comment"),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			DatabaseName:     testCatalogDatabase.Name,
+/// 			Owner:            pulumi.String("my_owner"),
+/// 			Retention:        pulumi.Int(1),
+/// 			TableType:        pulumi.String("VIRTUAL_VIEW"),
+/// 			ViewExpandedText: pulumi.String("view_expanded_text_1"),
+/// 			ViewOriginalText: pulumi.String("view_original_text_1"),
 /// 			Parameters: pulumi.StringMap{
 /// 				"param1": pulumi.String("param1_val"),
 /// 			},
@@ -412,20 +414,20 @@ import 'mltransform_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = glue.NewMLTransform(ctx, "test", &glue.MLTransformArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(testAwsIamRole.Arn),
+/// 			Parameters: &glue.MLTransformParametersArgs{
+/// 				FindMatchesParameters: &glue.MLTransformParametersFindMatchesParametersArgs{
+/// 					PrimaryKeyColumnName: pulumi.String("my_column_1"),
+/// 				},
+/// 				TransformType: pulumi.String("FIND_MATCHES"),
+/// 			},
 /// 			InputRecordTables: glue.MLTransformInputRecordTableArray{
 /// 				&glue.MLTransformInputRecordTableArgs{
 /// 					DatabaseName: testCatalogTable.DatabaseName,
 /// 					TableName:    testCatalogTable.Name,
 /// 				},
 /// 			},
-/// 			Parameters: &glue.MLTransformParametersArgs{
-/// 				TransformType: pulumi.String("FIND_MATCHES"),
-/// 				FindMatchesParameters: &glue.MLTransformParametersFindMatchesParametersArgs{
-/// 					PrimaryKeyColumnName: pulumi.String("my_column_1"),
-/// 				},
-/// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(testAwsIamRole.Arn),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testAwsIamRolePolicyAttachment,
 /// 		}))
@@ -447,40 +449,37 @@ import 'mltransform_state.dart';
 ///
 /// resource "aws_glue_mltransform" "test" {
 ///   depends_on = [testAwsIamRolePolicyAttachment]
-///   name       = "example"
-///   role_arn   = testAwsIamRole.arn
+///   parameters = {
+///     find_matches_parameters = {
+///       primary_key_column_name = "my_column_1"
+///     }
+///     transform_type = "FIND_MATCHES"
+///   }
 ///   input_record_tables {
 ///     database_name = aws_glue_catalogtable.test.database_name
 ///     table_name    = aws_glue_catalogtable.test.name
 ///   }
-///   parameters = {
-///     transform_type = "FIND_MATCHES"
-///     find_matches_parameters = {
-///       primary_key_column_name = "my_column_1"
-///     }
-///   }
+///   name     = "example"
+///   role_arn = testAwsIamRole.arn
 /// }
 /// resource "aws_glue_catalogdatabase" "test" {
 ///   name = "example"
 /// }
 /// resource "aws_glue_catalogtable" "test" {
-///   name               = "example"
-///   database_name      = aws_glue_catalogdatabase.test.name
-///   owner              = "my_owner"
-///   retention          = 1
-///   table_type         = "VIRTUAL_VIEW"
-///   view_expanded_text = "view_expanded_text_1"
-///   view_original_text = "view_original_text_1"
 ///   storage_descriptor = {
-///     bucket_columns            = ["bucket_column_1"]
-///     compressed                = false
-///     input_format              = "SequenceFileInputFormat"
-///     location                  = "my_location"
-///     number_of_buckets         = 1
-///     output_format             = "SequenceFileInputFormat"
-///     stored_as_sub_directories = false
-///     parameters = {
-///       "param1" = "param1_val"
+///     ser_de_info = {
+///       name = "ser_de_name"
+///       parameters = {
+///         "param1" = "param_val_1"
+///       }
+///       serialization_library = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
+///     }
+///     skewed_info = {
+///       skewed_column_names = ["my_column_1"]
+///       skewed_column_value_location_maps = {
+///         "my_column_1" = "my_column_1_val_loc_map"
+///       }
+///       skewed_column_values = ["skewed_val_1"]
 ///     }
 ///     columns = [{
 ///       "name"    = "my_column_1"
@@ -491,23 +490,19 @@ import 'mltransform_state.dart';
 ///       "type"    = "string"
 ///       "comment" = "my_column2_comment"
 ///     }]
-///     ser_de_info = {
-///       name = "ser_de_name"
-///       parameters = {
-///         "param1" = "param_val_1"
-///       }
-///       serialization_library = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
-///     }
 ///     sort_columns = [{
 ///       "column"    = "my_column_1"
 ///       "sortOrder" = 1
 ///     }]
-///     skewed_info = {
-///       skewed_column_names = ["my_column_1"]
-///       skewed_column_value_location_maps = {
-///         "my_column_1" = "my_column_1_val_loc_map"
-///       }
-///       skewed_column_values = ["skewed_val_1"]
+///     bucket_columns            = ["bucket_column_1"]
+///     compressed                = false
+///     input_format              = "SequenceFileInputFormat"
+///     location                  = "my_location"
+///     number_of_buckets         = 1
+///     output_format             = "SequenceFileInputFormat"
+///     stored_as_sub_directories = false
+///     parameters = {
+///       "param1" = "param1_val"
 ///     }
 ///   }
 ///   partition_keys {
@@ -520,6 +515,13 @@ import 'mltransform_state.dart';
 ///     type    = "string"
 ///     comment = "my_column_2_comment"
 ///   }
+///   name               = "example"
+///   database_name      = aws_glue_catalogdatabase.test.name
+///   owner              = "my_owner"
+///   retention          = 1
+///   table_type         = "VIRTUAL_VIEW"
+///   view_expanded_text = "view_expanded_text_1"
+///   view_original_text = "view_original_text_1"
 ///   parameters = {
 ///     "param1" = "param1_val"
 ///   }
@@ -536,16 +538,16 @@ import 'mltransform_state.dart';
 /// import com.pulumi.aws.glue.CatalogTable;
 /// import com.pulumi.aws.glue.CatalogTableArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorArgs;
-/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorColumnArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSerDeInfoArgs;
-/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSortColumnArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSkewedInfoArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorColumnArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSortColumnArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTablePartitionKeyArgs;
 /// import com.pulumi.aws.glue.MLTransform;
 /// import com.pulumi.aws.glue.MLTransformArgs;
-/// import com.pulumi.aws.glue.inputs.MLTransformInputRecordTableArgs;
 /// import com.pulumi.aws.glue.inputs.MLTransformParametersArgs;
 /// import com.pulumi.aws.glue.inputs.MLTransformParametersFindMatchesParametersArgs;
+/// import com.pulumi.aws.glue.inputs.MLTransformInputRecordTableArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -565,22 +567,17 @@ import 'mltransform_state.dart';
 ///             .build());
 ///
 ///         var testCatalogTable = new CatalogTable("testCatalogTable", CatalogTableArgs.builder()
-///             .name("example")
-///             .databaseName(testCatalogDatabase.name())
-///             .owner("my_owner")
-///             .retention(1)
-///             .tableType("VIRTUAL_VIEW")
-///             .viewExpandedText("view_expanded_text_1")
-///             .viewOriginalText("view_original_text_1")
 ///             .storageDescriptor(CatalogTableStorageDescriptorArgs.builder()
-///                 .bucketColumns("bucket_column_1")
-///                 .compressed(false)
-///                 .inputFormat("SequenceFileInputFormat")
-///                 .location("my_location")
-///                 .numberOfBuckets(1)
-///                 .outputFormat("SequenceFileInputFormat")
-///                 .storedAsSubDirectories(false)
-///                 .parameters(Map.of("param1", "param1_val"))
+///                 .serDeInfo(CatalogTableStorageDescriptorSerDeInfoArgs.builder()
+///                     .name("ser_de_name")
+///                     .parameters(Map.of("param1", "param_val_1"))
+///                     .serializationLibrary("org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe")
+///                     .build())
+///                 .skewedInfo(CatalogTableStorageDescriptorSkewedInfoArgs.builder()
+///                     .skewedColumnNames("my_column_1")
+///                     .skewedColumnValueLocationMaps(Map.of("my_column_1", "my_column_1_val_loc_map"))
+///                     .skewedColumnValues("skewed_val_1")
+///                     .build())
 ///                 .columns(
 ///                     CatalogTableStorageDescriptorColumnArgs.builder()
 ///                         .name("my_column_1")
@@ -592,20 +589,18 @@ import 'mltransform_state.dart';
 ///                         .type("string")
 ///                         .comment("my_column2_comment")
 ///                         .build())
-///                 .serDeInfo(CatalogTableStorageDescriptorSerDeInfoArgs.builder()
-///                     .name("ser_de_name")
-///                     .parameters(Map.of("param1", "param_val_1"))
-///                     .serializationLibrary("org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe")
-///                     .build())
 ///                 .sortColumns(CatalogTableStorageDescriptorSortColumnArgs.builder()
 ///                     .column("my_column_1")
 ///                     .sortOrder(1)
 ///                     .build())
-///                 .skewedInfo(CatalogTableStorageDescriptorSkewedInfoArgs.builder()
-///                     .skewedColumnNames("my_column_1")
-///                     .skewedColumnValueLocationMaps(Map.of("my_column_1", "my_column_1_val_loc_map"))
-///                     .skewedColumnValues("skewed_val_1")
-///                     .build())
+///                 .bucketColumns("bucket_column_1")
+///                 .compressed(false)
+///                 .inputFormat("SequenceFileInputFormat")
+///                 .location("my_location")
+///                 .numberOfBuckets(1)
+///                 .outputFormat("SequenceFileInputFormat")
+///                 .storedAsSubDirectories(false)
+///                 .parameters(Map.of("param1", "param1_val"))
 ///                 .build())
 ///             .partitionKeys(
 ///                 CatalogTablePartitionKeyArgs.builder()
@@ -618,22 +613,29 @@ import 'mltransform_state.dart';
 ///                     .type("string")
 ///                     .comment("my_column_2_comment")
 ///                     .build())
+///             .name("example")
+///             .databaseName(testCatalogDatabase.name())
+///             .owner("my_owner")
+///             .retention(1)
+///             .tableType("VIRTUAL_VIEW")
+///             .viewExpandedText("view_expanded_text_1")
+///             .viewOriginalText("view_original_text_1")
 ///             .parameters(Map.of("param1", "param1_val"))
 ///             .build());
 ///
 ///         var test = new MLTransform("test", MLTransformArgs.builder()
-///             .name("example")
-///             .roleArn(testAwsIamRole.arn())
+///             .parameters(MLTransformParametersArgs.builder()
+///                 .findMatchesParameters(MLTransformParametersFindMatchesParametersArgs.builder()
+///                     .primaryKeyColumnName("my_column_1")
+///                     .build())
+///                 .transformType("FIND_MATCHES")
+///                 .build())
 ///             .inputRecordTables(MLTransformInputRecordTableArgs.builder()
 ///                 .databaseName(testCatalogTable.databaseName())
 ///                 .tableName(testCatalogTable.name())
 ///                 .build())
-///             .parameters(MLTransformParametersArgs.builder()
-///                 .transformType("FIND_MATCHES")
-///                 .findMatchesParameters(MLTransformParametersFindMatchesParametersArgs.builder()
-///                     .primaryKeyColumnName("my_column_1")
-///                     .build())
-///                 .build())
+///             .name("example")
+///             .roleArn(testAwsIamRole.arn())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(testAwsIamRolePolicyAttachment)
 ///                 .build());
@@ -646,15 +648,15 @@ import 'mltransform_state.dart';
 ///   test:
 ///     type: aws:glue:MLTransform
 ///     properties:
-///       name: example
-///       roleArn: ${testAwsIamRole.arn}
+///       parameters:
+///         findMatchesParameters:
+///           primaryKeyColumnName: my_column_1
+///         transformType: FIND_MATCHES
 ///       inputRecordTables:
 ///         - databaseName: ${testCatalogTable.databaseName}
 ///           tableName: ${testCatalogTable.name}
-///       parameters:
-///         transformType: FIND_MATCHES
-///         findMatchesParameters:
-///           primaryKeyColumnName: my_column_1
+///       name: example
+///       roleArn: ${testAwsIamRole.arn}
 ///     options:
 ///       dependsOn:
 ///         - ${testAwsIamRolePolicyAttachment}
@@ -667,14 +669,29 @@ import 'mltransform_state.dart';
 ///     type: aws:glue:CatalogTable
 ///     name: test
 ///     properties:
-///       name: example
-///       databaseName: ${testCatalogDatabase.name}
-///       owner: my_owner
-///       retention: 1
-///       tableType: VIRTUAL_VIEW
-///       viewExpandedText: view_expanded_text_1
-///       viewOriginalText: view_original_text_1
 ///       storageDescriptor:
+///         serDeInfo:
+///           name: ser_de_name
+///           parameters:
+///             param1: param_val_1
+///           serializationLibrary: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe
+///         skewedInfo:
+///           skewedColumnNames:
+///             - my_column_1
+///           skewedColumnValueLocationMaps:
+///             my_column_1: my_column_1_val_loc_map
+///           skewedColumnValues:
+///             - skewed_val_1
+///         columns:
+///           - name: my_column_1
+///             type: int
+///             comment: my_column1_comment
+///           - name: my_column_2
+///             type: string
+///             comment: my_column2_comment
+///         sortColumns:
+///           - column: my_column_1
+///             sortOrder: 1
 ///         bucketColumns:
 ///           - bucket_column_1
 ///         compressed: false
@@ -685,28 +702,6 @@ import 'mltransform_state.dart';
 ///         storedAsSubDirectories: false
 ///         parameters:
 ///           param1: param1_val
-///         columns:
-///           - name: my_column_1
-///             type: int
-///             comment: my_column1_comment
-///           - name: my_column_2
-///             type: string
-///             comment: my_column2_comment
-///         serDeInfo:
-///           name: ser_de_name
-///           parameters:
-///             param1: param_val_1
-///           serializationLibrary: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe
-///         sortColumns:
-///           - column: my_column_1
-///             sortOrder: 1
-///         skewedInfo:
-///           skewedColumnNames:
-///             - my_column_1
-///           skewedColumnValueLocationMaps:
-///             my_column_1: my_column_1_val_loc_map
-///           skewedColumnValues:
-///             - skewed_val_1
 ///       partitionKeys:
 ///         - name: my_column_1
 ///           type: int
@@ -714,6 +709,13 @@ import 'mltransform_state.dart';
 ///         - name: my_column_2
 ///           type: string
 ///           comment: my_column_2_comment
+///       name: example
+///       databaseName: ${testCatalogDatabase.name}
+///       owner: my_owner
+///       retention: 1
+///       tableType: VIRTUAL_VIEW
+///       viewExpandedText: view_expanded_text_1
+///       viewOriginalText: view_original_text_1
 ///       parameters:
 ///         param1: param1_val
 /// ```
@@ -727,14 +729,14 @@ import 'mltransform_state.dart';
 /// $ pulumi import aws:glue/mLTransform:MLTransform example tfm-c2cafbe83b1c575f49eaca9939220e2fcd58e2d5
 /// ```
 class MLTransform extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of Glue ML Transform.
+  /// ARN of Glue ML Transform.
   late final pulumi.Output<String> arn;
   /// Description of the ML Transform.
   late final pulumi.Output<String?> description;
   /// The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
   late final pulumi.Output<String> glueVersion;
   /// A list of AWS Glue table definitions used by the transform. see Input Record Tables.
-  late final pulumi.Output<List<Map<String, dynamic>>> inputRecordTables;
+  late final pulumi.Output<List<MLTransformInputRecordTable>> inputRecordTables;
   /// The number of labels available for this transform.
   late final pulumi.Output<int> labelCount;
   /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `maxCapacity` is a mutually exclusive option with `numberOfWorkers` and `workerType`.
@@ -752,7 +754,7 @@ class MLTransform extends pulumi.CustomResource {
   /// The ARN of the IAM role associated with this ML Transform.
   late final pulumi.Output<String> roleArn;
   /// The object that represents the schema that this transform accepts. see Schema.
-  late final pulumi.Output<List<Map<String, dynamic>>> schemas;
+  late final pulumi.Output<List<MLTransformSchema>> schemas;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -774,12 +776,12 @@ class MLTransform extends pulumi.CustomResource {
           'aws:glue/mLTransform:MLTransform',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     glueVersion = registerOutput<String>('glueVersion');
-    inputRecordTables = registerOutput<List<Map<String, dynamic>>>('inputRecordTables');
+    inputRecordTables = registerOutput<List<MLTransformInputRecordTable>>('inputRecordTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MLTransformInputRecordTable>(guardedValue, (value) => MLTransformInputRecordTable.fromMap((value as Map).cast<String, dynamic>())); });
     labelCount = registerOutput<int>('labelCount');
     maxCapacity = registerOutput<double>('maxCapacity');
     maxRetries = registerOutput<int?>('maxRetries');
@@ -788,9 +790,9 @@ class MLTransform extends pulumi.CustomResource {
     parameters = registerOutput<MLTransformParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MLTransformParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    schemas = registerOutput<List<Map<String, dynamic>>>('schemas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    schemas = registerOutput<List<MLTransformSchema>>('schemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MLTransformSchema>(guardedValue, (value) => MLTransformSchema.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
     workerType = registerOutput<String?>('workerType');
   }
@@ -800,11 +802,12 @@ class MLTransform extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MLTransformState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MLTransform._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -821,7 +824,7 @@ class MLTransform extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     glueVersion = registerOutput<String>('glueVersion');
-    inputRecordTables = registerOutput<List<Map<String, dynamic>>>('inputRecordTables');
+    inputRecordTables = registerOutput<List<MLTransformInputRecordTable>>('inputRecordTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MLTransformInputRecordTable>(guardedValue, (value) => MLTransformInputRecordTable.fromMap((value as Map).cast<String, dynamic>())); });
     labelCount = registerOutput<int>('labelCount');
     maxCapacity = registerOutput<double>('maxCapacity');
     maxRetries = registerOutput<int?>('maxRetries');
@@ -830,9 +833,37 @@ class MLTransform extends pulumi.CustomResource {
     parameters = registerOutput<MLTransformParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MLTransformParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    schemas = registerOutput<List<Map<String, dynamic>>>('schemas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    schemas = registerOutput<List<MLTransformSchema>>('schemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MLTransformSchema>(guardedValue, (value) => MLTransformSchema.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeout = registerOutput<int?>('timeout');
+    workerType = registerOutput<String?>('workerType');
+  }
+
+  /// Creates a typed reference to an existing [MLTransform] resource.
+  MLTransform.reference(String urn)
+    : super(
+        'aws:glue/mLTransform:MLTransform',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    glueVersion = registerOutput<String>('glueVersion');
+    inputRecordTables = registerOutput<List<MLTransformInputRecordTable>>('inputRecordTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MLTransformInputRecordTable>(guardedValue, (value) => MLTransformInputRecordTable.fromMap((value as Map).cast<String, dynamic>())); });
+    labelCount = registerOutput<int>('labelCount');
+    maxCapacity = registerOutput<double>('maxCapacity');
+    maxRetries = registerOutput<int?>('maxRetries');
+    this.name = registerOutput<String>('name');
+    numberOfWorkers = registerOutput<int?>('numberOfWorkers');
+    parameters = registerOutput<MLTransformParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MLTransformParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    schemas = registerOutput<List<MLTransformSchema>>('schemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MLTransformSchema>(guardedValue, (value) => MLTransformSchema.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
     workerType = registerOutput<String?>('workerType');
   }

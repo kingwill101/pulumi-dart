@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedPerformanceMetrics {
   /// Whether advanced performance metrics are enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedPerformanceMetrics].
   /// [enabled] Whether advanced performance metrics are enabled.

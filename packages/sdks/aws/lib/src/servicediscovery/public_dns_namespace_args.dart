@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicediscovery_public_dns_namespace_public_dns_namespace_args_doc}
 class PublicDnsNamespaceArgs {
   /// The description that you specify for the namespace when you create it.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the namespace.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the namespace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PublicDnsNamespaceArgs].
   /// [description] The description that you specify for the namespace when you create it.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationAppConfig {
   /// The configuration item to set. Valid values are `opensearchDashboards.dashboardAdmin.users` and `opensearchDashboards.dashboardAdmin.groups`.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The value assigned to the configuration key, such as an IAM user ARN or group name. Must be between 1 and 4096 characters.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ApplicationAppConfig].
   /// [key] The configuration item to set. Valid values are `opensearchDashboards.dashboardAdmin.users` and `opensearchDashboards.dashboardAdmin.groups`.

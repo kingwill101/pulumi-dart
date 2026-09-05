@@ -30,8 +30,8 @@ class GetServerlessCacheCacheUsageLimitsDataStorage {
 
   factory GetServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheCacheUsageLimitsDataStorage(
-      maximum: pulumi.Input.fromValue(map['maximum'] as int),
-      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      maximum: pulumi.Input.fromValue((map['maximum'] as num).toInt()),
+      minimum: pulumi.Input.fromValue((map['minimum'] as num).toInt()),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }

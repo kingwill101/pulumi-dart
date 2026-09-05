@@ -12,11 +12,11 @@ import 'lb_attachment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example = new aws.lightsail.Lb("example", {
 ///     name: "example-load-balancer",
@@ -41,11 +41,11 @@ import 'lb_attachment_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example = aws.lightsail.Lb("example",
 ///     name="example-load-balancer",
 ///     health_check_path="/",
@@ -72,7 +72,6 @@ import 'lb_attachment_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -84,6 +83,7 @@ import 'lb_attachment_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.LightSail.Lb("example", new()
@@ -125,7 +125,6 @@ import 'lb_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -134,6 +133,7 @@ import 'lb_attachment_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -179,11 +179,11 @@ import 'lb_attachment_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
@@ -234,11 +234,11 @@ import 'lb_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new Lb("example", LbArgs.builder()
@@ -292,11 +292,11 @@ import 'lb_attachment_state.dart';
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         state: available
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - opt-in-not-required
+///         state: available
 /// ```
 ///
 ///
@@ -329,7 +329,7 @@ class LbAttachment extends pulumi.CustomResource {
           'aws:lightsail/lbAttachment:LbAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     lbName = registerOutput<String>('lbName');
@@ -341,11 +341,12 @@ class LbAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LbAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LbAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,6 +360,20 @@ class LbAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    instanceName = registerOutput<String>('instanceName');
+    lbName = registerOutput<String>('lbName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LbAttachment] resource.
+  LbAttachment.reference(String urn)
+    : super(
+        'aws:lightsail/lbAttachment:LbAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     instanceName = registerOutput<String>('instanceName');
     lbName = registerOutput<String>('lbName');
     region = registerOutput<String>('region');

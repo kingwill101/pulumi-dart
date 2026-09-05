@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_directconnect_get_router_configuration_get_router_configuration_args_doc}
 class GetRouterConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
   /// There is currently no AWS API to retrieve the full list of `routerTypeIdentifier` values. Here is a list of known `RouterType` objects that can be used:

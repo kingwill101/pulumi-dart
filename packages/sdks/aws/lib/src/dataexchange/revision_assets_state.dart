@@ -7,28 +7,28 @@ import 'revision_assets_timeouts.dart';
 /// Input properties used for looking up and filtering RevisionAssets resources.
 class RevisionAssetsState {
   /// The ARN of the Data Exchange Revision Assets.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// A block to define the asset associated with the revision. See Asset for more details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<RevisionAssetsAsset>>? assets;
+  final pulumi.Input<List<RevisionAssetsAsset>?>? assets;
   /// A comment for the revision. Maximum length is 16,348 characters.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The timestamp when the revision was created, in RFC3339 format.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Unique identifier for the data set associated with the revision.
-  final pulumi.Input<String>? dataSetId;
-  final pulumi.Input<bool>? finalized;
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<String?>? dataSetId;
+  final pulumi.Input<bool?>? finalized;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<RevisionAssetsTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<RevisionAssetsTimeouts?>? timeouts;
   /// The timestamp when the revision was last updated, in RFC3339 format.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [RevisionAssetsState].
   /// [arn] The ARN of the Data Exchange Revision Assets.

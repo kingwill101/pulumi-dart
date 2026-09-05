@@ -7,11 +7,11 @@ import 'anomaly_subscription_threshold_expression_and_tags.dart';
 
 class AnomalySubscriptionThresholdExpressionAnd {
   /// Configuration block for the filter that's based on  values. See Cost Category below.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionAndCostCategory>? costCategory;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionAndCostCategory?>? costCategory;
   /// Configuration block for the specific Dimension to use for.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionAndDimension>? dimension;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionAndDimension?>? dimension;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionAndTags>? tags;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionAndTags?>? tags;
 
   /// Creates a new [AnomalySubscriptionThresholdExpressionAnd].
   /// [costCategory] Configuration block for the filter that's based on  values. See Cost Category below.

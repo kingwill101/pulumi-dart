@@ -10,11 +10,11 @@ class RoutingControlArgs {
   /// ARN of the cluster in which this routing control will reside.
   final pulumi.Input<String> clusterArn;
   /// ARN of the control panel in which this routing control will reside.
-  final pulumi.Input<String>? controlPanelArn;
+  final pulumi.Input<String?>? controlPanelArn;
   /// The name describing the routing control.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RoutingControlArgs].
   /// [clusterArn] ARN of the cluster in which this routing control will reside.

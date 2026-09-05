@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReportPlanReportDeliveryChannel {
   /// List of the format of your reports: CSV, JSON, or both. If not specified, the default format is CSV.
-  final pulumi.Input<List<String>>? formats;
+  final pulumi.Input<List<String>?>? formats;
   /// Unique name of the S3 bucket that receives your reports.
   final pulumi.Input<String> s3BucketName;
   /// Prefix for where Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path: s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name. If not specified, there is no prefix.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
 
   /// Creates a new [ReportPlanReportDeliveryChannel].
   /// [formats] List of the format of your reports: CSV, JSON, or both. If not specified, the default format is CSV.

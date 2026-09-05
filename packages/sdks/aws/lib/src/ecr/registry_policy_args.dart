@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ecr_registry_policy_registry_policy_args_doc}
 class RegistryPolicyArgs {
   /// The policy document. This is a JSON formatted string.
-  final pulumi.Input<String> policy;
+  final pulumi.Input<dynamic> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [RegistryPolicyArgs].
   /// [policy] The policy document. This is a JSON formatted string.
@@ -29,7 +29,7 @@ class RegistryPolicyArgs {
 
   factory RegistryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegistryPolicyArgs(
-      policy: pulumi.Input.fromValue(map['policy'] as String),
+      policy: pulumi.Input.fromValue(map['policy']),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

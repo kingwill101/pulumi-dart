@@ -7,13 +7,13 @@ import 'quick_connect_quick_connect_config_user_config.dart';
 
 class QuickConnectQuickConnectConfig {
   /// Specifies the phone configuration of the Quick Connect. This is required only if `quickConnectType` is `PHONE_NUMBER`. The `phoneConfig` block is documented below.
-  final pulumi.Input<List<QuickConnectQuickConnectConfigPhoneConfig>>? phoneConfigs;
+  final pulumi.Input<List<QuickConnectQuickConnectConfigPhoneConfig>?>? phoneConfigs;
   /// Specifies the queue configuration of the Quick Connect. This is required only if `quickConnectType` is `QUEUE`. The `queueConfig` block is documented below.
-  final pulumi.Input<List<QuickConnectQuickConnectConfigQueueConfig>>? queueConfigs;
+  final pulumi.Input<List<QuickConnectQuickConnectConfigQueueConfig>?>? queueConfigs;
   /// Specifies the configuration type of the quick connect. valid values are `PHONE_NUMBER`, `QUEUE`, `USER`.
   final pulumi.Input<String> quickConnectType;
   /// Specifies the user configuration of the Quick Connect. This is required only if `quickConnectType` is `USER`. The `userConfig` block is documented below.
-  final pulumi.Input<List<QuickConnectQuickConnectConfigUserConfig>>? userConfigs;
+  final pulumi.Input<List<QuickConnectQuickConnectConfigUserConfig>?>? userConfigs;
 
   /// Creates a new [QuickConnectQuickConnectConfig].
   /// [phoneConfigs] Specifies the phone configuration of the Quick Connect. This is required only if `quickConnectType` is `PHONE_NUMBER`. The `phoneConfig` block is documented below.

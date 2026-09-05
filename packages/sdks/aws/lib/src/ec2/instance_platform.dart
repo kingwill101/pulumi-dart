@@ -1,4 +1,6 @@
-enum InstancePlatform {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum InstancePlatform implements pulumi.PulumiEnum<String> {
   linuxUnix("Linux/UNIX"),
   redHatEnterpriseLinux("Red Hat Enterprise Linux"),
   suseLinux("SUSE Linux"),
@@ -9,6 +11,7 @@ enum InstancePlatform {
   windowsWithSqlServerWeb("Windows with SQL Server Web");
 
   const InstancePlatform(this.wireValue);
+  @override
   final String wireValue;
 
   static InstancePlatform fromValue(String value) {

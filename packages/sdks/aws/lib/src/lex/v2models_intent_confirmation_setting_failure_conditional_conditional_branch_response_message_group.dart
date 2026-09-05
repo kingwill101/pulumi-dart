@@ -6,9 +6,9 @@ import 'v2models_intent_confirmation_setting_failure_conditional_conditional_bra
 
 class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupMessage>? message;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupMessage?>? message;
   /// Configuration blocks for message variations to send to the user. When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user. See `variation`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariation>>? variations;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariation>?>? variations;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user. See `message`.

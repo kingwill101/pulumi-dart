@@ -37,12 +37,12 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// });
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "/aws/prometheus/scraper-logs/example"});
 /// const exampleScraperLoggingConfiguration = new aws.amp.ScraperLoggingConfiguration("example", {
-///     scraperId: example.id,
 ///     loggingDestination: {
 ///         cloudwatchLogs: {
 ///             logGroupArn: pulumi.interpolate`${exampleLogGroup.arn}:*`,
 ///         },
 ///     },
+///     scraperId: example.id,
 /// });
 /// ```
 /// ```python
@@ -70,12 +70,12 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// """)
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="/aws/prometheus/scraper-logs/example")
 /// example_scraper_logging_configuration = aws.amp.ScraperLoggingConfiguration("example",
-///     scraper_id=example.id,
 ///     logging_destination={
 ///         "cloudwatch_logs": {
 ///             "log_group_arn": example_log_group.arn.apply(lambda arn: f"{arn}:*"),
 ///         },
-///     })
+///     },
+///     scraper_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -118,7 +118,6 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///
 ///     var exampleScraperLoggingConfiguration = new Aws.Amp.ScraperLoggingConfiguration("example", new()
 ///     {
-///         ScraperId = example.Id,
 ///         LoggingDestination = new Aws.Amp.Inputs.ScraperLoggingConfigurationLoggingDestinationArgs
 ///         {
 ///             CloudwatchLogs = new Aws.Amp.Inputs.ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs
@@ -126,6 +125,7 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///                 LogGroupArn = exampleLogGroup.Arn.Apply(arn => $"{arn}:*"),
 ///             },
 ///         },
+///         ScraperId = example.Id,
 ///     });
 ///
 /// });
@@ -172,7 +172,6 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// return err
 /// }
 /// _, err = amp.NewScraperLoggingConfiguration(ctx, "example", &amp.ScraperLoggingConfigurationArgs{
-/// ScraperId: example.ID().ToIDOutput().ToStringOutput(),
 /// LoggingDestination: &amp.ScraperLoggingConfigurationLoggingDestinationArgs{
 /// CloudwatchLogs: &amp.ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs{
 /// LogGroupArn: exampleLogGroup.Arn.ApplyT(func(arn string) (string, error) {
@@ -180,6 +179,7 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// }).(pulumi.StringOutput),
 /// },
 /// },
+/// ScraperId: example.ID().ToIDOutput().ToStringOutput(),
 /// })
 /// if err != nil {
 /// return err
@@ -215,12 +215,12 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///   name = "/aws/prometheus/scraper-logs/example"
 /// }
 /// resource "aws_amp_scraperloggingconfiguration" "example" {
-///   scraper_id = aws_amp_scraper.example.id
 ///   logging_destination = {
 ///     cloudwatch_logs = {
 ///       log_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
 ///     }
 ///   }
+///   scraper_id = aws_amp_scraper.example.id
 /// }
 /// ```
 /// ```java
@@ -281,12 +281,12 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleScraperLoggingConfiguration = new ScraperLoggingConfiguration("exampleScraperLoggingConfiguration", ScraperLoggingConfigurationArgs.builder()
-///             .scraperId(example.id())
 ///             .loggingDestination(ScraperLoggingConfigurationLoggingDestinationArgs.builder()
 ///                 .cloudwatchLogs(ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs.builder()
 ///                     .logGroupArn(exampleLogGroup.arn().applyValue(_arn -> String.format("%s:*", _arn)))
 ///                     .build())
 ///                 .build())
+///             .scraperId(example.id())
 ///             .build());
 ///
 ///     }
@@ -302,16 +302,16 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.amp.ScraperLoggingConfiguration("example", {
-///     scraperId: exampleAwsPrometheusScraper.id,
-///     scraperComponents: [
-///         "COLLECTOR",
-///         "EXPORTER",
-///     ],
 ///     loggingDestination: {
 ///         cloudwatchLogs: {
 ///             logGroupArn: `${exampleAwsCloudwatchLogGroup.arn}:*`,
 ///         },
 ///     },
+///     scraperId: exampleAwsPrometheusScraper.id,
+///     scraperComponents: [
+///         "COLLECTOR",
+///         "EXPORTER",
+///     ],
 /// });
 /// ```
 /// ```python
@@ -319,16 +319,16 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.amp.ScraperLoggingConfiguration("example",
-///     scraper_id=example_aws_prometheus_scraper["id"],
-///     scraper_components=[
-///         "COLLECTOR",
-///         "EXPORTER",
-///     ],
 ///     logging_destination={
 ///         "cloudwatch_logs": {
 ///             "log_group_arn": f"{example_aws_cloudwatch_log_group['arn']}:*",
 ///         },
-///     })
+///     },
+///     scraper_id=example_aws_prometheus_scraper["id"],
+///     scraper_components=[
+///         "COLLECTOR",
+///         "EXPORTER",
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -340,18 +340,18 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.Amp.ScraperLoggingConfiguration("example", new()
 ///     {
-///         ScraperId = exampleAwsPrometheusScraper.Id,
-///         ScraperComponents = new[]
-///         {
-///             "COLLECTOR",
-///             "EXPORTER",
-///         },
 ///         LoggingDestination = new Aws.Amp.Inputs.ScraperLoggingConfigurationLoggingDestinationArgs
 ///         {
 ///             CloudwatchLogs = new Aws.Amp.Inputs.ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs
 ///             {
 ///                 LogGroupArn = $"{exampleAwsCloudwatchLogGroup.Arn}:*",
 ///             },
+///         },
+///         ScraperId = exampleAwsPrometheusScraper.Id,
+///         ScraperComponents = new[]
+///         {
+///             "COLLECTOR",
+///             "EXPORTER",
 ///         },
 ///     });
 ///
@@ -368,15 +368,15 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := amp.NewScraperLoggingConfiguration(ctx, "example", &amp.ScraperLoggingConfigurationArgs{
-/// 			ScraperId: pulumi.Any(exampleAwsPrometheusScraper.Id),
-/// 			ScraperComponents: pulumi.StringArray{
-/// 				pulumi.String("COLLECTOR"),
-/// 				pulumi.String("EXPORTER"),
-/// 			},
 /// 			LoggingDestination: &amp.ScraperLoggingConfigurationLoggingDestinationArgs{
 /// 				CloudwatchLogs: &amp.ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs{
 /// 					LogGroupArn: pulumi.Sprintf("%v:*", exampleAwsCloudwatchLogGroup.Arn),
 /// 				},
+/// 			},
+/// 			ScraperId: pulumi.Any(exampleAwsPrometheusScraper.Id),
+/// 			ScraperComponents: pulumi.StringArray{
+/// 				pulumi.String("COLLECTOR"),
+/// 				pulumi.String("EXPORTER"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -396,13 +396,13 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraperloggingconfiguration" "example" {
-///   scraper_id         = exampleAwsPrometheusScraper.id
-///   scraper_components = ["COLLECTOR", "EXPORTER"]
 ///   logging_destination = {
 ///     cloudwatch_logs = {
 ///       log_group_arn ="${exampleAwsCloudwatchLogGroup.arn}:*"
 ///     }
 ///   }
+///   scraper_id         = exampleAwsPrometheusScraper.id
+///   scraper_components = ["COLLECTOR", "EXPORTER"]
 /// }
 /// ```
 /// ```java
@@ -429,15 +429,15 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ScraperLoggingConfiguration("example", ScraperLoggingConfigurationArgs.builder()
-///             .scraperId(exampleAwsPrometheusScraper.id())
-///             .scraperComponents(
-///                 "COLLECTOR",
-///                 "EXPORTER")
 ///             .loggingDestination(ScraperLoggingConfigurationLoggingDestinationArgs.builder()
 ///                 .cloudwatchLogs(ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs.builder()
 ///                     .logGroupArn(String.format("%s:*", exampleAwsCloudwatchLogGroup.arn()))
 ///                     .build())
 ///                 .build())
+///             .scraperId(exampleAwsPrometheusScraper.id())
+///             .scraperComponents(
+///                 "COLLECTOR",
+///                 "EXPORTER")
 ///             .build());
 ///
 ///     }
@@ -448,13 +448,13 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:amp:ScraperLoggingConfiguration
 ///     properties:
+///       loggingDestination:
+///         cloudwatchLogs:
+///           logGroupArn: ${exampleAwsCloudwatchLogGroup.arn}:*
 ///       scraperId: ${exampleAwsPrometheusScraper.id}
 ///       scraperComponents:
 ///         - COLLECTOR
 ///         - EXPORTER
-///       loggingDestination:
-///         cloudwatchLogs:
-///           logGroupArn: ${exampleAwsCloudwatchLogGroup.arn}:*
 /// ```
 ///
 ///
@@ -502,11 +502,11 @@ class ScraperLoggingConfiguration extends pulumi.CustomResource {
           'aws:amp/scraperLoggingConfiguration:ScraperLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     loggingDestination = registerOutput<ScraperLoggingConfigurationLoggingDestination>('loggingDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationLoggingDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scraperComponents = registerOutput<List<String>>('scraperComponents');
+    scraperComponents = registerOutput<List<String>>('scraperComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scraperId = registerOutput<String>('scraperId');
     timeouts = registerOutput<ScraperLoggingConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -516,11 +516,12 @@ class ScraperLoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScraperLoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScraperLoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -536,7 +537,23 @@ class ScraperLoggingConfiguration extends pulumi.CustomResource {
         ) {
     loggingDestination = registerOutput<ScraperLoggingConfigurationLoggingDestination>('loggingDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationLoggingDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scraperComponents = registerOutput<List<String>>('scraperComponents');
+    scraperComponents = registerOutput<List<String>>('scraperComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scraperId = registerOutput<String>('scraperId');
+    timeouts = registerOutput<ScraperLoggingConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ScraperLoggingConfiguration] resource.
+  ScraperLoggingConfiguration.reference(String urn)
+    : super(
+        'aws:amp/scraperLoggingConfiguration:ScraperLoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    loggingDestination = registerOutput<ScraperLoggingConfigurationLoggingDestination>('loggingDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationLoggingDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    scraperComponents = registerOutput<List<String>>('scraperComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scraperId = registerOutput<String>('scraperId');
     timeouts = registerOutput<ScraperLoggingConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

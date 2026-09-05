@@ -6,9 +6,9 @@ import 'telemetry_rule_rule_destination_configuration_waf_logging_parameters_log
 
 class TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterCondition {
   /// Condition that matches based on the WAF action. See `actionCondition` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionActionCondition>? actionCondition;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionActionCondition?>? actionCondition;
   /// Condition that matches based on WAF rule labels. See `labelNameCondition` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionLabelNameCondition>? labelNameCondition;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionLabelNameCondition?>? labelNameCondition;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterCondition].
   /// [actionCondition] Condition that matches based on the WAF action. See `actionCondition` below.

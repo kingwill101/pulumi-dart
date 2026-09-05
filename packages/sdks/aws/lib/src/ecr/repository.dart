@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_args.dart';
+import 'repository_encryption_configuration.dart';
 import 'repository_image_scanning_configuration.dart';
+import 'repository_image_tag_mutability_exclusion_filter.dart';
 import 'repository_state.dart';
 
 /// Provides an Elastic Container Registry Repository.
@@ -13,11 +15,11 @@ import 'repository_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.ecr.Repository("foo", {
-///     name: "bar",
-///     imageTagMutability: "MUTABLE",
 ///     imageScanningConfiguration: {
 ///         scanOnPush: true,
 ///     },
+///     name: "bar",
+///     imageTagMutability: "MUTABLE",
 /// });
 /// ```
 /// ```python
@@ -25,11 +27,11 @@ import 'repository_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.ecr.Repository("foo",
-///     name="bar",
-///     image_tag_mutability="MUTABLE",
 ///     image_scanning_configuration={
 ///         "scan_on_push": True,
-///     })
+///     },
+///     name="bar",
+///     image_tag_mutability="MUTABLE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,12 +43,12 @@ import 'repository_state.dart';
 /// {
 ///     var foo = new Aws.Ecr.Repository("foo", new()
 ///     {
-///         Name = "bar",
-///         ImageTagMutability = "MUTABLE",
 ///         ImageScanningConfiguration = new Aws.Ecr.Inputs.RepositoryImageScanningConfigurationArgs
 ///         {
 ///             ScanOnPush = true,
 ///         },
+///         Name = "bar",
+///         ImageTagMutability = "MUTABLE",
 ///     });
 ///
 /// });
@@ -62,11 +64,11 @@ import 'repository_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecr.NewRepository(ctx, "foo", &ecr.RepositoryArgs{
-/// 			Name:               pulumi.String("bar"),
-/// 			ImageTagMutability: pulumi.String("MUTABLE"),
 /// 			ImageScanningConfiguration: &ecr.RepositoryImageScanningConfigurationArgs{
 /// 				ScanOnPush: pulumi.Bool(true),
 /// 			},
+/// 			Name:               pulumi.String("bar"),
+/// 			ImageTagMutability: pulumi.String("MUTABLE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -85,11 +87,11 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "foo" {
-///   name                 = "bar"
-///   image_tag_mutability = "MUTABLE"
 ///   image_scanning_configuration = {
 ///     scan_on_push = true
 ///   }
+///   name                 = "bar"
+///   image_tag_mutability = "MUTABLE"
 /// }
 /// ```
 /// ```java
@@ -115,11 +117,11 @@ import 'repository_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new Repository("foo", RepositoryArgs.builder()
-///             .name("bar")
-///             .imageTagMutability("MUTABLE")
 ///             .imageScanningConfiguration(RepositoryImageScanningConfigurationArgs.builder()
 ///                 .scanOnPush(true)
 ///                 .build())
+///             .name("bar")
+///             .imageTagMutability("MUTABLE")
 ///             .build());
 ///
 ///     }
@@ -130,10 +132,10 @@ import 'repository_state.dart';
 ///   foo:
 ///     type: aws:ecr:Repository
 ///     properties:
-///       name: bar
-///       imageTagMutability: MUTABLE
 ///       imageScanningConfiguration:
 ///         scanOnPush: true
+///       name: bar
+///       imageTagMutability: MUTABLE
 /// ```
 ///
 ///
@@ -145,8 +147,6 @@ import 'repository_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecr.Repository("example", {
-///     name: "example-repo",
-///     imageTagMutability: "IMMUTABLE_WITH_EXCLUSION",
 ///     imageTagMutabilityExclusionFilters: [
 ///         {
 ///             filter: "latest*",
@@ -157,6 +157,8 @@ import 'repository_state.dart';
 ///             filterType: "WILDCARD",
 ///         },
 ///     ],
+///     name: "example-repo",
+///     imageTagMutability: "IMMUTABLE_WITH_EXCLUSION",
 /// });
 /// ```
 /// ```python
@@ -164,8 +166,6 @@ import 'repository_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecr.Repository("example",
-///     name="example-repo",
-///     image_tag_mutability="IMMUTABLE_WITH_EXCLUSION",
 ///     image_tag_mutability_exclusion_filters=[
 ///         {
 ///             "filter": "latest*",
@@ -175,7 +175,9 @@ import 'repository_state.dart';
 ///             "filter": "dev-*",
 ///             "filter_type": "WILDCARD",
 ///         },
-///     ])
+///     ],
+///     name="example-repo",
+///     image_tag_mutability="IMMUTABLE_WITH_EXCLUSION")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -187,8 +189,6 @@ import 'repository_state.dart';
 /// {
 ///     var example = new Aws.Ecr.Repository("example", new()
 ///     {
-///         Name = "example-repo",
-///         ImageTagMutability = "IMMUTABLE_WITH_EXCLUSION",
 ///         ImageTagMutabilityExclusionFilters = new[]
 ///         {
 ///             new Aws.Ecr.Inputs.RepositoryImageTagMutabilityExclusionFilterArgs
@@ -202,6 +202,8 @@ import 'repository_state.dart';
 ///                 FilterType = "WILDCARD",
 ///             },
 ///         },
+///         Name = "example-repo",
+///         ImageTagMutability = "IMMUTABLE_WITH_EXCLUSION",
 ///     });
 ///
 /// });
@@ -217,8 +219,6 @@ import 'repository_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecr.NewRepository(ctx, "example", &ecr.RepositoryArgs{
-/// 			Name:               pulumi.String("example-repo"),
-/// 			ImageTagMutability: pulumi.String("IMMUTABLE_WITH_EXCLUSION"),
 /// 			ImageTagMutabilityExclusionFilters: ecr.RepositoryImageTagMutabilityExclusionFilterArray{
 /// 				&ecr.RepositoryImageTagMutabilityExclusionFilterArgs{
 /// 					Filter:     pulumi.String("latest*"),
@@ -229,6 +229,8 @@ import 'repository_state.dart';
 /// 					FilterType: pulumi.String("WILDCARD"),
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("example-repo"),
+/// 			ImageTagMutability: pulumi.String("IMMUTABLE_WITH_EXCLUSION"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -247,8 +249,6 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "example" {
-///   name                 = "example-repo"
-///   image_tag_mutability = "IMMUTABLE_WITH_EXCLUSION"
 ///   image_tag_mutability_exclusion_filters {
 ///     filter      = "latest*"
 ///     filter_type = "WILDCARD"
@@ -257,6 +257,8 @@ import 'repository_state.dart';
 ///     filter      = "dev-*"
 ///     filter_type = "WILDCARD"
 ///   }
+///   name                 = "example-repo"
+///   image_tag_mutability = "IMMUTABLE_WITH_EXCLUSION"
 /// }
 /// ```
 /// ```java
@@ -282,8 +284,6 @@ import 'repository_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Repository("example", RepositoryArgs.builder()
-///             .name("example-repo")
-///             .imageTagMutability("IMMUTABLE_WITH_EXCLUSION")
 ///             .imageTagMutabilityExclusionFilters(
 ///                 RepositoryImageTagMutabilityExclusionFilterArgs.builder()
 ///                     .filter("latest*")
@@ -293,6 +293,8 @@ import 'repository_state.dart';
 ///                     .filter("dev-*")
 ///                     .filterType("WILDCARD")
 ///                     .build())
+///             .name("example-repo")
+///             .imageTagMutability("IMMUTABLE_WITH_EXCLUSION")
 ///             .build());
 ///
 ///     }
@@ -303,13 +305,13 @@ import 'repository_state.dart';
 ///   example:
 ///     type: aws:ecr:Repository
 ///     properties:
-///       name: example-repo
-///       imageTagMutability: IMMUTABLE_WITH_EXCLUSION
 ///       imageTagMutabilityExclusionFilters:
 ///         - filter: latest*
 ///           filterType: WILDCARD
 ///         - filter: dev-*
 ///           filterType: WILDCARD
+///       name: example-repo
+///       imageTagMutability: IMMUTABLE_WITH_EXCLUSION
 /// ```
 ///
 ///
@@ -336,7 +338,7 @@ class Repository extends pulumi.CustomResource {
   /// Full ARN of the repository.
   late final pulumi.Output<String> arn;
   /// Encryption configuration for the repository. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?> encryptionConfigurations;
+  late final pulumi.Output<List<RepositoryEncryptionConfiguration>?> encryptionConfigurations;
   /// If `true`, will delete the repository even if it contains images.
   /// Defaults to `false`.
   late final pulumi.Output<bool?> forceDelete;
@@ -345,7 +347,7 @@ class Repository extends pulumi.CustomResource {
   /// The tag mutability setting for the repository. Must be one of: `MUTABLE`, `IMMUTABLE`, `IMMUTABLE_WITH_EXCLUSION`, or `MUTABLE_WITH_EXCLUSION`. Defaults to `MUTABLE`.
   late final pulumi.Output<String?> imageTagMutability;
   /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `imageTagMutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?> imageTagMutabilityExclusionFilters;
+  late final pulumi.Output<List<RepositoryImageTagMutabilityExclusionFilter>?> imageTagMutabilityExclusionFilters;
   /// Name of the repository.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -371,20 +373,20 @@ class Repository extends pulumi.CustomResource {
           'aws:ecr/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<RepositoryEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryEncryptionConfiguration>(guardedValue, (value) => RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     forceDelete = registerOutput<bool?>('forceDelete');
     imageScanningConfiguration = registerOutput<RepositoryImageScanningConfiguration?>('imageScanningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryImageScanningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageTagMutability = registerOutput<String?>('imageTagMutability');
-    imageTagMutabilityExclusionFilters = registerOutput<List<Map<String, dynamic>>?>('imageTagMutabilityExclusionFilters');
+    imageTagMutabilityExclusionFilters = registerOutput<List<RepositoryImageTagMutabilityExclusionFilter>?>('imageTagMutabilityExclusionFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryImageTagMutabilityExclusionFilter>(guardedValue, (value) => RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
     repositoryUrl = registerOutput<String>('repositoryUrl');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -392,11 +394,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -411,16 +414,39 @@ class Repository extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<RepositoryEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryEncryptionConfiguration>(guardedValue, (value) => RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     forceDelete = registerOutput<bool?>('forceDelete');
     imageScanningConfiguration = registerOutput<RepositoryImageScanningConfiguration?>('imageScanningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryImageScanningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageTagMutability = registerOutput<String?>('imageTagMutability');
-    imageTagMutabilityExclusionFilters = registerOutput<List<Map<String, dynamic>>?>('imageTagMutabilityExclusionFilters');
+    imageTagMutabilityExclusionFilters = registerOutput<List<RepositoryImageTagMutabilityExclusionFilter>?>('imageTagMutabilityExclusionFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryImageTagMutabilityExclusionFilter>(guardedValue, (value) => RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
     repositoryUrl = registerOutput<String>('repositoryUrl');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'aws:ecr/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    encryptionConfigurations = registerOutput<List<RepositoryEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryEncryptionConfiguration>(guardedValue, (value) => RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDelete = registerOutput<bool?>('forceDelete');
+    imageScanningConfiguration = registerOutput<RepositoryImageScanningConfiguration?>('imageScanningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryImageScanningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageTagMutability = registerOutput<String?>('imageTagMutability');
+    imageTagMutabilityExclusionFilters = registerOutput<List<RepositoryImageTagMutabilityExclusionFilter>?>('imageTagMutabilityExclusionFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryImageTagMutabilityExclusionFilter>(guardedValue, (value) => RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryUrl = registerOutput<String>('repositoryUrl');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

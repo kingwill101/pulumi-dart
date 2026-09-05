@@ -221,6 +221,17 @@ Future<GetAttachmentResult> getAttachment(
   return GetAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetAttachmentResult> getAttachmentOutput(
+  GetAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getAttachment:getAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachmentResult.fromMap);
+}
+
 /// Get information on EC2 Transit Gateway Attachments.
 ///
 /// ## Example Usage
@@ -340,6 +351,17 @@ Future<GetAttachmentsResult> getAttachments(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAttachmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetAttachmentsResult> getAttachmentsOutput(
+  GetAttachmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getAttachments:getAttachments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachmentsResult.fromMap);
 }
 
 /// Get information on an EC2 Transit Gateway Connect.
@@ -598,6 +620,17 @@ Future<GetConnectResult> getConnect(
   return GetConnectResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectResult> getConnectOutput(
+  GetConnectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getConnect:getConnect',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectResult.fromMap);
+}
+
 /// Get information on an EC2 Transit Gateway Connect Peer.
 ///
 /// ## Example Usage
@@ -854,6 +887,17 @@ Future<GetConnectPeerResult> getConnectPeer(
   return GetConnectPeerResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectPeerResult> getConnectPeerOutput(
+  GetConnectPeerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getConnectPeer:getConnectPeer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectPeerResult.fromMap);
+}
+
 /// Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
 ///
 /// &gt; **Warning:** Using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `transitGatewayAttachmentId` attribute directly from the `aws.directconnect.GatewayAssociation` resource. For example, `transitGatewayAttachmentId  = aws_dx_gateway_association.example.transit_gateway_attachment_id`.
@@ -981,6 +1025,17 @@ Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachmen
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectConnectGatewayAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachmentOutput(
+  GetDirectConnectGatewayAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getDirectConnectGatewayAttachment:getDirectConnectGatewayAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDirectConnectGatewayAttachmentResult.fromMap);
 }
 
 /// Get information on an EC2 Transit Gateway Multicast Domain.
@@ -1239,6 +1294,17 @@ Future<GetMulticastDomainResult> getMulticastDomain(
   return GetMulticastDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetMulticastDomainResult> getMulticastDomainOutput(
+  GetMulticastDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getMulticastDomain:getMulticastDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMulticastDomainResult.fromMap);
+}
+
 /// Get information on an EC2 Transit Gateway Peering Attachment.
 ///
 /// ## Example Usage
@@ -1495,6 +1561,17 @@ Future<GetPeeringAttachmentResult> getPeeringAttachment(
   return GetPeeringAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
+  GetPeeringAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getPeeringAttachment:getPeeringAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringAttachmentResult.fromMap);
+}
+
 /// Get information on EC2 Transit Gateway Peering Attachments.
 ///
 /// ## Example Usage
@@ -1683,6 +1760,17 @@ Future<GetPeeringAttachmentsResult> getPeeringAttachments(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeeringAttachmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetPeeringAttachmentsResult> getPeeringAttachmentsOutput(
+  GetPeeringAttachmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getPeeringAttachments:getPeeringAttachments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringAttachmentsResult.fromMap);
 }
 
 /// Get information on an EC2 Transit Gateway Route Table.
@@ -1979,6 +2067,17 @@ Future<GetRouteTableResult> getRouteTable(
   return GetRouteTableResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteTableResult> getRouteTableOutput(
+  GetRouteTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getRouteTable:getRouteTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteTableResult.fromMap);
+}
+
 /// Provides information for multiple EC2 Transit Gateway Route Table Associations, such as their identifiers.
 ///
 /// ## Example Usage
@@ -2099,6 +2198,17 @@ Future<GetRouteTableAssociationsResult> getRouteTableAssociations(
   return GetRouteTableAssociationsResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteTableAssociationsResult> getRouteTableAssociationsOutput(
+  GetRouteTableAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getRouteTableAssociations:getRouteTableAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteTableAssociationsResult.fromMap);
+}
+
 /// Provides information for multiple EC2 Transit Gateway Route Table Propagations, such as their identifiers.
 ///
 /// ## Example Usage
@@ -2217,6 +2327,17 @@ Future<GetRouteTablePropagationsResult> getRouteTablePropagations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteTablePropagationsResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteTablePropagationsResult> getRouteTablePropagationsOutput(
+  GetRouteTablePropagationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getRouteTablePropagations:getRouteTablePropagations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteTablePropagationsResult.fromMap);
 }
 
 /// Provides informations for routes of a specific transit gateway, such as state, type, cidr
@@ -2375,6 +2496,17 @@ Future<GetRouteTableRoutesResult> getRouteTableRoutes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteTableRoutesResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteTableRoutesResult> getRouteTableRoutesOutput(
+  GetRouteTableRoutesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getRouteTableRoutes:getRouteTableRoutes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteTableRoutesResult.fromMap);
 }
 
 /// Get information on an EC2 Transit Gateway.
@@ -2631,6 +2763,17 @@ Future<GetTransitGatewayResult> getTransitGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTransitGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetTransitGatewayResult> getTransitGatewayOutput(
+  GetTransitGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getTransitGateway:getTransitGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransitGatewayResult.fromMap);
 }
 
 /// Get information on an EC2 Transit Gateway VPC Attachment.
@@ -2891,6 +3034,17 @@ Future<GetVpcAttachmentResult> getVpcAttachment(
   return GetVpcAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetVpcAttachmentResult> getVpcAttachmentOutput(
+  GetVpcAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getVpcAttachment:getVpcAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcAttachmentResult.fromMap);
+}
+
 /// Get information on EC2 Transit Gateway VPC Attachments.
 ///
 /// ## Example Usage
@@ -2986,6 +3140,17 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcAttachmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetVpcAttachmentsResult> getVpcAttachmentsOutput(
+  GetVpcAttachmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getVpcAttachments:getVpcAttachments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcAttachmentsResult.fromMap);
 }
 
 /// Get information on an EC2 Transit Gateway VPN Attachment.
@@ -3251,4 +3416,15 @@ Future<GetVpnAttachmentResult> getVpnAttachment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetVpnAttachmentResult> getVpnAttachmentOutput(
+  GetVpnAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2transitgateway/getVpnAttachment:getVpnAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnAttachmentResult.fromMap);
 }

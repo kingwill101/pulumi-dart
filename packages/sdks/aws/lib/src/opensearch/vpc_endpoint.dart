@@ -15,7 +15,6 @@ import 'vpc_endpoint_vpc_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.opensearch.VpcEndpoint("foo", {
-///     domainArn: domain1.arn,
 ///     vpcOptions: {
 ///         securityGroupIds: [
 ///             test.id,
@@ -26,6 +25,7 @@ import 'vpc_endpoint_vpc_options.dart';
 ///             test2AwsSubnet.id,
 ///         ],
 ///     },
+///     domainArn: domain1.arn,
 /// });
 /// ```
 /// ```python
@@ -33,7 +33,6 @@ import 'vpc_endpoint_vpc_options.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.opensearch.VpcEndpoint("foo",
-///     domain_arn=domain1["arn"],
 ///     vpc_options={
 ///         "security_group_ids": [
 ///             test["id"],
@@ -43,7 +42,8 @@ import 'vpc_endpoint_vpc_options.dart';
 ///             test_aws_subnet["id"],
 ///             test2_aws_subnet["id"],
 ///         ],
-///     })
+///     },
+///     domain_arn=domain1["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55,7 +55,6 @@ import 'vpc_endpoint_vpc_options.dart';
 /// {
 ///     var foo = new Aws.OpenSearch.VpcEndpoint("foo", new()
 ///     {
-///         DomainArn = domain1.Arn,
 ///         VpcOptions = new Aws.OpenSearch.Inputs.VpcEndpointVpcOptionsArgs
 ///         {
 ///             SecurityGroupIds = new[]
@@ -69,6 +68,7 @@ import 'vpc_endpoint_vpc_options.dart';
 ///                 test2AwsSubnet.Id,
 ///             },
 ///         },
+///         DomainArn = domain1.Arn,
 ///     });
 ///
 /// });
@@ -84,7 +84,6 @@ import 'vpc_endpoint_vpc_options.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := opensearch.NewVpcEndpoint(ctx, "foo", &opensearch.VpcEndpointArgs{
-/// 			DomainArn: pulumi.Any(domain1.Arn),
 /// 			VpcOptions: &opensearch.VpcEndpointVpcOptionsArgs{
 /// 				SecurityGroupIds: pulumi.StringArray{
 /// 					test.Id,
@@ -95,6 +94,7 @@ import 'vpc_endpoint_vpc_options.dart';
 /// 					test2AwsSubnet.Id,
 /// 				},
 /// 			},
+/// 			DomainArn: pulumi.Any(domain1.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,11 +113,11 @@ import 'vpc_endpoint_vpc_options.dart';
 /// }
 ///
 /// resource "aws_opensearch_vpcendpoint" "foo" {
-///   domain_arn = domain1.arn
 ///   vpc_options = {
 ///     security_group_ids = [test.id, test2.id]
 ///     subnet_ids         = [testAwsSubnet.id, test2AwsSubnet.id]
 ///   }
+///   domain_arn = domain1.arn
 /// }
 /// ```
 /// ```java
@@ -143,7 +143,6 @@ import 'vpc_endpoint_vpc_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new VpcEndpoint("foo", VpcEndpointArgs.builder()
-///             .domainArn(domain1.arn())
 ///             .vpcOptions(VpcEndpointVpcOptionsArgs.builder()
 ///                 .securityGroupIds(
 ///                     test.id(),
@@ -152,6 +151,7 @@ import 'vpc_endpoint_vpc_options.dart';
 ///                     testAwsSubnet.id(),
 ///                     test2AwsSubnet.id())
 ///                 .build())
+///             .domainArn(domain1.arn())
 ///             .build());
 ///
 ///     }
@@ -162,7 +162,6 @@ import 'vpc_endpoint_vpc_options.dart';
 ///   foo:
 ///     type: aws:opensearch:VpcEndpoint
 ///     properties:
-///       domainArn: ${domain1.arn}
 ///       vpcOptions:
 ///         securityGroupIds:
 ///           - ${test.id}
@@ -170,6 +169,7 @@ import 'vpc_endpoint_vpc_options.dart';
 ///         subnetIds:
 ///           - ${testAwsSubnet.id}
 ///           - ${test2AwsSubnet.id}
+///       domainArn: ${domain1.arn}
 /// ```
 ///
 ///
@@ -181,7 +181,7 @@ import 'vpc_endpoint_vpc_options.dart';
 /// $ pulumi import aws:opensearch/vpcEndpoint:VpcEndpoint example endpoint-id
 /// ```
 class VpcEndpoint extends pulumi.CustomResource {
-  /// Specifies the Amazon Resource Name (ARN) of the domain to create the endpoint for
+  /// ARN of the domain to create the endpoint for
   late final pulumi.Output<String> domainArn;
   /// The connection endpoint ID for connecting to the domain.
   late final pulumi.Output<String> endpoint;
@@ -202,7 +202,7 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:opensearch/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domainArn = registerOutput<String>('domainArn');
     endpoint = registerOutput<String>('endpoint');
@@ -215,11 +215,12 @@ class VpcEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,6 +234,21 @@ class VpcEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainArn = registerOutput<String>('domainArn');
+    endpoint = registerOutput<String>('endpoint');
+    region = registerOutput<String>('region');
+    vpcOptions = registerOutput<VpcEndpointVpcOptions>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpoint] resource.
+  VpcEndpoint.reference(String urn)
+    : super(
+        'aws:opensearch/vpcEndpoint:VpcEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainArn = registerOutput<String>('domainArn');
     endpoint = registerOutput<String>('endpoint');
     region = registerOutput<String>('region');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleTargetEcsParametersPlacementStrategy {
   /// The field to apply the placement strategy against.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// The type of placement strategy. One of: `random`, `spread`, `binpack`.
   final pulumi.Input<String> type;
 

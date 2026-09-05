@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterScalingGroupConfiguration {
   /// Number of vCPUs that you want to reserve for each node of this kdb cluster on the scaling group host.
-  final pulumi.Input<double>? cpu;
+  final pulumi.Input<double?>? cpu;
   /// Hard limit on the amount of memory a kdb cluster can use.
-  final pulumi.Input<int>? memoryLimit;
+  final pulumi.Input<int?>? memoryLimit;
   /// Reservation of the minimum amount of memory that should be available on the scaling group for a kdb cluster to be successfully placed in a scaling group.
   final pulumi.Input<int> memoryReservation;
   /// Number of kdb cluster nodes.
@@ -40,10 +40,10 @@ class KxClusterScalingGroupConfiguration {
 
   factory KxClusterScalingGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterScalingGroupConfiguration(
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      memoryLimit: (() { final guardedValue = map['memoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memoryReservation: pulumi.Input.fromValue(map['memoryReservation'] as int),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      memoryLimit: (() { final guardedValue = map['memoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memoryReservation: pulumi.Input.fromValue((map['memoryReservation'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       scalingGroupName: pulumi.Input.fromValue(map['scalingGroupName'] as String),
     );
   }

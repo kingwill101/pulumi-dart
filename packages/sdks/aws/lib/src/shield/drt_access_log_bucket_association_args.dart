@@ -12,7 +12,7 @@ class DrtAccessLogBucketAssociationArgs {
   final pulumi.Input<String> logBucket;
   /// The ID of the Role Arn association used for allowing Shield DRT Access.
   final pulumi.Input<String> roleArnAssociationId;
-  final pulumi.Input<DrtAccessLogBucketAssociationTimeouts>? timeouts;
+  final pulumi.Input<DrtAccessLogBucketAssociationTimeouts?>? timeouts;
 
   /// Creates a new [DrtAccessLogBucketAssociationArgs].
   /// [logBucket] The Amazon S3 bucket that contains the logs that you want to share.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OrganizationAdminAccountRegistration resources.
 class OrganizationAdminAccountRegistrationState {
   /// Identifier for the organization administrator account.
-  final pulumi.Input<String>? adminAccountId;
+  final pulumi.Input<String?>? adminAccountId;
   /// Identifier for the organization.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [OrganizationAdminAccountRegistrationState].
   /// [adminAccountId] Identifier for the organization administrator account.

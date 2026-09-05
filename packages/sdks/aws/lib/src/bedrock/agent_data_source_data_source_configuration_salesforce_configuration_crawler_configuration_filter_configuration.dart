@@ -5,7 +5,7 @@ import 'agent_data_source_data_source_configuration_salesforce_configuration_cra
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration {
   /// The configuration of filtering certain objects or content types of the data source. See `patternObjectFilter` block for details.
-  final pulumi.Input<List<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter>>? patternObjectFilters;
+  final pulumi.Input<List<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter>?>? patternObjectFilters;
   /// The type of filtering that you want to apply to certain objects or content of the data source. For example, the PATTERN type is regular expression patterns you can apply to filter your content.
   final pulumi.Input<String> type;
 

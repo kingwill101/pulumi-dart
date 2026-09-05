@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryAssociationS3RepositoryDetailCodeArtifact {
-  final pulumi.Input<String>? buildArtifactsObjectKey;
-  final pulumi.Input<String>? sourceCodeArtifactsObjectKey;
+  final pulumi.Input<String?>? buildArtifactsObjectKey;
+  final pulumi.Input<String?>? sourceCodeArtifactsObjectKey;
 
   /// Creates a new [RepositoryAssociationS3RepositoryDetailCodeArtifact].
   /// [buildArtifactsObjectKey] Optional.

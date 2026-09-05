@@ -5,9 +5,9 @@ import 'get_launch_template_network_interface_connection_tracking_specification.
 
 class GetLaunchTemplateNetworkInterface {
   final pulumi.Input<String> associateCarrierIpAddress;
-  final pulumi.Input<bool>? associatePublicIpAddress;
+  final pulumi.Input<bool?>? associatePublicIpAddress;
   final pulumi.Input<List<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>> connectionTrackingSpecifications;
-  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<bool?>? deleteOnTermination;
   final pulumi.Input<String> description;
   final pulumi.Input<int> deviceIndex;
   final pulumi.Input<int> enaQueueCount;
@@ -109,18 +109,18 @@ class GetLaunchTemplateNetworkInterface {
       connectionTrackingSpecifications: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>(map['connectionTrackingSpecifications']!, (value) => GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap((value as Map).cast<String, dynamic>()))),
       deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
-      deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
-      enaQueueCount: pulumi.Input.fromValue(map['enaQueueCount'] as int),
+      deviceIndex: pulumi.Input.fromValue((map['deviceIndex'] as num).toInt()),
+      enaQueueCount: pulumi.Input.fromValue((map['enaQueueCount'] as num).toInt()),
       interfaceType: pulumi.Input.fromValue(map['interfaceType'] as String),
-      ipv4AddressCount: pulumi.Input.fromValue(map['ipv4AddressCount'] as int),
+      ipv4AddressCount: pulumi.Input.fromValue((map['ipv4AddressCount'] as num).toInt()),
       ipv4Addresses: pulumi.Input.fromValue((map['ipv4Addresses'] as List).cast<String>()),
-      ipv4PrefixCount: pulumi.Input.fromValue(map['ipv4PrefixCount'] as int),
+      ipv4PrefixCount: pulumi.Input.fromValue((map['ipv4PrefixCount'] as num).toInt()),
       ipv4Prefixes: pulumi.Input.fromValue((map['ipv4Prefixes'] as List).cast<String>()),
-      ipv6AddressCount: pulumi.Input.fromValue(map['ipv6AddressCount'] as int),
+      ipv6AddressCount: pulumi.Input.fromValue((map['ipv6AddressCount'] as num).toInt()),
       ipv6Addresses: pulumi.Input.fromValue((map['ipv6Addresses'] as List).cast<String>()),
-      ipv6PrefixCount: pulumi.Input.fromValue(map['ipv6PrefixCount'] as int),
+      ipv6PrefixCount: pulumi.Input.fromValue((map['ipv6PrefixCount'] as num).toInt()),
       ipv6Prefixes: pulumi.Input.fromValue((map['ipv6Prefixes'] as List).cast<String>()),
-      networkCardIndex: pulumi.Input.fromValue(map['networkCardIndex'] as int),
+      networkCardIndex: pulumi.Input.fromValue((map['networkCardIndex'] as num).toInt()),
       networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
       primaryIpv6: pulumi.Input.fromValue(map['primaryIpv6'] as String),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),

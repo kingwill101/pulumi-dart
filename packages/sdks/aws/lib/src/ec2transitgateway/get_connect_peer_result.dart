@@ -6,28 +6,28 @@ import 'get_connect_peer_filter.dart';
 /// Result data returned by getConnectPeer.
 class GetConnectPeerResult {
   /// EC2 Transit Gateway Connect Peer ARN
-  final String arn;
+  final String? arn;
   /// BGP ASN number assigned customer device
-  final String bgpAsn;
+  final String? bgpAsn;
   /// The IP address assigned to customer device, which is used as BGP IP address.
-  final String bgpPeerAddress;
+  final String? bgpPeerAddress;
   /// The IP addresses assigned to Transit Gateway, which are used as BGP IP addresses.
-  final List<String> bgpTransitGatewayAddresses;
+  final List<String>? bgpTransitGatewayAddresses;
   final List<GetConnectPeerFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// CIDR blocks that will be used for addressing within the tunnel.
-  final List<String> insideCidrBlocks;
+  final List<String>? insideCidrBlocks;
   /// IP addressed assigned to customer device, which is used as tunnel endpoint
-  final String peerAddress;
-  final String region;
+  final String? peerAddress;
+  final String? region;
   /// Key-value tags for the EC2 Transit Gateway Connect Peer
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The IP address assigned to Transit Gateway, which is used as tunnel endpoint.
-  final String transitGatewayAddress;
+  final String? transitGatewayAddress;
   /// The Transit Gateway Connect
-  final String transitGatewayAttachmentId;
-  final String transitGatewayConnectPeerId;
+  final String? transitGatewayAttachmentId;
+  final String? transitGatewayConnectPeerId;
 
   /// Creates a new [GetConnectPeerResult].
   /// [arn] EC2 Transit Gateway Connect Peer ARN
@@ -38,60 +38,60 @@ class GetConnectPeerResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [insideCidrBlocks] CIDR blocks that will be used for addressing within the tunnel.
   /// [peerAddress] IP addressed assigned to customer device, which is used as tunnel endpoint
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect Peer
   /// [transitGatewayAddress] The IP address assigned to Transit Gateway, which is used as tunnel endpoint.
   /// [transitGatewayAttachmentId] The Transit Gateway Connect
-  /// [transitGatewayConnectPeerId] Required.
+  /// [transitGatewayConnectPeerId] Optional.
   const GetConnectPeerResult({
-    required this.arn,
-    required this.bgpAsn,
-    required this.bgpPeerAddress,
-    required this.bgpTransitGatewayAddresses,
+    this.arn,
+    this.bgpAsn,
+    this.bgpPeerAddress,
+    this.bgpTransitGatewayAddresses,
     this.filters,
-    required this.id,
-    required this.insideCidrBlocks,
-    required this.peerAddress,
-    required this.region,
-    required this.tags,
-    required this.transitGatewayAddress,
-    required this.transitGatewayAttachmentId,
-    required this.transitGatewayConnectPeerId,
+    this.id,
+    this.insideCidrBlocks,
+    this.peerAddress,
+    this.region,
+    this.tags,
+    this.transitGatewayAddress,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayConnectPeerId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'bgpAsn': bgpAsn,
-      'bgpPeerAddress': bgpPeerAddress,
-      'bgpTransitGatewayAddresses': bgpTransitGatewayAddresses,
+      'arn': ?arn,
+      'bgpAsn': ?bgpAsn,
+      'bgpPeerAddress': ?bgpPeerAddress,
+      'bgpTransitGatewayAddresses': ?bgpTransitGatewayAddresses,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectPeerFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'insideCidrBlocks': insideCidrBlocks,
-      'peerAddress': peerAddress,
-      'region': region,
-      'tags': tags,
-      'transitGatewayAddress': transitGatewayAddress,
-      'transitGatewayAttachmentId': transitGatewayAttachmentId,
-      'transitGatewayConnectPeerId': transitGatewayConnectPeerId,
+      'id': ?id,
+      'insideCidrBlocks': ?insideCidrBlocks,
+      'peerAddress': ?peerAddress,
+      'region': ?region,
+      'tags': ?tags,
+      'transitGatewayAddress': ?transitGatewayAddress,
+      'transitGatewayAttachmentId': ?transitGatewayAttachmentId,
+      'transitGatewayConnectPeerId': ?transitGatewayConnectPeerId,
     };
   }
 
   factory GetConnectPeerResult.fromMap(Map<String, dynamic> map) {
     return GetConnectPeerResult(
-      arn: map['arn'] as String,
-      bgpAsn: map['bgpAsn'] as String,
-      bgpPeerAddress: map['bgpPeerAddress'] as String,
-      bgpTransitGatewayAddresses: (map['bgpTransitGatewayAddresses'] as List).cast<String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      bgpAsn: (() { final guardedValue = map['bgpAsn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      bgpPeerAddress: (() { final guardedValue = map['bgpPeerAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      bgpTransitGatewayAddresses: (() { final guardedValue = map['bgpTransitGatewayAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectPeerFilter>(guardedValue, (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      insideCidrBlocks: (map['insideCidrBlocks'] as List).cast<String>(),
-      peerAddress: map['peerAddress'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      transitGatewayAddress: map['transitGatewayAddress'] as String,
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] as String,
-      transitGatewayConnectPeerId: map['transitGatewayConnectPeerId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      insideCidrBlocks: (() { final guardedValue = map['insideCidrBlocks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      peerAddress: (() { final guardedValue = map['peerAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      transitGatewayAddress: (() { final guardedValue = map['transitGatewayAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transitGatewayAttachmentId: (() { final guardedValue = map['transitGatewayAttachmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transitGatewayConnectPeerId: (() { final guardedValue = map['transitGatewayConnectPeerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

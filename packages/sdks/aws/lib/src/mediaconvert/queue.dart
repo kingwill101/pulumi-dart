@@ -146,7 +146,7 @@ class Queue extends pulumi.CustomResource {
           'aws:mediaconvert/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     concurrentJobs = registerOutput<int>('concurrentJobs');
@@ -156,8 +156,8 @@ class Queue extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationPlanSettings = registerOutput<QueueReservationPlanSettings>('reservationPlanSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueReservationPlanSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
@@ -165,11 +165,12 @@ class Queue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Queue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,7 +192,28 @@ class Queue extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationPlanSettings = registerOutput<QueueReservationPlanSettings>('reservationPlanSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueReservationPlanSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Queue] resource.
+  Queue.reference(String urn)
+    : super(
+        'aws:mediaconvert/queue:Queue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    concurrentJobs = registerOutput<int>('concurrentJobs');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    pricingPlan = registerOutput<String?>('pricingPlan');
+    region = registerOutput<String>('region');
+    reservationPlanSettings = registerOutput<QueueReservationPlanSettings>('reservationPlanSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueReservationPlanSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

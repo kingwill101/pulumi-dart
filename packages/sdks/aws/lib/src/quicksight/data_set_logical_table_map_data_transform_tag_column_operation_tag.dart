@@ -5,9 +5,9 @@ import 'data_set_logical_table_map_data_transform_tag_column_operation_tag_colum
 
 class DataSetLogicalTableMapDataTransformTagColumnOperationTag {
   /// A description for a column. See column_description.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription>? columnDescription;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription?>? columnDescription;
   /// A geospatial role for a column. Valid values are `COUNTRY`, `STATE`, `COUNTY`, `CITY`, `POSTCODE`, `LONGITUDE`, and `LATITUDE`.
-  final pulumi.Input<String>? columnGeographicRole;
+  final pulumi.Input<String?>? columnGeographicRole;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperationTag].
   /// [columnDescription] A description for a column. See column_description.

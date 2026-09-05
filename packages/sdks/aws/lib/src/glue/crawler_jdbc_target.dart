@@ -6,9 +6,9 @@ class CrawlerJdbcTarget {
   /// The name of the connection to use to connect to the JDBC target.
   final pulumi.Input<String> connectionName;
   /// Specify a value of `RAWTYPES` or `COMMENTS` to enable additional metadata intable responses. `RAWTYPES` provides the native-level datatype. `COMMENTS` provides comments associated with a column or table in the database.
-  final pulumi.Input<List<String>>? enableAdditionalMetadatas;
+  final pulumi.Input<List<String>?>? enableAdditionalMetadatas;
   /// A list of glob patterns used to exclude from the crawl.
-  final pulumi.Input<List<String>>? exclusions;
+  final pulumi.Input<List<String>?>? exclusions;
   /// The path of the JDBC target.
   final pulumi.Input<String> path;
 

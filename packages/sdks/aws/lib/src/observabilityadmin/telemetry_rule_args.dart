@@ -10,7 +10,7 @@ import 'telemetry_rule_timeouts.dart';
 /// {@macro pulumi_observabilityadmin_telemetry_rule_telemetry_rule_args_doc}
 class TelemetryRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for the telemetry rule. See `rule` below.
   final pulumi.Input<TelemetryRuleRule> rule;
   /// Name of the telemetry rule. Must be between 1 and 100 characters and contain only alphanumeric characters, hyphens, underscores, periods, hash symbols, and forward slashes. Changing this argument forces a new resource to be created.
@@ -18,8 +18,8 @@ class TelemetryRuleArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> ruleName;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<TelemetryRuleTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<TelemetryRuleTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryRuleArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

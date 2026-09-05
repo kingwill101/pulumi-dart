@@ -6,9 +6,9 @@ import 'v2models_intent_confirmation_setting_failure_response_message_group_vari
 
 class V2modelsIntentConfirmationSettingFailureResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponseMessageGroupMessage>? message;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponseMessageGroupMessage?>? message;
   /// Configuration blocks for message variations to send to the user. When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user. See `variation`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation>>? variations;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation>?>? variations;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user. See `message`.

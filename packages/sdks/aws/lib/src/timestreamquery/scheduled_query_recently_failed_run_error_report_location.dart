@@ -5,7 +5,7 @@ import 'scheduled_query_recently_failed_run_error_report_location_s3_report_loca
 
 class ScheduledQueryRecentlyFailedRunErrorReportLocation {
   /// S3 location where error reports are written.
-  final pulumi.Input<List<ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation>>? s3ReportLocations;
+  final pulumi.Input<List<ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation>?>? s3ReportLocations;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunErrorReportLocation].
   /// [s3ReportLocations] S3 location where error reports are written.

@@ -20,7 +20,7 @@ class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInp
 
   factory AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfig.fromMap(Map<String, dynamic> map) {
     return AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfig(
-      seed: pulumi.Input.fromValue(map['seed'] as int),
+      seed: pulumi.Input.fromValue((map['seed'] as num).toInt()),
     );
   }
 }

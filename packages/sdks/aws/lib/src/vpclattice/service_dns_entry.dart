@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceDnsEntry {
   /// Domain name of the service.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// ID of the hosted zone.
-  final pulumi.Input<String>? hostedZoneId;
+  final pulumi.Input<String?>? hostedZoneId;
 
   /// Creates a new [ServiceDnsEntry].
   /// [domainName] Domain name of the service.

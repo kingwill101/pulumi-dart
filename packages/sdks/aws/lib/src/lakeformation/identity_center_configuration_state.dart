@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IdentityCenterConfiguration resources.
 class IdentityCenterConfigurationState {
   /// ARN of the Lake Formation applicated integrated with IAM Identity Center.
-  final pulumi.Input<String>? applicationArn;
+  final pulumi.Input<String?>? applicationArn;
   /// Identifier for the Data Catalog.
   /// By default, the account ID.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// ARN of the IAM Identity Center Instance to associate.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? instanceArn;
+  final pulumi.Input<String?>? instanceArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the Resource Access Manager (RAM) resource share.
-  final pulumi.Input<String>? resourceShare;
+  final pulumi.Input<String?>? resourceShare;
 
   /// Creates a new [IdentityCenterConfigurationState].
   /// [applicationArn] ARN of the Lake Formation applicated integrated with IAM Identity Center.

@@ -205,7 +205,7 @@ class AccountSettings extends pulumi.CustomResource {
           'aws:quicksight/accountSettings:AccountSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     defaultNamespace = registerOutput<String>('defaultNamespace');
@@ -219,11 +219,12 @@ class AccountSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,6 +238,22 @@ class AccountSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    defaultNamespace = registerOutput<String>('defaultNamespace');
+    region = registerOutput<String>('region');
+    terminationProtectionEnabled = registerOutput<bool>('terminationProtectionEnabled');
+    timeouts = registerOutput<AccountSettingsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSettingsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AccountSettings] resource.
+  AccountSettings.reference(String urn)
+    : super(
+        'aws:quicksight/accountSettings:AccountSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     defaultNamespace = registerOutput<String>('defaultNamespace');
     region = registerOutput<String>('region');

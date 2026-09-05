@@ -12,17 +12,17 @@ class CustomRoutingEndpointGroupArgs {
   /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
   final pulumi.Input<List<CustomRoutingEndpointGroupDestinationConfiguration>> destinationConfigurations;
   /// The list of endpoint objects. Fields documented below.
-  final pulumi.Input<List<CustomRoutingEndpointGroupEndpointConfiguration>>? endpointConfigurations;
+  final pulumi.Input<List<CustomRoutingEndpointGroupEndpointConfiguration>?>? endpointConfigurations;
   /// The name of the AWS Region where the custom routing endpoint group is located.
-  final pulumi.Input<String>? endpointGroupRegion;
-  /// The Amazon Resource Name (ARN) of the custom routing listener.
+  final pulumi.Input<String?>? endpointGroupRegion;
+  /// ARN of the custom routing listener.
   final pulumi.Input<String> listenerArn;
 
   /// Creates a new [CustomRoutingEndpointGroupArgs].
   /// [destinationConfigurations] The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
   /// [endpointConfigurations] The list of endpoint objects. Fields documented below.
   /// [endpointGroupRegion] The name of the AWS Region where the custom routing endpoint group is located.
-  /// [listenerArn] The Amazon Resource Name (ARN) of the custom routing listener.
+  /// [listenerArn] ARN of the custom routing listener.
   const CustomRoutingEndpointGroupArgs({
     required this.destinationConfigurations,
     this.endpointConfigurations,

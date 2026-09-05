@@ -9,13 +9,13 @@ class VirtualGatewaySpecListenerTls {
   final pulumi.Input<VirtualGatewaySpecListenerTlsCertificate> certificate;
   /// Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
   final pulumi.Input<String> mode;
-  /// Listener's Transport Layer Security (TLS) validation context.
-  final pulumi.Input<VirtualGatewaySpecListenerTlsValidation>? validation;
+  /// Listener's TLS validation context.
+  final pulumi.Input<VirtualGatewaySpecListenerTlsValidation?>? validation;
 
   /// Creates a new [VirtualGatewaySpecListenerTls].
   /// [certificate] Listener's TLS certificate.
   /// [mode] Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
-  /// [validation] Listener's Transport Layer Security (TLS) validation context.
+  /// [validation] Listener's TLS validation context.
   const VirtualGatewaySpecListenerTls({
     required this.certificate,
     required this.mode,

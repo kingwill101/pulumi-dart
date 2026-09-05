@@ -107,9 +107,9 @@ class GetRecordsResourceRecordSet {
       resourceRecords: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords']!, (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))),
       setIdentifier: pulumi.Input.fromValue(map['setIdentifier'] as String),
       trafficPolicyInstanceId: pulumi.Input.fromValue(map['trafficPolicyInstanceId'] as String),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

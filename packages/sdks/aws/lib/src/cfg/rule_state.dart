@@ -8,29 +8,29 @@ import 'rule_source.dart';
 /// Input properties used for looking up and filtering Rule resources.
 class RuleState {
   /// The ARN of the config rule
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the rule
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The modes the Config rule can be evaluated in. See Evaluation Mode for more details.
-  final pulumi.Input<List<RuleEvaluationMode>>? evaluationModes;
+  final pulumi.Input<List<RuleEvaluationMode>?>? evaluationModes;
   /// A string in JSON format that is passed to the AWS Config rule Lambda function.
-  final pulumi.Input<String>? inputParameters;
+  final pulumi.Input<String?>? inputParameters;
   /// The maximum frequency with which AWS Config runs evaluations for a rule.
-  final pulumi.Input<String>? maximumExecutionFrequency;
+  final pulumi.Input<String?>? maximumExecutionFrequency;
   /// The name of the rule
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the config rule
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// Scope defines which resources can trigger an evaluation for the rule. See Scope Below.
-  final pulumi.Input<RuleScope>? scope;
+  final pulumi.Input<RuleScope?>? scope;
   /// Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
-  final pulumi.Input<RuleSource>? source;
+  final pulumi.Input<RuleSource?>? source;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RuleState].
   /// [arn] The ARN of the config rule

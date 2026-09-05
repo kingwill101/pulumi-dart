@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config_microsoft_oauth2_provider_config_oauth_discovery.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig {
-  final pulumi.Input<int>? clientCredentialsWoVersion;
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<int?>? clientCredentialsWoVersion;
+  final pulumi.Input<String?>? clientId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  final pulumi.Input<String>? clientIdWo;
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientIdWo;
+  final pulumi.Input<String?>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  final pulumi.Input<String>? clientSecretWo;
+  final pulumi.Input<String?>? clientSecretWo;
   /// OAuth discovery configuration. See `oauthDiscovery` below.
-  final pulumi.Input<List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfigOauthDiscovery>>? oauthDiscoveries;
+  final pulumi.Input<List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfigOauthDiscovery>?>? oauthDiscoveries;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig].
   /// [clientCredentialsWoVersion] Optional.
@@ -43,7 +43,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2Provid
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig(
-      clientCredentialsWoVersion: (() { final guardedValue = map['clientCredentialsWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clientCredentialsWoVersion: (() { final guardedValue = map['clientCredentialsWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientIdWo: (() { final guardedValue = map['clientIdWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

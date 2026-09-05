@@ -13,7 +13,7 @@ class BotAssociationArgs {
   /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
   final pulumi.Input<BotAssociationLexBot> lexBot;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BotAssociationArgs].
   /// [instanceId] The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.

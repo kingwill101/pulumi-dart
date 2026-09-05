@@ -114,6 +114,17 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
   return GetAuthorizationTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
+  GetAuthorizationTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecrpublic/getAuthorizationToken:getAuthorizationToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizationTokenResult.fromMap);
+}
+
 /// The ECR Public Images data source allows the list of images in a specified public repository to be retrieved.
 ///
 /// ## Example Usage
@@ -212,4 +223,15 @@ Future<GetImagesResult> getImages(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImagesResult.fromMap(result);
+}
+
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecrpublic/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
 }

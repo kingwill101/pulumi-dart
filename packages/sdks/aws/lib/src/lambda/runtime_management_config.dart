@@ -274,7 +274,7 @@ class RuntimeManagementConfig extends pulumi.CustomResource {
           'aws:lambda/runtimeManagementConfig:RuntimeManagementConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
@@ -289,11 +289,12 @@ class RuntimeManagementConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuntimeManagementConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuntimeManagementConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,23 @@ class RuntimeManagementConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+    runtimeVersionArn = registerOutput<String?>('runtimeVersionArn');
+    updateRuntimeOn = registerOutput<String?>('updateRuntimeOn');
+  }
+
+  /// Creates a typed reference to an existing [RuntimeManagementConfig] resource.
+  RuntimeManagementConfig.reference(String urn)
+    : super(
+        'aws:lambda/runtimeManagementConfig:RuntimeManagementConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     qualifier = registerOutput<String?>('qualifier');

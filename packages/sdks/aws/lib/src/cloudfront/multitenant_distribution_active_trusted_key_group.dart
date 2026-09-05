@@ -5,9 +5,9 @@ import 'multitenant_distribution_active_trusted_key_group_item.dart';
 
 class MultitenantDistributionActiveTrustedKeyGroup {
   /// Whether any of the key groups have public keys that CloudFront can use to verify the signatures of signed URLs and signed cookies.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// List of key groups. See Key Group Items below.
-  final pulumi.Input<List<MultitenantDistributionActiveTrustedKeyGroupItem>>? items;
+  final pulumi.Input<List<MultitenantDistributionActiveTrustedKeyGroupItem>?>? items;
 
   /// Creates a new [MultitenantDistributionActiveTrustedKeyGroup].
   /// [enabled] Whether any of the key groups have public keys that CloudFront can use to verify the signatures of signed URLs and signed cookies.

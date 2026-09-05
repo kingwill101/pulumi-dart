@@ -192,7 +192,7 @@ class ResourceLfTag extends pulumi.CustomResource {
           'aws:lakeformation/resourceLfTag:ResourceLfTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String?>('catalogId');
     database = registerOutput<ResourceLfTagDatabase?>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -208,11 +208,12 @@ class ResourceLfTag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceLfTagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceLfTag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,6 +227,24 @@ class ResourceLfTag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String?>('catalogId');
+    database = registerOutput<ResourceLfTagDatabase?>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTag = registerOutput<ResourceLfTagLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    table = registerOutput<ResourceLfTagTable?>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableWithColumns = registerOutput<ResourceLfTagTableWithColumns?>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<ResourceLfTagTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceLfTag] resource.
+  ResourceLfTag.reference(String urn)
+    : super(
+        'aws:lakeformation/resourceLfTag:ResourceLfTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String?>('catalogId');
     database = registerOutput<ResourceLfTagDatabase?>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lfTag = registerOutput<ResourceLfTagLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });

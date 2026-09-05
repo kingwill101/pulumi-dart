@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProvisionedProductOutput {
   /// The description of the output.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The output key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The output value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ProvisionedProductOutput].
   /// [description] The description of the output.

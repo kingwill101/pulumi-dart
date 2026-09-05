@@ -9,17 +9,17 @@ import 'lf_tag_expression_expression.dart';
 /// {@macro pulumi_lakeformation_lf_tag_expression_lf_tag_expression_args_doc}
 class LfTagExpressionArgs {
   /// ID of the Data Catalog. Defaults to the account ID if not specified.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Description of the LF-Tag Expression.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of LF-Tag conditions (key-value pairs). See expression for more details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<LfTagExpressionExpression>> expressions;
   /// Name of the LF-Tag Expression.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LfTagExpressionArgs].
   /// [catalogId] ID of the Data Catalog. Defaults to the account ID if not specified.

@@ -5,15 +5,15 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2 {
   /// Credentials used to access protected Zendesk resources.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// Identifier for the desired client.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret used by the OAuth client to authenticate to the authorization server.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest>? oauthRequest;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest?>? oauthRequest;
   /// Refresh token used to refresh an expired access token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2].
   /// [accessToken] Credentials used to access protected Zendesk resources.

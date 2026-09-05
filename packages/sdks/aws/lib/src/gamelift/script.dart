@@ -13,12 +13,12 @@ import 'script_storage_location.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.gamelift.Script("example", {
-///     name: "example-script",
 ///     storageLocation: {
 ///         bucket: exampleAwsS3Bucket.id,
 ///         key: exampleAwsS3Object.key,
 ///         roleArn: exampleAwsIamRole.arn,
 ///     },
+///     name: "example-script",
 /// });
 /// ```
 /// ```python
@@ -26,12 +26,12 @@ import 'script_storage_location.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.gamelift.Script("example",
-///     name="example-script",
 ///     storage_location={
 ///         "bucket": example_aws_s3_bucket["id"],
 ///         "key": example_aws_s3_object["key"],
 ///         "role_arn": example_aws_iam_role["arn"],
-///     })
+///     },
+///     name="example-script")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,13 +43,13 @@ import 'script_storage_location.dart';
 /// {
 ///     var example = new Aws.GameLift.Script("example", new()
 ///     {
-///         Name = "example-script",
 ///         StorageLocation = new Aws.GameLift.Inputs.ScriptStorageLocationArgs
 ///         {
 ///             Bucket = exampleAwsS3Bucket.Id,
 ///             Key = exampleAwsS3Object.Key,
 ///             RoleArn = exampleAwsIamRole.Arn,
 ///         },
+///         Name = "example-script",
 ///     });
 ///
 /// });
@@ -65,12 +65,12 @@ import 'script_storage_location.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewScript(ctx, "example", &gamelift.ScriptArgs{
-/// 			Name: pulumi.String("example-script"),
 /// 			StorageLocation: &gamelift.ScriptStorageLocationArgs{
 /// 				Bucket:  pulumi.Any(exampleAwsS3Bucket.Id),
 /// 				Key:     pulumi.Any(exampleAwsS3Object.Key),
 /// 				RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			},
+/// 			Name: pulumi.String("example-script"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,12 +89,12 @@ import 'script_storage_location.dart';
 /// }
 ///
 /// resource "aws_gamelift_script" "example" {
-///   name = "example-script"
 ///   storage_location = {
 ///     bucket   = exampleAwsS3Bucket.id
 ///     key      = exampleAwsS3Object.key
 ///     role_arn = exampleAwsIamRole.arn
 ///   }
+///   name = "example-script"
 /// }
 /// ```
 /// ```java
@@ -120,12 +120,12 @@ import 'script_storage_location.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Script("example", ScriptArgs.builder()
-///             .name("example-script")
 ///             .storageLocation(ScriptStorageLocationArgs.builder()
 ///                 .bucket(exampleAwsS3Bucket.id())
 ///                 .key(exampleAwsS3Object.key())
 ///                 .roleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .name("example-script")
 ///             .build());
 ///
 ///     }
@@ -136,11 +136,11 @@ import 'script_storage_location.dart';
 ///   example:
 ///     type: aws:gamelift:Script
 ///     properties:
-///       name: example-script
 ///       storageLocation:
 ///         bucket: ${exampleAwsS3Bucket.id}
 ///         key: ${exampleAwsS3Object.key}
 ///         roleArn: ${exampleAwsIamRole.arn}
+///       name: example-script
 /// ```
 ///
 ///
@@ -181,14 +181,14 @@ class Script extends pulumi.CustomResource {
           'aws:gamelift/script:Script',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     storageLocation = registerOutput<ScriptStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
     zipFile = registerOutput<String?>('zipFile');
   }
@@ -198,11 +198,12 @@ class Script extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScriptState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Script._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -220,8 +221,27 @@ class Script extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     storageLocation = registerOutput<ScriptStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String?>('version');
+    zipFile = registerOutput<String?>('zipFile');
+  }
+
+  /// Creates a typed reference to an existing [Script] resource.
+  Script.reference(String urn)
+    : super(
+        'aws:gamelift/script:Script',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    storageLocation = registerOutput<ScriptStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
     zipFile = registerOutput<String?>('zipFile');
   }

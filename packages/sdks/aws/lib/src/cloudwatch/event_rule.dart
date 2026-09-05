@@ -28,12 +28,12 @@ import 'event_rule_state.dart';
 /// });
 /// const snsTopicPolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["SNS:Publish"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["events.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["SNS:Publish"],
 ///         resources: [awsLogins.arn],
 ///     }],
 /// });
@@ -59,12 +59,12 @@ import 'event_rule_state.dart';
 ///     target_id="SendToSNS",
 ///     arn=aws_logins.arn)
 /// sns_topic_policy = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "actions": ["SNS:Publish"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["events.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["SNS:Publish"],
 ///     "resources": [aws_logins.arn],
 /// }])
 /// default = aws.sns.TopicPolicy("default",
@@ -111,11 +111,6 @@ import 'event_rule_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "SNS:Publish",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -126,6 +121,11 @@ import 'event_rule_state.dart';
 ///                             "events.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "SNS:Publish",
 ///                 },
 ///                 Resources = new[]
 ///                 {
@@ -191,10 +191,6 @@ import 'event_rule_state.dart';
 /// 		snsTopicPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SNS:Publish"),
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -202,6 +198,10 @@ import 'event_rule_state.dart';
 /// 								pulumi.String("events.amazonaws.com"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Publish"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						awsLogins.Arn,
@@ -231,12 +231,12 @@ import 'event_rule_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["SNS:Publish"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["events.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
+///     actions   = ["SNS:Publish"]
 ///     resources = [aws_sns_topic.aws_logins.arn]
 ///   }
 /// }
@@ -314,12 +314,12 @@ import 'event_rule_state.dart';
 ///
 ///         final var snsTopicPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("SNS:Publish")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("events.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("SNS:Publish")
 ///                 .resources(awsLogins.arn())
 ///                 .build())
 ///             .build());
@@ -365,13 +365,13 @@ import 'event_rule_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - SNS:Publish
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - events.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - SNS:Publish
 ///             resources:
 ///               - ${awsLogins.arn}
 /// ```
@@ -397,7 +397,7 @@ import 'event_rule_state.dart';
 /// $ pulumi import aws:cloudwatch/eventRule:EventRule example example-event-bus/capture-console-sign-in
 /// ```
 class EventRule extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the rule.
+  /// ARN of the rule.
   late final pulumi.Output<String> arn;
   /// The description of the rule.
   late final pulumi.Output<String?> description;
@@ -415,7 +415,7 @@ class EventRule extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+  /// ARN associated with the role that is used for target invocation.
   late final pulumi.Output<String?> roleArn;
   /// The scheduling expression. For example, `cron(0 20 * * ? *)` or `rate(5 minutes)`. At least one of `scheduleExpression` or `eventPattern` is required. Can only be used on the default event bus. For more information, refer to the AWS documentation [Schedule Expressions for Rules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html).
   late final pulumi.Output<String?> scheduleExpression;
@@ -440,7 +440,7 @@ class EventRule extends pulumi.CustomResource {
           'aws:cloudwatch/eventRule:EventRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -454,8 +454,8 @@ class EventRule extends pulumi.CustomResource {
     roleArn = registerOutput<String?>('roleArn');
     scheduleExpression = registerOutput<String?>('scheduleExpression');
     state = registerOutput<String?>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EventRule] resource's state with the given [name] and [id].
@@ -463,11 +463,12 @@ class EventRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -493,7 +494,32 @@ class EventRule extends pulumi.CustomResource {
     roleArn = registerOutput<String?>('roleArn');
     scheduleExpression = registerOutput<String?>('scheduleExpression');
     this.state = registerOutput<String?>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EventRule] resource.
+  EventRule.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventRule:EventRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    eventBusName = registerOutput<String?>('eventBusName');
+    eventPattern = registerOutput<String?>('eventPattern');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    scheduleExpression = registerOutput<String?>('scheduleExpression');
+    state = registerOutput<String?>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

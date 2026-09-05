@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionContainerDefinitionLinuxParametersCapabilities {
   /// Linux capabilities for the container that have been added to the default configuration provided by Docker.
-  final pulumi.Input<List<String>>? adds;
+  final pulumi.Input<List<String>?>? adds;
   /// Linux capabilities for the container that have been removed from the default configuration provided by Docker.
-  final pulumi.Input<List<String>>? drops;
+  final pulumi.Input<List<String>?>? drops;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionLinuxParametersCapabilities].
   /// [adds] Linux capabilities for the container that have been added to the default configuration provided by Docker.

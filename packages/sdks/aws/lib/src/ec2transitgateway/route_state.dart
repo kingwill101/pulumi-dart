@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Route resources.
 class RouteState {
   /// Indicates whether to drop traffic that matches this route (default to `false`).
-  final pulumi.Input<bool>? blackhole;
+  final pulumi.Input<bool?>? blackhole;
   /// IPv4 or IPv6 RFC1924 CIDR used for destination matches. Routing decisions are based on the most specific match.
-  final pulumi.Input<String>? destinationCidrBlock;
+  final pulumi.Input<String?>? destinationCidrBlock;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
   /// Identifier of EC2 Transit Gateway Route Table.
-  final pulumi.Input<String>? transitGatewayRouteTableId;
+  final pulumi.Input<String?>? transitGatewayRouteTableId;
 
   /// Creates a new [RouteState].
   /// [blackhole] Indicates whether to drop traffic that matches this route (default to `false`).

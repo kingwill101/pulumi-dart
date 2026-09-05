@@ -11,20 +11,20 @@ class NetworkPeeringConnectionArgs {
   /// Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.
   final pulumi.Input<String> displayName;
   /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
-  final pulumi.Input<String>? odbNetworkArn;
+  final pulumi.Input<String?>? odbNetworkArn;
   /// Unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
-  final pulumi.Input<String>? odbNetworkId;
+  final pulumi.Input<String?>? odbNetworkId;
   /// Set of peer network cidrs. Add remove is only supported during update operation. During create this attribute is compute only.
-  final pulumi.Input<List<String>>? peerNetworkCidrs;
+  final pulumi.Input<List<String>?>? peerNetworkCidrs;
   /// Unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> peerNetworkId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<NetworkPeeringConnectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<NetworkPeeringConnectionTimeouts?>? timeouts;
 
   /// Creates a new [NetworkPeeringConnectionArgs].
   /// [displayName] Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.

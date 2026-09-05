@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'landing_zone_args.dart';
+import 'landing_zone_drift_status.dart';
 import 'landing_zone_state.dart';
 
 /// Creates a new landing zone using Control Tower. For more information on usage, please see the
@@ -16,7 +17,7 @@ class LandingZone extends pulumi.CustomResource {
   /// The ARN of the landing zone.
   late final pulumi.Output<String> arn;
   /// The drift status summary of the landing zone.
-  late final pulumi.Output<List<Map<String, dynamic>>> driftStatuses;
+  late final pulumi.Output<List<LandingZoneDriftStatus>> driftStatuses;
   /// The latest available version of the landing zone.
   late final pulumi.Output<String> latestAvailableVersion;
   /// The manifest JSON file is a text file that describes your AWS resources. For examples, review [Launch your landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch).
@@ -44,16 +45,16 @@ class LandingZone extends pulumi.CustomResource {
           'aws:controltower/landingZone:LandingZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    driftStatuses = registerOutput<List<Map<String, dynamic>>>('driftStatuses');
+    driftStatuses = registerOutput<List<LandingZoneDriftStatus>>('driftStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LandingZoneDriftStatus>(guardedValue, (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>())); });
     latestAvailableVersion = registerOutput<String>('latestAvailableVersion');
     manifestJson = registerOutput<String>('manifestJson');
     region = registerOutput<String>('region');
-    remediationTypes = registerOutput<List<String>?>('remediationTypes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    remediationTypes = registerOutput<List<String>?>('remediationTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 
@@ -62,11 +63,12 @@ class LandingZone extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LandingZoneState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LandingZone._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -81,13 +83,33 @@ class LandingZone extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    driftStatuses = registerOutput<List<Map<String, dynamic>>>('driftStatuses');
+    driftStatuses = registerOutput<List<LandingZoneDriftStatus>>('driftStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LandingZoneDriftStatus>(guardedValue, (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>())); });
     latestAvailableVersion = registerOutput<String>('latestAvailableVersion');
     manifestJson = registerOutput<String>('manifestJson');
     region = registerOutput<String>('region');
-    remediationTypes = registerOutput<List<String>?>('remediationTypes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    remediationTypes = registerOutput<List<String>?>('remediationTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [LandingZone] resource.
+  LandingZone.reference(String urn)
+    : super(
+        'aws:controltower/landingZone:LandingZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    driftStatuses = registerOutput<List<LandingZoneDriftStatus>>('driftStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LandingZoneDriftStatus>(guardedValue, (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    latestAvailableVersion = registerOutput<String>('latestAvailableVersion');
+    manifestJson = registerOutput<String>('manifestJson');
+    region = registerOutput<String>('region');
+    remediationTypes = registerOutput<List<String>?>('remediationTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 }

@@ -146,7 +146,7 @@ class TopicRuleDestination extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
+  /// Configuration of the VPC connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
   late final pulumi.Output<TopicRuleDestinationVpcConfiguration> vpcConfiguration;
 
   /// Creates a new [TopicRuleDestination].
@@ -161,7 +161,7 @@ class TopicRuleDestination extends pulumi.CustomResource {
           'aws:iot/topicRuleDestination:TopicRuleDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');
@@ -174,11 +174,12 @@ class TopicRuleDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicRuleDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TopicRuleDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -192,6 +193,21 @@ class TopicRuleDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool?>('enabled');
+    region = registerOutput<String>('region');
+    vpcConfiguration = registerOutput<TopicRuleDestinationVpcConfiguration>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicRuleDestinationVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TopicRuleDestination] resource.
+  TopicRuleDestination.reference(String urn)
+    : super(
+        'aws:iot/topicRuleDestination:TopicRuleDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');

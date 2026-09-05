@@ -7,7 +7,7 @@ class AgentcoreHarnessToolConfigAgentcoreGateway {
   /// ARN of the AgentCore gateway resource.
   final pulumi.Input<String> gatewayArn;
   /// Outbound authentication configuration. See `outboundAuth` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuth>? outboundAuth;
+  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuth?>? outboundAuth;
 
   /// Creates a new [AgentcoreHarnessToolConfigAgentcoreGateway].
   /// [gatewayArn] ARN of the AgentCore gateway resource.

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalClusterGlobalClusterMember {
-  /// Amazon Resource Name (ARN) of member DB Cluster.
-  final pulumi.Input<String>? dbClusterArn;
+  /// ARN of member DB Cluster.
+  final pulumi.Input<String?>? dbClusterArn;
   /// Whether the member is the primary DB Cluster.
-  final pulumi.Input<bool>? isWriter;
+  final pulumi.Input<bool?>? isWriter;
 
   /// Creates a new [GlobalClusterGlobalClusterMember].
-  /// [dbClusterArn] Amazon Resource Name (ARN) of member DB Cluster.
+  /// [dbClusterArn] ARN of member DB Cluster.
   /// [isWriter] Whether the member is the primary DB Cluster.
   const GlobalClusterGlobalClusterMember({
     this.dbClusterArn,

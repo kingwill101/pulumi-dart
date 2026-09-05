@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAdvancedSecurityOptionsJwtOptions {
   /// Whether JWT authentication is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// URL endpoint that hosts the JSON Web Key Set (JWKS) containing public keys used to verify JWT signatures. This argument can be specified only with OpenSearch versions 3.3 and later. At least one of `jwksUrl` or `publicKey` must be specified when `enabled` is set to `true`.
-  final pulumi.Input<String>? jwksUrl;
+  final pulumi.Input<String?>? jwksUrl;
   /// PEM-encoded public key used to verify JWT signatures. At least one of `jwksUrl` or `publicKey` must be specified when `enabled` is set to `true`. If both `jwksUrl` and `publicKey` are specified, `publicKey` is ignored.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// Element of the JWT assertion to use for roles. Default is `roles`.
-  final pulumi.Input<String>? rolesKey;
+  final pulumi.Input<String?>? rolesKey;
   /// Element of the JWT assertion to use for the user name. Default is `sub`.
-  final pulumi.Input<String>? subjectKey;
+  final pulumi.Input<String?>? subjectKey;
 
   /// Creates a new [DomainAdvancedSecurityOptionsJwtOptions].
   /// [enabled] Whether JWT authentication is enabled.

@@ -66,12 +66,12 @@ class GetInstanceRootBlockDevice {
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
-      throughput: pulumi.Input.fromValue(map['throughput'] as int),
+      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
       volumeId: pulumi.Input.fromValue(map['volumeId'] as String),
-      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

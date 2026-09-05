@@ -187,7 +187,7 @@ class Hsm extends pulumi.CustomResource {
           'aws:cloudhsmv2/hsm:Hsm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     clusterId = registerOutput<String>('clusterId');
@@ -204,11 +204,12 @@ class Hsm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HsmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hsm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,6 +223,25 @@ class Hsm extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    clusterId = registerOutput<String>('clusterId');
+    hsmEniId = registerOutput<String>('hsmEniId');
+    hsmId = registerOutput<String>('hsmId');
+    hsmState = registerOutput<String>('hsmState');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [Hsm] resource.
+  Hsm.reference(String urn)
+    : super(
+        'aws:cloudhsmv2/hsm:Hsm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     clusterId = registerOutput<String>('clusterId');
     hsmEniId = registerOutput<String>('hsmEniId');

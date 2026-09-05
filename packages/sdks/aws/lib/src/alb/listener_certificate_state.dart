@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ListenerCertificate resources.
 class ListenerCertificateState {
   /// The ARN of the certificate to attach to the listener.
-  final pulumi.Input<String>? certificateArn;
+  final pulumi.Input<String?>? certificateArn;
   /// The ARN of the listener to which to attach the certificate.
-  final pulumi.Input<String>? listenerArn;
+  final pulumi.Input<String?>? listenerArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ListenerCertificateState].
   /// [certificateArn] The ARN of the certificate to attach to the listener.

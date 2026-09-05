@@ -5,18 +5,18 @@ import 'records_exclusive_resource_record_set_geoproximity_location_coordinates.
 
 class RecordsExclusiveResourceRecordSetGeoproximityLocation {
   /// AWS region of the resource where DNS traffic is directed to.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// Increases or decreases the size of the geographic region from which Route 53 routes traffic to a resource.
   /// To expand the size of the geographic region from which Route 53 routes traffic to a resource, specify a positive integer from `1` to `99`.
   /// To shrink the size of the geographic region from which Route 53 routes traffic to a resource, specify a negative bias of `-1` to `-99`.
   /// See the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geoproximity.html) for additional details.
-  final pulumi.Input<int>? bias;
+  final pulumi.Input<int?>? bias;
   /// Coordinates for a geoproximity resource record.
   /// See `coordinates` below.
-  final pulumi.Input<RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates>? coordinates;
+  final pulumi.Input<RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates?>? coordinates;
   /// AWS local zone group.
   /// Identify the Local Zones Group for a specific Local Zone by using the [`describe-availability-zones` CLI command](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-availability-zones.html).
-  final pulumi.Input<String>? localZoneGroup;
+  final pulumi.Input<String?>? localZoneGroup;
 
   /// Creates a new [RecordsExclusiveResourceRecordSetGeoproximityLocation].
   /// [awsRegion] AWS region of the resource where DNS traffic is directed to.
@@ -42,7 +42,7 @@ class RecordsExclusiveResourceRecordSetGeoproximityLocation {
   factory RecordsExclusiveResourceRecordSetGeoproximityLocation.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSetGeoproximityLocation(
       awsRegion: (() { final guardedValue = map['awsRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bias: (() { final guardedValue = map['bias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bias: (() { final guardedValue = map['bias']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       coordinates: (() { final guardedValue = map['coordinates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localZoneGroup: (() { final guardedValue = map['localZoneGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

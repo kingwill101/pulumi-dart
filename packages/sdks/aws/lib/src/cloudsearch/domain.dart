@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
 import 'domain_endpoint_options.dart';
+import 'domain_index_field.dart';
 import 'domain_scaling_parameters.dart';
 import 'domain_state.dart';
 
@@ -16,7 +17,6 @@ import 'domain_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudsearch.Domain("example", {
-///     name: "example-domain",
 ///     scalingParameters: {
 ///         desiredInstanceType: "search.medium",
 ///     },
@@ -40,6 +40,7 @@ import 'domain_state.dart';
 ///             sourceFields: "headline",
 ///         },
 ///     ],
+///     name: "example-domain",
 /// });
 /// ```
 /// ```python
@@ -47,7 +48,6 @@ import 'domain_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudsearch.Domain("example",
-///     name="example-domain",
 ///     scaling_parameters={
 ///         "desired_instance_type": "search.medium",
 ///     },
@@ -70,7 +70,8 @@ import 'domain_state.dart';
 ///             "sort": True,
 ///             "source_fields": "headline",
 ///         },
-///     ])
+///     ],
+///     name="example-domain")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -82,7 +83,6 @@ import 'domain_state.dart';
 /// {
 ///     var example = new Aws.CloudSearch.Domain("example", new()
 ///     {
-///         Name = "example-domain",
 ///         ScalingParameters = new Aws.CloudSearch.Inputs.DomainScalingParametersArgs
 ///         {
 ///             DesiredInstanceType = "search.medium",
@@ -110,6 +110,7 @@ import 'domain_state.dart';
 ///                 SourceFields = "headline",
 ///             },
 ///         },
+///         Name = "example-domain",
 ///     });
 ///
 /// });
@@ -125,7 +126,6 @@ import 'domain_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudsearch.NewDomain(ctx, "example", &cloudsearch.DomainArgs{
-/// 			Name: pulumi.String("example-domain"),
 /// 			ScalingParameters: &cloudsearch.DomainScalingParametersArgs{
 /// 				DesiredInstanceType: pulumi.String("search.medium"),
 /// 			},
@@ -149,6 +149,7 @@ import 'domain_state.dart';
 /// 					SourceFields: pulumi.String("headline"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-domain"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,7 +168,6 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_cloudsearch_domain" "example" {
-///   name = "example-domain"
 ///   scaling_parameters = {
 ///     desired_instance_type = "search.medium"
 ///   }
@@ -189,6 +189,7 @@ import 'domain_state.dart';
 ///     sort          = true
 ///     source_fields = "headline"
 ///   }
+///   name = "example-domain"
 /// }
 /// ```
 /// ```java
@@ -215,7 +216,6 @@ import 'domain_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
-///             .name("example-domain")
 ///             .scalingParameters(DomainScalingParametersArgs.builder()
 ///                 .desiredInstanceType("search.medium")
 ///                 .build())
@@ -238,6 +238,7 @@ import 'domain_state.dart';
 ///                     .sort(true)
 ///                     .sourceFields("headline")
 ///                     .build())
+///             .name("example-domain")
 ///             .build());
 ///
 ///     }
@@ -248,7 +249,6 @@ import 'domain_state.dart';
 ///   example:
 ///     type: aws:cloudsearch:Domain
 ///     properties:
-///       name: example-domain
 ///       scalingParameters:
 ///         desiredInstanceType: search.medium
 ///       indexFields:
@@ -266,6 +266,7 @@ import 'domain_state.dart';
 ///           return: true
 ///           sort: true
 ///           sourceFields: headline
+///       name: example-domain
 /// ```
 ///
 ///
@@ -286,7 +287,7 @@ class Domain extends pulumi.CustomResource {
   /// Domain endpoint options. Documented below.
   late final pulumi.Output<DomainEndpointOptions> endpointOptions;
   /// The index fields for documents added to the domain. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> indexFields;
+  late final pulumi.Output<List<DomainIndexField>?> indexFields;
   /// Whether or not to maintain extra instances for the domain in a second Availability Zone to ensure high availability.
   late final pulumi.Output<bool> multiAz;
   /// The name of the CloudSearch domain.
@@ -310,13 +311,13 @@ class Domain extends pulumi.CustomResource {
           'aws:cloudsearch/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
     domainId = registerOutput<String>('domainId');
     endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    indexFields = registerOutput<List<Map<String, dynamic>>?>('indexFields');
+    indexFields = registerOutput<List<DomainIndexField>?>('indexFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainIndexField>(guardedValue, (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>())); });
     multiAz = registerOutput<bool>('multiAz');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -329,11 +330,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,7 +353,28 @@ class Domain extends pulumi.CustomResource {
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
     domainId = registerOutput<String>('domainId');
     endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    indexFields = registerOutput<List<Map<String, dynamic>>?>('indexFields');
+    indexFields = registerOutput<List<DomainIndexField>?>('indexFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainIndexField>(guardedValue, (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>())); });
+    multiAz = registerOutput<bool>('multiAz');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    scalingParameters = registerOutput<DomainScalingParameters>('scalingParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainScalingParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    searchServiceEndpoint = registerOutput<String>('searchServiceEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:cloudsearch/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
+    domainId = registerOutput<String>('domainId');
+    endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    indexFields = registerOutput<List<DomainIndexField>?>('indexFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainIndexField>(guardedValue, (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>())); });
     multiAz = registerOutput<bool>('multiAz');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

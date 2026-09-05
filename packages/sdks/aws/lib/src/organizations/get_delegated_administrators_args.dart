@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_organizations_get_delegated_administrators_get_delegated_administrators_args_doc}
 class GetDelegatedAdministratorsArgs {
   /// Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
-  final pulumi.Input<String>? servicePrincipal;
+  final pulumi.Input<String?>? servicePrincipal;
 
   /// Creates a new [GetDelegatedAdministratorsArgs].
   /// [servicePrincipal] Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.

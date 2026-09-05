@@ -10,7 +10,7 @@ class GetGatewayArgs {
   /// Name of the gateway to retrieve.
   final pulumi.Input<String> name;
   /// A map of tags assigned to the gateway.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetGatewayArgs].
   /// [name] Name of the gateway to retrieve.

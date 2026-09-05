@@ -10,36 +10,36 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreOnlineEvaluationConfig resources.
 class AgentcoreOnlineEvaluationConfigState {
   /// Data source configuration specifying where to read agent traces. See `dataSourceConfig` Block below.
-  final pulumi.Input<AgentcoreOnlineEvaluationConfigDataSourceConfig>? dataSourceConfig;
+  final pulumi.Input<AgentcoreOnlineEvaluationConfigDataSourceConfig?>? dataSourceConfig;
   /// Description of the online evaluation configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to enable the online evaluation configuration immediately upon creation.
-  final pulumi.Input<bool>? enableOnCreate;
+  final pulumi.Input<bool?>? enableOnCreate;
   /// ARN of the IAM role that grants permissions to read from CloudWatch logs, write evaluation results, and invoke Amazon Bedrock models for evaluation.
-  final pulumi.Input<String>? evaluationExecutionRoleArn;
+  final pulumi.Input<String?>? evaluationExecutionRoleArn;
   /// List of evaluators to apply during online evaluation. Minimum 1, maximum 10. See `evaluator` Block below.
-  final pulumi.Input<List<AgentcoreOnlineEvaluationConfigEvaluator>>? evaluators;
+  final pulumi.Input<List<AgentcoreOnlineEvaluationConfigEvaluator>?>? evaluators;
   /// Execution status to enable or disable the online evaluation. Valid values: `ENABLED`, `DISABLED`. Computed on create based on `enableOnCreate`.
-  final pulumi.Input<String>? executionStatus;
+  final pulumi.Input<String?>? executionStatus;
   /// ARN of the online evaluation configuration.
-  final pulumi.Input<String>? onlineEvaluationConfigArn;
+  final pulumi.Input<String?>? onlineEvaluationConfigArn;
   /// Unique identifier of the online evaluation configuration.
-  final pulumi.Input<String>? onlineEvaluationConfigId;
+  final pulumi.Input<String?>? onlineEvaluationConfigId;
   /// Name of the online evaluation configuration. Must start with a letter and contain only alphanumeric characters and underscores, up to 48 characters.
-  final pulumi.Input<String>? onlineEvaluationConfigName;
+  final pulumi.Input<String?>? onlineEvaluationConfigName;
   /// Configuration specifying where evaluation results are written. See `outputConfig` Block below.
-  final pulumi.Input<List<AgentcoreOnlineEvaluationConfigOutputConfig>>? outputConfigs;
+  final pulumi.Input<List<AgentcoreOnlineEvaluationConfigOutputConfig>?>? outputConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Evaluation rule defining sampling configuration, filters, and session detection settings. See `rule` Block below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreOnlineEvaluationConfigRule>? rule;
+  final pulumi.Input<AgentcoreOnlineEvaluationConfigRule?>? rule;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcoreOnlineEvaluationConfigTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcoreOnlineEvaluationConfigTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreOnlineEvaluationConfigState].
   /// [dataSourceConfig] Data source configuration specifying where to read agent traces. See `dataSourceConfig` Block below.

@@ -10,6 +10,8 @@ export 'workspaces/directory_saml_properties.dart';
 export 'workspaces/directory_self_service_permissions.dart';
 export 'workspaces/directory_state.dart';
 export 'workspaces/directory_workspace_access_properties.dart';
+export 'workspaces/directory_workspace_access_properties_access_endpoint_config.dart';
+export 'workspaces/directory_workspace_access_properties_access_endpoint_config_access_endpoint.dart';
 export 'workspaces/directory_workspace_creation_properties.dart';
 export 'workspaces/functions.dart';
 export 'workspaces/get_bundle_args.dart';

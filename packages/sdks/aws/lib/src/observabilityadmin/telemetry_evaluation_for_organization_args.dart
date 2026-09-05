@@ -9,12 +9,12 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 /// {@macro pulumi_observabilityadmin_telemetry_evaluation_for_organization_telemetry_evaluation_for_organization_args_doc}
 class TelemetryEvaluationForOrganizationArgs {
   /// Whether to start telemetry evaluation in all AWS Regions where CloudWatch Observability Admin is available. The current region becomes the home region. Mutually exclusive with `regions`.
-  final pulumi.Input<bool>? allRegions;
+  final pulumi.Input<bool?>? allRegions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS Regions to include in multi-region telemetry evaluation. The current region is always implicitly included. Mutually exclusive with `allRegions`.
-  final pulumi.Input<List<String>>? regions;
-  final pulumi.Input<TelemetryEvaluationForOrganizationTimeouts>? timeouts;
+  final pulumi.Input<List<String>?>? regions;
+  final pulumi.Input<TelemetryEvaluationForOrganizationTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEvaluationForOrganizationArgs].
   /// [allRegions] Whether to start telemetry evaluation in all AWS Regions where CloudWatch Observability Admin is available. The current region becomes the home region. Mutually exclusive with `regions`.

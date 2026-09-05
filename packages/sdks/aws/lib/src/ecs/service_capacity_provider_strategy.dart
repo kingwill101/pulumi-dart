@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceCapacityProviderStrategy {
   /// Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
-  final pulumi.Input<int>? base;
+  final pulumi.Input<int?>? base;
   /// Short name of the capacity provider.
   final pulumi.Input<String> capacityProvider;
   /// Relative percentage of the total number of launched tasks that should use the specified capacity provider.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [ServiceCapacityProviderStrategy].
   /// [base] Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
@@ -30,9 +30,9 @@ class ServiceCapacityProviderStrategy {
 
   factory ServiceCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return ServiceCapacityProviderStrategy(
-      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       capacityProvider: pulumi.Input.fromValue(map['capacityProvider'] as String),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

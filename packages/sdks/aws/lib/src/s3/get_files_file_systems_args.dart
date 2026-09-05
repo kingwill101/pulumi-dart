@@ -9,9 +9,9 @@ import 'get_files_file_systems_file_system.dart';
 /// {@macro pulumi_s3_get_files_file_systems_get_files_file_systems_args_doc}
 class GetFilesFileSystemsArgs {
   /// List of file systems. See `fileSystems` below.
-  final pulumi.Input<List<GetFilesFileSystemsFileSystem>>? fileSystems;
+  final pulumi.Input<List<GetFilesFileSystemsFileSystem>?>? fileSystems;
   /// Region where this data source will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetFilesFileSystemsArgs].
   /// [fileSystems] List of file systems. See `fileSystems` below.

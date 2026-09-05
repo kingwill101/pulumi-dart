@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupOfflineStoreConfigS3StorageConfig {
-  /// The AWS Key Management Service (KMS) key ID of the key used to encrypt any objects written into the OfflineStore S3 location.
-  final pulumi.Input<String>? kmsKeyId;
+  /// KMS key ID of the key used to encrypt any objects written into the OfflineStore S3 location.
+  final pulumi.Input<String?>? kmsKeyId;
   /// The S3 path where offline records are written.
-  final pulumi.Input<String>? resolvedOutputS3Uri;
+  final pulumi.Input<String?>? resolvedOutputS3Uri;
   /// The S3 URI, or location in Amazon S3, of OfflineStore.
   final pulumi.Input<String> s3Uri;
 
   /// Creates a new [FeatureGroupOfflineStoreConfigS3StorageConfig].
-  /// [kmsKeyId] The AWS Key Management Service (KMS) key ID of the key used to encrypt any objects written into the OfflineStore S3 location.
+  /// [kmsKeyId] KMS key ID of the key used to encrypt any objects written into the OfflineStore S3 location.
   /// [resolvedOutputS3Uri] The S3 path where offline records are written.
   /// [s3Uri] The S3 URI, or location in Amazon S3, of OfflineStore.
   const FeatureGroupOfflineStoreConfigS3StorageConfig({

@@ -7,12 +7,12 @@ import 'delegation_signer_record_timeouts.dart';
 /// Input properties used for looking up and filtering DelegationSignerRecord resources.
 class DelegationSignerRecordState {
   /// An ID assigned to the created DS record.
-  final pulumi.Input<String>? dnssecKeyId;
+  final pulumi.Input<String?>? dnssecKeyId;
   /// The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The information about a key, including the algorithm, public key-value, and flags.
-  final pulumi.Input<DelegationSignerRecordSigningAttributes>? signingAttributes;
-  final pulumi.Input<DelegationSignerRecordTimeouts>? timeouts;
+  final pulumi.Input<DelegationSignerRecordSigningAttributes?>? signingAttributes;
+  final pulumi.Input<DelegationSignerRecordTimeouts?>? timeouts;
 
   /// Creates a new [DelegationSignerRecordState].
   /// [dnssecKeyId] An ID assigned to the created DS record.

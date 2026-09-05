@@ -6,9 +6,9 @@ import 'rule_group_rule_group_rule_variables_port_set.dart';
 
 class RuleGroupRuleGroupRuleVariables {
   /// Set of configuration blocks that define IP address information. See IP Sets below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRuleVariablesIpSet>>? ipSets;
+  final pulumi.Input<List<RuleGroupRuleGroupRuleVariablesIpSet>?>? ipSets;
   /// Set of configuration blocks that define port range information. See Port Sets below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRuleVariablesPortSet>>? portSets;
+  final pulumi.Input<List<RuleGroupRuleGroupRuleVariablesPortSet>?>? portSets;
 
   /// Creates a new [RuleGroupRuleGroupRuleVariables].
   /// [ipSets] Set of configuration blocks that define IP address information. See IP Sets below for details.

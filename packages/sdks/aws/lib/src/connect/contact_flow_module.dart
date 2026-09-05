@@ -676,7 +676,7 @@ import 'contact_flow_module_state.dart';
 /// $ pulumi import aws:connect/contactFlowModule:ContactFlowModule example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class ContactFlowModule extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Contact Flow Module.
+  /// ARN of the Contact Flow Module.
   late final pulumi.Output<String> arn;
   /// The identifier of the Contact Flow Module.
   late final pulumi.Output<String> contactFlowModuleId;
@@ -711,7 +711,7 @@ class ContactFlowModule extends pulumi.CustomResource {
           'aws:connect/contactFlowModule:ContactFlowModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactFlowModuleId = registerOutput<String>('contactFlowModuleId');
@@ -722,8 +722,8 @@ class ContactFlowModule extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ContactFlowModule] resource's state with the given [name] and [id].
@@ -731,11 +731,12 @@ class ContactFlowModule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactFlowModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContactFlowModule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -758,7 +759,29 @@ class ContactFlowModule extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ContactFlowModule] resource.
+  ContactFlowModule.reference(String urn)
+    : super(
+        'aws:connect/contactFlowModule:ContactFlowModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    contactFlowModuleId = registerOutput<String>('contactFlowModuleId');
+    content = registerOutput<String>('content');
+    contentHash = registerOutput<String?>('contentHash');
+    description = registerOutput<String?>('description');
+    filename = registerOutput<String?>('filename');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

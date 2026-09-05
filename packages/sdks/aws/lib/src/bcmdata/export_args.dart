@@ -10,10 +10,10 @@ import 'export_timeouts.dart';
 /// {@macro pulumi_bcmdata_export_export_args_doc}
 class ExportArgs {
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
-  final pulumi.Input<ExportExport>? export;
+  final pulumi.Input<ExportExport?>? export;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ExportTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ExportTimeouts?>? timeouts;
 
   /// Creates a new [ExportArgs].
   /// [export] The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.

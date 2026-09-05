@@ -11,16 +11,16 @@ class UserProfileArgs {
   /// The domain identifier.
   final pulumi.Input<String> domainIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The user profile status.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<UserProfileTimeouts>? timeouts;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<UserProfileTimeouts?>? timeouts;
   /// The user identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> userIdentifier;
   /// The user type.
-  final pulumi.Input<String>? userType;
+  final pulumi.Input<String?>? userType;
 
   /// Creates a new [UserProfileArgs].
   /// [domainIdentifier] The domain identifier.

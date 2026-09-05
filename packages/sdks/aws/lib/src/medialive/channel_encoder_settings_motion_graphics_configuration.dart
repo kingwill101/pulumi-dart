@@ -5,7 +5,7 @@ import 'channel_encoder_settings_motion_graphics_configuration_motion_graphics_s
 
 class ChannelEncoderSettingsMotionGraphicsConfiguration {
   /// Motion Graphics Insertion.
-  final pulumi.Input<String>? motionGraphicsInsertion;
+  final pulumi.Input<String?>? motionGraphicsInsertion;
   /// Motion Graphics Settings. See Motion Graphics Settings for more details.
   final pulumi.Input<ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings> motionGraphicsSettings;
 

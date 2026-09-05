@@ -8,36 +8,36 @@ import 'get_patch_baseline_source.dart';
 /// Result data returned by getPatchBaseline.
 class GetPatchBaselineResult {
   /// List of rules used to include patches in the baseline.
-  final List<GetPatchBaselineApprovalRule> approvalRules;
+  final List<GetPatchBaselineApprovalRule>? approvalRules;
   /// List of explicitly approved patches for the baseline.
-  final List<String> approvedPatches;
+  final List<String>? approvedPatches;
   /// Compliance level for approved patches.
-  final String approvedPatchesComplianceLevel;
+  final String? approvedPatchesComplianceLevel;
   /// Indicates whether the list of approved patches includes non-security updates that should be applied to the instances.
-  final bool approvedPatchesEnableNonSecurity;
+  final bool? approvedPatchesEnableNonSecurity;
   /// Indicates the compliance status of managed nodes for which security-related patches are available but were not approved. Supported for Windows Server managed nodes only.
-  final String availableSecurityUpdatesComplianceStatus;
+  final String? availableSecurityUpdatesComplianceStatus;
   final bool? defaultBaseline;
   /// Description of the baseline.
-  final String description;
+  final String? description;
   /// Set of global filters used to exclude patches from the baseline.
-  final List<GetPatchBaselineGlobalFilter> globalFilters;
+  final List<GetPatchBaselineGlobalFilter>? globalFilters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// JSON representation of the baseline.
-  final String json;
+  final String? json;
   /// Name specified to identify the patch source.
-  final String name;
+  final String? name;
   final String? namePrefix;
   final String? operatingSystem;
-  final String owner;
-  final String region;
+  final String? owner;
+  final String? region;
   /// List of rejected patches.
-  final List<String> rejectedPatches;
+  final List<String>? rejectedPatches;
   /// Action specified to take on patches included in the `rejectedPatches` list.
-  final String rejectedPatchesAction;
+  final String? rejectedPatchesAction;
   /// Information about the patches to use to update the managed nodes, including target operating systems and source repositories.
-  final List<GetPatchBaselineSource> sources;
+  final List<GetPatchBaselineSource>? sources;
 
   /// Creates a new [GetPatchBaselineResult].
   /// [approvalRules] List of rules used to include patches in the baseline.
@@ -53,75 +53,75 @@ class GetPatchBaselineResult {
   /// [name] Name specified to identify the patch source.
   /// [namePrefix] Optional.
   /// [operatingSystem] Optional.
-  /// [owner] Required.
-  /// [region] Required.
+  /// [owner] Optional.
+  /// [region] Optional.
   /// [rejectedPatches] List of rejected patches.
   /// [rejectedPatchesAction] Action specified to take on patches included in the `rejectedPatches` list.
   /// [sources] Information about the patches to use to update the managed nodes, including target operating systems and source repositories.
   const GetPatchBaselineResult({
-    required this.approvalRules,
-    required this.approvedPatches,
-    required this.approvedPatchesComplianceLevel,
-    required this.approvedPatchesEnableNonSecurity,
-    required this.availableSecurityUpdatesComplianceStatus,
+    this.approvalRules,
+    this.approvedPatches,
+    this.approvedPatchesComplianceLevel,
+    this.approvedPatchesEnableNonSecurity,
+    this.availableSecurityUpdatesComplianceStatus,
     this.defaultBaseline,
-    required this.description,
-    required this.globalFilters,
-    required this.id,
-    required this.json,
-    required this.name,
+    this.description,
+    this.globalFilters,
+    this.id,
+    this.json,
+    this.name,
     this.namePrefix,
     this.operatingSystem,
-    required this.owner,
-    required this.region,
-    required this.rejectedPatches,
-    required this.rejectedPatchesAction,
-    required this.sources,
+    this.owner,
+    this.region,
+    this.rejectedPatches,
+    this.rejectedPatchesAction,
+    this.sources,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'approvalRules': pulumi.Input.encodeList<GetPatchBaselineApprovalRule, Map<String, dynamic>>(approvalRules, (value) => value.toMap()),
-      'approvedPatches': approvedPatches,
-      'approvedPatchesComplianceLevel': approvedPatchesComplianceLevel,
-      'approvedPatchesEnableNonSecurity': approvedPatchesEnableNonSecurity,
-      'availableSecurityUpdatesComplianceStatus': availableSecurityUpdatesComplianceStatus,
+      'approvalRules': ?(() { final guardedValue = approvalRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPatchBaselineApprovalRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'approvedPatches': ?approvedPatches,
+      'approvedPatchesComplianceLevel': ?approvedPatchesComplianceLevel,
+      'approvedPatchesEnableNonSecurity': ?approvedPatchesEnableNonSecurity,
+      'availableSecurityUpdatesComplianceStatus': ?availableSecurityUpdatesComplianceStatus,
       'defaultBaseline': ?defaultBaseline,
-      'description': description,
-      'globalFilters': pulumi.Input.encodeList<GetPatchBaselineGlobalFilter, Map<String, dynamic>>(globalFilters, (value) => value.toMap()),
-      'id': id,
-      'json': json,
-      'name': name,
+      'description': ?description,
+      'globalFilters': ?(() { final guardedValue = globalFilters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPatchBaselineGlobalFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'json': ?json,
+      'name': ?name,
       'namePrefix': ?namePrefix,
       'operatingSystem': ?operatingSystem,
-      'owner': owner,
-      'region': region,
-      'rejectedPatches': rejectedPatches,
-      'rejectedPatchesAction': rejectedPatchesAction,
-      'sources': pulumi.Input.encodeList<GetPatchBaselineSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
+      'owner': ?owner,
+      'region': ?region,
+      'rejectedPatches': ?rejectedPatches,
+      'rejectedPatchesAction': ?rejectedPatchesAction,
+      'sources': ?(() { final guardedValue = sources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPatchBaselineSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetPatchBaselineResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineResult(
-      approvalRules: pulumi.Input.decodeList<GetPatchBaselineApprovalRule>(map['approvalRules']!, (value) => GetPatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())),
-      approvedPatches: (map['approvedPatches'] as List).cast<String>(),
-      approvedPatchesComplianceLevel: map['approvedPatchesComplianceLevel'] as String,
-      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] as bool,
-      availableSecurityUpdatesComplianceStatus: map['availableSecurityUpdatesComplianceStatus'] as String,
+      approvalRules: (() { final guardedValue = map['approvalRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPatchBaselineApprovalRule>(guardedValue, (value) => GetPatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      approvedPatches: (() { final guardedValue = map['approvedPatches']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      approvedPatchesComplianceLevel: (() { final guardedValue = map['approvedPatchesComplianceLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      approvedPatchesEnableNonSecurity: (() { final guardedValue = map['approvedPatchesEnableNonSecurity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      availableSecurityUpdatesComplianceStatus: (() { final guardedValue = map['availableSecurityUpdatesComplianceStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultBaseline: (() { final guardedValue = map['defaultBaseline']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      description: map['description'] as String,
-      globalFilters: pulumi.Input.decodeList<GetPatchBaselineGlobalFilter>(map['globalFilters']!, (value) => GetPatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      json: map['json'] as String,
-      name: map['name'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      globalFilters: (() { final guardedValue = map['globalFilters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPatchBaselineGlobalFilter>(guardedValue, (value) => GetPatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       operatingSystem: (() { final guardedValue = map['operatingSystem']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      owner: map['owner'] as String,
-      region: map['region'] as String,
-      rejectedPatches: (map['rejectedPatches'] as List).cast<String>(),
-      rejectedPatchesAction: map['rejectedPatchesAction'] as String,
-      sources: pulumi.Input.decodeList<GetPatchBaselineSource>(map['sources']!, (value) => GetPatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rejectedPatches: (() { final guardedValue = map['rejectedPatches']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      rejectedPatchesAction: (() { final guardedValue = map['rejectedPatchesAction']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPatchBaselineSource>(guardedValue, (value) => GetPatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

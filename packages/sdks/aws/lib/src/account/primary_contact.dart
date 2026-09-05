@@ -217,7 +217,7 @@ class PrimaryContact extends pulumi.CustomResource {
           'aws:account/primaryContact:PrimaryContact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     addressLine1 = registerOutput<String>('addressLine1');
@@ -239,11 +239,12 @@ class PrimaryContact extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrimaryContactState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrimaryContact._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,6 +258,30 @@ class PrimaryContact extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String?>('accountId');
+    addressLine1 = registerOutput<String>('addressLine1');
+    addressLine2 = registerOutput<String?>('addressLine2');
+    addressLine3 = registerOutput<String?>('addressLine3');
+    city = registerOutput<String>('city');
+    companyName = registerOutput<String?>('companyName');
+    countryCode = registerOutput<String>('countryCode');
+    districtOrCounty = registerOutput<String?>('districtOrCounty');
+    fullName = registerOutput<String>('fullName');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    postalCode = registerOutput<String>('postalCode');
+    stateOrRegion = registerOutput<String?>('stateOrRegion');
+    websiteUrl = registerOutput<String?>('websiteUrl');
+  }
+
+  /// Creates a typed reference to an existing [PrimaryContact] resource.
+  PrimaryContact.reference(String urn)
+    : super(
+        'aws:account/primaryContact:PrimaryContact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String?>('accountId');
     addressLine1 = registerOutput<String>('addressLine1');
     addressLine2 = registerOutput<String?>('addressLine2');

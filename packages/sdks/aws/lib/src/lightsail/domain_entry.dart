@@ -192,7 +192,7 @@ class DomainEntry extends pulumi.CustomResource {
           'aws:lightsail/domainEntry:DomainEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     isAlias = registerOutput<bool?>('isAlias');
@@ -207,11 +207,12 @@ class DomainEntry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainEntryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainEntry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,23 @@ class DomainEntry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainName = registerOutput<String>('domainName');
+    isAlias = registerOutput<bool?>('isAlias');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    target = registerOutput<String>('target');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DomainEntry] resource.
+  DomainEntry.reference(String urn)
+    : super(
+        'aws:lightsail/domainEntry:DomainEntry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     isAlias = registerOutput<bool?>('isAlias');
     this.name = registerOutput<String>('name');

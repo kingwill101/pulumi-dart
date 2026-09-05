@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_security_group_rules_exclusive_args.dart';
 import 'vpc_security_group_rules_exclusive_state.dart';
 
-/// Resource for managing an exclusive set of AWS VPC (Virtual Private Cloud) Security Group Rules.
+/// Resource for managing an exclusive set of AWS VPC Security Group Rules.
 ///
 /// This resource manages the complete set of ingress and egress rules assigned to a security group. It provides exclusive control by removing any rules not explicitly defined in the configuration.
 ///
@@ -460,10 +460,10 @@ class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
           'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    egressRuleIds = registerOutput<List<String>>('egressRuleIds');
-    ingressRuleIds = registerOutput<List<String>>('ingressRuleIds');
+    egressRuleIds = registerOutput<List<String>>('egressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ingressRuleIds = registerOutput<List<String>>('ingressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
   }
@@ -473,11 +473,12 @@ class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcSecurityGroupRulesExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcSecurityGroupRulesExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -491,8 +492,23 @@ class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    egressRuleIds = registerOutput<List<String>>('egressRuleIds');
-    ingressRuleIds = registerOutput<List<String>>('ingressRuleIds');
+    egressRuleIds = registerOutput<List<String>>('egressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ingressRuleIds = registerOutput<List<String>>('ingressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+  }
+
+  /// Creates a typed reference to an existing [VpcSecurityGroupRulesExclusive] resource.
+  VpcSecurityGroupRulesExclusive.reference(String urn)
+    : super(
+        'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    egressRuleIds = registerOutput<List<String>>('egressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ingressRuleIds = registerOutput<List<String>>('ingressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
   }

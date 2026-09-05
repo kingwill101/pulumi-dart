@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'pool_application_setting.dart';
 import 'pool_args.dart';
 import 'pool_capacity.dart';
+import 'pool_capacity_status.dart';
 import 'pool_state.dart';
+import 'pool_timeout_setting.dart';
 import 'pool_timeouts.dart';
 
 /// Manages a WorkSpaces Pool in the AWS WorkSpaces service.
@@ -30,14 +33,14 @@ import 'pool_timeouts.dart';
 ///     userIdentityType: "CUSTOMER_MANAGED",
 /// });
 /// const examplePool = new aws.workspaces.Pool("example", {
+///     capacity: {
+///         desiredUserSessions: 10,
+///     },
 ///     bundleId: example.then(example => example.id),
 ///     poolName: "example-pool",
 ///     description: "Example WorkSpaces Pool",
 ///     directoryId: exampleDirectory.directoryId,
 ///     runningMode: "AUTO_STOP",
-///     capacity: {
-///         desiredUserSessions: 10,
-///     },
 /// });
 /// ```
 /// ```python
@@ -56,14 +59,14 @@ import 'pool_timeouts.dart';
 ///     workspace_directory_description="Example WorkSpaces Directory for Pools",
 ///     user_identity_type="CUSTOMER_MANAGED")
 /// example_pool = aws.workspaces.Pool("example",
+///     capacity={
+///         "desired_user_sessions": 10,
+///     },
 ///     bundle_id=example.id,
 ///     pool_name="example-pool",
 ///     description="Example WorkSpaces Pool",
 ///     directory_id=example_directory.directory_id,
-///     running_mode="AUTO_STOP",
-///     capacity={
-///         "desired_user_sessions": 10,
-///     })
+///     running_mode="AUTO_STOP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -94,15 +97,15 @@ import 'pool_timeouts.dart';
 ///
 ///     var examplePool = new Aws.Workspaces.Pool("example", new()
 ///     {
+///         Capacity = new Aws.Workspaces.Inputs.PoolCapacityArgs
+///         {
+///             DesiredUserSessions = 10,
+///         },
 ///         BundleId = example.Apply(getBundleResult => getBundleResult.Id),
 ///         PoolName = "example-pool",
 ///         Description = "Example WorkSpaces Pool",
 ///         DirectoryId = exampleDirectory.DirectoryId,
 ///         RunningMode = "AUTO_STOP",
-///         Capacity = new Aws.Workspaces.Inputs.PoolCapacityArgs
-///         {
-///             DesiredUserSessions = 10,
-///         },
 ///     });
 ///
 /// });
@@ -138,14 +141,14 @@ import 'pool_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspaces.NewPool(ctx, "example", &workspaces.PoolArgs{
+/// 			Capacity: &workspaces.PoolCapacityArgs{
+/// 				DesiredUserSessions: pulumi.Int(10),
+/// 			},
 /// 			BundleId:    pulumi.String(example.Id),
 /// 			PoolName:    pulumi.String("example-pool"),
 /// 			Description: pulumi.String("Example WorkSpaces Pool"),
 /// 			DirectoryId: exampleDirectory.DirectoryId,
 /// 			RunningMode: pulumi.String("AUTO_STOP"),
-/// 			Capacity: &workspaces.PoolCapacityArgs{
-/// 				DesiredUserSessions: pulumi.Int(10),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -176,14 +179,14 @@ import 'pool_timeouts.dart';
 ///   user_identity_type              = "CUSTOMER_MANAGED"
 /// }
 /// resource "aws_workspaces_pool" "example" {
+///   capacity = {
+///     desired_user_sessions = 10
+///   }
 ///   bundle_id    = data.aws_workspaces_getbundle.example.id
 ///   pool_name    = "example-pool"
 ///   description  = "Example WorkSpaces Pool"
 ///   directory_id = aws_workspaces_directory.example.directory_id
 ///   running_mode = "AUTO_STOP"
-///   capacity = {
-///     desired_user_sessions = 10
-///   }
 /// }
 /// ```
 /// ```java
@@ -228,14 +231,14 @@ import 'pool_timeouts.dart';
 ///             .build());
 ///
 ///         var examplePool = new Pool("examplePool", PoolArgs.builder()
+///             .capacity(PoolCapacityArgs.builder()
+///                 .desiredUserSessions(10)
+///                 .build())
 ///             .bundleId(example.id())
 ///             .poolName("example-pool")
 ///             .description("Example WorkSpaces Pool")
 ///             .directoryId(exampleDirectory.directoryId())
 ///             .runningMode("AUTO_STOP")
-///             .capacity(PoolCapacityArgs.builder()
-///                 .desiredUserSessions(10)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -258,13 +261,13 @@ import 'pool_timeouts.dart';
 ///     type: aws:workspaces:Pool
 ///     name: example
 ///     properties:
+///       capacity:
+///         desiredUserSessions: 10
 ///       bundleId: ${example.id}
 ///       poolName: example-pool
 ///       description: Example WorkSpaces Pool
 ///       directoryId: ${exampleDirectory.directoryId}
 ///       runningMode: AUTO_STOP
-///       capacity:
-///         desiredUserSessions: 10
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -283,14 +286,14 @@ import 'pool_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspaces.Pool("example", {
+///     capacity: {
+///         desiredUserSessions: 10,
+///     },
 ///     bundleId: exampleAwsWorkspacesBundle.id,
 ///     poolName: "example-pool",
 ///     description: "Example WorkSpaces Pool with Application Settings",
 ///     directoryId: exampleAwsWorkspacesDirectory.directoryId,
 ///     runningMode: "AUTO_STOP",
-///     capacity: {
-///         desiredUserSessions: 10,
-///     },
 ///     applicationSettings: [{
 ///         status: "ENABLED",
 ///         settingsGroup: "my-settings-group",
@@ -302,14 +305,14 @@ import 'pool_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspaces.Pool("example",
+///     capacity={
+///         "desired_user_sessions": 10,
+///     },
 ///     bundle_id=example_aws_workspaces_bundle["id"],
 ///     pool_name="example-pool",
 ///     description="Example WorkSpaces Pool with Application Settings",
 ///     directory_id=example_aws_workspaces_directory["directoryId"],
 ///     running_mode="AUTO_STOP",
-///     capacity={
-///         "desired_user_sessions": 10,
-///     },
 ///     application_settings=[{
 ///         "status": "ENABLED",
 ///         "settings_group": "my-settings-group",
@@ -325,15 +328,15 @@ import 'pool_timeouts.dart';
 /// {
 ///     var example = new Aws.Workspaces.Pool("example", new()
 ///     {
+///         Capacity = new Aws.Workspaces.Inputs.PoolCapacityArgs
+///         {
+///             DesiredUserSessions = 10,
+///         },
 ///         BundleId = exampleAwsWorkspacesBundle.Id,
 ///         PoolName = "example-pool",
 ///         Description = "Example WorkSpaces Pool with Application Settings",
 ///         DirectoryId = exampleAwsWorkspacesDirectory.DirectoryId,
 ///         RunningMode = "AUTO_STOP",
-///         Capacity = new Aws.Workspaces.Inputs.PoolCapacityArgs
-///         {
-///             DesiredUserSessions = 10,
-///         },
 ///         ApplicationSettings = new[]
 ///         {
 ///             new Aws.Workspaces.Inputs.PoolApplicationSettingArgs
@@ -357,14 +360,14 @@ import 'pool_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspaces.NewPool(ctx, "example", &workspaces.PoolArgs{
+/// 			Capacity: &workspaces.PoolCapacityArgs{
+/// 				DesiredUserSessions: pulumi.Int(10),
+/// 			},
 /// 			BundleId:    pulumi.Any(exampleAwsWorkspacesBundle.Id),
 /// 			PoolName:    pulumi.String("example-pool"),
 /// 			Description: pulumi.String("Example WorkSpaces Pool with Application Settings"),
 /// 			DirectoryId: pulumi.Any(exampleAwsWorkspacesDirectory.DirectoryId),
 /// 			RunningMode: pulumi.String("AUTO_STOP"),
-/// 			Capacity: &workspaces.PoolCapacityArgs{
-/// 				DesiredUserSessions: pulumi.Int(10),
-/// 			},
 /// 			ApplicationSettings: workspaces.PoolApplicationSettingArray{
 /// 				&workspaces.PoolApplicationSettingArgs{
 /// 					Status:        pulumi.String("ENABLED"),
@@ -389,14 +392,14 @@ import 'pool_timeouts.dart';
 /// }
 ///
 /// resource "aws_workspaces_pool" "example" {
+///   capacity = {
+///     desired_user_sessions = 10
+///   }
 ///   bundle_id    = exampleAwsWorkspacesBundle.id
 ///   pool_name    = "example-pool"
 ///   description  = "Example WorkSpaces Pool with Application Settings"
 ///   directory_id = exampleAwsWorkspacesDirectory.directoryId
 ///   running_mode = "AUTO_STOP"
-///   capacity = {
-///     desired_user_sessions = 10
-///   }
 ///   application_settings {
 ///     status         = "ENABLED"
 ///     settings_group = "my-settings-group"
@@ -427,14 +430,14 @@ import 'pool_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Pool("example", PoolArgs.builder()
+///             .capacity(PoolCapacityArgs.builder()
+///                 .desiredUserSessions(10)
+///                 .build())
 ///             .bundleId(exampleAwsWorkspacesBundle.id())
 ///             .poolName("example-pool")
 ///             .description("Example WorkSpaces Pool with Application Settings")
 ///             .directoryId(exampleAwsWorkspacesDirectory.directoryId())
 ///             .runningMode("AUTO_STOP")
-///             .capacity(PoolCapacityArgs.builder()
-///                 .desiredUserSessions(10)
-///                 .build())
 ///             .applicationSettings(PoolApplicationSettingArgs.builder()
 ///                 .status("ENABLED")
 ///                 .settingsGroup("my-settings-group")
@@ -449,13 +452,13 @@ import 'pool_timeouts.dart';
 ///   example:
 ///     type: aws:workspaces:Pool
 ///     properties:
+///       capacity:
+///         desiredUserSessions: 10
 ///       bundleId: ${exampleAwsWorkspacesBundle.id}
 ///       poolName: example-pool
 ///       description: Example WorkSpaces Pool with Application Settings
 ///       directoryId: ${exampleAwsWorkspacesDirectory.directoryId}
 ///       runningMode: AUTO_STOP
-///       capacity:
-///         desiredUserSessions: 10
 ///       applicationSettings:
 ///         - status: ENABLED
 ///           settingsGroup: my-settings-group
@@ -470,14 +473,14 @@ import 'pool_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspaces.Pool("example", {
+///     capacity: {
+///         desiredUserSessions: 10,
+///     },
 ///     bundleId: exampleAwsWorkspacesBundle.id,
 ///     poolName: "example-pool",
 ///     description: "Example WorkSpaces Pool with Timeout Settings",
 ///     directoryId: exampleAwsWorkspacesDirectory.directoryId,
 ///     runningMode: "AUTO_STOP",
-///     capacity: {
-///         desiredUserSessions: 10,
-///     },
 ///     timeoutSettings: [{
 ///         disconnectTimeoutInSeconds: 900,
 ///         idleDisconnectTimeoutInSeconds: 900,
@@ -490,14 +493,14 @@ import 'pool_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspaces.Pool("example",
+///     capacity={
+///         "desired_user_sessions": 10,
+///     },
 ///     bundle_id=example_aws_workspaces_bundle["id"],
 ///     pool_name="example-pool",
 ///     description="Example WorkSpaces Pool with Timeout Settings",
 ///     directory_id=example_aws_workspaces_directory["directoryId"],
 ///     running_mode="AUTO_STOP",
-///     capacity={
-///         "desired_user_sessions": 10,
-///     },
 ///     timeout_settings=[{
 ///         "disconnect_timeout_in_seconds": 900,
 ///         "idle_disconnect_timeout_in_seconds": 900,
@@ -514,15 +517,15 @@ import 'pool_timeouts.dart';
 /// {
 ///     var example = new Aws.Workspaces.Pool("example", new()
 ///     {
+///         Capacity = new Aws.Workspaces.Inputs.PoolCapacityArgs
+///         {
+///             DesiredUserSessions = 10,
+///         },
 ///         BundleId = exampleAwsWorkspacesBundle.Id,
 ///         PoolName = "example-pool",
 ///         Description = "Example WorkSpaces Pool with Timeout Settings",
 ///         DirectoryId = exampleAwsWorkspacesDirectory.DirectoryId,
 ///         RunningMode = "AUTO_STOP",
-///         Capacity = new Aws.Workspaces.Inputs.PoolCapacityArgs
-///         {
-///             DesiredUserSessions = 10,
-///         },
 ///         TimeoutSettings = new[]
 ///         {
 ///             new Aws.Workspaces.Inputs.PoolTimeoutSettingArgs
@@ -547,14 +550,14 @@ import 'pool_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspaces.NewPool(ctx, "example", &workspaces.PoolArgs{
+/// 			Capacity: &workspaces.PoolCapacityArgs{
+/// 				DesiredUserSessions: pulumi.Int(10),
+/// 			},
 /// 			BundleId:    pulumi.Any(exampleAwsWorkspacesBundle.Id),
 /// 			PoolName:    pulumi.String("example-pool"),
 /// 			Description: pulumi.String("Example WorkSpaces Pool with Timeout Settings"),
 /// 			DirectoryId: pulumi.Any(exampleAwsWorkspacesDirectory.DirectoryId),
 /// 			RunningMode: pulumi.String("AUTO_STOP"),
-/// 			Capacity: &workspaces.PoolCapacityArgs{
-/// 				DesiredUserSessions: pulumi.Int(10),
-/// 			},
 /// 			TimeoutSettings: workspaces.PoolTimeoutSettingArray{
 /// 				&workspaces.PoolTimeoutSettingArgs{
 /// 					DisconnectTimeoutInSeconds:     pulumi.Int(900),
@@ -580,14 +583,14 @@ import 'pool_timeouts.dart';
 /// }
 ///
 /// resource "aws_workspaces_pool" "example" {
+///   capacity = {
+///     desired_user_sessions = 10
+///   }
 ///   bundle_id    = exampleAwsWorkspacesBundle.id
 ///   pool_name    = "example-pool"
 ///   description  = "Example WorkSpaces Pool with Timeout Settings"
 ///   directory_id = exampleAwsWorkspacesDirectory.directoryId
 ///   running_mode = "AUTO_STOP"
-///   capacity = {
-///     desired_user_sessions = 10
-///   }
 ///   timeout_settings {
 ///     disconnect_timeout_in_seconds      = 900
 ///     idle_disconnect_timeout_in_seconds = 900
@@ -619,14 +622,14 @@ import 'pool_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Pool("example", PoolArgs.builder()
+///             .capacity(PoolCapacityArgs.builder()
+///                 .desiredUserSessions(10)
+///                 .build())
 ///             .bundleId(exampleAwsWorkspacesBundle.id())
 ///             .poolName("example-pool")
 ///             .description("Example WorkSpaces Pool with Timeout Settings")
 ///             .directoryId(exampleAwsWorkspacesDirectory.directoryId())
 ///             .runningMode("AUTO_STOP")
-///             .capacity(PoolCapacityArgs.builder()
-///                 .desiredUserSessions(10)
-///                 .build())
 ///             .timeoutSettings(PoolTimeoutSettingArgs.builder()
 ///                 .disconnectTimeoutInSeconds(900)
 ///                 .idleDisconnectTimeoutInSeconds(900)
@@ -642,13 +645,13 @@ import 'pool_timeouts.dart';
 ///   example:
 ///     type: aws:workspaces:Pool
 ///     properties:
+///       capacity:
+///         desiredUserSessions: 10
 ///       bundleId: ${exampleAwsWorkspacesBundle.id}
 ///       poolName: example-pool
 ///       description: Example WorkSpaces Pool with Timeout Settings
 ///       directoryId: ${exampleAwsWorkspacesDirectory.directoryId}
 ///       runningMode: AUTO_STOP
-///       capacity:
-///         desiredUserSessions: 10
 ///       timeoutSettings:
 ///         - disconnectTimeoutInSeconds: 900
 ///           idleDisconnectTimeoutInSeconds: 900
@@ -676,13 +679,13 @@ import 'pool_timeouts.dart';
 /// * `region` (String) Region where this resource is managed.
 class Pool extends pulumi.CustomResource {
   /// Application settings configuration for the WorkSpaces Pool. See `applicationSettings` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> applicationSettings;
+  late final pulumi.Output<List<PoolApplicationSetting>> applicationSettings;
   /// ID of the bundle for the WorkSpaces Pool.
   late final pulumi.Output<String> bundleId;
   /// Capacity configuration for the WorkSpaces Pool. See `capacity` below.
   late final pulumi.Output<PoolCapacity?> capacity;
   /// Capacity status of the WorkSpaces Pool. See `capacityStatus` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> capacityStatuses;
+  late final pulumi.Output<List<PoolCapacityStatus>> capacityStatuses;
   /// Date and time the WorkSpaces Pool was created.
   late final pulumi.Output<String> createdAt;
   /// Description of the WorkSpaces Pool.
@@ -710,7 +713,7 @@ class Pool extends pulumi.CustomResource {
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Timeout settings configuration for the WorkSpaces Pool. See `timeoutSettings` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> timeoutSettings;
+  late final pulumi.Output<List<PoolTimeoutSetting>> timeoutSettings;
   late final pulumi.Output<PoolTimeouts?> timeouts;
 
   /// Creates a new [Pool].
@@ -725,12 +728,12 @@ class Pool extends pulumi.CustomResource {
           'aws:workspaces/pool:Pool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    applicationSettings = registerOutput<List<Map<String, dynamic>>>('applicationSettings');
+    applicationSettings = registerOutput<List<PoolApplicationSetting>>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolApplicationSetting>(guardedValue, (value) => PoolApplicationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     bundleId = registerOutput<String>('bundleId');
     capacity = registerOutput<PoolCapacity?>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    capacityStatuses = registerOutput<List<Map<String, dynamic>>>('capacityStatuses');
+    capacityStatuses = registerOutput<List<PoolCapacityStatus>>('capacityStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolCapacityStatus>(guardedValue, (value) => PoolCapacityStatus.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String>('description');
     directoryId = registerOutput<String>('directoryId');
@@ -741,9 +744,9 @@ class Pool extends pulumi.CustomResource {
     runningMode = registerOutput<String>('runningMode');
     s3BucketName = registerOutput<String>('s3BucketName');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeoutSettings = registerOutput<List<Map<String, dynamic>>>('timeoutSettings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutSettings = registerOutput<List<PoolTimeoutSetting>>('timeoutSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolTimeoutSetting>(guardedValue, (value) => PoolTimeoutSetting.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<PoolTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -752,11 +755,12 @@ class Pool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -770,10 +774,10 @@ class Pool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    applicationSettings = registerOutput<List<Map<String, dynamic>>>('applicationSettings');
+    applicationSettings = registerOutput<List<PoolApplicationSetting>>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolApplicationSetting>(guardedValue, (value) => PoolApplicationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     bundleId = registerOutput<String>('bundleId');
     capacity = registerOutput<PoolCapacity?>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    capacityStatuses = registerOutput<List<Map<String, dynamic>>>('capacityStatuses');
+    capacityStatuses = registerOutput<List<PoolCapacityStatus>>('capacityStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolCapacityStatus>(guardedValue, (value) => PoolCapacityStatus.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String>('description');
     directoryId = registerOutput<String>('directoryId');
@@ -784,9 +788,38 @@ class Pool extends pulumi.CustomResource {
     runningMode = registerOutput<String>('runningMode');
     s3BucketName = registerOutput<String>('s3BucketName');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeoutSettings = registerOutput<List<Map<String, dynamic>>>('timeoutSettings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutSettings = registerOutput<List<PoolTimeoutSetting>>('timeoutSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolTimeoutSetting>(guardedValue, (value) => PoolTimeoutSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<PoolTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'aws:workspaces/pool:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationSettings = registerOutput<List<PoolApplicationSetting>>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolApplicationSetting>(guardedValue, (value) => PoolApplicationSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    bundleId = registerOutput<String>('bundleId');
+    capacity = registerOutput<PoolCapacity?>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityStatuses = registerOutput<List<PoolCapacityStatus>>('capacityStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolCapacityStatus>(guardedValue, (value) => PoolCapacityStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String>('description');
+    directoryId = registerOutput<String>('directoryId');
+    poolArn = registerOutput<String>('poolArn');
+    poolId = registerOutput<String>('poolId');
+    poolName = registerOutput<String>('poolName');
+    region = registerOutput<String>('region');
+    runningMode = registerOutput<String>('runningMode');
+    s3BucketName = registerOutput<String>('s3BucketName');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutSettings = registerOutput<List<PoolTimeoutSetting>>('timeoutSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolTimeoutSetting>(guardedValue, (value) => PoolTimeoutSetting.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<PoolTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

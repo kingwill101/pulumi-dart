@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FolderMembership resources.
 class FolderMembershipState {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Identifier for the folder.
-  final pulumi.Input<String>? folderId;
+  final pulumi.Input<String?>? folderId;
   /// ID of the asset (the dashboard, analysis, or dataset).
-  final pulumi.Input<String>? memberId;
+  final pulumi.Input<String?>? memberId;
   /// Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? memberType;
+  final pulumi.Input<String?>? memberType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FolderMembershipState].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

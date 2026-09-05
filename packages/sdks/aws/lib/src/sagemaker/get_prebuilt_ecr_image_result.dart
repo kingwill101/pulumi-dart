@@ -5,54 +5,54 @@
 class GetPrebuiltEcrImageResult {
   final String? dnsSuffix;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? imageTag;
-  final String region;
+  final String? region;
   /// Account ID containing the image. For example, `469771592824`.
-  final String registryId;
+  final String? registryId;
   /// Docker image URL. For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving:2.4`.
-  final String registryPath;
-  final String repositoryName;
+  final String? registryPath;
+  final String? repositoryName;
 
   /// Creates a new [GetPrebuiltEcrImageResult].
   /// [dnsSuffix] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [imageTag] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [registryId] Account ID containing the image. For example, `469771592824`.
   /// [registryPath] Docker image URL. For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving:2.4`.
-  /// [repositoryName] Required.
+  /// [repositoryName] Optional.
   const GetPrebuiltEcrImageResult({
     this.dnsSuffix,
-    required this.id,
+    this.id,
     this.imageTag,
-    required this.region,
-    required this.registryId,
-    required this.registryPath,
-    required this.repositoryName,
+    this.region,
+    this.registryId,
+    this.registryPath,
+    this.repositoryName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dnsSuffix': ?dnsSuffix,
-      'id': id,
+      'id': ?id,
       'imageTag': ?imageTag,
-      'region': region,
-      'registryId': registryId,
-      'registryPath': registryPath,
-      'repositoryName': repositoryName,
+      'region': ?region,
+      'registryId': ?registryId,
+      'registryPath': ?registryPath,
+      'repositoryName': ?repositoryName,
     };
   }
 
   factory GetPrebuiltEcrImageResult.fromMap(Map<String, dynamic> map) {
     return GetPrebuiltEcrImageResult(
       dnsSuffix: (() { final guardedValue = map['dnsSuffix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imageTag: (() { final guardedValue = map['imageTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
-      registryId: map['registryId'] as String,
-      registryPath: map['registryPath'] as String,
-      repositoryName: map['repositoryName'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      registryId: (() { final guardedValue = map['registryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      registryPath: (() { final guardedValue = map['registryPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repositoryName: (() { final guardedValue = map['repositoryName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

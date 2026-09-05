@@ -6,15 +6,15 @@ import 'allowed_images_settings_image_criterion_deprecation_time_condition.dart'
 
 class AllowedImagesSettingsImageCriterion {
   /// Condition based on AMI creation date. See `creationDateCondition` below.
-  final pulumi.Input<AllowedImagesSettingsImageCriterionCreationDateCondition>? creationDateCondition;
+  final pulumi.Input<AllowedImagesSettingsImageCriterionCreationDateCondition?>? creationDateCondition;
   /// Condition based on AMI deprecation time. See `deprecationTimeCondition` below.
-  final pulumi.Input<AllowedImagesSettingsImageCriterionDeprecationTimeCondition>? deprecationTimeCondition;
+  final pulumi.Input<AllowedImagesSettingsImageCriterionDeprecationTimeCondition?>? deprecationTimeCondition;
   /// Set of AMI name patterns to allow. Maximum of 50 names.
-  final pulumi.Input<List<String>>? imageNames;
+  final pulumi.Input<List<String>?>? imageNames;
   /// Set of image providers to allow. Maximum of 200 providers. Valid values include `amazon`, `aws-marketplace`, `aws-backup-vault`, `none`, or a 12-digit AWS account ID.
-  final pulumi.Input<List<String>>? imageProviders;
+  final pulumi.Input<List<String>?>? imageProviders;
   /// Set of AWS Marketplace product codes to allow. Maximum of 50 product codes.
-  final pulumi.Input<List<String>>? marketplaceProductCodes;
+  final pulumi.Input<List<String>?>? marketplaceProductCodes;
 
   /// Creates a new [AllowedImagesSettingsImageCriterion].
   /// [creationDateCondition] Condition based on AMI creation date. See `creationDateCondition` below.

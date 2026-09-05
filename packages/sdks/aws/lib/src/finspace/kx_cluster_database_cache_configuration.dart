@@ -6,7 +6,7 @@ class KxClusterDatabaseCacheConfiguration {
   /// Type of disk cache.
   final pulumi.Input<String> cacheType;
   /// Paths within the database to cache.
-  final pulumi.Input<List<String>>? dbPaths;
+  final pulumi.Input<List<String>?>? dbPaths;
 
   /// Creates a new [KxClusterDatabaseCacheConfiguration].
   /// [cacheType] Type of disk cache.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProactiveEngagementEmergencyContact {
   /// Additional notes regarding the contact.
-  final pulumi.Input<String>? contactNotes;
+  final pulumi.Input<String?>? contactNotes;
   /// A valid email address that will be used for this contact.
   final pulumi.Input<String> emailAddress;
   /// A phone number, starting with `+` and up to 15 digits that will be used for this contact.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
 
   /// Creates a new [ProactiveEngagementEmergencyContact].
   /// [contactNotes] Additional notes regarding the contact.

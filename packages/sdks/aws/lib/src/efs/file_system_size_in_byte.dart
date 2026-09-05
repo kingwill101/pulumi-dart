@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSystemSizeInByte {
   /// The latest known metered size (in bytes) of data stored in the file system.
-  final pulumi.Input<int>? value;
+  final pulumi.Input<int?>? value;
   /// The latest known metered size (in bytes) of data stored in the Infrequent Access storage class.
-  final pulumi.Input<int>? valueInIa;
+  final pulumi.Input<int?>? valueInIa;
   /// The latest known metered size (in bytes) of data stored in the Standard storage class.
-  final pulumi.Input<int>? valueInStandard;
+  final pulumi.Input<int?>? valueInStandard;
 
   /// Creates a new [FileSystemSizeInByte].
   /// [value] The latest known metered size (in bytes) of data stored in the file system.
@@ -30,9 +30,9 @@ class FileSystemSizeInByte {
 
   factory FileSystemSizeInByte.fromMap(Map<String, dynamic> map) {
     return FileSystemSizeInByte(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      valueInIa: (() { final guardedValue = map['valueInIa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      valueInStandard: (() { final guardedValue = map['valueInStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      valueInIa: (() { final guardedValue = map['valueInIa']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      valueInStandard: (() { final guardedValue = map['valueInStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

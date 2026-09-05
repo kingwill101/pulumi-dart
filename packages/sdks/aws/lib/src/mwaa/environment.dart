@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
+import 'environment_last_updated.dart';
 import 'environment_logging_configuration.dart';
 import 'environment_network_configuration.dart';
 import 'environment_state.dart';
@@ -18,13 +19,13 @@ import 'environment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mwaa.Environment("example", {
-///     dagS3Path: "dags/",
-///     executionRoleArn: exampleAwsIamRole.arn,
-///     name: "example",
 ///     networkConfiguration: {
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
 ///         subnetIds: _private.map(__item => __item.id),
 ///     },
+///     dagS3Path: "dags/",
+///     executionRoleArn: exampleAwsIamRole.arn,
+///     name: "example",
 ///     sourceBucketArn: exampleAwsS3Bucket.arn,
 /// });
 /// ```
@@ -33,13 +34,13 @@ import 'environment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mwaa.Environment("example",
-///     dag_s3_path="dags/",
-///     execution_role_arn=example_aws_iam_role["arn"],
-///     name="example",
 ///     network_configuration={
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///         "subnet_ids": [__item["id"] for __item in private],
 ///     },
+///     dag_s3_path="dags/",
+///     execution_role_arn=example_aws_iam_role["arn"],
+///     name="example",
 ///     source_bucket_arn=example_aws_s3_bucket["arn"])
 /// ```
 /// ```csharp
@@ -52,9 +53,6 @@ import 'environment_state.dart';
 /// {
 ///     var example = new Aws.Mwaa.Environment("example", new()
 ///     {
-///         DagS3Path = "dags/",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
-///         Name = "example",
 ///         NetworkConfiguration = new Aws.Mwaa.Inputs.EnvironmentNetworkConfigurationArgs
 ///         {
 ///             SecurityGroupIds = new[]
@@ -63,6 +61,9 @@ import 'environment_state.dart';
 ///             },
 ///             SubnetIds = @private.Select(__item => __item.Id).ToList(),
 ///         },
+///         DagS3Path = "dags/",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         Name = "example",
 ///         SourceBucketArn = exampleAwsS3Bucket.Arn,
 ///     });
 ///
@@ -78,15 +79,15 @@ import 'environment_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := mwaa.NewEnvironment(ctx, "example", &mwaa.EnvironmentArgs{
-/// DagS3Path: pulumi.String("dags/"),
-/// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// Name: pulumi.String("example"),
 /// NetworkConfiguration: &mwaa.EnvironmentNetworkConfigurationArgs{
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-37)),
 /// },
+/// DagS3Path: pulumi.String("dags/"),
+/// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// Name: pulumi.String("example"),
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// })
 /// if err != nil {
@@ -106,14 +107,14 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_mwaa_environment" "example" {
-///   dag_s3_path        = "dags/"
-///   execution_role_arn = exampleAwsIamRole.arn
-///   name               = "example"
 ///   network_configuration = {
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnet_ids         = private[*].id
 ///   }
-///   source_bucket_arn = exampleAwsS3Bucket.arn
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = "example"
+///   source_bucket_arn  = exampleAwsS3Bucket.arn
 /// }
 /// ```
 /// ```java
@@ -139,13 +140,13 @@ import 'environment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Environment("example", EnvironmentArgs.builder()
-///             .dagS3Path("dags/")
-///             .executionRoleArn(exampleAwsIamRole.arn())
-///             .name("example")
 ///             .networkConfiguration(EnvironmentNetworkConfigurationArgs.builder()
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
 ///                 .subnetIds(private_.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .dagS3Path("dags/")
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .name("example")
 ///             .sourceBucketArn(exampleAwsS3Bucket.arn())
 ///             .build());
 ///
@@ -162,6 +163,10 @@ import 'environment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mwaa.Environment("example", {
+///     networkConfiguration: {
+///         securityGroupIds: [exampleAwsSecurityGroup.id],
+///         subnetIds: _private.map(__item => __item.id),
+///     },
 ///     airflowConfigurationOptions: {
 ///         "core.default_task_retries": "16",
 ///         "core.parallelism": "1",
@@ -169,10 +174,6 @@ import 'environment_state.dart';
 ///     dagS3Path: "dags/",
 ///     executionRoleArn: exampleAwsIamRole.arn,
 ///     name: "example",
-///     networkConfiguration: {
-///         securityGroupIds: [exampleAwsSecurityGroup.id],
-///         subnetIds: _private.map(__item => __item.id),
-///     },
 ///     sourceBucketArn: exampleAwsS3Bucket.arn,
 /// });
 /// ```
@@ -181,6 +182,10 @@ import 'environment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mwaa.Environment("example",
+///     network_configuration={
+///         "security_group_ids": [example_aws_security_group["id"]],
+///         "subnet_ids": [__item["id"] for __item in private],
+///     },
 ///     airflow_configuration_options={
 ///         "core.default_task_retries": "16",
 ///         "core.parallelism": "1",
@@ -188,10 +193,6 @@ import 'environment_state.dart';
 ///     dag_s3_path="dags/",
 ///     execution_role_arn=example_aws_iam_role["arn"],
 ///     name="example",
-///     network_configuration={
-///         "security_group_ids": [example_aws_security_group["id"]],
-///         "subnet_ids": [__item["id"] for __item in private],
-///     },
 ///     source_bucket_arn=example_aws_s3_bucket["arn"])
 /// ```
 /// ```csharp
@@ -204,14 +205,6 @@ import 'environment_state.dart';
 /// {
 ///     var example = new Aws.Mwaa.Environment("example", new()
 ///     {
-///         AirflowConfigurationOptions =
-///         {
-///             { "core.default_task_retries", "16" },
-///             { "core.parallelism", "1" },
-///         },
-///         DagS3Path = "dags/",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
-///         Name = "example",
 ///         NetworkConfiguration = new Aws.Mwaa.Inputs.EnvironmentNetworkConfigurationArgs
 ///         {
 ///             SecurityGroupIds = new[]
@@ -220,6 +213,14 @@ import 'environment_state.dart';
 ///             },
 ///             SubnetIds = @private.Select(__item => __item.Id).ToList(),
 ///         },
+///         AirflowConfigurationOptions =
+///         {
+///             { "core.default_task_retries", "16" },
+///             { "core.parallelism", "1" },
+///         },
+///         DagS3Path = "dags/",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         Name = "example",
 ///         SourceBucketArn = exampleAwsS3Bucket.Arn,
 ///     });
 ///
@@ -235,6 +236,12 @@ import 'environment_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := mwaa.NewEnvironment(ctx, "example", &mwaa.EnvironmentArgs{
+/// NetworkConfiguration: &mwaa.EnvironmentNetworkConfigurationArgs{
+/// SecurityGroupIds: pulumi.StringArray{
+/// exampleAwsSecurityGroup.Id,
+/// },
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-37)),
+/// },
 /// AirflowConfigurationOptions: pulumi.StringMap{
 /// "core.default_task_retries": pulumi.String("16"),
 /// "core.parallelism": pulumi.String("1"),
@@ -242,12 +249,6 @@ import 'environment_state.dart';
 /// DagS3Path: pulumi.String("dags/"),
 /// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// Name: pulumi.String("example"),
-/// NetworkConfiguration: &mwaa.EnvironmentNetworkConfigurationArgs{
-/// SecurityGroupIds: pulumi.StringArray{
-/// exampleAwsSecurityGroup.Id,
-/// },
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:10,24-37)),
-/// },
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// })
 /// if err != nil {
@@ -267,6 +268,10 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_mwaa_environment" "example" {
+///   network_configuration = {
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///     subnet_ids         = private[*].id
+///   }
 ///   airflow_configuration_options = {
 ///     "core.default_task_retries" = 16
 ///     "core.parallelism"          = 1
@@ -274,11 +279,7 @@ import 'environment_state.dart';
 ///   dag_s3_path        = "dags/"
 ///   execution_role_arn = exampleAwsIamRole.arn
 ///   name               = "example"
-///   network_configuration = {
-///     security_group_ids = [exampleAwsSecurityGroup.id]
-///     subnet_ids         = private[*].id
-///   }
-///   source_bucket_arn = exampleAwsS3Bucket.arn
+///   source_bucket_arn  = exampleAwsS3Bucket.arn
 /// }
 /// ```
 /// ```java
@@ -304,6 +305,10 @@ import 'environment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Environment("example", EnvironmentArgs.builder()
+///             .networkConfiguration(EnvironmentNetworkConfigurationArgs.builder()
+///                 .securityGroupIds(exampleAwsSecurityGroup.id())
+///                 .subnetIds(private_.stream().map(element -> element.id()).collect(toList()))
+///                 .build())
 ///             .airflowConfigurationOptions(Map.ofEntries(
 ///                 Map.entry("core.default_task_retries", "16"),
 ///                 Map.entry("core.parallelism", "1")
@@ -311,10 +316,6 @@ import 'environment_state.dart';
 ///             .dagS3Path("dags/")
 ///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .name("example")
-///             .networkConfiguration(EnvironmentNetworkConfigurationArgs.builder()
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
-///                 .subnetIds(private_.stream().map(element -> element.id()).collect(toList()))
-///                 .build())
 ///             .sourceBucketArn(exampleAwsS3Bucket.arn())
 ///             .build());
 ///
@@ -333,8 +334,6 @@ import 'environment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mwaa.Environment("example", {
-///     dagS3Path: "dags/",
-///     executionRoleArn: exampleAwsIamRole.arn,
 ///     loggingConfiguration: {
 ///         dagProcessingLogs: {
 ///             enabled: true,
@@ -357,11 +356,13 @@ import 'environment_state.dart';
 ///             logLevel: "CRITICAL",
 ///         },
 ///     },
-///     name: "example",
 ///     networkConfiguration: {
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
 ///         subnetIds: _private.map(__item => __item.id),
 ///     },
+///     dagS3Path: "dags/",
+///     executionRoleArn: exampleAwsIamRole.arn,
+///     name: "example",
 ///     sourceBucketArn: exampleAwsS3Bucket.arn,
 /// });
 /// ```
@@ -370,8 +371,6 @@ import 'environment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mwaa.Environment("example",
-///     dag_s3_path="dags/",
-///     execution_role_arn=example_aws_iam_role["arn"],
 ///     logging_configuration={
 ///         "dag_processing_logs": {
 ///             "enabled": True,
@@ -394,11 +393,13 @@ import 'environment_state.dart';
 ///             "log_level": "CRITICAL",
 ///         },
 ///     },
-///     name="example",
 ///     network_configuration={
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///         "subnet_ids": [__item["id"] for __item in private],
 ///     },
+///     dag_s3_path="dags/",
+///     execution_role_arn=example_aws_iam_role["arn"],
+///     name="example",
 ///     source_bucket_arn=example_aws_s3_bucket["arn"])
 /// ```
 /// ```csharp
@@ -411,8 +412,6 @@ import 'environment_state.dart';
 /// {
 ///     var example = new Aws.Mwaa.Environment("example", new()
 ///     {
-///         DagS3Path = "dags/",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
 ///         LoggingConfiguration = new Aws.Mwaa.Inputs.EnvironmentLoggingConfigurationArgs
 ///         {
 ///             DagProcessingLogs = new Aws.Mwaa.Inputs.EnvironmentLoggingConfigurationDagProcessingLogsArgs
@@ -441,7 +440,6 @@ import 'environment_state.dart';
 ///                 LogLevel = "CRITICAL",
 ///             },
 ///         },
-///         Name = "example",
 ///         NetworkConfiguration = new Aws.Mwaa.Inputs.EnvironmentNetworkConfigurationArgs
 ///         {
 ///             SecurityGroupIds = new[]
@@ -450,6 +448,9 @@ import 'environment_state.dart';
 ///             },
 ///             SubnetIds = @private.Select(__item => __item.Id).ToList(),
 ///         },
+///         DagS3Path = "dags/",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         Name = "example",
 ///         SourceBucketArn = exampleAwsS3Bucket.Arn,
 ///     });
 ///
@@ -465,8 +466,6 @@ import 'environment_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := mwaa.NewEnvironment(ctx, "example", &mwaa.EnvironmentArgs{
-/// DagS3Path: pulumi.String("dags/"),
-/// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// LoggingConfiguration: &mwaa.EnvironmentLoggingConfigurationArgs{
 /// DagProcessingLogs: &mwaa.EnvironmentLoggingConfigurationDagProcessingLogsArgs{
 /// Enabled: pulumi.Bool(true),
@@ -489,13 +488,15 @@ import 'environment_state.dart';
 /// LogLevel: pulumi.String("CRITICAL"),
 /// },
 /// },
-/// Name: pulumi.String("example"),
 /// NetworkConfiguration: &mwaa.EnvironmentNetworkConfigurationArgs{
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:28,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:25,24-37)),
 /// },
+/// DagS3Path: pulumi.String("dags/"),
+/// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// Name: pulumi.String("example"),
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// })
 /// if err != nil {
@@ -515,8 +516,6 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_mwaa_environment" "example" {
-///   dag_s3_path        = "dags/"
-///   execution_role_arn = exampleAwsIamRole.arn
 ///   logging_configuration = {
 ///     dag_processing_logs = {
 ///       enabled   = true
@@ -539,12 +538,14 @@ import 'environment_state.dart';
 ///       log_level = "CRITICAL"
 ///     }
 ///   }
-///   name = "example"
 ///   network_configuration = {
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnet_ids         = private[*].id
 ///   }
-///   source_bucket_arn = exampleAwsS3Bucket.arn
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = "example"
+///   source_bucket_arn  = exampleAwsS3Bucket.arn
 /// }
 /// ```
 /// ```java
@@ -576,8 +577,6 @@ import 'environment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Environment("example", EnvironmentArgs.builder()
-///             .dagS3Path("dags/")
-///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .loggingConfiguration(EnvironmentLoggingConfigurationArgs.builder()
 ///                 .dagProcessingLogs(EnvironmentLoggingConfigurationDagProcessingLogsArgs.builder()
 ///                     .enabled(true)
@@ -600,11 +599,13 @@ import 'environment_state.dart';
 ///                     .logLevel("CRITICAL")
 ///                     .build())
 ///                 .build())
-///             .name("example")
 ///             .networkConfiguration(EnvironmentNetworkConfigurationArgs.builder()
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
 ///                 .subnetIds(private_.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .dagS3Path("dags/")
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .name("example")
 ///             .sourceBucketArn(exampleAwsS3Bucket.arn())
 ///             .build());
 ///
@@ -621,13 +622,13 @@ import 'environment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mwaa.Environment("example", {
-///     dagS3Path: "dags/",
-///     executionRoleArn: exampleAwsIamRole.arn,
-///     name: "example",
 ///     networkConfiguration: {
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
 ///         subnetIds: _private.map(__item => __item.id),
 ///     },
+///     dagS3Path: "dags/",
+///     executionRoleArn: exampleAwsIamRole.arn,
+///     name: "example",
 ///     sourceBucketArn: exampleAwsS3Bucket.arn,
 ///     tags: {
 ///         Name: "example",
@@ -640,13 +641,13 @@ import 'environment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mwaa.Environment("example",
-///     dag_s3_path="dags/",
-///     execution_role_arn=example_aws_iam_role["arn"],
-///     name="example",
 ///     network_configuration={
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///         "subnet_ids": [__item["id"] for __item in private],
 ///     },
+///     dag_s3_path="dags/",
+///     execution_role_arn=example_aws_iam_role["arn"],
+///     name="example",
 ///     source_bucket_arn=example_aws_s3_bucket["arn"],
 ///     tags={
 ///         "Name": "example",
@@ -663,9 +664,6 @@ import 'environment_state.dart';
 /// {
 ///     var example = new Aws.Mwaa.Environment("example", new()
 ///     {
-///         DagS3Path = "dags/",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
-///         Name = "example",
 ///         NetworkConfiguration = new Aws.Mwaa.Inputs.EnvironmentNetworkConfigurationArgs
 ///         {
 ///             SecurityGroupIds = new[]
@@ -674,6 +672,9 @@ import 'environment_state.dart';
 ///             },
 ///             SubnetIds = @private.Select(__item => __item.Id).ToList(),
 ///         },
+///         DagS3Path = "dags/",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         Name = "example",
 ///         SourceBucketArn = exampleAwsS3Bucket.Arn,
 ///         Tags =
 ///         {
@@ -694,15 +695,15 @@ import 'environment_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := mwaa.NewEnvironment(ctx, "example", &mwaa.EnvironmentArgs{
-/// DagS3Path: pulumi.String("dags/"),
-/// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// Name: pulumi.String("example"),
 /// NetworkConfiguration: &mwaa.EnvironmentNetworkConfigurationArgs{
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-37)),
 /// },
+/// DagS3Path: pulumi.String("dags/"),
+/// ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// Name: pulumi.String("example"),
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("example"),
@@ -726,14 +727,14 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_mwaa_environment" "example" {
-///   dag_s3_path        = "dags/"
-///   execution_role_arn = exampleAwsIamRole.arn
-///   name               = "example"
 ///   network_configuration = {
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnet_ids         = private[*].id
 ///   }
-///   source_bucket_arn = exampleAwsS3Bucket.arn
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = "example"
+///   source_bucket_arn  = exampleAwsS3Bucket.arn
 ///   tags = {
 ///     "Name"        = "example"
 ///     "Environment" = "production"
@@ -763,13 +764,13 @@ import 'environment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Environment("example", EnvironmentArgs.builder()
-///             .dagS3Path("dags/")
-///             .executionRoleArn(exampleAwsIamRole.arn())
-///             .name("example")
 ///             .networkConfiguration(EnvironmentNetworkConfigurationArgs.builder()
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
 ///                 .subnetIds(private_.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .dagS3Path("dags/")
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .name("example")
 ///             .sourceBucketArn(exampleAwsS3Bucket.arn())
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example"),
@@ -807,11 +808,11 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String> endpointManagement;
   /// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`. Will be set by default to `mw1.small`. Please check the [AWS Pricing](https://aws.amazon.com/de/managed-workflows-for-apache-airflow/pricing/) for more information about the environment classes.
   late final pulumi.Output<String> environmentClass;
-  /// The Amazon Resource Name (ARN) of the task execution role that the Amazon MWAA and its environment can assume. Check the [official AWS documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html) for the detailed role specification.
+  /// ARN of the task execution role that the Amazon MWAA and its environment can assume. Check the [official AWS documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html) for the detailed role specification.
   late final pulumi.Output<String> executionRoleArn;
-  /// The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
+  /// ARN of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
   late final pulumi.Output<String?> kmsKey;
-  late final pulumi.Output<List<Map<String, dynamic>>> lastUpdateds;
+  late final pulumi.Output<List<EnvironmentLastUpdated>> lastUpdateds;
   /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `loggingConfiguration` Block for details.
   late final pulumi.Output<EnvironmentLoggingConfiguration> loggingConfiguration;
   /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
@@ -840,7 +841,7 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<int> schedulers;
   /// The Service Role ARN of the Amazon MWAA Environment
   late final pulumi.Output<String> serviceRoleArn;
-  /// The Amazon Resource Name (ARN) of your Amazon S3 storage bucket. For example, arn:aws:s3:::airflow-mybucketname.
+  /// ARN of your Amazon S3 storage bucket. For example, arn:aws:s3:::airflow-mybucketname.
   late final pulumi.Output<String> sourceBucketArn;
   /// The version of the startup shell script you want to use. You must specify the version ID that Amazon S3 assigns to the file every time you update the script.
   late final pulumi.Output<String> startupScriptS3ObjectVersion;
@@ -875,9 +876,10 @@ class Environment extends pulumi.CustomResource {
           'aws:mwaa/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['airflowConfigurationOptions'],
         ) {
-    airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions');
+    airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     airflowVersion = registerOutput<String>('airflowVersion');
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -887,7 +889,7 @@ class Environment extends pulumi.CustomResource {
     environmentClass = registerOutput<String>('environmentClass');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     kmsKey = registerOutput<String?>('kmsKey');
-    lastUpdateds = registerOutput<List<Map<String, dynamic>>>('lastUpdateds');
+    lastUpdateds = registerOutput<List<EnvironmentLastUpdated>>('lastUpdateds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentLastUpdated>(guardedValue, (value) => EnvironmentLastUpdated.fromMap((value as Map).cast<String, dynamic>())); });
     loggingConfiguration = registerOutput<EnvironmentLoggingConfiguration>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxWebservers = registerOutput<int>('maxWebservers');
     maxWorkers = registerOutput<int>('maxWorkers');
@@ -906,8 +908,8 @@ class Environment extends pulumi.CustomResource {
     startupScriptS3ObjectVersion = registerOutput<String>('startupScriptS3ObjectVersion');
     startupScriptS3Path = registerOutput<String?>('startupScriptS3Path');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webserverAccessMode = registerOutput<String>('webserverAccessMode');
     webserverUrl = registerOutput<String>('webserverUrl');
     webserverVpcEndpointService = registerOutput<String>('webserverVpcEndpointService');
@@ -920,11 +922,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -938,7 +941,7 @@ class Environment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions');
+    airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     airflowVersion = registerOutput<String>('airflowVersion');
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -948,7 +951,7 @@ class Environment extends pulumi.CustomResource {
     environmentClass = registerOutput<String>('environmentClass');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     kmsKey = registerOutput<String?>('kmsKey');
-    lastUpdateds = registerOutput<List<Map<String, dynamic>>>('lastUpdateds');
+    lastUpdateds = registerOutput<List<EnvironmentLastUpdated>>('lastUpdateds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentLastUpdated>(guardedValue, (value) => EnvironmentLastUpdated.fromMap((value as Map).cast<String, dynamic>())); });
     loggingConfiguration = registerOutput<EnvironmentLoggingConfiguration>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxWebservers = registerOutput<int>('maxWebservers');
     maxWorkers = registerOutput<int>('maxWorkers');
@@ -967,8 +970,56 @@ class Environment extends pulumi.CustomResource {
     startupScriptS3ObjectVersion = registerOutput<String>('startupScriptS3ObjectVersion');
     startupScriptS3Path = registerOutput<String?>('startupScriptS3Path');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    webserverAccessMode = registerOutput<String>('webserverAccessMode');
+    webserverUrl = registerOutput<String>('webserverUrl');
+    webserverVpcEndpointService = registerOutput<String>('webserverVpcEndpointService');
+    weeklyMaintenanceWindowStart = registerOutput<String>('weeklyMaintenanceWindowStart');
+    workerReplacementStrategy = registerOutput<String>('workerReplacementStrategy');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'aws:mwaa/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['airflowConfigurationOptions'],
+        isResourceReference: true,
+      ) {
+    airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    airflowVersion = registerOutput<String>('airflowVersion');
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    dagS3Path = registerOutput<String>('dagS3Path');
+    databaseVpcEndpointService = registerOutput<String>('databaseVpcEndpointService');
+    endpointManagement = registerOutput<String>('endpointManagement');
+    environmentClass = registerOutput<String>('environmentClass');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    kmsKey = registerOutput<String?>('kmsKey');
+    lastUpdateds = registerOutput<List<EnvironmentLastUpdated>>('lastUpdateds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentLastUpdated>(guardedValue, (value) => EnvironmentLastUpdated.fromMap((value as Map).cast<String, dynamic>())); });
+    loggingConfiguration = registerOutput<EnvironmentLoggingConfiguration>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxWebservers = registerOutput<int>('maxWebservers');
+    maxWorkers = registerOutput<int>('maxWorkers');
+    minWebservers = registerOutput<int>('minWebservers');
+    minWorkers = registerOutput<int>('minWorkers');
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<EnvironmentNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pluginsS3ObjectVersion = registerOutput<String>('pluginsS3ObjectVersion');
+    pluginsS3Path = registerOutput<String?>('pluginsS3Path');
+    region = registerOutput<String>('region');
+    requirementsS3ObjectVersion = registerOutput<String>('requirementsS3ObjectVersion');
+    requirementsS3Path = registerOutput<String?>('requirementsS3Path');
+    schedulers = registerOutput<int>('schedulers');
+    serviceRoleArn = registerOutput<String>('serviceRoleArn');
+    sourceBucketArn = registerOutput<String>('sourceBucketArn');
+    startupScriptS3ObjectVersion = registerOutput<String>('startupScriptS3ObjectVersion');
+    startupScriptS3Path = registerOutput<String?>('startupScriptS3Path');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webserverAccessMode = registerOutput<String>('webserverAccessMode');
     webserverUrl = registerOutput<String>('webserverUrl');
     webserverVpcEndpointService = registerOutput<String>('webserverVpcEndpointService');

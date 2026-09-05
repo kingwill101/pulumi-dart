@@ -20,7 +20,7 @@ class AgentcoreOnlineEvaluationConfigRuleSamplingConfig {
 
   factory AgentcoreOnlineEvaluationConfigRuleSamplingConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOnlineEvaluationConfigRuleSamplingConfig(
-      samplingPercentage: pulumi.Input.fromValue(map['samplingPercentage'] as double),
+      samplingPercentage: pulumi.Input.fromValue((map['samplingPercentage'] as num).toDouble()),
     );
   }
 }

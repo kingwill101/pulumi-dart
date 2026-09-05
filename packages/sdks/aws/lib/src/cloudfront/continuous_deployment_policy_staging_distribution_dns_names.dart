@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContinuousDeploymentPolicyStagingDistributionDnsNames {
   /// A list of CloudFront domain names for the staging distribution.
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
   /// Number of CloudFront domain names in the staging distribution.
   final pulumi.Input<int> quantity;
 
@@ -26,7 +26,7 @@ class ContinuousDeploymentPolicyStagingDistributionDnsNames {
   factory ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyStagingDistributionDnsNames(
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      quantity: pulumi.Input.fromValue(map['quantity'] as int),
+      quantity: pulumi.Input.fromValue((map['quantity'] as num).toInt()),
     );
   }
 }

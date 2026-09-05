@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketMetricFilter {
   /// S3 Access Point ARN for filtering (singular).
-  final pulumi.Input<String>? accessPoint;
+  final pulumi.Input<String?>? accessPoint;
   /// Object prefix for filtering (singular).
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Object tags for filtering (up to 10). Unsupported for S3 directory buckets.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BucketMetricFilter].
   /// [accessPoint] S3 Access Point ARN for filtering (singular).

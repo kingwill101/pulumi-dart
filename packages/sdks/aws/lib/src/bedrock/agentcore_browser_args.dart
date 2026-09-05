@@ -14,28 +14,28 @@ import 'agentcore_browser_timeouts.dart';
 /// {@macro pulumi_bedrock_agentcore_browser_agentcore_browser_args_doc}
 class AgentcoreBrowserArgs {
   /// Browser signing configuration that enables cryptographic agent identification using HTTP message signatures. See `browserSigning` below.
-  final pulumi.Input<AgentcoreBrowserBrowserSigning>? browserSigning;
+  final pulumi.Input<AgentcoreBrowserBrowserSigning?>? browserSigning;
   /// Certificates to install in the browser. See `certificate` below.
-  final pulumi.Input<List<AgentcoreBrowserCertificate>>? certificates;
+  final pulumi.Input<List<AgentcoreBrowserCertificate>?>? certificates;
   /// Description of the browser.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enterprise policy files to apply to the browser. See `enterprisePolicy` below.
-  final pulumi.Input<List<AgentcoreBrowserEnterprisePolicy>>? enterprisePolicies;
+  final pulumi.Input<List<AgentcoreBrowserEnterprisePolicy>?>? enterprisePolicies;
   /// ARN of the IAM role that the browser assumes for execution.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Name of the browser.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration for the browser. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AgentcoreBrowserNetworkConfiguration> networkConfiguration;
   /// Recording configuration for browser sessions. See `recording` below.
-  final pulumi.Input<AgentcoreBrowserRecording>? recording;
+  final pulumi.Input<AgentcoreBrowserRecording?>? recording;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentcoreBrowserTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentcoreBrowserTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreBrowserArgs].
   /// [browserSigning] Browser signing configuration that enables cryptographic agent identification using HTTP message signatures. See `browserSigning` below.

@@ -9,16 +9,16 @@ import 'profiles_resource_association_timeouts.dart';
 /// {@macro pulumi_route53_profiles_resource_association_profiles_resource_association_args_doc}
 class ProfilesResourceAssociationArgs {
   /// Name of the Profile Resource Association.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the profile associated with the VPC.
   final pulumi.Input<String> profileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource ID of the resource to be associated with the profile.
   final pulumi.Input<String> resourceArn;
   /// Resource properties for the resource to be associated with the profile.
-  final pulumi.Input<String>? resourceProperties;
-  final pulumi.Input<ProfilesResourceAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? resourceProperties;
+  final pulumi.Input<ProfilesResourceAssociationTimeouts?>? timeouts;
 
   /// Creates a new [ProfilesResourceAssociationArgs].
   /// [name] Name of the Profile Resource Association.

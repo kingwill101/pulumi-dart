@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailContentPolicyConfigFiltersConfig {
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
-  final pulumi.Input<String>? inputAction;
+  final pulumi.Input<String?>? inputAction;
   /// Toggles guardrail evaluation on input.
-  final pulumi.Input<bool>? inputEnabled;
+  final pulumi.Input<bool?>? inputEnabled;
   /// List of selected input modalities. Valid values: `IMAGE`, `TEXT`.
-  final pulumi.Input<List<String>>? inputModalities;
+  final pulumi.Input<List<String>?>? inputModalities;
   /// Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   final pulumi.Input<String> inputStrength;
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
-  final pulumi.Input<String>? outputAction;
+  final pulumi.Input<String?>? outputAction;
   /// Toggles guardrail evaluation on output.
-  final pulumi.Input<bool>? outputEnabled;
+  final pulumi.Input<bool?>? outputEnabled;
   /// List of selected output modalities. Valid values: `IMAGE`, `TEXT`.
-  final pulumi.Input<List<String>>? outputModalities;
+  final pulumi.Input<List<String>?>? outputModalities;
   /// Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   final pulumi.Input<String> outputStrength;
   /// Type of contextual grounding filter.

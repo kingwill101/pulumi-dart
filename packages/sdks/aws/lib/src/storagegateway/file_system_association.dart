@@ -161,15 +161,15 @@ import 'file_system_association_state.dart';
 ///     ],
 /// });
 /// const testGateway = new aws.storagegateway.Gateway("test", {
-///     gatewayIpAddress: test.publicIp,
-///     gatewayName: "test-sgw",
-///     gatewayTimezone: "GMT",
-///     gatewayType: "FILE_FSX_SMB",
 ///     smbActiveDirectorySettings: {
 ///         domainName: testAwsDirectoryServiceDirectory.name,
 ///         password: testAwsDirectoryServiceDirectory.password,
 ///         username: "Admin",
 ///     },
+///     gatewayIpAddress: test.publicIp,
+///     gatewayName: "test-sgw",
+///     gatewayTimezone: "GMT",
+///     gatewayType: "FILE_FSX_SMB",
 /// });
 /// const testWindowsFileSystem = new aws.fsx.WindowsFileSystem("test", {
 ///     activeDirectoryId: testAwsDirectoryServiceDirectory.id,
@@ -180,13 +180,13 @@ import 'file_system_association_state.dart';
 ///     throughputCapacity: 8,
 /// });
 /// const fsx = new aws.storagegateway.FileSystemAssociation("fsx", {
+///     cacheAttributes: {
+///         cacheStaleTimeoutInSeconds: 400,
+///     },
 ///     gatewayArn: testGateway.arn,
 ///     locationArn: testWindowsFileSystem.arn,
 ///     username: "Admin",
 ///     password: testAwsDirectoryServiceDirectory.password,
-///     cacheAttributes: {
-///         cacheStaleTimeoutInSeconds: 400,
-///     },
 ///     auditDestinationArn: testAwsCloudwatchLogGroup.arn,
 /// });
 /// ```
@@ -206,15 +206,15 @@ import 'file_system_association_state.dart';
 ///             test_aws_vpc_dhcp_options_association,
 ///         ]))
 /// test_gateway = aws.storagegateway.Gateway("test",
-///     gateway_ip_address=test.public_ip,
-///     gateway_name="test-sgw",
-///     gateway_timezone="GMT",
-///     gateway_type="FILE_FSX_SMB",
 ///     smb_active_directory_settings={
 ///         "domain_name": test_aws_directory_service_directory["name"],
 ///         "password": test_aws_directory_service_directory["password"],
 ///         "username": "Admin",
-///     })
+///     },
+///     gateway_ip_address=test.public_ip,
+///     gateway_name="test-sgw",
+///     gateway_timezone="GMT",
+///     gateway_type="FILE_FSX_SMB")
 /// test_windows_file_system = aws.fsx.WindowsFileSystem("test",
 ///     active_directory_id=test_aws_directory_service_directory["id"],
 ///     security_group_ids=[test_aws_security_group["id"]],
@@ -223,13 +223,13 @@ import 'file_system_association_state.dart';
 ///     subnet_ids=[test_aws_subnet[0]["id"]],
 ///     throughput_capacity=8)
 /// fsx = aws.storagegateway.FileSystemAssociation("fsx",
+///     cache_attributes={
+///         "cache_stale_timeout_in_seconds": 400,
+///     },
 ///     gateway_arn=test_gateway.arn,
 ///     location_arn=test_windows_file_system.arn,
 ///     username="Admin",
 ///     password=test_aws_directory_service_directory["password"],
-///     cache_attributes={
-///         "cache_stale_timeout_in_seconds": 400,
-///     },
 ///     audit_destination_arn=test_aws_cloudwatch_log_group["arn"])
 /// ```
 /// ```csharp
@@ -266,16 +266,16 @@ import 'file_system_association_state.dart';
 ///
 ///     var testGateway = new Aws.StorageGateway.Gateway("test", new()
 ///     {
-///         GatewayIpAddress = test.PublicIp,
-///         GatewayName = "test-sgw",
-///         GatewayTimezone = "GMT",
-///         GatewayType = "FILE_FSX_SMB",
 ///         SmbActiveDirectorySettings = new Aws.StorageGateway.Inputs.GatewaySmbActiveDirectorySettingsArgs
 ///         {
 ///             DomainName = testAwsDirectoryServiceDirectory.Name,
 ///             Password = testAwsDirectoryServiceDirectory.Password,
 ///             Username = "Admin",
 ///         },
+///         GatewayIpAddress = test.PublicIp,
+///         GatewayName = "test-sgw",
+///         GatewayTimezone = "GMT",
+///         GatewayType = "FILE_FSX_SMB",
 ///     });
 ///
 ///     var testWindowsFileSystem = new Aws.Fsx.WindowsFileSystem("test", new()
@@ -296,14 +296,14 @@ import 'file_system_association_state.dart';
 ///
 ///     var fsx = new Aws.StorageGateway.FileSystemAssociation("fsx", new()
 ///     {
-///         GatewayArn = testGateway.Arn,
-///         LocationArn = testWindowsFileSystem.Arn,
-///         Username = "Admin",
-///         Password = testAwsDirectoryServiceDirectory.Password,
 ///         CacheAttributes = new Aws.StorageGateway.Inputs.FileSystemAssociationCacheAttributesArgs
 ///         {
 ///             CacheStaleTimeoutInSeconds = 400,
 ///         },
+///         GatewayArn = testGateway.Arn,
+///         LocationArn = testWindowsFileSystem.Arn,
+///         Username = "Admin",
+///         Password = testAwsDirectoryServiceDirectory.Password,
 ///         AuditDestinationArn = testAwsCloudwatchLogGroup.Arn,
 ///     });
 ///
@@ -344,15 +344,15 @@ import 'file_system_association_state.dart';
 /// 			return err
 /// 		}
 /// 		testGateway, err := storagegateway.NewGateway(ctx, "test", &storagegateway.GatewayArgs{
-/// 			GatewayIpAddress: test.PublicIp,
-/// 			GatewayName:      pulumi.String("test-sgw"),
-/// 			GatewayTimezone:  pulumi.String("GMT"),
-/// 			GatewayType:      pulumi.String("FILE_FSX_SMB"),
 /// 			SmbActiveDirectorySettings: &storagegateway.GatewaySmbActiveDirectorySettingsArgs{
 /// 				DomainName: pulumi.Any(testAwsDirectoryServiceDirectory.Name),
 /// 				Password:   pulumi.Any(testAwsDirectoryServiceDirectory.Password),
 /// 				Username:   pulumi.String("Admin"),
 /// 			},
+/// 			GatewayIpAddress: test.PublicIp,
+/// 			GatewayName:      pulumi.String("test-sgw"),
+/// 			GatewayTimezone:  pulumi.String("GMT"),
+/// 			GatewayType:      pulumi.String("FILE_FSX_SMB"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -373,13 +373,13 @@ import 'file_system_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storagegateway.NewFileSystemAssociation(ctx, "fsx", &storagegateway.FileSystemAssociationArgs{
-/// 			GatewayArn:  testGateway.Arn,
-/// 			LocationArn: testWindowsFileSystem.Arn,
-/// 			Username:    pulumi.String("Admin"),
-/// 			Password:    pulumi.Any(testAwsDirectoryServiceDirectory.Password),
 /// 			CacheAttributes: &storagegateway.FileSystemAssociationCacheAttributesArgs{
 /// 				CacheStaleTimeoutInSeconds: pulumi.Int(400),
 /// 			},
+/// 			GatewayArn:          testGateway.Arn,
+/// 			LocationArn:         testWindowsFileSystem.Arn,
+/// 			Username:            pulumi.String("Admin"),
+/// 			Password:            pulumi.Any(testAwsDirectoryServiceDirectory.Password),
 /// 			AuditDestinationArn: pulumi.Any(testAwsCloudwatchLogGroup.Arn),
 /// 		})
 /// 		if err != nil {
@@ -411,15 +411,15 @@ import 'file_system_association_state.dart';
 ///   subnet_id                   = testAwsSubnet[0].id
 /// }
 /// resource "aws_storagegateway_gateway" "test" {
-///   gateway_ip_address = aws_ec2_instance.test.public_ip
-///   gateway_name       = "test-sgw"
-///   gateway_timezone   = "GMT"
-///   gateway_type       = "FILE_FSX_SMB"
 ///   smb_active_directory_settings = {
 ///     domain_name = testAwsDirectoryServiceDirectory.name
 ///     password    = testAwsDirectoryServiceDirectory.password
 ///     username    = "Admin"
 ///   }
+///   gateway_ip_address = aws_ec2_instance.test.public_ip
+///   gateway_name       = "test-sgw"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "FILE_FSX_SMB"
 /// }
 /// resource "aws_fsx_windowsfilesystem" "test" {
 ///   active_directory_id = testAwsDirectoryServiceDirectory.id
@@ -430,13 +430,13 @@ import 'file_system_association_state.dart';
 ///   throughput_capacity = 8
 /// }
 /// resource "aws_storagegateway_filesystemassociation" "fsx" {
-///   gateway_arn  = aws_storagegateway_gateway.test.arn
-///   location_arn = aws_fsx_windowsfilesystem.test.arn
-///   username     = "Admin"
-///   password     = testAwsDirectoryServiceDirectory.password
 ///   cache_attributes = {
 ///     cache_stale_timeout_in_seconds = 400
 ///   }
+///   gateway_arn           = aws_storagegateway_gateway.test.arn
+///   location_arn          = aws_fsx_windowsfilesystem.test.arn
+///   username              = "Admin"
+///   password              = testAwsDirectoryServiceDirectory.password
 ///   audit_destination_arn = testAwsCloudwatchLogGroup.arn
 /// }
 /// ```
@@ -489,15 +489,15 @@ import 'file_system_association_state.dart';
 ///                 .build());
 ///
 ///         var testGateway = new Gateway("testGateway", GatewayArgs.builder()
-///             .gatewayIpAddress(test.publicIp())
-///             .gatewayName("test-sgw")
-///             .gatewayTimezone("GMT")
-///             .gatewayType("FILE_FSX_SMB")
 ///             .smbActiveDirectorySettings(GatewaySmbActiveDirectorySettingsArgs.builder()
 ///                 .domainName(testAwsDirectoryServiceDirectory.name())
 ///                 .password(testAwsDirectoryServiceDirectory.password())
 ///                 .username("Admin")
 ///                 .build())
+///             .gatewayIpAddress(test.publicIp())
+///             .gatewayName("test-sgw")
+///             .gatewayTimezone("GMT")
+///             .gatewayType("FILE_FSX_SMB")
 ///             .build());
 ///
 ///         var testWindowsFileSystem = new WindowsFileSystem("testWindowsFileSystem", WindowsFileSystemArgs.builder()
@@ -510,13 +510,13 @@ import 'file_system_association_state.dart';
 ///             .build());
 ///
 ///         var fsx = new FileSystemAssociation("fsx", FileSystemAssociationArgs.builder()
+///             .cacheAttributes(FileSystemAssociationCacheAttributesArgs.builder()
+///                 .cacheStaleTimeoutInSeconds(400)
+///                 .build())
 ///             .gatewayArn(testGateway.arn())
 ///             .locationArn(testWindowsFileSystem.arn())
 ///             .username("Admin")
 ///             .password(testAwsDirectoryServiceDirectory.password())
-///             .cacheAttributes(FileSystemAssociationCacheAttributesArgs.builder()
-///                 .cacheStaleTimeoutInSeconds(400)
-///                 .build())
 ///             .auditDestinationArn(testAwsCloudwatchLogGroup.arn())
 ///             .build());
 ///
@@ -542,14 +542,14 @@ import 'file_system_association_state.dart';
 ///     type: aws:storagegateway:Gateway
 ///     name: test
 ///     properties:
-///       gatewayIpAddress: ${test.publicIp}
-///       gatewayName: test-sgw
-///       gatewayTimezone: GMT
-///       gatewayType: FILE_FSX_SMB
 ///       smbActiveDirectorySettings:
 ///         domainName: ${testAwsDirectoryServiceDirectory.name}
 ///         password: ${testAwsDirectoryServiceDirectory.password}
 ///         username: Admin
+///       gatewayIpAddress: ${test.publicIp}
+///       gatewayName: test-sgw
+///       gatewayTimezone: GMT
+///       gatewayType: FILE_FSX_SMB
 ///   testWindowsFileSystem:
 ///     type: aws:fsx:WindowsFileSystem
 ///     name: test
@@ -565,12 +565,12 @@ import 'file_system_association_state.dart';
 ///   fsx:
 ///     type: aws:storagegateway:FileSystemAssociation
 ///     properties:
+///       cacheAttributes:
+///         cacheStaleTimeoutInSeconds: 400
 ///       gatewayArn: ${testGateway.arn}
 ///       locationArn: ${testWindowsFileSystem.arn}
 ///       username: Admin
 ///       password: ${testAwsDirectoryServiceDirectory.password}
-///       cacheAttributes:
-///         cacheStaleTimeoutInSeconds: 400
 ///       auditDestinationArn: ${testAwsCloudwatchLogGroup.arn}
 /// variables:
 ///   awsServiceStoragegatewayAmiFILES3Latest:
@@ -583,21 +583,21 @@ import 'file_system_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.FileSystemAssociation` using the FSx file system association Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.FileSystemAssociation` using the FSx file system association ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/fileSystemAssociation:FileSystemAssociation example arn:aws:storagegateway:us-east-1:123456789012:fs-association/fsa-0DA347732FDB40125
 /// ```
 class FileSystemAssociation extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the newly created file system association.
+  /// ARN of the newly created file system association.
   late final pulumi.Output<String> arn;
-  /// The Amazon Resource Name (ARN) of the storage used for the audit logs.
+  /// ARN of the storage used for the audit logs.
   late final pulumi.Output<String?> auditDestinationArn;
   /// Refresh cache information. see Cache Attributes for more details.
   late final pulumi.Output<FileSystemAssociationCacheAttributes?> cacheAttributes;
-  /// The Amazon Resource Name (ARN) of the gateway.
+  /// ARN of the gateway.
   late final pulumi.Output<String> gatewayArn;
-  /// The Amazon Resource Name (ARN) of the Amazon FSx file system to associate with the FSx File Gateway.
+  /// ARN of the Amazon FSx file system to associate with the FSx File Gateway.
   late final pulumi.Output<String> locationArn;
   /// The password of the user credential.
   late final pulumi.Output<String> password;
@@ -622,17 +622,18 @@ class FileSystemAssociation extends pulumi.CustomResource {
           'aws:storagegateway/fileSystemAssociation:FileSystemAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     cacheAttributes = registerOutput<FileSystemAssociationCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemAssociationCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayArn = registerOutput<String>('gatewayArn');
     locationArn = registerOutput<String>('locationArn');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     username = registerOutput<String>('username');
   }
 
@@ -641,11 +642,12 @@ class FileSystemAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileSystemAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileSystemAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -664,10 +666,32 @@ class FileSystemAssociation extends pulumi.CustomResource {
     cacheAttributes = registerOutput<FileSystemAssociationCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemAssociationCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayArn = registerOutput<String>('gatewayArn');
     locationArn = registerOutput<String>('locationArn');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [FileSystemAssociation] resource.
+  FileSystemAssociation.reference(String urn)
+    : super(
+        'aws:storagegateway/fileSystemAssociation:FileSystemAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    auditDestinationArn = registerOutput<String?>('auditDestinationArn');
+    cacheAttributes = registerOutput<FileSystemAssociationCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemAssociationCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayArn = registerOutput<String>('gatewayArn');
+    locationArn = registerOutput<String>('locationArn');
+    password = registerOutput<String>('password', isSecret: true);
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     username = registerOutput<String>('username');
   }
 }

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObjectCopyGrant {
   /// Email address of the grantee. Used only when `type` is `AmazonCustomerByEmail`.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Canonical user ID of the grantee. Used only when `type` is `CanonicalUser`.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// List of permissions to grant to grantee. Valid values are `READ`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
   final pulumi.Input<List<String>> permissions;
   /// Type of grantee. Valid values are `CanonicalUser`, `Group`, and `AmazonCustomerByEmail`.
   final pulumi.Input<String> type;
   /// URI of the grantee group. Used only when `type` is `Group`.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ObjectCopyGrant].
   /// [email] Email address of the grantee. Used only when `type` is `AmazonCustomerByEmail`.

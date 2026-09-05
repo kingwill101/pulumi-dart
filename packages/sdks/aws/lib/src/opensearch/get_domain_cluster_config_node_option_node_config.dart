@@ -30,7 +30,7 @@ class GetDomainClusterConfigNodeOptionNodeConfig {
 
   factory GetDomainClusterConfigNodeOptionNodeConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigNodeOptionNodeConfig(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

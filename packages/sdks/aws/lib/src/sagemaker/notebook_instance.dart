@@ -151,10 +151,10 @@ import 'notebook_instance_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.CodeRepository("example", {
-///     codeRepositoryName: "my-notebook-instance-code-repo",
 ///     gitConfig: {
 ///         repositoryUrl: "https://github.com/github/docs.git",
 ///     },
+///     codeRepositoryName: "my-notebook-instance-code-repo",
 /// });
 /// const ni = new aws.sagemaker.NotebookInstance("ni", {
 ///     name: "my-notebook-instance",
@@ -171,10 +171,10 @@ import 'notebook_instance_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.CodeRepository("example",
-///     code_repository_name="my-notebook-instance-code-repo",
 ///     git_config={
 ///         "repository_url": "https://github.com/github/docs.git",
-///     })
+///     },
+///     code_repository_name="my-notebook-instance-code-repo")
 /// ni = aws.sagemaker.NotebookInstance("ni",
 ///     name="my-notebook-instance",
 ///     role_arn=role["arn"],
@@ -194,11 +194,11 @@ import 'notebook_instance_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.CodeRepository("example", new()
 ///     {
-///         CodeRepositoryName = "my-notebook-instance-code-repo",
 ///         GitConfig = new Aws.Sagemaker.Inputs.CodeRepositoryGitConfigArgs
 ///         {
 ///             RepositoryUrl = "https://github.com/github/docs.git",
 ///         },
+///         CodeRepositoryName = "my-notebook-instance-code-repo",
 ///     });
 ///
 ///     var ni = new Aws.Sagemaker.NotebookInstance("ni", new()
@@ -226,10 +226,10 @@ import 'notebook_instance_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := sagemaker.NewCodeRepository(ctx, "example", &sagemaker.CodeRepositoryArgs{
-/// 			CodeRepositoryName: pulumi.String("my-notebook-instance-code-repo"),
 /// 			GitConfig: &sagemaker.CodeRepositoryGitConfigArgs{
 /// 				RepositoryUrl: pulumi.String("https://github.com/github/docs.git"),
 /// 			},
+/// 			CodeRepositoryName: pulumi.String("my-notebook-instance-code-repo"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -260,10 +260,10 @@ import 'notebook_instance_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_coderepository" "example" {
-///   code_repository_name = "my-notebook-instance-code-repo"
 ///   git_config = {
 ///     repository_url = "https://github.com/github/docs.git"
 ///   }
+///   code_repository_name = "my-notebook-instance-code-repo"
 /// }
 /// resource "aws_sagemaker_notebookinstance" "ni" {
 ///   name                    = "my-notebook-instance"
@@ -300,10 +300,10 @@ import 'notebook_instance_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CodeRepository("example", CodeRepositoryArgs.builder()
-///             .codeRepositoryName("my-notebook-instance-code-repo")
 ///             .gitConfig(CodeRepositoryGitConfigArgs.builder()
 ///                 .repositoryUrl("https://github.com/github/docs.git")
 ///                 .build())
+///             .codeRepositoryName("my-notebook-instance-code-repo")
 ///             .build());
 ///
 ///         var ni = new NotebookInstance("ni", NotebookInstanceArgs.builder()
@@ -322,9 +322,9 @@ import 'notebook_instance_state.dart';
 ///   example:
 ///     type: aws:sagemaker:CodeRepository
 ///     properties:
-///       codeRepositoryName: my-notebook-instance-code-repo
 ///       gitConfig:
 ///         repositoryUrl: https://github.com/github/docs.git
+///       codeRepositoryName: my-notebook-instance-code-repo
 ///   ni:
 ///     type: aws:sagemaker:NotebookInstance
 ///     properties:
@@ -348,7 +348,7 @@ class NotebookInstance extends pulumi.CustomResource {
   /// An array of up to three Git repositories to associate with the notebook instance.
   /// These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance.
   late final pulumi.Output<List<String>?> additionalCodeRepositories;
-  /// The Amazon Resource Name (ARN) assigned by AWS to this notebook instance.
+  /// ARN assigned by AWS to this notebook instance.
   late final pulumi.Output<String> arn;
   /// The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.
   late final pulumi.Output<String?> defaultCodeRepository;
@@ -358,7 +358,7 @@ class NotebookInstance extends pulumi.CustomResource {
   late final pulumi.Output<NotebookInstanceInstanceMetadataServiceConfiguration?> instanceMetadataServiceConfiguration;
   /// The name of ML compute instance type.
   late final pulumi.Output<String> instanceType;
-  /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
+  /// KMS key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
   late final pulumi.Output<String?> kmsKeyId;
   /// The name of a lifecycle configuration to associate with the notebook instance.
   late final pulumi.Output<String?> lifecycleConfigName;
@@ -399,9 +399,9 @@ class NotebookInstance extends pulumi.CustomResource {
           'aws:sagemaker/notebookInstance:NotebookInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories');
+    additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     defaultCodeRepository = registerOutput<String?>('defaultCodeRepository');
     directInternetAccess = registerOutput<String?>('directInternetAccess');
@@ -415,10 +415,10 @@ class NotebookInstance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     rootAccess = registerOutput<String?>('rootAccess');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
     volumeSize = registerOutput<int?>('volumeSize');
   }
@@ -428,11 +428,12 @@ class NotebookInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotebookInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotebookInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -446,7 +447,7 @@ class NotebookInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories');
+    additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     defaultCodeRepository = registerOutput<String?>('defaultCodeRepository');
     directInternetAccess = registerOutput<String?>('directInternetAccess');
@@ -460,10 +461,41 @@ class NotebookInstance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     rootAccess = registerOutput<String?>('rootAccess');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String>('url');
+    volumeSize = registerOutput<int?>('volumeSize');
+  }
+
+  /// Creates a typed reference to an existing [NotebookInstance] resource.
+  NotebookInstance.reference(String urn)
+    : super(
+        'aws:sagemaker/notebookInstance:NotebookInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    defaultCodeRepository = registerOutput<String?>('defaultCodeRepository');
+    directInternetAccess = registerOutput<String?>('directInternetAccess');
+    instanceMetadataServiceConfiguration = registerOutput<NotebookInstanceInstanceMetadataServiceConfiguration?>('instanceMetadataServiceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookInstanceInstanceMetadataServiceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceType = registerOutput<String>('instanceType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    lifecycleConfigName = registerOutput<String?>('lifecycleConfigName');
+    this.name = registerOutput<String>('name');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    platformIdentifier = registerOutput<String>('platformIdentifier');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    rootAccess = registerOutput<String?>('rootAccess');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
     volumeSize = registerOutput<int?>('volumeSize');
   }

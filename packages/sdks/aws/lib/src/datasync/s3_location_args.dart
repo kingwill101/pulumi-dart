@@ -8,25 +8,25 @@ import 's3_location_s3_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datasync_s3_location_s3_location_args_doc}
 class S3LocationArgs {
-  /// (Amazon S3 on Outposts only) Amazon Resource Name (ARN) of the DataSync agent on the Outpost.
-  final pulumi.Input<List<String>>? agentArns;
+  /// (Amazon S3 on Outposts only) ARN of the DataSync agent on the Outpost.
+  final pulumi.Input<List<String>?>? agentArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the S3 bucket, or the Amazon S3 access point if the S3 bucket is located on an AWS Outposts resource.
+  final pulumi.Input<String?>? region;
+  /// ARN of the S3 bucket, or the Amazon S3 access point if the S3 bucket is located on an AWS Outposts resource.
   final pulumi.Input<String> s3BucketArn;
   /// Configuration block containing information for connecting to S3.
   final pulumi.Input<S3LocationS3Config> s3Config;
   /// Amazon S3 storage class that you want to store your files in when this location is used as a task destination. [Valid values](https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes)
-  final pulumi.Input<String>? s3StorageClass;
+  final pulumi.Input<String?>? s3StorageClass;
   /// Prefix to perform actions as source or destination.
   final pulumi.Input<String> subdirectory;
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [S3LocationArgs].
-  /// [agentArns] (Amazon S3 on Outposts only) Amazon Resource Name (ARN) of the DataSync agent on the Outpost.
+  /// [agentArns] (Amazon S3 on Outposts only) ARN of the DataSync agent on the Outpost.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [s3BucketArn] Amazon Resource Name (ARN) of the S3 bucket, or the Amazon S3 access point if the S3 bucket is located on an AWS Outposts resource.
+  /// [s3BucketArn] ARN of the S3 bucket, or the Amazon S3 access point if the S3 bucket is located on an AWS Outposts resource.
   /// [s3Config] Configuration block containing information for connecting to S3.
   /// [s3StorageClass] Amazon S3 storage class that you want to store your files in when this location is used as a task destination. [Valid values](https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes)
   /// [subdirectory] Prefix to perform actions as source or destination.

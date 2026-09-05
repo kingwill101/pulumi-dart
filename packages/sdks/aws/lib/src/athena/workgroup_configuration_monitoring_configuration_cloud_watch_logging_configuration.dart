@@ -6,11 +6,11 @@ import 'workgroup_configuration_monitoring_configuration_cloud_watch_logging_con
 class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration {
   final pulumi.Input<bool> enabled;
   /// Name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
   /// Prefix for the CloudWatch log stream name.
-  final pulumi.Input<String>? logStreamNamePrefix;
+  final pulumi.Input<String?>? logStreamNamePrefix;
   /// Repeatable block defining log types to be delivered to CloudWatch.
-  final pulumi.Input<List<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType>>? logTypes;
+  final pulumi.Input<List<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType>?>? logTypes;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration].
   /// [enabled] Required.

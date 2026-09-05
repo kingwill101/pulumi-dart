@@ -4,37 +4,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationUiColorPalette {
   /// Color (hexadecimal) that applies to selected states and buttons.
-  final pulumi.Input<String>? accent;
+  final pulumi.Input<String?>? accent;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the accent color.
-  final pulumi.Input<String>? accentForeground;
+  final pulumi.Input<String?>? accentForeground;
   /// Color (hexadecimal) that applies to error messages.
-  final pulumi.Input<String>? danger;
+  final pulumi.Input<String?>? danger;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the error color.
-  final pulumi.Input<String>? dangerForeground;
+  final pulumi.Input<String?>? dangerForeground;
   /// Color (hexadecimal) that applies to the names of fields that are identified as dimensions.
-  final pulumi.Input<String>? dimension;
+  final pulumi.Input<String?>? dimension;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the dimension color.
-  final pulumi.Input<String>? dimensionForeground;
+  final pulumi.Input<String?>? dimensionForeground;
   /// Color (hexadecimal) that applies to the names of fields that are identified as measures.
-  final pulumi.Input<String>? measure;
+  final pulumi.Input<String?>? measure;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the measure color.
-  final pulumi.Input<String>? measureForeground;
+  final pulumi.Input<String?>? measureForeground;
   /// Color (hexadecimal) that applies to visuals and other high emphasis UI.
-  final pulumi.Input<String>? primaryBackground;
+  final pulumi.Input<String?>? primaryBackground;
   /// Color (hexadecimal) of text and other foreground elements that appear over the primary background regions, such as grid lines, borders, table banding, icons, and so on.
-  final pulumi.Input<String>? primaryForeground;
+  final pulumi.Input<String?>? primaryForeground;
   /// Color (hexadecimal) that applies to the sheet background and sheet controls.
-  final pulumi.Input<String>? secondaryBackground;
+  final pulumi.Input<String?>? secondaryBackground;
   /// Color (hexadecimal) that applies to any sheet title, sheet control text, or UI that appears over the secondary background.
-  final pulumi.Input<String>? secondaryForeground;
+  final pulumi.Input<String?>? secondaryForeground;
   /// Color (hexadecimal) that applies to success messages, for example the check mark for a successful download.
-  final pulumi.Input<String>? success;
+  final pulumi.Input<String?>? success;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the success color.
-  final pulumi.Input<String>? successForeground;
+  final pulumi.Input<String?>? successForeground;
   /// Color (hexadecimal) that applies to warning and informational messages.
-  final pulumi.Input<String>? warning;
+  final pulumi.Input<String?>? warning;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the warning color.
-  final pulumi.Input<String>? warningForeground;
+  final pulumi.Input<String?>? warningForeground;
 
   /// Creates a new [ThemeConfigurationUiColorPalette].
   /// [accent] Color (hexadecimal) that applies to selected states and buttons.

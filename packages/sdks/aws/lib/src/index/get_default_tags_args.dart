@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_default_tags_get_default_tags_args_doc}
 class GetDefaultTagsArgs {
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetDefaultTagsArgs].
   /// [id] Optional.

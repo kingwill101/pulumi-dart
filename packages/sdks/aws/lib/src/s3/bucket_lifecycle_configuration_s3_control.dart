@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_lifecycle_configuration_rule_s3_control.dart';
 import 'bucket_lifecycle_configuration_s3_control_args.dart';
 import 'bucket_lifecycle_configuration_s3_control_state.dart';
 
@@ -16,7 +17,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3control.BucketLifecycleConfiguration("example", {
-///     bucket: exampleAwsS3controlBucket.arn,
 ///     rules: [
 ///         {
 ///             expiration: {
@@ -37,6 +37,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///             id: "temp",
 ///         },
 ///     ],
+///     bucket: exampleAwsS3controlBucket.arn,
 /// });
 /// ```
 /// ```python
@@ -44,7 +45,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3control.BucketLifecycleConfiguration("example",
-///     bucket=example_aws_s3control_bucket["arn"],
 ///     rules=[
 ///         {
 ///             "expiration": {
@@ -64,7 +64,8 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///             },
 ///             "id": "temp",
 ///         },
-///     ])
+///     ],
+///     bucket=example_aws_s3control_bucket["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -76,7 +77,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// {
 ///     var example = new Aws.S3Control.BucketLifecycleConfiguration("example", new()
 ///     {
-///         Bucket = exampleAwsS3controlBucket.Arn,
 ///         Rules = new[]
 ///         {
 ///             new Aws.S3Control.Inputs.BucketLifecycleConfigurationRuleArgs
@@ -104,6 +104,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///                 Id = "temp",
 ///             },
 ///         },
+///         Bucket = exampleAwsS3controlBucket.Arn,
 ///     });
 ///
 /// });
@@ -119,7 +120,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3control.NewBucketLifecycleConfiguration(ctx, "example", &s3control.BucketLifecycleConfigurationArgs{
-/// 			Bucket: pulumi.Any(exampleAwsS3controlBucket.Arn),
 /// 			Rules: s3control.BucketLifecycleConfigurationRuleArray{
 /// 				&s3control.BucketLifecycleConfigurationRuleArgs{
 /// 					Expiration: &s3control.BucketLifecycleConfigurationRuleExpirationArgs{
@@ -140,6 +140,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// 					Id: pulumi.String("temp"),
 /// 				},
 /// 			},
+/// 			Bucket: pulumi.Any(exampleAwsS3controlBucket.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -158,7 +159,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// }
 ///
 /// resource "aws_s3control_bucketlifecycleconfiguration" "example" {
-///   bucket = exampleAwsS3controlBucket.arn
 ///   rules {
 ///     expiration = {
 ///       days = 365
@@ -177,6 +177,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///     }
 ///     id = "temp"
 ///   }
+///   bucket = exampleAwsS3controlBucket.arn
 /// }
 /// ```
 /// ```java
@@ -204,7 +205,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketLifecycleConfiguration("example", BucketLifecycleConfigurationArgs.builder()
-///             .bucket(exampleAwsS3controlBucket.arn())
 ///             .rules(
 ///                 BucketLifecycleConfigurationRuleArgs.builder()
 ///                     .expiration(BucketLifecycleConfigurationRuleExpirationArgs.builder()
@@ -224,6 +224,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///                         .build())
 ///                     .id("temp")
 ///                     .build())
+///             .bucket(exampleAwsS3controlBucket.arn())
 ///             .build());
 ///
 ///     }
@@ -234,7 +235,6 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///   example:
 ///     type: aws:s3control:BucketLifecycleConfiguration
 ///     properties:
-///       bucket: ${exampleAwsS3controlBucket.arn}
 ///       rules:
 ///         - expiration:
 ///             days: 365
@@ -246,23 +246,24 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///           filter:
 ///             prefix: temp/
 ///           id: temp
+///       bucket: ${exampleAwsS3controlBucket.arn}
 /// ```
 ///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Control Bucket Lifecycle Configurations using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import S3 Control Bucket Lifecycle Configurations using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration example arn:aws:s3-outposts:us-east-1:123456789012:outpost/op-12345678/bucket/example
 /// ```
 class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the bucket.
+  /// ARN of the bucket.
   late final pulumi.Output<String> bucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block(s) containing lifecycle rules for the bucket. See `rule` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<BucketLifecycleConfigurationRuleS3Control>> rules;
 
   /// Creates a new [BucketLifecycleConfigurationS3Control].
   /// [name] The Pulumi resource name.
@@ -276,11 +277,11 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
           'aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<BucketLifecycleConfigurationRuleS3Control>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(guardedValue, (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [BucketLifecycleConfigurationS3Control] resource's state with the given [name] and [id].
@@ -288,11 +289,12 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketLifecycleConfigurationS3ControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketLifecycleConfigurationS3Control._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +310,20 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<BucketLifecycleConfigurationRuleS3Control>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(guardedValue, (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BucketLifecycleConfigurationS3Control] resource.
+  BucketLifecycleConfigurationS3Control.reference(String urn)
+    : super(
+        'aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<BucketLifecycleConfigurationRuleS3Control>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(guardedValue, (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

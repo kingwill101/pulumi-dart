@@ -161,11 +161,11 @@ import 'access_point_vpc_configuration.dart';
 /// const example = new aws.s3control.Bucket("example", {bucket: "example"});
 /// const exampleVpc = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
 /// const exampleAccessPoint = new aws.s3.AccessPoint("example", {
-///     bucket: example.arn,
-///     name: "example",
 ///     vpcConfiguration: {
 ///         vpcId: exampleVpc.id,
 ///     },
+///     bucket: example.arn,
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -175,11 +175,11 @@ import 'access_point_vpc_configuration.dart';
 /// example = aws.s3control.Bucket("example", bucket="example")
 /// example_vpc = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
 /// example_access_point = aws.s3.AccessPoint("example",
-///     bucket=example.arn,
-///     name="example",
 ///     vpc_configuration={
 ///         "vpc_id": example_vpc.id,
-///     })
+///     },
+///     bucket=example.arn,
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -201,12 +201,12 @@ import 'access_point_vpc_configuration.dart';
 ///
 ///     var exampleAccessPoint = new Aws.S3.AccessPoint("example", new()
 ///     {
-///         Bucket = example.Arn,
-///         Name = "example",
 ///         VpcConfiguration = new Aws.S3.Inputs.AccessPointVpcConfigurationArgs
 ///         {
 ///             VpcId = exampleVpc.Id,
 ///         },
+///         Bucket = example.Arn,
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -236,11 +236,11 @@ import 'access_point_vpc_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.Arn,
-/// 			Name:   pulumi.String("example"),
 /// 			VpcConfiguration: &s3.AccessPointVpcConfigurationArgs{
 /// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			},
+/// 			Bucket: example.Arn,
+/// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -262,11 +262,11 @@ import 'access_point_vpc_configuration.dart';
 ///   bucket = "example"
 /// }
 /// resource "aws_s3_accesspoint" "example" {
-///   bucket = aws_s3control_bucket.example.arn
-///   name   = "example"
 ///   vpc_configuration = {
 ///     vpc_id = aws_ec2_vpc.example.id
 ///   }
+///   bucket = aws_s3control_bucket.example.arn
+///   name   = "example"
 /// }
 /// resource "aws_ec2_vpc" "example" {
 ///   cidr_block = "10.0.0.0/16"
@@ -307,11 +307,11 @@ import 'access_point_vpc_configuration.dart';
 ///             .build());
 ///
 ///         var exampleAccessPoint = new AccessPoint("exampleAccessPoint", AccessPointArgs.builder()
-///             .bucket(example.arn())
-///             .name("example")
 ///             .vpcConfiguration(AccessPointVpcConfigurationArgs.builder()
 ///                 .vpcId(exampleVpc.id())
 ///                 .build())
+///             .bucket(example.arn())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -327,10 +327,10 @@ import 'access_point_vpc_configuration.dart';
 ///     type: aws:s3:AccessPoint
 ///     name: example
 ///     properties:
-///       bucket: ${example.arn}
-///       name: example
 ///       vpcConfiguration:
 ///         vpcId: ${exampleVpc.id}
+///       bucket: ${example.arn}
+///       name: example
 ///   exampleVpc:
 ///     type: aws:ec2:Vpc
 ///     name: example
@@ -350,10 +350,10 @@ import 'access_point_vpc_configuration.dart';
 ///     state: "available",
 /// });
 /// const example = new aws.s3.DirectoryBucket("example", {
-///     bucket: "example--zoneId--x-s3",
 ///     location: {
 ///         name: available.then(available => available.zoneIds?.[0]),
 ///     },
+///     bucket: "example--zoneId--x-s3",
 /// });
 /// const exampleAccessPoint = new aws.s3.AccessPoint("example", {
 ///     bucket: test.bucket,
@@ -366,10 +366,10 @@ import 'access_point_vpc_configuration.dart';
 ///
 /// available = aws.get_availability_zones(state="available")
 /// example = aws.s3.DirectoryBucket("example",
-///     bucket="example--zoneId--x-s3",
 ///     location={
 ///         "name": available.zone_ids[0],
-///     })
+///     },
+///     bucket="example--zoneId--x-s3")
 /// example_access_point = aws.s3.AccessPoint("example",
 ///     bucket=test["bucket"],
 ///     name="example--zoneId--xa-s3")
@@ -389,11 +389,11 @@ import 'access_point_vpc_configuration.dart';
 ///
 ///     var example = new Aws.S3.DirectoryBucket("example", new()
 ///     {
-///         Bucket = "example--zoneId--x-s3",
 ///         Location = new Aws.S3.Inputs.DirectoryBucketLocationArgs
 ///         {
 ///             Name = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.ZoneIds[0]),
 ///         },
+///         Bucket = "example--zoneId--x-s3",
 ///     });
 ///
 ///     var exampleAccessPoint = new Aws.S3.AccessPoint("example", new()
@@ -422,10 +422,10 @@ import 'access_point_vpc_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewDirectoryBucket(ctx, "example", &s3.DirectoryBucketArgs{
-/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
 /// 			Location: &s3.DirectoryBucketLocationArgs{
 /// 				Name: pulumi.String(available.ZoneIds[0]),
 /// 			},
+/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -455,10 +455,10 @@ import 'access_point_vpc_configuration.dart';
 /// }
 ///
 /// resource "aws_s3_directorybucket" "example" {
-///   bucket = "example--zoneId--x-s3"
 ///   location = {
 ///     name = data.aws_getavailabilityzones.available.zone_ids[0]
 ///   }
+///   bucket = "example--zoneId--x-s3"
 /// }
 /// resource "aws_s3_accesspoint" "example" {
 ///   bucket = test.bucket
@@ -496,10 +496,10 @@ import 'access_point_vpc_configuration.dart';
 ///             .build());
 ///
 ///         var example = new DirectoryBucket("example", DirectoryBucketArgs.builder()
-///             .bucket("example--zoneId--x-s3")
 ///             .location(DirectoryBucketLocationArgs.builder()
 ///                 .name(available.zoneIds()[0])
 ///                 .build())
+///             .bucket("example--zoneId--x-s3")
 ///             .build());
 ///
 ///         var exampleAccessPoint = new AccessPoint("exampleAccessPoint", AccessPointArgs.builder()
@@ -515,9 +515,9 @@ import 'access_point_vpc_configuration.dart';
 ///   example:
 ///     type: aws:s3:DirectoryBucket
 ///     properties:
-///       bucket: example--zoneId--x-s3
 ///       location:
 ///         name: ${available.zoneIds[0]}
+///       bucket: example--zoneId--x-s3
 ///   exampleAccessPoint:
 ///     type: aws:s3:AccessPoint
 ///     name: example
@@ -584,7 +584,7 @@ class AccessPoint extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Required for S3 on Outposts. Detailed below.
+  /// Configuration block to restrict access to this access point to requests from the specified VPC. Required for S3 on Outposts. Detailed below.
   late final pulumi.Output<AccessPointVpcConfiguration?> vpcConfiguration;
 
   /// Creates a new [AccessPoint].
@@ -599,7 +599,7 @@ class AccessPoint extends pulumi.CustomResource {
           'aws:s3/accessPoint:AccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
@@ -607,15 +607,15 @@ class AccessPoint extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     bucketAccountId = registerOutput<String>('bucketAccountId');
     domainName = registerOutput<String>('domainName');
-    endpoints = registerOutput<Map<String, String>>('endpoints');
+    endpoints = registerOutput<Map<String, String>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
     this.name = registerOutput<String>('name');
     networkOrigin = registerOutput<String>('networkOrigin');
     policy = registerOutput<String>('policy');
     publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -624,11 +624,12 @@ class AccessPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -648,15 +649,42 @@ class AccessPoint extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     bucketAccountId = registerOutput<String>('bucketAccountId');
     domainName = registerOutput<String>('domainName');
-    endpoints = registerOutput<Map<String, String>>('endpoints');
+    endpoints = registerOutput<Map<String, String>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
     this.name = registerOutput<String>('name');
     networkOrigin = registerOutput<String>('networkOrigin');
     policy = registerOutput<String>('policy');
     publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AccessPoint] resource.
+  AccessPoint.reference(String urn)
+    : super(
+        'aws:s3/accessPoint:AccessPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    alias = registerOutput<String>('alias');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    bucketAccountId = registerOutput<String>('bucketAccountId');
+    domainName = registerOutput<String>('domainName');
+    endpoints = registerOutput<Map<String, String>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
+    this.name = registerOutput<String>('name');
+    networkOrigin = registerOutput<String>('networkOrigin');
+    policy = registerOutput<String>('policy');
+    publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -6,13 +6,13 @@ import 'data_set_logical_table_map_source_join_instruction_right_join_key_proper
 
 class DataSetLogicalTableMapSourceJoinInstruction {
   /// Join key properties of the left operand. See left_join_key_properties.
-  final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties>? leftJoinKeyProperties;
+  final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties?>? leftJoinKeyProperties;
   /// Operand on the left side of a join.
   final pulumi.Input<String> leftOperand;
   /// Join instructions provided in the ON clause of a join.
   final pulumi.Input<String> onClause;
   /// Join key properties of the right operand. See right_join_key_properties.
-  final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties>? rightJoinKeyProperties;
+  final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties?>? rightJoinKeyProperties;
   /// Operand on the right side of a join.
   final pulumi.Input<String> rightOperand;
   /// Type of join. Valid values are `INNER`, `OUTER`, `LEFT`, and `RIGHT`.

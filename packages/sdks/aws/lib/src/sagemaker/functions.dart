@@ -130,3 +130,14 @@ Future<GetPrebuiltEcrImageResult> getPrebuiltEcrImage(
   );
   return GetPrebuiltEcrImageResult.fromMap(result);
 }
+
+pulumi.Output<GetPrebuiltEcrImageResult> getPrebuiltEcrImageOutput(
+  GetPrebuiltEcrImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sagemaker/getPrebuiltEcrImage:getPrebuiltEcrImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrebuiltEcrImageResult.fromMap);
+}

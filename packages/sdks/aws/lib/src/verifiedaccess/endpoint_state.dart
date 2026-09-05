@@ -10,44 +10,44 @@ import 'endpoint_sse_specification.dart';
 /// Input properties used for looking up and filtering Endpoint resources.
 class EndpointState {
   /// The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
-  final pulumi.Input<String>? applicationDomain;
+  final pulumi.Input<String?>? applicationDomain;
   /// The type of attachment. Currently, only `vpc` is supported.
-  final pulumi.Input<String>? attachmentType;
+  final pulumi.Input<String?>? attachmentType;
   /// The CIDR block details. This parameter is required if the endpoint type is `cidr`.
-  final pulumi.Input<EndpointCidrOptions>? cidrOptions;
+  final pulumi.Input<EndpointCidrOptions?>? cidrOptions;
   /// A description for the Verified Access endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Returned if endpoint has a device trust provider attached.
-  final pulumi.Input<String>? deviceValidationDomain;
+  final pulumi.Input<String?>? deviceValidationDomain;
   /// The ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
-  final pulumi.Input<String>? domainCertificateArn;
+  final pulumi.Input<String?>? domainCertificateArn;
   /// A DNS name that is generated for the endpoint.
-  final pulumi.Input<String>? endpointDomain;
+  final pulumi.Input<String?>? endpointDomain;
   /// A custom identifier that is prepended to the DNS name that is generated for the endpoint.
-  final pulumi.Input<String>? endpointDomainPrefix;
+  final pulumi.Input<String?>? endpointDomainPrefix;
   /// The type of Verified Access endpoint to create. Currently `load-balancer` or `network-interface` are supported.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// The load balancer details. This parameter is required if the endpoint type is `load-balancer`.
-  final pulumi.Input<EndpointLoadBalancerOptions>? loadBalancerOptions;
+  final pulumi.Input<EndpointLoadBalancerOptions?>? loadBalancerOptions;
   /// The network interface details. This parameter is required if the endpoint type is `network-interface`.
-  final pulumi.Input<EndpointNetworkInterfaceOptions>? networkInterfaceOptions;
+  final pulumi.Input<EndpointNetworkInterfaceOptions?>? networkInterfaceOptions;
   /// The policy document that is associated with this resource.
-  final pulumi.Input<String>? policyDocument;
-  final pulumi.Input<EndpointRdsOptions>? rdsOptions;
+  final pulumi.Input<String?>? policyDocument;
+  final pulumi.Input<EndpointRdsOptions?>? rdsOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of the the security groups IDs to associate with the Verified Access endpoint.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// The options in use for server side encryption.
-  final pulumi.Input<EndpointSseSpecification>? sseSpecification;
+  final pulumi.Input<EndpointSseSpecification?>? sseSpecification;
   /// Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The ID of the Verified Access group to associate the endpoint with.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? verifiedAccessGroupId;
-  final pulumi.Input<String>? verifiedAccessInstanceId;
+  final pulumi.Input<String?>? verifiedAccessGroupId;
+  final pulumi.Input<String?>? verifiedAccessInstanceId;
 
   /// Creates a new [EndpointState].
   /// [applicationDomain] The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.

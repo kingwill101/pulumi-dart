@@ -6,11 +6,11 @@ class PipelineStageBeforeEntryConditionRuleRuleTypeId {
   /// A category defines what kind of rule can be run in the stage, and constrains the provider type for the rule. The valid category is `Rule`.
   final pulumi.Input<String> category;
   /// The creator of the rule being called. The valid value for the Owner field in the rule category is `AWS`.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// The rule provider, such as the DeploymentWindow rule. For a list of rule provider names, see the rules listed in the [AWS CodePipeline rule reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
   final pulumi.Input<String> provider;
   /// A string that describes the rule version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PipelineStageBeforeEntryConditionRuleRuleTypeId].
   /// [category] A category defines what kind of rule can be run in the stage, and constrains the provider type for the rule. The valid category is `Rule`.

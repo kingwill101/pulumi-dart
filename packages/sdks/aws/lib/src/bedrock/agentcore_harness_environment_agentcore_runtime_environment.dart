@@ -7,19 +7,19 @@ import 'agentcore_harness_environment_agentcore_runtime_environment_network_conf
 
 class AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironment {
   /// ARN of the agent runtime the service provisions for the harness.
-  final pulumi.Input<String>? agentRuntimeArn;
+  final pulumi.Input<String?>? agentRuntimeArn;
   /// ID of the agent runtime the service provisions for the harness.
-  final pulumi.Input<String>? agentRuntimeId;
+  final pulumi.Input<String?>? agentRuntimeId;
   /// Name of the agent runtime the service derives for the harness.
-  final pulumi.Input<String>? agentRuntimeName;
+  final pulumi.Input<String?>? agentRuntimeName;
   /// Filesystem configurations. See `filesystemConfiguration` Block below.
   ///
   /// The following attributes are exported under `agentcoreRuntimeEnvironment`:
-  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentFilesystemConfiguration>>? filesystemConfigurations;
+  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentFilesystemConfiguration>?>? filesystemConfigurations;
   /// Lifecycle configuration. See `lifecycleConfiguration` Block below.
-  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentLifecycleConfiguration>>? lifecycleConfigurations;
+  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentLifecycleConfiguration>?>? lifecycleConfigurations;
   /// Network configuration. See `networkConfiguration` Block below.
-  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfiguration>>? networkConfigurations;
+  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfiguration>?>? networkConfigurations;
 
   /// Creates a new [AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironment].
   /// [agentRuntimeArn] ARN of the agent runtime the service provisions for the harness.

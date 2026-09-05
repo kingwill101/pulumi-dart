@@ -14,12 +14,12 @@ import 'human_task_uiui_template.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.sagemaker.HumanTaskUI("example", {
-///     humanTaskUiName: "example",
 ///     uiTemplate: {
 ///         content: std.file({
 ///             input: "sagemaker-human-task-ui-template.html",
 ///         }).then(invoke => invoke.result),
 ///     },
+///     humanTaskUiName: "example",
 /// });
 /// ```
 /// ```python
@@ -28,10 +28,10 @@ import 'human_task_uiui_template.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.sagemaker.HumanTaskUI("example",
-///     human_task_ui_name="example",
 ///     ui_template={
 ///         "content": std.file(input="sagemaker-human-task-ui-template.html").result,
-///     })
+///     },
+///     human_task_ui_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,7 +44,6 @@ import 'human_task_uiui_template.dart';
 /// {
 ///     var example = new Aws.Sagemaker.HumanTaskUI("example", new()
 ///     {
-///         HumanTaskUiName = "example",
 ///         UiTemplate = new Aws.Sagemaker.Inputs.HumanTaskUIUiTemplateArgs
 ///         {
 ///             Content = Std.File.Invoke(new()
@@ -52,6 +51,7 @@ import 'human_task_uiui_template.dart';
 ///                 Input = "sagemaker-human-task-ui-template.html",
 ///             }).Apply(invoke => invoke.Result),
 ///         },
+///         HumanTaskUiName = "example",
 ///     });
 ///
 /// });
@@ -74,10 +74,10 @@ import 'human_task_uiui_template.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewHumanTaskUI(ctx, "example", &sagemaker.HumanTaskUIArgs{
-/// 			HumanTaskUiName: pulumi.String("example"),
 /// 			UiTemplate: &sagemaker.HumanTaskUIUiTemplateArgs{
 /// 				Content: pulumi.String(invokeFile.Result),
 /// 			},
+/// 			HumanTaskUiName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -99,10 +99,10 @@ import 'human_task_uiui_template.dart';
 /// }
 ///
 /// resource "aws_sagemaker_humantaskui" "example" {
-///   human_task_ui_name = "example"
 ///   ui_template = {
 ///     content = file("sagemaker-human-task-ui-template.html")
 ///   }
+///   human_task_ui_name = "example"
 /// }
 /// ```
 /// ```java
@@ -130,12 +130,12 @@ import 'human_task_uiui_template.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HumanTaskUI("example", HumanTaskUIArgs.builder()
-///             .humanTaskUiName("example")
 ///             .uiTemplate(HumanTaskUIUiTemplateArgs.builder()
 ///                 .content(StdFunctions.file(FileArgs.builder()
 ///                     .input("sagemaker-human-task-ui-template.html")
 ///                     .build()).result())
 ///                 .build())
+///             .humanTaskUiName("example")
 ///             .build());
 ///
 ///     }
@@ -146,7 +146,6 @@ import 'human_task_uiui_template.dart';
 ///   example:
 ///     type: aws:sagemaker:HumanTaskUI
 ///     properties:
-///       humanTaskUiName: example
 ///       uiTemplate:
 ///         content:
 ///           fn::invoke:
@@ -154,6 +153,7 @@ import 'human_task_uiui_template.dart';
 ///             arguments:
 ///               input: sagemaker-human-task-ui-template.html
 ///             return: result
+///       humanTaskUiName: example
 /// ```
 ///
 ///
@@ -165,7 +165,7 @@ import 'human_task_uiui_template.dart';
 /// $ pulumi import aws:sagemaker/humanTaskUI:HumanTaskUI example example
 /// ```
 class HumanTaskUI extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Human Task UI.
+  /// ARN assigned by AWS to this Human Task UI.
   late final pulumi.Output<String> arn;
   /// The name of the Human Task UI.
   late final pulumi.Output<String> humanTaskUiName;
@@ -190,13 +190,13 @@ class HumanTaskUI extends pulumi.CustomResource {
           'aws:sagemaker/humanTaskUI:HumanTaskUI',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     humanTaskUiName = registerOutput<String>('humanTaskUiName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HumanTaskUIUiTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -205,11 +205,12 @@ class HumanTaskUI extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HumanTaskUIState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HumanTaskUI._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,8 +227,25 @@ class HumanTaskUI extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     humanTaskUiName = registerOutput<String>('humanTaskUiName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HumanTaskUIUiTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [HumanTaskUI] resource.
+  HumanTaskUI.reference(String urn)
+    : super(
+        'aws:sagemaker/humanTaskUI:HumanTaskUI',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    humanTaskUiName = registerOutput<String>('humanTaskUiName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HumanTaskUIUiTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

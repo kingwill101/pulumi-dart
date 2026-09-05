@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentUserParameter {
   /// The name of an environment profile parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of an environment profile parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentUserParameter].
   /// [name] The name of an environment profile parameter.

@@ -223,7 +223,7 @@ class PublicVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/publicVirtualInterface:PublicVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
@@ -236,9 +236,9 @@ class PublicVirtualInterface extends pulumi.CustomResource {
     customerAddress = registerOutput<String>('customerAddress');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vlan = registerOutput<int>('vlan');
   }
 
@@ -247,11 +247,12 @@ class PublicVirtualInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicVirtualInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicVirtualInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,9 +277,35 @@ class PublicVirtualInterface extends pulumi.CustomResource {
     customerAddress = registerOutput<String>('customerAddress');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vlan = registerOutput<int>('vlan');
+  }
+
+  /// Creates a typed reference to an existing [PublicVirtualInterface] resource.
+  PublicVirtualInterface.reference(String urn)
+    : super(
+        'aws:directconnect/publicVirtualInterface:PublicVirtualInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    connectionId = registerOutput<String>('connectionId');
+    customerAddress = registerOutput<String>('customerAddress');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vlan = registerOutput<int>('vlan');
   }
 }

@@ -22,6 +22,17 @@ Future<GetBrokerResult> getBroker(
   return GetBrokerResult.fromMap(result);
 }
 
+pulumi.Output<GetBrokerResult> getBrokerOutput(
+  GetBrokerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mq/getBroker:getBroker',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerResult.fromMap);
+}
+
 /// Provides details about available MQ broker engine types. Use this data source to retrieve supported engine types and their versions for Amazon MQ brokers.
 ///
 /// ## Example Usage
@@ -138,6 +149,17 @@ Future<GetBrokerEngineTypesResult> getBrokerEngineTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBrokerEngineTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetBrokerEngineTypesResult> getBrokerEngineTypesOutput(
+  GetBrokerEngineTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mq/getBrokerEngineTypes:getBrokerEngineTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerEngineTypesResult.fromMap);
 }
 
 /// Provides details about available MQ broker instance type offerings. Use this data source to discover supported instance types, storage types, and deployment modes for Amazon MQ brokers.
@@ -404,4 +426,15 @@ Future<GetInstanceTypeOfferingsResult> getInstanceTypeOfferings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceTypeOfferingsResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceTypeOfferingsResult> getInstanceTypeOfferingsOutput(
+  GetInstanceTypeOfferingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mq/getInstanceTypeOfferings:getInstanceTypeOfferings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTypeOfferingsResult.fromMap);
 }

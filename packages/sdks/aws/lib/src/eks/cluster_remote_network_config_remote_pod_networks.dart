@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRemoteNetworkConfigRemotePodNetworks {
   /// List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
 
   /// Creates a new [ClusterRemoteNetworkConfigRemotePodNetworks].
   /// [cidrs] List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.

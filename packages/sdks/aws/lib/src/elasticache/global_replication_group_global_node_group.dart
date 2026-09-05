@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalReplicationGroupGlobalNodeGroup {
   /// The ID of the global node group.
-  final pulumi.Input<String>? globalNodeGroupId;
+  final pulumi.Input<String?>? globalNodeGroupId;
   /// The keyspace for this node group.
-  final pulumi.Input<String>? slots;
+  final pulumi.Input<String?>? slots;
 
   /// Creates a new [GlobalReplicationGroupGlobalNodeGroup].
   /// [globalNodeGroupId] The ID of the global node group.

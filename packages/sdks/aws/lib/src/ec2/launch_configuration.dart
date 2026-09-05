@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'launch_configuration_args.dart';
+import 'launch_configuration_ebs_block_device.dart';
+import 'launch_configuration_ephemeral_block_device.dart';
 import 'launch_configuration_metadata_options.dart';
 import 'launch_configuration_root_block_device.dart';
 import 'launch_configuration_state.dart';
@@ -18,7 +20,6 @@ import 'launch_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ubuntu = aws.ec2.getAmi({
-///     mostRecent: true,
 ///     filters: [
 ///         {
 ///             name: "name",
@@ -29,6 +30,7 @@ import 'launch_configuration_state.dart';
 ///             values: ["hvm"],
 ///         },
 ///     ],
+///     mostRecent: true,
 ///     owners: ["099720109477"],
 /// });
 /// const asConf = new aws.ec2.LaunchConfiguration("as_conf", {
@@ -41,8 +43,7 @@ import 'launch_configuration_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ubuntu = aws.ec2.get_ami(most_recent=True,
-///     filters=[
+/// ubuntu = aws.ec2.get_ami(filters=[
 ///         {
 ///             "name": "name",
 ///             "values": ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
@@ -52,6 +53,7 @@ import 'launch_configuration_state.dart';
 ///             "values": ["hvm"],
 ///         },
 ///     ],
+///     most_recent=True,
 ///     owners=["099720109477"])
 /// as_conf = aws.ec2.LaunchConfiguration("as_conf",
 ///     name="web_config",
@@ -68,7 +70,6 @@ import 'launch_configuration_state.dart';
 /// {
 ///     var ubuntu = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -88,6 +89,7 @@ import 'launch_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
 ///         Owners = new[]
 ///         {
 ///             "099720109477",
@@ -114,7 +116,6 @@ import 'launch_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ubuntu, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -129,6 +130,7 @@ import 'launch_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Owners: []string{
 /// 				"099720109477",
 /// 			},
@@ -158,7 +160,6 @@ import 'launch_configuration_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "ubuntu" {
-///   most_recent = true
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
@@ -167,7 +168,8 @@ import 'launch_configuration_state.dart';
 ///     name   = "virtualization-type"
 ///     values = ["hvm"]
 ///   }
-///   owners = ["099720109477"]
+///   most_recent = true
+///   owners      = ["099720109477"]
 /// }
 ///
 /// # Canonical
@@ -202,7 +204,6 @@ import 'launch_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ubuntu = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
 ///             .filters(
 ///                 GetAmiFilterArgs.builder()
 ///                     .name("name")
@@ -212,6 +213,7 @@ import 'launch_configuration_state.dart';
 ///                     .name("virtualization-type")
 ///                     .values("hvm")
 ///                     .build())
+///             .mostRecent(true)
 ///             .owners("099720109477")
 ///             .build());
 ///
@@ -238,7 +240,6 @@ import 'launch_configuration_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
 ///         filters:
 ///           - name: name
 ///             values:
@@ -246,6 +247,7 @@ import 'launch_configuration_state.dart';
 ///           - name: virtualization-type
 ///             values:
 ///               - hvm
+///         mostRecent: true
 ///         owners:
 ///           - '099720109477'
 /// ```
@@ -263,18 +265,18 @@ import 'launch_configuration_state.dart';
 /// $ pulumi import aws:ec2/launchConfiguration:LaunchConfiguration example example
 /// ```
 class LaunchConfiguration extends pulumi.CustomResource {
-  /// The Amazon Resource Name of the launch configuration.
+  /// ARN of the launch configuration.
   late final pulumi.Output<String> arn;
   /// Associate a public ip address with an instance in a VPC.
   late final pulumi.Output<bool?> associatePublicIpAddress;
   /// Additional EBS block devices to attach to the instance. See Block Devices below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> ebsBlockDevices;
+  late final pulumi.Output<List<LaunchConfigurationEbsBlockDevice>> ebsBlockDevices;
   /// If true, the launched EC2 instance will be EBS-optimized.
   late final pulumi.Output<bool> ebsOptimized;
   /// Enables/disables detailed monitoring. This is enabled by default.
   late final pulumi.Output<bool?> enableMonitoring;
   /// Customize Ephemeral (also known as "Instance Store") volumes on the instance. See Block Devices below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ephemeralBlockDevices;
+  late final pulumi.Output<List<LaunchConfigurationEphemeralBlockDevice>?> ephemeralBlockDevices;
   /// The name attribute of the IAM instance profile to associate with launched instances.
   late final pulumi.Output<String?> iamInstanceProfile;
   /// The EC2 image ID to launch.
@@ -318,14 +320,14 @@ class LaunchConfiguration extends pulumi.CustomResource {
           'aws:ec2/launchConfiguration:LaunchConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associatePublicIpAddress = registerOutput<bool?>('associatePublicIpAddress');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<LaunchConfigurationEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchConfigurationEbsBlockDevice>(guardedValue, (value) => LaunchConfigurationEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enableMonitoring = registerOutput<bool?>('enableMonitoring');
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>?>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<LaunchConfigurationEphemeralBlockDevice>?>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchConfigurationEphemeralBlockDevice>(guardedValue, (value) => LaunchConfigurationEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     iamInstanceProfile = registerOutput<String?>('iamInstanceProfile');
     imageId = registerOutput<String>('imageId');
     instanceType = registerOutput<String>('instanceType');
@@ -336,7 +338,7 @@ class LaunchConfiguration extends pulumi.CustomResource {
     placementTenancy = registerOutput<String?>('placementTenancy');
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<LaunchConfigurationRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchConfigurationRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    securityGroups = registerOutput<List<String>?>('securityGroups');
+    securityGroups = registerOutput<List<String>?>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     spotPrice = registerOutput<String?>('spotPrice');
     userData = registerOutput<String?>('userData');
     userDataBase64 = registerOutput<String?>('userDataBase64');
@@ -347,11 +349,12 @@ class LaunchConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LaunchConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LaunchConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -367,10 +370,10 @@ class LaunchConfiguration extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     associatePublicIpAddress = registerOutput<bool?>('associatePublicIpAddress');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<LaunchConfigurationEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchConfigurationEbsBlockDevice>(guardedValue, (value) => LaunchConfigurationEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enableMonitoring = registerOutput<bool?>('enableMonitoring');
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>?>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<LaunchConfigurationEphemeralBlockDevice>?>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchConfigurationEphemeralBlockDevice>(guardedValue, (value) => LaunchConfigurationEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     iamInstanceProfile = registerOutput<String?>('iamInstanceProfile');
     imageId = registerOutput<String>('imageId');
     instanceType = registerOutput<String>('instanceType');
@@ -381,7 +384,38 @@ class LaunchConfiguration extends pulumi.CustomResource {
     placementTenancy = registerOutput<String?>('placementTenancy');
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<LaunchConfigurationRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchConfigurationRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    securityGroups = registerOutput<List<String>?>('securityGroups');
+    securityGroups = registerOutput<List<String>?>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    spotPrice = registerOutput<String?>('spotPrice');
+    userData = registerOutput<String?>('userData');
+    userDataBase64 = registerOutput<String?>('userDataBase64');
+  }
+
+  /// Creates a typed reference to an existing [LaunchConfiguration] resource.
+  LaunchConfiguration.reference(String urn)
+    : super(
+        'aws:ec2/launchConfiguration:LaunchConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associatePublicIpAddress = registerOutput<bool?>('associatePublicIpAddress');
+    ebsBlockDevices = registerOutput<List<LaunchConfigurationEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchConfigurationEbsBlockDevice>(guardedValue, (value) => LaunchConfigurationEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    ebsOptimized = registerOutput<bool>('ebsOptimized');
+    enableMonitoring = registerOutput<bool?>('enableMonitoring');
+    ephemeralBlockDevices = registerOutput<List<LaunchConfigurationEphemeralBlockDevice>?>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchConfigurationEphemeralBlockDevice>(guardedValue, (value) => LaunchConfigurationEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    iamInstanceProfile = registerOutput<String?>('iamInstanceProfile');
+    imageId = registerOutput<String>('imageId');
+    instanceType = registerOutput<String>('instanceType');
+    keyName = registerOutput<String>('keyName');
+    metadataOptions = registerOutput<LaunchConfigurationMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchConfigurationMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    placementTenancy = registerOutput<String?>('placementTenancy');
+    region = registerOutput<String>('region');
+    rootBlockDevice = registerOutput<LaunchConfigurationRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchConfigurationRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityGroups = registerOutput<List<String>?>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     spotPrice = registerOutput<String?>('spotPrice');
     userData = registerOutput<String?>('userData');
     userDataBase64 = registerOutput<String?>('userDataBase64');

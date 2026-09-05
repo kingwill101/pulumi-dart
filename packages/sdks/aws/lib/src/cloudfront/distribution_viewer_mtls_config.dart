@@ -5,9 +5,9 @@ import 'distribution_viewer_mtls_config_trust_store_config.dart';
 
 class DistributionViewerMtlsConfig {
   /// The mode for viewer mTLS. Valid values: `required`, `optional`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The trust store configuration for viewer mTLS (maximum one).
-  final pulumi.Input<DistributionViewerMtlsConfigTrustStoreConfig>? trustStoreConfig;
+  final pulumi.Input<DistributionViewerMtlsConfigTrustStoreConfig?>? trustStoreConfig;
 
   /// Creates a new [DistributionViewerMtlsConfig].
   /// [mode] The mode for viewer mTLS. Valid values: `required`, `optional`.

@@ -6,16 +6,16 @@ import 'cluster_policy_timeouts.dart';
 /// Input properties used for looking up and filtering ClusterPolicy resources.
 class ClusterPolicyState {
   /// Whether to bypass the policy lockout safety check. Setting this value to `true` increases the risk that the cluster becomes unmanageable. Defaults to `false`.
-  final pulumi.Input<bool>? bypassPolicyLockoutSafetyCheck;
+  final pulumi.Input<bool?>? bypassPolicyLockoutSafetyCheck;
   /// Identifier of the Aurora DSQL Cluster.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// Resource-based policy document as JSON.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Version of the policy document.
-  final pulumi.Input<String>? policyVersion;
+  final pulumi.Input<String?>? policyVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<ClusterPolicyTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<ClusterPolicyTimeouts?>? timeouts;
 
   /// Creates a new [ClusterPolicyState].
   /// [bypassPolicyLockoutSafetyCheck] Whether to bypass the policy lockout safety check. Setting this value to `true` increases the risk that the cluster becomes unmanageable. Defaults to `false`.

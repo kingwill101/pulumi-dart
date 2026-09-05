@@ -8,16 +8,16 @@ import 'express_gateway_service_primary_container_secret.dart';
 
 class ExpressGatewayServicePrimaryContainer {
   /// CloudWatch Logs configuration for the container. See `awsLogsConfiguration` Block below.
-  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>>? awsLogsConfigurations;
+  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>?>? awsLogsConfigurations;
   /// Command to run in the container. Overrides the default command from the Docker image.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Port on which the container listens for connections. Defaults to `80`.
-  final pulumi.Input<int>? containerPort;
-  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerEnvironment>>? environments;
+  final pulumi.Input<int?>? containerPort;
+  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerEnvironment>?>? environments;
   /// Docker image to use for the container.
   final pulumi.Input<String> image;
-  final pulumi.Input<ExpressGatewayServicePrimaryContainerRepositoryCredentials>? repositoryCredentials;
-  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerSecret>>? secrets;
+  final pulumi.Input<ExpressGatewayServicePrimaryContainerRepositoryCredentials?>? repositoryCredentials;
+  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerSecret>?>? secrets;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainer].
   /// [awsLogsConfigurations] CloudWatch Logs configuration for the container. See `awsLogsConfiguration` Block below.
@@ -53,7 +53,7 @@ class ExpressGatewayServicePrimaryContainer {
     return ExpressGatewayServicePrimaryContainer(
       awsLogsConfigurations: (() { final guardedValue = map['awsLogsConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>(guardedValue, (value) => ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      containerPort: (() { final guardedValue = map['containerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      containerPort: (() { final guardedValue = map['containerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       environments: (() { final guardedValue = map['environments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerEnvironment>(guardedValue, (value) => ExpressGatewayServicePrimaryContainerEnvironment.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
       repositoryCredentials: (() { final guardedValue = map['repositoryCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

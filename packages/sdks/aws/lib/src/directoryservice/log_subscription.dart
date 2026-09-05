@@ -17,14 +17,14 @@ import 'log_subscription_state.dart';
 /// });
 /// const ad_log_policy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         actions: [
-///             "logs:CreateLogStream",
-///             "logs:PutLogEvents",
-///         ],
 ///         principals: [{
 ///             identifiers: ["ds.amazonaws.com"],
 ///             type: "Service",
 ///         }],
+///         actions: [
+///             "logs:CreateLogStream",
+///             "logs:PutLogEvents",
+///         ],
 ///         resources: [pulumi.interpolate`${example.arn}:*`],
 ///         effect: "Allow",
 ///     }],
@@ -46,14 +46,14 @@ import 'log_subscription_state.dart';
 ///     name=f"/aws/directoryservice/{example_aws_directory_service_directory['id']}",
 ///     retention_in_days=14)
 /// ad_log_policy = aws.iam.get_policy_document_output(statements=[{
-///     "actions": [
-///         "logs:CreateLogStream",
-///         "logs:PutLogEvents",
-///     ],
 ///     "principals": [{
 ///         "identifiers": ["ds.amazonaws.com"],
 ///         "type": "Service",
 ///     }],
+///     "actions": [
+///         "logs:CreateLogStream",
+///         "logs:PutLogEvents",
+///     ],
 ///     "resources": [example.arn.apply(lambda arn: f"{arn}:*")],
 ///     "effect": "Allow",
 /// }])
@@ -84,11 +84,6 @@ import 'log_subscription_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -99,6 +94,11 @@ import 'log_subscription_state.dart';
 ///                         },
 ///                         Type = "Service",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents",
 ///                 },
 ///                 Resources = new[]
 ///                 {
@@ -147,10 +147,6 @@ import 'log_subscription_state.dart';
 /// 		ad_log_policy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("logs:CreateLogStream"),
-/// 						pulumi.String("logs:PutLogEvents"),
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Identifiers: pulumi.StringArray{
@@ -158,6 +154,10 @@ import 'log_subscription_state.dart';
 /// 							},
 /// 							Type: pulumi.String("Service"),
 /// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("logs:CreateLogStream"),
+/// 						pulumi.String("logs:PutLogEvents"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						example.Arn.ApplyT(func(arn string) (string, error) {
@@ -197,11 +197,11 @@ import 'log_subscription_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "ad-log-policy" {
 ///   statements {
-///     actions = ["logs:CreateLogStream", "logs:PutLogEvents"]
 ///     principals {
 ///       identifiers = ["ds.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
 ///     resources = ["${aws_cloudwatch_loggroup.example.arn}:*"]
 ///     effect    = "Allow"
 ///   }
@@ -256,13 +256,13 @@ import 'log_subscription_state.dart';
 ///
 ///         final var ad-log-policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions(
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("ds.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
+///                 .actions(
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents")
 ///                 .resources(example.arn().applyValue(_arn -> String.format("%s:*", _arn)))
 ///                 .effect("Allow")
 ///                 .build())
@@ -306,13 +306,13 @@ import 'log_subscription_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - logs:CreateLogStream
-///               - logs:PutLogEvents
-///             principals:
+///           - principals:
 ///               - identifiers:
 ///                   - ds.amazonaws.com
 ///                 type: Service
+///             actions:
+///               - logs:CreateLogStream
+///               - logs:PutLogEvents
 ///             resources:
 ///               - ${example.arn}:*
 ///             effect: Allow
@@ -346,7 +346,7 @@ class LogSubscription extends pulumi.CustomResource {
           'aws:directoryservice/logSubscription:LogSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     logGroupName = registerOutput<String>('logGroupName');
@@ -358,11 +358,12 @@ class LogSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -376,6 +377,20 @@ class LogSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    directoryId = registerOutput<String>('directoryId');
+    logGroupName = registerOutput<String>('logGroupName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LogSubscription] resource.
+  LogSubscription.reference(String urn)
+    : super(
+        'aws:directoryservice/logSubscription:LogSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     directoryId = registerOutput<String>('directoryId');
     logGroupName = registerOutput<String>('logGroupName');
     region = registerOutput<String>('region');

@@ -153,7 +153,7 @@ import 'email_identity_feedback_attributes_state.dart';
 class EmailIdentityFeedbackAttributes extends pulumi.CustomResource {
   /// Sets the feedback forwarding configuration for the identity.
   late final pulumi.Output<bool?> emailForwardingEnabled;
-  /// The email identity.
+  /// Email identity.
   late final pulumi.Output<String> emailIdentity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -170,7 +170,7 @@ class EmailIdentityFeedbackAttributes extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityFeedbackAttributes:EmailIdentityFeedbackAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     emailForwardingEnabled = registerOutput<bool?>('emailForwardingEnabled');
     emailIdentity = registerOutput<String>('emailIdentity');
@@ -182,11 +182,12 @@ class EmailIdentityFeedbackAttributes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailIdentityFeedbackAttributesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailIdentityFeedbackAttributes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,6 +201,20 @@ class EmailIdentityFeedbackAttributes extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    emailForwardingEnabled = registerOutput<bool?>('emailForwardingEnabled');
+    emailIdentity = registerOutput<String>('emailIdentity');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EmailIdentityFeedbackAttributes] resource.
+  EmailIdentityFeedbackAttributes.reference(String urn)
+    : super(
+        'aws:sesv2/emailIdentityFeedbackAttributes:EmailIdentityFeedbackAttributes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     emailForwardingEnabled = registerOutput<bool?>('emailForwardingEnabled');
     emailIdentity = registerOutput<String>('emailIdentity');
     region = registerOutput<String>('region');

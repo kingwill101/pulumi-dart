@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment {
   /// What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.
-  final pulumi.Input<String>? fallbackBehavior;
+  final pulumi.Input<String?>? fallbackBehavior;
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment].
   /// [fallbackBehavior] What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.

@@ -6,11 +6,11 @@ import 'scraper_destination_cloudwatch.dart';
 
 class ScraperDestination {
   /// Configuration block for an Amazon Managed Prometheus workspace destination. See `amp` Block for details.
-  final pulumi.Input<ScraperDestinationAmp>? amp;
+  final pulumi.Input<ScraperDestinationAmp?>? amp;
   /// Configuration block for a CloudWatch Metrics destination. See `cloudwatch` Block for details.
   ///
   /// &gt; **NOTE:** Either `amp` or `cloudwatch` must be specified, but not both.
-  final pulumi.Input<ScraperDestinationCloudwatch>? cloudwatch;
+  final pulumi.Input<ScraperDestinationCloudwatch?>? cloudwatch;
 
   /// Creates a new [ScraperDestination].
   /// [amp] Configuration block for an Amazon Managed Prometheus workspace destination. See `amp` Block for details.

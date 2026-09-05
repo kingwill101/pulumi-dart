@@ -6,9 +6,9 @@ class TableImportTableS3BucketSource {
   /// The S3 bucket that is being imported from.
   final pulumi.Input<String> bucket;
   /// The account number of the S3 bucket that is being imported from.
-  final pulumi.Input<String>? bucketOwner;
+  final pulumi.Input<String?>? bucketOwner;
   /// The key prefix shared by all S3 Objects that are being imported.
-  final pulumi.Input<String>? keyPrefix;
+  final pulumi.Input<String?>? keyPrefix;
 
   /// Creates a new [TableImportTableS3BucketSource].
   /// [bucket] The S3 bucket that is being imported from.

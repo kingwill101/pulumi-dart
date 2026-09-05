@@ -19,15 +19,15 @@ import 'trust_store_state.dart';
 ///     caCertificatesBundleS3Key: "...",
 /// });
 /// const example = new aws.lb.Listener("example", {
-///     loadBalancerArn: exampleAwsLb.id,
-///     defaultActions: [{
-///         targetGroupArn: exampleAwsLbTargetGroup.id,
-///         type: "forward",
-///     }],
 ///     mutualAuthentication: {
 ///         mode: "verify",
 ///         trustStoreArn: test.arn,
 ///     },
+///     defaultActions: [{
+///         targetGroupArn: exampleAwsLbTargetGroup.id,
+///         type: "forward",
+///     }],
+///     loadBalancerArn: exampleAwsLb.id,
 /// });
 /// ```
 /// ```python
@@ -39,15 +39,15 @@ import 'trust_store_state.dart';
 ///     ca_certificates_bundle_s3_bucket="...",
 ///     ca_certificates_bundle_s3_key="...")
 /// example = aws.lb.Listener("example",
-///     load_balancer_arn=example_aws_lb["id"],
+///     mutual_authentication={
+///         "mode": "verify",
+///         "trust_store_arn": test.arn,
+///     },
 ///     default_actions=[{
 ///         "target_group_arn": example_aws_lb_target_group["id"],
 ///         "type": "forward",
 ///     }],
-///     mutual_authentication={
-///         "mode": "verify",
-///         "trust_store_arn": test.arn,
-///     })
+///     load_balancer_arn=example_aws_lb["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -66,7 +66,11 @@ import 'trust_store_state.dart';
 ///
 ///     var example = new Aws.LB.Listener("example", new()
 ///     {
-///         LoadBalancerArn = exampleAwsLb.Id,
+///         MutualAuthentication = new Aws.LB.Inputs.ListenerMutualAuthenticationArgs
+///         {
+///             Mode = "verify",
+///             TrustStoreArn = test.Arn,
+///         },
 ///         DefaultActions = new[]
 ///         {
 ///             new Aws.LB.Inputs.ListenerDefaultActionArgs
@@ -75,11 +79,7 @@ import 'trust_store_state.dart';
 ///                 Type = "forward",
 ///             },
 ///         },
-///         MutualAuthentication = new Aws.LB.Inputs.ListenerMutualAuthenticationArgs
-///         {
-///             Mode = "verify",
-///             TrustStoreArn = test.Arn,
-///         },
+///         LoadBalancerArn = exampleAwsLb.Id,
 ///     });
 ///
 /// });
@@ -103,17 +103,17 @@ import 'trust_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
-/// 			LoadBalancerArn: pulumi.Any(exampleAwsLb.Id),
+/// 			MutualAuthentication: &lb.ListenerMutualAuthenticationArgs{
+/// 				Mode:          pulumi.String("verify"),
+/// 				TrustStoreArn: test.Arn,
+/// 			},
 /// 			DefaultActions: lb.ListenerDefaultActionArray{
 /// 				&lb.ListenerDefaultActionArgs{
 /// 					TargetGroupArn: pulumi.Any(exampleAwsLbTargetGroup.Id),
 /// 					Type:           pulumi.String("forward"),
 /// 				},
 /// 			},
-/// 			MutualAuthentication: &lb.ListenerMutualAuthenticationArgs{
-/// 				Mode:          pulumi.String("verify"),
-/// 				TrustStoreArn: test.Arn,
-/// 			},
+/// 			LoadBalancerArn: pulumi.Any(exampleAwsLb.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -137,15 +137,15 @@ import 'trust_store_state.dart';
 ///   ca_certificates_bundle_s3_key    = "..."
 /// }
 /// resource "aws_lb_listener" "example" {
-///   load_balancer_arn = exampleAwsLb.id
-///   default_actions {
-///     target_group_arn = exampleAwsLbTargetGroup.id
-///     type             = "forward"
-///   }
 ///   mutual_authentication = {
 ///     mode            = "verify"
 ///     trust_store_arn = aws_lb_truststore.test.arn
 ///   }
+///   default_actions {
+///     target_group_arn = exampleAwsLbTargetGroup.id
+///     type             = "forward"
+///   }
+///   load_balancer_arn = exampleAwsLb.id
 /// }
 /// ```
 /// ```java
@@ -158,8 +158,8 @@ import 'trust_store_state.dart';
 /// import com.pulumi.aws.lb.TrustStoreArgs;
 /// import com.pulumi.aws.lb.Listener;
 /// import com.pulumi.aws.lb.ListenerArgs;
-/// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import com.pulumi.aws.lb.inputs.ListenerMutualAuthenticationArgs;
+/// import com.pulumi.aws.lb.inputs.ListenerDefaultActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -180,15 +180,15 @@ import 'trust_store_state.dart';
 ///             .build());
 ///
 ///         var example = new Listener("example", ListenerArgs.builder()
-///             .loadBalancerArn(exampleAwsLb.id())
-///             .defaultActions(ListenerDefaultActionArgs.builder()
-///                 .targetGroupArn(exampleAwsLbTargetGroup.id())
-///                 .type("forward")
-///                 .build())
 ///             .mutualAuthentication(ListenerMutualAuthenticationArgs.builder()
 ///                 .mode("verify")
 ///                 .trustStoreArn(test.arn())
 ///                 .build())
+///             .defaultActions(ListenerDefaultActionArgs.builder()
+///                 .targetGroupArn(exampleAwsLbTargetGroup.id())
+///                 .type("forward")
+///                 .build())
+///             .loadBalancerArn(exampleAwsLb.id())
 ///             .build());
 ///
 ///     }
@@ -205,13 +205,13 @@ import 'trust_store_state.dart';
 ///   example:
 ///     type: aws:lb:Listener
 ///     properties:
-///       loadBalancerArn: ${exampleAwsLb.id}
-///       defaultActions:
-///         - targetGroupArn: ${exampleAwsLbTargetGroup.id}
-///           type: forward
 ///       mutualAuthentication:
 ///         mode: verify
 ///         trustStoreArn: ${test.arn}
+///       defaultActions:
+///         - targetGroupArn: ${exampleAwsLbTargetGroup.id}
+///           type: forward
+///       loadBalancerArn: ${exampleAwsLb.id}
 /// ```
 ///
 ///
@@ -221,7 +221,7 @@ import 'trust_store_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the trust store.
+/// - `arn` (String) ARN of the trust store.
 ///
 ///
 /// Using `pulumi import`, import Target Groups using their ARN. For example:
@@ -263,7 +263,7 @@ class TrustStore extends pulumi.CustomResource {
           'aws:lb/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');
@@ -273,8 +273,8 @@ class TrustStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [TrustStore] resource's state with the given [name] and [id].
@@ -282,11 +282,12 @@ class TrustStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,7 +309,28 @@ class TrustStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TrustStore] resource.
+  TrustStore.reference(String urn)
+    : super(
+        'aws:lb/trustStore:TrustStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    arnSuffix = registerOutput<String>('arnSuffix');
+    caCertificatesBundleS3Bucket = registerOutput<String>('caCertificatesBundleS3Bucket');
+    caCertificatesBundleS3Key = registerOutput<String>('caCertificatesBundleS3Key');
+    caCertificatesBundleS3ObjectVersion = registerOutput<String?>('caCertificatesBundleS3ObjectVersion');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

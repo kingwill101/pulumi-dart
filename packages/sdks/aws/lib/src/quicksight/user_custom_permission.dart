@@ -147,7 +147,7 @@ class UserCustomPermission extends pulumi.CustomResource {
           'aws:quicksight/userCustomPermission:UserCustomPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     customPermissionsName = registerOutput<String>('customPermissionsName');
@@ -161,11 +161,12 @@ class UserCustomPermission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserCustomPermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserCustomPermission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -179,6 +180,22 @@ class UserCustomPermission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    customPermissionsName = registerOutput<String>('customPermissionsName');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [UserCustomPermission] resource.
+  UserCustomPermission.reference(String urn)
+    : super(
+        'aws:quicksight/userCustomPermission:UserCustomPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     customPermissionsName = registerOutput<String>('customPermissionsName');
     namespace = registerOutput<String>('namespace');

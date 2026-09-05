@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorWorkerConfiguration {
-  /// The Amazon Resource Name (ARN) of the worker configuration.
+  /// ARN of the worker configuration.
   final pulumi.Input<String> arn;
   /// The revision of the worker configuration.
   final pulumi.Input<int> revision;
 
   /// Creates a new [ConnectorWorkerConfiguration].
-  /// [arn] The Amazon Resource Name (ARN) of the worker configuration.
+  /// [arn] ARN of the worker configuration.
   /// [revision] The revision of the worker configuration.
   const ConnectorWorkerConfiguration({
     required this.arn,
@@ -26,7 +26,7 @@ class ConnectorWorkerConfiguration {
   factory ConnectorWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectorWorkerConfiguration(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue((map['revision'] as num).toInt()),
     );
   }
 }

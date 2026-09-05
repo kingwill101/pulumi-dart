@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SharedDirectoryAccepter resources.
 class SharedDirectoryAccepterState {
   /// Method used when sharing a directory (i.e., `ORGANIZATIONS` or `HANDSHAKE`).
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// Account identifier of the directory owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Identifier of the Managed Microsoft AD directory from the perspective of the directory owner.
-  final pulumi.Input<String>? ownerDirectoryId;
+  final pulumi.Input<String?>? ownerDirectoryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
-  final pulumi.Input<String>? sharedDirectoryId;
+  final pulumi.Input<String?>? sharedDirectoryId;
 
   /// Creates a new [SharedDirectoryAccepterState].
   /// [method] Method used when sharing a directory (i.e., `ORGANIZATIONS` or `HANDSHAKE`).

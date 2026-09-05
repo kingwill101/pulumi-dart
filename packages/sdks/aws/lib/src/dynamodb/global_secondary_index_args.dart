@@ -24,24 +24,24 @@ class GlobalSecondaryIndexArgs {
   /// Sets the maximum number of read and write units for the index.
   /// See `onDemandThroughput` below.
   /// Only valid if the table's `billingMode` is `PAY_PER_REQUEST`.
-  final pulumi.Input<GlobalSecondaryIndexOnDemandThroughput>? onDemandThroughput;
+  final pulumi.Input<GlobalSecondaryIndexOnDemandThroughput?>? onDemandThroughput;
   /// Describes which attributes from the table are represented in the index.
   /// See `projection` below.
-  final pulumi.Input<GlobalSecondaryIndexProjection>? projection;
+  final pulumi.Input<GlobalSecondaryIndexProjection?>? projection;
   /// Provisioned throughput for the index.
   /// See `provisionedThroughput` below.
   /// Required if the table's `billingMode` is `PROVISIONED`.
-  final pulumi.Input<GlobalSecondaryIndexProvisionedThroughput>? provisionedThroughput;
+  final pulumi.Input<GlobalSecondaryIndexProvisionedThroughput?>? provisionedThroughput;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the table this index belongs to.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> tableName;
-  final pulumi.Input<GlobalSecondaryIndexTimeouts>? timeouts;
+  final pulumi.Input<GlobalSecondaryIndexTimeouts?>? timeouts;
   /// Sets the number of warm read and write units for this index.
   /// See `warmThroughput` below.
-  final pulumi.Input<GlobalSecondaryIndexWarmThroughput>? warmThroughput;
+  final pulumi.Input<GlobalSecondaryIndexWarmThroughput?>? warmThroughput;
 
   /// Creates a new [GlobalSecondaryIndexArgs].
   /// [indexName] Name of the index.

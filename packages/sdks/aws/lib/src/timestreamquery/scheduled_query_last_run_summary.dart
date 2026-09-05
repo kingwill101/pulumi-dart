@@ -7,19 +7,19 @@ import 'scheduled_query_last_run_summary_query_insights_response.dart';
 
 class ScheduledQueryLastRunSummary {
   /// S3 location for error report.
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryErrorReportLocation>>? errorReportLocations;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryErrorReportLocation>?>? errorReportLocations;
   /// Statistics for a single scheduled query run.
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryExecutionStat>>? executionStats;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryExecutionStat>?>? executionStats;
   /// Error message for the scheduled query in case of failure. You might have to look at the error report to get more detailed error reasons.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// InvocationTime for this run. This is the time at which the query is scheduled to run. Parameter `@scheduled_runtime` can be used in the query to get the value.
-  final pulumi.Input<String>? invocationTime;
+  final pulumi.Input<String?>? invocationTime;
   /// Various insights and metrics related to the run summary of the scheduled query.
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponse>>? queryInsightsResponses;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponse>?>? queryInsightsResponses;
   /// Status of a scheduled query run. Valid values: `AUTO_TRIGGER_SUCCESS`, `AUTO_TRIGGER_FAILURE`, `MANUAL_TRIGGER_SUCCESS`, `MANUAL_TRIGGER_FAILURE`.
-  final pulumi.Input<String>? runStatus;
+  final pulumi.Input<String?>? runStatus;
   /// Actual time when the query was run.
-  final pulumi.Input<String>? triggerTime;
+  final pulumi.Input<String?>? triggerTime;
 
   /// Creates a new [ScheduledQueryLastRunSummary].
   /// [errorReportLocations] S3 location for error report.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slot_type_args.dart';
+import 'slot_type_enumeration_value.dart';
 import 'slot_type_state.dart';
 
 /// Provides an Amazon Lex Slot Type resource. For more information see
@@ -13,8 +14,6 @@ import 'slot_type_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const flowerTypes = new aws.lex.SlotType("flower_types", {
-///     createVersion: true,
-///     description: "Types of flowers to order",
 ///     enumerationValues: [
 ///         {
 ///             synonyms: [
@@ -31,6 +30,8 @@ import 'slot_type_state.dart';
 ///             value: "tulips",
 ///         },
 ///     ],
+///     createVersion: true,
+///     description: "Types of flowers to order",
 ///     name: "FlowerTypes",
 ///     valueSelectionStrategy: "ORIGINAL_VALUE",
 /// });
@@ -40,8 +41,6 @@ import 'slot_type_state.dart';
 /// import pulumi_aws as aws
 ///
 /// flower_types = aws.lex.SlotType("flower_types",
-///     create_version=True,
-///     description="Types of flowers to order",
 ///     enumeration_values=[
 ///         {
 ///             "synonyms": [
@@ -58,6 +57,8 @@ import 'slot_type_state.dart';
 ///             "value": "tulips",
 ///         },
 ///     ],
+///     create_version=True,
+///     description="Types of flowers to order",
 ///     name="FlowerTypes",
 ///     value_selection_strategy="ORIGINAL_VALUE")
 /// ```
@@ -71,8 +72,6 @@ import 'slot_type_state.dart';
 /// {
 ///     var flowerTypes = new Aws.Lex.SlotType("flower_types", new()
 ///     {
-///         CreateVersion = true,
-///         Description = "Types of flowers to order",
 ///         EnumerationValues = new[]
 ///         {
 ///             new Aws.Lex.Inputs.SlotTypeEnumerationValueArgs
@@ -94,6 +93,8 @@ import 'slot_type_state.dart';
 ///                 Value = "tulips",
 ///             },
 ///         },
+///         CreateVersion = true,
+///         Description = "Types of flowers to order",
 ///         Name = "FlowerTypes",
 ///         ValueSelectionStrategy = "ORIGINAL_VALUE",
 ///     });
@@ -111,8 +112,6 @@ import 'slot_type_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lex.NewSlotType(ctx, "flower_types", &lex.SlotTypeArgs{
-/// 			CreateVersion: pulumi.Bool(true),
-/// 			Description:   pulumi.String("Types of flowers to order"),
 /// 			EnumerationValues: lex.SlotTypeEnumerationValueArray{
 /// 				&lex.SlotTypeEnumerationValueArgs{
 /// 					Synonyms: pulumi.StringArray{
@@ -129,6 +128,8 @@ import 'slot_type_state.dart';
 /// 					Value: pulumi.String("tulips"),
 /// 				},
 /// 			},
+/// 			CreateVersion:          pulumi.Bool(true),
+/// 			Description:            pulumi.String("Types of flowers to order"),
 /// 			Name:                   pulumi.String("FlowerTypes"),
 /// 			ValueSelectionStrategy: pulumi.String("ORIGINAL_VALUE"),
 /// 		})
@@ -149,8 +150,6 @@ import 'slot_type_state.dart';
 /// }
 ///
 /// resource "aws_lex_slottype" "flower_types" {
-///   create_version = true
-///   description    = "Types of flowers to order"
 ///   enumeration_values {
 ///     synonyms = ["Lirium", "Martagon"]
 ///     value    = "lilies"
@@ -159,6 +158,8 @@ import 'slot_type_state.dart';
 ///     synonyms = ["Eduardoregelia", "Podonix"]
 ///     value    = "tulips"
 ///   }
+///   create_version           = true
+///   description              = "Types of flowers to order"
 ///   name                     = "FlowerTypes"
 ///   value_selection_strategy = "ORIGINAL_VALUE"
 /// }
@@ -186,8 +187,6 @@ import 'slot_type_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var flowerTypes = new SlotType("flowerTypes", SlotTypeArgs.builder()
-///             .createVersion(true)
-///             .description("Types of flowers to order")
 ///             .enumerationValues(
 ///                 SlotTypeEnumerationValueArgs.builder()
 ///                     .synonyms(
@@ -201,6 +200,8 @@ import 'slot_type_state.dart';
 ///                         "Podonix")
 ///                     .value("tulips")
 ///                     .build())
+///             .createVersion(true)
+///             .description("Types of flowers to order")
 ///             .name("FlowerTypes")
 ///             .valueSelectionStrategy("ORIGINAL_VALUE")
 ///             .build());
@@ -214,8 +215,6 @@ import 'slot_type_state.dart';
 ///     type: aws:lex:SlotType
 ///     name: flower_types
 ///     properties:
-///       createVersion: true
-///       description: Types of flowers to order
 ///       enumerationValues:
 ///         - synonyms:
 ///             - Lirium
@@ -225,6 +224,8 @@ import 'slot_type_state.dart';
 ///             - Eduardoregelia
 ///             - Podonix
 ///           value: tulips
+///       createVersion: true
+///       description: Types of flowers to order
 ///       name: FlowerTypes
 ///       valueSelectionStrategy: ORIGINAL_VALUE
 /// ```
@@ -252,7 +253,7 @@ class SlotType extends pulumi.CustomResource {
   /// the slot type can take. Each value can have a list of synonyms, which are additional values that help
   /// train the machine learning model about the values that it resolves for a slot. Attributes are
   /// documented under enumeration_value.
-  late final pulumi.Output<List<Map<String, dynamic>>> enumerationValues;
+  late final pulumi.Output<List<SlotTypeEnumerationValue>> enumerationValues;
   /// The date when the `$LATEST` version of this slot type was updated.
   late final pulumi.Output<String> lastUpdatedDate;
   /// The name of the slot type. The name is not case sensitive. Must be less than or equal to 100 characters in length.
@@ -279,13 +280,13 @@ class SlotType extends pulumi.CustomResource {
           'aws:lex/slotType:SlotType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     checksum = registerOutput<String>('checksum');
     createVersion = registerOutput<bool?>('createVersion');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
-    enumerationValues = registerOutput<List<Map<String, dynamic>>>('enumerationValues');
+    enumerationValues = registerOutput<List<SlotTypeEnumerationValue>>('enumerationValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotTypeEnumerationValue>(guardedValue, (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>())); });
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -298,11 +299,12 @@ class SlotType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SlotTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SlotType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -320,7 +322,28 @@ class SlotType extends pulumi.CustomResource {
     createVersion = registerOutput<bool?>('createVersion');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
-    enumerationValues = registerOutput<List<Map<String, dynamic>>>('enumerationValues');
+    enumerationValues = registerOutput<List<SlotTypeEnumerationValue>>('enumerationValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotTypeEnumerationValue>(guardedValue, (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>())); });
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    valueSelectionStrategy = registerOutput<String?>('valueSelectionStrategy');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [SlotType] resource.
+  SlotType.reference(String urn)
+    : super(
+        'aws:lex/slotType:SlotType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    checksum = registerOutput<String>('checksum');
+    createVersion = registerOutput<bool?>('createVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    enumerationValues = registerOutput<List<SlotTypeEnumerationValue>>('enumerationValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotTypeEnumerationValue>(guardedValue, (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>())); });
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

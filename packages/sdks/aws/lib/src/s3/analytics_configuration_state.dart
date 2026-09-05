@@ -7,15 +7,15 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// Input properties used for looking up and filtering AnalyticsConfiguration resources.
 class AnalyticsConfigurationState {
   /// Name of the bucket this analytics configuration is associated with.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-  final pulumi.Input<AnalyticsConfigurationFilter>? filter;
+  final pulumi.Input<AnalyticsConfigurationFilter?>? filter;
   /// Unique identifier of the analytics configuration for the bucket.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for the analytics data export (documented below).
-  final pulumi.Input<AnalyticsConfigurationStorageClassAnalysis>? storageClassAnalysis;
+  final pulumi.Input<AnalyticsConfigurationStorageClassAnalysis?>? storageClassAnalysis;
 
   /// Creates a new [AnalyticsConfigurationState].
   /// [bucket] Name of the bucket this analytics configuration is associated with.

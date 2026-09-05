@@ -9,11 +9,11 @@ import 'proxy_default_target_group_connection_pool_config.dart';
 /// {@macro pulumi_rds_proxy_default_target_group_proxy_default_target_group_args_doc}
 class ProxyDefaultTargetGroupArgs {
   /// The settings that determine the size and behavior of the connection pool for the target group.
-  final pulumi.Input<ProxyDefaultTargetGroupConnectionPoolConfig>? connectionPoolConfig;
+  final pulumi.Input<ProxyDefaultTargetGroupConnectionPoolConfig?>? connectionPoolConfig;
   /// Name of the RDS DB Proxy.
   final pulumi.Input<String> dbProxyName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ProxyDefaultTargetGroupArgs].
   /// [connectionPoolConfig] The settings that determine the size and behavior of the connection pool for the target group.

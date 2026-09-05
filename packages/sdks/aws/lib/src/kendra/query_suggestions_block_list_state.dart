@@ -6,24 +6,24 @@ import 'query_suggestions_block_list_source_s3_path.dart';
 /// Input properties used for looking up and filtering QuerySuggestionsBlockList resources.
 class QuerySuggestionsBlockListState {
   /// ARN of the block list.
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<String?>? description;
   /// Identifier of the index for a block list.
-  final pulumi.Input<String>? indexId;
+  final pulumi.Input<String?>? indexId;
   /// Name for the block list.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Unique identifier of the block list.
-  final pulumi.Input<String>? querySuggestionsBlockListId;
+  final pulumi.Input<String?>? querySuggestionsBlockListId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// IAM (Identity and Access Management) role used to access the block list text file in S3.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// S3 path where your block list text file is located. See details below.
-  final pulumi.Input<QuerySuggestionsBlockListSourceS3Path>? sourceS3Path;
-  final pulumi.Input<String>? status;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<QuerySuggestionsBlockListSourceS3Path?>? sourceS3Path;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [QuerySuggestionsBlockListState].
   /// [arn] ARN of the block list.

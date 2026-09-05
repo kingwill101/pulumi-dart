@@ -184,7 +184,7 @@ import 'vpn_gateway_attachment_state.dart';
 /// ```
 ///
 ///
-/// See [Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
+/// See [VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
 /// and [Virtual Private Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) user
 /// guides for more information.
 ///
@@ -211,7 +211,7 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
           'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');
@@ -223,11 +223,12 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnGatewayAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnGatewayAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,6 +242,20 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [VpnGatewayAttachment] resource.
+  VpnGatewayAttachment.reference(String urn)
+    : super(
+        'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');

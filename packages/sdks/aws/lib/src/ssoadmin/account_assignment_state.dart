@@ -4,24 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering AccountAssignment resources.
 class AccountAssignmentState {
-  /// The Amazon Resource Name (ARN) of the SSO Instance.
-  final pulumi.Input<String>? instanceArn;
-  /// The Amazon Resource Name (ARN) of the Permission Set that the admin wants to grant the principal access to.
-  final pulumi.Input<String>? permissionSetArn;
+  /// ARN of the SSO Instance.
+  final pulumi.Input<String?>? instanceArn;
+  /// ARN of the Permission Set that the admin wants to grant the principal access to.
+  final pulumi.Input<String?>? permissionSetArn;
   /// An identifier for an object in SSO, such as a user or group. PrincipalIds are GUIDs (For example, `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`).
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The entity type for which the assignment will be created. Valid values: `USER`, `GROUP`.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// An AWS account identifier, typically a 10-12 digit string.
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
   /// The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
 
   /// Creates a new [AccountAssignmentState].
-  /// [instanceArn] The Amazon Resource Name (ARN) of the SSO Instance.
-  /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set that the admin wants to grant the principal access to.
+  /// [instanceArn] ARN of the SSO Instance.
+  /// [permissionSetArn] ARN of the Permission Set that the admin wants to grant the principal access to.
   /// [principalId] An identifier for an object in SSO, such as a user or group. PrincipalIds are GUIDs (For example, `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`).
   /// [principalType] The entity type for which the assignment will be created. Valid values: `USER`, `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

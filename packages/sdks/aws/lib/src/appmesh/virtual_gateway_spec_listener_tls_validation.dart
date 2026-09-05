@@ -5,13 +5,13 @@ import 'virtual_gateway_spec_listener_tls_validation_subject_alternative_names.d
 import 'virtual_gateway_spec_listener_tls_validation_trust.dart';
 
 class VirtualGatewaySpecListenerTlsValidation {
-  /// SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
-  final pulumi.Input<VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
+  /// SANs for a virtual gateway's listener's TLS validation context.
+  final pulumi.Input<VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames?>? subjectAlternativeNames;
   /// TLS validation context trust.
   final pulumi.Input<VirtualGatewaySpecListenerTlsValidationTrust> trust;
 
   /// Creates a new [VirtualGatewaySpecListenerTlsValidation].
-  /// [subjectAlternativeNames] SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
+  /// [subjectAlternativeNames] SANs for a virtual gateway's listener's TLS validation context.
   /// [trust] TLS validation context trust.
   const VirtualGatewaySpecListenerTlsValidation({
     this.subjectAlternativeNames,

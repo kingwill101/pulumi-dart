@@ -8,9 +8,9 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
   /// IPv4 network range to allow or deny, in CIDR notation. The specified CIDR block is modified to its canonical form. For example, `100.68.0.18/18` will be converted to `100.68.0.0/18`.
   final pulumi.Input<String> cidrBlock;
   /// ICMP protocol that consists of the ICMP type and code. Defined below.
-  final pulumi.Input<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode>? icmpTypeCode;
+  final pulumi.Input<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode?>? icmpTypeCode;
   /// Range of ports the rule applies to. Defined below.
-  final pulumi.Input<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange>? portRange;
+  final pulumi.Input<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange?>? portRange;
   /// Protocol number. A value of `1` means all the protocols.
   final pulumi.Input<String> protocol;
   /// Whether to `allow` or `deny` the traffic that matches the rule.
@@ -52,7 +52,7 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
       portRange: (() { final guardedValue = map['portRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       ruleAction: pulumi.Input.fromValue(map['ruleAction'] as String),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
     );
   }
 }

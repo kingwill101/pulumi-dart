@@ -7,27 +7,27 @@ import 'repository_upstream.dart';
 /// Input properties used for looking up and filtering Repository resources.
 class RepositoryState {
   /// The account number of the AWS account that manages the repository.
-  final pulumi.Input<String>? administratorAccount;
+  final pulumi.Input<String?>? administratorAccount;
   /// The ARN of the repository.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The description of the repository.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The domain that contains the created repository.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// The account number of the AWS account that owns the domain.
-  final pulumi.Input<String>? domainOwner;
+  final pulumi.Input<String?>? domainOwner;
   /// An array of external connections associated with the repository. Only one external connection can be set per repository. see External Connections.
-  final pulumi.Input<RepositoryExternalConnections>? externalConnections;
+  final pulumi.Input<RepositoryExternalConnections?>? externalConnections;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the repository to create.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// A list of upstream repositories to associate with the repository. The order of the upstream repositories in the list determines their priority order when AWS CodeArtifact looks for a requested package version. see Upstream
-  final pulumi.Input<List<RepositoryUpstream>>? upstreams;
+  final pulumi.Input<List<RepositoryUpstream>?>? upstreams;
 
   /// Creates a new [RepositoryState].
   /// [administratorAccount] The account number of the AWS account that manages the repository.

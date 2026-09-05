@@ -35,7 +35,7 @@ class GetDbServerDbServerPatchingDetail {
 
   factory GetDbServerDbServerPatchingDetail.fromMap(Map<String, dynamic> map) {
     return GetDbServerDbServerPatchingDetail(
-      estimatedPatchDuration: pulumi.Input.fromValue(map['estimatedPatchDuration'] as int),
+      estimatedPatchDuration: pulumi.Input.fromValue((map['estimatedPatchDuration'] as num).toInt()),
       patchingStatus: pulumi.Input.fromValue(map['patchingStatus'] as String),
       timePatchingEnded: pulumi.Input.fromValue(map['timePatchingEnded'] as String),
       timePatchingStarted: pulumi.Input.fromValue(map['timePatchingStarted'] as String),

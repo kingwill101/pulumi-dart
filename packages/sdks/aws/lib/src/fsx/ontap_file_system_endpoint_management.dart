@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapFileSystemEndpointManagement {
   /// Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// IP addresses of the file system endpoint.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [OntapFileSystemEndpointManagement].
   /// [dnsName] Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.

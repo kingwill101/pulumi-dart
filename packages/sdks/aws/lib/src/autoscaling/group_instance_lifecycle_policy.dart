@@ -5,7 +5,7 @@ import 'group_instance_lifecycle_policy_retention_triggers.dart';
 
 class GroupInstanceLifecyclePolicy {
   /// Conditions that trigger instance retention behavior. Defined below.
-  final pulumi.Input<GroupInstanceLifecyclePolicyRetentionTriggers>? retentionTriggers;
+  final pulumi.Input<GroupInstanceLifecyclePolicyRetentionTriggers?>? retentionTriggers;
 
   /// Creates a new [GroupInstanceLifecyclePolicy].
   /// [retentionTriggers] Conditions that trigger instance retention behavior. Defined below.

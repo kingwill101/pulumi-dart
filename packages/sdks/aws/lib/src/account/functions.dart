@@ -112,6 +112,17 @@ Future<GetPrimaryContactResult> getPrimaryContact(
   return GetPrimaryContactResult.fromMap(result);
 }
 
+pulumi.Output<GetPrimaryContactResult> getPrimaryContactOutput(
+  GetPrimaryContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:account/getPrimaryContact:getPrimaryContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrimaryContactResult.fromMap);
+}
+
 /// The `aws.account.getRegions` data source lets you query AWS region information for any account in your AWS Organization. It uses the AWS Account REST Service to show all regions, including those that are enabled, disabled, or in the process of being enabled or disabled. You can list regions for any organization account, see all possible region opt-in statuses (`ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, `ENABLED_BY_DEFAULT`), and check which regions are being enabled or disabled.
 ///
 /// This is more comprehensive than the aws.getRegions data source, which only uses the EC2 REST service and is limited to the current account and a subset of region statuses.
@@ -222,4 +233,15 @@ Future<GetRegionsResult> getRegions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionsResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionsResult> getRegionsOutput(
+  GetRegionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:account/getRegions:getRegions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionsResult.fromMap);
 }

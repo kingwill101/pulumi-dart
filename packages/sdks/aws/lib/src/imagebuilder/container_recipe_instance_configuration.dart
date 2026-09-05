@@ -5,9 +5,9 @@ import 'container_recipe_instance_configuration_block_device_mapping.dart';
 
 class ContainerRecipeInstanceConfiguration {
   /// Configuration block(s) with block device mappings for the container recipe. Detailed below.
-  final pulumi.Input<List<ContainerRecipeInstanceConfigurationBlockDeviceMapping>>? blockDeviceMappings;
+  final pulumi.Input<List<ContainerRecipeInstanceConfigurationBlockDeviceMapping>?>? blockDeviceMappings;
   /// The AMI ID to use as the base image for a container build and test instance. If not specified, Image Builder will use the appropriate ECS-optimized AMI as a base image.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
 
   /// Creates a new [ContainerRecipeInstanceConfiguration].
   /// [blockDeviceMappings] Configuration block(s) with block device mappings for the container recipe. Detailed below.

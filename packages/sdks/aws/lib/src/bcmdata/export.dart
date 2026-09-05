@@ -18,7 +18,6 @@ import 'export_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetPartition = aws.getPartition({});
 /// const test = new aws.bcmdata.Export("test", {"export": {
-///     name: "testexample",
 ///     dataQueries: [{
 ///         queryStatement: "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT",
 ///         tableConfigurations: {
@@ -33,20 +32,21 @@ import 'export_timeouts.dart';
 ///     }],
 ///     destinationConfigurations: [{
 ///         s3Destinations: [{
-///             s3Bucket: testAwsS3Bucket.bucket,
-///             s3Prefix: testAwsS3Bucket.bucketPrefix,
-///             s3Region: testAwsS3Bucket.region,
 ///             s3OutputConfigurations: [{
 ///                 overwrite: "OVERWRITE_REPORT",
 ///                 format: "TEXT_OR_CSV",
 ///                 compression: "GZIP",
 ///                 outputType: "CUSTOM",
 ///             }],
+///             s3Bucket: testAwsS3Bucket.bucket,
+///             s3Prefix: testAwsS3Bucket.bucketPrefix,
+///             s3Region: testAwsS3Bucket.region,
 ///         }],
 ///     }],
 ///     refreshCadences: [{
 ///         frequency: "SYNCHRONOUS",
 ///     }],
+///     name: "testexample",
 /// }});
 /// ```
 /// ```python
@@ -56,7 +56,6 @@ import 'export_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// current_get_partition = aws.get_partition()
 /// test = aws.bcmdata.Export("test", export={
-///     "name": "testexample",
 ///     "data_queries": [{
 ///         "query_statement": "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT",
 ///         "table_configurations": {
@@ -71,20 +70,21 @@ import 'export_timeouts.dart';
 ///     }],
 ///     "destination_configurations": [{
 ///         "s3_destinations": [{
-///             "s3_bucket": test_aws_s3_bucket["bucket"],
-///             "s3_prefix": test_aws_s3_bucket["bucketPrefix"],
-///             "s3_region": test_aws_s3_bucket["region"],
 ///             "s3_output_configurations": [{
 ///                 "overwrite": "OVERWRITE_REPORT",
 ///                 "format": "TEXT_OR_CSV",
 ///                 "compression": "GZIP",
 ///                 "output_type": "CUSTOM",
 ///             }],
+///             "s3_bucket": test_aws_s3_bucket["bucket"],
+///             "s3_prefix": test_aws_s3_bucket["bucketPrefix"],
+///             "s3_region": test_aws_s3_bucket["region"],
 ///         }],
 ///     }],
 ///     "refresh_cadences": [{
 ///         "frequency": "SYNCHRONOUS",
 ///     }],
+///     "name": "testexample",
 /// })
 /// ```
 /// ```csharp
@@ -103,7 +103,6 @@ import 'export_timeouts.dart';
 ///     {
 ///         ExportDetails = new Aws.BcmData.Inputs.ExportExportArgs
 ///         {
-///             Name = "testexample",
 ///             DataQueries = new[]
 ///             {
 ///                 new Aws.BcmData.Inputs.ExportExportDataQueryArgs
@@ -135,9 +134,6 @@ import 'export_timeouts.dart';
 ///                     {
 ///                         new Aws.BcmData.Inputs.ExportExportDestinationConfigurationS3DestinationArgs
 ///                         {
-///                             S3Bucket = testAwsS3Bucket.Bucket,
-///                             S3Prefix = testAwsS3Bucket.BucketPrefix,
-///                             S3Region = testAwsS3Bucket.Region,
 ///                             S3OutputConfigurations = new[]
 ///                             {
 ///                                 new Aws.BcmData.Inputs.ExportExportDestinationConfigurationS3DestinationS3OutputConfigurationArgs
@@ -148,6 +144,9 @@ import 'export_timeouts.dart';
 ///                                     OutputType = "CUSTOM",
 ///                                 },
 ///                             },
+///                             S3Bucket = testAwsS3Bucket.Bucket,
+///                             S3Prefix = testAwsS3Bucket.BucketPrefix,
+///                             S3Region = testAwsS3Bucket.Region,
 ///                         },
 ///                     },
 ///                 },
@@ -159,6 +158,7 @@ import 'export_timeouts.dart';
 ///                     Frequency = "SYNCHRONOUS",
 ///                 },
 ///             },
+///             Name = "testexample",
 ///         },
 ///     });
 ///
@@ -185,7 +185,6 @@ import 'export_timeouts.dart';
 /// 		}
 /// 		_, err = bcmdata.NewExport(ctx, "test", &bcmdata.ExportArgs{
 /// 			Export: &bcmdata.ExportExportArgs{
-/// 				Name: pulumi.String("testexample"),
 /// 				DataQueries: bcmdata.ExportExportDataQueryArray{
 /// 					&bcmdata.ExportExportDataQueryArgs{
 /// 						QueryStatement: pulumi.String("SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT"),
@@ -204,9 +203,6 @@ import 'export_timeouts.dart';
 /// 					&bcmdata.ExportExportDestinationConfigurationArgs{
 /// 						S3Destinations: bcmdata.ExportExportDestinationConfigurationS3DestinationArray{
 /// 							&bcmdata.ExportExportDestinationConfigurationS3DestinationArgs{
-/// 								S3Bucket: pulumi.Any(testAwsS3Bucket.Bucket),
-/// 								S3Prefix: pulumi.Any(testAwsS3Bucket.BucketPrefix),
-/// 								S3Region: pulumi.Any(testAwsS3Bucket.Region),
 /// 								S3OutputConfigurations: bcmdata.ExportExportDestinationConfigurationS3DestinationS3OutputConfigurationArray{
 /// 									&bcmdata.ExportExportDestinationConfigurationS3DestinationS3OutputConfigurationArgs{
 /// 										Overwrite:   pulumi.String("OVERWRITE_REPORT"),
@@ -215,6 +211,9 @@ import 'export_timeouts.dart';
 /// 										OutputType:  pulumi.String("CUSTOM"),
 /// 									},
 /// 								},
+/// 								S3Bucket: pulumi.Any(testAwsS3Bucket.Bucket),
+/// 								S3Prefix: pulumi.Any(testAwsS3Bucket.BucketPrefix),
+/// 								S3Region: pulumi.Any(testAwsS3Bucket.Region),
 /// 							},
 /// 						},
 /// 					},
@@ -224,6 +223,7 @@ import 'export_timeouts.dart';
 /// 						Frequency: pulumi.String("SYNCHRONOUS"),
 /// 					},
 /// 				},
+/// 				Name: pulumi.String("testexample"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -249,7 +249,6 @@ import 'export_timeouts.dart';
 ///
 /// resource "aws_bcmdata_export" "test" {
 ///   export = {
-///     name = "testexample"
 ///     data_queries = [{
 ///       "queryStatement" = "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT"
 ///       "tableConfigurations" = {
@@ -264,20 +263,21 @@ import 'export_timeouts.dart';
 ///     }]
 ///     destination_configurations = [{
 ///       "s3Destinations" = [{
-///         "s3Bucket" = testAwsS3Bucket.bucket
-///         "s3Prefix" = testAwsS3Bucket.bucketPrefix
-///         "s3Region" = testAwsS3Bucket.region
 ///         "s3OutputConfigurations" = [{
 ///           "overwrite"   = "OVERWRITE_REPORT"
 ///           "format"      = "TEXT_OR_CSV"
 ///           "compression" = "GZIP"
 ///           "outputType"  = "CUSTOM"
 ///         }]
+///         "s3Bucket" = testAwsS3Bucket.bucket
+///         "s3Prefix" = testAwsS3Bucket.bucketPrefix
+///         "s3Region" = testAwsS3Bucket.region
 ///       }]
 ///     }]
 ///     refresh_cadences = [{
 ///       "frequency" = "SYNCHRONOUS"
 ///     }]
+///     name = "testexample"
 ///   }
 /// }
 /// ```
@@ -319,7 +319,6 @@ import 'export_timeouts.dart';
 ///
 ///         var test = new Export("test", ExportArgs.builder()
 ///             .export(ExportExportArgs.builder()
-///                 .name("testexample")
 ///                 .dataQueries(ExportExportDataQueryArgs.builder()
 ///                     .queryStatement("SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT")
 ///                     .tableConfigurations(Map.of("COST_AND_USAGE_REPORT", Map.ofEntries(
@@ -332,20 +331,21 @@ import 'export_timeouts.dart';
 ///                     .build())
 ///                 .destinationConfigurations(ExportExportDestinationConfigurationArgs.builder()
 ///                     .s3Destinations(ExportExportDestinationConfigurationS3DestinationArgs.builder()
-///                         .s3Bucket(testAwsS3Bucket.bucket())
-///                         .s3Prefix(testAwsS3Bucket.bucketPrefix())
-///                         .s3Region(testAwsS3Bucket.region())
 ///                         .s3OutputConfigurations(ExportExportDestinationConfigurationS3DestinationS3OutputConfigurationArgs.builder()
 ///                             .overwrite("OVERWRITE_REPORT")
 ///                             .format("TEXT_OR_CSV")
 ///                             .compression("GZIP")
 ///                             .outputType("CUSTOM")
 ///                             .build())
+///                         .s3Bucket(testAwsS3Bucket.bucket())
+///                         .s3Prefix(testAwsS3Bucket.bucketPrefix())
+///                         .s3Region(testAwsS3Bucket.region())
 ///                         .build())
 ///                     .build())
 ///                 .refreshCadences(ExportExportRefreshCadenceArgs.builder()
 ///                     .frequency("SYNCHRONOUS")
 ///                     .build())
+///                 .name("testexample")
 ///                 .build())
 ///             .build());
 ///
@@ -358,7 +358,6 @@ import 'export_timeouts.dart';
 ///     type: aws:bcmdata:Export
 ///     properties:
 ///       export:
-///         name: testexample
 ///         dataQueries:
 ///           - queryStatement: SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT
 ///             tableConfigurations:
@@ -370,16 +369,17 @@ import 'export_timeouts.dart';
 ///                 INCLUDE_SPLIT_COST_ALLOCATION_DATA: FALSE
 ///         destinationConfigurations:
 ///           - s3Destinations:
-///               - s3Bucket: ${testAwsS3Bucket.bucket}
-///                 s3Prefix: ${testAwsS3Bucket.bucketPrefix}
-///                 s3Region: ${testAwsS3Bucket.region}
-///                 s3OutputConfigurations:
+///               - s3OutputConfigurations:
 ///                   - overwrite: OVERWRITE_REPORT
 ///                     format: TEXT_OR_CSV
 ///                     compression: GZIP
 ///                     outputType: CUSTOM
+///                 s3Bucket: ${testAwsS3Bucket.bucket}
+///                 s3Prefix: ${testAwsS3Bucket.bucketPrefix}
+///                 s3Region: ${testAwsS3Bucket.region}
 ///         refreshCadences:
 ///           - frequency: SYNCHRONOUS
+///         name: testexample
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -398,7 +398,7 @@ import 'export_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the BCM Data Exports export.
+/// - `arn` (String) ARN of the BCM Data Exports export.
 ///
 ///
 /// Using `pulumi import`, import BCM Data Exports Export using the export ARN. For example:
@@ -407,8 +407,8 @@ import 'export_timeouts.dart';
 /// $ pulumi import aws:bcmdata/export:Export example arn:aws:bcm-data-exports:us-east-1:123456789012:export/CostUsageReport-9f1c75f3-f982-4d9a-b936-1e7ecab814b7
 /// ```
 class Export extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) for this export.
-  /// * `export[0].export_arn` - Amazon Resource Name (ARN) for this export.
+  /// ARN for this export.
+  /// * `export[0].export_arn` - ARN for this export.
   late final pulumi.Output<String> arn;
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   late final pulumi.Output<ExportExport?> export;
@@ -429,12 +429,12 @@ class Export extends pulumi.CustomResource {
           'aws:bcmdata/export:Export',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     export = registerOutput<ExportExport?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ExportTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -443,11 +443,12 @@ class Export extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Export._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -463,8 +464,24 @@ class Export extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     export = registerOutput<ExportExport?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ExportTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Export] resource.
+  Export.reference(String urn)
+    : super(
+        'aws:bcmdata/export:Export',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    export = registerOutput<ExportExport?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ExportTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

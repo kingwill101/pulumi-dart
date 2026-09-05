@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetDeliveryOptions {
-  /// Whether messages that use the configuration set are required to use Transport Layer Security (TLS). If the value is `Require`, messages are only delivered if a TLS connection can be established. If the value is `Optional`, messages can be delivered in plain text if a TLS connection can't be established. Valid values: `Require` or `Optional`. Defaults to `Optional`.
-  final pulumi.Input<String>? tlsPolicy;
+  /// Whether messages that use the configuration set are required to use TLS. If the value is `Require`, messages are only delivered if a TLS connection can be established. If the value is `Optional`, messages can be delivered in plain text if a TLS connection can't be established. Valid values: `Require` or `Optional`. Defaults to `Optional`.
+  final pulumi.Input<String?>? tlsPolicy;
 
   /// Creates a new [ConfigurationSetDeliveryOptions].
-  /// [tlsPolicy] Whether messages that use the configuration set are required to use Transport Layer Security (TLS). If the value is `Require`, messages are only delivered if a TLS connection can be established. If the value is `Optional`, messages can be delivered in plain text if a TLS connection can't be established. Valid values: `Require` or `Optional`. Defaults to `Optional`.
+  /// [tlsPolicy] Whether messages that use the configuration set are required to use TLS. If the value is `Require`, messages are only delivered if a TLS connection can be established. If the value is `Optional`, messages can be delivered in plain text if a TLS connection can't be established. Valid values: `Require` or `Optional`. Defaults to `Optional`.
   const ConfigurationSetDeliveryOptions({
     this.tlsPolicy,
   });

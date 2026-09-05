@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stack_instances_args.dart';
 import 'stack_instances_deployment_targets.dart';
 import 'stack_instances_operation_preferences.dart';
+import 'stack_instances_stack_instance_summary.dart';
 import 'stack_instances_state.dart';
 
 /// Manages CloudFormation stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region. Additional information about stacks can be found in the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html).
@@ -174,12 +175,12 @@ import 'stack_instances_state.dart';
 ///
 /// const aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         effect: "Allow",
 ///         principals: [{
 ///             identifiers: [aWSCloudFormationStackSetAdministrationRole.arn],
 ///             type: "AWS",
 ///         }],
+///         actions: ["sts:AssumeRole"],
+///         effect: "Allow",
 ///     }],
 /// });
 /// const aWSCloudFormationStackSetExecutionRole = new aws.iam.Role("AWSCloudFormationStackSetExecutionRole", {
@@ -210,12 +211,12 @@ import 'stack_instances_state.dart';
 /// import pulumi_aws as aws
 ///
 /// a_ws_cloud_formation_stack_set_execution_role_assume_role_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "identifiers": [a_ws_cloud_formation_stack_set_administration_role["arn"]],
 ///         "type": "AWS",
 ///     }],
+///     "actions": ["sts:AssumeRole"],
+///     "effect": "Allow",
 /// }])
 /// a_ws_cloud_formation_stack_set_execution_role = aws.iam.Role("AWSCloudFormationStackSetExecutionRole",
 ///     assume_role_policy=a_ws_cloud_formation_stack_set_execution_role_assume_role_policy.json,
@@ -250,11 +251,6 @@ import 'stack_instances_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -266,6 +262,11 @@ import 'stack_instances_state.dart';
 ///                         Type = "AWS",
 ///                     },
 ///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
+///                 },
+///                 Effect = "Allow",
 ///             },
 ///         },
 ///     });
@@ -321,10 +322,6 @@ import 'stack_instances_state.dart';
 /// 		aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: pulumi.StringArray{
@@ -333,6 +330,10 @@ import 'stack_instances_state.dart';
 /// 							Type: "AWS",
 /// 						},
 /// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -389,12 +390,12 @@ import 'stack_instances_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     effect  = "Allow"
 ///     principals {
 ///       identifiers = [aWSCloudFormationStackSetAdministrationRole.arn]
 ///       type        = "AWS"
 ///     }
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicy" {
@@ -446,12 +447,12 @@ import 'stack_instances_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers(aWSCloudFormationStackSetAdministrationRole.arn())
 ///                     .type("AWS")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
+///                 .effect("Allow")
 ///                 .build())
 ///             .build());
 ///
@@ -503,13 +504,13 @@ import 'stack_instances_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - identifiers:
 ///                   - ${aWSCloudFormationStackSetAdministrationRole.arn}
 ///                 type: AWS
+///             actions:
+///               - sts:AssumeRole
+///             effect: Allow
 ///   # Documentation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html
 ///   # Additional IAM permissions necessary depend on the resources defined in the StackSet template
 ///   aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicy:
@@ -716,7 +717,7 @@ class StackInstances extends pulumi.CustomResource {
   /// Whether to remove the stack instances from the stack set, but not delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set. To retain the stack, ensure `retainStacks = true` has been successfully applied _before_ an apply that would destroy the resource. Defaults to `false`.
   late final pulumi.Output<bool?> retainStacks;
   /// List of stack instances created from an organizational unit deployment target. This may not always be set depending on whether CloudFormation returns summaries for your configuration. See `stackInstanceSummaries`.
-  late final pulumi.Output<List<Map<String, dynamic>>> stackInstanceSummaries;
+  late final pulumi.Output<List<StackInstancesStackInstanceSummary>> stackInstanceSummaries;
   /// Name or unique ID of the stack set that the stack instance is associated with.
   late final pulumi.Output<String> stackSetId;
   /// Name of the stack set.
@@ -736,17 +737,17 @@ class StackInstances extends pulumi.CustomResource {
           'aws:cloudformation/stackInstances:StackInstances',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accounts = registerOutput<List<String>>('accounts');
+    accounts = registerOutput<List<String>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     callAs = registerOutput<String?>('callAs');
     deploymentTargets = registerOutput<StackInstancesDeploymentTargets?>('deploymentTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackInstancesDeploymentTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     operationPreferences = registerOutput<StackInstancesOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackInstancesOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides');
+    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     retainStacks = registerOutput<bool?>('retainStacks');
-    stackInstanceSummaries = registerOutput<List<Map<String, dynamic>>>('stackInstanceSummaries');
+    stackInstanceSummaries = registerOutput<List<StackInstancesStackInstanceSummary>>('stackInstanceSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackInstancesStackInstanceSummary>(guardedValue, (value) => StackInstancesStackInstanceSummary.fromMap((value as Map).cast<String, dynamic>())); });
     stackSetId = registerOutput<String>('stackSetId');
     stackSetName = registerOutput<String>('stackSetName');
   }
@@ -756,11 +757,12 @@ class StackInstances extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StackInstancesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StackInstances._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -774,15 +776,37 @@ class StackInstances extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accounts = registerOutput<List<String>>('accounts');
+    accounts = registerOutput<List<String>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     callAs = registerOutput<String?>('callAs');
     deploymentTargets = registerOutput<StackInstancesDeploymentTargets?>('deploymentTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackInstancesDeploymentTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     operationPreferences = registerOutput<StackInstancesOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackInstancesOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides');
+    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     retainStacks = registerOutput<bool?>('retainStacks');
-    stackInstanceSummaries = registerOutput<List<Map<String, dynamic>>>('stackInstanceSummaries');
+    stackInstanceSummaries = registerOutput<List<StackInstancesStackInstanceSummary>>('stackInstanceSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackInstancesStackInstanceSummary>(guardedValue, (value) => StackInstancesStackInstanceSummary.fromMap((value as Map).cast<String, dynamic>())); });
+    stackSetId = registerOutput<String>('stackSetId');
+    stackSetName = registerOutput<String>('stackSetName');
+  }
+
+  /// Creates a typed reference to an existing [StackInstances] resource.
+  StackInstances.reference(String urn)
+    : super(
+        'aws:cloudformation/stackInstances:StackInstances',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accounts = registerOutput<List<String>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    callAs = registerOutput<String?>('callAs');
+    deploymentTargets = registerOutput<StackInstancesDeploymentTargets?>('deploymentTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackInstancesDeploymentTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    operationPreferences = registerOutput<StackInstancesOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackInstancesOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    retainStacks = registerOutput<bool?>('retainStacks');
+    stackInstanceSummaries = registerOutput<List<StackInstancesStackInstanceSummary>>('stackInstanceSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackInstancesStackInstanceSummary>(guardedValue, (value) => StackInstancesStackInstanceSummary.fromMap((value as Map).cast<String, dynamic>())); });
     stackSetId = registerOutput<String>('stackSetId');
     stackSetName = registerOutput<String>('stackSetName');
   }

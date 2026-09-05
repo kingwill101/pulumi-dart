@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MainRouteTableAssociation resources.
 class MainRouteTableAssociationState {
   /// Used internally, see **Notes** below
-  final pulumi.Input<String>? originalRouteTableId;
+  final pulumi.Input<String?>? originalRouteTableId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the Route Table to set as the new
   /// main route table for the target VPC
-  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<String?>? routeTableId;
   /// The ID of the VPC whose main route table should be set
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [MainRouteTableAssociationState].
   /// [originalRouteTableId] Used internally, see **Notes** below

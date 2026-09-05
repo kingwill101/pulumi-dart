@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration {
   /// Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.
-  final pulumi.Input<String>? encryptionConflictResolutionStrategy;
+  final pulumi.Input<String?>? encryptionConflictResolutionStrategy;
   /// Determines which newly created destination log groups are encrypted with `kmsKeyArn` when `encryptionStrategy` is `CUSTOMER_MANAGED`. Valid values: `ENCRYPTED_SOURCE_ONLY` (default), `NEW_DESTINATION_LOG_GROUPS`. Not valid when `encryptionStrategy` is `AWS_OWNED`.
-  final pulumi.Input<String>? encryptionScope;
+  final pulumi.Input<String?>? encryptionScope;
   /// Encryption strategy for logs. Valid values: `AWS_OWNED`, `CUSTOMER_MANAGED`.
   final pulumi.Input<String> encryptionStrategy;
   /// ARN of the KMS key to use for encryption when `encryptionStrategy` is `CUSTOMER_MANAGED`.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration].
   /// [encryptionConflictResolutionStrategy] Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.

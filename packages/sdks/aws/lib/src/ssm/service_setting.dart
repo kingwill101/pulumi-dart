@@ -146,7 +146,7 @@ class ServiceSetting extends pulumi.CustomResource {
           'aws:ssm/serviceSetting:ServiceSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
@@ -160,11 +160,12 @@ class ServiceSetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceSettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceSetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,6 +179,22 @@ class ServiceSetting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    settingId = registerOutput<String>('settingId');
+    settingValue = registerOutput<String>('settingValue');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [ServiceSetting] resource.
+  ServiceSetting.reference(String urn)
+    : super(
+        'aws:ssm/serviceSetting:ServiceSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     settingId = registerOutput<String>('settingId');

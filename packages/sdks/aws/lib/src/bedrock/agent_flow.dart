@@ -126,39 +126,35 @@ import 'agent_flow_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentFlow("example", {
-///     name: "example",
-///     executionRoleArn: exampleAwsIamRole.arn,
 ///     definition: {
 ///         connections: [
 ///             {
-///                 name: "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0",
-///                 source: "FlowInputNode",
-///                 target: "Prompt_1",
-///                 type: "Data",
 ///                 configuration: {
 ///                     data: {
 ///                         sourceOutput: "document",
 ///                         targetInput: "topic",
 ///                     },
 ///                 },
+///                 name: "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0",
+///                 source: "FlowInputNode",
+///                 target: "Prompt_1",
+///                 type: "Data",
 ///             },
 ///             {
-///                 name: "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0",
-///                 source: "Prompt_1",
-///                 target: "FlowOutputNode",
-///                 type: "Data",
 ///                 configuration: {
 ///                     data: {
 ///                         sourceOutput: "modelCompletion",
 ///                         targetInput: "document",
 ///                     },
 ///                 },
+///                 name: "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0",
+///                 source: "Prompt_1",
+///                 target: "FlowOutputNode",
+///                 type: "Data",
 ///             },
 ///         ],
 ///         nodes: [
 ///             {
-///                 name: "FlowInputNode",
-///                 type: "Input",
 ///                 configuration: {
 ///                     input: {},
 ///                 },
@@ -166,16 +162,14 @@ import 'agent_flow_timeouts.dart';
 ///                     name: "document",
 ///                     type: "String",
 ///                 }],
+///                 name: "FlowInputNode",
+///                 type: "Input",
 ///             },
 ///             {
-///                 name: "Prompt_1",
-///                 type: "Prompt",
 ///                 configuration: {
 ///                     prompt: {
 ///                         sourceConfiguration: {
 ///                             inline: {
-///                                 modelId: "amazon.titan-text-express-v1",
-///                                 templateType: "TEXT",
 ///                                 inferenceConfiguration: {
 ///                                     text: {
 ///                                         maxTokens: 2048,
@@ -186,12 +180,14 @@ import 'agent_flow_timeouts.dart';
 ///                                 },
 ///                                 templateConfiguration: {
 ///                                     text: {
-///                                         text: "Write a paragraph about {{topic}}.",
 ///                                         inputVariables: [{
 ///                                             name: "topic",
 ///                                         }],
+///                                         text: "Write a paragraph about {{topic}}.",
 ///                                     },
 ///                                 },
+///                                 modelId: "amazon.titan-text-express-v1",
+///                                 templateType: "TEXT",
 ///                             },
 ///                         },
 ///                     },
@@ -205,10 +201,10 @@ import 'agent_flow_timeouts.dart';
 ///                     name: "modelCompletion",
 ///                     type: "String",
 ///                 }],
+///                 name: "Prompt_1",
+///                 type: "Prompt",
 ///             },
 ///             {
-///                 name: "FlowOutputNode",
-///                 type: "Output",
 ///                 configuration: {
 ///                     output: {},
 ///                 },
@@ -217,9 +213,13 @@ import 'agent_flow_timeouts.dart';
 ///                     name: "document",
 ///                     type: "String",
 ///                 }],
+///                 name: "FlowOutputNode",
+///                 type: "Output",
 ///             },
 ///         ],
 ///     },
+///     name: "example",
+///     executionRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -227,39 +227,35 @@ import 'agent_flow_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentFlow("example",
-///     name="example",
-///     execution_role_arn=example_aws_iam_role["arn"],
 ///     definition={
 ///         "connections": [
 ///             {
-///                 "name": "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0",
-///                 "source": "FlowInputNode",
-///                 "target": "Prompt_1",
-///                 "type": "Data",
 ///                 "configuration": {
 ///                     "data": {
 ///                         "source_output": "document",
 ///                         "target_input": "topic",
 ///                     },
 ///                 },
+///                 "name": "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0",
+///                 "source": "FlowInputNode",
+///                 "target": "Prompt_1",
+///                 "type": "Data",
 ///             },
 ///             {
-///                 "name": "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0",
-///                 "source": "Prompt_1",
-///                 "target": "FlowOutputNode",
-///                 "type": "Data",
 ///                 "configuration": {
 ///                     "data": {
 ///                         "source_output": "modelCompletion",
 ///                         "target_input": "document",
 ///                     },
 ///                 },
+///                 "name": "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0",
+///                 "source": "Prompt_1",
+///                 "target": "FlowOutputNode",
+///                 "type": "Data",
 ///             },
 ///         ],
 ///         "nodes": [
 ///             {
-///                 "name": "FlowInputNode",
-///                 "type": "Input",
 ///                 "configuration": {
 ///                     "input": {},
 ///                 },
@@ -267,16 +263,14 @@ import 'agent_flow_timeouts.dart';
 ///                     "name": "document",
 ///                     "type": "String",
 ///                 }],
+///                 "name": "FlowInputNode",
+///                 "type": "Input",
 ///             },
 ///             {
-///                 "name": "Prompt_1",
-///                 "type": "Prompt",
 ///                 "configuration": {
 ///                     "prompt": {
 ///                         "source_configuration": {
 ///                             "inline": {
-///                                 "model_id": "amazon.titan-text-express-v1",
-///                                 "template_type": "TEXT",
 ///                                 "inference_configuration": {
 ///                                     "text": {
 ///                                         "max_tokens": 2048,
@@ -287,12 +281,14 @@ import 'agent_flow_timeouts.dart';
 ///                                 },
 ///                                 "template_configuration": {
 ///                                     "text": {
-///                                         "text": "Write a paragraph about {{topic}}.",
 ///                                         "input_variables": [{
 ///                                             "name": "topic",
 ///                                         }],
+///                                         "text": "Write a paragraph about {{topic}}.",
 ///                                     },
 ///                                 },
+///                                 "model_id": "amazon.titan-text-express-v1",
+///                                 "template_type": "TEXT",
 ///                             },
 ///                         },
 ///                     },
@@ -306,10 +302,10 @@ import 'agent_flow_timeouts.dart';
 ///                     "name": "modelCompletion",
 ///                     "type": "String",
 ///                 }],
+///                 "name": "Prompt_1",
+///                 "type": "Prompt",
 ///             },
 ///             {
-///                 "name": "FlowOutputNode",
-///                 "type": "Output",
 ///                 "configuration": {
 ///                     "output": {},
 ///                 },
@@ -318,9 +314,13 @@ import 'agent_flow_timeouts.dart';
 ///                     "name": "document",
 ///                     "type": "String",
 ///                 }],
+///                 "name": "FlowOutputNode",
+///                 "type": "Output",
 ///             },
 ///         ],
-///     })
+///     },
+///     name="example",
+///     execution_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -332,18 +332,12 @@ import 'agent_flow_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentFlow("example", new()
 ///     {
-///         Name = "example",
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
 ///         Definition = new Aws.Bedrock.Inputs.AgentFlowDefinitionArgs
 ///         {
 ///             Connections = new[]
 ///             {
 ///                 new Aws.Bedrock.Inputs.AgentFlowDefinitionConnectionArgs
 ///                 {
-///                     Name = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0",
-///                     Source = "FlowInputNode",
-///                     Target = "Prompt_1",
-///                     Type = "Data",
 ///                     Configuration = new Aws.Bedrock.Inputs.AgentFlowDefinitionConnectionConfigurationArgs
 ///                     {
 ///                         Data = new Aws.Bedrock.Inputs.AgentFlowDefinitionConnectionConfigurationDataArgs
@@ -352,13 +346,13 @@ import 'agent_flow_timeouts.dart';
 ///                             TargetInput = "topic",
 ///                         },
 ///                     },
+///                     Name = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0",
+///                     Source = "FlowInputNode",
+///                     Target = "Prompt_1",
+///                     Type = "Data",
 ///                 },
 ///                 new Aws.Bedrock.Inputs.AgentFlowDefinitionConnectionArgs
 ///                 {
-///                     Name = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0",
-///                     Source = "Prompt_1",
-///                     Target = "FlowOutputNode",
-///                     Type = "Data",
 ///                     Configuration = new Aws.Bedrock.Inputs.AgentFlowDefinitionConnectionConfigurationArgs
 ///                     {
 ///                         Data = new Aws.Bedrock.Inputs.AgentFlowDefinitionConnectionConfigurationDataArgs
@@ -367,14 +361,16 @@ import 'agent_flow_timeouts.dart';
 ///                             TargetInput = "document",
 ///                         },
 ///                     },
+///                     Name = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0",
+///                     Source = "Prompt_1",
+///                     Target = "FlowOutputNode",
+///                     Type = "Data",
 ///                 },
 ///             },
 ///             Nodes = new[]
 ///             {
 ///                 new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeArgs
 ///                 {
-///                     Name = "FlowInputNode",
-///                     Type = "Input",
 ///                     Configuration = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationArgs
 ///                     {
 ///                         Input = null,
@@ -387,11 +383,11 @@ import 'agent_flow_timeouts.dart';
 ///                             Type = "String",
 ///                         },
 ///                     },
+///                     Name = "FlowInputNode",
+///                     Type = "Input",
 ///                 },
 ///                 new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeArgs
 ///                 {
-///                     Name = "Prompt_1",
-///                     Type = "Prompt",
 ///                     Configuration = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationArgs
 ///                     {
 ///                         Prompt = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationPromptArgs
@@ -400,8 +396,6 @@ import 'agent_flow_timeouts.dart';
 ///                             {
 ///                                 Inline = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineArgs
 ///                                 {
-///                                     ModelId = "amazon.titan-text-express-v1",
-///                                     TemplateType = "TEXT",
 ///                                     InferenceConfiguration = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationArgs
 ///                                     {
 ///                                         Text = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationTextArgs
@@ -419,7 +413,6 @@ import 'agent_flow_timeouts.dart';
 ///                                     {
 ///                                         Text = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextArgs
 ///                                         {
-///                                             Text = "Write a paragraph about {{topic}}.",
 ///                                             InputVariables = new[]
 ///                                             {
 ///                                                 new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariableArgs
@@ -427,8 +420,11 @@ import 'agent_flow_timeouts.dart';
 ///                                                     Name = "topic",
 ///                                                 },
 ///                                             },
+///                                             Text = "Write a paragraph about {{topic}}.",
 ///                                         },
 ///                                     },
+///                                     ModelId = "amazon.titan-text-express-v1",
+///                                     TemplateType = "TEXT",
 ///                                 },
 ///                             },
 ///                         },
@@ -450,11 +446,11 @@ import 'agent_flow_timeouts.dart';
 ///                             Type = "String",
 ///                         },
 ///                     },
+///                     Name = "Prompt_1",
+///                     Type = "Prompt",
 ///                 },
 ///                 new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeArgs
 ///                 {
-///                     Name = "FlowOutputNode",
-///                     Type = "Output",
 ///                     Configuration = new Aws.Bedrock.Inputs.AgentFlowDefinitionNodeConfigurationArgs
 ///                     {
 ///                         Output = null,
@@ -468,9 +464,13 @@ import 'agent_flow_timeouts.dart';
 ///                             Type = "String",
 ///                         },
 ///                     },
+///                     Name = "FlowOutputNode",
+///                     Type = "Output",
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -486,39 +486,35 @@ import 'agent_flow_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentFlow(ctx, "example", &bedrock.AgentFlowArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Definition: &bedrock.AgentFlowDefinitionArgs{
 /// 				Connections: bedrock.AgentFlowDefinitionConnectionArray{
 /// 					&bedrock.AgentFlowDefinitionConnectionArgs{
-/// 						Name:   pulumi.String("FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"),
-/// 						Source: pulumi.String("FlowInputNode"),
-/// 						Target: pulumi.String("Prompt_1"),
-/// 						Type:   pulumi.String("Data"),
 /// 						Configuration: &bedrock.AgentFlowDefinitionConnectionConfigurationArgs{
 /// 							Data: &bedrock.AgentFlowDefinitionConnectionConfigurationDataArgs{
 /// 								SourceOutput: pulumi.String("document"),
 /// 								TargetInput:  pulumi.String("topic"),
 /// 							},
 /// 						},
+/// 						Name:   pulumi.String("FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"),
+/// 						Source: pulumi.String("FlowInputNode"),
+/// 						Target: pulumi.String("Prompt_1"),
+/// 						Type:   pulumi.String("Data"),
 /// 					},
 /// 					&bedrock.AgentFlowDefinitionConnectionArgs{
-/// 						Name:   pulumi.String("Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"),
-/// 						Source: pulumi.String("Prompt_1"),
-/// 						Target: pulumi.String("FlowOutputNode"),
-/// 						Type:   pulumi.String("Data"),
 /// 						Configuration: &bedrock.AgentFlowDefinitionConnectionConfigurationArgs{
 /// 							Data: &bedrock.AgentFlowDefinitionConnectionConfigurationDataArgs{
 /// 								SourceOutput: pulumi.String("modelCompletion"),
 /// 								TargetInput:  pulumi.String("document"),
 /// 							},
 /// 						},
+/// 						Name:   pulumi.String("Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"),
+/// 						Source: pulumi.String("Prompt_1"),
+/// 						Target: pulumi.String("FlowOutputNode"),
+/// 						Type:   pulumi.String("Data"),
 /// 					},
 /// 				},
 /// 				Nodes: bedrock.AgentFlowDefinitionNodeArray{
 /// 					&bedrock.AgentFlowDefinitionNodeArgs{
-/// 						Name: pulumi.String("FlowInputNode"),
-/// 						Type: pulumi.String("Input"),
 /// 						Configuration: &bedrock.AgentFlowDefinitionNodeConfigurationArgs{
 /// 							Input: &bedrock.AgentFlowDefinitionNodeConfigurationInputTypeArgs{},
 /// 						},
@@ -528,16 +524,14 @@ import 'agent_flow_timeouts.dart';
 /// 								Type: pulumi.String("String"),
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("FlowInputNode"),
+/// 						Type: pulumi.String("Input"),
 /// 					},
 /// 					&bedrock.AgentFlowDefinitionNodeArgs{
-/// 						Name: pulumi.String("Prompt_1"),
-/// 						Type: pulumi.String("Prompt"),
 /// 						Configuration: &bedrock.AgentFlowDefinitionNodeConfigurationArgs{
 /// 							Prompt: &bedrock.AgentFlowDefinitionNodeConfigurationPromptArgs{
 /// 								SourceConfiguration: &bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationArgs{
 /// 									Inline: &bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineArgs{
-/// 										ModelId:      pulumi.String("amazon.titan-text-express-v1"),
-/// 										TemplateType: pulumi.String("TEXT"),
 /// 										InferenceConfiguration: &bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationArgs{
 /// 											Text: &bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationTextArgs{
 /// 												MaxTokens: pulumi.Int(2048),
@@ -550,14 +544,16 @@ import 'agent_flow_timeouts.dart';
 /// 										},
 /// 										TemplateConfiguration: &bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationArgs{
 /// 											Text: &bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextArgs{
-/// 												Text: pulumi.String("Write a paragraph about {{topic}}."),
 /// 												InputVariables: bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariableArray{
 /// 													&bedrock.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariableArgs{
 /// 														Name: pulumi.String("topic"),
 /// 													},
 /// 												},
+/// 												Text: pulumi.String("Write a paragraph about {{topic}}."),
 /// 											},
 /// 										},
+/// 										ModelId:      pulumi.String("amazon.titan-text-express-v1"),
+/// 										TemplateType: pulumi.String("TEXT"),
 /// 									},
 /// 								},
 /// 							},
@@ -575,10 +571,10 @@ import 'agent_flow_timeouts.dart';
 /// 								Type: pulumi.String("String"),
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("Prompt_1"),
+/// 						Type: pulumi.String("Prompt"),
 /// 					},
 /// 					&bedrock.AgentFlowDefinitionNodeArgs{
-/// 						Name: pulumi.String("FlowOutputNode"),
-/// 						Type: pulumi.String("Output"),
 /// 						Configuration: &bedrock.AgentFlowDefinitionNodeConfigurationArgs{
 /// 							Output: &bedrock.AgentFlowDefinitionNodeConfigurationOutputTypeArgs{},
 /// 						},
@@ -589,9 +585,13 @@ import 'agent_flow_timeouts.dart';
 /// 								Type:       pulumi.String("String"),
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("FlowOutputNode"),
+/// 						Type: pulumi.String("Output"),
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -610,35 +610,31 @@ import 'agent_flow_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentflow" "example" {
-///   name               = "example"
-///   execution_role_arn = exampleAwsIamRole.arn
 ///   definition = {
 ///     connections = [{
-///       "name"   = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"
-///       "source" = "FlowInputNode"
-///       "target" = "Prompt_1"
-///       "type"   = "Data"
 ///       "configuration" = {
 ///         "data" = {
 ///           "sourceOutput" = "document"
 ///           "targetInput"  = "topic"
 ///         }
 ///       }
-///       }, {
-///       "name"   = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"
-///       "source" = "Prompt_1"
-///       "target" = "FlowOutputNode"
+///       "name"   = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"
+///       "source" = "FlowInputNode"
+///       "target" = "Prompt_1"
 ///       "type"   = "Data"
+///       }, {
 ///       "configuration" = {
 ///         "data" = {
 ///           "sourceOutput" = "modelCompletion"
 ///           "targetInput"  = "document"
 ///         }
 ///       }
+///       "name"   = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"
+///       "source" = "Prompt_1"
+///       "target" = "FlowOutputNode"
+///       "type"   = "Data"
 ///     }]
 ///     nodes = [{
-///       "name" = "FlowInputNode"
-///       "type" = "Input"
 ///       "configuration" = {
 ///         "input" = {}
 ///       }
@@ -646,15 +642,13 @@ import 'agent_flow_timeouts.dart';
 ///         "name" = "document"
 ///         "type" = "String"
 ///       }]
+///       "name" = "FlowInputNode"
+///       "type" = "Input"
 ///       }, {
-///       "name" = "Prompt_1"
-///       "type" = "Prompt"
 ///       "configuration" = {
 ///         "prompt" = {
 ///           "sourceConfiguration" = {
 ///             "inline" = {
-///               "modelId"      = "amazon.titan-text-express-v1"
-///               "templateType" = "TEXT"
 ///               "inferenceConfiguration" = {
 ///                 "text" = {
 ///                   "maxTokens"     = 2048
@@ -665,12 +659,14 @@ import 'agent_flow_timeouts.dart';
 ///               }
 ///               "templateConfiguration" = {
 ///                 "text" = {
-///                   "text" = "Write a paragraph about {{topic}}."
 ///                   "inputVariables" = [{
 ///                     "name" = "topic"
 ///                   }]
+///                   "text" = "Write a paragraph about {{topic}}."
 ///                 }
 ///               }
+///               "modelId"      = "amazon.titan-text-express-v1"
+///               "templateType" = "TEXT"
 ///             }
 ///           }
 ///         }
@@ -684,9 +680,9 @@ import 'agent_flow_timeouts.dart';
 ///         "name" = "modelCompletion"
 ///         "type" = "String"
 ///       }]
+///       "name" = "Prompt_1"
+///       "type" = "Prompt"
 ///       }, {
-///       "name" = "FlowOutputNode"
-///       "type" = "Output"
 ///       "configuration" = {
 ///         "output" = {}
 ///       }
@@ -695,8 +691,12 @@ import 'agent_flow_timeouts.dart';
 ///         "name"       = "document"
 ///         "type"       = "String"
 ///       }]
+///       "name" = "FlowOutputNode"
+///       "type" = "Output"
 ///     }]
 ///   }
+///   name               = "example"
+///   execution_role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -739,38 +739,34 @@ import 'agent_flow_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentFlow("example", AgentFlowArgs.builder()
-///             .name("example")
-///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .definition(AgentFlowDefinitionArgs.builder()
 ///                 .connections(
 ///                     AgentFlowDefinitionConnectionArgs.builder()
-///                         .name("FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0")
-///                         .source("FlowInputNode")
-///                         .target("Prompt_1")
-///                         .type("Data")
 ///                         .configuration(AgentFlowDefinitionConnectionConfigurationArgs.builder()
 ///                             .data(AgentFlowDefinitionConnectionConfigurationDataArgs.builder()
 ///                                 .sourceOutput("document")
 ///                                 .targetInput("topic")
 ///                                 .build())
 ///                             .build())
+///                         .name("FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0")
+///                         .source("FlowInputNode")
+///                         .target("Prompt_1")
+///                         .type("Data")
 ///                         .build(),
 ///                     AgentFlowDefinitionConnectionArgs.builder()
-///                         .name("Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0")
-///                         .source("Prompt_1")
-///                         .target("FlowOutputNode")
-///                         .type("Data")
 ///                         .configuration(AgentFlowDefinitionConnectionConfigurationArgs.builder()
 ///                             .data(AgentFlowDefinitionConnectionConfigurationDataArgs.builder()
 ///                                 .sourceOutput("modelCompletion")
 ///                                 .targetInput("document")
 ///                                 .build())
 ///                             .build())
+///                         .name("Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0")
+///                         .source("Prompt_1")
+///                         .target("FlowOutputNode")
+///                         .type("Data")
 ///                         .build())
 ///                 .nodes(
 ///                     AgentFlowDefinitionNodeArgs.builder()
-///                         .name("FlowInputNode")
-///                         .type("Input")
 ///                         .configuration(AgentFlowDefinitionNodeConfigurationArgs.builder()
 ///                             .input(AgentFlowDefinitionNodeConfigurationInputArgs.builder()
 ///                                 .build())
@@ -779,16 +775,14 @@ import 'agent_flow_timeouts.dart';
 ///                             .name("document")
 ///                             .type("String")
 ///                             .build())
+///                         .name("FlowInputNode")
+///                         .type("Input")
 ///                         .build(),
 ///                     AgentFlowDefinitionNodeArgs.builder()
-///                         .name("Prompt_1")
-///                         .type("Prompt")
 ///                         .configuration(AgentFlowDefinitionNodeConfigurationArgs.builder()
 ///                             .prompt(AgentFlowDefinitionNodeConfigurationPromptArgs.builder()
 ///                                 .sourceConfiguration(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationArgs.builder()
 ///                                     .inline(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineArgs.builder()
-///                                         .modelId("amazon.titan-text-express-v1")
-///                                         .templateType("TEXT")
 ///                                         .inferenceConfiguration(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationArgs.builder()
 ///                                             .text(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationTextArgs.builder()
 ///                                                 .maxTokens(2048)
@@ -799,12 +793,14 @@ import 'agent_flow_timeouts.dart';
 ///                                             .build())
 ///                                         .templateConfiguration(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationArgs.builder()
 ///                                             .text(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextArgs.builder()
-///                                                 .text("Write a paragraph about {{topic}}.")
 ///                                                 .inputVariables(AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariableArgs.builder()
 ///                                                     .name("topic")
 ///                                                     .build())
+///                                                 .text("Write a paragraph about {{topic}}.")
 ///                                                 .build())
 ///                                             .build())
+///                                         .modelId("amazon.titan-text-express-v1")
+///                                         .templateType("TEXT")
 ///                                         .build())
 ///                                     .build())
 ///                                 .build())
@@ -818,10 +814,10 @@ import 'agent_flow_timeouts.dart';
 ///                             .name("modelCompletion")
 ///                             .type("String")
 ///                             .build())
+///                         .name("Prompt_1")
+///                         .type("Prompt")
 ///                         .build(),
 ///                     AgentFlowDefinitionNodeArgs.builder()
-///                         .name("FlowOutputNode")
-///                         .type("Output")
 ///                         .configuration(AgentFlowDefinitionNodeConfigurationArgs.builder()
 ///                             .output(AgentFlowDefinitionNodeConfigurationOutputArgs.builder()
 ///                                 .build())
@@ -831,8 +827,12 @@ import 'agent_flow_timeouts.dart';
 ///                             .name("document")
 ///                             .type("String")
 ///                             .build())
+///                         .name("FlowOutputNode")
+///                         .type("Output")
 ///                         .build())
 ///                 .build())
+///             .name("example")
+///             .executionRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -843,42 +843,36 @@ import 'agent_flow_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentFlow
 ///     properties:
-///       name: example
-///       executionRoleArn: ${exampleAwsIamRole.arn}
 ///       definition:
 ///         connections:
-///           - name: FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0
-///             source: FlowInputNode
-///             target: Prompt_1
-///             type: Data
-///             configuration:
+///           - configuration:
 ///               data:
 ///                 sourceOutput: document
 ///                 targetInput: topic
-///           - name: Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0
-///             source: Prompt_1
-///             target: FlowOutputNode
+///             name: FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0
+///             source: FlowInputNode
+///             target: Prompt_1
 ///             type: Data
-///             configuration:
+///           - configuration:
 ///               data:
 ///                 sourceOutput: modelCompletion
 ///                 targetInput: document
+///             name: Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0
+///             source: Prompt_1
+///             target: FlowOutputNode
+///             type: Data
 ///         nodes:
-///           - name: FlowInputNode
-///             type: Input
-///             configuration:
+///           - configuration:
 ///               input: {}
 ///             outputs:
 ///               - name: document
 ///                 type: String
-///           - name: Prompt_1
-///             type: Prompt
-///             configuration:
+///             name: FlowInputNode
+///             type: Input
+///           - configuration:
 ///               prompt:
 ///                 sourceConfiguration:
 ///                   inline:
-///                     modelId: amazon.titan-text-express-v1
-///                     templateType: TEXT
 ///                     inferenceConfiguration:
 ///                       text:
 ///                         maxTokens: 2048
@@ -888,9 +882,11 @@ import 'agent_flow_timeouts.dart';
 ///                         topP: 0.8999999761581421
 ///                     templateConfiguration:
 ///                       text:
-///                         text: Write a paragraph about {{topic}}.
 ///                         inputVariables:
 ///                           - name: topic
+///                         text: Write a paragraph about {{topic}}.
+///                     modelId: amazon.titan-text-express-v1
+///                     templateType: TEXT
 ///             inputs:
 ///               - expression: $.data
 ///                 name: topic
@@ -898,14 +894,18 @@ import 'agent_flow_timeouts.dart';
 ///             outputs:
 ///               - name: modelCompletion
 ///                 type: String
-///           - name: FlowOutputNode
-///             type: Output
-///             configuration:
+///             name: Prompt_1
+///             type: Prompt
+///           - configuration:
 ///               output: {}
 ///             inputs:
 ///               - expression: $.data
 ///                 name: document
 ///                 type: String
+///             name: FlowOutputNode
+///             type: Output
+///       name: example
+///       executionRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -917,17 +917,17 @@ import 'agent_flow_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentFlow:AgentFlow example ABCDEFGHIJ
 /// ```
 class AgentFlow extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the flow.
+  /// ARN of the flow.
   late final pulumi.Output<String> arn;
   /// The time at which the flow was created.
   late final pulumi.Output<String> createdAt;
-  /// The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
+  /// ARN of the KMS key to encrypt the flow.
   late final pulumi.Output<String?> customerEncryptionKeyArn;
   /// A definition of the nodes and connections between nodes in the flow. See Definition for more information.
   late final pulumi.Output<AgentFlowDefinition?> definition;
   /// A description for the flow.
   late final pulumi.Output<String?> description;
-  /// The Amazon Resource Name (ARN) of the service role with permissions to create and manage a flow. For more information, see [Create a service role for flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide.
+  /// ARN of the service role with permissions to create and manage a flow. For more information, see [Create a service role for flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> executionRoleArn;
@@ -959,7 +959,7 @@ class AgentFlow extends pulumi.CustomResource {
           'aws:bedrock/agentFlow:AgentFlow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -970,8 +970,8 @@ class AgentFlow extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentFlowTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentFlowTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
@@ -982,11 +982,12 @@ class AgentFlow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentFlowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentFlow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1009,8 +1010,33 @@ class AgentFlow extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentFlowTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentFlowTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [AgentFlow] resource.
+  AgentFlow.reference(String urn)
+    : super(
+        'aws:bedrock/agentFlow:AgentFlow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    customerEncryptionKeyArn = registerOutput<String?>('customerEncryptionKeyArn');
+    definition = registerOutput<AgentFlowDefinition?>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentFlowDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentFlowTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentFlowTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');

@@ -166,12 +166,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kms.CustomKeyStore("example", {
-///     customKeyStoreName: "example-vpc-xks",
-///     customKeyStoreType: "EXTERNAL_KEY_STORE",
 ///     xksProxyAuthenticationCredential: {
 ///         accessKeyId: ephemeralAccessKeyId,
 ///         rawSecretAccessKey: ephemeralSecretAccessKey,
 ///     },
+///     customKeyStoreName: "example-vpc-xks",
+///     customKeyStoreType: "EXTERNAL_KEY_STORE",
 ///     xksProxyConnectivity: "VPC_ENDPOINT_SERVICE",
 ///     xksProxyUriEndpoint: "https://myproxy-private.xks.example.com",
 ///     xksProxyUriPath: "/kms/xks/v1",
@@ -183,12 +183,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kms.CustomKeyStore("example",
-///     custom_key_store_name="example-vpc-xks",
-///     custom_key_store_type="EXTERNAL_KEY_STORE",
 ///     xks_proxy_authentication_credential={
 ///         "access_key_id": ephemeral_access_key_id,
 ///         "raw_secret_access_key": ephemeral_secret_access_key,
 ///     },
+///     custom_key_store_name="example-vpc-xks",
+///     custom_key_store_type="EXTERNAL_KEY_STORE",
 ///     xks_proxy_connectivity="VPC_ENDPOINT_SERVICE",
 ///     xks_proxy_uri_endpoint="https://myproxy-private.xks.example.com",
 ///     xks_proxy_uri_path="/kms/xks/v1",
@@ -204,13 +204,13 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// {
 ///     var example = new Aws.Kms.CustomKeyStore("example", new()
 ///     {
-///         CustomKeyStoreName = "example-vpc-xks",
-///         CustomKeyStoreType = "EXTERNAL_KEY_STORE",
 ///         XksProxyAuthenticationCredential = new Aws.Kms.Inputs.CustomKeyStoreXksProxyAuthenticationCredentialArgs
 ///         {
 ///             AccessKeyId = ephemeralAccessKeyId,
 ///             RawSecretAccessKey = ephemeralSecretAccessKey,
 ///         },
+///         CustomKeyStoreName = "example-vpc-xks",
+///         CustomKeyStoreType = "EXTERNAL_KEY_STORE",
 ///         XksProxyConnectivity = "VPC_ENDPOINT_SERVICE",
 ///         XksProxyUriEndpoint = "https://myproxy-private.xks.example.com",
 ///         XksProxyUriPath = "/kms/xks/v1",
@@ -230,12 +230,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kms.NewCustomKeyStore(ctx, "example", &kms.CustomKeyStoreArgs{
-/// 			CustomKeyStoreName: pulumi.String("example-vpc-xks"),
-/// 			CustomKeyStoreType: pulumi.String("EXTERNAL_KEY_STORE"),
 /// 			XksProxyAuthenticationCredential: &kms.CustomKeyStoreXksProxyAuthenticationCredentialArgs{
 /// 				AccessKeyId:        pulumi.Any(ephemeralAccessKeyId),
 /// 				RawSecretAccessKey: pulumi.Any(ephemeralSecretAccessKey),
 /// 			},
+/// 			CustomKeyStoreName:             pulumi.String("example-vpc-xks"),
+/// 			CustomKeyStoreType:             pulumi.String("EXTERNAL_KEY_STORE"),
 /// 			XksProxyConnectivity:           pulumi.String("VPC_ENDPOINT_SERVICE"),
 /// 			XksProxyUriEndpoint:            pulumi.String("https://myproxy-private.xks.example.com"),
 /// 			XksProxyUriPath:                pulumi.String("/kms/xks/v1"),
@@ -258,12 +258,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// }
 ///
 /// resource "aws_kms_customkeystore" "example" {
-///   custom_key_store_name = "example-vpc-xks"
-///   custom_key_store_type = "EXTERNAL_KEY_STORE"
 ///   xks_proxy_authentication_credential = {
 ///     access_key_id         = ephemeralAccessKeyId
 ///     raw_secret_access_key = ephemeralSecretAccessKey
 ///   }
+///   custom_key_store_name               = "example-vpc-xks"
+///   custom_key_store_type               = "EXTERNAL_KEY_STORE"
 ///   xks_proxy_connectivity              = "VPC_ENDPOINT_SERVICE"
 ///   xks_proxy_uri_endpoint              = "https://myproxy-private.xks.example.com"
 ///   xks_proxy_uri_path                  = "/kms/xks/v1"
@@ -293,12 +293,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomKeyStore("example", CustomKeyStoreArgs.builder()
-///             .customKeyStoreName("example-vpc-xks")
-///             .customKeyStoreType("EXTERNAL_KEY_STORE")
 ///             .xksProxyAuthenticationCredential(CustomKeyStoreXksProxyAuthenticationCredentialArgs.builder()
 ///                 .accessKeyId(ephemeralAccessKeyId)
 ///                 .rawSecretAccessKey(ephemeralSecretAccessKey)
 ///                 .build())
+///             .customKeyStoreName("example-vpc-xks")
+///             .customKeyStoreType("EXTERNAL_KEY_STORE")
 ///             .xksProxyConnectivity("VPC_ENDPOINT_SERVICE")
 ///             .xksProxyUriEndpoint("https://myproxy-private.xks.example.com")
 ///             .xksProxyUriPath("/kms/xks/v1")
@@ -313,11 +313,11 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///   example:
 ///     type: aws:kms:CustomKeyStore
 ///     properties:
-///       customKeyStoreName: example-vpc-xks
-///       customKeyStoreType: EXTERNAL_KEY_STORE
 ///       xksProxyAuthenticationCredential:
 ///         accessKeyId: ${ephemeralAccessKeyId}
 ///         rawSecretAccessKey: ${ephemeralSecretAccessKey}
+///       customKeyStoreName: example-vpc-xks
+///       customKeyStoreType: EXTERNAL_KEY_STORE
 ///       xksProxyConnectivity: VPC_ENDPOINT_SERVICE
 ///       xksProxyUriEndpoint: https://myproxy-private.xks.example.com
 ///       xksProxyUriPath: /kms/xks/v1
@@ -333,12 +333,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kms.CustomKeyStore("example", {
-///     customKeyStoreName: "example-public-xks",
-///     customKeyStoreType: "EXTERNAL_KEY_STORE",
 ///     xksProxyAuthenticationCredential: {
 ///         accessKeyId: ephemeralAccessKeyId,
 ///         rawSecretAccessKey: ephemeralSecretAccessKey,
 ///     },
+///     customKeyStoreName: "example-public-xks",
+///     customKeyStoreType: "EXTERNAL_KEY_STORE",
 ///     xksProxyConnectivity: "PUBLIC_ENDPOINT",
 ///     xksProxyUriEndpoint: "https://myproxy.xks.example.com",
 ///     xksProxyUriPath: "/kms/xks/v1",
@@ -349,12 +349,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kms.CustomKeyStore("example",
-///     custom_key_store_name="example-public-xks",
-///     custom_key_store_type="EXTERNAL_KEY_STORE",
 ///     xks_proxy_authentication_credential={
 ///         "access_key_id": ephemeral_access_key_id,
 ///         "raw_secret_access_key": ephemeral_secret_access_key,
 ///     },
+///     custom_key_store_name="example-public-xks",
+///     custom_key_store_type="EXTERNAL_KEY_STORE",
 ///     xks_proxy_connectivity="PUBLIC_ENDPOINT",
 ///     xks_proxy_uri_endpoint="https://myproxy.xks.example.com",
 ///     xks_proxy_uri_path="/kms/xks/v1")
@@ -369,13 +369,13 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// {
 ///     var example = new Aws.Kms.CustomKeyStore("example", new()
 ///     {
-///         CustomKeyStoreName = "example-public-xks",
-///         CustomKeyStoreType = "EXTERNAL_KEY_STORE",
 ///         XksProxyAuthenticationCredential = new Aws.Kms.Inputs.CustomKeyStoreXksProxyAuthenticationCredentialArgs
 ///         {
 ///             AccessKeyId = ephemeralAccessKeyId,
 ///             RawSecretAccessKey = ephemeralSecretAccessKey,
 ///         },
+///         CustomKeyStoreName = "example-public-xks",
+///         CustomKeyStoreType = "EXTERNAL_KEY_STORE",
 ///         XksProxyConnectivity = "PUBLIC_ENDPOINT",
 ///         XksProxyUriEndpoint = "https://myproxy.xks.example.com",
 ///         XksProxyUriPath = "/kms/xks/v1",
@@ -394,12 +394,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kms.NewCustomKeyStore(ctx, "example", &kms.CustomKeyStoreArgs{
-/// 			CustomKeyStoreName: pulumi.String("example-public-xks"),
-/// 			CustomKeyStoreType: pulumi.String("EXTERNAL_KEY_STORE"),
 /// 			XksProxyAuthenticationCredential: &kms.CustomKeyStoreXksProxyAuthenticationCredentialArgs{
 /// 				AccessKeyId:        pulumi.Any(ephemeralAccessKeyId),
 /// 				RawSecretAccessKey: pulumi.Any(ephemeralSecretAccessKey),
 /// 			},
+/// 			CustomKeyStoreName:   pulumi.String("example-public-xks"),
+/// 			CustomKeyStoreType:   pulumi.String("EXTERNAL_KEY_STORE"),
 /// 			XksProxyConnectivity: pulumi.String("PUBLIC_ENDPOINT"),
 /// 			XksProxyUriEndpoint:  pulumi.String("https://myproxy.xks.example.com"),
 /// 			XksProxyUriPath:      pulumi.String("/kms/xks/v1"),
@@ -421,12 +421,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// }
 ///
 /// resource "aws_kms_customkeystore" "example" {
-///   custom_key_store_name = "example-public-xks"
-///   custom_key_store_type = "EXTERNAL_KEY_STORE"
 ///   xks_proxy_authentication_credential = {
 ///     access_key_id         = ephemeralAccessKeyId
 ///     raw_secret_access_key = ephemeralSecretAccessKey
 ///   }
+///   custom_key_store_name  = "example-public-xks"
+///   custom_key_store_type  = "EXTERNAL_KEY_STORE"
 ///   xks_proxy_connectivity = "PUBLIC_ENDPOINT"
 ///   xks_proxy_uri_endpoint = "https://myproxy.xks.example.com"
 ///   xks_proxy_uri_path     = "/kms/xks/v1"
@@ -455,12 +455,12 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomKeyStore("example", CustomKeyStoreArgs.builder()
-///             .customKeyStoreName("example-public-xks")
-///             .customKeyStoreType("EXTERNAL_KEY_STORE")
 ///             .xksProxyAuthenticationCredential(CustomKeyStoreXksProxyAuthenticationCredentialArgs.builder()
 ///                 .accessKeyId(ephemeralAccessKeyId)
 ///                 .rawSecretAccessKey(ephemeralSecretAccessKey)
 ///                 .build())
+///             .customKeyStoreName("example-public-xks")
+///             .customKeyStoreType("EXTERNAL_KEY_STORE")
 ///             .xksProxyConnectivity("PUBLIC_ENDPOINT")
 ///             .xksProxyUriEndpoint("https://myproxy.xks.example.com")
 ///             .xksProxyUriPath("/kms/xks/v1")
@@ -474,11 +474,11 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///   example:
 ///     type: aws:kms:CustomKeyStore
 ///     properties:
-///       customKeyStoreName: example-public-xks
-///       customKeyStoreType: EXTERNAL_KEY_STORE
 ///       xksProxyAuthenticationCredential:
 ///         accessKeyId: ${ephemeralAccessKeyId}
 ///         rawSecretAccessKey: ${ephemeralSecretAccessKey}
+///       customKeyStoreName: example-public-xks
+///       customKeyStoreType: EXTERNAL_KEY_STORE
 ///       xksProxyConnectivity: PUBLIC_ENDPOINT
 ///       xksProxyUriEndpoint: https://myproxy.xks.example.com
 ///       xksProxyUriPath: /kms/xks/v1
@@ -522,7 +522,7 @@ class CustomKeyStore extends pulumi.CustomResource {
           'aws:kms/customKeyStore:CustomKeyStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
     customKeyStoreName = registerOutput<String>('customKeyStoreName');
@@ -542,11 +542,12 @@ class CustomKeyStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomKeyStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomKeyStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -560,6 +561,28 @@ class CustomKeyStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
+    customKeyStoreName = registerOutput<String>('customKeyStoreName');
+    customKeyStoreType = registerOutput<String>('customKeyStoreType');
+    keyStorePassword = registerOutput<String?>('keyStorePassword');
+    region = registerOutput<String>('region');
+    trustAnchorCertificate = registerOutput<String?>('trustAnchorCertificate');
+    xksProxyAuthenticationCredential = registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>('xksProxyAuthenticationCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomKeyStoreXksProxyAuthenticationCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    xksProxyConnectivity = registerOutput<String?>('xksProxyConnectivity');
+    xksProxyUriEndpoint = registerOutput<String?>('xksProxyUriEndpoint');
+    xksProxyUriPath = registerOutput<String?>('xksProxyUriPath');
+    xksProxyVpcEndpointServiceName = registerOutput<String?>('xksProxyVpcEndpointServiceName');
+  }
+
+  /// Creates a typed reference to an existing [CustomKeyStore] resource.
+  CustomKeyStore.reference(String urn)
+    : super(
+        'aws:kms/customKeyStore:CustomKeyStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
     customKeyStoreName = registerOutput<String>('customKeyStoreName');
     customKeyStoreType = registerOutput<String>('customKeyStoreType');

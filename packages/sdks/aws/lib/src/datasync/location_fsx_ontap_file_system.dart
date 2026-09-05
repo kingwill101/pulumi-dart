@@ -15,9 +15,6 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.datasync.LocationFsxOntapFileSystem("test", {
-///     fsxFilesystemArn: testAwsFsxOntapFileSystem.arn,
-///     securityGroupArns: [testAwsSecurityGroup.arn],
-///     storageVirtualMachineArn: testAwsFsxOntapStorageVirtualMachine.arn,
 ///     protocol: {
 ///         nfs: {
 ///             mountOptions: {
@@ -25,6 +22,9 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///             },
 ///         },
 ///     },
+///     fsxFilesystemArn: testAwsFsxOntapFileSystem.arn,
+///     securityGroupArns: [testAwsSecurityGroup.arn],
+///     storageVirtualMachineArn: testAwsFsxOntapStorageVirtualMachine.arn,
 /// });
 /// ```
 /// ```python
@@ -32,16 +32,16 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.datasync.LocationFsxOntapFileSystem("test",
-///     fsx_filesystem_arn=test_aws_fsx_ontap_file_system["arn"],
-///     security_group_arns=[test_aws_security_group["arn"]],
-///     storage_virtual_machine_arn=test_aws_fsx_ontap_storage_virtual_machine["arn"],
 ///     protocol={
 ///         "nfs": {
 ///             "mount_options": {
 ///                 "version": "NFS3",
 ///             },
 ///         },
-///     })
+///     },
+///     fsx_filesystem_arn=test_aws_fsx_ontap_file_system["arn"],
+///     security_group_arns=[test_aws_security_group["arn"]],
+///     storage_virtual_machine_arn=test_aws_fsx_ontap_storage_virtual_machine["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,12 +53,6 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// {
 ///     var test = new Aws.DataSync.LocationFsxOntapFileSystem("test", new()
 ///     {
-///         FsxFilesystemArn = testAwsFsxOntapFileSystem.Arn,
-///         SecurityGroupArns = new[]
-///         {
-///             testAwsSecurityGroup.Arn,
-///         },
-///         StorageVirtualMachineArn = testAwsFsxOntapStorageVirtualMachine.Arn,
 ///         Protocol = new Aws.DataSync.Inputs.LocationFsxOntapFileSystemProtocolArgs
 ///         {
 ///             Nfs = new Aws.DataSync.Inputs.LocationFsxOntapFileSystemProtocolNfsArgs
@@ -69,6 +63,12 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///                 },
 ///             },
 ///         },
+///         FsxFilesystemArn = testAwsFsxOntapFileSystem.Arn,
+///         SecurityGroupArns = new[]
+///         {
+///             testAwsSecurityGroup.Arn,
+///         },
+///         StorageVirtualMachineArn = testAwsFsxOntapStorageVirtualMachine.Arn,
 ///     });
 ///
 /// });
@@ -84,11 +84,6 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewLocationFsxOntapFileSystem(ctx, "test", &datasync.LocationFsxOntapFileSystemArgs{
-/// 			FsxFilesystemArn: testAwsFsxOntapFileSystem.Arn,
-/// 			SecurityGroupArns: pulumi.StringArray{
-/// 				testAwsSecurityGroup.Arn,
-/// 			},
-/// 			StorageVirtualMachineArn: pulumi.Any(testAwsFsxOntapStorageVirtualMachine.Arn),
 /// 			Protocol: &datasync.LocationFsxOntapFileSystemProtocolArgs{
 /// 				Nfs: &datasync.LocationFsxOntapFileSystemProtocolNfsArgs{
 /// 					MountOptions: &datasync.LocationFsxOntapFileSystemProtocolNfsMountOptionsArgs{
@@ -96,6 +91,11 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			FsxFilesystemArn: testAwsFsxOntapFileSystem.Arn,
+/// 			SecurityGroupArns: pulumi.StringArray{
+/// 				testAwsSecurityGroup.Arn,
+/// 			},
+/// 			StorageVirtualMachineArn: pulumi.Any(testAwsFsxOntapStorageVirtualMachine.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,9 +114,6 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// }
 ///
 /// resource "aws_datasync_locationfsxontapfilesystem" "test" {
-///   fsx_filesystem_arn          = testAwsFsxOntapFileSystem.arn
-///   security_group_arns         = [testAwsSecurityGroup.arn]
-///   storage_virtual_machine_arn = testAwsFsxOntapStorageVirtualMachine.arn
 ///   protocol = {
 ///     nfs = {
 ///       mount_options = {
@@ -124,6 +121,9 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///       }
 ///     }
 ///   }
+///   fsx_filesystem_arn          = testAwsFsxOntapFileSystem.arn
+///   security_group_arns         = [testAwsSecurityGroup.arn]
+///   storage_virtual_machine_arn = testAwsFsxOntapStorageVirtualMachine.arn
 /// }
 /// ```
 /// ```java
@@ -151,9 +151,6 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new LocationFsxOntapFileSystem("test", LocationFsxOntapFileSystemArgs.builder()
-///             .fsxFilesystemArn(testAwsFsxOntapFileSystem.arn())
-///             .securityGroupArns(testAwsSecurityGroup.arn())
-///             .storageVirtualMachineArn(testAwsFsxOntapStorageVirtualMachine.arn())
 ///             .protocol(LocationFsxOntapFileSystemProtocolArgs.builder()
 ///                 .nfs(LocationFsxOntapFileSystemProtocolNfsArgs.builder()
 ///                     .mountOptions(LocationFsxOntapFileSystemProtocolNfsMountOptionsArgs.builder()
@@ -161,6 +158,9 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .fsxFilesystemArn(testAwsFsxOntapFileSystem.arn())
+///             .securityGroupArns(testAwsSecurityGroup.arn())
+///             .storageVirtualMachineArn(testAwsFsxOntapStorageVirtualMachine.arn())
 ///             .build());
 ///
 ///     }
@@ -171,14 +171,14 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///   test:
 ///     type: aws:datasync:LocationFsxOntapFileSystem
 ///     properties:
-///       fsxFilesystemArn: ${testAwsFsxOntapFileSystem.arn}
-///       securityGroupArns:
-///         - ${testAwsSecurityGroup.arn}
-///       storageVirtualMachineArn: ${testAwsFsxOntapStorageVirtualMachine.arn}
 ///       protocol:
 ///         nfs:
 ///           mountOptions:
 ///             version: NFS3
+///       fsxFilesystemArn: ${testAwsFsxOntapFileSystem.arn}
+///       securityGroupArns:
+///         - ${testAwsSecurityGroup.arn}
+///       storageVirtualMachineArn: ${testAwsFsxOntapStorageVirtualMachine.arn}
 /// ```
 ///
 ///
@@ -227,18 +227,18 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
           'aws:datasync/locationFsxOntapFileSystem:LocationFsxOntapFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
     protocol = registerOutput<LocationFsxOntapFileSystemProtocol>('protocol', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationFsxOntapFileSystemProtocol.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageVirtualMachineArn = registerOutput<String>('storageVirtualMachineArn');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -247,11 +247,12 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationFsxOntapFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationFsxOntapFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -270,11 +271,33 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
     protocol = registerOutput<LocationFsxOntapFileSystemProtocol>('protocol', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationFsxOntapFileSystemProtocol.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageVirtualMachineArn = registerOutput<String>('storageVirtualMachineArn');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [LocationFsxOntapFileSystem] resource.
+  LocationFsxOntapFileSystem.reference(String urn)
+    : super(
+        'aws:datasync/locationFsxOntapFileSystem:LocationFsxOntapFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
+    protocol = registerOutput<LocationFsxOntapFileSystemProtocol>('protocol', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationFsxOntapFileSystemProtocol.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageVirtualMachineArn = registerOutput<String>('storageVirtualMachineArn');
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

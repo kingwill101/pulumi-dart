@@ -4,44 +4,44 @@
 /// Result data returned by getApplication.
 class GetApplicationResult {
   /// ARN of the Application.
-  final String arn;
+  final String? arn;
   /// Description of the Application.
-  final String description;
-  final String id;
-  final String name;
-  final String region;
+  final String? description;
+  final String? id;
+  final String? name;
+  final String? region;
 
   /// Creates a new [GetApplicationResult].
   /// [arn] ARN of the Application.
   /// [description] Description of the Application.
-  /// [id] Required.
-  /// [name] Required.
-  /// [region] Required.
+  /// [id] Optional.
+  /// [name] Optional.
+  /// [region] Optional.
   const GetApplicationResult({
-    required this.arn,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.region,
+    this.arn,
+    this.description,
+    this.id,
+    this.name,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'id': id,
-      'name': name,
-      'region': region,
+      'arn': ?arn,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
     };
   }
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

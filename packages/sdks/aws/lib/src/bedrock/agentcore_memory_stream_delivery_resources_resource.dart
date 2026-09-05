@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_memory_stream_delivery_resources_resource_kinesis.dart';
 
 class AgentcoreMemoryStreamDeliveryResourcesResource {
-  /// Kinesis Data Stream configuration. See `kinesis` below.
-  final pulumi.Input<AgentcoreMemoryStreamDeliveryResourcesResourceKinesis>? kinesis;
+  /// Kinesis Data Stream configuration. See `kinesis` Block below.
+  final pulumi.Input<AgentcoreMemoryStreamDeliveryResourcesResourceKinesis?>? kinesis;
 
   /// Creates a new [AgentcoreMemoryStreamDeliveryResourcesResource].
-  /// [kinesis] Kinesis Data Stream configuration. See `kinesis` below.
+  /// [kinesis] Kinesis Data Stream configuration. See `kinesis` Block below.
   const AgentcoreMemoryStreamDeliveryResourcesResource({
     this.kinesis,
   });

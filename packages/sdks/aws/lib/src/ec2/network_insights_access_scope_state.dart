@@ -7,24 +7,24 @@ import 'network_insights_access_scope_match_path.dart';
 /// Input properties used for looking up and filtering NetworkInsightsAccessScope resources.
 class NetworkInsightsAccessScopeState {
   /// ARN of the Network Insights Access Scope.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Set of access scope path statements to exclude.
   /// See `excludePaths` below for details.
-  final pulumi.Input<List<NetworkInsightsAccessScopeExcludePath>>? excludePaths;
+  final pulumi.Input<List<NetworkInsightsAccessScopeExcludePath>?>? excludePaths;
   /// Set of access scope path statements to match.
   /// At least one must be specified.
   /// See `matchPaths` below for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<NetworkInsightsAccessScopeMatchPath>>? matchPaths;
+  final pulumi.Input<List<NetworkInsightsAccessScopeMatchPath>?>? matchPaths;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
   /// Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource.
   /// If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [NetworkInsightsAccessScopeState].
   /// [arn] ARN of the Network Insights Access Scope.

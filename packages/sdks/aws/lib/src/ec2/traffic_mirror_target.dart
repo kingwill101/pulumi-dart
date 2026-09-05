@@ -201,7 +201,7 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
   late final pulumi.Output<String?> gatewayLoadBalancerEndpointId;
   /// The network interface ID that is associated with the target.
   late final pulumi.Output<String?> networkInterfaceId;
-  /// The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
+  /// ARN of the Network Load Balancer that is associated with the target.
   late final pulumi.Output<String?> networkLoadBalancerArn;
   /// The ID of the AWS account that owns the traffic mirror target.
   late final pulumi.Output<String> ownerId;
@@ -226,7 +226,7 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorTarget:TrafficMirrorTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -235,8 +235,8 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
     networkLoadBalancerArn = registerOutput<String?>('networkLoadBalancerArn');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [TrafficMirrorTarget] resource's state with the given [name] and [id].
@@ -244,11 +244,12 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficMirrorTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficMirrorTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,7 +270,27 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
     networkLoadBalancerArn = registerOutput<String?>('networkLoadBalancerArn');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TrafficMirrorTarget] resource.
+  TrafficMirrorTarget.reference(String urn)
+    : super(
+        'aws:ec2/trafficMirrorTarget:TrafficMirrorTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    gatewayLoadBalancerEndpointId = registerOutput<String?>('gatewayLoadBalancerEndpointId');
+    networkInterfaceId = registerOutput<String?>('networkInterfaceId');
+    networkLoadBalancerArn = registerOutput<String?>('networkLoadBalancerArn');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

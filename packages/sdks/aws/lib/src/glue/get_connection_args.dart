@@ -12,9 +12,9 @@ class GetConnectionArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetConnectionArgs].
   /// [id] Concatenation of the catalog ID and connection name. For example, if your account ID is `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmInferenceSpecificationContainerBaseModel {
   /// Name of the SageMaker AI Hub content.
-  final pulumi.Input<String>? hubContentName;
+  final pulumi.Input<String?>? hubContentName;
   /// Version of the SageMaker AI Hub content.
-  final pulumi.Input<String>? hubContentVersion;
+  final pulumi.Input<String?>? hubContentVersion;
   /// Recipe name associated with the base model.
-  final pulumi.Input<String>? recipeName;
+  final pulumi.Input<String?>? recipeName;
 
   /// Creates a new [AlgorithmInferenceSpecificationContainerBaseModel].
   /// [hubContentName] Name of the SageMaker AI Hub content.

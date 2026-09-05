@@ -7,8 +7,8 @@ import 'network_insights_access_scope_match_path_destination_resource_statement.
 class NetworkInsightsAccessScopeMatchPathDestination {
   /// Packet header statement.
   /// See `packetHeaderStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeMatchPathDestinationPacketHeaderStatement>? packetHeaderStatement;
-  final pulumi.Input<NetworkInsightsAccessScopeMatchPathDestinationResourceStatement>? resourceStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeMatchPathDestinationPacketHeaderStatement?>? packetHeaderStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeMatchPathDestinationResourceStatement?>? resourceStatement;
 
   /// Creates a new [NetworkInsightsAccessScopeMatchPathDestination].
   /// [packetHeaderStatement] Packet header statement.

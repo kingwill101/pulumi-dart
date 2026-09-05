@@ -3,7 +3,7 @@ import 'default_route_table_propagation_args.dart';
 import 'default_route_table_propagation_state.dart';
 import 'default_route_table_propagation_timeouts.dart';
 
-/// Resource for managing an AWS EC2 (Elastic Compute Cloud) Transit Gateway Default Route Table Propagation.
+/// Resource for managing an AWS EC2 Transit Gateway Default Route Table Propagation.
 ///
 /// ## Example Usage
 ///
@@ -137,7 +137,7 @@ class DefaultRouteTablePropagation extends pulumi.CustomResource {
           'aws:ec2transitgateway/defaultRouteTablePropagation:DefaultRouteTablePropagation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     originalDefaultRouteTableId = registerOutput<String>('originalDefaultRouteTableId');
     region = registerOutput<String>('region');
@@ -151,11 +151,12 @@ class DefaultRouteTablePropagation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultRouteTablePropagationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultRouteTablePropagation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -169,6 +170,22 @@ class DefaultRouteTablePropagation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    originalDefaultRouteTableId = registerOutput<String>('originalDefaultRouteTableId');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<DefaultRouteTablePropagationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultRouteTablePropagationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+  }
+
+  /// Creates a typed reference to an existing [DefaultRouteTablePropagation] resource.
+  DefaultRouteTablePropagation.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/defaultRouteTablePropagation:DefaultRouteTablePropagation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     originalDefaultRouteTableId = registerOutput<String>('originalDefaultRouteTableId');
     region = registerOutput<String>('region');
     timeouts = registerOutput<DefaultRouteTablePropagationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultRouteTablePropagationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

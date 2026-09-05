@@ -4,23 +4,23 @@
 /// Result data returned by getTracker.
 class GetTrackerResult {
   /// Timestamp for when the tracker resource was created in ISO 8601 format.
-  final String createTime;
+  final String? createTime;
   /// Optional description for the tracker resource.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
-  final String kmsKeyId;
+  final String? kmsKeyId;
   /// Position filtering method of the tracker resource.
-  final String positionFiltering;
-  final String region;
+  final String? positionFiltering;
+  final String? region;
   /// Key-value map of resource tags for the tracker.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// ARN for the tracker resource. Used when you need to specify a resource across all AWS.
-  final String trackerArn;
-  final String trackerName;
+  final String? trackerArn;
+  final String? trackerName;
   /// Timestamp for when the tracker resource was last updated in ISO 8601 format.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetTrackerResult].
   /// [createTime] Timestamp for when the tracker resource was created in ISO 8601 format.
@@ -28,51 +28,51 @@ class GetTrackerResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kmsKeyId] Key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
   /// [positionFiltering] Position filtering method of the tracker resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value map of resource tags for the tracker.
   /// [trackerArn] ARN for the tracker resource. Used when you need to specify a resource across all AWS.
-  /// [trackerName] Required.
+  /// [trackerName] Optional.
   /// [updateTime] Timestamp for when the tracker resource was last updated in ISO 8601 format.
   const GetTrackerResult({
-    required this.createTime,
-    required this.description,
-    required this.id,
-    required this.kmsKeyId,
-    required this.positionFiltering,
-    required this.region,
-    required this.tags,
-    required this.trackerArn,
-    required this.trackerName,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.id,
+    this.kmsKeyId,
+    this.positionFiltering,
+    this.region,
+    this.tags,
+    this.trackerArn,
+    this.trackerName,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'id': id,
-      'kmsKeyId': kmsKeyId,
-      'positionFiltering': positionFiltering,
-      'region': region,
-      'tags': tags,
-      'trackerArn': trackerArn,
-      'trackerName': trackerName,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'id': ?id,
+      'kmsKeyId': ?kmsKeyId,
+      'positionFiltering': ?positionFiltering,
+      'region': ?region,
+      'tags': ?tags,
+      'trackerArn': ?trackerArn,
+      'trackerName': ?trackerName,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetTrackerResult.fromMap(Map<String, dynamic> map) {
     return GetTrackerResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      kmsKeyId: map['kmsKeyId'] as String,
-      positionFiltering: map['positionFiltering'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      trackerArn: map['trackerArn'] as String,
-      trackerName: map['trackerName'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      positionFiltering: (() { final guardedValue = map['positionFiltering']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      trackerArn: (() { final guardedValue = map['trackerArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trackerName: (() { final guardedValue = map['trackerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

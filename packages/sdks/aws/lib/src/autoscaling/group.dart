@@ -2,12 +2,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_args.dart';
 import 'group_availability_zone_distribution.dart';
 import 'group_capacity_reservation_specification.dart';
+import 'group_initial_lifecycle_hook.dart';
 import 'group_instance_lifecycle_policy.dart';
 import 'group_instance_maintenance_policy.dart';
 import 'group_instance_refresh.dart';
 import 'group_launch_template.dart';
 import 'group_mixed_instances_policy.dart';
 import 'group_state.dart';
+import 'group_tag.dart';
+import 'group_traffic_source.dart';
 import 'group_warm_pool.dart';
 import 'metric.dart';
 
@@ -91,19 +94,6 @@ import 'metric.dart';
 ///     strategy: aws.ec2.PlacementStrategy.Cluster,
 /// });
 /// const bar = new aws.autoscaling.Group("bar", {
-///     name: "foobar3-test",
-///     maxSize: 5,
-///     minSize: 2,
-///     healthCheckGracePeriod: 300,
-///     healthCheckType: "ELB",
-///     desiredCapacity: 4,
-///     forceDelete: true,
-///     placementGroup: test.id,
-///     launchConfiguration: foobar.name,
-///     vpcZoneIdentifiers: [
-///         example1.id,
-///         example2.id,
-///     ],
 ///     instanceMaintenancePolicy: {
 ///         minHealthyPercentage: 90,
 ///         maxHealthyPercentage: 120,
@@ -131,6 +121,23 @@ import 'metric.dart';
 ///             propagateAtLaunch: false,
 ///         },
 ///     ],
+///     name: "foobar3-test",
+///     maxSize: 5,
+///     minSize: 2,
+///     healthCheckGracePeriod: 300,
+///     healthCheckType: "ELB",
+///     desiredCapacity: 4,
+///     forceDelete: true,
+///     placementGroup: test.id,
+///     launchConfiguration: foobar.name,
+///     vpcZoneIdentifiers: [
+///         example1.id,
+///         example2.id,
+///     ],
+/// }, {
+///     customTimeouts: {
+///         "delete": "15m",
+///     },
 /// });
 /// ```
 /// ```python
@@ -142,19 +149,6 @@ import 'metric.dart';
 ///     name="test",
 ///     strategy=aws.ec2.PlacementStrategy.CLUSTER)
 /// bar = aws.autoscaling.Group("bar",
-///     name="foobar3-test",
-///     max_size=5,
-///     min_size=2,
-///     health_check_grace_period=300,
-///     health_check_type="ELB",
-///     desired_capacity=4,
-///     force_delete=True,
-///     placement_group=test.id,
-///     launch_configuration=foobar["name"],
-///     vpc_zone_identifiers=[
-///         example1["id"],
-///         example2["id"],
-///     ],
 ///     instance_maintenance_policy={
 ///         "min_healthy_percentage": 90,
 ///         "max_healthy_percentage": 120,
@@ -181,7 +175,21 @@ import 'metric.dart';
 ///             "value": "ipsum",
 ///             "propagate_at_launch": False,
 ///         },
-///     ])
+///     ],
+///     name="foobar3-test",
+///     max_size=5,
+///     min_size=2,
+///     health_check_grace_period=300,
+///     health_check_type="ELB",
+///     desired_capacity=4,
+///     force_delete=True,
+///     placement_group=test.id,
+///     launch_configuration=foobar["name"],
+///     vpc_zone_identifiers=[
+///         example1["id"],
+///         example2["id"],
+///     ],
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(delete="15m")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -200,20 +208,6 @@ import 'metric.dart';
 ///
 ///     var bar = new Aws.AutoScaling.Group("bar", new()
 ///     {
-///         Name = "foobar3-test",
-///         MaxSize = 5,
-///         MinSize = 2,
-///         HealthCheckGracePeriod = 300,
-///         HealthCheckType = "ELB",
-///         DesiredCapacity = 4,
-///         ForceDelete = true,
-///         PlacementGroup = test.Id,
-///         LaunchConfiguration = foobar.Name,
-///         VpcZoneIdentifiers = new[]
-///         {
-///             example1.Id,
-///             example2.Id,
-///         },
 ///         InstanceMaintenancePolicy = new Aws.AutoScaling.Inputs.GroupInstanceMaintenancePolicyArgs
 ///         {
 ///             MinHealthyPercentage = 90,
@@ -250,6 +244,20 @@ import 'metric.dart';
 ///                 PropagateAtLaunch = false,
 ///             },
 ///         },
+///         Name = "foobar3-test",
+///         MaxSize = 5,
+///         MinSize = 2,
+///         HealthCheckGracePeriod = 300,
+///         HealthCheckType = "ELB",
+///         DesiredCapacity = 4,
+///         ForceDelete = true,
+///         PlacementGroup = test.Id,
+///         LaunchConfiguration = foobar.Name,
+///         VpcZoneIdentifiers = new[]
+///         {
+///             example1.Id,
+///             example2.Id,
+///         },
 ///     });
 ///
 /// });
@@ -282,19 +290,6 @@ import 'metric.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = autoscaling.NewGroup(ctx, "bar", &autoscaling.GroupArgs{
-/// 			Name:                   pulumi.String("foobar3-test"),
-/// 			MaxSize:                pulumi.Int(5),
-/// 			MinSize:                pulumi.Int(2),
-/// 			HealthCheckGracePeriod: pulumi.Int(300),
-/// 			HealthCheckType:        pulumi.String("ELB"),
-/// 			DesiredCapacity:        pulumi.Int(4),
-/// 			ForceDelete:            pulumi.Bool(true),
-/// 			PlacementGroup:         test.ID().ToIDOutput().ToStringOutput(),
-/// 			LaunchConfiguration:    pulumi.Any(foobar.Name),
-/// 			VpcZoneIdentifiers: pulumi.StringArray{
-/// 				example1.Id,
-/// 				example2.Id,
-/// 			},
 /// 			InstanceMaintenancePolicy: &autoscaling.GroupInstanceMaintenancePolicyArgs{
 /// 				MinHealthyPercentage: pulumi.Int(90),
 /// 				MaxHealthyPercentage: pulumi.Int(120),
@@ -322,7 +317,20 @@ import 'metric.dart';
 /// 					PropagateAtLaunch: pulumi.Bool(false),
 /// 				},
 /// 			},
-/// 		})
+/// 			Name:                   pulumi.String("foobar3-test"),
+/// 			MaxSize:                pulumi.Int(5),
+/// 			MinSize:                pulumi.Int(2),
+/// 			HealthCheckGracePeriod: pulumi.Int(300),
+/// 			HealthCheckType:        pulumi.String("ELB"),
+/// 			DesiredCapacity:        pulumi.Int(4),
+/// 			ForceDelete:            pulumi.Bool(true),
+/// 			PlacementGroup:         test.ID().ToIDOutput().ToStringOutput(),
+/// 			LaunchConfiguration:    pulumi.Any(foobar.Name),
+/// 			VpcZoneIdentifiers: pulumi.StringArray{
+/// 				example1.Id,
+/// 				example2.Id,
+/// 			},
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Delete: "15m"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -344,16 +352,9 @@ import 'metric.dart';
 ///   strategy = "cluster"
 /// }
 /// resource "aws_autoscaling_group" "bar" {
-///   name                      = "foobar3-test"
-///   max_size                  = 5
-///   min_size                  = 2
-///   health_check_grace_period = 300
-///   health_check_type         = "ELB"
-///   desired_capacity          = 4
-///   force_delete              = true
-///   placement_group           = aws_ec2_placementgroup.test.id
-///   launch_configuration      = foobar.name
-///   vpc_zone_identifiers      = [example1.id, example2.id]
+///   timeouts {
+///     delete = "15m"
+///   }
 ///   instance_maintenance_policy = {
 ///     min_healthy_percentage = 90
 ///     max_healthy_percentage = 120
@@ -379,6 +380,16 @@ import 'metric.dart';
 ///     value               = "ipsum"
 ///     propagate_at_launch = false
 ///   }
+///   name                      = "foobar3-test"
+///   max_size                  = 5
+///   min_size                  = 2
+///   health_check_grace_period = 300
+///   health_check_type         = "ELB"
+///   desired_capacity          = 4
+///   force_delete              = true
+///   placement_group           = aws_ec2_placementgroup.test.id
+///   launch_configuration      = foobar.name
+///   vpc_zone_identifiers      = [example1.id, example2.id]
 /// }
 /// ```
 /// ```java
@@ -395,6 +406,8 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.inputs.GroupInitialLifecycleHookArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupTagArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -414,18 +427,6 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var bar = new Group("bar", GroupArgs.builder()
-///             .name("foobar3-test")
-///             .maxSize(5)
-///             .minSize(2)
-///             .healthCheckGracePeriod(300)
-///             .healthCheckType("ELB")
-///             .desiredCapacity(4)
-///             .forceDelete(true)
-///             .placementGroup(test.id())
-///             .launchConfiguration(foobar.name())
-///             .vpcZoneIdentifiers(
-///                 example1.id(),
-///                 example2.id())
 ///             .instanceMaintenancePolicy(GroupInstanceMaintenancePolicyArgs.builder()
 ///                 .minHealthyPercentage(90)
 ///                 .maxHealthyPercentage(120)
@@ -453,7 +454,23 @@ import 'metric.dart';
 ///                     .value("ipsum")
 ///                     .propagateAtLaunch(false)
 ///                     .build())
-///             .build());
+///             .name("foobar3-test")
+///             .maxSize(5)
+///             .minSize(2)
+///             .healthCheckGracePeriod(300)
+///             .healthCheckType("ELB")
+///             .desiredCapacity(4)
+///             .forceDelete(true)
+///             .placementGroup(test.id())
+///             .launchConfiguration(foobar.name())
+///             .vpcZoneIdentifiers(
+///                 example1.id(),
+///                 example2.id())
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .delete(CustomTimeouts.parseTimeoutString("15m"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -468,18 +485,6 @@ import 'metric.dart';
 ///   bar:
 ///     type: aws:autoscaling:Group
 ///     properties:
-///       name: foobar3-test
-///       maxSize: 5
-///       minSize: 2
-///       healthCheckGracePeriod: 300
-///       healthCheckType: ELB
-///       desiredCapacity: 4
-///       forceDelete: true
-///       placementGroup: ${test.id}
-///       launchConfiguration: ${foobar.name}
-///       vpcZoneIdentifiers:
-///         - ${example1.id}
-///         - ${example2.id}
 ///       instanceMaintenancePolicy:
 ///         minHealthyPercentage: 90
 ///         maxHealthyPercentage: 120
@@ -500,6 +505,21 @@ import 'metric.dart';
 ///         - key: lorem
 ///           value: ipsum
 ///           propagateAtLaunch: false
+///       name: foobar3-test
+///       maxSize: 5
+///       minSize: 2
+///       healthCheckGracePeriod: 300
+///       healthCheckType: ELB
+///       desiredCapacity: 4
+///       forceDelete: true
+///       placementGroup: ${test.id}
+///       launchConfiguration: ${foobar.name}
+///       vpcZoneIdentifiers:
+///         - ${example1.id}
+///         - ${example2.id}
+///     options:
+///       customTimeouts:
+///         delete: 15m
 /// ```
 ///
 ///
@@ -516,14 +536,14 @@ import 'metric.dart';
 ///     instanceType: "t2.micro",
 /// });
 /// const bar = new aws.autoscaling.Group("bar", {
-///     availabilityZones: ["us-east-1a"],
-///     desiredCapacity: 1,
-///     maxSize: 1,
-///     minSize: 1,
 ///     launchTemplate: {
 ///         id: foobar.id,
 ///         version: "$Latest",
 ///     },
+///     availabilityZones: ["us-east-1a"],
+///     desiredCapacity: 1,
+///     maxSize: 1,
+///     minSize: 1,
 /// });
 /// ```
 /// ```python
@@ -535,14 +555,14 @@ import 'metric.dart';
 ///     image_id="ami-1a2b3c",
 ///     instance_type="t2.micro")
 /// bar = aws.autoscaling.Group("bar",
-///     availability_zones=["us-east-1a"],
-///     desired_capacity=1,
-///     max_size=1,
-///     min_size=1,
 ///     launch_template={
 ///         "id": foobar.id,
 ///         "version": "$Latest",
-///     })
+///     },
+///     availability_zones=["us-east-1a"],
+///     desired_capacity=1,
+///     max_size=1,
+///     min_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -561,6 +581,11 @@ import 'metric.dart';
 ///
 ///     var bar = new Aws.AutoScaling.Group("bar", new()
 ///     {
+///         LaunchTemplate = new Aws.AutoScaling.Inputs.GroupLaunchTemplateArgs
+///         {
+///             Id = foobar.Id,
+///             Version = "$Latest",
+///         },
 ///         AvailabilityZones = new[]
 ///         {
 ///             "us-east-1a",
@@ -568,11 +593,6 @@ import 'metric.dart';
 ///         DesiredCapacity = 1,
 ///         MaxSize = 1,
 ///         MinSize = 1,
-///         LaunchTemplate = new Aws.AutoScaling.Inputs.GroupLaunchTemplateArgs
-///         {
-///             Id = foobar.Id,
-///             Version = "$Latest",
-///         },
 ///     });
 ///
 /// });
@@ -597,16 +617,16 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "bar", &autoscaling.GroupArgs{
+/// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
+/// 				Id:      foobar.ID().ToIDOutput().ToStringOutput(),
+/// 				Version: pulumi.String("$Latest"),
+/// 			},
 /// 			AvailabilityZones: pulumi.StringArray{
 /// 				pulumi.String("us-east-1a"),
 /// 			},
 /// 			DesiredCapacity: pulumi.Int(1),
 /// 			MaxSize:         pulumi.Int(1),
 /// 			MinSize:         pulumi.Int(1),
-/// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
-/// 				Id:      foobar.ID().ToIDOutput().ToStringOutput(),
-/// 				Version: pulumi.String("$Latest"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -630,14 +650,14 @@ import 'metric.dart';
 ///   instance_type = "t2.micro"
 /// }
 /// resource "aws_autoscaling_group" "bar" {
-///   availability_zones = ["us-east-1a"]
-///   desired_capacity   = 1
-///   max_size           = 1
-///   min_size           = 1
 ///   launch_template = {
 ///     id      = aws_ec2_launchtemplate.foobar.id
 ///     version = "$Latest"
 ///   }
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
 /// }
 /// ```
 /// ```java
@@ -671,14 +691,14 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var bar = new Group("bar", GroupArgs.builder()
-///             .availabilityZones("us-east-1a")
-///             .desiredCapacity(1)
-///             .maxSize(1)
-///             .minSize(1)
 ///             .launchTemplate(GroupLaunchTemplateArgs.builder()
 ///                 .id(foobar.id())
 ///                 .version("$Latest")
 ///                 .build())
+///             .availabilityZones("us-east-1a")
+///             .desiredCapacity(1)
+///             .maxSize(1)
+///             .minSize(1)
 ///             .build());
 ///
 ///     }
@@ -695,14 +715,14 @@ import 'metric.dart';
 ///   bar:
 ///     type: aws:autoscaling:Group
 ///     properties:
+///       launchTemplate:
+///         id: ${foobar.id}
+///         version: $Latest
 ///       availabilityZones:
 ///         - us-east-1a
 ///       desiredCapacity: 1
 ///       maxSize: 1
 ///       minSize: 1
-///       launchTemplate:
-///         id: ${foobar.id}
-///         version: $Latest
 /// ```
 ///
 ///
@@ -719,10 +739,6 @@ import 'metric.dart';
 ///     instanceType: "c5.large",
 /// });
 /// const exampleGroup = new aws.autoscaling.Group("example", {
-///     availabilityZones: ["us-east-1a"],
-///     desiredCapacity: 1,
-///     maxSize: 1,
-///     minSize: 1,
 ///     mixedInstancesPolicy: {
 ///         launchTemplate: {
 ///             launchTemplateSpecification: {
@@ -740,6 +756,10 @@ import 'metric.dart';
 ///             ],
 ///         },
 ///     },
+///     availabilityZones: ["us-east-1a"],
+///     desiredCapacity: 1,
+///     maxSize: 1,
+///     minSize: 1,
 /// });
 /// ```
 /// ```python
@@ -751,10 +771,6 @@ import 'metric.dart';
 ///     image_id=example_aws_ami["id"],
 ///     instance_type="c5.large")
 /// example_group = aws.autoscaling.Group("example",
-///     availability_zones=["us-east-1a"],
-///     desired_capacity=1,
-///     max_size=1,
-///     min_size=1,
 ///     mixed_instances_policy={
 ///         "launch_template": {
 ///             "launch_template_specification": {
@@ -771,7 +787,11 @@ import 'metric.dart';
 ///                 },
 ///             ],
 ///         },
-///     })
+///     },
+///     availability_zones=["us-east-1a"],
+///     desired_capacity=1,
+///     max_size=1,
+///     min_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -790,13 +810,6 @@ import 'metric.dart';
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
-///         DesiredCapacity = 1,
-///         MaxSize = 1,
-///         MinSize = 1,
 ///         MixedInstancesPolicy = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyArgs
 ///         {
 ///             LaunchTemplate = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyLaunchTemplateArgs
@@ -820,6 +833,13 @@ import 'metric.dart';
 ///                 },
 ///             },
 ///         },
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1a",
+///         },
+///         DesiredCapacity = 1,
+///         MaxSize = 1,
+///         MinSize = 1,
 ///     });
 ///
 /// });
@@ -844,12 +864,6 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
-/// 			DesiredCapacity: pulumi.Int(1),
-/// 			MaxSize:         pulumi.Int(1),
-/// 			MinSize:         pulumi.Int(1),
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
@@ -867,6 +881,12 @@ import 'metric.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
+/// 			},
+/// 			DesiredCapacity: pulumi.Int(1),
+/// 			MaxSize:         pulumi.Int(1),
+/// 			MinSize:         pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -890,10 +910,6 @@ import 'metric.dart';
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   availability_zones = ["us-east-1a"]
-///   desired_capacity   = 1
-///   max_size           = 1
-///   min_size           = 1
 ///   mixed_instances_policy = {
 ///     launch_template = {
 ///       launch_template_specification = {
@@ -908,6 +924,10 @@ import 'metric.dart';
 ///       }]
 ///     }
 ///   }
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
 /// }
 /// ```
 /// ```java
@@ -944,10 +964,6 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
-///             .availabilityZones("us-east-1a")
-///             .desiredCapacity(1)
-///             .maxSize(1)
-///             .minSize(1)
 ///             .mixedInstancesPolicy(GroupMixedInstancesPolicyArgs.builder()
 ///                 .launchTemplate(GroupMixedInstancesPolicyLaunchTemplateArgs.builder()
 ///                     .launchTemplateSpecification(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs.builder()
@@ -964,6 +980,10 @@ import 'metric.dart';
 ///                             .build())
 ///                     .build())
 ///                 .build())
+///             .availabilityZones("us-east-1a")
+///             .desiredCapacity(1)
+///             .maxSize(1)
+///             .minSize(1)
 ///             .build());
 ///
 ///     }
@@ -981,11 +1001,6 @@ import 'metric.dart';
 ///     type: aws:autoscaling:Group
 ///     name: example
 ///     properties:
-///       availabilityZones:
-///         - us-east-1a
-///       desiredCapacity: 1
-///       maxSize: 1
-///       minSize: 1
 ///       mixedInstancesPolicy:
 ///         launchTemplate:
 ///           launchTemplateSpecification:
@@ -995,6 +1010,11 @@ import 'metric.dart';
 ///               weightedCapacity: '3'
 ///             - instanceType: c3.large
 ///               weightedCapacity: '2'
+///       availabilityZones:
+///         - us-east-1a
+///       desiredCapacity: 1
+///       maxSize: 1
+///       minSize: 1
 /// ```
 ///
 ///
@@ -1011,14 +1031,6 @@ import 'metric.dart';
 ///     instanceType: "c5.large",
 /// });
 /// const exampleGroup = new aws.autoscaling.Group("example", {
-///     capacityRebalance: true,
-///     desiredCapacity: 12,
-///     maxSize: 15,
-///     minSize: 12,
-///     vpcZoneIdentifiers: [
-///         example1.id,
-///         example2.id,
-///     ],
 ///     mixedInstancesPolicy: {
 ///         instancesDistribution: {
 ///             onDemandBaseCapacity: 0,
@@ -1041,6 +1053,14 @@ import 'metric.dart';
 ///             ],
 ///         },
 ///     },
+///     capacityRebalance: true,
+///     desiredCapacity: 12,
+///     maxSize: 15,
+///     minSize: 12,
+///     vpcZoneIdentifiers: [
+///         example1.id,
+///         example2.id,
+///     ],
 /// });
 /// ```
 /// ```python
@@ -1052,14 +1072,6 @@ import 'metric.dart';
 ///     image_id=example_aws_ami["id"],
 ///     instance_type="c5.large")
 /// example_group = aws.autoscaling.Group("example",
-///     capacity_rebalance=True,
-///     desired_capacity=12,
-///     max_size=15,
-///     min_size=12,
-///     vpc_zone_identifiers=[
-///         example1["id"],
-///         example2["id"],
-///     ],
 ///     mixed_instances_policy={
 ///         "instances_distribution": {
 ///             "on_demand_base_capacity": 0,
@@ -1081,7 +1093,15 @@ import 'metric.dart';
 ///                 },
 ///             ],
 ///         },
-///     })
+///     },
+///     capacity_rebalance=True,
+///     desired_capacity=12,
+///     max_size=15,
+///     min_size=12,
+///     vpc_zone_identifiers=[
+///         example1["id"],
+///         example2["id"],
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1100,15 +1120,6 @@ import 'metric.dart';
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
-///         CapacityRebalance = true,
-///         DesiredCapacity = 12,
-///         MaxSize = 15,
-///         MinSize = 12,
-///         VpcZoneIdentifiers = new[]
-///         {
-///             example1.Id,
-///             example2.Id,
-///         },
 ///         MixedInstancesPolicy = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyArgs
 ///         {
 ///             InstancesDistribution = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyInstancesDistributionArgs
@@ -1138,6 +1149,15 @@ import 'metric.dart';
 ///                 },
 ///             },
 ///         },
+///         CapacityRebalance = true,
+///         DesiredCapacity = 12,
+///         MaxSize = 15,
+///         MinSize = 12,
+///         VpcZoneIdentifiers = new[]
+///         {
+///             example1.Id,
+///             example2.Id,
+///         },
 ///     });
 ///
 /// });
@@ -1162,14 +1182,6 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
-/// 			CapacityRebalance: pulumi.Bool(true),
-/// 			DesiredCapacity:   pulumi.Int(12),
-/// 			MaxSize:           pulumi.Int(15),
-/// 			MinSize:           pulumi.Int(12),
-/// 			VpcZoneIdentifiers: pulumi.StringArray{
-/// 				example1.Id,
-/// 				example2.Id,
-/// 			},
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				InstancesDistribution: &autoscaling.GroupMixedInstancesPolicyInstancesDistributionArgs{
 /// 					OnDemandBaseCapacity:                pulumi.Int(0),
@@ -1191,6 +1203,14 @@ import 'metric.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 			},
+/// 			CapacityRebalance: pulumi.Bool(true),
+/// 			DesiredCapacity:   pulumi.Int(12),
+/// 			MaxSize:           pulumi.Int(15),
+/// 			MinSize:           pulumi.Int(12),
+/// 			VpcZoneIdentifiers: pulumi.StringArray{
+/// 				example1.Id,
+/// 				example2.Id,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1215,11 +1235,6 @@ import 'metric.dart';
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   capacity_rebalance   = true
-///   desired_capacity     = 12
-///   max_size             = 15
-///   min_size             = 12
-///   vpc_zone_identifiers = [example1.id, example2.id]
 ///   mixed_instances_policy = {
 ///     instances_distribution = {
 ///       on_demand_base_capacity                  = 0
@@ -1239,6 +1254,11 @@ import 'metric.dart';
 ///       }]
 ///     }
 ///   }
+///   capacity_rebalance   = true
+///   desired_capacity     = 12
+///   max_size             = 15
+///   min_size             = 12
+///   vpc_zone_identifiers = [example1.id, example2.id]
 /// }
 /// ```
 /// ```java
@@ -1276,13 +1296,6 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
-///             .capacityRebalance(true)
-///             .desiredCapacity(12)
-///             .maxSize(15)
-///             .minSize(12)
-///             .vpcZoneIdentifiers(
-///                 example1.id(),
-///                 example2.id())
 ///             .mixedInstancesPolicy(GroupMixedInstancesPolicyArgs.builder()
 ///                 .instancesDistribution(GroupMixedInstancesPolicyInstancesDistributionArgs.builder()
 ///                     .onDemandBaseCapacity(0)
@@ -1304,6 +1317,13 @@ import 'metric.dart';
 ///                             .build())
 ///                     .build())
 ///                 .build())
+///             .capacityRebalance(true)
+///             .desiredCapacity(12)
+///             .maxSize(15)
+///             .minSize(12)
+///             .vpcZoneIdentifiers(
+///                 example1.id(),
+///                 example2.id())
 ///             .build());
 ///
 ///     }
@@ -1321,13 +1341,6 @@ import 'metric.dart';
 ///     type: aws:autoscaling:Group
 ///     name: example
 ///     properties:
-///       capacityRebalance: true
-///       desiredCapacity: 12
-///       maxSize: 15
-///       minSize: 12
-///       vpcZoneIdentifiers:
-///         - ${example1.id}
-///         - ${example2.id}
 ///       mixedInstancesPolicy:
 ///         instancesDistribution:
 ///           onDemandBaseCapacity: 0
@@ -1341,6 +1354,13 @@ import 'metric.dart';
 ///               weightedCapacity: '3'
 ///             - instanceType: c3.large
 ///               weightedCapacity: '2'
+///       capacityRebalance: true
+///       desiredCapacity: 12
+///       maxSize: 15
+///       minSize: 12
+///       vpcZoneIdentifiers:
+///         - ${example1.id}
+///         - ${example2.id}
 /// ```
 ///
 ///
@@ -1363,10 +1383,6 @@ import 'metric.dart';
 ///     imageId: example2AwsAmi.id,
 /// });
 /// const exampleGroup = new aws.autoscaling.Group("example", {
-///     availabilityZones: ["us-east-1a"],
-///     desiredCapacity: 1,
-///     maxSize: 1,
-///     minSize: 1,
 ///     mixedInstancesPolicy: {
 ///         launchTemplate: {
 ///             launchTemplateSpecification: {
@@ -1378,15 +1394,19 @@ import 'metric.dart';
 ///                     weightedCapacity: "3",
 ///                 },
 ///                 {
-///                     instanceType: "c6g.large",
 ///                     launchTemplateSpecification: {
 ///                         launchTemplateId: example2.id,
 ///                     },
+///                     instanceType: "c6g.large",
 ///                     weightedCapacity: "2",
 ///                 },
 ///             ],
 ///         },
 ///     },
+///     availabilityZones: ["us-east-1a"],
+///     desiredCapacity: 1,
+///     maxSize: 1,
+///     minSize: 1,
 /// });
 /// ```
 /// ```python
@@ -1401,10 +1421,6 @@ import 'metric.dart';
 ///     name_prefix="example2",
 ///     image_id=example2_aws_ami["id"])
 /// example_group = aws.autoscaling.Group("example",
-///     availability_zones=["us-east-1a"],
-///     desired_capacity=1,
-///     max_size=1,
-///     min_size=1,
 ///     mixed_instances_policy={
 ///         "launch_template": {
 ///             "launch_template_specification": {
@@ -1416,15 +1432,19 @@ import 'metric.dart';
 ///                     "weighted_capacity": "3",
 ///                 },
 ///                 {
-///                     "instance_type": "c6g.large",
 ///                     "launch_template_specification": {
 ///                         "launch_template_id": example2.id,
 ///                     },
+///                     "instance_type": "c6g.large",
 ///                     "weighted_capacity": "2",
 ///                 },
 ///             ],
 ///         },
-///     })
+///     },
+///     availability_zones=["us-east-1a"],
+///     desired_capacity=1,
+///     max_size=1,
+///     min_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1449,13 +1469,6 @@ import 'metric.dart';
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
-///         DesiredCapacity = 1,
-///         MaxSize = 1,
-///         MinSize = 1,
 ///         MixedInstancesPolicy = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyArgs
 ///         {
 ///             LaunchTemplate = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyLaunchTemplateArgs
@@ -1473,16 +1486,23 @@ import 'metric.dart';
 ///                     },
 ///                     new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs
 ///                     {
-///                         InstanceType = "c6g.large",
 ///                         LaunchTemplateSpecification = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationArgs
 ///                         {
 ///                             LaunchTemplateId = example2.Id,
 ///                         },
+///                         InstanceType = "c6g.large",
 ///                         WeightedCapacity = "2",
 ///                     },
 ///                 },
 ///             },
 ///         },
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1a",
+///         },
+///         DesiredCapacity = 1,
+///         MaxSize = 1,
+///         MinSize = 1,
 ///     });
 ///
 /// });
@@ -1514,12 +1534,6 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
-/// 			DesiredCapacity: pulumi.Int(1),
-/// 			MaxSize:         pulumi.Int(1),
-/// 			MinSize:         pulumi.Int(1),
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
@@ -1531,15 +1545,21 @@ import 'metric.dart';
 /// 							WeightedCapacity: pulumi.String("3"),
 /// 						},
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
-/// 							InstanceType: pulumi.String("c6g.large"),
 /// 							LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationArgs{
 /// 								LaunchTemplateId: example2.ID().ToIDOutput().ToStringOutput(),
 /// 							},
+/// 							InstanceType:     pulumi.String("c6g.large"),
 /// 							WeightedCapacity: pulumi.String("2"),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
+/// 			},
+/// 			DesiredCapacity: pulumi.Int(1),
+/// 			MaxSize:         pulumi.Int(1),
+/// 			MinSize:         pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1567,10 +1587,6 @@ import 'metric.dart';
 ///   image_id    = example2AwsAmi.id
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   availability_zones = ["us-east-1a"]
-///   desired_capacity   = 1
-///   max_size           = 1
-///   min_size           = 1
 ///   mixed_instances_policy = {
 ///     launch_template = {
 ///       launch_template_specification = {
@@ -1580,14 +1596,18 @@ import 'metric.dart';
 ///         "instanceType"     = "c4.large"
 ///         "weightedCapacity" = "3"
 ///         }, {
-///         "instanceType" = "c6g.large"
 ///         "launchTemplateSpecification" = {
 ///           "launchTemplateId" = aws_ec2_launchtemplate.example2.id
 ///         }
+///         "instanceType"     = "c6g.large"
 ///         "weightedCapacity" = "2"
 ///       }]
 ///     }
 ///   }
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
 /// }
 /// ```
 /// ```java
@@ -1630,10 +1650,6 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
-///             .availabilityZones("us-east-1a")
-///             .desiredCapacity(1)
-///             .maxSize(1)
-///             .minSize(1)
 ///             .mixedInstancesPolicy(GroupMixedInstancesPolicyArgs.builder()
 ///                 .launchTemplate(GroupMixedInstancesPolicyLaunchTemplateArgs.builder()
 ///                     .launchTemplateSpecification(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs.builder()
@@ -1645,14 +1661,18 @@ import 'metric.dart';
 ///                             .weightedCapacity("3")
 ///                             .build(),
 ///                         GroupMixedInstancesPolicyLaunchTemplateOverrideArgs.builder()
-///                             .instanceType("c6g.large")
 ///                             .launchTemplateSpecification(GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationArgs.builder()
 ///                                 .launchTemplateId(example2.id())
 ///                                 .build())
+///                             .instanceType("c6g.large")
 ///                             .weightedCapacity("2")
 ///                             .build())
 ///                     .build())
 ///                 .build())
+///             .availabilityZones("us-east-1a")
+///             .desiredCapacity(1)
+///             .maxSize(1)
+///             .minSize(1)
 ///             .build());
 ///
 ///     }
@@ -1675,11 +1695,6 @@ import 'metric.dart';
 ///     type: aws:autoscaling:Group
 ///     name: example
 ///     properties:
-///       availabilityZones:
-///         - us-east-1a
-///       desiredCapacity: 1
-///       maxSize: 1
-///       minSize: 1
 ///       mixedInstancesPolicy:
 ///         launchTemplate:
 ///           launchTemplateSpecification:
@@ -1687,10 +1702,15 @@ import 'metric.dart';
 ///           overrides:
 ///             - instanceType: c4.large
 ///               weightedCapacity: '3'
-///             - instanceType: c6g.large
-///               launchTemplateSpecification:
+///             - launchTemplateSpecification:
 ///                 launchTemplateId: ${example2.id}
+///               instanceType: c6g.large
 ///               weightedCapacity: '2'
+///       availabilityZones:
+///         - us-east-1a
+///       desiredCapacity: 1
+///       maxSize: 1
+///       minSize: 1
 /// ```
 ///
 ///
@@ -1709,10 +1729,6 @@ import 'metric.dart';
 ///     instanceType: "c5.large",
 /// });
 /// const exampleGroup = new aws.autoscaling.Group("example", {
-///     availabilityZones: ["us-east-1a"],
-///     desiredCapacity: 1,
-///     maxSize: 1,
-///     minSize: 1,
 ///     mixedInstancesPolicy: {
 ///         launchTemplate: {
 ///             launchTemplateSpecification: {
@@ -1730,6 +1746,10 @@ import 'metric.dart';
 ///             }],
 ///         },
 ///     },
+///     availabilityZones: ["us-east-1a"],
+///     desiredCapacity: 1,
+///     maxSize: 1,
+///     minSize: 1,
 /// });
 /// ```
 /// ```python
@@ -1741,10 +1761,6 @@ import 'metric.dart';
 ///     image_id=example_aws_ami["id"],
 ///     instance_type="c5.large")
 /// example_group = aws.autoscaling.Group("example",
-///     availability_zones=["us-east-1a"],
-///     desired_capacity=1,
-///     max_size=1,
-///     min_size=1,
 ///     mixed_instances_policy={
 ///         "launch_template": {
 ///             "launch_template_specification": {
@@ -1761,7 +1777,11 @@ import 'metric.dart';
 ///                 },
 ///             }],
 ///         },
-///     })
+///     },
+///     availability_zones=["us-east-1a"],
+///     desired_capacity=1,
+///     max_size=1,
+///     min_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1780,13 +1800,6 @@ import 'metric.dart';
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
-///         DesiredCapacity = 1,
-///         MaxSize = 1,
-///         MinSize = 1,
 ///         MixedInstancesPolicy = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyArgs
 ///         {
 ///             LaunchTemplate = new Aws.AutoScaling.Inputs.GroupMixedInstancesPolicyLaunchTemplateArgs
@@ -1814,6 +1827,13 @@ import 'metric.dart';
 ///                 },
 ///             },
 ///         },
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1a",
+///         },
+///         DesiredCapacity = 1,
+///         MaxSize = 1,
+///         MinSize = 1,
 ///     });
 ///
 /// });
@@ -1838,12 +1858,6 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
-/// 			DesiredCapacity: pulumi.Int(1),
-/// 			MaxSize:         pulumi.Int(1),
-/// 			MinSize:         pulumi.Int(1),
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
@@ -1863,6 +1877,12 @@ import 'metric.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
+/// 			},
+/// 			DesiredCapacity: pulumi.Int(1),
+/// 			MaxSize:         pulumi.Int(1),
+/// 			MinSize:         pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1886,10 +1906,6 @@ import 'metric.dart';
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   availability_zones = ["us-east-1a"]
-///   desired_capacity   = 1
-///   max_size           = 1
-///   min_size           = 1
 ///   mixed_instances_policy = {
 ///     launch_template = {
 ///       launch_template_specification = {
@@ -1907,6 +1923,10 @@ import 'metric.dart';
 ///       }]
 ///     }
 ///   }
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 1
+///   min_size           = 1
 /// }
 /// ```
 /// ```java
@@ -1946,10 +1966,6 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
-///             .availabilityZones("us-east-1a")
-///             .desiredCapacity(1)
-///             .maxSize(1)
-///             .minSize(1)
 ///             .mixedInstancesPolicy(GroupMixedInstancesPolicyArgs.builder()
 ///                 .launchTemplate(GroupMixedInstancesPolicyLaunchTemplateArgs.builder()
 ///                     .launchTemplateSpecification(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs.builder()
@@ -1967,6 +1983,10 @@ import 'metric.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .availabilityZones("us-east-1a")
+///             .desiredCapacity(1)
+///             .maxSize(1)
+///             .minSize(1)
 ///             .build());
 ///
 ///     }
@@ -1984,11 +2004,6 @@ import 'metric.dart';
 ///     type: aws:autoscaling:Group
 ///     name: example
 ///     properties:
-///       availabilityZones:
-///         - us-east-1a
-///       desiredCapacity: 1
-///       maxSize: 1
-///       minSize: 1
 ///       mixedInstancesPolicy:
 ///         launchTemplate:
 ///           launchTemplateSpecification:
@@ -1999,6 +2014,11 @@ import 'metric.dart';
 ///                   min: 1000
 ///                 vcpuCount:
 ///                   min: 4
+///       availabilityZones:
+///         - us-east-1a
+///       desiredCapacity: 1
+///       maxSize: 1
+///       minSize: 1
 /// ```
 ///
 ///
@@ -2333,74 +2353,74 @@ import 'metric.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.ec2.getAmi({
-///     mostRecent: true,
-///     owners: ["amazon"],
 ///     filters: [{
 ///         name: "name",
 ///         values: ["amzn-ami-hvm-*-x86_64-gp2"],
 ///     }],
+///     mostRecent: true,
+///     owners: ["amazon"],
 /// });
 /// const exampleLaunchTemplate = new aws.ec2.LaunchTemplate("example", {
 ///     imageId: example.then(example => example.id),
 ///     instanceType: "t3.nano",
 /// });
 /// const exampleGroup = new aws.autoscaling.Group("example", {
-///     availabilityZones: ["us-east-1a"],
-///     desiredCapacity: 1,
-///     maxSize: 2,
-///     minSize: 1,
 ///     launchTemplate: {
 ///         id: exampleLaunchTemplate.id,
 ///         version: exampleLaunchTemplate.latestVersion.apply(x =>String(x)),
+///     },
+///     instanceRefresh: {
+///         preferences: {
+///             minHealthyPercentage: 50,
+///         },
+///         strategy: "Rolling",
+///         triggers: ["tag"],
 ///     },
 ///     tags: [{
 ///         key: "Key",
 ///         value: "Value",
 ///         propagateAtLaunch: true,
 ///     }],
-///     instanceRefresh: {
-///         strategy: "Rolling",
-///         preferences: {
-///             minHealthyPercentage: 50,
-///         },
-///         triggers: ["tag"],
-///     },
+///     availabilityZones: ["us-east-1a"],
+///     desiredCapacity: 1,
+///     maxSize: 2,
+///     minSize: 1,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.ec2.get_ami(most_recent=True,
-///     owners=["amazon"],
-///     filters=[{
+/// example = aws.ec2.get_ami(filters=[{
 ///         "name": "name",
 ///         "values": ["amzn-ami-hvm-*-x86_64-gp2"],
-///     }])
+///     }],
+///     most_recent=True,
+///     owners=["amazon"])
 /// example_launch_template = aws.ec2.LaunchTemplate("example",
 ///     image_id=example.id,
 ///     instance_type="t3.nano")
 /// example_group = aws.autoscaling.Group("example",
-///     availability_zones=["us-east-1a"],
-///     desired_capacity=1,
-///     max_size=2,
-///     min_size=1,
 ///     launch_template={
 ///         "id": example_launch_template.id,
 ///         "version": example_launch_template.latest_version.apply(lambda x: str(x)),
+///     },
+///     instance_refresh={
+///         "preferences": {
+///             "min_healthy_percentage": 50,
+///         },
+///         "strategy": "Rolling",
+///         "triggers": ["tag"],
 ///     },
 ///     tags=[{
 ///         "key": "Key",
 ///         "value": "Value",
 ///         "propagate_at_launch": True,
 ///     }],
-///     instance_refresh={
-///         "strategy": "Rolling",
-///         "preferences": {
-///             "min_healthy_percentage": 50,
-///         },
-///         "triggers": ["tag"],
-///     })
+///     availability_zones=["us-east-1a"],
+///     desired_capacity=1,
+///     max_size=2,
+///     min_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2412,11 +2432,6 @@ import 'metric.dart';
 /// {
 ///     var example = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
-///         Owners = new[]
-///         {
-///             "amazon",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -2428,6 +2443,11 @@ import 'metric.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
+///         Owners = new[]
+///         {
+///             "amazon",
+///         },
 ///     });
 ///
 ///     var exampleLaunchTemplate = new Aws.Ec2.LaunchTemplate("example", new()
@@ -2438,17 +2458,22 @@ import 'metric.dart';
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
-///         DesiredCapacity = 1,
-///         MaxSize = 2,
-///         MinSize = 1,
 ///         LaunchTemplate = new Aws.AutoScaling.Inputs.GroupLaunchTemplateArgs
 ///         {
 ///             Id = exampleLaunchTemplate.Id,
 ///             Version = exampleLaunchTemplate.LatestVersion,
+///         },
+///         InstanceRefresh = new Aws.AutoScaling.Inputs.GroupInstanceRefreshArgs
+///         {
+///             Preferences = new Aws.AutoScaling.Inputs.GroupInstanceRefreshPreferencesArgs
+///             {
+///                 MinHealthyPercentage = 50,
+///             },
+///             Strategy = "Rolling",
+///             Triggers = new[]
+///             {
+///                 "tag",
+///             },
 ///         },
 ///         Tags = new[]
 ///         {
@@ -2459,18 +2484,13 @@ import 'metric.dart';
 ///                 PropagateAtLaunch = true,
 ///             },
 ///         },
-///         InstanceRefresh = new Aws.AutoScaling.Inputs.GroupInstanceRefreshArgs
+///         AvailabilityZones = new[]
 ///         {
-///             Strategy = "Rolling",
-///             Preferences = new Aws.AutoScaling.Inputs.GroupInstanceRefreshPreferencesArgs
-///             {
-///                 MinHealthyPercentage = 50,
-///             },
-///             Triggers = new[]
-///             {
-///                 "tag",
-///             },
+///             "us-east-1a",
 ///         },
+///         DesiredCapacity = 1,
+///         MaxSize = 2,
+///         MinSize = 1,
 ///     });
 ///
 /// });
@@ -2487,10 +2507,6 @@ import 'metric.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
-/// 			Owners: []string{
-/// 				"amazon",
-/// 			},
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -2498,6 +2514,10 @@ import 'metric.dart';
 /// 						"amzn-ami-hvm-*-x86_64-gp2",
 /// 					},
 /// 				},
+/// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
+/// 			Owners: []string{
+/// 				"amazon",
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -2511,15 +2531,18 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
-/// 			DesiredCapacity: pulumi.Int(1),
-/// 			MaxSize:         pulumi.Int(2),
-/// 			MinSize:         pulumi.Int(1),
 /// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
 /// 				Id:      exampleLaunchTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 				Version: exampleLaunchTemplate.LatestVersion,
+/// 			},
+/// 			InstanceRefresh: &autoscaling.GroupInstanceRefreshArgs{
+/// 				Preferences: &autoscaling.GroupInstanceRefreshPreferencesArgs{
+/// 					MinHealthyPercentage: pulumi.Int(50),
+/// 				},
+/// 				Strategy: pulumi.String("Rolling"),
+/// 				Triggers: pulumi.StringArray{
+/// 					pulumi.String("tag"),
+/// 				},
 /// 			},
 /// 			Tags: autoscaling.GroupTagArray{
 /// 				&autoscaling.GroupTagArgs{
@@ -2528,15 +2551,12 @@ import 'metric.dart';
 /// 					PropagateAtLaunch: pulumi.Bool(true),
 /// 				},
 /// 			},
-/// 			InstanceRefresh: &autoscaling.GroupInstanceRefreshArgs{
-/// 				Strategy: pulumi.String("Rolling"),
-/// 				Preferences: &autoscaling.GroupInstanceRefreshPreferencesArgs{
-/// 					MinHealthyPercentage: pulumi.Int(50),
-/// 				},
-/// 				Triggers: pulumi.StringArray{
-/// 					pulumi.String("tag"),
-/// 				},
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
 /// 			},
+/// 			DesiredCapacity: pulumi.Int(1),
+/// 			MaxSize:         pulumi.Int(2),
+/// 			MinSize:         pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2555,35 +2575,35 @@ import 'metric.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "example" {
-///   most_recent = true
-///   owners      = ["amazon"]
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-hvm-*-x86_64-gp2"]
 ///   }
+///   most_recent = true
+///   owners      = ["amazon"]
 /// }
 ///
 /// resource "aws_autoscaling_group" "example" {
-///   availability_zones = ["us-east-1a"]
-///   desired_capacity   = 1
-///   max_size           = 2
-///   min_size           = 1
 ///   launch_template = {
 ///     id      = aws_ec2_launchtemplate.example.id
 ///     version = aws_ec2_launchtemplate.example.latest_version
+///   }
+///   instance_refresh = {
+///     preferences = {
+///       min_healthy_percentage = 50
+///     }
+///     strategy = "Rolling"
+///     triggers = ["tag"]
 ///   }
 ///   tags {
 ///     key                 = "Key"
 ///     value               = "Value"
 ///     propagate_at_launch = true
 ///   }
-///   instance_refresh = {
-///     strategy = "Rolling"
-///     preferences = {
-///       min_healthy_percentage = 50
-///     }
-///     triggers = ["tag"]
-///   }
+///   availability_zones = ["us-east-1a"]
+///   desired_capacity   = 1
+///   max_size           = 2
+///   min_size           = 1
 /// }
 /// resource "aws_ec2_launchtemplate" "example" {
 ///   image_id      = data.aws_ec2_getami.example.id
@@ -2604,9 +2624,9 @@ import 'metric.dart';
 /// import com.pulumi.aws.autoscaling.Group;
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupLaunchTemplateArgs;
-/// import com.pulumi.aws.autoscaling.inputs.GroupTagArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupInstanceRefreshArgs;
 /// import com.pulumi.aws.autoscaling.inputs.GroupInstanceRefreshPreferencesArgs;
+/// import com.pulumi.aws.autoscaling.inputs.GroupTagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2621,12 +2641,12 @@ import 'metric.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
-///             .owners("amazon")
 ///             .filters(GetAmiFilterArgs.builder()
 ///                 .name("name")
 ///                 .values("amzn-ami-hvm-*-x86_64-gp2")
 ///                 .build())
+///             .mostRecent(true)
+///             .owners("amazon")
 ///             .build());
 ///
 ///         var exampleLaunchTemplate = new LaunchTemplate("exampleLaunchTemplate", LaunchTemplateArgs.builder()
@@ -2635,26 +2655,26 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
-///             .availabilityZones("us-east-1a")
-///             .desiredCapacity(1)
-///             .maxSize(2)
-///             .minSize(1)
 ///             .launchTemplate(GroupLaunchTemplateArgs.builder()
 ///                 .id(exampleLaunchTemplate.id())
 ///                 .version(exampleLaunchTemplate.latestVersion())
+///                 .build())
+///             .instanceRefresh(GroupInstanceRefreshArgs.builder()
+///                 .preferences(GroupInstanceRefreshPreferencesArgs.builder()
+///                     .minHealthyPercentage(50)
+///                     .build())
+///                 .strategy("Rolling")
+///                 .triggers("tag")
 ///                 .build())
 ///             .tags(GroupTagArgs.builder()
 ///                 .key("Key")
 ///                 .value("Value")
 ///                 .propagateAtLaunch(true)
 ///                 .build())
-///             .instanceRefresh(GroupInstanceRefreshArgs.builder()
-///                 .strategy("Rolling")
-///                 .preferences(GroupInstanceRefreshPreferencesArgs.builder()
-///                     .minHealthyPercentage(50)
-///                     .build())
-///                 .triggers("tag")
-///                 .build())
+///             .availabilityZones("us-east-1a")
+///             .desiredCapacity(1)
+///             .maxSize(2)
+///             .minSize(1)
 ///             .build());
 ///
 ///     }
@@ -2666,24 +2686,24 @@ import 'metric.dart';
 ///     type: aws:autoscaling:Group
 ///     name: example
 ///     properties:
+///       launchTemplate:
+///         id: ${exampleLaunchTemplate.id}
+///         version: ${exampleLaunchTemplate.latestVersion}
+///       instanceRefresh:
+///         preferences:
+///           minHealthyPercentage: 50
+///         strategy: Rolling
+///         triggers:
+///           - tag
+///       tags:
+///         - key: Key
+///           value: Value
+///           propagateAtLaunch: true
 ///       availabilityZones:
 ///         - us-east-1a
 ///       desiredCapacity: 1
 ///       maxSize: 2
 ///       minSize: 1
-///       launchTemplate:
-///         id: ${exampleLaunchTemplate.id}
-///         version: ${exampleLaunchTemplate.latestVersion}
-///       tags:
-///         - key: Key
-///           value: Value
-///           propagateAtLaunch: true
-///       instanceRefresh:
-///         strategy: Rolling
-///         preferences:
-///           minHealthyPercentage: 50
-///         triggers:
-///           - tag
 ///   exampleLaunchTemplate:
 ///     type: aws:ec2:LaunchTemplate
 ///     name: example
@@ -2695,13 +2715,13 @@ import 'metric.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
-///         owners:
-///           - amazon
 ///         filters:
 ///           - name: name
 ///             values:
 ///               - amzn-ami-hvm-*-x86_64-gp2
+///         mostRecent: true
+///         owners:
+///           - amazon
 /// ```
 ///
 ///
@@ -2718,18 +2738,18 @@ import 'metric.dart';
 ///     instanceType: "c5.large",
 /// });
 /// const exampleGroup = new aws.autoscaling.Group("example", {
+///     warmPool: {
+///         instanceReusePolicy: {
+///             reuseOnScaleIn: true,
+///         },
+///         poolState: "Hibernated",
+///         minSize: 1,
+///         maxGroupPreparedCapacity: 10,
+///     },
 ///     availabilityZones: ["us-east-1a"],
 ///     desiredCapacity: 1,
 ///     maxSize: 5,
 ///     minSize: 1,
-///     warmPool: {
-///         poolState: "Hibernated",
-///         minSize: 1,
-///         maxGroupPreparedCapacity: 10,
-///         instanceReusePolicy: {
-///             reuseOnScaleIn: true,
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -2741,18 +2761,18 @@ import 'metric.dart';
 ///     image_id=example_aws_ami["id"],
 ///     instance_type="c5.large")
 /// example_group = aws.autoscaling.Group("example",
-///     availability_zones=["us-east-1a"],
-///     desired_capacity=1,
-///     max_size=5,
-///     min_size=1,
 ///     warm_pool={
-///         "pool_state": "Hibernated",
-///         "min_size": 1,
-///         "max_group_prepared_capacity": 10,
 ///         "instance_reuse_policy": {
 ///             "reuse_on_scale_in": True,
 ///         },
-///     })
+///         "pool_state": "Hibernated",
+///         "min_size": 1,
+///         "max_group_prepared_capacity": 10,
+///     },
+///     availability_zones=["us-east-1a"],
+///     desired_capacity=1,
+///     max_size=5,
+///     min_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2771,6 +2791,16 @@ import 'metric.dart';
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
+///         WarmPool = new Aws.AutoScaling.Inputs.GroupWarmPoolArgs
+///         {
+///             InstanceReusePolicy = new Aws.AutoScaling.Inputs.GroupWarmPoolInstanceReusePolicyArgs
+///             {
+///                 ReuseOnScaleIn = true,
+///             },
+///             PoolState = "Hibernated",
+///             MinSize = 1,
+///             MaxGroupPreparedCapacity = 10,
+///         },
 ///         AvailabilityZones = new[]
 ///         {
 ///             "us-east-1a",
@@ -2778,16 +2808,6 @@ import 'metric.dart';
 ///         DesiredCapacity = 1,
 ///         MaxSize = 5,
 ///         MinSize = 1,
-///         WarmPool = new Aws.AutoScaling.Inputs.GroupWarmPoolArgs
-///         {
-///             PoolState = "Hibernated",
-///             MinSize = 1,
-///             MaxGroupPreparedCapacity = 10,
-///             InstanceReusePolicy = new Aws.AutoScaling.Inputs.GroupWarmPoolInstanceReusePolicyArgs
-///             {
-///                 ReuseOnScaleIn = true,
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -2812,20 +2832,20 @@ import 'metric.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
+/// 			WarmPool: &autoscaling.GroupWarmPoolArgs{
+/// 				InstanceReusePolicy: &autoscaling.GroupWarmPoolInstanceReusePolicyArgs{
+/// 					ReuseOnScaleIn: pulumi.Bool(true),
+/// 				},
+/// 				PoolState:                pulumi.String("Hibernated"),
+/// 				MinSize:                  pulumi.Int(1),
+/// 				MaxGroupPreparedCapacity: pulumi.Int(10),
+/// 			},
 /// 			AvailabilityZones: pulumi.StringArray{
 /// 				pulumi.String("us-east-1a"),
 /// 			},
 /// 			DesiredCapacity: pulumi.Int(1),
 /// 			MaxSize:         pulumi.Int(5),
 /// 			MinSize:         pulumi.Int(1),
-/// 			WarmPool: &autoscaling.GroupWarmPoolArgs{
-/// 				PoolState:                pulumi.String("Hibernated"),
-/// 				MinSize:                  pulumi.Int(1),
-/// 				MaxGroupPreparedCapacity: pulumi.Int(10),
-/// 				InstanceReusePolicy: &autoscaling.GroupWarmPoolInstanceReusePolicyArgs{
-/// 					ReuseOnScaleIn: pulumi.Bool(true),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2849,18 +2869,18 @@ import 'metric.dart';
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
+///   warm_pool = {
+///     instance_reuse_policy = {
+///       reuse_on_scale_in = true
+///     }
+///     pool_state                  = "Hibernated"
+///     min_size                    = 1
+///     max_group_prepared_capacity = 10
+///   }
 ///   availability_zones = ["us-east-1a"]
 ///   desired_capacity   = 1
 ///   max_size           = 5
 ///   min_size           = 1
-///   warm_pool = {
-///     pool_state                  = "Hibernated"
-///     min_size                    = 1
-///     max_group_prepared_capacity = 10
-///     instance_reuse_policy = {
-///       reuse_on_scale_in = true
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -2895,18 +2915,18 @@ import 'metric.dart';
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
+///             .warmPool(GroupWarmPoolArgs.builder()
+///                 .instanceReusePolicy(GroupWarmPoolInstanceReusePolicyArgs.builder()
+///                     .reuseOnScaleIn(true)
+///                     .build())
+///                 .poolState("Hibernated")
+///                 .minSize(1)
+///                 .maxGroupPreparedCapacity(10)
+///                 .build())
 ///             .availabilityZones("us-east-1a")
 ///             .desiredCapacity(1)
 ///             .maxSize(5)
 ///             .minSize(1)
-///             .warmPool(GroupWarmPoolArgs.builder()
-///                 .poolState("Hibernated")
-///                 .minSize(1)
-///                 .maxGroupPreparedCapacity(10)
-///                 .instanceReusePolicy(GroupWarmPoolInstanceReusePolicyArgs.builder()
-///                     .reuseOnScaleIn(true)
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -2924,17 +2944,17 @@ import 'metric.dart';
 ///     type: aws:autoscaling:Group
 ///     name: example
 ///     properties:
+///       warmPool:
+///         instanceReusePolicy:
+///           reuseOnScaleIn: true
+///         poolState: Hibernated
+///         minSize: 1
+///         maxGroupPreparedCapacity: 10
 ///       availabilityZones:
 ///         - us-east-1a
 ///       desiredCapacity: 1
 ///       maxSize: 5
 ///       minSize: 1
-///       warmPool:
-///         poolState: Hibernated
-///         minSize: 1
-///         maxGroupPreparedCapacity: 10
-///         instanceReusePolicy:
-///           reuseOnScaleIn: true
 /// ```
 ///
 ///
@@ -2946,8 +2966,8 @@ import 'metric.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.autoscaling.Group("test", {
-///     trafficSources: testAwsVpclatticeTargetGroup.map(__item => __item).map((v, k) => ({key: k, value: v})).map(entry => ({
-///         identifier: entry.value.arn,
+///     trafficSources: testAwsVpclatticeTargetGroup.map(__item => __item).map(entry => ({
+///         identifier: entry.arn,
 ///         type: "vpc-lattice",
 ///     })),
 ///     vpcZoneIdentifiers: testAwsSubnet.id,
@@ -2962,9 +2982,9 @@ import 'metric.dart';
 ///
 /// test = aws.autoscaling.Group("test",
 ///     traffic_sources=[{
-///         "identifier": entry["value"]["arn"],
+///         "identifier": entry["arn"],
 ///         "type": "vpc-lattice",
-///     } for entry in [{"key": k, "value": v} for k, v in sorted([__item for __item in test_aws_vpclattice_target_group].items())]],
+///     } for entry in [__item for __item in test_aws_vpclattice_target_group]],
 ///     vpc_zone_identifiers=test_aws_subnet["id"],
 ///     max_size=1,
 ///     min_size=1,
@@ -2980,11 +3000,11 @@ import 'metric.dart';
 /// {
 ///     var test = new Aws.AutoScaling.Group("test", new()
 ///     {
-///         TrafficSources = testAwsVpclatticeTargetGroup.Select(__item => __item).ToList().Select((v, k) => new { Key = k, Value = v }).Select(entry =>
+///         TrafficSources = testAwsVpclatticeTargetGroup.Select(__item => __item).ToList().Select(entry =>
 ///         {
 ///             return new Aws.AutoScaling.Inputs.GroupTrafficSourceArgs
 ///             {
-///                 Identifier = entry.Value.Arn,
+///                 Identifier = entry.Arn,
 ///                 Type = "vpc-lattice",
 ///             };
 ///         }).ToList(),
@@ -2995,6 +3015,43 @@ import 'metric.dart';
 ///     });
 ///
 /// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/autoscaling"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// var forResult0 []map[string]interface{}
+/// for _, entry := range %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:1,34-65) {
+/// forResult0 = append(forResult0, map[string]interface{}{
+/// "identifier": entry.(map[string]interface{})["arn"],
+/// "type": "vpc-lattice",
+/// })
+/// }
+/// _, err := autoscaling.NewGroup(ctx, "test", &autoscaling.GroupArgs{
+/// TrafficSources: toPulumiMapArray(forResult0),
+/// VpcZoneIdentifiers: pulumi.Any(testAwsSubnet.Id),
+/// MaxSize: pulumi.Int(1),
+/// MinSize: pulumi.Int(1),
+/// ForceDelete: pulumi.Bool(true),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// func toPulumiMapArray(arr []Map) pulumi.MapArray {
+/// var pulumiArr pulumi.MapArray
+/// for _, v := range arr {
+/// pulumiArr = append(pulumiArr, pulumi.Map(v))
+/// }
+/// return pulumiArr
+/// }
 /// ```
 /// ```hcl
 /// pulumi {
@@ -3007,9 +3064,9 @@ import 'metric.dart';
 ///
 /// resource "aws_autoscaling_group" "test" {
 ///   dynamic "traffic_sources" {
-///     for_each = entries(testAwsVpclatticeTargetGroup[*])
+///     for_each = testAwsVpclatticeTargetGroup[*]
 ///     content {
-///       identifier = traffic_sources.value.value.arn
+///       identifier = traffic_sources.value.arn
 ///       type       = "vpc-lattice"
 ///     }
 ///   }
@@ -3086,7 +3143,7 @@ class Group extends pulumi.CustomResource {
   /// `aws.autoscaling.LifecycleHook`
   /// resource, without the `autoscalingGroupName` attribute. Please note that this will only work when creating
   /// a new Auto Scaling Group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> initialLifecycleHooks;
+  late final pulumi.Output<List<GroupInitialLifecycleHook>?> initialLifecycleHooks;
   /// If this block is configured, adds an instance lifecycle policy to the specified Auto Scaling Group. Defined below.
   late final pulumi.Output<GroupInstanceLifecyclePolicy> instanceLifecyclePolicy;
   /// If this block is configured, add a instance maintenance policy to the specified Auto Scaling group. Defined below.
@@ -3141,13 +3198,13 @@ class Group extends pulumi.CustomResource {
   /// Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your Auto Scaling Group from functioning properly.
   late final pulumi.Output<List<String>?> suspendedProcesses;
   /// Configuration block(s) containing resource tags. See `tag` Block below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tags;
+  late final pulumi.Output<List<GroupTag>?> tags;
   /// Set of `aws.lb.TargetGroup` ARNs, for use with Application or Network Load Balancing. To remove all target group attachments an empty list should be specified.
   late final pulumi.Output<List<String>> targetGroupArns;
   /// List of policies to decide how the instances in the Auto Scaling Group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`. Additionally, the ARN of a Lambda function can be specified for custom termination policies.
   late final pulumi.Output<List<String>?> terminationPolicies;
   /// Attaches one or more traffic sources to the specified Auto Scaling group.
-  late final pulumi.Output<List<Map<String, dynamic>>> trafficSources;
+  late final pulumi.Output<List<GroupTrafficSource>> trafficSources;
   /// List of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with `availabilityZones`.
   late final pulumi.Output<List<String>> vpcZoneIdentifiers;
   /// Maximum
@@ -3180,11 +3237,11 @@ class Group extends pulumi.CustomResource {
           'aws:autoscaling/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneDistribution = registerOutput<GroupAvailabilityZoneDistribution>('availabilityZoneDistribution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAvailabilityZoneDistribution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     capacityRebalance = registerOutput<bool?>('capacityRebalance');
     capacityReservationSpecification = registerOutput<GroupCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     context = registerOutput<String?>('context');
@@ -3198,13 +3255,13 @@ class Group extends pulumi.CustomResource {
     healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
     healthCheckType = registerOutput<String>('healthCheckType');
     ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
-    initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>('initialLifecycleHooks');
+    initialLifecycleHooks = registerOutput<List<GroupInitialLifecycleHook>?>('initialLifecycleHooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupInitialLifecycleHook>(guardedValue, (value) => GroupInitialLifecycleHook.fromMap((value as Map).cast<String, dynamic>())); });
     instanceLifecyclePolicy = registerOutput<GroupInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchConfiguration = registerOutput<String?>('launchConfiguration');
     launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    loadBalancers = registerOutput<List<String>>('loadBalancers');
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
     maxSize = registerOutput<int>('maxSize');
     metricsGranularity = registerOutput<String?>('metricsGranularity');
@@ -3218,12 +3275,12 @@ class Group extends pulumi.CustomResource {
     protectFromScaleIn = registerOutput<bool?>('protectFromScaleIn');
     region = registerOutput<String>('region');
     serviceLinkedRoleArn = registerOutput<String>('serviceLinkedRoleArn');
-    suspendedProcesses = registerOutput<List<String>?>('suspendedProcesses');
-    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
-    targetGroupArns = registerOutput<List<String>>('targetGroupArns');
-    terminationPolicies = registerOutput<List<String>?>('terminationPolicies');
-    trafficSources = registerOutput<List<Map<String, dynamic>>>('trafficSources');
-    vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers');
+    suspendedProcesses = registerOutput<List<String>?>('suspendedProcesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<GroupTag>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupTag>(guardedValue, (value) => GroupTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetGroupArns = registerOutput<List<String>>('targetGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    terminationPolicies = registerOutput<List<String>?>('terminationPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    trafficSources = registerOutput<List<GroupTrafficSource>>('trafficSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupTrafficSource>(guardedValue, (value) => GroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
     waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
     warmPool = registerOutput<GroupWarmPool?>('warmPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWarmPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3235,11 +3292,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3255,7 +3313,7 @@ class Group extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneDistribution = registerOutput<GroupAvailabilityZoneDistribution>('availabilityZoneDistribution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAvailabilityZoneDistribution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     capacityRebalance = registerOutput<bool?>('capacityRebalance');
     capacityReservationSpecification = registerOutput<GroupCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     context = registerOutput<String?>('context');
@@ -3269,13 +3327,13 @@ class Group extends pulumi.CustomResource {
     healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
     healthCheckType = registerOutput<String>('healthCheckType');
     ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
-    initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>('initialLifecycleHooks');
+    initialLifecycleHooks = registerOutput<List<GroupInitialLifecycleHook>?>('initialLifecycleHooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupInitialLifecycleHook>(guardedValue, (value) => GroupInitialLifecycleHook.fromMap((value as Map).cast<String, dynamic>())); });
     instanceLifecyclePolicy = registerOutput<GroupInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchConfiguration = registerOutput<String?>('launchConfiguration');
     launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    loadBalancers = registerOutput<List<String>>('loadBalancers');
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
     maxSize = registerOutput<int>('maxSize');
     metricsGranularity = registerOutput<String?>('metricsGranularity');
@@ -3289,12 +3347,69 @@ class Group extends pulumi.CustomResource {
     protectFromScaleIn = registerOutput<bool?>('protectFromScaleIn');
     region = registerOutput<String>('region');
     serviceLinkedRoleArn = registerOutput<String>('serviceLinkedRoleArn');
-    suspendedProcesses = registerOutput<List<String>?>('suspendedProcesses');
-    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
-    targetGroupArns = registerOutput<List<String>>('targetGroupArns');
-    terminationPolicies = registerOutput<List<String>?>('terminationPolicies');
-    trafficSources = registerOutput<List<Map<String, dynamic>>>('trafficSources');
-    vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers');
+    suspendedProcesses = registerOutput<List<String>?>('suspendedProcesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<GroupTag>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupTag>(guardedValue, (value) => GroupTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetGroupArns = registerOutput<List<String>>('targetGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    terminationPolicies = registerOutput<List<String>?>('terminationPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    trafficSources = registerOutput<List<GroupTrafficSource>>('trafficSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupTrafficSource>(guardedValue, (value) => GroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
+    waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
+    warmPool = registerOutput<GroupWarmPool?>('warmPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWarmPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warmPoolSize = registerOutput<int>('warmPoolSize');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'aws:autoscaling/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZoneDistribution = registerOutput<GroupAvailabilityZoneDistribution>('availabilityZoneDistribution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAvailabilityZoneDistribution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    capacityRebalance = registerOutput<bool?>('capacityRebalance');
+    capacityReservationSpecification = registerOutput<GroupCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    context = registerOutput<String?>('context');
+    defaultCooldown = registerOutput<int>('defaultCooldown');
+    defaultInstanceWarmup = registerOutput<int?>('defaultInstanceWarmup');
+    desiredCapacity = registerOutput<int>('desiredCapacity');
+    desiredCapacityType = registerOutput<String?>('desiredCapacityType');
+    enabledMetrics = registerOutput<List<Metric>?>('enabledMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Metric>(guardedValue, (value) => Metric.fromValue(value as String)); });
+    forceDelete = registerOutput<bool?>('forceDelete');
+    forceDeleteWarmPool = registerOutput<bool?>('forceDeleteWarmPool');
+    healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
+    healthCheckType = registerOutput<String>('healthCheckType');
+    ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
+    initialLifecycleHooks = registerOutput<List<GroupInitialLifecycleHook>?>('initialLifecycleHooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupInitialLifecycleHook>(guardedValue, (value) => GroupInitialLifecycleHook.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceLifecyclePolicy = registerOutput<GroupInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    launchConfiguration = registerOutput<String?>('launchConfiguration');
+    launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
+    maxSize = registerOutput<int>('maxSize');
+    metricsGranularity = registerOutput<String?>('metricsGranularity');
+    minElbCapacity = registerOutput<int?>('minElbCapacity');
+    minSize = registerOutput<int>('minSize');
+    mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>('mixedInstancesPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMixedInstancesPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    placementGroup = registerOutput<String?>('placementGroup');
+    predictedCapacity = registerOutput<int>('predictedCapacity');
+    protectFromScaleIn = registerOutput<bool?>('protectFromScaleIn');
+    region = registerOutput<String>('region');
+    serviceLinkedRoleArn = registerOutput<String>('serviceLinkedRoleArn');
+    suspendedProcesses = registerOutput<List<String>?>('suspendedProcesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<GroupTag>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupTag>(guardedValue, (value) => GroupTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetGroupArns = registerOutput<List<String>>('targetGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    terminationPolicies = registerOutput<List<String>?>('terminationPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    trafficSources = registerOutput<List<GroupTrafficSource>>('trafficSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupTrafficSource>(guardedValue, (value) => GroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
     waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
     warmPool = registerOutput<GroupWarmPool?>('warmPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWarmPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });

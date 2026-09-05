@@ -5,7 +5,7 @@ import 'location_fsx_ontap_file_system_protocol_smb_mount_options.dart';
 
 class LocationFsxOntapFileSystemProtocolSmb {
   /// Fully qualified domain name of the Microsoft Active Directory (AD) that your storage virtual machine belongs to.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Mount options that are available for DataSync to access an SMB location. See SMB Mount Options below.
   final pulumi.Input<LocationFsxOntapFileSystemProtocolSmbMountOptions> mountOptions;
   /// Password of a user who has permission to access your SVM.

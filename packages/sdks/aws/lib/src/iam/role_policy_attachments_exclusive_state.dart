@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RolePolicyAttachmentsExclusive resources.
 class RolePolicyAttachmentsExclusiveState {
   /// A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
-  final pulumi.Input<List<String>>? policyArns;
+  final pulumi.Input<List<String>?>? policyArns;
   /// IAM role name.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
 
   /// Creates a new [RolePolicyAttachmentsExclusiveState].
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.

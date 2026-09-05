@@ -5,7 +5,7 @@ import 'agent_prompt_variant_inference_configuration_text.dart';
 
 class AgentPromptVariantInferenceConfiguration {
   /// Contains inference configurations for the prompt variant. See Text Inference Configuration for more information.
-  final pulumi.Input<AgentPromptVariantInferenceConfigurationText>? text;
+  final pulumi.Input<AgentPromptVariantInferenceConfigurationText?>? text;
 
   /// Creates a new [AgentPromptVariantInferenceConfiguration].
   /// [text] Contains inference configurations for the prompt variant. See Text Inference Configuration for more information.

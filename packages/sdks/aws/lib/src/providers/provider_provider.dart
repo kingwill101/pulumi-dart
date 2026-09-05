@@ -55,10 +55,11 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'aws',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['accessKey', 'secretKey', 'token'],
         ) {
-    accessKey = registerOutput<String?>('accessKey');
+    accessKey = registerOutput<String?>('accessKey', isSecret: true);
     customCaBundle = registerOutput<String?>('customCaBundle');
     ec2MetadataServiceEndpoint = registerOutput<String?>('ec2MetadataServiceEndpoint');
     ec2MetadataServiceEndpointMode = registerOutput<String?>('ec2MetadataServiceEndpointMode');
@@ -69,10 +70,10 @@ class ProviderProvider extends pulumi.ProviderResource {
     region = registerOutput<String?>('region');
     retryMode = registerOutput<String?>('retryMode');
     s3UsEast1RegionalEndpoint = registerOutput<String?>('s3UsEast1RegionalEndpoint');
-    secretKey = registerOutput<String?>('secretKey');
+    secretKey = registerOutput<String?>('secretKey', isSecret: true);
     stsRegion = registerOutput<String?>('stsRegion');
     tagPolicyCompliance = registerOutput<String?>('tagPolicyCompliance');
-    token = registerOutput<String?>('token');
+    token = registerOutput<String?>('token', isSecret: true);
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

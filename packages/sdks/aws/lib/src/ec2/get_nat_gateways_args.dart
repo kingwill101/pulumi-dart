@@ -9,14 +9,14 @@ import 'get_nat_gateways_filter.dart';
 /// {@macro pulumi_ec2_get_nat_gateways_get_nat_gateways_args_doc}
 class GetNatGatewaysArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetNatGatewaysFilter>>? filters;
+  final pulumi.Input<List<GetNatGatewaysFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired NAT Gateways.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// VPC ID that you want to filter from.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetNatGatewaysArgs].
   /// [filters] Custom filter block as described below.

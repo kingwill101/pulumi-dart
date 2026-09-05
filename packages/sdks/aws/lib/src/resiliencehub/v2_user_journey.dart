@@ -154,10 +154,10 @@ import 'v2_user_journey_state.dart';
 ///
 /// const example = new aws.resiliencehub.V2System("example", {name: "example-system"});
 /// const exampleV2Policy = new aws.resiliencehub.V2Policy("example", {
-///     name: "example-policy",
 ///     availabilitySlo: {
 ///         target: 99.9,
 ///     },
+///     name: "example-policy",
 /// });
 /// const exampleV2UserJourney = new aws.resiliencehub.V2UserJourney("example", {
 ///     systemArn: example.arn,
@@ -172,10 +172,10 @@ import 'v2_user_journey_state.dart';
 ///
 /// example = aws.resiliencehub.V2System("example", name="example-system")
 /// example_v2_policy = aws.resiliencehub.V2Policy("example",
-///     name="example-policy",
 ///     availability_slo={
 ///         "target": 99.9,
-///     })
+///     },
+///     name="example-policy")
 /// example_v2_user_journey = aws.resiliencehub.V2UserJourney("example",
 ///     system_arn=example.arn,
 ///     name="checkout-flow",
@@ -197,11 +197,11 @@ import 'v2_user_journey_state.dart';
 ///
 ///     var exampleV2Policy = new Aws.ResilienceHub.V2Policy("example", new()
 ///     {
-///         Name = "example-policy",
 ///         AvailabilitySlo = new Aws.ResilienceHub.Inputs.V2PolicyAvailabilitySloArgs
 ///         {
 ///             Target = 99.9,
 ///         },
+///         Name = "example-policy",
 ///     });
 ///
 ///     var exampleV2UserJourney = new Aws.ResilienceHub.V2UserJourney("example", new()
@@ -231,10 +231,10 @@ import 'v2_user_journey_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleV2Policy, err := resiliencehub.NewV2Policy(ctx, "example", &resiliencehub.V2PolicyArgs{
-/// 			Name: pulumi.String("example-policy"),
 /// 			AvailabilitySlo: &resiliencehub.V2PolicyAvailabilitySloArgs{
 /// 				Target: pulumi.Float64(99.9),
 /// 			},
+/// 			Name: pulumi.String("example-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -265,10 +265,10 @@ import 'v2_user_journey_state.dart';
 ///   name = "example-system"
 /// }
 /// resource "aws_resiliencehub_v2policy" "example" {
-///   name = "example-policy"
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
+///   name = "example-policy"
 /// }
 /// resource "aws_resiliencehub_v2userjourney" "example" {
 ///   system_arn  = aws_resiliencehub_v2system.example.arn
@@ -308,10 +308,10 @@ import 'v2_user_journey_state.dart';
 ///             .build());
 ///
 ///         var exampleV2Policy = new V2Policy("exampleV2Policy", V2PolicyArgs.builder()
-///             .name("example-policy")
 ///             .availabilitySlo(V2PolicyAvailabilitySloArgs.builder()
 ///                 .target(99.9)
 ///                 .build())
+///             .name("example-policy")
 ///             .build());
 ///
 ///         var exampleV2UserJourney = new V2UserJourney("exampleV2UserJourney", V2UserJourneyArgs.builder()
@@ -334,9 +334,9 @@ import 'v2_user_journey_state.dart';
 ///     type: aws:resiliencehub:V2Policy
 ///     name: example
 ///     properties:
-///       name: example-policy
 ///       availabilitySlo:
 ///         target: 99.9
+///       name: example-policy
 ///   exampleV2UserJourney:
 ///     type: aws:resiliencehub:V2UserJourney
 ///     name: example
@@ -396,7 +396,7 @@ class V2UserJourney extends pulumi.CustomResource {
           'aws:resiliencehub/v2UserJourney:V2UserJourney',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -411,11 +411,12 @@ class V2UserJourney extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2UserJourneyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2UserJourney._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -429,6 +430,23 @@ class V2UserJourney extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    policyArn = registerOutput<String?>('policyArn');
+    region = registerOutput<String>('region');
+    systemArn = registerOutput<String>('systemArn');
+    userJourneyId = registerOutput<String>('userJourneyId');
+  }
+
+  /// Creates a typed reference to an existing [V2UserJourney] resource.
+  V2UserJourney.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2UserJourney:V2UserJourney',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     policyArn = registerOutput<String?>('policyArn');

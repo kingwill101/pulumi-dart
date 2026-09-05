@@ -131,7 +131,7 @@ class PlaceIndex extends pulumi.CustomResource {
   late final pulumi.Output<PlaceIndexDataSourceConfiguration> dataSourceConfiguration;
   /// Optional description for the place index resource.
   late final pulumi.Output<String?> description;
-  /// Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across AWS.
+  /// ARN for the place index resource. Used to specify a resource across AWS.
   late final pulumi.Output<String> indexArn;
   /// Name of the place index resource.
   ///
@@ -158,7 +158,7 @@ class PlaceIndex extends pulumi.CustomResource {
           'aws:location/placeIndex:PlaceIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<String>('dataSource');
@@ -167,8 +167,8 @@ class PlaceIndex extends pulumi.CustomResource {
     indexArn = registerOutput<String>('indexArn');
     indexName = registerOutput<String>('indexName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -177,11 +177,12 @@ class PlaceIndex extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlaceIndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PlaceIndex._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,8 +203,29 @@ class PlaceIndex extends pulumi.CustomResource {
     indexArn = registerOutput<String>('indexArn');
     indexName = registerOutput<String>('indexName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PlaceIndex] resource.
+  PlaceIndex.reference(String urn)
+    : super(
+        'aws:location/placeIndex:PlaceIndex',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataSource = registerOutput<String>('dataSource');
+    dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlaceIndexDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    indexArn = registerOutput<String>('indexArn');
+    indexName = registerOutput<String>('indexName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -8,7 +8,7 @@ class AgentcoreBrowserEnterprisePolicyLocationS3 {
   /// Prefix for objects in the S3 bucket.
   final pulumi.Input<String> prefix;
   /// Version ID of the S3 object. If not specified, the latest version is used.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [AgentcoreBrowserEnterprisePolicyLocationS3].
   /// [bucket] Name of the S3 bucket.

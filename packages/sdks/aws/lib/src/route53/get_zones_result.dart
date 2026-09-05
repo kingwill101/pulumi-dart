@@ -3,29 +3,29 @@
 
 /// Result data returned by getZones.
 class GetZonesResult {
-  final String id;
+  final String? id;
   /// A list of all the Route53 Hosted Zone IDs found.
-  final List<String> ids;
+  final List<String>? ids;
 
   /// Creates a new [GetZonesResult].
-  /// [id] Required.
+  /// [id] Optional.
   /// [ids] A list of all the Route53 Hosted Zone IDs found.
   const GetZonesResult({
-    required this.id,
-    required this.ids,
+    this.id,
+    this.ids,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'ids': ids,
+      'id': ?id,
+      'ids': ?ids,
     };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      id: map['id'] as String,
-      ids: (map['ids'] as List).cast<String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

@@ -8,7 +8,7 @@ class PipelinePipelineDefinitionS3Location {
   /// The object key (or key name) uniquely identifies the object in an S3 bucket.
   final pulumi.Input<String> objectKey;
   /// Version Id of the pipeline definition file. If not specified, Amazon SageMaker AI will retrieve the latest version.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [PipelinePipelineDefinitionS3Location].
   /// [bucket] Name of the S3 bucket.

@@ -8,13 +8,13 @@ import 'channel_input_attachment_input_settings_audio_selector_selector_settings
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings {
   /// Audio HLS Rendition Selection. See Audio HLS Rendition Selection for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection>? audioHlsRenditionSelection;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection?>? audioHlsRenditionSelection;
   /// Audio Language Selection. See Audio Language Selection for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection>? audioLanguageSelection;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection?>? audioLanguageSelection;
   /// Audio Pid Selection. See Audio PID Selection for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection>? audioPidSelection;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection?>? audioPidSelection;
   /// Audio Track Selection. See Audio Track Selection for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection>? audioTrackSelection;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection?>? audioTrackSelection;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings].
   /// [audioHlsRenditionSelection] Audio HLS Rendition Selection. See Audio HLS Rendition Selection for more details.

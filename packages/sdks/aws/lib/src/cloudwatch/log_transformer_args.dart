@@ -11,7 +11,7 @@ class LogTransformerArgs {
   /// Log group ARN to set the transformer for.
   final pulumi.Input<String> logGroupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformerConfig` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfig>> transformerConfigs;
 

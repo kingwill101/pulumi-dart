@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecTcpRouteMatch {
   /// Port number to match from the request.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [RouteSpecTcpRouteMatch].
   /// [port] Port number to match from the request.
@@ -20,7 +20,7 @@ class RouteSpecTcpRouteMatch {
 
   factory RouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteMatch(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

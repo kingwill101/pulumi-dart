@@ -7,20 +7,20 @@ import 'workspace_configuration_timeouts.dart';
 /// Input properties used for looking up and filtering WorkspaceConfiguration resources.
 class WorkspaceConfigurationState {
   /// Configuration block for setting limits on metrics with specific label sets. Detailed below.
-  final pulumi.Input<List<WorkspaceConfigurationLimitsPerLabelSet>>? limitsPerLabelSets;
+  final pulumi.Input<List<WorkspaceConfigurationLimitsPerLabelSet>?>? limitsPerLabelSets;
   /// Time window in seconds for accepting out-of-order samples. Must be between 0 and 600 seconds.
-  final pulumi.Input<int>? outOfOrderTimeWindowInSeconds;
+  final pulumi.Input<int?>? outOfOrderTimeWindowInSeconds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Number of days to retain metric data in the workspace.
-  final pulumi.Input<int>? retentionPeriodInDays;
+  final pulumi.Input<int?>? retentionPeriodInDays;
   /// Query offset in seconds for rule evaluation. Must be between 0 and 86400 seconds.
-  final pulumi.Input<int>? ruleQueryOffsetInSeconds;
-  final pulumi.Input<WorkspaceConfigurationTimeouts>? timeouts;
+  final pulumi.Input<int?>? ruleQueryOffsetInSeconds;
+  final pulumi.Input<WorkspaceConfigurationTimeouts?>? timeouts;
   /// ID of the workspace to configure.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceConfigurationState].
   /// [limitsPerLabelSets] Configuration block for setting limits on metrics with specific label sets. Detailed below.
@@ -55,10 +55,10 @@ class WorkspaceConfigurationState {
   factory WorkspaceConfigurationState.fromMap(Map<String, dynamic> map) {
     return WorkspaceConfigurationState(
       limitsPerLabelSets: (() { final guardedValue = map['limitsPerLabelSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      outOfOrderTimeWindowInSeconds: (() { final guardedValue = map['outOfOrderTimeWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      outOfOrderTimeWindowInSeconds: (() { final guardedValue = map['outOfOrderTimeWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionPeriodInDays: (() { final guardedValue = map['retentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ruleQueryOffsetInSeconds: (() { final guardedValue = map['ruleQueryOffsetInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionPeriodInDays: (() { final guardedValue = map['retentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ruleQueryOffsetInSeconds: (() { final guardedValue = map['ruleQueryOffsetInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspaceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

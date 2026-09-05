@@ -12,43 +12,43 @@ import 'task_task_report_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datasync_task_task_args_doc}
 class TaskArgs {
-  /// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-  final pulumi.Input<String>? cloudwatchLogGroupArn;
-  /// Amazon Resource Name (ARN) of destination DataSync Location.
+  /// ARN of the CloudWatch Log Group that is used to monitor and log events in the sync task.
+  final pulumi.Input<String?>? cloudwatchLogGroupArn;
+  /// ARN of destination DataSync Location.
   final pulumi.Input<String> destinationLocationArn;
   /// Filter rules that determines which files to exclude from a task.
-  final pulumi.Input<TaskExcludes>? excludes;
+  final pulumi.Input<TaskExcludes?>? excludes;
   /// Filter rules that determines which files to include in a task.
-  final pulumi.Input<TaskIncludes>? includes;
+  final pulumi.Input<TaskIncludes?>? includes;
   /// Name of the DataSync Task.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-  final pulumi.Input<TaskOptions>? options;
+  final pulumi.Input<TaskOptions?>? options;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies a schedule used to periodically transfer files from a source to a destination location.
-  final pulumi.Input<TaskSchedule>? schedule;
-  /// Amazon Resource Name (ARN) of source DataSync Location.
+  final pulumi.Input<TaskSchedule?>? schedule;
+  /// ARN of source DataSync Location.
   final pulumi.Input<String> sourceLocationArn;
   /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// One of the following task modes for your data transfer:
   /// * `BASIC` (default) - Transfer files or objects between Amazon Web Services storage and on-premises, edge, or other cloud storage.
   /// * `ENHANCED` - Transfer virtually unlimited numbers of objects with enhanced metrics, more detailed logs, and higher performance than Basic mode. Currently available for transfers between Amazon S3 locations.
-  final pulumi.Input<String>? taskMode;
+  final pulumi.Input<String?>? taskMode;
   /// Configuration block containing the configuration of a DataSync Task Report. See `taskReportConfig` below.
-  final pulumi.Input<TaskTaskReportConfig>? taskReportConfig;
+  final pulumi.Input<TaskTaskReportConfig?>? taskReportConfig;
 
   /// Creates a new [TaskArgs].
-  /// [cloudwatchLogGroupArn] Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-  /// [destinationLocationArn] Amazon Resource Name (ARN) of destination DataSync Location.
+  /// [cloudwatchLogGroupArn] ARN of the CloudWatch Log Group that is used to monitor and log events in the sync task.
+  /// [destinationLocationArn] ARN of destination DataSync Location.
   /// [excludes] Filter rules that determines which files to exclude from a task.
   /// [includes] Filter rules that determines which files to include in a task.
   /// [name] Name of the DataSync Task.
   /// [options] Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schedule] Specifies a schedule used to periodically transfer files from a source to a destination location.
-  /// [sourceLocationArn] Amazon Resource Name (ARN) of source DataSync Location.
+  /// [sourceLocationArn] ARN of source DataSync Location.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taskMode] One of the following task modes for your data transfer:
   /// [taskReportConfig] Configuration block containing the configuration of a DataSync Task Report. See `taskReportConfig` below.

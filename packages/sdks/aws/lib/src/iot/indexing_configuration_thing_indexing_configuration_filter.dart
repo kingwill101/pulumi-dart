@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexingConfigurationThingIndexingConfigurationFilter {
   /// List of shadow names that you select to index.
-  final pulumi.Input<List<String>>? namedShadowNames;
+  final pulumi.Input<List<String>?>? namedShadowNames;
 
   /// Creates a new [IndexingConfigurationThingIndexingConfigurationFilter].
   /// [namedShadowNames] List of shadow names that you select to index.

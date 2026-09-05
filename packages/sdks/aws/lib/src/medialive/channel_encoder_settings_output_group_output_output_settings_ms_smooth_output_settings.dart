@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings {
-  final pulumi.Input<String>? h265PackagingType;
+  final pulumi.Input<String?>? h265PackagingType;
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  final pulumi.Input<String>? nameModifier;
+  final pulumi.Input<String?>? nameModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings].
   /// [h265PackagingType] Optional.

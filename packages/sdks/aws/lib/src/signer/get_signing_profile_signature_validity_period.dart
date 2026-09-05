@@ -24,7 +24,7 @@ class GetSigningProfileSignatureValidityPeriod {
   factory GetSigningProfileSignatureValidityPeriod.fromMap(Map<String, dynamic> map) {
     return GetSigningProfileSignatureValidityPeriod(
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

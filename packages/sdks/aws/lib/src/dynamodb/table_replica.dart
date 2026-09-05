@@ -7,31 +7,31 @@ class TableReplica {
   /// * `replica.*.arn` - ARN of the replica
   /// * `replica.*.stream_arn` - ARN of the replica Table Stream. Only available when `streamEnabled = true`.
   /// * `replica.*.stream_label` - Timestamp, in ISO 8601 format, for the replica stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether this global table will be using `STRONG` consistency mode or `EVENTUAL` consistency mode. Default value is `EVENTUAL`.
-  final pulumi.Input<String>? consistencyMode;
+  final pulumi.Input<String?>? consistencyMode;
   /// Whether deletion protection is enabled (true) or disabled (false) on the replica. Default is `false`.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// ARN of the CMK that should be used for the AWS KMS encryption.
   /// This argument should only be used if the key is different from the default KMS-managed DynamoDB key, `alias/aws/dynamodb`.
   /// **Note:** This attribute will _not_ be populated with the ARN of _default_ keys.
   /// **Note:** Changing this value will recreate the replica.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Whether to enable Point In Time Recovery for the replica. Default is `false`.
-  final pulumi.Input<bool>? pointInTimeRecovery;
+  final pulumi.Input<bool?>? pointInTimeRecovery;
   /// Whether to propagate the global table's tags to a replica.
   /// Default is `false`.
   /// Changes to tags only move in one direction: from global (source) to replica.
   /// Tag drift on a replica will not trigger an update.
   /// Tag changes on the global table are propagated to replicas.
   /// Changing from `true` to `false` on a subsequent `apply` leaves replica tags as-is and no longer manages them.
-  final pulumi.Input<bool>? propagateTags;
+  final pulumi.Input<bool?>? propagateTags;
   /// Region name of the replica.
   final pulumi.Input<String> regionName;
   /// ARN of the Table Stream. Only available when `streamEnabled = true`
-  final pulumi.Input<String>? streamArn;
+  final pulumi.Input<String?>? streamArn;
   /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
-  final pulumi.Input<String>? streamLabel;
+  final pulumi.Input<String?>? streamLabel;
 
   /// Creates a new [TableReplica].
   /// [arn] ARN of the table

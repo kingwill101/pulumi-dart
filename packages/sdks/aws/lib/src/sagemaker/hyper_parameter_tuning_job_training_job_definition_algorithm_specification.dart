@@ -5,11 +5,11 @@ import 'hyper_parameter_tuning_job_training_job_definition_algorithm_specificati
 
 class HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecification {
   /// SageMaker algorithm ARN.
-  final pulumi.Input<String>? algorithmName;
+  final pulumi.Input<String?>? algorithmName;
   /// Metric extraction rules.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecificationMetricDefinition>>? metricDefinitions;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecificationMetricDefinition>?>? metricDefinitions;
   /// Container image used for training.
-  final pulumi.Input<String>? trainingImage;
+  final pulumi.Input<String?>? trainingImage;
   /// Training input mode.
   ///
   /// Provide exactly one of `algorithmName` or `trainingImage`.

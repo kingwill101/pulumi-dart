@@ -5,7 +5,7 @@ import 'pipeline_stage_before_entry_condition_rule.dart';
 
 class PipelineStageBeforeEntryCondition {
   /// The action to be done when the condition is met. For example, rolling back an execution for a failure condition. Possible values are `ROLLBACK`, `FAIL`, `RETRY` and `SKIP`.
-  final pulumi.Input<String>? result;
+  final pulumi.Input<String?>? result;
   /// The rules that make up the condition. Defined as a `rule` block below.
   final pulumi.Input<List<PipelineStageBeforeEntryConditionRule>> rules;
 

@@ -6,7 +6,7 @@ class DirectoryBucketLocation {
   /// [Availability Zone ID](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html) or Local Zone ID.
   final pulumi.Input<String> name;
   /// Location type. Valid values: `AvailabilityZone`, `LocalZone`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DirectoryBucketLocation].
   /// [name] [Availability Zone ID](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html) or Local Zone ID.

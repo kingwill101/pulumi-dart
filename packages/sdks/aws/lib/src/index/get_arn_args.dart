@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetArnArgs {
   /// ARN to parse.
   final pulumi.Input<String> arn;
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetArnArgs].
   /// [arn] ARN to parse.

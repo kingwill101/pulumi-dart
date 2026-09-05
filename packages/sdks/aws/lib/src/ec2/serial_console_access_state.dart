@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SerialConsoleAccess resources.
 class SerialConsoleAccessState {
   /// Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [SerialConsoleAccessState].
   /// [enabled] Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.

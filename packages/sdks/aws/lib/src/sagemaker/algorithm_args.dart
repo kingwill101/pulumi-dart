@@ -12,22 +12,22 @@ import 'algorithm_validation_specification.dart';
 /// {@macro pulumi_sagemaker_algorithm_algorithm_args_doc}
 class AlgorithmArgs {
   /// Description of the algorithm.
-  final pulumi.Input<String>? algorithmDescription;
+  final pulumi.Input<String?>? algorithmDescription;
   /// Name of the algorithm.
   final pulumi.Input<String> algorithmName;
   /// Whether to certify the algorithm for AWS Marketplace.
-  final pulumi.Input<bool>? certifyForMarketplace;
+  final pulumi.Input<bool?>? certifyForMarketplace;
   /// Configuration for inference jobs that use this algorithm. See Inference Specification.
-  final pulumi.Input<AlgorithmInferenceSpecification>? inferenceSpecification;
+  final pulumi.Input<AlgorithmInferenceSpecification?>? inferenceSpecification;
   /// Region where this resource is managed. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AlgorithmTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AlgorithmTimeouts?>? timeouts;
   /// Configuration for training jobs that use this algorithm. See Training Specification.
   final pulumi.Input<AlgorithmTrainingSpecification> trainingSpecification;
   /// Configuration used to validate the algorithm. See Validation Specification.
-  final pulumi.Input<AlgorithmValidationSpecification>? validationSpecification;
+  final pulumi.Input<AlgorithmValidationSpecification?>? validationSpecification;
 
   /// Creates a new [AlgorithmArgs].
   /// [algorithmDescription] Description of the algorithm.

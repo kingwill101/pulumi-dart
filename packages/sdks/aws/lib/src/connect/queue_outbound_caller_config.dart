@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueOutboundCallerConfig {
   /// Specifies the caller ID name.
-  final pulumi.Input<String>? outboundCallerIdName;
+  final pulumi.Input<String?>? outboundCallerIdName;
   /// Specifies the caller ID number.
-  final pulumi.Input<String>? outboundCallerIdNumberId;
+  final pulumi.Input<String?>? outboundCallerIdNumberId;
   /// Specifies outbound whisper flow to be used during an outbound call.
-  final pulumi.Input<String>? outboundFlowId;
+  final pulumi.Input<String?>? outboundFlowId;
 
   /// Creates a new [QueueOutboundCallerConfig].
   /// [outboundCallerIdName] Specifies the caller ID name.

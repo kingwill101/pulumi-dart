@@ -12,9 +12,9 @@ class CellArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> cellName;
   /// List of cell arns to add as nested fault domains within this cell.
-  final pulumi.Input<List<String>>? cells;
+  final pulumi.Input<List<String>?>? cells;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CellArgs].
   /// [cellName] Unique name describing the cell.

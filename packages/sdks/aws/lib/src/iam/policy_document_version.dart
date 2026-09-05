@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The version of the policy language that you want to use. As a best practice, use the latest '2012-10-17' version.
-enum PolicyDocumentVersion {
+enum PolicyDocumentVersion implements pulumi.PulumiEnum<String> {
   resource20121017("2012-10-17"),
   resource20081017("2008-10-17");
 
   const PolicyDocumentVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyDocumentVersion fromValue(String value) {

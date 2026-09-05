@@ -261,7 +261,7 @@ import 'smb_file_share_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.SmbFileShare` using the SMB File Share Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.SmbFileShare` using the SMB File Share ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/smbFileShare:SmbFileShare example arn:aws:storagegateway:us-east-1:123456789012:share/share-12345678
@@ -271,9 +271,9 @@ class SmbFileShare extends pulumi.CustomResource {
   late final pulumi.Output<bool?> accessBasedEnumeration;
   /// A list of users in the Active Directory that have admin access to the file share. Only valid if `authentication` is set to `ActiveDirectory`.
   late final pulumi.Output<List<String>?> adminUserLists;
-  /// Amazon Resource Name (ARN) of the SMB File Share.
+  /// ARN of the SMB File Share.
   late final pulumi.Output<String> arn;
-  /// The Amazon Resource Name (ARN) of the CloudWatch Log Group used for the audit logs.
+  /// ARN of the CloudWatch Log Group used for the audit logs.
   late final pulumi.Output<String?> auditDestinationArn;
   /// The authentication method that users use to access the file share. Defaults to `ActiveDirectory`. Valid values: `ActiveDirectory`, `GuestAccess`.
   late final pulumi.Output<String?> authentication;
@@ -289,7 +289,7 @@ class SmbFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> fileShareName;
   /// ID of the SMB File Share.
   late final pulumi.Output<String> fileshareId;
-  /// Amazon Resource Name (ARN) of the file gateway.
+  /// ARN of the file gateway.
   late final pulumi.Output<String> gatewayArn;
   /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
   late final pulumi.Output<bool?> guessMimeTypeEnabled;
@@ -297,7 +297,7 @@ class SmbFileShare extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> invalidUserLists;
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
+  /// ARN for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   late final pulumi.Output<String?> kmsKeyArn;
   /// The ARN of the backed storage used for storing file data.
   late final pulumi.Output<String> locationArn;
@@ -342,10 +342,10 @@ class SmbFileShare extends pulumi.CustomResource {
           'aws:storagegateway/smbFileShare:SmbFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessBasedEnumeration = registerOutput<bool?>('accessBasedEnumeration');
-    adminUserLists = registerOutput<List<String>?>('adminUserLists');
+    adminUserLists = registerOutput<List<String>?>('adminUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     authentication = registerOutput<String?>('authentication');
@@ -357,7 +357,7 @@ class SmbFileShare extends pulumi.CustomResource {
     fileshareId = registerOutput<String>('fileshareId');
     gatewayArn = registerOutput<String>('gatewayArn');
     guessMimeTypeEnabled = registerOutput<bool?>('guessMimeTypeEnabled');
-    invalidUserLists = registerOutput<List<String>?>('invalidUserLists');
+    invalidUserLists = registerOutput<List<String>?>('invalidUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     locationArn = registerOutput<String>('locationArn');
@@ -370,9 +370,9 @@ class SmbFileShare extends pulumi.CustomResource {
     requesterPays = registerOutput<bool?>('requesterPays');
     roleArn = registerOutput<String>('roleArn');
     smbAclEnabled = registerOutput<bool?>('smbAclEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    validUserLists = registerOutput<List<String>?>('validUserLists');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validUserLists = registerOutput<List<String>?>('validUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
   }
 
@@ -381,11 +381,12 @@ class SmbFileShare extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SmbFileShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SmbFileShare._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,7 +401,7 @@ class SmbFileShare extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessBasedEnumeration = registerOutput<bool?>('accessBasedEnumeration');
-    adminUserLists = registerOutput<List<String>?>('adminUserLists');
+    adminUserLists = registerOutput<List<String>?>('adminUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     authentication = registerOutput<String?>('authentication');
@@ -412,7 +413,7 @@ class SmbFileShare extends pulumi.CustomResource {
     fileshareId = registerOutput<String>('fileshareId');
     gatewayArn = registerOutput<String>('gatewayArn');
     guessMimeTypeEnabled = registerOutput<bool?>('guessMimeTypeEnabled');
-    invalidUserLists = registerOutput<List<String>?>('invalidUserLists');
+    invalidUserLists = registerOutput<List<String>?>('invalidUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     locationArn = registerOutput<String>('locationArn');
@@ -425,9 +426,50 @@ class SmbFileShare extends pulumi.CustomResource {
     requesterPays = registerOutput<bool?>('requesterPays');
     roleArn = registerOutput<String>('roleArn');
     smbAclEnabled = registerOutput<bool?>('smbAclEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    validUserLists = registerOutput<List<String>?>('validUserLists');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validUserLists = registerOutput<List<String>?>('validUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
+  }
+
+  /// Creates a typed reference to an existing [SmbFileShare] resource.
+  SmbFileShare.reference(String urn)
+    : super(
+        'aws:storagegateway/smbFileShare:SmbFileShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessBasedEnumeration = registerOutput<bool?>('accessBasedEnumeration');
+    adminUserLists = registerOutput<List<String>?>('adminUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    auditDestinationArn = registerOutput<String?>('auditDestinationArn');
+    authentication = registerOutput<String?>('authentication');
+    bucketRegion = registerOutput<String?>('bucketRegion');
+    cacheAttributes = registerOutput<SmbFileShareCacheAttributes?>('cacheAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SmbFileShareCacheAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    caseSensitivity = registerOutput<String?>('caseSensitivity');
+    defaultStorageClass = registerOutput<String?>('defaultStorageClass');
+    fileShareName = registerOutput<String>('fileShareName');
+    fileshareId = registerOutput<String>('fileshareId');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    guessMimeTypeEnabled = registerOutput<bool?>('guessMimeTypeEnabled');
+    invalidUserLists = registerOutput<List<String>?>('invalidUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    locationArn = registerOutput<String>('locationArn');
+    notificationPolicy = registerOutput<String?>('notificationPolicy');
+    objectAcl = registerOutput<String?>('objectAcl');
+    oplocksEnabled = registerOutput<bool>('oplocksEnabled');
+    path = registerOutput<String>('path');
+    readOnly = registerOutput<bool?>('readOnly');
+    region = registerOutput<String>('region');
+    requesterPays = registerOutput<bool?>('requesterPays');
+    roleArn = registerOutput<String>('roleArn');
+    smbAclEnabled = registerOutput<bool?>('smbAclEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validUserLists = registerOutput<List<String>?>('validUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TelemetryRuleForOrganizationRuleDestinationConfigurationElbLoadBalancerLoggingParameters {
   /// Delimiter character used to separate fields in ELB access log entries when using plain text format.
-  final pulumi.Input<String>? fieldDelimiter;
+  final pulumi.Input<String?>? fieldDelimiter;
   /// Format for ELB access log entries. Valid values: `plain-text`, `json`.
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
 
   /// Creates a new [TelemetryRuleForOrganizationRuleDestinationConfigurationElbLoadBalancerLoggingParameters].
   /// [fieldDelimiter] Delimiter character used to separate fields in ELB access log entries when using plain text format.

@@ -6,11 +6,11 @@ class ConfigurationAggregatorAccountAggregationSource {
   /// List of 12-digit account IDs of the account(s) being aggregated.
   final pulumi.Input<List<String>> accountIds;
   /// If true, aggregate existing AWS Config regions and future regions.
-  final pulumi.Input<bool>? allRegions;
+  final pulumi.Input<bool?>? allRegions;
   /// List of source regions being aggregated.
   ///
   /// Either `regions` or `allRegions` (as true) must be specified.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
 
   /// Creates a new [ConfigurationAggregatorAccountAggregationSource].
   /// [accountIds] List of 12-digit account IDs of the account(s) being aggregated.

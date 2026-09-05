@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskExecutionPlacementStrategy {
   /// Field to apply the placement strategy against.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// Type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
   final pulumi.Input<String> type;
 

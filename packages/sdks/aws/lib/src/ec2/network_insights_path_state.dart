@@ -7,35 +7,35 @@ import 'network_insights_path_filter_at_source.dart';
 /// Input properties used for looking up and filtering NetworkInsightsPath resources.
 class NetworkInsightsPathState {
   /// ARN of the Network Insights Path.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID or ARN of the resource which is the destination of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN. Either the `destination` argument or the `destinationAddress` argument in the `filterAtSource` block must be specified.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// ARN of the destination.
-  final pulumi.Input<String>? destinationArn;
+  final pulumi.Input<String?>? destinationArn;
   /// IP address of the destination resource.
-  final pulumi.Input<String>? destinationIp;
+  final pulumi.Input<String?>? destinationIp;
   /// Destination port to analyze access to.
-  final pulumi.Input<int>? destinationPort;
+  final pulumi.Input<int?>? destinationPort;
   /// Scopes the analysis to network paths that match specific filters at the destination. If you specify this parameter, you can't specify `destinationIp`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
-  final pulumi.Input<NetworkInsightsPathFilterAtDestination>? filterAtDestination;
+  final pulumi.Input<NetworkInsightsPathFilterAtDestination?>? filterAtDestination;
   /// Scopes the analysis to network paths that match specific filters at the source. If you specify this parameter, you can't specify `sourceIp` or `destinationPort`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
-  final pulumi.Input<NetworkInsightsPathFilterAtSource>? filterAtSource;
+  final pulumi.Input<NetworkInsightsPathFilterAtSource?>? filterAtSource;
   /// Protocol to use for analysis. Valid options are `tcp` or `udp`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID or ARN of the resource which is the source of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// ARN of the source.
-  final pulumi.Input<String>? sourceArn;
+  final pulumi.Input<String?>? sourceArn;
   /// IP address of the source resource.
-  final pulumi.Input<String>? sourceIp;
+  final pulumi.Input<String?>? sourceIp;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [NetworkInsightsPathState].
   /// [arn] ARN of the Network Insights Path.
@@ -94,7 +94,7 @@ class NetworkInsightsPathState {
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationArn: (() { final guardedValue = map['destinationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationIp: (() { final guardedValue = map['destinationIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       filterAtDestination: (() { final guardedValue = map['filterAtDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInsightsPathFilterAtDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filterAtSource: (() { final guardedValue = map['filterAtSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInsightsPathFilterAtSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

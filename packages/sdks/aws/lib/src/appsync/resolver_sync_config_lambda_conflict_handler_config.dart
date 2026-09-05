@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverSyncConfigLambdaConflictHandlerConfig {
   /// ARN for the Lambda function to use as the Conflict Handler.
-  final pulumi.Input<String>? lambdaConflictHandlerArn;
+  final pulumi.Input<String?>? lambdaConflictHandlerArn;
 
   /// Creates a new [ResolverSyncConfigLambdaConflictHandlerConfig].
   /// [lambdaConflictHandlerArn] ARN for the Lambda function to use as the Conflict Handler.

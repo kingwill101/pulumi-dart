@@ -9,14 +9,14 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting {
   /// List of default values for a slot.
   /// See the `defaultValueSpecification` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification>>? defaultValueSpecifications;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification>?>? defaultValueSpecifications;
   /// Prompt that Amazon Lex uses to elicit the slot value from the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `promptSpecification` argument reference - they are identical.
-  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification>? promptSpecification;
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance>>? sampleUtterances;
+  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification?>? promptSpecification;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance>?>? sampleUtterances;
   /// Specifies the prompts that Amazon Lex uses while a bot is waiting for customer input.
   /// See the `waitAndContinueSpecification` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecification>>? waitAndContinueSpecifications;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecification>?>? waitAndContinueSpecifications;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting].
   /// [defaultValueSpecifications] List of default values for a slot.

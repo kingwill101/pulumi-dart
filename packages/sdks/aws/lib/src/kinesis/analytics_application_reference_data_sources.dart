@@ -6,7 +6,7 @@ import 'analytics_application_reference_data_sources_schema.dart';
 
 class AnalyticsApplicationReferenceDataSources {
   /// The ARN of the Kinesis Analytics Application.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The S3 configuration for the reference data source. See S3 Reference below for more details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesS3> s3;
   /// The Schema format of the data in the streaming source. See Source Schema below for more details.

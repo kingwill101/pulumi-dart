@@ -6,9 +6,9 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.

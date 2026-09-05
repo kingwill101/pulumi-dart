@@ -6,9 +6,9 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePrimaryNetworkInterface {
   /// Whether the network interface will be deleted when the instance terminates.
-  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<bool?>? deleteOnTermination;
   /// ID of the network interface to attach.
   final pulumi.Input<String> networkInterfaceId;
 

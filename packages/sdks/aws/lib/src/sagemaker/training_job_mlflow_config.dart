@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobMlflowConfig {
   /// Name of the MLflow experiment.
-  final pulumi.Input<String>? mlflowExperimentName;
+  final pulumi.Input<String?>? mlflowExperimentName;
   /// ARN of the MLflow tracking server.
   final pulumi.Input<String> mlflowResourceArn;
   /// Name of the MLflow run.
-  final pulumi.Input<String>? mlflowRunName;
+  final pulumi.Input<String?>? mlflowRunName;
 
   /// Creates a new [TrainingJobMlflowConfig].
   /// [mlflowExperimentName] Name of the MLflow experiment.

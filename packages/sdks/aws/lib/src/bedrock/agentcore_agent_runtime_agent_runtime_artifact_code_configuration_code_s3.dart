@@ -8,7 +8,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3 {
   /// Key of the object containing the ZIP file of the source code for the agent runtime in the Amazon S3 bucket.
   final pulumi.Input<String> prefix;
   /// Version ID of the Amazon S3 object. If not specified, the latest version of the object is used.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3].
   /// [bucket] Name of the Amazon S3 bucket.

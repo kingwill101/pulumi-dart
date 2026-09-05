@@ -14,6 +14,22 @@ import 'glossary_term_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.iam.Role("example", {
+///     inlinePolicies: [{
+///         name: "example",
+///         policy: JSON.stringify({
+///             Version: "2012-10-17",
+///             Statement: [{
+///                 Action: [
+///                     "datazone:*",
+///                     "ram:*",
+///                     "sso:*",
+///                     "kms:*",
+///                 ],
+///                 Effect: "Allow",
+///                 Resource: "*",
+///             }],
+///         }),
+///     }],
 ///     name: "example",
 ///     assumeRolePolicy: JSON.stringify({
 ///         Version: "2012-10-17",
@@ -40,22 +56,6 @@ import 'glossary_term_timeouts.dart';
 ///             },
 ///         ],
 ///     }),
-///     inlinePolicies: [{
-///         name: "example",
-///         policy: JSON.stringify({
-///             Version: "2012-10-17",
-///             Statement: [{
-///                 Action: [
-///                     "datazone:*",
-///                     "ram:*",
-///                     "sso:*",
-///                     "kms:*",
-///                 ],
-///                 Effect: "Allow",
-///                 Resource: "*",
-///             }],
-///         }),
-///     }],
 /// });
 /// const exampleDomain = new aws.datazone.Domain("example", {
 ///     name: "example_name",
@@ -88,6 +88,22 @@ import 'glossary_term_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iam.Role("example",
+///     inline_policies=[{
+///         "name": "example",
+///         "policy": json.dumps({
+///             "Version": "2012-10-17",
+///             "Statement": [{
+///                 "Action": [
+///                     "datazone:*",
+///                     "ram:*",
+///                     "sso:*",
+///                     "kms:*",
+///                 ],
+///                 "Effect": "Allow",
+///                 "Resource": "*",
+///             }],
+///         }),
+///     }],
 ///     name="example",
 ///     assume_role_policy=json.dumps({
 ///         "Version": "2012-10-17",
@@ -113,23 +129,7 @@ import 'glossary_term_timeouts.dart';
 ///                 },
 ///             },
 ///         ],
-///     }),
-///     inline_policies=[{
-///         "name": "example",
-///         "policy": json.dumps({
-///             "Version": "2012-10-17",
-///             "Statement": [{
-///                 "Action": [
-///                     "datazone:*",
-///                     "ram:*",
-///                     "sso:*",
-///                     "kms:*",
-///                 ],
-///                 "Effect": "Allow",
-///                 "Resource": "*",
-///             }],
-///         }),
-///     }])
+///     }))
 /// example_domain = aws.datazone.Domain("example",
 ///     name="example_name",
 ///     domain_execution_role=example.arn)
@@ -162,6 +162,32 @@ import 'glossary_term_timeouts.dart';
 /// {
 ///     var example = new Aws.Iam.Role("example", new()
 ///     {
+///         InlinePolicies = new[]
+///         {
+///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
+///             {
+///                 Name = "example",
+///                 Policy = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                 {
+///                     ["Version"] = "2012-10-17",
+///                     ["Statement"] = new[]
+///                     {
+///                         new Dictionary<string, object?>
+///                         {
+///                             ["Action"] = new[]
+///                             {
+///                                 "datazone:*",
+///                                 "ram:*",
+///                                 "sso:*",
+///                                 "kms:*",
+///                             },
+///                             ["Effect"] = "Allow",
+///                             ["Resource"] = "*",
+///                         },
+///                     },
+///                 }),
+///             },
+///         },
 ///         Name = "example",
 ///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///         {
@@ -196,32 +222,6 @@ import 'glossary_term_timeouts.dart';
 ///                 },
 ///             },
 ///         }),
-///         InlinePolicies = new[]
-///         {
-///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
-///             {
-///                 Name = "example",
-///                 Policy = JsonSerializer.Serialize(new Dictionary<string, object?>
-///                 {
-///                     ["Version"] = "2012-10-17",
-///                     ["Statement"] = new[]
-///                     {
-///                         new Dictionary<string, object?>
-///                         {
-///                             ["Action"] = new[]
-///                             {
-///                                 "datazone:*",
-///                                 "ram:*",
-///                                 "sso:*",
-///                                 "kms:*",
-///                             },
-///                             ["Effect"] = "Allow",
-///                             ["Resource"] = "*",
-///                         },
-///                     },
-///                 }),
-///             },
-///         },
 ///     });
 ///
 ///     var exampleDomain = new Aws.DataZone.Domain("example", new()
@@ -284,6 +284,25 @@ import 'glossary_term_timeouts.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Action": []string{
+/// 						"datazone:*",
+/// 						"ram:*",
+/// 						"sso:*",
+/// 						"kms:*",
+/// 					},
+/// 					"Effect":   "Allow",
+/// 					"Resource": "*",
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 			"Version": "2012-10-17",
+/// 			"Statement": []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"Action": []string{
 /// 						"sts:AssumeRole",
 /// 						"sts:TagSession",
 /// 					},
@@ -307,35 +326,16 @@ import 'glossary_term_timeouts.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
-/// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
-/// 				map[string]interface{}{
-/// 					"Action": []string{
-/// 						"datazone:*",
-/// 						"ram:*",
-/// 						"sso:*",
-/// 						"kms:*",
-/// 					},
-/// 					"Effect":   "Allow",
-/// 					"Resource": "*",
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		json1 := string(tmpJSON1)
 /// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			AssumeRolePolicy: pulumi.String(json0),
 /// 			InlinePolicies: iam.RoleInlinePolicyArray{
 /// 				&iam.RoleInlinePolicyArgs{
 /// 					Name:   pulumi.String("example"),
-/// 					Policy: pulumi.String(json1),
+/// 					Policy: pulumi.String(json0),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			AssumeRolePolicy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -397,6 +397,17 @@ import 'glossary_term_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   inline_policies {
+///     name = "example"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
+///         "Effect"   = "Allow"
+///         "Resource" = "*"
+///       }]
+///     })
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -414,17 +425,6 @@ import 'glossary_term_timeouts.dart';
 ///       }
 ///     }]
 ///   })
-///   inline_policies {
-///     name = "example"
-///     policy = jsonencode({
-///       "Version" = "2012-10-17"
-///       "Statement" = [{
-///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
-///         "Effect"   = "Allow"
-///         "Resource" = "*"
-///       }]
-///     })
-///   }
 /// }
 /// resource "aws_datazone_domain" "example" {
 ///   name                  = "example_name"
@@ -487,6 +487,23 @@ import 'glossary_term_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Role("example", RoleArgs.builder()
+///             .inlinePolicies(RoleInlinePolicyArgs.builder()
+///                 .name("example")
+///                 .policy(serializeJson(
+///                     jsonObject(
+///                         jsonProperty("Version", "2012-10-17"),
+///                         jsonProperty("Statement", jsonArray(jsonObject(
+///                             jsonProperty("Action", jsonArray(
+///                                 "datazone:*",
+///                                 "ram:*",
+///                                 "sso:*",
+///                                 "kms:*"
+///                             )),
+///                             jsonProperty("Effect", "Allow"),
+///                             jsonProperty("Resource", "*")
+///                         )))
+///                     )))
+///                 .build())
 ///             .name("example")
 ///             .assumeRolePolicy(serializeJson(
 ///                 jsonObject(
@@ -514,23 +531,6 @@ import 'glossary_term_timeouts.dart';
 ///                         )
 ///                     ))
 ///                 )))
-///             .inlinePolicies(RoleInlinePolicyArgs.builder()
-///                 .name("example")
-///                 .policy(serializeJson(
-///                     jsonObject(
-///                         jsonProperty("Version", "2012-10-17"),
-///                         jsonProperty("Statement", jsonArray(jsonObject(
-///                             jsonProperty("Action", jsonArray(
-///                                 "datazone:*",
-///                                 "ram:*",
-///                                 "sso:*",
-///                                 "kms:*"
-///                             )),
-///                             jsonProperty("Effect", "Allow"),
-///                             jsonProperty("Resource", "*")
-///                         )))
-///                     )))
-///                 .build())
 ///             .build());
 ///
 ///         var exampleDomain = new Domain("exampleDomain", DomainArgs.builder()
@@ -572,6 +572,19 @@ import 'glossary_term_timeouts.dart';
 ///   example:
 ///     type: aws:iam:Role
 ///     properties:
+///       inlinePolicies:
+///         - name: example
+///           policy:
+///             fn::toJSON:
+///               Version: 2012-10-17
+///               Statement:
+///                 - Action:
+///                     - datazone:*
+///                     - ram:*
+///                     - sso:*
+///                     - kms:*
+///                   Effect: Allow
+///                   Resource: '*'
 ///       name: example
 ///       assumeRolePolicy:
 ///         fn::toJSON:
@@ -589,19 +602,6 @@ import 'glossary_term_timeouts.dart';
 ///               Effect: Allow
 ///               Principal:
 ///                 Service: cloudformation.amazonaws.com
-///       inlinePolicies:
-///         - name: example
-///           policy:
-///             fn::toJSON:
-///               Version: 2012-10-17
-///               Statement:
-///                 - Action:
-///                     - datazone:*
-///                     - ram:*
-///                     - sso:*
-///                     - kms:*
-///                   Effect: Allow
-///                   Resource: '*'
 ///   exampleDomain:
 ///     type: aws:datazone:Domain
 ///     name: example
@@ -699,7 +699,7 @@ class GlossaryTerm extends pulumi.CustomResource {
           'aws:datazone/glossaryTerm:GlossaryTerm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
@@ -719,11 +719,12 @@ class GlossaryTerm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlossaryTermState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlossaryTerm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -737,6 +738,28 @@ class GlossaryTerm extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    domainIdentifier = registerOutput<String?>('domainIdentifier');
+    glossaryIdentifier = registerOutput<String>('glossaryIdentifier');
+    longDescription = registerOutput<String?>('longDescription');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    shortDescription = registerOutput<String?>('shortDescription');
+    status = registerOutput<String?>('status');
+    termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryTermTermRelations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryTermTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [GlossaryTerm] resource.
+  GlossaryTerm.reference(String urn)
+    : super(
+        'aws:datazone/glossaryTerm:GlossaryTerm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     domainIdentifier = registerOutput<String?>('domainIdentifier');

@@ -7,7 +7,7 @@ class BucketV2ServerSideEncryptionConfigurationRule {
   /// Single object for setting server-side encryption by default. See `applyServerSideEncryptionByDefault` Block below for details.
   final pulumi.Input<List<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>> applyServerSideEncryptionByDefaults;
   /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
-  final pulumi.Input<bool>? bucketKeyEnabled;
+  final pulumi.Input<bool?>? bucketKeyEnabled;
 
   /// Creates a new [BucketV2ServerSideEncryptionConfigurationRule].
   /// [applyServerSideEncryptionByDefaults] Single object for setting server-side encryption by default. See `applyServerSideEncryptionByDefault` Block below for details.

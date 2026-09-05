@@ -17,41 +17,41 @@ import 'domain_default_user_settings_tensor_board_app_settings.dart';
 
 class DomainDefaultUserSettings {
   /// Indicates whether auto-mounting of an EFS volume is supported for the user profile. The `DefaultAsDomain` value is only supported for user profiles. Do not use the `DefaultAsDomain` value when setting this parameter for a domain. Valid values are: `Enabled`, `Disabled`, and `DefaultAsDomain`.
-  final pulumi.Input<String>? autoMountHomeEfs;
+  final pulumi.Input<String?>? autoMountHomeEfs;
   /// The Canvas app settings. See `canvasAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsCanvasAppSettings>? canvasAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsCanvasAppSettings?>? canvasAppSettings;
   /// The Code Editor application settings. See `codeEditorAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsCodeEditorAppSettings>? codeEditorAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsCodeEditorAppSettings?>? codeEditorAppSettings;
   /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `customFileSystemConfig` Block below.
-  final pulumi.Input<List<DomainDefaultUserSettingsCustomFileSystemConfig>>? customFileSystemConfigs;
+  final pulumi.Input<List<DomainDefaultUserSettingsCustomFileSystemConfig>?>? customFileSystemConfigs;
   /// Details about the POSIX identity that is used for file system operations. See `customPosixUserConfig` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsCustomPosixUserConfig>? customPosixUserConfig;
+  final pulumi.Input<DomainDefaultUserSettingsCustomPosixUserConfig?>? customPosixUserConfig;
   /// The default experience that the user is directed to when accessing the domain. The supported values are: `studio::`: Indicates that Studio is the default experience. This value can only be passed if StudioWebPortal is set to ENABLED. `app:JupyterServer:`: Indicates that Studio Classic is the default experience.
-  final pulumi.Input<String>? defaultLandingUri;
+  final pulumi.Input<String?>? defaultLandingUri;
   /// The execution role ARN for the user.
   final pulumi.Input<String> executionRole;
   /// The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsJupyterLabAppSettings>? jupyterLabAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsJupyterLabAppSettings?>? jupyterLabAppSettings;
   /// The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsJupyterServerAppSettings>? jupyterServerAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsJupyterServerAppSettings?>? jupyterServerAppSettings;
   /// The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsKernelGatewayAppSettings>? kernelGatewayAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsKernelGatewayAppSettings?>? kernelGatewayAppSettings;
   /// The RSession app settings. See `rSessionAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsRSessionAppSettings>? rSessionAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsRSessionAppSettings?>? rSessionAppSettings;
   /// A collection of settings that configure user interaction with the RStudioServerPro app. See `rStudioServerProAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsRStudioServerProAppSettings>? rStudioServerProAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsRStudioServerProAppSettings?>? rStudioServerProAppSettings;
   /// A list of security group IDs that will be attached to the user.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The sharing settings. See `sharingSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsSharingSettings>? sharingSettings;
+  final pulumi.Input<DomainDefaultUserSettingsSharingSettings?>? sharingSettings;
   /// The storage settings for a private space. See `spaceStorageSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsSpaceStorageSettings>? spaceStorageSettings;
+  final pulumi.Input<DomainDefaultUserSettingsSpaceStorageSettings?>? spaceStorageSettings;
   /// Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? studioWebPortal;
+  final pulumi.Input<String?>? studioWebPortal;
   /// The Studio Web Portal settings. See `studioWebPortalSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsStudioWebPortalSettings>? studioWebPortalSettings;
+  final pulumi.Input<DomainDefaultUserSettingsStudioWebPortalSettings?>? studioWebPortalSettings;
   /// The TensorBoard app settings. See `tensorBoardAppSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsTensorBoardAppSettings>? tensorBoardAppSettings;
+  final pulumi.Input<DomainDefaultUserSettingsTensorBoardAppSettings?>? tensorBoardAppSettings;
 
   /// Creates a new [DomainDefaultUserSettings].
   /// [autoMountHomeEfs] Indicates whether auto-mounting of an EFS volume is supported for the user profile. The `DefaultAsDomain` value is only supported for user profiles. Do not use the `DefaultAsDomain` value when setting this parameter for a domain. Valid values are: `Enabled`, `Disabled`, and `DefaultAsDomain`.

@@ -4,45 +4,45 @@
 /// Result data returned by getResolverFirewallConfig.
 class GetResolverFirewallConfigResult {
   /// Determines how DNS Firewall operates during failures, for example when all traffic that is sent to DNS Firewall fails to receive a reply.
-  final String firewallFailOpen;
+  final String? firewallFailOpen;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Amazon Web Services account ID of the owner of the VPC that this firewall configuration applies to.
-  final String ownerId;
-  final String region;
-  final String resourceId;
+  final String? ownerId;
+  final String? region;
+  final String? resourceId;
 
   /// Creates a new [GetResolverFirewallConfigResult].
   /// [firewallFailOpen] Determines how DNS Firewall operates during failures, for example when all traffic that is sent to DNS Firewall fails to receive a reply.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ownerId] The Amazon Web Services account ID of the owner of the VPC that this firewall configuration applies to.
-  /// [region] Required.
-  /// [resourceId] Required.
+  /// [region] Optional.
+  /// [resourceId] Optional.
   const GetResolverFirewallConfigResult({
-    required this.firewallFailOpen,
-    required this.id,
-    required this.ownerId,
-    required this.region,
-    required this.resourceId,
+    this.firewallFailOpen,
+    this.id,
+    this.ownerId,
+    this.region,
+    this.resourceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'firewallFailOpen': firewallFailOpen,
-      'id': id,
-      'ownerId': ownerId,
-      'region': region,
-      'resourceId': resourceId,
+      'firewallFailOpen': ?firewallFailOpen,
+      'id': ?id,
+      'ownerId': ?ownerId,
+      'region': ?region,
+      'resourceId': ?resourceId,
     };
   }
 
   factory GetResolverFirewallConfigResult.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallConfigResult(
-      firewallFailOpen: map['firewallFailOpen'] as String,
-      id: map['id'] as String,
-      ownerId: map['ownerId'] as String,
-      region: map['region'] as String,
-      resourceId: map['resourceId'] as String,
+      firewallFailOpen: (() { final guardedValue = map['firewallFailOpen']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

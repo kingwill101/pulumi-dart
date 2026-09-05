@@ -10,7 +10,7 @@ class GetImageArgs {
   /// ID of the image.
   final pulumi.Input<String> imageId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetImageArgs].
   /// [imageId] ID of the image.

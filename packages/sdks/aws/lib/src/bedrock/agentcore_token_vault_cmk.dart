@@ -156,7 +156,7 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
           'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreTokenVaultCmkKmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -168,11 +168,12 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreTokenVaultCmkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreTokenVaultCmk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -186,6 +187,20 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreTokenVaultCmkKmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tokenVaultId = registerOutput<String>('tokenVaultId');
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreTokenVaultCmk] resource.
+  AgentcoreTokenVaultCmk.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreTokenVaultCmkKmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tokenVaultId = registerOutput<String>('tokenVaultId');

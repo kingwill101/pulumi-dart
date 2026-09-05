@@ -6,28 +6,28 @@ import 'hub_content_reference_timeouts.dart';
 /// Input properties used for looking up and filtering HubContentReference resources.
 class HubContentReferenceState {
   /// ARN of the private SageMaker Hub that contains the content reference.
-  final pulumi.Input<String>? hubArn;
+  final pulumi.Input<String?>? hubArn;
   /// ARN of the hub content reference (without version suffix). The minVersion is stripped off from the end of this ARN to make it usable to list tags.
-  final pulumi.Input<String>? hubContentArn;
+  final pulumi.Input<String?>? hubContentArn;
   /// Name of the hub content reference.
-  final pulumi.Input<String>? hubContentName;
+  final pulumi.Input<String?>? hubContentName;
   /// Status of the hub content reference. Valid values include `Available`, `Importing`, `Deleting`, `ImportFailed`, `DeleteFailed`.
-  final pulumi.Input<String>? hubContentStatus;
+  final pulumi.Input<String?>? hubContentStatus;
   /// Version of the hub content reference.
-  final pulumi.Input<String>? hubContentVersion;
+  final pulumi.Input<String?>? hubContentVersion;
   /// Name of the private SageMaker Hub to add the content reference to.
-  final pulumi.Input<String>? hubName;
+  final pulumi.Input<String?>? hubName;
   /// Minimum version of the hub content to reference. Use `"1.0.0"` to support all versions. Changing this value to an empty string forces replacement of the resource.
-  final pulumi.Input<String>? minVersion;
+  final pulumi.Input<String?>? minVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the public SageMaker JumpStart hub content to reference. The ARN must not include a version suffix.
-  final pulumi.Input<String>? sagemakerPublicHubContentArn;
+  final pulumi.Input<String?>? sagemakerPublicHubContentArn;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<HubContentReferenceTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<HubContentReferenceTimeouts?>? timeouts;
 
   /// Creates a new [HubContentReferenceState].
   /// [hubArn] ARN of the private SageMaker Hub that contains the content reference.

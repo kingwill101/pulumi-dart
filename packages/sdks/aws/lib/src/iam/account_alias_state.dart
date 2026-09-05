@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccountAlias resources.
 class AccountAliasState {
   /// The account alias
-  final pulumi.Input<String>? accountAlias;
+  final pulumi.Input<String?>? accountAlias;
 
   /// Creates a new [AccountAliasState].
   /// [accountAlias] The account alias

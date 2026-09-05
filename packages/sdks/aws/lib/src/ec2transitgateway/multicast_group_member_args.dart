@@ -12,7 +12,7 @@ class MulticastGroupMemberArgs {
   /// The group members' network interface ID to register with the transit gateway multicast group.
   final pulumi.Input<String> networkInterfaceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the transit gateway multicast domain.
   final pulumi.Input<String> transitGatewayMulticastDomainId;
 

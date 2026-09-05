@@ -6,9 +6,9 @@ import 'firewall_firewall_status_transit_gateway_attachment_sync_state.dart';
 
 class FirewallFirewallStatus {
   /// Set of subnets configured for use by the firewall.
-  final pulumi.Input<List<FirewallFirewallStatusSyncState>>? syncStates;
+  final pulumi.Input<List<FirewallFirewallStatusSyncState>?>? syncStates;
   /// Set of transit gateway configured for use by the firewall.
-  final pulumi.Input<List<FirewallFirewallStatusTransitGatewayAttachmentSyncState>>? transitGatewayAttachmentSyncStates;
+  final pulumi.Input<List<FirewallFirewallStatusTransitGatewayAttachmentSyncState>?>? transitGatewayAttachmentSyncStates;
 
   /// Creates a new [FirewallFirewallStatus].
   /// [syncStates] Set of subnets configured for use by the firewall.

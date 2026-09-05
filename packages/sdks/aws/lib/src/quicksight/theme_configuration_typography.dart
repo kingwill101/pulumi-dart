@@ -5,7 +5,7 @@ import 'theme_configuration_typography_font_family.dart';
 
 class ThemeConfigurationTypography {
   /// Determines the list of font families. Maximum number of 5 items. See font_families.
-  final pulumi.Input<List<ThemeConfigurationTypographyFontFamily>>? fontFamilies;
+  final pulumi.Input<List<ThemeConfigurationTypographyFontFamily>?>? fontFamilies;
 
   /// Creates a new [ThemeConfigurationTypography].
   /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.

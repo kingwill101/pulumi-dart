@@ -12,7 +12,7 @@ class ApplicationLayerAutomaticResponseArgs {
   final pulumi.Input<String> action;
   /// ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
   final pulumi.Input<String> resourceArn;
-  final pulumi.Input<ApplicationLayerAutomaticResponseTimeouts>? timeouts;
+  final pulumi.Input<ApplicationLayerAutomaticResponseTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationLayerAutomaticResponseArgs].
   /// [action] One of `COUNT` or `BLOCK`

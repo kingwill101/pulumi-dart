@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AgentcoreWorkloadIdentity resources.
 class AgentcoreWorkloadIdentityState {
   /// Set of allowed OAuth2 return URLs for resources associated with this workload identity. These URLs are used as valid redirect targets during OAuth2 authentication flows.
-  final pulumi.Input<List<String>>? allowedResourceOauth2ReturnUrls;
+  final pulumi.Input<List<String>?>? allowedResourceOauth2ReturnUrls;
   /// Name of the workload identity. Must be 3-255 characters and contain only alphanumeric characters, hyphens, periods, and underscores.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the Workload Identity.
-  final pulumi.Input<String>? workloadIdentityArn;
+  final pulumi.Input<String?>? workloadIdentityArn;
 
   /// Creates a new [AgentcoreWorkloadIdentityState].
   /// [allowedResourceOauth2ReturnUrls] Set of allowed OAuth2 return URLs for resources associated with this workload identity. These URLs are used as valid redirect targets during OAuth2 authentication flows.

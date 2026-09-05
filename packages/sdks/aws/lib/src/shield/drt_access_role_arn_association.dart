@@ -278,7 +278,7 @@ import 'drt_access_role_arn_association_timeouts.dart';
 /// $ pulumi import aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation example 123456789012
 /// ```
 class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
+  /// ARN of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
   late final pulumi.Output<String> roleArn;
   late final pulumi.Output<DrtAccessRoleArnAssociationTimeouts?> timeouts;
 
@@ -294,7 +294,7 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
           'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     roleArn = registerOutput<String>('roleArn');
     timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -305,11 +305,12 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DrtAccessRoleArnAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DrtAccessRoleArnAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -323,6 +324,19 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    roleArn = registerOutput<String>('roleArn');
+    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DrtAccessRoleArnAssociation] resource.
+  DrtAccessRoleArnAssociation.reference(String urn)
+    : super(
+        'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     roleArn = registerOutput<String>('roleArn');
     timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

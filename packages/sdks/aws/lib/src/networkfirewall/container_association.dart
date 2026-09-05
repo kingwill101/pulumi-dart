@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_association_args.dart';
+import 'container_association_container_monitoring_configuration.dart';
 import 'container_association_state.dart';
 import 'container_association_timeouts.dart';
 
@@ -15,16 +16,16 @@ import 'container_association_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.ContainerAssociation("example", {
-///     containerAssociationName: "example-eks-association",
-///     type: "EKS",
-///     description: "Association for production EKS cluster",
 ///     containerMonitoringConfigurations: [{
-///         clusterArn: exampleAwsEksCluster.arn,
 ///         attributeFilters: [{
 ///             key: "app",
 ///             value: "backend",
 ///         }],
+///         clusterArn: exampleAwsEksCluster.arn,
 ///     }],
+///     containerAssociationName: "example-eks-association",
+///     type: "EKS",
+///     description: "Association for production EKS cluster",
 ///     tags: {
 ///         Name: "example",
 ///         Environment: "production",
@@ -36,16 +37,16 @@ import 'container_association_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.ContainerAssociation("example",
-///     container_association_name="example-eks-association",
-///     type="EKS",
-///     description="Association for production EKS cluster",
 ///     container_monitoring_configurations=[{
-///         "cluster_arn": example_aws_eks_cluster["arn"],
 ///         "attribute_filters": [{
 ///             "key": "app",
 ///             "value": "backend",
 ///         }],
+///         "cluster_arn": example_aws_eks_cluster["arn"],
 ///     }],
+///     container_association_name="example-eks-association",
+///     type="EKS",
+///     description="Association for production EKS cluster",
 ///     tags={
 ///         "Name": "example",
 ///         "Environment": "production",
@@ -61,14 +62,10 @@ import 'container_association_timeouts.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.ContainerAssociation("example", new()
 ///     {
-///         ContainerAssociationName = "example-eks-association",
-///         Type = "EKS",
-///         Description = "Association for production EKS cluster",
 ///         ContainerMonitoringConfigurations = new[]
 ///         {
 ///             new Aws.NetworkFirewall.Inputs.ContainerAssociationContainerMonitoringConfigurationArgs
 ///             {
-///                 ClusterArn = exampleAwsEksCluster.Arn,
 ///                 AttributeFilters = new[]
 ///                 {
 ///                     new Aws.NetworkFirewall.Inputs.ContainerAssociationContainerMonitoringConfigurationAttributeFilterArgs
@@ -77,8 +74,12 @@ import 'container_association_timeouts.dart';
 ///                         Value = "backend",
 ///                     },
 ///                 },
+///                 ClusterArn = exampleAwsEksCluster.Arn,
 ///             },
 ///         },
+///         ContainerAssociationName = "example-eks-association",
+///         Type = "EKS",
+///         Description = "Association for production EKS cluster",
 ///         Tags =
 ///         {
 ///             { "Name", "example" },
@@ -99,20 +100,20 @@ import 'container_association_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewContainerAssociation(ctx, "example", &networkfirewall.ContainerAssociationArgs{
-/// 			ContainerAssociationName: pulumi.String("example-eks-association"),
-/// 			Type:                     pulumi.String("EKS"),
-/// 			Description:              pulumi.String("Association for production EKS cluster"),
 /// 			ContainerMonitoringConfigurations: networkfirewall.ContainerAssociationContainerMonitoringConfigurationArray{
 /// 				&networkfirewall.ContainerAssociationContainerMonitoringConfigurationArgs{
-/// 					ClusterArn: pulumi.Any(exampleAwsEksCluster.Arn),
 /// 					AttributeFilters: networkfirewall.ContainerAssociationContainerMonitoringConfigurationAttributeFilterArray{
 /// 						&networkfirewall.ContainerAssociationContainerMonitoringConfigurationAttributeFilterArgs{
 /// 							Key:   pulumi.String("app"),
 /// 							Value: pulumi.String("backend"),
 /// 						},
 /// 					},
+/// 					ClusterArn: pulumi.Any(exampleAwsEksCluster.Arn),
 /// 				},
 /// 			},
+/// 			ContainerAssociationName: pulumi.String("example-eks-association"),
+/// 			Type:                     pulumi.String("EKS"),
+/// 			Description:              pulumi.String("Association for production EKS cluster"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":        pulumi.String("example"),
 /// 				"Environment": pulumi.String("production"),
@@ -135,16 +136,16 @@ import 'container_association_timeouts.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_containerassociation" "example" {
-///   container_association_name = "example-eks-association"
-///   type                       = "EKS"
-///   description                = "Association for production EKS cluster"
 ///   container_monitoring_configurations {
-///     cluster_arn = exampleAwsEksCluster.arn
 ///     attribute_filters {
 ///       key   = "app"
 ///       value = "backend"
 ///     }
+///     cluster_arn = exampleAwsEksCluster.arn
 ///   }
+///   container_association_name = "example-eks-association"
+///   type                       = "EKS"
+///   description                = "Association for production EKS cluster"
 ///   tags = {
 ///     "Name"        = "example"
 ///     "Environment" = "production"
@@ -175,16 +176,16 @@ import 'container_association_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContainerAssociation("example", ContainerAssociationArgs.builder()
-///             .containerAssociationName("example-eks-association")
-///             .type("EKS")
-///             .description("Association for production EKS cluster")
 ///             .containerMonitoringConfigurations(ContainerAssociationContainerMonitoringConfigurationArgs.builder()
-///                 .clusterArn(exampleAwsEksCluster.arn())
 ///                 .attributeFilters(ContainerAssociationContainerMonitoringConfigurationAttributeFilterArgs.builder()
 ///                     .key("app")
 ///                     .value("backend")
 ///                     .build())
+///                 .clusterArn(exampleAwsEksCluster.arn())
 ///                 .build())
+///             .containerAssociationName("example-eks-association")
+///             .type("EKS")
+///             .description("Association for production EKS cluster")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example"),
 ///                 Map.entry("Environment", "production")
@@ -199,14 +200,14 @@ import 'container_association_timeouts.dart';
 ///   example:
 ///     type: aws:networkfirewall:ContainerAssociation
 ///     properties:
+///       containerMonitoringConfigurations:
+///         - attributeFilters:
+///             - key: app
+///               value: backend
+///           clusterArn: ${exampleAwsEksCluster.arn}
 ///       containerAssociationName: example-eks-association
 ///       type: EKS
 ///       description: Association for production EKS cluster
-///       containerMonitoringConfigurations:
-///         - clusterArn: ${exampleAwsEksCluster.arn}
-///           attributeFilters:
-///             - key: app
-///               value: backend
 ///       tags:
 ///         Name: example
 ///         Environment: production
@@ -221,11 +222,11 @@ import 'container_association_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.ContainerAssociation("example", {
-///     containerAssociationName: "example-ecs-association",
-///     type: "ECS",
 ///     containerMonitoringConfigurations: [{
 ///         clusterArn: exampleAwsEcsCluster.arn,
 ///     }],
+///     containerAssociationName: "example-ecs-association",
+///     type: "ECS",
 /// });
 /// ```
 /// ```python
@@ -233,11 +234,11 @@ import 'container_association_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.ContainerAssociation("example",
-///     container_association_name="example-ecs-association",
-///     type="ECS",
 ///     container_monitoring_configurations=[{
 ///         "cluster_arn": example_aws_ecs_cluster["arn"],
-///     }])
+///     }],
+///     container_association_name="example-ecs-association",
+///     type="ECS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -249,8 +250,6 @@ import 'container_association_timeouts.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.ContainerAssociation("example", new()
 ///     {
-///         ContainerAssociationName = "example-ecs-association",
-///         Type = "ECS",
 ///         ContainerMonitoringConfigurations = new[]
 ///         {
 ///             new Aws.NetworkFirewall.Inputs.ContainerAssociationContainerMonitoringConfigurationArgs
@@ -258,6 +257,8 @@ import 'container_association_timeouts.dart';
 ///                 ClusterArn = exampleAwsEcsCluster.Arn,
 ///             },
 ///         },
+///         ContainerAssociationName = "example-ecs-association",
+///         Type = "ECS",
 ///     });
 ///
 /// });
@@ -273,13 +274,13 @@ import 'container_association_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewContainerAssociation(ctx, "example", &networkfirewall.ContainerAssociationArgs{
-/// 			ContainerAssociationName: pulumi.String("example-ecs-association"),
-/// 			Type:                     pulumi.String("ECS"),
 /// 			ContainerMonitoringConfigurations: networkfirewall.ContainerAssociationContainerMonitoringConfigurationArray{
 /// 				&networkfirewall.ContainerAssociationContainerMonitoringConfigurationArgs{
 /// 					ClusterArn: pulumi.Any(exampleAwsEcsCluster.Arn),
 /// 				},
 /// 			},
+/// 			ContainerAssociationName: pulumi.String("example-ecs-association"),
+/// 			Type:                     pulumi.String("ECS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -298,11 +299,11 @@ import 'container_association_timeouts.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_containerassociation" "example" {
-///   container_association_name = "example-ecs-association"
-///   type                       = "ECS"
 ///   container_monitoring_configurations {
 ///     cluster_arn = exampleAwsEcsCluster.arn
 ///   }
+///   container_association_name = "example-ecs-association"
+///   type                       = "ECS"
 /// }
 /// ```
 /// ```java
@@ -328,11 +329,11 @@ import 'container_association_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContainerAssociation("example", ContainerAssociationArgs.builder()
-///             .containerAssociationName("example-ecs-association")
-///             .type("ECS")
 ///             .containerMonitoringConfigurations(ContainerAssociationContainerMonitoringConfigurationArgs.builder()
 ///                 .clusterArn(exampleAwsEcsCluster.arn())
 ///                 .build())
+///             .containerAssociationName("example-ecs-association")
+///             .type("ECS")
 ///             .build());
 ///
 ///     }
@@ -343,10 +344,10 @@ import 'container_association_timeouts.dart';
 ///   example:
 ///     type: aws:networkfirewall:ContainerAssociation
 ///     properties:
-///       containerAssociationName: example-ecs-association
-///       type: ECS
 ///       containerMonitoringConfigurations:
 ///         - clusterArn: ${exampleAwsEcsCluster.arn}
+///       containerAssociationName: example-ecs-association
+///       type: ECS
 /// ```
 ///
 ///
@@ -370,7 +371,7 @@ class ContainerAssociation extends pulumi.CustomResource {
   /// Name of the container association. You can't change the name after creation. Must be between 1 and 128 characters and contain only alphanumeric characters and hyphens.
   late final pulumi.Output<String> containerAssociationName;
   /// One or more monitoring configurations, up to 5. See `containerMonitoringConfiguration` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> containerMonitoringConfigurations;
+  late final pulumi.Output<List<ContainerAssociationContainerMonitoringConfiguration>> containerMonitoringConfigurations;
   /// Description of the container association.
   late final pulumi.Output<String?> description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -399,16 +400,16 @@ class ContainerAssociation extends pulumi.CustomResource {
           'aws:networkfirewall/containerAssociation:ContainerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     containerAssociationArn = registerOutput<String>('containerAssociationArn');
     containerAssociationName = registerOutput<String>('containerAssociationName');
-    containerMonitoringConfigurations = registerOutput<List<Map<String, dynamic>>>('containerMonitoringConfigurations');
+    containerMonitoringConfigurations = registerOutput<List<ContainerAssociationContainerMonitoringConfiguration>>('containerMonitoringConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerAssociationContainerMonitoringConfiguration>(guardedValue, (value) => ContainerAssociationContainerMonitoringConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     resolvedCidrCount = registerOutput<int>('resolvedCidrCount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ContainerAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateToken = registerOutput<String>('updateToken');
@@ -419,11 +420,12 @@ class ContainerAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,12 +441,34 @@ class ContainerAssociation extends pulumi.CustomResource {
         ) {
     containerAssociationArn = registerOutput<String>('containerAssociationArn');
     containerAssociationName = registerOutput<String>('containerAssociationName');
-    containerMonitoringConfigurations = registerOutput<List<Map<String, dynamic>>>('containerMonitoringConfigurations');
+    containerMonitoringConfigurations = registerOutput<List<ContainerAssociationContainerMonitoringConfiguration>>('containerMonitoringConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerAssociationContainerMonitoringConfiguration>(guardedValue, (value) => ContainerAssociationContainerMonitoringConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     resolvedCidrCount = registerOutput<int>('resolvedCidrCount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ContainerAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateToken = registerOutput<String>('updateToken');
+  }
+
+  /// Creates a typed reference to an existing [ContainerAssociation] resource.
+  ContainerAssociation.reference(String urn)
+    : super(
+        'aws:networkfirewall/containerAssociation:ContainerAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containerAssociationArn = registerOutput<String>('containerAssociationArn');
+    containerAssociationName = registerOutput<String>('containerAssociationName');
+    containerMonitoringConfigurations = registerOutput<List<ContainerAssociationContainerMonitoringConfiguration>>('containerMonitoringConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerAssociationContainerMonitoringConfiguration>(guardedValue, (value) => ContainerAssociationContainerMonitoringConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    resolvedCidrCount = registerOutput<int>('resolvedCidrCount');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ContainerAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateToken = registerOutput<String>('updateToken');

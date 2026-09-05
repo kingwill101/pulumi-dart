@@ -237,7 +237,7 @@ import 'snapshot_copy_state.dart';
 ///         Name: HelloWorld_copy_snap
 /// ```
 class SnapshotCopy extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the EBS Snapshot.
+  /// ARN of the EBS Snapshot.
   late final pulumi.Output<String> arn;
   /// Specifies a completion duration to initiate a time-based snapshot copy. Time-based snapshot copy operations complete within the specified duration.  Value must be between 15 and 2880 minutes, in 15 minute increments only.
   late final pulumi.Output<int?> completionDurationMinutes;
@@ -286,7 +286,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:ebs/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     completionDurationMinutes = registerOutput<int?>('completionDurationMinutes');
@@ -302,8 +302,8 @@ class SnapshotCopy extends pulumi.CustomResource {
     sourceRegion = registerOutput<String>('sourceRegion');
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     storageTier = registerOutput<String>('storageTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
     volumeId = registerOutput<String>('volumeId');
     volumeSize = registerOutput<int>('volumeSize');
@@ -314,11 +314,12 @@ class SnapshotCopy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotCopyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotCopy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,8 +347,38 @@ class SnapshotCopy extends pulumi.CustomResource {
     sourceRegion = registerOutput<String>('sourceRegion');
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     storageTier = registerOutput<String>('storageTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
+    volumeId = registerOutput<String>('volumeId');
+    volumeSize = registerOutput<int>('volumeSize');
+  }
+
+  /// Creates a typed reference to an existing [SnapshotCopy] resource.
+  SnapshotCopy.reference(String urn)
+    : super(
+        'aws:ebs/snapshotCopy:SnapshotCopy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    completionDurationMinutes = registerOutput<int?>('completionDurationMinutes');
+    dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    outpostArn = registerOutput<String>('outpostArn');
+    ownerAlias = registerOutput<String>('ownerAlias');
+    ownerId = registerOutput<String>('ownerId');
+    permanentRestore = registerOutput<bool?>('permanentRestore');
+    region = registerOutput<String>('region');
+    sourceRegion = registerOutput<String>('sourceRegion');
+    sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    storageTier = registerOutput<String>('storageTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
     volumeId = registerOutput<String>('volumeId');
     volumeSize = registerOutput<int>('volumeSize');

@@ -31,8 +31,8 @@ class V2modelsIntentOutputContext {
   factory V2modelsIntentOutputContext.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentOutputContext(
       name: pulumi.Input.fromValue(map['name'] as String),
-      timeToLiveInSeconds: pulumi.Input.fromValue(map['timeToLiveInSeconds'] as int),
-      turnsToLive: pulumi.Input.fromValue(map['turnsToLive'] as int),
+      timeToLiveInSeconds: pulumi.Input.fromValue((map['timeToLiveInSeconds'] as num).toInt()),
+      turnsToLive: pulumi.Input.fromValue((map['turnsToLive'] as num).toInt()),
     );
   }
 }

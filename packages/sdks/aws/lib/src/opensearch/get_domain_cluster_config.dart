@@ -25,7 +25,7 @@ class GetDomainClusterConfig {
   /// Number of warm nodes in the cluster.
   final pulumi.Input<int> warmCount;
   /// Warm storage is enabled.
-  final pulumi.Input<bool>? warmEnabled;
+  final pulumi.Input<bool?>? warmEnabled;
   /// Instance type for the OpenSearch cluster's warm nodes.
   final pulumi.Input<String> warmType;
   /// Configuration block containing zone awareness settings.
@@ -84,14 +84,14 @@ class GetDomainClusterConfig {
   factory GetDomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfig(
       coldStorageOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(map['coldStorageOptions']!, (value) => GetDomainClusterConfigColdStorageOption.fromMap((value as Map).cast<String, dynamic>()))),
-      dedicatedMasterCount: pulumi.Input.fromValue(map['dedicatedMasterCount'] as int),
+      dedicatedMasterCount: pulumi.Input.fromValue((map['dedicatedMasterCount'] as num).toInt()),
       dedicatedMasterEnabled: pulumi.Input.fromValue(map['dedicatedMasterEnabled'] as bool),
       dedicatedMasterType: pulumi.Input.fromValue(map['dedicatedMasterType'] as String),
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       multiAzWithStandbyEnabled: pulumi.Input.fromValue(map['multiAzWithStandbyEnabled'] as bool),
       nodeOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigNodeOption>(map['nodeOptions']!, (value) => GetDomainClusterConfigNodeOption.fromMap((value as Map).cast<String, dynamic>()))),
-      warmCount: pulumi.Input.fromValue(map['warmCount'] as int),
+      warmCount: pulumi.Input.fromValue((map['warmCount'] as num).toInt()),
       warmEnabled: (() { final guardedValue = map['warmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       warmType: pulumi.Input.fromValue(map['warmType'] as String),
       zoneAwarenessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(map['zoneAwarenessConfigs']!, (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap((value as Map).cast<String, dynamic>()))),

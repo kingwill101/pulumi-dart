@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering StudioLifecycleConfig resources.
 class StudioLifecycleConfigState {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Studio Lifecycle Config.
-  final pulumi.Input<String>? arn;
+  /// The ARN assigned by AWS to this Studio Lifecycle Config.
+  final pulumi.Input<String?>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The App type that the Lifecycle Configuration is attached to. Valid values are `JupyterServer`, `JupyterLab`, `CodeEditor` and `KernelGateway`.
-  final pulumi.Input<String>? studioLifecycleConfigAppType;
+  final pulumi.Input<String?>? studioLifecycleConfigAppType;
   /// The content of your Studio Lifecycle Configuration script. This content must be base64 encoded.
-  final pulumi.Input<String>? studioLifecycleConfigContent;
+  final pulumi.Input<String?>? studioLifecycleConfigContent;
   /// The name of the Studio Lifecycle Configuration to create.
-  final pulumi.Input<String>? studioLifecycleConfigName;
+  final pulumi.Input<String?>? studioLifecycleConfigName;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [StudioLifecycleConfigState].
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Studio Lifecycle Config.
+  /// [arn] The ARN assigned by AWS to this Studio Lifecycle Config.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [studioLifecycleConfigAppType] The App type that the Lifecycle Configuration is attached to. Valid values are `JupyterServer`, `JupyterLab`, `CodeEditor` and `KernelGateway`.
   /// [studioLifecycleConfigContent] The content of your Studio Lifecycle Configuration script. This content must be base64 encoded.

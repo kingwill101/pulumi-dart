@@ -12,9 +12,9 @@ class GetFunctionUrlArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> functionName;
   /// Alias name or `$LATEST`.
-  final pulumi.Input<String>? qualifier;
+  final pulumi.Input<String?>? qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetFunctionUrlArgs].
   /// [functionName] Name or ARN of the Lambda function.

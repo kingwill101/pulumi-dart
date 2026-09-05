@@ -119,7 +119,7 @@ import 'default_kms_key_state.dart';
 /// $ pulumi import aws:ebs/defaultKmsKey:DefaultKmsKey example arn:aws:kms:us-east-1:123456789012:key/abcd-1234
 /// ```
 class DefaultKmsKey extends pulumi.CustomResource {
-  /// The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use to encrypt the EBS volume.
+  /// ARN of the KMS customer master key (CMK) to use to encrypt the EBS volume.
   late final pulumi.Output<String> keyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -136,7 +136,7 @@ class DefaultKmsKey extends pulumi.CustomResource {
           'aws:ebs/defaultKmsKey:DefaultKmsKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     keyArn = registerOutput<String>('keyArn');
     region = registerOutput<String>('region');
@@ -147,11 +147,12 @@ class DefaultKmsKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultKmsKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultKmsKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -165,6 +166,19 @@ class DefaultKmsKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyArn = registerOutput<String>('keyArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DefaultKmsKey] resource.
+  DefaultKmsKey.reference(String urn)
+    : super(
+        'aws:ebs/defaultKmsKey:DefaultKmsKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyArn = registerOutput<String>('keyArn');
     region = registerOutput<String>('region');
   }

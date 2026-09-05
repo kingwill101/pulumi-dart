@@ -15,10 +15,10 @@ import 'directory_bucket_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.DirectoryBucket("example", {
-///     bucket: "example--usw2-az1--x-s3",
 ///     location: {
 ///         name: "usw2-az1",
 ///     },
+///     bucket: "example--usw2-az1--x-s3",
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'directory_bucket_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.DirectoryBucket("example",
-///     bucket="example--usw2-az1--x-s3",
 ///     location={
 ///         "name": "usw2-az1",
-///     })
+///     },
+///     bucket="example--usw2-az1--x-s3")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,11 +41,11 @@ import 'directory_bucket_state.dart';
 /// {
 ///     var example = new Aws.S3.DirectoryBucket("example", new()
 ///     {
-///         Bucket = "example--usw2-az1--x-s3",
 ///         Location = new Aws.S3.Inputs.DirectoryBucketLocationArgs
 ///         {
 ///             Name = "usw2-az1",
 ///         },
+///         Bucket = "example--usw2-az1--x-s3",
 ///     });
 ///
 /// });
@@ -61,10 +61,10 @@ import 'directory_bucket_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewDirectoryBucket(ctx, "example", &s3.DirectoryBucketArgs{
-/// 			Bucket: pulumi.String("example--usw2-az1--x-s3"),
 /// 			Location: &s3.DirectoryBucketLocationArgs{
 /// 				Name: pulumi.String("usw2-az1"),
 /// 			},
+/// 			Bucket: pulumi.String("example--usw2-az1--x-s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,10 +83,10 @@ import 'directory_bucket_state.dart';
 /// }
 ///
 /// resource "aws_s3_directorybucket" "example" {
-///   bucket = "example--usw2-az1--x-s3"
 ///   location = {
 ///     name = "usw2-az1"
 ///   }
+///   bucket = "example--usw2-az1--x-s3"
 /// }
 /// ```
 /// ```java
@@ -112,10 +112,10 @@ import 'directory_bucket_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DirectoryBucket("example", DirectoryBucketArgs.builder()
-///             .bucket("example--usw2-az1--x-s3")
 ///             .location(DirectoryBucketLocationArgs.builder()
 ///                 .name("usw2-az1")
 ///                 .build())
+///             .bucket("example--usw2-az1--x-s3")
 ///             .build());
 ///
 ///     }
@@ -126,9 +126,9 @@ import 'directory_bucket_state.dart';
 ///   example:
 ///     type: aws:s3:DirectoryBucket
 ///     properties:
-///       bucket: example--usw2-az1--x-s3
 ///       location:
 ///         name: usw2-az1
+///       bucket: example--usw2-az1--x-s3
 /// ```
 ///
 ///
@@ -140,11 +140,11 @@ import 'directory_bucket_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleLocalZone = new aws.s3.DirectoryBucket("example_local_zone", {
-///     bucket: "example--usw2-xxx-lz1--x-s3",
 ///     location: {
 ///         name: "usw2-xxx-lz1",
 ///         type: "LocalZone",
 ///     },
+///     bucket: "example--usw2-xxx-lz1--x-s3",
 /// });
 /// ```
 /// ```python
@@ -152,11 +152,11 @@ import 'directory_bucket_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_local_zone = aws.s3.DirectoryBucket("example_local_zone",
-///     bucket="example--usw2-xxx-lz1--x-s3",
 ///     location={
 ///         "name": "usw2-xxx-lz1",
 ///         "type": "LocalZone",
-///     })
+///     },
+///     bucket="example--usw2-xxx-lz1--x-s3")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -168,12 +168,12 @@ import 'directory_bucket_state.dart';
 /// {
 ///     var exampleLocalZone = new Aws.S3.DirectoryBucket("example_local_zone", new()
 ///     {
-///         Bucket = "example--usw2-xxx-lz1--x-s3",
 ///         Location = new Aws.S3.Inputs.DirectoryBucketLocationArgs
 ///         {
 ///             Name = "usw2-xxx-lz1",
 ///             Type = "LocalZone",
 ///         },
+///         Bucket = "example--usw2-xxx-lz1--x-s3",
 ///     });
 ///
 /// });
@@ -189,11 +189,11 @@ import 'directory_bucket_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewDirectoryBucket(ctx, "example_local_zone", &s3.DirectoryBucketArgs{
-/// 			Bucket: pulumi.String("example--usw2-xxx-lz1--x-s3"),
 /// 			Location: &s3.DirectoryBucketLocationArgs{
 /// 				Name: pulumi.String("usw2-xxx-lz1"),
 /// 				Type: pulumi.String("LocalZone"),
 /// 			},
+/// 			Bucket: pulumi.String("example--usw2-xxx-lz1--x-s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -212,11 +212,12 @@ import 'directory_bucket_state.dart';
 /// }
 ///
 /// resource "aws_s3_directorybucket" "example_local_zone" {
-///   bucket = "example--usw2-xxx-lz1--x-s3"
 ///   location = {
 ///     name = "usw2-xxx-lz1"
 ///     type = "LocalZone"
 ///   }
+///   # LocalZone ID
+///   bucket = "example--usw2-xxx-lz1--x-s3"
 /// }
 /// ```
 /// ```java
@@ -242,11 +243,11 @@ import 'directory_bucket_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleLocalZone = new DirectoryBucket("exampleLocalZone", DirectoryBucketArgs.builder()
-///             .bucket("example--usw2-xxx-lz1--x-s3")
 ///             .location(DirectoryBucketLocationArgs.builder()
 ///                 .name("usw2-xxx-lz1")
 ///                 .type("LocalZone")
 ///                 .build())
+///             .bucket("example--usw2-xxx-lz1--x-s3")
 ///             .build());
 ///
 ///     }
@@ -258,10 +259,10 @@ import 'directory_bucket_state.dart';
 ///     type: aws:s3:DirectoryBucket
 ///     name: example_local_zone
 ///     properties:
-///       bucket: example--usw2-xxx-lz1--x-s3
 ///       location:
 ///         name: usw2-xxx-lz1
 ///         type: LocalZone
+///       bucket: example--usw2-xxx-lz1--x-s3
 /// ```
 ///
 ///
@@ -316,7 +317,7 @@ class DirectoryBucket extends pulumi.CustomResource {
           'aws:s3/directoryBucket:DirectoryBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bucket = registerOutput<String>('bucket');
@@ -324,8 +325,8 @@ class DirectoryBucket extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool>('forceDestroy');
     location = registerOutput<DirectoryBucketLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryBucketLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -334,11 +335,12 @@ class DirectoryBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DirectoryBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,8 +360,28 @@ class DirectoryBucket extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool>('forceDestroy');
     location = registerOutput<DirectoryBucketLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryBucketLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DirectoryBucket] resource.
+  DirectoryBucket.reference(String urn)
+    : super(
+        'aws:s3/directoryBucket:DirectoryBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    dataRedundancy = registerOutput<String>('dataRedundancy');
+    forceDestroy = registerOutput<bool>('forceDestroy');
+    location = registerOutput<DirectoryBucketLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryBucketLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

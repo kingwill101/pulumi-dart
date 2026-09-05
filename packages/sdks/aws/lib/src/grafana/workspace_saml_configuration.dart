@@ -363,11 +363,11 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
           'aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    adminRoleValues = registerOutput<List<String>?>('adminRoleValues');
-    allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations');
-    editorRoleValues = registerOutput<List<String>>('editorRoleValues');
+    adminRoleValues = registerOutput<List<String>?>('adminRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    editorRoleValues = registerOutput<List<String>>('editorRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAssertion = registerOutput<String>('emailAssertion');
     groupsAssertion = registerOutput<String?>('groupsAssertion');
     idpMetadataUrl = registerOutput<String?>('idpMetadataUrl');
@@ -387,11 +387,12 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceSamlConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceSamlConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,9 +406,35 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    adminRoleValues = registerOutput<List<String>?>('adminRoleValues');
-    allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations');
-    editorRoleValues = registerOutput<List<String>>('editorRoleValues');
+    adminRoleValues = registerOutput<List<String>?>('adminRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    editorRoleValues = registerOutput<List<String>>('editorRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailAssertion = registerOutput<String>('emailAssertion');
+    groupsAssertion = registerOutput<String?>('groupsAssertion');
+    idpMetadataUrl = registerOutput<String?>('idpMetadataUrl');
+    idpMetadataXml = registerOutput<String?>('idpMetadataXml');
+    loginAssertion = registerOutput<String>('loginAssertion');
+    loginValidityDuration = registerOutput<int>('loginValidityDuration');
+    nameAssertion = registerOutput<String>('nameAssertion');
+    orgAssertion = registerOutput<String?>('orgAssertion');
+    region = registerOutput<String>('region');
+    roleAssertion = registerOutput<String?>('roleAssertion');
+    status = registerOutput<String>('status');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceSamlConfiguration] resource.
+  WorkspaceSamlConfiguration.reference(String urn)
+    : super(
+        'aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminRoleValues = registerOutput<List<String>?>('adminRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    editorRoleValues = registerOutput<List<String>>('editorRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAssertion = registerOutput<String>('emailAssertion');
     groupsAssertion = registerOutput<String?>('groupsAssertion');
     idpMetadataUrl = registerOutput<String?>('idpMetadataUrl');

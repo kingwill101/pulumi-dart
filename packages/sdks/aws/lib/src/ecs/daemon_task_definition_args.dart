@@ -12,23 +12,23 @@ class DaemonTaskDefinitionArgs {
   /// One or more container definition blocks. Detailed below.
   final pulumi.Input<List<DaemonTaskDefinitionContainerDefinition>> containerDefinitions;
   /// Number of CPU units used by the task.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Unique name for your daemon task definition.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> family;
   /// Amount (in MiB) of memory used by the task.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  final pulumi.Input<String>? taskRoleArn;
+  final pulumi.Input<String?>? taskRoleArn;
   /// Repeatable configuration block for volumes that containers in your task may use. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionVolume>>? volumes;
+  final pulumi.Input<List<DaemonTaskDefinitionVolume>?>? volumes;
 
   /// Creates a new [DaemonTaskDefinitionArgs].
   /// [containerDefinitions] One or more container definition blocks. Detailed below.

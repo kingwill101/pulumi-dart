@@ -200,7 +200,7 @@ class VpcIpv6CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv6CidrBlockAssociation:VpcIpv6CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     assignGeneratedIpv6CidrBlock = registerOutput<bool>('assignGeneratedIpv6CidrBlock');
     ipSource = registerOutput<String>('ipSource');
@@ -218,11 +218,12 @@ class VpcIpv6CidrBlockAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpv6CidrBlockAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpv6CidrBlockAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -236,6 +237,26 @@ class VpcIpv6CidrBlockAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assignGeneratedIpv6CidrBlock = registerOutput<bool>('assignGeneratedIpv6CidrBlock');
+    ipSource = registerOutput<String>('ipSource');
+    ipv6AddressAttribute = registerOutput<String>('ipv6AddressAttribute');
+    ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
+    ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
+    ipv6Pool = registerOutput<String>('ipv6Pool');
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpcIpv6CidrBlockAssociation] resource.
+  VpcIpv6CidrBlockAssociation.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpv6CidrBlockAssociation:VpcIpv6CidrBlockAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assignGeneratedIpv6CidrBlock = registerOutput<bool>('assignGeneratedIpv6CidrBlock');
     ipSource = registerOutput<String>('ipSource');
     ipv6AddressAttribute = registerOutput<String>('ipv6AddressAttribute');

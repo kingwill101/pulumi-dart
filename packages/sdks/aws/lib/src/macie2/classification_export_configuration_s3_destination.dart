@@ -6,8 +6,8 @@ class ClassificationExportConfigurationS3Destination {
   /// The Amazon S3 bucket name in which Amazon Macie exports the data classification results.
   final pulumi.Input<String> bucketName;
   /// The object key for the bucket in which Amazon Macie exports the data classification results.
-  final pulumi.Input<String>? keyPrefix;
-  /// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+  final pulumi.Input<String?>? keyPrefix;
+  /// ARN of the KMS key to be used to encrypt the data.
   ///
   /// Additional information can be found in the [Storing and retaining sensitive data discovery results with Amazon Macie for AWS Macie documentation](https://docs.aws.amazon.com/macie/latest/user/discovery-results-repository-s3.html).
   final pulumi.Input<String> kmsKeyArn;
@@ -15,7 +15,7 @@ class ClassificationExportConfigurationS3Destination {
   /// Creates a new [ClassificationExportConfigurationS3Destination].
   /// [bucketName] The Amazon S3 bucket name in which Amazon Macie exports the data classification results.
   /// [keyPrefix] The object key for the bucket in which Amazon Macie exports the data classification results.
-  /// [kmsKeyArn] Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+  /// [kmsKeyArn] ARN of the KMS key to be used to encrypt the data.
   const ClassificationExportConfigurationS3Destination({
     required this.bucketName,
     this.keyPrefix,

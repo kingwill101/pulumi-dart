@@ -116,7 +116,6 @@ import 'cluster_instance_state.dart';
 /// 		var example []*neptune.ClusterInstance
 /// 		for index := 0; index < 2; index++ {
 /// 			key0 := index
-/// 			_ := index
 /// 			__res, err := neptune.NewClusterInstance(ctx, fmt.Sprintf("example-%v", key0), &neptune.ClusterInstanceArgs{
 /// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 				Engine:            pulumi.String("neptune"),
@@ -241,7 +240,7 @@ class ClusterInstance extends pulumi.CustomResource {
   /// Specifies whether any instance modifications
   /// are applied immediately, or during the next maintenance window. Default is`false`.
   late final pulumi.Output<bool> applyImmediately;
-  /// Amazon Resource Name (ARN) of neptune instance
+  /// ARN of neptune instance
   late final pulumi.Output<String> arn;
   /// Indicates that minor engine upgrades will be applied automatically to the instance during the maintenance window. Default is `true`.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
@@ -307,7 +306,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:neptune/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     applyImmediately = registerOutput<bool>('applyImmediately');
@@ -334,8 +333,8 @@ class ClusterInstance extends pulumi.CustomResource {
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     writer = registerOutput<bool>('writer');
   }
 
@@ -344,11 +343,12 @@ class ClusterInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -387,8 +387,47 @@ class ClusterInstance extends pulumi.CustomResource {
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    writer = registerOutput<bool>('writer');
+  }
+
+  /// Creates a typed reference to an existing [ClusterInstance] resource.
+  ClusterInstance.reference(String urn)
+    : super(
+        'aws:neptune/clusterInstance:ClusterInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    dbiResourceId = registerOutput<String>('dbiResourceId');
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<String?>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    identifier = registerOutput<String>('identifier');
+    identifierPrefix = registerOutput<String>('identifierPrefix');
+    instanceClass = registerOutput<String>('instanceClass');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    neptuneParameterGroupName = registerOutput<String>('neptuneParameterGroupName');
+    neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
+    port = registerOutput<int?>('port');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    promotionTier = registerOutput<int?>('promotionTier');
+    publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     writer = registerOutput<bool>('writer');
   }
 }

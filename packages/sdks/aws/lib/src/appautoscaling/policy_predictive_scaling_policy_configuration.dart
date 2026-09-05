@@ -5,15 +5,15 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification.dart
 
 class PolicyPredictiveScalingPolicyConfiguration {
   /// Behavior applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
-  final pulumi.Input<String>? maxCapacityBreachBehavior;
+  final pulumi.Input<String?>? maxCapacityBreachBehavior;
   /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `maxCapacityBreachBehavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
-  final pulumi.Input<int>? maxCapacityBuffer;
+  final pulumi.Input<int?>? maxCapacityBuffer;
   /// Metrics and target utilization to use for predictive scaling. See `predictive_scaling_policy_configuration.metric_specification` Block for details.
   final pulumi.Input<List<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>> metricSpecifications;
   /// Predictive scaling mode. Valid values are `ForecastOnly` and `ForecastAndScale`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Amount of time, in seconds, that the start time can be advanced.
-  final pulumi.Input<int>? schedulingBufferTime;
+  final pulumi.Input<int?>? schedulingBufferTime;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfiguration].
   /// [maxCapacityBreachBehavior] Behavior applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
@@ -42,10 +42,10 @@ class PolicyPredictiveScalingPolicyConfiguration {
   factory PolicyPredictiveScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfiguration(
       maxCapacityBreachBehavior: (() { final guardedValue = map['maxCapacityBreachBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxCapacityBuffer: (() { final guardedValue = map['maxCapacityBuffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxCapacityBuffer: (() { final guardedValue = map['maxCapacityBuffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       metricSpecifications: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(map['metricSpecifications']!, (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecification.fromMap((value as Map).cast<String, dynamic>()))),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      schedulingBufferTime: (() { final guardedValue = map['schedulingBufferTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schedulingBufferTime: (() { final guardedValue = map['schedulingBufferTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -9,11 +9,11 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   /// Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
   final pulumi.Input<String> chunkingStrategy;
   /// Configurations for when you choose fixed-size chunking. Requires chunkingStrategy as `FIXED_SIZE`. See `fixedSizeChunkingConfiguration` for details.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration>? fixedSizeChunkingConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration?>? fixedSizeChunkingConfiguration;
   /// Configurations for when you choose hierarchical chunking. Requires chunkingStrategy as `HIERARCHICAL`. See `hierarchicalChunkingConfiguration` for details.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration>? hierarchicalChunkingConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration?>? hierarchicalChunkingConfiguration;
   /// Configurations for when you choose semantic chunking. Requires chunkingStrategy as `SEMANTIC`. See `semanticChunkingConfiguration` for details.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration>? semanticChunkingConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration?>? semanticChunkingConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfiguration].
   /// [chunkingStrategy] Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.

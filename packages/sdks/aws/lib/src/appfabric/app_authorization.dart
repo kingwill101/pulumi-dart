@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_authorization_args.dart';
 import 'app_authorization_credential.dart';
 import 'app_authorization_state.dart';
+import 'app_authorization_tenant.dart';
 import 'app_authorization_timeouts.dart';
 
 /// Resource for managing an AWS AppFabric App Authorization.
@@ -16,9 +17,6 @@ import 'app_authorization_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appfabric.AppAuthorization("example", {
-///     app: "TERRAFORMCLOUD",
-///     appBundleArn: arn,
-///     authType: "apiKey",
 ///     credential: {
 ///         apiKeyCredentials: [{
 ///             apiKey: "exampleapikeytoken",
@@ -28,6 +26,9 @@ import 'app_authorization_timeouts.dart';
 ///         tenantDisplayName: "example",
 ///         tenantIdentifier: "example",
 ///     }],
+///     app: "TERRAFORMCLOUD",
+///     appBundleArn: arn,
+///     authType: "apiKey",
 /// });
 /// ```
 /// ```python
@@ -35,9 +36,6 @@ import 'app_authorization_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appfabric.AppAuthorization("example",
-///     app="TERRAFORMCLOUD",
-///     app_bundle_arn=arn,
-///     auth_type="apiKey",
 ///     credential={
 ///         "api_key_credentials": [{
 ///             "api_key": "exampleapikeytoken",
@@ -46,7 +44,10 @@ import 'app_authorization_timeouts.dart';
 ///     tenants=[{
 ///         "tenant_display_name": "example",
 ///         "tenant_identifier": "example",
-///     }])
+///     }],
+///     app="TERRAFORMCLOUD",
+///     app_bundle_arn=arn,
+///     auth_type="apiKey")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,9 +59,6 @@ import 'app_authorization_timeouts.dart';
 /// {
 ///     var example = new Aws.AppFabric.AppAuthorization("example", new()
 ///     {
-///         App = "TERRAFORMCLOUD",
-///         AppBundleArn = arn,
-///         AuthType = "apiKey",
 ///         Credential = new Aws.AppFabric.Inputs.AppAuthorizationCredentialArgs
 ///         {
 ///             ApiKeyCredentials = new[]
@@ -79,6 +77,9 @@ import 'app_authorization_timeouts.dart';
 ///                 TenantIdentifier = "example",
 ///             },
 ///         },
+///         App = "TERRAFORMCLOUD",
+///         AppBundleArn = arn,
+///         AuthType = "apiKey",
 ///     });
 ///
 /// });
@@ -94,9 +95,6 @@ import 'app_authorization_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appfabric.NewAppAuthorization(ctx, "example", &appfabric.AppAuthorizationArgs{
-/// 			App:          pulumi.String("TERRAFORMCLOUD"),
-/// 			AppBundleArn: pulumi.Any(arn),
-/// 			AuthType:     pulumi.String("apiKey"),
 /// 			Credential: &appfabric.AppAuthorizationCredentialArgs{
 /// 				ApiKeyCredentials: appfabric.AppAuthorizationCredentialApiKeyCredentialArray{
 /// 					&appfabric.AppAuthorizationCredentialApiKeyCredentialArgs{
@@ -110,6 +108,9 @@ import 'app_authorization_timeouts.dart';
 /// 					TenantIdentifier:  pulumi.String("example"),
 /// 				},
 /// 			},
+/// 			App:          pulumi.String("TERRAFORMCLOUD"),
+/// 			AppBundleArn: pulumi.Any(arn),
+/// 			AuthType:     pulumi.String("apiKey"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -128,9 +129,6 @@ import 'app_authorization_timeouts.dart';
 /// }
 ///
 /// resource "aws_appfabric_appauthorization" "example" {
-///   app            = "TERRAFORMCLOUD"
-///   app_bundle_arn = arn
-///   auth_type      = "apiKey"
 ///   credential = {
 ///     api_key_credentials = [{
 ///       "apiKey" = "exampleapikeytoken"
@@ -140,6 +138,9 @@ import 'app_authorization_timeouts.dart';
 ///     tenant_display_name = "example"
 ///     tenant_identifier   = "example"
 ///   }
+///   app            = "TERRAFORMCLOUD"
+///   app_bundle_arn = arn
+///   auth_type      = "apiKey"
 /// }
 /// ```
 /// ```java
@@ -167,9 +168,6 @@ import 'app_authorization_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AppAuthorization("example", AppAuthorizationArgs.builder()
-///             .app("TERRAFORMCLOUD")
-///             .appBundleArn(arn)
-///             .authType("apiKey")
 ///             .credential(AppAuthorizationCredentialArgs.builder()
 ///                 .apiKeyCredentials(AppAuthorizationCredentialApiKeyCredentialArgs.builder()
 ///                     .apiKey("exampleapikeytoken")
@@ -179,6 +177,9 @@ import 'app_authorization_timeouts.dart';
 ///                 .tenantDisplayName("example")
 ///                 .tenantIdentifier("example")
 ///                 .build())
+///             .app("TERRAFORMCLOUD")
+///             .appBundleArn(arn)
+///             .authType("apiKey")
 ///             .build());
 ///
 ///     }
@@ -189,20 +190,20 @@ import 'app_authorization_timeouts.dart';
 ///   example:
 ///     type: aws:appfabric:AppAuthorization
 ///     properties:
-///       app: TERRAFORMCLOUD
-///       appBundleArn: ${arn}
-///       authType: apiKey
 ///       credential:
 ///         apiKeyCredentials:
 ///           - apiKey: exampleapikeytoken
 ///       tenants:
 ///         - tenantDisplayName: example
 ///           tenantIdentifier: example
+///       app: TERRAFORMCLOUD
+///       appBundleArn: ${arn}
+///       authType: apiKey
 /// ```
 class AppAuthorization extends pulumi.CustomResource {
   /// Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
   late final pulumi.Output<String> app;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// ARN of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
   /// ARN of the App Authorization.
   late final pulumi.Output<String> arn;
@@ -225,7 +226,7 @@ class AppAuthorization extends pulumi.CustomResource {
   /// Information about an application tenant, such as the application display name and identifier. See `tenant` Block for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> tenants;
+  late final pulumi.Output<List<AppAuthorizationTenant>> tenants;
   late final pulumi.Output<AppAuthorizationTimeouts?> timeouts;
   /// Timestamp of when the app authorization was last updated.
   late final pulumi.Output<String> updatedAt;
@@ -242,7 +243,7 @@ class AppAuthorization extends pulumi.CustomResource {
           'aws:appfabric/appAuthorization:AppAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     appBundleArn = registerOutput<String>('appBundleArn');
@@ -253,9 +254,9 @@ class AppAuthorization extends pulumi.CustomResource {
     credential = registerOutput<AppAuthorizationCredential>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persona = registerOutput<String>('persona');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenants = registerOutput<List<AppAuthorizationTenant>>('tenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppAuthorizationTenant>(guardedValue, (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<AppAuthorizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
@@ -265,11 +266,12 @@ class AppAuthorization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppAuthorizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppAuthorization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,9 +294,34 @@ class AppAuthorization extends pulumi.CustomResource {
     credential = registerOutput<AppAuthorizationCredential>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persona = registerOutput<String>('persona');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenants = registerOutput<List<AppAuthorizationTenant>>('tenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppAuthorizationTenant>(guardedValue, (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<AppAuthorizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [AppAuthorization] resource.
+  AppAuthorization.reference(String urn)
+    : super(
+        'aws:appfabric/appAuthorization:AppAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    app = registerOutput<String>('app');
+    appBundleArn = registerOutput<String>('appBundleArn');
+    arn = registerOutput<String>('arn');
+    authType = registerOutput<String>('authType');
+    authUrl = registerOutput<String>('authUrl');
+    createdAt = registerOutput<String>('createdAt');
+    credential = registerOutput<AppAuthorizationCredential>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    persona = registerOutput<String>('persona');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenants = registerOutput<List<AppAuthorizationTenant>>('tenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppAuthorizationTenant>(guardedValue, (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<AppAuthorizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }

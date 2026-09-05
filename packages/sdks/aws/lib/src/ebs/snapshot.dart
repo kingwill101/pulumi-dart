@@ -190,7 +190,7 @@ import 'snapshot_state.dart';
 /// $ pulumi import aws:ebs/snapshot:Snapshot id snap-049df61146c4d7901
 /// ```
 class Snapshot extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the EBS Snapshot.
+  /// ARN of the EBS Snapshot.
   late final pulumi.Output<String> arn;
   /// The data encryption key identifier for the snapshot.
   late final pulumi.Output<String> dataEncryptionKeyId;
@@ -200,7 +200,7 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<bool> encrypted;
   /// The ARN for the KMS encryption key.
   late final pulumi.Output<String> kmsKeyId;
-  /// The Amazon Resource Name (ARN) of the Outpost on which to create a local snapshot.
+  /// ARN of the Outpost on which to create a local snapshot.
   late final pulumi.Output<String?> outpostArn;
   /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
   late final pulumi.Output<String> ownerAlias;
@@ -235,7 +235,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:ebs/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
@@ -248,8 +248,8 @@ class Snapshot extends pulumi.CustomResource {
     permanentRestore = registerOutput<bool?>('permanentRestore');
     region = registerOutput<String>('region');
     storageTier = registerOutput<String>('storageTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
     volumeId = registerOutput<String>('volumeId');
     volumeSize = registerOutput<int>('volumeSize');
@@ -260,11 +260,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -289,8 +290,35 @@ class Snapshot extends pulumi.CustomResource {
     permanentRestore = registerOutput<bool?>('permanentRestore');
     region = registerOutput<String>('region');
     storageTier = registerOutput<String>('storageTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
+    volumeId = registerOutput<String>('volumeId');
+    volumeSize = registerOutput<int>('volumeSize');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'aws:ebs/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool>('encrypted');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    outpostArn = registerOutput<String?>('outpostArn');
+    ownerAlias = registerOutput<String>('ownerAlias');
+    ownerId = registerOutput<String>('ownerId');
+    permanentRestore = registerOutput<bool?>('permanentRestore');
+    region = registerOutput<String>('region');
+    storageTier = registerOutput<String>('storageTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
     volumeId = registerOutput<String>('volumeId');
     volumeSize = registerOutput<int>('volumeSize');

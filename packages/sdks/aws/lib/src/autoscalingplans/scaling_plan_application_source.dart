@@ -5,9 +5,9 @@ import 'scaling_plan_application_source_tag_filter.dart';
 
 class ScalingPlanApplicationSource {
   /// ARN of a AWS CloudFormation stack.
-  final pulumi.Input<String>? cloudformationStackArn;
+  final pulumi.Input<String?>? cloudformationStackArn;
   /// Set of tags.
-  final pulumi.Input<List<ScalingPlanApplicationSourceTagFilter>>? tagFilters;
+  final pulumi.Input<List<ScalingPlanApplicationSourceTagFilter>?>? tagFilters;
 
   /// Creates a new [ScalingPlanApplicationSource].
   /// [cloudformationStackArn] ARN of a AWS CloudFormation stack.

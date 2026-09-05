@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig {
-  final pulumi.Input<String>? bucketName;
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketName;
+  final pulumi.Input<String?>? bucketPrefix;
   /// Whether to fail the flow after the first instance of a failure when attempting to place data in the destination.
-  final pulumi.Input<bool>? failOnFirstDestinationError;
+  final pulumi.Input<bool?>? failOnFirstDestinationError;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig].
   /// [bucketName] Optional.

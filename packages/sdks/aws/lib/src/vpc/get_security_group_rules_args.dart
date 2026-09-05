@@ -9,12 +9,12 @@ import 'get_security_group_rules_filter.dart';
 /// {@macro pulumi_vpc_get_security_group_rules_get_security_group_rules_args_doc}
 class GetSecurityGroupRulesArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetSecurityGroupRulesFilter>>? filters;
+  final pulumi.Input<List<GetSecurityGroupRulesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired security group rule.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSecurityGroupRulesArgs].
   /// [filters] Custom filter block as described below.

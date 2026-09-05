@@ -6,15 +6,15 @@ import 'policy_target_tracking_scaling_policy_configuration_predefined_metric_sp
 
 class PolicyTargetTrackingScalingPolicyConfiguration {
   /// Custom CloudWatch metric. See the [AWS Customized Metric Specification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CustomizedMetricSpecification.html) documentation. See `target_tracking_scaling_policy_configuration.customized_metric_specification` Block for details.
-  final pulumi.Input<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification>? customizedMetricSpecification;
+  final pulumi.Input<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification?>? customizedMetricSpecification;
   /// Whether scale in by the target tracking policy is disabled. If `true`, scale in is disabled and the target tracking policy does not remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource. Defaults to `false`.
-  final pulumi.Input<bool>? disableScaleIn;
+  final pulumi.Input<bool?>? disableScaleIn;
   /// Predefined metric. See `target_tracking_scaling_policy_configuration.predefined_metric_specification` Block for details.
-  final pulumi.Input<PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification>? predefinedMetricSpecification;
+  final pulumi.Input<PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification?>? predefinedMetricSpecification;
   /// Amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
-  final pulumi.Input<int>? scaleInCooldown;
+  final pulumi.Input<int?>? scaleInCooldown;
   /// Amount of time, in seconds, after a scale out activity completes before another scale out activity can start.
-  final pulumi.Input<int>? scaleOutCooldown;
+  final pulumi.Input<int?>? scaleOutCooldown;
   /// Target value for the metric.
   final pulumi.Input<double> targetValue;
 
@@ -50,9 +50,9 @@ class PolicyTargetTrackingScalingPolicyConfiguration {
       customizedMetricSpecification: (() { final guardedValue = map['customizedMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disableScaleIn: (() { final guardedValue = map['disableScaleIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       predefinedMetricSpecification: (() { final guardedValue = map['predefinedMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scaleInCooldown: (() { final guardedValue = map['scaleInCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      scaleOutCooldown: (() { final guardedValue = map['scaleOutCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
+      scaleInCooldown: (() { final guardedValue = map['scaleInCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scaleOutCooldown: (() { final guardedValue = map['scaleOutCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }
 }

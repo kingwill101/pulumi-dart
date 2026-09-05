@@ -313,7 +313,7 @@ class Api extends pulumi.CustomResource {
           'aws:apigatewayv2/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiEndpoint = registerOutput<String>('apiEndpoint');
     apiKeySelectionExpression = registerOutput<String?>('apiKeySelectionExpression');
@@ -331,8 +331,8 @@ class Api extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     routeKey = registerOutput<String?>('routeKey');
     routeSelectionExpression = registerOutput<String?>('routeSelectionExpression');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     target = registerOutput<String?>('target');
     version = registerOutput<String?>('version');
   }
@@ -342,11 +342,12 @@ class Api extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Api._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -376,8 +377,39 @@ class Api extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     routeKey = registerOutput<String?>('routeKey');
     routeSelectionExpression = registerOutput<String?>('routeSelectionExpression');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    target = registerOutput<String?>('target');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'aws:apigatewayv2/api:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiEndpoint = registerOutput<String>('apiEndpoint');
+    apiKeySelectionExpression = registerOutput<String?>('apiKeySelectionExpression');
+    arn = registerOutput<String>('arn');
+    body = registerOutput<String?>('body');
+    corsConfiguration = registerOutput<ApiCorsConfiguration?>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    credentialsArn = registerOutput<String?>('credentialsArn');
+    description = registerOutput<String?>('description');
+    disableExecuteApiEndpoint = registerOutput<bool?>('disableExecuteApiEndpoint');
+    executionArn = registerOutput<String>('executionArn');
+    failOnWarnings = registerOutput<bool?>('failOnWarnings');
+    ipAddressType = registerOutput<String>('ipAddressType');
+    this.name = registerOutput<String>('name');
+    protocolType = registerOutput<String>('protocolType');
+    region = registerOutput<String>('region');
+    routeKey = registerOutput<String?>('routeKey');
+    routeSelectionExpression = registerOutput<String?>('routeSelectionExpression');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     target = registerOutput<String?>('target');
     version = registerOutput<String?>('version');
   }

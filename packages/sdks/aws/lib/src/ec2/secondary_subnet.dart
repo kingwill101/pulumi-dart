@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secondary_subnet_args.dart';
+import 'secondary_subnet_ipv4_cidr_block_association.dart';
 import 'secondary_subnet_state.dart';
 import 'secondary_subnet_timeouts.dart';
 
@@ -209,11 +210,11 @@ import 'secondary_subnet_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example = new aws.ec2.SecondaryNetwork("example", {
 ///     ipv4CidrBlock: "10.0.0.0/16",
@@ -235,11 +236,11 @@ import 'secondary_subnet_timeouts.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example = aws.ec2.SecondaryNetwork("example",
 ///     ipv4_cidr_block="10.0.0.0/16",
 ///     network_type="rdma",
@@ -264,7 +265,6 @@ import 'secondary_subnet_timeouts.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -276,6 +276,7 @@ import 'secondary_subnet_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.Ec2.SecondaryNetwork("example", new()
@@ -313,7 +314,6 @@ import 'secondary_subnet_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -322,6 +322,7 @@ import 'secondary_subnet_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -361,11 +362,11 @@ import 'secondary_subnet_timeouts.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_ec2_secondarynetwork" "example" {
@@ -411,11 +412,11 @@ import 'secondary_subnet_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new SecondaryNetwork("example", SecondaryNetworkArgs.builder()
@@ -457,11 +458,11 @@ import 'secondary_subnet_timeouts.dart';
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         state: available
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - opt-in-not-required
+///         state: available
 /// ```
 ///
 ///
@@ -494,7 +495,7 @@ class SecondarySubnet extends pulumi.CustomResource {
   /// IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
   late final pulumi.Output<String> ipv4CidrBlock;
   /// A list of IPv4 CIDR block associations for the secondary network.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipv4CidrBlockAssociations;
+  late final pulumi.Output<List<SecondarySubnetIpv4CidrBlockAssociation>> ipv4CidrBlockAssociations;
   /// ID of the AWS account that owns the secondary subnet.
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -525,21 +526,21 @@ class SecondarySubnet extends pulumi.CustomResource {
           'aws:ec2/secondarySubnet:SecondarySubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>('ipv4CidrBlockAssociations');
+    ipv4CidrBlockAssociations = registerOutput<List<SecondarySubnetIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecondarySubnetIpv4CidrBlockAssociation>(guardedValue, (value) => SecondarySubnetIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
     secondaryNetworkType = registerOutput<String>('secondaryNetworkType');
     secondarySubnetId = registerOutput<String>('secondarySubnetId');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SecondarySubnetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondarySubnetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -548,11 +549,12 @@ class SecondarySubnet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecondarySubnetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecondarySubnet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -570,15 +572,40 @@ class SecondarySubnet extends pulumi.CustomResource {
     availabilityZone = registerOutput<String>('availabilityZone');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>('ipv4CidrBlockAssociations');
+    ipv4CidrBlockAssociations = registerOutput<List<SecondarySubnetIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecondarySubnetIpv4CidrBlockAssociation>(guardedValue, (value) => SecondarySubnetIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
     secondaryNetworkType = registerOutput<String>('secondaryNetworkType');
     secondarySubnetId = registerOutput<String>('secondarySubnetId');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<SecondarySubnetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondarySubnetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SecondarySubnet] resource.
+  SecondarySubnet.reference(String urn)
+    : super(
+        'aws:ec2/secondarySubnet:SecondarySubnet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
+    ipv4CidrBlockAssociations = registerOutput<List<SecondarySubnetIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecondarySubnetIpv4CidrBlockAssociation>(guardedValue, (value) => SecondarySubnetIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
+    secondaryNetworkType = registerOutput<String>('secondaryNetworkType');
+    secondarySubnetId = registerOutput<String>('secondarySubnetId');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SecondarySubnetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondarySubnetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

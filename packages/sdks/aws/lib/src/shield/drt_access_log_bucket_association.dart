@@ -171,7 +171,7 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
           'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     logBucket = registerOutput<String>('logBucket');
     roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
@@ -183,11 +183,12 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DrtAccessLogBucketAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DrtAccessLogBucketAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,6 +202,20 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logBucket = registerOutput<String>('logBucket');
+    roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
+    timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessLogBucketAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DrtAccessLogBucketAssociation] resource.
+  DrtAccessLogBucketAssociation.reference(String urn)
+    : super(
+        'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logBucket = registerOutput<String>('logBucket');
     roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
     timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessLogBucketAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

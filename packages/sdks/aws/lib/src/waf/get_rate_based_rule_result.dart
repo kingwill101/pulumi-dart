@@ -4,28 +4,28 @@
 /// Result data returned by getRateBasedRule.
 class GetRateBasedRuleResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
 
   /// Creates a new [GetRateBasedRuleResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   const GetRateBasedRuleResult({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
     };
   }
 
   factory GetRateBasedRuleResult.fromMap(Map<String, dynamic> map) {
     return GetRateBasedRuleResult(
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

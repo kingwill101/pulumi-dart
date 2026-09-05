@@ -9,25 +9,25 @@ import 'queue_outbound_caller_config.dart';
 /// {@macro pulumi_connect_queue_queue_args_doc}
 class QueueArgs {
   /// Specifies the description of the Queue.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the identifier of the Hours of Operation.
   final pulumi.Input<String> hoursOfOperationId;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String> instanceId;
   /// Specifies the maximum number of contacts that can be in the queue before it is considered full. Minimum value of 0.
-  final pulumi.Input<int>? maxContacts;
+  final pulumi.Input<int?>? maxContacts;
   /// Specifies the name of the Queue.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A block that defines the outbound caller ID name, number, and outbound whisper flow. The Outbound Caller Config block is documented below.
-  final pulumi.Input<QueueOutboundCallerConfig>? outboundCallerConfig;
+  final pulumi.Input<QueueOutboundCallerConfig?>? outboundCallerConfig;
   /// Specifies a list of quick connects ids that determine the quick connects available to agents who are working the queue.
-  final pulumi.Input<List<String>>? quickConnectIds;
+  final pulumi.Input<List<String>?>? quickConnectIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the description of the Queue. Valid values are `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Tags to apply to the Queue. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [QueueArgs].
   /// [description] Specifies the description of the Queue.
@@ -73,7 +73,7 @@ class QueueArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hoursOfOperationId: pulumi.Input.fromValue(map['hoursOfOperationId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      maxContacts: (() { final guardedValue = map['maxContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxContacts: (() { final guardedValue = map['maxContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outboundCallerConfig: (() { final guardedValue = map['outboundCallerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueOutboundCallerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       quickConnectIds: (() { final guardedValue = map['quickConnectIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

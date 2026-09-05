@@ -12,7 +12,7 @@ class GetDeviceArgs {
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
   /// Key-value tags for the device.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDeviceArgs].
   /// [deviceId] ID of the device.

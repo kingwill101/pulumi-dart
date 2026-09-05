@@ -7,7 +7,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStat
   /// List of two-character country codes (ISO 3166-1 alpha-2).
   final pulumi.Input<List<String>> countryCodes;
   /// Configuration for inspecting forwarded IP headers. See Forwarded IP Config below.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig>? forwardedIpConfig;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig?>? forwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement].
   /// [countryCodes] List of two-character country codes (ISO 3166-1 alpha-2).

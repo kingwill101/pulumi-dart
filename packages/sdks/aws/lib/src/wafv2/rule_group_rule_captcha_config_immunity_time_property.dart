@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleCaptchaConfigImmunityTimeProperty {
   /// The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default setting is 300.
-  final pulumi.Input<int>? immunityTime;
+  final pulumi.Input<int?>? immunityTime;
 
   /// Creates a new [RuleGroupRuleCaptchaConfigImmunityTimeProperty].
   /// [immunityTime] The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default setting is 300.
@@ -20,7 +20,7 @@ class RuleGroupRuleCaptchaConfigImmunityTimeProperty {
 
   factory RuleGroupRuleCaptchaConfigImmunityTimeProperty.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleCaptchaConfigImmunityTimeProperty(
-      immunityTime: (() { final guardedValue = map['immunityTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      immunityTime: (() { final guardedValue = map['immunityTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

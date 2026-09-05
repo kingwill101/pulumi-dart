@@ -5,7 +5,7 @@ import 'virtual_node_spec_logging_access_log_file.dart';
 
 class VirtualNodeSpecLoggingAccessLog {
   /// File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
-  final pulumi.Input<VirtualNodeSpecLoggingAccessLogFile>? file;
+  final pulumi.Input<VirtualNodeSpecLoggingAccessLogFile?>? file;
 
   /// Creates a new [VirtualNodeSpecLoggingAccessLog].
   /// [file] File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.

@@ -135,7 +135,7 @@ class Subscription extends pulumi.CustomResource {
           'aws:shield/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoRenew = registerOutput<String>('autoRenew');
     skipDestroy = registerOutput<bool?>('skipDestroy');
@@ -146,11 +146,12 @@ class Subscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -164,6 +165,19 @@ class Subscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoRenew = registerOutput<String>('autoRenew');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'aws:shield/subscription:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoRenew = registerOutput<String>('autoRenew');
     skipDestroy = registerOutput<bool?>('skipDestroy');
   }

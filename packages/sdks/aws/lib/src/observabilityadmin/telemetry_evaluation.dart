@@ -140,7 +140,7 @@ class TelemetryEvaluation extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryEvaluation:TelemetryEvaluation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     failureReason = registerOutput<String>('failureReason');
     region = registerOutput<String>('region');
@@ -153,11 +153,12 @@ class TelemetryEvaluation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TelemetryEvaluationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TelemetryEvaluation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,6 +172,21 @@ class TelemetryEvaluation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    failureReason = registerOutput<String>('failureReason');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<TelemetryEvaluationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryEvaluationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TelemetryEvaluation] resource.
+  TelemetryEvaluation.reference(String urn)
+    : super(
+        'aws:observabilityadmin/telemetryEvaluation:TelemetryEvaluation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     failureReason = registerOutput<String>('failureReason');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

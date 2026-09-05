@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WebAppCustomization resources.
 class WebAppCustomizationState {
   /// Base64-encoded string representing the favicon image. Terraform will detect drift only if this argument is specified. To remove the favicon, recreate the resource.
-  final pulumi.Input<String>? faviconFile;
+  final pulumi.Input<String?>? faviconFile;
   /// Base64-encoded string representing the logo image. Terraform will detect drift only if this argument is specified. To remove the logo, recreate the resource.
-  final pulumi.Input<String>? logoFile;
+  final pulumi.Input<String?>? logoFile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Title of the web app. Must be between 1 and 100 characters in length (an empty string is not allowed). To remove the title, omit this argument from your configuration.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// Identifier of the web app to be customized.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? webAppId;
+  final pulumi.Input<String?>? webAppId;
 
   /// Creates a new [WebAppCustomizationState].
   /// [faviconFile] Base64-encoded string representing the favicon image. Terraform will detect drift only if this argument is specified. To remove the favicon, recreate the resource.

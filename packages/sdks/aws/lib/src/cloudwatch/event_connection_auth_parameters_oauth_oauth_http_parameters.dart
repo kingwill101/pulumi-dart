@@ -7,11 +7,11 @@ import 'event_connection_auth_parameters_oauth_oauth_http_parameters_query_strin
 
 class EventConnectionAuthParametersOauthOauthHttpParameters {
   /// Contains additional body string parameters for the connection. You can include up to 100 additional body string parameters per request. Each additional parameter counts towards the event payload size, which cannot exceed 64 KB. Each parameter can contain the following:
-  final pulumi.Input<List<EventConnectionAuthParametersOauthOauthHttpParametersBody>>? bodies;
+  final pulumi.Input<List<EventConnectionAuthParametersOauthOauthHttpParametersBody>?>? bodies;
   /// Contains additional header parameters for the connection. You can include up to 100 additional body string parameters per request. Each additional parameter counts towards the event payload size, which cannot exceed 64 KB. Each parameter can contain the following:
-  final pulumi.Input<List<EventConnectionAuthParametersOauthOauthHttpParametersHeader>>? headers;
+  final pulumi.Input<List<EventConnectionAuthParametersOauthOauthHttpParametersHeader>?>? headers;
   /// Contains additional query string parameters for the connection. You can include up to 100 additional body string parameters per request. Each additional parameter counts towards the event payload size, which cannot exceed 64 KB. Each parameter can contain the following:
-  final pulumi.Input<List<EventConnectionAuthParametersOauthOauthHttpParametersQueryString>>? queryStrings;
+  final pulumi.Input<List<EventConnectionAuthParametersOauthOauthHttpParametersQueryString>?>? queryStrings;
 
   /// Creates a new [EventConnectionAuthParametersOauthOauthHttpParameters].
   /// [bodies] Contains additional body string parameters for the connection. You can include up to 100 additional body string parameters per request. Each additional parameter counts towards the event payload size, which cannot exceed 64 KB. Each parameter can contain the following:

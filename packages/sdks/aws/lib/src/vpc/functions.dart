@@ -6,7 +6,7 @@ import 'get_security_group_rule_result.dart';
 import 'get_security_group_rules_args.dart';
 import 'get_security_group_rules_result.dart';
 
-/// Data source for managing an AWS EC2 (Elastic Compute Cloud) Vpc Endpoint Associations.
+/// Data source for managing an AWS EC2 Vpc Endpoint Associations.
 ///
 /// ## Example Usage
 ///
@@ -126,6 +126,17 @@ Future<GetEndpointAssociationsResult> getEndpointAssociations(
   return GetEndpointAssociationsResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointAssociationsResult> getEndpointAssociationsOutput(
+  GetEndpointAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpc/getEndpointAssociations:getEndpointAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointAssociationsResult.fromMap);
+}
+
 /// `aws.vpc.getSecurityGroupRule` provides details about a specific security group rule.
 ///
 /// ## Example Usage
@@ -242,6 +253,17 @@ Future<GetSecurityGroupRuleResult> getSecurityGroupRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityGroupRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityGroupRuleResult> getSecurityGroupRuleOutput(
+  GetSecurityGroupRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpc/getSecurityGroupRule:getSecurityGroupRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityGroupRuleResult.fromMap);
 }
 
 /// This resource can be useful for getting back a set of security group rule IDs.
@@ -393,4 +415,15 @@ Future<GetSecurityGroupRulesResult> getSecurityGroupRules(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityGroupRulesResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityGroupRulesResult> getSecurityGroupRulesOutput(
+  GetSecurityGroupRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpc/getSecurityGroupRules:getSecurityGroupRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityGroupRulesResult.fromMap);
 }

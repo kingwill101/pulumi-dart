@@ -7,10 +7,10 @@ import 'v2models_slot_value_elicitation_setting_prompt_specification_message_gro
 import 'v2models_slot_value_elicitation_setting_prompt_specification_message_group_message_ssml_message.dart';
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage {
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload>? customPayload;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageImageResponseCard>? imageResponseCard;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage>? plainTextMessage;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage>? ssmlMessage;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload?>? customPayload;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageImageResponseCard?>? imageResponseCard;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage?>? plainTextMessage;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage?>? ssmlMessage;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage].
   /// [customPayload] Optional.

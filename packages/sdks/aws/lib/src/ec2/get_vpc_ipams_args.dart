@@ -11,11 +11,11 @@ class GetVpcIpamsArgs {
   /// Custom filter block as described below.
   ///
   /// The arguments of this data source act as filters for querying the available IPAMs.
-  final pulumi.Input<List<GetVpcIpamsFilter>>? filters;
+  final pulumi.Input<List<GetVpcIpamsFilter>?>? filters;
   /// IDs of the IPAM resources to query for.
-  final pulumi.Input<List<String>>? ipamIds;
+  final pulumi.Input<List<String>?>? ipamIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetVpcIpamsArgs].
   /// [filters] Custom filter block as described below.

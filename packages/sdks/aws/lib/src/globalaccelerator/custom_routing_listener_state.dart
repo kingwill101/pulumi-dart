@@ -5,14 +5,14 @@ import 'custom_routing_listener_port_range.dart';
 
 /// Input properties used for looking up and filtering CustomRoutingListener resources.
 class CustomRoutingListenerState {
-  /// The Amazon Resource Name (ARN) of a custom routing accelerator.
-  final pulumi.Input<String>? acceleratorArn;
-  final pulumi.Input<String>? arn;
+  /// ARN of a custom routing accelerator.
+  final pulumi.Input<String?>? acceleratorArn;
+  final pulumi.Input<String?>? arn;
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  final pulumi.Input<List<CustomRoutingListenerPortRange>>? portRanges;
+  final pulumi.Input<List<CustomRoutingListenerPortRange>?>? portRanges;
 
   /// Creates a new [CustomRoutingListenerState].
-  /// [acceleratorArn] The Amazon Resource Name (ARN) of a custom routing accelerator.
+  /// [acceleratorArn] ARN of a custom routing accelerator.
   /// [arn] Optional.
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   const CustomRoutingListenerState({

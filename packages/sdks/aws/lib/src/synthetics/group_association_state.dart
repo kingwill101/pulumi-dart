@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GroupAssociation resources.
 class GroupAssociationState {
   /// ARN of the canary.
-  final pulumi.Input<String>? canaryArn;
-  final pulumi.Input<String>? groupArn;
+  final pulumi.Input<String?>? canaryArn;
+  final pulumi.Input<String?>? groupArn;
   /// ID of the Group.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Name of the group that the canary will be associated with.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GroupAssociationState].
   /// [canaryArn] ARN of the canary.

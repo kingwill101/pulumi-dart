@@ -50,7 +50,7 @@ class GetApiCorsConfiguration {
       allowMethods: pulumi.Input.fromValue((map['allowMethods'] as List).cast<String>()),
       allowOrigins: pulumi.Input.fromValue((map['allowOrigins'] as List).cast<String>()),
       exposeHeaders: pulumi.Input.fromValue((map['exposeHeaders'] as List).cast<String>()),
-      maxAge: pulumi.Input.fromValue(map['maxAge'] as int),
+      maxAge: pulumi.Input.fromValue((map['maxAge'] as num).toInt()),
     );
   }
 }

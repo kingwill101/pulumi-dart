@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alias_args.dart';
+import 'alias_routing_configuration.dart';
 import 'alias_state.dart';
 
 /// Provides a Step Function State Machine Alias.
@@ -14,14 +15,13 @@ import 'alias_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sfnAlias = new aws.sfn.Alias("sfn_alias", {
-///     name: "my_sfn_alias",
 ///     routingConfigurations: [{
 ///         stateMachineVersionArn: sfnTest.stateMachineVersionArn,
 ///         weight: 100,
 ///     }],
+///     name: "my_sfn_alias",
 /// });
 /// const mySfnAlias = new aws.sfn.Alias("my_sfn_alias", {
-///     name: "my_sfn_alias",
 ///     routingConfigurations: [
 ///         {
 ///             stateMachineVersionArn: "arn:aws:states:us-east-1:12345:stateMachine:demo:3",
@@ -32,6 +32,7 @@ import 'alias_state.dart';
 ///             weight: 50,
 ///         },
 ///     ],
+///     name: "my_sfn_alias",
 /// });
 /// ```
 /// ```python
@@ -39,13 +40,12 @@ import 'alias_state.dart';
 /// import pulumi_aws as aws
 ///
 /// sfn_alias = aws.sfn.Alias("sfn_alias",
-///     name="my_sfn_alias",
 ///     routing_configurations=[{
 ///         "state_machine_version_arn": sfn_test["stateMachineVersionArn"],
 ///         "weight": 100,
-///     }])
+///     }],
+///     name="my_sfn_alias")
 /// my_sfn_alias = aws.sfn.Alias("my_sfn_alias",
-///     name="my_sfn_alias",
 ///     routing_configurations=[
 ///         {
 ///             "state_machine_version_arn": "arn:aws:states:us-east-1:12345:stateMachine:demo:3",
@@ -55,7 +55,8 @@ import 'alias_state.dart';
 ///             "state_machine_version_arn": "arn:aws:states:us-east-1:12345:stateMachine:demo:2",
 ///             "weight": 50,
 ///         },
-///     ])
+///     ],
+///     name="my_sfn_alias")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,7 +68,6 @@ import 'alias_state.dart';
 /// {
 ///     var sfnAlias = new Aws.Sfn.Alias("sfn_alias", new()
 ///     {
-///         Name = "my_sfn_alias",
 ///         RoutingConfigurations = new[]
 ///         {
 ///             new Aws.Sfn.Inputs.AliasRoutingConfigurationArgs
@@ -76,11 +76,11 @@ import 'alias_state.dart';
 ///                 Weight = 100,
 ///             },
 ///         },
+///         Name = "my_sfn_alias",
 ///     });
 ///
 ///     var mySfnAlias = new Aws.Sfn.Alias("my_sfn_alias", new()
 ///     {
-///         Name = "my_sfn_alias",
 ///         RoutingConfigurations = new[]
 ///         {
 ///             new Aws.Sfn.Inputs.AliasRoutingConfigurationArgs
@@ -94,6 +94,7 @@ import 'alias_state.dart';
 ///                 Weight = 50,
 ///             },
 ///         },
+///         Name = "my_sfn_alias",
 ///     });
 ///
 /// });
@@ -109,19 +110,18 @@ import 'alias_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sfn.NewAlias(ctx, "sfn_alias", &sfn.AliasArgs{
-/// 			Name: pulumi.String("my_sfn_alias"),
 /// 			RoutingConfigurations: sfn.AliasRoutingConfigurationArray{
 /// 				&sfn.AliasRoutingConfigurationArgs{
 /// 					StateMachineVersionArn: pulumi.Any(sfnTest.StateMachineVersionArn),
 /// 					Weight:                 pulumi.Int(100),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my_sfn_alias"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = sfn.NewAlias(ctx, "my_sfn_alias", &sfn.AliasArgs{
-/// 			Name: pulumi.String("my_sfn_alias"),
 /// 			RoutingConfigurations: sfn.AliasRoutingConfigurationArray{
 /// 				&sfn.AliasRoutingConfigurationArgs{
 /// 					StateMachineVersionArn: pulumi.String("arn:aws:states:us-east-1:12345:stateMachine:demo:3"),
@@ -132,6 +132,7 @@ import 'alias_state.dart';
 /// 					Weight:                 pulumi.Int(50),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my_sfn_alias"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -150,14 +151,13 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_sfn_alias" "sfn_alias" {
-///   name = "my_sfn_alias"
 ///   routing_configurations {
 ///     state_machine_version_arn = sfnTest.stateMachineVersionArn
 ///     weight                    = 100
 ///   }
+///   name = "my_sfn_alias"
 /// }
 /// resource "aws_sfn_alias" "my_sfn_alias" {
-///   name = "my_sfn_alias"
 ///   routing_configurations {
 ///     state_machine_version_arn = "arn:aws:states:us-east-1:12345:stateMachine:demo:3"
 ///     weight                    = 50
@@ -166,6 +166,7 @@ import 'alias_state.dart';
 ///     state_machine_version_arn = "arn:aws:states:us-east-1:12345:stateMachine:demo:2"
 ///     weight                    = 50
 ///   }
+///   name = "my_sfn_alias"
 /// }
 /// ```
 /// ```java
@@ -191,15 +192,14 @@ import 'alias_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sfnAlias = new Alias("sfnAlias", AliasArgs.builder()
-///             .name("my_sfn_alias")
 ///             .routingConfigurations(AliasRoutingConfigurationArgs.builder()
 ///                 .stateMachineVersionArn(sfnTest.stateMachineVersionArn())
 ///                 .weight(100)
 ///                 .build())
+///             .name("my_sfn_alias")
 ///             .build());
 ///
 ///         var mySfnAlias = new Alias("mySfnAlias", AliasArgs.builder()
-///             .name("my_sfn_alias")
 ///             .routingConfigurations(
 ///                 AliasRoutingConfigurationArgs.builder()
 ///                     .stateMachineVersionArn("arn:aws:states:us-east-1:12345:stateMachine:demo:3")
@@ -209,6 +209,7 @@ import 'alias_state.dart';
 ///                     .stateMachineVersionArn("arn:aws:states:us-east-1:12345:stateMachine:demo:2")
 ///                     .weight(50)
 ///                     .build())
+///             .name("my_sfn_alias")
 ///             .build());
 ///
 ///     }
@@ -220,20 +221,20 @@ import 'alias_state.dart';
 ///     type: aws:sfn:Alias
 ///     name: sfn_alias
 ///     properties:
-///       name: my_sfn_alias
 ///       routingConfigurations:
 ///         - stateMachineVersionArn: ${sfnTest.stateMachineVersionArn}
 ///           weight: 100
+///       name: my_sfn_alias
 ///   mySfnAlias:
 ///     type: aws:sfn:Alias
 ///     name: my_sfn_alias
 ///     properties:
-///       name: my_sfn_alias
 ///       routingConfigurations:
 ///         - stateMachineVersionArn: arn:aws:states:us-east-1:12345:stateMachine:demo:3
 ///           weight: 50
 ///         - stateMachineVersionArn: arn:aws:states:us-east-1:12345:stateMachine:demo:2
 ///           weight: 50
+///       name: my_sfn_alias
 /// ```
 ///
 ///
@@ -252,7 +253,7 @@ import 'alias_state.dart';
 /// $ pulumi import aws:sfn/alias:Alias foo arn:aws:states:us-east-1:123456789098:stateMachine:myStateMachine:foo
 /// ```
 class Alias extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) identifying your state machine alias.
+  /// ARN identifying your state machine alias.
   late final pulumi.Output<String> arn;
   /// The date the state machine alias was created.
   late final pulumi.Output<String> creationDate;
@@ -263,7 +264,7 @@ class Alias extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The StateMachine alias' route configuration settings. Fields documented below
-  late final pulumi.Output<List<Map<String, dynamic>>> routingConfigurations;
+  late final pulumi.Output<List<AliasRoutingConfiguration>> routingConfigurations;
 
   /// Creates a new [Alias].
   /// [name] The Pulumi resource name.
@@ -277,14 +278,14 @@ class Alias extends pulumi.CustomResource {
           'aws:sfn/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfigurations = registerOutput<List<Map<String, dynamic>>>('routingConfigurations');
+    routingConfigurations = registerOutput<List<AliasRoutingConfiguration>>('routingConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AliasRoutingConfiguration>(guardedValue, (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
@@ -292,11 +293,12 @@ class Alias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Alias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,6 +317,23 @@ class Alias extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfigurations = registerOutput<List<Map<String, dynamic>>>('routingConfigurations');
+    routingConfigurations = registerOutput<List<AliasRoutingConfiguration>>('routingConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AliasRoutingConfiguration>(guardedValue, (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Alias] resource.
+  Alias.reference(String urn)
+    : super(
+        'aws:sfn/alias:Alias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationDate = registerOutput<String>('creationDate');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    routingConfigurations = registerOutput<List<AliasRoutingConfiguration>>('routingConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AliasRoutingConfiguration>(guardedValue, (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

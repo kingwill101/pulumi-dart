@@ -21,12 +21,12 @@ import 'get_registration_code_result.dart';
 ///     }],
 ///     spec: [{
 ///         container: [{
-///             image: "gcr.io/my-project/image-name",
-///             name: "image-name",
 ///             env: [{
 ///                 name: "IOT_ENDPOINT",
 ///                 value: example.endpointAddress,
 ///             }],
+///             image: "gcr.io/my-project/image-name",
+///             name: "image-name",
 ///         }],
 ///     }],
 /// });
@@ -43,12 +43,12 @@ import 'get_registration_code_result.dart';
 ///     }],
 ///     spec=[{
 ///         container: [{
-///             image: gcr.io/my-project/image-name,
-///             name: image-name,
 ///             env: [{
 ///                 name: IOT_ENDPOINT,
 ///                 value: example.endpoint_address,
 ///             }],
+///             image: gcr.io/my-project/image-name,
+///             name: image-name,
 ///         }],
 ///     }])
 /// ```
@@ -80,8 +80,6 @@ import 'get_registration_code_result.dart';
 ///                 {
 ///
 ///                     {
-///                         { "image", "gcr.io/my-project/image-name" },
-///                         { "name", "image-name" },
 ///                         { "env", new[]
 ///                         {
 ///
@@ -90,6 +88,8 @@ import 'get_registration_code_result.dart';
 ///                                 { "value", example.Apply(getEndpointResult => getEndpointResult.EndpointAddress) },
 ///                             },
 ///                         } },
+///                         { "image", "gcr.io/my-project/image-name" },
+///                         { "name", "image-name" },
 ///                     },
 ///                 } },
 ///             },
@@ -123,14 +123,14 @@ import 'get_registration_code_result.dart';
 /// 				map[string][]map[string]interface{}{
 /// 					"container": []map[string]interface{}{
 /// 						map[string]interface{}{
-/// 							"image": "gcr.io/my-project/image-name",
-/// 							"name":  "image-name",
 /// 							"env": []map[string]interface{}{
 /// 								map[string]interface{}{
 /// 									"name":  "IOT_ENDPOINT",
 /// 									"value": example.EndpointAddress,
 /// 								},
 /// 							},
+/// 							"image": "gcr.io/my-project/image-name",
+/// 							"name":  "image-name",
 /// 						},
 /// 					},
 /// 				},
@@ -164,12 +164,12 @@ import 'get_registration_code_result.dart';
 ///   }]
 ///   spec = [{
 ///     "container" = [{
-///       "image" = "gcr.io/my-project/image-name"
-///       "name"  = "image-name"
 ///       "env" = [{
 ///         "name"  = "IOT_ENDPOINT"
 ///         "value" = data.aws_iot_getendpoint.example.endpoint_address
 ///       }]
+///       "image" = "gcr.io/my-project/image-name"
+///       "name"  = "image-name"
 ///     }]
 ///   }]
 /// }
@@ -203,12 +203,12 @@ import 'get_registration_code_result.dart';
 ///         var agent = new Pod("agent", PodArgs.builder()
 ///             .metadata(Arrays.asList(Map.of("name", "my-device")))
 ///             .spec(Arrays.asList(Map.of("container", Arrays.asList(Map.ofEntries(
-///                 Map.entry("image", "gcr.io/my-project/image-name"),
-///                 Map.entry("name", "image-name"),
 ///                 Map.entry("env", Arrays.asList(Map.ofEntries(
 ///                     Map.entry("name", "IOT_ENDPOINT"),
 ///                     Map.entry("value", example.endpointAddress())
-///                 )))
+///                 ))),
+///                 Map.entry("image", "gcr.io/my-project/image-name"),
+///                 Map.entry("name", "image-name")
 ///             )))))
 ///             .build());
 ///
@@ -224,11 +224,11 @@ import 'get_registration_code_result.dart';
 ///         - name: my-device
 ///       spec:
 ///         - container:
-///             - image: gcr.io/my-project/image-name
-///               name: image-name
-///               env:
+///             - env:
 ///                 - name: IOT_ENDPOINT
 ///                   value: ${example.endpointAddress}
+///               image: gcr.io/my-project/image-name
+///               name: image-name
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -250,6 +250,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iot/getEndpoint:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Gets a registration code used to register a CA certificate with AWS IoT.
 ///
 /// ## Example Usage
@@ -263,11 +274,11 @@ Future<GetEndpointResult> getEndpoint(
 /// const example = aws.iot.getRegistrationCode({});
 /// const verification = new tls.PrivateKey("verification", {algorithm: "RSA"});
 /// const verificationCertRequest = new tls.CertRequest("verification", {
-///     keyAlgorithm: "RSA",
-///     privateKeyPem: verification.privateKeyPem,
 ///     subject: [{
 ///         commonName: example.then(example => example.registrationCode),
 ///     }],
+///     keyAlgorithm: "RSA",
+///     privateKeyPem: verification.privateKeyPem,
 /// });
 /// ```
 /// ```python
@@ -278,11 +289,11 @@ Future<GetEndpointResult> getEndpoint(
 /// example = aws.iot.get_registration_code()
 /// verification = tls.PrivateKey("verification", algorithm="RSA")
 /// verification_cert_request = tls.CertRequest("verification",
-///     key_algorithm="RSA",
-///     private_key_pem=verification.private_key_pem,
 ///     subject=[{
 ///         "commonName": example.registration_code,
-///     }])
+///     }],
+///     key_algorithm="RSA",
+///     private_key_pem=verification.private_key_pem)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -302,8 +313,6 @@ Future<GetEndpointResult> getEndpoint(
 ///
 ///     var verificationCertRequest = new Tls.CertRequest("verification", new()
 ///     {
-///         KeyAlgorithm = "RSA",
-///         PrivateKeyPem = verification.PrivateKeyPem,
 ///         Subject = new[]
 ///         {
 ///
@@ -311,6 +320,8 @@ Future<GetEndpointResult> getEndpoint(
 ///                 { "commonName", example.Apply(getRegistrationCodeResult => getRegistrationCodeResult.RegistrationCode) },
 ///             },
 ///         },
+///         KeyAlgorithm = "RSA",
+///         PrivateKeyPem = verification.PrivateKeyPem,
 ///     });
 ///
 /// });
@@ -337,13 +348,13 @@ Future<GetEndpointResult> getEndpoint(
 /// 			return err
 /// 		}
 /// 		_, err = tls.NewCertRequest(ctx, "verification", &tls.CertRequestArgs{
-/// 			KeyAlgorithm:  "RSA",
-/// 			PrivateKeyPem: verification.PrivateKeyPem,
 /// 			Subject: tls.CertRequestSubjectArgs{
 /// 				map[string]interface{}{
 /// 					"commonName": example.RegistrationCode,
 /// 				},
 /// 			},
+/// 			KeyAlgorithm:  "RSA",
+/// 			PrivateKeyPem: verification.PrivateKeyPem,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -371,11 +382,11 @@ Future<GetEndpointResult> getEndpoint(
 ///   algorithm = "RSA"
 /// }
 /// resource "tls_certrequest" "verification" {
-///   key_algorithm   = "RSA"
-///   private_key_pem = tls_privatekey.verification.private_key_pem
 ///   subject = [{
 ///     "commonName" = data.aws_iot_getregistrationcode.example.registration_code
 ///   }]
+///   key_algorithm   = "RSA"
+///   private_key_pem = tls_privatekey.verification.private_key_pem
 /// }
 /// ```
 /// ```java
@@ -411,11 +422,11 @@ Future<GetEndpointResult> getEndpoint(
 ///             .build());
 ///
 ///         var verificationCertRequest = new CertRequest("verificationCertRequest", CertRequestArgs.builder()
-///             .keyAlgorithm("RSA")
-///             .privateKeyPem(verification.privateKeyPem())
 ///             .subject(com.pulumi.tls.inputs.CertRequestSubjectArgs.builder()
 ///                 .commonName(example.registrationCode())
 ///                 .build())
+///             .keyAlgorithm("RSA")
+///             .privateKeyPem(verification.privateKeyPem())
 ///             .build());
 ///
 ///     }
@@ -431,10 +442,10 @@ Future<GetEndpointResult> getEndpoint(
 ///     type: tls:CertRequest
 ///     name: verification
 ///     properties:
-///       keyAlgorithm: RSA
-///       privateKeyPem: ${verification.privateKeyPem}
 ///       subject:
 ///         - commonName: ${example.registrationCode}
+///       keyAlgorithm: RSA
+///       privateKeyPem: ${verification.privateKeyPem}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -454,4 +465,15 @@ Future<GetRegistrationCodeResult> getRegistrationCode(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistrationCodeResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistrationCodeResult> getRegistrationCodeOutput(
+  GetRegistrationCodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iot/getRegistrationCode:getRegistrationCode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationCodeResult.fromMap);
 }

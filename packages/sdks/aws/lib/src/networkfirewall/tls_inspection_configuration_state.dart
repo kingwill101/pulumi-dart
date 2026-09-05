@@ -10,32 +10,32 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// Input properties used for looking up and filtering TlsInspectionConfiguration resources.
 class TlsInspectionConfigurationState {
   /// ARN of the TLS Inspection Configuration.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Certificate Manager certificate block. See Certificate Authority below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationCertificateAuthority>>? certificateAuthorities;
+  final pulumi.Input<List<TlsInspectionConfigurationCertificateAuthority>?>? certificateAuthorities;
   /// List of certificate blocks describing certificates associated with the TLS inspection configuration. See Certificates below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationCertificate>>? certificates;
+  final pulumi.Input<List<TlsInspectionConfigurationCertificate>?>? certificates;
   /// Description of the TLS inspection configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Encryption configuration block. Detailed below.
-  final pulumi.Input<List<TlsInspectionConfigurationEncryptionConfiguration>>? encryptionConfigurations;
+  final pulumi.Input<List<TlsInspectionConfigurationEncryptionConfiguration>?>? encryptionConfigurations;
   /// Descriptive name of the TLS inspection configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Number of firewall policies that use this TLS inspection configuration.
-  final pulumi.Input<int>? numberOfAssociations;
+  final pulumi.Input<int?>? numberOfAssociations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<TlsInspectionConfigurationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<TlsInspectionConfigurationTimeouts?>? timeouts;
   /// TLS inspection configuration block. Detailed below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<TlsInspectionConfigurationTlsInspectionConfiguration>? tlsInspectionConfiguration;
+  final pulumi.Input<TlsInspectionConfigurationTlsInspectionConfiguration?>? tlsInspectionConfiguration;
   /// A unique identifier for the TLS inspection configuration.
-  final pulumi.Input<String>? tlsInspectionConfigurationId;
+  final pulumi.Input<String?>? tlsInspectionConfigurationId;
   /// String token used when updating the rule group.
-  final pulumi.Input<String>? updateToken;
+  final pulumi.Input<String?>? updateToken;
 
   /// Creates a new [TlsInspectionConfigurationState].
   /// [arn] ARN of the TLS Inspection Configuration.
@@ -96,7 +96,7 @@ class TlsInspectionConfigurationState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionConfigurations: (() { final guardedValue = map['encryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(guardedValue, (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfAssociations: (() { final guardedValue = map['numberOfAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfAssociations: (() { final guardedValue = map['numberOfAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

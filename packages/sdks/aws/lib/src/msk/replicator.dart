@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replicator_args.dart';
+import 'replicator_kafka_cluster.dart';
 import 'replicator_log_delivery.dart';
 import 'replicator_replication_info_list.dart';
 import 'replicator_state.dart';
@@ -16,9 +17,23 @@ import 'replicator_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.msk.Replicator("test", {
-///     replicatorName: "test-name",
-///     description: "test-description",
-///     serviceExecutionRoleArn: sourceAwsIamRole.arn,
+///     replicationInfoList: {
+///         consumerGroupReplications: [{
+///             consumerGroupsToReplicates: [".*"],
+///         }],
+///         topicReplications: [{
+///             topicNameConfiguration: {
+///                 type: "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
+///             },
+///             startingPosition: {
+///                 type: "LATEST",
+///             },
+///             topicsToReplicates: [".*"],
+///         }],
+///         sourceKafkaClusterArn: source.arn,
+///         targetKafkaClusterArn: target.arn,
+///         targetCompressionType: "NONE",
+///     },
 ///     kafkaClusters: [
 ///         {
 ///             amazonMskCluster: {
@@ -39,23 +54,9 @@ import 'replicator_state.dart';
 ///             },
 ///         },
 ///     ],
-///     replicationInfoList: {
-///         sourceKafkaClusterArn: source.arn,
-///         targetKafkaClusterArn: target.arn,
-///         targetCompressionType: "NONE",
-///         topicReplications: [{
-///             topicNameConfiguration: {
-///                 type: "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
-///             },
-///             topicsToReplicates: [".*"],
-///             startingPosition: {
-///                 type: "LATEST",
-///             },
-///         }],
-///         consumerGroupReplications: [{
-///             consumerGroupsToReplicates: [".*"],
-///         }],
-///     },
+///     replicatorName: "test-name",
+///     description: "test-description",
+///     serviceExecutionRoleArn: sourceAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -63,9 +64,23 @@ import 'replicator_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.msk.Replicator("test",
-///     replicator_name="test-name",
-///     description="test-description",
-///     service_execution_role_arn=source_aws_iam_role["arn"],
+///     replication_info_list={
+///         "consumer_group_replications": [{
+///             "consumer_groups_to_replicates": [".*"],
+///         }],
+///         "topic_replications": [{
+///             "topic_name_configuration": {
+///                 "type": "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
+///             },
+///             "starting_position": {
+///                 "type": "LATEST",
+///             },
+///             "topics_to_replicates": [".*"],
+///         }],
+///         "source_kafka_cluster_arn": source["arn"],
+///         "target_kafka_cluster_arn": target["arn"],
+///         "target_compression_type": "NONE",
+///     },
 ///     kafka_clusters=[
 ///         {
 ///             "amazon_msk_cluster": {
@@ -86,23 +101,9 @@ import 'replicator_state.dart';
 ///             },
 ///         },
 ///     ],
-///     replication_info_list={
-///         "source_kafka_cluster_arn": source["arn"],
-///         "target_kafka_cluster_arn": target["arn"],
-///         "target_compression_type": "NONE",
-///         "topic_replications": [{
-///             "topic_name_configuration": {
-///                 "type": "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
-///             },
-///             "topics_to_replicates": [".*"],
-///             "starting_position": {
-///                 "type": "LATEST",
-///             },
-///         }],
-///         "consumer_group_replications": [{
-///             "consumer_groups_to_replicates": [".*"],
-///         }],
-///     })
+///     replicator_name="test-name",
+///     description="test-description",
+///     service_execution_role_arn=source_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -114,9 +115,40 @@ import 'replicator_state.dart';
 /// {
 ///     var test = new Aws.Msk.Replicator("test", new()
 ///     {
-///         ReplicatorName = "test-name",
-///         Description = "test-description",
-///         ServiceExecutionRoleArn = sourceAwsIamRole.Arn,
+///         ReplicationInfoList = new Aws.Msk.Inputs.ReplicatorReplicationInfoListArgs
+///         {
+///             ConsumerGroupReplications = new[]
+///             {
+///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs
+///                 {
+///                     ConsumerGroupsToReplicates = new[]
+///                     {
+///                         ".*",
+///                     },
+///                 },
+///             },
+///             TopicReplications = new[]
+///             {
+///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationArgs
+///                 {
+///                     TopicNameConfiguration = new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs
+///                     {
+///                         Type = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
+///                     },
+///                     StartingPosition = new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs
+///                     {
+///                         Type = "LATEST",
+///                     },
+///                     TopicsToReplicates = new[]
+///                     {
+///                         ".*",
+///                     },
+///                 },
+///             },
+///             SourceKafkaClusterArn = source.Arn,
+///             TargetKafkaClusterArn = target.Arn,
+///             TargetCompressionType = "NONE",
+///         },
 ///         KafkaClusters = new[]
 ///         {
 ///             new Aws.Msk.Inputs.ReplicatorKafkaClusterArgs
@@ -150,40 +182,9 @@ import 'replicator_state.dart';
 ///                 },
 ///             },
 ///         },
-///         ReplicationInfoList = new Aws.Msk.Inputs.ReplicatorReplicationInfoListArgs
-///         {
-///             SourceKafkaClusterArn = source.Arn,
-///             TargetKafkaClusterArn = target.Arn,
-///             TargetCompressionType = "NONE",
-///             TopicReplications = new[]
-///             {
-///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationArgs
-///                 {
-///                     TopicNameConfiguration = new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs
-///                     {
-///                         Type = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
-///                     },
-///                     TopicsToReplicates = new[]
-///                     {
-///                         ".*",
-///                     },
-///                     StartingPosition = new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs
-///                     {
-///                         Type = "LATEST",
-///                     },
-///                 },
-///             },
-///             ConsumerGroupReplications = new[]
-///             {
-///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs
-///                 {
-///                     ConsumerGroupsToReplicates = new[]
-///                     {
-///                         ".*",
-///                     },
-///                 },
-///             },
-///         },
+///         ReplicatorName = "test-name",
+///         Description = "test-description",
+///         ServiceExecutionRoleArn = sourceAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -198,16 +199,38 @@ import 'replicator_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := msk.NewReplicator(ctx, "test", &msk.ReplicatorArgs{
-/// ReplicatorName: pulumi.String("test-name"),
-/// Description: pulumi.String("test-description"),
-/// ServiceExecutionRoleArn: pulumi.Any(sourceAwsIamRole.Arn),
+/// ReplicationInfoList: &msk.ReplicatorReplicationInfoListArgs{
+/// ConsumerGroupReplications: msk.ReplicatorReplicationInfoListConsumerGroupReplicationArray{
+/// &msk.ReplicatorReplicationInfoListConsumerGroupReplicationArgs{
+/// ConsumerGroupsToReplicates: pulumi.StringArray{
+/// pulumi.String(".*"),
+/// },
+/// },
+/// },
+/// TopicReplications: msk.ReplicatorReplicationInfoListTopicReplicationArray{
+/// &msk.ReplicatorReplicationInfoListTopicReplicationArgs{
+/// TopicNameConfiguration: &msk.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs{
+/// Type: pulumi.String("PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"),
+/// },
+/// StartingPosition: &msk.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs{
+/// Type: pulumi.String("LATEST"),
+/// },
+/// TopicsToReplicates: pulumi.StringArray{
+/// pulumi.String(".*"),
+/// },
+/// },
+/// },
+/// SourceKafkaClusterArn: pulumi.Any(source.Arn),
+/// TargetKafkaClusterArn: pulumi.Any(target.Arn),
+/// TargetCompressionType: pulumi.String("NONE"),
+/// },
 /// KafkaClusters: msk.ReplicatorKafkaClusterArray{
 /// &msk.ReplicatorKafkaClusterArgs{
 /// AmazonMskCluster: &msk.ReplicatorKafkaClusterAmazonMskClusterArgs{
 /// MskClusterArn: pulumi.Any(source.Arn),
 /// },
 /// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,27-48)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:23,27-48)),
 /// SecurityGroupsIds: pulumi.StringArray{
 /// sourceAwsSecurityGroup.Id,
 /// },
@@ -218,38 +241,16 @@ import 'replicator_state.dart';
 /// MskClusterArn: pulumi.Any(target.Arn),
 /// },
 /// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:17,27-48)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:31,27-48)),
 /// SecurityGroupsIds: pulumi.StringArray{
 /// targetAwsSecurityGroup.Id,
 /// },
 /// },
 /// },
 /// },
-/// ReplicationInfoList: &msk.ReplicatorReplicationInfoListArgs{
-/// SourceKafkaClusterArn: pulumi.Any(source.Arn),
-/// TargetKafkaClusterArn: pulumi.Any(target.Arn),
-/// TargetCompressionType: pulumi.String("NONE"),
-/// TopicReplications: msk.ReplicatorReplicationInfoListTopicReplicationArray{
-/// &msk.ReplicatorReplicationInfoListTopicReplicationArgs{
-/// TopicNameConfiguration: &msk.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs{
-/// Type: pulumi.String("PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"),
-/// },
-/// TopicsToReplicates: pulumi.StringArray{
-/// pulumi.String(".*"),
-/// },
-/// StartingPosition: &msk.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs{
-/// Type: pulumi.String("LATEST"),
-/// },
-/// },
-/// },
-/// ConsumerGroupReplications: msk.ReplicatorReplicationInfoListConsumerGroupReplicationArray{
-/// &msk.ReplicatorReplicationInfoListConsumerGroupReplicationArgs{
-/// ConsumerGroupsToReplicates: pulumi.StringArray{
-/// pulumi.String(".*"),
-/// },
-/// },
-/// },
-/// },
+/// ReplicatorName: pulumi.String("test-name"),
+/// Description: pulumi.String("test-description"),
+/// ServiceExecutionRoleArn: pulumi.Any(sourceAwsIamRole.Arn),
 /// })
 /// if err != nil {
 /// return err
@@ -268,9 +269,23 @@ import 'replicator_state.dart';
 /// }
 ///
 /// resource "aws_msk_replicator" "test" {
-///   replicator_name            = "test-name"
-///   description                = "test-description"
-///   service_execution_role_arn = sourceAwsIamRole.arn
+///   replication_info_list = {
+///     consumer_group_replications = [{
+///       "consumerGroupsToReplicates" = [".*"]
+///     }]
+///     topic_replications = [{
+///       "topicNameConfiguration" = {
+///         "type" = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
+///       }
+///       "startingPosition" = {
+///         "type" = "LATEST"
+///       }
+///       "topicsToReplicates" = [".*"]
+///     }]
+///     source_kafka_cluster_arn = source.arn
+///     target_kafka_cluster_arn = target.arn
+///     target_compression_type  = "NONE"
+///   }
 ///   kafka_clusters {
 ///     amazon_msk_cluster = {
 ///       msk_cluster_arn = source.arn
@@ -289,23 +304,9 @@ import 'replicator_state.dart';
 ///       security_groups_ids = [targetAwsSecurityGroup.id]
 ///     }
 ///   }
-///   replication_info_list = {
-///     source_kafka_cluster_arn = source.arn
-///     target_kafka_cluster_arn = target.arn
-///     target_compression_type  = "NONE"
-///     topic_replications = [{
-///       "topicNameConfiguration" = {
-///         "type" = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
-///       }
-///       "topicsToReplicates" = [".*"]
-///       "startingPosition" = {
-///         "type" = "LATEST"
-///       }
-///     }]
-///     consumer_group_replications = [{
-///       "consumerGroupsToReplicates" = [".*"]
-///     }]
-///   }
+///   replicator_name            = "test-name"
+///   description                = "test-description"
+///   service_execution_role_arn = sourceAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -316,14 +317,14 @@ import 'replicator_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.Replicator;
 /// import com.pulumi.aws.msk.ReplicatorArgs;
-/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterArgs;
-/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterAmazonMskClusterArgs;
-/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterVpcConfigArgs;
 /// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs;
 /// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationArgs;
 /// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs;
 /// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs;
-/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterAmazonMskClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterVpcConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -338,9 +339,23 @@ import 'replicator_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Replicator("test", ReplicatorArgs.builder()
-///             .replicatorName("test-name")
-///             .description("test-description")
-///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
+///             .replicationInfoList(ReplicatorReplicationInfoListArgs.builder()
+///                 .consumerGroupReplications(ReplicatorReplicationInfoListConsumerGroupReplicationArgs.builder()
+///                     .consumerGroupsToReplicates(".*")
+///                     .build())
+///                 .topicReplications(ReplicatorReplicationInfoListTopicReplicationArgs.builder()
+///                     .topicNameConfiguration(ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs.builder()
+///                         .type("PREFIXED_WITH_SOURCE_CLUSTER_ALIAS")
+///                         .build())
+///                     .startingPosition(ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs.builder()
+///                         .type("LATEST")
+///                         .build())
+///                     .topicsToReplicates(".*")
+///                     .build())
+///                 .sourceKafkaClusterArn(source.arn())
+///                 .targetKafkaClusterArn(target.arn())
+///                 .targetCompressionType("NONE")
+///                 .build())
 ///             .kafkaClusters(
 ///                 ReplicatorKafkaClusterArgs.builder()
 ///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
@@ -360,23 +375,9 @@ import 'replicator_state.dart';
 ///                         .securityGroupsIds(targetAwsSecurityGroup.id())
 ///                         .build())
 ///                     .build())
-///             .replicationInfoList(ReplicatorReplicationInfoListArgs.builder()
-///                 .sourceKafkaClusterArn(source.arn())
-///                 .targetKafkaClusterArn(target.arn())
-///                 .targetCompressionType("NONE")
-///                 .topicReplications(ReplicatorReplicationInfoListTopicReplicationArgs.builder()
-///                     .topicNameConfiguration(ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs.builder()
-///                         .type("PREFIXED_WITH_SOURCE_CLUSTER_ALIAS")
-///                         .build())
-///                     .topicsToReplicates(".*")
-///                     .startingPosition(ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs.builder()
-///                         .type("LATEST")
-///                         .build())
-///                     .build())
-///                 .consumerGroupReplications(ReplicatorReplicationInfoListConsumerGroupReplicationArgs.builder()
-///                     .consumerGroupsToReplicates(".*")
-///                     .build())
-///                 .build())
+///             .replicatorName("test-name")
+///             .description("test-description")
+///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -405,7 +406,7 @@ class Replicator extends pulumi.CustomResource {
   /// A summary description of the replicator.
   late final pulumi.Output<String?> description;
   /// A list of Kafka clusters which are targets of the replicator.
-  late final pulumi.Output<List<Map<String, dynamic>>> kafkaClusters;
+  late final pulumi.Output<List<ReplicatorKafkaCluster>> kafkaClusters;
   /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
   late final pulumi.Output<ReplicatorLogDelivery?> logDelivery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -433,19 +434,19 @@ class Replicator extends pulumi.CustomResource {
           'aws:msk/replicator:Replicator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<String>('currentVersion');
     description = registerOutput<String?>('description');
-    kafkaClusters = registerOutput<List<Map<String, dynamic>>>('kafkaClusters');
+    kafkaClusters = registerOutput<List<ReplicatorKafkaCluster>>('kafkaClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicatorKafkaCluster>(guardedValue, (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>())); });
     logDelivery = registerOutput<ReplicatorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicatorName = registerOutput<String>('replicatorName');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Replicator] resource's state with the given [name] and [id].
@@ -453,11 +454,12 @@ class Replicator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Replicator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -474,13 +476,35 @@ class Replicator extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<String>('currentVersion');
     description = registerOutput<String?>('description');
-    kafkaClusters = registerOutput<List<Map<String, dynamic>>>('kafkaClusters');
+    kafkaClusters = registerOutput<List<ReplicatorKafkaCluster>>('kafkaClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicatorKafkaCluster>(guardedValue, (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>())); });
     logDelivery = registerOutput<ReplicatorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicatorName = registerOutput<String>('replicatorName');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Replicator] resource.
+  Replicator.reference(String urn)
+    : super(
+        'aws:msk/replicator:Replicator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    currentVersion = registerOutput<String>('currentVersion');
+    description = registerOutput<String?>('description');
+    kafkaClusters = registerOutput<List<ReplicatorKafkaCluster>>('kafkaClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicatorKafkaCluster>(guardedValue, (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    logDelivery = registerOutput<ReplicatorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicatorName = registerOutput<String>('replicatorName');
+    serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

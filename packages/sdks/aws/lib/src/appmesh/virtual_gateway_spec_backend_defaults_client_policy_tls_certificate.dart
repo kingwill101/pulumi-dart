@@ -5,9 +5,9 @@ import 'virtual_gateway_spec_backend_defaults_client_policy_tls_certificate_file
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_certificate_sds.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile>? file;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile?>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds>? sds;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds?>? sds;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate].
   /// [file] Optional.

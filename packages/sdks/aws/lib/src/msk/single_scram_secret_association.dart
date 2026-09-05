@@ -122,7 +122,7 @@ import 'single_scram_secret_association_state.dart';
 /// $ pulumi import aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3,arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
 /// ```
 class SingleScramSecretAssociation extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the MSK cluster.
+  /// ARN of the MSK cluster.
   late final pulumi.Output<String> clusterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -141,7 +141,7 @@ class SingleScramSecretAssociation extends pulumi.CustomResource {
           'aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');
@@ -153,11 +153,12 @@ class SingleScramSecretAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SingleScramSecretAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SingleScramSecretAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,6 +172,20 @@ class SingleScramSecretAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterArn = registerOutput<String>('clusterArn');
+    region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
+  }
+
+  /// Creates a typed reference to an existing [SingleScramSecretAssociation] resource.
+  SingleScramSecretAssociation.reference(String urn)
+    : super(
+        'aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');
     secretArn = registerOutput<String>('secretArn');

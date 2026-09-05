@@ -10,14 +10,14 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
   /// Describes the data format when records are written to the destination.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema> destinationSchema;
   /// Identifies a Kinesis Data Firehose delivery stream as the destination.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput>? kinesisFirehoseOutput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput?>? kinesisFirehoseOutput;
   /// Identifies a Kinesis data stream as the destination.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput>? kinesisStreamsOutput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput?>? kinesisStreamsOutput;
   /// Identifies a Lambda function as the destination.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput>? lambdaOutput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput?>? lambdaOutput;
   /// The name of the in-application stream.
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? outputId;
+  final pulumi.Input<String?>? outputId;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutput].
   /// [destinationSchema] Describes the data format when records are written to the destination.

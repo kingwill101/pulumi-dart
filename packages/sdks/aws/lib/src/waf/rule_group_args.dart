@@ -9,13 +9,13 @@ import 'rule_group_activated_rule.dart';
 /// {@macro pulumi_waf_rule_group_rule_group_args_doc}
 class RuleGroupArgs {
   /// A list of activated rules, see below
-  final pulumi.Input<List<RuleGroupActivatedRule>>? activatedRules;
+  final pulumi.Input<List<RuleGroupActivatedRule>?>? activatedRules;
   /// A friendly name for the metrics from the rule group
   final pulumi.Input<String> metricName;
   /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RuleGroupArgs].
   /// [activatedRules] A list of activated rules, see below

@@ -173,7 +173,7 @@ import 'security_profile_state.dart';
 /// $ pulumi import aws:connect/securityProfile:SecurityProfile example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class SecurityProfile extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Security Profile.
+  /// ARN of the Security Profile.
   late final pulumi.Output<String> arn;
   /// Specifies the description of the Security Profile.
   late final pulumi.Output<String?> description;
@@ -207,18 +207,18 @@ class SecurityProfile extends pulumi.CustomResource {
           'aws:connect/securityProfile:SecurityProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     organizationResourceId = registerOutput<String>('organizationResourceId');
-    permissions = registerOutput<List<String>?>('permissions');
+    permissions = registerOutput<List<String>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     securityProfileId = registerOutput<String>('securityProfileId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SecurityProfile] resource's state with the given [name] and [id].
@@ -226,11 +226,12 @@ class SecurityProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,10 +250,31 @@ class SecurityProfile extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     organizationResourceId = registerOutput<String>('organizationResourceId');
-    permissions = registerOutput<List<String>?>('permissions');
+    permissions = registerOutput<List<String>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     securityProfileId = registerOutput<String>('securityProfileId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SecurityProfile] resource.
+  SecurityProfile.reference(String urn)
+    : super(
+        'aws:connect/securityProfile:SecurityProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    organizationResourceId = registerOutput<String>('organizationResourceId');
+    permissions = registerOutput<List<String>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    securityProfileId = registerOutput<String>('securityProfileId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

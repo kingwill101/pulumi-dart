@@ -6,7 +6,7 @@ class GroupInsightsConfiguration {
   /// Specifies whether insights are enabled.
   final pulumi.Input<bool> insightsEnabled;
   /// Specifies whether insight notifications are enabled.
-  final pulumi.Input<bool>? notificationsEnabled;
+  final pulumi.Input<bool?>? notificationsEnabled;
 
   /// Creates a new [GroupInsightsConfiguration].
   /// [insightsEnabled] Specifies whether insights are enabled.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualClusterContainerProviderInfoEksInfo {
   /// The namespace where the EMR Containers cluster is running
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [VirtualClusterContainerProviderInfoEksInfo].
   /// [namespace] The namespace where the EMR Containers cluster is running

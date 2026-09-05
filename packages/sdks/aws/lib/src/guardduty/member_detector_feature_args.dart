@@ -11,13 +11,13 @@ class MemberDetectorFeatureArgs {
   /// Member account ID to be updated.
   final pulumi.Input<String> accountId;
   /// Additional feature configuration block. See below.
-  final pulumi.Input<List<MemberDetectorFeatureAdditionalConfiguration>>? additionalConfigurations;
+  final pulumi.Input<List<MemberDetectorFeatureAdditionalConfiguration>?>? additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   final pulumi.Input<String> detectorId;
   /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> status;
 

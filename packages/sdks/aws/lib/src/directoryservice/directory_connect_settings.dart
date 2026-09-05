@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryConnectSettings {
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The IP addresses of the AD Connector servers.
-  final pulumi.Input<List<String>>? connectIps;
+  final pulumi.Input<List<String>?>? connectIps;
   /// The DNS IP addresses of the domain to connect to.
   final pulumi.Input<List<String>> customerDnsIps;
   /// The username corresponding to the password provided.

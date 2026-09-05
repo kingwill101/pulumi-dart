@@ -6,28 +6,28 @@ import 'link_link_configuration.dart';
 /// Input properties used for looking up and filtering Link resources.
 class LinkState {
   /// ARN of the link.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Label that is assigned to this link.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
-  final pulumi.Input<String>? labelTemplate;
+  final pulumi.Input<String?>? labelTemplate;
   /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
-  final pulumi.Input<LinkLinkConfiguration>? linkConfiguration;
+  final pulumi.Input<LinkLinkConfiguration?>? linkConfiguration;
   /// ID string that AWS generated as part of the link ARN.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Types of data that the source account shares with the monitoring account.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
   /// ARN of the sink that is used for this link.
-  final pulumi.Input<String>? sinkArn;
+  final pulumi.Input<String?>? sinkArn;
   /// Identifier of the sink to use to create this link.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? sinkIdentifier;
+  final pulumi.Input<String?>? sinkIdentifier;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [LinkState].
   /// [arn] ARN of the link.

@@ -8,13 +8,13 @@ class WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManage
   /// Path of the account creation endpoint for your application. This is the page on your website that accepts the completed registration form for a new user. This page must accept POST requests.
   final pulumi.Input<String> creationPath;
   /// Whether or not to allow the use of regular expressions in the login page path.
-  final pulumi.Input<bool>? enableRegexInPath;
+  final pulumi.Input<bool?>? enableRegexInPath;
   /// Path of the account registration endpoint for your application. This is the page on your website that presents the registration form to new users. This page must accept GET text/html requests.
   final pulumi.Input<String> registrationPagePath;
   /// Criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspection>? requestInspection;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspection?>? requestInspection;
   /// Criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetResponseInspection>? responseInspection;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetResponseInspection?>? responseInspection;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSet].
   /// [creationPath] Path of the account creation endpoint for your application. This is the page on your website that accepts the completed registration form for a new user. This page must accept POST requests.

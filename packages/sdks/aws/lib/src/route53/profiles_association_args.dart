@@ -9,16 +9,16 @@ import 'profiles_association_timeouts.dart';
 /// {@macro pulumi_route53_profiles_association_profiles_association_args_doc}
 class ProfilesAssociationArgs {
   /// Name of the Profile Association. Must match a regex of `(?!^[0-9]+$)([a-zA-Z0-9\\-_' ']+)`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the profile associated with the VPC.
   final pulumi.Input<String> profileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource ID of the VPC the profile to be associated with.
   final pulumi.Input<String> resourceId;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ProfilesAssociationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ProfilesAssociationTimeouts?>? timeouts;
 
   /// Creates a new [ProfilesAssociationArgs].
   /// [name] Name of the Profile Association. Must match a regex of `(?!^[0-9]+$)([a-zA-Z0-9\\-_' ']+)`.

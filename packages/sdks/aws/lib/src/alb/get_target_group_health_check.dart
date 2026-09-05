@@ -52,14 +52,14 @@ class GetTargetGroupHealthCheck {
   factory GetTargetGroupHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupHealthCheck(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      healthyThreshold: pulumi.Input.fromValue((map['healthyThreshold'] as num).toInt()),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
       matcher: pulumi.Input.fromValue(map['matcher'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       port: pulumi.Input.fromValue(map['port'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeout: pulumi.Input.fromValue(map['timeout'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
+      timeout: pulumi.Input.fromValue((map['timeout'] as num).toInt()),
+      unhealthyThreshold: pulumi.Input.fromValue((map['unhealthyThreshold'] as num).toInt()),
     );
   }
 }

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OriginAccessControl resources.
 class OriginAccessControlState {
   /// The Origin Access Control ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The description of the Origin Access Control. Defaults to "Managed by Pulumi" if omitted.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The current version of this Origin Access Control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A name that identifies the Origin Access Control.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
-  final pulumi.Input<String>? originAccessControlOriginType;
+  final pulumi.Input<String?>? originAccessControlOriginType;
   /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
-  final pulumi.Input<String>? signingBehavior;
+  final pulumi.Input<String?>? signingBehavior;
   /// Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
-  final pulumi.Input<String>? signingProtocol;
+  final pulumi.Input<String?>? signingProtocol;
 
   /// Creates a new [OriginAccessControlState].
   /// [arn] The Origin Access Control ARN.

@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
   /// The file key for the object containing the application code.
   final pulumi.Input<String> fileKey;
   /// The version of the object containing the application code.
-  final pulumi.Input<String>? objectVersion;
+  final pulumi.Input<String?>? objectVersion;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation].
   /// [bucketArn] The ARN for the S3 bucket containing the application code.

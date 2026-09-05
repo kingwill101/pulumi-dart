@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreHarnessToolConfigRemoteMcp {
   /// Map of HTTP headers to include in requests to the MCP server.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// URL of the remote MCP server.
   final pulumi.Input<String> url;
 

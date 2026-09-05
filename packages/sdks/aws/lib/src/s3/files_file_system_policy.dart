@@ -288,7 +288,7 @@ class FilesFileSystemPolicy extends pulumi.CustomResource {
           'aws:s3/filesFileSystemPolicy:FilesFileSystemPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     fileSystemId = registerOutput<String>('fileSystemId');
     policy = registerOutput<String>('policy');
@@ -300,11 +300,12 @@ class FilesFileSystemPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilesFileSystemPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FilesFileSystemPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,6 +319,20 @@ class FilesFileSystemPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fileSystemId = registerOutput<String>('fileSystemId');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FilesFileSystemPolicy] resource.
+  FilesFileSystemPolicy.reference(String urn)
+    : super(
+        'aws:s3/filesFileSystemPolicy:FilesFileSystemPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     fileSystemId = registerOutput<String>('fileSystemId');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

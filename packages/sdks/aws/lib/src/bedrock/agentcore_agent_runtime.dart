@@ -2,11 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_agent_runtime_agent_runtime_artifact.dart';
 import 'agentcore_agent_runtime_args.dart';
 import 'agentcore_agent_runtime_authorizer_configuration.dart';
+import 'agentcore_agent_runtime_filesystem_configuration.dart';
+import 'agentcore_agent_runtime_lifecycle_configuration.dart';
 import 'agentcore_agent_runtime_network_configuration.dart';
 import 'agentcore_agent_runtime_protocol_configuration.dart';
 import 'agentcore_agent_runtime_request_header_configuration.dart';
 import 'agentcore_agent_runtime_state.dart';
 import 'agentcore_agent_runtime_timeouts.dart';
+import 'agentcore_agent_runtime_workload_identity_detail.dart';
 
 /// Manages an AWS Bedrock AgentCore Agent Runtime. Agent Runtime provides a containerized execution environment for AI agents.
 ///
@@ -21,12 +24,12 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["bedrock-agentcore.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const ecrPermissions = aws.iam.getPolicyDocument({
@@ -55,8 +58,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     policy: ecrPermissions.then(ecrPermissions => ecrPermissions.json),
 /// });
 /// const exampleAgentcoreAgentRuntime = new aws.bedrock.AgentcoreAgentRuntime("example", {
-///     agentRuntimeName: "example_agent_runtime",
-///     roleArn: example.arn,
 ///     agentRuntimeArtifact: {
 ///         containerConfiguration: {
 ///             containerUri: `${exampleAwsEcrRepository.repositoryUrl}:latest`,
@@ -65,6 +66,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
+///     agentRuntimeName: "example_agent_runtime",
+///     roleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -72,12 +75,12 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["bedrock-agentcore.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// ecr_permissions = aws.iam.get_policy_document(statements=[
 ///     {
@@ -101,8 +104,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     role=example.id,
 ///     policy=ecr_permissions.json)
 /// example_agentcore_agent_runtime = aws.bedrock.AgentcoreAgentRuntime("example",
-///     agent_runtime_name="example_agent_runtime",
-///     role_arn=example.arn,
 ///     agent_runtime_artifact={
 ///         "container_configuration": {
 ///             "container_uri": f"{example_aws_ecr_repository['repositoryUrl']}:latest",
@@ -110,7 +111,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     },
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
-///     })
+///     },
+///     agent_runtime_name="example_agent_runtime",
+///     role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -126,11 +129,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -141,6 +139,11 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///                             "bedrock-agentcore.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -192,8 +195,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 ///     var exampleAgentcoreAgentRuntime = new Aws.Bedrock.AgentcoreAgentRuntime("example", new()
 ///     {
-///         AgentRuntimeName = "example_agent_runtime",
-///         RoleArn = example.Arn,
 ///         AgentRuntimeArtifact = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs
 ///         {
 ///             ContainerConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs
@@ -205,6 +206,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
+///         AgentRuntimeName = "example_agent_runtime",
+///         RoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -223,10 +226,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -234,6 +233,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 								"bedrock-agentcore.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -282,8 +285,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
-/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
-/// 			RoleArn:          example.Arn,
 /// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
 /// 				ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
 /// 					ContainerUri: pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
@@ -292,6 +293,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 			NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
+/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
+/// 			RoleArn:          example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -311,12 +314,12 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "ecrPermissions" {
@@ -341,8 +344,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   policy = data.aws_iam_getpolicydocument.ecrPermissions.json
 /// }
 /// resource "aws_bedrock_agentcoreagentruntime" "example" {
-///   agent_runtime_name = "example_agent_runtime"
-///   role_arn           = aws_iam_role.example.arn
 ///   agent_runtime_artifact = {
 ///     container_configuration = {
 ///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:latest"
@@ -351,6 +352,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
+///   agent_runtime_name = "example_agent_runtime"
+///   role_arn           = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -387,12 +390,12 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("bedrock-agentcore.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -423,8 +426,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentcoreAgentRuntime = new AgentcoreAgentRuntime("exampleAgentcoreAgentRuntime", AgentcoreAgentRuntimeArgs.builder()
-///             .agentRuntimeName("example_agent_runtime")
-///             .roleArn(example.arn())
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
 ///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
@@ -433,6 +434,8 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
+///             .agentRuntimeName("example_agent_runtime")
+///             .roleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -455,26 +458,26 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreAgentRuntime
 ///     name: example
 ///     properties:
-///       agentRuntimeName: example_agent_runtime
-///       roleArn: ${example.arn}
 ///       agentRuntimeArtifact:
 ///         containerConfiguration:
 ///           containerUri: ${exampleAwsEcrRepository.repositoryUrl}:latest
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
+///       agentRuntimeName: example_agent_runtime
+///       roleArn: ${example.arn}
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - bedrock-agentcore.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 ///   ecrPermissions:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -502,17 +505,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreAgentRuntime("example", {
-///     agentRuntimeName: "example_agent_runtime",
-///     description: "Agent runtime with JWT authorization",
-///     roleArn: exampleAwsIamRole.arn,
 ///     agentRuntimeArtifact: {
 ///         containerConfiguration: {
 ///             containerUri: `${exampleAwsEcrRepository.repositoryUrl}:v1.0`,
 ///         },
-///     },
-///     environmentVariables: {
-///         LOG_LEVEL: "INFO",
-///         ENV: "production",
 ///     },
 ///     authorizerConfiguration: {
 ///         customJwtAuthorizer: {
@@ -537,6 +533,13 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     protocolConfiguration: {
 ///         serverProtocol: "MCP",
 ///     },
+///     agentRuntimeName: "example_agent_runtime",
+///     description: "Agent runtime with JWT authorization",
+///     roleArn: exampleAwsIamRole.arn,
+///     environmentVariables: {
+///         LOG_LEVEL: "INFO",
+///         ENV: "production",
+///     },
 /// });
 /// ```
 /// ```python
@@ -544,17 +547,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreAgentRuntime("example",
-///     agent_runtime_name="example_agent_runtime",
-///     description="Agent runtime with JWT authorization",
-///     role_arn=example_aws_iam_role["arn"],
 ///     agent_runtime_artifact={
 ///         "container_configuration": {
 ///             "container_uri": f"{example_aws_ecr_repository['repositoryUrl']}:v1.0",
 ///         },
-///     },
-///     environment_variables={
-///         "LOG_LEVEL": "INFO",
-///         "ENV": "production",
 ///     },
 ///     authorizer_configuration={
 ///         "custom_jwt_authorizer": {
@@ -578,6 +574,13 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     },
 ///     protocol_configuration={
 ///         "server_protocol": "MCP",
+///     },
+///     agent_runtime_name="example_agent_runtime",
+///     description="Agent runtime with JWT authorization",
+///     role_arn=example_aws_iam_role["arn"],
+///     environment_variables={
+///         "LOG_LEVEL": "INFO",
+///         "ENV": "production",
 ///     })
 /// ```
 /// ```csharp
@@ -590,20 +593,12 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreAgentRuntime("example", new()
 ///     {
-///         AgentRuntimeName = "example_agent_runtime",
-///         Description = "Agent runtime with JWT authorization",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AgentRuntimeArtifact = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs
 ///         {
 ///             ContainerConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs
 ///             {
 ///                 ContainerUri = $"{exampleAwsEcrRepository.RepositoryUrl}:v1.0",
 ///             },
-///         },
-///         EnvironmentVariables =
-///         {
-///             { "LOG_LEVEL", "INFO" },
-///             { "ENV", "production" },
 ///         },
 ///         AuthorizerConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAuthorizerConfigurationArgs
 ///         {
@@ -635,6 +630,14 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///         {
 ///             ServerProtocol = "MCP",
 ///         },
+///         AgentRuntimeName = "example_agent_runtime",
+///         Description = "Agent runtime with JWT authorization",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         EnvironmentVariables =
+///         {
+///             { "LOG_LEVEL", "INFO" },
+///             { "ENV", "production" },
+///         },
 ///     });
 ///
 /// });
@@ -650,17 +653,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
-/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
-/// 			Description:      pulumi.String("Agent runtime with JWT authorization"),
-/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
 /// 				ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
 /// 					ContainerUri: pulumi.Sprintf("%v:v1.0", exampleAwsEcrRepository.RepositoryUrl),
 /// 				},
-/// 			},
-/// 			EnvironmentVariables: pulumi.StringMap{
-/// 				"LOG_LEVEL": pulumi.String("INFO"),
-/// 				"ENV":       pulumi.String("production"),
 /// 			},
 /// 			AuthorizerConfiguration: &bedrock.AgentcoreAgentRuntimeAuthorizerConfigurationArgs{
 /// 				CustomJwtAuthorizer: &bedrock.AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerArgs{
@@ -685,6 +681,13 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 			ProtocolConfiguration: &bedrock.AgentcoreAgentRuntimeProtocolConfigurationArgs{
 /// 				ServerProtocol: pulumi.String("MCP"),
 /// 			},
+/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
+/// 			Description:      pulumi.String("Agent runtime with JWT authorization"),
+/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
+/// 			EnvironmentVariables: pulumi.StringMap{
+/// 				"LOG_LEVEL": pulumi.String("INFO"),
+/// 				"ENV":       pulumi.String("production"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -703,17 +706,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreagentruntime" "example" {
-///   agent_runtime_name = "example_agent_runtime"
-///   description        = "Agent runtime with JWT authorization"
-///   role_arn           = exampleAwsIamRole.arn
 ///   agent_runtime_artifact = {
 ///     container_configuration = {
 ///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:v1.0"
 ///     }
-///   }
-///   environment_variables = {
-///     "LOG_LEVEL" = "INFO"
-///     "ENV"       = "production"
 ///   }
 ///   authorizer_configuration = {
 ///     custom_jwt_authorizer = {
@@ -728,6 +724,13 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   }
 ///   protocol_configuration = {
 ///     server_protocol = "MCP"
+///   }
+///   agent_runtime_name = "example_agent_runtime"
+///   description        = "Agent runtime with JWT authorization"
+///   role_arn           = exampleAwsIamRole.arn
+///   environment_variables = {
+///     "LOG_LEVEL" = "INFO"
+///     "ENV"       = "production"
 ///   }
 /// }
 /// ```
@@ -759,18 +762,11 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
-///             .agentRuntimeName("example_agent_runtime")
-///             .description("Agent runtime with JWT authorization")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
 ///                     .containerUri(String.format("%s:v1.0", exampleAwsEcrRepository.repositoryUrl()))
 ///                     .build())
 ///                 .build())
-///             .environmentVariables(Map.ofEntries(
-///                 Map.entry("LOG_LEVEL", "INFO"),
-///                 Map.entry("ENV", "production")
-///             ))
 ///             .authorizerConfiguration(AgentcoreAgentRuntimeAuthorizerConfigurationArgs.builder()
 ///                 .customJwtAuthorizer(AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerArgs.builder()
 ///                     .discoveryUrl("https://accounts.google.com/.well-known/openid-configuration")
@@ -791,6 +787,13 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///             .protocolConfiguration(AgentcoreAgentRuntimeProtocolConfigurationArgs.builder()
 ///                 .serverProtocol("MCP")
 ///                 .build())
+///             .agentRuntimeName("example_agent_runtime")
+///             .description("Agent runtime with JWT authorization")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .environmentVariables(Map.ofEntries(
+///                 Map.entry("LOG_LEVEL", "INFO"),
+///                 Map.entry("ENV", "production")
+///             ))
 ///             .build());
 ///
 ///     }
@@ -801,15 +804,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreAgentRuntime
 ///     properties:
-///       agentRuntimeName: example_agent_runtime
-///       description: Agent runtime with JWT authorization
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       agentRuntimeArtifact:
 ///         containerConfiguration:
 ///           containerUri: ${exampleAwsEcrRepository.repositoryUrl}:v1.0
-///       environmentVariables:
-///         LOG_LEVEL: INFO
-///         ENV: production
 ///       authorizerConfiguration:
 ///         customJwtAuthorizer:
 ///           discoveryUrl: https://accounts.google.com/.well-known/openid-configuration
@@ -826,6 +823,12 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///         networkMode: PUBLIC
 ///       protocolConfiguration:
 ///         serverProtocol: MCP
+///       agentRuntimeName: example_agent_runtime
+///       description: Agent runtime with JWT authorization
+///       roleArn: ${exampleAwsIamRole.arn}
+///       environmentVariables:
+///         LOG_LEVEL: INFO
+///         ENV: production
 /// ```
 ///
 ///
@@ -837,9 +840,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreAgentRuntime("example", {
-///     agentRuntimeName: "example_agui_runtime",
-///     description: "Agent runtime with AG-UI protocol",
-///     roleArn: exampleAwsIamRole.arn,
 ///     agentRuntimeArtifact: {
 ///         containerConfiguration: {
 ///             containerUri: `${exampleAwsEcrRepository.repositoryUrl}:latest`,
@@ -851,6 +851,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     protocolConfiguration: {
 ///         serverProtocol: "AGUI",
 ///     },
+///     agentRuntimeName: "example_agui_runtime",
+///     description: "Agent runtime with AG-UI protocol",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -858,9 +861,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreAgentRuntime("example",
-///     agent_runtime_name="example_agui_runtime",
-///     description="Agent runtime with AG-UI protocol",
-///     role_arn=example_aws_iam_role["arn"],
 ///     agent_runtime_artifact={
 ///         "container_configuration": {
 ///             "container_uri": f"{example_aws_ecr_repository['repositoryUrl']}:latest",
@@ -871,7 +871,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///     },
 ///     protocol_configuration={
 ///         "server_protocol": "AGUI",
-///     })
+///     },
+///     agent_runtime_name="example_agui_runtime",
+///     description="Agent runtime with AG-UI protocol",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -883,9 +886,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreAgentRuntime("example", new()
 ///     {
-///         AgentRuntimeName = "example_agui_runtime",
-///         Description = "Agent runtime with AG-UI protocol",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AgentRuntimeArtifact = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs
 ///         {
 ///             ContainerConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs
@@ -901,6 +901,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///         {
 ///             ServerProtocol = "AGUI",
 ///         },
+///         AgentRuntimeName = "example_agui_runtime",
+///         Description = "Agent runtime with AG-UI protocol",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -916,9 +919,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
-/// 			AgentRuntimeName: pulumi.String("example_agui_runtime"),
-/// 			Description:      pulumi.String("Agent runtime with AG-UI protocol"),
-/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
 /// 				ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
 /// 					ContainerUri: pulumi.Sprintf("%v:latest", exampleAwsEcrRepository.RepositoryUrl),
@@ -930,6 +930,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// 			ProtocolConfiguration: &bedrock.AgentcoreAgentRuntimeProtocolConfigurationArgs{
 /// 				ServerProtocol: pulumi.String("AGUI"),
 /// 			},
+/// 			AgentRuntimeName: pulumi.String("example_agui_runtime"),
+/// 			Description:      pulumi.String("Agent runtime with AG-UI protocol"),
+/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -948,9 +951,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreagentruntime" "example" {
-///   agent_runtime_name = "example_agui_runtime"
-///   description        = "Agent runtime with AG-UI protocol"
-///   role_arn           = exampleAwsIamRole.arn
 ///   agent_runtime_artifact = {
 ///     container_configuration = {
 ///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:latest"
@@ -962,6 +962,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   protocol_configuration = {
 ///     server_protocol = "AGUI"
 ///   }
+///   agent_runtime_name = "example_agui_runtime"
+///   description        = "Agent runtime with AG-UI protocol"
+///   role_arn           = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -990,9 +993,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
-///             .agentRuntimeName("example_agui_runtime")
-///             .description("Agent runtime with AG-UI protocol")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
 ///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
@@ -1004,6 +1004,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///             .protocolConfiguration(AgentcoreAgentRuntimeProtocolConfigurationArgs.builder()
 ///                 .serverProtocol("AGUI")
 ///                 .build())
+///             .agentRuntimeName("example_agui_runtime")
+///             .description("Agent runtime with AG-UI protocol")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1014,9 +1017,6 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreAgentRuntime
 ///     properties:
-///       agentRuntimeName: example_agui_runtime
-///       description: Agent runtime with AG-UI protocol
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       agentRuntimeArtifact:
 ///         containerConfiguration:
 ///           containerUri: ${exampleAwsEcrRepository.repositoryUrl}:latest
@@ -1024,6 +1024,9 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///         networkMode: PUBLIC
 ///       protocolConfiguration:
 ///         serverProtocol: AGUI
+///       agentRuntimeName: example_agui_runtime
+///       description: Agent runtime with AG-UI protocol
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1035,23 +1038,23 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreAgentRuntime("example", {
-///     agentRuntimeName: "example_agent_runtime",
-///     roleArn: exampleAwsIamRole.arn,
 ///     agentRuntimeArtifact: {
 ///         codeConfiguration: {
-///             entryPoints: ["main.py"],
-///             runtime: "PYTHON_3_13",
 ///             code: {
 ///                 s3: {
 ///                     bucket: "example-bucket",
 ///                     prefix: "example-agent-runtime-code.zip",
 ///                 },
 ///             },
+///             entryPoints: ["main.py"],
+///             runtime: "PYTHON_3_13",
 ///         },
 ///     },
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
+///     agentRuntimeName: "example_agent_runtime",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1059,23 +1062,23 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreAgentRuntime("example",
-///     agent_runtime_name="example_agent_runtime",
-///     role_arn=example_aws_iam_role["arn"],
 ///     agent_runtime_artifact={
 ///         "code_configuration": {
-///             "entry_points": ["main.py"],
-///             "runtime": "PYTHON_3_13",
 ///             "code": {
 ///                 "s3": {
 ///                     "bucket": "example-bucket",
 ///                     "prefix": "example-agent-runtime-code.zip",
 ///                 },
 ///             },
+///             "entry_points": ["main.py"],
+///             "runtime": "PYTHON_3_13",
 ///         },
 ///     },
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
-///     })
+///     },
+///     agent_runtime_name="example_agent_runtime",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1087,17 +1090,10 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreAgentRuntime("example", new()
 ///     {
-///         AgentRuntimeName = "example_agent_runtime",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AgentRuntimeArtifact = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs
 ///         {
 ///             CodeConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationArgs
 ///             {
-///                 EntryPoints = new[]
-///                 {
-///                     "main.py",
-///                 },
-///                 Runtime = "PYTHON_3_13",
 ///                 Code = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeArgs
 ///                 {
 ///                     S3 = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3Args
@@ -1106,12 +1102,19 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///                         Prefix = "example-agent-runtime-code.zip",
 ///                     },
 ///                 },
+///                 EntryPoints = new[]
+///                 {
+///                     "main.py",
+///                 },
+///                 Runtime = "PYTHON_3_13",
 ///             },
 ///         },
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
+///         AgentRuntimeName = "example_agent_runtime",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1127,25 +1130,25 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
-/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
-/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
 /// 				CodeConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationArgs{
-/// 					EntryPoints: pulumi.StringArray{
-/// 						pulumi.String("main.py"),
-/// 					},
-/// 					Runtime: pulumi.String("PYTHON_3_13"),
 /// 					Code: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeArgs{
 /// 						S3: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3Args{
 /// 							Bucket: pulumi.String("example-bucket"),
 /// 							Prefix: pulumi.String("example-agent-runtime-code.zip"),
 /// 						},
 /// 					},
+/// 					EntryPoints: pulumi.StringArray{
+/// 						pulumi.String("main.py"),
+/// 					},
+/// 					Runtime: pulumi.String("PYTHON_3_13"),
 /// 				},
 /// 			},
 /// 			NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
+/// 			AgentRuntimeName: pulumi.String("example_agent_runtime"),
+/// 			RoleArn:          pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1164,23 +1167,23 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreagentruntime" "example" {
-///   agent_runtime_name = "example_agent_runtime"
-///   role_arn           = exampleAwsIamRole.arn
 ///   agent_runtime_artifact = {
 ///     code_configuration = {
-///       entry_points = ["main.py"]
-///       runtime      = "PYTHON_3_13"
 ///       code = {
 ///         s3 = {
 ///           bucket = "example-bucket"
 ///           prefix = "example-agent-runtime-code.zip"
 ///         }
 ///       }
+///       entry_points = ["main.py"]
+///       runtime      = "PYTHON_3_13"
 ///     }
 ///   }
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
+///   agent_runtime_name = "example_agent_runtime"
+///   role_arn           = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1210,23 +1213,23 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
-///             .agentRuntimeName("example_agent_runtime")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .codeConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationArgs.builder()
-///                     .entryPoints("main.py")
-///                     .runtime("PYTHON_3_13")
 ///                     .code(AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeArgs.builder()
 ///                         .s3(AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3Args.builder()
 ///                             .bucket("example-bucket")
 ///                             .prefix("example-agent-runtime-code.zip")
 ///                             .build())
 ///                         .build())
+///                     .entryPoints("main.py")
+///                     .runtime("PYTHON_3_13")
 ///                     .build())
 ///                 .build())
 ///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
+///             .agentRuntimeName("example_agent_runtime")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1237,19 +1240,19 @@ import 'agentcore_agent_runtime_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreAgentRuntime
 ///     properties:
-///       agentRuntimeName: example_agent_runtime
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       agentRuntimeArtifact:
 ///         codeConfiguration:
-///           entryPoints:
-///             - main.py
-///           runtime: PYTHON_3_13
 ///           code:
 ///             s3:
 ///               bucket: example-bucket
 ///               prefix: example-agent-runtime-code.zip
+///           entryPoints:
+///             - main.py
+///           runtime: PYTHON_3_13
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
+///       agentRuntimeName: example_agent_runtime
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1278,9 +1281,9 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// Map of environment variables to pass to the container.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
   /// List of filesystems to mount into the agent runtime. Up to 5 entries are supported. Each entry is one of session storage, Amazon S3 Files access point, or Amazon EFS access point. See `filesystemConfiguration` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> filesystemConfigurations;
+  late final pulumi.Output<List<AgentcoreAgentRuntimeFilesystemConfiguration>?> filesystemConfigurations;
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> lifecycleConfigurations;
+  late final pulumi.Output<List<AgentcoreAgentRuntimeLifecycleConfiguration>> lifecycleConfigurations;
   /// Network configuration for the agent runtime. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
@@ -1299,7 +1302,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
   /// Workload identity details for the agent runtime. See `workloadIdentityDetails` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityDetails;
+  late final pulumi.Output<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>> workloadIdentityDetails;
 
   /// Creates a new [AgentcoreAgentRuntime].
   /// [name] The Pulumi resource name.
@@ -1313,7 +1316,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1322,18 +1325,18 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
     authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    filesystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('filesystemConfigurations');
-    lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>('lifecycleConfigurations');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    filesystemConfigurations = registerOutput<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>('filesystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleConfigurations = registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>('lifecycleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
+    workloadIdentityDetails = registerOutput<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>('workloadIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeWorkloadIdentityDetail>(guardedValue, (value) => AgentcoreAgentRuntimeWorkloadIdentityDetail.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AgentcoreAgentRuntime] resource's state with the given [name] and [id].
@@ -1341,11 +1344,12 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreAgentRuntimeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreAgentRuntime._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1366,17 +1370,47 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
     authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    filesystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('filesystemConfigurations');
-    lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>('lifecycleConfigurations');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    filesystemConfigurations = registerOutput<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>('filesystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleConfigurations = registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>('lifecycleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
+    workloadIdentityDetails = registerOutput<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>('workloadIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeWorkloadIdentityDetail>(guardedValue, (value) => AgentcoreAgentRuntimeWorkloadIdentityDetail.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreAgentRuntime] resource.
+  AgentcoreAgentRuntime.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
+    agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentRuntimeId = registerOutput<String>('agentRuntimeId');
+    agentRuntimeName = registerOutput<String>('agentRuntimeName');
+    agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
+    authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    filesystemConfigurations = registerOutput<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>('filesystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleConfigurations = registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>('lifecycleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityDetails = registerOutput<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>('workloadIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeWorkloadIdentityDetail>(guardedValue, (value) => AgentcoreAgentRuntimeWorkloadIdentityDetail.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

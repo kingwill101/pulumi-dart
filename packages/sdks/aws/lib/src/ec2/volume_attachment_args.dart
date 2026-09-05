@@ -14,20 +14,20 @@ class VolumeAttachmentArgs {
   /// volume to detach. Useful if previous attempts failed, but use this option only
   /// as a last resort, as this can result in **data loss**. See
   /// [Detaching an Amazon EBS Volume from an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) for more information.
-  final pulumi.Input<bool>? forceDetach;
+  final pulumi.Input<bool?>? forceDetach;
   /// ID of the Instance to attach to
   final pulumi.Input<String> instanceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set this to true if you do not wish
   /// to detach the volume from the instance to which it is attached at destroy
   /// time, and instead just remove the attachment from this provider state. This is
   /// useful when destroying an instance which has volumes created by some other
   /// means attached.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Set this to true to ensure that the target instance is stopped
   /// before trying to detach the volume. Stops the instance, if it is not already stopped.
-  final pulumi.Input<bool>? stopInstanceBeforeDetaching;
+  final pulumi.Input<bool?>? stopInstanceBeforeDetaching;
   /// ID of the Volume to be attached
   final pulumi.Input<String> volumeId;
 

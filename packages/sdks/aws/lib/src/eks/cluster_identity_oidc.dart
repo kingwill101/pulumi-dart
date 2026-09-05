@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIdentityOidc {
   /// Issuer URL for the OpenID Connect identity provider.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
 
   /// Creates a new [ClusterIdentityOidc].
   /// [issuer] Issuer URL for the OpenID Connect identity provider.

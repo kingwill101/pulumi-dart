@@ -6,22 +6,22 @@ import 'trust_anchor_source.dart';
 
 /// Input properties used for looking up and filtering TrustAnchor resources.
 class TrustAnchorState {
-  /// Amazon Resource Name (ARN) of the Trust Anchor
-  final pulumi.Input<String>? arn;
+  /// ARN of the Trust Anchor
+  final pulumi.Input<String?>? arn;
   /// Whether or not the Trust Anchor should be enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the Trust Anchor.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<TrustAnchorNotificationSetting>>? notificationSettings;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<TrustAnchorNotificationSetting>?>? notificationSettings;
   /// The source of trust, documented below
-  final pulumi.Input<TrustAnchorSource>? source;
+  final pulumi.Input<TrustAnchorSource?>? source;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [TrustAnchorState].
-  /// [arn] Amazon Resource Name (ARN) of the Trust Anchor
+  /// [arn] ARN of the Trust Anchor
   /// [enabled] Whether or not the Trust Anchor should be enabled.
   /// [name] The name of the Trust Anchor.
   /// [notificationSettings] Optional.

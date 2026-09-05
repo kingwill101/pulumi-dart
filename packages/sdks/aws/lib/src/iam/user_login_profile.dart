@@ -188,13 +188,23 @@ import 'user_login_profile_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.iam.UserLoginProfile("example", {});
+/// const example = new aws.iam.UserLoginProfile("example", {}, {
+///     ignoreChanges: [
+///         "passwordLength",
+///         "passwordResetRequired",
+///         "pgpKey",
+///     ],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.iam.UserLoginProfile("example")
+/// example = aws.iam.UserLoginProfile("example", opts = pulumi.ResourceOptions(ignore_changes=[
+///         "passwordLength",
+///         "passwordResetRequired",
+///         "pgpKey",
+///     ]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -204,7 +214,17 @@ import 'user_login_profile_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Aws.Iam.UserLoginProfile("example");
+///     var example = new Aws.Iam.UserLoginProfile("example", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "passwordLength",
+///             "passwordResetRequired",
+///             "pgpKey",
+///         },
+///     });
 ///
 /// });
 /// ```
@@ -218,7 +238,11 @@ import 'user_login_profile_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := iam.NewUserLoginProfile(ctx, "example", nil)
+/// 		_, err := iam.NewUserLoginProfile(ctx, "example", nil, pulumi.IgnoreChanges([]string{
+/// 			"passwordLength",
+/// 			"passwordResetRequired",
+/// 			"pgpKey",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -236,6 +260,9 @@ import 'user_login_profile_state.dart';
 /// }
 ///
 /// resource "aws_iam_userloginprofile" "example" {
+///   lifecycle {
+///     ignore_changes = [passwordLength, passwordResetRequired, pgpKey]
+///   }
 /// }
 /// ```
 /// ```java
@@ -245,6 +272,8 @@ import 'user_login_profile_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.UserLoginProfile;
+/// import com.pulumi.aws.iam.UserLoginProfileArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -258,7 +287,9 @@ import 'user_login_profile_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new UserLoginProfile("example");
+///         var example = new UserLoginProfile("example", UserLoginProfileArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("passwordLength", "passwordResetRequired", "pgpKey")
+///             .build());
 ///
 ///     }
 /// }
@@ -267,6 +298,11 @@ import 'user_login_profile_state.dart';
 /// resources:
 ///   example:
 ///     type: aws:iam:UserLoginProfile
+///     options:
+///       ignoreChanges:
+///         - passwordLength
+///         - passwordResetRequired
+///         - pgpKey
 /// ```
 class UserLoginProfile extends pulumi.CustomResource {
   /// The encrypted password, base64 encoded. Only available if password was handled on resource creation, not import.
@@ -296,11 +332,12 @@ class UserLoginProfile extends pulumi.CustomResource {
           'aws:iam/userLoginProfile:UserLoginProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     encryptedPassword = registerOutput<String>('encryptedPassword');
     keyFingerprint = registerOutput<String>('keyFingerprint');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     passwordLength = registerOutput<int?>('passwordLength');
     passwordResetRequired = registerOutput<bool>('passwordResetRequired');
     pgpKey = registerOutput<String?>('pgpKey');
@@ -312,11 +349,12 @@ class UserLoginProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserLoginProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserLoginProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,7 +370,26 @@ class UserLoginProfile extends pulumi.CustomResource {
         ) {
     encryptedPassword = registerOutput<String>('encryptedPassword');
     keyFingerprint = registerOutput<String>('keyFingerprint');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    passwordLength = registerOutput<int?>('passwordLength');
+    passwordResetRequired = registerOutput<bool>('passwordResetRequired');
+    pgpKey = registerOutput<String?>('pgpKey');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [UserLoginProfile] resource.
+  UserLoginProfile.reference(String urn)
+    : super(
+        'aws:iam/userLoginProfile:UserLoginProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    encryptedPassword = registerOutput<String>('encryptedPassword');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    password = registerOutput<String>('password', isSecret: true);
     passwordLength = registerOutput<int?>('passwordLength');
     passwordResetRequired = registerOutput<bool>('passwordResetRequired');
     pgpKey = registerOutput<String?>('pgpKey');

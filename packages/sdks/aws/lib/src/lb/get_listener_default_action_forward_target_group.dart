@@ -25,7 +25,7 @@ class GetListenerDefaultActionForwardTargetGroup {
   factory GetListenerDefaultActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForwardTargetGroup(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

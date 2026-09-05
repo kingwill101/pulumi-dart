@@ -159,7 +159,7 @@ class RequestValidator extends pulumi.CustomResource {
           'aws:apigateway/requestValidator:RequestValidator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -173,11 +173,12 @@ class RequestValidator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RequestValidatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RequestValidator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +192,22 @@ class RequestValidator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    validateRequestBody = registerOutput<bool?>('validateRequestBody');
+    validateRequestParameters = registerOutput<bool?>('validateRequestParameters');
+  }
+
+  /// Creates a typed reference to an existing [RequestValidator] resource.
+  RequestValidator.reference(String urn)
+    : super(
+        'aws:apigateway/requestValidator:RequestValidator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');

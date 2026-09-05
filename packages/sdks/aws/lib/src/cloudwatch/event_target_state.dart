@@ -17,54 +17,54 @@ import 'event_target_sqs_target.dart';
 /// Input properties used for looking up and filtering EventTarget resources.
 class EventTargetState {
   /// Parameters used when you are using the rule to invoke an AppSync GraphQL API mutation. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetAppsyncTarget>? appsyncTarget;
-  /// The Amazon Resource Name (ARN) of the target.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<EventTargetAppsyncTarget?>? appsyncTarget;
+  /// ARN of the target.
+  final pulumi.Input<String?>? arn;
   /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetBatchTarget>? batchTarget;
+  final pulumi.Input<EventTargetBatchTarget?>? batchTarget;
   /// Parameters used when you are providing a dead letter config. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetDeadLetterConfig>? deadLetterConfig;
+  final pulumi.Input<EventTargetDeadLetterConfig?>? deadLetterConfig;
   /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetEcsTarget>? ecsTarget;
+  final pulumi.Input<EventTargetEcsTarget?>? ecsTarget;
   /// The name or ARN of the event bus to associate with the rule.
   /// If you omit this, the `default` event bus is used.
-  final pulumi.Input<String>? eventBusName;
+  final pulumi.Input<String?>? eventBusName;
   /// Used to delete managed rules created by AWS. Defaults to `false`.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
-  final pulumi.Input<EventTargetHttpTarget>? httpTarget;
+  final pulumi.Input<EventTargetHttpTarget?>? httpTarget;
   /// Valid JSON text passed to the target. Conflicts with `inputPath` and `inputTransformer`.
-  final pulumi.Input<String>? input;
+  final pulumi.Input<String?>? input;
   /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `inputTransformer`.
-  final pulumi.Input<String>? inputPath;
+  final pulumi.Input<String?>? inputPath;
   /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `inputPath`.
-  final pulumi.Input<EventTargetInputTransformer>? inputTransformer;
+  final pulumi.Input<EventTargetInputTransformer?>? inputTransformer;
   /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetKinesisTarget>? kinesisTarget;
+  final pulumi.Input<EventTargetKinesisTarget?>? kinesisTarget;
   /// Parameters used when you are using the rule to invoke an Amazon Redshift Statement. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetRedshiftTarget>? redshiftTarget;
+  final pulumi.Input<EventTargetRedshiftTarget?>? redshiftTarget;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetRetryPolicy>? retryPolicy;
-  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<EventTargetRetryPolicy?>? retryPolicy;
+  /// ARN of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  final pulumi.Input<String?>? roleArn;
   /// The name of the rule you want to add targets to.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? rule;
+  final pulumi.Input<String?>? rule;
   /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-  final pulumi.Input<List<EventTargetRunCommandTarget>>? runCommandTargets;
+  final pulumi.Input<List<EventTargetRunCommandTarget>?>? runCommandTargets;
   /// Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetSagemakerPipelineTarget>? sagemakerPipelineTarget;
+  final pulumi.Input<EventTargetSagemakerPipelineTarget?>? sagemakerPipelineTarget;
   /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-  final pulumi.Input<EventTargetSqsTarget>? sqsTarget;
+  final pulumi.Input<EventTargetSqsTarget?>? sqsTarget;
   /// The unique target assignment ID. If missing, will generate a random, unique id.
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
 
   /// Creates a new [EventTargetState].
   /// [appsyncTarget] Parameters used when you are using the rule to invoke an AppSync GraphQL API mutation. Documented below. A maximum of 1 are allowed.
-  /// [arn] The Amazon Resource Name (ARN) of the target.
+  /// [arn] ARN of the target.
   /// [batchTarget] Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
   /// [deadLetterConfig] Parameters used when you are providing a dead letter config. Documented below. A maximum of 1 are allowed.
   /// [ecsTarget] Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
@@ -78,7 +78,7 @@ class EventTargetState {
   /// [redshiftTarget] Parameters used when you are using the rule to invoke an Amazon Redshift Statement. Documented below. A maximum of 1 are allowed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retryPolicy] Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
-  /// [roleArn] The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  /// [roleArn] ARN of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
   /// [rule] The name of the rule you want to add targets to.
   /// [runCommandTargets] Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
   /// [sagemakerPipelineTarget] Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.

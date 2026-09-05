@@ -6,42 +6,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustState {
   /// Set of IPv4 addresses for the DNS server associated with the remote Directory.
   /// Can contain between 1 and 4 values.
-  final pulumi.Input<List<String>>? conditionalForwarderIpAddrs;
+  final pulumi.Input<List<String>?>? conditionalForwarderIpAddrs;
   /// Date and time when the Trust was created.
-  final pulumi.Input<String>? createdDateTime;
+  final pulumi.Input<String?>? createdDateTime;
   /// Whether to delete the conditional forwarder when deleting the Trust relationship.
-  final pulumi.Input<bool>? deleteAssociatedConditionalForwarder;
+  final pulumi.Input<bool?>? deleteAssociatedConditionalForwarder;
   /// ID of the Directory.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// Date and time when the Trust was last updated.
-  final pulumi.Input<String>? lastUpdatedDateTime;
+  final pulumi.Input<String?>? lastUpdatedDateTime;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Fully qualified domain name of the remote Directory.
-  final pulumi.Input<String>? remoteDomainName;
+  final pulumi.Input<String?>? remoteDomainName;
   /// Whether to enable selective authentication.
   /// Valid values are `Enabled` and `Disabled`.
   /// Default value is `Disabled`.
-  final pulumi.Input<String>? selectiveAuth;
+  final pulumi.Input<String?>? selectiveAuth;
   /// Date and time when the Trust state in `trustState` was last updated.
-  final pulumi.Input<String>? stateLastUpdatedDateTime;
+  final pulumi.Input<String?>? stateLastUpdatedDateTime;
   /// The direction of the Trust relationship.
   /// Valid values are `One-Way: Outgoing`, `One-Way: Incoming`, and `Two-Way`.
-  final pulumi.Input<String>? trustDirection;
+  final pulumi.Input<String?>? trustDirection;
   /// Password for the Trust.
   /// Does not need to match the passwords for either Directory.
   /// Can contain upper- and lower-case letters, numbers, and punctuation characters.
   /// May be up to 128 characters long.
-  final pulumi.Input<String>? trustPassword;
+  final pulumi.Input<String?>? trustPassword;
   /// State of the Trust relationship.
   /// One of `Created`, `VerifyFailed`,`Verified`, `UpdateFailed`,`Updated`,`Deleted`, or `Failed`.
-  final pulumi.Input<String>? trustState;
+  final pulumi.Input<String?>? trustState;
   /// Reason for the Trust state set in `trustState`.
-  final pulumi.Input<String>? trustStateReason;
+  final pulumi.Input<String?>? trustStateReason;
   /// Type of the Trust relationship.
   /// Valid values are `Forest` and `External`.
   /// Default value is `Forest`.
-  final pulumi.Input<String>? trustType;
+  final pulumi.Input<String?>? trustType;
 
   /// Creates a new [TrustState].
   /// [conditionalForwarderIpAddrs] Set of IPv4 addresses for the DNS server associated with the remote Directory.

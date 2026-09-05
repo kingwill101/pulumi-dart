@@ -128,7 +128,7 @@ class AppMonitor extends pulumi.CustomResource {
   late final pulumi.Output<AppMonitorAppMonitorConfiguration> appMonitorConfiguration;
   /// The unique ID of the app monitor. Useful for JS templates.
   late final pulumi.Output<String> appMonitorId;
-  /// The Amazon Resource Name (ARN) specifying the app monitor.
+  /// ARN specifying the app monitor.
   late final pulumi.Output<String> arn;
   /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See customEvents below.
   late final pulumi.Output<AppMonitorCustomEvents> customEvents;
@@ -161,7 +161,7 @@ class AppMonitor extends pulumi.CustomResource {
           'aws:rum/appMonitor:AppMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>('appMonitorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppMonitorAppMonitorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appMonitorId = registerOutput<String>('appMonitorId');
@@ -170,11 +170,11 @@ class AppMonitor extends pulumi.CustomResource {
     cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
     cwLogGroup = registerOutput<String>('cwLogGroup');
     domain = registerOutput<String?>('domain');
-    domainLists = registerOutput<List<String>?>('domainLists');
+    domainLists = registerOutput<List<String>?>('domainLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AppMonitor] resource's state with the given [name] and [id].
@@ -182,11 +182,12 @@ class AppMonitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppMonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppMonitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,10 +208,33 @@ class AppMonitor extends pulumi.CustomResource {
     cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
     cwLogGroup = registerOutput<String>('cwLogGroup');
     domain = registerOutput<String?>('domain');
-    domainLists = registerOutput<List<String>?>('domainLists');
+    domainLists = registerOutput<List<String>?>('domainLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AppMonitor] resource.
+  AppMonitor.reference(String urn)
+    : super(
+        'aws:rum/appMonitor:AppMonitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>('appMonitorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppMonitorAppMonitorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appMonitorId = registerOutput<String>('appMonitorId');
+    arn = registerOutput<String>('arn');
+    customEvents = registerOutput<AppMonitorCustomEvents>('customEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppMonitorCustomEvents.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
+    cwLogGroup = registerOutput<String>('cwLogGroup');
+    domain = registerOutput<String?>('domain');
+    domainLists = registerOutput<List<String>?>('domainLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

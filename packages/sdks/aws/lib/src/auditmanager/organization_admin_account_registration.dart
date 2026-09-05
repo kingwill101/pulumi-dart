@@ -133,7 +133,7 @@ class OrganizationAdminAccountRegistration extends pulumi.CustomResource {
           'aws:auditmanager/organizationAdminAccountRegistration:OrganizationAdminAccountRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     organizationId = registerOutput<String>('organizationId');
@@ -145,11 +145,12 @@ class OrganizationAdminAccountRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationAdminAccountRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationAdminAccountRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -163,6 +164,20 @@ class OrganizationAdminAccountRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    adminAccountId = registerOutput<String>('adminAccountId');
+    organizationId = registerOutput<String>('organizationId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationAdminAccountRegistration] resource.
+  OrganizationAdminAccountRegistration.reference(String urn)
+    : super(
+        'aws:auditmanager/organizationAdminAccountRegistration:OrganizationAdminAccountRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     organizationId = registerOutput<String>('organizationId');
     region = registerOutput<String>('region');

@@ -6,7 +6,7 @@ class ManagedPrefixListEntry {
   /// CIDR block of this entry.
   final pulumi.Input<String> cidr;
   /// Description of this entry. Due to API limitations, updating only the description of an existing entry requires temporarily removing and re-adding the entry.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [ManagedPrefixListEntry].
   /// [cidr] CIDR block of this entry.

@@ -6,9 +6,9 @@ import 'traffic_policy_policy_statement_condition_boolean_expression_evaluate_is
 
 class TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluate {
   /// Analysis result to evaluate. See `policy_statement.condition.string_expression.evaluate.analysis` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluateAnalysis>? analysis;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluateAnalysis?>? analysis;
   /// Address list membership check. See `isInAddressList` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluateIsInAddressList>? isInAddressList;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluateIsInAddressList?>? isInAddressList;
 
   /// Creates a new [TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluate].
   /// [analysis] Analysis result to evaluate. See `policy_statement.condition.string_expression.evaluate.analysis` Block below.

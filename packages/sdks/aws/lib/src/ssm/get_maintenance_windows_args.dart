@@ -9,9 +9,9 @@ import 'get_maintenance_windows_filter.dart';
 /// {@macro pulumi_ssm_get_maintenance_windows_get_maintenance_windows_args_doc}
 class GetMaintenanceWindowsArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetMaintenanceWindowsFilter>>? filters;
+  final pulumi.Input<List<GetMaintenanceWindowsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetMaintenanceWindowsArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

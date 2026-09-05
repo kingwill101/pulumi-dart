@@ -6,17 +6,17 @@ import 'cluster_master_instance_fleet_instance_type_config_ebs_config.dart';
 
 class ClusterMasterInstanceFleetInstanceTypeConfig {
   /// Bid price for each EC2 Spot instance type as defined by `instanceType`. Expressed in USD. If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
-  final pulumi.Input<String>? bidPrice;
+  final pulumi.Input<String?>? bidPrice;
   /// Bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by `instanceType`. Expressed as a number (for example, 20 specifies 20%). If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
-  final pulumi.Input<double>? bidPriceAsPercentageOfOnDemandPrice;
+  final pulumi.Input<double?>? bidPriceAsPercentageOfOnDemandPrice;
   /// Configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster. List of `configuration` blocks.
-  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>>? configurations;
+  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>?>? configurations;
   /// Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
-  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>>? ebsConfigs;
+  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>?>? ebsConfigs;
   /// EC2 instance type, such as m4.xlarge.
   final pulumi.Input<String> instanceType;
   /// Number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in `aws.emr.InstanceFleet`.
-  final pulumi.Input<int>? weightedCapacity;
+  final pulumi.Input<int?>? weightedCapacity;
 
   /// Creates a new [ClusterMasterInstanceFleetInstanceTypeConfig].
   /// [bidPrice] Bid price for each EC2 Spot instance type as defined by `instanceType`. Expressed in USD. If neither `bidPrice` nor `bidPriceAsPercentageOfOnDemandPrice` is provided, `bidPriceAsPercentageOfOnDemandPrice` defaults to 100%.
@@ -48,11 +48,11 @@ class ClusterMasterInstanceFleetInstanceTypeConfig {
   factory ClusterMasterInstanceFleetInstanceTypeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleetInstanceTypeConfig(
       bidPrice: (() { final guardedValue = map['bidPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bidPriceAsPercentageOfOnDemandPrice: (() { final guardedValue = map['bidPriceAsPercentageOfOnDemandPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bidPriceAsPercentageOfOnDemandPrice: (() { final guardedValue = map['bidPriceAsPercentageOfOnDemandPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>(guardedValue, (value) => ClusterMasterInstanceFleetInstanceTypeConfigConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ebsConfigs: (() { final guardedValue = map['ebsConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>(guardedValue, (value) => ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      weightedCapacity: (() { final guardedValue = map['weightedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weightedCapacity: (() { final guardedValue = map['weightedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

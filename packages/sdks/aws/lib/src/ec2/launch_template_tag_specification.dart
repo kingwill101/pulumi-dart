@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateTagSpecification {
   /// The type of resource to tag.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// A map of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LaunchTemplateTagSpecification].
   /// [resourceType] The type of resource to tag.

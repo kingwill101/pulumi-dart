@@ -148,7 +148,7 @@ class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
           'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     coreNetworkId = registerOutput<String>('coreNetworkId');
@@ -160,11 +160,12 @@ class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttachmentRoutingPolicyLabelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AttachmentRoutingPolicyLabel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,6 +179,20 @@ class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    routingPolicyLabel = registerOutput<String>('routingPolicyLabel');
+  }
+
+  /// Creates a typed reference to an existing [AttachmentRoutingPolicyLabel] resource.
+  AttachmentRoutingPolicyLabel.reference(String urn)
+    : super(
+        'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attachmentId = registerOutput<String>('attachmentId');
     coreNetworkId = registerOutput<String>('coreNetworkId');
     routingPolicyLabel = registerOutput<String>('routingPolicyLabel');

@@ -307,7 +307,7 @@ class Authorizer extends pulumi.CustomResource {
   late final pulumi.Output<int> authorizerResultTtlInSeconds;
   /// Authorizer type. Valid values: `JWT`, `REQUEST`. Specify `REQUEST` for a Lambda function using incoming request parameters. For HTTP APIs, specify `JWT` to use JSON Web Tokens.
   late final pulumi.Output<String> authorizerType;
-  /// Authorizer's Uniform Resource Identifier (URI). For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda.Function` resource. Supported only for `REQUEST` authorizers. Must be between 1 and 2048 characters in length.
+  /// Authorizer's URI. For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda.Function` resource. Supported only for `REQUEST` authorizers. Must be between 1 and 2048 characters in length.
   late final pulumi.Output<String?> authorizerUri;
   /// Whether a Lambda authorizer returns a response in a simple format. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs.
   late final pulumi.Output<bool?> enableSimpleResponses;
@@ -332,7 +332,7 @@ class Authorizer extends pulumi.CustomResource {
           'aws:apigatewayv2/authorizer:Authorizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     authorizerCredentialsArn = registerOutput<String?>('authorizerCredentialsArn');
@@ -341,7 +341,7 @@ class Authorizer extends pulumi.CustomResource {
     authorizerType = registerOutput<String>('authorizerType');
     authorizerUri = registerOutput<String?>('authorizerUri');
     enableSimpleResponses = registerOutput<bool?>('enableSimpleResponses');
-    identitySources = registerOutput<List<String>?>('identitySources');
+    identitySources = registerOutput<List<String>?>('identitySources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jwtConfiguration = registerOutput<AuthorizerJwtConfiguration?>('jwtConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizerJwtConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -352,11 +352,12 @@ class Authorizer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Authorizer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -377,7 +378,29 @@ class Authorizer extends pulumi.CustomResource {
     authorizerType = registerOutput<String>('authorizerType');
     authorizerUri = registerOutput<String?>('authorizerUri');
     enableSimpleResponses = registerOutput<bool?>('enableSimpleResponses');
-    identitySources = registerOutput<List<String>?>('identitySources');
+    identitySources = registerOutput<List<String>?>('identitySources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    jwtConfiguration = registerOutput<AuthorizerJwtConfiguration?>('jwtConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizerJwtConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Authorizer] resource.
+  Authorizer.reference(String urn)
+    : super(
+        'aws:apigatewayv2/authorizer:Authorizer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    authorizerCredentialsArn = registerOutput<String?>('authorizerCredentialsArn');
+    authorizerPayloadFormatVersion = registerOutput<String?>('authorizerPayloadFormatVersion');
+    authorizerResultTtlInSeconds = registerOutput<int>('authorizerResultTtlInSeconds');
+    authorizerType = registerOutput<String>('authorizerType');
+    authorizerUri = registerOutput<String?>('authorizerUri');
+    enableSimpleResponses = registerOutput<bool?>('enableSimpleResponses');
+    identitySources = registerOutput<List<String>?>('identitySources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jwtConfiguration = registerOutput<AuthorizerJwtConfiguration?>('jwtConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizerJwtConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -5,9 +5,9 @@ import 'flow_destination_flow_config_destination_connector_properties.dart';
 
 class FlowDestinationFlowConfig {
   /// API version that the destination connector uses.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Name of the connector profile. Must be unique for each connector profile in the AWS account.
-  final pulumi.Input<String>? connectorProfileName;
+  final pulumi.Input<String?>? connectorProfileName;
   /// Type of connector, such as Salesforce, Amplitude, and so on. Valid values are `Salesforce`, `Singular`, `Slack`, `Redshift`, `S3`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `EventBridge`, `LookoutMetrics`, `Upsolver`, `Honeycode`, `CustomerProfiles`, `SAPOData`, and `CustomConnector`.
   final pulumi.Input<String> connectorType;
   /// Information required to query a particular connector. See the `destination_flow_config.destination_connector_properties` Block for details.

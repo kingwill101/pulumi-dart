@@ -6,9 +6,9 @@ import 'evaluation_job_inference_config_model_precomputed_inference_source.dart'
 
 class EvaluationJobInferenceConfigModel {
   /// Amazon Bedrock model. See `bedrockModel` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigModelBedrockModel>? bedrockModel;
+  final pulumi.Input<EvaluationJobInferenceConfigModelBedrockModel?>? bedrockModel;
   /// Model where you provide your own precomputed inference response data. See `precomputedInferenceSource` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigModelPrecomputedInferenceSource>? precomputedInferenceSource;
+  final pulumi.Input<EvaluationJobInferenceConfigModelPrecomputedInferenceSource?>? precomputedInferenceSource;
 
   /// Creates a new [EvaluationJobInferenceConfigModel].
   /// [bedrockModel] Amazon Bedrock model. See `bedrockModel` Block below.

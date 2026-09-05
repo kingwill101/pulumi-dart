@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_imagebuilder_workflow_workflow_args_doc}
 class WorkflowArgs {
   /// Change description of the workflow.
-  final pulumi.Input<String>? changeDescription;
+  final pulumi.Input<String?>? changeDescription;
   /// Inline YAML string with data of the workflow. Exactly one of `data` and `uri` can be specified.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Description of the workflow.
-  final pulumi.Input<String>? description;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the workflow.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? description;
+  /// ARN of the KMS Key used to encrypt the workflow.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the workflow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of the workflow. Valid values: `BUILD`, `TEST`.
   final pulumi.Input<String> type;
   /// S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Version of the workflow.
   ///
   /// The following arguments are optional:
@@ -34,7 +34,7 @@ class WorkflowArgs {
   /// [changeDescription] Change description of the workflow.
   /// [data] Inline YAML string with data of the workflow. Exactly one of `data` and `uri` can be specified.
   /// [description] Description of the workflow.
-  /// [kmsKeyId] Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the workflow.
+  /// [kmsKeyId] ARN of the KMS Key used to encrypt the workflow.
   /// [name] Name of the workflow.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the workflow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

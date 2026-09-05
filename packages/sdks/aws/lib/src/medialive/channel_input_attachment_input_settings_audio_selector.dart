@@ -8,7 +8,7 @@ class ChannelInputAttachmentInputSettingsAudioSelector {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
-  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings>? selectorSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings?>? selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelector].
   /// [name] Name of the Channel.

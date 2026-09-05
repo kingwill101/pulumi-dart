@@ -109,7 +109,7 @@ import 'room_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the IVS Chat room.
+/// - `arn` (String) ARN of the IVS Chat room.
 ///
 ///
 /// Using `pulumi import`, import IVS (Interactive Video) Chat Room using the ARN. For example:
@@ -154,17 +154,17 @@ class Room extends pulumi.CustomResource {
           'aws:ivschat/room:Room',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers');
+    loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maximumMessageLength = registerOutput<int>('maximumMessageLength');
     maximumMessageRatePerSecond = registerOutput<int>('maximumMessageRatePerSecond');
     messageReviewHandler = registerOutput<RoomMessageReviewHandler?>('messageReviewHandler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoomMessageReviewHandler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Room] resource's state with the given [name] and [id].
@@ -172,11 +172,12 @@ class Room extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoomState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Room._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,13 +192,33 @@ class Room extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers');
+    loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maximumMessageLength = registerOutput<int>('maximumMessageLength');
     maximumMessageRatePerSecond = registerOutput<int>('maximumMessageRatePerSecond');
     messageReviewHandler = registerOutput<RoomMessageReviewHandler?>('messageReviewHandler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoomMessageReviewHandler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Room] resource.
+  Room.reference(String urn)
+    : super(
+        'aws:ivschat/room:Room',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    maximumMessageLength = registerOutput<int>('maximumMessageLength');
+    maximumMessageRatePerSecond = registerOutput<int>('maximumMessageRatePerSecond');
+    messageReviewHandler = registerOutput<RoomMessageReviewHandler?>('messageReviewHandler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoomMessageReviewHandler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

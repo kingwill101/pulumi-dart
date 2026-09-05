@@ -32,7 +32,7 @@ class MultiRegionAccessPointRoutesRoute {
     return MultiRegionAccessPointRoutesRoute(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
-      trafficDialPercentage: pulumi.Input.fromValue(map['trafficDialPercentage'] as int),
+      trafficDialPercentage: pulumi.Input.fromValue((map['trafficDialPercentage'] as num).toInt()),
     );
   }
 }

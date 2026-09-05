@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cfg_retention_configuration_retention_configuration_args_doc}
 class RetentionConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The number of days AWS Config stores historical information.
   final pulumi.Input<int> retentionPeriodInDays;
 
@@ -30,7 +30,7 @@ class RetentionConfigurationArgs {
   factory RetentionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RetentionConfigurationArgs(
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
+      retentionPeriodInDays: pulumi.Input.fromValue((map['retentionPeriodInDays'] as num).toInt()),
     );
   }
 }

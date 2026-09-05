@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UsagePlanKey resources.
 class UsagePlanKeyState {
   /// Identifier of the API key resource.
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
   /// Type of the API key resource. Currently, the valid key type is API_KEY.
-  final pulumi.Input<String>? keyType;
+  final pulumi.Input<String?>? keyType;
   /// Name of a usage plan key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Id of the usage plan resource representing to associate the key to.
-  final pulumi.Input<String>? usagePlanId;
+  final pulumi.Input<String?>? usagePlanId;
   /// Value of a usage plan key.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [UsagePlanKeyState].
   /// [keyId] Identifier of the API key resource.

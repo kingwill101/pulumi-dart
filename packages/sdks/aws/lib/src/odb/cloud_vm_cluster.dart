@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_vm_cluster_args.dart';
 import 'cloud_vm_cluster_data_collection_options.dart';
+import 'cloud_vm_cluster_iorm_config_cache.dart';
 import 'cloud_vm_cluster_state.dart';
 import 'cloud_vm_cluster_timeouts.dart';
 
@@ -18,6 +19,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const withMinimumParameter = new aws.odb.CloudVmCluster("with_minimum_parameter", {
+///     dataCollectionOptions: {
+///         isDiagnosticsEventsEnabled: false,
+///         isHealthMonitoringEnabled: false,
+///         isIncidentLogsEnabled: false,
+///     },
 ///     displayName: "my_vm_cluster",
 ///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
 ///     cpuCoreCount: 6,
@@ -35,11 +41,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     ],
 ///     dbNodeStorageSizeInGbs: 120,
 ///     memorySizeInGbs: 60,
-///     dataCollectionOptions: {
-///         isDiagnosticsEventsEnabled: false,
-///         isHealthMonitoringEnabled: false,
-///         isIncidentLogsEnabled: false,
-///     },
 /// });
 /// ```
 /// ```python
@@ -47,6 +48,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// with_minimum_parameter = aws.odb.CloudVmCluster("with_minimum_parameter",
+///     data_collection_options={
+///         "is_diagnostics_events_enabled": False,
+///         "is_health_monitoring_enabled": False,
+///         "is_incident_logs_enabled": False,
+///     },
 ///     display_name="my_vm_cluster",
 ///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
 ///     cpu_core_count=6,
@@ -63,12 +69,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         "db-server-2",
 ///     ],
 ///     db_node_storage_size_in_gbs=120,
-///     memory_size_in_gbs=60,
-///     data_collection_options={
-///         "is_diagnostics_events_enabled": False,
-///         "is_health_monitoring_enabled": False,
-///         "is_incident_logs_enabled": False,
-///     })
+///     memory_size_in_gbs=60)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -80,6 +81,12 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// {
 ///     var withMinimumParameter = new Aws.Odb.CloudVmCluster("with_minimum_parameter", new()
 ///     {
+///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
+///         {
+///             IsDiagnosticsEventsEnabled = false,
+///             IsHealthMonitoringEnabled = false,
+///             IsIncidentLogsEnabled = false,
+///         },
 ///         DisplayName = "my_vm_cluster",
 ///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
 ///         CpuCoreCount = 6,
@@ -101,12 +108,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         },
 ///         DbNodeStorageSizeInGbs = 120,
 ///         MemorySizeInGbs = 60,
-///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
-///         {
-///             IsDiagnosticsEventsEnabled = false,
-///             IsHealthMonitoringEnabled = false,
-///             IsIncidentLogsEnabled = false,
-///         },
 ///     });
 ///
 /// });
@@ -122,6 +123,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := odb.NewCloudVmCluster(ctx, "with_minimum_parameter", &odb.CloudVmClusterArgs{
+/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
+/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(false),
+/// 				IsHealthMonitoringEnabled:  pulumi.Bool(false),
+/// 				IsIncidentLogsEnabled:      pulumi.Bool(false),
+/// 			},
 /// 			DisplayName:                  pulumi.String("my_vm_cluster"),
 /// 			CloudExadataInfrastructureId: pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
 /// 			CpuCoreCount:                 pulumi.Int(6),
@@ -141,11 +147,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// 			},
 /// 			DbNodeStorageSizeInGbs: pulumi.Int(120),
 /// 			MemorySizeInGbs:        pulumi.Int(60),
-/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
-/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(false),
-/// 				IsHealthMonitoringEnabled:  pulumi.Bool(false),
-/// 				IsIncidentLogsEnabled:      pulumi.Bool(false),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -164,6 +165,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_odb_cloudvmcluster" "with_minimum_parameter" {
+///   data_collection_options = {
+///     is_diagnostics_events_enabled = false
+///     is_health_monitoring_enabled  = false
+///     is_incident_logs_enabled      = false
+///   }
 ///   display_name                    = "my_vm_cluster"
 ///   cloud_exadata_infrastructure_id = "<aws_odb_cloud_exadata_infrastructure_id>"
 ///   cpu_core_count                  = 6
@@ -178,11 +184,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///   db_servers                      = ["db-server-1", "db-server-2"]
 ///   db_node_storage_size_in_gbs     = 120
 ///   memory_size_in_gbs              = 60
-///   data_collection_options = {
-///     is_diagnostics_events_enabled = false
-///     is_health_monitoring_enabled  = false
-///     is_incident_logs_enabled      = false
-///   }
 /// }
 /// ```
 /// ```java
@@ -208,6 +209,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var withMinimumParameter = new CloudVmCluster("withMinimumParameter", CloudVmClusterArgs.builder()
+///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
+///                 .isDiagnosticsEventsEnabled(false)
+///                 .isHealthMonitoringEnabled(false)
+///                 .isIncidentLogsEnabled(false)
+///                 .build())
 ///             .displayName("my_vm_cluster")
 ///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
 ///             .cpuCoreCount(6)
@@ -224,11 +230,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///                 "db-server-2")
 ///             .dbNodeStorageSizeInGbs(120)
 ///             .memorySizeInGbs(60)
-///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
-///                 .isDiagnosticsEventsEnabled(false)
-///                 .isHealthMonitoringEnabled(false)
-///                 .isIncidentLogsEnabled(false)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -240,6 +241,10 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     type: aws:odb:CloudVmCluster
 ///     name: with_minimum_parameter
 ///     properties:
+///       dataCollectionOptions:
+///         isDiagnosticsEventsEnabled: false
+///         isHealthMonitoringEnabled: false
+///         isIncidentLogsEnabled: false
 ///       displayName: my_vm_cluster
 ///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
 ///       cpuCoreCount: 6
@@ -257,10 +262,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         - db-server-2
 ///       dbNodeStorageSizeInGbs: 120
 ///       memorySizeInGbs: 60
-///       dataCollectionOptions:
-///         isDiagnosticsEventsEnabled: false
-///         isHealthMonitoringEnabled: false
-///         isIncidentLogsEnabled: false
 /// ```
 ///
 ///
@@ -272,6 +273,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const withAllParameters = new aws.odb.CloudVmCluster("with_all_parameters", {
+///     dataCollectionOptions: {
+///         isDiagnosticsEventsEnabled: true,
+///         isHealthMonitoringEnabled: true,
+///         isIncidentLogsEnabled: true,
+///     },
 ///     displayName: "my_vm_cluster",
 ///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
 ///     cpuCoreCount: 6,
@@ -295,11 +301,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     tags: {
 ///         env: "dev",
 ///     },
-///     dataCollectionOptions: {
-///         isDiagnosticsEventsEnabled: true,
-///         isHealthMonitoringEnabled: true,
-///         isIncidentLogsEnabled: true,
-///     },
 /// });
 /// ```
 /// ```python
@@ -307,6 +308,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// with_all_parameters = aws.odb.CloudVmCluster("with_all_parameters",
+///     data_collection_options={
+///         "is_diagnostics_events_enabled": True,
+///         "is_health_monitoring_enabled": True,
+///         "is_incident_logs_enabled": True,
+///     },
 ///     display_name="my_vm_cluster",
 ///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
 ///     cpu_core_count=6,
@@ -329,11 +335,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     scan_listener_port_tcp=1521,
 ///     tags={
 ///         "env": "dev",
-///     },
-///     data_collection_options={
-///         "is_diagnostics_events_enabled": True,
-///         "is_health_monitoring_enabled": True,
-///         "is_incident_logs_enabled": True,
 ///     })
 /// ```
 /// ```csharp
@@ -346,6 +347,12 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// {
 ///     var withAllParameters = new Aws.Odb.CloudVmCluster("with_all_parameters", new()
 ///     {
+///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
+///         {
+///             IsDiagnosticsEventsEnabled = true,
+///             IsHealthMonitoringEnabled = true,
+///             IsIncidentLogsEnabled = true,
+///         },
 ///         DisplayName = "my_vm_cluster",
 ///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
 ///         CpuCoreCount = 6,
@@ -374,12 +381,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         {
 ///             { "env", "dev" },
 ///         },
-///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
-///         {
-///             IsDiagnosticsEventsEnabled = true,
-///             IsHealthMonitoringEnabled = true,
-///             IsIncidentLogsEnabled = true,
-///         },
 ///     });
 ///
 /// });
@@ -395,6 +396,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := odb.NewCloudVmCluster(ctx, "with_all_parameters", &odb.CloudVmClusterArgs{
+/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
+/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(true),
+/// 				IsHealthMonitoringEnabled:  pulumi.Bool(true),
+/// 				IsIncidentLogsEnabled:      pulumi.Bool(true),
+/// 			},
 /// 			DisplayName:                  pulumi.String("my_vm_cluster"),
 /// 			CloudExadataInfrastructureId: pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
 /// 			CpuCoreCount:                 pulumi.Int(6),
@@ -420,11 +426,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// 			Tags: pulumi.StringMap{
 /// 				"env": pulumi.String("dev"),
 /// 			},
-/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
-/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(true),
-/// 				IsHealthMonitoringEnabled:  pulumi.Bool(true),
-/// 				IsIncidentLogsEnabled:      pulumi.Bool(true),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -443,6 +444,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_odb_cloudvmcluster" "with_all_parameters" {
+///   data_collection_options = {
+///     is_diagnostics_events_enabled = true
+///     is_health_monitoring_enabled  = true
+///     is_incident_logs_enabled      = true
+///   }
 ///   display_name                    = "my_vm_cluster"
 ///   cloud_exadata_infrastructure_id = "<aws_odb_cloud_exadata_infrastructure_id>"
 ///   cpu_core_count                  = 6
@@ -462,11 +468,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///   scan_listener_port_tcp          = 1521
 ///   tags = {
 ///     "env" = "dev"
-///   }
-///   data_collection_options = {
-///     is_diagnostics_events_enabled = true
-///     is_health_monitoring_enabled  = true
-///     is_incident_logs_enabled      = true
 ///   }
 /// }
 /// ```
@@ -493,6 +494,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var withAllParameters = new CloudVmCluster("withAllParameters", CloudVmClusterArgs.builder()
+///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
+///                 .isDiagnosticsEventsEnabled(true)
+///                 .isHealthMonitoringEnabled(true)
+///                 .isIncidentLogsEnabled(true)
+///                 .build())
 ///             .displayName("my_vm_cluster")
 ///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
 ///             .cpuCoreCount(6)
@@ -513,11 +519,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///             .timezone("UTC")
 ///             .scanListenerPortTcp(1521)
 ///             .tags(Map.of("env", "dev"))
-///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
-///                 .isDiagnosticsEventsEnabled(true)
-///                 .isHealthMonitoringEnabled(true)
-///                 .isIncidentLogsEnabled(true)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -529,6 +530,10 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     type: aws:odb:CloudVmCluster
 ///     name: with_all_parameters
 ///     properties:
+///       dataCollectionOptions:
+///         isDiagnosticsEventsEnabled: true
+///         isHealthMonitoringEnabled: true
+///         isIncidentLogsEnabled: true
 ///       displayName: my_vm_cluster
 ///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
 ///       cpuCoreCount: 6
@@ -551,10 +556,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///       scanListenerPortTcp: 1521
 ///       tags:
 ///         env: dev
-///       dataCollectionOptions:
-///         isDiagnosticsEventsEnabled: true
-///         isHealthMonitoringEnabled: true
-///         isIncidentLogsEnabled: true
 /// ```
 ///
 ///
@@ -566,6 +567,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const giVersionTagExample = new aws.odb.CloudVmCluster("gi_version_tag_example", {
+///     dataCollectionOptions: {
+///         isDiagnosticsEventsEnabled: true,
+///         isHealthMonitoringEnabled: true,
+///         isIncidentLogsEnabled: true,
+///     },
 ///     displayName: "my_vm_cluster",
 ///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
 ///     cpuCoreCount: 6,
@@ -589,11 +595,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     tags: {
 ///         "odb:input_gi_version": "23.0.0.0",
 ///     },
-///     dataCollectionOptions: {
-///         isDiagnosticsEventsEnabled: true,
-///         isHealthMonitoringEnabled: true,
-///         isIncidentLogsEnabled: true,
-///     },
 /// });
 /// ```
 /// ```python
@@ -601,6 +602,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// gi_version_tag_example = aws.odb.CloudVmCluster("gi_version_tag_example",
+///     data_collection_options={
+///         "is_diagnostics_events_enabled": True,
+///         "is_health_monitoring_enabled": True,
+///         "is_incident_logs_enabled": True,
+///     },
 ///     display_name="my_vm_cluster",
 ///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
 ///     cpu_core_count=6,
@@ -623,11 +629,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     scan_listener_port_tcp=1521,
 ///     tags={
 ///         "odb:input_gi_version": "23.0.0.0",
-///     },
-///     data_collection_options={
-///         "is_diagnostics_events_enabled": True,
-///         "is_health_monitoring_enabled": True,
-///         "is_incident_logs_enabled": True,
 ///     })
 /// ```
 /// ```csharp
@@ -640,6 +641,12 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// {
 ///     var giVersionTagExample = new Aws.Odb.CloudVmCluster("gi_version_tag_example", new()
 ///     {
+///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
+///         {
+///             IsDiagnosticsEventsEnabled = true,
+///             IsHealthMonitoringEnabled = true,
+///             IsIncidentLogsEnabled = true,
+///         },
 ///         DisplayName = "my_vm_cluster",
 ///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
 ///         CpuCoreCount = 6,
@@ -668,12 +675,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         {
 ///             { "odb:input_gi_version", "23.0.0.0" },
 ///         },
-///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
-///         {
-///             IsDiagnosticsEventsEnabled = true,
-///             IsHealthMonitoringEnabled = true,
-///             IsIncidentLogsEnabled = true,
-///         },
 ///     });
 ///
 /// });
@@ -689,6 +690,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := odb.NewCloudVmCluster(ctx, "gi_version_tag_example", &odb.CloudVmClusterArgs{
+/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
+/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(true),
+/// 				IsHealthMonitoringEnabled:  pulumi.Bool(true),
+/// 				IsIncidentLogsEnabled:      pulumi.Bool(true),
+/// 			},
 /// 			DisplayName:                  pulumi.String("my_vm_cluster"),
 /// 			CloudExadataInfrastructureId: pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
 /// 			CpuCoreCount:                 pulumi.Int(6),
@@ -714,11 +720,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// 			Tags: pulumi.StringMap{
 /// 				"odb:input_gi_version": pulumi.String("23.0.0.0"),
 /// 			},
-/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
-/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(true),
-/// 				IsHealthMonitoringEnabled:  pulumi.Bool(true),
-/// 				IsIncidentLogsEnabled:      pulumi.Bool(true),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -737,6 +738,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_odb_cloudvmcluster" "gi_version_tag_example" {
+///   data_collection_options = {
+///     is_diagnostics_events_enabled = true
+///     is_health_monitoring_enabled  = true
+///     is_incident_logs_enabled      = true
+///   }
 ///   display_name                    = "my_vm_cluster"
 ///   cloud_exadata_infrastructure_id = "<aws_odb_cloud_exadata_infrastructure_id>"
 ///   cpu_core_count                  = 6
@@ -756,11 +762,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///   scan_listener_port_tcp          = 1521
 ///   tags = {
 ///     "odb:input_gi_version" = "23.0.0.0"
-///   }
-///   data_collection_options = {
-///     is_diagnostics_events_enabled = true
-///     is_health_monitoring_enabled  = true
-///     is_incident_logs_enabled      = true
 ///   }
 /// }
 /// ```
@@ -787,6 +788,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var giVersionTagExample = new CloudVmCluster("giVersionTagExample", CloudVmClusterArgs.builder()
+///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
+///                 .isDiagnosticsEventsEnabled(true)
+///                 .isHealthMonitoringEnabled(true)
+///                 .isIncidentLogsEnabled(true)
+///                 .build())
 ///             .displayName("my_vm_cluster")
 ///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
 ///             .cpuCoreCount(6)
@@ -807,11 +813,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///             .timezone("UTC")
 ///             .scanListenerPortTcp(1521)
 ///             .tags(Map.of("odb:input_gi_version", "23.0.0.0"))
-///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
-///                 .isDiagnosticsEventsEnabled(true)
-///                 .isHealthMonitoringEnabled(true)
-///                 .isIncidentLogsEnabled(true)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -823,6 +824,10 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///     type: aws:odb:CloudVmCluster
 ///     name: gi_version_tag_example
 ///     properties:
+///       dataCollectionOptions:
+///         isDiagnosticsEventsEnabled: true
+///         isHealthMonitoringEnabled: true
+///         isIncidentLogsEnabled: true
 ///       displayName: my_vm_cluster
 ///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
 ///       cpuCoreCount: 6
@@ -845,10 +850,6 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///       scanListenerPortTcp: 1521
 ///       tags:
 ///         odb:input_gi_version: 23.0.0.0
-///       dataCollectionOptions:
-///         isDiagnosticsEventsEnabled: true
-///         isHealthMonitoringEnabled: true
-///         isIncidentLogsEnabled: true
 /// ```
 ///
 ///
@@ -860,7 +861,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// $ pulumi import aws:odb/cloudVmCluster:CloudVmCluster example example
 /// ```
 class CloudVmCluster extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// ARN for the cloud vm cluster.
   late final pulumi.Output<String> arn;
   /// ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloudExadataInfrastructureId and odbNetworkId or cloudExadataInfrastructureArn and odbNetworkArn must be used.
   late final pulumi.Output<String> cloudExadataInfrastructureArn;
@@ -897,7 +898,7 @@ class CloudVmCluster extends pulumi.CustomResource {
   /// Host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - Maximum length of the combined hostname and domain is 63 characters. - Hostname must be unique within the subnet.
   late final pulumi.Output<String> hostnamePrefixComputed;
   /// Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster. See `iormConfigCache` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> iormConfigCaches;
+  late final pulumi.Output<List<CloudVmClusterIormConfigCache>> iormConfigCaches;
   /// Whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
   late final pulumi.Output<bool> isLocalBackupEnabled;
   /// Whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
@@ -970,7 +971,7 @@ class CloudVmCluster extends pulumi.CustomResource {
           'aws:odb/cloudVmCluster:CloudVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudExadataInfrastructureArn = registerOutput<String>('cloudExadataInfrastructureArn');
@@ -982,7 +983,7 @@ class CloudVmCluster extends pulumi.CustomResource {
     dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>('dataCollectionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
-    dbServers = registerOutput<List<String>>('dbServers');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     diskRedundancy = registerOutput<String>('diskRedundancy');
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
@@ -990,7 +991,7 @@ class CloudVmCluster extends pulumi.CustomResource {
     giVersionComputed = registerOutput<String>('giVersionComputed');
     hostnamePrefix = registerOutput<String>('hostnamePrefix');
     hostnamePrefixComputed = registerOutput<String>('hostnamePrefixComputed');
-    iormConfigCaches = registerOutput<List<Map<String, dynamic>>>('iormConfigCaches');
+    iormConfigCaches = registerOutput<List<CloudVmClusterIormConfigCache>>('iormConfigCaches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudVmClusterIormConfigCache>(guardedValue, (value) => CloudVmClusterIormConfigCache.fromMap((value as Map).cast<String, dynamic>())); });
     isLocalBackupEnabled = registerOutput<bool>('isLocalBackupEnabled');
     isSparseDiskgroupEnabled = registerOutput<bool>('isSparseDiskgroupEnabled');
     lastUpdateHistoryEntryId = registerOutput<String>('lastUpdateHistoryEntryId');
@@ -1007,19 +1008,19 @@ class CloudVmCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scanDnsName = registerOutput<String>('scanDnsName');
     scanDnsRecordId = registerOutput<String>('scanDnsRecordId');
-    scanIpIds = registerOutput<List<String>>('scanIpIds');
+    scanIpIds = registerOutput<List<String>>('scanIpIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scanListenerPortTcp = registerOutput<int>('scanListenerPortTcp');
     shape = registerOutput<String>('shape');
-    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys');
+    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
     storageSizeInGbs = registerOutput<int>('storageSizeInGbs');
     systemVersion = registerOutput<String>('systemVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timezone = registerOutput<String>('timezone');
-    vipIds = registerOutput<List<String>>('vipIds');
+    vipIds = registerOutput<List<String>>('vipIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [CloudVmCluster] resource's state with the given [name] and [id].
@@ -1027,11 +1028,12 @@ class CloudVmCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudVmClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudVmCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1055,7 +1057,7 @@ class CloudVmCluster extends pulumi.CustomResource {
     dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>('dataCollectionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
-    dbServers = registerOutput<List<String>>('dbServers');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     diskRedundancy = registerOutput<String>('diskRedundancy');
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
@@ -1063,7 +1065,7 @@ class CloudVmCluster extends pulumi.CustomResource {
     giVersionComputed = registerOutput<String>('giVersionComputed');
     hostnamePrefix = registerOutput<String>('hostnamePrefix');
     hostnamePrefixComputed = registerOutput<String>('hostnamePrefixComputed');
-    iormConfigCaches = registerOutput<List<Map<String, dynamic>>>('iormConfigCaches');
+    iormConfigCaches = registerOutput<List<CloudVmClusterIormConfigCache>>('iormConfigCaches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudVmClusterIormConfigCache>(guardedValue, (value) => CloudVmClusterIormConfigCache.fromMap((value as Map).cast<String, dynamic>())); });
     isLocalBackupEnabled = registerOutput<bool>('isLocalBackupEnabled');
     isSparseDiskgroupEnabled = registerOutput<bool>('isSparseDiskgroupEnabled');
     lastUpdateHistoryEntryId = registerOutput<String>('lastUpdateHistoryEntryId');
@@ -1080,18 +1082,77 @@ class CloudVmCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scanDnsName = registerOutput<String>('scanDnsName');
     scanDnsRecordId = registerOutput<String>('scanDnsRecordId');
-    scanIpIds = registerOutput<List<String>>('scanIpIds');
+    scanIpIds = registerOutput<List<String>>('scanIpIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scanListenerPortTcp = registerOutput<int>('scanListenerPortTcp');
     shape = registerOutput<String>('shape');
-    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys');
+    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
     storageSizeInGbs = registerOutput<int>('storageSizeInGbs');
     systemVersion = registerOutput<String>('systemVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timezone = registerOutput<String>('timezone');
-    vipIds = registerOutput<List<String>>('vipIds');
+    vipIds = registerOutput<List<String>>('vipIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CloudVmCluster] resource.
+  CloudVmCluster.reference(String urn)
+    : super(
+        'aws:odb/cloudVmCluster:CloudVmCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cloudExadataInfrastructureArn = registerOutput<String>('cloudExadataInfrastructureArn');
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
+    clusterName = registerOutput<String>('clusterName');
+    computeModel = registerOutput<String>('computeModel');
+    cpuCoreCount = registerOutput<int>('cpuCoreCount');
+    createdAt = registerOutput<String>('createdAt');
+    dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>('dataCollectionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    diskRedundancy = registerOutput<String>('diskRedundancy');
+    displayName = registerOutput<String>('displayName');
+    domain = registerOutput<String>('domain');
+    giVersion = registerOutput<String>('giVersion');
+    giVersionComputed = registerOutput<String>('giVersionComputed');
+    hostnamePrefix = registerOutput<String>('hostnamePrefix');
+    hostnamePrefixComputed = registerOutput<String>('hostnamePrefixComputed');
+    iormConfigCaches = registerOutput<List<CloudVmClusterIormConfigCache>>('iormConfigCaches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudVmClusterIormConfigCache>(guardedValue, (value) => CloudVmClusterIormConfigCache.fromMap((value as Map).cast<String, dynamic>())); });
+    isLocalBackupEnabled = registerOutput<bool>('isLocalBackupEnabled');
+    isSparseDiskgroupEnabled = registerOutput<bool>('isSparseDiskgroupEnabled');
+    lastUpdateHistoryEntryId = registerOutput<String>('lastUpdateHistoryEntryId');
+    licenseModel = registerOutput<String>('licenseModel');
+    listenerPort = registerOutput<int>('listenerPort');
+    memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    nodeCount = registerOutput<int>('nodeCount');
+    ociResourceAnchorName = registerOutput<String>('ociResourceAnchorName');
+    ociUrl = registerOutput<String>('ociUrl');
+    ocid = registerOutput<String>('ocid');
+    odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    odbNetworkId = registerOutput<String>('odbNetworkId');
+    percentProgress = registerOutput<double>('percentProgress');
+    region = registerOutput<String>('region');
+    scanDnsName = registerOutput<String>('scanDnsName');
+    scanDnsRecordId = registerOutput<String>('scanDnsRecordId');
+    scanIpIds = registerOutput<List<String>>('scanIpIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scanListenerPortTcp = registerOutput<int>('scanListenerPortTcp');
+    shape = registerOutput<String>('shape');
+    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    storageSizeInGbs = registerOutput<int>('storageSizeInGbs');
+    systemVersion = registerOutput<String>('systemVersion');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timezone = registerOutput<String>('timezone');
+    vipIds = registerOutput<List<String>>('vipIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

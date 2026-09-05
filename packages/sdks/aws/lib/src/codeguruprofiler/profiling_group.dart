@@ -15,11 +15,11 @@ import 'profiling_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.codeguruprofiler.ProfilingGroup("example", {
-///     name: "example",
-///     computePlatform: "Default",
 ///     agentOrchestrationConfig: {
 ///         profilingEnabled: true,
 ///     },
+///     name: "example",
+///     computePlatform: "Default",
 /// });
 /// ```
 /// ```python
@@ -27,11 +27,11 @@ import 'profiling_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.codeguruprofiler.ProfilingGroup("example",
-///     name="example",
-///     compute_platform="Default",
 ///     agent_orchestration_config={
 ///         "profiling_enabled": True,
-///     })
+///     },
+///     name="example",
+///     compute_platform="Default")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,12 +43,12 @@ import 'profiling_group_state.dart';
 /// {
 ///     var example = new Aws.CodeGuruProfiler.ProfilingGroup("example", new()
 ///     {
-///         Name = "example",
-///         ComputePlatform = "Default",
 ///         AgentOrchestrationConfig = new Aws.CodeGuruProfiler.Inputs.ProfilingGroupAgentOrchestrationConfigArgs
 ///         {
 ///             ProfilingEnabled = true,
 ///         },
+///         Name = "example",
+///         ComputePlatform = "Default",
 ///     });
 ///
 /// });
@@ -64,11 +64,11 @@ import 'profiling_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := codeguruprofiler.NewProfilingGroup(ctx, "example", &codeguruprofiler.ProfilingGroupArgs{
-/// 			Name:            pulumi.String("example"),
-/// 			ComputePlatform: pulumi.String("Default"),
 /// 			AgentOrchestrationConfig: &codeguruprofiler.ProfilingGroupAgentOrchestrationConfigArgs{
 /// 				ProfilingEnabled: pulumi.Bool(true),
 /// 			},
+/// 			Name:            pulumi.String("example"),
+/// 			ComputePlatform: pulumi.String("Default"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,11 +87,11 @@ import 'profiling_group_state.dart';
 /// }
 ///
 /// resource "aws_codeguruprofiler_profilinggroup" "example" {
-///   name             = "example"
-///   compute_platform = "Default"
 ///   agent_orchestration_config = {
 ///     profiling_enabled = true
 ///   }
+///   name             = "example"
+///   compute_platform = "Default"
 /// }
 /// ```
 /// ```java
@@ -117,11 +117,11 @@ import 'profiling_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ProfilingGroup("example", ProfilingGroupArgs.builder()
-///             .name("example")
-///             .computePlatform("Default")
 ///             .agentOrchestrationConfig(ProfilingGroupAgentOrchestrationConfigArgs.builder()
 ///                 .profilingEnabled(true)
 ///                 .build())
+///             .name("example")
+///             .computePlatform("Default")
 ///             .build());
 ///
 ///     }
@@ -132,10 +132,10 @@ import 'profiling_group_state.dart';
 ///   example:
 ///     type: aws:codeguruprofiler:ProfilingGroup
 ///     properties:
-///       name: example
-///       computePlatform: Default
 ///       agentOrchestrationConfig:
 ///         profilingEnabled: true
+///       name: example
+///       computePlatform: Default
 /// ```
 ///
 ///
@@ -176,15 +176,15 @@ class ProfilingGroup extends pulumi.CustomResource {
           'aws:codeguruprofiler/profilingGroup:ProfilingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentOrchestrationConfig = registerOutput<ProfilingGroupAgentOrchestrationConfig>('agentOrchestrationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfilingGroupAgentOrchestrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     computePlatform = registerOutput<String>('computePlatform');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ProfilingGroup] resource's state with the given [name] and [id].
@@ -192,11 +192,12 @@ class ProfilingGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfilingGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProfilingGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,7 +216,25 @@ class ProfilingGroup extends pulumi.CustomResource {
     computePlatform = registerOutput<String>('computePlatform');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ProfilingGroup] resource.
+  ProfilingGroup.reference(String urn)
+    : super(
+        'aws:codeguruprofiler/profilingGroup:ProfilingGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentOrchestrationConfig = registerOutput<ProfilingGroupAgentOrchestrationConfig>('agentOrchestrationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfilingGroupAgentOrchestrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    computePlatform = registerOutput<String>('computePlatform');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

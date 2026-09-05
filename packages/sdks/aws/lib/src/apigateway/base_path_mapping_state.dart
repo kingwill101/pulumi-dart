@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BasePathMapping resources.
 class BasePathMappingState {
   /// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-  final pulumi.Input<String>? basePath;
+  final pulumi.Input<String?>? basePath;
   /// Already-registered domain name to connect the API to.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Identifier for the domain name resource. Supported only for private custom domain names.
-  final pulumi.Input<String>? domainNameId;
+  final pulumi.Input<String?>? domainNameId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the API to connect.
-  final pulumi.Input<String>? restApi;
+  final pulumi.Input<dynamic>? restApi;
   /// Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-  final pulumi.Input<String>? stageName;
+  final pulumi.Input<String?>? stageName;
 
   /// Creates a new [BasePathMappingState].
   /// [basePath] Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
@@ -50,7 +50,7 @@ class BasePathMappingState {
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainNameId: (() { final guardedValue = map['domainNameId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       stageName: (() { final guardedValue = map['stageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

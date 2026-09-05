@@ -5,7 +5,7 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandling {
   /// Headers to insert into the request. See below.
-  final pulumi.Input<List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader>>? insertHeaders;
+  final pulumi.Input<List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader>?>? insertHeaders;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandling].
   /// [insertHeaders] Headers to insert into the request. See below.

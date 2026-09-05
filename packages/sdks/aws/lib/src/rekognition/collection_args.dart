@@ -13,10 +13,10 @@ class CollectionArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> collectionId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<CollectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<CollectionTimeouts?>? timeouts;
 
   /// Creates a new [CollectionArgs].
   /// [collectionId] Name of the collection

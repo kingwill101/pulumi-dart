@@ -6,9 +6,9 @@ import 'automation_rule_v2_action_finding_fields_update.dart';
 
 class AutomationRuleV2Action {
   /// Settings for external integration actions. See `externalIntegrationConfiguration` below.
-  final pulumi.Input<AutomationRuleV2ActionExternalIntegrationConfiguration>? externalIntegrationConfiguration;
+  final pulumi.Input<AutomationRuleV2ActionExternalIntegrationConfiguration?>? externalIntegrationConfiguration;
   /// Settings for updating finding fields. See `findingFieldsUpdate` below.
-  final pulumi.Input<AutomationRuleV2ActionFindingFieldsUpdate>? findingFieldsUpdate;
+  final pulumi.Input<AutomationRuleV2ActionFindingFieldsUpdate?>? findingFieldsUpdate;
   /// The action type. Valid values: `FINDING_FIELDS_UPDATE`, `EXTERNAL_INTEGRATION`.
   final pulumi.Input<String> type;
 

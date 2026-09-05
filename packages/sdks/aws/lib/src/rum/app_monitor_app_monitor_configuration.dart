@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppMonitorAppMonitorConfiguration {
   /// If you set this to `true`, RUM web client sets two cookies, a session cookie and a user cookie. The cookies allow the RUM web client to collect data relating to the number of users an application has and the behavior of the application across a sequence of events. Cookies are stored in the top-level domain of the current page.
-  final pulumi.Input<bool>? allowCookies;
+  final pulumi.Input<bool?>? allowCookies;
   /// If you set this to `true`, RUM enables X-Ray tracing for the user sessions that RUM samples. RUM adds an X-Ray trace header to allowed HTTP requests. It also records an X-Ray segment for allowed HTTP requests.
-  final pulumi.Input<bool>? enableXray;
+  final pulumi.Input<bool?>? enableXray;
   /// A list of URLs in your website or application to exclude from RUM data collection.
-  final pulumi.Input<List<String>>? excludedPages;
+  final pulumi.Input<List<String>?>? excludedPages;
   /// A list of pages in the CloudWatch RUM console that are to be displayed with a "favorite" icon.
-  final pulumi.Input<List<String>>? favoritePages;
+  final pulumi.Input<List<String>?>? favoritePages;
   /// The ARN of the guest IAM role that is attached to the Amazon Cognito identity pool that is used to authorize the sending of data to RUM.
-  final pulumi.Input<String>? guestRoleArn;
+  final pulumi.Input<String?>? guestRoleArn;
   /// The ID of the Amazon Cognito identity pool that is used to authorize the sending of data to RUM.
-  final pulumi.Input<String>? identityPoolId;
+  final pulumi.Input<String?>? identityPoolId;
   /// If this app monitor is to collect data from only certain pages in your application, this structure lists those pages.
-  final pulumi.Input<List<String>>? includedPages;
+  final pulumi.Input<List<String>?>? includedPages;
   /// Specifies the percentage of user sessions to use for RUM data collection. Choosing a higher percentage gives you more data but also incurs more costs. The number you specify is the percentage of user sessions that will be used. Default value is `0.1`.
-  final pulumi.Input<double>? sessionSampleRate;
+  final pulumi.Input<double?>? sessionSampleRate;
   /// An array that lists the types of telemetry data that this app monitor is to collect. Valid values are `errors`, `performance`, and `http`.
-  final pulumi.Input<List<String>>? telemetries;
+  final pulumi.Input<List<String>?>? telemetries;
 
   /// Creates a new [AppMonitorAppMonitorConfiguration].
   /// [allowCookies] If you set this to `true`, RUM web client sets two cookies, a session cookie and a user cookie. The cookies allow the RUM web client to collect data relating to the number of users an application has and the behavior of the application across a sequence of events. Cookies are stored in the top-level domain of the current page.
@@ -67,7 +67,7 @@ class AppMonitorAppMonitorConfiguration {
       guestRoleArn: (() { final guardedValue = map['guestRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identityPoolId: (() { final guardedValue = map['identityPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       includedPages: (() { final guardedValue = map['includedPages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      sessionSampleRate: (() { final guardedValue = map['sessionSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sessionSampleRate: (() { final guardedValue = map['sessionSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       telemetries: (() { final guardedValue = map['telemetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

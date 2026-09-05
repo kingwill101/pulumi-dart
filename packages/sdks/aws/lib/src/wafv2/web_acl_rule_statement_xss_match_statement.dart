@@ -5,8 +5,8 @@ import 'web_acl_rule_statement_xss_match_statement_field_to_match.dart';
 import 'web_acl_rule_statement_xss_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementXssMatchStatement {
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatch>? fieldToMatch;
-  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatch?>? fieldToMatch;
+  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementXssMatchStatement].
   /// [fieldToMatch] Optional.

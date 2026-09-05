@@ -5,7 +5,7 @@ import 'table_metadata_iceberg_schema.dart';
 
 class TableMetadataIceberg {
   /// Map of configuration properties for the Iceberg table, for example `write.distribution-mode` and `write.sort-order`.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Schema configuration for the Iceberg table. See `schema` below.
   final pulumi.Input<TableMetadataIcebergSchema> schema;
 

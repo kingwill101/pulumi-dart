@@ -12,31 +12,31 @@ import 'user_phone_numbers.dart';
 /// {@macro pulumi_identitystore_user_user_args_doc}
 class UserArgs {
   /// Details about the user's address. At most 1 address is allowed. Detailed below.
-  final pulumi.Input<UserAddresses>? addresses;
+  final pulumi.Input<UserAddresses?>? addresses;
   /// The name that is typically displayed when the user is referenced.
   final pulumi.Input<String> displayName;
   /// Details about the user's email. At most 1 email is allowed. Detailed below.
-  final pulumi.Input<UserEmails>? emails;
+  final pulumi.Input<UserEmails?>? emails;
   /// The globally unique identifier for the identity store that this user is in.
   final pulumi.Input<String> identityStoreId;
   /// The user's geographical region or location.
-  final pulumi.Input<String>? locale;
+  final pulumi.Input<String?>? locale;
   /// Details about the user's full name. Detailed below.
-  final pulumi.Input<UserName>? name;
+  final pulumi.Input<UserName?>? name;
   /// An alternate name for the user.
-  final pulumi.Input<String>? nickname;
+  final pulumi.Input<String?>? nickname;
   /// Details about the user's phone number. At most 1 phone number is allowed. Detailed below.
-  final pulumi.Input<UserPhoneNumbers>? phoneNumbers;
+  final pulumi.Input<UserPhoneNumbers?>? phoneNumbers;
   /// The preferred language of the user.
-  final pulumi.Input<String>? preferredLanguage;
+  final pulumi.Input<String?>? preferredLanguage;
   /// An URL that may be associated with the user.
-  final pulumi.Input<String>? profileUrl;
+  final pulumi.Input<String?>? profileUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The user's time zone.
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
   /// The user's title.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// A unique string used to identify the user. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. The limit is 128 characters.
   ///
   /// The following arguments are optional:
@@ -44,7 +44,7 @@ class UserArgs {
   /// The user type.
   ///
   /// &gt; Unless specified otherwise, all fields can contain up to 1024 characters of free-form text.
-  final pulumi.Input<String>? userType;
+  final pulumi.Input<String?>? userType;
 
   /// Creates a new [UserArgs].
   /// [addresses] Details about the user's address. At most 1 address is allowed. Detailed below.

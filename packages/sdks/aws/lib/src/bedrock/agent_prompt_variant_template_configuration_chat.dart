@@ -7,13 +7,13 @@ import 'agent_prompt_variant_template_configuration_chat_system.dart';
 import 'agent_prompt_variant_template_configuration_chat_tool_configuration.dart';
 
 class AgentPromptVariantTemplateConfigurationChat {
-  final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatInputVariable>>? inputVariables;
+  final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatInputVariable>?>? inputVariables;
   /// A list of messages in the chat for the prompt. See Message for more information.
   final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatMessage>> messages;
   /// A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
-  final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatSystem>>? systems;
+  final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatSystem>?>? systems;
   /// Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
-  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfiguration>? toolConfiguration;
+  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfiguration?>? toolConfiguration;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChat].
   /// [inputVariables] Optional.

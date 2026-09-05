@@ -10,27 +10,27 @@ import 'pipeline_thumbnail_config_permission.dart';
 /// Input properties used for looking up and filtering Pipeline resources.
 class PipelineState {
   /// The ARN of the Elastictranscoder pipeline.
-  final pulumi.Input<String>? arn;
-  /// The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
-  final pulumi.Input<String>? awsKmsKeyArn;
+  final pulumi.Input<String?>? arn;
+  /// KMS key that you want to use with this pipeline.
+  final pulumi.Input<String?>? awsKmsKeyArn;
   /// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
-  final pulumi.Input<PipelineContentConfig>? contentConfig;
+  final pulumi.Input<PipelineContentConfig?>? contentConfig;
   /// The permissions for the `contentConfig` object. (documented below)
-  final pulumi.Input<List<PipelineContentConfigPermission>>? contentConfigPermissions;
+  final pulumi.Input<List<PipelineContentConfigPermission>?>? contentConfigPermissions;
   /// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
-  final pulumi.Input<String>? inputBucket;
+  final pulumi.Input<String?>? inputBucket;
   /// The name of the pipeline. Maximum 40 characters
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status. (documented below)
-  final pulumi.Input<PipelineNotifications>? notifications;
+  final pulumi.Input<PipelineNotifications?>? notifications;
   /// The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files.
-  final pulumi.Input<String>? outputBucket;
+  final pulumi.Input<String?>? outputBucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? region;
+  /// IAM ARN for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
+  final pulumi.Input<String?>? role;
   /// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
-  final pulumi.Input<PipelineThumbnailConfig>? thumbnailConfig;
+  final pulumi.Input<PipelineThumbnailConfig?>? thumbnailConfig;
   /// The permissions for the `thumbnailConfig` object. (documented below)
   ///
   /// See ["Create Pipeline"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-pipeline.html) in the AWS docs for reference.
@@ -41,11 +41,11 @@ class PipelineState {
   /// you specify values for `contentConfig`, you must also specify values for
   /// `thumbnailConfig`. If you specify values for `contentConfig` and
   /// `thumbnailConfig`, omit the `outputBucket` object.
-  final pulumi.Input<List<PipelineThumbnailConfigPermission>>? thumbnailConfigPermissions;
+  final pulumi.Input<List<PipelineThumbnailConfigPermission>?>? thumbnailConfigPermissions;
 
   /// Creates a new [PipelineState].
   /// [arn] The ARN of the Elastictranscoder pipeline.
-  /// [awsKmsKeyArn] The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
+  /// [awsKmsKeyArn] KMS key that you want to use with this pipeline.
   /// [contentConfig] The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
   /// [contentConfigPermissions] The permissions for the `contentConfig` object. (documented below)
   /// [inputBucket] The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
@@ -53,7 +53,7 @@ class PipelineState {
   /// [notifications] The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status. (documented below)
   /// [outputBucket] The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [role] The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
+  /// [role] IAM ARN for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
   /// [thumbnailConfig] The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   /// [thumbnailConfigPermissions] The permissions for the `thumbnailConfig` object. (documented below)
   const PipelineState({

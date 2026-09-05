@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyRegistrationKeyRegistration {
   /// Whether the key is set as the default key for encryption and decryption use.
-  final pulumi.Input<bool>? defaultKey;
+  final pulumi.Input<bool?>? defaultKey;
   /// ARN of the AWS KMS key that is registered for encryption and decryption use.
   final pulumi.Input<String> keyArn;
 

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_public_ports_args.dart';
+import 'instance_public_ports_port_info.dart';
 import 'instance_public_ports_state.dart';
 
 /// Manages public ports for a Lightsail instance. Use this resource to open ports for a specific Amazon Lightsail instance and specify the IP addresses allowed to connect to the instance through the ports and the protocol.
@@ -16,11 +17,11 @@ import 'instance_public_ports_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example = new aws.lightsail.Instance("example", {
 ///     name: "example-instance",
@@ -29,7 +30,6 @@ import 'instance_public_ports_state.dart';
 ///     bundleId: "nano_3_0",
 /// });
 /// const exampleInstancePublicPorts = new aws.lightsail.InstancePublicPorts("example", {
-///     instanceName: example.name,
 ///     portInfos: [
 ///         {
 ///             protocol: "tcp",
@@ -43,24 +43,24 @@ import 'instance_public_ports_state.dart';
 ///             cidrs: ["192.168.1.0/24"],
 ///         },
 ///     ],
+///     instanceName: example.name,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example = aws.lightsail.Instance("example",
 ///     name="example-instance",
 ///     availability_zone=available.names[0],
 ///     blueprint_id="amazon_linux_2",
 ///     bundle_id="nano_3_0")
 /// example_instance_public_ports = aws.lightsail.InstancePublicPorts("example",
-///     instance_name=example.name,
 ///     port_infos=[
 ///         {
 ///             "protocol": "tcp",
@@ -73,7 +73,8 @@ import 'instance_public_ports_state.dart';
 ///             "to_port": 443,
 ///             "cidrs": ["192.168.1.0/24"],
 ///         },
-///     ])
+///     ],
+///     instance_name=example.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -85,7 +86,6 @@ import 'instance_public_ports_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -97,6 +97,7 @@ import 'instance_public_ports_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.LightSail.Instance("example", new()
@@ -109,7 +110,6 @@ import 'instance_public_ports_state.dart';
 ///
 ///     var exampleInstancePublicPorts = new Aws.LightSail.InstancePublicPorts("example", new()
 ///     {
-///         InstanceName = example.Name,
 ///         PortInfos = new[]
 ///         {
 ///             new Aws.LightSail.Inputs.InstancePublicPortsPortInfoArgs
@@ -129,6 +129,7 @@ import 'instance_public_ports_state.dart';
 ///                 },
 ///             },
 ///         },
+///         InstanceName = example.Name,
 ///     });
 ///
 /// });
@@ -145,7 +146,6 @@ import 'instance_public_ports_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -154,6 +154,7 @@ import 'instance_public_ports_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -168,7 +169,6 @@ import 'instance_public_ports_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewInstancePublicPorts(ctx, "example", &lightsail.InstancePublicPortsArgs{
-/// 			InstanceName: example.Name,
 /// 			PortInfos: lightsail.InstancePublicPortsPortInfoArray{
 /// 				&lightsail.InstancePublicPortsPortInfoArgs{
 /// 					Protocol: pulumi.String("tcp"),
@@ -184,6 +184,7 @@ import 'instance_public_ports_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			InstanceName: example.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -202,11 +203,11 @@ import 'instance_public_ports_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_lightsail_instance" "example" {
@@ -216,7 +217,6 @@ import 'instance_public_ports_state.dart';
 ///   bundle_id         = "nano_3_0"
 /// }
 /// resource "aws_lightsail_instancepublicports" "example" {
-///   instance_name = aws_lightsail_instance.example.name
 ///   port_infos {
 ///     protocol  = "tcp"
 ///     from_port = 80
@@ -228,6 +228,7 @@ import 'instance_public_ports_state.dart';
 ///     to_port   = 443
 ///     cidrs     = ["192.168.1.0/24"]
 ///   }
+///   instance_name = aws_lightsail_instance.example.name
 /// }
 /// ```
 /// ```java
@@ -258,11 +259,11 @@ import 'instance_public_ports_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new Instance("example", InstanceArgs.builder()
@@ -273,7 +274,6 @@ import 'instance_public_ports_state.dart';
 ///             .build());
 ///
 ///         var exampleInstancePublicPorts = new InstancePublicPorts("exampleInstancePublicPorts", InstancePublicPortsArgs.builder()
-///             .instanceName(example.name())
 ///             .portInfos(
 ///                 InstancePublicPortsPortInfoArgs.builder()
 ///                     .protocol("tcp")
@@ -286,6 +286,7 @@ import 'instance_public_ports_state.dart';
 ///                     .toPort(443)
 ///                     .cidrs("192.168.1.0/24")
 ///                     .build())
+///             .instanceName(example.name())
 ///             .build());
 ///
 ///     }
@@ -304,7 +305,6 @@ import 'instance_public_ports_state.dart';
 ///     type: aws:lightsail:InstancePublicPorts
 ///     name: example
 ///     properties:
-///       instanceName: ${example.name}
 ///       portInfos:
 ///         - protocol: tcp
 ///           fromPort: 80
@@ -314,16 +314,17 @@ import 'instance_public_ports_state.dart';
 ///           toPort: 443
 ///           cidrs:
 ///             - 192.168.1.0/24
+///       instanceName: ${example.name}
 /// variables:
 ///   available:
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         state: available
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - opt-in-not-required
+///         state: available
 /// ```
 class InstancePublicPorts extends pulumi.CustomResource {
   /// Name of the instance for which to open ports.
@@ -331,7 +332,7 @@ class InstancePublicPorts extends pulumi.CustomResource {
   /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `portInfo` Block for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> portInfos;
+  late final pulumi.Output<List<InstancePublicPortsPortInfo>> portInfos;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -347,10 +348,10 @@ class InstancePublicPorts extends pulumi.CustomResource {
           'aws:lightsail/instancePublicPorts:InstancePublicPorts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
-    portInfos = registerOutput<List<Map<String, dynamic>>>('portInfos');
+    portInfos = registerOutput<List<InstancePublicPortsPortInfo>>('portInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstancePublicPortsPortInfo>(guardedValue, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -359,11 +360,12 @@ class InstancePublicPorts extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstancePublicPortsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstancePublicPorts._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -378,7 +380,21 @@ class InstancePublicPorts extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     instanceName = registerOutput<String>('instanceName');
-    portInfos = registerOutput<List<Map<String, dynamic>>>('portInfos');
+    portInfos = registerOutput<List<InstancePublicPortsPortInfo>>('portInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstancePublicPortsPortInfo>(guardedValue, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [InstancePublicPorts] resource.
+  InstancePublicPorts.reference(String urn)
+    : super(
+        'aws:lightsail/instancePublicPorts:InstancePublicPorts',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    instanceName = registerOutput<String>('instanceName');
+    portInfos = registerOutput<List<InstancePublicPortsPortInfo>>('portInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstancePublicPortsPortInfo>(guardedValue, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

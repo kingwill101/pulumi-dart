@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kx_dataview_args.dart';
+import 'kx_dataview_segment_configuration.dart';
 import 'kx_dataview_state.dart';
 
 /// Resource for managing an AWS FinSpace Kx Dataview.
@@ -14,6 +15,10 @@ import 'kx_dataview_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.finspace.KxDataview("example", {
+///     segmentConfigurations: [{
+///         volumeName: exampleAwsFinspaceKxVolume.name,
+///         dbPaths: ["/*"],
+///     }],
 ///     name: "my-tf-kx-dataview",
 ///     environmentId: exampleAwsFinspaceKxEnvironment.id,
 ///     databaseName: exampleAwsFinspaceKxDatabase.name,
@@ -21,10 +26,12 @@ import 'kx_dataview_state.dart';
 ///     description: "Terraform managed Kx Dataview",
 ///     azMode: "SINGLE",
 ///     autoUpdate: true,
-///     segmentConfigurations: [{
-///         volumeName: exampleAwsFinspaceKxVolume.name,
-///         dbPaths: ["/*"],
-///     }],
+/// }, {
+///     customTimeouts: {
+///         create: "24h",
+///         update: "24h",
+///         "delete": "12h",
+///     },
 /// });
 /// ```
 /// ```python
@@ -32,6 +39,10 @@ import 'kx_dataview_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.finspace.KxDataview("example",
+///     segment_configurations=[{
+///         "volume_name": example_aws_finspace_kx_volume["name"],
+///         "db_paths": ["/*"],
+///     }],
 ///     name="my-tf-kx-dataview",
 ///     environment_id=example_aws_finspace_kx_environment["id"],
 ///     database_name=example_aws_finspace_kx_database["name"],
@@ -39,10 +50,7 @@ import 'kx_dataview_state.dart';
 ///     description="Terraform managed Kx Dataview",
 ///     az_mode="SINGLE",
 ///     auto_update=True,
-///     segment_configurations=[{
-///         "volume_name": example_aws_finspace_kx_volume["name"],
-///         "db_paths": ["/*"],
-///     }])
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="24h", update="24h", delete="12h")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,13 +62,6 @@ import 'kx_dataview_state.dart';
 /// {
 ///     var example = new Aws.FinSpace.KxDataview("example", new()
 ///     {
-///         Name = "my-tf-kx-dataview",
-///         EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
-///         DatabaseName = exampleAwsFinspaceKxDatabase.Name,
-///         AvailabilityZoneId = "use1-az2",
-///         Description = "Terraform managed Kx Dataview",
-///         AzMode = "SINGLE",
-///         AutoUpdate = true,
 ///         SegmentConfigurations = new[]
 ///         {
 ///             new Aws.FinSpace.Inputs.KxDataviewSegmentConfigurationArgs
@@ -72,6 +73,13 @@ import 'kx_dataview_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "my-tf-kx-dataview",
+///         EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
+///         DatabaseName = exampleAwsFinspaceKxDatabase.Name,
+///         AvailabilityZoneId = "use1-az2",
+///         Description = "Terraform managed Kx Dataview",
+///         AzMode = "SINGLE",
+///         AutoUpdate = true,
 ///     });
 ///
 /// });
@@ -87,13 +95,6 @@ import 'kx_dataview_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := finspace.NewKxDataview(ctx, "example", &finspace.KxDataviewArgs{
-/// 			Name:               pulumi.String("my-tf-kx-dataview"),
-/// 			EnvironmentId:      pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
-/// 			DatabaseName:       pulumi.Any(exampleAwsFinspaceKxDatabase.Name),
-/// 			AvailabilityZoneId: pulumi.String("use1-az2"),
-/// 			Description:        pulumi.String("Terraform managed Kx Dataview"),
-/// 			AzMode:             pulumi.String("SINGLE"),
-/// 			AutoUpdate:         pulumi.Bool(true),
 /// 			SegmentConfigurations: finspace.KxDataviewSegmentConfigurationArray{
 /// 				&finspace.KxDataviewSegmentConfigurationArgs{
 /// 					VolumeName: pulumi.Any(exampleAwsFinspaceKxVolume.Name),
@@ -102,7 +103,14 @@ import 'kx_dataview_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 		})
+/// 			Name:               pulumi.String("my-tf-kx-dataview"),
+/// 			EnvironmentId:      pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
+/// 			DatabaseName:       pulumi.Any(exampleAwsFinspaceKxDatabase.Name),
+/// 			AvailabilityZoneId: pulumi.String("use1-az2"),
+/// 			Description:        pulumi.String("Terraform managed Kx Dataview"),
+/// 			AzMode:             pulumi.String("SINGLE"),
+/// 			AutoUpdate:         pulumi.Bool(true),
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "24h", Update: "24h", Delete: "12h"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -120,6 +128,15 @@ import 'kx_dataview_state.dart';
 /// }
 ///
 /// resource "aws_finspace_kxdataview" "example" {
+///   timeouts {
+///     create = "24h"
+///     update = "24h"
+///     delete = "12h"
+///   }
+///   segment_configurations {
+///     volume_name = exampleAwsFinspaceKxVolume.name
+///     db_paths    = ["/*"]
+///   }
 ///   name                 = "my-tf-kx-dataview"
 ///   environment_id       = exampleAwsFinspaceKxEnvironment.id
 ///   database_name        = exampleAwsFinspaceKxDatabase.name
@@ -127,10 +144,6 @@ import 'kx_dataview_state.dart';
 ///   description          = "Terraform managed Kx Dataview"
 ///   az_mode              = "SINGLE"
 ///   auto_update          = true
-///   segment_configurations {
-///     volume_name = exampleAwsFinspaceKxVolume.name
-///     db_paths    = ["/*"]
-///   }
 /// }
 /// ```
 /// ```java
@@ -142,6 +155,8 @@ import 'kx_dataview_state.dart';
 /// import com.pulumi.aws.finspace.KxDataview;
 /// import com.pulumi.aws.finspace.KxDataviewArgs;
 /// import com.pulumi.aws.finspace.inputs.KxDataviewSegmentConfigurationArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -156,6 +171,10 @@ import 'kx_dataview_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new KxDataview("example", KxDataviewArgs.builder()
+///             .segmentConfigurations(KxDataviewSegmentConfigurationArgs.builder()
+///                 .volumeName(exampleAwsFinspaceKxVolume.name())
+///                 .dbPaths("/*")
+///                 .build())
 ///             .name("my-tf-kx-dataview")
 ///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
 ///             .databaseName(exampleAwsFinspaceKxDatabase.name())
@@ -163,11 +182,13 @@ import 'kx_dataview_state.dart';
 ///             .description("Terraform managed Kx Dataview")
 ///             .azMode("SINGLE")
 ///             .autoUpdate(true)
-///             .segmentConfigurations(KxDataviewSegmentConfigurationArgs.builder()
-///                 .volumeName(exampleAwsFinspaceKxVolume.name())
-///                 .dbPaths("/*")
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("24h"))
+///                     .update(CustomTimeouts.parseTimeoutString("24h"))
+///                     .delete(CustomTimeouts.parseTimeoutString("12h"))
 ///                 .build())
-///             .build());
+///                 .build());
 ///
 ///     }
 /// }
@@ -177,6 +198,10 @@ import 'kx_dataview_state.dart';
 ///   example:
 ///     type: aws:finspace:KxDataview
 ///     properties:
+///       segmentConfigurations:
+///         - volumeName: ${exampleAwsFinspaceKxVolume.name}
+///           dbPaths:
+///             - /*
 ///       name: my-tf-kx-dataview
 ///       environmentId: ${exampleAwsFinspaceKxEnvironment.id}
 ///       databaseName: ${exampleAwsFinspaceKxDatabase.name}
@@ -184,10 +209,11 @@ import 'kx_dataview_state.dart';
 ///       description: Terraform managed Kx Dataview
 ///       azMode: SINGLE
 ///       autoUpdate: true
-///       segmentConfigurations:
-///         - volumeName: ${exampleAwsFinspaceKxVolume.name}
-///           dbPaths:
-///             - /*
+///     options:
+///       customTimeouts:
+///         create: 24h
+///         update: 24h
+///         delete: 12h
 /// ```
 ///
 ///
@@ -199,7 +225,7 @@ import 'kx_dataview_state.dart';
 /// $ pulumi import aws:finspace/kxDataview:KxDataview example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-database,my-tf-kx-dataview
 /// ```
 class KxDataview extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX dataview.
+  /// ARN identifier of the KX dataview.
   late final pulumi.Output<String> arn;
   /// Whether to apply all the future additions and corrections automatically to the dataview when you ingest new changesets. Defaults to `false`.
   late final pulumi.Output<bool> autoUpdate;
@@ -228,7 +254,7 @@ class KxDataview extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment. See `segmentConfigurations` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> segmentConfigurations;
+  late final pulumi.Output<List<KxDataviewSegmentConfiguration>?> segmentConfigurations;
   /// Status of the dataview.
   late final pulumi.Output<String> status;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -248,7 +274,7 @@ class KxDataview extends pulumi.CustomResource {
           'aws:finspace/kxDataview:KxDataview',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoUpdate = registerOutput<bool>('autoUpdate');
@@ -263,10 +289,10 @@ class KxDataview extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     readWrite = registerOutput<bool?>('readWrite');
     region = registerOutput<String>('region');
-    segmentConfigurations = registerOutput<List<Map<String, dynamic>>?>('segmentConfigurations');
+    segmentConfigurations = registerOutput<List<KxDataviewSegmentConfiguration>?>('segmentConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(guardedValue, (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [KxDataview] resource's state with the given [name] and [id].
@@ -274,11 +300,12 @@ class KxDataview extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxDataviewState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxDataview._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,9 +332,37 @@ class KxDataview extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     readWrite = registerOutput<bool?>('readWrite');
     region = registerOutput<String>('region');
-    segmentConfigurations = registerOutput<List<Map<String, dynamic>>?>('segmentConfigurations');
+    segmentConfigurations = registerOutput<List<KxDataviewSegmentConfiguration>?>('segmentConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(guardedValue, (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [KxDataview] resource.
+  KxDataview.reference(String urn)
+    : super(
+        'aws:finspace/kxDataview:KxDataview',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoUpdate = registerOutput<bool>('autoUpdate');
+    availabilityZoneId = registerOutput<String?>('availabilityZoneId');
+    azMode = registerOutput<String>('azMode');
+    changesetId = registerOutput<String?>('changesetId');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    databaseName = registerOutput<String>('databaseName');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String>('environmentId');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    readWrite = registerOutput<bool?>('readWrite');
+    region = registerOutput<String>('region');
+    segmentConfigurations = registerOutput<List<KxDataviewSegmentConfiguration>?>('segmentConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(guardedValue, (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

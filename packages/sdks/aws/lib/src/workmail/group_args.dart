@@ -10,15 +10,15 @@ class GroupArgs {
   /// Primary email address used to register the group with WorkMail.
   final pulumi.Input<String> email;
   /// Whether to hide the group from the global address list.
-  final pulumi.Input<bool>? hiddenFromGlobalAddressList;
+  final pulumi.Input<bool?>? hiddenFromGlobalAddressList;
   /// Name of the group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Identifier of the WorkMail organization where the group is managed.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> organizationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GroupArgs].
   /// [email] Primary email address used to register the group with WorkMail.

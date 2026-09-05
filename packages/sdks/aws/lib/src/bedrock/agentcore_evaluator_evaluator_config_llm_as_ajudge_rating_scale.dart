@@ -6,9 +6,9 @@ import 'agentcore_evaluator_evaluator_config_llm_as_ajudge_rating_scale_numerica
 
 class AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScale {
   /// One or more categorical rating scale definitions. See `categorical` below.
-  final pulumi.Input<List<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleCategorical>>? categoricals;
+  final pulumi.Input<List<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleCategorical>?>? categoricals;
   /// One or more numerical rating scale definitions. See `numerical` below.
-  final pulumi.Input<List<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumerical>>? numericals;
+  final pulumi.Input<List<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumerical>?>? numericals;
 
   /// Creates a new [AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScale].
   /// [categoricals] One or more categorical rating scale definitions. See `categorical` below.

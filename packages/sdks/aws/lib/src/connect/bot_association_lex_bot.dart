@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BotAssociationLexBot {
   /// The Region that the Amazon Lex (V1) bot was created in. Defaults to current region.
-  final pulumi.Input<String>? lexRegion;
+  final pulumi.Input<String?>? lexRegion;
   /// The name of the Amazon Lex (V1) bot.
   final pulumi.Input<String> name;
 

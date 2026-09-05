@@ -10,17 +10,17 @@ import 'capacity_provider_managed_instances_provider.dart';
 /// {@macro pulumi_ecs_capacity_provider_capacity_provider_args_doc}
 class CapacityProviderArgs {
   /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
-  final pulumi.Input<CapacityProviderAutoScalingGroupProvider>? autoScalingGroupProvider;
+  final pulumi.Input<CapacityProviderAutoScalingGroupProvider?>? autoScalingGroupProvider;
   /// Name of the ECS cluster. Required when using `managedInstancesProvider`. Must not be set when using `autoScalingGroupProvider`.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Configuration block for the managed instances provider. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
-  final pulumi.Input<CapacityProviderManagedInstancesProvider>? managedInstancesProvider;
+  final pulumi.Input<CapacityProviderManagedInstancesProvider?>? managedInstancesProvider;
   /// Name of the capacity provider.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CapacityProviderArgs].
   /// [autoScalingGroupProvider] Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.

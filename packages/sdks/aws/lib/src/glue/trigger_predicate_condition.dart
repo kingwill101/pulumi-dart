@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerPredicateCondition {
   /// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
-  final pulumi.Input<String>? crawlState;
+  final pulumi.Input<String?>? crawlState;
   /// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
-  final pulumi.Input<String>? crawlerName;
+  final pulumi.Input<String?>? crawlerName;
   /// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// A logical operator. Defaults to `EQUALS`.
-  final pulumi.Input<String>? logicalOperator;
+  final pulumi.Input<String?>? logicalOperator;
   /// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [TriggerPredicateCondition].
   /// [crawlState] The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.

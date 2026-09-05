@@ -5,15 +5,15 @@ import 'configuration_policy_configuration_policy.dart';
 
 /// Input properties used for looking up and filtering ConfigurationPolicy resources.
 class ConfigurationPolicyState {
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Defines how Security Hub is configured. See below.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicy>? configurationPolicy;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicy?>? configurationPolicy;
   /// The description of the configuration policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the configuration policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ConfigurationPolicyState].
   /// [arn] Optional.

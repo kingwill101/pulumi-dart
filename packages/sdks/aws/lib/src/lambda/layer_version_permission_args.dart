@@ -12,13 +12,13 @@ class LayerVersionPermissionArgs {
   /// Name or ARN of the Lambda Layer.
   final pulumi.Input<String> layerName;
   /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organizationId` is provided.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// AWS account ID that should be able to use your Lambda Layer. Use `*` to share with all AWS accounts.
   final pulumi.Input<String> principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to retain the permission when the resource is destroyed. Default is `false`.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Unique identifier for the permission statement.
   final pulumi.Input<String> statementId;
   /// Version of Lambda Layer to grant access to. Note: permissions only apply to a single version of a layer.
@@ -68,7 +68,7 @@ class LayerVersionPermissionArgs {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       statementId: pulumi.Input.fromValue(map['statementId'] as String),
-      versionNumber: pulumi.Input.fromValue(map['versionNumber'] as int),
+      versionNumber: pulumi.Input.fromValue((map['versionNumber'] as num).toInt()),
     );
   }
 }

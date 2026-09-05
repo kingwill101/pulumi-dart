@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_capacity_providers_args.dart';
+import 'cluster_capacity_providers_default_capacity_provider_strategy.dart';
 import 'cluster_capacity_providers_state.dart';
 
 /// Manages the capacity providers of an ECS Cluster.
@@ -17,13 +18,13 @@ import 'cluster_capacity_providers_state.dart';
 ///
 /// const example = new aws.ecs.Cluster("example", {name: "my-cluster"});
 /// const exampleClusterCapacityProviders = new aws.ecs.ClusterCapacityProviders("example", {
-///     clusterName: example.name,
-///     capacityProviders: ["FARGATE"],
 ///     defaultCapacityProviderStrategies: [{
 ///         base: 1,
 ///         weight: 100,
 ///         capacityProvider: "FARGATE",
 ///     }],
+///     clusterName: example.name,
+///     capacityProviders: ["FARGATE"],
 /// });
 /// ```
 /// ```python
@@ -32,13 +33,13 @@ import 'cluster_capacity_providers_state.dart';
 ///
 /// example = aws.ecs.Cluster("example", name="my-cluster")
 /// example_cluster_capacity_providers = aws.ecs.ClusterCapacityProviders("example",
-///     cluster_name=example.name,
-///     capacity_providers=["FARGATE"],
 ///     default_capacity_provider_strategies=[{
 ///         "base": 1,
 ///         "weight": 100,
 ///         "capacity_provider": "FARGATE",
-///     }])
+///     }],
+///     cluster_name=example.name,
+///     capacity_providers=["FARGATE"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55,11 +56,6 @@ import 'cluster_capacity_providers_state.dart';
 ///
 ///     var exampleClusterCapacityProviders = new Aws.Ecs.ClusterCapacityProviders("example", new()
 ///     {
-///         ClusterName = example.Name,
-///         CapacityProviders = new[]
-///         {
-///             "FARGATE",
-///         },
 ///         DefaultCapacityProviderStrategies = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.ClusterCapacityProvidersDefaultCapacityProviderStrategyArgs
@@ -68,6 +64,11 @@ import 'cluster_capacity_providers_state.dart';
 ///                 Weight = 100,
 ///                 CapacityProvider = "FARGATE",
 ///             },
+///         },
+///         ClusterName = example.Name,
+///         CapacityProviders = new[]
+///         {
+///             "FARGATE",
 ///         },
 ///     });
 ///
@@ -90,16 +91,16 @@ import 'cluster_capacity_providers_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewClusterCapacityProviders(ctx, "example", &ecs.ClusterCapacityProvidersArgs{
-/// 			ClusterName: example.Name,
-/// 			CapacityProviders: pulumi.StringArray{
-/// 				pulumi.String("FARGATE"),
-/// 			},
 /// 			DefaultCapacityProviderStrategies: ecs.ClusterCapacityProvidersDefaultCapacityProviderStrategyArray{
 /// 				&ecs.ClusterCapacityProvidersDefaultCapacityProviderStrategyArgs{
 /// 					Base:             pulumi.Int(1),
 /// 					Weight:           pulumi.Int(100),
 /// 					CapacityProvider: pulumi.String("FARGATE"),
 /// 				},
+/// 			},
+/// 			ClusterName: example.Name,
+/// 			CapacityProviders: pulumi.StringArray{
+/// 				pulumi.String("FARGATE"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -122,13 +123,13 @@ import 'cluster_capacity_providers_state.dart';
 ///   name = "my-cluster"
 /// }
 /// resource "aws_ecs_clustercapacityproviders" "example" {
-///   cluster_name       = aws_ecs_cluster.example.name
-///   capacity_providers = ["FARGATE"]
 ///   default_capacity_provider_strategies {
 ///     base              = 1
 ///     weight            = 100
 ///     capacity_provider = "FARGATE"
 ///   }
+///   cluster_name       = aws_ecs_cluster.example.name
+///   capacity_providers = ["FARGATE"]
 /// }
 /// ```
 /// ```java
@@ -160,13 +161,13 @@ import 'cluster_capacity_providers_state.dart';
 ///             .build());
 ///
 ///         var exampleClusterCapacityProviders = new ClusterCapacityProviders("exampleClusterCapacityProviders", ClusterCapacityProvidersArgs.builder()
-///             .clusterName(example.name())
-///             .capacityProviders("FARGATE")
 ///             .defaultCapacityProviderStrategies(ClusterCapacityProvidersDefaultCapacityProviderStrategyArgs.builder()
 ///                 .base(1)
 ///                 .weight(100)
 ///                 .capacityProvider("FARGATE")
 ///                 .build())
+///             .clusterName(example.name())
+///             .capacityProviders("FARGATE")
 ///             .build());
 ///
 ///     }
@@ -182,13 +183,13 @@ import 'cluster_capacity_providers_state.dart';
 ///     type: aws:ecs:ClusterCapacityProviders
 ///     name: example
 ///     properties:
-///       clusterName: ${example.name}
-///       capacityProviders:
-///         - FARGATE
 ///       defaultCapacityProviderStrategies:
 ///         - base: 1
 ///           weight: 100
 ///           capacityProvider: FARGATE
+///       clusterName: ${example.name}
+///       capacityProviders:
+///         - FARGATE
 /// ```
 ///
 ///
@@ -205,7 +206,7 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
   /// Name of the ECS cluster to manage capacity providers for.
   late final pulumi.Output<String> clusterName;
   /// Set of capacity provider strategies to use by default for the cluster. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> defaultCapacityProviderStrategies;
+  late final pulumi.Output<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?> defaultCapacityProviderStrategies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -221,11 +222,11 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
           'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    capacityProviders = registerOutput<List<String>?>('capacityProviders');
+    capacityProviders = registerOutput<List<String>?>('capacityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterName = registerOutput<String>('clusterName');
-    defaultCapacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('defaultCapacityProviderStrategies');
+    defaultCapacityProviderStrategies = registerOutput<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>('defaultCapacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(guardedValue, (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -234,11 +235,12 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterCapacityProvidersState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterCapacityProviders._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,9 +254,24 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    capacityProviders = registerOutput<List<String>?>('capacityProviders');
+    capacityProviders = registerOutput<List<String>?>('capacityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterName = registerOutput<String>('clusterName');
-    defaultCapacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('defaultCapacityProviderStrategies');
+    defaultCapacityProviderStrategies = registerOutput<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>('defaultCapacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(guardedValue, (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ClusterCapacityProviders] resource.
+  ClusterCapacityProviders.reference(String urn)
+    : super(
+        'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    capacityProviders = registerOutput<List<String>?>('capacityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterName = registerOutput<String>('clusterName');
+    defaultCapacityProviderStrategies = registerOutput<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>('defaultCapacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(guardedValue, (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

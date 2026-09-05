@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AppregistryApplication resources.
 class AppregistryApplicationState {
   /// A map with a single tag key-value pair used to associate resources with the application. This attribute can be passed directly into the `tags` argument of another resource, or merged into a map of existing tags.
-  final pulumi.Input<Map<String, String>>? applicationTag;
-  /// ARN (Amazon Resource Name) of the application.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<Map<String, String>?>? applicationTag;
+  /// ARN of the application.
+  final pulumi.Input<String?>? arn;
   /// Description of the application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the application. The name must be unique within an AWS region.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags assigned to the Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AppregistryApplicationState].
   /// [applicationTag] A map with a single tag key-value pair used to associate resources with the application. This attribute can be passed directly into the `tags` argument of another resource, or merged into a map of existing tags.
-  /// [arn] ARN (Amazon Resource Name) of the application.
+  /// [arn] ARN of the application.
   /// [description] Description of the application.
   /// [name] Name of the application. The name must be unique within an AWS region.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

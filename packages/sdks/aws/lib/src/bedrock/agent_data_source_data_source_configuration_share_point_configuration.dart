@@ -5,8 +5,8 @@ import 'agent_data_source_data_source_configuration_share_point_configuration_cr
 import 'agent_data_source_data_source_configuration_share_point_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationSharePointConfiguration {
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration>? crawlerConfiguration;
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration>? sourceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfiguration].
   /// [crawlerConfiguration] Optional.

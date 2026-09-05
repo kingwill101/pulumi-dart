@@ -7,9 +7,9 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
   /// ARN of the Bedrock Knowledge Base.
   final pulumi.Input<String> bedrockKnowledgeBaseArn;
   /// Whether to return exact responses from the knowledge base. Defaults to `false`.
-  final pulumi.Input<bool>? exactResponse;
+  final pulumi.Input<bool?>? exactResponse;
   /// Configuration block for exact response fields. See `exactResponseFields`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields>? exactResponseFields;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields?>? exactResponseFields;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration].
   /// [bedrockKnowledgeBaseArn] ARN of the Bedrock Knowledge Base.

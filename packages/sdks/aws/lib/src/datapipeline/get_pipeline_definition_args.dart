@@ -9,11 +9,11 @@ import 'get_pipeline_definition_parameter_value.dart';
 /// {@macro pulumi_datapipeline_get_pipeline_definition_get_pipeline_definition_args_doc}
 class GetPipelineDefinitionArgs {
   /// Parameter values used in the pipeline definition. See below
-  final pulumi.Input<List<GetPipelineDefinitionParameterValue>>? parameterValues;
+  final pulumi.Input<List<GetPipelineDefinitionParameterValue>?>? parameterValues;
   /// ID of the pipeline.
   final pulumi.Input<String> pipelineId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetPipelineDefinitionArgs].
   /// [parameterValues] Parameter values used in the pipeline definition. See below

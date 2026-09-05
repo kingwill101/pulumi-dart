@@ -14,7 +14,7 @@ class ContinuousDeploymentPolicyArgs {
   /// CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
   final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames> stagingDistributionDnsNames;
   /// Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
-  final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
+  final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig?>? trafficConfig;
 
   /// Creates a new [ContinuousDeploymentPolicyArgs].
   /// [enabled] Whether this continuous deployment policy is enabled.

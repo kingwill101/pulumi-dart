@@ -10,17 +10,17 @@ import 'cost_category_rule_rule_not_tags.dart';
 
 class CostCategoryRuleRuleNot {
   /// Return results that match both `Dimension` objects.
-  final pulumi.Input<List<CostCategoryRuleRuleNotAnd>>? ands;
+  final pulumi.Input<List<CostCategoryRuleRuleNotAnd>?>? ands;
   /// Configuration block for the filter that's based on `CostCategory` values. See below.
-  final pulumi.Input<CostCategoryRuleRuleNotCostCategory>? costCategory;
+  final pulumi.Input<CostCategoryRuleRuleNotCostCategory?>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See below.
-  final pulumi.Input<CostCategoryRuleRuleNotDimension>? dimension;
+  final pulumi.Input<CostCategoryRuleRuleNotDimension?>? dimension;
   /// Return results that match both `Dimension` object.
-  final pulumi.Input<CostCategoryRuleRuleNotNot>? not;
+  final pulumi.Input<CostCategoryRuleRuleNotNot?>? not;
   /// Return results that match both `Dimension` object.
-  final pulumi.Input<List<CostCategoryRuleRuleNotOr>>? ors;
+  final pulumi.Input<List<CostCategoryRuleRuleNotOr>?>? ors;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<CostCategoryRuleRuleNotTags>? tags;
+  final pulumi.Input<CostCategoryRuleRuleNotTags?>? tags;
 
   /// Creates a new [CostCategoryRuleRuleNot].
   /// [ands] Return results that match both `Dimension` objects.

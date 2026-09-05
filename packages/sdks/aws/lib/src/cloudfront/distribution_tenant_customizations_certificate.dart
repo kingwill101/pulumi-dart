@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTenantCustomizationsCertificate {
   /// ARN of the distribution tenant.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
 
   /// Creates a new [DistributionTenantCustomizationsCertificate].
   /// [arn] ARN of the distribution tenant.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dms_replication_subnet_group_replication_subnet_group_args_doc}
 class ReplicationSubnetGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Description for the subnet group.
   final pulumi.Input<String> replicationSubnetGroupDescription;
   /// Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
@@ -16,7 +16,7 @@ class ReplicationSubnetGroupArgs {
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   final pulumi.Input<List<String>> subnetIds;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ReplicationSubnetGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

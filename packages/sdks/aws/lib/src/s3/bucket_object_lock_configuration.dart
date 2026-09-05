@@ -5,9 +5,9 @@ import 'bucket_object_lock_configuration_rule.dart';
 
 class BucketObjectLockConfiguration {
   /// Whether this bucket has an Object Lock configuration enabled. Valid value is `Enabled`. Use the top-level argument `objectLockEnabled` instead.
-  final pulumi.Input<String>? objectLockEnabled;
+  final pulumi.Input<String?>? objectLockEnabled;
   /// Object Lock rule in place for this bucket. See `object_lock_configuration.rule` Block below for details.
-  final pulumi.Input<BucketObjectLockConfigurationRule>? rule;
+  final pulumi.Input<BucketObjectLockConfigurationRule?>? rule;
 
   /// Creates a new [BucketObjectLockConfiguration].
   /// [objectLockEnabled] Whether this bucket has an Object Lock configuration enabled. Valid value is `Enabled`. Use the top-level argument `objectLockEnabled` instead.

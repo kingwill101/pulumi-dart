@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_args.dart';
+import 'network_interface_attachment.dart';
 import 'network_interface_ena_srd_specification.dart';
 import 'network_interface_state.dart';
 
@@ -13,13 +14,13 @@ import 'network_interface_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ec2.NetworkInterface("test", {
-///     subnetId: publicA.id,
-///     privateIps: ["10.0.0.50"],
-///     securityGroups: [web.id],
 ///     attachments: [{
 ///         instance: testAwsInstance.id,
 ///         deviceIndex: 1,
 ///     }],
+///     subnetId: publicA.id,
+///     privateIps: ["10.0.0.50"],
+///     securityGroups: [web.id],
 /// });
 /// ```
 /// ```python
@@ -27,13 +28,13 @@ import 'network_interface_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ec2.NetworkInterface("test",
-///     subnet_id=public_a["id"],
-///     private_ips=["10.0.0.50"],
-///     security_groups=[web["id"]],
 ///     attachments=[{
 ///         "instance": test_aws_instance["id"],
 ///         "device_index": 1,
-///     }])
+///     }],
+///     subnet_id=public_a["id"],
+///     private_ips=["10.0.0.50"],
+///     security_groups=[web["id"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,6 +46,14 @@ import 'network_interface_state.dart';
 /// {
 ///     var test = new Aws.Ec2.NetworkInterface("test", new()
 ///     {
+///         Attachments = new[]
+///         {
+///             new Aws.Ec2.Inputs.NetworkInterfaceAttachmentArgs
+///             {
+///                 Instance = testAwsInstance.Id,
+///                 DeviceIndex = 1,
+///             },
+///         },
 ///         SubnetId = publicA.Id,
 ///         PrivateIps = new[]
 ///         {
@@ -53,14 +62,6 @@ import 'network_interface_state.dart';
 ///         SecurityGroups = new[]
 ///         {
 ///             web.Id,
-///         },
-///         Attachments = new[]
-///         {
-///             new Aws.Ec2.Inputs.NetworkInterfaceAttachmentArgs
-///             {
-///                 Instance = testAwsInstance.Id,
-///                 DeviceIndex = 1,
-///             },
 ///         },
 ///     });
 ///
@@ -77,18 +78,18 @@ import 'network_interface_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewNetworkInterface(ctx, "test", &ec2.NetworkInterfaceArgs{
+/// 			Attachments: ec2.NetworkInterfaceAttachmentTypeArray{
+/// 				&ec2.NetworkInterfaceAttachmentTypeArgs{
+/// 					Instance:    pulumi.Any(testAwsInstance.Id),
+/// 					DeviceIndex: pulumi.Int(1),
+/// 				},
+/// 			},
 /// 			SubnetId: pulumi.Any(publicA.Id),
 /// 			PrivateIps: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.50"),
 /// 			},
 /// 			SecurityGroups: pulumi.StringArray{
 /// 				web.Id,
-/// 			},
-/// 			Attachments: ec2.NetworkInterfaceAttachmentTypeArray{
-/// 				&ec2.NetworkInterfaceAttachmentTypeArgs{
-/// 					Instance:    pulumi.Any(testAwsInstance.Id),
-/// 					DeviceIndex: pulumi.Int(1),
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -108,13 +109,13 @@ import 'network_interface_state.dart';
 /// }
 ///
 /// resource "aws_ec2_networkinterface" "test" {
-///   subnet_id       = publicA.id
-///   private_ips     = ["10.0.0.50"]
-///   security_groups = [web.id]
 ///   attachments {
 ///     instance     = testAwsInstance.id
 ///     device_index = 1
 ///   }
+///   subnet_id       = publicA.id
+///   private_ips     = ["10.0.0.50"]
+///   security_groups = [web.id]
 /// }
 /// ```
 /// ```java
@@ -140,13 +141,13 @@ import 'network_interface_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new NetworkInterface("test", NetworkInterfaceArgs.builder()
-///             .subnetId(publicA.id())
-///             .privateIps("10.0.0.50")
-///             .securityGroups(web.id())
 ///             .attachments(NetworkInterfaceAttachmentArgs.builder()
 ///                 .instance(testAwsInstance.id())
 ///                 .deviceIndex(1)
 ///                 .build())
+///             .subnetId(publicA.id())
+///             .privateIps("10.0.0.50")
+///             .securityGroups(web.id())
 ///             .build());
 ///
 ///     }
@@ -157,14 +158,14 @@ import 'network_interface_state.dart';
 ///   test:
 ///     type: aws:ec2:NetworkInterface
 ///     properties:
+///       attachments:
+///         - instance: ${testAwsInstance.id}
+///           deviceIndex: 1
 ///       subnetId: ${publicA.id}
 ///       privateIps:
 ///         - 10.0.0.50
 ///       securityGroups:
 ///         - ${web.id}
-///       attachments:
-///         - instance: ${testAwsInstance.id}
-///           deviceIndex: 1
 /// ```
 ///
 ///
@@ -208,7 +209,7 @@ class NetworkInterface extends pulumi.CustomResource {
   /// ARN of the network interface.
   late final pulumi.Output<String> arn;
   /// Configuration block to define the attachment of the ENI. See Attachment below for more details!
-  late final pulumi.Output<List<Map<String, dynamic>>> attachments;
+  late final pulumi.Output<List<NetworkInterfaceAttachment>> attachments;
   /// Description for the network interface.
   late final pulumi.Output<String?> description;
   /// Configures ENA Express for the network interface. The ENI must be attached to an instance to configure ENA Express. See ENA SRD Specification below for more details.
@@ -276,37 +277,37 @@ class NetworkInterface extends pulumi.CustomResource {
           'aws:ec2/networkInterface:NetworkInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
+    attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceAttachment>(guardedValue, (value) => NetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     enaSrdSpecification = registerOutput<NetworkInterfaceEnaSrdSpecification?>('enaSrdSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     interfaceType = registerOutput<String>('interfaceType');
     ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
-    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
+    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
     ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
-    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
-    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
+    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     macAddress = registerOutput<String>('macAddress');
     outpostArn = registerOutput<String>('outpostArn');
     ownerId = registerOutput<String>('ownerId');
     privateDnsName = registerOutput<String>('privateDnsName');
     privateIp = registerOutput<String>('privateIp');
     privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
-    privateIpLists = registerOutput<List<String>>('privateIpLists');
-    privateIps = registerOutput<List<String>>('privateIps');
+    privateIpLists = registerOutput<List<String>>('privateIpLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateIps = registerOutput<List<String>>('privateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     privateIpsCount = registerOutput<int>('privateIpsCount');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkInterface] resource's state with the given [name] and [id].
@@ -314,11 +315,12 @@ class NetworkInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,33 +335,73 @@ class NetworkInterface extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
+    attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceAttachment>(guardedValue, (value) => NetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     enaSrdSpecification = registerOutput<NetworkInterfaceEnaSrdSpecification?>('enaSrdSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     interfaceType = registerOutput<String>('interfaceType');
     ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
-    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
+    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
     ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
-    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
-    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
+    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     macAddress = registerOutput<String>('macAddress');
     outpostArn = registerOutput<String>('outpostArn');
     ownerId = registerOutput<String>('ownerId');
     privateDnsName = registerOutput<String>('privateDnsName');
     privateIp = registerOutput<String>('privateIp');
     privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
-    privateIpLists = registerOutput<List<String>>('privateIpLists');
-    privateIps = registerOutput<List<String>>('privateIps');
+    privateIpLists = registerOutput<List<String>>('privateIpLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateIps = registerOutput<List<String>>('privateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     privateIpsCount = registerOutput<int>('privateIpsCount');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterface] resource.
+  NetworkInterface.reference(String urn)
+    : super(
+        'aws:ec2/networkInterface:NetworkInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceAttachment>(guardedValue, (value) => NetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    enaSrdSpecification = registerOutput<NetworkInterfaceEnaSrdSpecification?>('enaSrdSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
+    interfaceType = registerOutput<String>('interfaceType');
+    ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
+    ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    ipv6AddressListEnabled = registerOutput<bool?>('ipv6AddressListEnabled');
+    ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
+    ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    macAddress = registerOutput<String>('macAddress');
+    outpostArn = registerOutput<String>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    privateDnsName = registerOutput<String>('privateDnsName');
+    privateIp = registerOutput<String>('privateIp');
+    privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
+    privateIpLists = registerOutput<List<String>>('privateIpLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateIps = registerOutput<List<String>>('privateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateIpsCount = registerOutput<int>('privateIpsCount');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

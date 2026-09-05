@@ -10,7 +10,7 @@ import 'field_level_encryption_config_query_arg_profile_config.dart';
 /// {@macro pulumi_cloudfront_field_level_encryption_config_field_level_encryption_config_args_doc}
 class FieldLevelEncryptionConfigArgs {
   /// An optional comment about the Field Level Encryption Config.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Content Type Profile Config specifies when to forward content if a content type isn't recognized and profiles to use as by default in a request if a query argument doesn't specify a profile to use.
   final pulumi.Input<FieldLevelEncryptionConfigContentTypeProfileConfig> contentTypeProfileConfig;
   /// Query Arg Profile Config that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.

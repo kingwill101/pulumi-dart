@@ -13,11 +13,11 @@ import 'permission_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleCertificateAuthority = new aws.acmpca.CertificateAuthority("example", {certificateAuthorityConfiguration: {
-///     keyAlgorithm: "RSA_4096",
-///     signingAlgorithm: "SHA512WITHRSA",
 ///     subject: {
 ///         commonName: "example.com",
 ///     },
+///     keyAlgorithm: "RSA_4096",
+///     signingAlgorithm: "SHA512WITHRSA",
 /// }});
 /// const example = new aws.acmpca.Permission("example", {
 ///     certificateAuthorityArn: exampleCertificateAuthority.arn,
@@ -34,11 +34,11 @@ import 'permission_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_certificate_authority = aws.acmpca.CertificateAuthority("example", certificate_authority_configuration={
-///     "key_algorithm": "RSA_4096",
-///     "signing_algorithm": "SHA512WITHRSA",
 ///     "subject": {
 ///         "common_name": "example.com",
 ///     },
+///     "key_algorithm": "RSA_4096",
+///     "signing_algorithm": "SHA512WITHRSA",
 /// })
 /// example = aws.acmpca.Permission("example",
 ///     certificate_authority_arn=example_certificate_authority.arn,
@@ -61,12 +61,12 @@ import 'permission_state.dart';
 ///     {
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
 ///     });
 ///
@@ -96,11 +96,11 @@ import 'permission_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleCertificateAuthority, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -138,11 +138,11 @@ import 'permission_state.dart';
 /// }
 /// resource "aws_acmpca_certificateauthority" "example" {
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
 /// }
 /// ```
@@ -173,11 +173,11 @@ import 'permission_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleCertificateAuthority = new CertificateAuthority("exampleCertificateAuthority", CertificateAuthorityArgs.builder()
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
 ///             .build());
 ///
@@ -209,10 +209,10 @@ import 'permission_state.dart';
 ///     name: example
 ///     properties:
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
 /// ```
 class Permission extends pulumi.CustomResource {
   /// Actions that the specified AWS service principal can use. These include `IssueCertificate`, `GetCertificate`, and `ListPermissions`. Note that in order for ACM to automatically rotate certificates issued by a PCA, it must be granted permission on all 3 actions, as per the example above.
@@ -240,9 +240,9 @@ class Permission extends pulumi.CustomResource {
           'aws:acmpca/permission:Permission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    actions = registerOutput<List<String>>('actions');
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
     policy = registerOutput<String>('policy');
     principal = registerOutput<String>('principal');
@@ -255,11 +255,12 @@ class Permission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Permission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,7 +274,24 @@ class Permission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<String>>('actions');
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    policy = registerOutput<String>('policy');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    sourceAccount = registerOutput<String>('sourceAccount');
+  }
+
+  /// Creates a typed reference to an existing [Permission] resource.
+  Permission.reference(String urn)
+    : super(
+        'aws:acmpca/permission:Permission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
     policy = registerOutput<String>('policy');
     principal = registerOutput<String>('principal');

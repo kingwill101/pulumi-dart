@@ -162,11 +162,11 @@ import 'email_identity_mail_from_attributes_state.dart';
 /// $ pulumi import aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes example example.com
 /// ```
 class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
-  /// The action to take if the required MX record isn't found when you send an email. Valid values: `USE_DEFAULT_VALUE`, `REJECT_MESSAGE`.
+  /// Action to take if the required MX record isn't found when you send an email. Valid values: `USE_DEFAULT_VALUE`, `REJECT_MESSAGE`.
   late final pulumi.Output<String?> behaviorOnMxFailure;
-  /// The verified email identity.
+  /// Verified email identity.
   late final pulumi.Output<String> emailIdentity;
-  /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behaviorOnMxFailure` is `REJECT_MESSAGE`.
+  /// Custom MAIL FROM domain that you want the verified identity to use. Required if `behaviorOnMxFailure` is `REJECT_MESSAGE`.
   late final pulumi.Output<String?> mailFromDomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -183,7 +183,7 @@ class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     emailIdentity = registerOutput<String>('emailIdentity');
@@ -196,11 +196,12 @@ class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailIdentityMailFromAttributesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailIdentityMailFromAttributes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,6 +215,21 @@ class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
+    emailIdentity = registerOutput<String>('emailIdentity');
+    mailFromDomain = registerOutput<String?>('mailFromDomain');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EmailIdentityMailFromAttributes] resource.
+  EmailIdentityMailFromAttributes.reference(String urn)
+    : super(
+        'aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     emailIdentity = registerOutput<String>('emailIdentity');
     mailFromDomain = registerOutput<String?>('mailFromDomain');

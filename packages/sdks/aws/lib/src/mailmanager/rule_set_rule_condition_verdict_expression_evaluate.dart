@@ -5,9 +5,9 @@ import 'rule_set_rule_condition_verdict_expression_evaluate_analysis.dart';
 
 class RuleSetRuleConditionVerdictExpressionEvaluate {
   /// Add On result to evaluate. See `analysis` Block.
-  final pulumi.Input<RuleSetRuleConditionVerdictExpressionEvaluateAnalysis>? analysis;
+  final pulumi.Input<RuleSetRuleConditionVerdictExpressionEvaluateAnalysis?>? analysis;
   /// Email authentication attribute to evaluate. Valid values are `SPF` and `DKIM`.
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
 
   /// Creates a new [RuleSetRuleConditionVerdictExpressionEvaluate].
   /// [analysis] Add On result to evaluate. See `analysis` Block.

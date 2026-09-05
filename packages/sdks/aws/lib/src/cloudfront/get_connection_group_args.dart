@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_get_connection_group_get_connection_group_args_doc}
 class GetConnectionGroupArgs {
   /// Identifier for the connection group. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `routingEndpoint` must be specified.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Routing endpoint for the connection group. For example: `d111111abcdef8.cloudfront.net`. Exactly one of `id` or `routingEndpoint` must be specified.
-  final pulumi.Input<String>? routingEndpoint;
+  final pulumi.Input<String?>? routingEndpoint;
 
   /// Creates a new [GetConnectionGroupArgs].
   /// [id] Identifier for the connection group. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `routingEndpoint` must be specified.

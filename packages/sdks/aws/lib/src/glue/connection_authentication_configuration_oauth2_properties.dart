@@ -7,17 +7,17 @@ import 'connection_authentication_configuration_oauth2_properties_oauth2_credent
 
 class ConnectionAuthenticationConfigurationOauth2Properties {
   /// Authorization code properties. See `authorizationCodeProperties` below.
-  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2PropertiesAuthorizationCodeProperties>? authorizationCodeProperties;
+  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2PropertiesAuthorizationCodeProperties?>? authorizationCodeProperties;
   /// OAuth2 client application details. See `oauth2ClientApplication` below.
-  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2PropertiesOauth2ClientApplication>? oauth2ClientApplication;
+  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2PropertiesOauth2ClientApplication?>? oauth2ClientApplication;
   /// OAuth2 credentials. See `oauth2Credentials` below.
-  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2PropertiesOauth2Credentials>? oauth2Credentials;
+  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2PropertiesOauth2Credentials?>? oauth2Credentials;
   /// OAuth2 grant type. Valid values: `AUTHORIZATION_CODE`, `CLIENT_CREDENTIALS`, `JWT_BEARER`.
-  final pulumi.Input<String>? oauth2GrantType;
+  final pulumi.Input<String?>? oauth2GrantType;
   /// Token URL for OAuth2 authentication.
-  final pulumi.Input<String>? tokenUrl;
+  final pulumi.Input<String?>? tokenUrl;
   /// Map of additional parameters for the token URL.
-  final pulumi.Input<Map<String, String>>? tokenUrlParametersMap;
+  final pulumi.Input<Map<String, String>?>? tokenUrlParametersMap;
 
   /// Creates a new [ConnectionAuthenticationConfigurationOauth2Properties].
   /// [authorizationCodeProperties] Authorization code properties. See `authorizationCodeProperties` below.

@@ -5,7 +5,7 @@ import 'rule_group_rule_captcha_config_immunity_time_property.dart';
 
 class RuleGroupRuleCaptchaConfig {
   /// Defines custom immunity time. See Immunity Time Property below for details.
-  final pulumi.Input<RuleGroupRuleCaptchaConfigImmunityTimeProperty>? immunityTimeProperty;
+  final pulumi.Input<RuleGroupRuleCaptchaConfigImmunityTimeProperty?>? immunityTimeProperty;
 
   /// Creates a new [RuleGroupRuleCaptchaConfig].
   /// [immunityTimeProperty] Defines custom immunity time. See Immunity Time Property below for details.

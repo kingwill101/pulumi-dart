@@ -8,18 +8,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connect_security_profile_security_profile_args_doc}
 class SecurityProfileArgs {
   /// Specifies the description of the Security Profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String> instanceId;
   /// Specifies the name of the Security Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a list of permissions assigned to the security profile.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the Security Profile. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SecurityProfileArgs].
   /// [description] Specifies the description of the Security Profile.

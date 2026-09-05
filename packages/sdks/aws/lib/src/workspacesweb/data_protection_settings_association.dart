@@ -190,7 +190,7 @@ class DataProtectionSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/dataProtectionSettingsAssociation:DataProtectionSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
     portalArn = registerOutput<String>('portalArn');
@@ -202,11 +202,12 @@ class DataProtectionSettingsAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataProtectionSettingsAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataProtectionSettingsAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -220,6 +221,20 @@ class DataProtectionSettingsAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DataProtectionSettingsAssociation] resource.
+  DataProtectionSettingsAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/dataProtectionSettingsAssociation:DataProtectionSettingsAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

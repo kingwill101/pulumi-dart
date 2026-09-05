@@ -6,7 +6,7 @@ class BucketV2Logging {
   /// Name of the bucket that will receive the log objects.
   final pulumi.Input<String> targetBucket;
   /// To specify a key prefix for log objects.
-  final pulumi.Input<String>? targetPrefix;
+  final pulumi.Input<String?>? targetPrefix;
 
   /// Creates a new [BucketV2Logging].
   /// [targetBucket] Name of the bucket that will receive the log objects.

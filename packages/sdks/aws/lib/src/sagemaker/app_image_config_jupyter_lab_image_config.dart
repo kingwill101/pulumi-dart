@@ -6,9 +6,9 @@ import 'app_image_config_jupyter_lab_image_config_file_system_config.dart';
 
 class AppImageConfigJupyterLabImageConfig {
   /// The configuration used to run the application image container. See Container Config details below.
-  final pulumi.Input<AppImageConfigJupyterLabImageConfigContainerConfig>? containerConfig;
+  final pulumi.Input<AppImageConfigJupyterLabImageConfigContainerConfig?>? containerConfig;
   /// The URL where the Git repository is located. See File System Config details below.
-  final pulumi.Input<AppImageConfigJupyterLabImageConfigFileSystemConfig>? fileSystemConfig;
+  final pulumi.Input<AppImageConfigJupyterLabImageConfigFileSystemConfig?>? fileSystemConfig;
 
   /// Creates a new [AppImageConfigJupyterLabImageConfig].
   /// [containerConfig] The configuration used to run the application image container. See Container Config details below.

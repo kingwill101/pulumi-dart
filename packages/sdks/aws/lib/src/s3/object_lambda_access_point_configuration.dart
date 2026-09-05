@@ -5,9 +5,9 @@ import 'object_lambda_access_point_configuration_transformation_configuration.da
 
 class ObjectLambdaAccessPointConfiguration {
   /// Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
-  final pulumi.Input<List<String>>? allowedFeatures;
+  final pulumi.Input<List<String>?>? allowedFeatures;
   /// Whether or not the CloudWatch metrics configuration is enabled.
-  final pulumi.Input<bool>? cloudWatchMetricsEnabled;
+  final pulumi.Input<bool?>? cloudWatchMetricsEnabled;
   /// Standard access point associated with the Object Lambda Access Point.
   final pulumi.Input<String> supportingAccessPoint;
   /// List of transformation configurations for the Object Lambda Access Point. See `transformationConfiguration` Block below for more details.

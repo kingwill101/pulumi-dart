@@ -7,6 +7,7 @@ import 'domain_cognito_options.dart';
 import 'domain_domain_endpoint_options.dart';
 import 'domain_ebs_options.dart';
 import 'domain_encrypt_at_rest.dart';
+import 'domain_log_publishing_option.dart';
 import 'domain_node_to_node_encryption.dart';
 import 'domain_snapshot_options.dart';
 import 'domain_state.dart';
@@ -24,11 +25,11 @@ import 'domain_vpc_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.elasticsearch.Domain("example", {
-///     domainName: "example",
-///     elasticsearchVersion: "7.10",
 ///     clusterConfig: {
 ///         instanceType: "r4.large.elasticsearch",
 ///     },
+///     domainName: "example",
+///     elasticsearchVersion: "7.10",
 ///     tags: {
 ///         Domain: "TestDomain",
 ///     },
@@ -39,11 +40,11 @@ import 'domain_vpc_options.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.elasticsearch.Domain("example",
-///     domain_name="example",
-///     elasticsearch_version="7.10",
 ///     cluster_config={
 ///         "instance_type": "r4.large.elasticsearch",
 ///     },
+///     domain_name="example",
+///     elasticsearch_version="7.10",
 ///     tags={
 ///         "Domain": "TestDomain",
 ///     })
@@ -58,12 +59,12 @@ import 'domain_vpc_options.dart';
 /// {
 ///     var example = new Aws.ElasticSearch.Domain("example", new()
 ///     {
-///         DomainName = "example",
-///         ElasticsearchVersion = "7.10",
 ///         ClusterConfig = new Aws.ElasticSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceType = "r4.large.elasticsearch",
 ///         },
+///         DomainName = "example",
+///         ElasticsearchVersion = "7.10",
 ///         Tags =
 ///         {
 ///             { "Domain", "TestDomain" },
@@ -83,11 +84,11 @@ import 'domain_vpc_options.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
-/// 			DomainName:           pulumi.String("example"),
-/// 			ElasticsearchVersion: pulumi.String("7.10"),
 /// 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 /// 				InstanceType: pulumi.String("r4.large.elasticsearch"),
 /// 			},
+/// 			DomainName:           pulumi.String("example"),
+/// 			ElasticsearchVersion: pulumi.String("7.10"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Domain": pulumi.String("TestDomain"),
 /// 			},
@@ -109,11 +110,11 @@ import 'domain_vpc_options.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "example" {
-///   domain_name           = "example"
-///   elasticsearch_version = "7.10"
 ///   cluster_config = {
 ///     instance_type = "r4.large.elasticsearch"
 ///   }
+///   domain_name           = "example"
+///   elasticsearch_version = "7.10"
 ///   tags = {
 ///     "Domain" = "TestDomain"
 ///   }
@@ -142,11 +143,11 @@ import 'domain_vpc_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
-///             .domainName("example")
-///             .elasticsearchVersion("7.10")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceType("r4.large.elasticsearch")
 ///                 .build())
+///             .domainName("example")
+///             .elasticsearchVersion("7.10")
 ///             .tags(Map.of("Domain", "TestDomain"))
 ///             .build());
 ///
@@ -158,10 +159,10 @@ import 'domain_vpc_options.dart';
 ///   example:
 ///     type: aws:elasticsearch:Domain
 ///     properties:
-///       domainName: example
-///       elasticsearchVersion: '7.10'
 ///       clusterConfig:
 ///         instanceType: r4.large.elasticsearch
+///       domainName: example
+///       elasticsearchVersion: '7.10'
 ///       tags:
 ///         Domain: TestDomain
 /// ```
@@ -459,11 +460,11 @@ import 'domain_vpc_options.dart';
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "example"});
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["es.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "logs:PutLogEvents",
 ///             "logs:PutLogEventsBatch",
@@ -487,11 +488,11 @@ import 'domain_vpc_options.dart';
 ///
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="example")
 /// example = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["es.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "logs:PutLogEvents",
 ///         "logs:PutLogEventsBatch",
@@ -526,7 +527,6 @@ import 'domain_vpc_options.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -538,6 +538,7 @@ import 'domain_vpc_options.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "logs:PutLogEvents",
@@ -593,7 +594,6 @@ import 'domain_vpc_options.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -602,6 +602,7 @@ import 'domain_vpc_options.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"logs:PutLogEvents",
 /// 						"logs:PutLogEventsBatch",
@@ -649,11 +650,11 @@ import 'domain_vpc_options.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["es.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["logs:PutLogEvents", "logs:PutLogEventsBatch", "logs:CreateLogStream"]
 ///     resources = ["arn:aws:logs:*"]
 ///   }
@@ -709,11 +710,11 @@ import 'domain_vpc_options.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("es.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "logs:PutLogEvents",
 ///                     "logs:PutLogEventsBatch",
@@ -763,11 +764,11 @@ import 'domain_vpc_options.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - es.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - logs:PutLogEvents
 ///               - logs:PutLogEventsBatch
@@ -804,20 +805,18 @@ import 'domain_vpc_options.dart';
 /// const current = aws.getRegion({});
 /// const currentGetCallerIdentity = aws.getCallerIdentity({});
 /// const es = new aws.ec2.SecurityGroup("es", {
-///     name: `${vpc}-elasticsearch-${domain}`,
-///     description: "Managed by Pulumi",
-///     vpcId: selected.then(selected => selected.id),
 ///     ingress: [{
 ///         fromPort: 443,
 ///         toPort: 443,
 ///         protocol: "tcp",
 ///         cidrBlocks: [selected.then(selected => selected.cidrBlock)],
 ///     }],
+///     name: `${vpc}-elasticsearch-${domain}`,
+///     description: "Managed by Pulumi",
+///     vpcId: selected.then(selected => selected.id),
 /// });
 /// const esServiceLinkedRole = new aws.iam.ServiceLinkedRole("es", {awsServiceName: "opensearchservice.amazonaws.com"});
 /// const esDomain = new aws.elasticsearch.Domain("es", {
-///     domainName: domain,
-///     elasticsearchVersion: "6.3",
 ///     clusterConfig: {
 ///         instanceType: "m4.large.elasticsearch",
 ///         zoneAwarenessEnabled: true,
@@ -829,6 +828,8 @@ import 'domain_vpc_options.dart';
 ///         ],
 ///         securityGroupIds: [es.id],
 ///     },
+///     domainName: domain,
+///     elasticsearchVersion: "6.3",
 ///     advancedOptions: {
 ///         "rest.action.multi.allow_explicit_index": "true",
 ///     },
@@ -873,19 +874,17 @@ import 'domain_vpc_options.dart';
 /// current = aws.get_region()
 /// current_get_caller_identity = aws.get_caller_identity()
 /// es = aws.ec2.SecurityGroup("es",
-///     name=f"{vpc}-elasticsearch-{domain}",
-///     description="Managed by Pulumi",
-///     vpc_id=selected.id,
 ///     ingress=[{
 ///         "from_port": 443,
 ///         "to_port": 443,
 ///         "protocol": "tcp",
 ///         "cidr_blocks": [selected.cidr_block],
-///     }])
+///     }],
+///     name=f"{vpc}-elasticsearch-{domain}",
+///     description="Managed by Pulumi",
+///     vpc_id=selected.id)
 /// es_service_linked_role = aws.iam.ServiceLinkedRole("es", aws_service_name="opensearchservice.amazonaws.com")
 /// es_domain = aws.elasticsearch.Domain("es",
-///     domain_name=domain,
-///     elasticsearch_version="6.3",
 ///     cluster_config={
 ///         "instance_type": "m4.large.elasticsearch",
 ///         "zone_awareness_enabled": True,
@@ -897,6 +896,8 @@ import 'domain_vpc_options.dart';
 ///         ],
 ///         "security_group_ids": [es.id],
 ///     },
+///     domain_name=domain,
+///     elasticsearch_version="6.3",
 ///     advanced_options={
 ///         "rest.action.multi.allow_explicit_index": "true",
 ///     },
@@ -961,9 +962,6 @@ import 'domain_vpc_options.dart';
 ///
 ///     var es = new Aws.Ec2.SecurityGroup("es", new()
 ///     {
-///         Name = $"{vpc}-elasticsearch-{domain}",
-///         Description = "Managed by Pulumi",
-///         VpcId = selected.Apply(getVpcResult => getVpcResult.Id),
 ///         Ingress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SecurityGroupIngressArgs
@@ -977,6 +975,9 @@ import 'domain_vpc_options.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = $"{vpc}-elasticsearch-{domain}",
+///         Description = "Managed by Pulumi",
+///         VpcId = selected.Apply(getVpcResult => getVpcResult.Id),
 ///     });
 ///
 ///     var esServiceLinkedRole = new Aws.Iam.ServiceLinkedRole("es", new()
@@ -986,8 +987,6 @@ import 'domain_vpc_options.dart';
 ///
 ///     var esDomain = new Aws.ElasticSearch.Domain("es", new()
 ///     {
-///         DomainName = domain,
-///         ElasticsearchVersion = "6.3",
 ///         ClusterConfig = new Aws.ElasticSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceType = "m4.large.elasticsearch",
@@ -1005,6 +1004,8 @@ import 'domain_vpc_options.dart';
 ///                 es.Id,
 ///             },
 ///         },
+///         DomainName = domain,
+///         ElasticsearchVersion = "6.3",
 ///         AdvancedOptions =
 ///         {
 ///             { "rest.action.multi.allow_explicit_index", "true" },
@@ -1096,9 +1097,6 @@ import 'domain_vpc_options.dart';
 /// 			return err
 /// 		}
 /// 		es, err := ec2.NewSecurityGroup(ctx, "es", &ec2.SecurityGroupArgs{
-/// 			Name:        pulumi.Sprintf("%v-elasticsearch-%v", vpc, domain),
-/// 			Description: pulumi.String("Managed by Pulumi"),
-/// 			VpcId:       pulumi.String(selected.Id),
 /// 			Ingress: ec2.SecurityGroupIngressArray{
 /// 				&ec2.SecurityGroupIngressArgs{
 /// 					FromPort: pulumi.Int(443),
@@ -1109,6 +1107,9 @@ import 'domain_vpc_options.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:        pulumi.Sprintf("%v-elasticsearch-%v", vpc, domain),
+/// 			Description: pulumi.String("Managed by Pulumi"),
+/// 			VpcId:       pulumi.String(selected.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1120,8 +1121,6 @@ import 'domain_vpc_options.dart';
 /// 			return err
 /// 		}
 /// 		_, err = elasticsearch.NewDomain(ctx, "es", &elasticsearch.DomainArgs{
-/// 			DomainName:           pulumi.String(domain),
-/// 			ElasticsearchVersion: pulumi.String("6.3"),
 /// 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 /// 				InstanceType:         pulumi.String("m4.large.elasticsearch"),
 /// 				ZoneAwarenessEnabled: pulumi.Bool(true),
@@ -1135,6 +1134,8 @@ import 'domain_vpc_options.dart';
 /// 					es.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			DomainName:           pulumi.String(domain),
+/// 			ElasticsearchVersion: pulumi.String("6.3"),
 /// 			AdvancedOptions: pulumi.StringMap{
 /// 				"rest.action.multi.allow_explicit_index": pulumi.String("true"),
 /// 			},
@@ -1192,23 +1193,21 @@ import 'domain_vpc_options.dart';
 /// }
 ///
 /// resource "aws_ec2_securitygroup" "es" {
-///   name        ="${var.vpc}-elasticsearch-${var.domain}"
-///   description = "Managed by Pulumi"
-///   vpc_id      = data.aws_ec2_getvpc.selected.id
 ///   ingress {
 ///     from_port   = 443
 ///     to_port     = 443
 ///     protocol    = "tcp"
 ///     cidr_blocks = [data.aws_ec2_getvpc.selected.cidr_block]
 ///   }
+///   name        ="${var.vpc}-elasticsearch-${var.domain}"
+///   description = "Managed by Pulumi"
+///   vpc_id      = data.aws_ec2_getvpc.selected.id
 /// }
 /// resource "aws_iam_servicelinkedrole" "es" {
 ///   aws_service_name = "opensearchservice.amazonaws.com"
 /// }
 /// resource "aws_elasticsearch_domain" "es" {
-///   depends_on            = [aws_iam_servicelinkedrole.es]
-///   domain_name           = var.domain
-///   elasticsearch_version = "6.3"
+///   depends_on = [aws_iam_servicelinkedrole.es]
 ///   cluster_config = {
 ///     instance_type          = "m4.large.elasticsearch"
 ///     zone_awareness_enabled = true
@@ -1217,6 +1216,8 @@ import 'domain_vpc_options.dart';
 ///     subnet_ids         = [data.aws_ec2_getsubnets.selectedGetSubnets.ids[0], data.aws_ec2_getsubnets.selectedGetSubnets.ids[1]]
 ///     security_group_ids = [aws_ec2_securitygroup.es.id]
 ///   }
+///   domain_name           = var.domain
+///   elasticsearch_version = "6.3"
 ///   advanced_options = {
 ///     "rest.action.multi.allow_explicit_index" = "true"
 ///   }
@@ -1301,15 +1302,15 @@ import 'domain_vpc_options.dart';
 ///             .build());
 ///
 ///         var es = new SecurityGroup("es", SecurityGroupArgs.builder()
-///             .name(String.format("%s-elasticsearch-%s", vpc,domain))
-///             .description("Managed by Pulumi")
-///             .vpcId(selected.id())
 ///             .ingress(SecurityGroupIngressArgs.builder()
 ///                 .fromPort(443)
 ///                 .toPort(443)
 ///                 .protocol("tcp")
 ///                 .cidrBlocks(selected.cidrBlock())
 ///                 .build())
+///             .name(String.format("%s-elasticsearch-%s", vpc,domain))
+///             .description("Managed by Pulumi")
+///             .vpcId(selected.id())
 ///             .build());
 ///
 ///         var esServiceLinkedRole = new ServiceLinkedRole("esServiceLinkedRole", ServiceLinkedRoleArgs.builder()
@@ -1317,8 +1318,6 @@ import 'domain_vpc_options.dart';
 ///             .build());
 ///
 ///         var esDomain = new Domain("esDomain", DomainArgs.builder()
-///             .domainName(domain)
-///             .elasticsearchVersion("6.3")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceType("m4.large.elasticsearch")
 ///                 .zoneAwarenessEnabled(true)
@@ -1329,6 +1328,8 @@ import 'domain_vpc_options.dart';
 ///                     selectedGetSubnets.ids()[1])
 ///                 .securityGroupIds(es.id())
 ///                 .build())
+///             .domainName(domain)
+///             .elasticsearchVersion("6.3")
 ///             .advancedOptions(Map.of("rest.action.multi.allow_explicit_index", "true"))
 ///             .accessPolicies("""
 /// {
@@ -1362,15 +1363,15 @@ import 'domain_vpc_options.dart';
 ///   es:
 ///     type: aws:ec2:SecurityGroup
 ///     properties:
-///       name: ${vpc}-elasticsearch-${domain}
-///       description: Managed by Pulumi
-///       vpcId: ${selected.id}
 ///       ingress:
 ///         - fromPort: 443
 ///           toPort: 443
 ///           protocol: tcp
 ///           cidrBlocks:
 ///             - ${selected.cidrBlock}
+///       name: ${vpc}-elasticsearch-${domain}
+///       description: Managed by Pulumi
+///       vpcId: ${selected.id}
 ///   esServiceLinkedRole:
 ///     type: aws:iam:ServiceLinkedRole
 ///     name: es
@@ -1380,8 +1381,6 @@ import 'domain_vpc_options.dart';
 ///     type: aws:elasticsearch:Domain
 ///     name: es
 ///     properties:
-///       domainName: ${domain}
-///       elasticsearchVersion: '6.3'
 ///       clusterConfig:
 ///         instanceType: m4.large.elasticsearch
 ///         zoneAwarenessEnabled: true
@@ -1391,6 +1390,8 @@ import 'domain_vpc_options.dart';
 ///           - ${selectedGetSubnets.ids[1]}
 ///         securityGroupIds:
 ///           - ${es.id}
+///       domainName: ${domain}
+///       elasticsearchVersion: '6.3'
 ///       advancedOptions:
 ///         rest.action.multi.allow_explicit_index: 'true'
 ///       accessPolicies: |
@@ -1479,7 +1480,7 @@ class Domain extends pulumi.CustomResource {
   /// Domain-specific endpoint for kibana without https scheme.
   late final pulumi.Output<String> kibanaEndpoint;
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logPublishingOptions;
+  late final pulumi.Output<List<DomainLogPublishingOption>?> logPublishingOptions;
   /// Configuration block for node-to-node encryption options. Detailed below.
   late final pulumi.Output<DomainNodeToNodeEncryption> nodeToNodeEncryption;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -1505,10 +1506,10 @@ class Domain extends pulumi.CustomResource {
           'aws:elasticsearch/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
-    advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
+    advancedOptions = registerOutput<Map<String, String>>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdvancedSecurityOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAutoTuneOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1522,12 +1523,12 @@ class Domain extends pulumi.CustomResource {
     encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEncryptAtRest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     kibanaEndpoint = registerOutput<String>('kibanaEndpoint');
-    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>('logPublishingOptions');
+    logPublishingOptions = registerOutput<List<DomainLogPublishingOption>?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainLogPublishingOption>(guardedValue, (value) => DomainLogPublishingOption.fromMap((value as Map).cast<String, dynamic>())); });
     nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNodeToNodeEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSnapshotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1536,11 +1537,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1555,7 +1557,7 @@ class Domain extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
-    advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
+    advancedOptions = registerOutput<Map<String, String>>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdvancedSecurityOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAutoTuneOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1569,12 +1571,45 @@ class Domain extends pulumi.CustomResource {
     encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEncryptAtRest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     kibanaEndpoint = registerOutput<String>('kibanaEndpoint');
-    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>('logPublishingOptions');
+    logPublishingOptions = registerOutput<List<DomainLogPublishingOption>?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainLogPublishingOption>(guardedValue, (value) => DomainLogPublishingOption.fromMap((value as Map).cast<String, dynamic>())); });
     nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNodeToNodeEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSnapshotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:elasticsearch/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPolicies = registerOutput<String>('accessPolicies');
+    advancedOptions = registerOutput<Map<String, String>>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdvancedSecurityOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAutoTuneOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainId = registerOutput<String>('domainId');
+    domainName = registerOutput<String>('domainName');
+    ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEbsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    elasticsearchVersion = registerOutput<String?>('elasticsearchVersion');
+    encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEncryptAtRest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String>('endpoint');
+    kibanaEndpoint = registerOutput<String>('kibanaEndpoint');
+    logPublishingOptions = registerOutput<List<DomainLogPublishingOption>?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainLogPublishingOption>(guardedValue, (value) => DomainLogPublishingOption.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNodeToNodeEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSnapshotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

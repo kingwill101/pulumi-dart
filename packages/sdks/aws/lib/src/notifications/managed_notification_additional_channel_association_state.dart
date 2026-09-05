@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedNotificationAdditionalChannelAssociation resources.
 class ManagedNotificationAdditionalChannelAssociationState {
   /// ARN of the channel to associate with the managed notification.
-  final pulumi.Input<String>? channelArn;
+  final pulumi.Input<String?>? channelArn;
   /// ARN of the managed notification to associate the channel with.
-  final pulumi.Input<String>? managedNotificationArn;
+  final pulumi.Input<String?>? managedNotificationArn;
 
   /// Creates a new [ManagedNotificationAdditionalChannelAssociationState].
   /// [channelArn] ARN of the channel to associate with the managed notification.

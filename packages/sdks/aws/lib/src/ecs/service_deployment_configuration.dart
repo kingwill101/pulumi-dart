@@ -7,15 +7,15 @@ import 'service_deployment_configuration_linear_configuration.dart';
 
 class ServiceDeploymentConfiguration {
   /// Number of minutes to wait after a new deployment is fully provisioned before terminating the old deployment. Valid range: 0-1440 minutes. Used with `BLUE_GREEN`, `LINEAR`, and `CANARY` strategies.
-  final pulumi.Input<String>? bakeTimeInMinutes;
+  final pulumi.Input<String?>? bakeTimeInMinutes;
   /// Configuration block for canary deployment strategy. Required when `strategy` is set to `CANARY`. See below.
-  final pulumi.Input<ServiceDeploymentConfigurationCanaryConfiguration>? canaryConfiguration;
+  final pulumi.Input<ServiceDeploymentConfigurationCanaryConfiguration?>? canaryConfiguration;
   /// Configuration block for lifecycle hooks that are invoked during deployments. See below.
-  final pulumi.Input<List<ServiceDeploymentConfigurationLifecycleHook>>? lifecycleHooks;
+  final pulumi.Input<List<ServiceDeploymentConfigurationLifecycleHook>?>? lifecycleHooks;
   /// Configuration block for linear deployment strategy. Required when `strategy` is set to `LINEAR`. See below.
-  final pulumi.Input<ServiceDeploymentConfigurationLinearConfiguration>? linearConfiguration;
+  final pulumi.Input<ServiceDeploymentConfigurationLinearConfiguration?>? linearConfiguration;
   /// Type of deployment strategy. Valid values: `ROLLING`, `BLUE_GREEN`, `LINEAR`, `CANARY`. Default: `ROLLING`.
-  final pulumi.Input<String>? strategy;
+  final pulumi.Input<String?>? strategy;
 
   /// Creates a new [ServiceDeploymentConfiguration].
   /// [bakeTimeInMinutes] Number of minutes to wait after a new deployment is fully provisioned before terminating the old deployment. Valid range: 0-1440 minutes. Used with `BLUE_GREEN`, `LINEAR`, and `CANARY` strategies.

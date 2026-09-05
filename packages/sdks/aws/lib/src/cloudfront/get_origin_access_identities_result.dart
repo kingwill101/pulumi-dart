@@ -5,13 +5,13 @@
 class GetOriginAccessIdentitiesResult {
   final List<String>? comments;
   /// Set of ARNs of the matched origin access identities.
-  final List<String> iamArns;
+  final List<String>? iamArns;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Set of ids of the matched origin access identities.
-  final List<String> ids;
+  final List<String>? ids;
   /// Set of S3 canonical user IDs of the matched origin access identities.
-  final List<String> s3CanonicalUserIds;
+  final List<String>? s3CanonicalUserIds;
 
   /// Creates a new [GetOriginAccessIdentitiesResult].
   /// [comments] Optional.
@@ -21,29 +21,29 @@ class GetOriginAccessIdentitiesResult {
   /// [s3CanonicalUserIds] Set of S3 canonical user IDs of the matched origin access identities.
   const GetOriginAccessIdentitiesResult({
     this.comments,
-    required this.iamArns,
-    required this.id,
-    required this.ids,
-    required this.s3CanonicalUserIds,
+    this.iamArns,
+    this.id,
+    this.ids,
+    this.s3CanonicalUserIds,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'comments': ?comments,
-      'iamArns': iamArns,
-      'id': id,
-      'ids': ids,
-      's3CanonicalUserIds': s3CanonicalUserIds,
+      'iamArns': ?iamArns,
+      'id': ?id,
+      'ids': ?ids,
+      's3CanonicalUserIds': ?s3CanonicalUserIds,
     };
   }
 
   factory GetOriginAccessIdentitiesResult.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentitiesResult(
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      iamArns: (map['iamArns'] as List).cast<String>(),
-      id: map['id'] as String,
-      ids: (map['ids'] as List).cast<String>(),
-      s3CanonicalUserIds: (map['s3CanonicalUserIds'] as List).cast<String>(),
+      iamArns: (() { final guardedValue = map['iamArns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      s3CanonicalUserIds: (() { final guardedValue = map['s3CanonicalUserIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

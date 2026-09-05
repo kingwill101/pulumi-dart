@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering HsmConfiguration resources.
 class HsmConfigurationState {
-  /// Amazon Resource Name (ARN) of the Hsm Client Certificate.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Hsm Client Certificate.
+  final pulumi.Input<String?>? arn;
   /// A text description of the HSM configuration to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The identifier to be assigned to the new Amazon Redshift HSM configuration.
-  final pulumi.Input<String>? hsmConfigurationIdentifier;
+  final pulumi.Input<String?>? hsmConfigurationIdentifier;
   /// The IP address that the Amazon Redshift cluster must use to access the HSM.
-  final pulumi.Input<String>? hsmIpAddress;
+  final pulumi.Input<String?>? hsmIpAddress;
   /// The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.
-  final pulumi.Input<String>? hsmPartitionName;
+  final pulumi.Input<String?>? hsmPartitionName;
   /// The password required to access the HSM partition.
-  final pulumi.Input<String>? hsmPartitionPassword;
+  final pulumi.Input<String?>? hsmPartitionPassword;
   /// The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.
-  final pulumi.Input<String>? hsmServerPublicCertificate;
+  final pulumi.Input<String?>? hsmServerPublicCertificate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [HsmConfigurationState].
-  /// [arn] Amazon Resource Name (ARN) of the Hsm Client Certificate.
+  /// [arn] ARN of the Hsm Client Certificate.
   /// [description] A text description of the HSM configuration to be created.
   /// [hsmConfigurationIdentifier] The identifier to be assigned to the new Amazon Redshift HSM configuration.
   /// [hsmIpAddress] The IP address that the Amazon Redshift cluster must use to access the HSM.

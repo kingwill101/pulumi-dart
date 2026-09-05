@@ -6,11 +6,11 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStep {
   /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStepDialogAction>? dialogAction;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStepDialogAction?>? dialogAction;
   /// Configuration block for override settings to configure the intent state. See `intent`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStepIntent>? intent;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStepIntent?>? intent;
   /// Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
-  final pulumi.Input<Map<String, String>>? sessionAttributes;
+  final pulumi.Input<Map<String, String>?>? sessionAttributes;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchNextStep].
   /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.

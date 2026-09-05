@@ -7,7 +7,7 @@ class WebAclRuleStatementAsnMatchStatement {
   /// List of Autonomous System Numbers (ASNs) to match against. ASNs are unique identifiers assigned to large internet networks managed by organizations such as internet service providers, enterprises, universities, or government agencies.
   final pulumi.Input<List<int>> asnLists;
   /// Configuration for inspecting IP addresses in an HTTP header instead of using the web request origin. See Forwarded IP Config below.
-  final pulumi.Input<WebAclRuleStatementAsnMatchStatementForwardedIpConfig>? forwardedIpConfig;
+  final pulumi.Input<WebAclRuleStatementAsnMatchStatementForwardedIpConfig?>? forwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementAsnMatchStatement].
   /// [asnLists] List of Autonomous System Numbers (ASNs) to match against. ASNs are unique identifiers assigned to large internet networks managed by organizations such as internet service providers, enterprises, universities, or government agencies.

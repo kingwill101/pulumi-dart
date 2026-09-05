@@ -9,15 +9,15 @@ import 'get_voices_voice.dart';
 /// {@macro pulumi_polly_get_voices_get_voices_args_doc}
 class GetVoicesArgs {
   /// Engine used by Amazon Polly when processing input text for speech synthesis. Valid values are `standard`, `neural`, and `long-form`.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Whether to return any bilingual voices that use the specified language as an additional language.
-  final pulumi.Input<bool>? includeAdditionalLanguageCodes;
+  final pulumi.Input<bool?>? includeAdditionalLanguageCodes;
   /// Language identification tag for filtering the list of voices returned. If not specified, all available voices are returned.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of voices with their properties. See `voices` Attribute Reference below.
-  final pulumi.Input<List<GetVoicesVoice>>? voices;
+  final pulumi.Input<List<GetVoicesVoice>?>? voices;
 
   /// Creates a new [GetVoicesArgs].
   /// [engine] Engine used by Amazon Polly when processing input text for speech synthesis. Valid values are `standard`, `neural`, and `long-form`.

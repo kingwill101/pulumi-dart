@@ -10,21 +10,21 @@ import 'domain_default_space_settings_space_storage_settings.dart';
 
 class DomainDefaultSpaceSettings {
   /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `customFileSystemConfig` Block below.
-  final pulumi.Input<List<DomainDefaultSpaceSettingsCustomFileSystemConfig>>? customFileSystemConfigs;
+  final pulumi.Input<List<DomainDefaultSpaceSettingsCustomFileSystemConfig>?>? customFileSystemConfigs;
   /// Details about the POSIX identity that is used for file system operations. See `customPosixUserConfig` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsCustomPosixUserConfig>? customPosixUserConfig;
+  final pulumi.Input<DomainDefaultSpaceSettingsCustomPosixUserConfig?>? customPosixUserConfig;
   /// The execution role for the space.
   final pulumi.Input<String> executionRole;
   /// The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettings>? jupyterLabAppSettings;
+  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettings?>? jupyterLabAppSettings;
   /// The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsJupyterServerAppSettings>? jupyterServerAppSettings;
+  final pulumi.Input<DomainDefaultSpaceSettingsJupyterServerAppSettings?>? jupyterServerAppSettings;
   /// The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsKernelGatewayAppSettings>? kernelGatewayAppSettings;
-  /// The security groups for the Amazon Virtual Private Cloud that the space uses for communication.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<DomainDefaultSpaceSettingsKernelGatewayAppSettings?>? kernelGatewayAppSettings;
+  /// Security groups for the VPC that the space uses for communication.
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The storage settings for a private space. See `spaceStorageSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsSpaceStorageSettings>? spaceStorageSettings;
+  final pulumi.Input<DomainDefaultSpaceSettingsSpaceStorageSettings?>? spaceStorageSettings;
 
   /// Creates a new [DomainDefaultSpaceSettings].
   /// [customFileSystemConfigs] The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `customFileSystemConfig` Block below.
@@ -33,7 +33,7 @@ class DomainDefaultSpaceSettings {
   /// [jupyterLabAppSettings] The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
   /// [jupyterServerAppSettings] The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
   /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
-  /// [securityGroups] The security groups for the Amazon Virtual Private Cloud that the space uses for communication.
+  /// [securityGroups] Security groups for the VPC that the space uses for communication.
   /// [spaceStorageSettings] The storage settings for a private space. See `spaceStorageSettings` Block below.
   const DomainDefaultSpaceSettings({
     this.customFileSystemConfigs,

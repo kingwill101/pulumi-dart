@@ -18,19 +18,19 @@ import 'queue_policy_state.dart';
 /// const q = new aws.sqs.Queue("q", {name: "examplequeue"});
 /// const test = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         sid: "First",
-///         effect: "Allow",
-///         principals: [{
-///             type: "*",
-///             identifiers: ["*"],
-///         }],
-///         actions: ["sqs:SendMessage"],
-///         resources: [q.arn],
 ///         conditions: [{
 ///             test: "ArnEquals",
 ///             variable: "aws:SourceArn",
 ///             values: [example.arn],
 ///         }],
+///         principals: [{
+///             type: "*",
+///             identifiers: ["*"],
+///         }],
+///         sid: "First",
+///         effect: "Allow",
+///         actions: ["sqs:SendMessage"],
+///         resources: [q.arn],
 ///     }],
 /// });
 /// const testQueuePolicy = new aws.sqs.QueuePolicy("test", {
@@ -44,19 +44,19 @@ import 'queue_policy_state.dart';
 ///
 /// q = aws.sqs.Queue("q", name="examplequeue")
 /// test = aws.iam.get_policy_document_output(statements=[{
-///     "sid": "First",
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "*",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": ["sqs:SendMessage"],
-///     "resources": [q.arn],
 ///     "conditions": [{
 ///         "test": "ArnEquals",
 ///         "variable": "aws:SourceArn",
 ///         "values": [example["arn"]],
 ///     }],
+///     "principals": [{
+///         "type": "*",
+///         "identifiers": ["*"],
+///     }],
+///     "sid": "First",
+///     "effect": "Allow",
+///     "actions": ["sqs:SendMessage"],
+///     "resources": [q.arn],
 /// }])
 /// test_queue_policy = aws.sqs.QueuePolicy("test",
 ///     queue_url=q.id,
@@ -81,27 +81,6 @@ import 'queue_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "First",
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "*",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "sqs:SendMessage",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     q.Arn,
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -113,6 +92,27 @@ import 'queue_policy_state.dart';
 ///                             example.Arn,
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "*",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Sid = "First",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sqs:SendMessage",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     q.Arn,
 ///                 },
 ///             },
 ///         },
@@ -146,22 +146,6 @@ import 'queue_policy_state.dart';
 /// 		test := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("First"),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("*"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("sqs:SendMessage"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						q.Arn,
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("ArnEquals"),
@@ -170,6 +154,22 @@ import 'queue_policy_state.dart';
 /// 								example.Arn,
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("*"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.String("First"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("sqs:SendMessage"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						q.Arn,
 /// 					},
 /// 				},
 /// 			},
@@ -196,19 +196,19 @@ import 'queue_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     sid    = "First"
-///     effect = "Allow"
-///     principals {
-///       type        = "*"
-///       identifiers = ["*"]
-///     }
-///     actions   = ["sqs:SendMessage"]
-///     resources = [aws_sqs_queue.q.arn]
 ///     conditions {
 ///       test     = "ArnEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = [example.arn]
 ///     }
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     sid       = "First"
+///     effect    = "Allow"
+///     actions   = ["sqs:SendMessage"]
+///     resources = [aws_sqs_queue.q.arn]
 ///   }
 /// }
 ///
@@ -231,8 +231,8 @@ import 'queue_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sqs.QueuePolicy;
 /// import com.pulumi.aws.sqs.QueuePolicyArgs;
 /// import java.util.ArrayList;
@@ -254,19 +254,19 @@ import 'queue_policy_state.dart';
 ///
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("First")
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("*")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions("sqs:SendMessage")
-///                 .resources(q.arn())
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("ArnEquals")
 ///                     .variable("aws:SourceArn")
 ///                     .values(example.arn())
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("*")
+///                     .identifiers("*")
+///                     .build())
+///                 .sid("First")
+///                 .effect("Allow")
+///                 .actions("sqs:SendMessage")
+///                 .resources(q.arn())
 ///                 .build())
 ///             .build());
 ///
@@ -296,21 +296,21 @@ import 'queue_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: First
-///             effect: Allow
-///             principals:
-///               - type: '*'
-///                 identifiers:
-///                   - '*'
-///             actions:
-///               - sqs:SendMessage
-///             resources:
-///               - ${q.arn}
-///             conditions:
+///           - conditions:
 ///               - test: ArnEquals
 ///                 variable: aws:SourceArn
 ///                 values:
 ///                   - ${example.arn}
+///             principals:
+///               - type: '*'
+///                 identifiers:
+///                   - '*'
+///             sid: First
+///             effect: Allow
+///             actions:
+///               - sqs:SendMessage
+///             resources:
+///               - ${q.arn}
 /// ```
 ///
 ///
@@ -653,7 +653,7 @@ class QueuePolicy extends pulumi.CustomResource {
           'aws:sqs/queuePolicy:QueuePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     queueUrl = registerOutput<String>('queueUrl');
@@ -665,11 +665,12 @@ class QueuePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueuePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueuePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -683,6 +684,20 @@ class QueuePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    queueUrl = registerOutput<String>('queueUrl');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [QueuePolicy] resource.
+  QueuePolicy.reference(String urn)
+    : super(
+        'aws:sqs/queuePolicy:QueuePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     queueUrl = registerOutput<String>('queueUrl');
     region = registerOutput<String>('region');

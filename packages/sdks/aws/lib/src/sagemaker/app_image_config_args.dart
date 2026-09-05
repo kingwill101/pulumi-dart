@@ -13,17 +13,17 @@ class AppImageConfigArgs {
   /// The name of the App Image Config.
   final pulumi.Input<String> appImageConfigName;
   /// The CodeEditorAppImageConfig. See Code Editor App Image Config details below.
-  final pulumi.Input<AppImageConfigCodeEditorAppImageConfig>? codeEditorAppImageConfig;
+  final pulumi.Input<AppImageConfigCodeEditorAppImageConfig?>? codeEditorAppImageConfig;
   /// The JupyterLabAppImageConfig. See Jupyter Lab Image Config details below.
-  final pulumi.Input<AppImageConfigJupyterLabImageConfig>? jupyterLabImageConfig;
+  final pulumi.Input<AppImageConfigJupyterLabImageConfig?>? jupyterLabImageConfig;
   /// The configuration for the file system and kernels in a SageMaker AI image running as a KernelGateway app. See Kernel Gateway Image Config details below.
-  final pulumi.Input<AppImageConfigKernelGatewayImageConfig>? kernelGatewayImageConfig;
+  final pulumi.Input<AppImageConfigKernelGatewayImageConfig?>? kernelGatewayImageConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **NOTE:** Exactly one of `codeEditorAppImageConfig`, `jupyterLabImageConfig`, or `kernelGatewayImageConfig` must be configured. Empty blocks (e.g., `codeEditorAppImageConfig {}`) are valid configurations.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppImageConfigArgs].
   /// [appImageConfigName] The name of the App Image Config.

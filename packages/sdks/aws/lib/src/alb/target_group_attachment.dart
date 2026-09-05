@@ -634,7 +634,7 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           'aws:alb/targetGroupAttachment:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     availabilityZone = registerOutput<String?>('availabilityZone');
     port = registerOutput<int?>('port');
@@ -649,11 +649,12 @@ class TargetGroupAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetGroupAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetGroupAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -667,6 +668,23 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    port = registerOutput<int?>('port');
+    quicServerId = registerOutput<String?>('quicServerId');
+    region = registerOutput<String>('region');
+    targetGroupArn = registerOutput<String>('targetGroupArn');
+    targetId = registerOutput<String>('targetId');
+  }
+
+  /// Creates a typed reference to an existing [TargetGroupAttachment] resource.
+  TargetGroupAttachment.reference(String urn)
+    : super(
+        'aws:alb/targetGroupAttachment:TargetGroupAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     availabilityZone = registerOutput<String?>('availabilityZone');
     port = registerOutput<int?>('port');
     quicServerId = registerOutput<String?>('quicServerId');

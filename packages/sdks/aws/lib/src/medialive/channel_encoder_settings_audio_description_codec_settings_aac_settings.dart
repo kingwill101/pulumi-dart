@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
   /// Average bitrate in bits/second.
-  final pulumi.Input<double>? bitrate;
+  final pulumi.Input<double?>? bitrate;
   /// Mono, Stereo, or 5.1 channel layout.
-  final pulumi.Input<String>? codingMode;
+  final pulumi.Input<String?>? codingMode;
   /// Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.
-  final pulumi.Input<String>? inputType;
+  final pulumi.Input<String?>? inputType;
   /// AAC profile.
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<String?>? profile;
   /// The rate control mode.
-  final pulumi.Input<String>? rateControlMode;
+  final pulumi.Input<String?>? rateControlMode;
   /// Sets LATM/LOAS AAC output for raw containers.
-  final pulumi.Input<String>? rawFormat;
+  final pulumi.Input<String?>? rawFormat;
   /// Sample rate in Hz.
-  final pulumi.Input<double>? sampleRate;
+  final pulumi.Input<double?>? sampleRate;
   /// Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
-  final pulumi.Input<String>? spec;
+  final pulumi.Input<String?>? spec;
   /// VBR Quality Level - Only used if rateControlMode is VBR.
-  final pulumi.Input<String>? vbrQuality;
+  final pulumi.Input<String?>? vbrQuality;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings].
   /// [bitrate] Average bitrate in bits/second.
@@ -60,13 +60,13 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings(
-      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       codingMode: (() { final guardedValue = map['codingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputType: (() { final guardedValue = map['inputType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rateControlMode: (() { final guardedValue = map['rateControlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rawFormat: (() { final guardedValue = map['rawFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sampleRate: (() { final guardedValue = map['sampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sampleRate: (() { final guardedValue = map['sampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vbrQuality: (() { final guardedValue = map['vbrQuality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

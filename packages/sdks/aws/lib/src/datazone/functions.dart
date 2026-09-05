@@ -124,6 +124,17 @@ Future<GetDomainResult> getDomain(
   return GetDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:datazone/getDomain:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
+}
+
 /// Data source for managing an AWS DataZone Environment Blueprint.
 ///
 /// ## Example Usage
@@ -292,4 +303,15 @@ Future<GetEnvironmentBlueprintResult> getEnvironmentBlueprint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentBlueprintResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentBlueprintResult> getEnvironmentBlueprintOutput(
+  GetEnvironmentBlueprintArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:datazone/getEnvironmentBlueprint:getEnvironmentBlueprint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentBlueprintResult.fromMap);
 }

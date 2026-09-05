@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_xss_match_statement_field_to_match_header_match_p
 
 class WebAclRuleStatementXssMatchStatementFieldToMatchHeader {
   /// Headers to inspect. See Headers Match Pattern below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern>? matchPattern;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern?>? matchPattern;
   /// Parts of the headers to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
   /// How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.

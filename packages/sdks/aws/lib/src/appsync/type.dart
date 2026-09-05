@@ -230,7 +230,7 @@ class Type extends pulumi.CustomResource {
           'aws:appsync/type:Type',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
@@ -246,11 +246,12 @@ class Type extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Type._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,6 +265,24 @@ class Type extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    arn = registerOutput<String>('arn');
+    definition = registerOutput<String>('definition');
+    description = registerOutput<String>('description');
+    format = registerOutput<String>('format');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Type] resource.
+  Type.reference(String urn)
+    : super(
+        'aws:appsync/type:Type',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
     definition = registerOutput<String>('definition');

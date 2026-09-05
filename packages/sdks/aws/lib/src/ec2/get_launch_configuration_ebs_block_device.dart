@@ -63,11 +63,11 @@ class GetLaunchConfigurationEbsBlockDevice {
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
       noDevice: pulumi.Input.fromValue(map['noDevice'] as bool),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
-      throughput: pulumi.Input.fromValue(map['throughput'] as int),
-      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

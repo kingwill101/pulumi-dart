@@ -6,34 +6,34 @@ import 'dx_gateway_attachment_timeouts.dart';
 /// Input properties used for looking up and filtering DxGatewayAttachment resources.
 class DxGatewayAttachmentState {
   /// ARN of the attachment.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Policy rule number associated with the attachment.
-  final pulumi.Input<int>? attachmentPolicyRuleNumber;
+  final pulumi.Input<int?>? attachmentPolicyRuleNumber;
   /// Type of attachment.
-  final pulumi.Input<String>? attachmentType;
+  final pulumi.Input<String?>? attachmentType;
   /// ARN of the core network for the attachment.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// ID of the Cloud WAN core network to which the Direct Connect gateway attachment should be attached.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// ARN of the Direct Connect gateway attachment.
-  final pulumi.Input<String>? directConnectGatewayArn;
+  final pulumi.Input<String?>? directConnectGatewayArn;
   /// One or more core network edge locations to associate with the Direct Connect gateway attachment.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? edgeLocations;
+  final pulumi.Input<List<String>?>? edgeLocations;
   /// ID of the attachment account owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// The routing policy label to apply to the Direct Connect Gateway attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
   /// Name of the segment attachment.
-  final pulumi.Input<String>? segmentName;
+  final pulumi.Input<String?>? segmentName;
   /// State of the attachment.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<DxGatewayAttachmentTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<DxGatewayAttachmentTimeouts?>? timeouts;
 
   /// Creates a new [DxGatewayAttachmentState].
   /// [arn] ARN of the attachment.
@@ -89,7 +89,7 @@ class DxGatewayAttachmentState {
   factory DxGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return DxGatewayAttachmentState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       attachmentType: (() { final guardedValue = map['attachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkArn: (() { final guardedValue = map['coreNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkId: (() { final guardedValue = map['coreNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

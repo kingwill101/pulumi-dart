@@ -10,13 +10,13 @@ class SmsChannelArgs {
   /// ID of the application.
   final pulumi.Input<String> applicationId;
   /// Whether the channel is enabled or disabled. By default, it is set to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the sender for your messages.
-  final pulumi.Input<String>? senderId;
+  final pulumi.Input<String?>? senderId;
   /// Short Code registered with the phone provider.
-  final pulumi.Input<String>? shortCode;
+  final pulumi.Input<String?>? shortCode;
 
   /// Creates a new [SmsChannelArgs].
   /// [applicationId] ID of the application.

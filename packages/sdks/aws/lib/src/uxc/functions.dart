@@ -250,3 +250,14 @@ Future<GetServicesResult> getServices(
   );
   return GetServicesResult.fromMap(result);
 }
+
+pulumi.Output<GetServicesResult> getServicesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:uxc/getServices:getServices',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetServicesResult.fromMap);
+}

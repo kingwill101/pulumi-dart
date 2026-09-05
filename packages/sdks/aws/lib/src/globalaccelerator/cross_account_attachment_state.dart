@@ -6,23 +6,23 @@ import 'cross_account_attachment_resource.dart';
 /// Input properties used for looking up and filtering CrossAccountAttachment resources.
 class CrossAccountAttachmentState {
   /// ARN of the Cross Account Attachment.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Creation Time when the Cross Account Attachment.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Last modified time of the Cross Account Attachment.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// Name of the Cross Account Attachment.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
-  final pulumi.Input<List<String>>? principals;
+  final pulumi.Input<List<String>?>? principals;
   /// List of resources to be associated with the accelerator.
-  final pulumi.Input<List<CrossAccountAttachmentResource>>? resources;
+  final pulumi.Input<List<CrossAccountAttachmentResource>?>? resources;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CrossAccountAttachmentState].
   /// [arn] ARN of the Cross Account Attachment.

@@ -6,9 +6,9 @@ import 'restore_testing_selection_protected_resource_conditions_string_not_equal
 
 class RestoreTestingSelectionProtectedResourceConditions {
   /// The list of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See the structure for details
-  final pulumi.Input<List<RestoreTestingSelectionProtectedResourceConditionsStringEqual>>? stringEquals;
+  final pulumi.Input<List<RestoreTestingSelectionProtectedResourceConditionsStringEqual>?>? stringEquals;
   /// The list of string not equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching.". See the structure for details
-  final pulumi.Input<List<RestoreTestingSelectionProtectedResourceConditionsStringNotEqual>>? stringNotEquals;
+  final pulumi.Input<List<RestoreTestingSelectionProtectedResourceConditionsStringNotEqual>?>? stringNotEquals;
 
   /// Creates a new [RestoreTestingSelectionProtectedResourceConditions].
   /// [stringEquals] The list of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See the structure for details

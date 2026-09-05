@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_lightsail_lb_certificate_lb_certificate_args_doc}
 class LbCertificateArgs {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Load balancer name where you want to create the SSL/TLS certificate.
   final pulumi.Input<String> lbName;
   /// SSL/TLS certificate name.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
 
   /// Creates a new [LbCertificateArgs].
   /// [domainName] Domain name (e.g., example.com) for your SSL/TLS certificate.

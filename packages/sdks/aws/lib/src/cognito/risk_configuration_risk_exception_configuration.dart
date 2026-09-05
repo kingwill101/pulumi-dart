@@ -6,11 +6,11 @@ class RiskConfigurationRiskExceptionConfiguration {
   /// Overrides the risk decision to always block the pre-authentication requests.
   /// The IP range is in CIDR notation, a compact representation of an IP address and its routing prefix.
   /// Can contain a maximum of 200 items.
-  final pulumi.Input<List<String>>? blockedIpRangeLists;
+  final pulumi.Input<List<String>?>? blockedIpRangeLists;
   /// Risk detection isn't performed on the IP addresses in this range list.
   /// The IP range is in CIDR notation.
   /// Can contain a maximum of 200 items.
-  final pulumi.Input<List<String>>? skippedIpRangeLists;
+  final pulumi.Input<List<String>?>? skippedIpRangeLists;
 
   /// Creates a new [RiskConfigurationRiskExceptionConfiguration].
   /// [blockedIpRangeLists] Overrides the risk decision to always block the pre-authentication requests.

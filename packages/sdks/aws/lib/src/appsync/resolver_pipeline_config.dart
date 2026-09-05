@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverPipelineConfig {
   /// List of Function objects.
-  final pulumi.Input<List<String>>? functions;
+  final pulumi.Input<List<String>?>? functions;
 
   /// Creates a new [ResolverPipelineConfig].
   /// [functions] List of Function objects.

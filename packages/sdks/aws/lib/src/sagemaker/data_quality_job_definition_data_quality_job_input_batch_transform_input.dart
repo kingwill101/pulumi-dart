@@ -9,11 +9,11 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInput {
   /// The dataset format for your batch transform job. Fields are documented below.
   final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat> datasetFormat;
   /// Path to the filesystem where the batch transform data is available to the container. Defaults to `/opt/ml/processing/input`.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Defaults to `FullyReplicated`. Valid values are `FullyReplicated` or `ShardedByS3Key`
-  final pulumi.Input<String>? s3DataDistributionType;
+  final pulumi.Input<String?>? s3DataDistributionType;
   /// Whether the `Pipe` or `File` is used as the input mode for transferring data for the monitoring job. `Pipe` mode is recommended for large datasets. `File` mode is useful for small files that fit in memory. Defaults to `File`.  Valid values are `Pipe` or `File`
-  final pulumi.Input<String>? s3InputMode;
+  final pulumi.Input<String?>? s3InputMode;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInput].
   /// [dataCapturedDestinationS3Uri] The Amazon S3 location being used to capture the data.

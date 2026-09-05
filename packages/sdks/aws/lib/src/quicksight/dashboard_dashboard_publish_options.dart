@@ -14,25 +14,25 @@ import 'dashboard_dashboard_publish_options_visual_menu_option.dart';
 
 class DashboardDashboardPublishOptions {
   /// Ad hoc (one-time) filtering option. See ad_hoc_filtering_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsAdHocFilteringOption>? adHocFilteringOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsAdHocFilteringOption?>? adHocFilteringOption;
   /// The drill-down options of data points in a dashboard. See data_point_drill_up_down_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsDataPointDrillUpDownOption>? dataPointDrillUpDownOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsDataPointDrillUpDownOption?>? dataPointDrillUpDownOption;
   /// The data point menu label options of a dashboard. See data_point_menu_label_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsDataPointMenuLabelOption>? dataPointMenuLabelOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsDataPointMenuLabelOption?>? dataPointMenuLabelOption;
   /// The data point tool tip options of a dashboard. See data_point_tooltip_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsDataPointTooltipOption>? dataPointTooltipOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsDataPointTooltipOption?>? dataPointTooltipOption;
   /// Export to .csv option. See export_to_csv_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsExportToCsvOption>? exportToCsvOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsExportToCsvOption?>? exportToCsvOption;
   /// Determines if hidden fields are exported with a dashboard. See export_with_hidden_fields_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsExportWithHiddenFieldsOption>? exportWithHiddenFieldsOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsExportWithHiddenFieldsOption?>? exportWithHiddenFieldsOption;
   /// Sheet controls option. See sheet_controls_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsSheetControlsOption>? sheetControlsOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsSheetControlsOption?>? sheetControlsOption;
   /// The sheet layout maximization options of a dashboard. See sheet_layout_element_maximization_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption>? sheetLayoutElementMaximizationOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption?>? sheetLayoutElementMaximizationOption;
   /// The axis sort options of a dashboard. See visual_axis_sort_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsVisualAxisSortOption>? visualAxisSortOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsVisualAxisSortOption?>? visualAxisSortOption;
   /// The menu options of a visual in a dashboard. See visual_menu_option.
-  final pulumi.Input<DashboardDashboardPublishOptionsVisualMenuOption>? visualMenuOption;
+  final pulumi.Input<DashboardDashboardPublishOptionsVisualMenuOption?>? visualMenuOption;
 
   /// Creates a new [DashboardDashboardPublishOptions].
   /// [adHocFilteringOption] Ad hoc (one-time) filtering option. See ad_hoc_filtering_option.

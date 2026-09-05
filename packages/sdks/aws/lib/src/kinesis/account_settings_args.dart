@@ -9,9 +9,9 @@ import 'account_settings_minimum_throughput_billing_commitment.dart';
 /// {@macro pulumi_kinesis_account_settings_account_settings_args_doc}
 class AccountSettingsArgs {
   /// Minimum throughput billing commitment configuration. Detailed below.
-  final pulumi.Input<AccountSettingsMinimumThroughputBillingCommitment>? minimumThroughputBillingCommitment;
+  final pulumi.Input<AccountSettingsMinimumThroughputBillingCommitment?>? minimumThroughputBillingCommitment;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AccountSettingsArgs].
   /// [minimumThroughputBillingCommitment] Minimum throughput billing commitment configuration. Detailed below.

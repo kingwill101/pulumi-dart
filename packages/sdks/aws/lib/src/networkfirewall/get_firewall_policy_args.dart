@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkfirewall_get_firewall_policy_get_firewall_policy_args_doc}
 class GetFirewallPolicyArgs {
   /// ARN of the firewall policy.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Descriptive name of the firewall policy.
   ///
   /// One or more of these arguments is required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the firewall policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetFirewallPolicyArgs].
   /// [arn] ARN of the firewall policy.

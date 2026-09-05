@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'xss_match_set_args.dart';
 import 'xss_match_set_state.dart';
+import 'xss_match_set_xss_match_tuple.dart';
 
 /// Provides a WAF XSS Match Set Resource
 ///
@@ -12,21 +13,21 @@ import 'xss_match_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const xssMatchSet = new aws.waf.XssMatchSet("xss_match_set", {
-///     name: "xss_match_set",
 ///     xssMatchTuples: [
 ///         {
-///             textTransformation: "NONE",
 ///             fieldToMatch: {
 ///                 type: "URI",
 ///             },
+///             textTransformation: "NONE",
 ///         },
 ///         {
-///             textTransformation: "NONE",
 ///             fieldToMatch: {
 ///                 type: "QUERY_STRING",
 ///             },
+///             textTransformation: "NONE",
 ///         },
 ///     ],
+///     name: "xss_match_set",
 /// });
 /// ```
 /// ```python
@@ -34,21 +35,21 @@ import 'xss_match_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// xss_match_set = aws.waf.XssMatchSet("xss_match_set",
-///     name="xss_match_set",
 ///     xss_match_tuples=[
 ///         {
-///             "text_transformation": "NONE",
 ///             "field_to_match": {
 ///                 "type": "URI",
 ///             },
+///             "text_transformation": "NONE",
 ///         },
 ///         {
-///             "text_transformation": "NONE",
 ///             "field_to_match": {
 ///                 "type": "QUERY_STRING",
 ///             },
+///             "text_transformation": "NONE",
 ///         },
-///     ])
+///     ],
+///     name="xss_match_set")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,26 +61,26 @@ import 'xss_match_set_state.dart';
 /// {
 ///     var xssMatchSet = new Aws.Waf.XssMatchSet("xss_match_set", new()
 ///     {
-///         Name = "xss_match_set",
 ///         XssMatchTuples = new[]
 ///         {
 ///             new Aws.Waf.Inputs.XssMatchSetXssMatchTupleArgs
 ///             {
-///                 TextTransformation = "NONE",
 ///                 FieldToMatch = new Aws.Waf.Inputs.XssMatchSetXssMatchTupleFieldToMatchArgs
 ///                 {
 ///                     Type = "URI",
 ///                 },
+///                 TextTransformation = "NONE",
 ///             },
 ///             new Aws.Waf.Inputs.XssMatchSetXssMatchTupleArgs
 ///             {
-///                 TextTransformation = "NONE",
 ///                 FieldToMatch = new Aws.Waf.Inputs.XssMatchSetXssMatchTupleFieldToMatchArgs
 ///                 {
 ///                     Type = "QUERY_STRING",
 ///                 },
+///                 TextTransformation = "NONE",
 ///             },
 ///         },
+///         Name = "xss_match_set",
 ///     });
 ///
 /// });
@@ -95,21 +96,21 @@ import 'xss_match_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := waf.NewXssMatchSet(ctx, "xss_match_set", &waf.XssMatchSetArgs{
-/// 			Name: pulumi.String("xss_match_set"),
 /// 			XssMatchTuples: waf.XssMatchSetXssMatchTupleArray{
 /// 				&waf.XssMatchSetXssMatchTupleArgs{
-/// 					TextTransformation: pulumi.String("NONE"),
 /// 					FieldToMatch: &waf.XssMatchSetXssMatchTupleFieldToMatchArgs{
 /// 						Type: pulumi.String("URI"),
 /// 					},
+/// 					TextTransformation: pulumi.String("NONE"),
 /// 				},
 /// 				&waf.XssMatchSetXssMatchTupleArgs{
-/// 					TextTransformation: pulumi.String("NONE"),
 /// 					FieldToMatch: &waf.XssMatchSetXssMatchTupleFieldToMatchArgs{
 /// 						Type: pulumi.String("QUERY_STRING"),
 /// 					},
+/// 					TextTransformation: pulumi.String("NONE"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("xss_match_set"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -128,19 +129,19 @@ import 'xss_match_set_state.dart';
 /// }
 ///
 /// resource "aws_waf_xssmatchset" "xss_match_set" {
-///   name = "xss_match_set"
 ///   xss_match_tuples {
-///     text_transformation = "NONE"
 ///     field_to_match = {
 ///       type = "URI"
 ///     }
+///     text_transformation = "NONE"
 ///   }
 ///   xss_match_tuples {
-///     text_transformation = "NONE"
 ///     field_to_match = {
 ///       type = "QUERY_STRING"
 ///     }
+///     text_transformation = "NONE"
 ///   }
+///   name = "xss_match_set"
 /// }
 /// ```
 /// ```java
@@ -167,20 +168,20 @@ import 'xss_match_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var xssMatchSet = new XssMatchSet("xssMatchSet", XssMatchSetArgs.builder()
-///             .name("xss_match_set")
 ///             .xssMatchTuples(
 ///                 XssMatchSetXssMatchTupleArgs.builder()
-///                     .textTransformation("NONE")
 ///                     .fieldToMatch(XssMatchSetXssMatchTupleFieldToMatchArgs.builder()
 ///                         .type("URI")
 ///                         .build())
+///                     .textTransformation("NONE")
 ///                     .build(),
 ///                 XssMatchSetXssMatchTupleArgs.builder()
-///                     .textTransformation("NONE")
 ///                     .fieldToMatch(XssMatchSetXssMatchTupleFieldToMatchArgs.builder()
 ///                         .type("QUERY_STRING")
 ///                         .build())
+///                     .textTransformation("NONE")
 ///                     .build())
+///             .name("xss_match_set")
 ///             .build());
 ///
 ///     }
@@ -192,14 +193,14 @@ import 'xss_match_set_state.dart';
 ///     type: aws:waf:XssMatchSet
 ///     name: xss_match_set
 ///     properties:
-///       name: xss_match_set
 ///       xssMatchTuples:
-///         - textTransformation: NONE
-///           fieldToMatch:
+///         - fieldToMatch:
 ///             type: URI
-///         - textTransformation: NONE
-///           fieldToMatch:
+///           textTransformation: NONE
+///         - fieldToMatch:
 ///             type: QUERY_STRING
+///           textTransformation: NONE
+///       name: xss_match_set
 /// ```
 ///
 ///
@@ -211,12 +212,12 @@ import 'xss_match_set_state.dart';
 /// $ pulumi import aws:waf/xssMatchSet:XssMatchSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class XssMatchSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN)
+  /// ARN
   late final pulumi.Output<String> arn;
   /// The name or description of the SizeConstraintSet.
   late final pulumi.Output<String> name;
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-  late final pulumi.Output<List<Map<String, dynamic>>?> xssMatchTuples;
+  late final pulumi.Output<List<XssMatchSetXssMatchTuple>?> xssMatchTuples;
 
   /// Creates a new [XssMatchSet].
   /// [name] The Pulumi resource name.
@@ -230,11 +231,11 @@ class XssMatchSet extends pulumi.CustomResource {
           'aws:waf/xssMatchSet:XssMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>('xssMatchTuples');
+    xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(guardedValue, (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [XssMatchSet] resource's state with the given [name] and [id].
@@ -242,11 +243,12 @@ class XssMatchSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     XssMatchSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return XssMatchSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -262,6 +264,20 @@ class XssMatchSet extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>('xssMatchTuples');
+    xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(guardedValue, (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [XssMatchSet] resource.
+  XssMatchSet.reference(String urn)
+    : super(
+        'aws:waf/xssMatchSet:XssMatchSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(guardedValue, (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -20,7 +20,7 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotCon
 
   factory GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: pulumi.Input.fromValue(map['targetResourceCount'] as int),
+      targetResourceCount: pulumi.Input.fromValue((map['targetResourceCount'] as num).toInt()),
     );
   }
 }

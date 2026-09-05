@@ -9,15 +9,15 @@ import 'get_local_gateway_virtual_interface_group_filter.dart';
 /// {@macro pulumi_ec2_get_local_gateway_virtual_interface_group_get_local_gateway_virtual_interface_group_args_doc}
 class GetLocalGatewayVirtualInterfaceGroupArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
-  final pulumi.Input<List<GetLocalGatewayVirtualInterfaceGroupFilter>>? filters;
+  final pulumi.Input<List<GetLocalGatewayVirtualInterfaceGroupFilter>?>? filters;
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Identifier of EC2 Local Gateway.
-  final pulumi.Input<String>? localGatewayId;
+  final pulumi.Input<String?>? localGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetLocalGatewayVirtualInterfaceGroupArgs].
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.

@@ -624,7 +624,7 @@ import 'domain_state.dart';
 /// $ pulumi import aws:customerprofiles/domain:Domain example e6f777be-22d0-4b40-b307-5d2720ef16b2
 /// ```
 class Domain extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Customer Profiles Domain.
+  /// ARN of the Customer Profiles Domain.
   late final pulumi.Output<String> arn;
   /// The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications.
   late final pulumi.Output<String?> deadLetterQueueUrl;
@@ -659,7 +659,7 @@ class Domain extends pulumi.CustomResource {
           'aws:customerprofiles/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deadLetterQueueUrl = registerOutput<String?>('deadLetterQueueUrl');
@@ -669,8 +669,8 @@ class Domain extends pulumi.CustomResource {
     matching = registerOutput<DomainMatching?>('matching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     ruleBasedMatching = registerOutput<DomainRuleBasedMatching?>('ruleBasedMatching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRuleBasedMatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -678,11 +678,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -704,7 +705,28 @@ class Domain extends pulumi.CustomResource {
     matching = registerOutput<DomainMatching?>('matching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     ruleBasedMatching = registerOutput<DomainRuleBasedMatching?>('ruleBasedMatching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRuleBasedMatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:customerprofiles/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deadLetterQueueUrl = registerOutput<String?>('deadLetterQueueUrl');
+    defaultEncryptionKey = registerOutput<String?>('defaultEncryptionKey');
+    defaultExpirationDays = registerOutput<int>('defaultExpirationDays');
+    domainName = registerOutput<String>('domainName');
+    matching = registerOutput<DomainMatching?>('matching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    ruleBasedMatching = registerOutput<DomainRuleBasedMatching?>('ruleBasedMatching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRuleBasedMatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

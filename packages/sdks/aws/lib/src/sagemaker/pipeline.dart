@@ -220,7 +220,7 @@ import 'pipeline_state.dart';
 /// $ pulumi import aws:sagemaker/pipeline:Pipeline test_pipeline pipeline
 /// ```
 class Pipeline extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Pipeline.
+  /// ARN assigned by AWS to this Pipeline.
   late final pulumi.Output<String> arn;
   /// This is the configuration that controls the parallelism of the pipeline. If specified, it applies to all runs of this pipeline by default. see Parallelism Configuration details below.
   late final pulumi.Output<PipelineParallelismConfiguration?> parallelismConfiguration;
@@ -255,7 +255,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:sagemaker/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     parallelismConfiguration = registerOutput<PipelineParallelismConfiguration?>('parallelismConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineParallelismConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -266,8 +266,8 @@ class Pipeline extends pulumi.CustomResource {
     pipelineName = registerOutput<String>('pipelineName');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -275,11 +275,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,7 +303,29 @@ class Pipeline extends pulumi.CustomResource {
     pipelineName = registerOutput<String>('pipelineName');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'aws:sagemaker/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    parallelismConfiguration = registerOutput<PipelineParallelismConfiguration?>('parallelismConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineParallelismConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pipelineDefinition = registerOutput<String?>('pipelineDefinition');
+    pipelineDefinitionS3Location = registerOutput<PipelinePipelineDefinitionS3Location?>('pipelineDefinitionS3Location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelinePipelineDefinitionS3Location.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pipelineDescription = registerOutput<String?>('pipelineDescription');
+    pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
+    pipelineName = registerOutput<String>('pipelineName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

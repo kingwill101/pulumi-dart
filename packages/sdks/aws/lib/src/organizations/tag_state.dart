@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Tag resources.
 class TagState {
   /// Tag name.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Id of the Organizations resource to tag.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Tag value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TagState].
   /// [key] Tag name.

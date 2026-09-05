@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_definition_args.dart';
 import 'task_definition_ephemeral_storage.dart';
+import 'task_definition_placement_constraint.dart';
 import 'task_definition_proxy_configuration.dart';
 import 'task_definition_runtime_platform.dart';
 import 'task_definition_state.dart';
+import 'task_definition_volume.dart';
 
 /// Manages a revision of an ECS task definition to be used in `aws.ecs.Service`.
 ///
@@ -17,6 +19,14 @@ import 'task_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const service = new aws.ecs.TaskDefinition("service", {
+///     placementConstraints: [{
+///         type: "memberOf",
+///         expression: "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
+///     }],
+///     volumes: [{
+///         name: "service-storage",
+///         hostPath: "/ecs/service-storage",
+///     }],
 ///     family: "service",
 ///     containerDefinitions: JSON.stringify([
 ///         {
@@ -42,14 +52,6 @@ import 'task_definition_state.dart';
 ///             }],
 ///         },
 ///     ]),
-///     volumes: [{
-///         name: "service-storage",
-///         hostPath: "/ecs/service-storage",
-///     }],
-///     placementConstraints: [{
-///         type: "memberOf",
-///         expression: "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
-///     }],
 /// });
 /// ```
 /// ```python
@@ -58,6 +60,14 @@ import 'task_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// service = aws.ecs.TaskDefinition("service",
+///     placement_constraints=[{
+///         "type": "memberOf",
+///         "expression": "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
+///     }],
+///     volumes=[{
+///         "name": "service-storage",
+///         "host_path": "/ecs/service-storage",
+///     }],
 ///     family="service",
 ///     container_definitions=json.dumps([
 ///         {
@@ -82,15 +92,7 @@ import 'task_definition_state.dart';
 ///                 "hostPort": 443,
 ///             }],
 ///         },
-///     ]),
-///     volumes=[{
-///         "name": "service-storage",
-///         "host_path": "/ecs/service-storage",
-///     }],
-///     placement_constraints=[{
-///         "type": "memberOf",
-///         "expression": "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
-///     }])
+///     ]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -103,6 +105,22 @@ import 'task_definition_state.dart';
 /// {
 ///     var service = new Aws.Ecs.TaskDefinition("service", new()
 ///     {
+///         PlacementConstraints = new[]
+///         {
+///             new Aws.Ecs.Inputs.TaskDefinitionPlacementConstraintArgs
+///             {
+///                 Type = "memberOf",
+///                 Expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
+///             },
+///         },
+///         Volumes = new[]
+///         {
+///             new Aws.Ecs.Inputs.TaskDefinitionVolumeArgs
+///             {
+///                 Name = "service-storage",
+///                 HostPath = "/ecs/service-storage",
+///             },
+///         },
 ///         Family = "service",
 ///         ContainerDefinitions = JsonSerializer.Serialize(new[]
 ///         {
@@ -139,22 +157,6 @@ import 'task_definition_state.dart';
 ///                 },
 ///             },
 ///         }),
-///         Volumes = new[]
-///         {
-///             new Aws.Ecs.Inputs.TaskDefinitionVolumeArgs
-///             {
-///                 Name = "service-storage",
-///                 HostPath = "/ecs/service-storage",
-///             },
-///         },
-///         PlacementConstraints = new[]
-///         {
-///             new Aws.Ecs.Inputs.TaskDefinitionPlacementConstraintArgs
-///             {
-///                 Type = "memberOf",
-///                 Expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -204,20 +206,20 @@ import 'task_definition_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = ecs.NewTaskDefinition(ctx, "service", &ecs.TaskDefinitionArgs{
-/// 			Family:               pulumi.String("service"),
-/// 			ContainerDefinitions: pulumi.String(json0),
-/// 			Volumes: ecs.TaskDefinitionVolumeArray{
-/// 				&ecs.TaskDefinitionVolumeArgs{
-/// 					Name:     pulumi.String("service-storage"),
-/// 					HostPath: pulumi.String("/ecs/service-storage"),
-/// 				},
-/// 			},
 /// 			PlacementConstraints: ecs.TaskDefinitionPlacementConstraintArray{
 /// 				&ecs.TaskDefinitionPlacementConstraintArgs{
 /// 					Type:       pulumi.String("memberOf"),
 /// 					Expression: pulumi.String("attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"),
 /// 				},
 /// 			},
+/// 			Volumes: ecs.TaskDefinitionVolumeArray{
+/// 				&ecs.TaskDefinitionVolumeArgs{
+/// 					Name:     pulumi.String("service-storage"),
+/// 					HostPath: pulumi.String("/ecs/service-storage"),
+/// 				},
+/// 			},
+/// 			Family:               pulumi.String("service"),
+/// 			ContainerDefinitions: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -236,6 +238,14 @@ import 'task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskdefinition" "service" {
+///   placement_constraints {
+///     type       = "memberOf"
+///     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+///   }
+///   volumes {
+///     name      = "service-storage"
+///     host_path = "/ecs/service-storage"
+///   }
 ///   family = "service"
 ///   container_definitions = jsonencode([{
 ///     "name"      = "first"
@@ -258,14 +268,6 @@ import 'task_definition_state.dart';
 ///       "hostPort"      = 443
 ///     }]
 ///   }])
-///   volumes {
-///     name      = "service-storage"
-///     host_path = "/ecs/service-storage"
-///   }
-///   placement_constraints {
-///     type       = "memberOf"
-///     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
-///   }
 /// }
 /// ```
 /// ```java
@@ -276,8 +278,8 @@ import 'task_definition_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.TaskDefinition;
 /// import com.pulumi.aws.ecs.TaskDefinitionArgs;
-/// import com.pulumi.aws.ecs.inputs.TaskDefinitionVolumeArgs;
 /// import com.pulumi.aws.ecs.inputs.TaskDefinitionPlacementConstraintArgs;
+/// import com.pulumi.aws.ecs.inputs.TaskDefinitionVolumeArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -293,6 +295,14 @@ import 'task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var service = new TaskDefinition("service", TaskDefinitionArgs.builder()
+///             .placementConstraints(TaskDefinitionPlacementConstraintArgs.builder()
+///                 .type("memberOf")
+///                 .expression("attribute:ecs.availability-zone in [us-west-2a, us-west-2b]")
+///                 .build())
+///             .volumes(TaskDefinitionVolumeArgs.builder()
+///                 .name("service-storage")
+///                 .hostPath("/ecs/service-storage")
+///                 .build())
 ///             .family("service")
 ///             .containerDefinitions(serializeJson(
 ///                 jsonArray(
@@ -319,14 +329,6 @@ import 'task_definition_state.dart';
 ///                         )))
 ///                     )
 ///                 )))
-///             .volumes(TaskDefinitionVolumeArgs.builder()
-///                 .name("service-storage")
-///                 .hostPath("/ecs/service-storage")
-///                 .build())
-///             .placementConstraints(TaskDefinitionPlacementConstraintArgs.builder()
-///                 .type("memberOf")
-///                 .expression("attribute:ecs.availability-zone in [us-west-2a, us-west-2b]")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -337,6 +339,12 @@ import 'task_definition_state.dart';
 ///   service:
 ///     type: aws:ecs:TaskDefinition
 ///     properties:
+///       placementConstraints:
+///         - type: memberOf
+///           expression: attribute:ecs.availability-zone in [us-west-2a, us-west-2b]
+///       volumes:
+///         - name: service-storage
+///           hostPath: /ecs/service-storage
 ///       family: service
 ///       containerDefinitions:
 ///         fn::toJSON:
@@ -356,12 +364,6 @@ import 'task_definition_state.dart';
 ///             portMappings:
 ///               - containerPort: 443
 ///                 hostPort: 443
-///       volumes:
-///         - name: service-storage
-///           hostPath: /ecs/service-storage
-///       placementConstraints:
-///         - type: memberOf
-///           expression: attribute:ecs.availability-zone in [us-west-2a, us-west-2b]
 /// ```
 ///
 ///
@@ -374,10 +376,6 @@ import 'task_definition_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const service = new aws.ecs.TaskDefinition("service", {
-///     family: "service",
-///     containerDefinitions: std.file({
-///         input: "task-definitions/service.json",
-///     }).then(invoke => invoke.result),
 ///     proxyConfiguration: {
 ///         type: "APPMESH",
 ///         containerName: "applicationContainerName",
@@ -389,6 +387,10 @@ import 'task_definition_state.dart';
 ///             ProxyIngressPort: "15000",
 ///         },
 ///     },
+///     family: "service",
+///     containerDefinitions: std.file({
+///         input: "task-definitions/service.json",
+///     }).then(invoke => invoke.result),
 /// });
 /// ```
 /// ```python
@@ -397,8 +399,6 @@ import 'task_definition_state.dart';
 /// import pulumi_std as std
 ///
 /// service = aws.ecs.TaskDefinition("service",
-///     family="service",
-///     container_definitions=std.file(input="task-definitions/service.json").result,
 ///     proxy_configuration={
 ///         "type": "APPMESH",
 ///         "container_name": "applicationContainerName",
@@ -409,7 +409,9 @@ import 'task_definition_state.dart';
 ///             "ProxyEgressPort": "15001",
 ///             "ProxyIngressPort": "15000",
 ///         },
-///     })
+///     },
+///     family="service",
+///     container_definitions=std.file(input="task-definitions/service.json").result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -422,11 +424,6 @@ import 'task_definition_state.dart';
 /// {
 ///     var service = new Aws.Ecs.TaskDefinition("service", new()
 ///     {
-///         Family = "service",
-///         ContainerDefinitions = Std.File.Invoke(new()
-///         {
-///             Input = "task-definitions/service.json",
-///         }).Apply(invoke => invoke.Result),
 ///         ProxyConfiguration = new Aws.Ecs.Inputs.TaskDefinitionProxyConfigurationArgs
 ///         {
 ///             Type = "APPMESH",
@@ -440,6 +437,11 @@ import 'task_definition_state.dart';
 ///                 { "ProxyIngressPort", "15000" },
 ///             },
 ///         },
+///         Family = "service",
+///         ContainerDefinitions = Std.File.Invoke(new()
+///         {
+///             Input = "task-definitions/service.json",
+///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
 /// });
@@ -462,8 +464,6 @@ import 'task_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewTaskDefinition(ctx, "service", &ecs.TaskDefinitionArgs{
-/// 			Family:               pulumi.String("service"),
-/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 			ProxyConfiguration: &ecs.TaskDefinitionProxyConfigurationArgs{
 /// 				Type:          pulumi.String("APPMESH"),
 /// 				ContainerName: pulumi.String("applicationContainerName"),
@@ -475,6 +475,8 @@ import 'task_definition_state.dart';
 /// 					"ProxyIngressPort": pulumi.String("15000"),
 /// 				},
 /// 			},
+/// 			Family:               pulumi.String("service"),
+/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -496,8 +498,6 @@ import 'task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskdefinition" "service" {
-///   family                = "service"
-///   container_definitions = file("task-definitions/service.json")
 ///   proxy_configuration = {
 ///     type           = "APPMESH"
 ///     container_name = "applicationContainerName"
@@ -509,6 +509,8 @@ import 'task_definition_state.dart';
 ///       "ProxyIngressPort" = 15000
 ///     }
 ///   }
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
 /// }
 /// ```
 /// ```java
@@ -536,10 +538,6 @@ import 'task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var service = new TaskDefinition("service", TaskDefinitionArgs.builder()
-///             .family("service")
-///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
-///                 .input("task-definitions/service.json")
-///                 .build()).result())
 ///             .proxyConfiguration(TaskDefinitionProxyConfigurationArgs.builder()
 ///                 .type("APPMESH")
 ///                 .containerName("applicationContainerName")
@@ -551,6 +549,10 @@ import 'task_definition_state.dart';
 ///                     Map.entry("ProxyIngressPort", "15000")
 ///                 ))
 ///                 .build())
+///             .family("service")
+///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
+///                 .input("task-definitions/service.json")
+///                 .build()).result())
 ///             .build());
 ///
 ///     }
@@ -561,13 +563,6 @@ import 'task_definition_state.dart';
 ///   service:
 ///     type: aws:ecs:TaskDefinition
 ///     properties:
-///       family: service
-///       containerDefinitions:
-///         fn::invoke:
-///           function: std:file
-///           arguments:
-///             input: task-definitions/service.json
-///           return: result
 ///       proxyConfiguration:
 ///         type: APPMESH
 ///         containerName: applicationContainerName
@@ -577,6 +572,13 @@ import 'task_definition_state.dart';
 ///           IgnoredUID: '1337'
 ///           ProxyEgressPort: 15001
 ///           ProxyIngressPort: 15000
+///       family: service
+///       containerDefinitions:
+///         fn::invoke:
+///           function: std:file
+///           arguments:
+///             input: task-definitions/service.json
+///           return: result
 /// ```
 ///
 ///
@@ -589,12 +591,7 @@ import 'task_definition_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const service = new aws.ecs.TaskDefinition("service", {
-///     family: "service",
-///     containerDefinitions: std.file({
-///         input: "task-definitions/service.json",
-///     }).then(invoke => invoke.result),
 ///     volumes: [{
-///         name: "service-storage",
 ///         dockerVolumeConfiguration: {
 ///             scope: "shared",
 ///             autoprovision: true,
@@ -605,7 +602,12 @@ import 'task_definition_state.dart';
 ///                 o: `addr=${fs.dnsName},rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport`,
 ///             },
 ///         },
+///         name: "service-storage",
 ///     }],
+///     family: "service",
+///     containerDefinitions: std.file({
+///         input: "task-definitions/service.json",
+///     }).then(invoke => invoke.result),
 /// });
 /// ```
 /// ```python
@@ -614,10 +616,7 @@ import 'task_definition_state.dart';
 /// import pulumi_std as std
 ///
 /// service = aws.ecs.TaskDefinition("service",
-///     family="service",
-///     container_definitions=std.file(input="task-definitions/service.json").result,
 ///     volumes=[{
-///         "name": "service-storage",
 ///         "docker_volume_configuration": {
 ///             "scope": "shared",
 ///             "autoprovision": True,
@@ -628,7 +627,10 @@ import 'task_definition_state.dart';
 ///                 "o": f"addr={fs['dnsName']},rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport",
 ///             },
 ///         },
-///     }])
+///         "name": "service-storage",
+///     }],
+///     family="service",
+///     container_definitions=std.file(input="task-definitions/service.json").result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -641,16 +643,10 @@ import 'task_definition_state.dart';
 /// {
 ///     var service = new Aws.Ecs.TaskDefinition("service", new()
 ///     {
-///         Family = "service",
-///         ContainerDefinitions = Std.File.Invoke(new()
-///         {
-///             Input = "task-definitions/service.json",
-///         }).Apply(invoke => invoke.Result),
 ///         Volumes = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.TaskDefinitionVolumeArgs
 ///             {
-///                 Name = "service-storage",
 ///                 DockerVolumeConfiguration = new Aws.Ecs.Inputs.TaskDefinitionVolumeDockerVolumeConfigurationArgs
 ///                 {
 ///                     Scope = "shared",
@@ -663,8 +659,14 @@ import 'task_definition_state.dart';
 ///                         { "o", $"addr={fs.DnsName},rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport" },
 ///                     },
 ///                 },
+///                 Name = "service-storage",
 ///             },
 ///         },
+///         Family = "service",
+///         ContainerDefinitions = Std.File.Invoke(new()
+///         {
+///             Input = "task-definitions/service.json",
+///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
 /// });
@@ -687,11 +689,8 @@ import 'task_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewTaskDefinition(ctx, "service", &ecs.TaskDefinitionArgs{
-/// 			Family:               pulumi.String("service"),
-/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 			Volumes: ecs.TaskDefinitionVolumeArray{
 /// 				&ecs.TaskDefinitionVolumeArgs{
-/// 					Name: pulumi.String("service-storage"),
 /// 					DockerVolumeConfiguration: &ecs.TaskDefinitionVolumeDockerVolumeConfigurationArgs{
 /// 						Scope:         pulumi.String("shared"),
 /// 						Autoprovision: pulumi.Bool(true),
@@ -702,8 +701,11 @@ import 'task_definition_state.dart';
 /// 							"o":      pulumi.Sprintf("addr=%v,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport", fs.DnsName),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("service-storage"),
 /// 				},
 /// 			},
+/// 			Family:               pulumi.String("service"),
+/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -725,10 +727,7 @@ import 'task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskdefinition" "service" {
-///   family                = "service"
-///   container_definitions = file("task-definitions/service.json")
 ///   volumes {
-///     name = "service-storage"
 ///     docker_volume_configuration = {
 ///       scope         = "shared"
 ///       autoprovision = true
@@ -739,7 +738,10 @@ import 'task_definition_state.dart';
 ///         "o"      ="addr=${fs.dnsName},rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport"
 ///       }
 ///     }
+///     name = "service-storage"
 ///   }
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
 /// }
 /// ```
 /// ```java
@@ -768,12 +770,7 @@ import 'task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var service = new TaskDefinition("service", TaskDefinitionArgs.builder()
-///             .family("service")
-///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
-///                 .input("task-definitions/service.json")
-///                 .build()).result())
 ///             .volumes(TaskDefinitionVolumeArgs.builder()
-///                 .name("service-storage")
 ///                 .dockerVolumeConfiguration(TaskDefinitionVolumeDockerVolumeConfigurationArgs.builder()
 ///                     .scope("shared")
 ///                     .autoprovision(true)
@@ -784,7 +781,12 @@ import 'task_definition_state.dart';
 ///                         Map.entry("o", String.format("addr=%s,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport", fs.dnsName()))
 ///                     ))
 ///                     .build())
+///                 .name("service-storage")
 ///                 .build())
+///             .family("service")
+///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
+///                 .input("task-definitions/service.json")
+///                 .build()).result())
 ///             .build());
 ///
 ///     }
@@ -795,16 +797,8 @@ import 'task_definition_state.dart';
 ///   service:
 ///     type: aws:ecs:TaskDefinition
 ///     properties:
-///       family: service
-///       containerDefinitions:
-///         fn::invoke:
-///           function: std:file
-///           arguments:
-///             input: task-definitions/service.json
-///           return: result
 ///       volumes:
-///         - name: service-storage
-///           dockerVolumeConfiguration:
+///         - dockerVolumeConfiguration:
 ///             scope: shared
 ///             autoprovision: true
 ///             driver: local
@@ -812,6 +806,14 @@ import 'task_definition_state.dart';
 ///               type: nfs
 ///               device: ${fs.dnsName}:/
 ///               o: addr=${fs.dnsName},rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport
+///           name: service-storage
+///       family: service
+///       containerDefinitions:
+///         fn::invoke:
+///           function: std:file
+///           arguments:
+///             input: task-definitions/service.json
+///           return: result
 /// ```
 ///
 ///
@@ -824,23 +826,23 @@ import 'task_definition_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const service = new aws.ecs.TaskDefinition("service", {
-///     family: "service",
-///     containerDefinitions: std.file({
-///         input: "task-definitions/service.json",
-///     }).then(invoke => invoke.result),
 ///     volumes: [{
-///         name: "service-storage",
 ///         efsVolumeConfiguration: {
-///             fileSystemId: fs.id,
-///             rootDirectory: "/opt/data",
-///             transitEncryption: "ENABLED",
-///             transitEncryptionPort: 2999,
 ///             authorizationConfig: {
 ///                 accessPointId: test.id,
 ///                 iam: "ENABLED",
 ///             },
+///             fileSystemId: fs.id,
+///             rootDirectory: "/opt/data",
+///             transitEncryption: "ENABLED",
+///             transitEncryptionPort: 2999,
 ///         },
+///         name: "service-storage",
 ///     }],
+///     family: "service",
+///     containerDefinitions: std.file({
+///         input: "task-definitions/service.json",
+///     }).then(invoke => invoke.result),
 /// });
 /// ```
 /// ```python
@@ -849,21 +851,21 @@ import 'task_definition_state.dart';
 /// import pulumi_std as std
 ///
 /// service = aws.ecs.TaskDefinition("service",
-///     family="service",
-///     container_definitions=std.file(input="task-definitions/service.json").result,
 ///     volumes=[{
-///         "name": "service-storage",
 ///         "efs_volume_configuration": {
-///             "file_system_id": fs["id"],
-///             "root_directory": "/opt/data",
-///             "transit_encryption": "ENABLED",
-///             "transit_encryption_port": 2999,
 ///             "authorization_config": {
 ///                 "access_point_id": test["id"],
 ///                 "iam": "ENABLED",
 ///             },
+///             "file_system_id": fs["id"],
+///             "root_directory": "/opt/data",
+///             "transit_encryption": "ENABLED",
+///             "transit_encryption_port": 2999,
 ///         },
-///     }])
+///         "name": "service-storage",
+///     }],
+///     family="service",
+///     container_definitions=std.file(input="task-definitions/service.json").result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -876,30 +878,30 @@ import 'task_definition_state.dart';
 /// {
 ///     var service = new Aws.Ecs.TaskDefinition("service", new()
 ///     {
-///         Family = "service",
-///         ContainerDefinitions = Std.File.Invoke(new()
-///         {
-///             Input = "task-definitions/service.json",
-///         }).Apply(invoke => invoke.Result),
 ///         Volumes = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.TaskDefinitionVolumeArgs
 ///             {
-///                 Name = "service-storage",
 ///                 EfsVolumeConfiguration = new Aws.Ecs.Inputs.TaskDefinitionVolumeEfsVolumeConfigurationArgs
 ///                 {
-///                     FileSystemId = fs.Id,
-///                     RootDirectory = "/opt/data",
-///                     TransitEncryption = "ENABLED",
-///                     TransitEncryptionPort = 2999,
 ///                     AuthorizationConfig = new Aws.Ecs.Inputs.TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs
 ///                     {
 ///                         AccessPointId = test.Id,
 ///                         Iam = "ENABLED",
 ///                     },
+///                     FileSystemId = fs.Id,
+///                     RootDirectory = "/opt/data",
+///                     TransitEncryption = "ENABLED",
+///                     TransitEncryptionPort = 2999,
 ///                 },
+///                 Name = "service-storage",
 ///             },
 ///         },
+///         Family = "service",
+///         ContainerDefinitions = Std.File.Invoke(new()
+///         {
+///             Input = "task-definitions/service.json",
+///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
 /// });
@@ -922,23 +924,23 @@ import 'task_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewTaskDefinition(ctx, "service", &ecs.TaskDefinitionArgs{
-/// 			Family:               pulumi.String("service"),
-/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 			Volumes: ecs.TaskDefinitionVolumeArray{
 /// 				&ecs.TaskDefinitionVolumeArgs{
-/// 					Name: pulumi.String("service-storage"),
 /// 					EfsVolumeConfiguration: &ecs.TaskDefinitionVolumeEfsVolumeConfigurationArgs{
-/// 						FileSystemId:          pulumi.Any(fs.Id),
-/// 						RootDirectory:         pulumi.String("/opt/data"),
-/// 						TransitEncryption:     pulumi.String("ENABLED"),
-/// 						TransitEncryptionPort: pulumi.Int(2999),
 /// 						AuthorizationConfig: &ecs.TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs{
 /// 							AccessPointId: pulumi.Any(test.Id),
 /// 							Iam:           pulumi.String("ENABLED"),
 /// 						},
+/// 						FileSystemId:          pulumi.Any(fs.Id),
+/// 						RootDirectory:         pulumi.String("/opt/data"),
+/// 						TransitEncryption:     pulumi.String("ENABLED"),
+/// 						TransitEncryptionPort: pulumi.Int(2999),
 /// 					},
+/// 					Name: pulumi.String("service-storage"),
 /// 				},
 /// 			},
+/// 			Family:               pulumi.String("service"),
+/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -960,21 +962,21 @@ import 'task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskdefinition" "service" {
-///   family                = "service"
-///   container_definitions = file("task-definitions/service.json")
 ///   volumes {
-///     name = "service-storage"
 ///     efs_volume_configuration = {
-///       file_system_id          = fs.id
-///       root_directory          = "/opt/data"
-///       transit_encryption      = "ENABLED"
-///       transit_encryption_port = 2999
 ///       authorization_config = {
 ///         access_point_id = test.id
 ///         iam             = "ENABLED"
 ///       }
+///       file_system_id          = fs.id
+///       root_directory          = "/opt/data"
+///       transit_encryption      = "ENABLED"
+///       transit_encryption_port = 2999
 ///     }
+///     name = "service-storage"
 ///   }
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
 /// }
 /// ```
 /// ```java
@@ -1004,23 +1006,23 @@ import 'task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var service = new TaskDefinition("service", TaskDefinitionArgs.builder()
-///             .family("service")
-///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
-///                 .input("task-definitions/service.json")
-///                 .build()).result())
 ///             .volumes(TaskDefinitionVolumeArgs.builder()
-///                 .name("service-storage")
 ///                 .efsVolumeConfiguration(TaskDefinitionVolumeEfsVolumeConfigurationArgs.builder()
-///                     .fileSystemId(fs.id())
-///                     .rootDirectory("/opt/data")
-///                     .transitEncryption("ENABLED")
-///                     .transitEncryptionPort(2999)
 ///                     .authorizationConfig(TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs.builder()
 ///                         .accessPointId(test.id())
 ///                         .iam("ENABLED")
 ///                         .build())
+///                     .fileSystemId(fs.id())
+///                     .rootDirectory("/opt/data")
+///                     .transitEncryption("ENABLED")
+///                     .transitEncryptionPort(2999)
 ///                     .build())
+///                 .name("service-storage")
 ///                 .build())
+///             .family("service")
+///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
+///                 .input("task-definitions/service.json")
+///                 .build()).result())
 ///             .build());
 ///
 ///     }
@@ -1031,6 +1033,16 @@ import 'task_definition_state.dart';
 ///   service:
 ///     type: aws:ecs:TaskDefinition
 ///     properties:
+///       volumes:
+///         - efsVolumeConfiguration:
+///             authorizationConfig:
+///               accessPointId: ${test.id}
+///               iam: ENABLED
+///             fileSystemId: ${fs.id}
+///             rootDirectory: /opt/data
+///             transitEncryption: ENABLED
+///             transitEncryptionPort: 2999
+///           name: service-storage
 ///       family: service
 ///       containerDefinitions:
 ///         fn::invoke:
@@ -1038,16 +1050,6 @@ import 'task_definition_state.dart';
 ///           arguments:
 ///             input: task-definitions/service.json
 ///           return: result
-///       volumes:
-///         - name: service-storage
-///           efsVolumeConfiguration:
-///             fileSystemId: ${fs.id}
-///             rootDirectory: /opt/data
-///             transitEncryption: ENABLED
-///             transitEncryptionPort: 2999
-///             authorizationConfig:
-///               accessPointId: ${test.id}
-///               iam: ENABLED
 /// ```
 ///
 ///
@@ -1067,21 +1069,21 @@ import 'task_definition_state.dart';
 ///     }),
 /// });
 /// const service = new aws.ecs.TaskDefinition("service", {
-///     family: "service",
-///     containerDefinitions: std.file({
-///         input: "task-definitions/service.json",
-///     }).then(invoke => invoke.result),
 ///     volumes: [{
-///         name: "service-storage",
 ///         fsxWindowsFileServerVolumeConfiguration: {
-///             fileSystemId: testAwsFsxWindowsFileSystem.id,
-///             rootDirectory: "\\data",
 ///             authorizationConfig: {
 ///                 credentialsParameter: test.arn,
 ///                 domain: testAwsDirectoryServiceDirectory.name,
 ///             },
+///             fileSystemId: testAwsFsxWindowsFileSystem.id,
+///             rootDirectory: "\\data",
 ///         },
+///         name: "service-storage",
 ///     }],
+///     family: "service",
+///     containerDefinitions: std.file({
+///         input: "task-definitions/service.json",
+///     }).then(invoke => invoke.result),
 /// });
 /// ```
 /// ```python
@@ -1097,19 +1099,19 @@ import 'task_definition_state.dart';
 ///         "password": test_aws_directory_service_directory["password"],
 ///     }))
 /// service = aws.ecs.TaskDefinition("service",
-///     family="service",
-///     container_definitions=std.file(input="task-definitions/service.json").result,
 ///     volumes=[{
-///         "name": "service-storage",
 ///         "fsx_windows_file_server_volume_configuration": {
-///             "file_system_id": test_aws_fsx_windows_file_system["id"],
-///             "root_directory": "\\data",
 ///             "authorization_config": {
 ///                 "credentials_parameter": test.arn,
 ///                 "domain": test_aws_directory_service_directory["name"],
 ///             },
+///             "file_system_id": test_aws_fsx_windows_file_system["id"],
+///             "root_directory": "\\data",
 ///         },
-///     }])
+///         "name": "service-storage",
+///     }],
+///     family="service",
+///     container_definitions=std.file(input="task-definitions/service.json").result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1133,28 +1135,28 @@ import 'task_definition_state.dart';
 ///
 ///     var service = new Aws.Ecs.TaskDefinition("service", new()
 ///     {
-///         Family = "service",
-///         ContainerDefinitions = Std.File.Invoke(new()
-///         {
-///             Input = "task-definitions/service.json",
-///         }).Apply(invoke => invoke.Result),
 ///         Volumes = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.TaskDefinitionVolumeArgs
 ///             {
-///                 Name = "service-storage",
 ///                 FsxWindowsFileServerVolumeConfiguration = new Aws.Ecs.Inputs.TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationArgs
 ///                 {
-///                     FileSystemId = testAwsFsxWindowsFileSystem.Id,
-///                     RootDirectory = "\\data",
 ///                     AuthorizationConfig = new Aws.Ecs.Inputs.TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigArgs
 ///                     {
 ///                         CredentialsParameter = test.Arn,
 ///                         Domain = testAwsDirectoryServiceDirectory.Name,
 ///                     },
+///                     FileSystemId = testAwsFsxWindowsFileSystem.Id,
+///                     RootDirectory = "\\data",
 ///                 },
+///                 Name = "service-storage",
 ///             },
 ///         },
+///         Family = "service",
+///         ContainerDefinitions = Std.File.Invoke(new()
+///         {
+///             Input = "task-definitions/service.json",
+///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
 /// });
@@ -1195,21 +1197,21 @@ import 'task_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewTaskDefinition(ctx, "service", &ecs.TaskDefinitionArgs{
-/// 			Family:               pulumi.String("service"),
-/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 			Volumes: ecs.TaskDefinitionVolumeArray{
 /// 				&ecs.TaskDefinitionVolumeArgs{
-/// 					Name: pulumi.String("service-storage"),
 /// 					FsxWindowsFileServerVolumeConfiguration: &ecs.TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationArgs{
-/// 						FileSystemId:  pulumi.Any(testAwsFsxWindowsFileSystem.Id),
-/// 						RootDirectory: pulumi.String("\\data"),
 /// 						AuthorizationConfig: &ecs.TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigArgs{
 /// 							CredentialsParameter: test.Arn,
 /// 							Domain:               pulumi.Any(testAwsDirectoryServiceDirectory.Name),
 /// 						},
+/// 						FileSystemId:  pulumi.Any(testAwsFsxWindowsFileSystem.Id),
+/// 						RootDirectory: pulumi.String("\\data"),
 /// 					},
+/// 					Name: pulumi.String("service-storage"),
 /// 				},
 /// 			},
+/// 			Family:               pulumi.String("service"),
+/// 			ContainerDefinitions: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1231,19 +1233,19 @@ import 'task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskdefinition" "service" {
-///   family                = "service"
-///   container_definitions = file("task-definitions/service.json")
 ///   volumes {
-///     name = "service-storage"
 ///     fsx_windows_file_server_volume_configuration = {
-///       file_system_id = testAwsFsxWindowsFileSystem.id
-///       root_directory = "\\data"
 ///       authorization_config = {
 ///         credentials_parameter = aws_secretsmanager_secretversion.test.arn
 ///         domain                = testAwsDirectoryServiceDirectory.name
 ///       }
+///       file_system_id = testAwsFsxWindowsFileSystem.id
+///       root_directory = "\\data"
 ///     }
+///     name = "service-storage"
 ///   }
+///   family                = "service"
+///   container_definitions = file("task-definitions/service.json")
 /// }
 /// resource "aws_secretsmanager_secretversion" "test" {
 ///   secret_id = testAwsSecretsmanagerSecret.id
@@ -1292,21 +1294,21 @@ import 'task_definition_state.dart';
 ///             .build());
 ///
 ///         var service = new TaskDefinition("service", TaskDefinitionArgs.builder()
-///             .family("service")
-///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
-///                 .input("task-definitions/service.json")
-///                 .build()).result())
 ///             .volumes(TaskDefinitionVolumeArgs.builder()
-///                 .name("service-storage")
 ///                 .fsxWindowsFileServerVolumeConfiguration(TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationArgs.builder()
-///                     .fileSystemId(testAwsFsxWindowsFileSystem.id())
-///                     .rootDirectory("\\data")
 ///                     .authorizationConfig(TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigArgs.builder()
 ///                         .credentialsParameter(test.arn())
 ///                         .domain(testAwsDirectoryServiceDirectory.name())
 ///                         .build())
+///                     .fileSystemId(testAwsFsxWindowsFileSystem.id())
+///                     .rootDirectory("\\data")
 ///                     .build())
+///                 .name("service-storage")
 ///                 .build())
+///             .family("service")
+///             .containerDefinitions(StdFunctions.file(FileArgs.builder()
+///                 .input("task-definitions/service.json")
+///                 .build()).result())
 ///             .build());
 ///
 ///     }
@@ -1317,6 +1319,14 @@ import 'task_definition_state.dart';
 ///   service:
 ///     type: aws:ecs:TaskDefinition
 ///     properties:
+///       volumes:
+///         - fsxWindowsFileServerVolumeConfiguration:
+///             authorizationConfig:
+///               credentialsParameter: ${test.arn}
+///               domain: ${testAwsDirectoryServiceDirectory.name}
+///             fileSystemId: ${testAwsFsxWindowsFileSystem.id}
+///             rootDirectory: \data
+///           name: service-storage
 ///       family: service
 ///       containerDefinitions:
 ///         fn::invoke:
@@ -1324,14 +1334,6 @@ import 'task_definition_state.dart';
 ///           arguments:
 ///             input: task-definitions/service.json
 ///           return: result
-///       volumes:
-///         - name: service-storage
-///           fsxWindowsFileServerVolumeConfiguration:
-///             fileSystemId: ${testAwsFsxWindowsFileSystem.id}
-///             rootDirectory: \data
-///             authorizationConfig:
-///               credentialsParameter: ${test.arn}
-///               domain: ${testAwsDirectoryServiceDirectory.name}
 ///   test:
 ///     type: aws:secretsmanager:SecretVersion
 ///     properties:
@@ -1582,6 +1584,10 @@ import 'task_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ecs.TaskDefinition("test", {
+///     runtimePlatform: {
+///         operatingSystemFamily: "WINDOWS_SERVER_2019_CORE",
+///         cpuArchitecture: "X86_64",
+///     },
 ///     family: "test",
 ///     requiresCompatibilities: ["FARGATE"],
 ///     networkMode: "awsvpc",
@@ -1597,10 +1603,6 @@ import 'task_definition_state.dart';
 ///   }
 /// ]
 /// `,
-///     runtimePlatform: {
-///         operatingSystemFamily: "WINDOWS_SERVER_2019_CORE",
-///         cpuArchitecture: "X86_64",
-///     },
 /// });
 /// ```
 /// ```python
@@ -1608,6 +1610,10 @@ import 'task_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ecs.TaskDefinition("test",
+///     runtime_platform={
+///         "operating_system_family": "WINDOWS_SERVER_2019_CORE",
+///         "cpu_architecture": "X86_64",
+///     },
 ///     family="test",
 ///     requires_compatibilities=["FARGATE"],
 ///     network_mode="awsvpc",
@@ -1622,11 +1628,7 @@ import 'task_definition_state.dart';
 ///     "essential": true
 ///   }
 /// ]
-/// """,
-///     runtime_platform={
-///         "operating_system_family": "WINDOWS_SERVER_2019_CORE",
-///         "cpu_architecture": "X86_64",
-///     })
+/// """)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1638,6 +1640,11 @@ import 'task_definition_state.dart';
 /// {
 ///     var test = new Aws.Ecs.TaskDefinition("test", new()
 ///     {
+///         RuntimePlatform = new Aws.Ecs.Inputs.TaskDefinitionRuntimePlatformArgs
+///         {
+///             OperatingSystemFamily = "WINDOWS_SERVER_2019_CORE",
+///             CpuArchitecture = "X86_64",
+///         },
 ///         Family = "test",
 ///         RequiresCompatibilities = new[]
 ///         {
@@ -1656,11 +1663,6 @@ import 'task_definition_state.dart';
 ///   }
 /// ]
 /// ",
-///         RuntimePlatform = new Aws.Ecs.Inputs.TaskDefinitionRuntimePlatformArgs
-///         {
-///             OperatingSystemFamily = "WINDOWS_SERVER_2019_CORE",
-///             CpuArchitecture = "X86_64",
-///         },
 ///     });
 ///
 /// });
@@ -1676,6 +1678,10 @@ import 'task_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewTaskDefinition(ctx, "test", &ecs.TaskDefinitionArgs{
+/// 			RuntimePlatform: &ecs.TaskDefinitionRuntimePlatformArgs{
+/// 				OperatingSystemFamily: pulumi.String("WINDOWS_SERVER_2019_CORE"),
+/// 				CpuArchitecture:       pulumi.String("X86_64"),
+/// 			},
 /// 			Family: pulumi.String("test"),
 /// 			RequiresCompatibilities: pulumi.StringArray{
 /// 				pulumi.String("FARGATE"),
@@ -1693,10 +1699,6 @@ import 'task_definition_state.dart';
 ///   }
 /// ]
 /// `),
-/// 			RuntimePlatform: &ecs.TaskDefinitionRuntimePlatformArgs{
-/// 				OperatingSystemFamily: pulumi.String("WINDOWS_SERVER_2019_CORE"),
-/// 				CpuArchitecture:       pulumi.String("X86_64"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1715,16 +1717,16 @@ import 'task_definition_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskdefinition" "test" {
+///   runtime_platform = {
+///     operating_system_family = "WINDOWS_SERVER_2019_CORE"
+///     cpu_architecture        = "X86_64"
+///   }
 ///   family                   = "test"
 ///   requires_compatibilities = ["FARGATE"]
 ///   network_mode             = "awsvpc"
 ///   cpu                      = 1024
 ///   memory                   = 2048
 ///   container_definitions    = "[\n  {\n    \"name\": \"iis\",\n    \"image\": \"mcr.microsoft.com/windows/servercore/iis\",\n    \"cpu\": 1024,\n    \"memory\": 2048,\n    \"essential\": true\n  }\n]\n"
-///   runtime_platform = {
-///     operating_system_family = "WINDOWS_SERVER_2019_CORE"
-///     cpu_architecture        = "X86_64"
-///   }
 /// }
 /// ```
 /// ```java
@@ -1750,6 +1752,10 @@ import 'task_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new TaskDefinition("test", TaskDefinitionArgs.builder()
+///             .runtimePlatform(TaskDefinitionRuntimePlatformArgs.builder()
+///                 .operatingSystemFamily("WINDOWS_SERVER_2019_CORE")
+///                 .cpuArchitecture("X86_64")
+///                 .build())
 ///             .family("test")
 ///             .requiresCompatibilities("FARGATE")
 ///             .networkMode("awsvpc")
@@ -1766,10 +1772,6 @@ import 'task_definition_state.dart';
 ///   }
 /// ]
 ///             """)
-///             .runtimePlatform(TaskDefinitionRuntimePlatformArgs.builder()
-///                 .operatingSystemFamily("WINDOWS_SERVER_2019_CORE")
-///                 .cpuArchitecture("X86_64")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -1780,6 +1782,9 @@ import 'task_definition_state.dart';
 ///   test:
 ///     type: aws:ecs:TaskDefinition
 ///     properties:
+///       runtimePlatform:
+///         operatingSystemFamily: WINDOWS_SERVER_2019_CORE
+///         cpuArchitecture: X86_64
 ///       family: test
 ///       requiresCompatibilities:
 ///         - FARGATE
@@ -1796,9 +1801,6 @@ import 'task_definition_state.dart';
 ///             "essential": true
 ///           }
 ///         ]
-///       runtimePlatform:
-///         operatingSystemFamily: WINDOWS_SERVER_2019_CORE
-///         cpuArchitecture: X86_64
 /// ```
 ///
 ///
@@ -1850,7 +1852,7 @@ class TaskDefinition extends pulumi.CustomResource {
   /// Process namespace to use for the containers in the task. Valid values: host`, `task`.
   late final pulumi.Output<String?> pidMode;
   /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> placementConstraints;
+  late final pulumi.Output<List<TaskDefinitionPlacementConstraint>?> placementConstraints;
   /// Configuration block for the App Mesh proxy. Detailed below.
   late final pulumi.Output<TaskDefinitionProxyConfiguration?> proxyConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -1876,7 +1878,7 @@ class TaskDefinition extends pulumi.CustomResource {
   /// &gt; **NOTE:** Proper escaping is required for JSON field values containing quotes (`"`) such as `environment` values. If directly setting the JSON, they should be escaped as `\"` in the JSON,  e.g., `"value": "I \"love\" escaped quotes"`. If using a variable value, they should be escaped as `\\\"` in the variable, e.g., `value = "I \\\"love\\\" escaped quotes"` in the variable and `"value": "${var.myvariable}"` in the JSON.
   ///
   /// &gt; **Note:** Fault injection only works with tasks using the `awsvpc` or `host` network modes. Fault injection isn't available on Windows.
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+  late final pulumi.Output<List<TaskDefinitionVolume>?> volumes;
 
   /// Creates a new [TaskDefinition].
   /// [name] The Pulumi resource name.
@@ -1890,7 +1892,7 @@ class TaskDefinition extends pulumi.CustomResource {
           'aws:ecs/taskDefinition:TaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnWithoutRevision = registerOutput<String>('arnWithoutRevision');
@@ -1904,18 +1906,18 @@ class TaskDefinition extends pulumi.CustomResource {
     memory = registerOutput<String?>('memory');
     networkMode = registerOutput<String>('networkMode');
     pidMode = registerOutput<String?>('pidMode');
-    placementConstraints = registerOutput<List<Map<String, dynamic>>?>('placementConstraints');
+    placementConstraints = registerOutput<List<TaskDefinitionPlacementConstraint>?>('placementConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskDefinitionPlacementConstraint>(guardedValue, (value) => TaskDefinitionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     proxyConfiguration = registerOutput<TaskDefinitionProxyConfiguration?>('proxyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    requiresCompatibilities = registerOutput<List<String>?>('requiresCompatibilities');
+    requiresCompatibilities = registerOutput<List<String>?>('requiresCompatibilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     revision = registerOutput<int>('revision');
     runtimePlatform = registerOutput<TaskDefinitionRuntimePlatform?>('runtimePlatform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionRuntimePlatform.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskRoleArn = registerOutput<String?>('taskRoleArn');
     trackLatest = registerOutput<bool?>('trackLatest');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<TaskDefinitionVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskDefinitionVolume>(guardedValue, (value) => TaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [TaskDefinition] resource's state with the given [name] and [id].
@@ -1923,11 +1925,12 @@ class TaskDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaskDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TaskDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1953,17 +1956,52 @@ class TaskDefinition extends pulumi.CustomResource {
     memory = registerOutput<String?>('memory');
     networkMode = registerOutput<String>('networkMode');
     pidMode = registerOutput<String?>('pidMode');
-    placementConstraints = registerOutput<List<Map<String, dynamic>>?>('placementConstraints');
+    placementConstraints = registerOutput<List<TaskDefinitionPlacementConstraint>?>('placementConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskDefinitionPlacementConstraint>(guardedValue, (value) => TaskDefinitionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     proxyConfiguration = registerOutput<TaskDefinitionProxyConfiguration?>('proxyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    requiresCompatibilities = registerOutput<List<String>?>('requiresCompatibilities');
+    requiresCompatibilities = registerOutput<List<String>?>('requiresCompatibilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     revision = registerOutput<int>('revision');
     runtimePlatform = registerOutput<TaskDefinitionRuntimePlatform?>('runtimePlatform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionRuntimePlatform.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskRoleArn = registerOutput<String?>('taskRoleArn');
     trackLatest = registerOutput<bool?>('trackLatest');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<TaskDefinitionVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskDefinitionVolume>(guardedValue, (value) => TaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [TaskDefinition] resource.
+  TaskDefinition.reference(String urn)
+    : super(
+        'aws:ecs/taskDefinition:TaskDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    arnWithoutRevision = registerOutput<String>('arnWithoutRevision');
+    containerDefinitions = registerOutput<String>('containerDefinitions');
+    cpu = registerOutput<String?>('cpu');
+    enableFaultInjection = registerOutput<bool>('enableFaultInjection');
+    ephemeralStorage = registerOutput<TaskDefinitionEphemeralStorage?>('ephemeralStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionEphemeralStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
+    family = registerOutput<String>('family');
+    ipcMode = registerOutput<String?>('ipcMode');
+    memory = registerOutput<String?>('memory');
+    networkMode = registerOutput<String>('networkMode');
+    pidMode = registerOutput<String?>('pidMode');
+    placementConstraints = registerOutput<List<TaskDefinitionPlacementConstraint>?>('placementConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskDefinitionPlacementConstraint>(guardedValue, (value) => TaskDefinitionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+    proxyConfiguration = registerOutput<TaskDefinitionProxyConfiguration?>('proxyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requiresCompatibilities = registerOutput<List<String>?>('requiresCompatibilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    revision = registerOutput<int>('revision');
+    runtimePlatform = registerOutput<TaskDefinitionRuntimePlatform?>('runtimePlatform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskDefinitionRuntimePlatform.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taskRoleArn = registerOutput<String?>('taskRoleArn');
+    trackLatest = registerOutput<bool?>('trackLatest');
+    volumes = registerOutput<List<TaskDefinitionVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskDefinitionVolume>(guardedValue, (value) => TaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

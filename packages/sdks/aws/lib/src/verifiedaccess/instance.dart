@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_state.dart';
+import 'instance_verified_access_trust_provider.dart';
 
 /// Resource for managing a Verified Access Instance.
 ///
@@ -353,7 +354,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// One or more blocks of providing information about the AWS Verified Access Trust Providers. See verifiedAccessTrustProviders below for details.One or more blocks
-  late final pulumi.Output<List<Map<String, dynamic>>> verifiedAccessTrustProviders;
+  late final pulumi.Output<List<InstanceVerifiedAccessTrustProvider>> verifiedAccessTrustProviders;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -367,18 +368,18 @@ class Instance extends pulumi.CustomResource {
           'aws:verifiedaccess/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidrEndpointsCustomSubdomain = registerOutput<String?>('cidrEndpointsCustomSubdomain');
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String?>('description');
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    verifiedAccessTrustProviders = registerOutput<List<Map<String, dynamic>>>('verifiedAccessTrustProviders');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verifiedAccessTrustProviders = registerOutput<List<InstanceVerifiedAccessTrustProvider>>('verifiedAccessTrustProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceVerifiedAccessTrustProvider>(guardedValue, (value) => InstanceVerifiedAccessTrustProvider.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -386,11 +387,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -409,10 +411,31 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    verifiedAccessTrustProviders = registerOutput<List<Map<String, dynamic>>>('verifiedAccessTrustProviders');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verifiedAccessTrustProviders = registerOutput<List<InstanceVerifiedAccessTrustProvider>>('verifiedAccessTrustProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceVerifiedAccessTrustProvider>(guardedValue, (value) => InstanceVerifiedAccessTrustProvider.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'aws:verifiedaccess/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidrEndpointsCustomSubdomain = registerOutput<String?>('cidrEndpointsCustomSubdomain');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String?>('description');
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verifiedAccessTrustProviders = registerOutput<List<InstanceVerifiedAccessTrustProvider>>('verifiedAccessTrustProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceVerifiedAccessTrustProvider>(guardedValue, (value) => InstanceVerifiedAccessTrustProvider.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

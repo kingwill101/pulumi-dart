@@ -23,8 +23,8 @@ class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPort
 
   factory GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange(
-      from: pulumi.Input.fromValue(map['from'] as int),
-      to: pulumi.Input.fromValue(map['to'] as int),
+      from: pulumi.Input.fromValue((map['from'] as num).toInt()),
+      to: pulumi.Input.fromValue((map['to'] as num).toInt()),
     );
   }
 }

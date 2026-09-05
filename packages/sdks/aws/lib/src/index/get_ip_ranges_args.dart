@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_ip_ranges_get_ip_ranges_args_doc}
 class GetIpRangesArgs {
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Filter IP ranges by regions (or include all regions, if
   /// omitted). Valid items are `global` (for `cloudfront`) as well as all AWS regions
   /// (e.g., `eu-central-1`)
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// Filter IP ranges by services. Valid items are `amazon`
   /// (for amazon.com), `amazonConnect`, `apiGateway`, `cloud9`, `cloudfront`,
   /// `codebuild`, `dynamodb`, `ec2`, `ec2InstanceConnect`, `globalaccelerator`,
@@ -22,7 +22,7 @@ class GetIpRangesArgs {
   /// CIDR blocks, this call will fail.
   final pulumi.Input<List<String>> services;
   /// Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [GetIpRangesArgs].
   /// [id] Optional.

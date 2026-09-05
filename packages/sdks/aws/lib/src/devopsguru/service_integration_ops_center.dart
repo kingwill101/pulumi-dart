@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceIntegrationOpsCenter {
   /// Specifies if DevOps Guru is enabled to create an AWS Systems Manager OpsItem for each created insight. Valid values are `DISABLED` and `ENABLED`.
-  final pulumi.Input<String>? optInStatus;
+  final pulumi.Input<String?>? optInStatus;
 
   /// Creates a new [ServiceIntegrationOpsCenter].
   /// [optInStatus] Specifies if DevOps Guru is enabled to create an AWS Systems Manager OpsItem for each created insight. Valid values are `DISABLED` and `ENABLED`.

@@ -10,13 +10,13 @@ class GetInstanceArgs {
   /// Returns information on a specific connect instance by alias
   ///
   /// &gt; **NOTE:** One of either `instanceId` or `instanceAlias` is required.
-  final pulumi.Input<String>? instanceAlias;
+  final pulumi.Input<String?>? instanceAlias;
   /// Returns information on a specific connect instance by id
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assigned to the instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetInstanceArgs].
   /// [instanceAlias] Returns information on a specific connect instance by alias

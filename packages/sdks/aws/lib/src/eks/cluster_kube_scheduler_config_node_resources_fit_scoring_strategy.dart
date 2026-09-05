@@ -5,9 +5,9 @@ import 'cluster_kube_scheduler_config_node_resources_fit_scoring_strategy_resour
 
 class ClusterKubeSchedulerConfigNodeResourcesFitScoringStrategy {
   /// List of resource weight configuration blocks for scoring nodes. Detailed below.
-  final pulumi.Input<List<ClusterKubeSchedulerConfigNodeResourcesFitScoringStrategyResource>>? resources;
+  final pulumi.Input<List<ClusterKubeSchedulerConfigNodeResourcesFitScoringStrategyResource>?>? resources;
   /// The scoring strategy type. Valid values are `LeastAllocated` and `MostAllocated`. Default is `LeastAllocated`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ClusterKubeSchedulerConfigNodeResourcesFitScoringStrategy].
   /// [resources] List of resource weight configuration blocks for scoring nodes. Detailed below.

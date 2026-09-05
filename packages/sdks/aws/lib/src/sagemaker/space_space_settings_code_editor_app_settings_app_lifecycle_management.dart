@@ -5,7 +5,7 @@ import 'space_space_settings_code_editor_app_settings_app_lifecycle_management_i
 
 class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.
-  final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings?>? idleSettings;
 
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.

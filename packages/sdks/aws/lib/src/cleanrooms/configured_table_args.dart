@@ -13,17 +13,17 @@ class ConfiguredTableArgs {
   /// The analysis method for the configured table. The only valid value is currently `DIRECT_QUERY`.
   final pulumi.Input<String> analysisMethod;
   /// A description for the configured table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the configured table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A reference to the AWS Glue table which will be used to create the configured table.
   /// * `table_reference.database_name` - (Required - Forces new resource) - The name of the AWS Glue database which contains the table.
   /// * `table_reference.table_name` - (Required - Forces new resource) - The name of the AWS Glue table which will be used to create the configured table.
   final pulumi.Input<ConfiguredTableTableReference> tableReference;
   /// Key value pairs which tag the configured table.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfiguredTableArgs].
   /// [allowedColumns] The columns of the references table which will be included in the configured table.

@@ -142,13 +142,16 @@ import 'lustre_file_system_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.fsx.LustreFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]});
+/// const example = new aws.fsx.LustreFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]}, {
+///     ignoreChanges: ["securityGroupIds"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.fsx.LustreFileSystem("example", security_group_ids=[example_aws_security_group["id"]])
+/// example = aws.fsx.LustreFileSystem("example", security_group_ids=[example_aws_security_group["id"]],
+/// opts = pulumi.ResourceOptions(ignore_changes=["securityGroupIds"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -163,6 +166,12 @@ import 'lustre_file_system_state.dart';
 ///         SecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "securityGroupIds",
 ///         },
 ///     });
 ///
@@ -182,7 +191,9 @@ import 'lustre_file_system_state.dart';
 /// 			SecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"securityGroupIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -200,6 +211,9 @@ import 'lustre_file_system_state.dart';
 /// }
 ///
 /// resource "aws_fsx_lustrefilesystem" "example" {
+///   lifecycle {
+///     ignore_changes = [securityGroupIds]
+///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
 /// ```
@@ -211,6 +225,7 @@ import 'lustre_file_system_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.LustreFileSystem;
 /// import com.pulumi.aws.fsx.LustreFileSystemArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -226,7 +241,9 @@ import 'lustre_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LustreFileSystem("example", LustreFileSystemArgs.builder()
 ///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("securityGroupIds")
+///                 .build());
 ///
 ///     }
 /// }
@@ -238,9 +255,12 @@ import 'lustre_file_system_state.dart';
 ///     properties:
 ///       securityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
+///     options:
+///       ignoreChanges:
+///         - securityGroupIds
 /// ```
 class LustreFileSystem extends pulumi.CustomResource {
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// How Amazon FSx keeps your file and directory listings up to date as you add or modify objects in your linked S3 bucket. see [Auto Import Data Repo](https://docs.aws.amazon.com/fsx/latest/LustreGuide/autoimport-data-repo.html) for more details. Only supported on `PERSISTENT_1` deployment types.
   late final pulumi.Output<String> autoImportPolicy;
@@ -311,7 +331,7 @@ class LustreFileSystem extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Throughput in MBps required for the `INTELLIGENT_TIERING` storage type. Must be 4000 or multiples of 4000.
   late final pulumi.Output<int?> throughputCapacity;
-  /// Identifier of the Virtual Private Cloud for the file system.
+  /// Identifier of the VPC for the file system.
   late final pulumi.Output<String> vpcId;
   /// Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   late final pulumi.Output<String> weeklyMaintenanceStartTime;
@@ -328,7 +348,7 @@ class LustreFileSystem extends pulumi.CustomResource {
           'aws:fsx/lustreFileSystem:LustreFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoImportPolicy = registerOutput<String>('autoImportPolicy');
@@ -344,25 +364,25 @@ class LustreFileSystem extends pulumi.CustomResource {
     efaEnabled = registerOutput<bool>('efaEnabled');
     exportPath = registerOutput<String>('exportPath');
     fileSystemTypeVersion = registerOutput<String>('fileSystemTypeVersion');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     importPath = registerOutput<String?>('importPath');
     importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     logConfiguration = registerOutput<LustreFileSystemLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataConfiguration = registerOutput<LustreFileSystemMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mountName = registerOutput<String>('mountName');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     perUnitStorageThroughput = registerOutput<int?>('perUnitStorageThroughput');
     region = registerOutput<String>('region');
     rootSquashConfiguration = registerOutput<LustreFileSystemRootSquashConfiguration?>('rootSquashConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemRootSquashConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int?>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
     subnetIds = registerOutput<String>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int?>('throughputCapacity');
     vpcId = registerOutput<String>('vpcId');
     weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
@@ -373,11 +393,12 @@ class LustreFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LustreFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LustreFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,25 +426,72 @@ class LustreFileSystem extends pulumi.CustomResource {
     efaEnabled = registerOutput<bool>('efaEnabled');
     exportPath = registerOutput<String>('exportPath');
     fileSystemTypeVersion = registerOutput<String>('fileSystemTypeVersion');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     importPath = registerOutput<String?>('importPath');
     importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     logConfiguration = registerOutput<LustreFileSystemLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataConfiguration = registerOutput<LustreFileSystemMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mountName = registerOutput<String>('mountName');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     perUnitStorageThroughput = registerOutput<int?>('perUnitStorageThroughput');
     region = registerOutput<String>('region');
     rootSquashConfiguration = registerOutput<LustreFileSystemRootSquashConfiguration?>('rootSquashConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemRootSquashConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int?>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
     subnetIds = registerOutput<String>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputCapacity = registerOutput<int?>('throughputCapacity');
+    vpcId = registerOutput<String>('vpcId');
+    weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
+  }
+
+  /// Creates a typed reference to an existing [LustreFileSystem] resource.
+  LustreFileSystem.reference(String urn)
+    : super(
+        'aws:fsx/lustreFileSystem:LustreFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoImportPolicy = registerOutput<String>('autoImportPolicy');
+    automaticBackupRetentionDays = registerOutput<int>('automaticBackupRetentionDays');
+    backupId = registerOutput<String?>('backupId');
+    copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    dailyAutomaticBackupStartTime = registerOutput<String>('dailyAutomaticBackupStartTime');
+    dataCompressionType = registerOutput<String?>('dataCompressionType');
+    dataReadCacheConfiguration = registerOutput<LustreFileSystemDataReadCacheConfiguration?>('dataReadCacheConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemDataReadCacheConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentType = registerOutput<String?>('deploymentType');
+    dnsName = registerOutput<String>('dnsName');
+    driveCacheType = registerOutput<String?>('driveCacheType');
+    efaEnabled = registerOutput<bool>('efaEnabled');
+    exportPath = registerOutput<String>('exportPath');
+    fileSystemTypeVersion = registerOutput<String>('fileSystemTypeVersion');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    importPath = registerOutput<String?>('importPath');
+    importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    logConfiguration = registerOutput<LustreFileSystemLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataConfiguration = registerOutput<LustreFileSystemMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mountName = registerOutput<String>('mountName');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerId = registerOutput<String>('ownerId');
+    perUnitStorageThroughput = registerOutput<int?>('perUnitStorageThroughput');
+    region = registerOutput<String>('region');
+    rootSquashConfiguration = registerOutput<LustreFileSystemRootSquashConfiguration?>('rootSquashConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LustreFileSystemRootSquashConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    storageCapacity = registerOutput<int?>('storageCapacity');
+    storageType = registerOutput<String?>('storageType');
+    subnetIds = registerOutput<String>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int?>('throughputCapacity');
     vpcId = registerOutput<String>('vpcId');
     weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');

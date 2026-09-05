@@ -276,6 +276,17 @@ Future<GetAmiIdsResult> getAmiIds(
   return GetAmiIdsResult.fromMap(result);
 }
 
+pulumi.Output<GetAmiIdsResult> getAmiIdsOutput(
+  GetAmiIdsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:autoscaling/getAmiIds:getAmiIds',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAmiIdsResult.fromMap);
+}
+
 /// Use this data source to get information on an existing autoscaling group.
 ///
 /// ## Example Usage
@@ -392,4 +403,15 @@ Future<GetGroupResult> getGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:autoscaling/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
 }

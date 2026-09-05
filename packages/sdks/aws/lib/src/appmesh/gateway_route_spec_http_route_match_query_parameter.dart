@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_http_route_match_query_parameter_match.dart';
 
 class GatewayRouteSpecHttpRouteMatchQueryParameter {
-  final pulumi.Input<GatewayRouteSpecHttpRouteMatchQueryParameterMatch>? match;
+  final pulumi.Input<GatewayRouteSpecHttpRouteMatchQueryParameterMatch?>? match;
   /// Name to use for the gateway route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
 

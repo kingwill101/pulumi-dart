@@ -13,13 +13,13 @@ class DefaultRouteTableArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> defaultRouteTableId;
   /// List of virtual gateways for propagation.
-  final pulumi.Input<List<String>>? propagatingVgws;
+  final pulumi.Input<List<String>?>? propagatingVgws;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of objects. Detailed below
-  final pulumi.Input<List<DefaultRouteTableRoute>>? routes;
+  final pulumi.Input<List<DefaultRouteTableRoute>?>? routes;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DefaultRouteTableArgs].
   /// [defaultRouteTableId] ID of the default route table.

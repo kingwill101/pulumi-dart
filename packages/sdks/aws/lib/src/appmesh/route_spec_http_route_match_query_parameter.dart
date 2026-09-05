@@ -5,7 +5,7 @@ import 'route_spec_http_route_match_query_parameter_match.dart';
 
 class RouteSpecHttpRouteMatchQueryParameter {
   /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
-  final pulumi.Input<RouteSpecHttpRouteMatchQueryParameterMatch>? match;
+  final pulumi.Input<RouteSpecHttpRouteMatchQueryParameterMatch?>? match;
   /// Name to use for the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
 

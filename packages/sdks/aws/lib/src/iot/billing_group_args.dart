@@ -9,13 +9,13 @@ import 'billing_group_properties.dart';
 /// {@macro pulumi_iot_billing_group_billing_group_args_doc}
 class BillingGroupArgs {
   /// The name of the Billing Group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Billing Group properties. Defined below.
-  final pulumi.Input<BillingGroupProperties>? properties;
+  final pulumi.Input<BillingGroupProperties?>? properties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BillingGroupArgs].
   /// [name] The name of the Billing Group.

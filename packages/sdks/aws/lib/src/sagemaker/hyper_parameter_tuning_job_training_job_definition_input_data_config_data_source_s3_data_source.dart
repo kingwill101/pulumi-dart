@@ -6,15 +6,15 @@ import 'hyper_parameter_tuning_job_training_job_definition_input_data_config_dat
 
 class HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSource {
   /// Attribute names for Pipe mode.
-  final pulumi.Input<List<String>>? attributeNames;
+  final pulumi.Input<List<String>?>? attributeNames;
   /// Hub access settings. See `hubAccessConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceHubAccessConfig>? hubAccessConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceHubAccessConfig?>? hubAccessConfig;
   /// Instance group names used with this channel.
-  final pulumi.Input<List<String>>? instanceGroupNames;
+  final pulumi.Input<List<String>?>? instanceGroupNames;
   /// Model access settings. See `modelAccessConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceModelAccessConfig?>? modelAccessConfig;
   /// Distribution mode for S3 data.
-  final pulumi.Input<String>? s3DataDistributionType;
+  final pulumi.Input<String?>? s3DataDistributionType;
   /// S3 data type.
   final pulumi.Input<String> s3DataType;
   /// S3 or HTTPS source URI.

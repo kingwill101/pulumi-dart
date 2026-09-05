@@ -11,21 +11,21 @@ import 'webhook_scope_configuration.dart';
 /// {@macro pulumi_codebuild_webhook_webhook_args_doc}
 class WebhookArgs {
   /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.
-  final pulumi.Input<String>? branchFilter;
+  final pulumi.Input<String?>? branchFilter;
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
-  final pulumi.Input<String>? buildType;
+  final pulumi.Input<String?>? buildType;
   /// Information about the webhook's trigger. See filterGroup for details.
-  final pulumi.Input<List<WebhookFilterGroup>>? filterGroups;
+  final pulumi.Input<List<WebhookFilterGroup>?>? filterGroups;
   /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payloadUrl` and `secret` values for the webhook. The `payloadUrl` and `secret` values in the output can be used to manually create a webhook within GitHub.
-  final pulumi.Input<bool>? manualCreation;
+  final pulumi.Input<bool?>? manualCreation;
   /// The name of the build project.
   final pulumi.Input<String> projectName;
   /// Defines comment-based approval requirements for triggering builds on pull requests. See pullRequestBuildPolicy for details.
-  final pulumi.Input<WebhookPullRequestBuildPolicy>? pullRequestBuildPolicy;
+  final pulumi.Input<WebhookPullRequestBuildPolicy?>? pullRequestBuildPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Scope configuration for global or organization webhooks. See scopeConfiguration for details.
-  final pulumi.Input<WebhookScopeConfiguration>? scopeConfiguration;
+  final pulumi.Input<WebhookScopeConfiguration?>? scopeConfiguration;
 
   /// Creates a new [WebhookArgs].
   /// [branchFilter] A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.

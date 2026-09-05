@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_secretsmanager_get_secret_version_get_secret_version_args_doc}
 class GetSecretVersionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
   final pulumi.Input<String> secretId;
   /// Unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
   /// Secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
-  final pulumi.Input<String>? versionStage;
+  final pulumi.Input<String?>? versionStage;
 
   /// Creates a new [GetSecretVersionArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

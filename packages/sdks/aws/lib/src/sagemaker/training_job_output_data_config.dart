@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobOutputDataConfig {
   /// Output compression type. Valid values: `GZIP`, `NONE`.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// KMS key ID used to encrypt the output data.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// S3 URI where output data is stored.
   final pulumi.Input<String> s3OutputPath;
 

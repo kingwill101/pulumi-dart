@@ -123,7 +123,7 @@ import 'lambda_function_association_state.dart';
 /// $ pulumi import aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation example aaaaaaaa-bbbb-cccc-dddd-111111111111,arn:aws:lambda:us-west-2:123456789123:function:example
 /// ```
 class LambdaFunctionAssociation extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
+  /// ARN of the Lambda Function, omitting any version or alias qualifier.
   late final pulumi.Output<String> functionArn;
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   late final pulumi.Output<String> instanceId;
@@ -142,7 +142,7 @@ class LambdaFunctionAssociation extends pulumi.CustomResource {
           'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     functionArn = registerOutput<String>('functionArn');
     instanceId = registerOutput<String>('instanceId');
@@ -154,11 +154,12 @@ class LambdaFunctionAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LambdaFunctionAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LambdaFunctionAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -172,6 +173,20 @@ class LambdaFunctionAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    functionArn = registerOutput<String>('functionArn');
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LambdaFunctionAssociation] resource.
+  LambdaFunctionAssociation.reference(String urn)
+    : super(
+        'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     functionArn = registerOutput<String>('functionArn');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');

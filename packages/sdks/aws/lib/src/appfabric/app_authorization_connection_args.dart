@@ -9,21 +9,21 @@ import 'app_authorization_connection_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appfabric_app_authorization_connection_app_authorization_connection_args_doc}
 class AppAuthorizationConnectionArgs {
-  /// Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
+  /// ARN or Universal Unique Identifier (UUID) of the app authorization to use for the request.
   final pulumi.Input<String> appAuthorizationArn;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// ARN of the app bundle to use for the request.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> appBundleArn;
   /// OAuth2 authorization information. Required if the app authorization for the request is configured with an OAuth2 (`oauth2`) authorization type. See `authRequest` Block for details.
-  final pulumi.Input<AppAuthorizationConnectionAuthRequest>? authRequest;
+  final pulumi.Input<AppAuthorizationConnectionAuthRequest?>? authRequest;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<AppAuthorizationConnectionTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<AppAuthorizationConnectionTimeouts?>? timeouts;
 
   /// Creates a new [AppAuthorizationConnectionArgs].
-  /// [appAuthorizationArn] Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
-  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [appAuthorizationArn] ARN or Universal Unique Identifier (UUID) of the app authorization to use for the request.
+  /// [appBundleArn] ARN of the app bundle to use for the request.
   /// [authRequest] OAuth2 authorization information. Required if the app authorization for the request is configured with an OAuth2 (`oauth2`) authorization type. See `authRequest` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.

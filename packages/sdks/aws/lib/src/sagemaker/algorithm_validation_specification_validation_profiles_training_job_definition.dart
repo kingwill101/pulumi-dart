@@ -8,7 +8,7 @@ import 'algorithm_validation_specification_validation_profiles_training_job_defi
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinition {
   /// Hyperparameters to pass to the training job.
-  final pulumi.Input<Map<String, String>>? hyperParameters;
+  final pulumi.Input<Map<String, String>?>? hyperParameters;
   /// Input channel configuration for the validation training job. See Input Data Config.
   final pulumi.Input<List<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfig>> inputDataConfigs;
   /// Output configuration for the validation training job. See Output Data Config.

@@ -7,10 +7,10 @@ import 'repository_association_repository_github_enterprise_server.dart';
 import 'repository_association_repository_s3_bucket.dart';
 
 class RepositoryAssociationRepository {
-  final pulumi.Input<RepositoryAssociationRepositoryBitbucket>? bitbucket;
-  final pulumi.Input<RepositoryAssociationRepositoryCodecommit>? codecommit;
-  final pulumi.Input<RepositoryAssociationRepositoryGithubEnterpriseServer>? githubEnterpriseServer;
-  final pulumi.Input<RepositoryAssociationRepositoryS3Bucket>? s3Bucket;
+  final pulumi.Input<RepositoryAssociationRepositoryBitbucket?>? bitbucket;
+  final pulumi.Input<RepositoryAssociationRepositoryCodecommit?>? codecommit;
+  final pulumi.Input<RepositoryAssociationRepositoryGithubEnterpriseServer?>? githubEnterpriseServer;
+  final pulumi.Input<RepositoryAssociationRepositoryS3Bucket?>? s3Bucket;
 
   /// Creates a new [RepositoryAssociationRepository].
   /// [bitbucket] Optional.

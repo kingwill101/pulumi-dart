@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
   /// S3 URI to deliver recordings.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration].
   /// [destination] S3 URI to deliver recordings.

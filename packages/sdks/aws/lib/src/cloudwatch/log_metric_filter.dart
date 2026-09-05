@@ -14,14 +14,14 @@ import 'log_metric_filter_state.dart';
 ///
 /// const dada = new aws.cloudwatch.LogGroup("dada", {name: "MyApp/access.log"});
 /// const yada = new aws.cloudwatch.LogMetricFilter("yada", {
-///     name: "MyAppAccessCount",
-///     pattern: "",
-///     logGroupName: dada.name,
 ///     metricTransformation: {
 ///         name: "EventCount",
 ///         namespace: "YourNamespace",
 ///         value: "1",
 ///     },
+///     name: "MyAppAccessCount",
+///     pattern: "",
+///     logGroupName: dada.name,
 /// });
 /// ```
 /// ```python
@@ -30,14 +30,14 @@ import 'log_metric_filter_state.dart';
 ///
 /// dada = aws.cloudwatch.LogGroup("dada", name="MyApp/access.log")
 /// yada = aws.cloudwatch.LogMetricFilter("yada",
-///     name="MyAppAccessCount",
-///     pattern="",
-///     log_group_name=dada.name,
 ///     metric_transformation={
 ///         "name": "EventCount",
 ///         "namespace": "YourNamespace",
 ///         "value": "1",
-///     })
+///     },
+///     name="MyAppAccessCount",
+///     pattern="",
+///     log_group_name=dada.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,15 +54,15 @@ import 'log_metric_filter_state.dart';
 ///
 ///     var yada = new Aws.CloudWatch.LogMetricFilter("yada", new()
 ///     {
-///         Name = "MyAppAccessCount",
-///         Pattern = "",
-///         LogGroupName = dada.Name,
 ///         MetricTransformation = new Aws.CloudWatch.Inputs.LogMetricFilterMetricTransformationArgs
 ///         {
 ///             Name = "EventCount",
 ///             Namespace = "YourNamespace",
 ///             Value = "1",
 ///         },
+///         Name = "MyAppAccessCount",
+///         Pattern = "",
+///         LogGroupName = dada.Name,
 ///     });
 ///
 /// });
@@ -84,14 +84,14 @@ import 'log_metric_filter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudwatch.NewLogMetricFilter(ctx, "yada", &cloudwatch.LogMetricFilterArgs{
-/// 			Name:         pulumi.String("MyAppAccessCount"),
-/// 			Pattern:      pulumi.String(""),
-/// 			LogGroupName: dada.Name,
 /// 			MetricTransformation: &cloudwatch.LogMetricFilterMetricTransformationArgs{
 /// 				Name:      pulumi.String("EventCount"),
 /// 				Namespace: pulumi.String("YourNamespace"),
 /// 				Value:     pulumi.String("1"),
 /// 			},
+/// 			Name:         pulumi.String("MyAppAccessCount"),
+/// 			Pattern:      pulumi.String(""),
+/// 			LogGroupName: dada.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,14 +110,14 @@ import 'log_metric_filter_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_logmetricfilter" "yada" {
-///   name           = "MyAppAccessCount"
-///   pattern        = ""
-///   log_group_name = aws_cloudwatch_loggroup.dada.name
 ///   metric_transformation = {
 ///     name      = "EventCount"
 ///     namespace = "YourNamespace"
 ///     value     = "1"
 ///   }
+///   name           = "MyAppAccessCount"
+///   pattern        = ""
+///   log_group_name = aws_cloudwatch_loggroup.dada.name
 /// }
 /// resource "aws_cloudwatch_loggroup" "dada" {
 ///   name = "MyApp/access.log"
@@ -152,14 +152,14 @@ import 'log_metric_filter_state.dart';
 ///             .build());
 ///
 ///         var yada = new LogMetricFilter("yada", LogMetricFilterArgs.builder()
-///             .name("MyAppAccessCount")
-///             .pattern("")
-///             .logGroupName(dada.name())
 ///             .metricTransformation(LogMetricFilterMetricTransformationArgs.builder()
 ///                 .name("EventCount")
 ///                 .namespace("YourNamespace")
 ///                 .value("1")
 ///                 .build())
+///             .name("MyAppAccessCount")
+///             .pattern("")
+///             .logGroupName(dada.name())
 ///             .build());
 ///
 ///     }
@@ -170,13 +170,13 @@ import 'log_metric_filter_state.dart';
 ///   yada:
 ///     type: aws:cloudwatch:LogMetricFilter
 ///     properties:
-///       name: MyAppAccessCount
-///       pattern: ""
-///       logGroupName: ${dada.name}
 ///       metricTransformation:
 ///         name: EventCount
 ///         namespace: YourNamespace
 ///         value: '1'
+///       name: MyAppAccessCount
+///       pattern: ""
+///       logGroupName: ${dada.name}
 ///   dada:
 ///     type: aws:cloudwatch:LogGroup
 ///     properties:
@@ -231,7 +231,7 @@ class LogMetricFilter extends pulumi.CustomResource {
           'aws:cloudwatch/logMetricFilter:LogMetricFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
     logGroupName = registerOutput<String>('logGroupName');
@@ -246,11 +246,12 @@ class LogMetricFilter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogMetricFilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogMetricFilter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,6 +265,23 @@ class LogMetricFilter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
+    logGroupName = registerOutput<String>('logGroupName');
+    metricTransformation = registerOutput<LogMetricFilterMetricTransformation>('metricTransformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogMetricFilterMetricTransformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pattern = registerOutput<String>('pattern');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LogMetricFilter] resource.
+  LogMetricFilter.reference(String urn)
+    : super(
+        'aws:cloudwatch/logMetricFilter:LogMetricFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
     logGroupName = registerOutput<String>('logGroupName');
     metricTransformation = registerOutput<LogMetricFilterMetricTransformation>('metricTransformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogMetricFilterMetricTransformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

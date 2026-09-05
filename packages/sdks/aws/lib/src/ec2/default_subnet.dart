@@ -189,7 +189,7 @@ class DefaultSubnet extends pulumi.CustomResource {
           'aws:ec2/defaultSubnet:DefaultSubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');
@@ -212,8 +212,8 @@ class DefaultSubnet extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -222,11 +222,12 @@ class DefaultSubnet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultSubnetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultSubnet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,8 +262,43 @@ class DefaultSubnet extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [DefaultSubnet] resource.
+  DefaultSubnet.reference(String urn)
+    : super(
+        'aws:ec2/defaultSubnet:DefaultSubnet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
+    enableDns64 = registerOutput<bool?>('enableDns64');
+    enableLniAtDeviceIndex = registerOutput<int>('enableLniAtDeviceIndex');
+    enableResourceNameDnsARecordOnLaunch = registerOutput<bool?>('enableResourceNameDnsARecordOnLaunch');
+    enableResourceNameDnsAaaaRecordOnLaunch = registerOutput<bool?>('enableResourceNameDnsAaaaRecordOnLaunch');
+    existingDefaultSubnet = registerOutput<bool>('existingDefaultSubnet');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    ipv6CidrBlockAssociationId = registerOutput<String>('ipv6CidrBlockAssociationId');
+    ipv6Native = registerOutput<bool?>('ipv6Native');
+    mapCustomerOwnedIpOnLaunch = registerOutput<bool?>('mapCustomerOwnedIpOnLaunch');
+    mapPublicIpOnLaunch = registerOutput<bool?>('mapPublicIpOnLaunch');
+    outpostArn = registerOutput<String>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

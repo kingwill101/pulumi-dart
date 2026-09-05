@@ -5,7 +5,7 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig {
   /// AWS KMS key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Monitoring outputs for monitoring jobs. Fields are documented below.
   final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs> monitoringOutputs;
 

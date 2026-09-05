@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
+import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Provides a DAX Parameter Group resource.
@@ -12,7 +13,6 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dax.ParameterGroup("example", {
-///     name: "example",
 ///     parameters: [
 ///         {
 ///             name: "query-ttl-millis",
@@ -23,6 +23,7 @@ import 'parameter_group_state.dart';
 ///             value: "100000",
 ///         },
 ///     ],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -30,7 +31,6 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dax.ParameterGroup("example",
-///     name="example",
 ///     parameters=[
 ///         {
 ///             "name": "query-ttl-millis",
@@ -40,7 +40,8 @@ import 'parameter_group_state.dart';
 ///             "name": "record-ttl-millis",
 ///             "value": "100000",
 ///         },
-///     ])
+///     ],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,7 +53,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var example = new Aws.Dax.ParameterGroup("example", new()
 ///     {
-///         Name = "example",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Dax.Inputs.ParameterGroupParameterArgs
@@ -66,6 +66,7 @@ import 'parameter_group_state.dart';
 ///                 Value = "100000",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -81,7 +82,6 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dax.NewParameterGroup(ctx, "example", &dax.ParameterGroupArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Parameters: dax.ParameterGroupParameterArray{
 /// 				&dax.ParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("query-ttl-millis"),
@@ -92,6 +92,7 @@ import 'parameter_group_state.dart';
 /// 					Value: pulumi.String("100000"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +111,6 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_dax_parametergroup" "example" {
-///   name = "example"
 ///   parameters {
 ///     name  = "query-ttl-millis"
 ///     value = "100000"
@@ -119,6 +119,7 @@ import 'parameter_group_state.dart';
 ///     name  = "record-ttl-millis"
 ///     value = "100000"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -144,7 +145,6 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ParameterGroup("example", ParameterGroupArgs.builder()
-///             .name("example")
 ///             .parameters(
 ///                 ParameterGroupParameterArgs.builder()
 ///                     .name("query-ttl-millis")
@@ -154,6 +154,7 @@ import 'parameter_group_state.dart';
 ///                     .name("record-ttl-millis")
 ///                     .value("100000")
 ///                     .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -164,12 +165,12 @@ import 'parameter_group_state.dart';
 ///   example:
 ///     type: aws:dax:ParameterGroup
 ///     properties:
-///       name: example
 ///       parameters:
 ///         - name: query-ttl-millis
 ///           value: '100000'
 ///         - name: record-ttl-millis
 ///           value: '100000'
+///       name: example
 /// ```
 ///
 ///
@@ -186,7 +187,7 @@ class ParameterGroup extends pulumi.CustomResource {
   /// The name of the parameter group.
   late final pulumi.Output<String> name;
   /// The parameters of the parameter group.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<ParameterGroupParameter>> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -202,11 +203,11 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:dax/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -215,11 +216,12 @@ class ParameterGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParameterGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ParameterGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,7 +237,22 @@ class ParameterGroup extends pulumi.CustomResource {
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ParameterGroup] resource.
+  ParameterGroup.reference(String urn)
+    : super(
+        'aws:dax/parameterGroup:ParameterGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<ParameterGroupParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

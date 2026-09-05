@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_args.dart';
+import 'project_failure_reason.dart';
 import 'project_state.dart';
 import 'project_timeouts.dart';
 
@@ -282,7 +283,7 @@ class Project extends pulumi.CustomResource {
   /// Identifier of domain which the project is part of. Must follow the regex of `^dzd[-_][a-zA-Z0-9_-]{1,36}$`.
   late final pulumi.Output<String> domainIdentifier;
   /// List of error messages if operation cannot be completed.
-  late final pulumi.Output<List<Map<String, dynamic>>> failureReasons;
+  late final pulumi.Output<List<ProjectFailureReason>> failureReasons;
   /// List of glossary terms that can be used in the project. The list cannot be empty or include over 20 values. Each value must follow the regex of `[a-zA-Z0-9_-]{1,36}$`.
   late final pulumi.Output<List<String>?> glossaryTerms;
   /// Timestamp of when the project was last updated.
@@ -311,14 +312,14 @@ class Project extends pulumi.CustomResource {
           'aws:datazone/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
-    glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
+    failureReasons = registerOutput<List<ProjectFailureReason>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectFailureReason>(guardedValue, (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>())); });
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
     this.name = registerOutput<String>('name');
     projectStatus = registerOutput<String>('projectStatus');
@@ -332,11 +333,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,8 +356,31 @@ class Project extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
-    glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
+    failureReasons = registerOutput<List<ProjectFailureReason>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectFailureReason>(guardedValue, (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>())); });
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
+    this.name = registerOutput<String>('name');
+    projectStatus = registerOutput<String>('projectStatus');
+    region = registerOutput<String>('region');
+    skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
+    timeouts = registerOutput<ProjectTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'aws:datazone/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    failureReasons = registerOutput<List<ProjectFailureReason>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectFailureReason>(guardedValue, (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>())); });
+    glossaryTerms = registerOutput<List<String>?>('glossaryTerms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
     this.name = registerOutput<String>('name');
     projectStatus = registerOutput<String>('projectStatus');

@@ -8,13 +8,13 @@ import 'ontap_storage_virtual_machine_endpoint_smb.dart';
 
 class OntapStorageVirtualMachineEndpoint {
   /// Endpoint for accessing data on your storage virtual machine via iSCSI protocol. See Endpoint.
-  final pulumi.Input<List<OntapStorageVirtualMachineEndpointIscsi>>? iscsis;
+  final pulumi.Input<List<OntapStorageVirtualMachineEndpointIscsi>?>? iscsis;
   /// Endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
-  final pulumi.Input<List<OntapStorageVirtualMachineEndpointManagement>>? managements;
+  final pulumi.Input<List<OntapStorageVirtualMachineEndpointManagement>?>? managements;
   /// Endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
-  final pulumi.Input<List<OntapStorageVirtualMachineEndpointNf>>? nfs;
+  final pulumi.Input<List<OntapStorageVirtualMachineEndpointNf>?>? nfs;
   /// Endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an activeDirectoryConfiguration has been set. See Endpoint.
-  final pulumi.Input<List<OntapStorageVirtualMachineEndpointSmb>>? smbs;
+  final pulumi.Input<List<OntapStorageVirtualMachineEndpointSmb>?>? smbs;
 
   /// Creates a new [OntapStorageVirtualMachineEndpoint].
   /// [iscsis] Endpoint for accessing data on your storage virtual machine via iSCSI protocol. See Endpoint.

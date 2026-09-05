@@ -8,11 +8,11 @@ class BlockPublicAccessConfigurationState {
   /// Enable or disable EMR Block Public Access.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<bool>? blockPublicSecurityGroupRules;
+  final pulumi.Input<bool?>? blockPublicSecurityGroupRules;
   /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `blockPublicSecurityGroupRules` is set to `true`.
-  final pulumi.Input<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>? permittedPublicSecurityGroupRuleRanges;
+  final pulumi.Input<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>? permittedPublicSecurityGroupRuleRanges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BlockPublicAccessConfigurationState].
   /// [blockPublicSecurityGroupRules] Enable or disable EMR Block Public Access.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataRepositoryAssociationS3AutoImportPolicy {
   /// List of file event types to automatically import from the linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<String>?>? events;
 
   /// Creates a new [DataRepositoryAssociationS3AutoImportPolicy].
   /// [events] List of file event types to automatically import from the linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.

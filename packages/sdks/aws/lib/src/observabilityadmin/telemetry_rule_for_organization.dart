@@ -23,11 +23,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluationForOrganization("example", {});
 /// const exampleTelemetryRuleForOrganization = new aws.observabilityadmin.TelemetryRuleForOrganization("example", {
-///     ruleName: "example-org-telemetry-rule",
 ///     rule: {
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EC2::VPC",
 ///     },
+///     ruleName: "example-org-telemetry-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -38,11 +38,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluationForOrganization("example")
 /// example_telemetry_rule_for_organization = aws.observabilityadmin.TelemetryRuleForOrganization("example",
-///     rule_name="example-org-telemetry-rule",
 ///     rule={
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EC2::VPC",
 ///     },
+///     rule_name="example-org-telemetry-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -57,12 +57,12 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 ///     var exampleTelemetryRuleForOrganization = new Aws.Observabilityadmin.TelemetryRuleForOrganization("example", new()
 ///     {
-///         RuleName = "example-org-telemetry-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleArgs
 ///         {
 ///             TelemetryType = "Logs",
 ///             ResourceType = "AWS::EC2::VPC",
 ///         },
+///         RuleName = "example-org-telemetry-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -88,11 +88,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRuleForOrganization(ctx, "example", &observabilityadmin.TelemetryRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("example-org-telemetry-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleForOrganizationRuleArgs{
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EC2::VPC"),
 /// 			},
+/// 			RuleName: pulumi.String("example-org-telemetry-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -116,11 +116,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule_name  = "example-org-telemetry-rule"
 ///   rule = {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EC2::VPC"
 ///   }
+///   rule_name = "example-org-telemetry-rule"
 /// }
 /// ```
 /// ```java
@@ -150,11 +150,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///         var example = new TelemetryEvaluationForOrganization("example");
 ///
 ///         var exampleTelemetryRuleForOrganization = new TelemetryRuleForOrganization("exampleTelemetryRuleForOrganization", TelemetryRuleForOrganizationArgs.builder()
-///             .ruleName("example-org-telemetry-rule")
 ///             .rule(TelemetryRuleForOrganizationRuleArgs.builder()
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EC2::VPC")
 ///                 .build())
+///             .ruleName("example-org-telemetry-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -170,10 +170,10 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRuleForOrganization
 ///     name: example
 ///     properties:
-///       ruleName: example-org-telemetry-rule
 ///       rule:
 ///         telemetryType: Logs
 ///         resourceType: AWS::EC2::VPC
+///       ruleName: example-org-telemetry-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -189,23 +189,23 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluationForOrganization("example", {});
 /// const exampleTelemetryRuleForOrganization = new aws.observabilityadmin.TelemetryRuleForOrganization("example", {
-///     ruleName: "org-vpc-flow-logs-rule",
 ///     rule: {
+///         destinationConfiguration: {
+///             vpcFlowLogParameters: {
+///                 trafficType: "ALL",
+///                 maxAggregationInterval: 60,
+///             },
+///             destinationType: "cloud-watch-logs",
+///             destinationPattern: "/aws/vpcflowlogs/<resourceId>",
+///             retentionInDays: 30,
+///         },
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EC2::VPC",
 ///         telemetrySourceTypes: ["VPC_FLOW_LOGS"],
 ///         allRegions: true,
 ///         allowFieldUpdates: true,
-///         destinationConfiguration: {
-///             destinationType: "cloud-watch-logs",
-///             destinationPattern: "/aws/vpcflowlogs/<resourceId>",
-///             retentionInDays: 30,
-///             vpcFlowLogParameters: {
-///                 trafficType: "ALL",
-///                 maxAggregationInterval: 60,
-///             },
-///         },
 ///     },
+///     ruleName: "org-vpc-flow-logs-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -216,23 +216,23 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluationForOrganization("example")
 /// example_telemetry_rule_for_organization = aws.observabilityadmin.TelemetryRuleForOrganization("example",
-///     rule_name="org-vpc-flow-logs-rule",
 ///     rule={
+///         "destination_configuration": {
+///             "vpc_flow_log_parameters": {
+///                 "traffic_type": "ALL",
+///                 "max_aggregation_interval": 60,
+///             },
+///             "destination_type": "cloud-watch-logs",
+///             "destination_pattern": "/aws/vpcflowlogs/<resourceId>",
+///             "retention_in_days": 30,
+///         },
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EC2::VPC",
 ///         "telemetry_source_types": ["VPC_FLOW_LOGS"],
 ///         "all_regions": True,
 ///         "allow_field_updates": True,
-///         "destination_configuration": {
-///             "destination_type": "cloud-watch-logs",
-///             "destination_pattern": "/aws/vpcflowlogs/<resourceId>",
-///             "retention_in_days": 30,
-///             "vpc_flow_log_parameters": {
-///                 "traffic_type": "ALL",
-///                 "max_aggregation_interval": 60,
-///             },
-///         },
 ///     },
+///     rule_name="org-vpc-flow-logs-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -247,9 +247,19 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 ///     var exampleTelemetryRuleForOrganization = new Aws.Observabilityadmin.TelemetryRuleForOrganization("example", new()
 ///     {
-///         RuleName = "org-vpc-flow-logs-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleArgs
 ///         {
+///             DestinationConfiguration = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleDestinationConfigurationArgs
+///             {
+///                 VpcFlowLogParameters = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParametersArgs
+///                 {
+///                     TrafficType = "ALL",
+///                     MaxAggregationInterval = 60,
+///                 },
+///                 DestinationType = "cloud-watch-logs",
+///                 DestinationPattern = "/aws/vpcflowlogs/<resourceId>",
+///                 RetentionInDays = 30,
+///             },
 ///             TelemetryType = "Logs",
 ///             ResourceType = "AWS::EC2::VPC",
 ///             TelemetrySourceTypes = new[]
@@ -258,18 +268,8 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///             },
 ///             AllRegions = true,
 ///             AllowFieldUpdates = true,
-///             DestinationConfiguration = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleDestinationConfigurationArgs
-///             {
-///                 DestinationType = "cloud-watch-logs",
-///                 DestinationPattern = "/aws/vpcflowlogs/<resourceId>",
-///                 RetentionInDays = 30,
-///                 VpcFlowLogParameters = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParametersArgs
-///                 {
-///                     TrafficType = "ALL",
-///                     MaxAggregationInterval = 60,
-///                 },
-///             },
 ///         },
+///         RuleName = "org-vpc-flow-logs-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -295,8 +295,16 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRuleForOrganization(ctx, "example", &observabilityadmin.TelemetryRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("org-vpc-flow-logs-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleForOrganizationRuleArgs{
+/// 				DestinationConfiguration: &observabilityadmin.TelemetryRuleForOrganizationRuleDestinationConfigurationArgs{
+/// 					VpcFlowLogParameters: &observabilityadmin.TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParametersArgs{
+/// 						TrafficType:            pulumi.String("ALL"),
+/// 						MaxAggregationInterval: pulumi.Int(60),
+/// 					},
+/// 					DestinationType:    pulumi.String("cloud-watch-logs"),
+/// 					DestinationPattern: pulumi.String("/aws/vpcflowlogs/<resourceId>"),
+/// 					RetentionInDays:    pulumi.Int(30),
+/// 				},
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EC2::VPC"),
 /// 				TelemetrySourceTypes: pulumi.StringArray{
@@ -304,16 +312,8 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// 				},
 /// 				AllRegions:        pulumi.Bool(true),
 /// 				AllowFieldUpdates: pulumi.Bool(true),
-/// 				DestinationConfiguration: &observabilityadmin.TelemetryRuleForOrganizationRuleDestinationConfigurationArgs{
-/// 					DestinationType:    pulumi.String("cloud-watch-logs"),
-/// 					DestinationPattern: pulumi.String("/aws/vpcflowlogs/<resourceId>"),
-/// 					RetentionInDays:    pulumi.Int(30),
-/// 					VpcFlowLogParameters: &observabilityadmin.TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParametersArgs{
-/// 						TrafficType:            pulumi.String("ALL"),
-/// 						MaxAggregationInterval: pulumi.Int(60),
-/// 					},
-/// 				},
 /// 			},
+/// 			RuleName: pulumi.String("org-vpc-flow-logs-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -337,23 +337,23 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule_name  = "org-vpc-flow-logs-rule"
 ///   rule = {
+///     destination_configuration = {
+///       vpc_flow_log_parameters = {
+///         traffic_type             = "ALL"
+///         max_aggregation_interval = 60
+///       }
+///       destination_type    = "cloud-watch-logs"
+///       destination_pattern = "/aws/vpcflowlogs/<resourceId>"
+///       retention_in_days   = 30
+///     }
 ///     telemetry_type         = "Logs"
 ///     resource_type          = "AWS::EC2::VPC"
 ///     telemetry_source_types = ["VPC_FLOW_LOGS"]
 ///     all_regions            = true
 ///     allow_field_updates    = true
-///     destination_configuration = {
-///       destination_type    = "cloud-watch-logs"
-///       destination_pattern = "/aws/vpcflowlogs/<resourceId>"
-///       retention_in_days   = 30
-///       vpc_flow_log_parameters = {
-///         traffic_type             = "ALL"
-///         max_aggregation_interval = 60
-///       }
-///     }
 ///   }
+///   rule_name = "org-vpc-flow-logs-rule"
 /// }
 /// ```
 /// ```java
@@ -385,23 +385,23 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///         var example = new TelemetryEvaluationForOrganization("example");
 ///
 ///         var exampleTelemetryRuleForOrganization = new TelemetryRuleForOrganization("exampleTelemetryRuleForOrganization", TelemetryRuleForOrganizationArgs.builder()
-///             .ruleName("org-vpc-flow-logs-rule")
 ///             .rule(TelemetryRuleForOrganizationRuleArgs.builder()
+///                 .destinationConfiguration(TelemetryRuleForOrganizationRuleDestinationConfigurationArgs.builder()
+///                     .vpcFlowLogParameters(TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParametersArgs.builder()
+///                         .trafficType("ALL")
+///                         .maxAggregationInterval(60)
+///                         .build())
+///                     .destinationType("cloud-watch-logs")
+///                     .destinationPattern("/aws/vpcflowlogs/<resourceId>")
+///                     .retentionInDays(30)
+///                     .build())
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EC2::VPC")
 ///                 .telemetrySourceTypes("VPC_FLOW_LOGS")
 ///                 .allRegions(true)
 ///                 .allowFieldUpdates(true)
-///                 .destinationConfiguration(TelemetryRuleForOrganizationRuleDestinationConfigurationArgs.builder()
-///                     .destinationType("cloud-watch-logs")
-///                     .destinationPattern("/aws/vpcflowlogs/<resourceId>")
-///                     .retentionInDays(30)
-///                     .vpcFlowLogParameters(TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParametersArgs.builder()
-///                         .trafficType("ALL")
-///                         .maxAggregationInterval(60)
-///                         .build())
-///                     .build())
 ///                 .build())
+///             .ruleName("org-vpc-flow-logs-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -417,21 +417,21 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRuleForOrganization
 ///     name: example
 ///     properties:
-///       ruleName: org-vpc-flow-logs-rule
 ///       rule:
+///         destinationConfiguration:
+///           vpcFlowLogParameters:
+///             trafficType: ALL
+///             maxAggregationInterval: 60
+///           destinationType: cloud-watch-logs
+///           destinationPattern: /aws/vpcflowlogs/<resourceId>
+///           retentionInDays: 30
 ///         telemetryType: Logs
 ///         resourceType: AWS::EC2::VPC
 ///         telemetrySourceTypes:
 ///           - VPC_FLOW_LOGS
 ///         allRegions: true
 ///         allowFieldUpdates: true
-///         destinationConfiguration:
-///           destinationType: cloud-watch-logs
-///           destinationPattern: /aws/vpcflowlogs/<resourceId>
-///           retentionInDays: 30
-///           vpcFlowLogParameters:
-///             trafficType: ALL
-///             maxAggregationInterval: 60
+///       ruleName: org-vpc-flow-logs-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -448,7 +448,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// const current = aws.organizations.getOrganization({});
 /// const example = new aws.observabilityadmin.TelemetryEvaluationForOrganization("example", {});
 /// const exampleTelemetryRuleForOrganization = new aws.observabilityadmin.TelemetryRuleForOrganization("example", {
-///     ruleName: "org-scoped-rule",
 ///     rule: {
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EKS::Cluster",
@@ -459,6 +458,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///             "us-west-2",
 ///         ],
 ///     },
+///     ruleName: "org-scoped-rule",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -470,7 +470,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// current = aws.organizations.get_organization()
 /// example = aws.observabilityadmin.TelemetryEvaluationForOrganization("example")
 /// example_telemetry_rule_for_organization = aws.observabilityadmin.TelemetryRuleForOrganization("example",
-///     rule_name="org-scoped-rule",
 ///     rule={
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EKS::Cluster",
@@ -481,6 +480,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///             "us-west-2",
 ///         ],
 ///     },
+///     rule_name="org-scoped-rule",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -497,7 +497,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 ///     var exampleTelemetryRuleForOrganization = new Aws.Observabilityadmin.TelemetryRuleForOrganization("example", new()
 ///     {
-///         RuleName = "org-scoped-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleArgs
 ///         {
 ///             TelemetryType = "Logs",
@@ -510,6 +509,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///                 "us-west-2",
 ///             },
 ///         },
+///         RuleName = "org-scoped-rule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -540,7 +540,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRuleForOrganization(ctx, "example", &observabilityadmin.TelemetryRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("org-scoped-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleForOrganizationRuleArgs{
 /// 				TelemetryType:     pulumi.String("Logs"),
 /// 				ResourceType:      pulumi.String("AWS::EKS::Cluster"),
@@ -551,6 +550,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// 					pulumi.String("us-west-2"),
 /// 				},
 /// 			},
+/// 			RuleName: pulumi.String("org-scoped-rule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -577,7 +577,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule_name  = "org-scoped-rule"
 ///   rule = {
 ///     telemetry_type     = "Logs"
 ///     resource_type      = "AWS::EKS::Cluster"
@@ -585,6 +584,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///     selection_criteria = "ResourceTags.Environment = 'production'"
 ///     regions            = ["us-east-1", "us-west-2"]
 ///   }
+///   rule_name = "org-scoped-rule"
 /// }
 /// ```
 /// ```java
@@ -619,7 +619,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///         var example = new TelemetryEvaluationForOrganization("example");
 ///
 ///         var exampleTelemetryRuleForOrganization = new TelemetryRuleForOrganization("exampleTelemetryRuleForOrganization", TelemetryRuleForOrganizationArgs.builder()
-///             .ruleName("org-scoped-rule")
 ///             .rule(TelemetryRuleForOrganizationRuleArgs.builder()
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EKS::Cluster")
@@ -629,6 +628,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///                     "us-east-1",
 ///                     "us-west-2")
 ///                 .build())
+///             .ruleName("org-scoped-rule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -644,7 +644,6 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRuleForOrganization
 ///     name: example
 ///     properties:
-///       ruleName: org-scoped-rule
 ///       rule:
 ///         telemetryType: Logs
 ///         resourceType: AWS::EKS::Cluster
@@ -653,6 +652,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///         regions:
 ///           - us-east-1
 ///           - us-west-2
+///       ruleName: org-scoped-rule
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -673,11 +673,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 /// const example = new aws.observabilityadmin.TelemetryEvaluationForOrganization("example", {});
 /// const exampleTelemetryRuleForOrganization = new aws.observabilityadmin.TelemetryRuleForOrganization("example", {
-///     ruleName: "org-tagged-rule",
 ///     rule: {
 ///         telemetryType: "Logs",
 ///         resourceType: "AWS::EC2::VPC",
 ///     },
+///     ruleName: "org-tagged-rule",
 ///     tags: {
 ///         Environment: "production",
 ///         Purpose: "organization-monitoring",
@@ -692,11 +692,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 /// example = aws.observabilityadmin.TelemetryEvaluationForOrganization("example")
 /// example_telemetry_rule_for_organization = aws.observabilityadmin.TelemetryRuleForOrganization("example",
-///     rule_name="org-tagged-rule",
 ///     rule={
 ///         "telemetry_type": "Logs",
 ///         "resource_type": "AWS::EC2::VPC",
 ///     },
+///     rule_name="org-tagged-rule",
 ///     tags={
 ///         "Environment": "production",
 ///         "Purpose": "organization-monitoring",
@@ -715,12 +715,12 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///
 ///     var exampleTelemetryRuleForOrganization = new Aws.Observabilityadmin.TelemetryRuleForOrganization("example", new()
 ///     {
-///         RuleName = "org-tagged-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.TelemetryRuleForOrganizationRuleArgs
 ///         {
 ///             TelemetryType = "Logs",
 ///             ResourceType = "AWS::EC2::VPC",
 ///         },
+///         RuleName = "org-tagged-rule",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -751,11 +751,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewTelemetryRuleForOrganization(ctx, "example", &observabilityadmin.TelemetryRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("org-tagged-rule"),
 /// 			Rule: &observabilityadmin.TelemetryRuleForOrganizationRuleArgs{
 /// 				TelemetryType: pulumi.String("Logs"),
 /// 				ResourceType:  pulumi.String("AWS::EC2::VPC"),
 /// 			},
+/// 			RuleName: pulumi.String("org-tagged-rule"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Purpose":     pulumi.String("organization-monitoring"),
@@ -783,11 +783,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
 ///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule_name  = "org-tagged-rule"
 ///   rule = {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EC2::VPC"
 ///   }
+///   rule_name = "org-tagged-rule"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Purpose"     = "organization-monitoring"
@@ -821,11 +821,11 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///         var example = new TelemetryEvaluationForOrganization("example");
 ///
 ///         var exampleTelemetryRuleForOrganization = new TelemetryRuleForOrganization("exampleTelemetryRuleForOrganization", TelemetryRuleForOrganizationArgs.builder()
-///             .ruleName("org-tagged-rule")
 ///             .rule(TelemetryRuleForOrganizationRuleArgs.builder()
 ///                 .telemetryType("Logs")
 ///                 .resourceType("AWS::EC2::VPC")
 ///                 .build())
+///             .ruleName("org-tagged-rule")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Purpose", "organization-monitoring")
@@ -845,10 +845,10 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///     type: aws:observabilityadmin:TelemetryRuleForOrganization
 ///     name: example
 ///     properties:
-///       ruleName: org-tagged-rule
 ///       rule:
 ///         telemetryType: Logs
 ///         resourceType: AWS::EC2::VPC
+///       ruleName: org-tagged-rule
 ///       tags:
 ///         Environment: production
 ///         Purpose: organization-monitoring
@@ -906,14 +906,14 @@ class TelemetryRuleForOrganization extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryRuleForOrganization:TelemetryRuleForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     rule = registerOutput<TelemetryRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TelemetryRuleForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -922,11 +922,12 @@ class TelemetryRuleForOrganization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TelemetryRuleForOrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TelemetryRuleForOrganization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -944,8 +945,26 @@ class TelemetryRuleForOrganization extends pulumi.CustomResource {
     rule = registerOutput<TelemetryRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<TelemetryRuleForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TelemetryRuleForOrganization] resource.
+  TelemetryRuleForOrganization.reference(String urn)
+    : super(
+        'aws:observabilityadmin/telemetryRuleForOrganization:TelemetryRuleForOrganization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    rule = registerOutput<TelemetryRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ruleArn = registerOutput<String>('ruleArn');
+    ruleName = registerOutput<String>('ruleName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TelemetryRuleForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,7 +5,7 @@ import 'gateway_route_spec_http_route_action_target_virtual_service.dart';
 
 class GatewayRouteSpecHttpRouteActionTarget {
   /// Port number to match from the request.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Virtual service gateway route target. See `spec.http2_route.action.target.virtual_service` Block for details.
   final pulumi.Input<GatewayRouteSpecHttpRouteActionTargetVirtualService> virtualService;
 
@@ -26,7 +26,7 @@ class GatewayRouteSpecHttpRouteActionTarget {
 
   factory GatewayRouteSpecHttpRouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteActionTarget(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       virtualService: pulumi.Input.fromValue(GatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap((map['virtualService']! as Map).cast<String, dynamic>())),
     );
   }

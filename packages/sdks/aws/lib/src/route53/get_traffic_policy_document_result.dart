@@ -8,9 +8,9 @@ import 'get_traffic_policy_document_rule.dart';
 class GetTrafficPolicyDocumentResult {
   final List<GetTrafficPolicyDocumentEndpoint>? endpoints;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Standard JSON policy document rendered based on the arguments above.
-  final String json;
+  final String? json;
   final String? recordType;
   final List<GetTrafficPolicyDocumentRule>? rules;
   final String? startEndpoint;
@@ -28,8 +28,8 @@ class GetTrafficPolicyDocumentResult {
   /// [version] Optional.
   const GetTrafficPolicyDocumentResult({
     this.endpoints,
-    required this.id,
-    required this.json,
+    this.id,
+    this.json,
     this.recordType,
     this.rules,
     this.startEndpoint,
@@ -40,8 +40,8 @@ class GetTrafficPolicyDocumentResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpoints': ?(() { final guardedValue = endpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTrafficPolicyDocumentEndpoint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'json': json,
+      'id': ?id,
+      'json': ?json,
       'recordType': ?recordType,
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTrafficPolicyDocumentRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'startEndpoint': ?startEndpoint,
@@ -53,8 +53,8 @@ class GetTrafficPolicyDocumentResult {
   factory GetTrafficPolicyDocumentResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentResult(
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTrafficPolicyDocumentEndpoint>(guardedValue, (value) => GetTrafficPolicyDocumentEndpoint.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      json: map['json'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return guardedValue as String; })(),
       recordType: (() { final guardedValue = map['recordType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTrafficPolicyDocumentRule>(guardedValue, (value) => GetTrafficPolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())); })(),
       startEndpoint: (() { final guardedValue = map['startEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),

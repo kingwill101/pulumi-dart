@@ -6,8 +6,8 @@ import 'organizations_access_timeouts.dart';
 /// Input properties used for looking up and filtering OrganizationsAccess resources.
 class OrganizationsAccessState {
   /// Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.
-  final pulumi.Input<bool>? enabled;
-  final pulumi.Input<OrganizationsAccessTimeouts>? timeouts;
+  final pulumi.Input<bool?>? enabled;
+  final pulumi.Input<OrganizationsAccessTimeouts?>? timeouts;
 
   /// Creates a new [OrganizationsAccessState].
   /// [enabled] Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.

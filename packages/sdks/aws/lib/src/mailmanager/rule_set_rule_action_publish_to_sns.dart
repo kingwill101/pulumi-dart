@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionPublishToSns {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// Email encoding in the notification.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// Notification payload type.
-  final pulumi.Input<String>? payloadType;
+  final pulumi.Input<String?>? payloadType;
   /// ARN of the IAM role used to publish the email.
   final pulumi.Input<String> roleArn;
   /// ARN of the SNS topic.

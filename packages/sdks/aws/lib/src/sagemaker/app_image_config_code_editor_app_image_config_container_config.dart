@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppImageConfigCodeEditorAppImageConfigContainerConfig {
   /// The arguments for the container when you're running the application.
-  final pulumi.Input<List<String>>? containerArguments;
+  final pulumi.Input<List<String>?>? containerArguments;
   /// The entrypoint used to run the application in the container.
-  final pulumi.Input<List<String>>? containerEntrypoints;
+  final pulumi.Input<List<String>?>? containerEntrypoints;
   /// The environment variables to set in the container.
-  final pulumi.Input<Map<String, String>>? containerEnvironmentVariables;
+  final pulumi.Input<Map<String, String>?>? containerEnvironmentVariables;
 
   /// Creates a new [AppImageConfigCodeEditorAppImageConfigContainerConfig].
   /// [containerArguments] The arguments for the container when you're running the application.

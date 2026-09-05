@@ -16,12 +16,12 @@ import 'policy_state.dart';
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [
 ///         {
-///             sid: "1",
-///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
 ///                 identifiers: [current.accountId],
 ///             }],
+///             sid: "1",
+///             effect: "Allow",
 ///             actions: [
 ///                 "acm-pca:DescribeCertificateAuthority",
 ///                 "acm-pca:GetCertificate",
@@ -32,19 +32,19 @@ import 'policy_state.dart';
 ///             resources: [exampleAwsAcmpcaCertificateAuthority.arn],
 ///         },
 ///         {
-///             sid: "2",
-///             effect: allow,
-///             principals: [{
-///                 type: "AWS",
-///                 identifiers: [current.accountId],
-///             }],
-///             actions: ["acm-pca:IssueCertificate"],
-///             resources: [exampleAwsAcmpcaCertificateAuthority.arn],
 ///             conditions: [{
 ///                 test: "StringEquals",
 ///                 variable: "acm-pca:TemplateArn",
 ///                 values: ["arn:aws:acm-pca:::template/EndEntityCertificate/V1"],
 ///             }],
+///             principals: [{
+///                 type: "AWS",
+///                 identifiers: [current.accountId],
+///             }],
+///             sid: "2",
+///             effect: allow,
+///             actions: ["acm-pca:IssueCertificate"],
+///             resources: [exampleAwsAcmpcaCertificateAuthority.arn],
 ///         },
 ///     ],
 /// });
@@ -59,12 +59,12 @@ import 'policy_state.dart';
 ///
 /// example = aws.iam.get_policy_document(statements=[
 ///     {
-///         "sid": "1",
-///         "effect": "Allow",
 ///         "principals": [{
 ///             "type": "AWS",
 ///             "identifiers": [current["accountId"]],
 ///         }],
+///         "sid": "1",
+///         "effect": "Allow",
 ///         "actions": [
 ///             "acm-pca:DescribeCertificateAuthority",
 ///             "acm-pca:GetCertificate",
@@ -75,19 +75,19 @@ import 'policy_state.dart';
 ///         "resources": [example_aws_acmpca_certificate_authority["arn"]],
 ///     },
 ///     {
-///         "sid": "2",
-///         "effect": allow,
-///         "principals": [{
-///             "type": "AWS",
-///             "identifiers": [current["accountId"]],
-///         }],
-///         "actions": ["acm-pca:IssueCertificate"],
-///         "resources": [example_aws_acmpca_certificate_authority["arn"]],
 ///         "conditions": [{
 ///             "test": "StringEquals",
 ///             "variable": "acm-pca:TemplateArn",
 ///             "values": ["arn:aws:acm-pca:::template/EndEntityCertificate/V1"],
 ///         }],
+///         "principals": [{
+///             "type": "AWS",
+///             "identifiers": [current["accountId"]],
+///         }],
+///         "sid": "2",
+///         "effect": allow,
+///         "actions": ["acm-pca:IssueCertificate"],
+///         "resources": [example_aws_acmpca_certificate_authority["arn"]],
 ///     },
 /// ])
 /// example_policy = aws.acmpca.Policy("example",
@@ -108,8 +108,6 @@ import 'policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "1",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -121,6 +119,8 @@ import 'policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "1",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "acm-pca:DescribeCertificateAuthority",
@@ -136,27 +136,6 @@ import 'policy_state.dart';
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "2",
-///                 Effect = allow,
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             current.AccountId,
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "acm-pca:IssueCertificate",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     exampleAwsAcmpcaCertificateAuthority.Arn,
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -168,6 +147,27 @@ import 'policy_state.dart';
 ///                             "arn:aws:acm-pca:::template/EndEntityCertificate/V1",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             current.AccountId,
+///                         },
+///                     },
+///                 },
+///                 Sid = "2",
+///                 Effect = allow,
+///                 Actions = new[]
+///                 {
+///                     "acm-pca:IssueCertificate",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     exampleAwsAcmpcaCertificateAuthority.Arn,
 ///                 },
 ///             },
 ///         },
@@ -195,8 +195,6 @@ import 'policy_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("1"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -205,6 +203,8 @@ import 'policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("1"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"acm-pca:DescribeCertificateAuthority",
 /// 						"acm-pca:GetCertificate",
@@ -217,22 +217,6 @@ import 'policy_state.dart';
 /// 					},
 /// 				},
 /// 				{
-/// 					Sid:    pulumi.StringRef("2"),
-/// 					Effect: pulumi.StringRef(allow),
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "AWS",
-/// 							Identifiers: pulumi.StringArray{
-/// 								current.AccountId,
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: []string{
-/// 						"acm-pca:IssueCertificate",
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleAwsAcmpcaCertificateAuthority.Arn,
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test:     "StringEquals",
@@ -241,6 +225,22 @@ import 'policy_state.dart';
 /// 								"arn:aws:acm-pca:::template/EndEntityCertificate/V1",
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.StringRef("2"),
+/// 					Effect: pulumi.StringRef(allow),
+/// 					Actions: []string{
+/// 						"acm-pca:IssueCertificate",
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleAwsAcmpcaCertificateAuthority.Arn,
 /// 					},
 /// 				},
 /// 			},
@@ -270,29 +270,29 @@ import 'policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "1"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [current.accountId]
 ///     }
+///     sid       = "1"
+///     effect    = "Allow"
 ///     actions   = ["acm-pca:DescribeCertificateAuthority", "acm-pca:GetCertificate", "acm-pca:GetCertificateAuthorityCertificate", "acm-pca:ListPermissions", "acm-pca:ListTags"]
 ///     resources = [exampleAwsAcmpcaCertificateAuthority.arn]
 ///   }
 ///   statements {
-///     sid    = "2"
-///     effect = allow
-///     principals {
-///       type        = "AWS"
-///       identifiers = [current.accountId]
-///     }
-///     actions   = ["acm-pca:IssueCertificate"]
-///     resources = [exampleAwsAcmpcaCertificateAuthority.arn]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "acm-pca:TemplateArn"
 ///       values   = ["arn:aws:acm-pca:::template/EndEntityCertificate/V1"]
 ///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = [current.accountId]
+///     }
+///     sid       = "2"
+///     effect    = allow
+///     actions   = ["acm-pca:IssueCertificate"]
+///     resources = [exampleAwsAcmpcaCertificateAuthority.arn]
 ///   }
 /// }
 ///
@@ -330,12 +330,12 @@ import 'policy_state.dart';
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("1")
-///                     .effect("Allow")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
 ///                         .identifiers(current.accountId())
 ///                         .build())
+///                     .sid("1")
+///                     .effect("Allow")
 ///                     .actions(
 ///                         "acm-pca:DescribeCertificateAuthority",
 ///                         "acm-pca:GetCertificate",
@@ -345,19 +345,19 @@ import 'policy_state.dart';
 ///                     .resources(exampleAwsAcmpcaCertificateAuthority.arn())
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("2")
-///                     .effect(allow)
-///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                         .type("AWS")
-///                         .identifiers(current.accountId())
-///                         .build())
-///                     .actions("acm-pca:IssueCertificate")
-///                     .resources(exampleAwsAcmpcaCertificateAuthority.arn())
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
 ///                         .variable("acm-pca:TemplateArn")
 ///                         .values("arn:aws:acm-pca:::template/EndEntityCertificate/V1")
 ///                         .build())
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers(current.accountId())
+///                         .build())
+///                     .sid("2")
+///                     .effect(allow)
+///                     .actions("acm-pca:IssueCertificate")
+///                     .resources(exampleAwsAcmpcaCertificateAuthority.arn())
 ///                     .build())
 ///             .build());
 ///
@@ -383,12 +383,12 @@ import 'policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: '1'
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${current.accountId}
+///             sid: '1'
+///             effect: Allow
 ///             actions:
 ///               - acm-pca:DescribeCertificateAuthority
 ///               - acm-pca:GetCertificate
@@ -397,21 +397,21 @@ import 'policy_state.dart';
 ///               - acm-pca:ListTags
 ///             resources:
 ///               - ${exampleAwsAcmpcaCertificateAuthority.arn}
-///           - sid: '2'
-///             effect: ${allow}
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - ${current.accountId}
-///             actions:
-///               - acm-pca:IssueCertificate
-///             resources:
-///               - ${exampleAwsAcmpcaCertificateAuthority.arn}
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: acm-pca:TemplateArn
 ///                 values:
 ///                   - arn:aws:acm-pca:::template/EndEntityCertificate/V1
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - ${current.accountId}
+///             sid: '2'
+///             effect: ${allow}
+///             actions:
+///               - acm-pca:IssueCertificate
+///             resources:
+///               - ${exampleAwsAcmpcaCertificateAuthority.arn}
 /// ```
 ///
 ///
@@ -421,7 +421,7 @@ import 'policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `resourceArn` (String) Amazon Resource Name (ARN) of the ACM PCA certificate authority.
+/// - `resourceArn` (String) ARN of the ACM PCA certificate authority.
 ///
 ///
 /// Using `pulumi import`, import `aws.acmpca.Policy` using the `resourceArn` value. For example:
@@ -449,7 +449,7 @@ class Policy extends pulumi.CustomResource {
           'aws:acmpca/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -461,11 +461,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -479,6 +480,20 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'aws:acmpca/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

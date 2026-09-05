@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_args.dart';
+import 'network_managed_service.dart';
+import 'network_oci_dns_forwarding_config.dart';
 import 'network_state.dart';
 import 'network_timeouts.dart';
 
@@ -329,7 +331,7 @@ import 'network_timeouts.dart';
 /// $ pulumi import aws:odb/network:Network example example
 /// ```
 class Network extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the odb network resource.
+  /// ARN of the odb network resource.
   late final pulumi.Output<String> arn;
   /// Name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure `availabilityZone` maps correctly with `availabilityZoneId`.
   late final pulumi.Output<String> availabilityZone;
@@ -358,9 +360,9 @@ class Network extends pulumi.CustomResource {
   /// Endpoint policy for KMS access from the ODB network.
   late final pulumi.Output<String?> kmsPolicyDocument;
   /// Managed services configuration for the ODB network. See `managedServices` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> managedServices;
+  late final pulumi.Output<List<NetworkManagedService>> managedServices;
   /// DNS resolver endpoints in OCI for forwarding DNS queries for the `ociPrivateZone` domain. See `ociDnsForwardingConfigs` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ociDnsForwardingConfigs;
+  late final pulumi.Output<List<NetworkOciDnsForwardingConfig>> ociDnsForwardingConfigs;
   /// Unique identifier of the OCI network anchor for the ODB network.
   late final pulumi.Output<String> ociNetworkAnchorId;
   /// URL of the OCI network anchor for the ODB network.
@@ -410,7 +412,7 @@ class Network extends pulumi.CustomResource {
           'aws:odb/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
@@ -418,22 +420,22 @@ class Network extends pulumi.CustomResource {
     backupSubnetCidr = registerOutput<String>('backupSubnetCidr');
     clientSubnetCidr = registerOutput<String>('clientSubnetCidr');
     createdAt = registerOutput<String>('createdAt');
-    crossRegionS3RestoreSourcesAccesses = registerOutput<List<String>>('crossRegionS3RestoreSourcesAccesses');
+    crossRegionS3RestoreSourcesAccesses = registerOutput<List<String>>('crossRegionS3RestoreSourcesAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customDomainName = registerOutput<String?>('customDomainName');
     defaultDnsPrefix = registerOutput<String?>('defaultDnsPrefix');
     deleteAssociatedResources = registerOutput<bool>('deleteAssociatedResources');
     displayName = registerOutput<String>('displayName');
-    ec2PlacementGroupIds = registerOutput<List<String>>('ec2PlacementGroupIds');
+    ec2PlacementGroupIds = registerOutput<List<String>>('ec2PlacementGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsAccess = registerOutput<String>('kmsAccess');
     kmsPolicyDocument = registerOutput<String?>('kmsPolicyDocument');
-    managedServices = registerOutput<List<Map<String, dynamic>>>('managedServices');
-    ociDnsForwardingConfigs = registerOutput<List<Map<String, dynamic>>>('ociDnsForwardingConfigs');
+    managedServices = registerOutput<List<NetworkManagedService>>('managedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagedService>(guardedValue, (value) => NetworkManagedService.fromMap((value as Map).cast<String, dynamic>())); });
+    ociDnsForwardingConfigs = registerOutput<List<NetworkOciDnsForwardingConfig>>('ociDnsForwardingConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkOciDnsForwardingConfig>(guardedValue, (value) => NetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ociNetworkAnchorId = registerOutput<String>('ociNetworkAnchorId');
     ociNetworkAnchorUrl = registerOutput<String>('ociNetworkAnchorUrl');
     ociResourceAnchorName = registerOutput<String>('ociResourceAnchorName');
     ociVcnId = registerOutput<String>('ociVcnId');
     ociVcnUrl = registerOutput<String>('ociVcnUrl');
-    peeredCidrs = registerOutput<List<String>>('peeredCidrs');
+    peeredCidrs = registerOutput<List<String>>('peeredCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     percentProgress = registerOutput<double>('percentProgress');
     region = registerOutput<String>('region');
     s3Access = registerOutput<String>('s3Access');
@@ -442,8 +444,8 @@ class Network extends pulumi.CustomResource {
     statusReason = registerOutput<String>('statusReason');
     stsAccess = registerOutput<String>('stsAccess');
     stsPolicyDocument = registerOutput<String?>('stsPolicyDocument');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<NetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zeroEtlAccess = registerOutput<String>('zeroEtlAccess');
   }
@@ -453,11 +455,12 @@ class Network extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Network._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -477,22 +480,22 @@ class Network extends pulumi.CustomResource {
     backupSubnetCidr = registerOutput<String>('backupSubnetCidr');
     clientSubnetCidr = registerOutput<String>('clientSubnetCidr');
     createdAt = registerOutput<String>('createdAt');
-    crossRegionS3RestoreSourcesAccesses = registerOutput<List<String>>('crossRegionS3RestoreSourcesAccesses');
+    crossRegionS3RestoreSourcesAccesses = registerOutput<List<String>>('crossRegionS3RestoreSourcesAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customDomainName = registerOutput<String?>('customDomainName');
     defaultDnsPrefix = registerOutput<String?>('defaultDnsPrefix');
     deleteAssociatedResources = registerOutput<bool>('deleteAssociatedResources');
     displayName = registerOutput<String>('displayName');
-    ec2PlacementGroupIds = registerOutput<List<String>>('ec2PlacementGroupIds');
+    ec2PlacementGroupIds = registerOutput<List<String>>('ec2PlacementGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsAccess = registerOutput<String>('kmsAccess');
     kmsPolicyDocument = registerOutput<String?>('kmsPolicyDocument');
-    managedServices = registerOutput<List<Map<String, dynamic>>>('managedServices');
-    ociDnsForwardingConfigs = registerOutput<List<Map<String, dynamic>>>('ociDnsForwardingConfigs');
+    managedServices = registerOutput<List<NetworkManagedService>>('managedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagedService>(guardedValue, (value) => NetworkManagedService.fromMap((value as Map).cast<String, dynamic>())); });
+    ociDnsForwardingConfigs = registerOutput<List<NetworkOciDnsForwardingConfig>>('ociDnsForwardingConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkOciDnsForwardingConfig>(guardedValue, (value) => NetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ociNetworkAnchorId = registerOutput<String>('ociNetworkAnchorId');
     ociNetworkAnchorUrl = registerOutput<String>('ociNetworkAnchorUrl');
     ociResourceAnchorName = registerOutput<String>('ociResourceAnchorName');
     ociVcnId = registerOutput<String>('ociVcnId');
     ociVcnUrl = registerOutput<String>('ociVcnUrl');
-    peeredCidrs = registerOutput<List<String>>('peeredCidrs');
+    peeredCidrs = registerOutput<List<String>>('peeredCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     percentProgress = registerOutput<double>('percentProgress');
     region = registerOutput<String>('region');
     s3Access = registerOutput<String>('s3Access');
@@ -501,8 +504,53 @@ class Network extends pulumi.CustomResource {
     statusReason = registerOutput<String>('statusReason');
     stsAccess = registerOutput<String>('stsAccess');
     stsPolicyDocument = registerOutput<String?>('stsPolicyDocument');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<NetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zeroEtlAccess = registerOutput<String>('zeroEtlAccess');
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'aws:odb/network:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    backupSubnetCidr = registerOutput<String>('backupSubnetCidr');
+    clientSubnetCidr = registerOutput<String>('clientSubnetCidr');
+    createdAt = registerOutput<String>('createdAt');
+    crossRegionS3RestoreSourcesAccesses = registerOutput<List<String>>('crossRegionS3RestoreSourcesAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customDomainName = registerOutput<String?>('customDomainName');
+    defaultDnsPrefix = registerOutput<String?>('defaultDnsPrefix');
+    deleteAssociatedResources = registerOutput<bool>('deleteAssociatedResources');
+    displayName = registerOutput<String>('displayName');
+    ec2PlacementGroupIds = registerOutput<List<String>>('ec2PlacementGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsAccess = registerOutput<String>('kmsAccess');
+    kmsPolicyDocument = registerOutput<String?>('kmsPolicyDocument');
+    managedServices = registerOutput<List<NetworkManagedService>>('managedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagedService>(guardedValue, (value) => NetworkManagedService.fromMap((value as Map).cast<String, dynamic>())); });
+    ociDnsForwardingConfigs = registerOutput<List<NetworkOciDnsForwardingConfig>>('ociDnsForwardingConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkOciDnsForwardingConfig>(guardedValue, (value) => NetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    ociNetworkAnchorId = registerOutput<String>('ociNetworkAnchorId');
+    ociNetworkAnchorUrl = registerOutput<String>('ociNetworkAnchorUrl');
+    ociResourceAnchorName = registerOutput<String>('ociResourceAnchorName');
+    ociVcnId = registerOutput<String>('ociVcnId');
+    ociVcnUrl = registerOutput<String>('ociVcnUrl');
+    peeredCidrs = registerOutput<List<String>>('peeredCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    percentProgress = registerOutput<double>('percentProgress');
+    region = registerOutput<String>('region');
+    s3Access = registerOutput<String>('s3Access');
+    s3PolicyDocument = registerOutput<String?>('s3PolicyDocument');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    stsAccess = registerOutput<String>('stsAccess');
+    stsPolicyDocument = registerOutput<String?>('stsPolicyDocument');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<NetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zeroEtlAccess = registerOutput<String>('zeroEtlAccess');
   }

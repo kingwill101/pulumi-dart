@@ -28,11 +28,11 @@ import 'workforce_workforce_vpc_config.dart';
 ///     userPoolId: exampleUserPool.id,
 /// });
 /// const example = new aws.sagemaker.Workforce("example", {
-///     workforceName: "example",
 ///     cognitoConfig: {
 ///         clientId: exampleUserPoolClient.id,
 ///         userPool: exampleUserPoolDomain.userPoolId,
 ///     },
+///     workforceName: "example",
 /// });
 /// ```
 /// ```python
@@ -48,11 +48,11 @@ import 'workforce_workforce_vpc_config.dart';
 ///     domain="example",
 ///     user_pool_id=example_user_pool.id)
 /// example = aws.sagemaker.Workforce("example",
-///     workforce_name="example",
 ///     cognito_config={
 ///         "client_id": example_user_pool_client.id,
 ///         "user_pool": example_user_pool_domain.user_pool_id,
-///     })
+///     },
+///     workforce_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -82,12 +82,12 @@ import 'workforce_workforce_vpc_config.dart';
 ///
 ///     var example = new Aws.Sagemaker.Workforce("example", new()
 ///     {
-///         WorkforceName = "example",
 ///         CognitoConfig = new Aws.Sagemaker.Inputs.WorkforceCognitoConfigArgs
 ///         {
 ///             ClientId = exampleUserPoolClient.Id,
 ///             UserPool = exampleUserPoolDomain.UserPoolId,
 ///         },
+///         WorkforceName = "example",
 ///     });
 ///
 /// });
@@ -125,11 +125,11 @@ import 'workforce_workforce_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewWorkforce(ctx, "example", &sagemaker.WorkforceArgs{
-/// 			WorkforceName: pulumi.String("example"),
 /// 			CognitoConfig: &sagemaker.WorkforceCognitoConfigArgs{
 /// 				ClientId: exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
 /// 				UserPool: exampleUserPoolDomain.UserPoolId,
 /// 			},
+/// 			WorkforceName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -148,11 +148,11 @@ import 'workforce_workforce_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workforce" "example" {
-///   workforce_name = "example"
 ///   cognito_config = {
 ///     client_id = aws_cognito_userpoolclient.example.id
 ///     user_pool = aws_cognito_userpooldomain.example.user_pool_id
 ///   }
+///   workforce_name = "example"
 /// }
 /// resource "aws_cognito_userpool" "example" {
 ///   name = "example"
@@ -211,11 +211,11 @@ import 'workforce_workforce_vpc_config.dart';
 ///             .build());
 ///
 ///         var example = new Workforce("example", WorkforceArgs.builder()
-///             .workforceName("example")
 ///             .cognitoConfig(WorkforceCognitoConfigArgs.builder()
 ///                 .clientId(exampleUserPoolClient.id())
 ///                 .userPool(exampleUserPoolDomain.userPoolId())
 ///                 .build())
+///             .workforceName("example")
 ///             .build());
 ///
 ///     }
@@ -226,10 +226,10 @@ import 'workforce_workforce_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:Workforce
 ///     properties:
-///       workforceName: example
 ///       cognitoConfig:
 ///         clientId: ${exampleUserPoolClient.id}
 ///         userPool: ${exampleUserPoolDomain.userPoolId}
+///       workforceName: example
 ///   exampleUserPool:
 ///     type: aws:cognito:UserPool
 ///     name: example
@@ -259,7 +259,6 @@ import 'workforce_workforce_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.Workforce("example", {
-///     workforceName: "example",
 ///     oidcConfig: {
 ///         authorizationEndpoint: "https://example.com",
 ///         clientId: "example",
@@ -270,6 +269,7 @@ import 'workforce_workforce_vpc_config.dart';
 ///         tokenEndpoint: "https://example.com",
 ///         userInfoEndpoint: "https://example.com",
 ///     },
+///     workforceName: "example",
 /// });
 /// ```
 /// ```python
@@ -277,7 +277,6 @@ import 'workforce_workforce_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.Workforce("example",
-///     workforce_name="example",
 ///     oidc_config={
 ///         "authorization_endpoint": "https://example.com",
 ///         "client_id": "example",
@@ -287,7 +286,8 @@ import 'workforce_workforce_vpc_config.dart';
 ///         "logout_endpoint": "https://example.com",
 ///         "token_endpoint": "https://example.com",
 ///         "user_info_endpoint": "https://example.com",
-///     })
+///     },
+///     workforce_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -299,7 +299,6 @@ import 'workforce_workforce_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.Workforce("example", new()
 ///     {
-///         WorkforceName = "example",
 ///         OidcConfig = new Aws.Sagemaker.Inputs.WorkforceOidcConfigArgs
 ///         {
 ///             AuthorizationEndpoint = "https://example.com",
@@ -311,6 +310,7 @@ import 'workforce_workforce_vpc_config.dart';
 ///             TokenEndpoint = "https://example.com",
 ///             UserInfoEndpoint = "https://example.com",
 ///         },
+///         WorkforceName = "example",
 ///     });
 ///
 /// });
@@ -326,7 +326,6 @@ import 'workforce_workforce_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewWorkforce(ctx, "example", &sagemaker.WorkforceArgs{
-/// 			WorkforceName: pulumi.String("example"),
 /// 			OidcConfig: &sagemaker.WorkforceOidcConfigArgs{
 /// 				AuthorizationEndpoint: pulumi.String("https://example.com"),
 /// 				ClientId:              pulumi.String("example"),
@@ -337,6 +336,7 @@ import 'workforce_workforce_vpc_config.dart';
 /// 				TokenEndpoint:         pulumi.String("https://example.com"),
 /// 				UserInfoEndpoint:      pulumi.String("https://example.com"),
 /// 			},
+/// 			WorkforceName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -355,7 +355,6 @@ import 'workforce_workforce_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workforce" "example" {
-///   workforce_name = "example"
 ///   oidc_config = {
 ///     authorization_endpoint = "https://example.com"
 ///     client_id              = "example"
@@ -366,6 +365,7 @@ import 'workforce_workforce_vpc_config.dart';
 ///     token_endpoint         = "https://example.com"
 ///     user_info_endpoint     = "https://example.com"
 ///   }
+///   workforce_name = "example"
 /// }
 /// ```
 /// ```java
@@ -391,7 +391,6 @@ import 'workforce_workforce_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Workforce("example", WorkforceArgs.builder()
-///             .workforceName("example")
 ///             .oidcConfig(WorkforceOidcConfigArgs.builder()
 ///                 .authorizationEndpoint("https://example.com")
 ///                 .clientId("example")
@@ -402,6 +401,7 @@ import 'workforce_workforce_vpc_config.dart';
 ///                 .tokenEndpoint("https://example.com")
 ///                 .userInfoEndpoint("https://example.com")
 ///                 .build())
+///             .workforceName("example")
 ///             .build());
 ///
 ///     }
@@ -412,7 +412,6 @@ import 'workforce_workforce_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:Workforce
 ///     properties:
-///       workforceName: example
 ///       oidcConfig:
 ///         authorizationEndpoint: https://example.com
 ///         clientId: example
@@ -422,6 +421,7 @@ import 'workforce_workforce_vpc_config.dart';
 ///         logoutEndpoint: https://example.com
 ///         tokenEndpoint: https://example.com
 ///         userInfoEndpoint: https://example.com
+///       workforceName: example
 /// ```
 ///
 ///
@@ -433,7 +433,7 @@ import 'workforce_workforce_vpc_config.dart';
 /// $ pulumi import aws:sagemaker/workforce:Workforce example example
 /// ```
 class Workforce extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Workforce.
+  /// ARN assigned by AWS to this Workforce.
   late final pulumi.Output<String> arn;
   /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidcConfig`. see Cognito Config details below.
   late final pulumi.Output<WorkforceCognitoConfig?> cognitoConfig;
@@ -462,7 +462,7 @@ class Workforce extends pulumi.CustomResource {
           'aws:sagemaker/workforce:Workforce',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -479,11 +479,12 @@ class Workforce extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workforce._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -497,6 +498,25 @@ class Workforce extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>('sourceIpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceSourceIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subdomain = registerOutput<String>('subdomain');
+    workforceName = registerOutput<String>('workforceName');
+    workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>('workforceVpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceWorkforceVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Workforce] resource.
+  Workforce.reference(String urn)
+    : super(
+        'aws:sagemaker/workforce:Workforce',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

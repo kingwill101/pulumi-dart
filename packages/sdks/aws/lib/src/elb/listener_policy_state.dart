@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ListenerPolicy resources.
 class ListenerPolicyState {
   /// The load balancer to attach the policy to.
-  final pulumi.Input<String>? loadBalancerName;
+  final pulumi.Input<String?>? loadBalancerName;
   /// The load balancer listener port to apply the policy to.
-  final pulumi.Input<int>? loadBalancerPort;
+  final pulumi.Input<int?>? loadBalancerPort;
   /// List of Policy Names to apply to the backend server.
-  final pulumi.Input<List<String>>? policyNames;
+  final pulumi.Input<List<String>?>? policyNames;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of arbitrary keys and values that, when changed, will trigger an update.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [ListenerPolicyState].
   /// [loadBalancerName] The load balancer to attach the policy to.
@@ -42,7 +42,7 @@ class ListenerPolicyState {
   factory ListenerPolicyState.fromMap(Map<String, dynamic> map) {
     return ListenerPolicyState(
       loadBalancerName: (() { final guardedValue = map['loadBalancerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loadBalancerPort: (() { final guardedValue = map['loadBalancerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadBalancerPort: (() { final guardedValue = map['loadBalancerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       policyNames: (() { final guardedValue = map['policyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

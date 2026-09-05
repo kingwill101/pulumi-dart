@@ -126,6 +126,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicequotas/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Retrieve information about a Service Quota.
 ///
 /// &gt; **NOTE:** Global quotas apply to all AWS regions, but can only be accessed in `us-east-1` in the Commercial partition or `us-gov-west-1` in the GovCloud partition. In other regions, the AWS API will return the error `The request failed because the specified service does not exist.`
@@ -287,6 +298,17 @@ Future<GetServiceQuotaResult> getServiceQuota(
   return GetServiceQuotaResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceQuotaResult> getServiceQuotaOutput(
+  GetServiceQuotaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicequotas/getServiceQuota:getServiceQuota',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceQuotaResult.fromMap);
+}
+
 /// Data source for managing AWS Service Quotas Templates.
 ///
 /// ## Example Usage
@@ -405,4 +427,15 @@ Future<GetTemplatesResult> getTemplates(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTemplatesResult.fromMap(result);
+}
+
+pulumi.Output<GetTemplatesResult> getTemplatesOutput(
+  GetTemplatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicequotas/getTemplates:getTemplates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplatesResult.fromMap);
 }

@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_definition_args.dart';
+import 'pipeline_definition_parameter_object.dart';
+import 'pipeline_definition_parameter_value.dart';
+import 'pipeline_definition_pipeline_object.dart';
 import 'pipeline_definition_state.dart';
 
 /// Provides a DataPipeline Pipeline Definition resource.
@@ -13,19 +16,16 @@ import 'pipeline_definition_state.dart';
 ///
 /// const _default = new aws.datapipeline.Pipeline("default", {name: "tf-pipeline-default"});
 /// const example = new aws.datapipeline.PipelineDefinition("example", {
-///     pipelineId: _default.id,
 ///     pipelineObjects: [
 ///         {
-///             id: "Default",
-///             name: "Default",
 ///             fields: [{
 ///                 key: "workerGroup",
 ///                 stringValue: "workerGroup",
 ///             }],
+///             id: "Default",
+///             name: "Default",
 ///         },
 ///         {
-///             id: "Schedule",
-///             name: "Schedule",
 ///             fields: [
 ///                 {
 ///                     key: "startDateTime",
@@ -44,10 +44,10 @@ import 'pipeline_definition_state.dart';
 ///                     stringValue: "2012-12-21T18:00:00",
 ///                 },
 ///             ],
+///             id: "Schedule",
+///             name: "Schedule",
 ///         },
 ///         {
-///             id: "SayHello",
-///             name: "SayHello",
 ///             fields: [
 ///                 {
 ///                     key: "type",
@@ -66,8 +66,11 @@ import 'pipeline_definition_state.dart';
 ///                     stringValue: "Schedule",
 ///                 },
 ///             ],
+///             id: "SayHello",
+///             name: "SayHello",
 ///         },
 ///     ],
+///     pipelineId: _default.id,
 /// });
 /// ```
 /// ```python
@@ -76,19 +79,16 @@ import 'pipeline_definition_state.dart';
 ///
 /// default = aws.datapipeline.Pipeline("default", name="tf-pipeline-default")
 /// example = aws.datapipeline.PipelineDefinition("example",
-///     pipeline_id=default.id,
 ///     pipeline_objects=[
 ///         {
-///             "id": "Default",
-///             "name": "Default",
 ///             "fields": [{
 ///                 "key": "workerGroup",
 ///                 "string_value": "workerGroup",
 ///             }],
+///             "id": "Default",
+///             "name": "Default",
 ///         },
 ///         {
-///             "id": "Schedule",
-///             "name": "Schedule",
 ///             "fields": [
 ///                 {
 ///                     "key": "startDateTime",
@@ -107,10 +107,10 @@ import 'pipeline_definition_state.dart';
 ///                     "string_value": "2012-12-21T18:00:00",
 ///                 },
 ///             ],
+///             "id": "Schedule",
+///             "name": "Schedule",
 ///         },
 ///         {
-///             "id": "SayHello",
-///             "name": "SayHello",
 ///             "fields": [
 ///                 {
 ///                     "key": "type",
@@ -129,8 +129,11 @@ import 'pipeline_definition_state.dart';
 ///                     "string_value": "Schedule",
 ///                 },
 ///             ],
+///             "id": "SayHello",
+///             "name": "SayHello",
 ///         },
-///     ])
+///     ],
+///     pipeline_id=default.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -147,13 +150,10 @@ import 'pipeline_definition_state.dart';
 ///
 ///     var example = new Aws.DataPipeline.PipelineDefinition("example", new()
 ///     {
-///         PipelineId = @default.Id,
 ///         PipelineObjects = new[]
 ///         {
 ///             new Aws.DataPipeline.Inputs.PipelineDefinitionPipelineObjectArgs
 ///             {
-///                 Id = "Default",
-///                 Name = "Default",
 ///                 Fields = new[]
 ///                 {
 ///                     new Aws.DataPipeline.Inputs.PipelineDefinitionPipelineObjectFieldArgs
@@ -162,11 +162,11 @@ import 'pipeline_definition_state.dart';
 ///                         StringValue = "workerGroup",
 ///                     },
 ///                 },
+///                 Id = "Default",
+///                 Name = "Default",
 ///             },
 ///             new Aws.DataPipeline.Inputs.PipelineDefinitionPipelineObjectArgs
 ///             {
-///                 Id = "Schedule",
-///                 Name = "Schedule",
 ///                 Fields = new[]
 ///                 {
 ///                     new Aws.DataPipeline.Inputs.PipelineDefinitionPipelineObjectFieldArgs
@@ -190,11 +190,11 @@ import 'pipeline_definition_state.dart';
 ///                         StringValue = "2012-12-21T18:00:00",
 ///                     },
 ///                 },
+///                 Id = "Schedule",
+///                 Name = "Schedule",
 ///             },
 ///             new Aws.DataPipeline.Inputs.PipelineDefinitionPipelineObjectArgs
 ///             {
-///                 Id = "SayHello",
-///                 Name = "SayHello",
 ///                 Fields = new[]
 ///                 {
 ///                     new Aws.DataPipeline.Inputs.PipelineDefinitionPipelineObjectFieldArgs
@@ -218,8 +218,11 @@ import 'pipeline_definition_state.dart';
 ///                         StringValue = "Schedule",
 ///                     },
 ///                 },
+///                 Id = "SayHello",
+///                 Name = "SayHello",
 ///             },
 ///         },
+///         PipelineId = @default.Id,
 ///     });
 ///
 /// });
@@ -241,21 +244,18 @@ import 'pipeline_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datapipeline.NewPipelineDefinition(ctx, "example", &datapipeline.PipelineDefinitionArgs{
-/// 			PipelineId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			PipelineObjects: datapipeline.PipelineDefinitionPipelineObjectArray{
 /// 				&datapipeline.PipelineDefinitionPipelineObjectArgs{
-/// 					Id:   pulumi.String("Default"),
-/// 					Name: pulumi.String("Default"),
 /// 					Fields: datapipeline.PipelineDefinitionPipelineObjectFieldArray{
 /// 						&datapipeline.PipelineDefinitionPipelineObjectFieldArgs{
 /// 							Key:         pulumi.String("workerGroup"),
 /// 							StringValue: pulumi.String("workerGroup"),
 /// 						},
 /// 					},
+/// 					Id:   pulumi.String("Default"),
+/// 					Name: pulumi.String("Default"),
 /// 				},
 /// 				&datapipeline.PipelineDefinitionPipelineObjectArgs{
-/// 					Id:   pulumi.String("Schedule"),
-/// 					Name: pulumi.String("Schedule"),
 /// 					Fields: datapipeline.PipelineDefinitionPipelineObjectFieldArray{
 /// 						&datapipeline.PipelineDefinitionPipelineObjectFieldArgs{
 /// 							Key:         pulumi.String("startDateTime"),
@@ -274,10 +274,10 @@ import 'pipeline_definition_state.dart';
 /// 							StringValue: pulumi.String("2012-12-21T18:00:00"),
 /// 						},
 /// 					},
+/// 					Id:   pulumi.String("Schedule"),
+/// 					Name: pulumi.String("Schedule"),
 /// 				},
 /// 				&datapipeline.PipelineDefinitionPipelineObjectArgs{
-/// 					Id:   pulumi.String("SayHello"),
-/// 					Name: pulumi.String("SayHello"),
 /// 					Fields: datapipeline.PipelineDefinitionPipelineObjectFieldArray{
 /// 						&datapipeline.PipelineDefinitionPipelineObjectFieldArgs{
 /// 							Key:         pulumi.String("type"),
@@ -296,8 +296,11 @@ import 'pipeline_definition_state.dart';
 /// 							StringValue: pulumi.String("Schedule"),
 /// 						},
 /// 					},
+/// 					Id:   pulumi.String("SayHello"),
+/// 					Name: pulumi.String("SayHello"),
 /// 				},
 /// 			},
+/// 			PipelineId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -319,18 +322,15 @@ import 'pipeline_definition_state.dart';
 ///   name = "tf-pipeline-default"
 /// }
 /// resource "aws_datapipeline_pipelinedefinition" "example" {
-///   pipeline_id = aws_datapipeline_pipeline.default.id
 ///   pipeline_objects {
-///     id   = "Default"
-///     name = "Default"
 ///     fields {
 ///       key          = "workerGroup"
 ///       string_value = "workerGroup"
 ///     }
+///     id   = "Default"
+///     name = "Default"
 ///   }
 ///   pipeline_objects {
-///     id   = "Schedule"
-///     name = "Schedule"
 ///     fields {
 ///       key          = "startDateTime"
 ///       string_value = "2012-12-12T00:00:00"
@@ -347,10 +347,10 @@ import 'pipeline_definition_state.dart';
 ///       key          = "endDateTime"
 ///       string_value = "2012-12-21T18:00:00"
 ///     }
+///     id   = "Schedule"
+///     name = "Schedule"
 ///   }
 ///   pipeline_objects {
-///     id   = "SayHello"
-///     name = "SayHello"
 ///     fields {
 ///       key          = "type"
 ///       string_value = "ShellCommandActivity"
@@ -367,7 +367,10 @@ import 'pipeline_definition_state.dart';
 ///       key          = "schedule"
 ///       string_value = "Schedule"
 ///     }
+///     id   = "SayHello"
+///     name = "SayHello"
 ///   }
+///   pipeline_id = aws_datapipeline_pipeline.default.id
 /// }
 /// ```
 /// ```java
@@ -400,19 +403,16 @@ import 'pipeline_definition_state.dart';
 ///             .build());
 ///
 ///         var example = new PipelineDefinition("example", PipelineDefinitionArgs.builder()
-///             .pipelineId(default_.id())
 ///             .pipelineObjects(
 ///                 PipelineDefinitionPipelineObjectArgs.builder()
-///                     .id("Default")
-///                     .name("Default")
 ///                     .fields(PipelineDefinitionPipelineObjectFieldArgs.builder()
 ///                         .key("workerGroup")
 ///                         .stringValue("workerGroup")
 ///                         .build())
+///                     .id("Default")
+///                     .name("Default")
 ///                     .build(),
 ///                 PipelineDefinitionPipelineObjectArgs.builder()
-///                     .id("Schedule")
-///                     .name("Schedule")
 ///                     .fields(
 ///                         PipelineDefinitionPipelineObjectFieldArgs.builder()
 ///                             .key("startDateTime")
@@ -430,10 +430,10 @@ import 'pipeline_definition_state.dart';
 ///                             .key("endDateTime")
 ///                             .stringValue("2012-12-21T18:00:00")
 ///                             .build())
+///                     .id("Schedule")
+///                     .name("Schedule")
 ///                     .build(),
 ///                 PipelineDefinitionPipelineObjectArgs.builder()
-///                     .id("SayHello")
-///                     .name("SayHello")
 ///                     .fields(
 ///                         PipelineDefinitionPipelineObjectFieldArgs.builder()
 ///                             .key("type")
@@ -451,7 +451,10 @@ import 'pipeline_definition_state.dart';
 ///                             .key("schedule")
 ///                             .stringValue("Schedule")
 ///                             .build())
+///                     .id("SayHello")
+///                     .name("SayHello")
 ///                     .build())
+///             .pipelineId(default_.id())
 ///             .build());
 ///
 ///     }
@@ -466,16 +469,13 @@ import 'pipeline_definition_state.dart';
 ///   example:
 ///     type: aws:datapipeline:PipelineDefinition
 ///     properties:
-///       pipelineId: ${default.id}
 ///       pipelineObjects:
-///         - id: Default
-///           name: Default
-///           fields:
+///         - fields:
 ///             - key: workerGroup
 ///               stringValue: workerGroup
-///         - id: Schedule
-///           name: Schedule
-///           fields:
+///           id: Default
+///           name: Default
+///         - fields:
 ///             - key: startDateTime
 ///               stringValue: 2012-12-12T00:00:00
 ///             - key: type
@@ -484,9 +484,9 @@ import 'pipeline_definition_state.dart';
 ///               stringValue: 1 hour
 ///             - key: endDateTime
 ///               stringValue: 2012-12-21T18:00:00
-///         - id: SayHello
-///           name: SayHello
-///           fields:
+///           id: Schedule
+///           name: Schedule
+///         - fields:
 ///             - key: type
 ///               stringValue: ShellCommandActivity
 ///             - key: command
@@ -495,6 +495,9 @@ import 'pipeline_definition_state.dart';
 ///               stringValue: Default
 ///             - key: schedule
 ///               stringValue: Schedule
+///           id: SayHello
+///           name: SayHello
+///       pipelineId: ${default.id}
 /// ```
 ///
 ///
@@ -507,15 +510,15 @@ import 'pipeline_definition_state.dart';
 /// ```
 class PipelineDefinition extends pulumi.CustomResource {
   /// Configuration block for the parameter objects used in the pipeline definition. See below
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameterObjects;
+  late final pulumi.Output<List<PipelineDefinitionParameterObject>?> parameterObjects;
   /// Configuration block for the parameter values used in the pipeline definition. See below
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameterValues;
+  late final pulumi.Output<List<PipelineDefinitionParameterValue>?> parameterValues;
   /// ID of the pipeline.
   late final pulumi.Output<String> pipelineId;
   /// Configuration block for the objects that define the pipeline. See below
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> pipelineObjects;
+  late final pulumi.Output<List<PipelineDefinitionPipelineObject>> pipelineObjects;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -531,12 +534,12 @@ class PipelineDefinition extends pulumi.CustomResource {
           'aws:datapipeline/pipelineDefinition:PipelineDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    parameterObjects = registerOutput<List<Map<String, dynamic>>?>('parameterObjects');
-    parameterValues = registerOutput<List<Map<String, dynamic>>?>('parameterValues');
+    parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterObject>(guardedValue, (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>())); });
+    parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterValue>(guardedValue, (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>())); });
     pipelineId = registerOutput<String>('pipelineId');
-    pipelineObjects = registerOutput<List<Map<String, dynamic>>>('pipelineObjects');
+    pipelineObjects = registerOutput<List<PipelineDefinitionPipelineObject>>('pipelineObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(guardedValue, (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -545,11 +548,12 @@ class PipelineDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PipelineDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -563,10 +567,26 @@ class PipelineDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    parameterObjects = registerOutput<List<Map<String, dynamic>>?>('parameterObjects');
-    parameterValues = registerOutput<List<Map<String, dynamic>>?>('parameterValues');
+    parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterObject>(guardedValue, (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>())); });
+    parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterValue>(guardedValue, (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>())); });
     pipelineId = registerOutput<String>('pipelineId');
-    pipelineObjects = registerOutput<List<Map<String, dynamic>>>('pipelineObjects');
+    pipelineObjects = registerOutput<List<PipelineDefinitionPipelineObject>>('pipelineObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(guardedValue, (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PipelineDefinition] resource.
+  PipelineDefinition.reference(String urn)
+    : super(
+        'aws:datapipeline/pipelineDefinition:PipelineDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterObject>(guardedValue, (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>())); });
+    parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterValue>(guardedValue, (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>())); });
+    pipelineId = registerOutput<String>('pipelineId');
+    pipelineObjects = registerOutput<List<PipelineDefinitionPipelineObject>>('pipelineObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(guardedValue, (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

@@ -10,33 +10,33 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// Input properties used for looking up and filtering V2modelsSlot resources.
 class V2modelsSlotState {
   /// Identifier of the bot associated with the slot.
-  final pulumi.Input<String>? botId;
+  final pulumi.Input<String?>? botId;
   /// Version of the bot associated with the slot.
-  final pulumi.Input<String>? botVersion;
+  final pulumi.Input<String?>? botVersion;
   /// Description of the slot.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier of the intent that contains the slot.
-  final pulumi.Input<String>? intentId;
+  final pulumi.Input<String?>? intentId;
   /// Identifier of the language and locale that the slot will be used in.
-  final pulumi.Input<String>? localeId;
+  final pulumi.Input<String?>? localeId;
   /// Whether the slot returns multiple values in one response.
   /// See the `multipleValuesSetting` argument reference below.
-  final pulumi.Input<List<V2modelsSlotMultipleValuesSetting>>? multipleValuesSettings;
+  final pulumi.Input<List<V2modelsSlotMultipleValuesSetting>?>? multipleValuesSettings;
   /// Name of the slot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Determines how slot values are used in Amazon CloudWatch logs.
   /// See the `obfuscationSetting` argument reference below.
-  final pulumi.Input<List<V2modelsSlotObfuscationSetting>>? obfuscationSettings;
+  final pulumi.Input<List<V2modelsSlotObfuscationSetting>?>? obfuscationSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Unique identifier associated with the slot.
-  final pulumi.Input<String>? slotId;
+  final pulumi.Input<String?>? slotId;
   /// Unique identifier for the slot type associated with this slot.
-  final pulumi.Input<String>? slotTypeId;
+  final pulumi.Input<String?>? slotTypeId;
   /// Specifications for the constituent sub slots and the expression for the composite slot.
   /// See the `subSlotSetting` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSetting>>? subSlotSettings;
-  final pulumi.Input<V2modelsSlotTimeouts>? timeouts;
+  final pulumi.Input<List<V2modelsSlotSubSlotSetting>?>? subSlotSettings;
+  final pulumi.Input<V2modelsSlotTimeouts?>? timeouts;
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
   /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `promptAttemptsSpecification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
   /// This will cause Terraform to report differences.
@@ -44,7 +44,7 @@ class V2modelsSlotState {
   /// See the `valueElicitationSetting` argument reference below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<V2modelsSlotValueElicitationSetting>? valueElicitationSetting;
+  final pulumi.Input<V2modelsSlotValueElicitationSetting?>? valueElicitationSetting;
 
   /// Creates a new [V2modelsSlotState].
   /// [botId] Identifier of the bot associated with the slot.

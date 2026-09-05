@@ -5,7 +5,7 @@ import 'agentcore_gateway_rule_action_configuration_bundle_weighted_override_tra
 
 class AgentcoreGatewayRuleActionConfigurationBundleWeightedOverride {
   /// Exactly two `trafficSplit` blocks describing the two variants.
-  final pulumi.Input<List<AgentcoreGatewayRuleActionConfigurationBundleWeightedOverrideTrafficSplit>>? trafficSplits;
+  final pulumi.Input<List<AgentcoreGatewayRuleActionConfigurationBundleWeightedOverrideTrafficSplit>?>? trafficSplits;
 
   /// Creates a new [AgentcoreGatewayRuleActionConfigurationBundleWeightedOverride].
   /// [trafficSplits] Exactly two `trafficSplit` blocks describing the two variants.

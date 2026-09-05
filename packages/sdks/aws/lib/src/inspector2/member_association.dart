@@ -137,7 +137,7 @@ class MemberAssociation extends pulumi.CustomResource {
           'aws:inspector2/memberAssociation:MemberAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     delegatedAdminAccountId = registerOutput<String>('delegatedAdminAccountId');
@@ -151,11 +151,12 @@ class MemberAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MemberAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MemberAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -169,6 +170,22 @@ class MemberAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    delegatedAdminAccountId = registerOutput<String>('delegatedAdminAccountId');
+    region = registerOutput<String>('region');
+    relationshipStatus = registerOutput<String>('relationshipStatus');
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [MemberAssociation] resource.
+  MemberAssociation.reference(String urn)
+    : super(
+        'aws:inspector2/memberAssociation:MemberAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     delegatedAdminAccountId = registerOutput<String>('delegatedAdminAccountId');
     region = registerOutput<String>('region');

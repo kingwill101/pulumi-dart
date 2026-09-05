@@ -224,18 +224,19 @@ class ApnsVoipChannel extends pulumi.CustomResource {
           'aws:pinpoint/apnsVoipChannel:ApnsVoipChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['bundleId', 'certificate', 'privateKey', 'teamId', 'tokenKey', 'tokenKeyId'],
         ) {
     applicationId = registerOutput<String>('applicationId');
-    bundleId = registerOutput<String?>('bundleId');
-    certificate = registerOutput<String?>('certificate');
+    bundleId = registerOutput<String?>('bundleId', isSecret: true);
+    certificate = registerOutput<String?>('certificate', isSecret: true);
     defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     enabled = registerOutput<bool?>('enabled');
-    privateKey = registerOutput<String?>('privateKey');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     region = registerOutput<String>('region');
-    teamId = registerOutput<String?>('teamId');
-    tokenKey = registerOutput<String?>('tokenKey');
-    tokenKeyId = registerOutput<String?>('tokenKeyId');
+    teamId = registerOutput<String?>('teamId', isSecret: true);
+    tokenKey = registerOutput<String?>('tokenKey', isSecret: true);
+    tokenKeyId = registerOutput<String?>('tokenKeyId', isSecret: true);
   }
 
   /// Gets an existing [ApnsVoipChannel] resource's state with the given [name] and [id].
@@ -243,11 +244,12 @@ class ApnsVoipChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApnsVoipChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApnsVoipChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -262,14 +264,36 @@ class ApnsVoipChannel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    bundleId = registerOutput<String?>('bundleId');
-    certificate = registerOutput<String?>('certificate');
+    bundleId = registerOutput<String?>('bundleId', isSecret: true);
+    certificate = registerOutput<String?>('certificate', isSecret: true);
     defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     enabled = registerOutput<bool?>('enabled');
-    privateKey = registerOutput<String?>('privateKey');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     region = registerOutput<String>('region');
-    teamId = registerOutput<String?>('teamId');
-    tokenKey = registerOutput<String?>('tokenKey');
-    tokenKeyId = registerOutput<String?>('tokenKeyId');
+    teamId = registerOutput<String?>('teamId', isSecret: true);
+    tokenKey = registerOutput<String?>('tokenKey', isSecret: true);
+    tokenKeyId = registerOutput<String?>('tokenKeyId', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ApnsVoipChannel] resource.
+  ApnsVoipChannel.reference(String urn)
+    : super(
+        'aws:pinpoint/apnsVoipChannel:ApnsVoipChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['bundleId', 'certificate', 'privateKey', 'teamId', 'tokenKey', 'tokenKeyId'],
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    bundleId = registerOutput<String?>('bundleId', isSecret: true);
+    certificate = registerOutput<String?>('certificate', isSecret: true);
+    defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
+    enabled = registerOutput<bool?>('enabled');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    region = registerOutput<String>('region');
+    teamId = registerOutput<String?>('teamId', isSecret: true);
+    tokenKey = registerOutput<String?>('tokenKey', isSecret: true);
+    tokenKeyId = registerOutput<String?>('tokenKeyId', isSecret: true);
   }
 }

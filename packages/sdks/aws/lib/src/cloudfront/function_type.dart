@@ -18,11 +18,11 @@ import 'function_state.dart';
 /// $ pulumi import aws:cloudfront/function:Function test my_test_function
 /// ```
 class FunctionType extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifying your CloudFront Function.
+  /// ARN identifying your CloudFront Function.
   late final pulumi.Output<String> arn;
-  /// Source code of the function
+  /// Source code of the function. Must be between 1 and 40960 bytes.
   late final pulumi.Output<String> code;
-  /// Comment.
+  /// Comment. Must not exceed 128 characters.
   late final pulumi.Output<String?> comment;
   /// ETag hash of the function. This is the value for the `DEVELOPMENT` stage of the function.
   late final pulumi.Output<String> etag;
@@ -30,7 +30,7 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> keyValueStoreAssociations;
   /// ETag hash of any `LIVE` stage of the function.
   late final pulumi.Output<String> liveStageEtag;
-  /// Unique name for your CloudFront Function.
+  /// Unique name for your CloudFront Function. Valid names contain only alphanumeric characters, hyphens, and underscores, and must be between 1 and 64 characters.
   late final pulumi.Output<String> name;
   /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   late final pulumi.Output<bool?> publish;
@@ -57,20 +57,20 @@ class FunctionType extends pulumi.CustomResource {
           'aws:cloudfront/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     code = registerOutput<String>('code');
     comment = registerOutput<String?>('comment');
     etag = registerOutput<String>('etag');
-    keyValueStoreAssociations = registerOutput<List<String>?>('keyValueStoreAssociations');
+    keyValueStoreAssociations = registerOutput<List<String>?>('keyValueStoreAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     liveStageEtag = registerOutput<String>('liveStageEtag');
     this.name = registerOutput<String>('name');
     publish = registerOutput<bool?>('publish');
     runtime = registerOutput<String>('runtime');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FunctionType] resource's state with the given [name] and [id].
@@ -78,11 +78,12 @@ class FunctionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -100,13 +101,36 @@ class FunctionType extends pulumi.CustomResource {
     code = registerOutput<String>('code');
     comment = registerOutput<String?>('comment');
     etag = registerOutput<String>('etag');
-    keyValueStoreAssociations = registerOutput<List<String>?>('keyValueStoreAssociations');
+    keyValueStoreAssociations = registerOutput<List<String>?>('keyValueStoreAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     liveStageEtag = registerOutput<String>('liveStageEtag');
     this.name = registerOutput<String>('name');
     publish = registerOutput<bool?>('publish');
     runtime = registerOutput<String>('runtime');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FunctionType] resource.
+  FunctionType.reference(String urn)
+    : super(
+        'aws:cloudfront/function:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    code = registerOutput<String>('code');
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    keyValueStoreAssociations = registerOutput<List<String>?>('keyValueStoreAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    liveStageEtag = registerOutput<String>('liveStageEtag');
+    this.name = registerOutput<String>('name');
+    publish = registerOutput<bool?>('publish');
+    runtime = registerOutput<String>('runtime');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

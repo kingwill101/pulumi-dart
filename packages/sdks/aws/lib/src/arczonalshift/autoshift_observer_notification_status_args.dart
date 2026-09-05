@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_arczonalshift_autoshift_observer_notification_status_autoshift_observer_notification_status_args_doc}
 class AutoshiftObserverNotificationStatusArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Autoshift observer notification status. Valid values are `ENABLED` or `DISABLED`.
   ///
   /// The following arguments are optional:

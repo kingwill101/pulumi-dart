@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_args.dart';
+import 'bucket_cors_rule.dart';
+import 'bucket_grant.dart';
+import 'bucket_lifecycle_rule.dart';
 import 'bucket_logging.dart';
 import 'bucket_object_lock_configuration.dart';
 import 'bucket_replication_configuration.dart';
@@ -392,15 +395,15 @@ class Bucket extends pulumi.CustomResource {
   /// Bucket region-specific domain name. The bucket domain name including the region name. Please refer to the [S3 endpoints reference](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) for format. Note: AWS CloudFront allows specifying an S3 region-specific endpoint when creating an S3 origin. This will prevent redirect issues from CloudFront to the S3 Origin URL. For more information, see the [Virtual Hosted-Style Requests for Other Regions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html#deprecated-global-endpoint) section in the AWS S3 User Guide.
   late final pulumi.Output<String> bucketRegionalDomainName;
   /// Rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html). See `corsRule` Block below for details. The provider will only perform drift detection if a configuration value is provided. Use the resource `aws.s3.BucketCorsConfiguration` instead.
-  late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
+  late final pulumi.Output<List<BucketCorsRule>> corsRules;
   /// Boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket *when the bucket is destroyed* so that the bucket can be destroyed without error. These objects are *not* recoverable. This only deletes objects when the bucket is destroyed, *not* when setting this parameter to `true`. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the bucket or destroying the bucket, this flag will not work. Additionally when importing a bucket, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   late final pulumi.Output<bool?> forceDestroy;
   /// [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl). See `grant` Block below for details. Conflicts with `acl`. The provider will only perform drift detection if a configuration value is provided. Use the resource `aws.s3.BucketAcl` instead.
-  late final pulumi.Output<List<Map<String, dynamic>>> grants;
+  late final pulumi.Output<List<BucketGrant>> grants;
   /// [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
   late final pulumi.Output<String> hostedZoneId;
   /// Configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html). See `lifecycleRule` Block below for details. The provider will only perform drift detection if a configuration value is provided. Use the resource `aws.s3.BucketLifecycleConfiguration` instead.
-  late final pulumi.Output<List<Map<String, dynamic>>> lifecycleRules;
+  late final pulumi.Output<List<BucketLifecycleRule>> lifecycleRules;
   /// Configuration of [S3 bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) parameters. See `logging` Block below for details. The provider will only perform drift detection if a configuration value is provided. Use the resource `aws.s3.BucketLogging` instead.
   late final pulumi.Output<BucketLogging> logging;
   /// Configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html). See `objectLockConfiguration` Block below for details. The provider will only perform drift detection if a configuration value is provided. Use the `objectLockEnabled` parameter and the resource `aws.s3.BucketObjectLockConfiguration` instead.
@@ -442,7 +445,7 @@ class Bucket extends pulumi.CustomResource {
           'aws:s3/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accelerationStatus = registerOutput<String>('accelerationStatus');
     acl = registerOutput<String>('acl');
@@ -453,11 +456,11 @@ class Bucket extends pulumi.CustomResource {
     bucketPrefix = registerOutput<String>('bucketPrefix');
     bucketRegion = registerOutput<String>('bucketRegion');
     bucketRegionalDomainName = registerOutput<String>('bucketRegionalDomainName');
-    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    corsRules = registerOutput<List<BucketCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsRule>(guardedValue, (value) => BucketCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    grants = registerOutput<List<Map<String, dynamic>>>('grants');
+    grants = registerOutput<List<BucketGrant>>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketGrant>(guardedValue, (value) => BucketGrant.fromMap((value as Map).cast<String, dynamic>())); });
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>>('lifecycleRules');
+    lifecycleRules = registerOutput<List<BucketLifecycleRule>>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleRule>(guardedValue, (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
     logging = registerOutput<BucketLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     objectLockConfiguration = registerOutput<BucketObjectLockConfiguration>('objectLockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     objectLockEnabled = registerOutput<bool>('objectLockEnabled');
@@ -466,8 +469,8 @@ class Bucket extends pulumi.CustomResource {
     replicationConfiguration = registerOutput<BucketReplicationConfiguration>('replicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requestPayer = registerOutput<String>('requestPayer');
     serverSideEncryptionConfiguration = registerOutput<BucketServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versioning = registerOutput<BucketVersioning>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     website = registerOutput<BucketWebsite>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     websiteDomain = registerOutput<String>('websiteDomain');
@@ -479,11 +482,12 @@ class Bucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Bucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -506,11 +510,11 @@ class Bucket extends pulumi.CustomResource {
     bucketPrefix = registerOutput<String>('bucketPrefix');
     bucketRegion = registerOutput<String>('bucketRegion');
     bucketRegionalDomainName = registerOutput<String>('bucketRegionalDomainName');
-    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    corsRules = registerOutput<List<BucketCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsRule>(guardedValue, (value) => BucketCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    grants = registerOutput<List<Map<String, dynamic>>>('grants');
+    grants = registerOutput<List<BucketGrant>>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketGrant>(guardedValue, (value) => BucketGrant.fromMap((value as Map).cast<String, dynamic>())); });
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>>('lifecycleRules');
+    lifecycleRules = registerOutput<List<BucketLifecycleRule>>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleRule>(guardedValue, (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
     logging = registerOutput<BucketLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     objectLockConfiguration = registerOutput<BucketObjectLockConfiguration>('objectLockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     objectLockEnabled = registerOutput<bool>('objectLockEnabled');
@@ -519,8 +523,47 @@ class Bucket extends pulumi.CustomResource {
     replicationConfiguration = registerOutput<BucketReplicationConfiguration>('replicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requestPayer = registerOutput<String>('requestPayer');
     serverSideEncryptionConfiguration = registerOutput<BucketServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versioning = registerOutput<BucketVersioning>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsite>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    websiteDomain = registerOutput<String>('websiteDomain');
+    websiteEndpoint = registerOutput<String>('websiteEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [Bucket] resource.
+  Bucket.reference(String urn)
+    : super(
+        'aws:s3/bucket:Bucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accelerationStatus = registerOutput<String>('accelerationStatus');
+    acl = registerOutput<String>('acl');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    bucketDomainName = registerOutput<String>('bucketDomainName');
+    bucketNamespace = registerOutput<String>('bucketNamespace');
+    bucketPrefix = registerOutput<String>('bucketPrefix');
+    bucketRegion = registerOutput<String>('bucketRegion');
+    bucketRegionalDomainName = registerOutput<String>('bucketRegionalDomainName');
+    corsRules = registerOutput<List<BucketCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsRule>(guardedValue, (value) => BucketCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    grants = registerOutput<List<BucketGrant>>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketGrant>(guardedValue, (value) => BucketGrant.fromMap((value as Map).cast<String, dynamic>())); });
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    lifecycleRules = registerOutput<List<BucketLifecycleRule>>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleRule>(guardedValue, (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
+    logging = registerOutput<BucketLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    objectLockConfiguration = registerOutput<BucketObjectLockConfiguration>('objectLockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    objectLockEnabled = registerOutput<bool>('objectLockEnabled');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    replicationConfiguration = registerOutput<BucketReplicationConfiguration>('replicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestPayer = registerOutput<String>('requestPayer');
+    serverSideEncryptionConfiguration = registerOutput<BucketServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versioning = registerOutput<BucketVersioning>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     website = registerOutput<BucketWebsite>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     websiteDomain = registerOutput<String>('websiteDomain');

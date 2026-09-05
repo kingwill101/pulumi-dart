@@ -5,11 +5,11 @@ import 'agentcore_harness_tool_config_agentcore_gateway_outbound_auth_oauth.dart
 
 class AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuth {
   /// Set to `true` to use AWS IAM authentication.
-  final pulumi.Input<bool>? awsIam;
+  final pulumi.Input<bool?>? awsIam;
   /// Set to `true` to disable authentication.
-  final pulumi.Input<bool>? none;
+  final pulumi.Input<bool?>? none;
   /// OAuth credential provider configuration. See `oauth` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuthOauth>? oauth;
+  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuthOauth?>? oauth;
 
   /// Creates a new [AgentcoreHarnessToolConfigAgentcoreGatewayOutboundAuth].
   /// [awsIam] Set to `true` to use AWS IAM authentication.

@@ -20,15 +20,13 @@ import 'evaluation_job_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.EvaluationJob("example", {
-///     jobName: "example-job",
-///     roleArn: exampleAwsIamRole.arn,
 ///     evaluationConfig: {
 ///         automated: {
 ///             datasetMetricConfigs: [{
-///                 taskType: "Generation",
 ///                 dataset: {
 ///                     name: "Builtin.Bold",
 ///                 },
+///                 taskType: "Generation",
 ///                 metricNames: ["Builtin.Robustness"],
 ///             }],
 ///         },
@@ -43,6 +41,8 @@ import 'evaluation_job_timeouts.dart';
 ///     outputDataConfig: {
 ///         s3Uri: `s3://${exampleAwsS3Bucket.id}/output/`,
 ///     },
+///     jobName: "example-job",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -50,15 +50,13 @@ import 'evaluation_job_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.EvaluationJob("example",
-///     job_name="example-job",
-///     role_arn=example_aws_iam_role["arn"],
 ///     evaluation_config={
 ///         "automated": {
 ///             "dataset_metric_configs": [{
-///                 "task_type": "Generation",
 ///                 "dataset": {
 ///                     "name": "Builtin.Bold",
 ///                 },
+///                 "task_type": "Generation",
 ///                 "metric_names": ["Builtin.Robustness"],
 ///             }],
 ///         },
@@ -72,7 +70,9 @@ import 'evaluation_job_timeouts.dart';
 ///     },
 ///     output_data_config={
 ///         "s3_uri": f"s3://{example_aws_s3_bucket['id']}/output/",
-///     })
+///     },
+///     job_name="example-job",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -84,8 +84,6 @@ import 'evaluation_job_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.EvaluationJob("example", new()
 ///     {
-///         JobName = "example-job",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         EvaluationConfig = new Aws.Bedrock.Inputs.EvaluationJobEvaluationConfigArgs
 ///         {
 ///             Automated = new Aws.Bedrock.Inputs.EvaluationJobEvaluationConfigAutomatedArgs
@@ -94,11 +92,11 @@ import 'evaluation_job_timeouts.dart';
 ///                 {
 ///                     new Aws.Bedrock.Inputs.EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigArgs
 ///                     {
-///                         TaskType = "Generation",
 ///                         Dataset = new Aws.Bedrock.Inputs.EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDatasetArgs
 ///                         {
 ///                             Name = "Builtin.Bold",
 ///                         },
+///                         TaskType = "Generation",
 ///                         MetricNames = new[]
 ///                         {
 ///                             "Builtin.Robustness",
@@ -124,6 +122,8 @@ import 'evaluation_job_timeouts.dart';
 ///         {
 ///             S3Uri = $"s3://{exampleAwsS3Bucket.Id}/output/",
 ///         },
+///         JobName = "example-job",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -139,16 +139,14 @@ import 'evaluation_job_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewEvaluationJob(ctx, "example", &bedrock.EvaluationJobArgs{
-/// 			JobName: pulumi.String("example-job"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			EvaluationConfig: &bedrock.EvaluationJobEvaluationConfigArgs{
 /// 				Automated: &bedrock.EvaluationJobEvaluationConfigAutomatedArgs{
 /// 					DatasetMetricConfigs: bedrock.EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigArray{
 /// 						&bedrock.EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigArgs{
-/// 							TaskType: pulumi.String("Generation"),
 /// 							Dataset: &bedrock.EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDatasetArgs{
 /// 								Name: pulumi.String("Builtin.Bold"),
 /// 							},
+/// 							TaskType: pulumi.String("Generation"),
 /// 							MetricNames: pulumi.StringArray{
 /// 								pulumi.String("Builtin.Robustness"),
 /// 							},
@@ -168,6 +166,8 @@ import 'evaluation_job_timeouts.dart';
 /// 			OutputDataConfig: &bedrock.EvaluationJobOutputDataConfigArgs{
 /// 				S3Uri: pulumi.Sprintf("s3://%v/output/", exampleAwsS3Bucket.Id),
 /// 			},
+/// 			JobName: pulumi.String("example-job"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -186,15 +186,13 @@ import 'evaluation_job_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_evaluationjob" "example" {
-///   job_name = "example-job"
-///   role_arn = exampleAwsIamRole.arn
 ///   evaluation_config = {
 ///     automated = {
 ///       dataset_metric_configs = [{
-///         "taskType" = "Generation"
 ///         "dataset" = {
 ///           "name" = "Builtin.Bold"
 ///         }
+///         "taskType"    = "Generation"
 ///         "metricNames" = ["Builtin.Robustness"]
 ///       }]
 ///     }
@@ -209,6 +207,8 @@ import 'evaluation_job_timeouts.dart';
 ///   output_data_config = {
 ///     s3_uri ="s3://${exampleAwsS3Bucket.id}/output/"
 ///   }
+///   job_name = "example-job"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -241,15 +241,13 @@ import 'evaluation_job_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EvaluationJob("example", EvaluationJobArgs.builder()
-///             .jobName("example-job")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .evaluationConfig(EvaluationJobEvaluationConfigArgs.builder()
 ///                 .automated(EvaluationJobEvaluationConfigAutomatedArgs.builder()
 ///                     .datasetMetricConfigs(EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigArgs.builder()
-///                         .taskType("Generation")
 ///                         .dataset(EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDatasetArgs.builder()
 ///                             .name("Builtin.Bold")
 ///                             .build())
+///                         .taskType("Generation")
 ///                         .metricNames("Builtin.Robustness")
 ///                         .build())
 ///                     .build())
@@ -264,6 +262,8 @@ import 'evaluation_job_timeouts.dart';
 ///             .outputDataConfig(EvaluationJobOutputDataConfigArgs.builder()
 ///                 .s3Uri(String.format("s3://%s/output/", exampleAwsS3Bucket.id()))
 ///                 .build())
+///             .jobName("example-job")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -274,14 +274,12 @@ import 'evaluation_job_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:EvaluationJob
 ///     properties:
-///       jobName: example-job
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       evaluationConfig:
 ///         automated:
 ///           datasetMetricConfigs:
-///             - taskType: Generation
-///               dataset:
+///             - dataset:
 ///                 name: Builtin.Bold
+///               taskType: Generation
 ///               metricNames:
 ///                 - Builtin.Robustness
 ///       inferenceConfig:
@@ -290,6 +288,8 @@ import 'evaluation_job_timeouts.dart';
 ///               modelIdentifier: amazon.nova-micro-v1:0
 ///       outputDataConfig:
 ///         s3Uri: s3://${exampleAwsS3Bucket.id}/output/
+///       jobName: example-job
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -359,13 +359,13 @@ class EvaluationJob extends pulumi.CustomResource {
           'aws:bedrock/evaluationJob:EvaluationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationType = registerOutput<String>('applicationType');
     createdAt = registerOutput<String>('createdAt');
     customerEncryptionKeyId = registerOutput<String?>('customerEncryptionKeyId');
     evaluationConfig = registerOutput<EvaluationJobEvaluationConfig>('evaluationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobEvaluationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    failureMessages = registerOutput<List<String>>('failureMessages');
+    failureMessages = registerOutput<List<String>>('failureMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inferenceConfig = registerOutput<EvaluationJobInferenceConfig>('inferenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobInferenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobArn = registerOutput<String>('jobArn');
     jobDescription = registerOutput<String?>('jobDescription');
@@ -377,8 +377,8 @@ class EvaluationJob extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     skipDestroy = registerOutput<bool?>('skipDestroy');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<EvaluationJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -387,11 +387,12 @@ class EvaluationJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EvaluationJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EvaluationJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -409,7 +410,7 @@ class EvaluationJob extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     customerEncryptionKeyId = registerOutput<String?>('customerEncryptionKeyId');
     evaluationConfig = registerOutput<EvaluationJobEvaluationConfig>('evaluationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobEvaluationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    failureMessages = registerOutput<List<String>>('failureMessages');
+    failureMessages = registerOutput<List<String>>('failureMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inferenceConfig = registerOutput<EvaluationJobInferenceConfig>('inferenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobInferenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobArn = registerOutput<String>('jobArn');
     jobDescription = registerOutput<String?>('jobDescription');
@@ -421,8 +422,38 @@ class EvaluationJob extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     skipDestroy = registerOutput<bool?>('skipDestroy');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<EvaluationJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EvaluationJob] resource.
+  EvaluationJob.reference(String urn)
+    : super(
+        'aws:bedrock/evaluationJob:EvaluationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationType = registerOutput<String>('applicationType');
+    createdAt = registerOutput<String>('createdAt');
+    customerEncryptionKeyId = registerOutput<String?>('customerEncryptionKeyId');
+    evaluationConfig = registerOutput<EvaluationJobEvaluationConfig>('evaluationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobEvaluationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failureMessages = registerOutput<List<String>>('failureMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inferenceConfig = registerOutput<EvaluationJobInferenceConfig>('inferenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobInferenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobArn = registerOutput<String>('jobArn');
+    jobDescription = registerOutput<String?>('jobDescription');
+    jobName = registerOutput<String>('jobName');
+    jobType = registerOutput<String>('jobType');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    outputDataConfig = registerOutput<EvaluationJobOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<EvaluationJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

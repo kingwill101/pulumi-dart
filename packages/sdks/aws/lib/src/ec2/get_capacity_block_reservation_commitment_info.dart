@@ -26,7 +26,7 @@ class GetCapacityBlockReservationCommitmentInfo {
   factory GetCapacityBlockReservationCommitmentInfo.fromMap(Map<String, dynamic> map) {
     return GetCapacityBlockReservationCommitmentInfo(
       commitmentEndDate: pulumi.Input.fromValue(map['commitmentEndDate'] as String),
-      committedInstanceCount: pulumi.Input.fromValue(map['committedInstanceCount'] as int),
+      committedInstanceCount: pulumi.Input.fromValue((map['committedInstanceCount'] as num).toInt()),
     );
   }
 }

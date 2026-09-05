@@ -7,37 +7,37 @@ import 'connect_peer_configuration.dart';
 /// Input properties used for looking up and filtering ConnectPeer resources.
 class ConnectPeerState {
   /// ARN of the Connect peer.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Connect peer BGP options. See bgpOptions for more information.
-  final pulumi.Input<ConnectPeerBgpOptions>? bgpOptions;
+  final pulumi.Input<ConnectPeerBgpOptions?>? bgpOptions;
   /// Configuration of the Connect peer.
-  final pulumi.Input<List<ConnectPeerConfiguration>>? configurations;
+  final pulumi.Input<List<ConnectPeerConfiguration>?>? configurations;
   /// ID of the connection attachment.
-  final pulumi.Input<String>? connectAttachmentId;
+  final pulumi.Input<String?>? connectAttachmentId;
   /// ID of the Connect peer.
-  final pulumi.Input<String>? connectPeerId;
+  final pulumi.Input<String?>? connectPeerId;
   /// Connect peer core network address.
-  final pulumi.Input<String>? coreNetworkAddress;
+  final pulumi.Input<String?>? coreNetworkAddress;
   /// ID of a core network.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// Timestamp when the Connect peer was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Region where the peer is located.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
-  final pulumi.Input<List<String>>? insideCidrBlocks;
+  final pulumi.Input<List<String>?>? insideCidrBlocks;
   /// Connect peer address.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? peerAddress;
+  final pulumi.Input<String?>? peerAddress;
   /// State of the Connect peer.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
-  final pulumi.Input<String>? subnetArn;
+  final pulumi.Input<String?>? subnetArn;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ConnectPeerState].
   /// [arn] ARN of the Connect peer.

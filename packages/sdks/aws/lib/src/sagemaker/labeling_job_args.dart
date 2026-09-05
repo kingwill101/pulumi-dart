@@ -19,21 +19,21 @@ class LabelingJobArgs {
   /// Attribute name to use for the label in the output manifest file.
   final pulumi.Input<String> labelAttributeName;
   /// S3 URI of the file that defines the categories used to label the data objects.
-  final pulumi.Input<String>? labelCategoryConfigS3Uri;
+  final pulumi.Input<String?>? labelCategoryConfigS3Uri;
   /// Information required to perform automated data labeling.. Fields are documented below.
-  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfig>? labelingJobAlgorithmsConfig;
+  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfig?>? labelingJobAlgorithmsConfig;
   /// Name of the labeling job.
   final pulumi.Input<String> labelingJobName;
   /// Location of the output data. Fields are documented below.
   final pulumi.Input<LabelingJobOutputConfig> outputConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of IAM role that Amazon SageMaker assumes to perform tasks during data labeling.
   final pulumi.Input<String> roleArn;
   /// Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
-  final pulumi.Input<List<LabelingJobStoppingCondition>>? stoppingConditions;
+  final pulumi.Input<List<LabelingJobStoppingCondition>?>? stoppingConditions;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LabelingJobArgs].
   /// [humanTaskConfig] Configuration information required for human workers to complete a labeling task. Fields are documented below.

@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandling {
   /// Custom headers to insert into the request. See Insert Header below.
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader>>? insertHeaders;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader>?>? insertHeaders;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandling].
   /// [insertHeaders] Custom headers to insert into the request. See Insert Header below.

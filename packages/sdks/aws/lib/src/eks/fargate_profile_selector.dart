@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FargateProfileSelector {
   /// Key-value map of Kubernetes labels for selection.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Kubernetes namespace for selection.
   ///
   /// The following arguments are optional:

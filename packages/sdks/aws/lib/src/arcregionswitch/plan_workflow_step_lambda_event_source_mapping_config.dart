@@ -8,11 +8,11 @@ class PlanWorkflowStepLambdaEventSourceMappingConfig {
   /// Action to perform on the event source mapping.
   final pulumi.Input<String> action;
   /// Event source mappings per region. See `regionEventSourceMapping` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepLambdaEventSourceMappingConfigRegionEventSourceMapping>>? regionEventSourceMappings;
+  final pulumi.Input<List<PlanWorkflowStepLambdaEventSourceMappingConfigRegionEventSourceMapping>?>? regionEventSourceMappings;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
   /// Ungraceful behavior configuration. See `workflow.step.lambda_event_source_mapping_config.ungraceful` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepLambdaEventSourceMappingConfigUngraceful>>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepLambdaEventSourceMappingConfigUngraceful>?>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepLambdaEventSourceMappingConfig].
   /// [action] Action to perform on the event source mapping.
@@ -39,7 +39,7 @@ class PlanWorkflowStepLambdaEventSourceMappingConfig {
     return PlanWorkflowStepLambdaEventSourceMappingConfig(
       action: pulumi.Input.fromValue(map['action'] as String),
       regionEventSourceMappings: (() { final guardedValue = map['regionEventSourceMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepLambdaEventSourceMappingConfigRegionEventSourceMapping>(guardedValue, (value) => PlanWorkflowStepLambdaEventSourceMappingConfigRegionEventSourceMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepLambdaEventSourceMappingConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepLambdaEventSourceMappingConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

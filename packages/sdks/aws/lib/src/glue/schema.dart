@@ -141,7 +141,7 @@ import 'schema_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Glue schema.
+/// - `arn` (String) ARN of the Glue schema.
 ///
 ///
 /// Using `pulumi import`, import Glue Registries using `arn`. For example:
@@ -150,7 +150,7 @@ import 'schema_state.dart';
 /// $ pulumi import aws:glue/schema:Schema example arn:aws:glue:us-west-2:123456789012:schema/example/example
 /// ```
 class Schema extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the schema.
+  /// ARN of the schema.
   late final pulumi.Output<String> arn;
   /// The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
   late final pulumi.Output<String> compatibility;
@@ -191,7 +191,7 @@ class Schema extends pulumi.CustomResource {
           'aws:glue/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     compatibility = registerOutput<String>('compatibility');
@@ -205,8 +205,8 @@ class Schema extends pulumi.CustomResource {
     schemaCheckpoint = registerOutput<int>('schemaCheckpoint');
     schemaDefinition = registerOutput<String>('schemaDefinition');
     schemaName = registerOutput<String>('schemaName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Schema] resource's state with the given [name] and [id].
@@ -214,11 +214,12 @@ class Schema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,7 +245,32 @@ class Schema extends pulumi.CustomResource {
     schemaCheckpoint = registerOutput<int>('schemaCheckpoint');
     schemaDefinition = registerOutput<String>('schemaDefinition');
     schemaName = registerOutput<String>('schemaName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'aws:glue/schema:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    compatibility = registerOutput<String>('compatibility');
+    dataFormat = registerOutput<String>('dataFormat');
+    description = registerOutput<String?>('description');
+    latestSchemaVersion = registerOutput<int>('latestSchemaVersion');
+    nextSchemaVersion = registerOutput<int>('nextSchemaVersion');
+    region = registerOutput<String>('region');
+    registryArn = registerOutput<String>('registryArn');
+    registryName = registerOutput<String>('registryName');
+    schemaCheckpoint = registerOutput<int>('schemaCheckpoint');
+    schemaDefinition = registerOutput<String>('schemaDefinition');
+    schemaName = registerOutput<String>('schemaName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_system_args.dart';
+import 'file_system_lifecycle_policy.dart';
 import 'file_system_protection.dart';
+import 'file_system_size_in_byte.dart';
 import 'file_system_state.dart';
 
 /// Provides an Elastic File System (EFS) File System resource.
@@ -137,10 +139,10 @@ import 'file_system_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const fooWithLifecylePolicy = new aws.efs.FileSystem("foo_with_lifecyle_policy", {
-///     creationToken: "my-product",
 ///     lifecyclePolicies: [{
 ///         transitionToIa: "AFTER_30_DAYS",
 ///     }],
+///     creationToken: "my-product",
 /// });
 /// ```
 /// ```python
@@ -148,10 +150,10 @@ import 'file_system_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo_with_lifecyle_policy = aws.efs.FileSystem("foo_with_lifecyle_policy",
-///     creation_token="my-product",
 ///     lifecycle_policies=[{
 ///         "transition_to_ia": "AFTER_30_DAYS",
-///     }])
+///     }],
+///     creation_token="my-product")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -163,7 +165,6 @@ import 'file_system_state.dart';
 /// {
 ///     var fooWithLifecylePolicy = new Aws.Efs.FileSystem("foo_with_lifecyle_policy", new()
 ///     {
-///         CreationToken = "my-product",
 ///         LifecyclePolicies = new[]
 ///         {
 ///             new Aws.Efs.Inputs.FileSystemLifecyclePolicyArgs
@@ -171,6 +172,7 @@ import 'file_system_state.dart';
 ///                 TransitionToIa = "AFTER_30_DAYS",
 ///             },
 ///         },
+///         CreationToken = "my-product",
 ///     });
 ///
 /// });
@@ -186,12 +188,12 @@ import 'file_system_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := efs.NewFileSystem(ctx, "foo_with_lifecyle_policy", &efs.FileSystemArgs{
-/// 			CreationToken: pulumi.String("my-product"),
 /// 			LifecyclePolicies: efs.FileSystemLifecyclePolicyArray{
 /// 				&efs.FileSystemLifecyclePolicyArgs{
 /// 					TransitionToIa: pulumi.String("AFTER_30_DAYS"),
 /// 				},
 /// 			},
+/// 			CreationToken: pulumi.String("my-product"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -210,10 +212,10 @@ import 'file_system_state.dart';
 /// }
 ///
 /// resource "aws_efs_filesystem" "foo_with_lifecyle_policy" {
-///   creation_token = "my-product"
 ///   lifecycle_policies {
 ///     transition_to_ia = "AFTER_30_DAYS"
 ///   }
+///   creation_token = "my-product"
 /// }
 /// ```
 /// ```java
@@ -239,10 +241,10 @@ import 'file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var fooWithLifecylePolicy = new FileSystem("fooWithLifecylePolicy", FileSystemArgs.builder()
-///             .creationToken("my-product")
 ///             .lifecyclePolicies(FileSystemLifecyclePolicyArgs.builder()
 ///                 .transitionToIa("AFTER_30_DAYS")
 ///                 .build())
+///             .creationToken("my-product")
 ///             .build());
 ///
 ///     }
@@ -254,9 +256,9 @@ import 'file_system_state.dart';
 ///     type: aws:efs:FileSystem
 ///     name: foo_with_lifecyle_policy
 ///     properties:
-///       creationToken: my-product
 ///       lifecyclePolicies:
 ///         - transitionToIa: AFTER_30_DAYS
+///       creationToken: my-product
 /// ```
 ///
 ///
@@ -268,7 +270,7 @@ import 'file_system_state.dart';
 /// $ pulumi import aws:efs/fileSystem:FileSystem foo fs-6fa144c6
 /// ```
 class FileSystem extends pulumi.CustomResource {
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// The identifier of the Availability Zone in which the file system's One Zone storage classes exist.
   late final pulumi.Output<String> availabilityZoneId;
@@ -286,7 +288,7 @@ class FileSystem extends pulumi.CustomResource {
   /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
   late final pulumi.Output<String> kmsKeyId;
   /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lifecyclePolicies;
+  late final pulumi.Output<List<FileSystemLifecyclePolicy>?> lifecyclePolicies;
   /// The value of the file system's `Name` tag.
   late final pulumi.Output<String> name;
   /// The current number of mount targets that the file system has.
@@ -302,7 +304,7 @@ class FileSystem extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The latest known metered size (in bytes) of data stored in the file system, the value is not the exact size that the file system was at any point in time. See Size In Bytes.
-  late final pulumi.Output<List<Map<String, dynamic>>> sizeInBytes;
+  late final pulumi.Output<List<FileSystemSizeInByte>> sizeInBytes;
   /// A map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -322,7 +324,7 @@ class FileSystem extends pulumi.CustomResource {
           'aws:efs/fileSystem:FileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
@@ -331,7 +333,7 @@ class FileSystem extends pulumi.CustomResource {
     dnsName = registerOutput<String>('dnsName');
     encrypted = registerOutput<bool>('encrypted');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    lifecyclePolicies = registerOutput<List<Map<String, dynamic>>?>('lifecyclePolicies');
+    lifecyclePolicies = registerOutput<List<FileSystemLifecyclePolicy>?>('lifecyclePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileSystemLifecyclePolicy>(guardedValue, (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     numberOfMountTargets = registerOutput<int>('numberOfMountTargets');
     ownerId = registerOutput<String>('ownerId');
@@ -339,9 +341,9 @@ class FileSystem extends pulumi.CustomResource {
     protection = registerOutput<FileSystemProtection>('protection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemProtection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisionedThroughputInMibps = registerOutput<double?>('provisionedThroughputInMibps');
     region = registerOutput<String>('region');
-    sizeInBytes = registerOutput<List<Map<String, dynamic>>>('sizeInBytes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sizeInBytes = registerOutput<List<FileSystemSizeInByte>>('sizeInBytes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileSystemSizeInByte>(guardedValue, (value) => FileSystemSizeInByte.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputMode = registerOutput<String?>('throughputMode');
   }
 
@@ -350,11 +352,12 @@ class FileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,7 +378,7 @@ class FileSystem extends pulumi.CustomResource {
     dnsName = registerOutput<String>('dnsName');
     encrypted = registerOutput<bool>('encrypted');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    lifecyclePolicies = registerOutput<List<Map<String, dynamic>>?>('lifecyclePolicies');
+    lifecyclePolicies = registerOutput<List<FileSystemLifecyclePolicy>?>('lifecyclePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileSystemLifecyclePolicy>(guardedValue, (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     numberOfMountTargets = registerOutput<int>('numberOfMountTargets');
     ownerId = registerOutput<String>('ownerId');
@@ -383,9 +386,39 @@ class FileSystem extends pulumi.CustomResource {
     protection = registerOutput<FileSystemProtection>('protection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemProtection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisionedThroughputInMibps = registerOutput<double?>('provisionedThroughputInMibps');
     region = registerOutput<String>('region');
-    sizeInBytes = registerOutput<List<Map<String, dynamic>>>('sizeInBytes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sizeInBytes = registerOutput<List<FileSystemSizeInByte>>('sizeInBytes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileSystemSizeInByte>(guardedValue, (value) => FileSystemSizeInByte.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputMode = registerOutput<String?>('throughputMode');
+  }
+
+  /// Creates a typed reference to an existing [FileSystem] resource.
+  FileSystem.reference(String urn)
+    : super(
+        'aws:efs/fileSystem:FileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    availabilityZoneName = registerOutput<String>('availabilityZoneName');
+    creationToken = registerOutput<String>('creationToken');
+    dnsName = registerOutput<String>('dnsName');
+    encrypted = registerOutput<bool>('encrypted');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    lifecyclePolicies = registerOutput<List<FileSystemLifecyclePolicy>?>('lifecyclePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileSystemLifecyclePolicy>(guardedValue, (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    numberOfMountTargets = registerOutput<int>('numberOfMountTargets');
+    ownerId = registerOutput<String>('ownerId');
+    performanceMode = registerOutput<String>('performanceMode');
+    protection = registerOutput<FileSystemProtection>('protection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemProtection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisionedThroughputInMibps = registerOutput<double?>('provisionedThroughputInMibps');
+    region = registerOutput<String>('region');
+    sizeInBytes = registerOutput<List<FileSystemSizeInByte>>('sizeInBytes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileSystemSizeInByte>(guardedValue, (value) => FileSystemSizeInByte.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputMode = registerOutput<String?>('throughputMode');
   }
 }

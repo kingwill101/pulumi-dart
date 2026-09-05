@@ -931,7 +931,7 @@ class ExportTask extends pulumi.CustomResource {
   late final pulumi.Output<String> s3Prefix;
   /// Time that the snapshot was created.
   late final pulumi.Output<String> snapshotTime;
-  /// Amazon Resource Name (ARN) of the snapshot to export.
+  /// ARN of the snapshot to export.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> sourceArn;
@@ -959,9 +959,9 @@ class ExportTask extends pulumi.CustomResource {
           'aws:rds/exportTask:ExportTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    exportOnlies = registerOutput<List<String>?>('exportOnlies');
+    exportOnlies = registerOutput<List<String>?>('exportOnlies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');
     failureCause = registerOutput<String>('failureCause');
     iamRoleArn = registerOutput<String>('iamRoleArn');
@@ -985,11 +985,12 @@ class ExportTask extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExportTaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExportTask._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1003,7 +1004,35 @@ class ExportTask extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    exportOnlies = registerOutput<List<String>?>('exportOnlies');
+    exportOnlies = registerOutput<List<String>?>('exportOnlies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');
+    failureCause = registerOutput<String>('failureCause');
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    percentProgress = registerOutput<int>('percentProgress');
+    region = registerOutput<String>('region');
+    s3BucketName = registerOutput<String>('s3BucketName');
+    s3Prefix = registerOutput<String>('s3Prefix');
+    snapshotTime = registerOutput<String>('snapshotTime');
+    sourceArn = registerOutput<String>('sourceArn');
+    sourceType = registerOutput<String>('sourceType');
+    status = registerOutput<String>('status');
+    taskEndTime = registerOutput<String>('taskEndTime');
+    taskStartTime = registerOutput<String>('taskStartTime');
+    timeouts = registerOutput<ExportTaskTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportTaskTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warningMessage = registerOutput<String>('warningMessage');
+  }
+
+  /// Creates a typed reference to an existing [ExportTask] resource.
+  ExportTask.reference(String urn)
+    : super(
+        'aws:rds/exportTask:ExportTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    exportOnlies = registerOutput<List<String>?>('exportOnlies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');
     failureCause = registerOutput<String>('failureCause');
     iamRoleArn = registerOutput<String>('iamRoleArn');

@@ -10,7 +10,7 @@ import 'notification_hub_timeouts.dart';
 class NotificationHubArgs {
   /// Notification Hub region.
   final pulumi.Input<String> notificationHubRegion;
-  final pulumi.Input<NotificationHubTimeouts>? timeouts;
+  final pulumi.Input<NotificationHubTimeouts?>? timeouts;
 
   /// Creates a new [NotificationHubArgs].
   /// [notificationHubRegion] Notification Hub region.

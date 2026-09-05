@@ -10,15 +10,15 @@ class DiskArgs {
   /// Availability Zone in which to create the disk.
   final pulumi.Input<String> availabilityZone;
   /// Name of the disk. Must begin with an alphabetic character and contain only alphanumeric characters, underscores, hyphens, and dots.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Size of the disk in GB.
   ///
   /// The following arguments are optional:
   final pulumi.Input<int> sizeInGb;
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DiskArgs].
   /// [availabilityZone] Availability Zone in which to create the disk.
@@ -49,7 +49,7 @@ class DiskArgs {
       availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGb: pulumi.Input.fromValue(map['sizeInGb'] as int),
+      sizeInGb: pulumi.Input.fromValue((map['sizeInGb'] as num).toInt()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

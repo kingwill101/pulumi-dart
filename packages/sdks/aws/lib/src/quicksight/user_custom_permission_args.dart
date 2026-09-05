@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_quicksight_user_custom_permission_user_custom_permission_args_doc}
 class UserCustomPermissionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Custom permissions profile name.
   final pulumi.Input<String> customPermissionsName;
   /// Namespace that the user belongs to. Defaults to `default`.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Username of the user.
   ///
   /// The following arguments are optional:

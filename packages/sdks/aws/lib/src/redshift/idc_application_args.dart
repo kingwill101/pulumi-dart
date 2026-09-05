@@ -10,9 +10,9 @@ import 'idc_application_service_integration.dart';
 /// {@macro pulumi_redshift_idc_application_idc_application_args_doc}
 class IdcApplicationArgs {
   /// Type of application being created. Valid values are `None` or `Lakehouse`.
-  final pulumi.Input<String>? applicationType;
+  final pulumi.Input<String?>? applicationType;
   /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorizedTokenIssuer documentation for more details.
-  final pulumi.Input<IdcApplicationAuthorizedTokenIssuer>? authorizedTokenIssuer;
+  final pulumi.Input<IdcApplicationAuthorizedTokenIssuer?>? authorizedTokenIssuer;
   /// IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
   final pulumi.Input<String> iamRoleArn;
   /// Display name for the Amazon Redshift IAM Identity Center application instance.
@@ -20,14 +20,14 @@ class IdcApplicationArgs {
   /// ARN of the IAM Identity Center instance where Amazon Redshift creates a new managed application.
   final pulumi.Input<String> idcInstanceArn;
   /// Namespace for the Amazon Redshift IAM Identity Center application instance.
-  final pulumi.Input<String>? identityNamespace;
+  final pulumi.Input<String?>? identityNamespace;
   /// Name of the Redshift application in IAM Identity Center.
   final pulumi.Input<String> redshiftIdcApplicationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the serviceIntegration documentation for more details.
-  final pulumi.Input<IdcApplicationServiceIntegration>? serviceIntegration;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<IdcApplicationServiceIntegration?>? serviceIntegration;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IdcApplicationArgs].
   /// [applicationType] Type of application being created. Valid values are `None` or `Lakehouse`.

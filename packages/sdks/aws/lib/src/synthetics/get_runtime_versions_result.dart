@@ -6,34 +6,34 @@ import 'get_runtime_versions_runtime_version.dart';
 /// Result data returned by getRuntimeVersions.
 class GetRuntimeVersionsResult {
   /// Name of the AWS region from which runtime versions are fetched.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// List of runtime versions. See `runtimeVersions` attribute reference.
-  final List<GetRuntimeVersionsRuntimeVersion> runtimeVersions;
+  final List<GetRuntimeVersionsRuntimeVersion>? runtimeVersions;
 
   /// Creates a new [GetRuntimeVersionsResult].
   /// [id] Name of the AWS region from which runtime versions are fetched.
-  /// [region] Required.
+  /// [region] Optional.
   /// [runtimeVersions] List of runtime versions. See `runtimeVersions` attribute reference.
   const GetRuntimeVersionsResult({
-    required this.id,
-    required this.region,
-    required this.runtimeVersions,
+    this.id,
+    this.region,
+    this.runtimeVersions,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'region': region,
-      'runtimeVersions': pulumi.Input.encodeList<GetRuntimeVersionsRuntimeVersion, Map<String, dynamic>>(runtimeVersions, (value) => value.toMap()),
+      'id': ?id,
+      'region': ?region,
+      'runtimeVersions': ?(() { final guardedValue = runtimeVersions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRuntimeVersionsRuntimeVersion, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRuntimeVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetRuntimeVersionsResult(
-      id: map['id'] as String,
-      region: map['region'] as String,
-      runtimeVersions: pulumi.Input.decodeList<GetRuntimeVersionsRuntimeVersion>(map['runtimeVersions']!, (value) => GetRuntimeVersionsRuntimeVersion.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      runtimeVersions: (() { final guardedValue = map['runtimeVersions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRuntimeVersionsRuntimeVersion>(guardedValue, (value) => GetRuntimeVersionsRuntimeVersion.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

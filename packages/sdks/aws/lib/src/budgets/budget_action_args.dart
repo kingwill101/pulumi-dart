@@ -11,7 +11,7 @@ import 'budget_action_subscriber.dart';
 /// {@macro pulumi_budgets_budget_action_budget_action_args_doc}
 class BudgetActionArgs {
   /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The trigger threshold of the action. See Action Threshold.
   final pulumi.Input<BudgetActionActionThreshold> actionThreshold;
   /// The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
@@ -29,7 +29,7 @@ class BudgetActionArgs {
   /// A list of subscribers. See Subscriber.
   final pulumi.Input<List<BudgetActionSubscriber>> subscribers;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BudgetActionArgs].
   /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.

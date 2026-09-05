@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings {
   final pulumi.Input<int> networkId;
   final pulumi.Input<String> networkName;
-  final pulumi.Input<int>? repInterval;
+  final pulumi.Input<int?>? repInterval;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings].
   /// [networkId] Required.
@@ -27,9 +27,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings(
-      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkId: pulumi.Input.fromValue((map['networkId'] as num).toInt()),
       networkName: pulumi.Input.fromValue(map['networkName'] as String),
-      repInterval: (() { final guardedValue = map['repInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      repInterval: (() { final guardedValue = map['repInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

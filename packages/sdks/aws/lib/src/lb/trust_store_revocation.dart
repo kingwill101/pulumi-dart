@@ -200,7 +200,7 @@ class TrustStoreRevocation extends pulumi.CustomResource {
           'aws:lb/trustStoreRevocation:TrustStoreRevocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     revocationId = registerOutput<int>('revocationId');
@@ -215,11 +215,12 @@ class TrustStoreRevocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustStoreRevocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustStoreRevocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,6 +234,23 @@ class TrustStoreRevocation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    revocationId = registerOutput<int>('revocationId');
+    revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');
+    revocationsS3Key = registerOutput<String>('revocationsS3Key');
+    revocationsS3ObjectVersion = registerOutput<String?>('revocationsS3ObjectVersion');
+    trustStoreArn = registerOutput<String>('trustStoreArn');
+  }
+
+  /// Creates a typed reference to an existing [TrustStoreRevocation] resource.
+  TrustStoreRevocation.reference(String urn)
+    : super(
+        'aws:lb/trustStoreRevocation:TrustStoreRevocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     revocationId = registerOutput<int>('revocationId');
     revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');

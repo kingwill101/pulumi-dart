@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersSelfManagedKafkaParametersVpc {
-  final pulumi.Input<List<String>>? securityGroups;
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<List<String>?>? securityGroups;
+  final pulumi.Input<List<String>?>? subnets;
 
   /// Creates a new [PipeSourceParametersSelfManagedKafkaParametersVpc].
   /// [securityGroups] Optional.

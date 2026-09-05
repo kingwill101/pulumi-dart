@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BudgetResourceAssociation resources.
 class BudgetResourceAssociationState {
   /// Budget name.
-  final pulumi.Input<String>? budgetName;
+  final pulumi.Input<String?>? budgetName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource identifier.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [BudgetResourceAssociationState].
   /// [budgetName] Budget name.

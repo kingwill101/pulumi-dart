@@ -5,62 +5,62 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClusterInstance resources.
 class ClusterInstanceState {
   /// Whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
-  final pulumi.Input<bool>? applyImmediately;
+  final pulumi.Input<bool?>? applyImmediately;
   /// ARN of cluster instance
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set (see [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_DBInstance.html)). Default `true`.
-  final pulumi.Input<bool>? autoMinorVersionUpgrade;
+  final pulumi.Input<bool?>? autoMinorVersionUpgrade;
   /// EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_CreateDBInstance.html) about the details.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Identifier of the certificate authority (CA) certificate for the DB instance.
-  final pulumi.Input<String>? caCertIdentifier;
+  final pulumi.Input<String?>? caCertIdentifier;
   /// Whether to restart the DB instance when rotating its SSL/TLS certificate. By default, AWS restarts the DB instance when you rotate your SSL/TLS certificate. The certificate is not updated until the DB instance is restarted. Set to `false` only if you are not using SSL/TLS to connect to the DB instance.
-  final pulumi.Input<String>? certificateRotationRestart;
+  final pulumi.Input<String?>? certificateRotationRestart;
   /// Identifier of the `aws.docdb.Cluster` in which to launch this instance.
-  final pulumi.Input<String>? clusterIdentifier;
+  final pulumi.Input<String?>? clusterIdentifier;
   /// Copy all DB instance `tags` to snapshots. Default is `false`.
-  final pulumi.Input<bool>? copyTagsToSnapshot;
+  final pulumi.Input<bool?>? copyTagsToSnapshot;
   /// DB subnet group to associate with this DB instance.
-  final pulumi.Input<String>? dbSubnetGroupName;
+  final pulumi.Input<String?>? dbSubnetGroupName;
   /// Region-unique, immutable identifier for the DB instance.
-  final pulumi.Input<String>? dbiResourceId;
+  final pulumi.Input<String?>? dbiResourceId;
   /// Value that indicates whether to enable Performance Insights for the DB Instance. Default `false`. See [docs] (https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html) about the details.
-  final pulumi.Input<bool>? enablePerformanceInsights;
+  final pulumi.Input<bool?>? enablePerformanceInsights;
   /// DNS address for this instance. May not be writable
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Name of the database engine to be used for the DocumentDB instance. Defaults to `docdb`. Valid Values: `docdb`.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Database engine version
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// The identifier for the DocumentDB instance, if omitted, the provider will assign a random, unique identifier.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
-  final pulumi.Input<String>? identifierPrefix;
+  final pulumi.Input<String?>? identifierPrefix;
   /// Instance class to use. For details on CPU and memory, see [Scaling for DocumentDB Instances](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-manage-performance.html#db-cluster-manage-scaling-instance). See the `aws.docdb.getOrderableDbInstance` data source. See [AWS Documentation](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-instance-classes.html#db-instance-class-specs) for complete details.
-  final pulumi.Input<String>? instanceClass;
+  final pulumi.Input<String?>? instanceClass;
   /// ARN for the KMS encryption key if one is set to the cluster.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. If you do not specify a value for PerformanceInsightsKMSKeyId, then Amazon DocumentDB uses your default KMS key.
-  final pulumi.Input<String>? performanceInsightsKmsKeyId;
+  final pulumi.Input<String?>? performanceInsightsKmsKeyId;
   /// Database port
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Daily time range during which automated backups are created if automated backups are enabled.
-  final pulumi.Input<String>? preferredBackupWindow;
+  final pulumi.Input<String?>? preferredBackupWindow;
   /// Window to perform maintenance in. Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00".
-  final pulumi.Input<String>? preferredMaintenanceWindow;
+  final pulumi.Input<String?>? preferredMaintenanceWindow;
   /// Failover Priority setting on instance level. Default `0`. The reader who has lower tier has higher priority to get promoter to writer.
-  final pulumi.Input<int>? promotionTier;
-  final pulumi.Input<bool>? publiclyAccessible;
+  final pulumi.Input<int?>? promotionTier;
+  final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the DB cluster is encrypted.
-  final pulumi.Input<bool>? storageEncrypted;
+  final pulumi.Input<bool?>? storageEncrypted;
   /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Whether this instance is writable. `False` indicates this instance is a read replica.
-  final pulumi.Input<bool>? writer;
+  final pulumi.Input<bool?>? writer;
 
   /// Creates a new [ClusterInstanceState].
   /// [applyImmediately] Whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
@@ -179,10 +179,10 @@ class ClusterInstanceState {
       instanceClass: (() { final guardedValue = map['instanceClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performanceInsightsKmsKeyId: (() { final guardedValue = map['performanceInsightsKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       preferredBackupWindow: (() { final guardedValue = map['preferredBackupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preferredMaintenanceWindow: (() { final guardedValue = map['preferredMaintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      promotionTier: (() { final guardedValue = map['promotionTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      promotionTier: (() { final guardedValue = map['promotionTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       publiclyAccessible: (() { final guardedValue = map['publiclyAccessible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageEncrypted: (() { final guardedValue = map['storageEncrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

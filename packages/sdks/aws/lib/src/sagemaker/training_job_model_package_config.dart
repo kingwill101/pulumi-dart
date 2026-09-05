@@ -6,7 +6,7 @@ class TrainingJobModelPackageConfig {
   /// ARN of the model package group.
   final pulumi.Input<String> modelPackageGroupArn;
   /// ARN of the source model package.
-  final pulumi.Input<String>? sourceModelPackageArn;
+  final pulumi.Input<String?>? sourceModelPackageArn;
 
   /// Creates a new [TrainingJobModelPackageConfig].
   /// [modelPackageGroupArn] ARN of the model package group.

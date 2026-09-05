@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_lightsail_lb_lb_args_doc}
 class LbArgs {
   /// Health check path of the load balancer. Default value `/`.
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// Instance port the load balancer will connect to.
   final pulumi.Input<int> instancePort;
   /// IP address type of the load balancer. Valid values: `dualstack`, `ipv4`. Default value `dualstack`.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// Name of the Lightsail load balancer.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LbArgs].
   /// [healthCheckPath] Health check path of the load balancer. Default value `/`.
@@ -52,7 +52,7 @@ class LbArgs {
   factory LbArgs.fromMap(Map<String, dynamic> map) {
     return LbArgs(
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instancePort: pulumi.Input.fromValue(map['instancePort'] as int),
+      instancePort: pulumi.Input.fromValue((map['instancePort'] as num).toInt()),
       ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

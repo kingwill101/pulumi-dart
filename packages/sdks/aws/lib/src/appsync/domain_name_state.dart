@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DomainName resources.
 class DomainNameState {
   /// Domain name that AppSync provides.
-  final pulumi.Input<String>? appsyncDomainName;
+  final pulumi.Input<String?>? appsyncDomainName;
   /// ARN of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate. The certifiacte must reside in us-east-1.
-  final pulumi.Input<String>? certificateArn;
+  final pulumi.Input<String?>? certificateArn;
   /// Description of the Domain Name.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Domain name.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// ID of your Amazon Route 53 hosted zone.
-  final pulumi.Input<String>? hostedZoneId;
+  final pulumi.Input<String?>? hostedZoneId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainNameState].
   /// [appsyncDomainName] Domain name that AppSync provides.

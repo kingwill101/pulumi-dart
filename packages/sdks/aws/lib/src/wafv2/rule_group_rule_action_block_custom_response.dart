@@ -5,11 +5,11 @@ import 'rule_group_rule_action_block_custom_response_response_header.dart';
 
 class RuleGroupRuleActionBlockCustomResponse {
   /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
-  final pulumi.Input<String>? customResponseBodyKey;
+  final pulumi.Input<String?>? customResponseBodyKey;
   /// The HTTP status code to return to the client.
   final pulumi.Input<int> responseCode;
   /// The `responseHeader` blocks used to define the HTTP response headers added to the response. See Custom HTTP Header below for details.
-  final pulumi.Input<List<RuleGroupRuleActionBlockCustomResponseResponseHeader>>? responseHeaders;
+  final pulumi.Input<List<RuleGroupRuleActionBlockCustomResponseResponseHeader>?>? responseHeaders;
 
   /// Creates a new [RuleGroupRuleActionBlockCustomResponse].
   /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
@@ -32,7 +32,7 @@ class RuleGroupRuleActionBlockCustomResponse {
   factory RuleGroupRuleActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionBlockCustomResponse(
       customResponseBodyKey: (() { final guardedValue = map['customResponseBodyKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      responseCode: pulumi.Input.fromValue(map['responseCode'] as int),
+      responseCode: pulumi.Input.fromValue((map['responseCode'] as num).toInt()),
       responseHeaders: (() { final guardedValue = map['responseHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader>(guardedValue, (value) => RuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

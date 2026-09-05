@@ -8,15 +8,15 @@ class ConnectionAuthenticationConfiguration {
   /// Type of authentication. Valid values: `BASIC`, `CUSTOM`, `IAM`, `OAUTH2`.
   final pulumi.Input<String> authenticationType;
   /// Basic authentication credentials. See `basicAuthenticationCredentials` below.
-  final pulumi.Input<ConnectionAuthenticationConfigurationBasicAuthenticationCredentials>? basicAuthenticationCredentials;
+  final pulumi.Input<ConnectionAuthenticationConfigurationBasicAuthenticationCredentials?>? basicAuthenticationCredentials;
   /// Map of custom authentication credentials.
-  final pulumi.Input<Map<String, String>>? customAuthenticationCredentials;
+  final pulumi.Input<Map<String, String>?>? customAuthenticationCredentials;
   /// ARN of the KMS key used for encryption.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// OAuth2 properties. See `oauth2Properties` below.
-  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2Properties>? oauth2Properties;
+  final pulumi.Input<ConnectionAuthenticationConfigurationOauth2Properties?>? oauth2Properties;
   /// ARN of the Secrets Manager secret containing credentials.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [ConnectionAuthenticationConfiguration].
   /// [authenticationType] Type of authentication. Valid values: `BASIC`, `CUSTOM`, `IAM`, `OAUTH2`.

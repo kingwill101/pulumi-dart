@@ -38,7 +38,7 @@ class GetClusterShard {
     return GetClusterShard(
       name: pulumi.Input.fromValue(map['name'] as String),
       nodes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterShardNode>(map['nodes']!, (value) => GetClusterShardNode.fromMap((value as Map).cast<String, dynamic>()))),
-      numNodes: pulumi.Input.fromValue(map['numNodes'] as int),
+      numNodes: pulumi.Input.fromValue((map['numNodes'] as num).toInt()),
       slots: pulumi.Input.fromValue(map['slots'] as String),
     );
   }

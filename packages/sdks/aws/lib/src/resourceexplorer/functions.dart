@@ -128,3 +128,14 @@ Future<SearchResult> search(
   );
   return SearchResult.fromMap(result);
 }
+
+pulumi.Output<SearchResult> searchOutput(
+  SearchArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:resourceexplorer/search:Search',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(SearchResult.fromMap);
+}

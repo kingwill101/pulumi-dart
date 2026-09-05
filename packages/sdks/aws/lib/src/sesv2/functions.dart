@@ -128,6 +128,17 @@ Future<GetConfigurationSetResult> getConfigurationSet(
   return GetConfigurationSetResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationSetResult> getConfigurationSetOutput(
+  GetConfigurationSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sesv2/getConfigurationSet:getConfigurationSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationSetResult.fromMap);
+}
+
 /// Data source for managing an AWS SESv2 (Simple Email V2) Dedicated IP Pool.
 ///
 /// ## Example Usage
@@ -248,6 +259,17 @@ Future<GetDedicatedIpPoolResult> getDedicatedIpPool(
   return GetDedicatedIpPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedIpPoolResult> getDedicatedIpPoolOutput(
+  GetDedicatedIpPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sesv2/getDedicatedIpPool:getDedicatedIpPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedIpPoolResult.fromMap);
+}
+
 /// Data source for managing an AWS SESv2 (Simple Email V2) Email Identity.
 ///
 /// ## Example Usage
@@ -366,6 +388,17 @@ Future<GetEmailIdentityResult> getEmailIdentity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEmailIdentityResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailIdentityResult> getEmailIdentityOutput(
+  GetEmailIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sesv2/getEmailIdentity:getEmailIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailIdentityResult.fromMap);
 }
 
 /// Data source for managing an AWS SESv2 (Simple Email V2) Email Identity Mail From Attributes.
@@ -514,4 +547,15 @@ Future<GetEmailIdentityMailFromAttributesResult> getEmailIdentityMailFromAttribu
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEmailIdentityMailFromAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailIdentityMailFromAttributesResult> getEmailIdentityMailFromAttributesOutput(
+  GetEmailIdentityMailFromAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sesv2/getEmailIdentityMailFromAttributes:getEmailIdentityMailFromAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailIdentityMailFromAttributesResult.fromMap);
 }

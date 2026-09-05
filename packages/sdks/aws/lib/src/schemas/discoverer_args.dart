@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_schemas_discoverer_discoverer_args_doc}
 class DiscovererArgs {
   /// The description of the discoverer. Maximum of 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the event bus to discover event schemas on.
   final pulumi.Input<String> sourceArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DiscovererArgs].
   /// [description] The description of the discoverer. Maximum of 256 characters.

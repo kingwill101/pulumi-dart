@@ -144,11 +144,11 @@ import 'resource_share_state.dart';
 class ResourceShare extends pulumi.CustomResource {
   /// Whether principals outside your organization can be associated with a resource share.
   late final pulumi.Output<bool?> allowExternalPrincipals;
-  /// Amazon Resource Name (ARN) of the resource share.
+  /// ARN of the resource share.
   late final pulumi.Output<String> arn;
   /// Name of the resource share.
   late final pulumi.Output<String> name;
-  /// Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
+  /// ARNs of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
   late final pulumi.Output<List<String>> permissionArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -171,16 +171,16 @@ class ResourceShare extends pulumi.CustomResource {
           'aws:ram/resourceShare:ResourceShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    permissionArns = registerOutput<List<String>>('permissionArns');
+    permissionArns = registerOutput<List<String>>('permissionArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     resourceShareConfiguration = registerOutput<ResourceShareResourceShareConfiguration>('resourceShareConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceShareResourceShareConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResourceShare] resource's state with the given [name] and [id].
@@ -188,11 +188,12 @@ class ResourceShare extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceShare._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,10 +210,29 @@ class ResourceShare extends pulumi.CustomResource {
     allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    permissionArns = registerOutput<List<String>>('permissionArns');
+    permissionArns = registerOutput<List<String>>('permissionArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     resourceShareConfiguration = registerOutput<ResourceShareResourceShareConfiguration>('resourceShareConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceShareResourceShareConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceShare] resource.
+  ResourceShare.reference(String urn)
+    : super(
+        'aws:ram/resourceShare:ResourceShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowExternalPrincipals = registerOutput<bool?>('allowExternalPrincipals');
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    permissionArns = registerOutput<List<String>>('permissionArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    resourceShareConfiguration = registerOutput<ResourceShareResourceShareConfiguration>('resourceShareConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceShareResourceShareConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

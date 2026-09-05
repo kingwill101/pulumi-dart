@@ -7,13 +7,13 @@ import 'algorithm_validation_specification_validation_profiles_transform_job_def
 
 class AlgorithmValidationSpecificationValidationProfilesTransformJobDefinition {
   /// Batch strategy for the transform job. Allowed values are: `MultiRecord` and `SingleRecord`.
-  final pulumi.Input<String>? batchStrategy;
+  final pulumi.Input<String?>? batchStrategy;
   /// Environment variables to pass to the transform container.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Maximum number of parallel transform requests.
-  final pulumi.Input<int>? maxConcurrentTransforms;
+  final pulumi.Input<int?>? maxConcurrentTransforms;
   /// Maximum payload size, in MiB, for transform requests.
-  final pulumi.Input<int>? maxPayloadInMb;
+  final pulumi.Input<int?>? maxPayloadInMb;
   /// Input configuration for the transform job. See Transform Input.
   final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInput> transformInput;
   /// Output configuration for the transform job. See Transform Output.
@@ -55,8 +55,8 @@ class AlgorithmValidationSpecificationValidationProfilesTransformJobDefinition {
     return AlgorithmValidationSpecificationValidationProfilesTransformJobDefinition(
       batchStrategy: (() { final guardedValue = map['batchStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      maxConcurrentTransforms: (() { final guardedValue = map['maxConcurrentTransforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxPayloadInMb: (() { final guardedValue = map['maxPayloadInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentTransforms: (() { final guardedValue = map['maxConcurrentTransforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxPayloadInMb: (() { final guardedValue = map['maxPayloadInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       transformInput: pulumi.Input.fromValue(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInput.fromMap((map['transformInput']! as Map).cast<String, dynamic>())),
       transformOutput: pulumi.Input.fromValue(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformOutput.fromMap((map['transformOutput']! as Map).cast<String, dynamic>())),
       transformResources: pulumi.Input.fromValue(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformResources.fromMap((map['transformResources']! as Map).cast<String, dynamic>())),

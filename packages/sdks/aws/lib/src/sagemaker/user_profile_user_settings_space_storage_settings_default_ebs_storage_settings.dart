@@ -25,8 +25,8 @@ class UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
 
   factory UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings(
-      defaultEbsVolumeSizeInGb: pulumi.Input.fromValue(map['defaultEbsVolumeSizeInGb'] as int),
-      maximumEbsVolumeSizeInGb: pulumi.Input.fromValue(map['maximumEbsVolumeSizeInGb'] as int),
+      defaultEbsVolumeSizeInGb: pulumi.Input.fromValue((map['defaultEbsVolumeSizeInGb'] as num).toInt()),
+      maximumEbsVolumeSizeInGb: pulumi.Input.fromValue((map['maximumEbsVolumeSizeInGb'] as num).toInt()),
     );
   }
 }

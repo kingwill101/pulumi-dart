@@ -5,7 +5,7 @@ import 'fleet_spot_options_maintenance_strategies_capacity_rebalance.dart';
 
 class FleetSpotOptionsMaintenanceStrategies {
   /// Nested argument containing the capacity rebalance for your fleet request. Defined below.
-  final pulumi.Input<FleetSpotOptionsMaintenanceStrategiesCapacityRebalance>? capacityRebalance;
+  final pulumi.Input<FleetSpotOptionsMaintenanceStrategiesCapacityRebalance?>? capacityRebalance;
 
   /// Creates a new [FleetSpotOptionsMaintenanceStrategies].
   /// [capacityRebalance] Nested argument containing the capacity rebalance for your fleet request. Defined below.

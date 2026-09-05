@@ -5,7 +5,7 @@ import 'agentcore_gateway_rule_action_route_to_target_weighted_route_traffic_spl
 
 class AgentcoreGatewayRuleActionRouteToTargetWeightedRoute {
   /// Exactly two `trafficSplit` blocks describing the two variants.
-  final pulumi.Input<List<AgentcoreGatewayRuleActionRouteToTargetWeightedRouteTrafficSplit>>? trafficSplits;
+  final pulumi.Input<List<AgentcoreGatewayRuleActionRouteToTargetWeightedRouteTrafficSplit>?>? trafficSplits;
 
   /// Creates a new [AgentcoreGatewayRuleActionRouteToTargetWeightedRoute].
   /// [trafficSplits] Exactly two `trafficSplit` blocks describing the two variants.

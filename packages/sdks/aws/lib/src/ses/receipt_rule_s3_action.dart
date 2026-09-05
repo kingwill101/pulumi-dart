@@ -3,26 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleS3Action {
-  /// The name of the S3 bucket
+  /// Name of the S3 bucket.
   final pulumi.Input<String> bucketName;
-  /// The ARN of the IAM role to be used by Amazon Simple Email Service while writing to the Amazon S3 bucket, optionally encrypting your mail via the provided customer managed key, and publishing to the Amazon SNS topic
-  final pulumi.Input<String>? iamRoleArn;
-  /// The ARN of the KMS key
-  final pulumi.Input<String>? kmsKeyArn;
-  /// The key prefix of the S3 bucket
-  final pulumi.Input<String>? objectKeyPrefix;
-  /// The position of the action in the receipt rule
+  /// ARN of the IAM role to be used by Amazon Simple Email Service while writing to the Amazon S3 bucket, optionally encrypting your mail via the provided customer managed key, and publishing to the Amazon SNS topic.
+  final pulumi.Input<String?>? iamRoleArn;
+  /// ARN of the KMS key.
+  final pulumi.Input<String?>? kmsKeyArn;
+  /// Key prefix of the S3 bucket.
+  final pulumi.Input<String?>? objectKeyPrefix;
+  /// Position of the action in the receipt rule.
   final pulumi.Input<int> position;
-  /// The ARN of an SNS topic to notify
-  final pulumi.Input<String>? topicArn;
+  /// ARN of an SNS topic to notify.
+  final pulumi.Input<String?>? topicArn;
 
   /// Creates a new [ReceiptRuleS3Action].
-  /// [bucketName] The name of the S3 bucket
-  /// [iamRoleArn] The ARN of the IAM role to be used by Amazon Simple Email Service while writing to the Amazon S3 bucket, optionally encrypting your mail via the provided customer managed key, and publishing to the Amazon SNS topic
-  /// [kmsKeyArn] The ARN of the KMS key
-  /// [objectKeyPrefix] The key prefix of the S3 bucket
-  /// [position] The position of the action in the receipt rule
-  /// [topicArn] The ARN of an SNS topic to notify
+  /// [bucketName] Name of the S3 bucket.
+  /// [iamRoleArn] ARN of the IAM role to be used by Amazon Simple Email Service while writing to the Amazon S3 bucket, optionally encrypting your mail via the provided customer managed key, and publishing to the Amazon SNS topic.
+  /// [kmsKeyArn] ARN of the KMS key.
+  /// [objectKeyPrefix] Key prefix of the S3 bucket.
+  /// [position] Position of the action in the receipt rule.
+  /// [topicArn] ARN of an SNS topic to notify.
   const ReceiptRuleS3Action({
     required this.bucketName,
     this.iamRoleArn,
@@ -49,7 +49,7 @@ class ReceiptRuleS3Action {
       iamRoleArn: (() { final guardedValue = map['iamRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       objectKeyPrefix: (() { final guardedValue = map['objectKeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      position: pulumi.Input.fromValue(map['position'] as int),
+      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
       topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

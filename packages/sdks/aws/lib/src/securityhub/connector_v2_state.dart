@@ -7,25 +7,25 @@ import 'connector_v2_health.dart';
 /// Input properties used for looking up and filtering ConnectorV2 resources.
 class ConnectorV2State {
   /// ARN of the connector.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the connector.
-  final pulumi.Input<String>? connectorId;
+  final pulumi.Input<String?>? connectorId;
   /// Third-party provider details. See `connectorProvider` below.
-  final pulumi.Input<ConnectorV2ConnectorProvider>? connectorProvider;
+  final pulumi.Input<ConnectorV2ConnectorProvider?>? connectorProvider;
   /// A description of the connector.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Current health status. See `health` below.
-  final pulumi.Input<List<ConnectorV2Health>>? healths;
+  final pulumi.Input<List<ConnectorV2Health>?>? healths;
   /// ARN of KMS key for connector encryption.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// The name of the connector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ConnectorV2State].
   /// [arn] ARN of the connector.

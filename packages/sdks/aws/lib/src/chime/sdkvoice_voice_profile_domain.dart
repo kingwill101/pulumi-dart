@@ -19,10 +19,10 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleSdkvoiceVoiceProfileDomain = new aws.chime.SdkvoiceVoiceProfileDomain("example", {
-///     name: "ExampleVoiceProfileDomain",
 ///     serverSideEncryptionConfiguration: {
 ///         kmsKeyArn: example.arn,
 ///     },
+///     name: "ExampleVoiceProfileDomain",
 ///     description: "My Voice Profile Domain",
 ///     tags: {
 ///         key1: "value1",
@@ -37,10 +37,10 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 ///     description="KMS Key for Voice Profile Domain",
 ///     deletion_window_in_days=7)
 /// example_sdkvoice_voice_profile_domain = aws.chime.SdkvoiceVoiceProfileDomain("example",
-///     name="ExampleVoiceProfileDomain",
 ///     server_side_encryption_configuration={
 ///         "kms_key_arn": example.arn,
 ///     },
+///     name="ExampleVoiceProfileDomain",
 ///     description="My Voice Profile Domain",
 ///     tags={
 ///         "key1": "value1",
@@ -62,11 +62,11 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 ///
 ///     var exampleSdkvoiceVoiceProfileDomain = new Aws.Chime.SdkvoiceVoiceProfileDomain("example", new()
 ///     {
-///         Name = "ExampleVoiceProfileDomain",
 ///         ServerSideEncryptionConfiguration = new Aws.Chime.Inputs.SdkvoiceVoiceProfileDomainServerSideEncryptionConfigurationArgs
 ///         {
 ///             KmsKeyArn = example.Arn,
 ///         },
+///         Name = "ExampleVoiceProfileDomain",
 ///         Description = "My Voice Profile Domain",
 ///         Tags =
 ///         {
@@ -95,10 +95,10 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = chime.NewSdkvoiceVoiceProfileDomain(ctx, "example", &chime.SdkvoiceVoiceProfileDomainArgs{
-/// 			Name: pulumi.String("ExampleVoiceProfileDomain"),
 /// 			ServerSideEncryptionConfiguration: &chime.SdkvoiceVoiceProfileDomainServerSideEncryptionConfigurationArgs{
 /// 				KmsKeyArn: example.Arn,
 /// 			},
+/// 			Name:        pulumi.String("ExampleVoiceProfileDomain"),
 /// 			Description: pulumi.String("My Voice Profile Domain"),
 /// 			Tags: pulumi.StringMap{
 /// 				"key1": pulumi.String("value1"),
@@ -125,10 +125,10 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_chime_sdkvoicevoiceprofiledomain" "example" {
-///   name = "ExampleVoiceProfileDomain"
 ///   server_side_encryption_configuration = {
 ///     kms_key_arn = aws_kms_key.example.arn
 ///   }
+///   name        = "ExampleVoiceProfileDomain"
 ///   description = "My Voice Profile Domain"
 ///   tags = {
 ///     "key1" = "value1"
@@ -165,10 +165,10 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 ///             .build());
 ///
 ///         var exampleSdkvoiceVoiceProfileDomain = new SdkvoiceVoiceProfileDomain("exampleSdkvoiceVoiceProfileDomain", SdkvoiceVoiceProfileDomainArgs.builder()
-///             .name("ExampleVoiceProfileDomain")
 ///             .serverSideEncryptionConfiguration(SdkvoiceVoiceProfileDomainServerSideEncryptionConfigurationArgs.builder()
 ///                 .kmsKeyArn(example.arn())
 ///                 .build())
+///             .name("ExampleVoiceProfileDomain")
 ///             .description("My Voice Profile Domain")
 ///             .tags(Map.of("key1", "value1"))
 ///             .build());
@@ -187,9 +187,9 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 ///     type: aws:chime:SdkvoiceVoiceProfileDomain
 ///     name: example
 ///     properties:
-///       name: ExampleVoiceProfileDomain
 ///       serverSideEncryptionConfiguration:
 ///         kmsKeyArn: ${example.arn}
+///       name: ExampleVoiceProfileDomain
 ///       description: My Voice Profile Domain
 ///       tags:
 ///         key1: value1
@@ -229,15 +229,15 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
           'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serverSideEncryptionConfiguration = registerOutput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SdkvoiceVoiceProfileDomain] resource's state with the given [name] and [id].
@@ -245,11 +245,12 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SdkvoiceVoiceProfileDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SdkvoiceVoiceProfileDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,7 +269,25 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serverSideEncryptionConfiguration = registerOutput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SdkvoiceVoiceProfileDomain] resource.
+  SdkvoiceVoiceProfileDomain.reference(String urn)
+    : super(
+        'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serverSideEncryptionConfiguration = registerOutput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

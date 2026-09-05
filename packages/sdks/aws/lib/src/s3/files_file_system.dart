@@ -179,7 +179,7 @@ class FilesFileSystem extends pulumi.CustomResource {
           'aws:s3/filesFileSystem:FilesFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptBucketWarning = registerOutput<bool?>('acceptBucketWarning');
     arn = registerOutput<String>('arn');
@@ -193,8 +193,8 @@ class FilesFileSystem extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<FilesFileSystemTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesFileSystemTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -203,11 +203,12 @@ class FilesFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilesFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FilesFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,8 +234,34 @@ class FilesFileSystem extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<FilesFileSystemTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesFileSystemTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FilesFileSystem] resource.
+  FilesFileSystem.reference(String urn)
+    : super(
+        'aws:s3/filesFileSystem:FilesFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptBucketWarning = registerOutput<bool?>('acceptBucketWarning');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    creationTime = registerOutput<String>('creationTime');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<FilesFileSystemTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesFileSystemTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

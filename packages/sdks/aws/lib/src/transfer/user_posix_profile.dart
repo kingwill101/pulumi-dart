@@ -6,7 +6,7 @@ class UserPosixProfile {
   /// POSIX group ID used for all EFS operations by this user.
   final pulumi.Input<int> gid;
   /// Secondary POSIX group IDs used for all EFS operations by this user.
-  final pulumi.Input<List<int>>? secondaryGids;
+  final pulumi.Input<List<int>?>? secondaryGids;
   /// POSIX user ID used for all EFS operations by this user.
   final pulumi.Input<int> uid;
 
@@ -30,9 +30,9 @@ class UserPosixProfile {
 
   factory UserPosixProfile.fromMap(Map<String, dynamic> map) {
     return UserPosixProfile(
-      gid: pulumi.Input.fromValue(map['gid'] as int),
+      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
       secondaryGids: (() { final guardedValue = map['secondaryGids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      uid: pulumi.Input.fromValue(map['uid'] as int),
+      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
     );
   }
 }

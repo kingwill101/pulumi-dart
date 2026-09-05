@@ -10,11 +10,11 @@ import 'dev_environment_repository.dart';
 /// {@endtemplate}
 /// {@macro pulumi_codecatalyst_dev_environment_dev_environment_args_doc}
 class DevEnvironmentArgs {
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Information about the integrated development environment (IDE) configured for a Dev Environment.
   final pulumi.Input<DevEnvironmentIdes> ides;
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
-  final pulumi.Input<int>? inactivityTimeoutMinutes;
+  final pulumi.Input<int?>? inactivityTimeoutMinutes;
   /// The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   ///
   /// The following arguments are optional:
@@ -24,9 +24,9 @@ class DevEnvironmentArgs {
   /// The name of the project in the space.
   final pulumi.Input<String> projectName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The source repository that contains the branch to clone into the Dev Environment.
-  final pulumi.Input<List<DevEnvironmentRepository>>? repositories;
+  final pulumi.Input<List<DevEnvironmentRepository>?>? repositories;
   /// The name of the space.
   final pulumi.Input<String> spaceName;
 
@@ -70,7 +70,7 @@ class DevEnvironmentArgs {
     return DevEnvironmentArgs(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ides: pulumi.Input.fromValue(DevEnvironmentIdes.fromMap((map['ides']! as Map).cast<String, dynamic>())),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       persistentStorage: pulumi.Input.fromValue(DevEnvironmentPersistentStorage.fromMap((map['persistentStorage']! as Map).cast<String, dynamic>())),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),

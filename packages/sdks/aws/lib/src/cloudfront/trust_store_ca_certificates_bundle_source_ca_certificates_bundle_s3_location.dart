@@ -10,7 +10,7 @@ class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
   /// AWS region of the S3 bucket.
   final pulumi.Input<String> region;
   /// S3 object version ID for the CA certificates bundle.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location].
   /// [bucket] S3 bucket name containing the CA certificates bundle.

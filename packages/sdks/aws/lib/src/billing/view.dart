@@ -185,7 +185,7 @@ class View extends pulumi.CustomResource {
           'aws:billing/view:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     billingViewType = registerOutput<String>('billingViewType');
@@ -197,9 +197,9 @@ class View extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     sourceAccountId = registerOutput<String>('sourceAccountId');
     sourceViewCount = registerOutput<int>('sourceViewCount');
-    sourceViews = registerOutput<List<String>?>('sourceViews');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sourceViews = registerOutput<List<String>?>('sourceViews', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ViewTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
     viewDefinitionLastUpdatedAt = registerOutput<String>('viewDefinitionLastUpdatedAt');
@@ -210,11 +210,12 @@ class View extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ViewState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return View._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,9 +239,36 @@ class View extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     sourceAccountId = registerOutput<String>('sourceAccountId');
     sourceViewCount = registerOutput<int>('sourceViewCount');
-    sourceViews = registerOutput<List<String>?>('sourceViews');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sourceViews = registerOutput<List<String>?>('sourceViews', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ViewTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+    viewDefinitionLastUpdatedAt = registerOutput<String>('viewDefinitionLastUpdatedAt');
+  }
+
+  /// Creates a typed reference to an existing [View] resource.
+  View.reference(String urn)
+    : super(
+        'aws:billing/view:View',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    billingViewType = registerOutput<String>('billingViewType');
+    createdAt = registerOutput<String>('createdAt');
+    dataFilterExpression = registerOutput<ViewDataFilterExpression?>('dataFilterExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewDataFilterExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    derivedViewCount = registerOutput<int>('derivedViewCount');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    sourceAccountId = registerOutput<String>('sourceAccountId');
+    sourceViewCount = registerOutput<int>('sourceViewCount');
+    sourceViews = registerOutput<List<String>?>('sourceViews', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ViewTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
     viewDefinitionLastUpdatedAt = registerOutput<String>('viewDefinitionLastUpdatedAt');

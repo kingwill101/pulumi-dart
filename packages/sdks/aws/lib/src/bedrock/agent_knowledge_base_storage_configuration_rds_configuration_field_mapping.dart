@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping {
   /// Name for the universal metadata field where Amazon Bedrock will store any custom metadata from your data source.
-  final pulumi.Input<String>? customMetadataField;
+  final pulumi.Input<String?>? customMetadataField;
   /// Name of the field in which Amazon Bedrock stores metadata about the vector store.
   final pulumi.Input<String> metadataField;
   /// Name of the field in which Amazon Bedrock stores the ID for each entry.

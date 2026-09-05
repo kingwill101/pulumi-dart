@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_rule_args.dart';
 import 'notification_rule_state.dart';
+import 'notification_rule_target.dart';
 
 /// Provides a CodeStar Notifications Rule.
 ///
@@ -15,11 +16,11 @@ import 'notification_rule_state.dart';
 /// const notif = new aws.sns.Topic("notif", {name: "notification"});
 /// const notifAccess = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         actions: ["sns:Publish"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["codestar-notifications.amazonaws.com"],
 ///         }],
+///         actions: ["sns:Publish"],
 ///         resources: [notif.arn],
 ///     }],
 /// });
@@ -28,13 +29,13 @@ import 'notification_rule_state.dart';
 ///     policy: notifAccess.json,
 /// });
 /// const commits = new aws.codestarnotifications.NotificationRule("commits", {
+///     targets: [{
+///         address: notif.arn,
+///     }],
 ///     detailType: "BASIC",
 ///     eventTypeIds: ["codecommit-repository-comments-on-commits"],
 ///     name: "example-code-repo-commits",
 ///     resource: code.arn,
-///     targets: [{
-///         address: notif.arn,
-///     }],
 /// });
 /// ```
 /// ```python
@@ -44,24 +45,24 @@ import 'notification_rule_state.dart';
 /// code = aws.codecommit.Repository("code", repository_name="example-code-repo")
 /// notif = aws.sns.Topic("notif", name="notification")
 /// notif_access = aws.iam.get_policy_document_output(statements=[{
-///     "actions": ["sns:Publish"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["codestar-notifications.amazonaws.com"],
 ///     }],
+///     "actions": ["sns:Publish"],
 ///     "resources": [notif.arn],
 /// }])
 /// default = aws.sns.TopicPolicy("default",
 ///     arn=notif.arn,
 ///     policy=notif_access.json)
 /// commits = aws.codestarnotifications.NotificationRule("commits",
+///     targets=[{
+///         "address": notif.arn,
+///     }],
 ///     detail_type="BASIC",
 ///     event_type_ids=["codecommit-repository-comments-on-commits"],
 ///     name="example-code-repo-commits",
-///     resource=code.arn,
-///     targets=[{
-///         "address": notif.arn,
-///     }])
+///     resource=code.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -87,10 +88,6 @@ import 'notification_rule_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sns:Publish",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -101,6 +98,10 @@ import 'notification_rule_state.dart';
 ///                             "codestar-notifications.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sns:Publish",
 ///                 },
 ///                 Resources = new[]
 ///                 {
@@ -118,13 +119,6 @@ import 'notification_rule_state.dart';
 ///
 ///     var commits = new Aws.CodeStarNotifications.NotificationRule("commits", new()
 ///     {
-///         DetailType = "BASIC",
-///         EventTypeIds = new[]
-///         {
-///             "codecommit-repository-comments-on-commits",
-///         },
-///         Name = "example-code-repo-commits",
-///         Resource = code.Arn,
 ///         Targets = new[]
 ///         {
 ///             new Aws.CodeStarNotifications.Inputs.NotificationRuleTargetArgs
@@ -132,6 +126,13 @@ import 'notification_rule_state.dart';
 ///                 Address = notif.Arn,
 ///             },
 ///         },
+///         DetailType = "BASIC",
+///         EventTypeIds = new[]
+///         {
+///             "codecommit-repository-comments-on-commits",
+///         },
+///         Name = "example-code-repo-commits",
+///         Resource = code.Arn,
 ///     });
 ///
 /// });
@@ -164,9 +165,6 @@ import 'notification_rule_state.dart';
 /// 		notifAccess := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("sns:Publish"),
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -174,6 +172,9 @@ import 'notification_rule_state.dart';
 /// 								pulumi.String("codestar-notifications.amazonaws.com"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("sns:Publish"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						notif.Arn,
@@ -189,17 +190,17 @@ import 'notification_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codestarnotifications.NewNotificationRule(ctx, "commits", &codestarnotifications.NotificationRuleArgs{
+/// 			Targets: codestarnotifications.NotificationRuleTargetArray{
+/// 				&codestarnotifications.NotificationRuleTargetArgs{
+/// 					Address: notif.Arn,
+/// 				},
+/// 			},
 /// 			DetailType: pulumi.String("BASIC"),
 /// 			EventTypeIds: pulumi.StringArray{
 /// 				pulumi.String("codecommit-repository-comments-on-commits"),
 /// 			},
 /// 			Name:     pulumi.String("example-code-repo-commits"),
 /// 			Resource: code.Arn,
-/// 			Targets: codestarnotifications.NotificationRuleTargetArray{
-/// 				&codestarnotifications.NotificationRuleTargetArgs{
-/// 					Address: notif.Arn,
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -219,11 +220,11 @@ import 'notification_rule_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "notifAccess" {
 ///   statements {
-///     actions = ["sns:Publish"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codestar-notifications.amazonaws.com"]
 ///     }
+///     actions   = ["sns:Publish"]
 ///     resources = [aws_sns_topic.notif.arn]
 ///   }
 /// }
@@ -239,13 +240,13 @@ import 'notification_rule_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.notifAccess.json
 /// }
 /// resource "aws_codestarnotifications_notificationrule" "commits" {
+///   targets {
+///     address = aws_sns_topic.notif.arn
+///   }
 ///   detail_type    = "BASIC"
 ///   event_type_ids = ["codecommit-repository-comments-on-commits"]
 ///   name           = "example-code-repo-commits"
 ///   resource       = aws_codecommit_repository.code.arn
-///   targets {
-///     address = aws_sns_topic.notif.arn
-///   }
 /// }
 /// ```
 /// ```java
@@ -290,11 +291,11 @@ import 'notification_rule_state.dart';
 ///
 ///         final var notifAccess = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sns:Publish")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("codestar-notifications.amazonaws.com")
 ///                     .build())
+///                 .actions("sns:Publish")
 ///                 .resources(notif.arn())
 ///                 .build())
 ///             .build());
@@ -305,13 +306,13 @@ import 'notification_rule_state.dart';
 ///             .build());
 ///
 ///         var commits = new NotificationRule("commits", NotificationRuleArgs.builder()
+///             .targets(NotificationRuleTargetArgs.builder()
+///                 .address(notif.arn())
+///                 .build())
 ///             .detailType("BASIC")
 ///             .eventTypeIds("codecommit-repository-comments-on-commits")
 ///             .name("example-code-repo-commits")
 ///             .resource(code.arn())
-///             .targets(NotificationRuleTargetArgs.builder()
-///                 .address(notif.arn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -335,25 +336,25 @@ import 'notification_rule_state.dart';
 ///   commits:
 ///     type: aws:codestarnotifications:NotificationRule
 ///     properties:
+///       targets:
+///         - address: ${notif.arn}
 ///       detailType: BASIC
 ///       eventTypeIds:
 ///         - codecommit-repository-comments-on-commits
 ///       name: example-code-repo-commits
 ///       resource: ${code.arn}
-///       targets:
-///         - address: ${notif.arn}
 /// variables:
 ///   notifAccess:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sns:Publish
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - codestar-notifications.amazonaws.com
+///             actions:
+///               - sns:Publish
 ///             resources:
 ///               - ${notif.arn}
 /// ```
@@ -365,7 +366,7 @@ import 'notification_rule_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeStar notification rule.
+/// - `arn` (String) ARN of the CodeStar notification rule.
 ///
 ///
 /// Using `pulumi import`, import CodeStar notification rule using the ARN. For example:
@@ -394,7 +395,7 @@ class NotificationRule extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targets;
+  late final pulumi.Output<List<NotificationRuleTarget>?> targets;
 
   /// Creates a new [NotificationRule].
   /// [name] The Pulumi resource name.
@@ -408,18 +409,18 @@ class NotificationRule extends pulumi.CustomResource {
           'aws:codestarnotifications/notificationRule:NotificationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     detailType = registerOutput<String>('detailType');
-    eventTypeIds = registerOutput<List<String>>('eventTypeIds');
+    eventTypeIds = registerOutput<List<String>>('eventTypeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resource = registerOutput<String>('resource');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>?>('targets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<NotificationRuleTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationRuleTarget>(guardedValue, (value) => NotificationRuleTarget.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [NotificationRule] resource's state with the given [name] and [id].
@@ -427,11 +428,12 @@ class NotificationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotificationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -447,13 +449,34 @@ class NotificationRule extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     detailType = registerOutput<String>('detailType');
-    eventTypeIds = registerOutput<List<String>>('eventTypeIds');
+    eventTypeIds = registerOutput<List<String>>('eventTypeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resource = registerOutput<String>('resource');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>?>('targets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<NotificationRuleTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationRuleTarget>(guardedValue, (value) => NotificationRuleTarget.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [NotificationRule] resource.
+  NotificationRule.reference(String urn)
+    : super(
+        'aws:codestarnotifications/notificationRule:NotificationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    detailType = registerOutput<String>('detailType');
+    eventTypeIds = registerOutput<List<String>>('eventTypeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resource = registerOutput<String>('resource');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<NotificationRuleTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationRuleTarget>(guardedValue, (value) => NotificationRuleTarget.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -26,7 +26,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLi
   factory EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize(
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

@@ -7,12 +7,12 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// Input properties used for looking up and filtering LogS3TableIntegrationSource resources.
 class LogS3TableIntegrationSourceState {
   /// Data source to associate with the S3 Table Integration. See `dataSource` Block below.
-  final pulumi.Input<LogS3TableIntegrationSourceDataSource>? dataSource;
+  final pulumi.Input<LogS3TableIntegrationSourceDataSource?>? dataSource;
   /// ARN of the `aws.observabilityadmin.S3TableIntegration` to associate the data source with.
-  final pulumi.Input<String>? integrationArn;
+  final pulumi.Input<String?>? integrationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<LogS3TableIntegrationSourceTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<LogS3TableIntegrationSourceTimeouts?>? timeouts;
 
   /// Creates a new [LogS3TableIntegrationSourceState].
   /// [dataSource] Data source to associate with the S3 Table Integration. See `dataSource` Block below.

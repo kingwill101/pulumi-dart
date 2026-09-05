@@ -213,7 +213,7 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
           'aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     blockPublicAcls = registerOutput<bool?>('blockPublicAcls');
     blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
@@ -229,11 +229,12 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketPublicAccessBlockState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketPublicAccessBlock._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -247,6 +248,24 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    blockPublicAcls = registerOutput<bool?>('blockPublicAcls');
+    blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    bucket = registerOutput<String>('bucket');
+    ignorePublicAcls = registerOutput<bool?>('ignorePublicAcls');
+    region = registerOutput<String>('region');
+    restrictPublicBuckets = registerOutput<bool?>('restrictPublicBuckets');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+  }
+
+  /// Creates a typed reference to an existing [BucketPublicAccessBlock] resource.
+  BucketPublicAccessBlock.reference(String urn)
+    : super(
+        'aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     blockPublicAcls = registerOutput<bool?>('blockPublicAcls');
     blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
     bucket = registerOutput<String>('bucket');

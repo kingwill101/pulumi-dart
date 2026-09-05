@@ -14,16 +14,16 @@ class CapabilityArgs {
   /// Name of the EKS cluster.
   final pulumi.Input<String> clusterName;
   /// Configuration for the capability. See `configuration` below.
-  final pulumi.Input<CapabilityConfiguration>? configuration;
+  final pulumi.Input<CapabilityConfiguration?>? configuration;
   /// Delete propagation policy for the capability. Valid values: `RETAIN`.
   final pulumi.Input<String> deletePropagationPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM role to associate with the capability.
   final pulumi.Input<String> roleArn;
   /// Key-value map of resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<CapabilityTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<CapabilityTimeouts?>? timeouts;
   /// Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
   final pulumi.Input<String> type;
 

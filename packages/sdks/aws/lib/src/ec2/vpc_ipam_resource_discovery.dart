@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_ipam_resource_discovery_args.dart';
+import 'vpc_ipam_resource_discovery_operating_region.dart';
+import 'vpc_ipam_resource_discovery_organizational_unit_exclusion.dart';
 import 'vpc_ipam_resource_discovery_state.dart';
 
 /// Provides an IPAM Resource Discovery resource. IPAM Resource Discoveries are resources meant for multi-organization customers. If you wish to use a single IPAM across multiple orgs, a resource discovery can be created and shared from a subordinate organization to the management organizations IPAM delegated admin account. For a full deployment example, see `aws.ec2.VpcIpamResourceDiscoveryAssociation` resource.
@@ -15,10 +17,10 @@ import 'vpc_ipam_resource_discovery_state.dart';
 ///
 /// const current = aws.getRegion({});
 /// const main = new aws.ec2.VpcIpamResourceDiscovery("main", {
-///     description: "My IPAM Resource Discovery",
 ///     operatingRegions: [{
 ///         regionName: current.then(current => current.region),
 ///     }],
+///     description: "My IPAM Resource Discovery",
 ///     tags: {
 ///         Test: "Main",
 ///     },
@@ -30,10 +32,10 @@ import 'vpc_ipam_resource_discovery_state.dart';
 ///
 /// current = aws.get_region()
 /// main = aws.ec2.VpcIpamResourceDiscovery("main",
-///     description="My IPAM Resource Discovery",
 ///     operating_regions=[{
 ///         "region_name": current.region,
 ///     }],
+///     description="My IPAM Resource Discovery",
 ///     tags={
 ///         "Test": "Main",
 ///     })
@@ -50,7 +52,6 @@ import 'vpc_ipam_resource_discovery_state.dart';
 ///
 ///     var main = new Aws.Ec2.VpcIpamResourceDiscovery("main", new()
 ///     {
-///         Description = "My IPAM Resource Discovery",
 ///         OperatingRegions = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.VpcIpamResourceDiscoveryOperatingRegionArgs
@@ -58,6 +59,7 @@ import 'vpc_ipam_resource_discovery_state.dart';
 ///                 RegionName = current.Apply(getRegionResult => getRegionResult.Region),
 ///             },
 ///         },
+///         Description = "My IPAM Resource Discovery",
 ///         Tags =
 ///         {
 ///             { "Test", "Main" },
@@ -82,12 +84,12 @@ import 'vpc_ipam_resource_discovery_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamResourceDiscovery(ctx, "main", &ec2.VpcIpamResourceDiscoveryArgs{
-/// 			Description: pulumi.String("My IPAM Resource Discovery"),
 /// 			OperatingRegions: ec2.VpcIpamResourceDiscoveryOperatingRegionArray{
 /// 				&ec2.VpcIpamResourceDiscoveryOperatingRegionArgs{
 /// 					RegionName: pulumi.String(current.Region),
 /// 				},
 /// 			},
+/// 			Description: pulumi.String("My IPAM Resource Discovery"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Test": pulumi.String("Main"),
 /// 			},
@@ -112,10 +114,10 @@ import 'vpc_ipam_resource_discovery_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpcipamresourcediscovery" "main" {
-///   description = "My IPAM Resource Discovery"
 ///   operating_regions {
 ///     region_name = data.aws_getregion.current.region
 ///   }
+///   description = "My IPAM Resource Discovery"
 ///   tags = {
 ///     "Test" = "Main"
 ///   }
@@ -149,10 +151,10 @@ import 'vpc_ipam_resource_discovery_state.dart';
 ///             .build());
 ///
 ///         var main = new VpcIpamResourceDiscovery("main", VpcIpamResourceDiscoveryArgs.builder()
-///             .description("My IPAM Resource Discovery")
 ///             .operatingRegions(VpcIpamResourceDiscoveryOperatingRegionArgs.builder()
 ///                 .regionName(current.region())
 ///                 .build())
+///             .description("My IPAM Resource Discovery")
 ///             .tags(Map.of("Test", "Main"))
 ///             .build());
 ///
@@ -164,9 +166,9 @@ import 'vpc_ipam_resource_discovery_state.dart';
 ///   main:
 ///     type: aws:ec2:VpcIpamResourceDiscovery
 ///     properties:
-///       description: My IPAM Resource Discovery
 ///       operatingRegions:
 ///         - regionName: ${current.region}
+///       description: My IPAM Resource Discovery
 ///       tags:
 ///         Test: Main
 /// variables:
@@ -185,7 +187,7 @@ import 'vpc_ipam_resource_discovery_state.dart';
 /// $ pulumi import aws:ec2/vpcIpamResourceDiscovery:VpcIpamResourceDiscovery example ipam-res-disco-0178368ad2146a492
 /// ```
 class VpcIpamResourceDiscovery extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of IPAM Resource Discovery
+  /// ARN of IPAM Resource Discovery
   late final pulumi.Output<String> arn;
   /// A description for the IPAM Resource Discovery.
   late final pulumi.Output<String?> description;
@@ -194,9 +196,9 @@ class VpcIpamResourceDiscovery extends pulumi.CustomResource {
   /// A boolean to identify if the Resource Discovery is the accounts default resource discovery
   late final pulumi.Output<bool> isDefault;
   /// Determines which regions the Resource Discovery will enable IPAM features for usage and monitoring. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM Resource Discovery. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. **You must set your provider block region as an operating_region.**
-  late final pulumi.Output<List<Map<String, dynamic>>> operatingRegions;
+  late final pulumi.Output<List<VpcIpamResourceDiscoveryOperatingRegion>> operatingRegions;
   /// Add an Organizational Unit (OU) exclusion to IPAM. If IPAM is integrated with AWS Organizations and OU exclusion is added, IPAM will not manage the IP addresses in accounts in the OU exclusion. Refer to [IPAM Quotas](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) for the limit of exclusions that can be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> organizationalUnitExclusions;
+  late final pulumi.Output<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?> organizationalUnitExclusions;
   /// The account ID for the account that manages the Resource Discovery
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -218,18 +220,18 @@ class VpcIpamResourceDiscovery extends pulumi.CustomResource {
           'aws:ec2/vpcIpamResourceDiscovery:VpcIpamResourceDiscovery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     ipamResourceDiscoveryRegion = registerOutput<String>('ipamResourceDiscoveryRegion');
     isDefault = registerOutput<bool>('isDefault');
-    operatingRegions = registerOutput<List<Map<String, dynamic>>>('operatingRegions');
-    organizationalUnitExclusions = registerOutput<List<Map<String, dynamic>>?>('organizationalUnitExclusions');
+    operatingRegions = registerOutput<List<VpcIpamResourceDiscoveryOperatingRegion>>('operatingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamResourceDiscoveryOperatingRegion>(guardedValue, (value) => VpcIpamResourceDiscoveryOperatingRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    organizationalUnitExclusions = registerOutput<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?>('organizationalUnitExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>(guardedValue, (value) => VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VpcIpamResourceDiscovery] resource's state with the given [name] and [id].
@@ -237,11 +239,12 @@ class VpcIpamResourceDiscovery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpamResourceDiscoveryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpamResourceDiscovery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,11 +262,32 @@ class VpcIpamResourceDiscovery extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     ipamResourceDiscoveryRegion = registerOutput<String>('ipamResourceDiscoveryRegion');
     isDefault = registerOutput<bool>('isDefault');
-    operatingRegions = registerOutput<List<Map<String, dynamic>>>('operatingRegions');
-    organizationalUnitExclusions = registerOutput<List<Map<String, dynamic>>?>('organizationalUnitExclusions');
+    operatingRegions = registerOutput<List<VpcIpamResourceDiscoveryOperatingRegion>>('operatingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamResourceDiscoveryOperatingRegion>(guardedValue, (value) => VpcIpamResourceDiscoveryOperatingRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    organizationalUnitExclusions = registerOutput<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?>('organizationalUnitExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>(guardedValue, (value) => VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcIpamResourceDiscovery] resource.
+  VpcIpamResourceDiscovery.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpamResourceDiscovery:VpcIpamResourceDiscovery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    ipamResourceDiscoveryRegion = registerOutput<String>('ipamResourceDiscoveryRegion');
+    isDefault = registerOutput<bool>('isDefault');
+    operatingRegions = registerOutput<List<VpcIpamResourceDiscoveryOperatingRegion>>('operatingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamResourceDiscoveryOperatingRegion>(guardedValue, (value) => VpcIpamResourceDiscoveryOperatingRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    organizationalUnitExclusions = registerOutput<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?>('organizationalUnitExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>(guardedValue, (value) => VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap((value as Map).cast<String, dynamic>())); });
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -202,3 +202,14 @@ Future<GetViewsResult> getViews(
   );
   return GetViewsResult.fromMap(result);
 }
+
+pulumi.Output<GetViewsResult> getViewsOutput(
+  GetViewsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:billing/getViews:getViews',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetViewsResult.fromMap);
+}

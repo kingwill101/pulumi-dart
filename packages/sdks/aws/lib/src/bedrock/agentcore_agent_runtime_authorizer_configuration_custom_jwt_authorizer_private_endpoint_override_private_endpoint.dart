@@ -6,9 +6,9 @@ import 'agentcore_agent_runtime_authorizer_configuration_custom_jwt_authorizer_p
 
 class AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint {
   /// Managed VPC resource configuration. See `managedVpcResource` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource>? managedVpcResource;
+  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource?>? managedVpcResource;
   /// Self-managed VPC Lattice resource configuration. See `selfManagedLatticeResource` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource>? selfManagedLatticeResource;
+  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource?>? selfManagedLatticeResource;
 
   /// Creates a new [AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint].
   /// [managedVpcResource] Managed VPC resource configuration. See `managedVpcResource` below.

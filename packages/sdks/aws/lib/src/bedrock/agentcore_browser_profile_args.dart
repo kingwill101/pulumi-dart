@@ -9,16 +9,16 @@ import 'agentcore_browser_profile_timeouts.dart';
 /// {@macro pulumi_bedrock_agentcore_browser_profile_agentcore_browser_profile_args_doc}
 class AgentcoreBrowserProfileArgs {
   /// Description of the browser profile. Must be between 1 and 4096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the browser profile. Must start with a letter and can contain alphanumeric characters and underscores, up to 48 characters.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentcoreBrowserProfileTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentcoreBrowserProfileTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreBrowserProfileArgs].
   /// [description] Description of the browser profile. Must be between 1 and 4096 characters.

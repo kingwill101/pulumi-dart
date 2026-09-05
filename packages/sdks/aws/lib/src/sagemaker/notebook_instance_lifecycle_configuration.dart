@@ -176,7 +176,7 @@ import 'notebook_instance_lifecycle_configuration_state.dart';
 /// $ pulumi import aws:sagemaker/notebookInstanceLifecycleConfiguration:NotebookInstanceLifecycleConfiguration lc foo
 /// ```
 class NotebookInstanceLifecycleConfiguration extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
+  /// ARN assigned by AWS to this lifecycle configuration.
   late final pulumi.Output<String> arn;
   /// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
   late final pulumi.Output<String> name;
@@ -203,15 +203,15 @@ class NotebookInstanceLifecycleConfiguration extends pulumi.CustomResource {
           'aws:sagemaker/notebookInstanceLifecycleConfiguration:NotebookInstanceLifecycleConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     onCreate = registerOutput<String?>('onCreate');
     onStart = registerOutput<String?>('onStart');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NotebookInstanceLifecycleConfiguration] resource's state with the given [name] and [id].
@@ -219,11 +219,12 @@ class NotebookInstanceLifecycleConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotebookInstanceLifecycleConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotebookInstanceLifecycleConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -242,7 +243,25 @@ class NotebookInstanceLifecycleConfiguration extends pulumi.CustomResource {
     onCreate = registerOutput<String?>('onCreate');
     onStart = registerOutput<String?>('onStart');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NotebookInstanceLifecycleConfiguration] resource.
+  NotebookInstanceLifecycleConfiguration.reference(String urn)
+    : super(
+        'aws:sagemaker/notebookInstanceLifecycleConfiguration:NotebookInstanceLifecycleConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    onCreate = registerOutput<String?>('onCreate');
+    onStart = registerOutput<String?>('onStart');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

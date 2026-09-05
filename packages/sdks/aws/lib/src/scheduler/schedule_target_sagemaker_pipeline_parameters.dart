@@ -5,7 +5,7 @@ import 'schedule_target_sagemaker_pipeline_parameters_pipeline_parameter.dart';
 
 class ScheduleTargetSagemakerPipelineParameters {
   /// Set of up to 200 parameter names and values to use when executing the SageMaker AI Model Building Pipeline. Detailed below.
-  final pulumi.Input<List<ScheduleTargetSagemakerPipelineParametersPipelineParameter>>? pipelineParameters;
+  final pulumi.Input<List<ScheduleTargetSagemakerPipelineParametersPipelineParameter>?>? pipelineParameters;
 
   /// Creates a new [ScheduleTargetSagemakerPipelineParameters].
   /// [pipelineParameters] Set of up to 200 parameter names and values to use when executing the SageMaker AI Model Building Pipeline. Detailed below.

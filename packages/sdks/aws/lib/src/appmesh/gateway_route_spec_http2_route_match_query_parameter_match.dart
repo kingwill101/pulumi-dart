@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttp2RouteMatchQueryParameterMatch {
   /// Exact query parameter to match on.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteMatchQueryParameterMatch].
   /// [exact] Exact query parameter to match on.

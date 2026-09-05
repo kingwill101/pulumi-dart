@@ -19,11 +19,11 @@ import 'domain_state.dart';
 ///
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["sagemaker.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const exampleRole = new aws.iam.Role("example", {
@@ -32,13 +32,13 @@ import 'domain_state.dart';
 ///     assumeRolePolicy: example.then(example => example.json),
 /// });
 /// const exampleDomain = new aws.sagemaker.Domain("example", {
+///     defaultUserSettings: {
+///         executionRole: exampleRole.arn,
+///     },
 ///     domainName: "example",
 ///     authMode: "IAM",
 ///     vpcId: exampleAwsVpc.id,
 ///     subnetIds: [exampleAwsSubnet.id],
-///     defaultUserSettings: {
-///         executionRole: exampleRole.arn,
-///     },
 /// });
 /// ```
 /// ```python
@@ -46,24 +46,24 @@ import 'domain_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["sagemaker.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
 ///     name="example",
 ///     path="/",
 ///     assume_role_policy=example.json)
 /// example_domain = aws.sagemaker.Domain("example",
+///     default_user_settings={
+///         "execution_role": example_role.arn,
+///     },
 ///     domain_name="example",
 ///     auth_mode="IAM",
 ///     vpc_id=example_aws_vpc["id"],
-///     subnet_ids=[example_aws_subnet["id"]],
-///     default_user_settings={
-///         "execution_role": example_role.arn,
-///     })
+///     subnet_ids=[example_aws_subnet["id"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -79,10 +79,6 @@ import 'domain_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -93,6 +89,10 @@ import 'domain_state.dart';
 ///                             "sagemaker.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -107,16 +107,16 @@ import 'domain_state.dart';
 ///
 ///     var exampleDomain = new Aws.Sagemaker.Domain("example", new()
 ///     {
+///         DefaultUserSettings = new Aws.Sagemaker.Inputs.DomainDefaultUserSettingsArgs
+///         {
+///             ExecutionRole = exampleRole.Arn,
+///         },
 ///         DomainName = "example",
 ///         AuthMode = "IAM",
 ///         VpcId = exampleAwsVpc.Id,
 ///         SubnetIds = new[]
 ///         {
 ///             exampleAwsSubnet.Id,
-///         },
-///         DefaultUserSettings = new Aws.Sagemaker.Inputs.DomainDefaultUserSettingsArgs
-///         {
-///             ExecutionRole = exampleRole.Arn,
 ///         },
 ///     });
 ///
@@ -136,9 +136,6 @@ import 'domain_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -146,6 +143,9 @@ import 'domain_state.dart';
 /// 								"sagemaker.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -162,14 +162,14 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewDomain(ctx, "example", &sagemaker.DomainArgs{
+/// 			DefaultUserSettings: &sagemaker.DomainDefaultUserSettingsArgs{
+/// 				ExecutionRole: exampleRole.Arn,
+/// 			},
 /// 			DomainName: pulumi.String("example"),
 /// 			AuthMode:   pulumi.String("IAM"),
 /// 			VpcId:      pulumi.Any(exampleAwsVpc.Id),
 /// 			SubnetIds: pulumi.StringArray{
 /// 				exampleAwsSubnet.Id,
-/// 			},
-/// 			DefaultUserSettings: &sagemaker.DomainDefaultUserSettingsArgs{
-/// 				ExecutionRole: exampleRole.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -190,22 +190,22 @@ import 'domain_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["sagemaker.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
 /// resource "aws_sagemaker_domain" "example" {
+///   default_user_settings = {
+///     execution_role = aws_iam_role.example.arn
+///   }
 ///   domain_name = "example"
 ///   auth_mode   = "IAM"
 ///   vpc_id      = exampleAwsVpc.id
 ///   subnet_ids  = [exampleAwsSubnet.id]
-///   default_user_settings = {
-///     execution_role = aws_iam_role.example.arn
-///   }
 /// }
 /// resource "aws_iam_role" "example" {
 ///   name               = "example"
@@ -243,11 +243,11 @@ import 'domain_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("sagemaker.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -258,13 +258,13 @@ import 'domain_state.dart';
 ///             .build());
 ///
 ///         var exampleDomain = new Domain("exampleDomain", DomainArgs.builder()
+///             .defaultUserSettings(DomainDefaultUserSettingsArgs.builder()
+///                 .executionRole(exampleRole.arn())
+///                 .build())
 ///             .domainName("example")
 ///             .authMode("IAM")
 ///             .vpcId(exampleAwsVpc.id())
 ///             .subnetIds(exampleAwsSubnet.id())
-///             .defaultUserSettings(DomainDefaultUserSettingsArgs.builder()
-///                 .executionRole(exampleRole.arn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -276,13 +276,13 @@ import 'domain_state.dart';
 ///     type: aws:sagemaker:Domain
 ///     name: example
 ///     properties:
+///       defaultUserSettings:
+///         executionRole: ${exampleRole.arn}
 ///       domainName: example
 ///       authMode: IAM
 ///       vpcId: ${exampleAwsVpc.id}
 ///       subnetIds:
 ///         - ${exampleAwsSubnet.id}
-///       defaultUserSettings:
-///         executionRole: ${exampleRole.arn}
 ///   exampleRole:
 ///     type: aws:iam:Role
 ///     name: example
@@ -296,12 +296,12 @@ import 'domain_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - sagemaker.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -317,31 +317,31 @@ import 'domain_state.dart';
 ///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// const exampleAppImageConfig = new aws.sagemaker.AppImageConfig("example", {
-///     appImageConfigName: "example",
 ///     kernelGatewayImageConfig: {
 ///         kernelSpecs: [{
 ///             name: "example",
 ///         }],
 ///     },
+///     appImageConfigName: "example",
 /// });
 /// const exampleImageVersion = new aws.sagemaker.ImageVersion("example", {
 ///     imageName: example.id,
 ///     baseImage: "base-image",
 /// });
 /// const exampleDomain = new aws.sagemaker.Domain("example", {
-///     domainName: "example",
-///     authMode: "IAM",
-///     vpcId: exampleAwsVpc.id,
-///     subnetIds: [exampleAwsSubnet.id],
 ///     defaultUserSettings: {
-///         executionRole: exampleAwsIamRole.arn,
 ///         kernelGatewayAppSettings: {
 ///             customImages: [{
 ///                 appImageConfigName: exampleAppImageConfig.appImageConfigName,
 ///                 imageName: exampleImageVersion.imageName,
 ///             }],
 ///         },
+///         executionRole: exampleAwsIamRole.arn,
 ///     },
+///     domainName: "example",
+///     authMode: "IAM",
+///     vpcId: exampleAwsVpc.id,
+///     subnetIds: [exampleAwsSubnet.id],
 /// });
 /// ```
 /// ```python
@@ -352,29 +352,29 @@ import 'domain_state.dart';
 ///     image_name="example",
 ///     role_arn=example_aws_iam_role["arn"])
 /// example_app_image_config = aws.sagemaker.AppImageConfig("example",
-///     app_image_config_name="example",
 ///     kernel_gateway_image_config={
 ///         "kernel_specs": [{
 ///             "name": "example",
 ///         }],
-///     })
+///     },
+///     app_image_config_name="example")
 /// example_image_version = aws.sagemaker.ImageVersion("example",
 ///     image_name=example.id,
 ///     base_image="base-image")
 /// example_domain = aws.sagemaker.Domain("example",
-///     domain_name="example",
-///     auth_mode="IAM",
-///     vpc_id=example_aws_vpc["id"],
-///     subnet_ids=[example_aws_subnet["id"]],
 ///     default_user_settings={
-///         "execution_role": example_aws_iam_role["arn"],
 ///         "kernel_gateway_app_settings": {
 ///             "custom_images": [{
 ///                 "app_image_config_name": example_app_image_config.app_image_config_name,
 ///                 "image_name": example_image_version.image_name,
 ///             }],
 ///         },
-///     })
+///         "execution_role": example_aws_iam_role["arn"],
+///     },
+///     domain_name="example",
+///     auth_mode="IAM",
+///     vpc_id=example_aws_vpc["id"],
+///     subnet_ids=[example_aws_subnet["id"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -392,7 +392,6 @@ import 'domain_state.dart';
 ///
 ///     var exampleAppImageConfig = new Aws.Sagemaker.AppImageConfig("example", new()
 ///     {
-///         AppImageConfigName = "example",
 ///         KernelGatewayImageConfig = new Aws.Sagemaker.Inputs.AppImageConfigKernelGatewayImageConfigArgs
 ///         {
 ///             KernelSpecs = new[]
@@ -403,6 +402,7 @@ import 'domain_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AppImageConfigName = "example",
 ///     });
 ///
 ///     var exampleImageVersion = new Aws.Sagemaker.ImageVersion("example", new()
@@ -413,16 +413,8 @@ import 'domain_state.dart';
 ///
 ///     var exampleDomain = new Aws.Sagemaker.Domain("example", new()
 ///     {
-///         DomainName = "example",
-///         AuthMode = "IAM",
-///         VpcId = exampleAwsVpc.Id,
-///         SubnetIds = new[]
-///         {
-///             exampleAwsSubnet.Id,
-///         },
 ///         DefaultUserSettings = new Aws.Sagemaker.Inputs.DomainDefaultUserSettingsArgs
 ///         {
-///             ExecutionRole = exampleAwsIamRole.Arn,
 ///             KernelGatewayAppSettings = new Aws.Sagemaker.Inputs.DomainDefaultUserSettingsKernelGatewayAppSettingsArgs
 ///             {
 ///                 CustomImages = new[]
@@ -434,6 +426,14 @@ import 'domain_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             ExecutionRole = exampleAwsIamRole.Arn,
+///         },
+///         DomainName = "example",
+///         AuthMode = "IAM",
+///         VpcId = exampleAwsVpc.Id,
+///         SubnetIds = new[]
+///         {
+///             exampleAwsSubnet.Id,
 ///         },
 ///     });
 ///
@@ -457,7 +457,6 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAppImageConfig, err := sagemaker.NewAppImageConfig(ctx, "example", &sagemaker.AppImageConfigArgs{
-/// 			AppImageConfigName: pulumi.String("example"),
 /// 			KernelGatewayImageConfig: &sagemaker.AppImageConfigKernelGatewayImageConfigArgs{
 /// 				KernelSpecs: sagemaker.AppImageConfigKernelGatewayImageConfigKernelSpecArray{
 /// 					&sagemaker.AppImageConfigKernelGatewayImageConfigKernelSpecArgs{
@@ -465,6 +464,7 @@ import 'domain_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AppImageConfigName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -477,14 +477,7 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewDomain(ctx, "example", &sagemaker.DomainArgs{
-/// 			DomainName: pulumi.String("example"),
-/// 			AuthMode:   pulumi.String("IAM"),
-/// 			VpcId:      pulumi.Any(exampleAwsVpc.Id),
-/// 			SubnetIds: pulumi.StringArray{
-/// 				exampleAwsSubnet.Id,
-/// 			},
 /// 			DefaultUserSettings: &sagemaker.DomainDefaultUserSettingsArgs{
-/// 				ExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 				KernelGatewayAppSettings: &sagemaker.DomainDefaultUserSettingsKernelGatewayAppSettingsArgs{
 /// 					CustomImages: sagemaker.DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImageArray{
 /// 						&sagemaker.DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImageArgs{
@@ -493,6 +486,13 @@ import 'domain_state.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				ExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			},
+/// 			DomainName: pulumi.String("example"),
+/// 			AuthMode:   pulumi.String("IAM"),
+/// 			VpcId:      pulumi.Any(exampleAwsVpc.Id),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleAwsSubnet.Id,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -516,31 +516,31 @@ import 'domain_state.dart';
 ///   role_arn   = exampleAwsIamRole.arn
 /// }
 /// resource "aws_sagemaker_appimageconfig" "example" {
-///   app_image_config_name = "example"
 ///   kernel_gateway_image_config = {
 ///     kernel_specs = [{
 ///       "name" = "example"
 ///     }]
 ///   }
+///   app_image_config_name = "example"
 /// }
 /// resource "aws_sagemaker_imageversion" "example" {
 ///   image_name = aws_sagemaker_image.example.id
 ///   base_image = "base-image"
 /// }
 /// resource "aws_sagemaker_domain" "example" {
-///   domain_name = "example"
-///   auth_mode   = "IAM"
-///   vpc_id      = exampleAwsVpc.id
-///   subnet_ids  = [exampleAwsSubnet.id]
 ///   default_user_settings = {
-///     execution_role = exampleAwsIamRole.arn
 ///     kernel_gateway_app_settings = {
 ///       custom_images = [{
 ///         "appImageConfigName" = aws_sagemaker_appimageconfig.example.app_image_config_name
 ///         "imageName"          = aws_sagemaker_imageversion.example.image_name
 ///       }]
 ///     }
+///     execution_role = exampleAwsIamRole.arn
 ///   }
+///   domain_name = "example"
+///   auth_mode   = "IAM"
+///   vpc_id      = exampleAwsVpc.id
+///   subnet_ids  = [exampleAwsSubnet.id]
 /// }
 /// ```
 /// ```java
@@ -581,12 +581,12 @@ import 'domain_state.dart';
 ///             .build());
 ///
 ///         var exampleAppImageConfig = new AppImageConfig("exampleAppImageConfig", AppImageConfigArgs.builder()
-///             .appImageConfigName("example")
 ///             .kernelGatewayImageConfig(AppImageConfigKernelGatewayImageConfigArgs.builder()
 ///                 .kernelSpecs(AppImageConfigKernelGatewayImageConfigKernelSpecArgs.builder()
 ///                     .name("example")
 ///                     .build())
 ///                 .build())
+///             .appImageConfigName("example")
 ///             .build());
 ///
 ///         var exampleImageVersion = new ImageVersion("exampleImageVersion", ImageVersionArgs.builder()
@@ -595,19 +595,19 @@ import 'domain_state.dart';
 ///             .build());
 ///
 ///         var exampleDomain = new Domain("exampleDomain", DomainArgs.builder()
-///             .domainName("example")
-///             .authMode("IAM")
-///             .vpcId(exampleAwsVpc.id())
-///             .subnetIds(exampleAwsSubnet.id())
 ///             .defaultUserSettings(DomainDefaultUserSettingsArgs.builder()
-///                 .executionRole(exampleAwsIamRole.arn())
 ///                 .kernelGatewayAppSettings(DomainDefaultUserSettingsKernelGatewayAppSettingsArgs.builder()
 ///                     .customImages(DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImageArgs.builder()
 ///                         .appImageConfigName(exampleAppImageConfig.appImageConfigName())
 ///                         .imageName(exampleImageVersion.imageName())
 ///                         .build())
 ///                     .build())
+///                 .executionRole(exampleAwsIamRole.arn())
 ///                 .build())
+///             .domainName("example")
+///             .authMode("IAM")
+///             .vpcId(exampleAwsVpc.id())
+///             .subnetIds(exampleAwsSubnet.id())
 ///             .build());
 ///
 ///     }
@@ -624,10 +624,10 @@ import 'domain_state.dart';
 ///     type: aws:sagemaker:AppImageConfig
 ///     name: example
 ///     properties:
-///       appImageConfigName: example
 ///       kernelGatewayImageConfig:
 ///         kernelSpecs:
 ///           - name: example
+///       appImageConfigName: example
 ///   exampleImageVersion:
 ///     type: aws:sagemaker:ImageVersion
 ///     name: example
@@ -638,17 +638,17 @@ import 'domain_state.dart';
 ///     type: aws:sagemaker:Domain
 ///     name: example
 ///     properties:
+///       defaultUserSettings:
+///         kernelGatewayAppSettings:
+///           customImages:
+///             - appImageConfigName: ${exampleAppImageConfig.appImageConfigName}
+///               imageName: ${exampleImageVersion.imageName}
+///         executionRole: ${exampleAwsIamRole.arn}
 ///       domainName: example
 ///       authMode: IAM
 ///       vpcId: ${exampleAwsVpc.id}
 ///       subnetIds:
 ///         - ${exampleAwsSubnet.id}
-///       defaultUserSettings:
-///         executionRole: ${exampleAwsIamRole.arn}
-///         kernelGatewayAppSettings:
-///           customImages:
-///             - appImageConfigName: ${exampleAppImageConfig.appImageConfigName}
-///               imageName: ${exampleImageVersion.imageName}
 /// ```
 ///
 ///
@@ -664,7 +664,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String?> appNetworkAccessType;
   /// The entity that creates and manages the required security groups for inter-app communication in `VPCOnly` mode. Valid values are `Service` and `Customer`.
   late final pulumi.Output<String?> appSecurityGroupManagement;
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Domain.
+  /// ARN assigned by AWS to this Domain.
   late final pulumi.Output<String> arn;
   /// The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
   late final pulumi.Output<String> authMode;
@@ -700,7 +700,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The domain's URL.
   late final pulumi.Output<String> url;
-  /// The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
+  /// ID of the VPC that Studio uses for communication.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vpcId;
@@ -717,7 +717,7 @@ class Domain extends pulumi.CustomResource {
           'aws:sagemaker/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appNetworkAccessType = registerOutput<String?>('appNetworkAccessType');
     appSecurityGroupManagement = registerOutput<String?>('appSecurityGroupManagement');
@@ -734,10 +734,10 @@ class Domain extends pulumi.CustomResource {
     securityGroupIdForDomainBoundary = registerOutput<String>('securityGroupIdForDomainBoundary');
     singleSignOnApplicationArn = registerOutput<String>('singleSignOnApplicationArn');
     singleSignOnManagedApplicationInstanceId = registerOutput<String>('singleSignOnManagedApplicationInstanceId');
-    subnetIds = registerOutput<List<String>>('subnetIds');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tagPropagation = registerOutput<String?>('tagPropagation');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
     vpcId = registerOutput<String>('vpcId');
   }
@@ -747,11 +747,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -780,10 +781,42 @@ class Domain extends pulumi.CustomResource {
     securityGroupIdForDomainBoundary = registerOutput<String>('securityGroupIdForDomainBoundary');
     singleSignOnApplicationArn = registerOutput<String>('singleSignOnApplicationArn');
     singleSignOnManagedApplicationInstanceId = registerOutput<String>('singleSignOnManagedApplicationInstanceId');
-    subnetIds = registerOutput<List<String>>('subnetIds');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tagPropagation = registerOutput<String?>('tagPropagation');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String>('url');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:sagemaker/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appNetworkAccessType = registerOutput<String?>('appNetworkAccessType');
+    appSecurityGroupManagement = registerOutput<String?>('appSecurityGroupManagement');
+    arn = registerOutput<String>('arn');
+    authMode = registerOutput<String>('authMode');
+    defaultSpaceSettings = registerOutput<DomainDefaultSpaceSettings?>('defaultSpaceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDefaultSpaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultUserSettings = registerOutput<DomainDefaultUserSettings>('defaultUserSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDefaultUserSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    domainSettings = registerOutput<DomainDomainSettings?>('domainSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDomainSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    homeEfsFileSystemId = registerOutput<String>('homeEfsFileSystemId');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    region = registerOutput<String>('region');
+    retentionPolicy = registerOutput<DomainRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityGroupIdForDomainBoundary = registerOutput<String>('securityGroupIdForDomainBoundary');
+    singleSignOnApplicationArn = registerOutput<String>('singleSignOnApplicationArn');
+    singleSignOnManagedApplicationInstanceId = registerOutput<String>('singleSignOnManagedApplicationInstanceId');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tagPropagation = registerOutput<String?>('tagPropagation');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
     vpcId = registerOutput<String>('vpcId');
   }

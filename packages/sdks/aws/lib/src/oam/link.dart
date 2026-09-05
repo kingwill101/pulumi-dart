@@ -220,12 +220,12 @@ import 'link_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.oam.Link("example", {
-///     labelTemplate: "$AccountName",
 ///     linkConfiguration: {
 ///         logGroupConfiguration: {
 ///             filter: "LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'",
 ///         },
 ///     },
+///     labelTemplate: "$AccountName",
 ///     resourceTypes: ["AWS::Logs::LogGroup"],
 ///     sinkIdentifier: exampleAwsOamSink.arn,
 /// }, {
@@ -237,12 +237,12 @@ import 'link_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.oam.Link("example",
-///     label_template="$AccountName",
 ///     link_configuration={
 ///         "log_group_configuration": {
 ///             "filter": "LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'",
 ///         },
 ///     },
+///     label_template="$AccountName",
 ///     resource_types=["AWS::Logs::LogGroup"],
 ///     sink_identifier=example_aws_oam_sink["arn"],
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_oam_sink_policy]))
@@ -257,7 +257,6 @@ import 'link_state.dart';
 /// {
 ///     var example = new Aws.Oam.Link("example", new()
 ///     {
-///         LabelTemplate = "$AccountName",
 ///         LinkConfiguration = new Aws.Oam.Inputs.LinkLinkConfigurationArgs
 ///         {
 ///             LogGroupConfiguration = new Aws.Oam.Inputs.LinkLinkConfigurationLogGroupConfigurationArgs
@@ -265,6 +264,7 @@ import 'link_state.dart';
 ///                 Filter = "LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'",
 ///             },
 ///         },
+///         LabelTemplate = "$AccountName",
 ///         ResourceTypes = new[]
 ///         {
 ///             "AWS::Logs::LogGroup",
@@ -291,12 +291,12 @@ import 'link_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := oam.NewLink(ctx, "example", &oam.LinkArgs{
-/// 			LabelTemplate: pulumi.String("$AccountName"),
 /// 			LinkConfiguration: &oam.LinkLinkConfigurationArgs{
 /// 				LogGroupConfiguration: &oam.LinkLinkConfigurationLogGroupConfigurationArgs{
 /// 					Filter: pulumi.String("LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'"),
 /// 				},
 /// 			},
+/// 			LabelTemplate: pulumi.String("$AccountName"),
 /// 			ResourceTypes: pulumi.StringArray{
 /// 				pulumi.String("AWS::Logs::LogGroup"),
 /// 			},
@@ -321,13 +321,13 @@ import 'link_state.dart';
 /// }
 ///
 /// resource "aws_oam_link" "example" {
-///   depends_on     = [exampleAwsOamSinkPolicy]
-///   label_template = "$AccountName"
+///   depends_on = [exampleAwsOamSinkPolicy]
 ///   link_configuration = {
 ///     log_group_configuration = {
 ///       filter = "LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'"
 ///     }
 ///   }
+///   label_template  = "$AccountName"
 ///   resource_types  = ["AWS::Logs::LogGroup"]
 ///   sink_identifier = exampleAwsOamSink.arn
 /// }
@@ -357,12 +357,12 @@ import 'link_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Link("example", LinkArgs.builder()
-///             .labelTemplate("$AccountName")
 ///             .linkConfiguration(LinkLinkConfigurationArgs.builder()
 ///                 .logGroupConfiguration(LinkLinkConfigurationLogGroupConfigurationArgs.builder()
 ///                     .filter("LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'")
 ///                     .build())
 ///                 .build())
+///             .labelTemplate("$AccountName")
 ///             .resourceTypes("AWS::Logs::LogGroup")
 ///             .sinkIdentifier(exampleAwsOamSink.arn())
 ///             .build(), CustomResourceOptions.builder()
@@ -377,10 +377,10 @@ import 'link_state.dart';
 ///   example:
 ///     type: aws:oam:Link
 ///     properties:
-///       labelTemplate: $AccountName
 ///       linkConfiguration:
 ///         logGroupConfiguration:
 ///           filter: LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'
+///       labelTemplate: $AccountName
 ///       resourceTypes:
 ///         - AWS::Logs::LogGroup
 ///       sinkIdentifier: ${exampleAwsOamSink.arn}
@@ -398,12 +398,12 @@ import 'link_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.oam.Link("example", {
-///     labelTemplate: "$AccountName",
 ///     linkConfiguration: {
 ///         metricConfiguration: {
 ///             filter: "Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')",
 ///         },
 ///     },
+///     labelTemplate: "$AccountName",
 ///     resourceTypes: ["AWS::CloudWatch::Metric"],
 ///     sinkIdentifier: exampleAwsOamSink.arn,
 /// }, {
@@ -415,12 +415,12 @@ import 'link_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.oam.Link("example",
-///     label_template="$AccountName",
 ///     link_configuration={
 ///         "metric_configuration": {
 ///             "filter": "Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')",
 ///         },
 ///     },
+///     label_template="$AccountName",
 ///     resource_types=["AWS::CloudWatch::Metric"],
 ///     sink_identifier=example_aws_oam_sink["arn"],
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_oam_sink_policy]))
@@ -435,7 +435,6 @@ import 'link_state.dart';
 /// {
 ///     var example = new Aws.Oam.Link("example", new()
 ///     {
-///         LabelTemplate = "$AccountName",
 ///         LinkConfiguration = new Aws.Oam.Inputs.LinkLinkConfigurationArgs
 ///         {
 ///             MetricConfiguration = new Aws.Oam.Inputs.LinkLinkConfigurationMetricConfigurationArgs
@@ -443,6 +442,7 @@ import 'link_state.dart';
 ///                 Filter = "Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')",
 ///             },
 ///         },
+///         LabelTemplate = "$AccountName",
 ///         ResourceTypes = new[]
 ///         {
 ///             "AWS::CloudWatch::Metric",
@@ -469,12 +469,12 @@ import 'link_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := oam.NewLink(ctx, "example", &oam.LinkArgs{
-/// 			LabelTemplate: pulumi.String("$AccountName"),
 /// 			LinkConfiguration: &oam.LinkLinkConfigurationArgs{
 /// 				MetricConfiguration: &oam.LinkLinkConfigurationMetricConfigurationArgs{
 /// 					Filter: pulumi.String("Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')"),
 /// 				},
 /// 			},
+/// 			LabelTemplate: pulumi.String("$AccountName"),
 /// 			ResourceTypes: pulumi.StringArray{
 /// 				pulumi.String("AWS::CloudWatch::Metric"),
 /// 			},
@@ -499,13 +499,13 @@ import 'link_state.dart';
 /// }
 ///
 /// resource "aws_oam_link" "example" {
-///   depends_on     = [exampleAwsOamSinkPolicy]
-///   label_template = "$AccountName"
+///   depends_on = [exampleAwsOamSinkPolicy]
 ///   link_configuration = {
 ///     metric_configuration = {
 ///       filter = "Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')"
 ///     }
 ///   }
+///   label_template  = "$AccountName"
 ///   resource_types  = ["AWS::CloudWatch::Metric"]
 ///   sink_identifier = exampleAwsOamSink.arn
 /// }
@@ -535,12 +535,12 @@ import 'link_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Link("example", LinkArgs.builder()
-///             .labelTemplate("$AccountName")
 ///             .linkConfiguration(LinkLinkConfigurationArgs.builder()
 ///                 .metricConfiguration(LinkLinkConfigurationMetricConfigurationArgs.builder()
 ///                     .filter("Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')")
 ///                     .build())
 ///                 .build())
+///             .labelTemplate("$AccountName")
 ///             .resourceTypes("AWS::CloudWatch::Metric")
 ///             .sinkIdentifier(exampleAwsOamSink.arn())
 ///             .build(), CustomResourceOptions.builder()
@@ -555,10 +555,10 @@ import 'link_state.dart';
 ///   example:
 ///     type: aws:oam:Link
 ///     properties:
-///       labelTemplate: $AccountName
 ///       linkConfiguration:
 ///         metricConfiguration:
 ///           filter: Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')
+///       labelTemplate: $AccountName
 ///       resourceTypes:
 ///         - AWS::CloudWatch::Metric
 ///       sinkIdentifier: ${exampleAwsOamSink.arn}
@@ -612,7 +612,7 @@ class Link extends pulumi.CustomResource {
           'aws:oam/link:Link',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     label = registerOutput<String>('label');
@@ -620,11 +620,11 @@ class Link extends pulumi.CustomResource {
     linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkId = registerOutput<String>('linkId');
     region = registerOutput<String>('region');
-    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sinkArn = registerOutput<String>('sinkArn');
     sinkIdentifier = registerOutput<String>('sinkIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Link] resource's state with the given [name] and [id].
@@ -632,11 +632,12 @@ class Link extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Link._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -656,10 +657,32 @@ class Link extends pulumi.CustomResource {
     linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkId = registerOutput<String>('linkId');
     region = registerOutput<String>('region');
-    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sinkArn = registerOutput<String>('sinkArn');
     sinkIdentifier = registerOutput<String>('sinkIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Link] resource.
+  Link.reference(String urn)
+    : super(
+        'aws:oam/link:Link',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    label = registerOutput<String>('label');
+    labelTemplate = registerOutput<String>('labelTemplate');
+    linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkId = registerOutput<String>('linkId');
+    region = registerOutput<String>('region');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sinkArn = registerOutput<String>('sinkArn');
+    sinkIdentifier = registerOutput<String>('sinkIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

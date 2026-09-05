@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FeatureV2 resources.
 class FeatureV2State {
   /// Name of the opt-in feature to enable. Valid values: `NETWORK_SCANNING`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// Current enablement status of the feature. Valid values: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? featureStatus;
+  final pulumi.Input<String?>? featureStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FeatureV2State].
   /// [featureName] Name of the opt-in feature to enable. Valid values: `NETWORK_SCANNING`. Changing this forces a new resource to be created.

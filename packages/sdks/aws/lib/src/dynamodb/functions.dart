@@ -128,6 +128,17 @@ Future<GetBackupsResult> getBackups(
   return GetBackupsResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupsResult> getBackupsOutput(
+  GetBackupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dynamodb/getBackups:getBackups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupsResult.fromMap);
+}
+
 /// Provides information about a DynamoDB table.
 ///
 /// ## Example Usage
@@ -244,6 +255,17 @@ Future<GetTableResult> getTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dynamodb/getTable:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
 }
 
 /// Data source for retrieving a value from an AWS DynamoDB table.
@@ -415,6 +437,17 @@ Future<GetTableItemResult> getTableItem(
   return GetTableItemResult.fromMap(result);
 }
 
+pulumi.Output<GetTableItemResult> getTableItemOutput(
+  GetTableItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dynamodb/getTableItem:getTableItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableItemResult.fromMap);
+}
+
 /// Returns a list of all AWS DynamoDB table names in a region.
 ///
 /// ## Example Usage
@@ -537,4 +570,15 @@ Future<GetTablesResult> getTables(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTablesResult.fromMap(result);
+}
+
+pulumi.Output<GetTablesResult> getTablesOutput(
+  GetTablesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dynamodb/getTables:getTables',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTablesResult.fromMap);
 }

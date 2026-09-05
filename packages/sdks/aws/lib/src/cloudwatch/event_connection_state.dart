@@ -6,35 +6,35 @@ import 'event_connection_invocation_connectivity_parameters.dart';
 
 /// Input properties used for looking up and filtering EventConnection resources.
 class EventConnectionState {
-  /// The Amazon Resource Name (ARN) of the connection.
-  final pulumi.Input<String>? arn;
+  /// ARN of the connection.
+  final pulumi.Input<String?>? arn;
   /// Parameters used for authorization. A maximum of 1 are allowed. Documented below.
-  final pulumi.Input<EventConnectionAuthParameters>? authParameters;
+  final pulumi.Input<EventConnectionAuthParameters?>? authParameters;
   /// Type of authorization to use for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
-  final pulumi.Input<String>? authorizationType;
+  final pulumi.Input<String?>? authorizationType;
   /// Description for the connection. Maximum of 512 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Parameters to use for invoking a private API. Documented below.
-  final pulumi.Input<EventConnectionInvocationConnectivityParameters>? invocationConnectivityParameters;
-  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
-  final pulumi.Input<String>? kmsKeyIdentifier;
+  final pulumi.Input<EventConnectionInvocationConnectivityParameters?>? invocationConnectivityParameters;
+  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key ARN, KeyId, key alias, or key alias ARN.
+  final pulumi.Input<String?>? kmsKeyIdentifier;
   /// The name for the connection. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the secret created from the authorization parameters specified for the connection.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the secret created from the authorization parameters specified for the connection.
+  final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [EventConnectionState].
-  /// [arn] The Amazon Resource Name (ARN) of the connection.
+  /// [arn] ARN of the connection.
   /// [authParameters] Parameters used for authorization. A maximum of 1 are allowed. Documented below.
   /// [authorizationType] Type of authorization to use for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
   /// [description] Description for the connection. Maximum of 512 characters.
   /// [invocationConnectivityParameters] Parameters to use for invoking a private API. Documented below.
-  /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
+  /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key ARN, KeyId, key alias, or key alias ARN.
   /// [name] The name for the connection. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [secretArn] The Amazon Resource Name (ARN) of the secret created from the authorization parameters specified for the connection.
+  /// [secretArn] ARN of the secret created from the authorization parameters specified for the connection.
   const EventConnectionState({
     this.arn,
     this.authParameters,

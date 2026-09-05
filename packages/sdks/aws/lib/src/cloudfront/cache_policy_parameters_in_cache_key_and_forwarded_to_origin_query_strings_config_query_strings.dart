@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings {
   /// List of item names, such as cookies, headers, or query strings.
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings].
   /// [items] List of item names, such as cookies, headers, or query strings.

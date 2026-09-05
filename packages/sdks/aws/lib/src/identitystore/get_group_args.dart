@@ -9,17 +9,17 @@ import 'get_group_alternate_identifier.dart';
 /// {@macro pulumi_identitystore_get_group_get_group_args_doc}
 class GetGroupArgs {
   /// A unique identifier for the group that is not the primary identifier. Conflicts with `groupId` and `filter`. Detailed below.
-  final pulumi.Input<GetGroupAlternateIdentifier>? alternateIdentifier;
+  final pulumi.Input<GetGroupAlternateIdentifier?>? alternateIdentifier;
   /// The identifier for a group in the Identity Store.
   ///
   /// &gt; Exactly one of the above arguments must be provided. Passing both `filter` and `groupId` is allowed for backwards compatibility.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Identity Store ID associated with the Single Sign-On Instance.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identityStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetGroupArgs].
   /// [alternateIdentifier] A unique identifier for the group that is not the primary identifier. Conflicts with `groupId` and `filter`. Detailed below.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig {
   /// Level of granularity included in the prefix. Valid values are `YEAR`, `MONTH`, `DAY`, `HOUR`, and `MINUTE`.
-  final pulumi.Input<String>? prefixFormat;
+  final pulumi.Input<String?>? prefixFormat;
   /// Whether the destination file path includes either or both of the selected elements. Valid values are `EXECUTION_ID` and `SCHEMA_VERSION`.
-  final pulumi.Input<List<String>>? prefixHierarchies;
+  final pulumi.Input<List<String>?>? prefixHierarchies;
   /// Format of the prefix, and whether it applies to the file name, file path, or both. Valid values are `FILENAME`, `PATH`, and `PATH_AND_FILENAME`.
-  final pulumi.Input<String>? prefixType;
+  final pulumi.Input<String?>? prefixType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig].
   /// [prefixFormat] Level of granularity included in the prefix. Valid values are `YEAR`, `MONTH`, `DAY`, `HOUR`, and `MINUTE`.

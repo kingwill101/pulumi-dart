@@ -939,7 +939,7 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
           'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -951,11 +951,12 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceLoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceLoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -969,6 +970,20 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
+  }
+
+  /// Creates a typed reference to an existing [InstanceLoggingConfiguration] resource.
+  InstanceLoggingConfiguration.reference(String urn)
+    : super(
+        'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');

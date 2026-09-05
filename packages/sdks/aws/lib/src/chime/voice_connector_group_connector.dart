@@ -25,7 +25,7 @@ class VoiceConnectorGroupConnector {
 
   factory VoiceConnectorGroupConnector.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorGroupConnector(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       voiceConnectorId: pulumi.Input.fromValue(map['voiceConnectorId'] as String),
     );
   }

@@ -205,7 +205,7 @@ class Tag extends pulumi.CustomResource {
   late final pulumi.Output<String> key;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the Transfer Family resource to tag.
+  /// ARN of the Transfer Family resource to tag.
   late final pulumi.Output<String> resourceArn;
   /// Tag value.
   late final pulumi.Output<String> value;
@@ -222,7 +222,7 @@ class Tag extends pulumi.CustomResource {
           'aws:transfer/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
@@ -235,11 +235,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -253,6 +254,21 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'aws:transfer/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

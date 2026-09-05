@@ -11,15 +11,15 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// {@macro pulumi_networkfirewall_tls_inspection_configuration_tls_inspection_configuration_args_doc}
 class TlsInspectionConfigurationArgs {
   /// Description of the TLS inspection configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Encryption configuration block. Detailed below.
-  final pulumi.Input<List<TlsInspectionConfigurationEncryptionConfiguration>>? encryptionConfigurations;
+  final pulumi.Input<List<TlsInspectionConfigurationEncryptionConfiguration>?>? encryptionConfigurations;
   /// Descriptive name of the TLS inspection configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<TlsInspectionConfigurationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<TlsInspectionConfigurationTimeouts?>? timeouts;
   /// TLS inspection configuration block. Detailed below.
   ///
   /// The following arguments are optional:

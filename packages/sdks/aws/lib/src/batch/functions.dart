@@ -127,6 +127,17 @@ Future<GetComputeEnvironmentResult> getComputeEnvironment(
   return GetComputeEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetComputeEnvironmentResult> getComputeEnvironmentOutput(
+  GetComputeEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:batch/getComputeEnvironment:getComputeEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComputeEnvironmentResult.fromMap);
+}
+
 /// Data source for managing an AWS Batch Job Definition.
 ///
 /// ## Example Usage
@@ -357,6 +368,17 @@ Future<GetJobDefinitionResult> getJobDefinition(
   return GetJobDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetJobDefinitionResult> getJobDefinitionOutput(
+  GetJobDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:batch/getJobDefinition:getJobDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobDefinitionResult.fromMap);
+}
+
 /// The Batch Job Queue data source allows access to details of a specific
 /// job queue within AWS Batch.
 ///
@@ -476,6 +498,17 @@ Future<GetJobQueueResult> getJobQueue(
   return GetJobQueueResult.fromMap(result);
 }
 
+pulumi.Output<GetJobQueueResult> getJobQueueOutput(
+  GetJobQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:batch/getJobQueue:getJobQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobQueueResult.fromMap);
+}
+
 /// The Batch Scheduling Policy data source allows access to details of a specific Scheduling Policy within AWS Batch.
 ///
 /// ## Example Usage
@@ -592,4 +625,15 @@ Future<GetSchedulingPolicyResult> getSchedulingPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchedulingPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSchedulingPolicyResult> getSchedulingPolicyOutput(
+  GetSchedulingPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:batch/getSchedulingPolicy:getSchedulingPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchedulingPolicyResult.fromMap);
 }

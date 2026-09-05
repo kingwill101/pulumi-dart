@@ -16,9 +16,6 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleTrustedTokenIssuer = new aws.ssoadmin.TrustedTokenIssuer("example", {
-///     name: "example",
-///     instanceArn: example.then(example => example.arns?.[0]),
-///     trustedTokenIssuerType: "OIDC_JWT",
 ///     trustedTokenIssuerConfiguration: {
 ///         oidcJwtConfiguration: {
 ///             claimAttributePath: "email",
@@ -27,6 +24,9 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///             jwksRetrievalOption: "OPEN_ID_DISCOVERY",
 ///         },
 ///     },
+///     name: "example",
+///     instanceArn: example.then(example => example.arns?.[0]),
+///     trustedTokenIssuerType: "OIDC_JWT",
 /// });
 /// ```
 /// ```python
@@ -35,9 +35,6 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///
 /// example = aws.ssoadmin.get_instances()
 /// example_trusted_token_issuer = aws.ssoadmin.TrustedTokenIssuer("example",
-///     name="example",
-///     instance_arn=example.arns[0],
-///     trusted_token_issuer_type="OIDC_JWT",
 ///     trusted_token_issuer_configuration={
 ///         "oidc_jwt_configuration": {
 ///             "claim_attribute_path": "email",
@@ -45,7 +42,10 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///             "issuer_url": "https://example.com",
 ///             "jwks_retrieval_option": "OPEN_ID_DISCOVERY",
 ///         },
-///     })
+///     },
+///     name="example",
+///     instance_arn=example.arns[0],
+///     trusted_token_issuer_type="OIDC_JWT")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,9 +59,6 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///
 ///     var exampleTrustedTokenIssuer = new Aws.SsoAdmin.TrustedTokenIssuer("example", new()
 ///     {
-///         Name = "example",
-///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
-///         TrustedTokenIssuerType = "OIDC_JWT",
 ///         TrustedTokenIssuerConfiguration = new Aws.SsoAdmin.Inputs.TrustedTokenIssuerTrustedTokenIssuerConfigurationArgs
 ///         {
 ///             OidcJwtConfiguration = new Aws.SsoAdmin.Inputs.TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfigurationArgs
@@ -72,6 +69,9 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///                 JwksRetrievalOption = "OPEN_ID_DISCOVERY",
 ///             },
 ///         },
+///         Name = "example",
+///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
+///         TrustedTokenIssuerType = "OIDC_JWT",
 ///     });
 ///
 /// });
@@ -91,9 +91,6 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssoadmin.NewTrustedTokenIssuer(ctx, "example", &ssoadmin.TrustedTokenIssuerArgs{
-/// 			Name:                   pulumi.String("example"),
-/// 			InstanceArn:            pulumi.String(example.Arns[0]),
-/// 			TrustedTokenIssuerType: pulumi.String("OIDC_JWT"),
 /// 			TrustedTokenIssuerConfiguration: &ssoadmin.TrustedTokenIssuerTrustedTokenIssuerConfigurationArgs{
 /// 				OidcJwtConfiguration: &ssoadmin.TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfigurationArgs{
 /// 					ClaimAttributePath:         pulumi.String("email"),
@@ -102,6 +99,9 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 /// 					JwksRetrievalOption:        pulumi.String("OPEN_ID_DISCOVERY"),
 /// 				},
 /// 			},
+/// 			Name:                   pulumi.String("example"),
+/// 			InstanceArn:            pulumi.String(example.Arns[0]),
+/// 			TrustedTokenIssuerType: pulumi.String("OIDC_JWT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,9 +123,6 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 /// }
 ///
 /// resource "aws_ssoadmin_trustedtokenissuer" "example" {
-///   name                      = "example"
-///   instance_arn              = data.aws_ssoadmin_getinstances.example.arns[0]
-///   trusted_token_issuer_type = "OIDC_JWT"
 ///   trusted_token_issuer_configuration = {
 ///     oidc_jwt_configuration = {
 ///       claim_attribute_path          = "email"
@@ -134,6 +131,9 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///       jwks_retrieval_option         = "OPEN_ID_DISCOVERY"
 ///     }
 ///   }
+///   name                      = "example"
+///   instance_arn              = data.aws_ssoadmin_getinstances.example.arns[0]
+///   trusted_token_issuer_type = "OIDC_JWT"
 /// }
 /// ```
 /// ```java
@@ -165,9 +165,6 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///             .build());
 ///
 ///         var exampleTrustedTokenIssuer = new TrustedTokenIssuer("exampleTrustedTokenIssuer", TrustedTokenIssuerArgs.builder()
-///             .name("example")
-///             .instanceArn(example.arns()[0])
-///             .trustedTokenIssuerType("OIDC_JWT")
 ///             .trustedTokenIssuerConfiguration(TrustedTokenIssuerTrustedTokenIssuerConfigurationArgs.builder()
 ///                 .oidcJwtConfiguration(TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfigurationArgs.builder()
 ///                     .claimAttributePath("email")
@@ -176,6 +173,9 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///                     .jwksRetrievalOption("OPEN_ID_DISCOVERY")
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .instanceArn(example.arns()[0])
+///             .trustedTokenIssuerType("OIDC_JWT")
 ///             .build());
 ///
 ///     }
@@ -187,15 +187,15 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///     type: aws:ssoadmin:TrustedTokenIssuer
 ///     name: example
 ///     properties:
-///       name: example
-///       instanceArn: ${example.arns[0]}
-///       trustedTokenIssuerType: OIDC_JWT
 ///       trustedTokenIssuerConfiguration:
 ///         oidcJwtConfiguration:
 ///           claimAttributePath: email
 ///           identityStoreAttributePath: emails.value
 ///           issuerUrl: https://example.com
 ///           jwksRetrievalOption: OPEN_ID_DISCOVERY
+///       name: example
+///       instanceArn: ${example.arns[0]}
+///       trustedTokenIssuerType: OIDC_JWT
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -256,15 +256,15 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
           'aws:ssoadmin/trustedTokenIssuer:TrustedTokenIssuer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clientToken = registerOutput<String?>('clientToken');
     instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedTokenIssuerConfiguration = registerOutput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>('trustedTokenIssuerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trustedTokenIssuerType = registerOutput<String>('trustedTokenIssuerType');
   }
@@ -274,11 +274,12 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustedTokenIssuerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustedTokenIssuer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,8 +298,28 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
     instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedTokenIssuerConfiguration = registerOutput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>('trustedTokenIssuerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trustedTokenIssuerType = registerOutput<String>('trustedTokenIssuerType');
+  }
+
+  /// Creates a typed reference to an existing [TrustedTokenIssuer] resource.
+  TrustedTokenIssuer.reference(String urn)
+    : super(
+        'aws:ssoadmin/trustedTokenIssuer:TrustedTokenIssuer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    clientToken = registerOutput<String?>('clientToken');
+    instanceArn = registerOutput<String>('instanceArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedTokenIssuerConfiguration = registerOutput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>('trustedTokenIssuerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trustedTokenIssuerType = registerOutput<String>('trustedTokenIssuerType');
   }

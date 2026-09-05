@@ -6,9 +6,9 @@ import 'agentcore_gateway_target_target_configuration_mcp_api_gateway_api_gatewa
 
 class AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfiguration {
   /// Repeatable block of path and method patterns to expose as tools. See `toolFilter` below.
-  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfigurationToolFilter>>? toolFilters;
+  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfigurationToolFilter>?>? toolFilters;
   /// Repeatable block of explicit tool definitions with optional custom names and descriptions. See `toolOverride` below.
-  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfigurationToolOverride>>? toolOverrides;
+  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfigurationToolOverride>?>? toolOverrides;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfiguration].
   /// [toolFilters] Repeatable block of path and method patterns to expose as tools. See `toolFilter` below.

@@ -5,7 +5,7 @@ import 'policy_predictive_scaling_configuration_metric_specification_customized_
 
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric {
   /// Dimensions of the metric.
-  final pulumi.Input<List<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension>>? dimensions;
+  final pulumi.Input<List<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension>?>? dimensions;
   /// Name of the metric.
   final pulumi.Input<String> metricName;
   /// Namespace of the metric.

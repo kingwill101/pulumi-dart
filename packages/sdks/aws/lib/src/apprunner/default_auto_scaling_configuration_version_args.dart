@@ -10,7 +10,7 @@ class DefaultAutoScalingConfigurationVersionArgs {
   /// ARN of the App Runner auto scaling configuration that you want to set as the default.
   final pulumi.Input<String> autoScalingConfigurationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DefaultAutoScalingConfigurationVersionArgs].
   /// [autoScalingConfigurationArn] ARN of the App Runner auto scaling configuration that you want to set as the default.

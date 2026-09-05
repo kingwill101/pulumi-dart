@@ -162,14 +162,14 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
           'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
@@ -179,11 +179,12 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PeeringAttachmentAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PeeringAttachmentAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,8 +202,27 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [PeeringAttachmentAccepter] resource.
+  PeeringAttachmentAccepter.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    peerAccountId = registerOutput<String>('peerAccountId');
+    peerRegion = registerOutput<String>('peerRegion');
+    peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }

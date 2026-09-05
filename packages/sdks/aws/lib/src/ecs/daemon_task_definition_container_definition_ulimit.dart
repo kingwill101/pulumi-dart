@@ -30,9 +30,9 @@ class DaemonTaskDefinitionContainerDefinitionUlimit {
 
   factory DaemonTaskDefinitionContainerDefinitionUlimit.fromMap(Map<String, dynamic> map) {
     return DaemonTaskDefinitionContainerDefinitionUlimit(
-      hardLimit: pulumi.Input.fromValue(map['hardLimit'] as int),
+      hardLimit: pulumi.Input.fromValue((map['hardLimit'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      softLimit: pulumi.Input.fromValue(map['softLimit'] as int),
+      softLimit: pulumi.Input.fromValue((map['softLimit'] as num).toInt()),
     );
   }
 }

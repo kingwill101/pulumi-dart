@@ -4,7 +4,7 @@ import 'route_server_peer_bgp_options.dart';
 import 'route_server_peer_state.dart';
 import 'route_server_peer_timeouts.dart';
 
-/// Provides a resource for managing a VPC (Virtual Private Cloud) Route Server Peer.
+/// Provides a resource for managing a VPC Route Server Peer.
 ///
 /// ## Example Usage
 ///
@@ -16,11 +16,11 @@ import 'route_server_peer_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.vpc.RouteServerPeer("test", {
-///     routeServerEndpointId: example.routeServerEndpointId,
-///     peerAddress: "10.0.1.250",
 ///     bgpOptions: {
 ///         peerAsn: 65200,
 ///     },
+///     routeServerEndpointId: example.routeServerEndpointId,
+///     peerAddress: "10.0.1.250",
 ///     tags: {
 ///         Name: "Appliance 1",
 ///     },
@@ -31,11 +31,11 @@ import 'route_server_peer_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.vpc.RouteServerPeer("test",
-///     route_server_endpoint_id=example["routeServerEndpointId"],
-///     peer_address="10.0.1.250",
 ///     bgp_options={
 ///         "peer_asn": 65200,
 ///     },
+///     route_server_endpoint_id=example["routeServerEndpointId"],
+///     peer_address="10.0.1.250",
 ///     tags={
 ///         "Name": "Appliance 1",
 ///     })
@@ -50,12 +50,12 @@ import 'route_server_peer_timeouts.dart';
 /// {
 ///     var test = new Aws.Vpc.RouteServerPeer("test", new()
 ///     {
-///         RouteServerEndpointId = example.RouteServerEndpointId,
-///         PeerAddress = "10.0.1.250",
 ///         BgpOptions = new Aws.Vpc.Inputs.RouteServerPeerBgpOptionsArgs
 ///         {
 ///             PeerAsn = 65200,
 ///         },
+///         RouteServerEndpointId = example.RouteServerEndpointId,
+///         PeerAddress = "10.0.1.250",
 ///         Tags =
 ///         {
 ///             { "Name", "Appliance 1" },
@@ -75,11 +75,11 @@ import 'route_server_peer_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpc.NewRouteServerPeer(ctx, "test", &vpc.RouteServerPeerArgs{
-/// 			RouteServerEndpointId: pulumi.Any(example.RouteServerEndpointId),
-/// 			PeerAddress:           pulumi.String("10.0.1.250"),
 /// 			BgpOptions: &vpc.RouteServerPeerBgpOptionsArgs{
 /// 				PeerAsn: pulumi.Int(65200),
 /// 			},
+/// 			RouteServerEndpointId: pulumi.Any(example.RouteServerEndpointId),
+/// 			PeerAddress:           pulumi.String("10.0.1.250"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Appliance 1"),
 /// 			},
@@ -101,11 +101,11 @@ import 'route_server_peer_timeouts.dart';
 /// }
 ///
 /// resource "aws_vpc_routeserverpeer" "test" {
-///   route_server_endpoint_id = example.routeServerEndpointId
-///   peer_address             = "10.0.1.250"
 ///   bgp_options = {
 ///     peer_asn = 65200
 ///   }
+///   route_server_endpoint_id = example.routeServerEndpointId
+///   peer_address             = "10.0.1.250"
 ///   tags = {
 ///     "Name" = "Appliance 1"
 ///   }
@@ -134,11 +134,11 @@ import 'route_server_peer_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new RouteServerPeer("test", RouteServerPeerArgs.builder()
-///             .routeServerEndpointId(example.routeServerEndpointId())
-///             .peerAddress("10.0.1.250")
 ///             .bgpOptions(RouteServerPeerBgpOptionsArgs.builder()
 ///                 .peerAsn(65200)
 ///                 .build())
+///             .routeServerEndpointId(example.routeServerEndpointId())
+///             .peerAddress("10.0.1.250")
 ///             .tags(Map.of("Name", "Appliance 1"))
 ///             .build());
 ///
@@ -150,10 +150,10 @@ import 'route_server_peer_timeouts.dart';
 ///   test:
 ///     type: aws:vpc:RouteServerPeer
 ///     properties:
-///       routeServerEndpointId: ${example.routeServerEndpointId}
-///       peerAddress: 10.0.1.250
 ///       bgpOptions:
 ///         peerAsn: 65200
+///       routeServerEndpointId: ${example.routeServerEndpointId}
+///       peerAddress: 10.0.1.250
 ///       tags:
 ///         Name: Appliance 1
 /// ```
@@ -192,12 +192,12 @@ import 'route_server_peer_timeouts.dart';
 ///     dependsOn: [testRouteServerVpcAssociation],
 /// });
 /// const testRouteServerPeer = new aws.vpc.RouteServerPeer("test", {
-///     routeServerEndpointId: testRouteServerEndpoint.routeServerEndpointId,
-///     peerAddress: "10.0.1.250",
 ///     bgpOptions: {
 ///         peerAsn: 65000,
 ///         peerLivenessDetection: "bgp-keepalive",
 ///     },
+///     routeServerEndpointId: testRouteServerEndpoint.routeServerEndpointId,
+///     peerAddress: "10.0.1.250",
 ///     tags: {
 ///         Name: "Test Appliance",
 ///     },
@@ -227,12 +227,12 @@ import 'route_server_peer_timeouts.dart';
 ///     route_table_id=test_aws_route_table["id"],
 ///     opts = pulumi.ResourceOptions(depends_on=[test_route_server_vpc_association]))
 /// test_route_server_peer = aws.vpc.RouteServerPeer("test",
-///     route_server_endpoint_id=test_route_server_endpoint.route_server_endpoint_id,
-///     peer_address="10.0.1.250",
 ///     bgp_options={
 ///         "peer_asn": 65000,
 ///         "peer_liveness_detection": "bgp-keepalive",
 ///     },
+///     route_server_endpoint_id=test_route_server_endpoint.route_server_endpoint_id,
+///     peer_address="10.0.1.250",
 ///     tags={
 ///         "Name": "Test Appliance",
 ///     })
@@ -290,13 +290,13 @@ import 'route_server_peer_timeouts.dart';
 ///
 ///     var testRouteServerPeer = new Aws.Vpc.RouteServerPeer("test", new()
 ///     {
-///         RouteServerEndpointId = testRouteServerEndpoint.RouteServerEndpointId,
-///         PeerAddress = "10.0.1.250",
 ///         BgpOptions = new Aws.Vpc.Inputs.RouteServerPeerBgpOptionsArgs
 ///         {
 ///             PeerAsn = 65000,
 ///             PeerLivenessDetection = "bgp-keepalive",
 ///         },
+///         RouteServerEndpointId = testRouteServerEndpoint.RouteServerEndpointId,
+///         PeerAddress = "10.0.1.250",
 ///         Tags =
 ///         {
 ///             { "Name", "Test Appliance" },
@@ -353,12 +353,12 @@ import 'route_server_peer_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewRouteServerPeer(ctx, "test", &vpc.RouteServerPeerArgs{
-/// 			RouteServerEndpointId: testRouteServerEndpoint.RouteServerEndpointId,
-/// 			PeerAddress:           pulumi.String("10.0.1.250"),
 /// 			BgpOptions: &vpc.RouteServerPeerBgpOptionsArgs{
 /// 				PeerAsn:               pulumi.Int(65000),
 /// 				PeerLivenessDetection: pulumi.String("bgp-keepalive"),
 /// 			},
+/// 			RouteServerEndpointId: testRouteServerEndpoint.RouteServerEndpointId,
+/// 			PeerAddress:           pulumi.String("10.0.1.250"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Test Appliance"),
 /// 			},
@@ -403,12 +403,12 @@ import 'route_server_peer_timeouts.dart';
 ///   route_table_id  = testAwsRouteTable.id
 /// }
 /// resource "aws_vpc_routeserverpeer" "test" {
-///   route_server_endpoint_id = aws_vpc_routeserverendpoint.test.route_server_endpoint_id
-///   peer_address             = "10.0.1.250"
 ///   bgp_options = {
 ///     peer_asn                = 65000
 ///     peer_liveness_detection = "bgp-keepalive"
 ///   }
+///   route_server_endpoint_id = aws_vpc_routeserverendpoint.test.route_server_endpoint_id
+///   peer_address             = "10.0.1.250"
 ///   tags = {
 ///     "Name" = "Test Appliance"
 ///   }
@@ -471,12 +471,12 @@ import 'route_server_peer_timeouts.dart';
 ///                 .build());
 ///
 ///         var testRouteServerPeer = new RouteServerPeer("testRouteServerPeer", RouteServerPeerArgs.builder()
-///             .routeServerEndpointId(testRouteServerEndpoint.routeServerEndpointId())
-///             .peerAddress("10.0.1.250")
 ///             .bgpOptions(RouteServerPeerBgpOptionsArgs.builder()
 ///                 .peerAsn(65000)
 ///                 .peerLivenessDetection("bgp-keepalive")
 ///                 .build())
+///             .routeServerEndpointId(testRouteServerEndpoint.routeServerEndpointId())
+///             .peerAddress("10.0.1.250")
 ///             .tags(Map.of("Name", "Test Appliance"))
 ///             .build());
 ///
@@ -521,11 +521,11 @@ import 'route_server_peer_timeouts.dart';
 ///     type: aws:vpc:RouteServerPeer
 ///     name: test
 ///     properties:
-///       routeServerEndpointId: ${testRouteServerEndpoint.routeServerEndpointId}
-///       peerAddress: 10.0.1.250
 ///       bgpOptions:
 ///         peerAsn: 65000
 ///         peerLivenessDetection: bgp-keepalive
+///       routeServerEndpointId: ${testRouteServerEndpoint.routeServerEndpointId}
+///       peerAddress: 10.0.1.250
 ///       tags:
 ///         Name: Test Appliance
 /// ```
@@ -533,7 +533,7 @@ import 'route_server_peer_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC (Virtual Private Cloud) Route Server using the `routeServerPeerId`. For example:
+/// Using `pulumi import`, import VPC Route Server using the `routeServerPeerId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerPeer:RouteServerPeer example rsp-12345678
@@ -581,7 +581,7 @@ class RouteServerPeer extends pulumi.CustomResource {
           'aws:vpc/routeServerPeer:RouteServerPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPeerBgpOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -593,8 +593,8 @@ class RouteServerPeer extends pulumi.CustomResource {
     routeServerId = registerOutput<String>('routeServerId');
     routeServerPeerId = registerOutput<String>('routeServerPeerId');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPeerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }
@@ -604,11 +604,12 @@ class RouteServerPeer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteServerPeerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteServerPeer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -632,8 +633,33 @@ class RouteServerPeer extends pulumi.CustomResource {
     routeServerId = registerOutput<String>('routeServerId');
     routeServerPeerId = registerOutput<String>('routeServerPeerId');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPeerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [RouteServerPeer] resource.
+  RouteServerPeer.reference(String urn)
+    : super(
+        'aws:vpc/routeServerPeer:RouteServerPeer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPeerBgpOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointEniAddress = registerOutput<String>('endpointEniAddress');
+    endpointEniId = registerOutput<String>('endpointEniId');
+    peerAddress = registerOutput<String>('peerAddress');
+    region = registerOutput<String>('region');
+    routeServerEndpointId = registerOutput<String>('routeServerEndpointId');
+    routeServerId = registerOutput<String>('routeServerId');
+    routeServerPeerId = registerOutput<String>('routeServerPeerId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPeerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }

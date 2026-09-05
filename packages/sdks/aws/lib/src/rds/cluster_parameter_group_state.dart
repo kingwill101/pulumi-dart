@@ -6,23 +6,23 @@ import 'cluster_parameter_group_parameter.dart';
 /// Input properties used for looking up and filtering ClusterParameterGroup resources.
 class ClusterParameterGroupState {
   /// The ARN of the db cluster parameter group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The family of the DB cluster parameter group.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the DB parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
-  final pulumi.Input<List<ClusterParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<ClusterParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ClusterParameterGroupState].
   /// [arn] The ARN of the db cluster parameter group.
@@ -34,9 +34,9 @@ class ClusterParameterGroupState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  const ClusterParameterGroupState({
+  ClusterParameterGroupState({
     this.arn,
-    this.description,
+    pulumi.Input<String?>? description,
     this.family,
     this.name,
     this.namePrefix,
@@ -44,7 +44,7 @@ class ClusterParameterGroupState {
     this.region,
     this.tags,
     this.tagsAll,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

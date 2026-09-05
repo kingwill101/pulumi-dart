@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The strategy of the placement group determines how the instances are organized within the group.
 /// See https://docs.aws.amazon.com/cli/latest/reference/ec2/create-placement-group.html
-enum PlacementStrategy {
+enum PlacementStrategy implements pulumi.PulumiEnum<String> {
   spread("spread"),
   cluster("cluster");
 
   const PlacementStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static PlacementStrategy fromValue(String value) {

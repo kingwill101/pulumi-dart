@@ -10,25 +10,25 @@ import 'theme_permission.dart';
 /// {@macro pulumi_quicksight_theme_theme_args_doc}
 class ThemeArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
   final pulumi.Input<String> baseThemeId;
   /// The theme configuration, which contains the theme display properties. See configuration.
-  final pulumi.Input<ThemeConfiguration>? configuration;
+  final pulumi.Input<ThemeConfiguration?>? configuration;
   /// Display name of the theme.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A set of resource permissions on the theme. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<ThemePermission>>? permissions;
+  final pulumi.Input<List<ThemePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the theme.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> themeId;
   /// A description of the current theme version being created/updated.
-  final pulumi.Input<String>? versionDescription;
+  final pulumi.Input<String?>? versionDescription;
 
   /// Creates a new [ThemeArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

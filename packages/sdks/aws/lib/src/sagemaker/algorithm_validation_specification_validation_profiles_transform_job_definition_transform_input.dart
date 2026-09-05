@@ -5,13 +5,13 @@ import 'algorithm_validation_specification_validation_profiles_transform_job_def
 
 class AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInput {
   /// Compression type of the input data. Allowed values are: `None` and `Gzip`.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// MIME type of the input data.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Data source for the transform job. See Transform Job Data Source.
   final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSource> dataSource;
   /// Method used to split the transform input. Allowed values are: `None`, `Line`, `RecordIO`, and `TFRecord`.
-  final pulumi.Input<String>? splitType;
+  final pulumi.Input<String?>? splitType;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInput].
   /// [compressionType] Compression type of the input data. Allowed values are: `None` and `Gzip`.

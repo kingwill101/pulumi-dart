@@ -15,11 +15,11 @@ import 'efs_location_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.EfsLocation("example", {
-///     efsFileSystemArn: exampleAwsEfsMountTarget.fileSystemArn,
 ///     ec2Config: {
 ///         securityGroupArns: [exampleAwsSecurityGroup.arn],
 ///         subnetArn: exampleAwsSubnet.arn,
 ///     },
+///     efsFileSystemArn: exampleAwsEfsMountTarget.fileSystemArn,
 /// });
 /// ```
 /// ```python
@@ -27,11 +27,11 @@ import 'efs_location_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.EfsLocation("example",
-///     efs_file_system_arn=example_aws_efs_mount_target["fileSystemArn"],
 ///     ec2_config={
 ///         "security_group_arns": [example_aws_security_group["arn"]],
 ///         "subnet_arn": example_aws_subnet["arn"],
-///     })
+///     },
+///     efs_file_system_arn=example_aws_efs_mount_target["fileSystemArn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,7 +43,6 @@ import 'efs_location_state.dart';
 /// {
 ///     var example = new Aws.DataSync.EfsLocation("example", new()
 ///     {
-///         EfsFileSystemArn = exampleAwsEfsMountTarget.FileSystemArn,
 ///         Ec2Config = new Aws.DataSync.Inputs.EfsLocationEc2ConfigArgs
 ///         {
 ///             SecurityGroupArns = new[]
@@ -52,6 +51,7 @@ import 'efs_location_state.dart';
 ///             },
 ///             SubnetArn = exampleAwsSubnet.Arn,
 ///         },
+///         EfsFileSystemArn = exampleAwsEfsMountTarget.FileSystemArn,
 ///     });
 ///
 /// });
@@ -67,13 +67,13 @@ import 'efs_location_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewEfsLocation(ctx, "example", &datasync.EfsLocationArgs{
-/// 			EfsFileSystemArn: pulumi.Any(exampleAwsEfsMountTarget.FileSystemArn),
 /// 			Ec2Config: &datasync.EfsLocationEc2ConfigArgs{
 /// 				SecurityGroupArns: pulumi.StringArray{
 /// 					exampleAwsSecurityGroup.Arn,
 /// 				},
 /// 				SubnetArn: pulumi.Any(exampleAwsSubnet.Arn),
 /// 			},
+/// 			EfsFileSystemArn: pulumi.Any(exampleAwsEfsMountTarget.FileSystemArn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -92,11 +92,11 @@ import 'efs_location_state.dart';
 /// }
 ///
 /// resource "aws_datasync_efslocation" "example" {
-///   efs_file_system_arn = exampleAwsEfsMountTarget.fileSystemArn
 ///   ec2_config = {
 ///     security_group_arns = [exampleAwsSecurityGroup.arn]
 ///     subnet_arn          = exampleAwsSubnet.arn
 ///   }
+///   efs_file_system_arn = exampleAwsEfsMountTarget.fileSystemArn
 /// }
 /// ```
 /// ```java
@@ -122,11 +122,11 @@ import 'efs_location_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EfsLocation("example", EfsLocationArgs.builder()
-///             .efsFileSystemArn(exampleAwsEfsMountTarget.fileSystemArn())
 ///             .ec2Config(EfsLocationEc2ConfigArgs.builder()
 ///                 .securityGroupArns(exampleAwsSecurityGroup.arn())
 ///                 .subnetArn(exampleAwsSubnet.arn())
 ///                 .build())
+///             .efsFileSystemArn(exampleAwsEfsMountTarget.fileSystemArn())
 ///             .build());
 ///
 ///     }
@@ -137,11 +137,11 @@ import 'efs_location_state.dart';
 ///   example:
 ///     type: aws:datasync:EfsLocation
 ///     properties:
-///       efsFileSystemArn: ${exampleAwsEfsMountTarget.fileSystemArn}
 ///       ec2Config:
 ///         securityGroupArns:
 ///           - ${exampleAwsSecurityGroup.arn}
 ///         subnetArn: ${exampleAwsSubnet.arn}
+///       efsFileSystemArn: ${exampleAwsEfsMountTarget.fileSystemArn}
 /// ```
 ///
 ///
@@ -151,22 +151,22 @@ import 'efs_location_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync EFS location.
+/// - `arn` (String) ARN of the DataSync EFS location.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.EfsLocation` using the DataSync Task Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.EfsLocation` using the DataSync Task ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/efsLocation:EfsLocation example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
 /// ```
 class EfsLocation extends pulumi.CustomResource {
-  /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses to access the Amazon EFS file system.
+  /// ARN of the access point that DataSync uses to access the Amazon EFS file system.
   late final pulumi.Output<String?> accessPointArn;
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// Configuration block containing EC2 configurations for connecting to the EFS File System.
   late final pulumi.Output<EfsLocationEc2Config> ec2Config;
-  /// Amazon Resource Name (ARN) of EFS File System.
+  /// ARN of EFS File System.
   late final pulumi.Output<String> efsFileSystemArn;
   /// Specifies an Identity and Access Management (IAM) role that DataSync assumes when mounting the Amazon EFS file system.
   late final pulumi.Output<String?> fileSystemAccessRoleArn;
@@ -194,7 +194,7 @@ class EfsLocation extends pulumi.CustomResource {
           'aws:datasync/efsLocation:EfsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPointArn = registerOutput<String?>('accessPointArn');
     arn = registerOutput<String>('arn');
@@ -204,8 +204,8 @@ class EfsLocation extends pulumi.CustomResource {
     inTransitEncryption = registerOutput<String?>('inTransitEncryption');
     region = registerOutput<String>('region');
     subdirectory = registerOutput<String?>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -214,11 +214,12 @@ class EfsLocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EfsLocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EfsLocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -240,8 +241,30 @@ class EfsLocation extends pulumi.CustomResource {
     inTransitEncryption = registerOutput<String?>('inTransitEncryption');
     region = registerOutput<String>('region');
     subdirectory = registerOutput<String?>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [EfsLocation] resource.
+  EfsLocation.reference(String urn)
+    : super(
+        'aws:datasync/efsLocation:EfsLocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPointArn = registerOutput<String?>('accessPointArn');
+    arn = registerOutput<String>('arn');
+    ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EfsLocationEc2Config.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
+    fileSystemAccessRoleArn = registerOutput<String?>('fileSystemAccessRoleArn');
+    inTransitEncryption = registerOutput<String?>('inTransitEncryption');
+    region = registerOutput<String>('region');
+    subdirectory = registerOutput<String?>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

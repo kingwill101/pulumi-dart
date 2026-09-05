@@ -5,13 +5,13 @@ import 'control_control_mapping_source_source_keyword.dart';
 
 class ControlControlMappingSource {
   /// Description of the source.
-  final pulumi.Input<String>? sourceDescription;
+  final pulumi.Input<String?>? sourceDescription;
   /// Frequency of evidence collection. Valid values are `DAILY`, `WEEKLY`, or `MONTHLY`.
-  final pulumi.Input<String>? sourceFrequency;
+  final pulumi.Input<String?>? sourceFrequency;
   /// Unique identifier for the source.
-  final pulumi.Input<String>? sourceId;
+  final pulumi.Input<String?>? sourceId;
   /// Keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See `sourceKeyword` below.
-  final pulumi.Input<ControlControlMappingSourceSourceKeyword>? sourceKeyword;
+  final pulumi.Input<ControlControlMappingSourceSourceKeyword?>? sourceKeyword;
   /// Name of the source.
   final pulumi.Input<String> sourceName;
   /// Setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
@@ -21,7 +21,7 @@ class ControlControlMappingSource {
   /// The following arguments are optional:
   final pulumi.Input<String> sourceType;
   /// Instructions for troubleshooting the control.
-  final pulumi.Input<String>? troubleshootingText;
+  final pulumi.Input<String?>? troubleshootingText;
 
   /// Creates a new [ControlControlMappingSource].
   /// [sourceDescription] Description of the source.

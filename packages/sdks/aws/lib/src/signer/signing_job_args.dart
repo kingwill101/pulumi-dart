@@ -12,11 +12,11 @@ class SigningJobArgs {
   /// The S3 bucket in which to save your signed object. See Destination below for details.
   final pulumi.Input<SigningJobDestination> destination;
   /// Set this argument to `true` to ignore signing job failures and retrieve failed status and reason. Default `false`.
-  final pulumi.Input<bool>? ignoreSigningJobFailure;
+  final pulumi.Input<bool?>? ignoreSigningJobFailure;
   /// The name of the profile to initiate the signing operation.
   final pulumi.Input<String> profileName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The S3 bucket that contains the object to sign. See Source below for details.
   final pulumi.Input<SigningJobSource> source;
 

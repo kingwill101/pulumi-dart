@@ -16,14 +16,14 @@ import 'agentcore_policy_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcorePolicy("example", {
-///     name: "example_policy",
-///     policyEngineId: exampleAwsBedrockagentcorePolicyEngine.policyEngineId,
-///     description: "Allow read access to example resources",
 ///     definition: {
 ///         cedar: {
 ///             statement: "permit(principal, action == Action::\\\"Read\\\", resource);\n",
 ///         },
 ///     },
+///     name: "example_policy",
+///     policyEngineId: exampleAwsBedrockagentcorePolicyEngine.policyEngineId,
+///     description: "Allow read access to example resources",
 /// });
 /// ```
 /// ```python
@@ -31,14 +31,14 @@ import 'agentcore_policy_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcorePolicy("example",
-///     name="example_policy",
-///     policy_engine_id=example_aws_bedrockagentcore_policy_engine["policyEngineId"],
-///     description="Allow read access to example resources",
 ///     definition={
 ///         "cedar": {
 ///             "statement": "permit(principal, action == Action::\\\"Read\\\", resource);\n",
 ///         },
-///     })
+///     },
+///     name="example_policy",
+///     policy_engine_id=example_aws_bedrockagentcore_policy_engine["policyEngineId"],
+///     description="Allow read access to example resources")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,9 +50,6 @@ import 'agentcore_policy_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcorePolicy("example", new()
 ///     {
-///         Name = "example_policy",
-///         PolicyEngineId = exampleAwsBedrockagentcorePolicyEngine.PolicyEngineId,
-///         Description = "Allow read access to example resources",
 ///         Definition = new Aws.Bedrock.Inputs.AgentcorePolicyDefinitionArgs
 ///         {
 ///             Cedar = new Aws.Bedrock.Inputs.AgentcorePolicyDefinitionCedarArgs
@@ -61,6 +58,9 @@ import 'agentcore_policy_timeouts.dart';
 /// ",
 ///             },
 ///         },
+///         Name = "example_policy",
+///         PolicyEngineId = exampleAwsBedrockagentcorePolicyEngine.PolicyEngineId,
+///         Description = "Allow read access to example resources",
 ///     });
 ///
 /// });
@@ -76,14 +76,14 @@ import 'agentcore_policy_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcorePolicy(ctx, "example", &bedrock.AgentcorePolicyArgs{
-/// 			Name:           pulumi.String("example_policy"),
-/// 			PolicyEngineId: pulumi.Any(exampleAwsBedrockagentcorePolicyEngine.PolicyEngineId),
-/// 			Description:    pulumi.String("Allow read access to example resources"),
 /// 			Definition: &bedrock.AgentcorePolicyDefinitionArgs{
 /// 				Cedar: &bedrock.AgentcorePolicyDefinitionCedarArgs{
 /// 					Statement: pulumi.String("permit(principal, action == Action::\\\"Read\\\", resource);\n"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("example_policy"),
+/// 			PolicyEngineId: pulumi.Any(exampleAwsBedrockagentcorePolicyEngine.PolicyEngineId),
+/// 			Description:    pulumi.String("Allow read access to example resources"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -102,14 +102,14 @@ import 'agentcore_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorepolicy" "example" {
-///   name             = "example_policy"
-///   policy_engine_id = exampleAwsBedrockagentcorePolicyEngine.policyEngineId
-///   description      = "Allow read access to example resources"
 ///   definition = {
 ///     cedar = {
 ///       statement = "permit(principal, action == Action::\\\"Read\\\", resource);\n"
 ///     }
 ///   }
+///   name             = "example_policy"
+///   policy_engine_id = exampleAwsBedrockagentcorePolicyEngine.policyEngineId
+///   description      = "Allow read access to example resources"
 /// }
 /// ```
 /// ```java
@@ -136,9 +136,6 @@ import 'agentcore_policy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcorePolicy("example", AgentcorePolicyArgs.builder()
-///             .name("example_policy")
-///             .policyEngineId(exampleAwsBedrockagentcorePolicyEngine.policyEngineId())
-///             .description("Allow read access to example resources")
 ///             .definition(AgentcorePolicyDefinitionArgs.builder()
 ///                 .cedar(AgentcorePolicyDefinitionCedarArgs.builder()
 ///                     .statement("""
@@ -146,6 +143,9 @@ import 'agentcore_policy_timeouts.dart';
 ///                     """)
 ///                     .build())
 ///                 .build())
+///             .name("example_policy")
+///             .policyEngineId(exampleAwsBedrockagentcorePolicyEngine.policyEngineId())
+///             .description("Allow read access to example resources")
 ///             .build());
 ///
 ///     }
@@ -156,13 +156,13 @@ import 'agentcore_policy_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcorePolicy
 ///     properties:
-///       name: example_policy
-///       policyEngineId: ${exampleAwsBedrockagentcorePolicyEngine.policyEngineId}
-///       description: Allow read access to example resources
 ///       definition:
 ///         cedar:
 ///           statement: |
 ///             permit(principal, action == Action::\"Read\", resource);
+///       name: example_policy
+///       policyEngineId: ${exampleAwsBedrockagentcorePolicyEngine.policyEngineId}
+///       description: Allow read access to example resources
 /// ```
 ///
 ///
@@ -219,7 +219,7 @@ class AgentcorePolicy extends pulumi.CustomResource {
           'aws:bedrock/agentcorePolicy:AgentcorePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     definition = registerOutput<AgentcorePolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcorePolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
@@ -237,11 +237,12 @@ class AgentcorePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcorePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcorePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,6 +256,26 @@ class AgentcorePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    definition = registerOutput<AgentcorePolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcorePolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    policyArn = registerOutput<String>('policyArn');
+    policyEngineId = registerOutput<String>('policyEngineId');
+    policyId = registerOutput<String>('policyId');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<AgentcorePolicyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcorePolicyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationMode = registerOutput<String?>('validationMode');
+  }
+
+  /// Creates a typed reference to an existing [AgentcorePolicy] resource.
+  AgentcorePolicy.reference(String urn)
+    : super(
+        'aws:bedrock/agentcorePolicy:AgentcorePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     definition = registerOutput<AgentcorePolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcorePolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

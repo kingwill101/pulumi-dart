@@ -6,11 +6,11 @@ import 'v2models_slot_value_elicitation_setting_prompt_specification_prompt_atte
 import 'v2models_slot_value_elicitation_setting_prompt_specification_prompt_attempts_specification_text_input_specification.dart';
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification {
-  final pulumi.Input<bool>? allowInterrupt;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes>? allowedInputTypes;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification>? audioAndDtmfInputSpecification;
+  final pulumi.Input<bool?>? allowInterrupt;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes?>? allowedInputTypes;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification?>? audioAndDtmfInputSpecification;
   final pulumi.Input<String> mapBlockKey;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification>? textInputSpecification;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification?>? textInputSpecification;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification].
   /// [allowInterrupt] Optional.

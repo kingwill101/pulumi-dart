@@ -10,9 +10,9 @@ class CentralizationRuleForOrganizationRuleSource {
   /// Scope defining which resources to include. Use organization ID format: `OrganizationId = 'o-example123456'`.
   final pulumi.Input<String> scope;
   /// Configuration block for source logs settings. See `sourceLogsConfiguration` below.
-  final pulumi.Input<CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration>? sourceLogsConfiguration;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration?>? sourceLogsConfiguration;
   /// Configuration block for source metrics settings. See `sourceMetricsConfiguration` below.
-  final pulumi.Input<CentralizationRuleForOrganizationRuleSourceSourceMetricsConfiguration>? sourceMetricsConfiguration;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleSourceSourceMetricsConfiguration?>? sourceMetricsConfiguration;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleSource].
   /// [regions] Set of AWS regions from which to centralize telemetry. Must contain at least one region.

@@ -5,7 +5,7 @@ import 'get_listener_rule_action_jwt_validation_additional_claim.dart';
 
 class GetListenerRuleActionJwtValidation {
   /// Additional claims to validate.
-  final pulumi.Input<List<GetListenerRuleActionJwtValidationAdditionalClaim>>? additionalClaims;
+  final pulumi.Input<List<GetListenerRuleActionJwtValidationAdditionalClaim>?>? additionalClaims;
   /// Issuer of the JWT.
   final pulumi.Input<String> issuer;
   /// JSON Web Key Set (JWKS) endpoint.

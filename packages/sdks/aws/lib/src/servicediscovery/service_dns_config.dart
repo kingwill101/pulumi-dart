@@ -9,7 +9,7 @@ class ServiceDnsConfig {
   /// The ID of the namespace to use for DNS configuration.
   final pulumi.Input<String> namespaceId;
   /// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
-  final pulumi.Input<String>? routingPolicy;
+  final pulumi.Input<String?>? routingPolicy;
 
   /// Creates a new [ServiceDnsConfig].
   /// [dnsRecords] An array that contains one DnsRecord object for each resource record set. See `dnsRecords` Block for details.

@@ -6,10 +6,10 @@ import 'certificate_authority_revocation_configuration_ocsp_configuration.dart';
 
 class CertificateAuthorityRevocationConfiguration {
   /// Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.
-  final pulumi.Input<CertificateAuthorityRevocationConfigurationCrlConfiguration>? crlConfiguration;
+  final pulumi.Input<CertificateAuthorityRevocationConfigurationCrlConfiguration?>? crlConfiguration;
   /// Nested argument containing configuration of
   /// the custom OCSP responder endpoint. Defined below.
-  final pulumi.Input<CertificateAuthorityRevocationConfigurationOcspConfiguration>? ocspConfiguration;
+  final pulumi.Input<CertificateAuthorityRevocationConfigurationOcspConfiguration?>? ocspConfiguration;
 
   /// Creates a new [CertificateAuthorityRevocationConfiguration].
   /// [crlConfiguration] Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.

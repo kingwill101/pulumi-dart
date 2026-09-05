@@ -25,7 +25,7 @@ class VirtualGatewaySpecListenerPortMapping {
 
   factory VirtualGatewaySpecListenerPortMapping.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerPortMapping(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }

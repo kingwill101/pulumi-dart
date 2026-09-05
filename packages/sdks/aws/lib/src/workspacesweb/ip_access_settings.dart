@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_access_settings_args.dart';
+import 'ip_access_settings_ip_rule.dart';
 import 'ip_access_settings_state.dart';
 
 /// Resource for managing an AWS WorkSpaces Web IP Access Settings resource. Once associated with a web portal, IP access settings control which IP addresses users can connect from.
@@ -14,10 +15,10 @@ import 'ip_access_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspacesweb.IpAccessSettings("example", {
-///     displayName: "example",
 ///     ipRules: [{
 ///         ipRange: "10.0.0.0/16",
 ///     }],
+///     displayName: "example",
 /// });
 /// ```
 /// ```python
@@ -25,10 +26,10 @@ import 'ip_access_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspacesweb.IpAccessSettings("example",
-///     display_name="example",
 ///     ip_rules=[{
 ///         "ip_range": "10.0.0.0/16",
-///     }])
+///     }],
+///     display_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -40,7 +41,6 @@ import 'ip_access_settings_state.dart';
 /// {
 ///     var example = new Aws.WorkSpacesWeb.IpAccessSettings("example", new()
 ///     {
-///         DisplayName = "example",
 ///         IpRules = new[]
 ///         {
 ///             new Aws.WorkSpacesWeb.Inputs.IpAccessSettingsIpRuleArgs
@@ -48,6 +48,7 @@ import 'ip_access_settings_state.dart';
 ///                 IpRange = "10.0.0.0/16",
 ///             },
 ///         },
+///         DisplayName = "example",
 ///     });
 ///
 /// });
@@ -63,12 +64,12 @@ import 'ip_access_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspacesweb.NewIpAccessSettings(ctx, "example", &workspacesweb.IpAccessSettingsArgs{
-/// 			DisplayName: pulumi.String("example"),
 /// 			IpRules: workspacesweb.IpAccessSettingsIpRuleArray{
 /// 				&workspacesweb.IpAccessSettingsIpRuleArgs{
 /// 					IpRange: pulumi.String("10.0.0.0/16"),
 /// 				},
 /// 			},
+/// 			DisplayName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,10 +88,10 @@ import 'ip_access_settings_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   display_name = "example"
 ///   ip_rules {
 ///     ip_range = "10.0.0.0/16"
 ///   }
+///   display_name = "example"
 /// }
 /// ```
 /// ```java
@@ -116,10 +117,10 @@ import 'ip_access_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IpAccessSettings("example", IpAccessSettingsArgs.builder()
-///             .displayName("example")
 ///             .ipRules(IpAccessSettingsIpRuleArgs.builder()
 ///                 .ipRange("10.0.0.0/16")
 ///                 .build())
+///             .displayName("example")
 ///             .build());
 ///
 ///     }
@@ -130,9 +131,9 @@ import 'ip_access_settings_state.dart';
 ///   example:
 ///     type: aws:workspacesweb:IpAccessSettings
 ///     properties:
-///       displayName: example
 ///       ipRules:
 ///         - ipRange: 10.0.0.0/16
+///       displayName: example
 /// ```
 ///
 ///
@@ -144,8 +145,6 @@ import 'ip_access_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspacesweb.IpAccessSettings("example", {
-///     displayName: "example",
-///     description: "Example IP access settings",
 ///     ipRules: [
 ///         {
 ///             ipRange: "10.0.0.0/16",
@@ -156,6 +155,8 @@ import 'ip_access_settings_state.dart';
 ///             description: "Branch office",
 ///         },
 ///     ],
+///     displayName: "example",
+///     description: "Example IP access settings",
 /// });
 /// ```
 /// ```python
@@ -163,8 +164,6 @@ import 'ip_access_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspacesweb.IpAccessSettings("example",
-///     display_name="example",
-///     description="Example IP access settings",
 ///     ip_rules=[
 ///         {
 ///             "ip_range": "10.0.0.0/16",
@@ -174,7 +173,9 @@ import 'ip_access_settings_state.dart';
 ///             "ip_range": "192.168.0.0/24",
 ///             "description": "Branch office",
 ///         },
-///     ])
+///     ],
+///     display_name="example",
+///     description="Example IP access settings")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -186,8 +187,6 @@ import 'ip_access_settings_state.dart';
 /// {
 ///     var example = new Aws.WorkSpacesWeb.IpAccessSettings("example", new()
 ///     {
-///         DisplayName = "example",
-///         Description = "Example IP access settings",
 ///         IpRules = new[]
 ///         {
 ///             new Aws.WorkSpacesWeb.Inputs.IpAccessSettingsIpRuleArgs
@@ -201,6 +200,8 @@ import 'ip_access_settings_state.dart';
 ///                 Description = "Branch office",
 ///             },
 ///         },
+///         DisplayName = "example",
+///         Description = "Example IP access settings",
 ///     });
 ///
 /// });
@@ -216,8 +217,6 @@ import 'ip_access_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspacesweb.NewIpAccessSettings(ctx, "example", &workspacesweb.IpAccessSettingsArgs{
-/// 			DisplayName: pulumi.String("example"),
-/// 			Description: pulumi.String("Example IP access settings"),
 /// 			IpRules: workspacesweb.IpAccessSettingsIpRuleArray{
 /// 				&workspacesweb.IpAccessSettingsIpRuleArgs{
 /// 					IpRange:     pulumi.String("10.0.0.0/16"),
@@ -228,6 +227,8 @@ import 'ip_access_settings_state.dart';
 /// 					Description: pulumi.String("Branch office"),
 /// 				},
 /// 			},
+/// 			DisplayName: pulumi.String("example"),
+/// 			Description: pulumi.String("Example IP access settings"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -246,8 +247,6 @@ import 'ip_access_settings_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   display_name = "example"
-///   description  = "Example IP access settings"
 ///   ip_rules {
 ///     ip_range    = "10.0.0.0/16"
 ///     description = "Main office"
@@ -256,6 +255,8 @@ import 'ip_access_settings_state.dart';
 ///     ip_range    = "192.168.0.0/24"
 ///     description = "Branch office"
 ///   }
+///   display_name = "example"
+///   description  = "Example IP access settings"
 /// }
 /// ```
 /// ```java
@@ -281,8 +282,6 @@ import 'ip_access_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IpAccessSettings("example", IpAccessSettingsArgs.builder()
-///             .displayName("example")
-///             .description("Example IP access settings")
 ///             .ipRules(
 ///                 IpAccessSettingsIpRuleArgs.builder()
 ///                     .ipRange("10.0.0.0/16")
@@ -292,6 +291,8 @@ import 'ip_access_settings_state.dart';
 ///                     .ipRange("192.168.0.0/24")
 ///                     .description("Branch office")
 ///                     .build())
+///             .displayName("example")
+///             .description("Example IP access settings")
 ///             .build());
 ///
 ///     }
@@ -302,13 +303,13 @@ import 'ip_access_settings_state.dart';
 ///   example:
 ///     type: aws:workspacesweb:IpAccessSettings
 ///     properties:
-///       displayName: example
-///       description: Example IP access settings
 ///       ipRules:
 ///         - ipRange: 10.0.0.0/16
 ///           description: Main office
 ///         - ipRange: 192.168.0.0/24
 ///           description: Branch office
+///       displayName: example
+///       description: Example IP access settings
 /// ```
 ///
 ///
@@ -324,12 +325,6 @@ import 'ip_access_settings_state.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleIpAccessSettings = new aws.workspacesweb.IpAccessSettings("example", {
-///     displayName: "example",
-///     description: "Example IP access settings",
-///     customerManagedKey: example.arn,
-///     additionalEncryptionContext: {
-///         Environment: "Production",
-///     },
 ///     ipRules: [
 ///         {
 ///             ipRange: "10.0.0.0/16",
@@ -340,6 +335,12 @@ import 'ip_access_settings_state.dart';
 ///             description: "Branch office",
 ///         },
 ///     ],
+///     displayName: "example",
+///     description: "Example IP access settings",
+///     customerManagedKey: example.arn,
+///     additionalEncryptionContext: {
+///         Environment: "Production",
+///     },
 ///     tags: {
 ///         Name: "example-ip-access-settings",
 ///     },
@@ -353,12 +354,6 @@ import 'ip_access_settings_state.dart';
 ///     description="KMS key for WorkSpaces Web IP Access Settings",
 ///     deletion_window_in_days=7)
 /// example_ip_access_settings = aws.workspacesweb.IpAccessSettings("example",
-///     display_name="example",
-///     description="Example IP access settings",
-///     customer_managed_key=example.arn,
-///     additional_encryption_context={
-///         "Environment": "Production",
-///     },
 ///     ip_rules=[
 ///         {
 ///             "ip_range": "10.0.0.0/16",
@@ -369,6 +364,12 @@ import 'ip_access_settings_state.dart';
 ///             "description": "Branch office",
 ///         },
 ///     ],
+///     display_name="example",
+///     description="Example IP access settings",
+///     customer_managed_key=example.arn,
+///     additional_encryption_context={
+///         "Environment": "Production",
+///     },
 ///     tags={
 ///         "Name": "example-ip-access-settings",
 ///     })
@@ -389,13 +390,6 @@ import 'ip_access_settings_state.dart';
 ///
 ///     var exampleIpAccessSettings = new Aws.WorkSpacesWeb.IpAccessSettings("example", new()
 ///     {
-///         DisplayName = "example",
-///         Description = "Example IP access settings",
-///         CustomerManagedKey = example.Arn,
-///         AdditionalEncryptionContext =
-///         {
-///             { "Environment", "Production" },
-///         },
 ///         IpRules = new[]
 ///         {
 ///             new Aws.WorkSpacesWeb.Inputs.IpAccessSettingsIpRuleArgs
@@ -408,6 +402,13 @@ import 'ip_access_settings_state.dart';
 ///                 IpRange = "192.168.0.0/24",
 ///                 Description = "Branch office",
 ///             },
+///         },
+///         DisplayName = "example",
+///         Description = "Example IP access settings",
+///         CustomerManagedKey = example.Arn,
+///         AdditionalEncryptionContext =
+///         {
+///             { "Environment", "Production" },
 ///         },
 ///         Tags =
 ///         {
@@ -436,12 +437,6 @@ import 'ip_access_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspacesweb.NewIpAccessSettings(ctx, "example", &workspacesweb.IpAccessSettingsArgs{
-/// 			DisplayName:        pulumi.String("example"),
-/// 			Description:        pulumi.String("Example IP access settings"),
-/// 			CustomerManagedKey: example.Arn,
-/// 			AdditionalEncryptionContext: pulumi.StringMap{
-/// 				"Environment": pulumi.String("Production"),
-/// 			},
 /// 			IpRules: workspacesweb.IpAccessSettingsIpRuleArray{
 /// 				&workspacesweb.IpAccessSettingsIpRuleArgs{
 /// 					IpRange:     pulumi.String("10.0.0.0/16"),
@@ -451,6 +446,12 @@ import 'ip_access_settings_state.dart';
 /// 					IpRange:     pulumi.String("192.168.0.0/24"),
 /// 					Description: pulumi.String("Branch office"),
 /// 				},
+/// 			},
+/// 			DisplayName:        pulumi.String("example"),
+/// 			Description:        pulumi.String("Example IP access settings"),
+/// 			CustomerManagedKey: example.Arn,
+/// 			AdditionalEncryptionContext: pulumi.StringMap{
+/// 				"Environment": pulumi.String("Production"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-ip-access-settings"),
@@ -477,12 +478,6 @@ import 'ip_access_settings_state.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   display_name         = "example"
-///   description          = "Example IP access settings"
-///   customer_managed_key = aws_kms_key.example.arn
-///   additional_encryption_context = {
-///     "Environment" = "Production"
-///   }
 ///   ip_rules {
 ///     ip_range    = "10.0.0.0/16"
 ///     description = "Main office"
@@ -490,6 +485,12 @@ import 'ip_access_settings_state.dart';
 ///   ip_rules {
 ///     ip_range    = "192.168.0.0/24"
 ///     description = "Branch office"
+///   }
+///   display_name         = "example"
+///   description          = "Example IP access settings"
+///   customer_managed_key = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
 ///   }
 ///   tags = {
 ///     "Name" = "example-ip-access-settings"
@@ -526,10 +527,6 @@ import 'ip_access_settings_state.dart';
 ///             .build());
 ///
 ///         var exampleIpAccessSettings = new IpAccessSettings("exampleIpAccessSettings", IpAccessSettingsArgs.builder()
-///             .displayName("example")
-///             .description("Example IP access settings")
-///             .customerManagedKey(example.arn())
-///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .ipRules(
 ///                 IpAccessSettingsIpRuleArgs.builder()
 ///                     .ipRange("10.0.0.0/16")
@@ -539,6 +536,10 @@ import 'ip_access_settings_state.dart';
 ///                     .ipRange("192.168.0.0/24")
 ///                     .description("Branch office")
 ///                     .build())
+///             .displayName("example")
+///             .description("Example IP access settings")
+///             .customerManagedKey(example.arn())
+///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .tags(Map.of("Name", "example-ip-access-settings"))
 ///             .build());
 ///
@@ -556,16 +557,16 @@ import 'ip_access_settings_state.dart';
 ///     type: aws:workspacesweb:IpAccessSettings
 ///     name: example
 ///     properties:
-///       displayName: example
-///       description: Example IP access settings
-///       customerManagedKey: ${example.arn}
-///       additionalEncryptionContext:
-///         Environment: Production
 ///       ipRules:
 ///         - ipRange: 10.0.0.0/16
 ///           description: Main office
 ///         - ipRange: 192.168.0.0/24
 ///           description: Branch office
+///       displayName: example
+///       description: Example IP access settings
+///       customerManagedKey: ${example.arn}
+///       additionalEncryptionContext:
+///         Environment: Production
 ///       tags:
 ///         Name: example-ip-access-settings
 /// ```
@@ -594,7 +595,7 @@ class IpAccessSettings extends pulumi.CustomResource {
   /// The IP rules of the IP access settings. See IP Rule below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> ipRules;
+  late final pulumi.Output<List<IpAccessSettingsIpRule>> ipRules;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -614,18 +615,18 @@ class IpAccessSettings extends pulumi.CustomResource {
           'aws:workspacesweb/ipAccessSettings:IpAccessSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
-    ipRules = registerOutput<List<Map<String, dynamic>>>('ipRules');
+    ipRules = registerOutput<List<IpAccessSettingsIpRule>>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpAccessSettingsIpRule>(guardedValue, (value) => IpAccessSettingsIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IpAccessSettings] resource's state with the given [name] and [id].
@@ -633,11 +634,12 @@ class IpAccessSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IpAccessSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IpAccessSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -651,15 +653,36 @@ class IpAccessSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
-    ipRules = registerOutput<List<Map<String, dynamic>>>('ipRules');
+    ipRules = registerOutput<List<IpAccessSettingsIpRule>>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpAccessSettingsIpRule>(guardedValue, (value) => IpAccessSettingsIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IpAccessSettings] resource.
+  IpAccessSettings.reference(String urn)
+    : super(
+        'aws:workspacesweb/ipAccessSettings:IpAccessSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
+    ipRules = registerOutput<List<IpAccessSettingsIpRule>>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpAccessSettingsIpRule>(guardedValue, (value) => IpAccessSettingsIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -9,9 +9,9 @@ import 'voice_connector_origination_route.dart';
 /// {@macro pulumi_chime_voice_connector_origination_voice_connector_origination_args_doc}
 class VoiceConnectorOriginationArgs {
   /// When origination settings are disabled, inbound calls are not enabled for your Amazon Chime Voice Connector.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
   final pulumi.Input<List<VoiceConnectorOriginationRoute>> routes;
   /// The Amazon Chime Voice Connector ID.

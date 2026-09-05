@@ -40,11 +40,11 @@ class AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfigura
 
   factory AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration(
-      maxLength: pulumi.Input.fromValue(map['maxLength'] as int),
+      maxLength: pulumi.Input.fromValue((map['maxLength'] as num).toInt()),
       stopSequences: pulumi.Input.fromValue((map['stopSequences'] as List).cast<String>()),
-      temperature: pulumi.Input.fromValue(map['temperature'] as double),
-      topK: pulumi.Input.fromValue(map['topK'] as int),
-      topP: pulumi.Input.fromValue(map['topP'] as double),
+      temperature: pulumi.Input.fromValue((map['temperature'] as num).toDouble()),
+      topK: pulumi.Input.fromValue((map['topK'] as num).toInt()),
+      topP: pulumi.Input.fromValue((map['topP'] as num).toDouble()),
     );
   }
 }

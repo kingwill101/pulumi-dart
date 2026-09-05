@@ -19,9 +19,6 @@ import 'inventory_state.dart';
 /// const test = new aws.s3.Bucket("test", {bucket: "my-tf-test-bucket"});
 /// const inventory = new aws.s3.Bucket("inventory", {bucket: "my-tf-inventory-bucket"});
 /// const testInventory = new aws.s3.Inventory("test", {
-///     bucket: test.id,
-///     name: "EntireBucketDaily",
-///     includedObjectVersions: "All",
 ///     schedule: {
 ///         frequency: "Daily",
 ///     },
@@ -31,6 +28,9 @@ import 'inventory_state.dart';
 ///             bucketArn: inventory.arn,
 ///         },
 ///     },
+///     bucket: test.id,
+///     name: "EntireBucketDaily",
+///     includedObjectVersions: "All",
 /// });
 /// ```
 /// ```python
@@ -40,9 +40,6 @@ import 'inventory_state.dart';
 /// test = aws.s3.Bucket("test", bucket="my-tf-test-bucket")
 /// inventory = aws.s3.Bucket("inventory", bucket="my-tf-inventory-bucket")
 /// test_inventory = aws.s3.Inventory("test",
-///     bucket=test.id,
-///     name="EntireBucketDaily",
-///     included_object_versions="All",
 ///     schedule={
 ///         "frequency": "Daily",
 ///     },
@@ -51,7 +48,10 @@ import 'inventory_state.dart';
 ///             "format": "ORC",
 ///             "bucket_arn": inventory.arn,
 ///         },
-///     })
+///     },
+///     bucket=test.id,
+///     name="EntireBucketDaily",
+///     included_object_versions="All")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -73,9 +73,6 @@ import 'inventory_state.dart';
 ///
 ///     var testInventory = new Aws.S3.Inventory("test", new()
 ///     {
-///         Bucket = test.Id,
-///         Name = "EntireBucketDaily",
-///         IncludedObjectVersions = "All",
 ///         Schedule = new Aws.S3.Inputs.InventoryScheduleArgs
 ///         {
 ///             Frequency = "Daily",
@@ -88,6 +85,9 @@ import 'inventory_state.dart';
 ///                 BucketArn = inventory.Arn,
 ///             },
 ///         },
+///         Bucket = test.Id,
+///         Name = "EntireBucketDaily",
+///         IncludedObjectVersions = "All",
 ///     });
 ///
 /// });
@@ -115,9 +115,6 @@ import 'inventory_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewInventory(ctx, "test", &s3.InventoryArgs{
-/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:                   pulumi.String("EntireBucketDaily"),
-/// 			IncludedObjectVersions: pulumi.String("All"),
 /// 			Schedule: &s3.InventoryScheduleArgs{
 /// 				Frequency: pulumi.String("Daily"),
 /// 			},
@@ -127,6 +124,9 @@ import 'inventory_state.dart';
 /// 					BucketArn: inventory.Arn,
 /// 				},
 /// 			},
+/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                   pulumi.String("EntireBucketDaily"),
+/// 			IncludedObjectVersions: pulumi.String("All"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -151,9 +151,6 @@ import 'inventory_state.dart';
 ///   bucket = "my-tf-inventory-bucket"
 /// }
 /// resource "aws_s3_inventory" "test" {
-///   bucket                   = aws_s3_bucket.test.id
-///   name                     = "EntireBucketDaily"
-///   included_object_versions = "All"
 ///   schedule = {
 ///     frequency = "Daily"
 ///   }
@@ -163,6 +160,9 @@ import 'inventory_state.dart';
 ///       bucket_arn = aws_s3_bucket.inventory.arn
 ///     }
 ///   }
+///   bucket                   = aws_s3_bucket.test.id
+///   name                     = "EntireBucketDaily"
+///   included_object_versions = "All"
 /// }
 /// ```
 /// ```java
@@ -200,9 +200,6 @@ import 'inventory_state.dart';
 ///             .build());
 ///
 ///         var testInventory = new Inventory("testInventory", InventoryArgs.builder()
-///             .bucket(test.id())
-///             .name("EntireBucketDaily")
-///             .includedObjectVersions("All")
 ///             .schedule(InventoryScheduleArgs.builder()
 ///                 .frequency("Daily")
 ///                 .build())
@@ -212,6 +209,9 @@ import 'inventory_state.dart';
 ///                     .bucketArn(inventory.arn())
 ///                     .build())
 ///                 .build())
+///             .bucket(test.id())
+///             .name("EntireBucketDaily")
+///             .includedObjectVersions("All")
 ///             .build());
 ///
 ///     }
@@ -231,15 +231,15 @@ import 'inventory_state.dart';
 ///     type: aws:s3:Inventory
 ///     name: test
 ///     properties:
-///       bucket: ${test.id}
-///       name: EntireBucketDaily
-///       includedObjectVersions: All
 ///       schedule:
 ///         frequency: Daily
 ///       destination:
 ///         bucket:
 ///           format: ORC
 ///           bucketArn: ${inventory.arn}
+///       bucket: ${test.id}
+///       name: EntireBucketDaily
+///       includedObjectVersions: All
 /// ```
 ///
 ///
@@ -253,9 +253,6 @@ import 'inventory_state.dart';
 /// const test = new aws.s3.Bucket("test", {bucket: "my-tf-test-bucket"});
 /// const inventory = new aws.s3.Bucket("inventory", {bucket: "my-tf-inventory-bucket"});
 /// const test_prefix = new aws.s3.Inventory("test-prefix", {
-///     bucket: test.id,
-///     name: "DocumentsWeekly",
-///     includedObjectVersions: "All",
 ///     schedule: {
 ///         frequency: "Daily",
 ///     },
@@ -269,6 +266,9 @@ import 'inventory_state.dart';
 ///             prefix: "inventory",
 ///         },
 ///     },
+///     bucket: test.id,
+///     name: "DocumentsWeekly",
+///     includedObjectVersions: "All",
 /// });
 /// ```
 /// ```python
@@ -278,9 +278,6 @@ import 'inventory_state.dart';
 /// test = aws.s3.Bucket("test", bucket="my-tf-test-bucket")
 /// inventory = aws.s3.Bucket("inventory", bucket="my-tf-inventory-bucket")
 /// test_prefix = aws.s3.Inventory("test-prefix",
-///     bucket=test.id,
-///     name="DocumentsWeekly",
-///     included_object_versions="All",
 ///     schedule={
 ///         "frequency": "Daily",
 ///     },
@@ -293,7 +290,10 @@ import 'inventory_state.dart';
 ///             "bucket_arn": inventory.arn,
 ///             "prefix": "inventory",
 ///         },
-///     })
+///     },
+///     bucket=test.id,
+///     name="DocumentsWeekly",
+///     included_object_versions="All")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -315,9 +315,6 @@ import 'inventory_state.dart';
 ///
 ///     var test_prefix = new Aws.S3.Inventory("test-prefix", new()
 ///     {
-///         Bucket = test.Id,
-///         Name = "DocumentsWeekly",
-///         IncludedObjectVersions = "All",
 ///         Schedule = new Aws.S3.Inputs.InventoryScheduleArgs
 ///         {
 ///             Frequency = "Daily",
@@ -335,6 +332,9 @@ import 'inventory_state.dart';
 ///                 Prefix = "inventory",
 ///             },
 ///         },
+///         Bucket = test.Id,
+///         Name = "DocumentsWeekly",
+///         IncludedObjectVersions = "All",
 ///     });
 ///
 /// });
@@ -362,9 +362,6 @@ import 'inventory_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewInventory(ctx, "test-prefix", &s3.InventoryArgs{
-/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:                   pulumi.String("DocumentsWeekly"),
-/// 			IncludedObjectVersions: pulumi.String("All"),
 /// 			Schedule: &s3.InventoryScheduleArgs{
 /// 				Frequency: pulumi.String("Daily"),
 /// 			},
@@ -378,6 +375,9 @@ import 'inventory_state.dart';
 /// 					Prefix:    pulumi.String("inventory"),
 /// 				},
 /// 			},
+/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                   pulumi.String("DocumentsWeekly"),
+/// 			IncludedObjectVersions: pulumi.String("All"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -402,9 +402,6 @@ import 'inventory_state.dart';
 ///   bucket = "my-tf-inventory-bucket"
 /// }
 /// resource "aws_s3_inventory" "test-prefix" {
-///   bucket                   = aws_s3_bucket.test.id
-///   name                     = "DocumentsWeekly"
-///   included_object_versions = "All"
 ///   schedule = {
 ///     frequency = "Daily"
 ///   }
@@ -418,6 +415,9 @@ import 'inventory_state.dart';
 ///       prefix     = "inventory"
 ///     }
 ///   }
+///   bucket                   = aws_s3_bucket.test.id
+///   name                     = "DocumentsWeekly"
+///   included_object_versions = "All"
 /// }
 /// ```
 /// ```java
@@ -456,9 +456,6 @@ import 'inventory_state.dart';
 ///             .build());
 ///
 ///         var test_prefix = new Inventory("test-prefix", InventoryArgs.builder()
-///             .bucket(test.id())
-///             .name("DocumentsWeekly")
-///             .includedObjectVersions("All")
 ///             .schedule(InventoryScheduleArgs.builder()
 ///                 .frequency("Daily")
 ///                 .build())
@@ -472,6 +469,9 @@ import 'inventory_state.dart';
 ///                     .prefix("inventory")
 ///                     .build())
 ///                 .build())
+///             .bucket(test.id())
+///             .name("DocumentsWeekly")
+///             .includedObjectVersions("All")
 ///             .build());
 ///
 ///     }
@@ -490,9 +490,6 @@ import 'inventory_state.dart';
 ///   test-prefix:
 ///     type: aws:s3:Inventory
 ///     properties:
-///       bucket: ${test.id}
-///       name: DocumentsWeekly
-///       includedObjectVersions: All
 ///       schedule:
 ///         frequency: Daily
 ///       filter:
@@ -502,6 +499,9 @@ import 'inventory_state.dart';
 ///           format: ORC
 ///           bucketArn: ${inventory.arn}
 ///           prefix: inventory
+///       bucket: ${test.id}
+///       name: DocumentsWeekly
+///       includedObjectVersions: All
 /// ```
 ///
 ///
@@ -546,7 +546,7 @@ class Inventory extends pulumi.CustomResource {
           'aws:s3/inventory:Inventory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     destination = registerOutput<InventoryDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventoryDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -554,7 +554,7 @@ class Inventory extends pulumi.CustomResource {
     filter = registerOutput<InventoryFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventoryFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     includedObjectVersions = registerOutput<String>('includedObjectVersions');
     this.name = registerOutput<String>('name');
-    optionalFields = registerOutput<List<String>?>('optionalFields');
+    optionalFields = registerOutput<List<String>?>('optionalFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     schedule = registerOutput<InventorySchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventorySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -564,11 +564,12 @@ class Inventory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InventoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Inventory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -588,7 +589,27 @@ class Inventory extends pulumi.CustomResource {
     filter = registerOutput<InventoryFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventoryFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     includedObjectVersions = registerOutput<String>('includedObjectVersions');
     this.name = registerOutput<String>('name');
-    optionalFields = registerOutput<List<String>?>('optionalFields');
+    optionalFields = registerOutput<List<String>?>('optionalFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    schedule = registerOutput<InventorySchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventorySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Inventory] resource.
+  Inventory.reference(String urn)
+    : super(
+        'aws:s3/inventory:Inventory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    destination = registerOutput<InventoryDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventoryDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool?>('enabled');
+    filter = registerOutput<InventoryFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventoryFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includedObjectVersions = registerOutput<String>('includedObjectVersions');
+    this.name = registerOutput<String>('name');
+    optionalFields = registerOutput<List<String>?>('optionalFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     schedule = registerOutput<InventorySchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventorySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

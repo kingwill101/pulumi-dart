@@ -8,7 +8,7 @@ class ConfigurationTemplateSetting {
   /// Unique namespace identifying the option's associated AWS resource
   final pulumi.Input<String> namespace;
   /// resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// Value for the configuration option
   final pulumi.Input<String> value;
 

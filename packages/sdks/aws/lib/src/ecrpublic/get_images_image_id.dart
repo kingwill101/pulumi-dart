@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImageId {
   /// Digest of the image manifest.
-  final pulumi.Input<String>? imageDigest;
+  final pulumi.Input<String?>? imageDigest;
   /// Tag used for the image.
-  final pulumi.Input<String>? imageTag;
+  final pulumi.Input<String?>? imageTag;
 
   /// Creates a new [GetImagesImageId].
   /// [imageDigest] Digest of the image manifest.

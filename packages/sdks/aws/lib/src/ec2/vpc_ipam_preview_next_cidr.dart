@@ -319,10 +319,10 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
-    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
+    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipamPoolId = registerOutput<String>('ipamPoolId');
     netmaskLength = registerOutput<int?>('netmaskLength');
     region = registerOutput<String>('region');
@@ -333,11 +333,12 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpamPreviewNextCidrState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpamPreviewNextCidr._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -352,7 +353,23 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cidr = registerOutput<String>('cidr');
-    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
+    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    netmaskLength = registerOutput<int?>('netmaskLength');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [VpcIpamPreviewNextCidr] resource.
+  VpcIpamPreviewNextCidr.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidr = registerOutput<String>('cidr');
+    disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipamPoolId = registerOutput<String>('ipamPoolId');
     netmaskLength = registerOutput<int?>('netmaskLength');
     region = registerOutput<String>('region');

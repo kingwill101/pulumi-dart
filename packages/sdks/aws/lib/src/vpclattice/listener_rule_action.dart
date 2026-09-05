@@ -6,9 +6,9 @@ import 'listener_rule_action_forward.dart';
 
 class ListenerRuleAction {
   /// Rule action that returns a custom HTTP response. See `fixedResponse` Block for details.
-  final pulumi.Input<ListenerRuleActionFixedResponse>? fixedResponse;
+  final pulumi.Input<ListenerRuleActionFixedResponse?>? fixedResponse;
   /// Forward action. Traffic that matches the rule is forwarded to the specified target groups. See `forward` Block for details.
-  final pulumi.Input<ListenerRuleActionForward>? forward;
+  final pulumi.Input<ListenerRuleActionForward?>? forward;
 
   /// Creates a new [ListenerRuleAction].
   /// [fixedResponse] Rule action that returns a custom HTTP response. See `fixedResponse` Block for details.

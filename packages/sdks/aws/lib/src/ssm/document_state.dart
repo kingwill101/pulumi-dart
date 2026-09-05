@@ -6,57 +6,57 @@ import 'document_parameter.dart';
 
 /// Input properties used for looking up and filtering Document resources.
 class DocumentState {
-  /// The Amazon Resource Name (ARN) of the document.
-  final pulumi.Input<String>? arn;
+  /// ARN of the document.
+  final pulumi.Input<String?>? arn;
   /// One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
-  final pulumi.Input<List<DocumentAttachmentsSource>>? attachmentsSources;
+  final pulumi.Input<List<DocumentAttachmentsSource>?>? attachmentsSources;
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The date the document was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// The default version of the document.
-  final pulumi.Input<String>? defaultVersion;
+  final pulumi.Input<String?>? defaultVersion;
   /// A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
-  final pulumi.Input<String>? documentFormat;
+  final pulumi.Input<String?>? documentFormat;
   /// The type of the document. For a list of valid values, see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreateDocument.html#systemsmanager-CreateDocument-request-DocumentType).
-  final pulumi.Input<String>? documentType;
+  final pulumi.Input<String?>? documentType;
   /// The document version.
-  final pulumi.Input<String>? documentVersion;
+  final pulumi.Input<String?>? documentVersion;
   /// The Sha256 or Sha1 hash created by the system when the document was created.
-  final pulumi.Input<String>? hash;
+  final pulumi.Input<String?>? hash;
   /// The hash type of the document. Valid values: `Sha256`, `Sha1`.
-  final pulumi.Input<String>? hashType;
+  final pulumi.Input<String?>? hashType;
   /// The latest version of the document.
-  final pulumi.Input<String>? latestVersion;
+  final pulumi.Input<String?>? latestVersion;
   /// The name of the document.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Amazon Web Services user that created the document.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// One or more configuration blocks describing the parameters for the document. See `parameter` block below for details.
-  final pulumi.Input<List<DocumentParameter>>? parameters;
+  final pulumi.Input<List<DocumentParameter>?>? parameters;
   /// Additional permissions to attach to the document. See Permissions below for details.
-  final pulumi.Input<Map<String, String>>? permissions;
+  final pulumi.Input<Map<String, String>?>? permissions;
   /// The list of operating system (OS) platforms compatible with this SSM document. Valid values: `Windows`, `Linux`, `MacOS`.
-  final pulumi.Input<List<String>>? platformTypes;
+  final pulumi.Input<List<String>?>? platformTypes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The schema version of the document.
-  final pulumi.Input<String>? schemaVersion;
+  final pulumi.Input<String?>? schemaVersion;
   /// The status of the SSM document. Valid values: `Creating`, `Active`, `Updating`, `Deleting`, `Failed`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
   /// The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
 
   /// Creates a new [DocumentState].
-  /// [arn] The Amazon Resource Name (ARN) of the document.
+  /// [arn] ARN of the document.
   /// [attachmentsSources] One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
   /// [content] The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   /// [createdDate] The date the document was created.

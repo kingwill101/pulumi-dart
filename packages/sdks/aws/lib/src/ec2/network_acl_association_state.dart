@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkAclAssociation resources.
 class NetworkAclAssociationState {
   /// The ID of the network ACL.
-  final pulumi.Input<String>? networkAclId;
+  final pulumi.Input<String?>? networkAclId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the associated Subnet.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [NetworkAclAssociationState].
   /// [networkAclId] The ID of the network ACL.

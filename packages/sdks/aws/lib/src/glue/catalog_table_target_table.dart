@@ -10,7 +10,7 @@ class CatalogTableTargetTable {
   /// Name of the target table.
   final pulumi.Input<String> name;
   /// Region of the target table.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [CatalogTableTargetTable].
   /// [catalogId] ID of the Data Catalog in which the table resides.

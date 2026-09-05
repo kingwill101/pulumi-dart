@@ -9,11 +9,11 @@ import 'get_connection_filter.dart';
 /// {@macro pulumi_vpn_get_connection_get_connection_args_doc}
 class GetConnectionArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetConnectionFilter>>? filters;
+  final pulumi.Input<List<GetConnectionFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the EC2 VPN Connection.
-  final pulumi.Input<String>? vpnConnectionId;
+  final pulumi.Input<String?>? vpnConnectionId;
 
   /// Creates a new [GetConnectionArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

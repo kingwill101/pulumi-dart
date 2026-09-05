@@ -5,13 +5,13 @@ import 'rule_set_rule_condition_string_expression_evaluate_analysis.dart';
 
 class RuleSetRuleConditionStringExpressionEvaluate {
   /// Add On result to evaluate. See `analysis` Block.
-  final pulumi.Input<RuleSetRuleConditionStringExpressionEvaluateAnalysis>? analysis;
+  final pulumi.Input<RuleSetRuleConditionStringExpressionEvaluateAnalysis?>? analysis;
   /// Email authentication attribute to evaluate. Valid values are `SPF` and `DKIM`.
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
   /// Client certificate field to evaluate. Valid values are `CN`, `SAN_RFC822_NAME`, `SAN_DNS_NAME`, `SAN_DIRECTORY_NAME`, `SAN_UNIFORM_RESOURCE_IDENTIFIER`, `SAN_IP_ADDRESS`, `SAN_REGISTERED_ID`, and `SERIAL_NUMBER`.
-  final pulumi.Input<String>? clientCertificateAttribute;
+  final pulumi.Input<String?>? clientCertificateAttribute;
   /// MIME header name to evaluate. Must contain between 1 and 256 characters and begin with `X-` or `x-`.
-  final pulumi.Input<String>? mimeHeaderAttribute;
+  final pulumi.Input<String?>? mimeHeaderAttribute;
 
   /// Creates a new [RuleSetRuleConditionStringExpressionEvaluate].
   /// [analysis] Add On result to evaluate. See `analysis` Block.

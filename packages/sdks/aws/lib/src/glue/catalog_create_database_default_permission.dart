@@ -5,9 +5,9 @@ import 'catalog_create_database_default_permission_principal.dart';
 
 class CatalogCreateDatabaseDefaultPermission {
   /// Permissions that are granted to the principal. Valid values include `ALL`, `SELECT`, `ALTER`, `DROP`, `DELETE`, `INSERT`, `CREATE_DATABASE`, `CREATE_TABLE`, `DATA_LOCATION_ACCESS`.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
   /// Principal who is granted permissions. See `principal` below.
-  final pulumi.Input<CatalogCreateDatabaseDefaultPermissionPrincipal>? principal;
+  final pulumi.Input<CatalogCreateDatabaseDefaultPermissionPrincipal?>? principal;
 
   /// Creates a new [CatalogCreateDatabaseDefaultPermission].
   /// [permissions] Permissions that are granted to the principal. Valid values include `ALL`, `SELECT`, `ALTER`, `DROP`, `DELETE`, `INSERT`, `CREATE_DATABASE`, `CREATE_TABLE`, `DATA_LOCATION_ACCESS`.

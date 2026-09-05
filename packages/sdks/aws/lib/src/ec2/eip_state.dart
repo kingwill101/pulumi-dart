@@ -5,45 +5,45 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Eip resources.
 class EipState {
   /// IP address from an EC2 BYOIP pool. This option is only available for VPC EIPs.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in a VPC.
-  final pulumi.Input<String>? allocationId;
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? allocationId;
+  final pulumi.Input<String?>? arn;
   /// User-specified primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
-  final pulumi.Input<String>? associateWithPrivateIp;
+  final pulumi.Input<String?>? associateWithPrivateIp;
   /// ID representing the association of the address with an instance in a VPC.
-  final pulumi.Input<String>? associationId;
+  final pulumi.Input<String?>? associationId;
   /// Carrier IP address.
-  final pulumi.Input<String>? carrierIp;
+  final pulumi.Input<String?>? carrierIp;
   /// Customer owned IP.
-  final pulumi.Input<String>? customerOwnedIp;
+  final pulumi.Input<String?>? customerOwnedIp;
   /// ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing).
-  final pulumi.Input<String>? customerOwnedIpv4Pool;
+  final pulumi.Input<String?>? customerOwnedIpv4Pool;
   /// Indicates if this EIP is for use in VPC (`vpc`).
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// EC2 instance ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4 CIDR provisioned to it.
-  final pulumi.Input<String>? ipamPoolId;
+  final pulumi.Input<String?>? ipamPoolId;
   /// Location from which the IP address is advertised. Use this parameter to limit the address to this location.
-  final pulumi.Input<String>? networkBorderGroup;
+  final pulumi.Input<String?>? networkBorderGroup;
   /// Network interface ID to associate with.
-  final pulumi.Input<String>? networkInterface;
+  final pulumi.Input<String?>? networkInterface;
   /// The Private DNS associated with the Elastic IP address (if in VPC).
-  final pulumi.Input<String>? privateDns;
+  final pulumi.Input<String?>? privateDns;
   /// Contains the private IP address (if in VPC).
-  final pulumi.Input<String>? privateIp;
+  final pulumi.Input<String?>? privateIp;
   /// The DNS pointer (PTR) record for the IP address.
-  final pulumi.Input<String>? ptrRecord;
+  final pulumi.Input<String?>? ptrRecord;
   /// Public DNS associated with the Elastic IP address.
-  final pulumi.Input<String>? publicDns;
+  final pulumi.Input<String?>? publicDns;
   /// Contains the public IP address.
-  final pulumi.Input<String>? publicIp;
+  final pulumi.Input<String?>? publicIp;
   /// EC2 IPv4 address pool identifier or `amazon`.
   /// This option is only available for VPC EIPs.
-  final pulumi.Input<String>? publicIpv4Pool;
+  final pulumi.Input<String?>? publicIpv4Pool;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **NOTE:** You can specify either the `instance` ID or the `networkInterface` ID, but not both.
@@ -51,9 +51,9 @@ class EipState {
   /// See the relevant [AssociateAddress API Call](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html) for more information.
   ///
   /// &gt; **NOTE:** Specifying both `publicIpv4Pool` and `address` won't cause an error, however, only `address` will be used if both options are defined as the API only requires one of the two.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [EipState].
   /// [address] IP address from an EC2 BYOIP pool. This option is only available for VPC EIPs.

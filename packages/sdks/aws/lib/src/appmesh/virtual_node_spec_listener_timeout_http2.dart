@@ -6,9 +6,9 @@ import 'virtual_node_spec_listener_timeout_http2_per_request.dart';
 
 class VirtualNodeSpecListenerTimeoutHttp2 {
   /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.listener.timeout.tcp.idle` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTimeoutHttp2Idle>? idle;
+  final pulumi.Input<VirtualNodeSpecListenerTimeoutHttp2Idle?>? idle;
   /// Per request timeout. See `spec.listener.timeout.http2.per_request` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTimeoutHttp2PerRequest>? perRequest;
+  final pulumi.Input<VirtualNodeSpecListenerTimeoutHttp2PerRequest?>? perRequest;
 
   /// Creates a new [VirtualNodeSpecListenerTimeoutHttp2].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.listener.timeout.tcp.idle` Block for details.

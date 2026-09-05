@@ -369,7 +369,7 @@ class AccountSetting extends pulumi.CustomResource {
           'aws:ecr/accountSetting:AccountSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -381,11 +381,12 @@ class AccountSetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountSettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountSetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,6 +400,20 @@ class AccountSetting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [AccountSetting] resource.
+  AccountSetting.reference(String urn)
+    : super(
+        'aws:ecr/accountSetting:AccountSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     value = registerOutput<String>('value');

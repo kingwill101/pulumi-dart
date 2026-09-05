@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_get_records_get_records_args_doc}
 class GetRecordsArgs {
   /// Regex string to apply to the resource record names returned by AWS.
-  final pulumi.Input<String>? nameRegex;
+  final pulumi.Input<String?>? nameRegex;
   /// The ID of the hosted zone that contains the resource record sets that you want to list.
   final pulumi.Input<String> zoneId;
 

@@ -20,7 +20,7 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
 
   factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control(
-      daysAfterInitiation: pulumi.Input.fromValue(map['daysAfterInitiation'] as int),
+      daysAfterInitiation: pulumi.Input.fromValue((map['daysAfterInitiation'] as num).toInt()),
     );
   }
 }

@@ -17,11 +17,6 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.User("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     name: "example",
-///     password: "Password123",
-///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
-///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
 ///     identityInfo: {
 ///         firstName: "example",
 ///         lastName: "example2",
@@ -30,6 +25,11 @@ import 'user_state.dart';
 ///         afterContactWorkTimeLimit: 0,
 ///         phoneType: "SOFT_PHONE",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     name: "example",
+///     password: "Password123",
+///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
+///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
 /// });
 /// ```
 /// ```python
@@ -37,11 +37,6 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.User("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     name="example",
-///     password="Password123",
-///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
-///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]],
 ///     identity_info={
 ///         "first_name": "example",
 ///         "last_name": "example2",
@@ -49,7 +44,12 @@ import 'user_state.dart';
 ///     phone_config={
 ///         "after_contact_work_time_limit": 0,
 ///         "phone_type": "SOFT_PHONE",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     name="example",
+///     password="Password123",
+///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
+///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,14 +61,6 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Connect.User("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         Name = "example",
-///         Password = "Password123",
-///         RoutingProfileId = exampleAwsConnectRoutingProfile.RoutingProfileId,
-///         SecurityProfileIds = new[]
-///         {
-///             exampleAwsConnectSecurityProfile.SecurityProfileId,
-///         },
 ///         IdentityInfo = new Aws.Connect.Inputs.UserIdentityInfoArgs
 ///         {
 ///             FirstName = "example",
@@ -78,6 +70,14 @@ import 'user_state.dart';
 ///         {
 ///             AfterContactWorkTimeLimit = 0,
 ///             PhoneType = "SOFT_PHONE",
+///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         Name = "example",
+///         Password = "Password123",
+///         RoutingProfileId = exampleAwsConnectRoutingProfile.RoutingProfileId,
+///         SecurityProfileIds = new[]
+///         {
+///             exampleAwsConnectSecurityProfile.SecurityProfileId,
 ///         },
 ///     });
 ///
@@ -94,13 +94,6 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUser(ctx, "example", &connect.UserArgs{
-/// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			Name:             pulumi.String("example"),
-/// 			Password:         pulumi.String("Password123"),
-/// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
-/// 			SecurityProfileIds: pulumi.StringArray{
-/// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
-/// 			},
 /// 			IdentityInfo: &connect.UserIdentityInfoArgs{
 /// 				FirstName: pulumi.String("example"),
 /// 				LastName:  pulumi.String("example2"),
@@ -108,6 +101,13 @@ import 'user_state.dart';
 /// 			PhoneConfig: &connect.UserPhoneConfigArgs{
 /// 				AfterContactWorkTimeLimit: pulumi.Int(0),
 /// 				PhoneType:                 pulumi.String("SOFT_PHONE"),
+/// 			},
+/// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			Name:             pulumi.String("example"),
+/// 			Password:         pulumi.String("Password123"),
+/// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
+/// 			SecurityProfileIds: pulumi.StringArray{
+/// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -127,11 +127,6 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   instance_id          = exampleAwsConnectInstance.id
-///   name                 = "example"
-///   password             = "Password123"
-///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
-///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
 ///   identity_info = {
 ///     first_name = "example"
 ///     last_name  = "example2"
@@ -140,6 +135,11 @@ import 'user_state.dart';
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
 /// }
 /// ```
 /// ```java
@@ -166,11 +166,6 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .name("example")
-///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
 ///             .identityInfo(UserIdentityInfoArgs.builder()
 ///                 .firstName("example")
 ///                 .lastName("example2")
@@ -179,6 +174,11 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .name("example")
+///             .password("Password123")
+///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
 ///             .build());
 ///
 ///     }
@@ -189,18 +189,18 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:connect:User
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       name: example
-///       password: Password123
-///       routingProfileId: ${exampleAwsConnectRoutingProfile.routingProfileId}
-///       securityProfileIds:
-///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
 ///       identityInfo:
 ///         firstName: example
 ///         lastName: example2
 ///       phoneConfig:
 ///         afterContactWorkTimeLimit: 0
 ///         phoneType: SOFT_PHONE
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       name: example
+///       password: Password123
+///       routingProfileId: ${exampleAwsConnectRoutingProfile.routingProfileId}
+///       securityProfileIds:
+///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
 /// ```
 ///
 ///
@@ -212,12 +212,6 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.User("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     name: "example",
-///     password: "Password123",
-///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
-///     hierarchyGroupId: exampleAwsConnectUserHierarchyGroup.hierarchyGroupId,
-///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
 ///     identityInfo: {
 ///         firstName: "example",
 ///         lastName: "example2",
@@ -226,6 +220,12 @@ import 'user_state.dart';
 ///         afterContactWorkTimeLimit: 0,
 ///         phoneType: "SOFT_PHONE",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     name: "example",
+///     password: "Password123",
+///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
+///     hierarchyGroupId: exampleAwsConnectUserHierarchyGroup.hierarchyGroupId,
+///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
 /// });
 /// ```
 /// ```python
@@ -233,12 +233,6 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.User("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     name="example",
-///     password="Password123",
-///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
-///     hierarchy_group_id=example_aws_connect_user_hierarchy_group["hierarchyGroupId"],
-///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]],
 ///     identity_info={
 ///         "first_name": "example",
 ///         "last_name": "example2",
@@ -246,7 +240,13 @@ import 'user_state.dart';
 ///     phone_config={
 ///         "after_contact_work_time_limit": 0,
 ///         "phone_type": "SOFT_PHONE",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     name="example",
+///     password="Password123",
+///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
+///     hierarchy_group_id=example_aws_connect_user_hierarchy_group["hierarchyGroupId"],
+///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -258,15 +258,6 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Connect.User("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         Name = "example",
-///         Password = "Password123",
-///         RoutingProfileId = exampleAwsConnectRoutingProfile.RoutingProfileId,
-///         HierarchyGroupId = exampleAwsConnectUserHierarchyGroup.HierarchyGroupId,
-///         SecurityProfileIds = new[]
-///         {
-///             exampleAwsConnectSecurityProfile.SecurityProfileId,
-///         },
 ///         IdentityInfo = new Aws.Connect.Inputs.UserIdentityInfoArgs
 ///         {
 ///             FirstName = "example",
@@ -276,6 +267,15 @@ import 'user_state.dart';
 ///         {
 ///             AfterContactWorkTimeLimit = 0,
 ///             PhoneType = "SOFT_PHONE",
+///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         Name = "example",
+///         Password = "Password123",
+///         RoutingProfileId = exampleAwsConnectRoutingProfile.RoutingProfileId,
+///         HierarchyGroupId = exampleAwsConnectUserHierarchyGroup.HierarchyGroupId,
+///         SecurityProfileIds = new[]
+///         {
+///             exampleAwsConnectSecurityProfile.SecurityProfileId,
 ///         },
 ///     });
 ///
@@ -292,14 +292,6 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUser(ctx, "example", &connect.UserArgs{
-/// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			Name:             pulumi.String("example"),
-/// 			Password:         pulumi.String("Password123"),
-/// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
-/// 			HierarchyGroupId: pulumi.Any(exampleAwsConnectUserHierarchyGroup.HierarchyGroupId),
-/// 			SecurityProfileIds: pulumi.StringArray{
-/// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
-/// 			},
 /// 			IdentityInfo: &connect.UserIdentityInfoArgs{
 /// 				FirstName: pulumi.String("example"),
 /// 				LastName:  pulumi.String("example2"),
@@ -307,6 +299,14 @@ import 'user_state.dart';
 /// 			PhoneConfig: &connect.UserPhoneConfigArgs{
 /// 				AfterContactWorkTimeLimit: pulumi.Int(0),
 /// 				PhoneType:                 pulumi.String("SOFT_PHONE"),
+/// 			},
+/// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			Name:             pulumi.String("example"),
+/// 			Password:         pulumi.String("Password123"),
+/// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
+/// 			HierarchyGroupId: pulumi.Any(exampleAwsConnectUserHierarchyGroup.HierarchyGroupId),
+/// 			SecurityProfileIds: pulumi.StringArray{
+/// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -326,12 +326,6 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   instance_id          = exampleAwsConnectInstance.id
-///   name                 = "example"
-///   password             = "Password123"
-///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
-///   hierarchy_group_id   = exampleAwsConnectUserHierarchyGroup.hierarchyGroupId
-///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
 ///   identity_info = {
 ///     first_name = "example"
 ///     last_name  = "example2"
@@ -340,6 +334,12 @@ import 'user_state.dart';
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   hierarchy_group_id   = exampleAwsConnectUserHierarchyGroup.hierarchyGroupId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
 /// }
 /// ```
 /// ```java
@@ -366,12 +366,6 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .name("example")
-///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .hierarchyGroupId(exampleAwsConnectUserHierarchyGroup.hierarchyGroupId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
 ///             .identityInfo(UserIdentityInfoArgs.builder()
 ///                 .firstName("example")
 ///                 .lastName("example2")
@@ -380,6 +374,12 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .name("example")
+///             .password("Password123")
+///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
+///             .hierarchyGroupId(exampleAwsConnectUserHierarchyGroup.hierarchyGroupId())
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
 ///             .build());
 ///
 ///     }
@@ -390,6 +390,12 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:connect:User
 ///     properties:
+///       identityInfo:
+///         firstName: example
+///         lastName: example2
+///       phoneConfig:
+///         afterContactWorkTimeLimit: 0
+///         phoneType: SOFT_PHONE
 ///       instanceId: ${exampleAwsConnectInstance.id}
 ///       name: example
 ///       password: Password123
@@ -397,12 +403,6 @@ import 'user_state.dart';
 ///       hierarchyGroupId: ${exampleAwsConnectUserHierarchyGroup.hierarchyGroupId}
 ///       securityProfileIds:
 ///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
-///       identityInfo:
-///         firstName: example
-///         lastName: example2
-///       phoneConfig:
-///         afterContactWorkTimeLimit: 0
-///         phoneType: SOFT_PHONE
 /// ```
 ///
 ///
@@ -414,11 +414,6 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.User("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     name: "example",
-///     password: "Password123",
-///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
-///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
 ///     identityInfo: {
 ///         email: "example@example.com",
 ///         firstName: "example",
@@ -429,6 +424,11 @@ import 'user_state.dart';
 ///         afterContactWorkTimeLimit: 0,
 ///         phoneType: "SOFT_PHONE",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     name: "example",
+///     password: "Password123",
+///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
+///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
 /// });
 /// ```
 /// ```python
@@ -436,11 +436,6 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.User("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     name="example",
-///     password="Password123",
-///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
-///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]],
 ///     identity_info={
 ///         "email": "example@example.com",
 ///         "first_name": "example",
@@ -450,7 +445,12 @@ import 'user_state.dart';
 ///     phone_config={
 ///         "after_contact_work_time_limit": 0,
 ///         "phone_type": "SOFT_PHONE",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     name="example",
+///     password="Password123",
+///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
+///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -462,14 +462,6 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Connect.User("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         Name = "example",
-///         Password = "Password123",
-///         RoutingProfileId = exampleAwsConnectRoutingProfile.RoutingProfileId,
-///         SecurityProfileIds = new[]
-///         {
-///             exampleAwsConnectSecurityProfile.SecurityProfileId,
-///         },
 ///         IdentityInfo = new Aws.Connect.Inputs.UserIdentityInfoArgs
 ///         {
 ///             Email = "example@example.com",
@@ -482,6 +474,14 @@ import 'user_state.dart';
 ///             AfterContactWorkTimeLimit = 0,
 ///             PhoneType = "SOFT_PHONE",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         Name = "example",
+///         Password = "Password123",
+///         RoutingProfileId = exampleAwsConnectRoutingProfile.RoutingProfileId,
+///         SecurityProfileIds = new[]
+///         {
+///             exampleAwsConnectSecurityProfile.SecurityProfileId,
+///         },
 ///     });
 ///
 /// });
@@ -497,13 +497,6 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUser(ctx, "example", &connect.UserArgs{
-/// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			Name:             pulumi.String("example"),
-/// 			Password:         pulumi.String("Password123"),
-/// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
-/// 			SecurityProfileIds: pulumi.StringArray{
-/// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
-/// 			},
 /// 			IdentityInfo: &connect.UserIdentityInfoArgs{
 /// 				Email:          pulumi.String("example@example.com"),
 /// 				FirstName:      pulumi.String("example"),
@@ -513,6 +506,13 @@ import 'user_state.dart';
 /// 			PhoneConfig: &connect.UserPhoneConfigArgs{
 /// 				AfterContactWorkTimeLimit: pulumi.Int(0),
 /// 				PhoneType:                 pulumi.String("SOFT_PHONE"),
+/// 			},
+/// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			Name:             pulumi.String("example"),
+/// 			Password:         pulumi.String("Password123"),
+/// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
+/// 			SecurityProfileIds: pulumi.StringArray{
+/// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -532,11 +532,6 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   instance_id          = exampleAwsConnectInstance.id
-///   name                 = "example"
-///   password             = "Password123"
-///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
-///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
 ///   identity_info = {
 ///     email           = "example@example.com"
 ///     first_name      = "example"
@@ -547,6 +542,11 @@ import 'user_state.dart';
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
 /// }
 /// ```
 /// ```java
@@ -573,11 +573,6 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .name("example")
-///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
 ///             .identityInfo(UserIdentityInfoArgs.builder()
 ///                 .email("example@example.com")
 ///                 .firstName("example")
@@ -588,6 +583,11 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .name("example")
+///             .password("Password123")
+///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
 ///             .build());
 ///
 ///     }
@@ -598,12 +598,6 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:connect:User
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       name: example
-///       password: Password123
-///       routingProfileId: ${exampleAwsConnectRoutingProfile.routingProfileId}
-///       securityProfileIds:
-///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
 ///       identityInfo:
 ///         email: example@example.com
 ///         firstName: example
@@ -612,6 +606,12 @@ import 'user_state.dart';
 ///       phoneConfig:
 ///         afterContactWorkTimeLimit: 0
 ///         phoneType: SOFT_PHONE
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       name: example
+///       password: Password123
+///       routingProfileId: ${exampleAwsConnectRoutingProfile.routingProfileId}
+///       securityProfileIds:
+///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
 /// ```
 ///
 ///
@@ -623,15 +623,15 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.User("example", {
+///     phoneConfig: {
+///         afterContactWorkTimeLimit: 0,
+///         phoneType: "SOFT_PHONE",
+///     },
 ///     instanceId: exampleAwsConnectInstance.id,
 ///     name: "example",
 ///     password: "Password123",
 ///     routingProfileId: exampleAwsConnectRoutingProfile.routingProfileId,
 ///     securityProfileIds: [exampleAwsConnectSecurityProfile.securityProfileId],
-///     phoneConfig: {
-///         afterContactWorkTimeLimit: 0,
-///         phoneType: "SOFT_PHONE",
-///     },
 /// });
 /// ```
 /// ```python
@@ -639,15 +639,15 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.User("example",
+///     phone_config={
+///         "after_contact_work_time_limit": 0,
+///         "phone_type": "SOFT_PHONE",
+///     },
 ///     instance_id=example_aws_connect_instance["id"],
 ///     name="example",
 ///     password="Password123",
 ///     routing_profile_id=example_aws_connect_routing_profile["routingProfileId"],
-///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]],
-///     phone_config={
-///         "after_contact_work_time_limit": 0,
-///         "phone_type": "SOFT_PHONE",
-///     })
+///     security_profile_ids=[example_aws_connect_security_profile["securityProfileId"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -659,6 +659,11 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Connect.User("example", new()
 ///     {
+///         PhoneConfig = new Aws.Connect.Inputs.UserPhoneConfigArgs
+///         {
+///             AfterContactWorkTimeLimit = 0,
+///             PhoneType = "SOFT_PHONE",
+///         },
 ///         InstanceId = exampleAwsConnectInstance.Id,
 ///         Name = "example",
 ///         Password = "Password123",
@@ -666,11 +671,6 @@ import 'user_state.dart';
 ///         SecurityProfileIds = new[]
 ///         {
 ///             exampleAwsConnectSecurityProfile.SecurityProfileId,
-///         },
-///         PhoneConfig = new Aws.Connect.Inputs.UserPhoneConfigArgs
-///         {
-///             AfterContactWorkTimeLimit = 0,
-///             PhoneType = "SOFT_PHONE",
 ///         },
 ///     });
 ///
@@ -687,16 +687,16 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUser(ctx, "example", &connect.UserArgs{
+/// 			PhoneConfig: &connect.UserPhoneConfigArgs{
+/// 				AfterContactWorkTimeLimit: pulumi.Int(0),
+/// 				PhoneType:                 pulumi.String("SOFT_PHONE"),
+/// 			},
 /// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
 /// 			Name:             pulumi.String("example"),
 /// 			Password:         pulumi.String("Password123"),
 /// 			RoutingProfileId: pulumi.Any(exampleAwsConnectRoutingProfile.RoutingProfileId),
 /// 			SecurityProfileIds: pulumi.StringArray{
 /// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
-/// 			},
-/// 			PhoneConfig: &connect.UserPhoneConfigArgs{
-/// 				AfterContactWorkTimeLimit: pulumi.Int(0),
-/// 				PhoneType:                 pulumi.String("SOFT_PHONE"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -716,15 +716,15 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
+///   phone_config = {
+///     after_contact_work_time_limit = 0
+///     phone_type                    = "SOFT_PHONE"
+///   }
 ///   instance_id          = exampleAwsConnectInstance.id
 ///   name                 = "example"
 ///   password             = "Password123"
 ///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
 ///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId]
-///   phone_config = {
-///     after_contact_work_time_limit = 0
-///     phone_type                    = "SOFT_PHONE"
-///   }
 /// }
 /// ```
 /// ```java
@@ -750,15 +750,15 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
+///             .phoneConfig(UserPhoneConfigArgs.builder()
+///                 .afterContactWorkTimeLimit(0)
+///                 .phoneType("SOFT_PHONE")
+///                 .build())
 ///             .instanceId(exampleAwsConnectInstance.id())
 ///             .name("example")
 ///             .password("Password123")
 ///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
 ///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
-///             .phoneConfig(UserPhoneConfigArgs.builder()
-///                 .afterContactWorkTimeLimit(0)
-///                 .phoneType("SOFT_PHONE")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -769,15 +769,15 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:connect:User
 ///     properties:
+///       phoneConfig:
+///         afterContactWorkTimeLimit: 0
+///         phoneType: SOFT_PHONE
 ///       instanceId: ${exampleAwsConnectInstance.id}
 ///       name: example
 ///       password: Password123
 ///       routingProfileId: ${exampleAwsConnectRoutingProfile.routingProfileId}
 ///       securityProfileIds:
 ///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
-///       phoneConfig:
-///         afterContactWorkTimeLimit: 0
-///         phoneType: SOFT_PHONE
 /// ```
 ///
 ///
@@ -789,6 +789,12 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.User("example", {
+///     phoneConfig: {
+///         afterContactWorkTimeLimit: 0,
+///         autoAccept: false,
+///         deskPhoneNumber: "+112345678912",
+///         phoneType: "DESK_PHONE",
+///     },
 ///     instanceId: exampleAwsConnectInstance.id,
 ///     name: "example",
 ///     password: "Password123",
@@ -797,12 +803,6 @@ import 'user_state.dart';
 ///         exampleAwsConnectSecurityProfile.securityProfileId,
 ///         example2.securityProfileId,
 ///     ],
-///     phoneConfig: {
-///         afterContactWorkTimeLimit: 0,
-///         autoAccept: false,
-///         deskPhoneNumber: "+112345678912",
-///         phoneType: "DESK_PHONE",
-///     },
 /// });
 /// ```
 /// ```python
@@ -810,6 +810,12 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.User("example",
+///     phone_config={
+///         "after_contact_work_time_limit": 0,
+///         "auto_accept": False,
+///         "desk_phone_number": "+112345678912",
+///         "phone_type": "DESK_PHONE",
+///     },
 ///     instance_id=example_aws_connect_instance["id"],
 ///     name="example",
 ///     password="Password123",
@@ -817,13 +823,7 @@ import 'user_state.dart';
 ///     security_profile_ids=[
 ///         example_aws_connect_security_profile["securityProfileId"],
 ///         example2["securityProfileId"],
-///     ],
-///     phone_config={
-///         "after_contact_work_time_limit": 0,
-///         "auto_accept": False,
-///         "desk_phone_number": "+112345678912",
-///         "phone_type": "DESK_PHONE",
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -835,6 +835,13 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Connect.User("example", new()
 ///     {
+///         PhoneConfig = new Aws.Connect.Inputs.UserPhoneConfigArgs
+///         {
+///             AfterContactWorkTimeLimit = 0,
+///             AutoAccept = false,
+///             DeskPhoneNumber = "+112345678912",
+///             PhoneType = "DESK_PHONE",
+///         },
 ///         InstanceId = exampleAwsConnectInstance.Id,
 ///         Name = "example",
 ///         Password = "Password123",
@@ -843,13 +850,6 @@ import 'user_state.dart';
 ///         {
 ///             exampleAwsConnectSecurityProfile.SecurityProfileId,
 ///             example2.SecurityProfileId,
-///         },
-///         PhoneConfig = new Aws.Connect.Inputs.UserPhoneConfigArgs
-///         {
-///             AfterContactWorkTimeLimit = 0,
-///             AutoAccept = false,
-///             DeskPhoneNumber = "+112345678912",
-///             PhoneType = "DESK_PHONE",
 ///         },
 ///     });
 ///
@@ -866,6 +866,12 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUser(ctx, "example", &connect.UserArgs{
+/// 			PhoneConfig: &connect.UserPhoneConfigArgs{
+/// 				AfterContactWorkTimeLimit: pulumi.Int(0),
+/// 				AutoAccept:                pulumi.Bool(false),
+/// 				DeskPhoneNumber:           pulumi.String("+112345678912"),
+/// 				PhoneType:                 pulumi.String("DESK_PHONE"),
+/// 			},
 /// 			InstanceId:       pulumi.Any(exampleAwsConnectInstance.Id),
 /// 			Name:             pulumi.String("example"),
 /// 			Password:         pulumi.String("Password123"),
@@ -873,12 +879,6 @@ import 'user_state.dart';
 /// 			SecurityProfileIds: pulumi.StringArray{
 /// 				exampleAwsConnectSecurityProfile.SecurityProfileId,
 /// 				example2.SecurityProfileId,
-/// 			},
-/// 			PhoneConfig: &connect.UserPhoneConfigArgs{
-/// 				AfterContactWorkTimeLimit: pulumi.Int(0),
-/// 				AutoAccept:                pulumi.Bool(false),
-/// 				DeskPhoneNumber:           pulumi.String("+112345678912"),
-/// 				PhoneType:                 pulumi.String("DESK_PHONE"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -898,17 +898,17 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   instance_id          = exampleAwsConnectInstance.id
-///   name                 = "example"
-///   password             = "Password123"
-///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
-///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId, example2.securityProfileId]
 ///   phone_config = {
 ///     after_contact_work_time_limit = 0
 ///     auto_accept                   = false
 ///     desk_phone_number             = "+112345678912"
 ///     phone_type                    = "DESK_PHONE"
 ///   }
+///   instance_id          = exampleAwsConnectInstance.id
+///   name                 = "example"
+///   password             = "Password123"
+///   routing_profile_id   = exampleAwsConnectRoutingProfile.routingProfileId
+///   security_profile_ids = [exampleAwsConnectSecurityProfile.securityProfileId, example2.securityProfileId]
 /// }
 /// ```
 /// ```java
@@ -934,6 +934,12 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
+///             .phoneConfig(UserPhoneConfigArgs.builder()
+///                 .afterContactWorkTimeLimit(0)
+///                 .autoAccept(false)
+///                 .deskPhoneNumber("+112345678912")
+///                 .phoneType("DESK_PHONE")
+///                 .build())
 ///             .instanceId(exampleAwsConnectInstance.id())
 ///             .name("example")
 ///             .password("Password123")
@@ -941,12 +947,6 @@ import 'user_state.dart';
 ///             .securityProfileIds(
 ///                 exampleAwsConnectSecurityProfile.securityProfileId(),
 ///                 example2.securityProfileId())
-///             .phoneConfig(UserPhoneConfigArgs.builder()
-///                 .afterContactWorkTimeLimit(0)
-///                 .autoAccept(false)
-///                 .deskPhoneNumber("+112345678912")
-///                 .phoneType("DESK_PHONE")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -957,6 +957,11 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:connect:User
 ///     properties:
+///       phoneConfig:
+///         afterContactWorkTimeLimit: 0
+///         autoAccept: false
+///         deskPhoneNumber: '+112345678912'
+///         phoneType: DESK_PHONE
 ///       instanceId: ${exampleAwsConnectInstance.id}
 ///       name: example
 ///       password: Password123
@@ -964,11 +969,6 @@ import 'user_state.dart';
 ///       securityProfileIds:
 ///         - ${exampleAwsConnectSecurityProfile.securityProfileId}
 ///         - ${example2.securityProfileId}
-///       phoneConfig:
-///         afterContactWorkTimeLimit: 0
-///         autoAccept: false
-///         deskPhoneNumber: '+112345678912'
-///         phoneType: DESK_PHONE
 /// ```
 ///
 ///
@@ -980,7 +980,7 @@ import 'user_state.dart';
 /// $ pulumi import aws:connect/user:User example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class User extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the user.
+  /// ARN of the user.
   late final pulumi.Output<String> arn;
   /// The identifier of the user account in the directory used for identity management. If Amazon Connect cannot access the directory, you can specify this identifier to authenticate users. If you include the identifier, we assume that Amazon Connect cannot access the directory. Otherwise, the identity information is used to authenticate users from your directory. This parameter is required if you are using an existing directory for identity management in Amazon Connect when Amazon Connect cannot access your directory to authenticate users. If you are using SAML for identity management and include this parameter, an error is returned.
   late final pulumi.Output<String> directoryUserId;
@@ -1022,7 +1022,8 @@ class User extends pulumi.CustomResource {
           'aws:connect/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');
     directoryUserId = registerOutput<String>('directoryUserId');
@@ -1030,13 +1031,13 @@ class User extends pulumi.CustomResource {
     identityInfo = registerOutput<UserIdentityInfo?>('identityInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserIdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     phoneConfig = registerOutput<UserPhoneConfig>('phoneConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPhoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingProfileId = registerOutput<String>('routingProfileId');
-    securityProfileIds = registerOutput<List<String>>('securityProfileIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityProfileIds = registerOutput<List<String>>('securityProfileIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userId = registerOutput<String>('userId');
   }
 
@@ -1045,11 +1046,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1069,13 +1071,39 @@ class User extends pulumi.CustomResource {
     identityInfo = registerOutput<UserIdentityInfo?>('identityInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserIdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     phoneConfig = registerOutput<UserPhoneConfig>('phoneConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPhoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingProfileId = registerOutput<String>('routingProfileId');
-    securityProfileIds = registerOutput<List<String>>('securityProfileIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityProfileIds = registerOutput<List<String>>('securityProfileIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:connect/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    directoryUserId = registerOutput<String>('directoryUserId');
+    hierarchyGroupId = registerOutput<String?>('hierarchyGroupId');
+    identityInfo = registerOutput<UserIdentityInfo?>('identityInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserIdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
+    phoneConfig = registerOutput<UserPhoneConfig>('phoneConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPhoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    routingProfileId = registerOutput<String>('routingProfileId');
+    securityProfileIds = registerOutput<List<String>>('securityProfileIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userId = registerOutput<String>('userId');
   }
 }

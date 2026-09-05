@@ -27,9 +27,6 @@ import 'directory_vpc_settings.dart';
 ///     cidrBlock: "10.0.2.0/24",
 /// });
 /// const bar = new aws.directoryservice.Directory("bar", {
-///     name: "corp.notexample.com",
-///     password: "SuperSecretPassw0rd",
-///     size: "Small",
 ///     vpcSettings: {
 ///         vpcId: main.id,
 ///         subnetIds: [
@@ -37,6 +34,9 @@ import 'directory_vpc_settings.dart';
 ///             barSubnet.id,
 ///         ],
 ///     },
+///     name: "corp.notexample.com",
+///     password: "SuperSecretPassw0rd",
+///     size: "Small",
 ///     tags: {
 ///         Project: "foo",
 ///     },
@@ -56,9 +56,6 @@ import 'directory_vpc_settings.dart';
 ///     availability_zone="us-west-2b",
 ///     cidr_block="10.0.2.0/24")
 /// bar = aws.directoryservice.Directory("bar",
-///     name="corp.notexample.com",
-///     password="SuperSecretPassw0rd",
-///     size="Small",
 ///     vpc_settings={
 ///         "vpc_id": main.id,
 ///         "subnet_ids": [
@@ -66,6 +63,9 @@ import 'directory_vpc_settings.dart';
 ///             bar_subnet.id,
 ///         ],
 ///     },
+///     name="corp.notexample.com",
+///     password="SuperSecretPassw0rd",
+///     size="Small",
 ///     tags={
 ///         "Project": "foo",
 ///     })
@@ -99,9 +99,6 @@ import 'directory_vpc_settings.dart';
 ///
 ///     var bar = new Aws.DirectoryService.Directory("bar", new()
 ///     {
-///         Name = "corp.notexample.com",
-///         Password = "SuperSecretPassw0rd",
-///         Size = "Small",
 ///         VpcSettings = new Aws.DirectoryService.Inputs.DirectoryVpcSettingsArgs
 ///         {
 ///             VpcId = main.Id,
@@ -111,6 +108,9 @@ import 'directory_vpc_settings.dart';
 ///                 barSubnet.Id,
 ///             },
 ///         },
+///         Name = "corp.notexample.com",
+///         Password = "SuperSecretPassw0rd",
+///         Size = "Small",
 ///         Tags =
 ///         {
 ///             { "Project", "foo" },
@@ -153,9 +153,6 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewDirectory(ctx, "bar", &directoryservice.DirectoryArgs{
-/// 			Name:     pulumi.String("corp.notexample.com"),
-/// 			Password: pulumi.String("SuperSecretPassw0rd"),
-/// 			Size:     pulumi.String("Small"),
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
 /// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetIds: pulumi.StringArray{
@@ -163,6 +160,9 @@ import 'directory_vpc_settings.dart';
 /// 					barSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("corp.notexample.com"),
+/// 			Password: pulumi.String("SuperSecretPassw0rd"),
+/// 			Size:     pulumi.String("Small"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Project": pulumi.String("foo"),
 /// 			},
@@ -184,13 +184,13 @@ import 'directory_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "bar" {
-///   name     = "corp.notexample.com"
-///   password = "SuperSecretPassw0rd"
-///   size     = "Small"
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.main.id
 ///     subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
 ///   }
+///   name     = "corp.notexample.com"
+///   password = "SuperSecretPassw0rd"
+///   size     = "Small"
 ///   tags = {
 ///     "Project" = "foo"
 ///   }
@@ -252,15 +252,15 @@ import 'directory_vpc_settings.dart';
 ///             .build());
 ///
 ///         var bar = new Directory("bar", DirectoryArgs.builder()
-///             .name("corp.notexample.com")
-///             .password("SuperSecretPassw0rd")
-///             .size("Small")
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
 ///                 .vpcId(main.id())
 ///                 .subnetIds(
 ///                     foo.id(),
 ///                     barSubnet.id())
 ///                 .build())
+///             .name("corp.notexample.com")
+///             .password("SuperSecretPassw0rd")
+///             .size("Small")
 ///             .tags(Map.of("Project", "foo"))
 ///             .build());
 ///
@@ -272,14 +272,14 @@ import 'directory_vpc_settings.dart';
 ///   bar:
 ///     type: aws:directoryservice:Directory
 ///     properties:
-///       name: corp.notexample.com
-///       password: SuperSecretPassw0rd
-///       size: Small
 ///       vpcSettings:
 ///         vpcId: ${main.id}
 ///         subnetIds:
 ///           - ${foo.id}
 ///           - ${barSubnet.id}
+///       name: corp.notexample.com
+///       password: SuperSecretPassw0rd
+///       size: Small
 ///       tags:
 ///         Project: foo
 ///   main:
@@ -321,10 +321,6 @@ import 'directory_vpc_settings.dart';
 ///     cidrBlock: "10.0.2.0/24",
 /// });
 /// const bar = new aws.directoryservice.Directory("bar", {
-///     name: "corp.notexample.com",
-///     password: "SuperSecretPassw0rd",
-///     edition: "Standard",
-///     type: "MicrosoftAD",
 ///     vpcSettings: {
 ///         vpcId: main.id,
 ///         subnetIds: [
@@ -332,6 +328,10 @@ import 'directory_vpc_settings.dart';
 ///             barSubnet.id,
 ///         ],
 ///     },
+///     name: "corp.notexample.com",
+///     password: "SuperSecretPassw0rd",
+///     edition: "Standard",
+///     type: "MicrosoftAD",
 ///     tags: {
 ///         Project: "foo",
 ///     },
@@ -351,10 +351,6 @@ import 'directory_vpc_settings.dart';
 ///     availability_zone="us-west-2b",
 ///     cidr_block="10.0.2.0/24")
 /// bar = aws.directoryservice.Directory("bar",
-///     name="corp.notexample.com",
-///     password="SuperSecretPassw0rd",
-///     edition="Standard",
-///     type="MicrosoftAD",
 ///     vpc_settings={
 ///         "vpc_id": main.id,
 ///         "subnet_ids": [
@@ -362,6 +358,10 @@ import 'directory_vpc_settings.dart';
 ///             bar_subnet.id,
 ///         ],
 ///     },
+///     name="corp.notexample.com",
+///     password="SuperSecretPassw0rd",
+///     edition="Standard",
+///     type="MicrosoftAD",
 ///     tags={
 ///         "Project": "foo",
 ///     })
@@ -395,10 +395,6 @@ import 'directory_vpc_settings.dart';
 ///
 ///     var bar = new Aws.DirectoryService.Directory("bar", new()
 ///     {
-///         Name = "corp.notexample.com",
-///         Password = "SuperSecretPassw0rd",
-///         Edition = "Standard",
-///         Type = "MicrosoftAD",
 ///         VpcSettings = new Aws.DirectoryService.Inputs.DirectoryVpcSettingsArgs
 ///         {
 ///             VpcId = main.Id,
@@ -408,6 +404,10 @@ import 'directory_vpc_settings.dart';
 ///                 barSubnet.Id,
 ///             },
 ///         },
+///         Name = "corp.notexample.com",
+///         Password = "SuperSecretPassw0rd",
+///         Edition = "Standard",
+///         Type = "MicrosoftAD",
 ///         Tags =
 ///         {
 ///             { "Project", "foo" },
@@ -450,10 +450,6 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewDirectory(ctx, "bar", &directoryservice.DirectoryArgs{
-/// 			Name:     pulumi.String("corp.notexample.com"),
-/// 			Password: pulumi.String("SuperSecretPassw0rd"),
-/// 			Edition:  pulumi.String("Standard"),
-/// 			Type:     pulumi.String("MicrosoftAD"),
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
 /// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetIds: pulumi.StringArray{
@@ -461,6 +457,10 @@ import 'directory_vpc_settings.dart';
 /// 					barSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("corp.notexample.com"),
+/// 			Password: pulumi.String("SuperSecretPassw0rd"),
+/// 			Edition:  pulumi.String("Standard"),
+/// 			Type:     pulumi.String("MicrosoftAD"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Project": pulumi.String("foo"),
 /// 			},
@@ -482,14 +482,14 @@ import 'directory_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "bar" {
-///   name     = "corp.notexample.com"
-///   password = "SuperSecretPassw0rd"
-///   edition  = "Standard"
-///   type     = "MicrosoftAD"
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.main.id
 ///     subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
 ///   }
+///   name     = "corp.notexample.com"
+///   password = "SuperSecretPassw0rd"
+///   edition  = "Standard"
+///   type     = "MicrosoftAD"
 ///   tags = {
 ///     "Project" = "foo"
 ///   }
@@ -551,16 +551,16 @@ import 'directory_vpc_settings.dart';
 ///             .build());
 ///
 ///         var bar = new Directory("bar", DirectoryArgs.builder()
-///             .name("corp.notexample.com")
-///             .password("SuperSecretPassw0rd")
-///             .edition("Standard")
-///             .type("MicrosoftAD")
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
 ///                 .vpcId(main.id())
 ///                 .subnetIds(
 ///                     foo.id(),
 ///                     barSubnet.id())
 ///                 .build())
+///             .name("corp.notexample.com")
+///             .password("SuperSecretPassw0rd")
+///             .edition("Standard")
+///             .type("MicrosoftAD")
 ///             .tags(Map.of("Project", "foo"))
 ///             .build());
 ///
@@ -572,15 +572,15 @@ import 'directory_vpc_settings.dart';
 ///   bar:
 ///     type: aws:directoryservice:Directory
 ///     properties:
-///       name: corp.notexample.com
-///       password: SuperSecretPassw0rd
-///       edition: Standard
-///       type: MicrosoftAD
 ///       vpcSettings:
 ///         vpcId: ${main.id}
 ///         subnetIds:
 ///           - ${foo.id}
 ///           - ${barSubnet.id}
+///       name: corp.notexample.com
+///       password: SuperSecretPassw0rd
+///       edition: Standard
+///       type: MicrosoftAD
 ///       tags:
 ///         Project: foo
 ///   main:
@@ -622,10 +622,6 @@ import 'directory_vpc_settings.dart';
 ///     cidrBlock: "10.0.2.0/24",
 /// });
 /// const connector = new aws.directoryservice.Directory("connector", {
-///     name: "corp.notexample.com",
-///     password: "SuperSecretPassw0rd",
-///     size: "Small",
-///     type: "ADConnector",
 ///     connectSettings: {
 ///         customerDnsIps: ["A.B.C.D"],
 ///         customerUsername: "Admin",
@@ -635,6 +631,10 @@ import 'directory_vpc_settings.dart';
 ///         ],
 ///         vpcId: main.id,
 ///     },
+///     name: "corp.notexample.com",
+///     password: "SuperSecretPassw0rd",
+///     size: "Small",
+///     type: "ADConnector",
 /// });
 /// ```
 /// ```python
@@ -651,10 +651,6 @@ import 'directory_vpc_settings.dart';
 ///     availability_zone="us-west-2b",
 ///     cidr_block="10.0.2.0/24")
 /// connector = aws.directoryservice.Directory("connector",
-///     name="corp.notexample.com",
-///     password="SuperSecretPassw0rd",
-///     size="Small",
-///     type="ADConnector",
 ///     connect_settings={
 ///         "customer_dns_ips": ["A.B.C.D"],
 ///         "customer_username": "Admin",
@@ -663,7 +659,11 @@ import 'directory_vpc_settings.dart';
 ///             bar.id,
 ///         ],
 ///         "vpc_id": main.id,
-///     })
+///     },
+///     name="corp.notexample.com",
+///     password="SuperSecretPassw0rd",
+///     size="Small",
+///     type="ADConnector")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -694,10 +694,6 @@ import 'directory_vpc_settings.dart';
 ///
 ///     var connector = new Aws.DirectoryService.Directory("connector", new()
 ///     {
-///         Name = "corp.notexample.com",
-///         Password = "SuperSecretPassw0rd",
-///         Size = "Small",
-///         Type = "ADConnector",
 ///         ConnectSettings = new Aws.DirectoryService.Inputs.DirectoryConnectSettingsArgs
 ///         {
 ///             CustomerDnsIps = new[]
@@ -712,6 +708,10 @@ import 'directory_vpc_settings.dart';
 ///             },
 ///             VpcId = main.Id,
 ///         },
+///         Name = "corp.notexample.com",
+///         Password = "SuperSecretPassw0rd",
+///         Size = "Small",
+///         Type = "ADConnector",
 ///     });
 ///
 /// });
@@ -750,10 +750,6 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewDirectory(ctx, "connector", &directoryservice.DirectoryArgs{
-/// 			Name:     pulumi.String("corp.notexample.com"),
-/// 			Password: pulumi.String("SuperSecretPassw0rd"),
-/// 			Size:     pulumi.String("Small"),
-/// 			Type:     pulumi.String("ADConnector"),
 /// 			ConnectSettings: &directoryservice.DirectoryConnectSettingsArgs{
 /// 				CustomerDnsIps: pulumi.StringArray{
 /// 					pulumi.String("A.B.C.D"),
@@ -765,6 +761,10 @@ import 'directory_vpc_settings.dart';
 /// 				},
 /// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
 /// 			},
+/// 			Name:     pulumi.String("corp.notexample.com"),
+/// 			Password: pulumi.String("SuperSecretPassw0rd"),
+/// 			Size:     pulumi.String("Small"),
+/// 			Type:     pulumi.String("ADConnector"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -783,16 +783,16 @@ import 'directory_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "connector" {
-///   name     = "corp.notexample.com"
-///   password = "SuperSecretPassw0rd"
-///   size     = "Small"
-///   type     = "ADConnector"
 ///   connect_settings = {
 ///     customer_dns_ips  = ["A.B.C.D"]
 ///     customer_username = "Admin"
 ///     subnet_ids        = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
 ///     vpc_id            = aws_ec2_vpc.main.id
 ///   }
+///   name     = "corp.notexample.com"
+///   password = "SuperSecretPassw0rd"
+///   size     = "Small"
+///   type     = "ADConnector"
 /// }
 /// resource "aws_ec2_vpc" "main" {
 ///   cidr_block = "10.0.0.0/16"
@@ -851,10 +851,6 @@ import 'directory_vpc_settings.dart';
 ///             .build());
 ///
 ///         var connector = new Directory("connector", DirectoryArgs.builder()
-///             .name("corp.notexample.com")
-///             .password("SuperSecretPassw0rd")
-///             .size("Small")
-///             .type("ADConnector")
 ///             .connectSettings(DirectoryConnectSettingsArgs.builder()
 ///                 .customerDnsIps("A.B.C.D")
 ///                 .customerUsername("Admin")
@@ -863,6 +859,10 @@ import 'directory_vpc_settings.dart';
 ///                     bar.id())
 ///                 .vpcId(main.id())
 ///                 .build())
+///             .name("corp.notexample.com")
+///             .password("SuperSecretPassw0rd")
+///             .size("Small")
+///             .type("ADConnector")
 ///             .build());
 ///
 ///     }
@@ -873,10 +873,6 @@ import 'directory_vpc_settings.dart';
 ///   connector:
 ///     type: aws:directoryservice:Directory
 ///     properties:
-///       name: corp.notexample.com
-///       password: SuperSecretPassw0rd
-///       size: Small
-///       type: ADConnector
 ///       connectSettings:
 ///         customerDnsIps:
 ///           - A.B.C.D
@@ -885,6 +881,10 @@ import 'directory_vpc_settings.dart';
 ///           - ${foo.id}
 ///           - ${bar.id}
 ///         vpcId: ${main.id}
+///       name: corp.notexample.com
+///       password: SuperSecretPassw0rd
+///       size: Small
+///       type: ADConnector
 ///   main:
 ///     type: aws:ec2:Vpc
 ///     properties:
@@ -963,25 +963,26 @@ class Directory extends pulumi.CustomResource {
           'aws:directoryservice/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     accessUrl = registerOutput<String>('accessUrl');
     alias = registerOutput<String>('alias');
     connectSettings = registerOutput<DirectoryConnectSettings?>('connectSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConnectSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
-    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
+    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     edition = registerOutput<String>('edition');
     enableDirectoryDataAccess = registerOutput<bool?>('enableDirectoryDataAccess');
     enableSso = registerOutput<bool?>('enableSso');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     shortName = registerOutput<String>('shortName');
     size = registerOutput<String>('size');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     vpcSettings = registerOutput<DirectoryVpcSettings?>('vpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryVpcSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -991,11 +992,12 @@ class Directory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Directory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1014,18 +1016,49 @@ class Directory extends pulumi.CustomResource {
     connectSettings = registerOutput<DirectoryConnectSettings?>('connectSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConnectSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
-    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
+    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     edition = registerOutput<String>('edition');
     enableDirectoryDataAccess = registerOutput<bool?>('enableDirectoryDataAccess');
     enableSso = registerOutput<bool?>('enableSso');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     shortName = registerOutput<String>('shortName');
     size = registerOutput<String>('size');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    vpcSettings = registerOutput<DirectoryVpcSettings?>('vpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryVpcSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Directory] resource.
+  Directory.reference(String urn)
+    : super(
+        'aws:directoryservice/directory:Directory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    accessUrl = registerOutput<String>('accessUrl');
+    alias = registerOutput<String>('alias');
+    connectSettings = registerOutput<DirectoryConnectSettings?>('connectSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConnectSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
+    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    edition = registerOutput<String>('edition');
+    enableDirectoryDataAccess = registerOutput<bool?>('enableDirectoryDataAccess');
+    enableSso = registerOutput<bool?>('enableSso');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    shortName = registerOutput<String>('shortName');
+    size = registerOutput<String>('size');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     vpcSettings = registerOutput<DirectoryVpcSettings?>('vpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryVpcSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

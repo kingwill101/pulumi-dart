@@ -20,7 +20,7 @@ class TrainingJobRetryStrategy {
 
   factory TrainingJobRetryStrategy.fromMap(Map<String, dynamic> map) {
     return TrainingJobRetryStrategy(
-      maximumRetryAttempts: pulumi.Input.fromValue(map['maximumRetryAttempts'] as int),
+      maximumRetryAttempts: pulumi.Input.fromValue((map['maximumRetryAttempts'] as num).toInt()),
     );
   }
 }

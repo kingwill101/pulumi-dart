@@ -17,10 +17,10 @@ import 'bucket_abac_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "bucket-name"});
 /// const exampleBucketAbac = new aws.s3.BucketAbac("example", {
-///     bucket: example.bucket,
 ///     abacStatus: {
 ///         status: "Enabled",
 ///     },
+///     bucket: example.bucket,
 /// });
 /// ```
 /// ```python
@@ -29,10 +29,10 @@ import 'bucket_abac_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="bucket-name")
 /// example_bucket_abac = aws.s3.BucketAbac("example",
-///     bucket=example.bucket,
 ///     abac_status={
 ///         "status": "Enabled",
-///     })
+///     },
+///     bucket=example.bucket)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,11 +49,11 @@ import 'bucket_abac_state.dart';
 ///
 ///     var exampleBucketAbac = new Aws.S3.BucketAbac("example", new()
 ///     {
-///         Bucket = example.BucketName,
 ///         AbacStatus = new Aws.S3.Inputs.BucketAbacAbacStatusArgs
 ///         {
 ///             Status = "Enabled",
 ///         },
+///         Bucket = example.BucketName,
 ///     });
 ///
 /// });
@@ -75,10 +75,10 @@ import 'bucket_abac_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAbac(ctx, "example", &s3.BucketAbacArgs{
-/// 			Bucket: example.Bucket,
 /// 			AbacStatus: &s3.BucketAbacAbacStatusArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
+/// 			Bucket: example.Bucket,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -100,10 +100,10 @@ import 'bucket_abac_state.dart';
 ///   bucket = "bucket-name"
 /// }
 /// resource "aws_s3_bucketabac" "example" {
-///   bucket = aws_s3_bucket.example.bucket
 ///   abac_status = {
 ///     status = "Enabled"
 ///   }
+///   bucket = aws_s3_bucket.example.bucket
 /// }
 /// ```
 /// ```java
@@ -135,10 +135,10 @@ import 'bucket_abac_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketAbac = new BucketAbac("exampleBucketAbac", BucketAbacArgs.builder()
-///             .bucket(example.bucket())
 ///             .abacStatus(BucketAbacAbacStatusArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
+///             .bucket(example.bucket())
 ///             .build());
 ///
 ///     }
@@ -154,9 +154,9 @@ import 'bucket_abac_state.dart';
 ///     type: aws:s3:BucketAbac
 ///     name: example
 ///     properties:
-///       bucket: ${example.bucket}
 ///       abacStatus:
 ///         status: Enabled
+///       bucket: ${example.bucket}
 /// ```
 ///
 ///
@@ -202,7 +202,7 @@ class BucketAbac extends pulumi.CustomResource {
           'aws:s3/bucketAbac:BucketAbac',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAbacAbacStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String>('bucket');
@@ -215,11 +215,12 @@ class BucketAbac extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketAbacState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketAbac._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,6 +234,21 @@ class BucketAbac extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAbacAbacStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BucketAbac] resource.
+  BucketAbac.reference(String urn)
+    : super(
+        'aws:s3/bucketAbac:BucketAbac',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAbacAbacStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

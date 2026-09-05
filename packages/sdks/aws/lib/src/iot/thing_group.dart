@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'thing_group_args.dart';
+import 'thing_group_metadata.dart';
 import 'thing_group_properties.dart';
 import 'thing_group_state.dart';
 
@@ -14,8 +15,6 @@ import 'thing_group_state.dart';
 ///
 /// const parent = new aws.iot.ThingGroup("parent", {name: "parent"});
 /// const example = new aws.iot.ThingGroup("example", {
-///     name: "example",
-///     parentGroupName: parent.name,
 ///     properties: {
 ///         attributePayload: {
 ///             attributes: {
@@ -25,6 +24,8 @@ import 'thing_group_state.dart';
 ///         },
 ///         description: "This is my thing group",
 ///     },
+///     name: "example",
+///     parentGroupName: parent.name,
 ///     tags: {
 ///         managed: "true",
 ///     },
@@ -36,8 +37,6 @@ import 'thing_group_state.dart';
 ///
 /// parent = aws.iot.ThingGroup("parent", name="parent")
 /// example = aws.iot.ThingGroup("example",
-///     name="example",
-///     parent_group_name=parent.name,
 ///     properties={
 ///         "attribute_payload": {
 ///             "attributes": {
@@ -47,6 +46,8 @@ import 'thing_group_state.dart';
 ///         },
 ///         "description": "This is my thing group",
 ///     },
+///     name="example",
+///     parent_group_name=parent.name,
 ///     tags={
 ///         "managed": "true",
 ///     })
@@ -66,8 +67,6 @@ import 'thing_group_state.dart';
 ///
 ///     var example = new Aws.Iot.ThingGroup("example", new()
 ///     {
-///         Name = "example",
-///         ParentGroupName = parent.Name,
 ///         Properties = new Aws.Iot.Inputs.ThingGroupPropertiesArgs
 ///         {
 ///             AttributePayload = new Aws.Iot.Inputs.ThingGroupPropertiesAttributePayloadArgs
@@ -80,6 +79,8 @@ import 'thing_group_state.dart';
 ///             },
 ///             Description = "This is my thing group",
 ///         },
+///         Name = "example",
+///         ParentGroupName = parent.Name,
 ///         Tags =
 ///         {
 ///             { "managed", "true" },
@@ -105,8 +106,6 @@ import 'thing_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iot.NewThingGroup(ctx, "example", &iot.ThingGroupArgs{
-/// 			Name:            pulumi.String("example"),
-/// 			ParentGroupName: parent.Name,
 /// 			Properties: &iot.ThingGroupPropertiesArgs{
 /// 				AttributePayload: &iot.ThingGroupPropertiesAttributePayloadArgs{
 /// 					Attributes: pulumi.StringMap{
@@ -116,6 +115,8 @@ import 'thing_group_state.dart';
 /// 				},
 /// 				Description: pulumi.String("This is my thing group"),
 /// 			},
+/// 			Name:            pulumi.String("example"),
+/// 			ParentGroupName: parent.Name,
 /// 			Tags: pulumi.StringMap{
 /// 				"managed": pulumi.String("true"),
 /// 			},
@@ -140,8 +141,6 @@ import 'thing_group_state.dart';
 ///   name = "parent"
 /// }
 /// resource "aws_iot_thinggroup" "example" {
-///   name              = "example"
-///   parent_group_name = aws_iot_thinggroup.parent.name
 ///   properties = {
 ///     attribute_payload = {
 ///       attributes = {
@@ -151,6 +150,8 @@ import 'thing_group_state.dart';
 ///     }
 ///     description = "This is my thing group"
 ///   }
+///   name              = "example"
+///   parent_group_name = aws_iot_thinggroup.parent.name
 ///   tags = {
 ///     "managed" = "true"
 ///   }
@@ -184,8 +185,6 @@ import 'thing_group_state.dart';
 ///             .build());
 ///
 ///         var example = new ThingGroup("example", ThingGroupArgs.builder()
-///             .name("example")
-///             .parentGroupName(parent.name())
 ///             .properties(ThingGroupPropertiesArgs.builder()
 ///                 .attributePayload(ThingGroupPropertiesAttributePayloadArgs.builder()
 ///                     .attributes(Map.ofEntries(
@@ -195,6 +194,8 @@ import 'thing_group_state.dart';
 ///                     .build())
 ///                 .description("This is my thing group")
 ///                 .build())
+///             .name("example")
+///             .parentGroupName(parent.name())
 ///             .tags(Map.of("managed", "true"))
 ///             .build());
 ///
@@ -210,14 +211,14 @@ import 'thing_group_state.dart';
 ///   example:
 ///     type: aws:iot:ThingGroup
 ///     properties:
-///       name: example
-///       parentGroupName: ${parent.name}
 ///       properties:
 ///         attributePayload:
 ///           attributes:
 ///             One: '11111'
 ///             Two: TwoTwo
 ///         description: This is my thing group
+///       name: example
+///       parentGroupName: ${parent.name}
 ///       tags:
 ///         managed: 'true'
 /// ```
@@ -233,7 +234,7 @@ import 'thing_group_state.dart';
 class ThingGroup extends pulumi.CustomResource {
   /// The ARN of the Thing Group.
   late final pulumi.Output<String> arn;
-  late final pulumi.Output<List<Map<String, dynamic>>> metadatas;
+  late final pulumi.Output<List<ThingGroupMetadata>> metadatas;
   /// The name of the Thing Group.
   late final pulumi.Output<String> name;
   /// The name of the parent Thing Group.
@@ -260,16 +261,16 @@ class ThingGroup extends pulumi.CustomResource {
           'aws:iot/thingGroup:ThingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
+    metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThingGroupMetadata>(guardedValue, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     parentGroupName = registerOutput<String?>('parentGroupName');
     properties = registerOutput<ThingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 
@@ -278,11 +279,12 @@ class ThingGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThingGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ThingGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,13 +299,33 @@ class ThingGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
+    metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThingGroupMetadata>(guardedValue, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     parentGroupName = registerOutput<String?>('parentGroupName');
     properties = registerOutput<ThingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [ThingGroup] resource.
+  ThingGroup.reference(String urn)
+    : super(
+        'aws:iot/thingGroup:ThingGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThingGroupMetadata>(guardedValue, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    parentGroupName = registerOutput<String?>('parentGroupName');
+    properties = registerOutput<ThingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 }

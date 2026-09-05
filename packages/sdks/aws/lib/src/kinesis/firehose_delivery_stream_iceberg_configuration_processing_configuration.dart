@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_iceberg_configuration_processing_configuration_
 
 class FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final pulumi.Input<List<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>>? processors;
+  final pulumi.Input<List<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_get_server_certificate_get_server_certificate_args_doc}
 class GetServerCertificateArgs {
   /// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
-  final pulumi.Input<bool>? latest;
+  final pulumi.Input<bool?>? latest;
   /// exact name of the cert to lookup
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// prefix of cert to filter by
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// prefix of path to filter by
-  final pulumi.Input<String>? pathPrefix;
+  final pulumi.Input<String?>? pathPrefix;
 
   /// Creates a new [GetServerCertificateArgs].
   /// [latest] sort results by expiration date. returns the certificate with expiration date in furthest in the future.

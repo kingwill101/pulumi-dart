@@ -243,7 +243,8 @@ class Authorizer extends pulumi.CustomResource {
           'aws:iot/authorizer:Authorizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['tokenSigningPublicKeys'],
         ) {
     arn = registerOutput<String>('arn');
     authorizerFunctionArn = registerOutput<String>('authorizerFunctionArn');
@@ -252,10 +253,10 @@ class Authorizer extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     signingDisabled = registerOutput<bool?>('signingDisabled');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tokenKeyName = registerOutput<String?>('tokenKeyName');
-    tokenSigningPublicKeys = registerOutput<Map<String, String>?>('tokenSigningPublicKeys');
+    tokenSigningPublicKeys = registerOutput<Map<String, String>?>('tokenSigningPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 
   /// Gets an existing [Authorizer] resource's state with the given [name] and [id].
@@ -263,11 +264,12 @@ class Authorizer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Authorizer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,9 +290,32 @@ class Authorizer extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     signingDisabled = registerOutput<bool?>('signingDisabled');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tokenKeyName = registerOutput<String?>('tokenKeyName');
-    tokenSigningPublicKeys = registerOutput<Map<String, String>?>('tokenSigningPublicKeys');
+    tokenSigningPublicKeys = registerOutput<Map<String, String>?>('tokenSigningPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Authorizer] resource.
+  Authorizer.reference(String urn)
+    : super(
+        'aws:iot/authorizer:Authorizer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['tokenSigningPublicKeys'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authorizerFunctionArn = registerOutput<String>('authorizerFunctionArn');
+    enableCachingForHttp = registerOutput<bool?>('enableCachingForHttp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    signingDisabled = registerOutput<bool?>('signingDisabled');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tokenKeyName = registerOutput<String?>('tokenKeyName');
+    tokenSigningPublicKeys = registerOutput<Map<String, String>?>('tokenSigningPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 }

@@ -5,16 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcCidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
   final pulumi.Input<String> associationId;
-  /// Cidr block of the desired VPC.
+  /// CIDR block of the desired VPC.
   final pulumi.Input<String> cidrBlock;
-  /// Current state of the desired VPC.
-  /// Can be either `"pending"` or `"available"`.
+  /// Current state of the desired VPC. Can be either `"pending"` or `"available"`.
   final pulumi.Input<String> state;
 
   /// Creates a new [GetVpcCidrBlockAssociation].
   /// [associationId] Association ID for the IPv4 CIDR block.
-  /// [cidrBlock] Cidr block of the desired VPC.
-  /// [state] Current state of the desired VPC.
+  /// [cidrBlock] CIDR block of the desired VPC.
+  /// [state] Current state of the desired VPC. Can be either `"pending"` or `"available"`.
   const GetVpcCidrBlockAssociation({
     required this.associationId,
     required this.cidrBlock,

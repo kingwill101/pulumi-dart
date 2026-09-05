@@ -30,9 +30,9 @@ class CustomRoutingEndpointGroupDestinationConfiguration {
 
   factory CustomRoutingEndpointGroupDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupDestinationConfiguration(
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
       protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<String>()),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
     );
   }
 }

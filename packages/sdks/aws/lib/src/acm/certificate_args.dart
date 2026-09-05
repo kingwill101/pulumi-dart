@@ -9,26 +9,26 @@ import 'certificate_validation_option.dart';
 /// {@endtemplate}
 /// {@macro pulumi_acm_certificate_certificate_args_doc}
 class CertificateArgs {
-  final pulumi.Input<String>? certificateAuthorityArn;
-  final pulumi.Input<String>? certificateBody;
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateAuthorityArn;
+  final pulumi.Input<String?>? certificateBody;
+  final pulumi.Input<String?>? certificateChain;
   /// Domain to be validated
-  final pulumi.Input<String>? domainName;
-  final pulumi.Input<String>? earlyRenewalDuration;
-  final pulumi.Input<String>? keyAlgorithm;
-  final pulumi.Input<CertificateOptions>? options;
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? domainName;
+  final pulumi.Input<String?>? earlyRenewalDuration;
+  final pulumi.Input<String?>? keyAlgorithm;
+  final pulumi.Input<CertificateOptions?>? options;
+  final pulumi.Input<String?>? privateKey;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  final pulumi.Input<String>? privateKeyWo;
-  final pulumi.Input<int>? privateKeyWoVersion;
+  final pulumi.Input<String?>? privateKeyWo;
+  final pulumi.Input<int?>? privateKeyWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
-  final pulumi.Input<String>? region;
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<String>? validationMethod;
-  final pulumi.Input<List<CertificateValidationOption>>? validationOptions;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<String?>? validationMethod;
+  final pulumi.Input<List<CertificateValidationOption>?>? validationOptions;
 
   /// Creates a new [CertificateArgs].
   /// [certificateAuthorityArn] Optional.
@@ -95,7 +95,7 @@ class CertificateArgs {
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKeyWo: (() { final guardedValue = map['privateKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

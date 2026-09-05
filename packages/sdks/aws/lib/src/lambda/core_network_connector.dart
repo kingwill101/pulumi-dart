@@ -29,8 +29,6 @@ import 'core_network_connector_timeouts.dart';
 ///     }),
 /// });
 /// const example = new aws.lambda.CoreNetworkConnector("example", {
-///     name: "example",
-///     operatorRole: exampleRole.arn,
 ///     configuration: {
 ///         vpcEgressConfiguration: {
 ///             associatedComputeResourceTypes: ["MicroVm"],
@@ -39,6 +37,8 @@ import 'core_network_connector_timeouts.dart';
 ///             securityGroupIds: [exampleAwsSecurityGroup.id],
 ///         },
 ///     },
+///     name: "example",
+///     operatorRole: exampleRole.arn,
 /// });
 /// const exampleRolePolicy = new aws.iam.RolePolicy("example", {
 ///     name: "example-network-connector-operator",
@@ -89,8 +89,6 @@ import 'core_network_connector_timeouts.dart';
 ///         }],
 ///     }))
 /// example = aws.lambda_.CoreNetworkConnector("example",
-///     name="example",
-///     operator_role=example_role.arn,
 ///     configuration={
 ///         "vpc_egress_configuration": {
 ///             "associated_compute_resource_types": ["MicroVm"],
@@ -98,7 +96,9 @@ import 'core_network_connector_timeouts.dart';
 ///             "subnet_ids": [__item["id"] for __item in example_aws_subnet],
 ///             "security_group_ids": [example_aws_security_group["id"]],
 ///         },
-///     })
+///     },
+///     name="example",
+///     operator_role=example_role.arn)
 /// example_role_policy = aws.iam.RolePolicy("example",
 ///     name="example-network-connector-operator",
 ///     role=example_role.id,
@@ -161,8 +161,6 @@ import 'core_network_connector_timeouts.dart';
 ///
 ///     var example = new Aws.Lambda.CoreNetworkConnector("example", new()
 ///     {
-///         Name = "example",
-///         OperatorRole = exampleRole.Arn,
 ///         Configuration = new Aws.Lambda.Inputs.CoreNetworkConnectorConfigurationArgs
 ///         {
 ///             VpcEgressConfiguration = new Aws.Lambda.Inputs.CoreNetworkConnectorConfigurationVpcEgressConfigurationArgs
@@ -179,6 +177,8 @@ import 'core_network_connector_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         OperatorRole = exampleRole.Arn,
 ///     });
 ///
 ///     var exampleRolePolicy = new Aws.Iam.RolePolicy("example", new()
@@ -258,20 +258,20 @@ import 'core_network_connector_timeouts.dart';
 /// return err
 /// }
 /// _, err = lambda.NewCoreNetworkConnector(ctx, "example", &lambda.CoreNetworkConnectorArgs{
-/// Name: pulumi.String("example"),
-/// OperatorRole: exampleRole.Arn,
 /// Configuration: &lambda.CoreNetworkConnectorConfigurationArgs{
 /// VpcEgressConfiguration: &lambda.CoreNetworkConnectorConfigurationVpcEgressConfigurationArgs{
 /// AssociatedComputeResourceTypes: pulumi.StringArray{
 /// pulumi.String("MicroVm"),
 /// },
 /// NetworkProtocol: pulumi.String("IPv4"),
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,40-62)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,40-62)),
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
 /// },
 /// },
+/// Name: pulumi.String("example"),
+/// OperatorRole: exampleRole.Arn,
 /// })
 /// if err != nil {
 /// return err
@@ -328,8 +328,6 @@ import 'core_network_connector_timeouts.dart';
 /// }
 ///
 /// resource "aws_lambda_corenetworkconnector" "example" {
-///   name          = "example"
-///   operator_role = aws_iam_role.example.arn
 ///   configuration = {
 ///     vpc_egress_configuration = {
 ///       associated_compute_resource_types = ["MicroVm"]
@@ -338,6 +336,8 @@ import 'core_network_connector_timeouts.dart';
 ///       security_group_ids                = [exampleAwsSecurityGroup.id]
 ///     }
 ///   }
+///   name          = "example"
+///   operator_role = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
 ///   name = "example-network-connector-operator"
@@ -420,8 +420,6 @@ import 'core_network_connector_timeouts.dart';
 ///             .build());
 ///
 ///         var example = new CoreNetworkConnector("example", CoreNetworkConnectorArgs.builder()
-///             .name("example")
-///             .operatorRole(exampleRole.arn())
 ///             .configuration(CoreNetworkConnectorConfigurationArgs.builder()
 ///                 .vpcEgressConfiguration(CoreNetworkConnectorConfigurationVpcEgressConfigurationArgs.builder()
 ///                     .associatedComputeResourceTypes("MicroVm")
@@ -430,6 +428,8 @@ import 'core_network_connector_timeouts.dart';
 ///                     .securityGroupIds(exampleAwsSecurityGroup.id())
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .operatorRole(exampleRole.arn())
 ///             .build());
 ///
 ///         var exampleRolePolicy = new RolePolicy("exampleRolePolicy", RolePolicyArgs.builder()
@@ -511,7 +511,7 @@ class CoreNetworkConnector extends pulumi.CustomResource {
           'aws:lambda/coreNetworkConnector:CoreNetworkConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -526,11 +526,12 @@ class CoreNetworkConnector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CoreNetworkConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CoreNetworkConnector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -544,6 +545,23 @@ class CoreNetworkConnector extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    operatorRole = registerOutput<String>('operatorRole');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<CoreNetworkConnectorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CoreNetworkConnector] resource.
+  CoreNetworkConnector.reference(String urn)
+    : super(
+        'aws:lambda/coreNetworkConnector:CoreNetworkConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

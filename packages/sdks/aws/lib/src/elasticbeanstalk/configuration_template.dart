@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_template_args.dart';
+import 'configuration_template_setting.dart';
 import 'configuration_template_state.dart';
 
 /// Provides an Elastic Beanstalk Configuration Template, which are associated with
@@ -172,7 +173,7 @@ class ConfigurationTemplate extends pulumi.CustomResource {
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
-  late final pulumi.Output<List<Map<String, dynamic>>> settings;
+  late final pulumi.Output<List<ConfigurationTemplateSetting>> settings;
   /// A solution stack to base your Template
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   late final pulumi.Output<String?> solutionStackName;
@@ -189,14 +190,14 @@ class ConfigurationTemplate extends pulumi.CustomResource {
           'aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     application = registerOutput<String>('application');
     description = registerOutput<String?>('description');
     environmentId = registerOutput<String?>('environmentId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    settings = registerOutput<List<Map<String, dynamic>>>('settings');
+    settings = registerOutput<List<ConfigurationTemplateSetting>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationTemplateSetting>(guardedValue, (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>())); });
     solutionStackName = registerOutput<String?>('solutionStackName');
   }
 
@@ -205,11 +206,12 @@ class ConfigurationTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,7 +230,25 @@ class ConfigurationTemplate extends pulumi.CustomResource {
     environmentId = registerOutput<String?>('environmentId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    settings = registerOutput<List<Map<String, dynamic>>>('settings');
+    settings = registerOutput<List<ConfigurationTemplateSetting>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationTemplateSetting>(guardedValue, (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    solutionStackName = registerOutput<String?>('solutionStackName');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationTemplate] resource.
+  ConfigurationTemplate.reference(String urn)
+    : super(
+        'aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    application = registerOutput<String>('application');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String?>('environmentId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    settings = registerOutput<List<ConfigurationTemplateSetting>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationTemplateSetting>(guardedValue, (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>())); });
     solutionStackName = registerOutput<String?>('solutionStackName');
   }
 }

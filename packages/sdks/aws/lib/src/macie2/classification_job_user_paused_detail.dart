@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobUserPausedDetail {
-  final pulumi.Input<String>? jobExpiresAt;
-  final pulumi.Input<String>? jobImminentExpirationHealthEventArn;
-  final pulumi.Input<String>? jobPausedAt;
+  final pulumi.Input<String?>? jobExpiresAt;
+  final pulumi.Input<String?>? jobImminentExpirationHealthEventArn;
+  final pulumi.Input<String?>? jobPausedAt;
 
   /// Creates a new [ClassificationJobUserPausedDetail].
   /// [jobExpiresAt] Optional.

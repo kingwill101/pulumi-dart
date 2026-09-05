@@ -9,21 +9,21 @@ import 'data_protection_settings_inline_redaction_configuration.dart';
 /// {@macro pulumi_workspacesweb_data_protection_settings_data_protection_settings_args_doc}
 class DataProtectionSettingsArgs {
   /// Additional encryption context for the data protection settings.
-  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>?>? additionalEncryptionContext;
   /// ARN of the customer managed KMS key.
-  final pulumi.Input<String>? customerManagedKey;
+  final pulumi.Input<String?>? customerManagedKey;
   /// The description of the data protection settings.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the data protection settings.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> displayName;
   /// The inline redaction configuration of the data protection settings. Detailed below.
-  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration>? inlineRedactionConfiguration;
+  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration?>? inlineRedactionConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataProtectionSettingsArgs].
   /// [additionalEncryptionContext] Additional encryption context for the data protection settings.

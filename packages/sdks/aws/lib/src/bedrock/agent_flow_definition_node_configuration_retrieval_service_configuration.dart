@@ -5,7 +5,7 @@ import 'agent_flow_definition_node_configuration_retrieval_service_configuration
 
 class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration {
   /// Contains configurations for the service to use for storing the input into the node. See Storage S3 Service Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3>? s3;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3?>? s3;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration].
   /// [s3] Contains configurations for the service to use for storing the input into the node. See Storage S3 Service Configuration for more information.

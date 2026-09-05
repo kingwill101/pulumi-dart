@@ -16,8 +16,6 @@ import 'application_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.m2.Application("example", {
-///     name: "Example",
-///     engineType: "bluage",
 ///     definition: {
 ///         content: `{
 ///   \"definition\": {
@@ -46,6 +44,8 @@ import 'application_timeouts.dart';
 ///
 /// `,
 ///     },
+///     name: "Example",
+///     engineType: "bluage",
 /// });
 /// ```
 /// ```python
@@ -53,8 +53,6 @@ import 'application_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.m2.Application("example",
-///     name="Example",
-///     engine_type="bluage",
 ///     definition={
 ///         "content": f"""{{
 ///   \"definition\": {{
@@ -82,7 +80,9 @@ import 'application_timeouts.dart';
 /// }}
 ///
 /// """,
-///     })
+///     },
+///     name="Example",
+///     engine_type="bluage")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -94,8 +94,6 @@ import 'application_timeouts.dart';
 /// {
 ///     var example = new Aws.M2.Application("example", new()
 ///     {
-///         Name = "Example",
-///         EngineType = "bluage",
 ///         Definition = new Aws.M2.Inputs.ApplicationDefinitionArgs
 ///         {
 ///             Content = @$"{{
@@ -125,6 +123,8 @@ import 'application_timeouts.dart';
 ///
 /// ",
 ///         },
+///         Name = "Example",
+///         EngineType = "bluage",
 ///     });
 ///
 /// });
@@ -140,8 +140,6 @@ import 'application_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := m2.NewApplication(ctx, "example", &m2.ApplicationArgs{
-/// 			Name:       pulumi.String("Example"),
-/// 			EngineType: pulumi.String("bluage"),
 /// 			Definition: &m2.ApplicationDefinitionArgs{
 /// 				Content: pulumi.Sprintf(`{
 ///   \"definition\": {
@@ -170,6 +168,8 @@ import 'application_timeouts.dart';
 ///
 /// `, s3_source),
 /// 			},
+/// 			Name:       pulumi.String("Example"),
+/// 			EngineType: pulumi.String("bluage"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -188,8 +188,6 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_application" "example" {
-///   name        = "Example"
-///   engine_type = "bluage"
 ///   definition = {
 ///     content ="{
 ///   \"definition\": {
@@ -218,6 +216,8 @@ import 'application_timeouts.dart';
 ///
 /// "
 ///   }
+///   name        = "Example"
+///   engine_type = "bluage"
 /// }
 /// ```
 /// ```java
@@ -243,8 +243,6 @@ import 'application_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Application("example", ApplicationArgs.builder()
-///             .name("Example")
-///             .engineType("bluage")
 ///             .definition(ApplicationDefinitionArgs.builder()
 ///                 .content("""
 /// {
@@ -274,6 +272,8 @@ import 'application_timeouts.dart';
 ///
 /// ", s3_source))
 ///                 .build())
+///             .name("Example")
+///             .engineType("bluage")
 ///             .build());
 ///
 ///     }
@@ -284,8 +284,6 @@ import 'application_timeouts.dart';
 ///   example:
 ///     type: aws:m2:Application
 ///     properties:
-///       name: Example
-///       engineType: bluage
 ///       definition:
 ///         content: |+
 ///           {
@@ -312,6 +310,9 @@ import 'application_timeouts.dart';
 ///             ],
 ///             \"template-version\": \"2.0\"
 ///           }
+///
+///       name: Example
+///       engineType: bluage
 /// ```
 ///
 ///
@@ -363,7 +364,7 @@ class Application extends pulumi.CustomResource {
           'aws:m2/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
@@ -375,8 +376,8 @@ class Application extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -385,11 +386,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,8 +415,32 @@ class Application extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:m2/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    currentVersion = registerOutput<int>('currentVersion');
+    definition = registerOutput<ApplicationDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    engineType = registerOutput<String>('engineType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

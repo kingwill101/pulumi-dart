@@ -6,7 +6,7 @@ class WorkgroupConfigurationQueryResultsS3AccessGrantsConfiguration {
   /// The authentication type used for Amazon S3 access grants. Currently, only `DIRECTORY_IDENTITY` is supported.
   final pulumi.Input<String> authenticationType;
   /// When enabled, appends the user ID as an Amazon S3 path prefix to the query result output location. Defaults to `false`.
-  final pulumi.Input<bool>? createUserLevelPrefix;
+  final pulumi.Input<bool?>? createUserLevelPrefix;
   /// Specifies whether Amazon S3 access grants are enabled for query results.
   final pulumi.Input<bool> enableS3AccessGrants;
 

@@ -5,9 +5,9 @@ import 'launch_template_instance_market_options_spot_options.dart';
 
 class LaunchTemplateInstanceMarketOptions {
   /// The market type. Can be `spot`.
-  final pulumi.Input<String>? marketType;
+  final pulumi.Input<String?>? marketType;
   /// The options for [Spot Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
-  final pulumi.Input<LaunchTemplateInstanceMarketOptionsSpotOptions>? spotOptions;
+  final pulumi.Input<LaunchTemplateInstanceMarketOptionsSpotOptions?>? spotOptions;
 
   /// Creates a new [LaunchTemplateInstanceMarketOptions].
   /// [marketType] The market type. Can be `spot`.

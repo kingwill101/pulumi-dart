@@ -1,8 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'record_alias.dart';
 import 'record_args.dart';
 import 'record_cidr_routing_policy.dart';
+import 'record_failover_routing_policy.dart';
+import 'record_geolocation_routing_policy.dart';
 import 'record_geoproximity_routing_policy.dart';
+import 'record_latency_routing_policy.dart';
 import 'record_state.dart';
+import 'record_weighted_routing_policy.dart';
 
 /// Provides a Route53 record resource.
 ///
@@ -155,24 +160,24 @@ import 'record_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const www_dev = new aws.route53.Record("www-dev", {
+///     weightedRoutingPolicies: [{
+///         weight: 10,
+///     }],
 ///     zoneId: primary.zoneId,
 ///     name: "www",
 ///     type: aws.route53.RecordType.CNAME,
 ///     ttl: 5,
-///     weightedRoutingPolicies: [{
-///         weight: 10,
-///     }],
 ///     setIdentifier: "dev",
 ///     records: ["dev.example.com"],
 /// });
 /// const www_live = new aws.route53.Record("www-live", {
+///     weightedRoutingPolicies: [{
+///         weight: 90,
+///     }],
 ///     zoneId: primary.zoneId,
 ///     name: "www",
 ///     type: aws.route53.RecordType.CNAME,
 ///     ttl: 5,
-///     weightedRoutingPolicies: [{
-///         weight: 90,
-///     }],
 ///     setIdentifier: "live",
 ///     records: ["live.example.com"],
 /// });
@@ -182,23 +187,23 @@ import 'record_state.dart';
 /// import pulumi_aws as aws
 ///
 /// www_dev = aws.route53.Record("www-dev",
-///     zone_id=primary["zoneId"],
-///     name="www",
-///     type=aws.route53.RecordType.CNAME,
-///     ttl=5,
 ///     weighted_routing_policies=[{
 ///         "weight": 10,
 ///     }],
-///     set_identifier="dev",
-///     records=["dev.example.com"])
-/// www_live = aws.route53.Record("www-live",
 ///     zone_id=primary["zoneId"],
 ///     name="www",
 ///     type=aws.route53.RecordType.CNAME,
 ///     ttl=5,
+///     set_identifier="dev",
+///     records=["dev.example.com"])
+/// www_live = aws.route53.Record("www-live",
 ///     weighted_routing_policies=[{
 ///         "weight": 90,
 ///     }],
+///     zone_id=primary["zoneId"],
+///     name="www",
+///     type=aws.route53.RecordType.CNAME,
+///     ttl=5,
 ///     set_identifier="live",
 ///     records=["live.example.com"])
 /// ```
@@ -212,10 +217,6 @@ import 'record_state.dart';
 /// {
 ///     var www_dev = new Aws.Route53.Record("www-dev", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "www",
-///         Type = Aws.Route53.RecordType.CNAME,
-///         Ttl = 5,
 ///         WeightedRoutingPolicies = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordWeightedRoutingPolicyArgs
@@ -223,6 +224,10 @@ import 'record_state.dart';
 ///                 Weight = 10,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "www",
+///         Type = Aws.Route53.RecordType.CNAME,
+///         Ttl = 5,
 ///         SetIdentifier = "dev",
 ///         Records = new[]
 ///         {
@@ -232,10 +237,6 @@ import 'record_state.dart';
 ///
 ///     var www_live = new Aws.Route53.Record("www-live", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "www",
-///         Type = Aws.Route53.RecordType.CNAME,
-///         Ttl = 5,
 ///         WeightedRoutingPolicies = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordWeightedRoutingPolicyArgs
@@ -243,6 +244,10 @@ import 'record_state.dart';
 ///                 Weight = 90,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "www",
+///         Type = Aws.Route53.RecordType.CNAME,
+///         Ttl = 5,
 ///         SetIdentifier = "live",
 ///         Records = new[]
 ///         {
@@ -263,15 +268,15 @@ import 'record_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53.NewRecord(ctx, "www-dev", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("www"),
-/// 			Type:   pulumi.String(route53.RecordTypeCNAME),
-/// 			Ttl:    pulumi.Int(5),
 /// 			WeightedRoutingPolicies: route53.RecordWeightedRoutingPolicyArray{
 /// 				&route53.RecordWeightedRoutingPolicyArgs{
 /// 					Weight: pulumi.Int(10),
 /// 				},
 /// 			},
+/// 			ZoneId:        pulumi.Any(primary.ZoneId),
+/// 			Name:          pulumi.String("www"),
+/// 			Type:          pulumi.String(route53.RecordTypeCNAME),
+/// 			Ttl:           pulumi.Int(5),
 /// 			SetIdentifier: pulumi.String("dev"),
 /// 			Records: pulumi.StringArray{
 /// 				pulumi.String("dev.example.com"),
@@ -281,15 +286,15 @@ import 'record_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "www-live", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("www"),
-/// 			Type:   pulumi.String(route53.RecordTypeCNAME),
-/// 			Ttl:    pulumi.Int(5),
 /// 			WeightedRoutingPolicies: route53.RecordWeightedRoutingPolicyArray{
 /// 				&route53.RecordWeightedRoutingPolicyArgs{
 /// 					Weight: pulumi.Int(90),
 /// 				},
 /// 			},
+/// 			ZoneId:        pulumi.Any(primary.ZoneId),
+/// 			Name:          pulumi.String("www"),
+/// 			Type:          pulumi.String(route53.RecordTypeCNAME),
+/// 			Ttl:           pulumi.Int(5),
 /// 			SetIdentifier: pulumi.String("live"),
 /// 			Records: pulumi.StringArray{
 /// 				pulumi.String("live.example.com"),
@@ -312,24 +317,24 @@ import 'record_state.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www-dev" {
-///   zone_id = primary.zoneId
-///   name    = "www"
-///   type    = "CNAME"
-///   ttl     = 5
 ///   weighted_routing_policies {
 ///     weight = 10
 ///   }
+///   zone_id        = primary.zoneId
+///   name           = "www"
+///   type           = "CNAME"
+///   ttl            = 5
 ///   set_identifier = "dev"
 ///   records        = ["dev.example.com"]
 /// }
 /// resource "aws_route53_record" "www-live" {
-///   zone_id = primary.zoneId
-///   name    = "www"
-///   type    = "CNAME"
-///   ttl     = 5
 ///   weighted_routing_policies {
 ///     weight = 90
 ///   }
+///   zone_id        = primary.zoneId
+///   name           = "www"
+///   type           = "CNAME"
+///   ttl            = 5
 ///   set_identifier = "live"
 ///   records        = ["live.example.com"]
 /// }
@@ -357,25 +362,25 @@ import 'record_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var www_dev = new Record("www-dev", RecordArgs.builder()
+///             .weightedRoutingPolicies(RecordWeightedRoutingPolicyArgs.builder()
+///                 .weight(10)
+///                 .build())
 ///             .zoneId(primary.zoneId())
 ///             .name("www")
 ///             .type("CNAME")
 ///             .ttl(5)
-///             .weightedRoutingPolicies(RecordWeightedRoutingPolicyArgs.builder()
-///                 .weight(10)
-///                 .build())
 ///             .setIdentifier("dev")
 ///             .records("dev.example.com")
 ///             .build());
 ///
 ///         var www_live = new Record("www-live", RecordArgs.builder()
+///             .weightedRoutingPolicies(RecordWeightedRoutingPolicyArgs.builder()
+///                 .weight(90)
+///                 .build())
 ///             .zoneId(primary.zoneId())
 ///             .name("www")
 ///             .type("CNAME")
 ///             .ttl(5)
-///             .weightedRoutingPolicies(RecordWeightedRoutingPolicyArgs.builder()
-///                 .weight(90)
-///                 .build())
 ///             .setIdentifier("live")
 ///             .records("live.example.com")
 ///             .build());
@@ -388,24 +393,24 @@ import 'record_state.dart';
 ///   www-dev:
 ///     type: aws:route53:Record
 ///     properties:
+///       weightedRoutingPolicies:
+///         - weight: 10
 ///       zoneId: ${primary.zoneId}
 ///       name: www
 ///       type: CNAME
 ///       ttl: 5
-///       weightedRoutingPolicies:
-///         - weight: 10
 ///       setIdentifier: dev
 ///       records:
 ///         - dev.example.com
 ///   www-live:
 ///     type: aws:route53:Record
 ///     properties:
+///       weightedRoutingPolicies:
+///         - weight: 90
 ///       zoneId: ${primary.zoneId}
 ///       name: www
 ///       type: CNAME
 ///       ttl: 5
-///       weightedRoutingPolicies:
-///         - weight: 90
 ///       setIdentifier: live
 ///       records:
 ///         - live.example.com
@@ -420,16 +425,16 @@ import 'record_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const www = new aws.route53.Record("www", {
-///     zoneId: primary.zoneId,
-///     name: "www.example.com",
-///     type: aws.route53.RecordType.CNAME,
-///     ttl: 300,
 ///     geoproximityRoutingPolicy: {
 ///         coordinates: [{
 ///             latitude: "49.22",
 ///             longitude: "-74.01",
 ///         }],
 ///     },
+///     zoneId: primary.zoneId,
+///     name: "www.example.com",
+///     type: aws.route53.RecordType.CNAME,
+///     ttl: 300,
 ///     setIdentifier: "dev",
 ///     records: ["dev.example.com"],
 /// });
@@ -439,16 +444,16 @@ import 'record_state.dart';
 /// import pulumi_aws as aws
 ///
 /// www = aws.route53.Record("www",
-///     zone_id=primary["zoneId"],
-///     name="www.example.com",
-///     type=aws.route53.RecordType.CNAME,
-///     ttl=300,
 ///     geoproximity_routing_policy={
 ///         "coordinates": [{
 ///             "latitude": "49.22",
 ///             "longitude": "-74.01",
 ///         }],
 ///     },
+///     zone_id=primary["zoneId"],
+///     name="www.example.com",
+///     type=aws.route53.RecordType.CNAME,
+///     ttl=300,
 ///     set_identifier="dev",
 ///     records=["dev.example.com"])
 /// ```
@@ -462,10 +467,6 @@ import 'record_state.dart';
 /// {
 ///     var www = new Aws.Route53.Record("www", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "www.example.com",
-///         Type = Aws.Route53.RecordType.CNAME,
-///         Ttl = 300,
 ///         GeoproximityRoutingPolicy = new Aws.Route53.Inputs.RecordGeoproximityRoutingPolicyArgs
 ///         {
 ///             Coordinates = new[]
@@ -477,6 +478,10 @@ import 'record_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "www.example.com",
+///         Type = Aws.Route53.RecordType.CNAME,
+///         Ttl = 300,
 ///         SetIdentifier = "dev",
 ///         Records = new[]
 ///         {
@@ -497,10 +502,6 @@ import 'record_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53.NewRecord(ctx, "www", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("www.example.com"),
-/// 			Type:   pulumi.String(route53.RecordTypeCNAME),
-/// 			Ttl:    pulumi.Int(300),
 /// 			GeoproximityRoutingPolicy: &route53.RecordGeoproximityRoutingPolicyArgs{
 /// 				Coordinates: route53.RecordGeoproximityRoutingPolicyCoordinateArray{
 /// 					&route53.RecordGeoproximityRoutingPolicyCoordinateArgs{
@@ -509,6 +510,10 @@ import 'record_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ZoneId:        pulumi.Any(primary.ZoneId),
+/// 			Name:          pulumi.String("www.example.com"),
+/// 			Type:          pulumi.String(route53.RecordTypeCNAME),
+/// 			Ttl:           pulumi.Int(300),
 /// 			SetIdentifier: pulumi.String("dev"),
 /// 			Records: pulumi.StringArray{
 /// 				pulumi.String("dev.example.com"),
@@ -531,16 +536,16 @@ import 'record_state.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   zone_id = primary.zoneId
-///   name    = "www.example.com"
-///   type    = "CNAME"
-///   ttl     = 300
 ///   geoproximity_routing_policy = {
 ///     coordinates = [{
 ///       "latitude"  = "49.22"
 ///       "longitude" = "-74.01"
 ///     }]
 ///   }
+///   zone_id        = primary.zoneId
+///   name           = "www.example.com"
+///   type           = "CNAME"
+///   ttl            = 300
 ///   set_identifier = "dev"
 ///   records        = ["dev.example.com"]
 /// }
@@ -569,16 +574,16 @@ import 'record_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
-///             .name("www.example.com")
-///             .type("CNAME")
-///             .ttl(300)
 ///             .geoproximityRoutingPolicy(RecordGeoproximityRoutingPolicyArgs.builder()
 ///                 .coordinates(RecordGeoproximityRoutingPolicyCoordinateArgs.builder()
 ///                     .latitude("49.22")
 ///                     .longitude("-74.01")
 ///                     .build())
 ///                 .build())
+///             .zoneId(primary.zoneId())
+///             .name("www.example.com")
+///             .type("CNAME")
+///             .ttl(300)
 ///             .setIdentifier("dev")
 ///             .records("dev.example.com")
 ///             .build());
@@ -591,14 +596,14 @@ import 'record_state.dart';
 ///   www:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${primary.zoneId}
-///       name: www.example.com
-///       type: CNAME
-///       ttl: 300
 ///       geoproximityRoutingPolicy:
 ///         coordinates:
 ///           - latitude: '49.22'
 ///             longitude: '-74.01'
+///       zoneId: ${primary.zoneId}
+///       name: www.example.com
+///       type: CNAME
+///       ttl: 300
 ///       setIdentifier: dev
 ///       records:
 ///         - dev.example.com
@@ -619,24 +624,24 @@ import 'record_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const main = new aws.elb.LoadBalancer("main", {
-///     name: "foobar-elb",
-///     availabilityZones: ["us-east-1c"],
 ///     listeners: [{
 ///         instancePort: 80,
 ///         instanceProtocol: "http",
 ///         lbPort: 80,
 ///         lbProtocol: "http",
 ///     }],
+///     name: "foobar-elb",
+///     availabilityZones: ["us-east-1c"],
 /// });
 /// const www = new aws.route53.Record("www", {
-///     zoneId: primary.zoneId,
-///     name: "example.com",
-///     type: aws.route53.RecordType.A,
 ///     aliases: [{
 ///         name: main.dnsName,
 ///         zoneId: main.zoneId,
 ///         evaluateTargetHealth: true,
 ///     }],
+///     zoneId: primary.zoneId,
+///     name: "example.com",
+///     type: aws.route53.RecordType.A,
 /// });
 /// ```
 /// ```python
@@ -644,23 +649,23 @@ import 'record_state.dart';
 /// import pulumi_aws as aws
 ///
 /// main = aws.elb.LoadBalancer("main",
-///     name="foobar-elb",
-///     availability_zones=["us-east-1c"],
 ///     listeners=[{
 ///         "instance_port": 80,
 ///         "instance_protocol": "http",
 ///         "lb_port": 80,
 ///         "lb_protocol": "http",
-///     }])
+///     }],
+///     name="foobar-elb",
+///     availability_zones=["us-east-1c"])
 /// www = aws.route53.Record("www",
-///     zone_id=primary["zoneId"],
-///     name="example.com",
-///     type=aws.route53.RecordType.A,
 ///     aliases=[{
 ///         "name": main.dns_name,
 ///         "zone_id": main.zone_id,
 ///         "evaluate_target_health": True,
-///     }])
+///     }],
+///     zone_id=primary["zoneId"],
+///     name="example.com",
+///     type=aws.route53.RecordType.A)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -672,11 +677,6 @@ import 'record_state.dart';
 /// {
 ///     var main = new Aws.Elb.LoadBalancer("main", new()
 ///     {
-///         Name = "foobar-elb",
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1c",
-///         },
 ///         Listeners = new[]
 ///         {
 ///             new Aws.Elb.Inputs.LoadBalancerListenerArgs
@@ -687,13 +687,15 @@ import 'record_state.dart';
 ///                 LbProtocol = "http",
 ///             },
 ///         },
+///         Name = "foobar-elb",
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1c",
+///         },
 ///     });
 ///
 ///     var www = new Aws.Route53.Record("www", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "example.com",
-///         Type = Aws.Route53.RecordType.A,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -703,6 +705,9 @@ import 'record_state.dart';
 ///                 EvaluateTargetHealth = true,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "example.com",
+///         Type = Aws.Route53.RecordType.A,
 ///     });
 ///
 /// });
@@ -719,10 +724,6 @@ import 'record_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		main, err := elb.NewLoadBalancer(ctx, "main", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("foobar-elb"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1c"),
-/// 			},
 /// 			Listeners: elb.LoadBalancerListenerArray{
 /// 				&elb.LoadBalancerListenerArgs{
 /// 					InstancePort:     pulumi.Int(80),
@@ -731,14 +732,15 @@ import 'record_state.dart';
 /// 					LbProtocol:       pulumi.String("http"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("foobar-elb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1c"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "www", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("example.com"),
-/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:                 main.DnsName,
@@ -746,6 +748,9 @@ import 'record_state.dart';
 /// 					EvaluateTargetHealth: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.Any(primary.ZoneId),
+/// 			Name:   pulumi.String("example.com"),
+/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -764,24 +769,24 @@ import 'record_state.dart';
 /// }
 ///
 /// resource "aws_elb_loadbalancer" "main" {
-///   name               = "foobar-elb"
-///   availability_zones = ["us-east-1c"]
 ///   listeners {
 ///     instance_port     = 80
 ///     instance_protocol = "http"
 ///     lb_port           = 80
 ///     lb_protocol       = "http"
 ///   }
+///   name               = "foobar-elb"
+///   availability_zones = ["us-east-1c"]
 /// }
 /// resource "aws_route53_record" "www" {
-///   zone_id = primary.zoneId
-///   name    = "example.com"
-///   type    = "A"
 ///   aliases {
 ///     name                   = aws_elb_loadbalancer.main.dns_name
 ///     zone_id                = aws_elb_loadbalancer.main.zone_id
 ///     evaluate_target_health = true
 ///   }
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
 /// }
 /// ```
 /// ```java
@@ -810,25 +815,25 @@ import 'record_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var main = new LoadBalancer("main", LoadBalancerArgs.builder()
-///             .name("foobar-elb")
-///             .availabilityZones("us-east-1c")
 ///             .listeners(LoadBalancerListenerArgs.builder()
 ///                 .instancePort(80)
 ///                 .instanceProtocol("http")
 ///                 .lbPort(80)
 ///                 .lbProtocol("http")
 ///                 .build())
+///             .name("foobar-elb")
+///             .availabilityZones("us-east-1c")
 ///             .build());
 ///
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
-///             .name("example.com")
-///             .type("A")
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(main.dnsName())
 ///                 .zoneId(main.zoneId())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
+///             .zoneId(primary.zoneId())
+///             .name("example.com")
+///             .type("A")
 ///             .build());
 ///
 ///     }
@@ -839,24 +844,24 @@ import 'record_state.dart';
 ///   main:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: foobar-elb
-///       availabilityZones:
-///         - us-east-1c
 ///       listeners:
 ///         - instancePort: 80
 ///           instanceProtocol: http
 ///           lbPort: 80
 ///           lbProtocol: http
+///       name: foobar-elb
+///       availabilityZones:
+///         - us-east-1c
 ///   www:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${primary.zoneId}
-///       name: example.com
-///       type: A
 ///       aliases:
 ///         - name: ${main.dnsName}
 ///           zoneId: ${main.zoneId}
 ///           evaluateTargetHealth: true
+///       zoneId: ${primary.zoneId}
+///       name: example.com
+///       type: A
 /// ```
 ///
 ///
@@ -873,14 +878,14 @@ import 'record_state.dart';
 ///     ipAddressType: "IPV4",
 /// });
 /// const www = new aws.route53.Record("www", {
-///     zoneId: primary.zoneId,
-///     name: "example.com",
-///     type: aws.route53.RecordType.A,
 ///     aliases: [{
 ///         name: main.dnsName,
 ///         zoneId: main.hostedZoneId,
 ///         evaluateTargetHealth: false,
 ///     }],
+///     zoneId: primary.zoneId,
+///     name: "example.com",
+///     type: aws.route53.RecordType.A,
 /// });
 /// ```
 /// ```python
@@ -892,14 +897,14 @@ import 'record_state.dart';
 ///     enabled=True,
 ///     ip_address_type="IPV4")
 /// www = aws.route53.Record("www",
-///     zone_id=primary["zoneId"],
-///     name="example.com",
-///     type=aws.route53.RecordType.A,
 ///     aliases=[{
 ///         "name": main.dns_name,
 ///         "zone_id": main.hosted_zone_id,
 ///         "evaluate_target_health": False,
-///     }])
+///     }],
+///     zone_id=primary["zoneId"],
+///     name="example.com",
+///     type=aws.route53.RecordType.A)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -918,9 +923,6 @@ import 'record_state.dart';
 ///
 ///     var www = new Aws.Route53.Record("www", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "example.com",
-///         Type = Aws.Route53.RecordType.A,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -930,6 +932,9 @@ import 'record_state.dart';
 ///                 EvaluateTargetHealth = false,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "example.com",
+///         Type = Aws.Route53.RecordType.A,
 ///     });
 ///
 /// });
@@ -954,9 +959,6 @@ import 'record_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "www", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("example.com"),
-/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:                 main.DnsName,
@@ -964,6 +966,9 @@ import 'record_state.dart';
 /// 					EvaluateTargetHealth: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.Any(primary.ZoneId),
+/// 			Name:   pulumi.String("example.com"),
+/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -987,14 +992,14 @@ import 'record_state.dart';
 ///   ip_address_type = "IPV4"
 /// }
 /// resource "aws_route53_record" "www" {
-///   zone_id = primary.zoneId
-///   name    = "example.com"
-///   type    = "A"
 ///   aliases {
 ///     name                   = aws_globalaccelerator_accelerator.main.dns_name
 ///     zone_id                = aws_globalaccelerator_accelerator.main.hosted_zone_id
 ///     evaluate_target_health = false
 ///   }
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
 /// }
 /// ```
 /// ```java
@@ -1028,14 +1033,14 @@ import 'record_state.dart';
 ///             .build());
 ///
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
-///             .name("example.com")
-///             .type("A")
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(main.dnsName())
 ///                 .zoneId(main.hostedZoneId())
 ///                 .evaluateTargetHealth(false)
 ///                 .build())
+///             .zoneId(primary.zoneId())
+///             .name("example.com")
+///             .type("A")
 ///             .build());
 ///
 ///     }
@@ -1052,13 +1057,13 @@ import 'record_state.dart';
 ///   www:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${primary.zoneId}
-///       name: example.com
-///       type: A
 ///       aliases:
 ///         - name: ${main.dnsName}
 ///           zoneId: ${main.hostedZoneId}
 ///           evaluateTargetHealth: false
+///       zoneId: ${primary.zoneId}
+///       name: example.com
+///       type: A
 /// ```
 ///
 ///
@@ -1304,7 +1309,7 @@ import 'record_state.dart';
 class Record extends pulumi.CustomResource {
   /// An alias block. Conflicts with `ttl` & `records`.
   /// Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> aliases;
+  late final pulumi.Output<List<RecordAlias>?> aliases;
   /// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
   ///
   /// Exactly one of `records` or `alias` must be specified: this determines whether it's an alias record.
@@ -1312,17 +1317,17 @@ class Record extends pulumi.CustomResource {
   /// A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
   late final pulumi.Output<RecordCidrRoutingPolicy?> cidrRoutingPolicy;
   /// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> failoverRoutingPolicies;
+  late final pulumi.Output<List<RecordFailoverRoutingPolicy>?> failoverRoutingPolicies;
   /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`. Does not include trailing `.`.
   late final pulumi.Output<String> fqdn;
   /// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> geolocationRoutingPolicies;
+  late final pulumi.Output<List<RecordGeolocationRoutingPolicy>?> geolocationRoutingPolicies;
   /// A block indicating a routing policy based on the geoproximity of the requestor. Conflicts with any other routing policy. Documented below.
   late final pulumi.Output<RecordGeoproximityRoutingPolicy?> geoproximityRoutingPolicy;
   /// The health check the record should be associated with.
   late final pulumi.Output<String?> healthCheckId;
   /// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> latencyRoutingPolicies;
+  late final pulumi.Output<List<RecordLatencyRoutingPolicy>?> latencyRoutingPolicies;
   /// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
   late final pulumi.Output<bool?> multivalueAnswerRoutingPolicy;
   /// The name of the record.
@@ -1336,7 +1341,7 @@ class Record extends pulumi.CustomResource {
   /// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
   late final pulumi.Output<String> type;
   /// A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> weightedRoutingPolicies;
+  late final pulumi.Output<List<RecordWeightedRoutingPolicy>?> weightedRoutingPolicies;
   /// The ID of the hosted zone to contain this record.
   late final pulumi.Output<String> zoneId;
 
@@ -1352,24 +1357,24 @@ class Record extends pulumi.CustomResource {
           'aws:route53/record:Record',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    aliases = registerOutput<List<Map<String, dynamic>>?>('aliases');
+    aliases = registerOutput<List<RecordAlias>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordAlias>(guardedValue, (value) => RecordAlias.fromMap((value as Map).cast<String, dynamic>())); });
     allowOverwrite = registerOutput<bool>('allowOverwrite');
     cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>('cidrRoutingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordCidrRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    failoverRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('failoverRoutingPolicies');
+    failoverRoutingPolicies = registerOutput<List<RecordFailoverRoutingPolicy>?>('failoverRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordFailoverRoutingPolicy>(guardedValue, (value) => RecordFailoverRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String>('fqdn');
-    geolocationRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('geolocationRoutingPolicies');
+    geolocationRoutingPolicies = registerOutput<List<RecordGeolocationRoutingPolicy>?>('geolocationRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordGeolocationRoutingPolicy>(guardedValue, (value) => RecordGeolocationRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     geoproximityRoutingPolicy = registerOutput<RecordGeoproximityRoutingPolicy?>('geoproximityRoutingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordGeoproximityRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthCheckId = registerOutput<String?>('healthCheckId');
-    latencyRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('latencyRoutingPolicies');
+    latencyRoutingPolicies = registerOutput<List<RecordLatencyRoutingPolicy>?>('latencyRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordLatencyRoutingPolicy>(guardedValue, (value) => RecordLatencyRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     multivalueAnswerRoutingPolicy = registerOutput<bool?>('multivalueAnswerRoutingPolicy');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<String>?>('records');
+    records = registerOutput<List<String>?>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     setIdentifier = registerOutput<String?>('setIdentifier');
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
-    weightedRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('weightedRoutingPolicies');
+    weightedRoutingPolicies = registerOutput<List<RecordWeightedRoutingPolicy>?>('weightedRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordWeightedRoutingPolicy>(guardedValue, (value) => RecordWeightedRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -1378,11 +1383,12 @@ class Record extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Record._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1396,22 +1402,50 @@ class Record extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aliases = registerOutput<List<Map<String, dynamic>>?>('aliases');
+    aliases = registerOutput<List<RecordAlias>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordAlias>(guardedValue, (value) => RecordAlias.fromMap((value as Map).cast<String, dynamic>())); });
     allowOverwrite = registerOutput<bool>('allowOverwrite');
     cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>('cidrRoutingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordCidrRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    failoverRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('failoverRoutingPolicies');
+    failoverRoutingPolicies = registerOutput<List<RecordFailoverRoutingPolicy>?>('failoverRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordFailoverRoutingPolicy>(guardedValue, (value) => RecordFailoverRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String>('fqdn');
-    geolocationRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('geolocationRoutingPolicies');
+    geolocationRoutingPolicies = registerOutput<List<RecordGeolocationRoutingPolicy>?>('geolocationRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordGeolocationRoutingPolicy>(guardedValue, (value) => RecordGeolocationRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     geoproximityRoutingPolicy = registerOutput<RecordGeoproximityRoutingPolicy?>('geoproximityRoutingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordGeoproximityRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthCheckId = registerOutput<String?>('healthCheckId');
-    latencyRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('latencyRoutingPolicies');
+    latencyRoutingPolicies = registerOutput<List<RecordLatencyRoutingPolicy>?>('latencyRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordLatencyRoutingPolicy>(guardedValue, (value) => RecordLatencyRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     multivalueAnswerRoutingPolicy = registerOutput<bool?>('multivalueAnswerRoutingPolicy');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<String>?>('records');
+    records = registerOutput<List<String>?>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     setIdentifier = registerOutput<String?>('setIdentifier');
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
-    weightedRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>('weightedRoutingPolicies');
+    weightedRoutingPolicies = registerOutput<List<RecordWeightedRoutingPolicy>?>('weightedRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordWeightedRoutingPolicy>(guardedValue, (value) => RecordWeightedRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [Record] resource.
+  Record.reference(String urn)
+    : super(
+        'aws:route53/record:Record',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aliases = registerOutput<List<RecordAlias>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordAlias>(guardedValue, (value) => RecordAlias.fromMap((value as Map).cast<String, dynamic>())); });
+    allowOverwrite = registerOutput<bool>('allowOverwrite');
+    cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>('cidrRoutingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordCidrRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failoverRoutingPolicies = registerOutput<List<RecordFailoverRoutingPolicy>?>('failoverRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordFailoverRoutingPolicy>(guardedValue, (value) => RecordFailoverRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    fqdn = registerOutput<String>('fqdn');
+    geolocationRoutingPolicies = registerOutput<List<RecordGeolocationRoutingPolicy>?>('geolocationRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordGeolocationRoutingPolicy>(guardedValue, (value) => RecordGeolocationRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    geoproximityRoutingPolicy = registerOutput<RecordGeoproximityRoutingPolicy?>('geoproximityRoutingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordGeoproximityRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthCheckId = registerOutput<String?>('healthCheckId');
+    latencyRoutingPolicies = registerOutput<List<RecordLatencyRoutingPolicy>?>('latencyRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordLatencyRoutingPolicy>(guardedValue, (value) => RecordLatencyRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    multivalueAnswerRoutingPolicy = registerOutput<bool?>('multivalueAnswerRoutingPolicy');
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<String>?>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    setIdentifier = registerOutput<String?>('setIdentifier');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    weightedRoutingPolicies = registerOutput<List<RecordWeightedRoutingPolicy>?>('weightedRoutingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordWeightedRoutingPolicy>(guardedValue, (value) => RecordWeightedRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 }

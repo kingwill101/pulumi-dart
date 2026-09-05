@@ -15,31 +15,31 @@ import 'get_permissions_table_with_columns.dart';
 /// {@macro pulumi_lakeformation_get_permissions_get_permissions_args_doc}
 class GetPermissionsArgs {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
-  final pulumi.Input<bool>? catalogResource;
+  final pulumi.Input<bool?>? catalogResource;
   /// Configuration block for a data cells filter resource. Detailed below.
-  final pulumi.Input<GetPermissionsDataCellsFilter>? dataCellsFilter;
+  final pulumi.Input<GetPermissionsDataCellsFilter?>? dataCellsFilter;
   /// Configuration block for a data location resource. Detailed below.
-  final pulumi.Input<GetPermissionsDataLocation>? dataLocation;
+  final pulumi.Input<GetPermissionsDataLocation?>? dataLocation;
   /// Configuration block for a database resource. Detailed below.
-  final pulumi.Input<GetPermissionsDatabase>? database;
+  final pulumi.Input<GetPermissionsDatabase?>? database;
   /// Configuration block for an LF-tag resource. Detailed below.
-  final pulumi.Input<GetPermissionsLfTag>? lfTag;
+  final pulumi.Input<GetPermissionsLfTag?>? lfTag;
   /// Configuration block for an LF-tag policy resource. Detailed below.
-  final pulumi.Input<GetPermissionsLfTagPolicy>? lfTagPolicy;
+  final pulumi.Input<GetPermissionsLfTagPolicy?>? lfTagPolicy;
   /// Principal to be granted the permissions on the resource. Supported principals are IAM users or IAM roles.
   ///
   /// One of the following is required:
   final pulumi.Input<String> principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for a table resource. Detailed below.
-  final pulumi.Input<GetPermissionsTable>? table;
+  final pulumi.Input<GetPermissionsTable?>? table;
   /// Configuration block for a table with columns resource. Detailed below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<GetPermissionsTableWithColumns>? tableWithColumns;
+  final pulumi.Input<GetPermissionsTableWithColumns?>? tableWithColumns;
 
   /// Creates a new [GetPermissionsArgs].
   /// [catalogId] Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.

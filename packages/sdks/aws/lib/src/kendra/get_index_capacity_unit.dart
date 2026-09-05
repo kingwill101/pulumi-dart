@@ -25,8 +25,8 @@ class GetIndexCapacityUnit {
 
   factory GetIndexCapacityUnit.fromMap(Map<String, dynamic> map) {
     return GetIndexCapacityUnit(
-      queryCapacityUnits: pulumi.Input.fromValue(map['queryCapacityUnits'] as int),
-      storageCapacityUnits: pulumi.Input.fromValue(map['storageCapacityUnits'] as int),
+      queryCapacityUnits: pulumi.Input.fromValue((map['queryCapacityUnits'] as num).toInt()),
+      storageCapacityUnits: pulumi.Input.fromValue((map['storageCapacityUnits'] as num).toInt()),
     );
   }
 }

@@ -16,8 +16,6 @@ import 'organization_configuration_state.dart';
 ///
 /// const example = new aws.guardduty.Detector("example", {enable: true});
 /// const exampleOrganizationConfiguration = new aws.guardduty.OrganizationConfiguration("example", {
-///     autoEnableOrganizationMembers: "ALL",
-///     detectorId: example.id,
 ///     datasources: {
 ///         s3Logs: {
 ///             autoEnable: true,
@@ -35,6 +33,8 @@ import 'organization_configuration_state.dart';
 ///             },
 ///         },
 ///     },
+///     autoEnableOrganizationMembers: "ALL",
+///     detectorId: example.id,
 /// });
 /// ```
 /// ```python
@@ -43,8 +43,6 @@ import 'organization_configuration_state.dart';
 ///
 /// example = aws.guardduty.Detector("example", enable=True)
 /// example_organization_configuration = aws.guardduty.OrganizationConfiguration("example",
-///     auto_enable_organization_members="ALL",
-///     detector_id=example.id,
 ///     datasources={
 ///         "s3_logs": {
 ///             "auto_enable": True,
@@ -61,7 +59,9 @@ import 'organization_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
-///     })
+///     },
+///     auto_enable_organization_members="ALL",
+///     detector_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,8 +78,6 @@ import 'organization_configuration_state.dart';
 ///
 ///     var exampleOrganizationConfiguration = new Aws.GuardDuty.OrganizationConfiguration("example", new()
 ///     {
-///         AutoEnableOrganizationMembers = "ALL",
-///         DetectorId = example.Id,
 ///         Datasources = new Aws.GuardDuty.Inputs.OrganizationConfigurationDatasourcesArgs
 ///         {
 ///             S3Logs = new Aws.GuardDuty.Inputs.OrganizationConfigurationDatasourcesS3LogsArgs
@@ -104,6 +102,8 @@ import 'organization_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AutoEnableOrganizationMembers = "ALL",
+///         DetectorId = example.Id,
 ///     });
 ///
 /// });
@@ -125,8 +125,6 @@ import 'organization_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewOrganizationConfiguration(ctx, "example", &guardduty.OrganizationConfigurationArgs{
-/// 			AutoEnableOrganizationMembers: pulumi.String("ALL"),
-/// 			DetectorId:                    example.ID().ToIDOutput().ToStringOutput(),
 /// 			Datasources: &guardduty.OrganizationConfigurationDatasourcesArgs{
 /// 				S3Logs: &guardduty.OrganizationConfigurationDatasourcesS3LogsArgs{
 /// 					AutoEnable: pulumi.Bool(true),
@@ -144,6 +142,8 @@ import 'organization_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AutoEnableOrganizationMembers: pulumi.String("ALL"),
+/// 			DetectorId:                    example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -165,8 +165,6 @@ import 'organization_configuration_state.dart';
 ///   enable = true
 /// }
 /// resource "aws_guardduty_organizationconfiguration" "example" {
-///   auto_enable_organization_members = "ALL"
-///   detector_id                      = aws_guardduty_detector.example.id
 ///   datasources = {
 ///     s3_logs = {
 ///       auto_enable = true
@@ -184,6 +182,8 @@ import 'organization_configuration_state.dart';
 ///       }
 ///     }
 ///   }
+///   auto_enable_organization_members = "ALL"
+///   detector_id                      = aws_guardduty_detector.example.id
 /// }
 /// ```
 /// ```java
@@ -221,8 +221,6 @@ import 'organization_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleOrganizationConfiguration = new OrganizationConfiguration("exampleOrganizationConfiguration", OrganizationConfigurationArgs.builder()
-///             .autoEnableOrganizationMembers("ALL")
-///             .detectorId(example.id())
 ///             .datasources(OrganizationConfigurationDatasourcesArgs.builder()
 ///                 .s3Logs(OrganizationConfigurationDatasourcesS3LogsArgs.builder()
 ///                     .autoEnable(true)
@@ -240,6 +238,8 @@ import 'organization_configuration_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .autoEnableOrganizationMembers("ALL")
+///             .detectorId(example.id())
 ///             .build());
 ///
 ///     }
@@ -255,8 +255,6 @@ import 'organization_configuration_state.dart';
 ///     type: aws:guardduty:OrganizationConfiguration
 ///     name: example
 ///     properties:
-///       autoEnableOrganizationMembers: ALL
-///       detectorId: ${example.id}
 ///       datasources:
 ///         s3Logs:
 ///           autoEnable: true
@@ -267,6 +265,8 @@ import 'organization_configuration_state.dart';
 ///           scanEc2InstanceWithFindings:
 ///             ebsVolumes:
 ///               autoEnable: true
+///       autoEnableOrganizationMembers: ALL
+///       detectorId: ${example.id}
 /// ```
 ///
 ///
@@ -302,7 +302,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
     datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -315,11 +315,12 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,6 +334,21 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
+    datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    detectorId = registerOutput<String>('detectorId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationConfiguration] resource.
+  OrganizationConfiguration.reference(String urn)
+    : super(
+        'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
     datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     detectorId = registerOutput<String>('detectorId');

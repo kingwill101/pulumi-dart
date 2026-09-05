@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_resiliencehub_v2_system_v2_system_args_doc}
 class V2SystemArgs {
   /// Description of the system.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS key ARN.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the system. Changing this value requires creating a new resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether cross-account sharing is enabled for this system.
-  final pulumi.Input<bool>? sharingEnabled;
+  final pulumi.Input<bool?>? sharingEnabled;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [V2SystemArgs].
   /// [description] Description of the system.

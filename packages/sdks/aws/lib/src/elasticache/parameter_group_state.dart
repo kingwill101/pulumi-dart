@@ -6,21 +6,21 @@ import 'parameter_group_parameter.dart';
 /// Input properties used for looking up and filtering ParameterGroup resources.
 class ParameterGroupState {
   /// The AWS ARN associated with the parameter group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The family of the ElastiCache parameter group.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the ElastiCache parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of ElastiCache parameters to apply.
-  final pulumi.Input<List<ParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<ParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ParameterGroupState].
   /// [arn] The AWS ARN associated with the parameter group.
@@ -31,16 +31,16 @@ class ParameterGroupState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  const ParameterGroupState({
+  ParameterGroupState({
     this.arn,
-    this.description,
+    pulumi.Input<String?>? description,
     this.family,
     this.name,
     this.parameters,
     this.region,
     this.tags,
     this.tagsAll,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

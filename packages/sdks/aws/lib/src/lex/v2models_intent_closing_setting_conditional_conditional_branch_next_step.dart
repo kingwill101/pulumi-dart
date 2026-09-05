@@ -6,11 +6,11 @@ import 'v2models_intent_closing_setting_conditional_conditional_branch_next_step
 
 class V2modelsIntentClosingSettingConditionalConditionalBranchNextStep {
   /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchNextStepDialogAction>? dialogAction;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchNextStepDialogAction?>? dialogAction;
   /// Configuration block for override settings to configure the intent state. See `intent`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntent>? intent;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntent?>? intent;
   /// Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
-  final pulumi.Input<Map<String, String>>? sessionAttributes;
+  final pulumi.Input<Map<String, String>?>? sessionAttributes;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalConditionalBranchNextStep].
   /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.

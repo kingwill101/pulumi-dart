@@ -6,51 +6,51 @@ import 'vpc_endpoint_service_private_dns_name_configuration.dart';
 /// Input properties used for looking up and filtering VpcEndpointService resources.
 class VpcEndpointServiceState {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-  final pulumi.Input<bool>? acceptanceRequired;
+  final pulumi.Input<bool?>? acceptanceRequired;
   /// The ARNs of one or more principals allowed to discover the endpoint service.
-  final pulumi.Input<List<String>>? allowedPrincipals;
-  /// The Amazon Resource Name (ARN) of the VPC endpoint service.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<List<String>?>? allowedPrincipals;
+  /// ARN of the VPC endpoint service.
+  final pulumi.Input<String?>? arn;
   /// A set of Availability Zones in which the service is available.
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// A set of DNS names for the service.
-  final pulumi.Input<List<String>>? baseEndpointDnsNames;
-  /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
-  final pulumi.Input<List<String>>? gatewayLoadBalancerArns;
+  final pulumi.Input<List<String>?>? baseEndpointDnsNames;
+  /// ARNs of one or more Gateway Load Balancers for the endpoint service.
+  final pulumi.Input<List<String>?>? gatewayLoadBalancerArns;
   /// Whether or not the service manages its VPC endpoints - `true` or `false`.
-  final pulumi.Input<bool>? managesVpcEndpoints;
-  /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
-  final pulumi.Input<List<String>>? networkLoadBalancerArns;
+  final pulumi.Input<bool?>? managesVpcEndpoints;
+  /// ARNs of one or more Network Load Balancers for the endpoint service.
+  final pulumi.Input<List<String>?>? networkLoadBalancerArns;
   /// The private DNS name for the service.
-  final pulumi.Input<String>? privateDnsName;
+  final pulumi.Input<String?>? privateDnsName;
   /// List of objects containing information about the endpoint service private DNS name configuration.
-  final pulumi.Input<List<VpcEndpointServicePrivateDnsNameConfiguration>>? privateDnsNameConfigurations;
+  final pulumi.Input<List<VpcEndpointServicePrivateDnsNameConfiguration>?>? privateDnsNameConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The service name.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// The service type, `Gateway` or `Interface`.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<String?>? serviceType;
   /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
-  final pulumi.Input<List<String>>? supportedIpAddressTypes;
+  final pulumi.Input<List<String>?>? supportedIpAddressTypes;
   /// The set of regions from which service consumers can access the service.
-  final pulumi.Input<List<String>>? supportedRegions;
+  final pulumi.Input<List<String>?>? supportedRegions;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VpcEndpointServiceState].
   /// [acceptanceRequired] Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   /// [allowedPrincipals] The ARNs of one or more principals allowed to discover the endpoint service.
-  /// [arn] The Amazon Resource Name (ARN) of the VPC endpoint service.
+  /// [arn] ARN of the VPC endpoint service.
   /// [availabilityZones] A set of Availability Zones in which the service is available.
   /// [baseEndpointDnsNames] A set of DNS names for the service.
-  /// [gatewayLoadBalancerArns] Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
+  /// [gatewayLoadBalancerArns] ARNs of one or more Gateway Load Balancers for the endpoint service.
   /// [managesVpcEndpoints] Whether or not the service manages its VPC endpoints - `true` or `false`.
-  /// [networkLoadBalancerArns] Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
+  /// [networkLoadBalancerArns] ARNs of one or more Network Load Balancers for the endpoint service.
   /// [privateDnsName] The private DNS name for the service.
   /// [privateDnsNameConfigurations] List of objects containing information about the endpoint service private DNS name configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

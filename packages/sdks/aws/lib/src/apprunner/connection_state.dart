@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
   /// ARN of the connection.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the connection.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Source repository provider. Valid values: `GITHUB`.
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<String?>? providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current state of the App Runner connection. When the state is `AVAILABLE`, you can use the connection to create an `aws.apprunner.Service` resource.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ConnectionState].
   /// [arn] ARN of the connection.

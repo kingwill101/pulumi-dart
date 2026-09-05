@@ -5,7 +5,7 @@ import 'bucket_objectv2_override_provider_default_tags.dart';
 
 class BucketObjectv2OverrideProvider {
   /// Override the provider `defaultTags` configuration block. See `defaultTags` Block below for more details.
-  final pulumi.Input<BucketObjectv2OverrideProviderDefaultTags>? defaultTags;
+  final pulumi.Input<BucketObjectv2OverrideProviderDefaultTags?>? defaultTags;
 
   /// Creates a new [BucketObjectv2OverrideProvider].
   /// [defaultTags] Override the provider `defaultTags` configuration block. See `defaultTags` Block below for more details.

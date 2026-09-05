@@ -6,7 +6,7 @@ class ScalingPlanScalingInstructionPredefinedLoadMetricSpecification {
   /// Metric type. Valid values: `ALBTargetGroupRequestCount`, `ASGTotalCPUUtilization`, `ASGTotalNetworkIn`, `ASGTotalNetworkOut`.
   final pulumi.Input<String> predefinedLoadMetricType;
   /// Identifies the resource associated with the metric type.
-  final pulumi.Input<String>? resourceLabel;
+  final pulumi.Input<String?>? resourceLabel;
 
   /// Creates a new [ScalingPlanScalingInstructionPredefinedLoadMetricSpecification].
   /// [predefinedLoadMetricType] Metric type. Valid values: `ALBTargetGroupRequestCount`, `ASGTotalCPUUtilization`, `ASGTotalNetworkIn`, `ASGTotalNetworkOut`.

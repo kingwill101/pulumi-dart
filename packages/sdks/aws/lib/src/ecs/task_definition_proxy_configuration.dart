@@ -6,9 +6,9 @@ class TaskDefinitionProxyConfiguration {
   /// Name of the container that will serve as the App Mesh proxy.
   final pulumi.Input<String> containerName;
   /// Set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TaskDefinitionProxyConfiguration].
   /// [containerName] Name of the container that will serve as the App Mesh proxy.

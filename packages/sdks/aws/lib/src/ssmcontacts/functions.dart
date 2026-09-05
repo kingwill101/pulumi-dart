@@ -126,6 +126,17 @@ Future<GetContactResult> getContact(
   return GetContactResult.fromMap(result);
 }
 
+pulumi.Output<GetContactResult> getContactOutput(
+  GetContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssmcontacts/getContact:getContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactResult.fromMap);
+}
+
 /// Data source for managing an AWS SSM Contacts Contact Channel.
 ///
 /// ## Example Usage
@@ -246,6 +257,17 @@ Future<GetContactChannelResult> getContactChannel(
   return GetContactChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetContactChannelResult> getContactChannelOutput(
+  GetContactChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssmcontacts/getContactChannel:getContactChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactChannelResult.fromMap);
+}
+
 /// Data source for managing a Plan of an AWS SSM Contact.
 ///
 /// ## Example Usage
@@ -364,4 +386,15 @@ Future<GetPlanResult> getPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetPlanResult> getPlanOutput(
+  GetPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssmcontacts/getPlan:getPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlanResult.fromMap);
 }

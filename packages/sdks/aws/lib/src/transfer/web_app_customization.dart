@@ -39,7 +39,7 @@ class WebAppCustomization extends pulumi.CustomResource {
           'aws:transfer/webAppCustomization:WebAppCustomization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     faviconFile = registerOutput<String>('faviconFile');
     logoFile = registerOutput<String>('logoFile');
@@ -53,11 +53,12 @@ class WebAppCustomization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAppCustomizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAppCustomization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -71,6 +72,22 @@ class WebAppCustomization extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    faviconFile = registerOutput<String>('faviconFile');
+    logoFile = registerOutput<String>('logoFile');
+    region = registerOutput<String>('region');
+    title = registerOutput<String?>('title');
+    webAppId = registerOutput<String>('webAppId');
+  }
+
+  /// Creates a typed reference to an existing [WebAppCustomization] resource.
+  WebAppCustomization.reference(String urn)
+    : super(
+        'aws:transfer/webAppCustomization:WebAppCustomization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     faviconFile = registerOutput<String>('faviconFile');
     logoFile = registerOutput<String>('logoFile');
     region = registerOutput<String>('region');

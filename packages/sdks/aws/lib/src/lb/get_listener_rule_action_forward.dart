@@ -7,10 +7,10 @@ import 'get_listener_rule_action_forward_target_group.dart';
 class GetListenerRuleActionForward {
   /// Target group stickiness for the rule.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionForwardStickiness>>? stickinesses;
+  final pulumi.Input<List<GetListenerRuleActionForwardStickiness>?>? stickinesses;
   /// Set of target groups for the action.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionForwardTargetGroup>>? targetGroups;
+  final pulumi.Input<List<GetListenerRuleActionForwardTargetGroup>?>? targetGroups;
 
   /// Creates a new [GetListenerRuleActionForward].
   /// [stickinesses] Target group stickiness for the rule.

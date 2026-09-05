@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy {
   /// Deployment model for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
-  final pulumi.Input<String>? firewallDeploymentModel;
+  final pulumi.Input<String?>? firewallDeploymentModel;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy].
   /// [firewallDeploymentModel] Deployment model for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.

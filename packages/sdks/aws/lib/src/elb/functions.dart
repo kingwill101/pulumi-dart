@@ -18,14 +18,14 @@ import 'get_service_account_result.dart';
 ///
 /// const main = aws.elb.getHostedZoneId({});
 /// const www = new aws.route53.Record("www", {
-///     zoneId: primary.zoneId,
-///     name: "example.com",
-///     type: aws.route53.RecordType.A,
 ///     aliases: [{
 ///         name: mainAwsElb.dnsName,
 ///         zoneId: main.then(main => main.id),
 ///         evaluateTargetHealth: true,
 ///     }],
+///     zoneId: primary.zoneId,
+///     name: "example.com",
+///     type: aws.route53.RecordType.A,
 /// });
 /// ```
 /// ```python
@@ -34,14 +34,14 @@ import 'get_service_account_result.dart';
 ///
 /// main = aws.elb.get_hosted_zone_id()
 /// www = aws.route53.Record("www",
-///     zone_id=primary["zoneId"],
-///     name="example.com",
-///     type=aws.route53.RecordType.A,
 ///     aliases=[{
 ///         "name": main_aws_elb["dnsName"],
 ///         "zone_id": main.id,
 ///         "evaluate_target_health": True,
-///     }])
+///     }],
+///     zone_id=primary["zoneId"],
+///     name="example.com",
+///     type=aws.route53.RecordType.A)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55,9 +55,6 @@ import 'get_service_account_result.dart';
 ///
 ///     var www = new Aws.Route53.Record("www", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "example.com",
-///         Type = Aws.Route53.RecordType.A,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -67,6 +64,9 @@ import 'get_service_account_result.dart';
 ///                 EvaluateTargetHealth = true,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "example.com",
+///         Type = Aws.Route53.RecordType.A,
 ///     });
 ///
 /// });
@@ -87,9 +87,6 @@ import 'get_service_account_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "www", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("example.com"),
-/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:                 pulumi.Any(mainAwsElb.DnsName),
@@ -97,6 +94,9 @@ import 'get_service_account_result.dart';
 /// 					EvaluateTargetHealth: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.Any(primary.ZoneId),
+/// 			Name:   pulumi.String("example.com"),
+/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -118,14 +118,14 @@ import 'get_service_account_result.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   zone_id = primary.zoneId
-///   name    = "example.com"
-///   type    = "A"
 ///   aliases {
 ///     name                   = mainAwsElb.dnsName
 ///     zone_id                = data.aws_elb_gethostedzoneid.main.id
 ///     evaluate_target_health = true
 ///   }
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
 /// }
 /// ```
 /// ```java
@@ -156,14 +156,14 @@ import 'get_service_account_result.dart';
 ///             .build());
 ///
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
-///             .name("example.com")
-///             .type("A")
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(mainAwsElb.dnsName())
 ///                 .zoneId(main.id())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
+///             .zoneId(primary.zoneId())
+///             .name("example.com")
+///             .type("A")
 ///             .build());
 ///
 ///     }
@@ -174,13 +174,13 @@ import 'get_service_account_result.dart';
 ///   www:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${primary.zoneId}
-///       name: example.com
-///       type: A
 ///       aliases:
 ///         - name: ${mainAwsElb.dnsName}
 ///           zoneId: ${main.id}
 ///           evaluateTargetHealth: true
+///       zoneId: ${primary.zoneId}
+///       name: example.com
+///       type: A
 /// variables:
 ///   main:
 ///     fn::invoke:
@@ -200,6 +200,17 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostedZoneIdResult.fromMap(result);
+}
+
+pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
+  GetHostedZoneIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elb/getHostedZoneId:getHostedZoneId',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostedZoneIdResult.fromMap);
 }
 
 /// Provides information about a "classic" Elastic Load Balancer (ELB).
@@ -351,6 +362,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
   return GetLoadBalancerResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elb/getLoadBalancer:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
+}
+
 /// Use this data source to get the Account ID of the [AWS Elastic Load Balancing Service Account](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html#attach-bucket-policy)
 /// in a given region for the purpose of permitting in S3 bucket policy.
 ///
@@ -371,11 +393,11 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// });
 /// const allowElbLogging = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [main.then(main => main.arn)],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["s3:PutObject"],
 ///         resources: [pulumi.interpolate`${elbLogs.arn}/AWSLogs/*`],
 ///     }],
@@ -385,8 +407,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///     policy: allowElbLogging.json,
 /// });
 /// const bar = new aws.elb.LoadBalancer("bar", {
-///     name: "my-foobar-elb",
-///     availabilityZones: ["us-west-2a"],
 ///     accessLogs: {
 ///         bucket: elbLogs.id,
 ///         interval: 5,
@@ -397,6 +417,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///         lbPort: 80,
 ///         lbProtocol: "http",
 ///     }],
+///     name: "my-foobar-elb",
+///     availabilityZones: ["us-west-2a"],
 /// });
 /// ```
 /// ```python
@@ -409,11 +431,11 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///     bucket=elb_logs.id,
 ///     acl="private")
 /// allow_elb_logging = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [main.arn],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["s3:PutObject"],
 ///     "resources": [elb_logs.arn.apply(lambda arn: f"{arn}/AWSLogs/*")],
 /// }])
@@ -421,8 +443,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///     bucket=elb_logs.id,
 ///     policy=allow_elb_logging.json)
 /// bar = aws.elb.LoadBalancer("bar",
-///     name="my-foobar-elb",
-///     availability_zones=["us-west-2a"],
 ///     access_logs={
 ///         "bucket": elb_logs.id,
 ///         "interval": 5,
@@ -432,7 +452,9 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///         "instance_protocol": "http",
 ///         "lb_port": 80,
 ///         "lb_protocol": "http",
-///     }])
+///     }],
+///     name="my-foobar-elb",
+///     availability_zones=["us-west-2a"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -461,7 +483,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -473,6 +494,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:PutObject",
@@ -493,11 +515,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///
 ///     var bar = new Aws.Elb.LoadBalancer("bar", new()
 ///     {
-///         Name = "my-foobar-elb",
-///         AvailabilityZones = new[]
-///         {
-///             "us-west-2a",
-///         },
 ///         AccessLogs = new Aws.Elb.Inputs.LoadBalancerAccessLogsArgs
 ///         {
 ///             Bucket = elbLogs.Id,
@@ -512,6 +529,11 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///                 LbPort = 80,
 ///                 LbProtocol = "http",
 ///             },
+///         },
+///         Name = "my-foobar-elb",
+///         AvailabilityZones = new[]
+///         {
+///             "us-west-2a",
 ///         },
 ///     });
 ///
@@ -551,7 +573,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 		allowElbLogging := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -560,6 +581,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:PutObject"),
 /// 					},
@@ -579,10 +601,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 			return err
 /// 		}
 /// 		_, err = elb.NewLoadBalancer(ctx, "bar", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("my-foobar-elb"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-west-2a"),
-/// 			},
 /// 			AccessLogs: &elb.LoadBalancerAccessLogsArgs{
 /// 				Bucket:   elbLogs.ID().ToIDOutput().ToStringOutput(),
 /// 				Interval: pulumi.Int(5),
@@ -594,6 +612,10 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 					LbPort:           pulumi.Int(80),
 /// 					LbProtocol:       pulumi.String("http"),
 /// 				},
+/// 			},
+/// 			Name: pulumi.String("my-foobar-elb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-west-2a"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -616,11 +638,11 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// }
 /// data "aws_iam_getpolicydocument" "allowElbLogging" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [data.aws_elb_getserviceaccount.main.arn]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.elb_logs.arn}/AWSLogs/*"]
 ///   }
@@ -638,8 +660,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///   policy = data.aws_iam_getpolicydocument.allowElbLogging.json
 /// }
 /// resource "aws_elb_loadbalancer" "bar" {
-///   name               = "my-foobar-elb"
-///   availability_zones = ["us-west-2a"]
 ///   access_logs = {
 ///     bucket   = aws_s3_bucket.elb_logs.id
 ///     interval = 5
@@ -650,6 +670,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///     lb_port           = 80
 ///     lb_protocol       = "http"
 ///   }
+///   name               = "my-foobar-elb"
+///   availability_zones = ["us-west-2a"]
 /// }
 /// ```
 /// ```java
@@ -701,11 +723,11 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///
 ///         final var allowElbLogging = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(main.arn())
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("s3:PutObject")
 ///                 .resources(elbLogs.arn().applyValue(_arn -> String.format("%s/AWSLogs/*", _arn)))
 ///                 .build())
@@ -717,8 +739,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///             .build());
 ///
 ///         var bar = new LoadBalancer("bar", LoadBalancerArgs.builder()
-///             .name("my-foobar-elb")
-///             .availabilityZones("us-west-2a")
 ///             .accessLogs(LoadBalancerAccessLogsArgs.builder()
 ///                 .bucket(elbLogs.id())
 ///                 .interval(5)
@@ -729,6 +749,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///                 .lbPort(80)
 ///                 .lbProtocol("http")
 ///                 .build())
+///             .name("my-foobar-elb")
+///             .availabilityZones("us-west-2a")
 ///             .build());
 ///
 ///     }
@@ -756,9 +778,6 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///   bar:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: my-foobar-elb
-///       availabilityZones:
-///         - us-west-2a
 ///       accessLogs:
 ///         bucket: ${elbLogs.id}
 ///         interval: 5
@@ -767,6 +786,9 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///           instanceProtocol: http
 ///           lbPort: 80
 ///           lbProtocol: http
+///       name: my-foobar-elb
+///       availabilityZones:
+///         - us-west-2a
 /// variables:
 ///   main:
 ///     fn::invoke:
@@ -777,11 +799,11 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${main.arn}
+///             effect: Allow
 ///             actions:
 ///               - s3:PutObject
 ///             resources:
@@ -800,4 +822,15 @@ Future<GetServiceAccountResult> getServiceAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceAccountResult> getServiceAccountOutput(
+  GetServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elb/getServiceAccount:getServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAccountResult.fromMap);
 }

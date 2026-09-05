@@ -135,6 +135,17 @@ Future<GetIpSetResult> getIpSet(
   return GetIpSetResult.fromMap(result);
 }
 
+pulumi.Output<GetIpSetResult> getIpSetOutput(
+  GetIpSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafv2/getIpSet:getIpSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpSetResult.fromMap);
+}
+
 /// High-level information for a managed rule group.
 ///
 /// ## Example Usage
@@ -267,6 +278,17 @@ Future<GetManagedRuleGroupResult> getManagedRuleGroup(
   return GetManagedRuleGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedRuleGroupResult> getManagedRuleGroupOutput(
+  GetManagedRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafv2/getManagedRuleGroup:getManagedRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedRuleGroupResult.fromMap);
+}
+
 /// Retrieves the summary of a WAFv2 Regex Pattern Set.
 ///
 /// ## Example Usage
@@ -390,6 +412,17 @@ Future<GetRegexPatternSetResult> getRegexPatternSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegexPatternSetResult.fromMap(result);
+}
+
+pulumi.Output<GetRegexPatternSetResult> getRegexPatternSetOutput(
+  GetRegexPatternSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafv2/getRegexPatternSet:getRegexPatternSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegexPatternSetResult.fromMap);
 }
 
 /// Retrieves the summary of a WAFv2 Rule Group.
@@ -517,6 +550,17 @@ Future<GetRuleGroupResult> getRuleGroup(
   return GetRuleGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetRuleGroupResult> getRuleGroupOutput(
+  GetRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafv2/getRuleGroup:getRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuleGroupResult.fromMap);
+}
+
 /// Retrieves the summary of a WAFv2 Web ACL.
 /// [args] Arguments passed to this invoke. {@macro pulumi_wafv2_get_web_acl_get_web_acl_args_doc}
 /// [options] Invoke options controlling this call.
@@ -531,4 +575,15 @@ Future<GetWebAclResult> getWebAcl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAclResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAclResult> getWebAclOutput(
+  GetWebAclArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafv2/getWebAcl:getWebAcl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAclResult.fromMap);
 }

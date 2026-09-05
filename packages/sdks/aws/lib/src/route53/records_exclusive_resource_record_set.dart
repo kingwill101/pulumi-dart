@@ -10,50 +10,50 @@ import 'records_exclusive_resource_record_set_resource_record.dart';
 class RecordsExclusiveResourceRecordSet {
   /// Alias target block.
   /// See `aliasTarget` below.
-  final pulumi.Input<RecordsExclusiveResourceRecordSetAliasTarget>? aliasTarget;
-  final pulumi.Input<RecordsExclusiveResourceRecordSetCidrRoutingConfig>? cidrRoutingConfig;
+  final pulumi.Input<RecordsExclusiveResourceRecordSetAliasTarget?>? aliasTarget;
+  final pulumi.Input<RecordsExclusiveResourceRecordSetCidrRoutingConfig?>? cidrRoutingConfig;
   /// Type of failover resource record.
   /// Valid values are `PRIMARY` and `SECONDARY`.
   /// See the [AWS documentation on DNS failover](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html) for additional details.
-  final pulumi.Input<String>? failover;
+  final pulumi.Input<String?>? failover;
   /// Geolocation block to control how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
   /// See `geolocation` below.
-  final pulumi.Input<RecordsExclusiveResourceRecordSetGeolocation>? geolocation;
+  final pulumi.Input<RecordsExclusiveResourceRecordSetGeolocation?>? geolocation;
   /// Geoproximity location block.
   /// See `geoproximityLocation` below.
-  final pulumi.Input<RecordsExclusiveResourceRecordSetGeoproximityLocation>? geoproximityLocation;
+  final pulumi.Input<RecordsExclusiveResourceRecordSetGeoproximityLocation?>? geoproximityLocation;
   /// Health check the record should be associated with.
-  final pulumi.Input<String>? healthCheckId;
+  final pulumi.Input<String?>? healthCheckId;
   /// Set to `true` to indicate this record is a multivalue answer record and traffic should be routed approximately randomly to multiple resources.
-  final pulumi.Input<bool>? multiValueAnswer;
+  final pulumi.Input<bool?>? multiValueAnswer;
   /// Name of the record.
   final pulumi.Input<String> name;
   /// AWS region of the resource this record set refers to.
   /// Must be a valid AWS region name.
   /// See the [AWS documentation](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency) on latency based routing for additional details.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Information about the resource records to act upon.
   /// See `resourceRecords` below.
-  final pulumi.Input<List<RecordsExclusiveResourceRecordSetResourceRecord>>? resourceRecords;
+  final pulumi.Input<List<RecordsExclusiveResourceRecordSetResourceRecord>?>? resourceRecords;
   /// An identifier that differentiates among multiple resource record sets that have the same combination of name and type.
   /// Required if using `cidrRoutingConfig`, `failover`, `geolocation`,`geoproximityLocation`, `multiValueAnswer`, `region`, or `weight`.
-  final pulumi.Input<String>? setIdentifier;
+  final pulumi.Input<String?>? setIdentifier;
   /// ID of the traffic policy instance that Route 53 created this resource record set for.
   /// To delete the resource record set that is associated with a traffic policy instance, use the `DeleteTrafficPolicyInstance` API.
   /// Route 53 will delete the resource record set automatically.
   /// If the resource record set is deleted via `ChangeResourceRecordSets` (the API underpinning this Terraform resource), Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it.
-  final pulumi.Input<String>? trafficPolicyInstanceId;
+  final pulumi.Input<String?>? trafficPolicyInstanceId;
   /// Resource record cache time to live (TTL), in seconds.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// Record type.
   /// Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `TXT`, `TLSA`, `SSHFP`, `SVCB`, and `HTTPS`.
   ///
   /// The following arguments are optional:
   ///
   /// &gt; Exactly one of `resourceRecords` or `aliasTarget` must be specified.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [RecordsExclusiveResourceRecordSet].
   /// [aliasTarget] Alias target block.
@@ -123,9 +123,9 @@ class RecordsExclusiveResourceRecordSet {
       resourceRecords: (() { final guardedValue = map['resourceRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecordsExclusiveResourceRecordSetResourceRecord>(guardedValue, (value) => RecordsExclusiveResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
       setIdentifier: (() { final guardedValue = map['setIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       trafficPolicyInstanceId: (() { final guardedValue = map['trafficPolicyInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

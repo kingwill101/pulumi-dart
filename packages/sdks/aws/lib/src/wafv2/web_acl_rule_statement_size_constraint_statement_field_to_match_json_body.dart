@@ -5,13 +5,13 @@ import 'web_acl_rule_statement_size_constraint_statement_field_to_match_json_bod
 
 class WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody {
   /// How to handle requests with invalid JSON body. Valid values: `EVALUATE_AS_STRING`, `MATCH`, `NO_MATCH`.
-  final pulumi.Input<String>? invalidFallbackBehavior;
+  final pulumi.Input<String?>? invalidFallbackBehavior;
   /// JSON content to inspect. See JSON Body Match Pattern below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern>? matchPattern;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern?>? matchPattern;
   /// Parts of the JSON to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
   /// How to handle requests with a body larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`. Defaults to `CONTINUE`.
-  final pulumi.Input<String>? oversizeHandling;
+  final pulumi.Input<String?>? oversizeHandling;
 
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody].
   /// [invalidFallbackBehavior] How to handle requests with invalid JSON body. Valid values: `EVALUATE_AS_STRING`, `MATCH`, `NO_MATCH`.

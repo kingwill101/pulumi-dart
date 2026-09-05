@@ -5,7 +5,7 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandling {
   /// Headers to insert into the request. See below.
-  final pulumi.Input<List<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader>>? insertHeaders;
+  final pulumi.Input<List<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader>?>? insertHeaders;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandling].
   /// [insertHeaders] Headers to insert into the request. See below.

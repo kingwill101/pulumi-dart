@@ -31,7 +31,7 @@ class FilesSynchronizationConfigurationImportDataRule {
   factory FilesSynchronizationConfigurationImportDataRule.fromMap(Map<String, dynamic> map) {
     return FilesSynchronizationConfigurationImportDataRule(
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      sizeLessThan: pulumi.Input.fromValue(map['sizeLessThan'] as int),
+      sizeLessThan: pulumi.Input.fromValue((map['sizeLessThan'] as num).toInt()),
       trigger: pulumi.Input.fromValue(map['trigger'] as String),
     );
   }

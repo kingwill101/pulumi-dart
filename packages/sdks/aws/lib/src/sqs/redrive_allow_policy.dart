@@ -282,7 +282,7 @@ class RedriveAllowPolicy extends pulumi.CustomResource {
           'aws:sqs/redriveAllowPolicy:RedriveAllowPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     queueUrl = registerOutput<String>('queueUrl');
     redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');
@@ -294,11 +294,12 @@ class RedriveAllowPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RedriveAllowPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RedriveAllowPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -312,6 +313,20 @@ class RedriveAllowPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    queueUrl = registerOutput<String>('queueUrl');
+    redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [RedriveAllowPolicy] resource.
+  RedriveAllowPolicy.reference(String urn)
+    : super(
+        'aws:sqs/redriveAllowPolicy:RedriveAllowPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     queueUrl = registerOutput<String>('queueUrl');
     redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');
     region = registerOutput<String>('region');

@@ -128,6 +128,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:directconnect/getConnection:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// Retrieve information about a Direct Connect Gateway.
 ///
 /// ## Example Usage
@@ -244,6 +255,17 @@ Future<GetGatewayResult> getGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:directconnect/getGateway:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
 }
 
 /// Retrieve information about a specific AWS Direct Connect location in the current AWS Region.
@@ -367,6 +389,17 @@ Future<GetLocationResult> getLocation(
   return GetLocationResult.fromMap(result);
 }
 
+pulumi.Output<GetLocationResult> getLocationOutput(
+  GetLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:directconnect/getLocation:getLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationResult.fromMap);
+}
+
 /// Retrieve information about the AWS Direct Connect locations in the current AWS Region.
 /// These are the locations that can be specified when configuring `aws.directconnect.Connection` or `aws.directconnect.LinkAggregationGroup` resources.
 ///
@@ -476,6 +509,17 @@ Future<GetLocationsResult> getLocations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationsResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationsResult> getLocationsOutput(
+  GetLocationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:directconnect/getLocations:getLocations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationsResult.fromMap);
 }
 
 /// Data source for retrieving Router Configuration instructions for a given AWS Direct Connect Virtual Interface and Router Type.
@@ -603,4 +647,15 @@ Future<GetRouterConfigurationResult> getRouterConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouterConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetRouterConfigurationResult> getRouterConfigurationOutput(
+  GetRouterConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:directconnect/getRouterConfiguration:getRouterConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterConfigurationResult.fromMap);
 }

@@ -5,9 +5,9 @@ import 'cluster_kube_api_server_config_service_node_port_range.dart';
 
 class ClusterKubeApiServerConfig {
   /// The duration that Kubernetes events are retained. Must be a single-unit duration (e.g., `30m`, `1h`). Valid range: `10m` to `60m`. Default is `1h`.
-  final pulumi.Input<String>? eventTtl;
+  final pulumi.Input<String?>? eventTtl;
   /// Configuration block for the port range available for NodePort services. Detailed below.
-  final pulumi.Input<ClusterKubeApiServerConfigServiceNodePortRange>? serviceNodePortRange;
+  final pulumi.Input<ClusterKubeApiServerConfigServiceNodePortRange?>? serviceNodePortRange;
 
   /// Creates a new [ClusterKubeApiServerConfig].
   /// [eventTtl] The duration that Kubernetes events are retained. Must be a single-unit duration (e.g., `30m`, `1h`). Valid range: `10m` to `60m`. Default is `1h`.

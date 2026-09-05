@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessGrantAccessGrantsLocationConfiguration {
   /// Sub-prefix.
-  final pulumi.Input<String>? s3SubPrefix;
+  final pulumi.Input<String?>? s3SubPrefix;
 
   /// Creates a new [AccessGrantAccessGrantsLocationConfiguration].
   /// [s3SubPrefix] Sub-prefix.

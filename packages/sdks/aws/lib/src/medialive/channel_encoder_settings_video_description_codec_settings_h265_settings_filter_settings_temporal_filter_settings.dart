@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings {
   /// Post filter sharpening.
-  final pulumi.Input<String>? postFilterSharpening;
+  final pulumi.Input<String?>? postFilterSharpening;
   /// Filter strength.
-  final pulumi.Input<String>? strength;
+  final pulumi.Input<String?>? strength;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings].
   /// [postFilterSharpening] Post filter sharpening.

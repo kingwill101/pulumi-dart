@@ -5,7 +5,7 @@ import 'intent_follow_up_prompt_rejection_statement_message.dart';
 
 class IntentFollowUpPromptRejectionStatement {
   final pulumi.Input<List<IntentFollowUpPromptRejectionStatementMessage>> messages;
-  final pulumi.Input<String>? responseCard;
+  final pulumi.Input<String?>? responseCard;
 
   /// Creates a new [IntentFollowUpPromptRejectionStatement].
   /// [messages] Required.

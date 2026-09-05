@@ -5,7 +5,7 @@ import 'agentcore_online_evaluation_config_data_source_config_cloudwatch_logs.da
 
 class AgentcoreOnlineEvaluationConfigDataSourceConfig {
   /// CloudWatch logs configuration for reading agent traces. See `cloudwatchLogs` Block below.
-  final pulumi.Input<AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogs?>? cloudwatchLogs;
 
   /// Creates a new [AgentcoreOnlineEvaluationConfigDataSourceConfig].
   /// [cloudwatchLogs] CloudWatch logs configuration for reading agent traces. See `cloudwatchLogs` Block below.

@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserHierarchyStructureHierarchyStructureLevelThree {
-  /// The Amazon Resource Name (ARN) of the hierarchy level.
-  final pulumi.Input<String>? arn;
+  /// The ARN of the hierarchy level.
+  final pulumi.Input<String?>? arn;
   /// The identifier of the hierarchy level.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the user hierarchy level. Must not be more than 50 characters.
   final pulumi.Input<String> name;
 
   /// Creates a new [UserHierarchyStructureHierarchyStructureLevelThree].
-  /// [arn] The Amazon Resource Name (ARN) of the hierarchy level.
+  /// [arn] The ARN of the hierarchy level.
   /// [id] The identifier of the hierarchy level.
   /// [name] The name of the user hierarchy level. Must not be more than 50 characters.
   const UserHierarchyStructureHierarchyStructureLevelThree({

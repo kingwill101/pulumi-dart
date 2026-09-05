@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionArgs {
   /// Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
   final pulumi.Input<String> id;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDistributionArgs].
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.

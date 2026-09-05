@@ -5,8 +5,8 @@ import 'agentcore_gateway_target_target_configuration_mcp_open_api_schema_inline
 import 'agentcore_gateway_target_target_configuration_mcp_open_api_schema_s3.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema {
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload>? inlinePayload;
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3>? s3;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload?>? inlinePayload;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3?>? s3;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema].
   /// [inlinePayload] Optional.

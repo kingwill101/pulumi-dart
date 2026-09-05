@@ -9,14 +9,14 @@ import 'get_network_acls_filter.dart';
 /// {@macro pulumi_ec2_get_network_acls_get_network_acls_args_doc}
 class GetNetworkAclsArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetNetworkAclsFilter>>? filters;
+  final pulumi.Input<List<GetNetworkAclsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired network ACLs.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// VPC ID that you want to filter from.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetNetworkAclsArgs].
   /// [filters] Custom filter block as described below.

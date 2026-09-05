@@ -5,9 +5,9 @@ import 'framework_control_set_control.dart';
 
 class FrameworkControlSet {
   /// Configuration block(s) for the controls within the control set. See `controls` Block below for details.
-  final pulumi.Input<List<FrameworkControlSetControl>>? controls;
+  final pulumi.Input<List<FrameworkControlSetControl>?>? controls;
   /// Unique identifier for the framework.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the control set.
   final pulumi.Input<String> name;
 

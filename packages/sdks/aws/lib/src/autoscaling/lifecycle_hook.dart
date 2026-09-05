@@ -24,15 +24,15 @@ import 'lifecycle_hook_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foobar = new aws.autoscaling.Group("foobar", {
-///     availabilityZones: ["us-west-2a"],
-///     name: "test-foobar5",
-///     healthCheckType: "EC2",
-///     terminationPolicies: ["OldestInstance"],
 ///     tags: [{
 ///         key: "Foo",
 ///         value: "foo-bar",
 ///         propagateAtLaunch: true,
 ///     }],
+///     availabilityZones: ["us-west-2a"],
+///     name: "test-foobar5",
+///     healthCheckType: "EC2",
+///     terminationPolicies: ["OldestInstance"],
 /// });
 /// const foobarLifecycleHook = new aws.autoscaling.LifecycleHook("foobar", {
 ///     name: "foobar",
@@ -53,15 +53,15 @@ import 'lifecycle_hook_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foobar = aws.autoscaling.Group("foobar",
-///     availability_zones=["us-west-2a"],
-///     name="test-foobar5",
-///     health_check_type="EC2",
-///     termination_policies=["OldestInstance"],
 ///     tags=[{
 ///         "key": "Foo",
 ///         "value": "foo-bar",
 ///         "propagate_at_launch": True,
-///     }])
+///     }],
+///     availability_zones=["us-west-2a"],
+///     name="test-foobar5",
+///     health_check_type="EC2",
+///     termination_policies=["OldestInstance"])
 /// foobar_lifecycle_hook = aws.autoscaling.LifecycleHook("foobar",
 ///     name="foobar",
 ///     autoscaling_group_name=foobar.name,
@@ -85,6 +85,15 @@ import 'lifecycle_hook_state.dart';
 /// {
 ///     var foobar = new Aws.AutoScaling.Group("foobar", new()
 ///     {
+///         Tags = new[]
+///         {
+///             new Aws.AutoScaling.Inputs.GroupTagArgs
+///             {
+///                 Key = "Foo",
+///                 Value = "foo-bar",
+///                 PropagateAtLaunch = true,
+///             },
+///         },
 ///         AvailabilityZones = new[]
 ///         {
 ///             "us-west-2a",
@@ -94,15 +103,6 @@ import 'lifecycle_hook_state.dart';
 ///         TerminationPolicies = new[]
 ///         {
 ///             "OldestInstance",
-///         },
-///         Tags = new[]
-///         {
-///             new Aws.AutoScaling.Inputs.GroupTagArgs
-///             {
-///                 Key = "Foo",
-///                 Value = "foo-bar",
-///                 PropagateAtLaunch = true,
-///             },
 ///         },
 ///     });
 ///
@@ -136,6 +136,13 @@ import 'lifecycle_hook_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		foobar, err := autoscaling.NewGroup(ctx, "foobar", &autoscaling.GroupArgs{
+/// 			Tags: autoscaling.GroupTagArray{
+/// 				&autoscaling.GroupTagArgs{
+/// 					Key:               pulumi.String("Foo"),
+/// 					Value:             pulumi.String("foo-bar"),
+/// 					PropagateAtLaunch: pulumi.Bool(true),
+/// 				},
+/// 			},
 /// 			AvailabilityZones: pulumi.StringArray{
 /// 				pulumi.String("us-west-2a"),
 /// 			},
@@ -143,13 +150,6 @@ import 'lifecycle_hook_state.dart';
 /// 			HealthCheckType: pulumi.String("EC2"),
 /// 			TerminationPolicies: pulumi.StringArray{
 /// 				pulumi.String("OldestInstance"),
-/// 			},
-/// 			Tags: autoscaling.GroupTagArray{
-/// 				&autoscaling.GroupTagArgs{
-/// 					Key:               pulumi.String("Foo"),
-/// 					Value:             pulumi.String("foo-bar"),
-/// 					PropagateAtLaunch: pulumi.Bool(true),
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -189,15 +189,15 @@ import 'lifecycle_hook_state.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "foobar" {
-///   availability_zones   = ["us-west-2a"]
-///   name                 = "test-foobar5"
-///   health_check_type    = "EC2"
-///   termination_policies = ["OldestInstance"]
 ///   tags {
 ///     key                 = "Foo"
 ///     value               = "foo-bar"
 ///     propagate_at_launch = true
 ///   }
+///   availability_zones   = ["us-west-2a"]
+///   name                 = "test-foobar5"
+///   health_check_type    = "EC2"
+///   termination_policies = ["OldestInstance"]
 /// }
 /// resource "aws_autoscaling_lifecyclehook" "foobar" {
 ///   name                   = "foobar"
@@ -238,15 +238,15 @@ import 'lifecycle_hook_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foobar = new Group("foobar", GroupArgs.builder()
-///             .availabilityZones("us-west-2a")
-///             .name("test-foobar5")
-///             .healthCheckType("EC2")
-///             .terminationPolicies("OldestInstance")
 ///             .tags(GroupTagArgs.builder()
 ///                 .key("Foo")
 ///                 .value("foo-bar")
 ///                 .propagateAtLaunch(true)
 ///                 .build())
+///             .availabilityZones("us-west-2a")
+///             .name("test-foobar5")
+///             .healthCheckType("EC2")
+///             .terminationPolicies("OldestInstance")
 ///             .build());
 ///
 ///         var foobarLifecycleHook = new LifecycleHook("foobarLifecycleHook", LifecycleHookArgs.builder()
@@ -271,16 +271,16 @@ import 'lifecycle_hook_state.dart';
 ///   foobar:
 ///     type: aws:autoscaling:Group
 ///     properties:
+///       tags:
+///         - key: Foo
+///           value: foo-bar
+///           propagateAtLaunch: true
 ///       availabilityZones:
 ///         - us-west-2a
 ///       name: test-foobar5
 ///       healthCheckType: EC2
 ///       terminationPolicies:
 ///         - OldestInstance
-///       tags:
-///         - key: Foo
-///           value: foo-bar
-///           propagateAtLaunch: true
 ///   foobarLifecycleHook:
 ///     type: aws:autoscaling:LifecycleHook
 ///     name: foobar
@@ -350,7 +350,7 @@ class LifecycleHook extends pulumi.CustomResource {
           'aws:autoscaling/lifecycleHook:LifecycleHook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     defaultResult = registerOutput<String>('defaultResult');
@@ -368,11 +368,12 @@ class LifecycleHook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LifecycleHookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LifecycleHook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -386,6 +387,26 @@ class LifecycleHook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    defaultResult = registerOutput<String>('defaultResult');
+    heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');
+    lifecycleTransition = registerOutput<String>('lifecycleTransition');
+    this.name = registerOutput<String>('name');
+    notificationMetadata = registerOutput<String?>('notificationMetadata');
+    notificationTargetArn = registerOutput<String?>('notificationTargetArn');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [LifecycleHook] resource.
+  LifecycleHook.reference(String urn)
+    : super(
+        'aws:autoscaling/lifecycleHook:LifecycleHook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     defaultResult = registerOutput<String>('defaultResult');
     heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');

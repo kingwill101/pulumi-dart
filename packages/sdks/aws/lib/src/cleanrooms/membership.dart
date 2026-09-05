@@ -16,10 +16,7 @@ import 'membership_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testMembership = new aws.cleanrooms.Membership("test_membership", {
-///     collaborationId: "1234abcd-12ab-34cd-56ef-1234567890ab",
-///     queryLogStatus: "DISABLED",
 ///     defaultResultConfiguration: {
-///         roleArn: "arn:aws:iam::123456789012:role/role-name",
 ///         outputConfiguration: {
 ///             s3: {
 ///                 bucket: "test-bucket",
@@ -27,7 +24,10 @@ import 'membership_state.dart';
 ///                 keyPrefix: "test-prefix",
 ///             },
 ///         },
+///         roleArn: "arn:aws:iam::123456789012:role/role-name",
 ///     },
+///     collaborationId: "1234abcd-12ab-34cd-56ef-1234567890ab",
+///     queryLogStatus: "DISABLED",
 ///     tags: {
 ///         Project: "Terraform",
 ///     },
@@ -38,10 +38,7 @@ import 'membership_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_membership = aws.cleanrooms.Membership("test_membership",
-///     collaboration_id="1234abcd-12ab-34cd-56ef-1234567890ab",
-///     query_log_status="DISABLED",
 ///     default_result_configuration={
-///         "role_arn": "arn:aws:iam::123456789012:role/role-name",
 ///         "output_configuration": {
 ///             "s3": {
 ///                 "bucket": "test-bucket",
@@ -49,7 +46,10 @@ import 'membership_state.dart';
 ///                 "key_prefix": "test-prefix",
 ///             },
 ///         },
+///         "role_arn": "arn:aws:iam::123456789012:role/role-name",
 ///     },
+///     collaboration_id="1234abcd-12ab-34cd-56ef-1234567890ab",
+///     query_log_status="DISABLED",
 ///     tags={
 ///         "Project": "Terraform",
 ///     })
@@ -64,11 +64,8 @@ import 'membership_state.dart';
 /// {
 ///     var testMembership = new Aws.CleanRooms.Membership("test_membership", new()
 ///     {
-///         CollaborationId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-///         QueryLogStatus = "DISABLED",
 ///         DefaultResultConfiguration = new Aws.CleanRooms.Inputs.MembershipDefaultResultConfigurationArgs
 ///         {
-///             RoleArn = "arn:aws:iam::123456789012:role/role-name",
 ///             OutputConfiguration = new Aws.CleanRooms.Inputs.MembershipDefaultResultConfigurationOutputConfigurationArgs
 ///             {
 ///                 S3 = new Aws.CleanRooms.Inputs.MembershipDefaultResultConfigurationOutputConfigurationS3Args
@@ -78,7 +75,10 @@ import 'membership_state.dart';
 ///                     KeyPrefix = "test-prefix",
 ///                 },
 ///             },
+///             RoleArn = "arn:aws:iam::123456789012:role/role-name",
 ///         },
+///         CollaborationId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+///         QueryLogStatus = "DISABLED",
 ///         Tags =
 ///         {
 ///             { "Project", "Terraform" },
@@ -98,10 +98,7 @@ import 'membership_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cleanrooms.NewMembership(ctx, "test_membership", &cleanrooms.MembershipArgs{
-/// 			CollaborationId: pulumi.String("1234abcd-12ab-34cd-56ef-1234567890ab"),
-/// 			QueryLogStatus:  pulumi.String("DISABLED"),
 /// 			DefaultResultConfiguration: &cleanrooms.MembershipDefaultResultConfigurationArgs{
-/// 				RoleArn: pulumi.String("arn:aws:iam::123456789012:role/role-name"),
 /// 				OutputConfiguration: &cleanrooms.MembershipDefaultResultConfigurationOutputConfigurationArgs{
 /// 					S3: &cleanrooms.MembershipDefaultResultConfigurationOutputConfigurationS3Args{
 /// 						Bucket:       pulumi.String("test-bucket"),
@@ -109,7 +106,10 @@ import 'membership_state.dart';
 /// 						KeyPrefix:    pulumi.String("test-prefix"),
 /// 					},
 /// 				},
+/// 				RoleArn: pulumi.String("arn:aws:iam::123456789012:role/role-name"),
 /// 			},
+/// 			CollaborationId: pulumi.String("1234abcd-12ab-34cd-56ef-1234567890ab"),
+/// 			QueryLogStatus:  pulumi.String("DISABLED"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Project": pulumi.String("Terraform"),
 /// 			},
@@ -131,10 +131,7 @@ import 'membership_state.dart';
 /// }
 ///
 /// resource "aws_cleanrooms_membership" "test_membership" {
-///   collaboration_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
-///   query_log_status = "DISABLED"
 ///   default_result_configuration = {
-///     role_arn = "arn:aws:iam::123456789012:role/role-name"
 ///     output_configuration = {
 ///       s3 = {
 ///         bucket        = "test-bucket"
@@ -142,7 +139,10 @@ import 'membership_state.dart';
 ///         key_prefix    = "test-prefix"
 ///       }
 ///     }
+///     role_arn = "arn:aws:iam::123456789012:role/role-name"
 ///   }
+///   collaboration_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
+///   query_log_status = "DISABLED"
 ///   tags = {
 ///     "Project" = "Terraform"
 ///   }
@@ -173,10 +173,7 @@ import 'membership_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testMembership = new Membership("testMembership", MembershipArgs.builder()
-///             .collaborationId("1234abcd-12ab-34cd-56ef-1234567890ab")
-///             .queryLogStatus("DISABLED")
 ///             .defaultResultConfiguration(MembershipDefaultResultConfigurationArgs.builder()
-///                 .roleArn("arn:aws:iam::123456789012:role/role-name")
 ///                 .outputConfiguration(MembershipDefaultResultConfigurationOutputConfigurationArgs.builder()
 ///                     .s3(MembershipDefaultResultConfigurationOutputConfigurationS3Args.builder()
 ///                         .bucket("test-bucket")
@@ -184,7 +181,10 @@ import 'membership_state.dart';
 ///                         .keyPrefix("test-prefix")
 ///                         .build())
 ///                     .build())
+///                 .roleArn("arn:aws:iam::123456789012:role/role-name")
 ///                 .build())
+///             .collaborationId("1234abcd-12ab-34cd-56ef-1234567890ab")
+///             .queryLogStatus("DISABLED")
 ///             .tags(Map.of("Project", "Terraform"))
 ///             .build());
 ///
@@ -197,15 +197,15 @@ import 'membership_state.dart';
 ///     type: aws:cleanrooms:Membership
 ///     name: test_membership
 ///     properties:
-///       collaborationId: 1234abcd-12ab-34cd-56ef-1234567890ab
-///       queryLogStatus: DISABLED
 ///       defaultResultConfiguration:
-///         roleArn: arn:aws:iam::123456789012:role/role-name
 ///         outputConfiguration:
 ///           s3:
 ///             bucket: test-bucket
 ///             resultFormat: PARQUET
 ///             keyPrefix: test-prefix
+///         roleArn: arn:aws:iam::123456789012:role/role-name
+///       collaborationId: 1234abcd-12ab-34cd-56ef-1234567890ab
+///       queryLogStatus: DISABLED
 ///       tags:
 ///         Project: Terraform
 /// ```
@@ -274,7 +274,7 @@ class Membership extends pulumi.CustomResource {
           'aws:cleanrooms/membership:Membership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     collaborationArn = registerOutput<String>('collaborationArn');
@@ -284,13 +284,13 @@ class Membership extends pulumi.CustomResource {
     collaborationName = registerOutput<String>('collaborationName');
     createTime = registerOutput<String>('createTime');
     defaultResultConfiguration = registerOutput<MembershipDefaultResultConfiguration?>('defaultResultConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipDefaultResultConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    memberAbilities = registerOutput<List<String>>('memberAbilities');
+    memberAbilities = registerOutput<List<String>>('memberAbilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>('paymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipPaymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     queryLogStatus = registerOutput<String>('queryLogStatus');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -299,11 +299,12 @@ class Membership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Membership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,13 +326,40 @@ class Membership extends pulumi.CustomResource {
     collaborationName = registerOutput<String>('collaborationName');
     createTime = registerOutput<String>('createTime');
     defaultResultConfiguration = registerOutput<MembershipDefaultResultConfiguration?>('defaultResultConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipDefaultResultConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    memberAbilities = registerOutput<List<String>>('memberAbilities');
+    memberAbilities = registerOutput<List<String>>('memberAbilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>('paymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipPaymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     queryLogStatus = registerOutput<String>('queryLogStatus');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Membership] resource.
+  Membership.reference(String urn)
+    : super(
+        'aws:cleanrooms/membership:Membership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    collaborationArn = registerOutput<String>('collaborationArn');
+    collaborationCreatorAccountId = registerOutput<String>('collaborationCreatorAccountId');
+    collaborationCreatorDisplayName = registerOutput<String>('collaborationCreatorDisplayName');
+    collaborationId = registerOutput<String>('collaborationId');
+    collaborationName = registerOutput<String>('collaborationName');
+    createTime = registerOutput<String>('createTime');
+    defaultResultConfiguration = registerOutput<MembershipDefaultResultConfiguration?>('defaultResultConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipDefaultResultConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memberAbilities = registerOutput<List<String>>('memberAbilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>('paymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipPaymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    queryLogStatus = registerOutput<String>('queryLogStatus');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

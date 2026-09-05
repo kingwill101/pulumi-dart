@@ -11,16 +11,16 @@ class MountTargetArgs {
   final pulumi.Input<String> fileSystemId;
   /// The address (within the address range of the specified subnet) at
   /// which the file system may be mounted via the mount target.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// IPv6 address to use. Valid only when `ipAddressType` is set to `IPV6_ONLY` or `DUAL_STACK`.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of up to 5 VPC security group IDs (that must
   /// be for the same VPC as subnet specified) in effect for the mount target.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The ID of the subnet to add the mount target in.
   final pulumi.Input<String> subnetId;
 

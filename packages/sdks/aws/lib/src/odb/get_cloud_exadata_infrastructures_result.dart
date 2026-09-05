@@ -6,28 +6,28 @@ import 'get_cloud_exadata_infrastructures_cloud_exadata_infrastructure.dart';
 /// Result data returned by getCloudExadataInfrastructures.
 class GetCloudExadataInfrastructuresResult {
   /// List of Cloud Exadata Infrastructures. Returns basic information about the Cloud Exadata Infrastructures.
-  final List<GetCloudExadataInfrastructuresCloudExadataInfrastructure> cloudExadataInfrastructures;
-  final String region;
+  final List<GetCloudExadataInfrastructuresCloudExadataInfrastructure>? cloudExadataInfrastructures;
+  final String? region;
 
   /// Creates a new [GetCloudExadataInfrastructuresResult].
   /// [cloudExadataInfrastructures] List of Cloud Exadata Infrastructures. Returns basic information about the Cloud Exadata Infrastructures.
-  /// [region] Required.
+  /// [region] Optional.
   const GetCloudExadataInfrastructuresResult({
-    required this.cloudExadataInfrastructures,
-    required this.region,
+    this.cloudExadataInfrastructures,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudExadataInfrastructures': pulumi.Input.encodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure, Map<String, dynamic>>(cloudExadataInfrastructures, (value) => value.toMap()),
-      'region': region,
+      'cloudExadataInfrastructures': ?(() { final guardedValue = cloudExadataInfrastructures; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetCloudExadataInfrastructuresResult.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresResult(
-      cloudExadataInfrastructures: pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure>(map['cloudExadataInfrastructures']!, (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      cloudExadataInfrastructures: (() { final guardedValue = map['cloudExadataInfrastructures']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure>(guardedValue, (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

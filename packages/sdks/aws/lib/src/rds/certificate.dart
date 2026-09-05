@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
 import 'certificate_state.dart';
 
-/// Provides a resource to override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances in the current AWS region.
+/// Provides a resource to override the system-default SSL/TLS certificate for Amazon RDS for new DB instances in the current AWS region.
 ///
 /// &gt; **NOTE:** Removing this Terraform resource removes the override. New DB instances will use the system-default certificate for the current AWS region.
 ///
@@ -139,7 +139,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:rds/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     certificateIdentifier = registerOutput<String>('certificateIdentifier');
     region = registerOutput<String>('region');
@@ -150,11 +150,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -168,6 +169,19 @@ class Certificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateIdentifier = registerOutput<String>('certificateIdentifier');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:rds/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateIdentifier = registerOutput<String>('certificateIdentifier');
     region = registerOutput<String>('region');
   }

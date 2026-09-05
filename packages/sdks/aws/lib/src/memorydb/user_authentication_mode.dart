@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAuthenticationMode {
   /// Number of passwords belonging to the user if `type` is set to `password`.
-  final pulumi.Input<int>? passwordCount;
+  final pulumi.Input<int?>? passwordCount;
   /// Set of passwords used for authentication if `type` is set to `password`. You can create up to two passwords for each user.
-  final pulumi.Input<List<String>>? passwords;
+  final pulumi.Input<List<String>?>? passwords;
   /// Specifies the authentication type. Valid values are: `password` or `iam`.
   final pulumi.Input<String> type;
 
@@ -30,7 +30,7 @@ class UserAuthenticationMode {
 
   factory UserAuthenticationMode.fromMap(Map<String, dynamic> map) {
     return UserAuthenticationMode(
-      passwordCount: (() { final guardedValue = map['passwordCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordCount: (() { final guardedValue = map['passwordCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       passwords: (() { final guardedValue = map['passwords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

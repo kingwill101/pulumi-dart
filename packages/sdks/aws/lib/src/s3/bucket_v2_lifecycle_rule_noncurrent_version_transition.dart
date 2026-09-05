@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2LifecycleRuleNoncurrentVersionTransition {
   /// Number of days noncurrent object versions transition.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
   final pulumi.Input<String> storageClass;
 
@@ -25,7 +25,7 @@ class BucketV2LifecycleRuleNoncurrentVersionTransition {
 
   factory BucketV2LifecycleRuleNoncurrentVersionTransition.fromMap(Map<String, dynamic> map) {
     return BucketV2LifecycleRuleNoncurrentVersionTransition(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
     );
   }

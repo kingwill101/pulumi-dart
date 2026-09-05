@@ -8,33 +8,33 @@ import 'budget_action_subscriber.dart';
 /// Input properties used for looking up and filtering BudgetAction resources.
 class BudgetActionState {
   /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The id of the budget action.
-  final pulumi.Input<String>? actionId;
+  final pulumi.Input<String?>? actionId;
   /// The trigger threshold of the action. See Action Threshold.
-  final pulumi.Input<BudgetActionActionThreshold>? actionThreshold;
+  final pulumi.Input<BudgetActionActionThreshold?>? actionThreshold;
   /// The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
-  final pulumi.Input<String>? actionType;
+  final pulumi.Input<String?>? actionType;
   /// This specifies if the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
-  final pulumi.Input<String>? approvalModel;
+  final pulumi.Input<String?>? approvalModel;
   /// The ARN of the budget action.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of a budget.
-  final pulumi.Input<String>? budgetName;
+  final pulumi.Input<String?>? budgetName;
   /// Specifies all of the type-specific parameters. See Definition.
-  final pulumi.Input<BudgetActionDefinition>? definition;
+  final pulumi.Input<BudgetActionDefinition?>? definition;
   /// The role passed for action execution and reversion. Roles and actions must be in the same account.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
-  final pulumi.Input<String>? notificationType;
+  final pulumi.Input<String?>? notificationType;
   /// The status of the budget action.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A list of subscribers. See Subscriber.
-  final pulumi.Input<List<BudgetActionSubscriber>>? subscribers;
+  final pulumi.Input<List<BudgetActionSubscriber>?>? subscribers;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [BudgetActionState].
   /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.

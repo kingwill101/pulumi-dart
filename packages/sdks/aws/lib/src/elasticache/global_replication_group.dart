@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_replication_group_args.dart';
+import 'global_replication_group_global_node_group.dart';
 import 'global_replication_group_state.dart';
 
 /// Provides an ElastiCache Global Replication Group resource, which manages replication between two or more Replication Groups in different regions. For more information, see the [ElastiCache User Guide](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
@@ -513,7 +514,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> engineVersionActual;
   /// Set of node groups (shards) on the global replication group.
   /// Has the values:
-  late final pulumi.Output<List<Map<String, dynamic>>> globalNodeGroups;
+  late final pulumi.Output<List<GlobalReplicationGroupGlobalNodeGroup>> globalNodeGroups;
   /// A user-created description for the global replication group.
   late final pulumi.Output<String?> globalReplicationGroupDescription;
   /// The full ID of the global replication group.
@@ -546,7 +547,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
           'aws:elasticache/globalReplicationGroup:GlobalReplicationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     atRestEncryptionEnabled = registerOutput<bool>('atRestEncryptionEnabled');
@@ -557,7 +558,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
-    globalNodeGroups = registerOutput<List<Map<String, dynamic>>>('globalNodeGroups');
+    globalNodeGroups = registerOutput<List<GlobalReplicationGroupGlobalNodeGroup>>('globalNodeGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalReplicationGroupGlobalNodeGroup>(guardedValue, (value) => GlobalReplicationGroupGlobalNodeGroup.fromMap((value as Map).cast<String, dynamic>())); });
     globalReplicationGroupDescription = registerOutput<String?>('globalReplicationGroupDescription');
     globalReplicationGroupId = registerOutput<String>('globalReplicationGroupId');
     globalReplicationGroupIdSuffix = registerOutput<String>('globalReplicationGroupIdSuffix');
@@ -573,11 +574,12 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalReplicationGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalReplicationGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -600,7 +602,36 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
-    globalNodeGroups = registerOutput<List<Map<String, dynamic>>>('globalNodeGroups');
+    globalNodeGroups = registerOutput<List<GlobalReplicationGroupGlobalNodeGroup>>('globalNodeGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalReplicationGroupGlobalNodeGroup>(guardedValue, (value) => GlobalReplicationGroupGlobalNodeGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    globalReplicationGroupDescription = registerOutput<String?>('globalReplicationGroupDescription');
+    globalReplicationGroupId = registerOutput<String>('globalReplicationGroupId');
+    globalReplicationGroupIdSuffix = registerOutput<String>('globalReplicationGroupIdSuffix');
+    numNodeGroups = registerOutput<int>('numNodeGroups');
+    parameterGroupName = registerOutput<String?>('parameterGroupName');
+    primaryReplicationGroupId = registerOutput<String>('primaryReplicationGroupId');
+    region = registerOutput<String>('region');
+    transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
+  }
+
+  /// Creates a typed reference to an existing [GlobalReplicationGroup] resource.
+  GlobalReplicationGroup.reference(String urn)
+    : super(
+        'aws:elasticache/globalReplicationGroup:GlobalReplicationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    atRestEncryptionEnabled = registerOutput<bool>('atRestEncryptionEnabled');
+    authTokenEnabled = registerOutput<bool>('authTokenEnabled');
+    automaticFailoverEnabled = registerOutput<bool>('automaticFailoverEnabled');
+    cacheNodeType = registerOutput<String>('cacheNodeType');
+    clusterEnabled = registerOutput<bool>('clusterEnabled');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    globalNodeGroups = registerOutput<List<GlobalReplicationGroupGlobalNodeGroup>>('globalNodeGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalReplicationGroupGlobalNodeGroup>(guardedValue, (value) => GlobalReplicationGroupGlobalNodeGroup.fromMap((value as Map).cast<String, dynamic>())); });
     globalReplicationGroupDescription = registerOutput<String?>('globalReplicationGroupDescription');
     globalReplicationGroupId = registerOutput<String>('globalReplicationGroupId');
     globalReplicationGroupIdSuffix = registerOutput<String>('globalReplicationGroupIdSuffix');

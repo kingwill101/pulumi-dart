@@ -8,15 +8,15 @@ import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_
 
 class AgentKnowledgeBaseKnowledgeBaseConfiguration {
   /// Settings for an Amazon Kendra knowledge base. See `kendraKnowledgeBaseConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration>? kendraKnowledgeBaseConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration?>? kendraKnowledgeBaseConfiguration;
   /// Settings for a managed knowledge base where Amazon Bedrock manages the vector store. See `managedKnowledgeBaseConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfiguration>? managedKnowledgeBaseConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfiguration?>? managedKnowledgeBaseConfiguration;
   /// Configurations for a knowledge base connected to an SQL database. See `sqlKnowledgeBaseConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration>? sqlKnowledgeBaseConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration?>? sqlKnowledgeBaseConfiguration;
   /// Type of data that the data source is converted into for the knowledge base. Valid Values: `VECTOR`, `KENDRA`, `SQL`, `MANAGED`.
   final pulumi.Input<String> type;
   /// Details about the model that's used to convert the data source into vector embeddings. See `vectorKnowledgeBaseConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration>? vectorKnowledgeBaseConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration?>? vectorKnowledgeBaseConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfiguration].
   /// [kendraKnowledgeBaseConfiguration] Settings for an Amazon Kendra knowledge base. See `kendraKnowledgeBaseConfiguration` block for details.

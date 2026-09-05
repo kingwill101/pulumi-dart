@@ -13,17 +13,17 @@ class TableArgs {
   /// The name of the Timestream database.
   final pulumi.Input<String> databaseName;
   /// Contains properties to set on the table when enabling magnetic store writes. See Magnetic Store Write Properties below for more details.
-  final pulumi.Input<TableMagneticStoreWriteProperties>? magneticStoreWriteProperties;
+  final pulumi.Input<TableMagneticStoreWriteProperties?>? magneticStoreWriteProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magneticStoreRetentionPeriodInDays` default to 73000 and `memoryStoreRetentionPeriodInHours` defaults to 6.
-  final pulumi.Input<TableRetentionProperties>? retentionProperties;
+  final pulumi.Input<TableRetentionProperties?>? retentionProperties;
   /// The schema of the table. See Schema below for more details.
-  final pulumi.Input<TableSchema>? schema;
+  final pulumi.Input<TableSchema?>? schema;
   /// The name of the Timestream table.
   final pulumi.Input<String> tableName;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TableArgs].
   /// [databaseName] The name of the Timestream database.

@@ -6,11 +6,11 @@ import 'security_configuration_encryption_configuration.dart';
 /// Input properties used for looking up and filtering SecurityConfiguration resources.
 class SecurityConfigurationState {
   /// Configuration block containing encryption configuration. Detailed below.
-  final pulumi.Input<SecurityConfigurationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<SecurityConfigurationEncryptionConfiguration?>? encryptionConfiguration;
   /// Name of the security configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [SecurityConfigurationState].
   /// [encryptionConfiguration] Configuration block containing encryption configuration. Detailed below.

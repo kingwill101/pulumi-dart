@@ -8,9 +8,9 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
   /// ARN of the model used to create vector embeddings for the knowledge base.
   final pulumi.Input<String> embeddingModelArn;
   /// The embeddings model configuration details for the vector model used in Knowledge Base.  See `embeddingModelConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration>? embeddingModelConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration?>? embeddingModelConfiguration;
   /// supplemental_data_storage_configuration.  See `supplementalDataStorageConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration>? supplementalDataStorageConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration?>? supplementalDataStorageConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration].
   /// [embeddingModelArn] ARN of the model used to create vector embeddings for the knowledge base.

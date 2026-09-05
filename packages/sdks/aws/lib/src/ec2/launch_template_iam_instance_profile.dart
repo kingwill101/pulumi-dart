@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateIamInstanceProfile {
-  /// The Amazon Resource Name (ARN) of the instance profile. Conflicts with `name`.
-  final pulumi.Input<String>? arn;
+  /// ARN of the instance profile. Conflicts with `name`.
+  final pulumi.Input<String?>? arn;
   /// The name of the instance profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [LaunchTemplateIamInstanceProfile].
-  /// [arn] The Amazon Resource Name (ARN) of the instance profile. Conflicts with `name`.
+  /// [arn] ARN of the instance profile. Conflicts with `name`.
   /// [name] The name of the instance profile.
   const LaunchTemplateIamInstanceProfile({
     this.arn,

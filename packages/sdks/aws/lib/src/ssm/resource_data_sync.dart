@@ -14,38 +14,38 @@ import 'resource_data_sync_state.dart';
 ///
 /// const exampleBucket = new aws.s3.Bucket("example", {bucket: "example"});
 /// const exampleResourceDataSync = new aws.ssm.ResourceDataSync("example", {
-///     name: "example",
 ///     s3Destination: {
 ///         bucketName: exampleBucket.bucket,
 ///         region: exampleBucket.region,
 ///     },
+///     name: "example",
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
-///             sid: "SSMBucketPermissionsCheck",
-///             effect: "Allow",
 ///             principals: [{
 ///                 type: "Service",
 ///                 identifiers: ["ssm.amazonaws.com"],
 ///             }],
+///             sid: "SSMBucketPermissionsCheck",
+///             effect: "Allow",
 ///             actions: ["s3:GetBucketAcl"],
 ///             resources: [exampleBucket.arn],
 ///         },
 ///         {
-///             sid: "SSMBucketDelivery",
-///             effect: "Allow",
-///             principals: [{
-///                 type: "Service",
-///                 identifiers: ["ssm.amazonaws.com"],
-///             }],
-///             actions: ["s3:PutObject"],
-///             resources: [pulumi.interpolate`${exampleBucket.arn}/*`],
 ///             conditions: [{
 ///                 test: "StringEquals",
 ///                 variable: "s3:x-amz-acl",
 ///                 values: ["bucket-owner-full-control"],
 ///             }],
+///             principals: [{
+///                 type: "Service",
+///                 identifiers: ["ssm.amazonaws.com"],
+///             }],
+///             sid: "SSMBucketDelivery",
+///             effect: "Allow",
+///             actions: ["s3:PutObject"],
+///             resources: [pulumi.interpolate`${exampleBucket.arn}/*`],
 ///         },
 ///     ],
 /// });
@@ -60,36 +60,36 @@ import 'resource_data_sync_state.dart';
 ///
 /// example_bucket = aws.s3.Bucket("example", bucket="example")
 /// example_resource_data_sync = aws.ssm.ResourceDataSync("example",
-///     name="example",
 ///     s3_destination={
 ///         "bucket_name": example_bucket.bucket,
 ///         "region": example_bucket.region,
-///     })
+///     },
+///     name="example")
 /// example = aws.iam.get_policy_document_output(statements=[
 ///     {
-///         "sid": "SSMBucketPermissionsCheck",
-///         "effect": "Allow",
 ///         "principals": [{
 ///             "type": "Service",
 ///             "identifiers": ["ssm.amazonaws.com"],
 ///         }],
+///         "sid": "SSMBucketPermissionsCheck",
+///         "effect": "Allow",
 ///         "actions": ["s3:GetBucketAcl"],
 ///         "resources": [example_bucket.arn],
 ///     },
 ///     {
-///         "sid": "SSMBucketDelivery",
-///         "effect": "Allow",
-///         "principals": [{
-///             "type": "Service",
-///             "identifiers": ["ssm.amazonaws.com"],
-///         }],
-///         "actions": ["s3:PutObject"],
-///         "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/*")],
 ///         "conditions": [{
 ///             "test": "StringEquals",
 ///             "variable": "s3:x-amz-acl",
 ///             "values": ["bucket-owner-full-control"],
 ///         }],
+///         "principals": [{
+///             "type": "Service",
+///             "identifiers": ["ssm.amazonaws.com"],
+///         }],
+///         "sid": "SSMBucketDelivery",
+///         "effect": "Allow",
+///         "actions": ["s3:PutObject"],
+///         "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/*")],
 ///     },
 /// ])
 /// example_bucket_policy = aws.s3.BucketPolicy("example",
@@ -111,12 +111,12 @@ import 'resource_data_sync_state.dart';
 ///
 ///     var exampleResourceDataSync = new Aws.Ssm.ResourceDataSync("example", new()
 ///     {
-///         Name = "example",
 ///         S3Destination = new Aws.Ssm.Inputs.ResourceDataSyncS3DestinationArgs
 ///         {
 ///             BucketName = exampleBucket.BucketName,
 ///             Region = exampleBucket.Region,
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var example = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -125,8 +125,6 @@ import 'resource_data_sync_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "SSMBucketPermissionsCheck",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -138,6 +136,8 @@ import 'resource_data_sync_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "SSMBucketPermissionsCheck",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:GetBucketAcl",
@@ -149,27 +149,6 @@ import 'resource_data_sync_state.dart';
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "SSMBucketDelivery",
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "ssm.amazonaws.com",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "s3:PutObject",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"{exampleBucket.Arn}/*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -181,6 +160,27 @@ import 'resource_data_sync_state.dart';
 ///                             "bucket-owner-full-control",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "ssm.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Sid = "SSMBucketDelivery",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "s3:PutObject",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{exampleBucket.Arn}/*",
 ///                 },
 ///             },
 ///         },
@@ -215,11 +215,11 @@ import 'resource_data_sync_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewResourceDataSync(ctx, "example", &ssm.ResourceDataSyncArgs{
-/// 			Name: pulumi.String("example"),
 /// 			S3Destination: &ssm.ResourceDataSyncS3DestinationArgs{
 /// 				BucketName: exampleBucket.Bucket,
 /// 				Region:     exampleBucket.Region,
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -227,8 +227,6 @@ import 'resource_data_sync_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("SSMBucketPermissionsCheck"),
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -237,6 +235,8 @@ import 'resource_data_sync_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.String("SSMBucketPermissionsCheck"),
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:GetBucketAcl"),
 /// 					},
@@ -245,24 +245,6 @@ import 'resource_data_sync_state.dart';
 /// 					},
 /// 				},
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("SSMBucketDelivery"),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("Service"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("ssm.amazonaws.com"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("s3:PutObject"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
-/// 							return fmt.Sprintf("%v/*", arn), nil
-/// 						}).(pulumi.StringOutput),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -271,6 +253,24 @@ import 'resource_data_sync_state.dart';
 /// 								pulumi.String("bucket-owner-full-control"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("ssm.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.String("SSMBucketDelivery"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", arn), nil
+/// 						}).(pulumi.StringOutput),
 /// 					},
 /// 				},
 /// 			},
@@ -297,38 +297,38 @@ import 'resource_data_sync_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "SSMBucketPermissionsCheck"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ssm.amazonaws.com"]
 ///     }
+///     sid       = "SSMBucketPermissionsCheck"
+///     effect    = "Allow"
 ///     actions   = ["s3:GetBucketAcl"]
 ///     resources = [aws_s3_bucket.example.arn]
 ///   }
 ///   statements {
-///     sid    = "SSMBucketDelivery"
-///     effect = "Allow"
-///     principals {
-///       type        = "Service"
-///       identifiers = ["ssm.amazonaws.com"]
-///     }
-///     actions   = ["s3:PutObject"]
-///     resources = ["${aws_s3_bucket.example.arn}/*"]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "s3:x-amz-acl"
 ///       values   = ["bucket-owner-full-control"]
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ssm.amazonaws.com"]
+///     }
+///     sid       = "SSMBucketDelivery"
+///     effect    = "Allow"
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/*"]
 ///   }
 /// }
 ///
 /// resource "aws_ssm_resourcedatasync" "example" {
-///   name = "example"
 ///   s3_destination = {
 ///     bucket_name = aws_s3_bucket.example.bucket
 ///     region      = aws_s3_bucket.example.region
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_s3_bucket" "example" {
 ///   bucket = "example"
@@ -374,39 +374,39 @@ import 'resource_data_sync_state.dart';
 ///             .build());
 ///
 ///         var exampleResourceDataSync = new ResourceDataSync("exampleResourceDataSync", ResourceDataSyncArgs.builder()
-///             .name("example")
 ///             .s3Destination(ResourceDataSyncS3DestinationArgs.builder()
 ///                 .bucketName(exampleBucket.bucket())
 ///                 .region(exampleBucket.region())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("SSMBucketPermissionsCheck")
-///                     .effect("Allow")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
 ///                         .identifiers("ssm.amazonaws.com")
 ///                         .build())
+///                     .sid("SSMBucketPermissionsCheck")
+///                     .effect("Allow")
 ///                     .actions("s3:GetBucketAcl")
 ///                     .resources(exampleBucket.arn())
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("SSMBucketDelivery")
-///                     .effect("Allow")
-///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                         .type("Service")
-///                         .identifiers("ssm.amazonaws.com")
-///                         .build())
-///                     .actions("s3:PutObject")
-///                     .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
 ///                         .variable("s3:x-amz-acl")
 ///                         .values("bucket-owner-full-control")
 ///                         .build())
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("Service")
+///                         .identifiers("ssm.amazonaws.com")
+///                         .build())
+///                     .sid("SSMBucketDelivery")
+///                     .effect("Allow")
+///                     .actions("s3:PutObject")
+///                     .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                     .build())
 ///             .build());
 ///
@@ -424,10 +424,10 @@ import 'resource_data_sync_state.dart';
 ///     type: aws:ssm:ResourceDataSync
 ///     name: example
 ///     properties:
-///       name: example
 ///       s3Destination:
 ///         bucketName: ${exampleBucket.bucket}
 ///         region: ${exampleBucket.region}
+///       name: example
 ///   exampleBucket:
 ///     type: aws:s3:Bucket
 ///     name: example
@@ -445,31 +445,31 @@ import 'resource_data_sync_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: SSMBucketPermissionsCheck
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - ssm.amazonaws.com
+///             sid: SSMBucketPermissionsCheck
+///             effect: Allow
 ///             actions:
 ///               - s3:GetBucketAcl
 ///             resources:
 ///               - ${exampleBucket.arn}
-///           - sid: SSMBucketDelivery
-///             effect: Allow
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - ssm.amazonaws.com
-///             actions:
-///               - s3:PutObject
-///             resources:
-///               - ${exampleBucket.arn}/*
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: s3:x-amz-acl
 ///                 values:
 ///                   - bucket-owner-full-control
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - ssm.amazonaws.com
+///             sid: SSMBucketDelivery
+///             effect: Allow
+///             actions:
+///               - s3:PutObject
+///             resources:
+///               - ${exampleBucket.arn}/*
 /// ```
 ///
 ///
@@ -500,7 +500,7 @@ class ResourceDataSync extends pulumi.CustomResource {
           'aws:ssm/resourceDataSync:ResourceDataSync',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -512,11 +512,12 @@ class ResourceDataSync extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceDataSyncState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceDataSync._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -530,6 +531,20 @@ class ResourceDataSync extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    s3Destination = registerOutput<ResourceDataSyncS3Destination>('s3Destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDataSyncS3Destination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceDataSync] resource.
+  ResourceDataSync.reference(String urn)
+    : super(
+        'aws:ssm/resourceDataSync:ResourceDataSync',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     s3Destination = registerOutput<ResourceDataSyncS3Destination>('s3Destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDataSyncS3Destination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

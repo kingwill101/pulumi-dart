@@ -5,7 +5,7 @@ import 'cluster_kube_scheduler_config_node_resources_fit_scoring_strategy.dart';
 
 class ClusterKubeSchedulerConfigNodeResourcesFit {
   /// Configuration block for the scoring strategy used to rank nodes during scheduling. Detailed below.
-  final pulumi.Input<ClusterKubeSchedulerConfigNodeResourcesFitScoringStrategy>? scoringStrategy;
+  final pulumi.Input<ClusterKubeSchedulerConfigNodeResourcesFitScoringStrategy?>? scoringStrategy;
 
   /// Creates a new [ClusterKubeSchedulerConfigNodeResourcesFit].
   /// [scoringStrategy] Configuration block for the scoring strategy used to rank nodes during scheduling. Detailed below.

@@ -8,34 +8,34 @@ import 'assessment_scope.dart';
 
 /// Input properties used for looking up and filtering Assessment resources.
 class AssessmentState {
-  /// Amazon Resource Name (ARN) of the assessment.
-  final pulumi.Input<String>? arn;
+  /// ARN of the assessment.
+  final pulumi.Input<String?>? arn;
   /// Assessment report storage destination configuration. See `assessmentReportsDestination` below.
-  final pulumi.Input<AssessmentAssessmentReportsDestination>? assessmentReportsDestination;
+  final pulumi.Input<AssessmentAssessmentReportsDestination?>? assessmentReportsDestination;
   /// Description of the assessment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier of the framework the assessment will be created from.
-  final pulumi.Input<String>? frameworkId;
+  final pulumi.Input<String?>? frameworkId;
   /// Name of the assessment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of roles for the assessment. See `roles` below.
-  final pulumi.Input<List<AssessmentRole>>? roles;
+  final pulumi.Input<List<AssessmentRole>?>? roles;
   /// Complete list of all roles with access to the assessment. This includes both roles explicitly configured via the `roles` block, and any roles which have access to all Audit Manager assessments by default.
-  final pulumi.Input<List<AssessmentRolesAll>>? rolesAlls;
+  final pulumi.Input<List<AssessmentRolesAll>?>? rolesAlls;
   /// Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AssessmentScope>? scope;
+  final pulumi.Input<AssessmentScope?>? scope;
   /// Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A map of tags to assign to the assessment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AssessmentState].
-  /// [arn] Amazon Resource Name (ARN) of the assessment.
+  /// [arn] ARN of the assessment.
   /// [assessmentReportsDestination] Assessment report storage destination configuration. See `assessmentReportsDestination` below.
   /// [description] Description of the assessment.
   /// [frameworkId] Unique identifier of the framework the assessment will be created from.

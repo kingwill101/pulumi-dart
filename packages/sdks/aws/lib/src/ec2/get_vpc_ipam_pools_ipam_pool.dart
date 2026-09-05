@@ -103,9 +103,9 @@ class GetVpcIpamPoolsIpamPool {
   factory GetVpcIpamPoolsIpamPool.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolsIpamPool(
       addressFamily: pulumi.Input.fromValue(map['addressFamily'] as String),
-      allocationDefaultNetmaskLength: pulumi.Input.fromValue(map['allocationDefaultNetmaskLength'] as int),
-      allocationMaxNetmaskLength: pulumi.Input.fromValue(map['allocationMaxNetmaskLength'] as int),
-      allocationMinNetmaskLength: pulumi.Input.fromValue(map['allocationMinNetmaskLength'] as int),
+      allocationDefaultNetmaskLength: pulumi.Input.fromValue((map['allocationDefaultNetmaskLength'] as num).toInt()),
+      allocationMaxNetmaskLength: pulumi.Input.fromValue((map['allocationMaxNetmaskLength'] as num).toInt()),
+      allocationMinNetmaskLength: pulumi.Input.fromValue((map['allocationMinNetmaskLength'] as num).toInt()),
       allocationResourceTags: pulumi.Input.fromValue((map['allocationResourceTags'] as Map).cast<String, String>()),
       arn: pulumi.Input.fromValue(map['arn'] as String),
       autoImport: pulumi.Input.fromValue(map['autoImport'] as bool),
@@ -115,7 +115,7 @@ class GetVpcIpamPoolsIpamPool {
       ipamScopeId: pulumi.Input.fromValue(map['ipamScopeId'] as String),
       ipamScopeType: pulumi.Input.fromValue(map['ipamScopeType'] as String),
       locale: pulumi.Input.fromValue(map['locale'] as String),
-      poolDepth: pulumi.Input.fromValue(map['poolDepth'] as int),
+      poolDepth: pulumi.Input.fromValue((map['poolDepth'] as num).toInt()),
       publiclyAdvertisable: pulumi.Input.fromValue(map['publiclyAdvertisable'] as bool),
       sourceIpamPoolId: pulumi.Input.fromValue(map['sourceIpamPoolId'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),

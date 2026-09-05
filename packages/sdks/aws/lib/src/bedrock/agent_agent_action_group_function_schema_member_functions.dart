@@ -5,7 +5,7 @@ import 'agent_agent_action_group_function_schema_member_functions_function.dart'
 
 class AgentAgentActionGroupFunctionSchemaMemberFunctions {
   /// Functions that each define an action in the action group. See `functions` Block for details.
-  final pulumi.Input<List<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction>>? functions;
+  final pulumi.Input<List<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction>?>? functions;
 
   /// Creates a new [AgentAgentActionGroupFunctionSchemaMemberFunctions].
   /// [functions] Functions that each define an action in the action group. See `functions` Block for details.

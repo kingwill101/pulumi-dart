@@ -122,6 +122,17 @@ Future<GetConnectorResult> getConnector(
   return GetConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:transfer/getConnector:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
+}
+
 /// Use this data source to get the ARN of an AWS Transfer Server for use in other
 /// resources.
 ///
@@ -239,4 +250,15 @@ Future<GetServerResult> getServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:transfer/getServer:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
 }

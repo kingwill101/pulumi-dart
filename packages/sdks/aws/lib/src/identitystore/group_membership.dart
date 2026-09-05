@@ -13,13 +13,13 @@ import 'group_membership_state.dart';
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleUser = new aws.identitystore.User("example", {
-///     identityStoreId: example.then(example => example.identityStoreIds?.[0]),
-///     displayName: "John Doe",
-///     userName: "john.doe@example.com",
 ///     name: {
 ///         familyName: "Doe",
 ///         givenName: "John",
 ///     },
+///     identityStoreId: example.then(example => example.identityStoreIds?.[0]),
+///     displayName: "John Doe",
+///     userName: "john.doe@example.com",
 /// });
 /// const exampleGroup = new aws.identitystore.Group("example", {
 ///     identityStoreId: example.then(example => example.identityStoreIds?.[0]),
@@ -38,13 +38,13 @@ import 'group_membership_state.dart';
 ///
 /// example = aws.ssoadmin.get_instances()
 /// example_user = aws.identitystore.User("example",
-///     identity_store_id=example.identity_store_ids[0],
-///     display_name="John Doe",
-///     user_name="john.doe@example.com",
 ///     name={
 ///         "family_name": "Doe",
 ///         "given_name": "John",
-///     })
+///     },
+///     identity_store_id=example.identity_store_ids[0],
+///     display_name="John Doe",
+///     user_name="john.doe@example.com")
 /// example_group = aws.identitystore.Group("example",
 ///     identity_store_id=example.identity_store_ids[0],
 ///     display_name="MyGroup",
@@ -66,14 +66,14 @@ import 'group_membership_state.dart';
 ///
 ///     var exampleUser = new Aws.IdentityStore.User("example", new()
 ///     {
-///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
-///         DisplayName = "John Doe",
-///         UserName = "john.doe@example.com",
 ///         Name = new Aws.IdentityStore.Inputs.UserNameArgs
 ///         {
 ///             FamilyName = "Doe",
 ///             GivenName = "John",
 ///         },
+///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
+///         DisplayName = "John Doe",
+///         UserName = "john.doe@example.com",
 ///     });
 ///
 ///     var exampleGroup = new Aws.IdentityStore.Group("example", new()
@@ -108,13 +108,13 @@ import 'group_membership_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleUser, err := identitystore.NewUser(ctx, "example", &identitystore.UserArgs{
-/// 			IdentityStoreId: pulumi.String(example.IdentityStoreIds[0]),
-/// 			DisplayName:     pulumi.String("John Doe"),
-/// 			UserName:        pulumi.String("john.doe@example.com"),
 /// 			Name: &identitystore.UserNameArgs{
 /// 				FamilyName: pulumi.String("Doe"),
 /// 				GivenName:  pulumi.String("John"),
 /// 			},
+/// 			IdentityStoreId: pulumi.String(example.IdentityStoreIds[0]),
+/// 			DisplayName:     pulumi.String("John Doe"),
+/// 			UserName:        pulumi.String("john.doe@example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -152,13 +152,13 @@ import 'group_membership_state.dart';
 /// }
 ///
 /// resource "aws_identitystore_user" "example" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
-///   display_name      = "John Doe"
-///   user_name         = "john.doe@example.com"
 ///   name = {
 ///     family_name = "Doe"
 ///     given_name  = "John"
 ///   }
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   display_name      = "John Doe"
+///   user_name         = "john.doe@example.com"
 /// }
 /// resource "aws_identitystore_group" "example" {
 ///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
@@ -203,13 +203,13 @@ import 'group_membership_state.dart';
 ///             .build());
 ///
 ///         var exampleUser = new User("exampleUser", UserArgs.builder()
-///             .identityStoreId(example.identityStoreIds()[0])
-///             .displayName("John Doe")
-///             .userName("john.doe@example.com")
 ///             .name(UserNameArgs.builder()
 ///                 .familyName("Doe")
 ///                 .givenName("John")
 ///                 .build())
+///             .identityStoreId(example.identityStoreIds()[0])
+///             .displayName("John Doe")
+///             .userName("john.doe@example.com")
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
@@ -233,12 +233,12 @@ import 'group_membership_state.dart';
 ///     type: aws:identitystore:User
 ///     name: example
 ///     properties:
-///       identityStoreId: ${example.identityStoreIds[0]}
-///       displayName: John Doe
-///       userName: john.doe@example.com
 ///       name:
 ///         familyName: Doe
 ///         givenName: John
+///       identityStoreId: ${example.identityStoreIds[0]}
+///       displayName: John Doe
+///       userName: john.doe@example.com
 ///   exampleGroup:
 ///     type: aws:identitystore:Group
 ///     name: example
@@ -292,7 +292,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:identitystore/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');
@@ -306,11 +306,12 @@ class GroupMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -324,6 +325,22 @@ class GroupMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    groupId = registerOutput<String>('groupId');
+    identityStoreId = registerOutput<String>('identityStoreId');
+    memberId = registerOutput<String>('memberId');
+    membershipId = registerOutput<String>('membershipId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [GroupMembership] resource.
+  GroupMembership.reference(String urn)
+    : super(
+        'aws:identitystore/groupMembership:GroupMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');
     memberId = registerOutput<String>('memberId');

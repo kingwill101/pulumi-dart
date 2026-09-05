@@ -6,7 +6,7 @@ class StackAccessEndpoint {
   /// Type of the interface endpoint. See the [`AccessEndpoint` AWS API documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html) for valid values.
   final pulumi.Input<String> endpointType;
   /// ID of the VPC in which the interface endpoint is used.
-  final pulumi.Input<String>? vpceId;
+  final pulumi.Input<String?>? vpceId;
 
   /// Creates a new [StackAccessEndpoint].
   /// [endpointType] Type of the interface endpoint. See the [`AccessEndpoint` AWS API documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html) for valid values.

@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings {
   /// Average bitrate in bits/second.
-  final pulumi.Input<double>? bitrate;
+  final pulumi.Input<double?>? bitrate;
   /// Specifies the bitstream mode (bsmod) for the emitted AC-3 stream.
-  final pulumi.Input<String>? bitstreamMode;
+  final pulumi.Input<String?>? bitstreamMode;
   /// Dolby Digital coding mode.
-  final pulumi.Input<String>? codingMode;
+  final pulumi.Input<String?>? codingMode;
   /// Sets the dialnorm of the output.
-  final pulumi.Input<int>? dialnorm;
+  final pulumi.Input<int?>? dialnorm;
   /// If set to filmStandard, adds dynamic range compression signaling to the output bitstream as defined in the Dolby Digital specification.
-  final pulumi.Input<String>? drcProfile;
+  final pulumi.Input<String?>? drcProfile;
   /// When set to enabled, applies a 120Hz lowpass filter to the LFE channel prior to encoding.
-  final pulumi.Input<String>? lfeFilter;
+  final pulumi.Input<String?>? lfeFilter;
   /// Metadata control.
-  final pulumi.Input<String>? metadataControl;
+  final pulumi.Input<String?>? metadataControl;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings].
   /// [bitrate] Average bitrate in bits/second.
@@ -50,10 +50,10 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings(
-      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       bitstreamMode: (() { final guardedValue = map['bitstreamMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       codingMode: (() { final guardedValue = map['codingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dialnorm: (() { final guardedValue = map['dialnorm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dialnorm: (() { final guardedValue = map['dialnorm']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       drcProfile: (() { final guardedValue = map['drcProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lfeFilter: (() { final guardedValue = map['lfeFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadataControl: (() { final guardedValue = map['metadataControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

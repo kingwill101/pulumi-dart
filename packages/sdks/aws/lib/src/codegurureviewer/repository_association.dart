@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_association_args.dart';
 import 'repository_association_kms_key_details.dart';
 import 'repository_association_repository.dart';
+import 'repository_association_s3_repository_detail.dart';
 import 'repository_association_state.dart';
 
 /// Resource for managing an AWS CodeGuru Reviewer Repository Association.
@@ -14,7 +15,9 @@ import 'repository_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kms.Key("example", {});
-/// const exampleRepository = new aws.codecommit.Repository("example", {repositoryName: "example-repo"});
+/// const exampleRepository = new aws.codecommit.Repository("example", {repositoryName: "example-repo"}, {
+///     ignoreChanges: ["tags[\"codeguru-reviewer\"]"],
+/// });
 /// const exampleRepositoryAssociation = new aws.codegurureviewer.RepositoryAssociation("example", {
 ///     repository: {
 ///         codecommit: {
@@ -32,7 +35,8 @@ import 'repository_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kms.Key("example")
-/// example_repository = aws.codecommit.Repository("example", repository_name="example-repo")
+/// example_repository = aws.codecommit.Repository("example", repository_name="example-repo",
+/// opts = pulumi.ResourceOptions(ignore_changes=["tags[\"codeguru-reviewer\"]"]))
 /// example_repository_association = aws.codegurureviewer.RepositoryAssociation("example",
 ///     repository={
 ///         "codecommit": {
@@ -57,6 +61,12 @@ import 'repository_association_state.dart';
 ///     var exampleRepository = new Aws.CodeCommit.Repository("example", new()
 ///     {
 ///         RepositoryName = "example-repo",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "tags[\"codeguru-reviewer\"]",
+///         },
 ///     });
 ///
 ///     var exampleRepositoryAssociation = new Aws.CodeGuruReviewer.RepositoryAssociation("example", new()
@@ -95,7 +105,9 @@ import 'repository_association_state.dart';
 /// 		}
 /// 		exampleRepository, err := codecommit.NewRepository(ctx, "example", &codecommit.RepositoryArgs{
 /// 			RepositoryName: pulumi.String("example-repo"),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"tags[\"codeguru-reviewer\"]",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -129,6 +141,9 @@ import 'repository_association_state.dart';
 /// resource "aws_kms_key" "example" {
 /// }
 /// resource "aws_codecommit_repository" "example" {
+///   lifecycle {
+///     ignore_changes = [tags["codeguru-reviewer"]]
+///   }
 ///   repository_name = "example-repo"
 /// }
 /// resource "aws_codegurureviewer_repositoryassociation" "example" {
@@ -157,6 +172,7 @@ import 'repository_association_state.dart';
 /// import com.pulumi.aws.codegurureviewer.inputs.RepositoryAssociationRepositoryArgs;
 /// import com.pulumi.aws.codegurureviewer.inputs.RepositoryAssociationRepositoryCodecommitArgs;
 /// import com.pulumi.aws.codegurureviewer.inputs.RepositoryAssociationKmsKeyDetailsArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -174,7 +190,9 @@ import 'repository_association_state.dart';
 ///
 ///         var exampleRepository = new Repository("exampleRepository", RepositoryArgs.builder()
 ///             .repositoryName("example-repo")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("tags[\"codeguru-reviewer\"]")
+///                 .build());
 ///
 ///         var exampleRepositoryAssociation = new RepositoryAssociation("exampleRepositoryAssociation", RepositoryAssociationArgs.builder()
 ///             .repository(RepositoryAssociationRepositoryArgs.builder()
@@ -200,6 +218,9 @@ import 'repository_association_state.dart';
 ///     name: example
 ///     properties:
 ///       repositoryName: example-repo
+///     options:
+///       ignoreChanges:
+///         - tags["codeguru-reviewer"]
 ///   exampleRepositoryAssociation:
 ///     type: aws:codegurureviewer:RepositoryAssociation
 ///     name: example
@@ -212,11 +233,11 @@ import 'repository_association_state.dart';
 ///         kmsKeyId: ${example.keyId}
 /// ```
 class RepositoryAssociation extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) identifying the repository association.
+  /// ARN identifying the repository association.
   late final pulumi.Output<String> arn;
   /// The ID of the repository association.
   late final pulumi.Output<String> associationId;
-  /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
+  /// ARN of an AWS CodeStar Connections connection.
   late final pulumi.Output<String> connectionArn;
   /// An object describing the KMS key to asssociate. Block is documented below.
   late final pulumi.Output<RepositoryAssociationKmsKeyDetails?> kmsKeyDetails;
@@ -232,7 +253,7 @@ class RepositoryAssociation extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<RepositoryAssociationRepository> repository;
-  late final pulumi.Output<List<Map<String, dynamic>>> s3RepositoryDetails;
+  late final pulumi.Output<List<RepositoryAssociationS3RepositoryDetail>> s3RepositoryDetails;
   /// The state of the repository association.
   late final pulumi.Output<String> state;
   /// A description of why the repository association is in the current state.
@@ -252,7 +273,7 @@ class RepositoryAssociation extends pulumi.CustomResource {
           'aws:codegurureviewer/repositoryAssociation:RepositoryAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');
@@ -263,11 +284,11 @@ class RepositoryAssociation extends pulumi.CustomResource {
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
     repository = registerOutput<RepositoryAssociationRepository>('repository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryAssociationRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    s3RepositoryDetails = registerOutput<List<Map<String, dynamic>>>('s3RepositoryDetails');
+    s3RepositoryDetails = registerOutput<List<RepositoryAssociationS3RepositoryDetail>>('s3RepositoryDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(guardedValue, (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RepositoryAssociation] resource's state with the given [name] and [id].
@@ -275,11 +296,12 @@ class RepositoryAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,10 +324,35 @@ class RepositoryAssociation extends pulumi.CustomResource {
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
     repository = registerOutput<RepositoryAssociationRepository>('repository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryAssociationRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    s3RepositoryDetails = registerOutput<List<Map<String, dynamic>>>('s3RepositoryDetails');
+    s3RepositoryDetails = registerOutput<List<RepositoryAssociationS3RepositoryDetail>>('s3RepositoryDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(guardedValue, (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RepositoryAssociation] resource.
+  RepositoryAssociation.reference(String urn)
+    : super(
+        'aws:codegurureviewer/repositoryAssociation:RepositoryAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associationId = registerOutput<String>('associationId');
+    connectionArn = registerOutput<String>('connectionArn');
+    kmsKeyDetails = registerOutput<RepositoryAssociationKmsKeyDetails?>('kmsKeyDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryAssociationKmsKeyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    repository = registerOutput<RepositoryAssociationRepository>('repository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryAssociationRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3RepositoryDetails = registerOutput<List<RepositoryAssociationS3RepositoryDetail>>('s3RepositoryDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(guardedValue, (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -14,25 +14,21 @@ import 'listener_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.ListenerRule("example", {
-///     name: "example",
-///     listenerIdentifier: exampleAwsVpclatticeListener.listenerId,
-///     serviceIdentifier: exampleAwsVpclatticeService.id,
-///     priority: 20,
 ///     match: {
 ///         httpMatch: {
-///             headerMatches: [{
-///                 name: "example-header",
-///                 caseSensitive: false,
-///                 match: {
-///                     exact: "example-contains",
-///                 },
-///             }],
 ///             pathMatch: {
-///                 caseSensitive: true,
 ///                 match: {
 ///                     prefix: "/example-path",
 ///                 },
+///                 caseSensitive: true,
 ///             },
+///             headerMatches: [{
+///                 match: {
+///                     exact: "example-contains",
+///                 },
+///                 name: "example-header",
+///                 caseSensitive: false,
+///             }],
 ///         },
 ///     },
 ///     action: {
@@ -49,6 +45,10 @@ import 'listener_rule_state.dart';
 ///             ],
 ///         },
 ///     },
+///     name: "example",
+///     listenerIdentifier: exampleAwsVpclatticeListener.listenerId,
+///     serviceIdentifier: exampleAwsVpclatticeService.id,
+///     priority: 20,
 /// });
 /// ```
 /// ```python
@@ -56,25 +56,21 @@ import 'listener_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.ListenerRule("example",
-///     name="example",
-///     listener_identifier=example_aws_vpclattice_listener["listenerId"],
-///     service_identifier=example_aws_vpclattice_service["id"],
-///     priority=20,
 ///     match={
 ///         "http_match": {
-///             "header_matches": [{
-///                 "name": "example-header",
-///                 "case_sensitive": False,
-///                 "match": {
-///                     "exact": "example-contains",
-///                 },
-///             }],
 ///             "path_match": {
-///                 "case_sensitive": True,
 ///                 "match": {
 ///                     "prefix": "/example-path",
 ///                 },
+///                 "case_sensitive": True,
 ///             },
+///             "header_matches": [{
+///                 "match": {
+///                     "exact": "example-contains",
+///                 },
+///                 "name": "example-header",
+///                 "case_sensitive": False,
+///             }],
 ///         },
 ///     },
 ///     action={
@@ -90,7 +86,11 @@ import 'listener_rule_state.dart';
 ///                 },
 ///             ],
 ///         },
-///     })
+///     },
+///     name="example",
+///     listener_identifier=example_aws_vpclattice_listener["listenerId"],
+///     service_identifier=example_aws_vpclattice_service["id"],
+///     priority=20)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -102,32 +102,28 @@ import 'listener_rule_state.dart';
 /// {
 ///     var example = new Aws.VpcLattice.ListenerRule("example", new()
 ///     {
-///         Name = "example",
-///         ListenerIdentifier = exampleAwsVpclatticeListener.ListenerId,
-///         ServiceIdentifier = exampleAwsVpclatticeService.Id,
-///         Priority = 20,
 ///         Match = new Aws.VpcLattice.Inputs.ListenerRuleMatchArgs
 ///         {
 ///             HttpMatch = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchArgs
 ///             {
+///                 PathMatch = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchPathMatchArgs
+///                 {
+///                     Match = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchPathMatchMatchArgs
+///                     {
+///                         Prefix = "/example-path",
+///                     },
+///                     CaseSensitive = true,
+///                 },
 ///                 HeaderMatches = new[]
 ///                 {
 ///                     new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchHeaderMatchArgs
 ///                     {
-///                         Name = "example-header",
-///                         CaseSensitive = false,
 ///                         Match = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchHeaderMatchMatchArgs
 ///                         {
 ///                             Exact = "example-contains",
 ///                         },
-///                     },
-///                 },
-///                 PathMatch = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchPathMatchArgs
-///                 {
-///                     CaseSensitive = true,
-///                     Match = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchPathMatchMatchArgs
-///                     {
-///                         Prefix = "/example-path",
+///                         Name = "example-header",
+///                         CaseSensitive = false,
 ///                     },
 ///                 },
 ///             },
@@ -151,6 +147,10 @@ import 'listener_rule_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         ListenerIdentifier = exampleAwsVpclatticeListener.ListenerId,
+///         ServiceIdentifier = exampleAwsVpclatticeService.Id,
+///         Priority = 20,
 ///     });
 ///
 /// });
@@ -166,25 +166,21 @@ import 'listener_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewListenerRule(ctx, "example", &vpclattice.ListenerRuleArgs{
-/// 			Name:               pulumi.String("example"),
-/// 			ListenerIdentifier: pulumi.Any(exampleAwsVpclatticeListener.ListenerId),
-/// 			ServiceIdentifier:  pulumi.Any(exampleAwsVpclatticeService.Id),
-/// 			Priority:           pulumi.Int(20),
 /// 			Match: &vpclattice.ListenerRuleMatchArgs{
 /// 				HttpMatch: &vpclattice.ListenerRuleMatchHttpMatchArgs{
+/// 					PathMatch: &vpclattice.ListenerRuleMatchHttpMatchPathMatchArgs{
+/// 						Match: &vpclattice.ListenerRuleMatchHttpMatchPathMatchMatchArgs{
+/// 							Prefix: pulumi.String("/example-path"),
+/// 						},
+/// 						CaseSensitive: pulumi.Bool(true),
+/// 					},
 /// 					HeaderMatches: vpclattice.ListenerRuleMatchHttpMatchHeaderMatchArray{
 /// 						&vpclattice.ListenerRuleMatchHttpMatchHeaderMatchArgs{
-/// 							Name:          pulumi.String("example-header"),
-/// 							CaseSensitive: pulumi.Bool(false),
 /// 							Match: &vpclattice.ListenerRuleMatchHttpMatchHeaderMatchMatchArgs{
 /// 								Exact: pulumi.String("example-contains"),
 /// 							},
-/// 						},
-/// 					},
-/// 					PathMatch: &vpclattice.ListenerRuleMatchHttpMatchPathMatchArgs{
-/// 						CaseSensitive: pulumi.Bool(true),
-/// 						Match: &vpclattice.ListenerRuleMatchHttpMatchPathMatchMatchArgs{
-/// 							Prefix: pulumi.String("/example-path"),
+/// 							Name:          pulumi.String("example-header"),
+/// 							CaseSensitive: pulumi.Bool(false),
 /// 						},
 /// 					},
 /// 				},
@@ -203,6 +199,10 @@ import 'listener_rule_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("example"),
+/// 			ListenerIdentifier: pulumi.Any(exampleAwsVpclatticeListener.ListenerId),
+/// 			ServiceIdentifier:  pulumi.Any(exampleAwsVpclatticeService.Id),
+/// 			Priority:           pulumi.Int(20),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -221,25 +221,21 @@ import 'listener_rule_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_listenerrule" "example" {
-///   name                = "example"
-///   listener_identifier = exampleAwsVpclatticeListener.listenerId
-///   service_identifier  = exampleAwsVpclatticeService.id
-///   priority            = 20
 ///   match = {
 ///     http_match = {
-///       header_matches = [{
-///         "name"          = "example-header"
-///         "caseSensitive" = false
-///         "match" = {
-///           "exact" = "example-contains"
-///         }
-///       }]
 ///       path_match = {
-///         case_sensitive = true
 ///         match = {
 ///           prefix = "/example-path"
 ///         }
+///         case_sensitive = true
 ///       }
+///       header_matches = [{
+///         "match" = {
+///           "exact" = "example-contains"
+///         }
+///         "name"          = "example-header"
+///         "caseSensitive" = false
+///       }]
 ///     }
 ///   }
 ///   action = {
@@ -253,6 +249,10 @@ import 'listener_rule_state.dart';
 ///       }]
 ///     }
 ///   }
+///   name                = "example"
+///   listener_identifier = exampleAwsVpclatticeListener.listenerId
+///   service_identifier  = exampleAwsVpclatticeService.id
+///   priority            = 20
 /// }
 /// ```
 /// ```java
@@ -265,10 +265,10 @@ import 'listener_rule_state.dart';
 /// import com.pulumi.aws.vpclattice.ListenerRuleArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchArgs;
-/// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchHeaderMatchArgs;
-/// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchHeaderMatchMatchArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchPathMatchArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchPathMatchMatchArgs;
+/// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchHeaderMatchArgs;
+/// import com.pulumi.aws.vpclattice.inputs.ListenerRuleMatchHttpMatchHeaderMatchMatchArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleActionArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleActionForwardArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ListenerRuleActionForwardTargetGroupArgs;
@@ -286,24 +286,20 @@ import 'listener_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ListenerRule("example", ListenerRuleArgs.builder()
-///             .name("example")
-///             .listenerIdentifier(exampleAwsVpclatticeListener.listenerId())
-///             .serviceIdentifier(exampleAwsVpclatticeService.id())
-///             .priority(20)
 ///             .match(ListenerRuleMatchArgs.builder()
 ///                 .httpMatch(ListenerRuleMatchHttpMatchArgs.builder()
-///                     .headerMatches(ListenerRuleMatchHttpMatchHeaderMatchArgs.builder()
-///                         .name("example-header")
-///                         .caseSensitive(false)
-///                         .match(ListenerRuleMatchHttpMatchHeaderMatchMatchArgs.builder()
-///                             .exact("example-contains")
-///                             .build())
-///                         .build())
 ///                     .pathMatch(ListenerRuleMatchHttpMatchPathMatchArgs.builder()
-///                         .caseSensitive(true)
 ///                         .match(ListenerRuleMatchHttpMatchPathMatchMatchArgs.builder()
 ///                             .prefix("/example-path")
 ///                             .build())
+///                         .caseSensitive(true)
+///                         .build())
+///                     .headerMatches(ListenerRuleMatchHttpMatchHeaderMatchArgs.builder()
+///                         .match(ListenerRuleMatchHttpMatchHeaderMatchMatchArgs.builder()
+///                             .exact("example-contains")
+///                             .build())
+///                         .name("example-header")
+///                         .caseSensitive(false)
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -320,6 +316,10 @@ import 'listener_rule_state.dart';
 ///                             .build())
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .listenerIdentifier(exampleAwsVpclatticeListener.listenerId())
+///             .serviceIdentifier(exampleAwsVpclatticeService.id())
+///             .priority(20)
 ///             .build());
 ///
 ///     }
@@ -330,21 +330,17 @@ import 'listener_rule_state.dart';
 ///   example:
 ///     type: aws:vpclattice:ListenerRule
 ///     properties:
-///       name: example
-///       listenerIdentifier: ${exampleAwsVpclatticeListener.listenerId}
-///       serviceIdentifier: ${exampleAwsVpclatticeService.id}
-///       priority: 20
 ///       match:
 ///         httpMatch:
-///           headerMatches:
-///             - name: example-header
-///               caseSensitive: false
-///               match:
-///                 exact: example-contains
 ///           pathMatch:
-///             caseSensitive: true
 ///             match:
 ///               prefix: /example-path
+///             caseSensitive: true
+///           headerMatches:
+///             - match:
+///                 exact: example-contains
+///               name: example-header
+///               caseSensitive: false
 ///       action:
 ///         forward:
 ///           targetGroups:
@@ -352,6 +348,10 @@ import 'listener_rule_state.dart';
 ///               weight: 1
 ///             - targetGroupIdentifier: ${example2.id}
 ///               weight: 2
+///       name: example
+///       listenerIdentifier: ${exampleAwsVpclatticeListener.listenerId}
+///       serviceIdentifier: ${exampleAwsVpclatticeService.id}
+///       priority: 20
 /// ```
 ///
 ///
@@ -363,17 +363,13 @@ import 'listener_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.ListenerRule("example", {
-///     name: "example",
-///     listenerIdentifier: exampleAwsVpclatticeListener.listenerId,
-///     serviceIdentifier: exampleAwsVpclatticeService.id,
-///     priority: 10,
 ///     match: {
 ///         httpMatch: {
 ///             pathMatch: {
-///                 caseSensitive: false,
 ///                 match: {
 ///                     exact: "/example-path",
 ///                 },
+///                 caseSensitive: false,
 ///             },
 ///         },
 ///     },
@@ -382,6 +378,10 @@ import 'listener_rule_state.dart';
 ///             statusCode: 404,
 ///         },
 ///     },
+///     name: "example",
+///     listenerIdentifier: exampleAwsVpclatticeListener.listenerId,
+///     serviceIdentifier: exampleAwsVpclatticeService.id,
+///     priority: 10,
 /// });
 /// ```
 /// ```python
@@ -389,17 +389,13 @@ import 'listener_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.ListenerRule("example",
-///     name="example",
-///     listener_identifier=example_aws_vpclattice_listener["listenerId"],
-///     service_identifier=example_aws_vpclattice_service["id"],
-///     priority=10,
 ///     match={
 ///         "http_match": {
 ///             "path_match": {
-///                 "case_sensitive": False,
 ///                 "match": {
 ///                     "exact": "/example-path",
 ///                 },
+///                 "case_sensitive": False,
 ///             },
 ///         },
 ///     },
@@ -407,7 +403,11 @@ import 'listener_rule_state.dart';
 ///         "fixed_response": {
 ///             "status_code": 404,
 ///         },
-///     })
+///     },
+///     name="example",
+///     listener_identifier=example_aws_vpclattice_listener["listenerId"],
+///     service_identifier=example_aws_vpclattice_service["id"],
+///     priority=10)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -419,21 +419,17 @@ import 'listener_rule_state.dart';
 /// {
 ///     var example = new Aws.VpcLattice.ListenerRule("example", new()
 ///     {
-///         Name = "example",
-///         ListenerIdentifier = exampleAwsVpclatticeListener.ListenerId,
-///         ServiceIdentifier = exampleAwsVpclatticeService.Id,
-///         Priority = 10,
 ///         Match = new Aws.VpcLattice.Inputs.ListenerRuleMatchArgs
 ///         {
 ///             HttpMatch = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchArgs
 ///             {
 ///                 PathMatch = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchPathMatchArgs
 ///                 {
-///                     CaseSensitive = false,
 ///                     Match = new Aws.VpcLattice.Inputs.ListenerRuleMatchHttpMatchPathMatchMatchArgs
 ///                     {
 ///                         Exact = "/example-path",
 ///                     },
+///                     CaseSensitive = false,
 ///                 },
 ///             },
 ///         },
@@ -444,6 +440,10 @@ import 'listener_rule_state.dart';
 ///                 StatusCode = 404,
 ///             },
 ///         },
+///         Name = "example",
+///         ListenerIdentifier = exampleAwsVpclatticeListener.ListenerId,
+///         ServiceIdentifier = exampleAwsVpclatticeService.Id,
+///         Priority = 10,
 ///     });
 ///
 /// });
@@ -459,17 +459,13 @@ import 'listener_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewListenerRule(ctx, "example", &vpclattice.ListenerRuleArgs{
-/// 			Name:               pulumi.String("example"),
-/// 			ListenerIdentifier: pulumi.Any(exampleAwsVpclatticeListener.ListenerId),
-/// 			ServiceIdentifier:  pulumi.Any(exampleAwsVpclatticeService.Id),
-/// 			Priority:           pulumi.Int(10),
 /// 			Match: &vpclattice.ListenerRuleMatchArgs{
 /// 				HttpMatch: &vpclattice.ListenerRuleMatchHttpMatchArgs{
 /// 					PathMatch: &vpclattice.ListenerRuleMatchHttpMatchPathMatchArgs{
-/// 						CaseSensitive: pulumi.Bool(false),
 /// 						Match: &vpclattice.ListenerRuleMatchHttpMatchPathMatchMatchArgs{
 /// 							Exact: pulumi.String("/example-path"),
 /// 						},
+/// 						CaseSensitive: pulumi.Bool(false),
 /// 					},
 /// 				},
 /// 			},
@@ -478,6 +474,10 @@ import 'listener_rule_state.dart';
 /// 					StatusCode: pulumi.Int(404),
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("example"),
+/// 			ListenerIdentifier: pulumi.Any(exampleAwsVpclatticeListener.ListenerId),
+/// 			ServiceIdentifier:  pulumi.Any(exampleAwsVpclatticeService.Id),
+/// 			Priority:           pulumi.Int(10),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -496,17 +496,13 @@ import 'listener_rule_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_listenerrule" "example" {
-///   name                = "example"
-///   listener_identifier = exampleAwsVpclatticeListener.listenerId
-///   service_identifier  = exampleAwsVpclatticeService.id
-///   priority            = 10
 ///   match = {
 ///     http_match = {
 ///       path_match = {
-///         case_sensitive = false
 ///         match = {
 ///           exact = "/example-path"
 ///         }
+///         case_sensitive = false
 ///       }
 ///     }
 ///   }
@@ -515,6 +511,10 @@ import 'listener_rule_state.dart';
 ///       status_code = 404
 ///     }
 ///   }
+///   name                = "example"
+///   listener_identifier = exampleAwsVpclatticeListener.listenerId
+///   service_identifier  = exampleAwsVpclatticeService.id
+///   priority            = 10
 /// }
 /// ```
 /// ```java
@@ -545,17 +545,13 @@ import 'listener_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ListenerRule("example", ListenerRuleArgs.builder()
-///             .name("example")
-///             .listenerIdentifier(exampleAwsVpclatticeListener.listenerId())
-///             .serviceIdentifier(exampleAwsVpclatticeService.id())
-///             .priority(10)
 ///             .match(ListenerRuleMatchArgs.builder()
 ///                 .httpMatch(ListenerRuleMatchHttpMatchArgs.builder()
 ///                     .pathMatch(ListenerRuleMatchHttpMatchPathMatchArgs.builder()
-///                         .caseSensitive(false)
 ///                         .match(ListenerRuleMatchHttpMatchPathMatchMatchArgs.builder()
 ///                             .exact("/example-path")
 ///                             .build())
+///                         .caseSensitive(false)
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -564,6 +560,10 @@ import 'listener_rule_state.dart';
 ///                     .statusCode(404)
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .listenerIdentifier(exampleAwsVpclatticeListener.listenerId())
+///             .serviceIdentifier(exampleAwsVpclatticeService.id())
+///             .priority(10)
 ///             .build());
 ///
 ///     }
@@ -574,19 +574,19 @@ import 'listener_rule_state.dart';
 ///   example:
 ///     type: aws:vpclattice:ListenerRule
 ///     properties:
+///       match:
+///         httpMatch:
+///           pathMatch:
+///             match:
+///               exact: /example-path
+///             caseSensitive: false
+///       action:
+///         fixedResponse:
+///           statusCode: 404
 ///       name: example
 ///       listenerIdentifier: ${exampleAwsVpclatticeListener.listenerId}
 ///       serviceIdentifier: ${exampleAwsVpclatticeService.id}
 ///       priority: 10
-///       match:
-///         httpMatch:
-///           pathMatch:
-///             caseSensitive: false
-///             match:
-///               exact: /example-path
-///       action:
-///         fixedResponse:
-///           statusCode: 404
 /// ```
 ///
 ///
@@ -602,7 +602,7 @@ class ListenerRule extends pulumi.CustomResource {
   late final pulumi.Output<ListenerRuleAction> action;
   /// ARN for the listener rule.
   late final pulumi.Output<String> arn;
-  /// ID or Amazon Resource Name (ARN) of the listener.
+  /// ID or ARN of the listener.
   late final pulumi.Output<String> listenerIdentifier;
   /// Rule match. See `match` Block for details.
   late final pulumi.Output<ListenerRuleMatch> match;
@@ -614,7 +614,7 @@ class ListenerRule extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Unique identifier for the listener rule.
   late final pulumi.Output<String> ruleId;
-  /// ID or Amazon Resource Name (ARN) of the service.
+  /// ID or ARN of the service.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceIdentifier;
@@ -635,7 +635,7 @@ class ListenerRule extends pulumi.CustomResource {
           'aws:vpclattice/listenerRule:ListenerRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<ListenerRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -646,8 +646,8 @@ class ListenerRule extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleId = registerOutput<String>('ruleId');
     serviceIdentifier = registerOutput<String>('serviceIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ListenerRule] resource's state with the given [name] and [id].
@@ -655,11 +655,12 @@ class ListenerRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ListenerRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ListenerRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -682,7 +683,29 @@ class ListenerRule extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleId = registerOutput<String>('ruleId');
     serviceIdentifier = registerOutput<String>('serviceIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ListenerRule] resource.
+  ListenerRule.reference(String urn)
+    : super(
+        'aws:vpclattice/listenerRule:ListenerRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<ListenerRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    listenerIdentifier = registerOutput<String>('listenerIdentifier');
+    match = registerOutput<ListenerRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    ruleId = registerOutput<String>('ruleId');
+    serviceIdentifier = registerOutput<String>('serviceIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

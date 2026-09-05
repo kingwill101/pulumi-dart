@@ -8,40 +8,40 @@ import 'model_container_multi_model_config.dart';
 
 class ModelContainer {
   /// Additional data sources that are available to the model in addition to those specified in `modelDataSource`. See Additional Model Data Source.
-  final pulumi.Input<List<ModelContainerAdditionalModelDataSource>>? additionalModelDataSources;
+  final pulumi.Input<List<ModelContainerAdditionalModelDataSource>?>? additionalModelDataSources;
   /// DNS host name for the container.
-  final pulumi.Input<String>? containerHostname;
+  final pulumi.Input<String?>? containerHostname;
   /// Environment variables for the Docker container.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Registry path where the inference code image is stored in Amazon ECR.
-  final pulumi.Input<String>? image;
-  /// Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). For more information see [Using a Private Docker Registry for Real-Time Inference Containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html). see Image Config.
-  final pulumi.Input<ModelContainerImageConfig>? imageConfig;
+  final pulumi.Input<String?>? image;
+  /// Whether the model container is in Amazon ECR or a private Docker registry accessible from your VPC. For more information see [Using a Private Docker Registry for Real-Time Inference Containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html). see Image Config.
+  final pulumi.Input<ModelContainerImageConfig?>? imageConfig;
   /// Inference specification name in the model package version.
-  final pulumi.Input<String>? inferenceSpecificationName;
+  final pulumi.Input<String?>? inferenceSpecificationName;
   /// Container hosts value. Allowed values are: `SingleModel` and `MultiModel`. The default value is `SingleModel`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Location of model data to deploy. Use this for uncompressed model deployment. For information about how to deploy an uncompressed model, see [Deploying uncompressed models](https://docs.aws.amazon.com/sagemaker/latest/dg/large-model-inference-uncompressed.html) in the _AWS SageMaker AI Developer Guide_.
-  final pulumi.Input<ModelContainerModelDataSource>? modelDataSource;
+  final pulumi.Input<ModelContainerModelDataSource?>? modelDataSource;
   /// URL for the S3 location where model artifacts are stored.
-  final pulumi.Input<String>? modelDataUrl;
-  /// Amazon Resource Name (ARN) of the model package to use to create the model.
+  final pulumi.Input<String?>? modelDataUrl;
+  /// ARN of the model package to use to create the model.
   /// A list of key value pairs.
-  final pulumi.Input<String>? modelPackageName;
+  final pulumi.Input<String?>? modelPackageName;
   /// Specifies additional configuration for multi-model endpoints. see Multi Model Config.
-  final pulumi.Input<ModelContainerMultiModelConfig>? multiModelConfig;
+  final pulumi.Input<ModelContainerMultiModelConfig?>? multiModelConfig;
 
   /// Creates a new [ModelContainer].
   /// [additionalModelDataSources] Additional data sources that are available to the model in addition to those specified in `modelDataSource`. See Additional Model Data Source.
   /// [containerHostname] DNS host name for the container.
   /// [environment] Environment variables for the Docker container.
   /// [image] Registry path where the inference code image is stored in Amazon ECR.
-  /// [imageConfig] Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). For more information see [Using a Private Docker Registry for Real-Time Inference Containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html). see Image Config.
+  /// [imageConfig] Whether the model container is in Amazon ECR or a private Docker registry accessible from your VPC. For more information see [Using a Private Docker Registry for Real-Time Inference Containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html). see Image Config.
   /// [inferenceSpecificationName] Inference specification name in the model package version.
   /// [mode] Container hosts value. Allowed values are: `SingleModel` and `MultiModel`. The default value is `SingleModel`.
   /// [modelDataSource] Location of model data to deploy. Use this for uncompressed model deployment. For information about how to deploy an uncompressed model, see [Deploying uncompressed models](https://docs.aws.amazon.com/sagemaker/latest/dg/large-model-inference-uncompressed.html) in the _AWS SageMaker AI Developer Guide_.
   /// [modelDataUrl] URL for the S3 location where model artifacts are stored.
-  /// [modelPackageName] Amazon Resource Name (ARN) of the model package to use to create the model.
+  /// [modelPackageName] ARN of the model package to use to create the model.
   /// [multiModelConfig] Specifies additional configuration for multi-model endpoints. see Multi Model Config.
   const ModelContainer({
     this.additionalModelDataSources,

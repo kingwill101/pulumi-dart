@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LbStickinessPolicy resources.
 class LbStickinessPolicyState {
   /// Cookie duration in seconds. This determines the length of the session stickiness.
-  final pulumi.Input<int>? cookieDuration;
+  final pulumi.Input<int?>? cookieDuration;
   /// Whether to enable session stickiness for the load balancer.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Name of the load balancer to which you want to enable session stickiness.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? lbName;
+  final pulumi.Input<String?>? lbName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LbStickinessPolicyState].
   /// [cookieDuration] Cookie duration in seconds. This determines the length of the session stickiness.
@@ -38,7 +38,7 @@ class LbStickinessPolicyState {
 
   factory LbStickinessPolicyState.fromMap(Map<String, dynamic> map) {
     return LbStickinessPolicyState(
-      cookieDuration: (() { final guardedValue = map['cookieDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cookieDuration: (() { final guardedValue = map['cookieDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lbName: (() { final guardedValue = map['lbName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

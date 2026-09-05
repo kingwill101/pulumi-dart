@@ -12,14 +12,14 @@ class MembershipArgs {
   /// The ID of the collaboration to which the member was invited.
   final pulumi.Input<String> collaborationId;
   /// The default configuration for a query result.
-  final pulumi.Input<MembershipDefaultResultConfiguration>? defaultResultConfiguration;
-  final pulumi.Input<MembershipPaymentConfiguration>? paymentConfiguration;
+  final pulumi.Input<MembershipDefaultResultConfiguration?>? defaultResultConfiguration;
+  final pulumi.Input<MembershipPaymentConfiguration?>? paymentConfiguration;
   /// An indicator as to whether query logging has been enabled or disabled for the membership.
   final pulumi.Input<String> queryLogStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key value pairs which tag the membership.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MembershipArgs].
   /// [collaborationId] The ID of the collaboration to which the member was invited.

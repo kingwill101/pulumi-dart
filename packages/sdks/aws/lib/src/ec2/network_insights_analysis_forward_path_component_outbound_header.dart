@@ -5,11 +5,11 @@ import 'network_insights_analysis_forward_path_component_outbound_header_destina
 import 'network_insights_analysis_forward_path_component_outbound_header_source_port_range.dart';
 
 class NetworkInsightsAnalysisForwardPathComponentOutboundHeader {
-  final pulumi.Input<List<String>>? destinationAddresses;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange>>? destinationPortRanges;
-  final pulumi.Input<String>? protocol;
-  final pulumi.Input<List<String>>? sourceAddresses;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? destinationAddresses;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange>?>? destinationPortRanges;
+  final pulumi.Input<String?>? protocol;
+  final pulumi.Input<List<String>?>? sourceAddresses;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange>?>? sourcePortRanges;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentOutboundHeader].
   /// [destinationAddresses] Optional.

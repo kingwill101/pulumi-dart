@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus {
-  final pulumi.Input<String>? revokedStatusAction;
-  final pulumi.Input<String>? unknownStatusAction;
+  final pulumi.Input<String?>? revokedStatusAction;
+  final pulumi.Input<String?>? unknownStatusAction;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus].
   /// [revokedStatusAction] Optional.

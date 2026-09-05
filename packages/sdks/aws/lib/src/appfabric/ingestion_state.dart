@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Ingestion resources.
 class IngestionState {
   /// Name of the application. Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app).
-  final pulumi.Input<String>? app;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
-  final pulumi.Input<String>? appBundleArn;
+  final pulumi.Input<String?>? app;
+  /// ARN of the app bundle to use for the request.
+  final pulumi.Input<String?>? appBundleArn;
   /// ARN of the Ingestion.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Ingestion type. Valid values are `auditLog`.
-  final pulumi.Input<String>? ingestionType;
+  final pulumi.Input<String?>? ingestionType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the application tenant.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [IngestionState].
   /// [app] Name of the application. Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app).
-  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [appBundleArn] ARN of the app bundle to use for the request.
   /// [arn] ARN of the Ingestion.
   /// [ingestionType] Ingestion type. Valid values are `auditLog`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

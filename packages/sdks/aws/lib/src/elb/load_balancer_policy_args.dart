@@ -11,13 +11,13 @@ class LoadBalancerPolicyArgs {
   /// The load balancer on which the policy is defined.
   final pulumi.Input<String> loadBalancerName;
   /// Policy attribute to apply to the policy.
-  final pulumi.Input<List<LoadBalancerPolicyPolicyAttribute>>? policyAttributes;
+  final pulumi.Input<List<LoadBalancerPolicyPolicyAttribute>?>? policyAttributes;
   /// The name of the load balancer policy.
   final pulumi.Input<String> policyName;
   /// The policy type.
   final pulumi.Input<String> policyTypeName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LoadBalancerPolicyArgs].
   /// [loadBalancerName] The load balancer on which the policy is defined.

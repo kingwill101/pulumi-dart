@@ -8,7 +8,7 @@ class GetInferenceProfilesInferenceProfileSummary {
   final pulumi.Input<String> createdAt;
   /// Description of the inference profile.
   final pulumi.Input<String> description;
-  /// Amazon Resource Name (ARN) of the inference profile.
+  /// ARN of the inference profile.
   final pulumi.Input<String> inferenceProfileArn;
   /// Unique identifier of the inference profile.
   final pulumi.Input<String> inferenceProfileId;
@@ -26,7 +26,7 @@ class GetInferenceProfilesInferenceProfileSummary {
   /// Creates a new [GetInferenceProfilesInferenceProfileSummary].
   /// [createdAt] Time at which the inference profile was created.
   /// [description] Description of the inference profile.
-  /// [inferenceProfileArn] Amazon Resource Name (ARN) of the inference profile.
+  /// [inferenceProfileArn] ARN of the inference profile.
   /// [inferenceProfileId] Unique identifier of the inference profile.
   /// [inferenceProfileName] Name of the inference profile.
   /// [models] List of information about each model in the inference profile. See `models` Block.

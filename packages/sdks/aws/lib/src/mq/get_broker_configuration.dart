@@ -26,7 +26,7 @@ class GetBrokerConfiguration {
   factory GetBrokerConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBrokerConfiguration(
       id: pulumi.Input.fromValue(map['id'] as String),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue((map['revision'] as num).toInt()),
     );
   }
 }

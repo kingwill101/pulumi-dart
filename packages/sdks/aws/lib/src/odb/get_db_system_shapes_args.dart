@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_odb_get_db_system_shapes_get_db_system_shapes_args_doc}
 class GetDbSystemShapesArgs {
   /// Physical ID of the AZ, for example, use1-az4. This ID persists across accounts.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetDbSystemShapesArgs].
   /// [availabilityZoneId] Physical ID of the AZ, for example, use1-az4. This ID persists across accounts.

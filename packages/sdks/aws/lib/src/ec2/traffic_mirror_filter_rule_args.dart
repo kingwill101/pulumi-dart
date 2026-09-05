@@ -10,15 +10,15 @@ import 'traffic_mirror_filter_rule_source_port_range.dart';
 /// {@macro pulumi_ec2_traffic_mirror_filter_rule_traffic_mirror_filter_rule_args_doc}
 class TrafficMirrorFilterRuleArgs {
   /// Description of the traffic mirror filter rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Destination CIDR block to assign to the Traffic Mirror rule.
   final pulumi.Input<String> destinationCidrBlock;
   /// Destination port range. Supported only when the protocol is set to TCP(6) or UDP(17). See Traffic mirror port range documented below
-  final pulumi.Input<TrafficMirrorFilterRuleDestinationPortRange>? destinationPortRange;
+  final pulumi.Input<TrafficMirrorFilterRuleDestinationPortRange?>? destinationPortRange;
   /// Protocol number, for example 17 (UDP), to assign to the Traffic Mirror rule. For information about the protocol value, see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) on the Internet Assigned Numbers Authority (IANA) website.
-  final pulumi.Input<int>? protocol;
+  final pulumi.Input<int?>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Action to take (accept | reject) on the filtered traffic. Valid values are `accept` and `reject`
   final pulumi.Input<String> ruleAction;
   /// Number of the Traffic Mirror rule. This number must be unique for each Traffic Mirror rule in a given direction. The rules are processed in ascending order by rule number.
@@ -26,7 +26,7 @@ class TrafficMirrorFilterRuleArgs {
   /// Source CIDR block to assign to the Traffic Mirror rule.
   final pulumi.Input<String> sourceCidrBlock;
   /// Source port range. Supported only when the protocol is set to TCP(6) or UDP(17). See Traffic mirror port range documented below
-  final pulumi.Input<TrafficMirrorFilterRuleSourcePortRange>? sourcePortRange;
+  final pulumi.Input<TrafficMirrorFilterRuleSourcePortRange?>? sourcePortRange;
   /// Direction of traffic to be captured. Valid values are `ingress` and `egress`
   ///
   /// Traffic mirror port range support following attributes:
@@ -81,10 +81,10 @@ class TrafficMirrorFilterRuleArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationCidrBlock: pulumi.Input.fromValue(map['destinationCidrBlock'] as String),
       destinationPortRange: (() { final guardedValue = map['destinationPortRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TrafficMirrorFilterRuleDestinationPortRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleAction: pulumi.Input.fromValue(map['ruleAction'] as String),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
       sourceCidrBlock: pulumi.Input.fromValue(map['sourceCidrBlock'] as String),
       sourcePortRange: (() { final guardedValue = map['sourcePortRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TrafficMirrorFilterRuleSourcePortRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       trafficDirection: pulumi.Input.fromValue(map['trafficDirection'] as String),

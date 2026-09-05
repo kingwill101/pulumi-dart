@@ -7,7 +7,7 @@ class ClusterKubeControllerManagerConfig {
   /// Configuration block for the horizontal pod autoscaler controller. Detailed below.
   ///
   /// &gt; **NOTE:** The `horizontalPodAutoscalerControllerConfig` requires a Provisioned Control Plane scaling tier (e.g., `tier-xl` or higher). It cannot be configured on clusters using the `standard` tier.
-  final pulumi.Input<ClusterKubeControllerManagerConfigHorizontalPodAutoscalerControllerConfig>? horizontalPodAutoscalerControllerConfig;
+  final pulumi.Input<ClusterKubeControllerManagerConfigHorizontalPodAutoscalerControllerConfig?>? horizontalPodAutoscalerControllerConfig;
 
   /// Creates a new [ClusterKubeControllerManagerConfig].
   /// [horizontalPodAutoscalerControllerConfig] Configuration block for the horizontal pod autoscaler controller. Detailed below.

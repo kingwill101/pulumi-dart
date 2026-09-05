@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficPolicyDocumentRuleLocation {
   /// Value of a continent.
-  final pulumi.Input<String>? continent;
+  final pulumi.Input<String?>? continent;
   /// Value of a country.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// References to an endpoint.
-  final pulumi.Input<String>? endpointReference;
+  final pulumi.Input<String?>? endpointReference;
   /// Indicates whether you want Amazon Route 53 to evaluate the health of the endpoint and route traffic only to healthy endpoints.
-  final pulumi.Input<bool>? evaluateTargetHealth;
+  final pulumi.Input<bool?>? evaluateTargetHealth;
   /// If you want to associate a health check with the endpoint or rule.
-  final pulumi.Input<String>? healthCheck;
+  final pulumi.Input<String?>? healthCheck;
   /// Indicates whether this set of values represents the default location.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// References to a rule.
-  final pulumi.Input<String>? ruleReference;
+  final pulumi.Input<String?>? ruleReference;
   /// Value of a subdivision.
-  final pulumi.Input<String>? subdivision;
+  final pulumi.Input<String?>? subdivision;
 
   /// Creates a new [GetTrafficPolicyDocumentRuleLocation].
   /// [continent] Value of a continent.

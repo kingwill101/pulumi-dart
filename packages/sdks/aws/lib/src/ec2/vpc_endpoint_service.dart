@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_service_args.dart';
+import 'vpc_endpoint_service_private_dns_name_configuration.dart';
 import 'vpc_endpoint_service_state.dart';
 
 /// Provides a VPC Endpoint Service resource.
@@ -257,22 +258,22 @@ class VpcEndpointService extends pulumi.CustomResource {
   late final pulumi.Output<bool> acceptanceRequired;
   /// The ARNs of one or more principals allowed to discover the endpoint service.
   late final pulumi.Output<List<String>> allowedPrincipals;
-  /// The Amazon Resource Name (ARN) of the VPC endpoint service.
+  /// ARN of the VPC endpoint service.
   late final pulumi.Output<String> arn;
   /// A set of Availability Zones in which the service is available.
   late final pulumi.Output<List<String>> availabilityZones;
   /// A set of DNS names for the service.
   late final pulumi.Output<List<String>> baseEndpointDnsNames;
-  /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
+  /// ARNs of one or more Gateway Load Balancers for the endpoint service.
   late final pulumi.Output<List<String>?> gatewayLoadBalancerArns;
   /// Whether or not the service manages its VPC endpoints - `true` or `false`.
   late final pulumi.Output<bool> managesVpcEndpoints;
-  /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
+  /// ARNs of one or more Network Load Balancers for the endpoint service.
   late final pulumi.Output<List<String>?> networkLoadBalancerArns;
   /// The private DNS name for the service.
   late final pulumi.Output<String> privateDnsName;
   /// List of objects containing information about the endpoint service private DNS name configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateDnsNameConfigurations;
+  late final pulumi.Output<List<VpcEndpointServicePrivateDnsNameConfiguration>> privateDnsNameConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The service name.
@@ -302,26 +303,26 @@ class VpcEndpointService extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointService:VpcEndpointService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptanceRequired = registerOutput<bool>('acceptanceRequired');
-    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
+    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
-    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames');
-    gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
-    networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns');
+    networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     privateDnsName = registerOutput<String>('privateDnsName');
-    privateDnsNameConfigurations = registerOutput<List<Map<String, dynamic>>>('privateDnsNameConfigurations');
+    privateDnsNameConfigurations = registerOutput<List<VpcEndpointServicePrivateDnsNameConfiguration>>('privateDnsNameConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointServicePrivateDnsNameConfiguration>(guardedValue, (value) => VpcEndpointServicePrivateDnsNameConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     serviceName = registerOutput<String>('serviceName');
     serviceType = registerOutput<String>('serviceType');
     state = registerOutput<String>('state');
-    supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes');
-    supportedRegions = registerOutput<List<String>>('supportedRegions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedRegions = registerOutput<List<String>>('supportedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VpcEndpointService] resource's state with the given [name] and [id].
@@ -329,11 +330,12 @@ class VpcEndpointService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpointService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -348,22 +350,51 @@ class VpcEndpointService extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     acceptanceRequired = registerOutput<bool>('acceptanceRequired');
-    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
+    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
-    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames');
-    gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
-    networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns');
+    networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     privateDnsName = registerOutput<String>('privateDnsName');
-    privateDnsNameConfigurations = registerOutput<List<Map<String, dynamic>>>('privateDnsNameConfigurations');
+    privateDnsNameConfigurations = registerOutput<List<VpcEndpointServicePrivateDnsNameConfiguration>>('privateDnsNameConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointServicePrivateDnsNameConfiguration>(guardedValue, (value) => VpcEndpointServicePrivateDnsNameConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     serviceName = registerOutput<String>('serviceName');
     serviceType = registerOutput<String>('serviceType');
     this.state = registerOutput<String>('state');
-    supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes');
-    supportedRegions = registerOutput<List<String>>('supportedRegions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedRegions = registerOutput<List<String>>('supportedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpointService] resource.
+  VpcEndpointService.reference(String urn)
+    : super(
+        'aws:ec2/vpcEndpointService:VpcEndpointService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptanceRequired = registerOutput<bool>('acceptanceRequired');
+    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
+    networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateDnsName = registerOutput<String>('privateDnsName');
+    privateDnsNameConfigurations = registerOutput<List<VpcEndpointServicePrivateDnsNameConfiguration>>('privateDnsNameConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointServicePrivateDnsNameConfiguration>(guardedValue, (value) => VpcEndpointServicePrivateDnsNameConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    serviceName = registerOutput<String>('serviceName');
+    serviceType = registerOutput<String>('serviceType');
+    state = registerOutput<String>('state');
+    supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedRegions = registerOutput<List<String>>('supportedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

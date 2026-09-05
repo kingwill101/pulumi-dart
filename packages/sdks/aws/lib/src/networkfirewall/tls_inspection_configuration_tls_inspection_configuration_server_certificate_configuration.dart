@@ -7,13 +7,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration_server_certifi
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration {
   /// ARN of the imported certificate authority (CA) certificate within Certificate Manager (ACM) to use for outbound SSL/TLS inspection. See [Using SSL/TLS certificates with TLS inspection configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection-certificate-requirements.html) for limitations on CA certificates.
-  final pulumi.Input<String>? certificateAuthorityArn;
+  final pulumi.Input<String?>? certificateAuthorityArn;
   /// Check Certificate Revocation Status block. Detailed below.
-  final pulumi.Input<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus>? checkCertificateRevocationStatus;
+  final pulumi.Input<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus?>? checkCertificateRevocationStatus;
   /// Scope block. Detailed below.
   final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope>> scopes;
   /// Server certificates to use for inbound SSL/TLS inspection. See [Using SSL/TLS certificates with TLS inspection configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection-certificate-requirements.html).
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate>>? serverCertificates;
+  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate>?>? serverCertificates;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration].
   /// [certificateAuthorityArn] ARN of the imported certificate authority (CA) certificate within Certificate Manager (ACM) to use for outbound SSL/TLS inspection. See [Using SSL/TLS certificates with TLS inspection configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection-certificate-requirements.html) for limitations on CA certificates.

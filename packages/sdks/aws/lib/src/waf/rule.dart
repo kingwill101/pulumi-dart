@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_args.dart';
+import 'rule_predicate.dart';
 import 'rule_state.dart';
 
 /// Provides a WAF Rule Resource
@@ -12,20 +13,20 @@ import 'rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ipset = new aws.waf.IpSet("ipset", {
-///     name: "tfIPSet",
 ///     ipSetDescriptors: [{
 ///         type: "IPV4",
 ///         value: "192.0.7.0/24",
 ///     }],
+///     name: "tfIPSet",
 /// });
 /// const wafrule = new aws.waf.Rule("wafrule", {
-///     name: "tfWAFRule",
-///     metricName: "tfWAFRule",
 ///     predicates: [{
 ///         dataId: ipset.id,
 ///         negated: false,
 ///         type: "IPMatch",
 ///     }],
+///     name: "tfWAFRule",
+///     metricName: "tfWAFRule",
 /// }, {
 ///     dependsOn: [ipset],
 /// });
@@ -35,19 +36,19 @@ import 'rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// ipset = aws.waf.IpSet("ipset",
-///     name="tfIPSet",
 ///     ip_set_descriptors=[{
 ///         "type": "IPV4",
 ///         "value": "192.0.7.0/24",
-///     }])
+///     }],
+///     name="tfIPSet")
 /// wafrule = aws.waf.Rule("wafrule",
-///     name="tfWAFRule",
-///     metric_name="tfWAFRule",
 ///     predicates=[{
 ///         "data_id": ipset.id,
 ///         "negated": False,
 ///         "type": "IPMatch",
 ///     }],
+///     name="tfWAFRule",
+///     metric_name="tfWAFRule",
 ///     opts = pulumi.ResourceOptions(depends_on=[ipset]))
 /// ```
 /// ```csharp
@@ -60,7 +61,6 @@ import 'rule_state.dart';
 /// {
 ///     var ipset = new Aws.Waf.IpSet("ipset", new()
 ///     {
-///         Name = "tfIPSet",
 ///         IpSetDescriptors = new[]
 ///         {
 ///             new Aws.Waf.Inputs.IpSetIpSetDescriptorArgs
@@ -69,12 +69,11 @@ import 'rule_state.dart';
 ///                 Value = "192.0.7.0/24",
 ///             },
 ///         },
+///         Name = "tfIPSet",
 ///     });
 ///
 ///     var wafrule = new Aws.Waf.Rule("wafrule", new()
 ///     {
-///         Name = "tfWAFRule",
-///         MetricName = "tfWAFRule",
 ///         Predicates = new[]
 ///         {
 ///             new Aws.Waf.Inputs.RulePredicateArgs
@@ -84,6 +83,8 @@ import 'rule_state.dart';
 ///                 Type = "IPMatch",
 ///             },
 ///         },
+///         Name = "tfWAFRule",
+///         MetricName = "tfWAFRule",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -105,20 +106,18 @@ import 'rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ipset, err := waf.NewIpSet(ctx, "ipset", &waf.IpSetArgs{
-/// 			Name: pulumi.String("tfIPSet"),
 /// 			IpSetDescriptors: waf.IpSetIpSetDescriptorArray{
 /// 				&waf.IpSetIpSetDescriptorArgs{
 /// 					Type:  pulumi.String("IPV4"),
 /// 					Value: pulumi.String("192.0.7.0/24"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tfIPSet"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = waf.NewRule(ctx, "wafrule", &waf.RuleArgs{
-/// 			Name:       pulumi.String("tfWAFRule"),
-/// 			MetricName: pulumi.String("tfWAFRule"),
 /// 			Predicates: waf.RulePredicateArray{
 /// 				&waf.RulePredicateArgs{
 /// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
@@ -126,6 +125,8 @@ import 'rule_state.dart';
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("tfWAFRule"),
+/// 			MetricName: pulumi.String("tfWAFRule"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			ipset,
 /// 		}))
@@ -146,21 +147,21 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_waf_ipset" "ipset" {
-///   name = "tfIPSet"
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
 ///   }
+///   name = "tfIPSet"
 /// }
 /// resource "aws_waf_rule" "wafrule" {
-///   depends_on  = [aws_waf_ipset.ipset]
-///   name        = "tfWAFRule"
-///   metric_name = "tfWAFRule"
+///   depends_on = [aws_waf_ipset.ipset]
 ///   predicates {
 ///     data_id = aws_waf_ipset.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
 /// }
 /// ```
 /// ```java
@@ -190,21 +191,21 @@ import 'rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ipset = new IpSet("ipset", IpSetArgs.builder()
-///             .name("tfIPSet")
 ///             .ipSetDescriptors(IpSetIpSetDescriptorArgs.builder()
 ///                 .type("IPV4")
 ///                 .value("192.0.7.0/24")
 ///                 .build())
+///             .name("tfIPSet")
 ///             .build());
 ///
 ///         var wafrule = new Rule("wafrule", RuleArgs.builder()
-///             .name("tfWAFRule")
-///             .metricName("tfWAFRule")
 ///             .predicates(RulePredicateArgs.builder()
 ///                 .dataId(ipset.id())
 ///                 .negated(false)
 ///                 .type("IPMatch")
 ///                 .build())
+///             .name("tfWAFRule")
+///             .metricName("tfWAFRule")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(ipset)
 ///                 .build());
@@ -217,19 +218,19 @@ import 'rule_state.dart';
 ///   ipset:
 ///     type: aws:waf:IpSet
 ///     properties:
-///       name: tfIPSet
 ///       ipSetDescriptors:
 ///         - type: IPV4
 ///           value: 192.0.7.0/24
+///       name: tfIPSet
 ///   wafrule:
 ///     type: aws:waf:Rule
 ///     properties:
-///       name: tfWAFRule
-///       metricName: tfWAFRule
 ///       predicates:
 ///         - dataId: ${ipset.id}
 ///           negated: false
 ///           type: IPMatch
+///       name: tfWAFRule
+///       metricName: tfWAFRule
 ///     options:
 ///       dependsOn:
 ///         - ${ipset}
@@ -251,7 +252,7 @@ class Rule extends pulumi.CustomResource {
   /// The name or description of the rule.
   late final pulumi.Output<String> name;
   /// The objects to include in a rule (documented below).
-  late final pulumi.Output<List<Map<String, dynamic>>?> predicates;
+  late final pulumi.Output<List<RulePredicate>?> predicates;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -269,14 +270,14 @@ class Rule extends pulumi.CustomResource {
           'aws:waf/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    predicates = registerOutput<List<Map<String, dynamic>>?>('predicates');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    predicates = registerOutput<List<RulePredicate>?>('predicates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulePredicate>(guardedValue, (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
@@ -284,11 +285,12 @@ class Rule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,8 +307,25 @@ class Rule extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    predicates = registerOutput<List<Map<String, dynamic>>?>('predicates');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    predicates = registerOutput<List<RulePredicate>?>('predicates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulePredicate>(guardedValue, (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'aws:waf/rule:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    predicates = registerOutput<List<RulePredicate>?>('predicates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulePredicate>(guardedValue, (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

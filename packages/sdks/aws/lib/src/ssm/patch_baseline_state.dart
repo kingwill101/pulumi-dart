@@ -8,41 +8,41 @@ import 'patch_baseline_source.dart';
 /// Input properties used for looking up and filtering PatchBaseline resources.
 class PatchBaselineState {
   /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approvalRule` below.
-  final pulumi.Input<List<PatchBaselineApprovalRule>>? approvalRules;
+  final pulumi.Input<List<PatchBaselineApprovalRule>?>? approvalRules;
   /// List of explicitly approved patches for the baseline. Cannot be specified with `approvalRule`.
-  final pulumi.Input<List<String>>? approvedPatches;
+  final pulumi.Input<List<String>?>? approvedPatches;
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
-  final pulumi.Input<String>? approvedPatchesComplianceLevel;
+  final pulumi.Input<String?>? approvedPatchesComplianceLevel;
   /// Whether the list of approved patches includes non-security updates that should be applied to the instances. Applies to Linux instances only.
-  final pulumi.Input<bool>? approvedPatchesEnableNonSecurity;
+  final pulumi.Input<bool?>? approvedPatchesEnableNonSecurity;
   /// ARN of the baseline.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Indicates the compliance status of managed nodes for which security-related patches are available but were not approved. Supported for Windows Server managed nodes only. Valid values are `COMPLIANT`, `NON_COMPLIANT`.
-  final pulumi.Input<String>? availableSecurityUpdatesComplianceStatus;
+  final pulumi.Input<String?>? availableSecurityUpdatesComplianceStatus;
   /// Description of the patch baseline.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT`, `CLASSIFICATION`, `MSRC_SEVERITY`, and `PATCH_ID`.
-  final pulumi.Input<List<PatchBaselineGlobalFilter>>? globalFilters;
+  final pulumi.Input<List<PatchBaselineGlobalFilter>?>? globalFilters;
   /// JSON definition of the baseline.
-  final pulumi.Input<String>? json;
+  final pulumi.Input<String?>? json;
   /// Name of the patch baseline.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Operating system the patch baseline applies to. Valid values are `ALMA_LINUX`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `AMAZON_LINUX_2022`, `AMAZON_LINUX_2023`, `CENTOS`, `DEBIAN`, `MACOS`, `ORACLE_LINUX`, `RASPBIAN`, `REDHAT_ENTERPRISE_LINUX`, `ROCKY_LINUX`, `SUSE`, `UBUNTU`, and `WINDOWS`. The default value is `WINDOWS`.
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of rejected patches.
-  final pulumi.Input<List<String>>? rejectedPatches;
+  final pulumi.Input<List<String>?>? rejectedPatches;
   /// Action for Patch Manager to take on patches included in the `rejectedPatches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
-  final pulumi.Input<String>? rejectedPatchesAction;
+  final pulumi.Input<String?>? rejectedPatchesAction;
   /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
-  final pulumi.Input<List<PatchBaselineSource>>? sources;
+  final pulumi.Input<List<PatchBaselineSource>?>? sources;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [PatchBaselineState].
   /// [approvalRules] Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approvalRule` below.

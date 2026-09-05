@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Schedule resources.
 class ScheduleState {
   /// ARN assigned by AWS to the autoscaling schedule.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of the Auto Scaling group.
-  final pulumi.Input<String>? autoscalingGroupName;
+  final pulumi.Input<String?>? autoscalingGroupName;
   /// The initial capacity of the Auto Scaling group after the scheduled action runs and the capacity it attempts to maintain. Set to `-1` if you don't want to change the desired capacity at the scheduled time. Defaults to `0`.
-  final pulumi.Input<int>? desiredCapacity;
+  final pulumi.Input<int?>? desiredCapacity;
   /// The date and time for the recurring schedule to end, in UTC with the format `"YYYY-MM-DDThh:mm:ssZ"` (e.g. `"2021-06-01T00:00:00Z"`).
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The maximum size of the Auto Scaling group. Set to `-1` if you don't want to change the maximum size at the scheduled time. Defaults to `0`.
-  final pulumi.Input<int>? maxSize;
+  final pulumi.Input<int?>? maxSize;
   /// The minimum size of the Auto Scaling group. Set to `-1` if you don't want to change the minimum size at the scheduled time. Defaults to `0`.
-  final pulumi.Input<int>? minSize;
+  final pulumi.Input<int?>? minSize;
   /// The recurring schedule for this action specified using the Unix cron syntax format.
-  final pulumi.Input<String>? recurrence;
+  final pulumi.Input<String?>? recurrence;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of this scaling action.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? scheduledActionName;
+  final pulumi.Input<String?>? scheduledActionName;
   /// The date and time for the recurring schedule to start, in UTC with the format `"YYYY-MM-DDThh:mm:ssZ"` (e.g. `"2021-06-01T00:00:00Z"`).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Specifies the time zone for a cron expression. Valid values are the canonical names of the IANA time zones (such as `Etc/GMT+9` or `Pacific/Tahiti`).
   ///
   /// &gt; **NOTE:** When `startTime` and `endTime` are specified with `recurrence` , they form the boundaries of when the recurring action will start and stop.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [ScheduleState].
   /// [arn] ARN assigned by AWS to the autoscaling schedule.
@@ -77,10 +77,10 @@ class ScheduleState {
     return ScheduleState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoscalingGroupName: (() { final guardedValue = map['autoscalingGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       recurrence: (() { final guardedValue = map['recurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduledActionName: (() { final guardedValue = map['scheduledActionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

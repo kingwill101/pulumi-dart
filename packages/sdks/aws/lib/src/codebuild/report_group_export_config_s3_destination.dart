@@ -7,13 +7,13 @@ class ReportGroupExportConfigS3Destination {
   final pulumi.Input<String> bucket;
   /// A boolean value that specifies if the results of a report are encrypted.
   /// **Note: the API does not currently allow setting encryption as disabled**
-  final pulumi.Input<bool>? encryptionDisabled;
+  final pulumi.Input<bool?>? encryptionDisabled;
   /// The encryption key for the report's encrypted raw data. The KMS key ARN.
   final pulumi.Input<String> encryptionKey;
   /// The type of build output artifact to create. Valid values are: `NONE` (default) and `ZIP`.
-  final pulumi.Input<String>? packaging;
+  final pulumi.Input<String?>? packaging;
   /// The path to the exported report's raw data results.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [ReportGroupExportConfigS3Destination].
   /// [bucket] The name of the S3 bucket where the raw data of a report are exported.

@@ -5,15 +5,15 @@ import 'gateway_route_spec_http2_route_match_header_match_range.dart';
 
 class GatewayRouteSpecHttp2RouteMatchHeaderMatch {
   /// Exact query parameter to match on.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Header value sent by the client must begin with the specified characters.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http2_route.match.header.match.range` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttp2RouteMatchHeaderMatchRange>? range;
+  final pulumi.Input<GatewayRouteSpecHttp2RouteMatchHeaderMatchRange?>? range;
   /// Regex used to match the path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
   /// Specified ending characters of the host name to match on.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteMatchHeaderMatch].
   /// [exact] Exact query parameter to match on.

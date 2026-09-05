@@ -10,7 +10,7 @@ class GetLocationArgs {
   /// Code for the location to retrieve.
   final pulumi.Input<String> locationCode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetLocationArgs].
   /// [locationCode] Code for the location to retrieve.

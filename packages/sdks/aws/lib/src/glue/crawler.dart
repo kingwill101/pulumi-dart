@@ -1,8 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'crawler_args.dart';
+import 'crawler_catalog_target.dart';
+import 'crawler_delta_target.dart';
+import 'crawler_dynamodb_target.dart';
+import 'crawler_hudi_target.dart';
+import 'crawler_iceberg_target.dart';
+import 'crawler_jdbc_target.dart';
 import 'crawler_lake_formation_configuration.dart';
 import 'crawler_lineage_configuration.dart';
+import 'crawler_mongodb_target.dart';
 import 'crawler_recrawl_policy.dart';
+import 'crawler_s3_target.dart';
 import 'crawler_schema_change_policy.dart';
 import 'crawler_state.dart';
 
@@ -18,12 +26,12 @@ import 'crawler_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Crawler("example", {
-///     databaseName: exampleAwsGlueCatalogDatabase.name,
-///     name: "example",
-///     role: exampleAwsIamRole.arn,
 ///     dynamodbTargets: [{
 ///         path: "table-name",
 ///     }],
+///     databaseName: exampleAwsGlueCatalogDatabase.name,
+///     name: "example",
+///     role: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -31,12 +39,12 @@ import 'crawler_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Crawler("example",
-///     database_name=example_aws_glue_catalog_database["name"],
-///     name="example",
-///     role=example_aws_iam_role["arn"],
 ///     dynamodb_targets=[{
 ///         "path": "table-name",
-///     }])
+///     }],
+///     database_name=example_aws_glue_catalog_database["name"],
+///     name="example",
+///     role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,9 +56,6 @@ import 'crawler_state.dart';
 /// {
 ///     var example = new Aws.Glue.Crawler("example", new()
 ///     {
-///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
-///         Name = "example",
-///         Role = exampleAwsIamRole.Arn,
 ///         DynamodbTargets = new[]
 ///         {
 ///             new Aws.Glue.Inputs.CrawlerDynamodbTargetArgs
@@ -58,6 +63,9 @@ import 'crawler_state.dart';
 ///                 Path = "table-name",
 ///             },
 ///         },
+///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
+///         Name = "example",
+///         Role = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -73,14 +81,14 @@ import 'crawler_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCrawler(ctx, "example", &glue.CrawlerArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
-/// 			Name:         pulumi.String("example"),
-/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			DynamodbTargets: glue.CrawlerDynamodbTargetArray{
 /// 				&glue.CrawlerDynamodbTargetArgs{
 /// 					Path: pulumi.String("table-name"),
 /// 				},
 /// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
+/// 			Name:         pulumi.String("example"),
+/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -99,12 +107,12 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   database_name = exampleAwsGlueCatalogDatabase.name
-///   name          = "example"
-///   role          = exampleAwsIamRole.arn
 ///   dynamodb_targets {
 ///     path = "table-name"
 ///   }
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -130,12 +138,12 @@ import 'crawler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
-///             .name("example")
-///             .role(exampleAwsIamRole.arn())
 ///             .dynamodbTargets(CrawlerDynamodbTargetArgs.builder()
 ///                 .path("table-name")
 ///                 .build())
+///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .name("example")
+///             .role(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -146,11 +154,11 @@ import 'crawler_state.dart';
 ///   example:
 ///     type: aws:glue:Crawler
 ///     properties:
+///       dynamodbTargets:
+///         - path: table-name
 ///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
 ///       name: example
 ///       role: ${exampleAwsIamRole.arn}
-///       dynamodbTargets:
-///         - path: table-name
 /// ```
 ///
 ///
@@ -162,13 +170,13 @@ import 'crawler_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Crawler("example", {
-///     databaseName: exampleAwsGlueCatalogDatabase.name,
-///     name: "example",
-///     role: exampleAwsIamRole.arn,
 ///     jdbcTargets: [{
 ///         connectionName: exampleAwsGlueConnection.name,
 ///         path: "database-name/%",
 ///     }],
+///     databaseName: exampleAwsGlueCatalogDatabase.name,
+///     name: "example",
+///     role: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -176,13 +184,13 @@ import 'crawler_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Crawler("example",
-///     database_name=example_aws_glue_catalog_database["name"],
-///     name="example",
-///     role=example_aws_iam_role["arn"],
 ///     jdbc_targets=[{
 ///         "connection_name": example_aws_glue_connection["name"],
 ///         "path": "database-name/%",
-///     }])
+///     }],
+///     database_name=example_aws_glue_catalog_database["name"],
+///     name="example",
+///     role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -194,9 +202,6 @@ import 'crawler_state.dart';
 /// {
 ///     var example = new Aws.Glue.Crawler("example", new()
 ///     {
-///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
-///         Name = "example",
-///         Role = exampleAwsIamRole.Arn,
 ///         JdbcTargets = new[]
 ///         {
 ///             new Aws.Glue.Inputs.CrawlerJdbcTargetArgs
@@ -205,6 +210,9 @@ import 'crawler_state.dart';
 ///                 Path = "database-name/%",
 ///             },
 ///         },
+///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
+///         Name = "example",
+///         Role = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -220,15 +228,15 @@ import 'crawler_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCrawler(ctx, "example", &glue.CrawlerArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
-/// 			Name:         pulumi.String("example"),
-/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			JdbcTargets: glue.CrawlerJdbcTargetArray{
 /// 				&glue.CrawlerJdbcTargetArgs{
 /// 					ConnectionName: pulumi.Any(exampleAwsGlueConnection.Name),
 /// 					Path:           pulumi.String("database-name/%"),
 /// 				},
 /// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
+/// 			Name:         pulumi.String("example"),
+/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -247,13 +255,13 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   database_name = exampleAwsGlueCatalogDatabase.name
-///   name          = "example"
-///   role          = exampleAwsIamRole.arn
 ///   jdbc_targets {
 ///     connection_name = exampleAwsGlueConnection.name
 ///     path            = "database-name/%"
 ///   }
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -279,13 +287,13 @@ import 'crawler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
-///             .name("example")
-///             .role(exampleAwsIamRole.arn())
 ///             .jdbcTargets(CrawlerJdbcTargetArgs.builder()
 ///                 .connectionName(exampleAwsGlueConnection.name())
 ///                 .path("database-name/%")
 ///                 .build())
+///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .name("example")
+///             .role(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -296,12 +304,12 @@ import 'crawler_state.dart';
 ///   example:
 ///     type: aws:glue:Crawler
 ///     properties:
-///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
-///       name: example
-///       role: ${exampleAwsIamRole.arn}
 ///       jdbcTargets:
 ///         - connectionName: ${exampleAwsGlueConnection.name}
 ///           path: database-name/%
+///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
+///       name: example
+///       role: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -313,12 +321,12 @@ import 'crawler_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Crawler("example", {
-///     databaseName: exampleAwsGlueCatalogDatabase.name,
-///     name: "example",
-///     role: exampleAwsIamRole.arn,
 ///     s3Targets: [{
 ///         path: `s3://${exampleAwsS3Bucket.bucket}`,
 ///     }],
+///     databaseName: exampleAwsGlueCatalogDatabase.name,
+///     name: "example",
+///     role: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -326,12 +334,12 @@ import 'crawler_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Crawler("example",
-///     database_name=example_aws_glue_catalog_database["name"],
-///     name="example",
-///     role=example_aws_iam_role["arn"],
 ///     s3_targets=[{
 ///         "path": f"s3://{example_aws_s3_bucket['bucket']}",
-///     }])
+///     }],
+///     database_name=example_aws_glue_catalog_database["name"],
+///     name="example",
+///     role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -343,9 +351,6 @@ import 'crawler_state.dart';
 /// {
 ///     var example = new Aws.Glue.Crawler("example", new()
 ///     {
-///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
-///         Name = "example",
-///         Role = exampleAwsIamRole.Arn,
 ///         S3Targets = new[]
 ///         {
 ///             new Aws.Glue.Inputs.CrawlerS3TargetArgs
@@ -353,6 +358,9 @@ import 'crawler_state.dart';
 ///                 Path = $"s3://{exampleAwsS3Bucket.Bucket}",
 ///             },
 ///         },
+///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
+///         Name = "example",
+///         Role = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -368,14 +376,14 @@ import 'crawler_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCrawler(ctx, "example", &glue.CrawlerArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
-/// 			Name:         pulumi.String("example"),
-/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			S3Targets: glue.CrawlerS3TargetArray{
 /// 				&glue.CrawlerS3TargetArgs{
 /// 					Path: pulumi.Sprintf("s3://%v", exampleAwsS3Bucket.Bucket),
 /// 				},
 /// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
+/// 			Name:         pulumi.String("example"),
+/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -394,12 +402,12 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   database_name = exampleAwsGlueCatalogDatabase.name
-///   name          = "example"
-///   role          = exampleAwsIamRole.arn
 ///   s3_targets {
 ///     path ="s3://${exampleAwsS3Bucket.bucket}"
 ///   }
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -425,12 +433,12 @@ import 'crawler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
-///             .name("example")
-///             .role(exampleAwsIamRole.arn())
 ///             .s3Targets(CrawlerS3TargetArgs.builder()
 ///                 .path(String.format("s3://%s", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .name("example")
+///             .role(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -441,11 +449,11 @@ import 'crawler_state.dart';
 ///   example:
 ///     type: aws:glue:Crawler
 ///     properties:
+///       s3Targets:
+///         - path: s3://${exampleAwsS3Bucket.bucket}
 ///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
 ///       name: example
 ///       role: ${exampleAwsIamRole.arn}
-///       s3Targets:
-///         - path: s3://${exampleAwsS3Bucket.bucket}
 /// ```
 ///
 ///
@@ -457,16 +465,16 @@ import 'crawler_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Crawler("example", {
-///     databaseName: exampleAwsGlueCatalogDatabase.name,
-///     name: "example",
-///     role: exampleAwsIamRole.arn,
+///     schemaChangePolicy: {
+///         deleteBehavior: "LOG",
+///     },
 ///     catalogTargets: [{
 ///         databaseName: exampleAwsGlueCatalogDatabase.name,
 ///         tables: [exampleAwsGlueCatalogTable.name],
 ///     }],
-///     schemaChangePolicy: {
-///         deleteBehavior: "LOG",
-///     },
+///     databaseName: exampleAwsGlueCatalogDatabase.name,
+///     name: "example",
+///     role: exampleAwsIamRole.arn,
 ///     configuration: `{
 ///   \\"Version\\":1.0,
 ///   \\"Grouping\\": {
@@ -481,16 +489,16 @@ import 'crawler_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Crawler("example",
-///     database_name=example_aws_glue_catalog_database["name"],
-///     name="example",
-///     role=example_aws_iam_role["arn"],
+///     schema_change_policy={
+///         "delete_behavior": "LOG",
+///     },
 ///     catalog_targets=[{
 ///         "database_name": example_aws_glue_catalog_database["name"],
 ///         "tables": [example_aws_glue_catalog_table["name"]],
 ///     }],
-///     schema_change_policy={
-///         "delete_behavior": "LOG",
-///     },
+///     database_name=example_aws_glue_catalog_database["name"],
+///     name="example",
+///     role=example_aws_iam_role["arn"],
 ///     configuration="""{
 ///   \"Version\":1.0,
 ///   \"Grouping\": {
@@ -509,9 +517,10 @@ import 'crawler_state.dart';
 /// {
 ///     var example = new Aws.Glue.Crawler("example", new()
 ///     {
-///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
-///         Name = "example",
-///         Role = exampleAwsIamRole.Arn,
+///         SchemaChangePolicy = new Aws.Glue.Inputs.CrawlerSchemaChangePolicyArgs
+///         {
+///             DeleteBehavior = "LOG",
+///         },
 ///         CatalogTargets = new[]
 ///         {
 ///             new Aws.Glue.Inputs.CrawlerCatalogTargetArgs
@@ -523,10 +532,9 @@ import 'crawler_state.dart';
 ///                 },
 ///             },
 ///         },
-///         SchemaChangePolicy = new Aws.Glue.Inputs.CrawlerSchemaChangePolicyArgs
-///         {
-///             DeleteBehavior = "LOG",
-///         },
+///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
+///         Name = "example",
+///         Role = exampleAwsIamRole.Arn,
 ///         Configuration = @"{
 ///   \""Version\"":1.0,
 ///   \""Grouping\"": {
@@ -549,9 +557,9 @@ import 'crawler_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCrawler(ctx, "example", &glue.CrawlerArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
-/// 			Name:         pulumi.String("example"),
-/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
+/// 			SchemaChangePolicy: &glue.CrawlerSchemaChangePolicyArgs{
+/// 				DeleteBehavior: pulumi.String("LOG"),
+/// 			},
 /// 			CatalogTargets: glue.CrawlerCatalogTargetArray{
 /// 				&glue.CrawlerCatalogTargetArgs{
 /// 					DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
@@ -560,9 +568,9 @@ import 'crawler_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			SchemaChangePolicy: &glue.CrawlerSchemaChangePolicyArgs{
-/// 				DeleteBehavior: pulumi.String("LOG"),
-/// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
+/// 			Name:         pulumi.String("example"),
+/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Configuration: pulumi.String(`{
 ///   \"Version\":1.0,
 ///   \"Grouping\": {
@@ -588,16 +596,16 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   database_name = exampleAwsGlueCatalogDatabase.name
-///   name          = "example"
-///   role          = exampleAwsIamRole.arn
+///   schema_change_policy = {
+///     delete_behavior = "LOG"
+///   }
 ///   catalog_targets {
 ///     database_name = exampleAwsGlueCatalogDatabase.name
 ///     tables        = [exampleAwsGlueCatalogTable.name]
 ///   }
-///   schema_change_policy = {
-///     delete_behavior = "LOG"
-///   }
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
 ///   configuration = "{\n  \\\"Version\\\":1.0,\n  \\\"Grouping\\\": {\n    \\\"TableGroupingPolicy\\\": \\\"CombineCompatibleSchemas\\\"\n  }\n}\n"
 /// }
 /// ```
@@ -609,8 +617,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.Crawler;
 /// import com.pulumi.aws.glue.CrawlerArgs;
-/// import com.pulumi.aws.glue.inputs.CrawlerCatalogTargetArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerSchemaChangePolicyArgs;
+/// import com.pulumi.aws.glue.inputs.CrawlerCatalogTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -625,16 +633,16 @@ import 'crawler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
-///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .schemaChangePolicy(CrawlerSchemaChangePolicyArgs.builder()
+///                 .deleteBehavior("LOG")
+///                 .build())
 ///             .catalogTargets(CrawlerCatalogTargetArgs.builder()
 ///                 .databaseName(exampleAwsGlueCatalogDatabase.name())
 ///                 .tables(exampleAwsGlueCatalogTable.name())
 ///                 .build())
-///             .schemaChangePolicy(CrawlerSchemaChangePolicyArgs.builder()
-///                 .deleteBehavior("LOG")
-///                 .build())
+///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .name("example")
+///             .role(exampleAwsIamRole.arn())
 ///             .configuration("""
 /// {
 ///   \"Version\":1.0,
@@ -653,15 +661,15 @@ import 'crawler_state.dart';
 ///   example:
 ///     type: aws:glue:Crawler
 ///     properties:
-///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
-///       name: example
-///       role: ${exampleAwsIamRole.arn}
+///       schemaChangePolicy:
+///         deleteBehavior: LOG
 ///       catalogTargets:
 ///         - databaseName: ${exampleAwsGlueCatalogDatabase.name}
 ///           tables:
 ///             - ${exampleAwsGlueCatalogTable.name}
-///       schemaChangePolicy:
-///         deleteBehavior: LOG
+///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
+///       name: example
+///       role: ${exampleAwsIamRole.arn}
 ///       configuration: |
 ///         {
 ///           \"Version\":1.0,
@@ -680,13 +688,13 @@ import 'crawler_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Crawler("example", {
-///     databaseName: exampleAwsGlueCatalogDatabase.name,
-///     name: "example",
-///     role: exampleAwsIamRole.arn,
 ///     mongodbTargets: [{
 ///         connectionName: exampleAwsGlueConnection.name,
 ///         path: "database-name/%",
 ///     }],
+///     databaseName: exampleAwsGlueCatalogDatabase.name,
+///     name: "example",
+///     role: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -694,13 +702,13 @@ import 'crawler_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Crawler("example",
-///     database_name=example_aws_glue_catalog_database["name"],
-///     name="example",
-///     role=example_aws_iam_role["arn"],
 ///     mongodb_targets=[{
 ///         "connection_name": example_aws_glue_connection["name"],
 ///         "path": "database-name/%",
-///     }])
+///     }],
+///     database_name=example_aws_glue_catalog_database["name"],
+///     name="example",
+///     role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -712,9 +720,6 @@ import 'crawler_state.dart';
 /// {
 ///     var example = new Aws.Glue.Crawler("example", new()
 ///     {
-///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
-///         Name = "example",
-///         Role = exampleAwsIamRole.Arn,
 ///         MongodbTargets = new[]
 ///         {
 ///             new Aws.Glue.Inputs.CrawlerMongodbTargetArgs
@@ -723,6 +728,9 @@ import 'crawler_state.dart';
 ///                 Path = "database-name/%",
 ///             },
 ///         },
+///         DatabaseName = exampleAwsGlueCatalogDatabase.Name,
+///         Name = "example",
+///         Role = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -738,15 +746,15 @@ import 'crawler_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCrawler(ctx, "example", &glue.CrawlerArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
-/// 			Name:         pulumi.String("example"),
-/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			MongodbTargets: glue.CrawlerMongodbTargetArray{
 /// 				&glue.CrawlerMongodbTargetArgs{
 /// 					ConnectionName: pulumi.Any(exampleAwsGlueConnection.Name),
 /// 					Path:           pulumi.String("database-name/%"),
 /// 				},
 /// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
+/// 			Name:         pulumi.String("example"),
+/// 			Role:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -765,13 +773,13 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   database_name = exampleAwsGlueCatalogDatabase.name
-///   name          = "example"
-///   role          = exampleAwsIamRole.arn
 ///   mongodb_targets {
 ///     connection_name = exampleAwsGlueConnection.name
 ///     path            = "database-name/%"
 ///   }
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -797,13 +805,13 @@ import 'crawler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
-///             .name("example")
-///             .role(exampleAwsIamRole.arn())
 ///             .mongodbTargets(CrawlerMongodbTargetArgs.builder()
 ///                 .connectionName(exampleAwsGlueConnection.name())
 ///                 .path("database-name/%")
 ///                 .build())
+///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .name("example")
+///             .role(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -814,12 +822,12 @@ import 'crawler_state.dart';
 ///   example:
 ///     type: aws:glue:Crawler
 ///     properties:
-///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
-///       name: example
-///       role: ${exampleAwsIamRole.arn}
 ///       mongodbTargets:
 ///         - connectionName: ${exampleAwsGlueConnection.name}
 ///           path: database-name/%
+///       databaseName: ${exampleAwsGlueCatalogDatabase.name}
+///       name: example
+///       role: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -831,6 +839,9 @@ import 'crawler_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const eventsCrawler = new aws.glue.Crawler("events_crawler", {
+///     s3Targets: [{
+///         path: `s3://${dataLakeBucket.bucket}`,
+///     }],
 ///     databaseName: glueDatabase.name,
 ///     schedule: "cron(0 1 * * ? *)",
 ///     name: `events_crawler_${environmentName}`,
@@ -847,9 +858,6 @@ import 'crawler_state.dart';
 ///         },
 ///         Version: 1,
 ///     }),
-///     s3Targets: [{
-///         path: `s3://${dataLakeBucket.bucket}`,
-///     }],
 /// });
 /// ```
 /// ```python
@@ -858,6 +866,9 @@ import 'crawler_state.dart';
 /// import pulumi_aws as aws
 ///
 /// events_crawler = aws.glue.Crawler("events_crawler",
+///     s3_targets=[{
+///         "path": f"s3://{data_lake_bucket['bucket']}",
+///     }],
 ///     database_name=glue_database["name"],
 ///     schedule="cron(0 1 * * ? *)",
 ///     name=f"events_crawler_{environment_name}",
@@ -873,10 +884,7 @@ import 'crawler_state.dart';
 ///             },
 ///         },
 ///         "Version": 1,
-///     }),
-///     s3_targets=[{
-///         "path": f"s3://{data_lake_bucket['bucket']}",
-///     }])
+///     }))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -889,6 +897,13 @@ import 'crawler_state.dart';
 /// {
 ///     var eventsCrawler = new Aws.Glue.Crawler("events_crawler", new()
 ///     {
+///         S3Targets = new[]
+///         {
+///             new Aws.Glue.Inputs.CrawlerS3TargetArgs
+///             {
+///                 Path = $"s3://{dataLakeBucket.Bucket}",
+///             },
+///         },
 ///         DatabaseName = glueDatabase.Name,
 ///         Schedule = "cron(0 1 * * ? *)",
 ///         Name = $"events_crawler_{environmentName}",
@@ -909,13 +924,6 @@ import 'crawler_state.dart';
 ///             },
 ///             ["Version"] = 1,
 ///         }),
-///         S3Targets = new[]
-///         {
-///             new Aws.Glue.Inputs.CrawlerS3TargetArgs
-///             {
-///                 Path = $"s3://{dataLakeBucket.Bucket}",
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -948,17 +956,17 @@ import 'crawler_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = glue.NewCrawler(ctx, "events_crawler", &glue.CrawlerArgs{
+/// 			S3Targets: glue.CrawlerS3TargetArray{
+/// 				&glue.CrawlerS3TargetArgs{
+/// 					Path: pulumi.Sprintf("s3://%v", dataLakeBucket.Bucket),
+/// 				},
+/// 			},
 /// 			DatabaseName:  pulumi.Any(glueDatabase.Name),
 /// 			Schedule:      pulumi.String("cron(0 1 * * ? *)"),
 /// 			Name:          pulumi.Sprintf("events_crawler_%v", environmentName),
 /// 			Role:          pulumi.Any(glueRole.Arn),
 /// 			Tags:          pulumi.Any(tags),
 /// 			Configuration: pulumi.String(json0),
-/// 			S3Targets: glue.CrawlerS3TargetArray{
-/// 				&glue.CrawlerS3TargetArgs{
-/// 					Path: pulumi.Sprintf("s3://%v", dataLakeBucket.Bucket),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -977,6 +985,9 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "events_crawler" {
+///   s3_targets {
+///     path ="s3://${dataLakeBucket.bucket}"
+///   }
 ///   database_name = glueDatabase.name
 ///   schedule      = "cron(0 1 * * ? *)"
 ///   name          ="events_crawler_${environmentName}"
@@ -993,9 +1004,6 @@ import 'crawler_state.dart';
 ///     }
 ///     "Version" = 1
 ///   })
-///   s3_targets {
-///     path ="s3://${dataLakeBucket.bucket}"
-///   }
 /// }
 /// ```
 /// ```java
@@ -1022,6 +1030,9 @@ import 'crawler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var eventsCrawler = new Crawler("eventsCrawler", CrawlerArgs.builder()
+///             .s3Targets(CrawlerS3TargetArgs.builder()
+///                 .path(String.format("s3://%s", dataLakeBucket.bucket()))
+///                 .build())
 ///             .databaseName(glueDatabase.name())
 ///             .schedule("cron(0 1 * * ? *)")
 ///             .name(String.format("events_crawler_%s", environmentName))
@@ -1039,9 +1050,6 @@ import 'crawler_state.dart';
 ///                     )),
 ///                     jsonProperty("Version", 1)
 ///                 )))
-///             .s3Targets(CrawlerS3TargetArgs.builder()
-///                 .path(String.format("s3://%s", dataLakeBucket.bucket()))
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -1053,6 +1061,8 @@ import 'crawler_state.dart';
 ///     type: aws:glue:Crawler
 ///     name: events_crawler
 ///     properties:
+///       s3Targets:
+///         - path: s3://${dataLakeBucket.bucket}
 ///       databaseName: ${glueDatabase.name}
 ///       schedule: cron(0 1 * * ? *)
 ///       name: events_crawler_${environmentName}
@@ -1066,8 +1076,6 @@ import 'crawler_state.dart';
 ///             Partitions:
 ///               AddOrUpdateBehavior: InheritFromTable
 ///           Version: 1
-///       s3Targets:
-///         - path: s3://${dataLakeBucket.bucket}
 /// ```
 ///
 ///
@@ -1082,7 +1090,7 @@ class Crawler extends pulumi.CustomResource {
   /// The ARN of the crawler
   late final pulumi.Output<String> arn;
   /// List of nested AWS Glue Data Catalog target arguments. See Catalog Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> catalogTargets;
+  late final pulumi.Output<List<CrawlerCatalogTarget>?> catalogTargets;
   /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
   late final pulumi.Output<List<String>?> classifiers;
   /// JSON string of configuration information. For more details see [Setting Crawler Configuration Options](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
@@ -1090,23 +1098,23 @@ class Crawler extends pulumi.CustomResource {
   /// Glue database where results are written.
   late final pulumi.Output<String> databaseName;
   /// List of nested Delta Lake target arguments. See Delta Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deltaTargets;
+  late final pulumi.Output<List<CrawlerDeltaTarget>?> deltaTargets;
   /// Description of the crawler.
   late final pulumi.Output<String?> description;
   /// List of nested DynamoDB target arguments. See Dynamodb Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dynamodbTargets;
+  late final pulumi.Output<List<CrawlerDynamodbTarget>?> dynamodbTargets;
   /// List of nested Hudi target arguments. See Iceberg Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hudiTargets;
+  late final pulumi.Output<List<CrawlerHudiTarget>?> hudiTargets;
   /// List of nested Iceberg target arguments. See Iceberg Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> icebergTargets;
+  late final pulumi.Output<List<CrawlerIcebergTarget>?> icebergTargets;
   /// List of nested JDBC target arguments. See JDBC Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> jdbcTargets;
+  late final pulumi.Output<List<CrawlerJdbcTarget>?> jdbcTargets;
   /// Specifies Lake Formation configuration settings for the crawler. See Lake Formation Configuration below.
   late final pulumi.Output<CrawlerLakeFormationConfiguration?> lakeFormationConfiguration;
   /// Specifies data lineage configuration settings for the crawler. See Lineage Configuration below.
   late final pulumi.Output<CrawlerLineageConfiguration?> lineageConfiguration;
   /// List of nested MongoDB target arguments. See MongoDB Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mongodbTargets;
+  late final pulumi.Output<List<CrawlerMongodbTarget>?> mongodbTargets;
   /// Name of the crawler.
   late final pulumi.Output<String> name;
   /// A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.. See Recrawl Policy below.
@@ -1116,7 +1124,7 @@ class Crawler extends pulumi.CustomResource {
   /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
   late final pulumi.Output<String> role;
   /// List of nested Amazon S3 target arguments. See S3 Target below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> s3Targets;
+  late final pulumi.Output<List<CrawlerS3Target>?> s3Targets;
   /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
   late final pulumi.Output<String?> schedule;
   /// Policy for the crawler's update and deletion behavior. See Schema Change Policy below.
@@ -1144,33 +1152,33 @@ class Crawler extends pulumi.CustomResource {
           'aws:glue/crawler:Crawler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    catalogTargets = registerOutput<List<Map<String, dynamic>>?>('catalogTargets');
-    classifiers = registerOutput<List<String>?>('classifiers');
+    catalogTargets = registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerCatalogTarget>(guardedValue, (value) => CrawlerCatalogTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    classifiers = registerOutput<List<String>?>('classifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     configuration = registerOutput<String?>('configuration');
     databaseName = registerOutput<String>('databaseName');
-    deltaTargets = registerOutput<List<Map<String, dynamic>>?>('deltaTargets');
+    deltaTargets = registerOutput<List<CrawlerDeltaTarget>?>('deltaTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerDeltaTarget>(guardedValue, (value) => CrawlerDeltaTarget.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    dynamodbTargets = registerOutput<List<Map<String, dynamic>>?>('dynamodbTargets');
-    hudiTargets = registerOutput<List<Map<String, dynamic>>?>('hudiTargets');
-    icebergTargets = registerOutput<List<Map<String, dynamic>>?>('icebergTargets');
-    jdbcTargets = registerOutput<List<Map<String, dynamic>>?>('jdbcTargets');
+    dynamodbTargets = registerOutput<List<CrawlerDynamodbTarget>?>('dynamodbTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerDynamodbTarget>(guardedValue, (value) => CrawlerDynamodbTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    hudiTargets = registerOutput<List<CrawlerHudiTarget>?>('hudiTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerHudiTarget>(guardedValue, (value) => CrawlerHudiTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    icebergTargets = registerOutput<List<CrawlerIcebergTarget>?>('icebergTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerIcebergTarget>(guardedValue, (value) => CrawlerIcebergTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    jdbcTargets = registerOutput<List<CrawlerJdbcTarget>?>('jdbcTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerJdbcTarget>(guardedValue, (value) => CrawlerJdbcTarget.fromMap((value as Map).cast<String, dynamic>())); });
     lakeFormationConfiguration = registerOutput<CrawlerLakeFormationConfiguration?>('lakeFormationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerLakeFormationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lineageConfiguration = registerOutput<CrawlerLineageConfiguration?>('lineageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerLineageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mongodbTargets = registerOutput<List<Map<String, dynamic>>?>('mongodbTargets');
+    mongodbTargets = registerOutput<List<CrawlerMongodbTarget>?>('mongodbTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerMongodbTarget>(guardedValue, (value) => CrawlerMongodbTarget.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>('recrawlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerRecrawlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    s3Targets = registerOutput<List<Map<String, dynamic>>?>('s3Targets');
+    s3Targets = registerOutput<List<CrawlerS3Target>?>('s3Targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerS3Target>(guardedValue, (value) => CrawlerS3Target.fromMap((value as Map).cast<String, dynamic>())); });
     schedule = registerOutput<String?>('schedule');
     schemaChangePolicy = registerOutput<CrawlerSchemaChangePolicy?>('schemaChangePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerSchemaChangePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     tablePrefix = registerOutput<String?>('tablePrefix');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Crawler] resource's state with the given [name] and [id].
@@ -1178,11 +1186,12 @@ class Crawler extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CrawlerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Crawler._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1197,29 +1206,65 @@ class Crawler extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    catalogTargets = registerOutput<List<Map<String, dynamic>>?>('catalogTargets');
-    classifiers = registerOutput<List<String>?>('classifiers');
+    catalogTargets = registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerCatalogTarget>(guardedValue, (value) => CrawlerCatalogTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    classifiers = registerOutput<List<String>?>('classifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     configuration = registerOutput<String?>('configuration');
     databaseName = registerOutput<String>('databaseName');
-    deltaTargets = registerOutput<List<Map<String, dynamic>>?>('deltaTargets');
+    deltaTargets = registerOutput<List<CrawlerDeltaTarget>?>('deltaTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerDeltaTarget>(guardedValue, (value) => CrawlerDeltaTarget.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    dynamodbTargets = registerOutput<List<Map<String, dynamic>>?>('dynamodbTargets');
-    hudiTargets = registerOutput<List<Map<String, dynamic>>?>('hudiTargets');
-    icebergTargets = registerOutput<List<Map<String, dynamic>>?>('icebergTargets');
-    jdbcTargets = registerOutput<List<Map<String, dynamic>>?>('jdbcTargets');
+    dynamodbTargets = registerOutput<List<CrawlerDynamodbTarget>?>('dynamodbTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerDynamodbTarget>(guardedValue, (value) => CrawlerDynamodbTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    hudiTargets = registerOutput<List<CrawlerHudiTarget>?>('hudiTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerHudiTarget>(guardedValue, (value) => CrawlerHudiTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    icebergTargets = registerOutput<List<CrawlerIcebergTarget>?>('icebergTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerIcebergTarget>(guardedValue, (value) => CrawlerIcebergTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    jdbcTargets = registerOutput<List<CrawlerJdbcTarget>?>('jdbcTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerJdbcTarget>(guardedValue, (value) => CrawlerJdbcTarget.fromMap((value as Map).cast<String, dynamic>())); });
     lakeFormationConfiguration = registerOutput<CrawlerLakeFormationConfiguration?>('lakeFormationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerLakeFormationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lineageConfiguration = registerOutput<CrawlerLineageConfiguration?>('lineageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerLineageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mongodbTargets = registerOutput<List<Map<String, dynamic>>?>('mongodbTargets');
+    mongodbTargets = registerOutput<List<CrawlerMongodbTarget>?>('mongodbTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerMongodbTarget>(guardedValue, (value) => CrawlerMongodbTarget.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>('recrawlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerRecrawlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    s3Targets = registerOutput<List<Map<String, dynamic>>?>('s3Targets');
+    s3Targets = registerOutput<List<CrawlerS3Target>?>('s3Targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerS3Target>(guardedValue, (value) => CrawlerS3Target.fromMap((value as Map).cast<String, dynamic>())); });
     schedule = registerOutput<String?>('schedule');
     schemaChangePolicy = registerOutput<CrawlerSchemaChangePolicy?>('schemaChangePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerSchemaChangePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     tablePrefix = registerOutput<String?>('tablePrefix');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Crawler] resource.
+  Crawler.reference(String urn)
+    : super(
+        'aws:glue/crawler:Crawler',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    catalogTargets = registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerCatalogTarget>(guardedValue, (value) => CrawlerCatalogTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    classifiers = registerOutput<List<String>?>('classifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    configuration = registerOutput<String?>('configuration');
+    databaseName = registerOutput<String>('databaseName');
+    deltaTargets = registerOutput<List<CrawlerDeltaTarget>?>('deltaTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerDeltaTarget>(guardedValue, (value) => CrawlerDeltaTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    dynamodbTargets = registerOutput<List<CrawlerDynamodbTarget>?>('dynamodbTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerDynamodbTarget>(guardedValue, (value) => CrawlerDynamodbTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    hudiTargets = registerOutput<List<CrawlerHudiTarget>?>('hudiTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerHudiTarget>(guardedValue, (value) => CrawlerHudiTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    icebergTargets = registerOutput<List<CrawlerIcebergTarget>?>('icebergTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerIcebergTarget>(guardedValue, (value) => CrawlerIcebergTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    jdbcTargets = registerOutput<List<CrawlerJdbcTarget>?>('jdbcTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerJdbcTarget>(guardedValue, (value) => CrawlerJdbcTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    lakeFormationConfiguration = registerOutput<CrawlerLakeFormationConfiguration?>('lakeFormationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerLakeFormationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lineageConfiguration = registerOutput<CrawlerLineageConfiguration?>('lineageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerLineageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mongodbTargets = registerOutput<List<CrawlerMongodbTarget>?>('mongodbTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerMongodbTarget>(guardedValue, (value) => CrawlerMongodbTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>('recrawlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerRecrawlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    s3Targets = registerOutput<List<CrawlerS3Target>?>('s3Targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerS3Target>(guardedValue, (value) => CrawlerS3Target.fromMap((value as Map).cast<String, dynamic>())); });
+    schedule = registerOutput<String?>('schedule');
+    schemaChangePolicy = registerOutput<CrawlerSchemaChangePolicy?>('schemaChangePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CrawlerSchemaChangePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityConfiguration = registerOutput<String?>('securityConfiguration');
+    tablePrefix = registerOutput<String?>('tablePrefix');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

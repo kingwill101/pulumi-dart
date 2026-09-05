@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworksOdbNetwork {
-  /// Amazon Resource Name (ARN) of the odb network resource.
+  /// ARN of the odb network resource.
   final pulumi.Input<String> arn;
   /// Display name for the network resource.
   final pulumi.Input<String> displayName;
@@ -17,7 +17,7 @@ class GetNetworksOdbNetwork {
   final pulumi.Input<String> ociVcnUrl;
 
   /// Creates a new [GetNetworksOdbNetwork].
-  /// [arn] Amazon Resource Name (ARN) of the odb network resource.
+  /// [arn] ARN of the odb network resource.
   /// [displayName] Display name for the network resource.
   /// [id] Unique identifier of the odb network resource.
   /// [ociNetworkAnchorId] Unique identifier of the OCI network anchor for the ODB network.

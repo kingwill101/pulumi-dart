@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_scanning_configuration_args.dart';
+import 'registry_scanning_configuration_rule.dart';
 import 'registry_scanning_configuration_state.dart';
 
 /// Provides an Elastic Container Registry Scanning Configuration. Can't be completely deleted, instead reverts to the default `BASIC` scanning configuration without rules.
@@ -14,14 +15,14 @@ import 'registry_scanning_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const configuration = new aws.ecr.RegistryScanningConfiguration("configuration", {
-///     scanType: "ENHANCED",
 ///     rules: [{
-///         scanFrequency: "CONTINUOUS_SCAN",
 ///         repositoryFilters: [{
 ///             filter: "example",
 ///             filterType: "WILDCARD",
 ///         }],
+///         scanFrequency: "CONTINUOUS_SCAN",
 ///     }],
+///     scanType: "ENHANCED",
 /// });
 /// ```
 /// ```python
@@ -29,14 +30,14 @@ import 'registry_scanning_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// configuration = aws.ecr.RegistryScanningConfiguration("configuration",
-///     scan_type="ENHANCED",
 ///     rules=[{
-///         "scan_frequency": "CONTINUOUS_SCAN",
 ///         "repository_filters": [{
 ///             "filter": "example",
 ///             "filter_type": "WILDCARD",
 ///         }],
-///     }])
+///         "scan_frequency": "CONTINUOUS_SCAN",
+///     }],
+///     scan_type="ENHANCED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,12 +49,10 @@ import 'registry_scanning_configuration_state.dart';
 /// {
 ///     var configuration = new Aws.Ecr.RegistryScanningConfiguration("configuration", new()
 ///     {
-///         ScanType = "ENHANCED",
 ///         Rules = new[]
 ///         {
 ///             new Aws.Ecr.Inputs.RegistryScanningConfigurationRuleArgs
 ///             {
-///                 ScanFrequency = "CONTINUOUS_SCAN",
 ///                 RepositoryFilters = new[]
 ///                 {
 ///                     new Aws.Ecr.Inputs.RegistryScanningConfigurationRuleRepositoryFilterArgs
@@ -62,8 +61,10 @@ import 'registry_scanning_configuration_state.dart';
 ///                         FilterType = "WILDCARD",
 ///                     },
 ///                 },
+///                 ScanFrequency = "CONTINUOUS_SCAN",
 ///             },
 ///         },
+///         ScanType = "ENHANCED",
 ///     });
 ///
 /// });
@@ -79,18 +80,18 @@ import 'registry_scanning_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecr.NewRegistryScanningConfiguration(ctx, "configuration", &ecr.RegistryScanningConfigurationArgs{
-/// 			ScanType: pulumi.String("ENHANCED"),
 /// 			Rules: ecr.RegistryScanningConfigurationRuleArray{
 /// 				&ecr.RegistryScanningConfigurationRuleArgs{
-/// 					ScanFrequency: pulumi.String("CONTINUOUS_SCAN"),
 /// 					RepositoryFilters: ecr.RegistryScanningConfigurationRuleRepositoryFilterArray{
 /// 						&ecr.RegistryScanningConfigurationRuleRepositoryFilterArgs{
 /// 							Filter:     pulumi.String("example"),
 /// 							FilterType: pulumi.String("WILDCARD"),
 /// 						},
 /// 					},
+/// 					ScanFrequency: pulumi.String("CONTINUOUS_SCAN"),
 /// 				},
 /// 			},
+/// 			ScanType: pulumi.String("ENHANCED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -109,14 +110,14 @@ import 'registry_scanning_configuration_state.dart';
 /// }
 ///
 /// resource "aws_ecr_registryscanningconfiguration" "configuration" {
-///   scan_type = "ENHANCED"
 ///   rules {
-///     scan_frequency = "CONTINUOUS_SCAN"
 ///     repository_filters {
 ///       filter      = "example"
 ///       filter_type = "WILDCARD"
 ///     }
+///     scan_frequency = "CONTINUOUS_SCAN"
 ///   }
+///   scan_type = "ENHANCED"
 /// }
 /// ```
 /// ```java
@@ -143,14 +144,14 @@ import 'registry_scanning_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var configuration = new RegistryScanningConfiguration("configuration", RegistryScanningConfigurationArgs.builder()
-///             .scanType("ENHANCED")
 ///             .rules(RegistryScanningConfigurationRuleArgs.builder()
-///                 .scanFrequency("CONTINUOUS_SCAN")
 ///                 .repositoryFilters(RegistryScanningConfigurationRuleRepositoryFilterArgs.builder()
 ///                     .filter("example")
 ///                     .filterType("WILDCARD")
 ///                     .build())
+///                 .scanFrequency("CONTINUOUS_SCAN")
 ///                 .build())
+///             .scanType("ENHANCED")
 ///             .build());
 ///
 ///     }
@@ -161,12 +162,12 @@ import 'registry_scanning_configuration_state.dart';
 ///   configuration:
 ///     type: aws:ecr:RegistryScanningConfiguration
 ///     properties:
-///       scanType: ENHANCED
 ///       rules:
-///         - scanFrequency: CONTINUOUS_SCAN
-///           repositoryFilters:
+///         - repositoryFilters:
 ///             - filter: example
 ///               filterType: WILDCARD
+///           scanFrequency: CONTINUOUS_SCAN
+///       scanType: ENHANCED
 /// ```
 ///
 ///
@@ -178,23 +179,23 @@ import 'registry_scanning_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ecr.RegistryScanningConfiguration("test", {
-///     scanType: "ENHANCED",
 ///     rules: [
 ///         {
-///             scanFrequency: "SCAN_ON_PUSH",
 ///             repositoryFilters: [{
 ///                 filter: "*",
 ///                 filterType: "WILDCARD",
 ///             }],
+///             scanFrequency: "SCAN_ON_PUSH",
 ///         },
 ///         {
-///             scanFrequency: "CONTINUOUS_SCAN",
 ///             repositoryFilters: [{
 ///                 filter: "example",
 ///                 filterType: "WILDCARD",
 ///             }],
+///             scanFrequency: "CONTINUOUS_SCAN",
 ///         },
 ///     ],
+///     scanType: "ENHANCED",
 /// });
 /// ```
 /// ```python
@@ -202,23 +203,23 @@ import 'registry_scanning_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ecr.RegistryScanningConfiguration("test",
-///     scan_type="ENHANCED",
 ///     rules=[
 ///         {
-///             "scan_frequency": "SCAN_ON_PUSH",
 ///             "repository_filters": [{
 ///                 "filter": "*",
 ///                 "filter_type": "WILDCARD",
 ///             }],
+///             "scan_frequency": "SCAN_ON_PUSH",
 ///         },
 ///         {
-///             "scan_frequency": "CONTINUOUS_SCAN",
 ///             "repository_filters": [{
 ///                 "filter": "example",
 ///                 "filter_type": "WILDCARD",
 ///             }],
+///             "scan_frequency": "CONTINUOUS_SCAN",
 ///         },
-///     ])
+///     ],
+///     scan_type="ENHANCED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -230,12 +231,10 @@ import 'registry_scanning_configuration_state.dart';
 /// {
 ///     var test = new Aws.Ecr.RegistryScanningConfiguration("test", new()
 ///     {
-///         ScanType = "ENHANCED",
 ///         Rules = new[]
 ///         {
 ///             new Aws.Ecr.Inputs.RegistryScanningConfigurationRuleArgs
 ///             {
-///                 ScanFrequency = "SCAN_ON_PUSH",
 ///                 RepositoryFilters = new[]
 ///                 {
 ///                     new Aws.Ecr.Inputs.RegistryScanningConfigurationRuleRepositoryFilterArgs
@@ -244,10 +243,10 @@ import 'registry_scanning_configuration_state.dart';
 ///                         FilterType = "WILDCARD",
 ///                     },
 ///                 },
+///                 ScanFrequency = "SCAN_ON_PUSH",
 ///             },
 ///             new Aws.Ecr.Inputs.RegistryScanningConfigurationRuleArgs
 ///             {
-///                 ScanFrequency = "CONTINUOUS_SCAN",
 ///                 RepositoryFilters = new[]
 ///                 {
 ///                     new Aws.Ecr.Inputs.RegistryScanningConfigurationRuleRepositoryFilterArgs
@@ -256,8 +255,10 @@ import 'registry_scanning_configuration_state.dart';
 ///                         FilterType = "WILDCARD",
 ///                     },
 ///                 },
+///                 ScanFrequency = "CONTINUOUS_SCAN",
 ///             },
 ///         },
+///         ScanType = "ENHANCED",
 ///     });
 ///
 /// });
@@ -273,27 +274,27 @@ import 'registry_scanning_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecr.NewRegistryScanningConfiguration(ctx, "test", &ecr.RegistryScanningConfigurationArgs{
-/// 			ScanType: pulumi.String("ENHANCED"),
 /// 			Rules: ecr.RegistryScanningConfigurationRuleArray{
 /// 				&ecr.RegistryScanningConfigurationRuleArgs{
-/// 					ScanFrequency: pulumi.String("SCAN_ON_PUSH"),
 /// 					RepositoryFilters: ecr.RegistryScanningConfigurationRuleRepositoryFilterArray{
 /// 						&ecr.RegistryScanningConfigurationRuleRepositoryFilterArgs{
 /// 							Filter:     pulumi.String("*"),
 /// 							FilterType: pulumi.String("WILDCARD"),
 /// 						},
 /// 					},
+/// 					ScanFrequency: pulumi.String("SCAN_ON_PUSH"),
 /// 				},
 /// 				&ecr.RegistryScanningConfigurationRuleArgs{
-/// 					ScanFrequency: pulumi.String("CONTINUOUS_SCAN"),
 /// 					RepositoryFilters: ecr.RegistryScanningConfigurationRuleRepositoryFilterArray{
 /// 						&ecr.RegistryScanningConfigurationRuleRepositoryFilterArgs{
 /// 							Filter:     pulumi.String("example"),
 /// 							FilterType: pulumi.String("WILDCARD"),
 /// 						},
 /// 					},
+/// 					ScanFrequency: pulumi.String("CONTINUOUS_SCAN"),
 /// 				},
 /// 			},
+/// 			ScanType: pulumi.String("ENHANCED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -312,21 +313,21 @@ import 'registry_scanning_configuration_state.dart';
 /// }
 ///
 /// resource "aws_ecr_registryscanningconfiguration" "test" {
-///   scan_type = "ENHANCED"
 ///   rules {
-///     scan_frequency = "SCAN_ON_PUSH"
 ///     repository_filters {
 ///       filter      = "*"
 ///       filter_type = "WILDCARD"
 ///     }
+///     scan_frequency = "SCAN_ON_PUSH"
 ///   }
 ///   rules {
-///     scan_frequency = "CONTINUOUS_SCAN"
 ///     repository_filters {
 ///       filter      = "example"
 ///       filter_type = "WILDCARD"
 ///     }
+///     scan_frequency = "CONTINUOUS_SCAN"
 ///   }
+///   scan_type = "ENHANCED"
 /// }
 /// ```
 /// ```java
@@ -353,22 +354,22 @@ import 'registry_scanning_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new RegistryScanningConfiguration("test", RegistryScanningConfigurationArgs.builder()
-///             .scanType("ENHANCED")
 ///             .rules(
 ///                 RegistryScanningConfigurationRuleArgs.builder()
-///                     .scanFrequency("SCAN_ON_PUSH")
 ///                     .repositoryFilters(RegistryScanningConfigurationRuleRepositoryFilterArgs.builder()
 ///                         .filter("*")
 ///                         .filterType("WILDCARD")
 ///                         .build())
+///                     .scanFrequency("SCAN_ON_PUSH")
 ///                     .build(),
 ///                 RegistryScanningConfigurationRuleArgs.builder()
-///                     .scanFrequency("CONTINUOUS_SCAN")
 ///                     .repositoryFilters(RegistryScanningConfigurationRuleRepositoryFilterArgs.builder()
 ///                         .filter("example")
 ///                         .filterType("WILDCARD")
 ///                         .build())
+///                     .scanFrequency("CONTINUOUS_SCAN")
 ///                     .build())
+///             .scanType("ENHANCED")
 ///             .build());
 ///
 ///     }
@@ -379,16 +380,16 @@ import 'registry_scanning_configuration_state.dart';
 ///   test:
 ///     type: aws:ecr:RegistryScanningConfiguration
 ///     properties:
-///       scanType: ENHANCED
 ///       rules:
-///         - scanFrequency: SCAN_ON_PUSH
-///           repositoryFilters:
+///         - repositoryFilters:
 ///             - filter: '*'
 ///               filterType: WILDCARD
-///         - scanFrequency: CONTINUOUS_SCAN
-///           repositoryFilters:
+///           scanFrequency: SCAN_ON_PUSH
+///         - repositoryFilters:
 ///             - filter: example
 ///               filterType: WILDCARD
+///           scanFrequency: CONTINUOUS_SCAN
+///       scanType: ENHANCED
 /// ```
 ///
 ///
@@ -405,7 +406,7 @@ class RegistryScanningConfiguration extends pulumi.CustomResource {
   /// The registry ID the scanning configuration applies to.
   late final pulumi.Output<String> registryId;
   /// One or multiple blocks specifying scanning rules to determine which repository filters are used and at what frequency scanning will occur. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RegistryScanningConfigurationRule>?> rules;
   /// the scanning type to set for the registry. Can be either `ENHANCED` or `BASIC`.
   late final pulumi.Output<String> scanType;
 
@@ -421,11 +422,11 @@ class RegistryScanningConfiguration extends pulumi.CustomResource {
           'aws:ecr/registryScanningConfiguration:RegistryScanningConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RegistryScanningConfigurationRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryScanningConfigurationRule>(guardedValue, (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>())); });
     scanType = registerOutput<String>('scanType');
   }
 
@@ -434,11 +435,12 @@ class RegistryScanningConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryScanningConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryScanningConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -454,7 +456,22 @@ class RegistryScanningConfiguration extends pulumi.CustomResource {
         ) {
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RegistryScanningConfigurationRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryScanningConfigurationRule>(guardedValue, (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scanType = registerOutput<String>('scanType');
+  }
+
+  /// Creates a typed reference to an existing [RegistryScanningConfiguration] resource.
+  RegistryScanningConfiguration.reference(String urn)
+    : super(
+        'aws:ecr/registryScanningConfiguration:RegistryScanningConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    rules = registerOutput<List<RegistryScanningConfigurationRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryScanningConfigurationRule>(guardedValue, (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>())); });
     scanType = registerOutput<String>('scanType');
   }
 }

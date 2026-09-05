@@ -6,34 +6,34 @@ import 'get_organizational_unit_descendant_accounts_account.dart';
 /// Result data returned by getOrganizationalUnitDescendantAccounts.
 class GetOrganizationalUnitDescendantAccountsResult {
   /// List of child accounts, which have the following attributes:
-  final List<GetOrganizationalUnitDescendantAccountsAccount> accounts;
+  final List<GetOrganizationalUnitDescendantAccountsAccount>? accounts;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String parentId;
+  final String? id;
+  final String? parentId;
 
   /// Creates a new [GetOrganizationalUnitDescendantAccountsResult].
   /// [accounts] List of child accounts, which have the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [parentId] Required.
+  /// [parentId] Optional.
   const GetOrganizationalUnitDescendantAccountsResult({
-    required this.accounts,
-    required this.id,
-    required this.parentId,
+    this.accounts,
+    this.id,
+    this.parentId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<GetOrganizationalUnitDescendantAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
-      'id': id,
-      'parentId': parentId,
+      'accounts': ?(() { final guardedValue = accounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOrganizationalUnitDescendantAccountsAccount, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'parentId': ?parentId,
     };
   }
 
   factory GetOrganizationalUnitDescendantAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitDescendantAccountsResult(
-      accounts: pulumi.Input.decodeList<GetOrganizationalUnitDescendantAccountsAccount>(map['accounts']!, (value) => GetOrganizationalUnitDescendantAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      parentId: map['parentId'] as String,
+      accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOrganizationalUnitDescendantAccountsAccount>(guardedValue, (value) => GetOrganizationalUnitDescendantAccountsAccount.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentId: (() { final guardedValue = map['parentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

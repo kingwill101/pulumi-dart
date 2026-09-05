@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TablePolicy resources.
 class TablePolicyState {
   /// Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Amazon Web Services resource-based policy document in JSON format.
-  final pulumi.Input<String>? resourcePolicy;
+  final pulumi.Input<String?>? resourcePolicy;
   /// ARN referencing the Table Bucket that contains this Namespace.
-  final pulumi.Input<String>? tableBucketArn;
+  final pulumi.Input<String?>? tableBucketArn;
 
   /// Creates a new [TablePolicyState].
   /// [name] Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_main_route_table_association_main_route_table_association_args_doc}
 class MainRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the Route Table to set as the new
   /// main route table for the target VPC
   final pulumi.Input<String> routeTableId;

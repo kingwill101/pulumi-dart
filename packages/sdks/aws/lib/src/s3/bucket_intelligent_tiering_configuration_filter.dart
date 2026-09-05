@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketIntelligentTieringConfigurationFilter {
   /// Object key name prefix that identifies the subset of objects to which the configuration applies.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// All of these tags must exist in the object's tag set in order for the configuration to apply.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BucketIntelligentTieringConfigurationFilter].
   /// [prefix] Object key name prefix that identifies the subset of objects to which the configuration applies.

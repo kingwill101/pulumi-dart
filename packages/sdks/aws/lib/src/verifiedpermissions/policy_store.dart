@@ -159,15 +159,15 @@ class PolicyStore extends pulumi.CustomResource {
           'aws:verifiedpermissions/policyStore:PolicyStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<String>('deletionProtection');
     description = registerOutput<String?>('description');
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validationSettings = registerOutput<PolicyStoreValidationSettings>('validationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyStoreValidationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -176,11 +176,12 @@ class PolicyStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,8 +200,27 @@ class PolicyStore extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validationSettings = registerOutput<PolicyStoreValidationSettings>('validationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyStoreValidationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PolicyStore] resource.
+  PolicyStore.reference(String urn)
+    : super(
+        'aws:verifiedpermissions/policyStore:PolicyStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtection = registerOutput<String>('deletionProtection');
+    description = registerOutput<String?>('description');
+    policyStoreId = registerOutput<String>('policyStoreId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validationSettings = registerOutput<PolicyStoreValidationSettings>('validationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyStoreValidationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

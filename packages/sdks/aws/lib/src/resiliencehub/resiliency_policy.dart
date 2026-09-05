@@ -14,10 +14,6 @@ import 'resiliency_policy_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.ResiliencyPolicy("example", {
-///     name: "testexample",
-///     description: "testexample",
-///     tier: "NonCritical",
-///     dataLocationConstraint: "AnyLocation",
 ///     policy: {
 ///         region: {
 ///             rpo: "24h",
@@ -36,6 +32,10 @@ import 'resiliency_policy_timeouts.dart';
 ///             rto: "24h",
 ///         },
 ///     },
+///     name: "testexample",
+///     description: "testexample",
+///     tier: "NonCritical",
+///     dataLocationConstraint: "AnyLocation",
 /// });
 /// ```
 /// ```python
@@ -43,10 +43,6 @@ import 'resiliency_policy_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.ResiliencyPolicy("example",
-///     name="testexample",
-///     description="testexample",
-///     tier="NonCritical",
-///     data_location_constraint="AnyLocation",
 ///     policy={
 ///         "region": {
 ///             "rpo": "24h",
@@ -64,7 +60,11 @@ import 'resiliency_policy_timeouts.dart';
 ///             "rpo": "24h",
 ///             "rto": "24h",
 ///         },
-///     })
+///     },
+///     name="testexample",
+///     description="testexample",
+///     tier="NonCritical",
+///     data_location_constraint="AnyLocation")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -76,10 +76,6 @@ import 'resiliency_policy_timeouts.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.ResiliencyPolicy("example", new()
 ///     {
-///         Name = "testexample",
-///         Description = "testexample",
-///         Tier = "NonCritical",
-///         DataLocationConstraint = "AnyLocation",
 ///         Policy = new Aws.ResilienceHub.Inputs.ResiliencyPolicyPolicyArgs
 ///         {
 ///             Region = new Aws.ResilienceHub.Inputs.ResiliencyPolicyPolicyRegionArgs
@@ -103,6 +99,10 @@ import 'resiliency_policy_timeouts.dart';
 ///                 Rto = "24h",
 ///             },
 ///         },
+///         Name = "testexample",
+///         Description = "testexample",
+///         Tier = "NonCritical",
+///         DataLocationConstraint = "AnyLocation",
 ///     });
 ///
 /// });
@@ -118,10 +118,6 @@ import 'resiliency_policy_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewResiliencyPolicy(ctx, "example", &resiliencehub.ResiliencyPolicyArgs{
-/// 			Name:                   pulumi.String("testexample"),
-/// 			Description:            pulumi.String("testexample"),
-/// 			Tier:                   pulumi.String("NonCritical"),
-/// 			DataLocationConstraint: pulumi.String("AnyLocation"),
 /// 			Policy: &resiliencehub.ResiliencyPolicyPolicyArgs{
 /// 				Region: &resiliencehub.ResiliencyPolicyPolicyRegionArgs{
 /// 					Rpo: pulumi.String("24h"),
@@ -140,6 +136,10 @@ import 'resiliency_policy_timeouts.dart';
 /// 					Rto: pulumi.String("24h"),
 /// 				},
 /// 			},
+/// 			Name:                   pulumi.String("testexample"),
+/// 			Description:            pulumi.String("testexample"),
+/// 			Tier:                   pulumi.String("NonCritical"),
+/// 			DataLocationConstraint: pulumi.String("AnyLocation"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -158,10 +158,6 @@ import 'resiliency_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_resiliencypolicy" "example" {
-///   name                     = "testexample"
-///   description              = "testexample"
-///   tier                     = "NonCritical"
-///   data_location_constraint = "AnyLocation"
 ///   policy = {
 ///     region = {
 ///       rpo = "24h"
@@ -180,6 +176,10 @@ import 'resiliency_policy_timeouts.dart';
 ///       rto = "24h"
 ///     }
 ///   }
+///   name                     = "testexample"
+///   description              = "testexample"
+///   tier                     = "NonCritical"
+///   data_location_constraint = "AnyLocation"
 /// }
 /// ```
 /// ```java
@@ -209,10 +209,6 @@ import 'resiliency_policy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResiliencyPolicy("example", ResiliencyPolicyArgs.builder()
-///             .name("testexample")
-///             .description("testexample")
-///             .tier("NonCritical")
-///             .dataLocationConstraint("AnyLocation")
 ///             .policy(ResiliencyPolicyPolicyArgs.builder()
 ///                 .region(ResiliencyPolicyPolicyRegionArgs.builder()
 ///                     .rpo("24h")
@@ -231,6 +227,10 @@ import 'resiliency_policy_timeouts.dart';
 ///                     .rto("24h")
 ///                     .build())
 ///                 .build())
+///             .name("testexample")
+///             .description("testexample")
+///             .tier("NonCritical")
+///             .dataLocationConstraint("AnyLocation")
 ///             .build());
 ///
 ///     }
@@ -241,10 +241,6 @@ import 'resiliency_policy_timeouts.dart';
 ///   example:
 ///     type: aws:resiliencehub:ResiliencyPolicy
 ///     properties:
-///       name: testexample
-///       description: testexample
-///       tier: NonCritical
-///       dataLocationConstraint: AnyLocation
 ///       policy:
 ///         region:
 ///           rpo: 24h
@@ -258,6 +254,10 @@ import 'resiliency_policy_timeouts.dart';
 ///         software:
 ///           rpo: 24h
 ///           rto: 24h
+///       name: testexample
+///       description: testexample
+///       tier: NonCritical
+///       dataLocationConstraint: AnyLocation
 /// ```
 ///
 ///
@@ -309,7 +309,7 @@ class ResiliencyPolicy extends pulumi.CustomResource {
           'aws:resiliencehub/resiliencyPolicy:ResiliencyPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataLocationConstraint = registerOutput<String>('dataLocationConstraint');
@@ -318,8 +318,8 @@ class ResiliencyPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policy = registerOutput<ResiliencyPolicyPolicy?>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     timeouts = registerOutput<ResiliencyPolicyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -329,11 +329,12 @@ class ResiliencyPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResiliencyPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResiliencyPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,8 +355,30 @@ class ResiliencyPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policy = registerOutput<ResiliencyPolicyPolicy?>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String>('tier');
+    timeouts = registerOutput<ResiliencyPolicyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResiliencyPolicy] resource.
+  ResiliencyPolicy.reference(String urn)
+    : super(
+        'aws:resiliencehub/resiliencyPolicy:ResiliencyPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataLocationConstraint = registerOutput<String>('dataLocationConstraint');
+    description = registerOutput<String?>('description');
+    estimatedCostTier = registerOutput<String>('estimatedCostTier');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<ResiliencyPolicyPolicy?>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     timeouts = registerOutput<ResiliencyPolicyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

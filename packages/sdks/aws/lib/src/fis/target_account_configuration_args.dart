@@ -10,15 +10,15 @@ class TargetAccountConfigurationArgs {
   /// Account ID of the target account.
   final pulumi.Input<String> accountId;
   /// Description of the target account.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> experimentTemplateId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM Role for the target account.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [TargetAccountConfigurationArgs].
   /// [accountId] Account ID of the target account.

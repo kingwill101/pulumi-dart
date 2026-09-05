@@ -7,7 +7,7 @@ class TrailAdvancedEventSelector {
   /// Specifies the selector statements in an advanced event selector. Fields documented below.
   final pulumi.Input<List<TrailAdvancedEventSelectorFieldSelector>> fieldSelectors;
   /// Name of the trail.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TrailAdvancedEventSelector].
   /// [fieldSelectors] Specifies the selector statements in an advanced event selector. Fields documented below.

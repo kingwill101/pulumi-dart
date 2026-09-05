@@ -222,7 +222,7 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
@@ -236,7 +236,7 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
-    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vlan = registerOutput<int>('vlan');
   }
 
@@ -245,11 +245,12 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedPublicVirtualInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedPublicVirtualInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,7 +276,32 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
-    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vlan = registerOutput<int>('vlan');
+  }
+
+  /// Creates a typed reference to an existing [HostedPublicVirtualInterface] resource.
+  HostedPublicVirtualInterface.reference(String urn)
+    : super(
+        'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    connectionId = registerOutput<String>('connectionId');
+    customerAddress = registerOutput<String>('customerAddress');
+    this.name = registerOutput<String>('name');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vlan = registerOutput<int>('vlan');
   }
 }

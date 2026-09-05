@@ -5,7 +5,7 @@ import 'analyzer_configuration_unused_access_analysis_rule_exclusion.dart';
 
 class AnalyzerConfigurationUnusedAccessAnalysisRule {
   /// List of rules for the analyzer containing criteria to exclude from analysis. Entities that meet the rule criteria will not generate findings. See `exclusion` Block for details.
-  final pulumi.Input<List<AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion>>? exclusions;
+  final pulumi.Input<List<AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion>?>? exclusions;
 
   /// Creates a new [AnalyzerConfigurationUnusedAccessAnalysisRule].
   /// [exclusions] List of rules for the analyzer containing criteria to exclude from analysis. Entities that meet the rule criteria will not generate findings. See `exclusion` Block for details.

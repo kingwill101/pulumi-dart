@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_args.dart';
+import 'group_external_id.dart';
 import 'group_state.dart';
 
 /// Resource for managing an AWS IdentityStore Group.
@@ -138,7 +139,7 @@ class Group extends pulumi.CustomResource {
   /// A string containing the name of the group. This value is commonly displayed when the group is referenced.
   late final pulumi.Output<String> displayName;
   /// A list of external IDs that contains the identifiers issued to this resource by an external identity provider. See External IDs below.
-  late final pulumi.Output<List<Map<String, dynamic>>> externalIds;
+  late final pulumi.Output<List<GroupExternalId>> externalIds;
   /// The identifier of the newly created group in the identity store.
   late final pulumi.Output<String> groupId;
   /// The globally unique identifier for the identity store.
@@ -160,12 +161,12 @@ class Group extends pulumi.CustomResource {
           'aws:identitystore/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
+    externalIds = registerOutput<List<GroupExternalId>>('externalIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupExternalId>(guardedValue, (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>())); });
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');
     region = registerOutput<String>('region');
@@ -176,11 +177,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,7 +199,25 @@ class Group extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
+    externalIds = registerOutput<List<GroupExternalId>>('externalIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupExternalId>(guardedValue, (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>())); });
+    groupId = registerOutput<String>('groupId');
+    identityStoreId = registerOutput<String>('identityStoreId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'aws:identitystore/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    externalIds = registerOutput<List<GroupExternalId>>('externalIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupExternalId>(guardedValue, (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>())); });
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');
     region = registerOutput<String>('region');

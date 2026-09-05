@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogDeliveryConfigurationLogConfigurationS3Configuration {
   /// The ARN of the S3 bucket to which the logs should be delivered.
-  final pulumi.Input<String>? bucketArn;
+  final pulumi.Input<String?>? bucketArn;
 
   /// Creates a new [LogDeliveryConfigurationLogConfigurationS3Configuration].
   /// [bucketArn] The ARN of the S3 bucket to which the logs should be delivered.

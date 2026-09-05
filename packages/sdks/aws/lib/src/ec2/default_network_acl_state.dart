@@ -7,27 +7,27 @@ import 'default_network_acl_ingress.dart';
 /// Input properties used for looking up and filtering DefaultNetworkAcl resources.
 class DefaultNetworkAclState {
   /// ARN of the Default Network ACL
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Network ACL ID to manage. This attribute is exported from `aws.ec2.Vpc`, or manually found via the AWS Console.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? defaultNetworkAclId;
+  final pulumi.Input<String?>? defaultNetworkAclId;
   /// Configuration block for an egress rule. Detailed below.
-  final pulumi.Input<List<DefaultNetworkAclEgress>>? egress;
+  final pulumi.Input<List<DefaultNetworkAclEgress>?>? egress;
   /// Configuration block for an ingress rule. Detailed below.
-  final pulumi.Input<List<DefaultNetworkAclIngress>>? ingress;
+  final pulumi.Input<List<DefaultNetworkAclIngress>?>? ingress;
   /// ID of the AWS account that owns the Default Network ACL
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the associated VPC
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [DefaultNetworkAclState].
   /// [arn] ARN of the Default Network ACL

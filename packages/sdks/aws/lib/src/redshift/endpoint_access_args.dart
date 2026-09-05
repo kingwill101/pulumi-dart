@@ -12,13 +12,13 @@ class EndpointAccessArgs {
   /// The Redshift-managed VPC endpoint name.
   final pulumi.Input<String> endpointName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The Amazon Web Services account ID of the owner of the cluster. This is only required if the cluster is in another Amazon Web Services account.
-  final pulumi.Input<String>? resourceOwner;
+  final pulumi.Input<String?>? resourceOwner;
   /// The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint.
   final pulumi.Input<String> subnetGroupName;
   /// The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
 
   /// Creates a new [EndpointAccessArgs].
   /// [clusterIdentifier] The cluster identifier of the cluster to access.

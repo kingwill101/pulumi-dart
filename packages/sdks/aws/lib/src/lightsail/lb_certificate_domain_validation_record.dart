@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LbCertificateDomainValidationRecord {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Name of the DNS record to create to validate the certificate.
-  final pulumi.Input<String>? resourceRecordName;
+  final pulumi.Input<String?>? resourceRecordName;
   /// Type of DNS record to create to validate the certificate.
-  final pulumi.Input<String>? resourceRecordType;
+  final pulumi.Input<String?>? resourceRecordType;
   /// Value of the DNS record to create to validate the certificate.
-  final pulumi.Input<String>? resourceRecordValue;
+  final pulumi.Input<String?>? resourceRecordValue;
 
   /// Creates a new [LbCertificateDomainValidationRecord].
   /// [domainName] Domain name (e.g., example.com) for your SSL/TLS certificate.

@@ -5,15 +5,15 @@ import 'route_spec_grpc_route_match_metadata_match_range.dart';
 
 class RouteSpecGrpcRouteMatchMetadataMatch {
   /// Exact query parameter to match on.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Header value sent by the client must begin with the specified characters.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http_route.match.header.match.range` Block for details.
-  final pulumi.Input<RouteSpecGrpcRouteMatchMetadataMatchRange>? range;
+  final pulumi.Input<RouteSpecGrpcRouteMatchMetadataMatchRange?>? range;
   /// Regex used to match the path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
   /// Header value sent by the client must end with the specified characters.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [RouteSpecGrpcRouteMatchMetadataMatch].
   /// [exact] Exact query parameter to match on.

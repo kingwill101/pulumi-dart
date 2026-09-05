@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'location_hdfs_args.dart';
+import 'location_hdfs_name_node.dart';
 import 'location_hdfs_qop_configuration.dart';
 import 'location_hdfs_state.dart';
 
@@ -15,13 +16,13 @@ import 'location_hdfs_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.LocationHdfs("example", {
-///     agentArns: [exampleAwsDatasyncAgent.arn],
-///     authenticationType: "SIMPLE",
-///     simpleUser: "example",
 ///     nameNodes: [{
 ///         hostname: exampleAwsInstance.privateDns,
 ///         port: 80,
 ///     }],
+///     agentArns: [exampleAwsDatasyncAgent.arn],
+///     authenticationType: "SIMPLE",
+///     simpleUser: "example",
 /// });
 /// ```
 /// ```python
@@ -29,13 +30,13 @@ import 'location_hdfs_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.LocationHdfs("example",
-///     agent_arns=[example_aws_datasync_agent["arn"]],
-///     authentication_type="SIMPLE",
-///     simple_user="example",
 ///     name_nodes=[{
 ///         "hostname": example_aws_instance["privateDns"],
 ///         "port": 80,
-///     }])
+///     }],
+///     agent_arns=[example_aws_datasync_agent["arn"]],
+///     authentication_type="SIMPLE",
+///     simple_user="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,12 +48,6 @@ import 'location_hdfs_state.dart';
 /// {
 ///     var example = new Aws.DataSync.LocationHdfs("example", new()
 ///     {
-///         AgentArns = new[]
-///         {
-///             exampleAwsDatasyncAgent.Arn,
-///         },
-///         AuthenticationType = "SIMPLE",
-///         SimpleUser = "example",
 ///         NameNodes = new[]
 ///         {
 ///             new Aws.DataSync.Inputs.LocationHdfsNameNodeArgs
@@ -61,6 +56,12 @@ import 'location_hdfs_state.dart';
 ///                 Port = 80,
 ///             },
 ///         },
+///         AgentArns = new[]
+///         {
+///             exampleAwsDatasyncAgent.Arn,
+///         },
+///         AuthenticationType = "SIMPLE",
+///         SimpleUser = "example",
 ///     });
 ///
 /// });
@@ -76,17 +77,17 @@ import 'location_hdfs_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewLocationHdfs(ctx, "example", &datasync.LocationHdfsArgs{
-/// 			AgentArns: pulumi.StringArray{
-/// 				exampleAwsDatasyncAgent.Arn,
-/// 			},
-/// 			AuthenticationType: pulumi.String("SIMPLE"),
-/// 			SimpleUser:         pulumi.String("example"),
 /// 			NameNodes: datasync.LocationHdfsNameNodeArray{
 /// 				&datasync.LocationHdfsNameNodeArgs{
 /// 					Hostname: pulumi.Any(exampleAwsInstance.PrivateDns),
 /// 					Port:     pulumi.Int(80),
 /// 				},
 /// 			},
+/// 			AgentArns: pulumi.StringArray{
+/// 				exampleAwsDatasyncAgent.Arn,
+/// 			},
+/// 			AuthenticationType: pulumi.String("SIMPLE"),
+/// 			SimpleUser:         pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -105,13 +106,13 @@ import 'location_hdfs_state.dart';
 /// }
 ///
 /// resource "aws_datasync_locationhdfs" "example" {
-///   agent_arns          = [exampleAwsDatasyncAgent.arn]
-///   authentication_type = "SIMPLE"
-///   simple_user         = "example"
 ///   name_nodes {
 ///     hostname = exampleAwsInstance.privateDns
 ///     port     = 80
 ///   }
+///   agent_arns          = [exampleAwsDatasyncAgent.arn]
+///   authentication_type = "SIMPLE"
+///   simple_user         = "example"
 /// }
 /// ```
 /// ```java
@@ -137,13 +138,13 @@ import 'location_hdfs_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationHdfs("example", LocationHdfsArgs.builder()
-///             .agentArns(exampleAwsDatasyncAgent.arn())
-///             .authenticationType("SIMPLE")
-///             .simpleUser("example")
 ///             .nameNodes(LocationHdfsNameNodeArgs.builder()
 ///                 .hostname(exampleAwsInstance.privateDns())
 ///                 .port(80)
 ///                 .build())
+///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .authenticationType("SIMPLE")
+///             .simpleUser("example")
 ///             .build());
 ///
 ///     }
@@ -154,13 +155,13 @@ import 'location_hdfs_state.dart';
 ///   example:
 ///     type: aws:datasync:LocationHdfs
 ///     properties:
+///       nameNodes:
+///         - hostname: ${exampleAwsInstance.privateDns}
+///           port: 80
 ///       agentArns:
 ///         - ${exampleAwsDatasyncAgent.arn}
 ///       authenticationType: SIMPLE
 ///       simpleUser: example
-///       nameNodes:
-///         - hostname: ${exampleAwsInstance.privateDns}
-///           port: 80
 /// ```
 ///
 ///
@@ -173,12 +174,12 @@ import 'location_hdfs_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.datasync.LocationHdfs("example", {
-///     agentArns: [exampleAwsDatasyncAgent.arn],
-///     authenticationType: "KERBEROS",
 ///     nameNodes: [{
 ///         hostname: exampleAwsInstance.privateDns,
 ///         port: 80,
 ///     }],
+///     agentArns: [exampleAwsDatasyncAgent.arn],
+///     authenticationType: "KERBEROS",
 ///     kerberosPrincipal: "user@example.com",
 ///     kerberosKeytabBase64: std.filebase64({
 ///         input: "user.keytab",
@@ -194,12 +195,12 @@ import 'location_hdfs_state.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.datasync.LocationHdfs("example",
-///     agent_arns=[example_aws_datasync_agent["arn"]],
-///     authentication_type="KERBEROS",
 ///     name_nodes=[{
 ///         "hostname": example_aws_instance["privateDns"],
 ///         "port": 80,
 ///     }],
+///     agent_arns=[example_aws_datasync_agent["arn"]],
+///     authentication_type="KERBEROS",
 ///     kerberos_principal="user@example.com",
 ///     kerberos_keytab_base64=std.filebase64(input="user.keytab").result,
 ///     kerberos_krb5_conf=std.file(input="krb5.conf").result)
@@ -215,11 +216,6 @@ import 'location_hdfs_state.dart';
 /// {
 ///     var example = new Aws.DataSync.LocationHdfs("example", new()
 ///     {
-///         AgentArns = new[]
-///         {
-///             exampleAwsDatasyncAgent.Arn,
-///         },
-///         AuthenticationType = "KERBEROS",
 ///         NameNodes = new[]
 ///         {
 ///             new Aws.DataSync.Inputs.LocationHdfsNameNodeArgs
@@ -228,6 +224,11 @@ import 'location_hdfs_state.dart';
 ///                 Port = 80,
 ///             },
 ///         },
+///         AgentArns = new[]
+///         {
+///             exampleAwsDatasyncAgent.Arn,
+///         },
+///         AuthenticationType = "KERBEROS",
 ///         KerberosPrincipal = "user@example.com",
 ///         KerberosKeytabBase64 = Std.Filebase64.Invoke(new()
 ///         {
@@ -265,16 +266,16 @@ import 'location_hdfs_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datasync.NewLocationHdfs(ctx, "example", &datasync.LocationHdfsArgs{
-/// 			AgentArns: pulumi.StringArray{
-/// 				exampleAwsDatasyncAgent.Arn,
-/// 			},
-/// 			AuthenticationType: pulumi.String("KERBEROS"),
 /// 			NameNodes: datasync.LocationHdfsNameNodeArray{
 /// 				&datasync.LocationHdfsNameNodeArgs{
 /// 					Hostname: pulumi.Any(exampleAwsInstance.PrivateDns),
 /// 					Port:     pulumi.Int(80),
 /// 				},
 /// 			},
+/// 			AgentArns: pulumi.StringArray{
+/// 				exampleAwsDatasyncAgent.Arn,
+/// 			},
+/// 			AuthenticationType:   pulumi.String("KERBEROS"),
 /// 			KerberosPrincipal:    pulumi.String("user@example.com"),
 /// 			KerberosKeytabBase64: pulumi.String(invokeFilebase64.Result),
 /// 			KerberosKrb5Conf:     pulumi.String(invokeFile1.Result),
@@ -299,12 +300,12 @@ import 'location_hdfs_state.dart';
 /// }
 ///
 /// resource "aws_datasync_locationhdfs" "example" {
-///   agent_arns          = [exampleAwsDatasyncAgent.arn]
-///   authentication_type = "KERBEROS"
 ///   name_nodes {
 ///     hostname = exampleAwsInstance.privateDns
 ///     port     = 80
 ///   }
+///   agent_arns             = [exampleAwsDatasyncAgent.arn]
+///   authentication_type    = "KERBEROS"
 ///   kerberos_principal     = "user@example.com"
 ///   kerberos_keytab_base64 = filebase64("user.keytab")
 ///   kerberos_krb5_conf     = file("krb5.conf")
@@ -336,12 +337,12 @@ import 'location_hdfs_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationHdfs("example", LocationHdfsArgs.builder()
-///             .agentArns(exampleAwsDatasyncAgent.arn())
-///             .authenticationType("KERBEROS")
 ///             .nameNodes(LocationHdfsNameNodeArgs.builder()
 ///                 .hostname(exampleAwsInstance.privateDns())
 ///                 .port(80)
 ///                 .build())
+///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .authenticationType("KERBEROS")
 ///             .kerberosPrincipal("user@example.com")
 ///             .kerberosKeytabBase64(StdFunctions.filebase64(Filebase64Args.builder()
 ///                 .input("user.keytab")
@@ -359,12 +360,12 @@ import 'location_hdfs_state.dart';
 ///   example:
 ///     type: aws:datasync:LocationHdfs
 ///     properties:
-///       agentArns:
-///         - ${exampleAwsDatasyncAgent.arn}
-///       authenticationType: KERBEROS
 ///       nameNodes:
 ///         - hostname: ${exampleAwsInstance.privateDns}
 ///           port: 80
+///       agentArns:
+///         - ${exampleAwsDatasyncAgent.arn}
+///       authenticationType: KERBEROS
 ///       kerberosPrincipal: user@example.com
 ///       kerberosKeytabBase64:
 ///         fn::invoke:
@@ -387,10 +388,10 @@ import 'location_hdfs_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync HDFS location.
+/// - `arn` (String) ARN of the DataSync HDFS location.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.LocationHdfs` using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.LocationHdfs` using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/locationHdfs:LocationHdfs example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -398,7 +399,7 @@ import 'location_hdfs_state.dart';
 class LocationHdfs extends pulumi.CustomResource {
   /// A list of DataSync Agent ARNs with which this location will be associated.
   late final pulumi.Output<List<String>> agentArns;
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The type of authentication used to determine the identity of the user. Valid values are `SIMPLE` and `KERBEROS`.
   late final pulumi.Output<String?> authenticationType;
@@ -417,7 +418,7 @@ class LocationHdfs extends pulumi.CustomResource {
   /// The URI of the HDFS cluster's Key Management Server (KMS).
   late final pulumi.Output<String?> kmsKeyProviderUri;
   /// The NameNode that manages the HDFS namespace. The NameNode performs operations such as opening, closing, and renaming files and directories. The NameNode contains the information to map blocks of data to the DataNodes. You can use only one NameNode. See configuration below.
-  late final pulumi.Output<List<Map<String, dynamic>>> nameNodes;
+  late final pulumi.Output<List<LocationHdfsNameNode>> nameNodes;
   /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer protection settings configured on the Hadoop Distributed File System (HDFS) cluster. If `qopConfiguration` isn't specified, `rpcProtection` and `dataTransferProtection` default to `PRIVACY`. If you set RpcProtection or DataTransferProtection, the other parameter assumes the same value.  See configuration below.
   late final pulumi.Output<LocationHdfsQopConfiguration> qopConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -446,9 +447,9 @@ class LocationHdfs extends pulumi.CustomResource {
           'aws:datasync/locationHdfs:LocationHdfs',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    agentArns = registerOutput<List<String>>('agentArns');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String?>('authenticationType');
     blockSize = registerOutput<int?>('blockSize');
@@ -458,14 +459,14 @@ class LocationHdfs extends pulumi.CustomResource {
     kerberosKrb5ConfBase64 = registerOutput<String?>('kerberosKrb5ConfBase64');
     kerberosPrincipal = registerOutput<String?>('kerberosPrincipal');
     kmsKeyProviderUri = registerOutput<String?>('kmsKeyProviderUri');
-    nameNodes = registerOutput<List<Map<String, dynamic>>>('nameNodes');
+    nameNodes = registerOutput<List<LocationHdfsNameNode>>('nameNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationHdfsNameNode>(guardedValue, (value) => LocationHdfsNameNode.fromMap((value as Map).cast<String, dynamic>())); });
     qopConfiguration = registerOutput<LocationHdfsQopConfiguration>('qopConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationHdfsQopConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replicationFactor = registerOutput<int?>('replicationFactor');
     simpleUser = registerOutput<String?>('simpleUser');
     subdirectory = registerOutput<String?>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -474,11 +475,12 @@ class LocationHdfs extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationHdfsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationHdfs._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,7 +494,7 @@ class LocationHdfs extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    agentArns = registerOutput<List<String>>('agentArns');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String?>('authenticationType');
     blockSize = registerOutput<int?>('blockSize');
@@ -502,14 +504,44 @@ class LocationHdfs extends pulumi.CustomResource {
     kerberosKrb5ConfBase64 = registerOutput<String?>('kerberosKrb5ConfBase64');
     kerberosPrincipal = registerOutput<String?>('kerberosPrincipal');
     kmsKeyProviderUri = registerOutput<String?>('kmsKeyProviderUri');
-    nameNodes = registerOutput<List<Map<String, dynamic>>>('nameNodes');
+    nameNodes = registerOutput<List<LocationHdfsNameNode>>('nameNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationHdfsNameNode>(guardedValue, (value) => LocationHdfsNameNode.fromMap((value as Map).cast<String, dynamic>())); });
     qopConfiguration = registerOutput<LocationHdfsQopConfiguration>('qopConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationHdfsQopConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replicationFactor = registerOutput<int?>('replicationFactor');
     simpleUser = registerOutput<String?>('simpleUser');
     subdirectory = registerOutput<String?>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [LocationHdfs] resource.
+  LocationHdfs.reference(String urn)
+    : super(
+        'aws:datasync/locationHdfs:LocationHdfs',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String?>('authenticationType');
+    blockSize = registerOutput<int?>('blockSize');
+    kerberosKeytab = registerOutput<String?>('kerberosKeytab');
+    kerberosKeytabBase64 = registerOutput<String?>('kerberosKeytabBase64');
+    kerberosKrb5Conf = registerOutput<String?>('kerberosKrb5Conf');
+    kerberosKrb5ConfBase64 = registerOutput<String?>('kerberosKrb5ConfBase64');
+    kerberosPrincipal = registerOutput<String?>('kerberosPrincipal');
+    kmsKeyProviderUri = registerOutput<String?>('kmsKeyProviderUri');
+    nameNodes = registerOutput<List<LocationHdfsNameNode>>('nameNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationHdfsNameNode>(guardedValue, (value) => LocationHdfsNameNode.fromMap((value as Map).cast<String, dynamic>())); });
+    qopConfiguration = registerOutput<LocationHdfsQopConfiguration>('qopConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationHdfsQopConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    replicationFactor = registerOutput<int?>('replicationFactor');
+    simpleUser = registerOutput<String?>('simpleUser');
+    subdirectory = registerOutput<String?>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

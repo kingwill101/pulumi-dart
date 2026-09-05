@@ -187,7 +187,7 @@ class DomainConfiguration extends pulumi.CustomResource {
           'aws:iot/domainConfiguration:DomainConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationProtocol = registerOutput<String>('applicationProtocol');
     arn = registerOutput<String>('arn');
@@ -197,11 +197,11 @@ class DomainConfiguration extends pulumi.CustomResource {
     domainType = registerOutput<String>('domainType');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    serverCertificateArns = registerOutput<List<String>?>('serverCertificateArns');
+    serverCertificateArns = registerOutput<List<String>?>('serverCertificateArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceType = registerOutput<String?>('serviceType');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsConfig = registerOutput<DomainConfigurationTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainConfigurationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     validationCertificateArn = registerOutput<String?>('validationCertificateArn');
   }
@@ -211,11 +211,12 @@ class DomainConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,11 +238,37 @@ class DomainConfiguration extends pulumi.CustomResource {
     domainType = registerOutput<String>('domainType');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    serverCertificateArns = registerOutput<List<String>?>('serverCertificateArns');
+    serverCertificateArns = registerOutput<List<String>?>('serverCertificateArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceType = registerOutput<String?>('serviceType');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tlsConfig = registerOutput<DomainConfigurationTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainConfigurationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationCertificateArn = registerOutput<String?>('validationCertificateArn');
+  }
+
+  /// Creates a typed reference to an existing [DomainConfiguration] resource.
+  DomainConfiguration.reference(String urn)
+    : super(
+        'aws:iot/domainConfiguration:DomainConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationProtocol = registerOutput<String>('applicationProtocol');
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String>('authenticationType');
+    authorizerConfig = registerOutput<DomainConfigurationAuthorizerConfig?>('authorizerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainConfigurationAuthorizerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    domainType = registerOutput<String>('domainType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serverCertificateArns = registerOutput<List<String>?>('serverCertificateArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceType = registerOutput<String?>('serviceType');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsConfig = registerOutput<DomainConfigurationTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainConfigurationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     validationCertificateArn = registerOutput<String?>('validationCertificateArn');
   }

@@ -6,30 +6,30 @@ import 'metering_policy_entry_timeouts.dart';
 /// Input properties used for looking up and filtering MeteringPolicyEntry resources.
 class MeteringPolicyEntryState {
   /// Destination CIDR block to match. If not specified, all destination CIDR blocks are matched.
-  final pulumi.Input<String>? destinationCidrBlock;
-  final pulumi.Input<String>? destinationPortRange;
-  final pulumi.Input<String>? destinationTransitGatewayAttachmentId;
+  final pulumi.Input<String?>? destinationCidrBlock;
+  final pulumi.Input<String?>? destinationPortRange;
+  final pulumi.Input<String?>? destinationTransitGatewayAttachmentId;
   /// Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
-  final pulumi.Input<String>? destinationTransitGatewayAttachmentType;
+  final pulumi.Input<String?>? destinationTransitGatewayAttachmentType;
   /// The account to charge for matching traffic. Valid values are `source-attachment-owner` or `destination-attachment-owner`.
-  final pulumi.Input<String>? meteredAccount;
+  final pulumi.Input<String?>? meteredAccount;
   /// Rule number for this entry. Lower numbers have higher priority. Valid values are between `1` and `32766`.
-  final pulumi.Input<int>? policyRuleNumber;
+  final pulumi.Input<int?>? policyRuleNumber;
   /// Protocol number to match (e.g., `6` for TCP, `17` for UDP). If not specified, all protocols are matched.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Source CIDR block to match. If not specified, all source CIDR blocks are matched.
-  final pulumi.Input<String>? sourceCidrBlock;
-  final pulumi.Input<String>? sourcePortRange;
-  final pulumi.Input<String>? sourceTransitGatewayAttachmentId;
+  final pulumi.Input<String?>? sourceCidrBlock;
+  final pulumi.Input<String?>? sourcePortRange;
+  final pulumi.Input<String?>? sourceTransitGatewayAttachmentId;
   /// Source attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
-  final pulumi.Input<String>? sourceTransitGatewayAttachmentType;
-  final pulumi.Input<MeteringPolicyEntryTimeouts>? timeouts;
+  final pulumi.Input<String?>? sourceTransitGatewayAttachmentType;
+  final pulumi.Input<MeteringPolicyEntryTimeouts?>? timeouts;
   /// EC2 Transit Gateway Metering Policy identifier.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transitGatewayMeteringPolicyId;
+  final pulumi.Input<String?>? transitGatewayMeteringPolicyId;
 
   /// Creates a new [MeteringPolicyEntryState].
   /// [destinationCidrBlock] Destination CIDR block to match. If not specified, all destination CIDR blocks are matched.
@@ -89,7 +89,7 @@ class MeteringPolicyEntryState {
       destinationTransitGatewayAttachmentId: (() { final guardedValue = map['destinationTransitGatewayAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationTransitGatewayAttachmentType: (() { final guardedValue = map['destinationTransitGatewayAttachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       meteredAccount: (() { final guardedValue = map['meteredAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policyRuleNumber: (() { final guardedValue = map['policyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      policyRuleNumber: (() { final guardedValue = map['policyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceCidrBlock: (() { final guardedValue = map['sourceCidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

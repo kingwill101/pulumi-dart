@@ -11,9 +11,9 @@ class ByteMatchSetArgs {
   /// Specifies the bytes (typically a string that corresponds
   /// with ASCII characters) that you want to search for in web requests,
   /// the location in requests that you want to search, and other settings.
-  final pulumi.Input<List<ByteMatchSetByteMatchTuple>>? byteMatchTuples;
+  final pulumi.Input<List<ByteMatchSetByteMatchTuple>?>? byteMatchTuples;
   /// The name or description of the Byte Match Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ByteMatchSetArgs].
   /// [byteMatchTuples] Specifies the bytes (typically a string that corresponds

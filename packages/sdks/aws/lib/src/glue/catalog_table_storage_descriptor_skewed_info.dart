@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableStorageDescriptorSkewedInfo {
   /// List of names of columns that contain skewed values.
-  final pulumi.Input<List<String>>? skewedColumnNames;
+  final pulumi.Input<List<String>?>? skewedColumnNames;
   /// List of values that appear so frequently as to be considered skewed.
-  final pulumi.Input<Map<String, String>>? skewedColumnValueLocationMaps;
+  final pulumi.Input<Map<String, String>?>? skewedColumnValueLocationMaps;
   /// Map of skewed values to the columns that contain them.
-  final pulumi.Input<List<String>>? skewedColumnValues;
+  final pulumi.Input<List<String>?>? skewedColumnValues;
 
   /// Creates a new [CatalogTableStorageDescriptorSkewedInfo].
   /// [skewedColumnNames] List of names of columns that contain skewed values.

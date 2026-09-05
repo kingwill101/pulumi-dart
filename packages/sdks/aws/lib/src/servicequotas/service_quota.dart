@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_quota_args.dart';
 import 'service_quota_state.dart';
+import 'service_quota_usage_metric.dart';
 
 /// Manages an individual Service Quota.
 ///
@@ -135,7 +136,7 @@ import 'service_quota_state.dart';
 class ServiceQuota extends pulumi.CustomResource {
   /// Whether the service quota can be increased.
   late final pulumi.Output<bool> adjustable;
-  /// Amazon Resource Name (ARN) of the service quota.
+  /// ARN of the service quota.
   late final pulumi.Output<String> arn;
   /// Default value of the service quota.
   late final pulumi.Output<double> defaultValue;
@@ -152,7 +153,7 @@ class ServiceQuota extends pulumi.CustomResource {
   /// Name of the service.
   late final pulumi.Output<String> serviceName;
   /// Information about the measurement.
-  late final pulumi.Output<List<Map<String, dynamic>>> usageMetrics;
+  late final pulumi.Output<List<ServiceQuotaUsageMetric>> usageMetrics;
   /// Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
   late final pulumi.Output<double> value;
 
@@ -168,7 +169,7 @@ class ServiceQuota extends pulumi.CustomResource {
           'aws:servicequotas/serviceQuota:ServiceQuota',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     adjustable = registerOutput<bool>('adjustable');
     arn = registerOutput<String>('arn');
@@ -180,7 +181,7 @@ class ServiceQuota extends pulumi.CustomResource {
     requestStatus = registerOutput<String>('requestStatus');
     serviceCode = registerOutput<String>('serviceCode');
     serviceName = registerOutput<String>('serviceName');
-    usageMetrics = registerOutput<List<Map<String, dynamic>>>('usageMetrics');
+    usageMetrics = registerOutput<List<ServiceQuotaUsageMetric>>('usageMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceQuotaUsageMetric>(guardedValue, (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>())); });
     value = registerOutput<double>('value');
   }
 
@@ -189,11 +190,12 @@ class ServiceQuota extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceQuotaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceQuota._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,7 +219,30 @@ class ServiceQuota extends pulumi.CustomResource {
     requestStatus = registerOutput<String>('requestStatus');
     serviceCode = registerOutput<String>('serviceCode');
     serviceName = registerOutput<String>('serviceName');
-    usageMetrics = registerOutput<List<Map<String, dynamic>>>('usageMetrics');
+    usageMetrics = registerOutput<List<ServiceQuotaUsageMetric>>('usageMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceQuotaUsageMetric>(guardedValue, (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    value = registerOutput<double>('value');
+  }
+
+  /// Creates a typed reference to an existing [ServiceQuota] resource.
+  ServiceQuota.reference(String urn)
+    : super(
+        'aws:servicequotas/serviceQuota:ServiceQuota',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adjustable = registerOutput<bool>('adjustable');
+    arn = registerOutput<String>('arn');
+    defaultValue = registerOutput<double>('defaultValue');
+    quotaCode = registerOutput<String>('quotaCode');
+    quotaName = registerOutput<String>('quotaName');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String>('requestId');
+    requestStatus = registerOutput<String>('requestStatus');
+    serviceCode = registerOutput<String>('serviceCode');
+    serviceName = registerOutput<String>('serviceName');
+    usageMetrics = registerOutput<List<ServiceQuotaUsageMetric>>('usageMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceQuotaUsageMetric>(guardedValue, (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>())); });
     value = registerOutput<double>('value');
   }
 }

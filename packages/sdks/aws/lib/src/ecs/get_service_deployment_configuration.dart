@@ -71,8 +71,8 @@ class GetServiceDeploymentConfiguration {
       deploymentCircuitBreakers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceDeploymentConfigurationDeploymentCircuitBreaker>(map['deploymentCircuitBreakers']!, (value) => GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap((value as Map).cast<String, dynamic>()))),
       lifecycleHooks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceDeploymentConfigurationLifecycleHook>(map['lifecycleHooks']!, (value) => GetServiceDeploymentConfigurationLifecycleHook.fromMap((value as Map).cast<String, dynamic>()))),
       linearConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceDeploymentConfigurationLinearConfiguration>(map['linearConfigurations']!, (value) => GetServiceDeploymentConfigurationLinearConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      maximumPercent: pulumi.Input.fromValue(map['maximumPercent'] as int),
-      minimumHealthyPercent: pulumi.Input.fromValue(map['minimumHealthyPercent'] as int),
+      maximumPercent: pulumi.Input.fromValue((map['maximumPercent'] as num).toInt()),
+      minimumHealthyPercent: pulumi.Input.fromValue((map['minimumHealthyPercent'] as num).toInt()),
       strategy: pulumi.Input.fromValue(map['strategy'] as String),
     );
   }

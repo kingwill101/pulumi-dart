@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_args.dart';
+import 'rule_evaluation_mode.dart';
 import 'rule_scope.dart';
 import 'rule_source.dart';
 import 'rule_state.dart';
@@ -21,11 +22,11 @@ import 'rule_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["config.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -38,11 +39,11 @@ import 'rule_state.dart';
 ///     roleArn: rRole.arn,
 /// });
 /// const r = new aws.cfg.Rule("r", {
-///     name: "example",
 ///     source: {
 ///         owner: "AWS",
 ///         sourceIdentifier: "S3_BUCKET_VERSIONING_ENABLED",
 ///     },
+///     name: "example",
 /// }, {
 ///     dependsOn: [foo],
 /// });
@@ -64,11 +65,11 @@ import 'rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["config.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// r_role = aws.iam.Role("r",
@@ -78,11 +79,11 @@ import 'rule_state.dart';
 ///     name="example",
 ///     role_arn=r_role.arn)
 /// r = aws.cfg.Rule("r",
-///     name="example",
 ///     source={
 ///         "owner": "AWS",
 ///         "source_identifier": "S3_BUCKET_VERSIONING_ENABLED",
 ///     },
+///     name="example",
 ///     opts = pulumi.ResourceOptions(depends_on=[foo]))
 /// p = aws.iam.get_policy_document(statements=[{
 ///     "effect": "Allow",
@@ -108,7 +109,6 @@ import 'rule_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -120,6 +120,7 @@ import 'rule_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -142,12 +143,12 @@ import 'rule_state.dart';
 ///
 ///     var r = new Aws.Cfg.Rule("r", new()
 ///     {
-///         Name = "example",
 ///         Source = new Aws.Cfg.Inputs.RuleSourceArgs
 ///         {
 ///             Owner = "AWS",
 ///             SourceIdentifier = "S3_BUCKET_VERSIONING_ENABLED",
 ///         },
+///         Name = "example",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -198,7 +199,6 @@ import 'rule_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -207,6 +207,7 @@ import 'rule_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -231,11 +232,11 @@ import 'rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cfg.NewRule(ctx, "r", &cfg.RuleArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Source: &cfg.RuleSourceArgs{
 /// 				Owner:            pulumi.String("AWS"),
 /// 				SourceIdentifier: pulumi.String("S3_BUCKET_VERSIONING_ENABLED"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			foo,
 /// 		}))
@@ -281,11 +282,11 @@ import 'rule_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -299,11 +300,11 @@ import 'rule_state.dart';
 ///
 /// resource "aws_cfg_rule" "r" {
 ///   depends_on = [aws_cfg_recorder.foo]
-///   name       = "example"
 ///   source = {
 ///     owner             = "AWS"
 ///     source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_cfg_recorder" "foo" {
 ///   name     = "example"
@@ -354,11 +355,11 @@ import 'rule_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("config.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -374,11 +375,11 @@ import 'rule_state.dart';
 ///             .build());
 ///
 ///         var r = new Rule("r", RuleArgs.builder()
-///             .name("example")
 ///             .source(RuleSourceArgs.builder()
 ///                 .owner("AWS")
 ///                 .sourceIdentifier("S3_BUCKET_VERSIONING_ENABLED")
 ///                 .build())
+///             .name("example")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(foo)
 ///                 .build());
@@ -405,10 +406,10 @@ import 'rule_state.dart';
 ///   r:
 ///     type: aws:cfg:Rule
 ///     properties:
-///       name: example
 ///       source:
 ///         owner: AWS
 ///         sourceIdentifier: S3_BUCKET_VERSIONING_ENABLED
+///       name: example
 ///     options:
 ///       dependsOn:
 ///         - ${foo}
@@ -436,11 +437,11 @@ import 'rule_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - config.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   p:
@@ -458,7 +459,7 @@ import 'rule_state.dart';
 ///
 /// ### Custom Rules
 ///
-/// Custom rules can be used by setting the source owner to `CUSTOM_LAMBDA` and the source identifier to the Amazon Resource Name (ARN) of the Lambda Function. The AWS Config service must have permissions to invoke the Lambda Function, e.g., via the `aws.lambda.Permission` resource. More information about custom rules can be found in the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules.html).
+/// Custom rules can be used by setting the source owner to `CUSTOM_LAMBDA` and the source identifier to the ARN of the Lambda Function. The AWS Config service must have permissions to invoke the Lambda Function, e.g., via the `aws.lambda.Permission` resource. More information about custom rules can be found in the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules.html).
 ///
 ///
 /// ```typescript
@@ -701,12 +702,7 @@ import 'rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cfg.Rule("example", {
-///     name: "example",
 ///     source: {
-///         owner: "CUSTOM_POLICY",
-///         sourceDetails: [{
-///             messageType: "ConfigurationItemChangeNotification",
-///         }],
 ///         customPolicyDetails: {
 ///             policyRuntime: "guard-2.x.x",
 ///             policyText: `\\t  rule tableisactive when
@@ -721,7 +717,12 @@ import 'rule_state.dart';
 /// \\t  }
 /// `,
 ///         },
+///         sourceDetails: [{
+///             messageType: "ConfigurationItemChangeNotification",
+///         }],
+///         owner: "CUSTOM_POLICY",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -729,12 +730,7 @@ import 'rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cfg.Rule("example",
-///     name="example",
 ///     source={
-///         "owner": "CUSTOM_POLICY",
-///         "source_details": [{
-///             "message_type": "ConfigurationItemChangeNotification",
-///         }],
 ///         "custom_policy_details": {
 ///             "policy_runtime": "guard-2.x.x",
 ///             "policy_text": """\t  rule tableisactive when
@@ -749,7 +745,12 @@ import 'rule_state.dart';
 /// \t  }
 /// """,
 ///         },
-///     })
+///         "source_details": [{
+///             "message_type": "ConfigurationItemChangeNotification",
+///         }],
+///         "owner": "CUSTOM_POLICY",
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -761,17 +762,8 @@ import 'rule_state.dart';
 /// {
 ///     var example = new Aws.Cfg.Rule("example", new()
 ///     {
-///         Name = "example",
 ///         Source = new Aws.Cfg.Inputs.RuleSourceArgs
 ///         {
-///             Owner = "CUSTOM_POLICY",
-///             SourceDetails = new[]
-///             {
-///                 new Aws.Cfg.Inputs.RuleSourceSourceDetailArgs
-///                 {
-///                     MessageType = "ConfigurationItemChangeNotification",
-///                 },
-///             },
 ///             CustomPolicyDetails = new Aws.Cfg.Inputs.RuleSourceCustomPolicyDetailsArgs
 ///             {
 ///                 PolicyRuntime = "guard-2.x.x",
@@ -787,7 +779,16 @@ import 'rule_state.dart';
 /// \t  }
 /// ",
 ///             },
+///             SourceDetails = new[]
+///             {
+///                 new Aws.Cfg.Inputs.RuleSourceSourceDetailArgs
+///                 {
+///                     MessageType = "ConfigurationItemChangeNotification",
+///                 },
+///             },
+///             Owner = "CUSTOM_POLICY",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -803,14 +804,7 @@ import 'rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cfg.NewRule(ctx, "example", &cfg.RuleArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Source: &cfg.RuleSourceArgs{
-/// 				Owner: pulumi.String("CUSTOM_POLICY"),
-/// 				SourceDetails: cfg.RuleSourceSourceDetailArray{
-/// 					&cfg.RuleSourceSourceDetailArgs{
-/// 						MessageType: pulumi.String("ConfigurationItemChangeNotification"),
-/// 					},
-/// 				},
 /// 				CustomPolicyDetails: &cfg.RuleSourceCustomPolicyDetailsArgs{
 /// 					PolicyRuntime: pulumi.String("guard-2.x.x"),
 /// 					PolicyText: pulumi.String(`\t  rule tableisactive when
@@ -825,7 +819,14 @@ import 'rule_state.dart';
 /// \t  }
 /// `),
 /// 				},
+/// 				SourceDetails: cfg.RuleSourceSourceDetailArray{
+/// 					&cfg.RuleSourceSourceDetailArgs{
+/// 						MessageType: pulumi.String("ConfigurationItemChangeNotification"),
+/// 					},
+/// 				},
+/// 				Owner: pulumi.String("CUSTOM_POLICY"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -844,17 +845,17 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_cfg_rule" "example" {
-///   name = "example"
 ///   source = {
-///     owner = "CUSTOM_POLICY"
-///     source_details = [{
-///       "messageType" = "ConfigurationItemChangeNotification"
-///     }]
 ///     custom_policy_details = {
 ///       policy_runtime = "guard-2.x.x"
 ///       policy_text    = "\\t  rule tableisactive when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\" {\n\\t\\t  configuration.tableStatus == ['ACTIVE']\n\\t  }\n\\t  \n\\t  rule checkcompliance when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\"\n\\t\\t  tableisactive {\n\\t\\t\\t  supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus == \\\"ENABLED\\\"\n\\t  }\n"
 ///     }
+///     source_details = [{
+///       "messageType" = "ConfigurationItemChangeNotification"
+///     }]
+///     owner = "CUSTOM_POLICY"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -866,8 +867,8 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.cfg.Rule;
 /// import com.pulumi.aws.cfg.RuleArgs;
 /// import com.pulumi.aws.cfg.inputs.RuleSourceArgs;
-/// import com.pulumi.aws.cfg.inputs.RuleSourceSourceDetailArgs;
 /// import com.pulumi.aws.cfg.inputs.RuleSourceCustomPolicyDetailsArgs;
+/// import com.pulumi.aws.cfg.inputs.RuleSourceSourceDetailArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -882,12 +883,7 @@ import 'rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Rule("example", RuleArgs.builder()
-///             .name("example")
 ///             .source(RuleSourceArgs.builder()
-///                 .owner("CUSTOM_POLICY")
-///                 .sourceDetails(RuleSourceSourceDetailArgs.builder()
-///                     .messageType("ConfigurationItemChangeNotification")
-///                     .build())
 ///                 .customPolicyDetails(RuleSourceCustomPolicyDetailsArgs.builder()
 ///                     .policyRuntime("guard-2.x.x")
 ///                     .policyText("""
@@ -903,7 +899,12 @@ import 'rule_state.dart';
 /// \t  }
 ///                     """)
 ///                     .build())
+///                 .sourceDetails(RuleSourceSourceDetailArgs.builder()
+///                     .messageType("ConfigurationItemChangeNotification")
+///                     .build())
+///                 .owner("CUSTOM_POLICY")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -914,14 +915,14 @@ import 'rule_state.dart';
 ///   example:
 ///     type: aws:cfg:Rule
 ///     properties:
-///       name: example
 ///       source:
-///         owner: CUSTOM_POLICY
-///         sourceDetails:
-///           - messageType: ConfigurationItemChangeNotification
 ///         customPolicyDetails:
 ///           policyRuntime: guard-2.x.x
 ///           policyText: "\\t  rule tableisactive when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\" {\n\\t\\t  configuration.tableStatus == ['ACTIVE']\n\\t  }\n\\t  \n\\t  rule checkcompliance when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\"\n\\t\\t  tableisactive {\n\\t\\t\\t  supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus == \\\"ENABLED\\\"\n\\t  }\n"
+///         sourceDetails:
+///           - messageType: ConfigurationItemChangeNotification
+///         owner: CUSTOM_POLICY
+///       name: example
 /// ```
 ///
 ///
@@ -950,7 +951,7 @@ class Rule extends pulumi.CustomResource {
   /// Description of the rule
   late final pulumi.Output<String?> description;
   /// The modes the Config rule can be evaluated in. See Evaluation Mode for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> evaluationModes;
+  late final pulumi.Output<List<RuleEvaluationMode>> evaluationModes;
   /// A string in JSON format that is passed to the AWS Config rule Lambda function.
   late final pulumi.Output<String?> inputParameters;
   /// The maximum frequency with which AWS Config runs evaluations for a rule.
@@ -982,11 +983,11 @@ class Rule extends pulumi.CustomResource {
           'aws:cfg/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    evaluationModes = registerOutput<List<Map<String, dynamic>>>('evaluationModes');
+    evaluationModes = registerOutput<List<RuleEvaluationMode>>('evaluationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleEvaluationMode>(guardedValue, (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>())); });
     inputParameters = registerOutput<String?>('inputParameters');
     maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
@@ -994,8 +995,8 @@ class Rule extends pulumi.CustomResource {
     ruleId = registerOutput<String>('ruleId');
     scope = registerOutput<RuleScope?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<RuleSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
@@ -1003,11 +1004,12 @@ class Rule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1023,7 +1025,7 @@ class Rule extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    evaluationModes = registerOutput<List<Map<String, dynamic>>>('evaluationModes');
+    evaluationModes = registerOutput<List<RuleEvaluationMode>>('evaluationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleEvaluationMode>(guardedValue, (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>())); });
     inputParameters = registerOutput<String?>('inputParameters');
     maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
@@ -1031,7 +1033,30 @@ class Rule extends pulumi.CustomResource {
     ruleId = registerOutput<String>('ruleId');
     scope = registerOutput<RuleScope?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<RuleSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'aws:cfg/rule:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    evaluationModes = registerOutput<List<RuleEvaluationMode>>('evaluationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleEvaluationMode>(guardedValue, (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>())); });
+    inputParameters = registerOutput<String?>('inputParameters');
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    ruleId = registerOutput<String>('ruleId');
+    scope = registerOutput<RuleScope?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<RuleSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

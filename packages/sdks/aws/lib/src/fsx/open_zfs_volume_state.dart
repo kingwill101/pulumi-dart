@@ -7,43 +7,43 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 
 /// Input properties used for looking up and filtering OpenZfsVolume resources.
 class OpenZfsVolumeState {
-  /// Amazon Resource Name of the file system.
-  final pulumi.Input<String>? arn;
+  /// ARN of the file system.
+  final pulumi.Input<String?>? arn;
   /// Whether tags for the file system should be copied to snapshots. Default is false.
-  final pulumi.Input<bool>? copyTagsToSnapshots;
+  final pulumi.Input<bool?>? copyTagsToSnapshots;
   /// Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
-  final pulumi.Input<String>? dataCompressionType;
+  final pulumi.Input<String?>? dataCompressionType;
   /// Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
-  final pulumi.Input<String>? deleteVolumeOptions;
+  final pulumi.Input<String?>? deleteVolumeOptions;
   /// Name of the volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NFS export configuration for the root volume. Exactly 1 item. See `nfsExports` Block Below for details.
-  final pulumi.Input<OpenZfsVolumeNfsExports>? nfsExports;
+  final pulumi.Input<OpenZfsVolumeNfsExports?>? nfsExports;
   /// Configuration to use when creating the OpenZFS volume. See `originSnapshot` Block below for details.
-  final pulumi.Input<OpenZfsVolumeOriginSnapshot>? originSnapshot;
+  final pulumi.Input<OpenZfsVolumeOriginSnapshot?>? originSnapshot;
   /// Volume ID of the volume that will be the parent volume for the volume being created, this could be the root volume created from the `aws.fsx.OpenZfsFileSystem` resource with the `rootVolumeId` or the `id` property of another `aws.fsx.OpenZfsVolume`.
-  final pulumi.Input<String>? parentVolumeId;
+  final pulumi.Input<String?>? parentVolumeId;
   /// Whether the volume is read-only. Default is false.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Record size of an OpenZFS volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. Default is `128` KiB.
-  final pulumi.Input<int>? recordSizeKib;
+  final pulumi.Input<int?>? recordSizeKib;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Maximum amount of storage in gibibytes (GiB) that the volume can use from its parent.
-  final pulumi.Input<int>? storageCapacityQuotaGib;
+  final pulumi.Input<int?>? storageCapacityQuotaGib;
   /// Amount of storage in gibibytes (GiB) to reserve from the parent volume.
-  final pulumi.Input<int>? storageCapacityReservationGib;
+  final pulumi.Input<int?>? storageCapacityReservationGib;
   /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `userAndGroupQuotas` Block Below.
-  final pulumi.Input<List<OpenZfsVolumeUserAndGroupQuota>>? userAndGroupQuotas;
+  final pulumi.Input<List<OpenZfsVolumeUserAndGroupQuota>?>? userAndGroupQuotas;
   /// Volume type. Default is `OPENZFS`.
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
 
   /// Creates a new [OpenZfsVolumeState].
-  /// [arn] Amazon Resource Name of the file system.
+  /// [arn] ARN of the file system.
   /// [copyTagsToSnapshots] Whether tags for the file system should be copied to snapshots. Default is false.
   /// [dataCompressionType] Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   /// [deleteVolumeOptions] Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
@@ -113,10 +113,10 @@ class OpenZfsVolumeState {
       originSnapshot: (() { final guardedValue = map['originSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenZfsVolumeOriginSnapshot.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parentVolumeId: (() { final guardedValue = map['parentVolumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      recordSizeKib: (() { final guardedValue = map['recordSizeKib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recordSizeKib: (() { final guardedValue = map['recordSizeKib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageCapacityQuotaGib: (() { final guardedValue = map['storageCapacityQuotaGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      storageCapacityReservationGib: (() { final guardedValue = map['storageCapacityReservationGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageCapacityQuotaGib: (() { final guardedValue = map['storageCapacityQuotaGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      storageCapacityReservationGib: (() { final guardedValue = map['storageCapacityReservationGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       userAndGroupQuotas: (() { final guardedValue = map['userAndGroupQuotas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OpenZfsVolumeUserAndGroupQuota>(guardedValue, (value) => OpenZfsVolumeUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))); })(),

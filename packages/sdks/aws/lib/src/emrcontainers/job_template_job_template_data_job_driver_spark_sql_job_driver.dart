@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
   /// The SQL file to be executed.
-  final pulumi.Input<String>? entryPoint;
+  final pulumi.Input<String?>? entryPoint;
   /// The Spark parameters to be included in the Spark SQL command.
-  final pulumi.Input<String>? sparkSqlParameters;
+  final pulumi.Input<String?>? sparkSqlParameters;
 
   /// Creates a new [JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver].
   /// [entryPoint] The SQL file to be executed.

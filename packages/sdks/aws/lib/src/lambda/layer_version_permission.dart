@@ -788,7 +788,7 @@ class LayerVersionPermission extends pulumi.CustomResource {
           'aws:lambda/layerVersionPermission:LayerVersionPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     layerName = registerOutput<String>('layerName');
@@ -807,11 +807,12 @@ class LayerVersionPermission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LayerVersionPermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LayerVersionPermission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -825,6 +826,27 @@ class LayerVersionPermission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    layerName = registerOutput<String>('layerName');
+    organizationId = registerOutput<String?>('organizationId');
+    policy = registerOutput<String>('policy');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    revisionId = registerOutput<String>('revisionId');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    statementId = registerOutput<String>('statementId');
+    versionNumber = registerOutput<int>('versionNumber');
+  }
+
+  /// Creates a typed reference to an existing [LayerVersionPermission] resource.
+  LayerVersionPermission.reference(String urn)
+    : super(
+        'aws:lambda/layerVersionPermission:LayerVersionPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     layerName = registerOutput<String>('layerName');
     organizationId = registerOutput<String?>('organizationId');

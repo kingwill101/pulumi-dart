@@ -9,11 +9,11 @@ import 'data_catalog_encryption_settings_data_catalog_encryption_settings.dart';
 /// {@macro pulumi_glue_data_catalog_encryption_settings_data_catalog_encryption_settings_args_doc}
 class DataCatalogEncryptionSettingsArgs {
   /// The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// The security configuration to set. see Data Catalog Encryption Settings.
   final pulumi.Input<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings> dataCatalogEncryptionSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DataCatalogEncryptionSettingsArgs].
   /// [catalogId] The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.

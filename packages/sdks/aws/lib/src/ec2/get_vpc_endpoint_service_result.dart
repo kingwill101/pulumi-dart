@@ -6,40 +6,40 @@ import 'get_vpc_endpoint_service_filter.dart';
 /// Result data returned by getVpcEndpointService.
 class GetVpcEndpointServiceResult {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-  final bool acceptanceRequired;
+  final bool? acceptanceRequired;
   /// ARN of the VPC endpoint service.
-  final String arn;
+  final String? arn;
   /// Availability Zones in which the service is available. Not available for endpoint services in other regions.
-  final List<String> availabilityZones;
+  final List<String>? availabilityZones;
   /// The DNS names for the service.
-  final List<String> baseEndpointDnsNames;
+  final List<String>? baseEndpointDnsNames;
   final List<GetVpcEndpointServiceFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Whether or not the service manages its VPC endpoints - `true` or `false`.
-  final bool managesVpcEndpoints;
+  final bool? managesVpcEndpoints;
   /// AWS account ID of the service owner or `amazon`.
-  final String owner;
+  final String? owner;
   /// Private DNS name for the service.
-  final String privateDnsName;
+  final String? privateDnsName;
   /// Private DNS names assigned to the VPC endpoint service.
-  final List<String> privateDnsNames;
+  final List<String>? privateDnsNames;
   /// (**Deprecated**) Region of the endpoint service. Use `serviceRegion` instead.
-  final String region;
+  final String? region;
   final String? service;
   /// ID of the endpoint service.
-  final String serviceId;
-  final String serviceName;
+  final String? serviceId;
+  final String? serviceName;
   /// Region of the endpoint service.
-  final String serviceRegion;
+  final String? serviceRegion;
   final List<String>? serviceRegions;
-  final String serviceType;
+  final String? serviceType;
   /// The supported IP address types.
-  final List<String> supportedIpAddressTypes;
+  final List<String>? supportedIpAddressTypes;
   /// Map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Whether or not the service supports endpoint policies - `true` or `false`.
-  final bool vpcEndpointPolicySupported;
+  final bool? vpcEndpointPolicySupported;
 
   /// Creates a new [GetVpcEndpointServiceResult].
   /// [acceptanceRequired] Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
@@ -55,83 +55,83 @@ class GetVpcEndpointServiceResult {
   /// [region] (**Deprecated**) Region of the endpoint service. Use `serviceRegion` instead.
   /// [service] Optional.
   /// [serviceId] ID of the endpoint service.
-  /// [serviceName] Required.
+  /// [serviceName] Optional.
   /// [serviceRegion] Region of the endpoint service.
   /// [serviceRegions] Optional.
-  /// [serviceType] Required.
+  /// [serviceType] Optional.
   /// [supportedIpAddressTypes] The supported IP address types.
   /// [tags] Map of tags assigned to the resource.
   /// [vpcEndpointPolicySupported] Whether or not the service supports endpoint policies - `true` or `false`.
   const GetVpcEndpointServiceResult({
-    required this.acceptanceRequired,
-    required this.arn,
-    required this.availabilityZones,
-    required this.baseEndpointDnsNames,
+    this.acceptanceRequired,
+    this.arn,
+    this.availabilityZones,
+    this.baseEndpointDnsNames,
     this.filters,
-    required this.id,
-    required this.managesVpcEndpoints,
-    required this.owner,
-    required this.privateDnsName,
-    required this.privateDnsNames,
-    required this.region,
+    this.id,
+    this.managesVpcEndpoints,
+    this.owner,
+    this.privateDnsName,
+    this.privateDnsNames,
+    this.region,
     this.service,
-    required this.serviceId,
-    required this.serviceName,
-    required this.serviceRegion,
+    this.serviceId,
+    this.serviceName,
+    this.serviceRegion,
     this.serviceRegions,
-    required this.serviceType,
-    required this.supportedIpAddressTypes,
-    required this.tags,
-    required this.vpcEndpointPolicySupported,
+    this.serviceType,
+    this.supportedIpAddressTypes,
+    this.tags,
+    this.vpcEndpointPolicySupported,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acceptanceRequired': acceptanceRequired,
-      'arn': arn,
-      'availabilityZones': availabilityZones,
-      'baseEndpointDnsNames': baseEndpointDnsNames,
+      'acceptanceRequired': ?acceptanceRequired,
+      'arn': ?arn,
+      'availabilityZones': ?availabilityZones,
+      'baseEndpointDnsNames': ?baseEndpointDnsNames,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpcEndpointServiceFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'managesVpcEndpoints': managesVpcEndpoints,
-      'owner': owner,
-      'privateDnsName': privateDnsName,
-      'privateDnsNames': privateDnsNames,
-      'region': region,
+      'id': ?id,
+      'managesVpcEndpoints': ?managesVpcEndpoints,
+      'owner': ?owner,
+      'privateDnsName': ?privateDnsName,
+      'privateDnsNames': ?privateDnsNames,
+      'region': ?region,
       'service': ?service,
-      'serviceId': serviceId,
-      'serviceName': serviceName,
-      'serviceRegion': serviceRegion,
+      'serviceId': ?serviceId,
+      'serviceName': ?serviceName,
+      'serviceRegion': ?serviceRegion,
       'serviceRegions': ?serviceRegions,
-      'serviceType': serviceType,
-      'supportedIpAddressTypes': supportedIpAddressTypes,
-      'tags': tags,
-      'vpcEndpointPolicySupported': vpcEndpointPolicySupported,
+      'serviceType': ?serviceType,
+      'supportedIpAddressTypes': ?supportedIpAddressTypes,
+      'tags': ?tags,
+      'vpcEndpointPolicySupported': ?vpcEndpointPolicySupported,
     };
   }
 
   factory GetVpcEndpointServiceResult.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceResult(
-      acceptanceRequired: map['acceptanceRequired'] as bool,
-      arn: map['arn'] as String,
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      baseEndpointDnsNames: (map['baseEndpointDnsNames'] as List).cast<String>(),
+      acceptanceRequired: (() { final guardedValue = map['acceptanceRequired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      baseEndpointDnsNames: (() { final guardedValue = map['baseEndpointDnsNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(guardedValue, (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      managesVpcEndpoints: map['managesVpcEndpoints'] as bool,
-      owner: map['owner'] as String,
-      privateDnsName: map['privateDnsName'] as String,
-      privateDnsNames: (map['privateDnsNames'] as List).cast<String>(),
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managesVpcEndpoints: (() { final guardedValue = map['managesVpcEndpoints']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateDnsName: (() { final guardedValue = map['privateDnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateDnsNames: (() { final guardedValue = map['privateDnsNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      serviceId: map['serviceId'] as String,
-      serviceName: map['serviceName'] as String,
-      serviceRegion: map['serviceRegion'] as String,
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceRegion: (() { final guardedValue = map['serviceRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceRegions: (() { final guardedValue = map['serviceRegions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      serviceType: map['serviceType'] as String,
-      supportedIpAddressTypes: (map['supportedIpAddressTypes'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcEndpointPolicySupported: map['vpcEndpointPolicySupported'] as bool,
+      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportedIpAddressTypes: (() { final guardedValue = map['supportedIpAddressTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      vpcEndpointPolicySupported: (() { final guardedValue = map['vpcEndpointPolicySupported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

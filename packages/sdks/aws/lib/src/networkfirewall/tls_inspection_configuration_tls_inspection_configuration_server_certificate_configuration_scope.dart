@@ -8,20 +8,20 @@ import 'tls_inspection_configuration_tls_inspection_configuration_server_certifi
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope {
   /// Set of configuration blocks describing the destination ports to inspect for. If not specified, this matches with any destination port. See Destination Ports below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort>>? destinationPorts;
+  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort>?>? destinationPorts;
   /// Set of configuration blocks describing the destination IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any destination address. See Destination below for details.
   final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination>> destinations;
-  /// Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
+  /// Set of protocols to inspect for, specified using the protocol's assigned IP number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
   final pulumi.Input<List<int>> protocols;
   /// Set of configuration blocks describing the source ports to inspect for. If not specified, this matches with any source port. See Source Ports below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort>>? sourcePorts;
+  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort>?>? sourcePorts;
   /// Set of configuration blocks describing the source IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any source address. See Source below for details.
-  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource>>? sources;
+  final pulumi.Input<List<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource>?>? sources;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope].
   /// [destinationPorts] Set of configuration blocks describing the destination ports to inspect for. If not specified, this matches with any destination port. See Destination Ports below for details.
   /// [destinations] Set of configuration blocks describing the destination IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any destination address. See Destination below for details.
-  /// [protocols] Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
+  /// [protocols] Set of protocols to inspect for, specified using the protocol's assigned IP number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
   /// [sourcePorts] Set of configuration blocks describing the source ports to inspect for. If not specified, this matches with any source port. See Source Ports below for details.
   /// [sources] Set of configuration blocks describing the source IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any source address. See Source below for details.
   const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope({

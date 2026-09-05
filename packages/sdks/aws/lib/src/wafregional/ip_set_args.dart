@@ -9,11 +9,11 @@ import 'ip_set_ip_set_descriptor.dart';
 /// {@macro pulumi_wafregional_ip_set_ip_set_args_doc}
 class IpSetArgs {
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
-  final pulumi.Input<List<IpSetIpSetDescriptor>>? ipSetDescriptors;
+  final pulumi.Input<List<IpSetIpSetDescriptor>?>? ipSetDescriptors;
   /// The name or description of the IPSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [IpSetArgs].
   /// [ipSetDescriptors] One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.

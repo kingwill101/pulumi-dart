@@ -912,6 +912,17 @@ Future<GetAliasResult> getAlias(
   return GetAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetAliasResult> getAliasOutput(
+  GetAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getAlias:getAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAliasResult.fromMap);
+}
+
 /// Provides details about an AWS Lambda Code Signing Config. Use this data source to retrieve information about an existing code signing configuration for Lambda functions to ensure code integrity and authenticity.
 ///
 /// For information about Lambda code signing configurations and how to use them, see [configuring code signing for Lambda functions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html).
@@ -1428,7 +1439,6 @@ Future<GetAliasResult> getAlias(
 /// 		var conditional []*lambda.Function
 /// 		for index := 0; index < tmp0; index++ {
 /// 			key0 := index
-/// 			_ := index
 /// 			__res, err := lambda.NewFunction(ctx, fmt.Sprintf("conditional-%v", key0), &lambda.FunctionArgs{
 /// 				Code:                 pulumi.NewFileArchive("function.zip"),
 /// 				Name:                 pulumi.String("conditional-function"),
@@ -1777,6 +1787,17 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
   return GetCodeSigningConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
+  GetCodeSigningConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getCodeSigningConfig:getCodeSigningConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCodeSigningConfigResult.fromMap);
+}
+
 /// Provides details about an AWS Lambda Function. Use this data source to obtain information about an existing Lambda function for use in other resources or as a reference for function configurations.
 ///
 /// &gt; **Note:** This data source returns information about the latest version or alias specified by the `qualifier`. If no `qualifier` is provided, it returns information about the most recent published version, or `$LATEST` if no published version exists.
@@ -2105,10 +2126,17 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 /// });
 /// // Create new function with similar configuration
 /// const example = new aws.lambda.Function("example", {
-///     durableConfig: singleOrNone(.map(entry => ({
-///         executionTimeout: entry.value.executionTimeout,
-///         retentionPeriod: entry.value.retentionPeriod,
-///     }))),
+///     vpcConfig: {
+///         subnetIds: reference.then(reference => reference.vpcConfig?.subnetIds),
+///         securityGroupIds: reference.then(reference => reference.vpcConfig?.securityGroupIds),
+///     },
+///     environment: {
+///         variables: reference.then(reference => reference.environment?.variables),
+///     },
+///     durableConfig: singleOrNone(reference.then(reference => .map(entry => ({
+///         executionTimeout: entry.executionTimeout,
+///         retentionPeriod: entry.retentionPeriod,
+///     })))),
 ///     code: new pulumi.asset.FileArchive("new-function.zip"),
 ///     name: "new-function",
 ///     role: reference.then(reference => reference.role),
@@ -2117,13 +2145,6 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 ///     memorySize: reference.then(reference => reference.memorySize),
 ///     timeout: reference.then(reference => reference.timeout),
 ///     architectures: reference.then(reference => reference.architectures),
-///     vpcConfig: {
-///         subnetIds: reference.then(reference => reference.vpcConfig?.subnetIds),
-///         securityGroupIds: reference.then(reference => reference.vpcConfig?.securityGroupIds),
-///     },
-///     environment: {
-///         variables: reference.then(reference => reference.environment?.variables),
-///     },
 /// });
 /// ```
 /// ```python
@@ -2140,10 +2161,17 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 /// reference = aws.lambda_.get_function(function_name="existing-function")
 /// # Create new function with similar configuration
 /// example = aws.lambda_.Function("example",
-///     durable_config=single_or_none([{"key": k, "value": v} for k, v in sorted(reference.durable_configs.items())].apply(lambda entries: [{
-///         "executionTimeout": entry["value"].execution_timeout,
-///         "retentionPeriod": entry["value"].retention_period,
-///     } for entry in entries])),
+///     vpc_config={
+///         "subnet_ids": reference.vpc_config.subnet_ids,
+///         "security_group_ids": reference.vpc_config.security_group_ids,
+///     },
+///     environment={
+///         "variables": reference.environment.variables,
+///     },
+///     durable_config=single_or_none([{
+///         "executionTimeout": entry.execution_timeout,
+///         "retentionPeriod": entry.retention_period,
+///     } for entry in reference.durable_configs]),
 ///     code=pulumi.FileArchive("new-function.zip"),
 ///     name="new-function",
 ///     role=reference.role,
@@ -2151,14 +2179,7 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 ///     runtime=aws.lambda_.Runtime(reference.runtime),
 ///     memory_size=reference.memory_size,
 ///     timeout=reference.timeout,
-///     architectures=reference.architectures,
-///     vpc_config={
-///         "subnet_ids": reference.vpc_config.subnet_ids,
-///         "security_group_ids": reference.vpc_config.security_group_ids,
-///     },
-///     environment={
-///         "variables": reference.environment.variables,
-///     })
+///     architectures=reference.architectures)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2177,15 +2198,6 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 ///     // Create new function with similar configuration
 ///     var example = new Aws.Lambda.Function("example", new()
 ///     {
-///         DurableConfig = Enumerable.SingleOrDefault(),
-///         Code = new FileArchive("new-function.zip"),
-///         Name = "new-function",
-///         Role = reference.Apply(getFunctionResult => getFunctionResult.Role),
-///         Handler = reference.Apply(getFunctionResult => getFunctionResult.Handler),
-///         Runtime = reference.Apply(getFunctionResult => getFunctionResult.Runtime).Apply(System.Enum.Parse<Aws.Lambda.Runtime>),
-///         MemorySize = reference.Apply(getFunctionResult => getFunctionResult.MemorySize),
-///         Timeout = reference.Apply(getFunctionResult => getFunctionResult.Timeout),
-///         Architectures = reference.Apply(getFunctionResult => getFunctionResult.Architectures),
 ///         VpcConfig = new Aws.Lambda.Inputs.FunctionVpcConfigArgs
 ///         {
 ///             SubnetIds = reference.Apply(getFunctionResult => getFunctionResult.VpcConfig?.SubnetIds),
@@ -2195,6 +2207,22 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 ///         {
 ///             Variables = reference.Apply(getFunctionResult => getFunctionResult.Environment?.Variables),
 ///         },
+///         DurableConfig = Enumerable.SingleOrDefault(.Select(entry =>
+///         {
+///             return
+///             {
+///                 { "executionTimeout", entry.ExecutionTimeout },
+///                 { "retentionPeriod", entry.RetentionPeriod },
+///             };
+///         }).ToList()),
+///         Code = new FileArchive("new-function.zip"),
+///         Name = "new-function",
+///         Role = reference.Apply(getFunctionResult => getFunctionResult.Role),
+///         Handler = reference.Apply(getFunctionResult => getFunctionResult.Handler),
+///         Runtime = reference.Apply(getFunctionResult => getFunctionResult.Runtime).Apply(System.Enum.Parse<Aws.Lambda.Runtime>),
+///         MemorySize = reference.Apply(getFunctionResult => getFunctionResult.MemorySize),
+///         Timeout = reference.Apply(getFunctionResult => getFunctionResult.Timeout),
+///         Architectures = reference.Apply(getFunctionResult => getFunctionResult.Architectures),
 ///     });
 ///
 /// });
@@ -2214,9 +2242,16 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 ///
 /// # Create new function with similar configuration
 /// resource "aws_lambda_function" "example" {
-///   durable_config = one([for entry in entries(data.aws_lambda_getfunction.reference.durable_configs) : {
-///     "executionTimeout" = entry.value.executionTimeout
-///     "retentionPeriod"  = entry.value.retentionPeriod
+///   vpc_config = {
+///     subnet_ids         = data.aws_lambda_getfunction.reference.vpc_config.subnet_ids
+///     security_group_ids = data.aws_lambda_getfunction.reference.vpc_config.security_group_ids
+///   }
+///   environment = {
+///     variables = data.aws_lambda_getfunction.reference.environment.variables
+///   }
+///   durable_config = one([for entry in data.aws_lambda_getfunction.reference.durable_configs : {
+///     "executionTimeout" = entry.executionTimeout
+///     "retentionPeriod"  = entry.retentionPeriod
 ///   } ])
 ///   code          = fileArchive("new-function.zip")
 ///   name          = "new-function"
@@ -2226,13 +2261,6 @@ Future<GetCodeSigningConfigResult> getCodeSigningConfig(
 ///   memory_size   = data.aws_lambda_getfunction.reference.memory_size
 ///   timeout       = data.aws_lambda_getfunction.reference.timeout
 ///   architectures = data.aws_lambda_getfunction.reference.architectures
-///   vpc_config = {
-///     subnet_ids         = data.aws_lambda_getfunction.reference.vpc_config.subnet_ids
-///     security_group_ids = data.aws_lambda_getfunction.reference.vpc_config.security_group_ids
-///   }
-///   environment = {
-///     variables = data.aws_lambda_getfunction.reference.environment.variables
-///   }
 /// }
 /// # Get existing function details
 /// ```
@@ -2594,6 +2622,17 @@ Future<GetFunctionResult> getFunction(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionResult> getFunctionOutput(
+  GetFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getFunction:getFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionResult.fromMap);
 }
 
 /// Provides details about an AWS Lambda Function URL. Use this data source to retrieve information about an existing function URL configuration.
@@ -3009,7 +3048,7 @@ Future<GetFunctionResult> getFunction(
 /// 		corsConfig := len(example.Cors).ApplyT(func(length int) (lambda.GetFunctionUrlCor, error) {
 /// 			var tmp0 lambda.GetFunctionUrlCor
 /// 			if length > 0 {
-/// 				tmp0 = lambda.GetFunctionUrlCor(example.Cors[0])
+/// 				tmp0 = example.Cors[0].(lambda.GetFunctionUrlCor)
 /// 			} else {
 /// 				tmp0 = nil
 /// 			}
@@ -3096,6 +3135,17 @@ Future<GetFunctionUrlResult> getFunctionUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionUrlResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
+  GetFunctionUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getFunctionUrl:getFunctionUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionUrlResult.fromMap);
 }
 
 /// Provides a list of AWS Lambda Functions in the current region. Use this data source to discover existing Lambda functions for inventory, monitoring, or bulk operations.
@@ -3466,6 +3516,101 @@ Future<GetFunctionUrlResult> getFunctionUrl(
 /// ```
 ///
 ///
+/// ### Filter Functions by Name Pattern
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+/// import * as std from "@pulumi/std";
+///
+/// function can_(
+///     fn: () => any
+/// ): boolean {
+///     try {
+///         const result = fn();
+///         if (result === undefined) {
+///             return false;
+///         }
+///         return true;
+///     } catch (e) {
+///         return false;
+///     }
+/// }
+///
+///
+/// export = async () => {
+///     // Get all functions
+///     const all = await aws.lambda.getFunctions({});
+///     const apiFunctions = .filter(name =>
+/// can_(() => (await await std.regex({
+///         pattern: "^api-",
+///         string: name,
+///     })).result)).map(name => (name));
+///     const workerFunctions = .filter(name =>
+/// can_(() => (await await std.regex({
+///         pattern: "^worker-",
+///         string: name,
+///     })).result)).map(name => (name));
+///     return {
+///         apiFunctions: apiFunctions,
+///         workerFunctions: workerFunctions,
+///     };
+/// }
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+/// import pulumi_std as std
+///
+/// def can_(fn):
+///     try:
+///         _result = fn()
+///         return True
+///     except:
+///         return False
+///
+///
+/// # Get all functions
+/// all = aws.lambda_.get_functions()
+/// api_functions = [name for name in all.function_names if can_(lambda: std.regex(pattern="^api-",
+///     string=name).result)]
+/// worker_functions = [name for name in all.function_names if can_(lambda: std.regex(pattern="^worker-",
+///     string=name).result)]
+/// pulumi.export("apiFunctions", api_functions)
+/// pulumi.export("workerFunctions", worker_functions)
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_lambda_getfunctions" "all" {
+/// }
+///
+/// # Get all functions
+/// locals {
+///   apiFunctions = [for name in data.aws_lambda_getfunctions.all.function_names : name if can(regex("^api-", name))]
+/// }
+/// locals {
+///   workerFunctions = [for name in data.aws_lambda_getfunctions.all.function_names : name if can(regex("^worker-", name))]
+/// }
+/// output "apiFunctions" {
+///   value = local.apiFunctions
+/// }
+/// output "workerFunctions" {
+///   value = local.workerFunctions
+/// }
+/// ```
+///
+///
 /// ### Create Function Inventory
 ///
 ///
@@ -3593,6 +3738,17 @@ Future<GetFunctionsResult> getFunctions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionsResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionsResult> getFunctionsOutput(
+  GetFunctionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getFunctions:getFunctions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionsResult.fromMap);
 }
 
 /// Invokes an AWS Lambda Function and returns its results. Use this data source to execute Lambda functions during Pulumi operations and use their results in other resources or outputs.
@@ -4068,6 +4224,17 @@ Future<GetInvocationResult> getInvocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInvocationResult.fromMap(result);
+}
+
+pulumi.Output<GetInvocationResult> getInvocationOutput(
+  GetInvocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getInvocation:getInvocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInvocationResult.fromMap);
 }
 
 /// Provides details about an AWS Lambda Layer Version. Use this data source to retrieve information about a specific layer version or find the latest version compatible with your runtime and architecture requirements.
@@ -5164,4 +5331,15 @@ Future<GetLayerVersionResult> getLayerVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLayerVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetLayerVersionResult> getLayerVersionOutput(
+  GetLayerVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lambda/getLayerVersion:getLayerVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLayerVersionResult.fromMap);
 }

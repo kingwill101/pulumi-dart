@@ -5,11 +5,11 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice {
   /// Defines tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This block has no fields.
-  final pulumi.Input<Map<String, dynamic>>? any;
+  final pulumi.Input<Map<String, dynamic>?>? any;
   /// Defines tools. The model automatically decides whether to call a tool or to generate text instead. This block has no fields.
-  final pulumi.Input<Map<String, dynamic>>? auto;
+  final pulumi.Input<Map<String, dynamic>?>? auto;
   /// Defines a specific tool that the model must request. No text is generated but the results of tool use are sent back to the model to help generate a response. See Named Tool for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool>? tool;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool?>? tool;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice].
   /// [any] Defines tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This block has no fields.

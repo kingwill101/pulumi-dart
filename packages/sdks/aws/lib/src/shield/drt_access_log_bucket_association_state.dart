@@ -6,10 +6,10 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 /// Input properties used for looking up and filtering DrtAccessLogBucketAssociation resources.
 class DrtAccessLogBucketAssociationState {
   /// The Amazon S3 bucket that contains the logs that you want to share.
-  final pulumi.Input<String>? logBucket;
+  final pulumi.Input<String?>? logBucket;
   /// The ID of the Role Arn association used for allowing Shield DRT Access.
-  final pulumi.Input<String>? roleArnAssociationId;
-  final pulumi.Input<DrtAccessLogBucketAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? roleArnAssociationId;
+  final pulumi.Input<DrtAccessLogBucketAssociationTimeouts?>? timeouts;
 
   /// Creates a new [DrtAccessLogBucketAssociationState].
   /// [logBucket] The Amazon S3 bucket that contains the logs that you want to share.

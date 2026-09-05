@@ -10,9 +10,9 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
   /// A block argument. Detailed below.
   final pulumi.Input<List<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition>> conditions;
   /// A user-defined description that further helps identify the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A set of AWS Region codes where this rule applies.
-  final pulumi.Input<List<String>>? edgeLocations;
+  final pulumi.Input<List<String>?>? edgeLocations;
   /// An integer from `1` to `65535` indicating the rule's order number. Rules are processed in order from the lowest numbered rule to the highest. Rules stop processing when a rule is matched.
   final pulumi.Input<int> ruleNumber;
 
@@ -46,7 +46,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition>(map['conditions']!, (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edgeLocations: (() { final guardedValue = map['edgeLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
     );
   }
 }

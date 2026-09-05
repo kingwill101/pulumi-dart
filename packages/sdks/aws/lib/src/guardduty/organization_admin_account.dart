@@ -207,7 +207,7 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
           'aws:guardduty/organizationAdminAccount:OrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');
@@ -218,11 +218,12 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationAdminAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationAdminAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -236,6 +237,19 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    adminAccountId = registerOutput<String>('adminAccountId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationAdminAccount] resource.
+  OrganizationAdminAccount.reference(String urn)
+    : super(
+        'aws:guardduty/organizationAdminAccount:OrganizationAdminAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');
   }

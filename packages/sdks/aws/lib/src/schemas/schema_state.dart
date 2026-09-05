@@ -4,33 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Schema resources.
 class SchemaState {
-  /// The Amazon Resource Name (ARN) of the discoverer.
-  final pulumi.Input<String>? arn;
+  /// ARN of the discoverer.
+  final pulumi.Input<String?>? arn;
   /// The schema specification. Must be a valid Open API 3.0 spec.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The description of the schema. Maximum of 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The last modified date of the schema.
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// The name of the schema. Maximum of 385 characters consisting of lower case letters, upper case letters, ., -, _, @.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the registry in which this schema belongs.
-  final pulumi.Input<String>? registryName;
+  final pulumi.Input<String?>? registryName;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The version of the schema.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The created date of the version of the schema.
-  final pulumi.Input<String>? versionCreatedDate;
+  final pulumi.Input<String?>? versionCreatedDate;
 
   /// Creates a new [SchemaState].
-  /// [arn] The Amazon Resource Name (ARN) of the discoverer.
+  /// [arn] ARN of the discoverer.
   /// [content] The schema specification. Must be a valid Open API 3.0 spec.
   /// [description] The description of the schema. Maximum of 256 characters.
   /// [lastModified] The last modified date of the schema.

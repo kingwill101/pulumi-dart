@@ -8,23 +8,23 @@ import 'automation_rule_action_finding_fields_update_workflow.dart';
 
 class AutomationRuleActionFindingFieldsUpdate {
   /// The rule action updates the `Confidence` field of a finding.
-  final pulumi.Input<int>? confidence;
+  final pulumi.Input<int?>? confidence;
   /// The rule action updates the `Criticality` field of a finding.
-  final pulumi.Input<int>? criticality;
+  final pulumi.Input<int?>? criticality;
   /// A resource block that updates the note. Documented below.
-  final pulumi.Input<AutomationRuleActionFindingFieldsUpdateNote>? note;
+  final pulumi.Input<AutomationRuleActionFindingFieldsUpdateNote?>? note;
   /// A resource block that the rule action updates the `RelatedFindings` field of a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleActionFindingFieldsUpdateRelatedFinding>>? relatedFindings;
+  final pulumi.Input<List<AutomationRuleActionFindingFieldsUpdateRelatedFinding>?>? relatedFindings;
   /// A resource block that updates to the severity information for a finding. Documented below.
-  final pulumi.Input<AutomationRuleActionFindingFieldsUpdateSeverity>? severity;
+  final pulumi.Input<AutomationRuleActionFindingFieldsUpdateSeverity?>? severity;
   /// The rule action updates the `Types` field of a finding.
-  final pulumi.Input<List<String>>? types;
+  final pulumi.Input<List<String>?>? types;
   /// The rule action updates the `UserDefinedFields` field of a finding.
-  final pulumi.Input<Map<String, String>>? userDefinedFields;
+  final pulumi.Input<Map<String, String>?>? userDefinedFields;
   /// The rule action updates the `VerificationState` field of a finding. The allowed values are the following `UNKNOWN`, `TRUE_POSITIVE`, `FALSE_POSITIVE` and `BENIGN_POSITIVE`.
-  final pulumi.Input<String>? verificationState;
+  final pulumi.Input<String?>? verificationState;
   /// A resource block that is used to update information about the investigation into the finding. Documented below.
-  final pulumi.Input<AutomationRuleActionFindingFieldsUpdateWorkflow>? workflow;
+  final pulumi.Input<AutomationRuleActionFindingFieldsUpdateWorkflow?>? workflow;
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdate].
   /// [confidence] The rule action updates the `Confidence` field of a finding.
@@ -64,8 +64,8 @@ class AutomationRuleActionFindingFieldsUpdate {
 
   factory AutomationRuleActionFindingFieldsUpdate.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdate(
-      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      criticality: (() { final guardedValue = map['criticality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      criticality: (() { final guardedValue = map['criticality']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       note: (() { final guardedValue = map['note']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomationRuleActionFindingFieldsUpdateNote.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       relatedFindings: (() { final guardedValue = map['relatedFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationRuleActionFindingFieldsUpdateRelatedFinding>(guardedValue, (value) => AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap((value as Map).cast<String, dynamic>()))); })(),
       severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomationRuleActionFindingFieldsUpdateSeverity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

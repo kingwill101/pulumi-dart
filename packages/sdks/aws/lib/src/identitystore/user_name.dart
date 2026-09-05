@@ -6,17 +6,17 @@ class UserName {
   /// The family name of the user.
   final pulumi.Input<String> familyName;
   /// The name that is typically displayed when the name is shown for display.
-  final pulumi.Input<String>? formatted;
+  final pulumi.Input<String?>? formatted;
   /// The given name of the user.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> givenName;
   /// The honorific prefix of the user.
-  final pulumi.Input<String>? honorificPrefix;
+  final pulumi.Input<String?>? honorificPrefix;
   /// The honorific suffix of the user.
-  final pulumi.Input<String>? honorificSuffix;
+  final pulumi.Input<String?>? honorificSuffix;
   /// The middle name of the user.
-  final pulumi.Input<String>? middleName;
+  final pulumi.Input<String?>? middleName;
 
   /// Creates a new [UserName].
   /// [familyName] The family name of the user.

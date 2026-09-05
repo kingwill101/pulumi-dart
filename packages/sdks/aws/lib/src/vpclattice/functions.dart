@@ -132,6 +132,17 @@ Future<GetAuthPolicyResult> getAuthPolicy(
   return GetAuthPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthPolicyResult> getAuthPolicyOutput(
+  GetAuthPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpclattice/getAuthPolicy:getAuthPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthPolicyResult.fromMap);
+}
+
 /// Data source for managing an AWS VPC Lattice Listener.
 ///
 /// ## Example Usage
@@ -240,6 +251,17 @@ Future<GetListenerResult> getListener(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetListenerResult.fromMap(result);
+}
+
+pulumi.Output<GetListenerResult> getListenerOutput(
+  GetListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpclattice/getListener:getListener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListenerResult.fromMap);
 }
 
 /// Data source for managing an AWS VPC Lattice Resource Policy.
@@ -362,6 +384,17 @@ Future<GetResourcePolicyResult> getResourcePolicy(
   return GetResourcePolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
+  GetResourcePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpclattice/getResourcePolicy:getResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyResult.fromMap);
+}
+
 /// Data source for managing an AWS VPC Lattice Service.
 ///
 /// ## Example Usage
@@ -482,6 +515,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpclattice/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Data source for managing an AWS VPC Lattice Service Network.
 ///
 /// ## Example Usage
@@ -600,6 +644,17 @@ Future<GetServiceNetworkResult> getServiceNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
+  GetServiceNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpclattice/getServiceNetwork:getServiceNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceNetworkResult.fromMap);
 }
 
 /// Data source for listing AWS VPC Lattice Service Network Service Associations.
@@ -823,4 +878,15 @@ Future<GetServiceNetworkServiceAssociationsResult> getServiceNetworkServiceAssoc
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceNetworkServiceAssociationsResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceNetworkServiceAssociationsResult> getServiceNetworkServiceAssociationsOutput(
+  GetServiceNetworkServiceAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:vpclattice/getServiceNetworkServiceAssociations:getServiceNetworkServiceAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceNetworkServiceAssociationsResult.fromMap);
 }

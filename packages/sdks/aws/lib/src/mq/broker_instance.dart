@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerInstance {
   /// URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engineType`.
-  final pulumi.Input<String>? consoleUrl;
+  final pulumi.Input<String?>? consoleUrl;
   /// `amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
-  final pulumi.Input<List<String>>? endpoints;
+  final pulumi.Input<List<String>?>? endpoints;
   /// IP Address of the broker.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [BrokerInstance].
   /// [consoleUrl] URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engineType`.

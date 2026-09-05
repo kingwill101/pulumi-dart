@@ -914,7 +914,7 @@ class ServerlessAccessPolicy extends pulumi.CustomResource {
           'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -929,11 +929,12 @@ class ServerlessAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -947,6 +948,23 @@ class ServerlessAccessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<String>('policy');
+    policyVersion = registerOutput<String>('policyVersion');
+    region = registerOutput<String>('region');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerlessAccessPolicy] resource.
+  ServerlessAccessPolicy.reference(String urn)
+    : super(
+        'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     policy = registerOutput<String>('policy');

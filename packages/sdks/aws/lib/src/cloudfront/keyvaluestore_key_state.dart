@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering KeyvaluestoreKey resources.
 class KeyvaluestoreKeyState {
   /// Key to put.
-  final pulumi.Input<String>? key;
-  /// Amazon Resource Name (ARN) of the Key Value Store.
-  final pulumi.Input<String>? keyValueStoreArn;
+  final pulumi.Input<String?>? key;
+  /// ARN of the Key Value Store.
+  final pulumi.Input<String?>? keyValueStoreArn;
   /// Total size of the Key Value Store in bytes.
-  final pulumi.Input<int>? totalSizeInBytes;
+  final pulumi.Input<int?>? totalSizeInBytes;
   /// Value to put.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [KeyvaluestoreKeyState].
   /// [key] Key to put.
-  /// [keyValueStoreArn] Amazon Resource Name (ARN) of the Key Value Store.
+  /// [keyValueStoreArn] ARN of the Key Value Store.
   /// [totalSizeInBytes] Total size of the Key Value Store in bytes.
   /// [value] Value to put.
   const KeyvaluestoreKeyState({
@@ -38,7 +38,7 @@ class KeyvaluestoreKeyState {
     return KeyvaluestoreKeyState(
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyValueStoreArn: (() { final guardedValue = map['keyValueStoreArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalSizeInBytes: (() { final guardedValue = map['totalSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalSizeInBytes: (() { final guardedValue = map['totalSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

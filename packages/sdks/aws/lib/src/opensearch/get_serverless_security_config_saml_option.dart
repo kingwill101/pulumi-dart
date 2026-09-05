@@ -37,7 +37,7 @@ class GetServerlessSecurityConfigSamlOption {
     return GetServerlessSecurityConfigSamlOption(
       groupAttribute: pulumi.Input.fromValue(map['groupAttribute'] as String),
       metadata: pulumi.Input.fromValue(map['metadata'] as String),
-      sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
+      sessionTimeout: pulumi.Input.fromValue((map['sessionTimeout'] as num).toInt()),
       userAttribute: pulumi.Input.fromValue(map['userAttribute'] as String),
     );
   }

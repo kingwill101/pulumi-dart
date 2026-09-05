@@ -15,12 +15,12 @@ import 'location_azure_blob_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.LocationAzureBlob("example", {
-///     agentArns: [exampleAwsDatasyncAgent.arn],
-///     authenticationType: "SAS",
-///     containerUrl: "https://myaccount.blob.core.windows.net/mycontainer",
 ///     sasConfiguration: {
 ///         token: "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
 ///     },
+///     agentArns: [exampleAwsDatasyncAgent.arn],
+///     authenticationType: "SAS",
+///     containerUrl: "https://myaccount.blob.core.windows.net/mycontainer",
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'location_azure_blob_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.LocationAzureBlob("example",
-///     agent_arns=[example_aws_datasync_agent["arn"]],
-///     authentication_type="SAS",
-///     container_url="https://myaccount.blob.core.windows.net/mycontainer",
 ///     sas_configuration={
 ///         "token": "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
-///     })
+///     },
+///     agent_arns=[example_aws_datasync_agent["arn"]],
+///     authentication_type="SAS",
+///     container_url="https://myaccount.blob.core.windows.net/mycontainer")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,16 +45,16 @@ import 'location_azure_blob_state.dart';
 /// {
 ///     var example = new Aws.DataSync.LocationAzureBlob("example", new()
 ///     {
+///         SasConfiguration = new Aws.DataSync.Inputs.LocationAzureBlobSasConfigurationArgs
+///         {
+///             Token = "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
+///         },
 ///         AgentArns = new[]
 ///         {
 ///             exampleAwsDatasyncAgent.Arn,
 ///         },
 ///         AuthenticationType = "SAS",
 ///         ContainerUrl = "https://myaccount.blob.core.windows.net/mycontainer",
-///         SasConfiguration = new Aws.DataSync.Inputs.LocationAzureBlobSasConfigurationArgs
-///         {
-///             Token = "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
-///         },
 ///     });
 ///
 /// });
@@ -70,14 +70,14 @@ import 'location_azure_blob_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewLocationAzureBlob(ctx, "example", &datasync.LocationAzureBlobArgs{
+/// 			SasConfiguration: &datasync.LocationAzureBlobSasConfigurationArgs{
+/// 				Token: pulumi.String("sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D"),
+/// 			},
 /// 			AgentArns: pulumi.StringArray{
 /// 				exampleAwsDatasyncAgent.Arn,
 /// 			},
 /// 			AuthenticationType: pulumi.String("SAS"),
 /// 			ContainerUrl:       pulumi.String("https://myaccount.blob.core.windows.net/mycontainer"),
-/// 			SasConfiguration: &datasync.LocationAzureBlobSasConfigurationArgs{
-/// 				Token: pulumi.String("sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -96,12 +96,12 @@ import 'location_azure_blob_state.dart';
 /// }
 ///
 /// resource "aws_datasync_locationazureblob" "example" {
-///   agent_arns          = [exampleAwsDatasyncAgent.arn]
-///   authentication_type = "SAS"
-///   container_url       = "https://myaccount.blob.core.windows.net/mycontainer"
 ///   sas_configuration = {
 ///     token = "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D"
 ///   }
+///   agent_arns          = [exampleAwsDatasyncAgent.arn]
+///   authentication_type = "SAS"
+///   container_url       = "https://myaccount.blob.core.windows.net/mycontainer"
 /// }
 /// ```
 /// ```java
@@ -127,12 +127,12 @@ import 'location_azure_blob_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationAzureBlob("example", LocationAzureBlobArgs.builder()
-///             .agentArns(exampleAwsDatasyncAgent.arn())
-///             .authenticationType("SAS")
-///             .containerUrl("https://myaccount.blob.core.windows.net/mycontainer")
 ///             .sasConfiguration(LocationAzureBlobSasConfigurationArgs.builder()
 ///                 .token("sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D")
 ///                 .build())
+///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .authenticationType("SAS")
+///             .containerUrl("https://myaccount.blob.core.windows.net/mycontainer")
 ///             .build());
 ///
 ///     }
@@ -143,12 +143,12 @@ import 'location_azure_blob_state.dart';
 ///   example:
 ///     type: aws:datasync:LocationAzureBlob
 ///     properties:
+///       sasConfiguration:
+///         token: sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D
 ///       agentArns:
 ///         - ${exampleAwsDatasyncAgent.arn}
 ///       authenticationType: SAS
 ///       containerUrl: https://myaccount.blob.core.windows.net/mycontainer
-///       sasConfiguration:
-///         token: sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D
 /// ```
 ///
 ///
@@ -158,10 +158,10 @@ import 'location_azure_blob_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync Azure Blob location.
+/// - `arn` (String) ARN of the DataSync Azure Blob location.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.LocationAzureBlob` using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.LocationAzureBlob` using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/locationAzureBlob:LocationAzureBlob example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -171,7 +171,7 @@ class LocationAzureBlob extends pulumi.CustomResource {
   late final pulumi.Output<String?> accessTier;
   /// A list of DataSync Agent ARNs with which this location will be associated.
   late final pulumi.Output<List<String>> agentArns;
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The authentication method DataSync uses to access your Azure Blob Storage. Valid values: `SAS`.
   late final pulumi.Output<String> authenticationType;
@@ -203,10 +203,10 @@ class LocationAzureBlob extends pulumi.CustomResource {
           'aws:datasync/locationAzureBlob:LocationAzureBlob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessTier = registerOutput<String?>('accessTier');
-    agentArns = registerOutput<List<String>>('agentArns');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');
     blobType = registerOutput<String?>('blobType');
@@ -214,8 +214,8 @@ class LocationAzureBlob extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sasConfiguration = registerOutput<LocationAzureBlobSasConfiguration?>('sasConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationAzureBlobSasConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -224,11 +224,12 @@ class LocationAzureBlob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationAzureBlobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationAzureBlob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -243,7 +244,7 @@ class LocationAzureBlob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessTier = registerOutput<String?>('accessTier');
-    agentArns = registerOutput<List<String>>('agentArns');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');
     blobType = registerOutput<String?>('blobType');
@@ -251,8 +252,31 @@ class LocationAzureBlob extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sasConfiguration = registerOutput<LocationAzureBlobSasConfiguration?>('sasConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationAzureBlobSasConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [LocationAzureBlob] resource.
+  LocationAzureBlob.reference(String urn)
+    : super(
+        'aws:datasync/locationAzureBlob:LocationAzureBlob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessTier = registerOutput<String?>('accessTier');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String>('authenticationType');
+    blobType = registerOutput<String?>('blobType');
+    containerUrl = registerOutput<String>('containerUrl');
+    region = registerOutput<String>('region');
+    sasConfiguration = registerOutput<LocationAzureBlobSasConfiguration?>('sasConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationAzureBlobSasConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

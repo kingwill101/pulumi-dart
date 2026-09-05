@@ -128,11 +128,11 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> accountsWithRestoreAccesses;
   /// The username of the database within a snapshot.
   late final pulumi.Output<String> adminUsername;
-  /// The Amazon Resource Name (ARN) of the snapshot.
+  /// ARN of the snapshot.
   late final pulumi.Output<String> arn;
   /// The unique identifier of the KMS key used to encrypt the snapshot.
   late final pulumi.Output<String> kmsKeyId;
-  /// The Amazon Resource Name (ARN) of the namespace the snapshot was created from.
+  /// ARN of the namespace the snapshot was created from.
   late final pulumi.Output<String> namespaceArn;
   /// The namespace to create a snapshot for.
   late final pulumi.Output<String> namespaceName;
@@ -157,10 +157,10 @@ class Snapshot extends pulumi.CustomResource {
           'aws:redshiftserverless/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses');
-    accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses');
+    accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     adminUsername = registerOutput<String>('adminUsername');
     arn = registerOutput<String>('arn');
     kmsKeyId = registerOutput<String>('kmsKeyId');
@@ -177,11 +177,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,8 +196,30 @@ class Snapshot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses');
-    accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses');
+    accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    adminUsername = registerOutput<String>('adminUsername');
+    arn = registerOutput<String>('arn');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    namespaceArn = registerOutput<String>('namespaceArn');
+    namespaceName = registerOutput<String>('namespaceName');
+    ownerAccount = registerOutput<String>('ownerAccount');
+    region = registerOutput<String>('region');
+    retentionPeriod = registerOutput<int?>('retentionPeriod');
+    snapshotName = registerOutput<String>('snapshotName');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'aws:redshiftserverless/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     adminUsername = registerOutput<String>('adminUsername');
     arn = registerOutput<String>('arn');
     kmsKeyId = registerOutput<String>('kmsKeyId');

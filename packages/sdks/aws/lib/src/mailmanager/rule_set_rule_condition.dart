@@ -10,17 +10,17 @@ import 'rule_set_rule_condition_verdict_expression.dart';
 
 class RuleSetRuleCondition {
   /// Boolean expression evaluated against an email attribute or Add On result. See `booleanExpression` Block.
-  final pulumi.Input<RuleSetRuleConditionBooleanExpression>? booleanExpression;
+  final pulumi.Input<RuleSetRuleConditionBooleanExpression?>? booleanExpression;
   /// DMARC policy expression evaluated against the email's DMARC result. See `dmarcExpression` Block.
-  final pulumi.Input<RuleSetRuleConditionDmarcExpression>? dmarcExpression;
+  final pulumi.Input<RuleSetRuleConditionDmarcExpression?>? dmarcExpression;
   /// IP CIDR expression evaluated against the sender IP address. See `ipExpression` Block.
-  final pulumi.Input<RuleSetRuleConditionIpExpression>? ipExpression;
+  final pulumi.Input<RuleSetRuleConditionIpExpression?>? ipExpression;
   /// Numeric expression evaluated against an email attribute such as message size. See `numberExpression` Block.
-  final pulumi.Input<RuleSetRuleConditionNumberExpression>? numberExpression;
+  final pulumi.Input<RuleSetRuleConditionNumberExpression?>? numberExpression;
   /// String expression evaluated against an email attribute, MIME header, client certificate field, or Add On result. See `stringExpression` Block.
-  final pulumi.Input<RuleSetRuleConditionStringExpression>? stringExpression;
+  final pulumi.Input<RuleSetRuleConditionStringExpression?>? stringExpression;
   /// Verdict expression evaluated against email authentication results such as SPF or DKIM. See `verdictExpression` Block.
-  final pulumi.Input<RuleSetRuleConditionVerdictExpression>? verdictExpression;
+  final pulumi.Input<RuleSetRuleConditionVerdictExpression?>? verdictExpression;
 
   /// Creates a new [RuleSetRuleCondition].
   /// [booleanExpression] Boolean expression evaluated against an email attribute or Add On result. See `booleanExpression` Block.

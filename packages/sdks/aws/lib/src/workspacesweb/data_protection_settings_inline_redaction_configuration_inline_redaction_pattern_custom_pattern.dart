@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern {
   /// The keyword regex for the customer pattern.
-  final pulumi.Input<String>? keywordRegex;
+  final pulumi.Input<String?>? keywordRegex;
   /// The pattern description for the customer pattern.
-  final pulumi.Input<String>? patternDescription;
+  final pulumi.Input<String?>? patternDescription;
   /// The pattern name for the custom pattern.
   final pulumi.Input<String> patternName;
   /// The pattern regex for the customer pattern. The format must follow JavaScript regex format.

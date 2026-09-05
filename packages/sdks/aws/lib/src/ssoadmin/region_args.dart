@@ -11,12 +11,12 @@ class RegionArgs {
   /// ARN of the IAM Identity Center instance.
   final pulumi.Input<String> instanceArn;
   /// Region where Terraform calls the SSO Admin API for this resource. Defaults to the Region in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// AWS Region to add (for example, `us-east-1`). Changing this forces a new resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> regionName;
-  final pulumi.Input<RegionTimeouts>? timeouts;
+  final pulumi.Input<RegionTimeouts?>? timeouts;
 
   /// Creates a new [RegionArgs].
   /// [instanceArn] ARN of the IAM Identity Center instance.

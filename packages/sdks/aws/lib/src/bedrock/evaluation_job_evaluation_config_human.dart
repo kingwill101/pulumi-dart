@@ -7,11 +7,11 @@ import 'evaluation_job_evaluation_config_human_human_workflow_config.dart';
 
 class EvaluationJobEvaluationConfigHuman {
   /// One or more custom metrics for your human workers to use. See `evaluation_config.human.custom_metric` Block below.
-  final pulumi.Input<List<EvaluationJobEvaluationConfigHumanCustomMetric>>? customMetrics;
+  final pulumi.Input<List<EvaluationJobEvaluationConfigHumanCustomMetric>?>? customMetrics;
   /// One or more configurations for the prompt datasets and metrics to use. See `evaluation_config.human.dataset_metric_config` Block below.
   final pulumi.Input<List<EvaluationJobEvaluationConfigHumanDatasetMetricConfig>> datasetMetricConfigs;
   /// Configuration for the human workflow. See `humanWorkflowConfig` Block below.
-  final pulumi.Input<EvaluationJobEvaluationConfigHumanHumanWorkflowConfig>? humanWorkflowConfig;
+  final pulumi.Input<EvaluationJobEvaluationConfigHumanHumanWorkflowConfig?>? humanWorkflowConfig;
 
   /// Creates a new [EvaluationJobEvaluationConfigHuman].
   /// [customMetrics] One or more custom metrics for your human workers to use. See `evaluation_config.human.custom_metric` Block below.

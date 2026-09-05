@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_args.dart';
+import 'lifecycle_policy_policy_detail.dart';
 import 'lifecycle_policy_resource_selection.dart';
 import 'lifecycle_policy_state.dart';
 
@@ -32,10 +33,12 @@ import 'lifecycle_policy_state.dart';
 ///     role: example.name,
 /// });
 /// const exampleLifecyclePolicy = new aws.imagebuilder.LifecyclePolicy("example", {
-///     name: "name",
-///     description: "Example description",
-///     executionRole: example.arn,
-///     resourceType: "AMI_IMAGE",
+///     resourceSelection: {
+///         tagMap: {
+///             key1: "value1",
+///             key2: "value2",
+///         },
+///     },
 ///     policyDetails: [{
 ///         action: {
 ///             type: "DELETE",
@@ -47,12 +50,10 @@ import 'lifecycle_policy_state.dart';
 ///             unit: "YEARS",
 ///         },
 ///     }],
-///     resourceSelection: {
-///         tagMap: {
-///             key1: "value1",
-///             key2: "value2",
-///         },
-///     },
+///     name: "name",
+///     description: "Example description",
+///     executionRole: example.arn,
+///     resourceType: "AMI_IMAGE",
 /// }, {
 ///     dependsOn: [exampleRolePolicyAttachment],
 /// });
@@ -80,10 +81,12 @@ import 'lifecycle_policy_state.dart';
 ///     policy_arn=f"arn:{current_get_partition.partition}:iam::aws:policy/service-role/EC2ImageBuilderLifecycleExecutionPolicy",
 ///     role=example.name)
 /// example_lifecycle_policy = aws.imagebuilder.LifecyclePolicy("example",
-///     name="name",
-///     description="Example description",
-///     execution_role=example.arn,
-///     resource_type="AMI_IMAGE",
+///     resource_selection={
+///         "tag_map": {
+///             "key1": "value1",
+///             "key2": "value2",
+///         },
+///     },
 ///     policy_details=[{
 ///         "action": {
 ///             "type": "DELETE",
@@ -95,12 +98,10 @@ import 'lifecycle_policy_state.dart';
 ///             "unit": "YEARS",
 ///         },
 ///     }],
-///     resource_selection={
-///         "tag_map": {
-///             "key1": "value1",
-///             "key2": "value2",
-///         },
-///     },
+///     name="name",
+///     description="Example description",
+///     execution_role=example.arn,
+///     resource_type="AMI_IMAGE",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_role_policy_attachment]))
 /// ```
 /// ```csharp
@@ -145,10 +146,14 @@ import 'lifecycle_policy_state.dart';
 ///
 ///     var exampleLifecyclePolicy = new Aws.ImageBuilder.LifecyclePolicy("example", new()
 ///     {
-///         Name = "name",
-///         Description = "Example description",
-///         ExecutionRole = example.Arn,
-///         ResourceType = "AMI_IMAGE",
+///         ResourceSelection = new Aws.ImageBuilder.Inputs.LifecyclePolicyResourceSelectionArgs
+///         {
+///             TagMap =
+///             {
+///                 { "key1", "value1" },
+///                 { "key2", "value2" },
+///             },
+///         },
 ///         PolicyDetails = new[]
 ///         {
 ///             new Aws.ImageBuilder.Inputs.LifecyclePolicyPolicyDetailArgs
@@ -166,14 +171,10 @@ import 'lifecycle_policy_state.dart';
 ///                 },
 ///             },
 ///         },
-///         ResourceSelection = new Aws.ImageBuilder.Inputs.LifecyclePolicyResourceSelectionArgs
-///         {
-///             TagMap =
-///             {
-///                 { "key1", "value1" },
-///                 { "key2", "value2" },
-///             },
-///         },
+///         Name = "name",
+///         Description = "Example description",
+///         ExecutionRole = example.Arn,
+///         ResourceType = "AMI_IMAGE",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -238,10 +239,12 @@ import 'lifecycle_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = imagebuilder.NewLifecyclePolicy(ctx, "example", &imagebuilder.LifecyclePolicyArgs{
-/// 			Name:          pulumi.String("name"),
-/// 			Description:   pulumi.String("Example description"),
-/// 			ExecutionRole: example.Arn,
-/// 			ResourceType:  pulumi.String("AMI_IMAGE"),
+/// 			ResourceSelection: &imagebuilder.LifecyclePolicyResourceSelectionArgs{
+/// 				TagMap: pulumi.StringMap{
+/// 					"key1": pulumi.String("value1"),
+/// 					"key2": pulumi.String("value2"),
+/// 				},
+/// 			},
 /// 			PolicyDetails: imagebuilder.LifecyclePolicyPolicyDetailArray{
 /// 				&imagebuilder.LifecyclePolicyPolicyDetailArgs{
 /// 					Action: &imagebuilder.LifecyclePolicyPolicyDetailActionArgs{
@@ -255,12 +258,10 @@ import 'lifecycle_policy_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			ResourceSelection: &imagebuilder.LifecyclePolicyResourceSelectionArgs{
-/// 				TagMap: pulumi.StringMap{
-/// 					"key1": pulumi.String("value1"),
-/// 					"key2": pulumi.String("value2"),
-/// 				},
-/// 			},
+/// 			Name:          pulumi.String("name"),
+/// 			Description:   pulumi.String("Example description"),
+/// 			ExecutionRole: example.Arn,
+/// 			ResourceType:  pulumi.String("AMI_IMAGE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleRolePolicyAttachment,
 /// 		}))
@@ -303,11 +304,13 @@ import 'lifecycle_policy_state.dart';
 ///   role       = aws_iam_role.example.name
 /// }
 /// resource "aws_imagebuilder_lifecyclepolicy" "example" {
-///   depends_on     = [aws_iam_rolepolicyattachment.example]
-///   name           = "name"
-///   description    = "Example description"
-///   execution_role = aws_iam_role.example.arn
-///   resource_type  = "AMI_IMAGE"
+///   depends_on = [aws_iam_rolepolicyattachment.example]
+///   resource_selection = {
+///     tag_map = {
+///       "key1" = "value1"
+///       "key2" = "value2"
+///     }
+///   }
 ///   policy_details {
 ///     action = {
 ///       type = "DELETE"
@@ -319,12 +322,10 @@ import 'lifecycle_policy_state.dart';
 ///       unit            = "YEARS"
 ///     }
 ///   }
-///   resource_selection = {
-///     tag_map = {
-///       "key1" = "value1"
-///       "key2" = "value2"
-///     }
-///   }
+///   name           = "name"
+///   description    = "Example description"
+///   execution_role = aws_iam_role.example.arn
+///   resource_type  = "AMI_IMAGE"
 /// }
 /// ```
 /// ```java
@@ -342,10 +343,10 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import com.pulumi.aws.imagebuilder.LifecyclePolicy;
 /// import com.pulumi.aws.imagebuilder.LifecyclePolicyArgs;
+/// import com.pulumi.aws.imagebuilder.inputs.LifecyclePolicyResourceSelectionArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.LifecyclePolicyPolicyDetailArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.LifecyclePolicyPolicyDetailActionArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.LifecyclePolicyPolicyDetailFilterArgs;
-/// import com.pulumi.aws.imagebuilder.inputs.LifecyclePolicyResourceSelectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
@@ -388,10 +389,12 @@ import 'lifecycle_policy_state.dart';
 ///             .build());
 ///
 ///         var exampleLifecyclePolicy = new LifecyclePolicy("exampleLifecyclePolicy", LifecyclePolicyArgs.builder()
-///             .name("name")
-///             .description("Example description")
-///             .executionRole(example.arn())
-///             .resourceType("AMI_IMAGE")
+///             .resourceSelection(LifecyclePolicyResourceSelectionArgs.builder()
+///                 .tagMap(Map.ofEntries(
+///                     Map.entry("key1", "value1"),
+///                     Map.entry("key2", "value2")
+///                 ))
+///                 .build())
 ///             .policyDetails(LifecyclePolicyPolicyDetailArgs.builder()
 ///                 .action(LifecyclePolicyPolicyDetailActionArgs.builder()
 ///                     .type("DELETE")
@@ -403,12 +406,10 @@ import 'lifecycle_policy_state.dart';
 ///                     .unit("YEARS")
 ///                     .build())
 ///                 .build())
-///             .resourceSelection(LifecyclePolicyResourceSelectionArgs.builder()
-///                 .tagMap(Map.ofEntries(
-///                     Map.entry("key1", "value1"),
-///                     Map.entry("key2", "value2")
-///                 ))
-///                 .build())
+///             .name("name")
+///             .description("Example description")
+///             .executionRole(example.arn())
+///             .resourceType("AMI_IMAGE")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleRolePolicyAttachment)
 ///                 .build());
@@ -440,10 +441,10 @@ import 'lifecycle_policy_state.dart';
 ///     type: aws:imagebuilder:LifecyclePolicy
 ///     name: example
 ///     properties:
-///       name: name
-///       description: Example description
-///       executionRole: ${example.arn}
-///       resourceType: AMI_IMAGE
+///       resourceSelection:
+///         tagMap:
+///           key1: value1
+///           key2: value2
 ///       policyDetails:
 ///         - action:
 ///             type: DELETE
@@ -452,10 +453,10 @@ import 'lifecycle_policy_state.dart';
 ///             value: 6
 ///             retainAtLeast: 10
 ///             unit: YEARS
-///       resourceSelection:
-///         tagMap:
-///           key1: value1
-///           key2: value2
+///       name: name
+///       description: Example description
+///       executionRole: ${example.arn}
+///       resourceType: AMI_IMAGE
 ///     options:
 ///       dependsOn:
 ///         - ${exampleRolePolicyAttachment}
@@ -477,25 +478,25 @@ import 'lifecycle_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder lifecycle policy.
+/// - `arn` (String) ARN of the Image Builder lifecycle policy.
 ///
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.LifecyclePolicy` using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.LifecyclePolicy` using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/lifecyclePolicy:LifecyclePolicy example arn:aws:imagebuilder:us-east-1:123456789012:lifecycle-policy/example
 /// ```
 class LifecyclePolicy extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the lifecycle policy.
+  /// ARN of the lifecycle policy.
   late final pulumi.Output<String> arn;
   /// description for the lifecycle policy.
   late final pulumi.Output<String?> description;
-  /// The Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions. More information about this role can be found [`here`](https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-lifecycle-prerequisites.html#image-lifecycle-prereq-role).
+  /// ARN for the IAM role you create that grants Image Builder access to run lifecycle actions. More information about this role can be found [`here`](https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-lifecycle-prerequisites.html#image-lifecycle-prereq-role).
   late final pulumi.Output<String> executionRole;
   /// The name of the lifecycle policy to create.
   late final pulumi.Output<String> name;
   /// Configuration block with policy details. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> policyDetails;
+  late final pulumi.Output<List<LifecyclePolicyPolicyDetail>> policyDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Selection criteria for the resources that the lifecycle policy applies to. Detailed below.
@@ -523,19 +524,19 @@ class LifecyclePolicy extends pulumi.CustomResource {
           'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
-    policyDetails = registerOutput<List<Map<String, dynamic>>>('policyDetails');
+    policyDetails = registerOutput<List<LifecyclePolicyPolicyDetail>>('policyDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(guardedValue, (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceSelection = registerOutput<LifecyclePolicyResourceSelection>('resourceSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LifecyclePolicyResourceSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LifecyclePolicy] resource's state with the given [name] and [id].
@@ -543,11 +544,12 @@ class LifecyclePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LifecyclePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LifecyclePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -565,12 +567,34 @@ class LifecyclePolicy extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
-    policyDetails = registerOutput<List<Map<String, dynamic>>>('policyDetails');
+    policyDetails = registerOutput<List<LifecyclePolicyPolicyDetail>>('policyDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(guardedValue, (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceSelection = registerOutput<LifecyclePolicyResourceSelection>('resourceSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LifecyclePolicyResourceSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LifecyclePolicy] resource.
+  LifecyclePolicy.reference(String urn)
+    : super(
+        'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    executionRole = registerOutput<String>('executionRole');
+    this.name = registerOutput<String>('name');
+    policyDetails = registerOutput<List<LifecyclePolicyPolicyDetail>>('policyDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(guardedValue, (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    resourceSelection = registerOutput<LifecyclePolicyResourceSelection>('resourceSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LifecyclePolicyResourceSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

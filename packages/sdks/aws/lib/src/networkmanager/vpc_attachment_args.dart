@@ -11,13 +11,13 @@ class VpcAttachmentArgs {
   /// ID of a core network for the VPC attachment.
   final pulumi.Input<String> coreNetworkId;
   /// Options for the VPC attachment. See below.
-  final pulumi.Input<VpcAttachmentOptions>? options;
+  final pulumi.Input<VpcAttachmentOptions?>? options;
   /// The routing policy label to apply to the VPC attachment for traffic routing decisions. Maximum length of 256 characters.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
   /// Subnet ARNs of the VPC attachment.
   final pulumi.Input<List<String>> subnetArns;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ARN of the VPC.
   ///
   /// The following arguments are optional:

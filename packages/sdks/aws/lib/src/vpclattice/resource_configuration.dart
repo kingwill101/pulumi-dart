@@ -16,16 +16,16 @@ import 'resource_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.ResourceConfiguration("example", {
-///     name: "Example",
-///     resourceGatewayIdentifier: exampleAwsVpclatticeResourceGateway.id,
-///     portRanges: ["80"],
-///     protocol: "TCP",
 ///     resourceConfigurationDefinition: {
 ///         dnsResource: {
 ///             domainName: "example.com",
 ///             ipAddressType: "IPV4",
 ///         },
 ///     },
+///     name: "Example",
+///     resourceGatewayIdentifier: exampleAwsVpclatticeResourceGateway.id,
+///     portRanges: ["80"],
+///     protocol: "TCP",
 ///     tags: {
 ///         Environment: "Example",
 ///     },
@@ -36,16 +36,16 @@ import 'resource_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.ResourceConfiguration("example",
-///     name="Example",
-///     resource_gateway_identifier=example_aws_vpclattice_resource_gateway["id"],
-///     port_ranges=["80"],
-///     protocol="TCP",
 ///     resource_configuration_definition={
 ///         "dns_resource": {
 ///             "domain_name": "example.com",
 ///             "ip_address_type": "IPV4",
 ///         },
 ///     },
+///     name="Example",
+///     resource_gateway_identifier=example_aws_vpclattice_resource_gateway["id"],
+///     port_ranges=["80"],
+///     protocol="TCP",
 ///     tags={
 ///         "Environment": "Example",
 ///     })
@@ -60,13 +60,6 @@ import 'resource_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.VpcLattice.ResourceConfiguration("example", new()
 ///     {
-///         Name = "Example",
-///         ResourceGatewayIdentifier = exampleAwsVpclatticeResourceGateway.Id,
-///         PortRanges = new[]
-///         {
-///             "80",
-///         },
-///         Protocol = "TCP",
 ///         ResourceConfigurationDefinition = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArgs
 ///         {
 ///             DnsResource = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs
@@ -75,6 +68,13 @@ import 'resource_configuration_timeouts.dart';
 ///                 IpAddressType = "IPV4",
 ///             },
 ///         },
+///         Name = "Example",
+///         ResourceGatewayIdentifier = exampleAwsVpclatticeResourceGateway.Id,
+///         PortRanges = new[]
+///         {
+///             "80",
+///         },
+///         Protocol = "TCP",
 ///         Tags =
 ///         {
 ///             { "Environment", "Example" },
@@ -94,18 +94,18 @@ import 'resource_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewResourceConfiguration(ctx, "example", &vpclattice.ResourceConfigurationArgs{
-/// 			Name:                      pulumi.String("Example"),
-/// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
-/// 			PortRanges: pulumi.StringArray{
-/// 				pulumi.String("80"),
-/// 			},
-/// 			Protocol: pulumi.String("TCP"),
 /// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
 /// 				DnsResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs{
 /// 					DomainName:    pulumi.String("example.com"),
 /// 					IpAddressType: pulumi.String("IPV4"),
 /// 				},
 /// 			},
+/// 			Name:                      pulumi.String("Example"),
+/// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
+/// 			PortRanges: pulumi.StringArray{
+/// 				pulumi.String("80"),
+/// 			},
+/// 			Protocol: pulumi.String("TCP"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Example"),
 /// 			},
@@ -127,16 +127,16 @@ import 'resource_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   name                        = "Example"
-///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
-///   port_ranges                 = ["80"]
-///   protocol                    = "TCP"
 ///   resource_configuration_definition = {
 ///     dns_resource = {
 ///       domain_name     = "example.com"
 ///       ip_address_type = "IPV4"
 ///     }
 ///   }
+///   name                        = "Example"
+///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
+///   port_ranges                 = ["80"]
+///   protocol                    = "TCP"
 ///   tags = {
 ///     "Environment" = "Example"
 ///   }
@@ -166,16 +166,16 @@ import 'resource_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceConfiguration("example", ResourceConfigurationArgs.builder()
-///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
-///             .portRanges("80")
-///             .protocol("TCP")
 ///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
 ///                 .dnsResource(ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs.builder()
 ///                     .domainName("example.com")
 ///                     .ipAddressType("IPV4")
 ///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .portRanges("80")
+///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
 ///             .build());
 ///
@@ -187,15 +187,15 @@ import 'resource_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:vpclattice:ResourceConfiguration
 ///     properties:
+///       resourceConfigurationDefinition:
+///         dnsResource:
+///           domainName: example.com
+///           ipAddressType: IPV4
 ///       name: Example
 ///       resourceGatewayIdentifier: ${exampleAwsVpclatticeResourceGateway.id}
 ///       portRanges:
 ///         - '80'
 ///       protocol: TCP
-///       resourceConfigurationDefinition:
-///         dnsResource:
-///           domainName: example.com
-///           ipAddressType: IPV4
 ///       tags:
 ///         Environment: Example
 /// ```
@@ -209,15 +209,15 @@ import 'resource_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.ResourceConfiguration("example", {
-///     name: "Example",
-///     resourceGatewayIdentifier: exampleAwsVpclatticeResourceGateway.id,
-///     portRanges: ["80"],
-///     protocol: "TCP",
 ///     resourceConfigurationDefinition: {
 ///         ipResource: {
 ///             ipAddress: "10.0.0.1",
 ///         },
 ///     },
+///     name: "Example",
+///     resourceGatewayIdentifier: exampleAwsVpclatticeResourceGateway.id,
+///     portRanges: ["80"],
+///     protocol: "TCP",
 ///     tags: {
 ///         Environment: "Example",
 ///     },
@@ -228,15 +228,15 @@ import 'resource_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.ResourceConfiguration("example",
-///     name="Example",
-///     resource_gateway_identifier=example_aws_vpclattice_resource_gateway["id"],
-///     port_ranges=["80"],
-///     protocol="TCP",
 ///     resource_configuration_definition={
 ///         "ip_resource": {
 ///             "ip_address": "10.0.0.1",
 ///         },
 ///     },
+///     name="Example",
+///     resource_gateway_identifier=example_aws_vpclattice_resource_gateway["id"],
+///     port_ranges=["80"],
+///     protocol="TCP",
 ///     tags={
 ///         "Environment": "Example",
 ///     })
@@ -251,13 +251,6 @@ import 'resource_configuration_timeouts.dart';
 /// {
 ///     var example = new Aws.VpcLattice.ResourceConfiguration("example", new()
 ///     {
-///         Name = "Example",
-///         ResourceGatewayIdentifier = exampleAwsVpclatticeResourceGateway.Id,
-///         PortRanges = new[]
-///         {
-///             "80",
-///         },
-///         Protocol = "TCP",
 ///         ResourceConfigurationDefinition = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArgs
 ///         {
 ///             IpResource = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionIpResourceArgs
@@ -265,6 +258,13 @@ import 'resource_configuration_timeouts.dart';
 ///                 IpAddress = "10.0.0.1",
 ///             },
 ///         },
+///         Name = "Example",
+///         ResourceGatewayIdentifier = exampleAwsVpclatticeResourceGateway.Id,
+///         PortRanges = new[]
+///         {
+///             "80",
+///         },
+///         Protocol = "TCP",
 ///         Tags =
 ///         {
 ///             { "Environment", "Example" },
@@ -284,17 +284,17 @@ import 'resource_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewResourceConfiguration(ctx, "example", &vpclattice.ResourceConfigurationArgs{
+/// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
+/// 				IpResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionIpResourceArgs{
+/// 					IpAddress: pulumi.String("10.0.0.1"),
+/// 				},
+/// 			},
 /// 			Name:                      pulumi.String("Example"),
 /// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
 /// 			PortRanges: pulumi.StringArray{
 /// 				pulumi.String("80"),
 /// 			},
 /// 			Protocol: pulumi.String("TCP"),
-/// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
-/// 				IpResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionIpResourceArgs{
-/// 					IpAddress: pulumi.String("10.0.0.1"),
-/// 				},
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Example"),
 /// 			},
@@ -316,15 +316,15 @@ import 'resource_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   name                        = "Example"
-///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
-///   port_ranges                 = ["80"]
-///   protocol                    = "TCP"
 ///   resource_configuration_definition = {
 ///     ip_resource = {
 ///       ip_address = "10.0.0.1"
 ///     }
 ///   }
+///   name                        = "Example"
+///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
+///   port_ranges                 = ["80"]
+///   protocol                    = "TCP"
 ///   tags = {
 ///     "Environment" = "Example"
 ///   }
@@ -354,15 +354,15 @@ import 'resource_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceConfiguration("example", ResourceConfigurationArgs.builder()
-///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
-///             .portRanges("80")
-///             .protocol("TCP")
 ///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
 ///                 .ipResource(ResourceConfigurationResourceConfigurationDefinitionIpResourceArgs.builder()
 ///                     .ipAddress("10.0.0.1")
 ///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .portRanges("80")
+///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
 ///             .build());
 ///
@@ -374,14 +374,14 @@ import 'resource_configuration_timeouts.dart';
 ///   example:
 ///     type: aws:vpclattice:ResourceConfiguration
 ///     properties:
+///       resourceConfigurationDefinition:
+///         ipResource:
+///           ipAddress: 10.0.0.1
 ///       name: Example
 ///       resourceGatewayIdentifier: ${exampleAwsVpclatticeResourceGateway.id}
 ///       portRanges:
 ///         - '80'
 ///       protocol: TCP
-///       resourceConfigurationDefinition:
-///         ipResource:
-///           ipAddress: 10.0.0.1
 ///       tags:
 ///         Environment: Example
 /// ```
@@ -396,18 +396,18 @@ import 'resource_configuration_timeouts.dart';
 ///
 /// const example = new aws.vpclattice.DomainVerification("example", {domainName: "example.com"});
 /// const exampleResourceConfiguration = new aws.vpclattice.ResourceConfiguration("example", {
-///     name: "Example",
-///     resourceGatewayIdentifier: exampleAwsVpclatticeResourceGateway.id,
-///     customDomainName: "custom.example.com",
-///     domainVerificationId: example.id,
-///     portRanges: ["443"],
-///     protocol: "TCP",
 ///     resourceConfigurationDefinition: {
 ///         dnsResource: {
 ///             domainName: "test.example.com",
 ///             ipAddressType: "IPV4",
 ///         },
 ///     },
+///     name: "Example",
+///     resourceGatewayIdentifier: exampleAwsVpclatticeResourceGateway.id,
+///     customDomainName: "custom.example.com",
+///     domainVerificationId: example.id,
+///     portRanges: ["443"],
+///     protocol: "TCP",
 ///     tags: {
 ///         Environment: "Example",
 ///     },
@@ -419,18 +419,18 @@ import 'resource_configuration_timeouts.dart';
 ///
 /// example = aws.vpclattice.DomainVerification("example", domain_name="example.com")
 /// example_resource_configuration = aws.vpclattice.ResourceConfiguration("example",
-///     name="Example",
-///     resource_gateway_identifier=example_aws_vpclattice_resource_gateway["id"],
-///     custom_domain_name="custom.example.com",
-///     domain_verification_id=example.id,
-///     port_ranges=["443"],
-///     protocol="TCP",
 ///     resource_configuration_definition={
 ///         "dns_resource": {
 ///             "domain_name": "test.example.com",
 ///             "ip_address_type": "IPV4",
 ///         },
 ///     },
+///     name="Example",
+///     resource_gateway_identifier=example_aws_vpclattice_resource_gateway["id"],
+///     custom_domain_name="custom.example.com",
+///     domain_verification_id=example.id,
+///     port_ranges=["443"],
+///     protocol="TCP",
 ///     tags={
 ///         "Environment": "Example",
 ///     })
@@ -450,6 +450,14 @@ import 'resource_configuration_timeouts.dart';
 ///
 ///     var exampleResourceConfiguration = new Aws.VpcLattice.ResourceConfiguration("example", new()
 ///     {
+///         ResourceConfigurationDefinition = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArgs
+///         {
+///             DnsResource = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs
+///             {
+///                 DomainName = "test.example.com",
+///                 IpAddressType = "IPV4",
+///             },
+///         },
 ///         Name = "Example",
 ///         ResourceGatewayIdentifier = exampleAwsVpclatticeResourceGateway.Id,
 ///         CustomDomainName = "custom.example.com",
@@ -459,14 +467,6 @@ import 'resource_configuration_timeouts.dart';
 ///             "443",
 ///         },
 ///         Protocol = "TCP",
-///         ResourceConfigurationDefinition = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArgs
-///         {
-///             DnsResource = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs
-///             {
-///                 DomainName = "test.example.com",
-///                 IpAddressType = "IPV4",
-///             },
-///         },
 ///         Tags =
 ///         {
 ///             { "Environment", "Example" },
@@ -492,6 +492,12 @@ import 'resource_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpclattice.NewResourceConfiguration(ctx, "example", &vpclattice.ResourceConfigurationArgs{
+/// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
+/// 				DnsResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs{
+/// 					DomainName:    pulumi.String("test.example.com"),
+/// 					IpAddressType: pulumi.String("IPV4"),
+/// 				},
+/// 			},
 /// 			Name:                      pulumi.String("Example"),
 /// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
 /// 			CustomDomainName:          pulumi.String("custom.example.com"),
@@ -500,12 +506,6 @@ import 'resource_configuration_timeouts.dart';
 /// 				pulumi.String("443"),
 /// 			},
 /// 			Protocol: pulumi.String("TCP"),
-/// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
-/// 				DnsResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs{
-/// 					DomainName:    pulumi.String("test.example.com"),
-/// 					IpAddressType: pulumi.String("IPV4"),
-/// 				},
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Example"),
 /// 			},
@@ -530,18 +530,18 @@ import 'resource_configuration_timeouts.dart';
 ///   domain_name = "example.com"
 /// }
 /// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   name                        = "Example"
-///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
-///   custom_domain_name          = "custom.example.com"
-///   domain_verification_id      = aws_vpclattice_domainverification.example.id
-///   port_ranges                 = ["443"]
-///   protocol                    = "TCP"
 ///   resource_configuration_definition = {
 ///     dns_resource = {
 ///       domain_name     = "test.example.com"
 ///       ip_address_type = "IPV4"
 ///     }
 ///   }
+///   name                        = "Example"
+///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
+///   custom_domain_name          = "custom.example.com"
+///   domain_verification_id      = aws_vpclattice_domainverification.example.id
+///   port_ranges                 = ["443"]
+///   protocol                    = "TCP"
 ///   tags = {
 ///     "Environment" = "Example"
 ///   }
@@ -577,18 +577,18 @@ import 'resource_configuration_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleResourceConfiguration = new ResourceConfiguration("exampleResourceConfiguration", ResourceConfigurationArgs.builder()
-///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
-///             .customDomainName("custom.example.com")
-///             .domainVerificationId(example.id())
-///             .portRanges("443")
-///             .protocol("TCP")
 ///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
 ///                 .dnsResource(ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs.builder()
 ///                     .domainName("test.example.com")
 ///                     .ipAddressType("IPV4")
 ///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .customDomainName("custom.example.com")
+///             .domainVerificationId(example.id())
+///             .portRanges("443")
+///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
 ///             .build());
 ///
@@ -605,6 +605,10 @@ import 'resource_configuration_timeouts.dart';
 ///     type: aws:vpclattice:ResourceConfiguration
 ///     name: example
 ///     properties:
+///       resourceConfigurationDefinition:
+///         dnsResource:
+///           domainName: test.example.com
+///           ipAddressType: IPV4
 ///       name: Example
 ///       resourceGatewayIdentifier: ${exampleAwsVpclatticeResourceGateway.id}
 ///       customDomainName: custom.example.com
@@ -612,10 +616,6 @@ import 'resource_configuration_timeouts.dart';
 ///       portRanges:
 ///         - '443'
 ///       protocol: TCP
-///       resourceConfigurationDefinition:
-///         dnsResource:
-///           domainName: test.example.com
-///           ipAddressType: IPV4
 ///       tags:
 ///         Environment: Example
 /// ```
@@ -629,14 +629,14 @@ import 'resource_configuration_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.vpclattice.ResourceConfiguration("test", {
-///     name: "Example",
-///     resourceGatewayIdentifier: testAwsVpclatticeResourceGateway.id,
-///     type: "ARN",
 ///     resourceConfigurationDefinition: {
 ///         arnResource: {
 ///             arn: example.arn,
 ///         },
 ///     },
+///     name: "Example",
+///     resourceGatewayIdentifier: testAwsVpclatticeResourceGateway.id,
+///     type: "ARN",
 /// });
 /// ```
 /// ```python
@@ -644,14 +644,14 @@ import 'resource_configuration_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.vpclattice.ResourceConfiguration("test",
-///     name="Example",
-///     resource_gateway_identifier=test_aws_vpclattice_resource_gateway["id"],
-///     type="ARN",
 ///     resource_configuration_definition={
 ///         "arn_resource": {
 ///             "arn": example["arn"],
 ///         },
-///     })
+///     },
+///     name="Example",
+///     resource_gateway_identifier=test_aws_vpclattice_resource_gateway["id"],
+///     type="ARN")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -663,9 +663,6 @@ import 'resource_configuration_timeouts.dart';
 /// {
 ///     var test = new Aws.VpcLattice.ResourceConfiguration("test", new()
 ///     {
-///         Name = "Example",
-///         ResourceGatewayIdentifier = testAwsVpclatticeResourceGateway.Id,
-///         Type = "ARN",
 ///         ResourceConfigurationDefinition = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArgs
 ///         {
 ///             ArnResource = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArnResourceArgs
@@ -673,6 +670,9 @@ import 'resource_configuration_timeouts.dart';
 ///                 Arn = example.Arn,
 ///             },
 ///         },
+///         Name = "Example",
+///         ResourceGatewayIdentifier = testAwsVpclatticeResourceGateway.Id,
+///         Type = "ARN",
 ///     });
 ///
 /// });
@@ -688,14 +688,14 @@ import 'resource_configuration_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewResourceConfiguration(ctx, "test", &vpclattice.ResourceConfigurationArgs{
-/// 			Name:                      pulumi.String("Example"),
-/// 			ResourceGatewayIdentifier: pulumi.Any(testAwsVpclatticeResourceGateway.Id),
-/// 			Type:                      pulumi.String("ARN"),
 /// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
 /// 				ArnResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArnResourceArgs{
 /// 					Arn: pulumi.Any(example.Arn),
 /// 				},
 /// 			},
+/// 			Name:                      pulumi.String("Example"),
+/// 			ResourceGatewayIdentifier: pulumi.Any(testAwsVpclatticeResourceGateway.Id),
+/// 			Type:                      pulumi.String("ARN"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -714,14 +714,14 @@ import 'resource_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_vpclattice_resourceconfiguration" "test" {
-///   name                        = "Example"
-///   resource_gateway_identifier = testAwsVpclatticeResourceGateway.id
-///   type                        = "ARN"
 ///   resource_configuration_definition = {
 ///     arn_resource = {
 ///       arn = example.arn
 ///     }
 ///   }
+///   name                        = "Example"
+///   resource_gateway_identifier = testAwsVpclatticeResourceGateway.id
+///   type                        = "ARN"
 /// }
 /// ```
 /// ```java
@@ -748,14 +748,14 @@ import 'resource_configuration_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ResourceConfiguration("test", ResourceConfigurationArgs.builder()
-///             .name("Example")
-///             .resourceGatewayIdentifier(testAwsVpclatticeResourceGateway.id())
-///             .type("ARN")
 ///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
 ///                 .arnResource(ResourceConfigurationResourceConfigurationDefinitionArnResourceArgs.builder()
 ///                     .arn(example.arn())
 ///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .resourceGatewayIdentifier(testAwsVpclatticeResourceGateway.id())
+///             .type("ARN")
 ///             .build());
 ///
 ///     }
@@ -766,12 +766,12 @@ import 'resource_configuration_timeouts.dart';
 ///   test:
 ///     type: aws:vpclattice:ResourceConfiguration
 ///     properties:
-///       name: Example
-///       resourceGatewayIdentifier: ${testAwsVpclatticeResourceGateway.id}
-///       type: ARN
 ///       resourceConfigurationDefinition:
 ///         arnResource:
 ///           arn: ${example.arn}
+///       name: Example
+///       resourceGatewayIdentifier: ${testAwsVpclatticeResourceGateway.id}
+///       type: ARN
 /// ```
 ///
 ///
@@ -831,7 +831,7 @@ class ResourceConfiguration extends pulumi.CustomResource {
           'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowAssociationToShareableServiceNetwork = registerOutput<bool>('allowAssociationToShareableServiceNetwork');
     arn = registerOutput<String>('arn');
@@ -840,14 +840,14 @@ class ResourceConfiguration extends pulumi.CustomResource {
     domainVerificationId = registerOutput<String>('domainVerificationId');
     domainVerificationStatus = registerOutput<String>('domainVerificationStatus');
     this.name = registerOutput<String>('name');
-    portRanges = registerOutput<List<String>>('portRanges');
+    portRanges = registerOutput<List<String>>('portRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     resourceConfigurationDefinition = registerOutput<ResourceConfigurationResourceConfigurationDefinition?>('resourceConfigurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationResourceConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceConfigurationGroupId = registerOutput<String?>('resourceConfigurationGroupId');
     resourceGatewayIdentifier = registerOutput<String>('resourceGatewayIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
@@ -857,11 +857,12 @@ class ResourceConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -882,14 +883,42 @@ class ResourceConfiguration extends pulumi.CustomResource {
     domainVerificationId = registerOutput<String>('domainVerificationId');
     domainVerificationStatus = registerOutput<String>('domainVerificationStatus');
     this.name = registerOutput<String>('name');
-    portRanges = registerOutput<List<String>>('portRanges');
+    portRanges = registerOutput<List<String>>('portRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     resourceConfigurationDefinition = registerOutput<ResourceConfigurationResourceConfigurationDefinition?>('resourceConfigurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationResourceConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceConfigurationGroupId = registerOutput<String?>('resourceConfigurationGroupId');
     resourceGatewayIdentifier = registerOutput<String>('resourceGatewayIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ResourceConfiguration] resource.
+  ResourceConfiguration.reference(String urn)
+    : super(
+        'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowAssociationToShareableServiceNetwork = registerOutput<bool>('allowAssociationToShareableServiceNetwork');
+    arn = registerOutput<String>('arn');
+    customDomainName = registerOutput<String?>('customDomainName');
+    domainVerificationArn = registerOutput<String>('domainVerificationArn');
+    domainVerificationId = registerOutput<String>('domainVerificationId');
+    domainVerificationStatus = registerOutput<String>('domainVerificationStatus');
+    this.name = registerOutput<String>('name');
+    portRanges = registerOutput<List<String>>('portRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    resourceConfigurationDefinition = registerOutput<ResourceConfigurationResourceConfigurationDefinition?>('resourceConfigurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationResourceConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceConfigurationGroupId = registerOutput<String?>('resourceConfigurationGroupId');
+    resourceGatewayIdentifier = registerOutput<String>('resourceGatewayIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

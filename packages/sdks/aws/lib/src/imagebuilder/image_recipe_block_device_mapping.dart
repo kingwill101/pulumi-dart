@@ -5,13 +5,13 @@ import 'image_recipe_block_device_mapping_ebs.dart';
 
 class ImageRecipeBlockDeviceMapping {
   /// Name of the device. For example, `/dev/sda` or `/dev/xvdb`.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Configuration block with Elastic Block Storage (EBS) block device mapping settings. Detailed below.
-  final pulumi.Input<ImageRecipeBlockDeviceMappingEbs>? ebs;
+  final pulumi.Input<ImageRecipeBlockDeviceMappingEbs?>? ebs;
   /// Set to `true` to remove a mapping from the parent image.
-  final pulumi.Input<bool>? noDevice;
+  final pulumi.Input<bool?>? noDevice;
   /// Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
-  final pulumi.Input<String>? virtualName;
+  final pulumi.Input<String?>? virtualName;
 
   /// Creates a new [ImageRecipeBlockDeviceMapping].
   /// [deviceName] Name of the device. For example, `/dev/sda` or `/dev/xvdb`.

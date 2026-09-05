@@ -129,7 +129,7 @@ import 'voice_connector_state.dart';
 /// $ pulumi import aws:chime/voiceConnector:VoiceConnector test example
 /// ```
 class VoiceConnector extends pulumi.CustomResource {
-  /// ARN (Amazon Resource Name) of the Amazon Chime Voice Connector.
+  /// ARN of the Amazon Chime Voice Connector.
   late final pulumi.Output<String> arn;
   /// The AWS Region in which the Amazon Chime Voice Connector is created. Default value: `us-east-1`
   late final pulumi.Output<String> awsRegion;
@@ -160,7 +160,7 @@ class VoiceConnector extends pulumi.CustomResource {
           'aws:chime/voiceConnector:VoiceConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsRegion = registerOutput<String>('awsRegion');
@@ -168,8 +168,8 @@ class VoiceConnector extends pulumi.CustomResource {
     outboundHostName = registerOutput<String>('outboundHostName');
     region = registerOutput<String>('region');
     requireEncryption = registerOutput<bool>('requireEncryption');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VoiceConnector] resource's state with the given [name] and [id].
@@ -177,11 +177,12 @@ class VoiceConnector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,7 +202,26 @@ class VoiceConnector extends pulumi.CustomResource {
     outboundHostName = registerOutput<String>('outboundHostName');
     region = registerOutput<String>('region');
     requireEncryption = registerOutput<bool>('requireEncryption');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnector] resource.
+  VoiceConnector.reference(String urn)
+    : super(
+        'aws:chime/voiceConnector:VoiceConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsRegion = registerOutput<String>('awsRegion');
+    this.name = registerOutput<String>('name');
+    outboundHostName = registerOutput<String>('outboundHostName');
+    region = registerOutput<String>('region');
+    requireEncryption = registerOutput<bool>('requireEncryption');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

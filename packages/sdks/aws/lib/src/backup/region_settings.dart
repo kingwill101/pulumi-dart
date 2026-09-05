@@ -310,11 +310,11 @@ class RegionSettings extends pulumi.CustomResource {
           'aws:backup/regionSettings:RegionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
-    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference');
-    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference');
+    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
   }
 
   /// Gets an existing [RegionSettings] resource's state with the given [name] and [id].
@@ -322,11 +322,12 @@ class RegionSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,7 +342,21 @@ class RegionSettings extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     region = registerOutput<String>('region');
-    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference');
-    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference');
+    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+  }
+
+  /// Creates a typed reference to an existing [RegionSettings] resource.
+  RegionSettings.reference(String urn)
+    : super(
+        'aws:backup/regionSettings:RegionSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
   }
 }

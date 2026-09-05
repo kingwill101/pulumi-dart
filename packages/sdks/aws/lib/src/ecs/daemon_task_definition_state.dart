@@ -7,33 +7,33 @@ import 'daemon_task_definition_volume.dart';
 /// Input properties used for looking up and filtering DaemonTaskDefinition resources.
 class DaemonTaskDefinitionState {
   /// Full ARN of the Daemon Task Definition (including both `family` and `revision`).
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// One or more container definition blocks. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinition>>? containerDefinitions;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinition>?>? containerDefinitions;
   /// Number of CPU units used by the task.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Unique name for your daemon task definition.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Amount (in MiB) of memory used by the task.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Revision of the task in a particular family.
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
   /// Status of the daemon task definition.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  final pulumi.Input<String>? taskRoleArn;
+  final pulumi.Input<String?>? taskRoleArn;
   /// Repeatable configuration block for volumes that containers in your task may use. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionVolume>>? volumes;
+  final pulumi.Input<List<DaemonTaskDefinitionVolume>?>? volumes;
 
   /// Creates a new [DaemonTaskDefinitionState].
   /// [arn] Full ARN of the Daemon Task Definition (including both `family` and `revision`).
@@ -92,7 +92,7 @@ class DaemonTaskDefinitionState {
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

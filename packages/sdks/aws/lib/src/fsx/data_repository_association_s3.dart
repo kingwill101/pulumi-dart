@@ -6,9 +6,9 @@ import 'data_repository_association_s3_auto_import_policy.dart';
 
 class DataRepositoryAssociationS3 {
   /// Type of updated objects that are automatically exported from your file system to the linked S3 bucket. See the `autoExportPolicy` Block below.
-  final pulumi.Input<DataRepositoryAssociationS3AutoExportPolicy>? autoExportPolicy;
+  final pulumi.Input<DataRepositoryAssociationS3AutoExportPolicy?>? autoExportPolicy;
   /// Type of updated objects that are automatically imported from the linked S3 bucket to your file system. See the `autoImportPolicy` Block below.
-  final pulumi.Input<DataRepositoryAssociationS3AutoImportPolicy>? autoImportPolicy;
+  final pulumi.Input<DataRepositoryAssociationS3AutoImportPolicy?>? autoImportPolicy;
 
   /// Creates a new [DataRepositoryAssociationS3].
   /// [autoExportPolicy] Type of updated objects that are automatically exported from your file system to the linked S3 bucket. See the `autoExportPolicy` Block below.

@@ -7,11 +7,11 @@ import 'workgroup_configuration_monitoring_configuration_s3_logging_configuratio
 
 class WorkgroupConfigurationMonitoringConfiguration {
   /// Configuration block for delivering logs to Amazon CloudWatch log groups. See CloudWatch Logging Configuration below.
-  final pulumi.Input<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration>? cloudWatchLoggingConfiguration;
+  final pulumi.Input<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration?>? cloudWatchLoggingConfiguration;
   /// Configuration block for managed log persistence. See Managed Logging Configuration below.
-  final pulumi.Input<WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration>? managedLoggingConfiguration;
+  final pulumi.Input<WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration?>? managedLoggingConfiguration;
   /// Configuration block for delivering logs to Amazon S3 buckets. See S3 Logging Configuration below.
-  final pulumi.Input<WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration>? s3LoggingConfiguration;
+  final pulumi.Input<WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration?>? s3LoggingConfiguration;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfiguration].
   /// [cloudWatchLoggingConfiguration] Configuration block for delivering logs to Amazon CloudWatch log groups. See CloudWatch Logging Configuration below.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudwatch_query_definition_query_definition_args_doc}
 class QueryDefinitionArgs {
   /// Specific log groups to use with the query.
-  final pulumi.Input<List<String>>? logGroupNames;
+  final pulumi.Input<List<String>?>? logGroupNames;
   /// The name of the query.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   final pulumi.Input<String> queryString;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [QueryDefinitionArgs].
   /// [logGroupNames] Specific log groups to use with the query.

@@ -32,7 +32,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf(
       containerPath: pulumi.Input.fromValue(map['containerPath'] as String),
       mountOptions: pulumi.Input.fromValue((map['mountOptions'] as List).cast<String>()),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

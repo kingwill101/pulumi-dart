@@ -154,7 +154,7 @@ class CustomerGateway extends pulumi.CustomResource {
   late final pulumi.Output<String?> bgpAsn;
   /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `2147483648` to `4294967295` Conflicts with `bgpAsn`.
   late final pulumi.Output<String?> bgpAsnExtended;
-  /// The Amazon Resource Name (ARN) for the customer gateway certificate.
+  /// ARN for the customer gateway certificate.
   late final pulumi.Output<String?> certificateArn;
   /// A name for the customer gateway device.
   late final pulumi.Output<String?> deviceName;
@@ -182,7 +182,7 @@ class CustomerGateway extends pulumi.CustomResource {
           'aws:ec2/customerGateway:CustomerGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bgpAsn = registerOutput<String?>('bgpAsn');
@@ -191,8 +191,8 @@ class CustomerGateway extends pulumi.CustomResource {
     deviceName = registerOutput<String?>('deviceName');
     ipAddress = registerOutput<String?>('ipAddress');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -201,11 +201,12 @@ class CustomerGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomerGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomerGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,8 +227,29 @@ class CustomerGateway extends pulumi.CustomResource {
     deviceName = registerOutput<String?>('deviceName');
     ipAddress = registerOutput<String?>('ipAddress');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CustomerGateway] resource.
+  CustomerGateway.reference(String urn)
+    : super(
+        'aws:ec2/customerGateway:CustomerGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bgpAsn = registerOutput<String?>('bgpAsn');
+    bgpAsnExtended = registerOutput<String?>('bgpAsnExtended');
+    certificateArn = registerOutput<String?>('certificateArn');
+    deviceName = registerOutput<String?>('deviceName');
+    ipAddress = registerOutput<String?>('ipAddress');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

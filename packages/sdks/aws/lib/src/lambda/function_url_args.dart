@@ -11,17 +11,17 @@ class FunctionUrlArgs {
   /// Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.
   final pulumi.Input<String> authorizationType;
   /// Cross-origin resource sharing (CORS) settings for the function URL. See below.
-  final pulumi.Input<FunctionUrlCors>? cors;
+  final pulumi.Input<FunctionUrlCors?>? cors;
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> functionName;
   /// How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
-  final pulumi.Input<String>? invokeMode;
+  final pulumi.Input<String?>? invokeMode;
   /// Alias name or `$LATEST`.
-  final pulumi.Input<String>? qualifier;
+  final pulumi.Input<String?>? qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FunctionUrlArgs].
   /// [authorizationType] Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.

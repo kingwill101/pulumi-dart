@@ -315,15 +315,15 @@ import 'queue_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.connect.Queue("test", {
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name: "Example Name",
-///     description: "Example Description",
-///     hoursOfOperationId: "12345678-1234-1234-1234-123456789012",
 ///     outboundCallerConfig: {
 ///         outboundCallerIdName: "example",
 ///         outboundCallerIdNumberId: "12345678-abcd-1234-abcd-123456789012",
 ///         outboundFlowId: "87654321-defg-1234-defg-987654321234",
 ///     },
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name: "Example Name",
+///     description: "Example Description",
+///     hoursOfOperationId: "12345678-1234-1234-1234-123456789012",
 ///     tags: {
 ///         Name: "Example Queue with Outbound Caller Config",
 ///     },
@@ -334,15 +334,15 @@ import 'queue_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.connect.Queue("test",
-///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name="Example Name",
-///     description="Example Description",
-///     hours_of_operation_id="12345678-1234-1234-1234-123456789012",
 ///     outbound_caller_config={
 ///         "outbound_caller_id_name": "example",
 ///         "outbound_caller_id_number_id": "12345678-abcd-1234-abcd-123456789012",
 ///         "outbound_flow_id": "87654321-defg-1234-defg-987654321234",
 ///     },
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name="Example Name",
+///     description="Example Description",
+///     hours_of_operation_id="12345678-1234-1234-1234-123456789012",
 ///     tags={
 ///         "Name": "Example Queue with Outbound Caller Config",
 ///     })
@@ -357,16 +357,16 @@ import 'queue_state.dart';
 /// {
 ///     var test = new Aws.Connect.Queue("test", new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///         Name = "Example Name",
-///         Description = "Example Description",
-///         HoursOfOperationId = "12345678-1234-1234-1234-123456789012",
 ///         OutboundCallerConfig = new Aws.Connect.Inputs.QueueOutboundCallerConfigArgs
 ///         {
 ///             OutboundCallerIdName = "example",
 ///             OutboundCallerIdNumberId = "12345678-abcd-1234-abcd-123456789012",
 ///             OutboundFlowId = "87654321-defg-1234-defg-987654321234",
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///         Name = "Example Name",
+///         Description = "Example Description",
+///         HoursOfOperationId = "12345678-1234-1234-1234-123456789012",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Queue with Outbound Caller Config" },
@@ -386,15 +386,15 @@ import 'queue_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewQueue(ctx, "test", &connect.QueueArgs{
-/// 			InstanceId:         pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
-/// 			Name:               pulumi.String("Example Name"),
-/// 			Description:        pulumi.String("Example Description"),
-/// 			HoursOfOperationId: pulumi.String("12345678-1234-1234-1234-123456789012"),
 /// 			OutboundCallerConfig: &connect.QueueOutboundCallerConfigArgs{
 /// 				OutboundCallerIdName:     pulumi.String("example"),
 /// 				OutboundCallerIdNumberId: pulumi.String("12345678-abcd-1234-abcd-123456789012"),
 /// 				OutboundFlowId:           pulumi.String("87654321-defg-1234-defg-987654321234"),
 /// 			},
+/// 			InstanceId:         pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
+/// 			Name:               pulumi.String("Example Name"),
+/// 			Description:        pulumi.String("Example Description"),
+/// 			HoursOfOperationId: pulumi.String("12345678-1234-1234-1234-123456789012"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Queue with Outbound Caller Config"),
 /// 			},
@@ -416,15 +416,15 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_connect_queue" "test" {
-///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
-///   name                  = "Example Name"
-///   description           = "Example Description"
-///   hours_of_operation_id = "12345678-1234-1234-1234-123456789012"
 ///   outbound_caller_config = {
 ///     outbound_caller_id_name      = "example"
 ///     outbound_caller_id_number_id = "12345678-abcd-1234-abcd-123456789012"
 ///     outbound_flow_id             = "87654321-defg-1234-defg-987654321234"
 ///   }
+///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name                  = "Example Name"
+///   description           = "Example Description"
+///   hours_of_operation_id = "12345678-1234-1234-1234-123456789012"
 ///   tags = {
 ///     "Name" = "Example Queue with Outbound Caller Config"
 ///   }
@@ -453,15 +453,15 @@ import 'queue_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Queue("test", QueueArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
-///             .name("Example Name")
-///             .description("Example Description")
-///             .hoursOfOperationId("12345678-1234-1234-1234-123456789012")
 ///             .outboundCallerConfig(QueueOutboundCallerConfigArgs.builder()
 ///                 .outboundCallerIdName("example")
 ///                 .outboundCallerIdNumberId("12345678-abcd-1234-abcd-123456789012")
 ///                 .outboundFlowId("87654321-defg-1234-defg-987654321234")
 ///                 .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
+///             .name("Example Name")
+///             .description("Example Description")
+///             .hoursOfOperationId("12345678-1234-1234-1234-123456789012")
 ///             .tags(Map.of("Name", "Example Queue with Outbound Caller Config"))
 ///             .build());
 ///
@@ -473,14 +473,14 @@ import 'queue_state.dart';
 ///   test:
 ///     type: aws:connect:Queue
 ///     properties:
-///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
-///       name: Example Name
-///       description: Example Description
-///       hoursOfOperationId: 12345678-1234-1234-1234-123456789012
 ///       outboundCallerConfig:
 ///         outboundCallerIdName: example
 ///         outboundCallerIdNumberId: 12345678-abcd-1234-abcd-123456789012
 ///         outboundFlowId: 87654321-defg-1234-defg-987654321234
+///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
+///       name: Example Name
+///       description: Example Description
+///       hoursOfOperationId: 12345678-1234-1234-1234-123456789012
 ///       tags:
 ///         Name: Example Queue with Outbound Caller Config
 /// ```
@@ -494,7 +494,7 @@ import 'queue_state.dart';
 /// $ pulumi import aws:connect/queue:Queue example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class Queue extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Queue.
+  /// ARN of the Queue.
   late final pulumi.Output<String> arn;
   /// Specifies the description of the Queue.
   late final pulumi.Output<String?> description;
@@ -533,7 +533,7 @@ class Queue extends pulumi.CustomResource {
           'aws:connect/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -543,11 +543,11 @@ class Queue extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>('outboundCallerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueOutboundCallerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     queueId = registerOutput<String>('queueId');
-    quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
+    quickConnectIds = registerOutput<List<String>?>('quickConnectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
@@ -555,11 +555,12 @@ class Queue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Queue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -581,10 +582,34 @@ class Queue extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>('outboundCallerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueOutboundCallerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     queueId = registerOutput<String>('queueId');
-    quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
+    quickConnectIds = registerOutput<List<String>?>('quickConnectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Queue] resource.
+  Queue.reference(String urn)
+    : super(
+        'aws:connect/queue:Queue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
+    instanceId = registerOutput<String>('instanceId');
+    maxContacts = registerOutput<int?>('maxContacts');
+    this.name = registerOutput<String>('name');
+    outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>('outboundCallerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueOutboundCallerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    queueId = registerOutput<String>('queueId');
+    quickConnectIds = registerOutput<List<String>?>('quickConnectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

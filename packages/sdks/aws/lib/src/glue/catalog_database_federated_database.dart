@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogDatabaseFederatedDatabase {
   /// Name of the connection to the external metastore.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Unique identifier for the federated database.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
 
   /// Creates a new [CatalogDatabaseFederatedDatabase].
   /// [connectionName] Name of the connection to the external metastore.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionImageConfig {
   /// Parameters to pass to the container image.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Entry point to your application.
-  final pulumi.Input<List<String>>? entryPoints;
+  final pulumi.Input<List<String>?>? entryPoints;
   /// Working directory for the container image.
-  final pulumi.Input<String>? workingDirectory;
+  final pulumi.Input<String?>? workingDirectory;
 
   /// Creates a new [FunctionImageConfig].
   /// [commands] Parameters to pass to the container image.

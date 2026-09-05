@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_queue_args.dart';
+import 'job_queue_compute_environment_order.dart';
+import 'job_queue_job_state_time_limit_action.dart';
 import 'job_queue_state.dart';
 import 'job_queue_timeouts.dart';
 
@@ -15,9 +17,6 @@ import 'job_queue_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testQueue = new aws.batch.JobQueue("test_queue", {
-///     name: "tf-test-batch-job-queue",
-///     state: "ENABLED",
-///     priority: 1,
 ///     computeEnvironmentOrders: [
 ///         {
 ///             order: 1,
@@ -28,6 +27,9 @@ import 'job_queue_timeouts.dart';
 ///             computeEnvironment: testEnvironment2.arn,
 ///         },
 ///     ],
+///     name: "tf-test-batch-job-queue",
+///     state: "ENABLED",
+///     priority: 1,
 /// });
 /// ```
 /// ```python
@@ -35,9 +37,6 @@ import 'job_queue_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test_queue = aws.batch.JobQueue("test_queue",
-///     name="tf-test-batch-job-queue",
-///     state="ENABLED",
-///     priority=1,
 ///     compute_environment_orders=[
 ///         {
 ///             "order": 1,
@@ -47,7 +46,10 @@ import 'job_queue_timeouts.dart';
 ///             "order": 2,
 ///             "compute_environment": test_environment2["arn"],
 ///         },
-///     ])
+///     ],
+///     name="tf-test-batch-job-queue",
+///     state="ENABLED",
+///     priority=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,9 +61,6 @@ import 'job_queue_timeouts.dart';
 /// {
 ///     var testQueue = new Aws.Batch.JobQueue("test_queue", new()
 ///     {
-///         Name = "tf-test-batch-job-queue",
-///         State = "ENABLED",
-///         Priority = 1,
 ///         ComputeEnvironmentOrders = new[]
 ///         {
 ///             new Aws.Batch.Inputs.JobQueueComputeEnvironmentOrderArgs
@@ -75,6 +74,9 @@ import 'job_queue_timeouts.dart';
 ///                 ComputeEnvironment = testEnvironment2.Arn,
 ///             },
 ///         },
+///         Name = "tf-test-batch-job-queue",
+///         State = "ENABLED",
+///         Priority = 1,
 ///     });
 ///
 /// });
@@ -90,9 +92,6 @@ import 'job_queue_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := batch.NewJobQueue(ctx, "test_queue", &batch.JobQueueArgs{
-/// 			Name:     pulumi.String("tf-test-batch-job-queue"),
-/// 			State:    pulumi.String("ENABLED"),
-/// 			Priority: pulumi.Int(1),
 /// 			ComputeEnvironmentOrders: batch.JobQueueComputeEnvironmentOrderArray{
 /// 				&batch.JobQueueComputeEnvironmentOrderArgs{
 /// 					Order:              pulumi.Int(1),
@@ -103,6 +102,9 @@ import 'job_queue_timeouts.dart';
 /// 					ComputeEnvironment: pulumi.Any(testEnvironment2.Arn),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-test-batch-job-queue"),
+/// 			State:    pulumi.String("ENABLED"),
+/// 			Priority: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,9 +123,6 @@ import 'job_queue_timeouts.dart';
 /// }
 ///
 /// resource "aws_batch_jobqueue" "test_queue" {
-///   name     = "tf-test-batch-job-queue"
-///   state    = "ENABLED"
-///   priority = 1
 ///   compute_environment_orders {
 ///     order               = 1
 ///     compute_environment = testEnvironment1.arn
@@ -132,6 +131,9 @@ import 'job_queue_timeouts.dart';
 ///     order               = 2
 ///     compute_environment = testEnvironment2.arn
 ///   }
+///   name     = "tf-test-batch-job-queue"
+///   state    = "ENABLED"
+///   priority = 1
 /// }
 /// ```
 /// ```java
@@ -157,9 +159,6 @@ import 'job_queue_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testQueue = new JobQueue("testQueue", JobQueueArgs.builder()
-///             .name("tf-test-batch-job-queue")
-///             .state("ENABLED")
-///             .priority(1)
 ///             .computeEnvironmentOrders(
 ///                 JobQueueComputeEnvironmentOrderArgs.builder()
 ///                     .order(1)
@@ -169,6 +168,9 @@ import 'job_queue_timeouts.dart';
 ///                     .order(2)
 ///                     .computeEnvironment(testEnvironment2.arn())
 ///                     .build())
+///             .name("tf-test-batch-job-queue")
+///             .state("ENABLED")
+///             .priority(1)
 ///             .build());
 ///
 ///     }
@@ -180,14 +182,14 @@ import 'job_queue_timeouts.dart';
 ///     type: aws:batch:JobQueue
 ///     name: test_queue
 ///     properties:
-///       name: tf-test-batch-job-queue
-///       state: ENABLED
-///       priority: 1
 ///       computeEnvironmentOrders:
 ///         - order: 1
 ///           computeEnvironment: ${testEnvironment1.arn}
 ///         - order: 2
 ///           computeEnvironment: ${testEnvironment2.arn}
+///       name: tf-test-batch-job-queue
+///       state: ENABLED
+///       priority: 1
 /// ```
 ///
 ///
@@ -199,21 +201,17 @@ import 'job_queue_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.batch.SchedulingPolicy("example", {
-///     name: "example",
 ///     fairSharePolicy: {
-///         computeReservation: 1,
-///         shareDecaySeconds: 3600,
 ///         shareDistributions: [{
 ///             shareIdentifier: "A1*",
 ///             weightFactor: 0.1,
 ///         }],
+///         computeReservation: 1,
+///         shareDecaySeconds: 3600,
 ///     },
+///     name: "example",
 /// });
 /// const exampleJobQueue = new aws.batch.JobQueue("example", {
-///     name: "tf-test-batch-job-queue",
-///     schedulingPolicyArn: example.arn,
-///     state: "ENABLED",
-///     priority: 1,
 ///     computeEnvironmentOrders: [
 ///         {
 ///             order: 1,
@@ -224,6 +222,10 @@ import 'job_queue_timeouts.dart';
 ///             computeEnvironment: testEnvironment2.arn,
 ///         },
 ///     ],
+///     name: "tf-test-batch-job-queue",
+///     schedulingPolicyArn: example.arn,
+///     state: "ENABLED",
+///     priority: 1,
 /// });
 /// ```
 /// ```python
@@ -231,20 +233,16 @@ import 'job_queue_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.batch.SchedulingPolicy("example",
-///     name="example",
 ///     fair_share_policy={
-///         "compute_reservation": 1,
-///         "share_decay_seconds": 3600,
 ///         "share_distributions": [{
 ///             "share_identifier": "A1*",
 ///             "weight_factor": 0.1,
 ///         }],
-///     })
+///         "compute_reservation": 1,
+///         "share_decay_seconds": 3600,
+///     },
+///     name="example")
 /// example_job_queue = aws.batch.JobQueue("example",
-///     name="tf-test-batch-job-queue",
-///     scheduling_policy_arn=example.arn,
-///     state="ENABLED",
-///     priority=1,
 ///     compute_environment_orders=[
 ///         {
 ///             "order": 1,
@@ -254,7 +252,11 @@ import 'job_queue_timeouts.dart';
 ///             "order": 2,
 ///             "compute_environment": test_environment2["arn"],
 ///         },
-///     ])
+///     ],
+///     name="tf-test-batch-job-queue",
+///     scheduling_policy_arn=example.arn,
+///     state="ENABLED",
+///     priority=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -266,11 +268,8 @@ import 'job_queue_timeouts.dart';
 /// {
 ///     var example = new Aws.Batch.SchedulingPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FairSharePolicy = new Aws.Batch.Inputs.SchedulingPolicyFairSharePolicyArgs
 ///         {
-///             ComputeReservation = 1,
-///             ShareDecaySeconds = 3600,
 ///             ShareDistributions = new[]
 ///             {
 ///                 new Aws.Batch.Inputs.SchedulingPolicyFairSharePolicyShareDistributionArgs
@@ -279,15 +278,14 @@ import 'job_queue_timeouts.dart';
 ///                     WeightFactor = 0.1,
 ///                 },
 ///             },
+///             ComputeReservation = 1,
+///             ShareDecaySeconds = 3600,
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var exampleJobQueue = new Aws.Batch.JobQueue("example", new()
 ///     {
-///         Name = "tf-test-batch-job-queue",
-///         SchedulingPolicyArn = example.Arn,
-///         State = "ENABLED",
-///         Priority = 1,
 ///         ComputeEnvironmentOrders = new[]
 ///         {
 ///             new Aws.Batch.Inputs.JobQueueComputeEnvironmentOrderArgs
@@ -301,6 +299,10 @@ import 'job_queue_timeouts.dart';
 ///                 ComputeEnvironment = testEnvironment2.Arn,
 ///             },
 ///         },
+///         Name = "tf-test-batch-job-queue",
+///         SchedulingPolicyArn = example.Arn,
+///         State = "ENABLED",
+///         Priority = 1,
 ///     });
 ///
 /// });
@@ -316,26 +318,22 @@ import 'job_queue_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := batch.NewSchedulingPolicy(ctx, "example", &batch.SchedulingPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FairSharePolicy: &batch.SchedulingPolicyFairSharePolicyArgs{
-/// 				ComputeReservation: pulumi.Int(1),
-/// 				ShareDecaySeconds:  pulumi.Int(3600),
 /// 				ShareDistributions: batch.SchedulingPolicyFairSharePolicyShareDistributionArray{
 /// 					&batch.SchedulingPolicyFairSharePolicyShareDistributionArgs{
 /// 						ShareIdentifier: pulumi.String("A1*"),
 /// 						WeightFactor:    pulumi.Float64(0.1),
 /// 					},
 /// 				},
+/// 				ComputeReservation: pulumi.Int(1),
+/// 				ShareDecaySeconds:  pulumi.Int(3600),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = batch.NewJobQueue(ctx, "example", &batch.JobQueueArgs{
-/// 			Name:                pulumi.String("tf-test-batch-job-queue"),
-/// 			SchedulingPolicyArn: example.Arn,
-/// 			State:               pulumi.String("ENABLED"),
-/// 			Priority:            pulumi.Int(1),
 /// 			ComputeEnvironmentOrders: batch.JobQueueComputeEnvironmentOrderArray{
 /// 				&batch.JobQueueComputeEnvironmentOrderArgs{
 /// 					Order:              pulumi.Int(1),
@@ -346,6 +344,10 @@ import 'job_queue_timeouts.dart';
 /// 					ComputeEnvironment: pulumi.Any(testEnvironment2.Arn),
 /// 				},
 /// 			},
+/// 			Name:                pulumi.String("tf-test-batch-job-queue"),
+/// 			SchedulingPolicyArn: example.Arn,
+/// 			State:               pulumi.String("ENABLED"),
+/// 			Priority:            pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -364,21 +366,17 @@ import 'job_queue_timeouts.dart';
 /// }
 ///
 /// resource "aws_batch_schedulingpolicy" "example" {
-///   name = "example"
 ///   fair_share_policy = {
-///     compute_reservation = 1
-///     share_decay_seconds = 3600
 ///     share_distributions = [{
 ///       "shareIdentifier" = "A1*"
 ///       "weightFactor"    = 0.1
 ///     }]
+///     compute_reservation = 1
+///     share_decay_seconds = 3600
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_batch_jobqueue" "example" {
-///   name                  = "tf-test-batch-job-queue"
-///   scheduling_policy_arn = aws_batch_schedulingpolicy.example.arn
-///   state                 = "ENABLED"
-///   priority              = 1
 ///   compute_environment_orders {
 ///     order               = 1
 ///     compute_environment = testEnvironment1.arn
@@ -387,6 +385,10 @@ import 'job_queue_timeouts.dart';
 ///     order               = 2
 ///     compute_environment = testEnvironment2.arn
 ///   }
+///   name                  = "tf-test-batch-job-queue"
+///   scheduling_policy_arn = aws_batch_schedulingpolicy.example.arn
+///   state                 = "ENABLED"
+///   priority              = 1
 /// }
 /// ```
 /// ```java
@@ -416,22 +418,18 @@ import 'job_queue_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SchedulingPolicy("example", SchedulingPolicyArgs.builder()
-///             .name("example")
 ///             .fairSharePolicy(SchedulingPolicyFairSharePolicyArgs.builder()
-///                 .computeReservation(1)
-///                 .shareDecaySeconds(3600)
 ///                 .shareDistributions(SchedulingPolicyFairSharePolicyShareDistributionArgs.builder()
 ///                     .shareIdentifier("A1*")
 ///                     .weightFactor(0.1)
 ///                     .build())
+///                 .computeReservation(1)
+///                 .shareDecaySeconds(3600)
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var exampleJobQueue = new JobQueue("exampleJobQueue", JobQueueArgs.builder()
-///             .name("tf-test-batch-job-queue")
-///             .schedulingPolicyArn(example.arn())
-///             .state("ENABLED")
-///             .priority(1)
 ///             .computeEnvironmentOrders(
 ///                 JobQueueComputeEnvironmentOrderArgs.builder()
 ///                     .order(1)
@@ -441,6 +439,10 @@ import 'job_queue_timeouts.dart';
 ///                     .order(2)
 ///                     .computeEnvironment(testEnvironment2.arn())
 ///                     .build())
+///             .name("tf-test-batch-job-queue")
+///             .schedulingPolicyArn(example.arn())
+///             .state("ENABLED")
+///             .priority(1)
 ///             .build());
 ///
 ///     }
@@ -451,26 +453,26 @@ import 'job_queue_timeouts.dart';
 ///   example:
 ///     type: aws:batch:SchedulingPolicy
 ///     properties:
-///       name: example
 ///       fairSharePolicy:
-///         computeReservation: 1
-///         shareDecaySeconds: 3600
 ///         shareDistributions:
 ///           - shareIdentifier: A1*
 ///             weightFactor: 0.1
+///         computeReservation: 1
+///         shareDecaySeconds: 3600
+///       name: example
 ///   exampleJobQueue:
 ///     type: aws:batch:JobQueue
 ///     name: example
 ///     properties:
-///       name: tf-test-batch-job-queue
-///       schedulingPolicyArn: ${example.arn}
-///       state: ENABLED
-///       priority: 1
 ///       computeEnvironmentOrders:
 ///         - order: 1
 ///           computeEnvironment: ${testEnvironment1.arn}
 ///         - order: 2
 ///           computeEnvironment: ${testEnvironment2.arn}
+///       name: tf-test-batch-job-queue
+///       schedulingPolicyArn: ${example.arn}
+///       state: ENABLED
+///       priority: 1
 /// ```
 ///
 ///
@@ -480,7 +482,7 @@ import 'job_queue_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the job queue.
+/// - `arn` (String) ARN of the job queue.
 ///
 ///
 /// Using `pulumi import`, import Batch Job Queue using the `arn`. For example:
@@ -489,12 +491,12 @@ import 'job_queue_timeouts.dart';
 /// $ pulumi import aws:batch/jobQueue:JobQueue test_queue arn:aws:batch:us-east-1:123456789012:job-queue/sample
 /// ```
 class JobQueue extends pulumi.CustomResource {
-  /// The Amazon Resource Name of the job queue.
+  /// ARN of the job queue.
   late final pulumi.Output<String> arn;
   /// The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment runs a specific job. Compute environments must be in the VALID state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.
-  late final pulumi.Output<List<Map<String, dynamic>>?> computeEnvironmentOrders;
+  late final pulumi.Output<List<JobQueueComputeEnvironmentOrder>?> computeEnvironmentOrders;
   /// The set of job state time limit actions mapped to a job queue. Specifies an action that AWS Batch will take after the job has remained at the head of the queue in the specified state for longer than the specified time.
-  late final pulumi.Output<List<Map<String, dynamic>>?> jobStateTimeLimitActions;
+  late final pulumi.Output<List<JobQueueJobStateTimeLimitAction>?> jobStateTimeLimitActions;
   /// Specifies the name of the job queue.
   late final pulumi.Output<String> name;
   /// The priority of the job queue. Job queues with a higher priority
@@ -524,18 +526,18 @@ class JobQueue extends pulumi.CustomResource {
           'aws:batch/jobQueue:JobQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    computeEnvironmentOrders = registerOutput<List<Map<String, dynamic>>?>('computeEnvironmentOrders');
-    jobStateTimeLimitActions = registerOutput<List<Map<String, dynamic>>?>('jobStateTimeLimitActions');
+    computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(guardedValue, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())); });
+    jobStateTimeLimitActions = registerOutput<List<JobQueueJobStateTimeLimitAction>?>('jobStateTimeLimitActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(guardedValue, (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
     schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<JobQueueTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobQueueTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -544,11 +546,12 @@ class JobQueue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobQueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobQueue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -563,15 +566,37 @@ class JobQueue extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    computeEnvironmentOrders = registerOutput<List<Map<String, dynamic>>?>('computeEnvironmentOrders');
-    jobStateTimeLimitActions = registerOutput<List<Map<String, dynamic>>?>('jobStateTimeLimitActions');
+    computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(guardedValue, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())); });
+    jobStateTimeLimitActions = registerOutput<List<JobQueueJobStateTimeLimitAction>?>('jobStateTimeLimitActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(guardedValue, (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
     schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<JobQueueTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobQueueTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [JobQueue] resource.
+  JobQueue.reference(String urn)
+    : super(
+        'aws:batch/jobQueue:JobQueue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(guardedValue, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())); });
+    jobStateTimeLimitActions = registerOutput<List<JobQueueJobStateTimeLimitAction>?>('jobStateTimeLimitActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(guardedValue, (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    schedulingPolicyArn = registerOutput<String?>('schedulingPolicyArn');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<JobQueueTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobQueueTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

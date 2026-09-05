@@ -7,21 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_datasync_location_fsx_lustre_location_fsx_lustre_args_doc}
 class LocationFsxLustreArgs {
-  /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
+  /// ARN for the FSx for Lustre file system.
   final pulumi.Input<String> fsxFilesystemArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
+  final pulumi.Input<String?>? region;
+  /// ARNs of the security groups that are to use to configure the FSx for Lustre file system.
   final pulumi.Input<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination.
-  final pulumi.Input<String>? subdirectory;
+  final pulumi.Input<String?>? subdirectory;
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LocationFsxLustreArgs].
-  /// [fsxFilesystemArn] The Amazon Resource Name (ARN) for the FSx for Lustre file system.
+  /// [fsxFilesystemArn] ARN for the FSx for Lustre file system.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupArns] The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
+  /// [securityGroupArns] ARNs of the security groups that are to use to configure the FSx for Lustre file system.
   /// [subdirectory] Subdirectory to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LocationFsxLustreArgs({

@@ -7,11 +7,11 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `message` argument reference - they are identical.
-  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessage>? message;
+  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessage?>? message;
   /// Configuration blocks for message variations to send to the user.
   /// When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `variation` argument reference - they are identical.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariation>>? variations;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariation>?>? variations;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user.

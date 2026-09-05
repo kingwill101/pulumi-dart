@@ -7,7 +7,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   /// When the service applies the transformation. Currently only `POST_CHUNKING` is supported.
   final pulumi.Input<String> stepToApply;
   /// The lambda function that processes documents.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction>? transformationFunction;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction?>? transformationFunction;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation].
   /// [stepToApply] When the service applies the transformation. Currently only `POST_CHUNKING` is supported.

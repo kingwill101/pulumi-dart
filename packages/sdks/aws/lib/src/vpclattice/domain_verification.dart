@@ -319,7 +319,7 @@ import 'domain_verification_state.dart';
 /// $ pulumi import aws:vpclattice/domainVerification:DomainVerification example dv-0a1b2c3d4e5f
 /// ```
 class DomainVerification extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the domain verification.
+  /// ARN of the domain verification.
   late final pulumi.Output<String> arn;
   /// Date and time that the domain verification was created, in ISO-8601 format.
   late final pulumi.Output<String> createdAt;
@@ -354,7 +354,7 @@ class DomainVerification extends pulumi.CustomResource {
           'aws:vpclattice/domainVerification:DomainVerification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -362,8 +362,8 @@ class DomainVerification extends pulumi.CustomResource {
     lastVerifiedTime = registerOutput<String>('lastVerifiedTime');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     txtRecordName = registerOutput<String>('txtRecordName');
     txtRecordValue = registerOutput<String>('txtRecordValue');
   }
@@ -373,11 +373,12 @@ class DomainVerification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainVerificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainVerification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,8 +398,29 @@ class DomainVerification extends pulumi.CustomResource {
     lastVerifiedTime = registerOutput<String>('lastVerifiedTime');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    txtRecordName = registerOutput<String>('txtRecordName');
+    txtRecordValue = registerOutput<String>('txtRecordValue');
+  }
+
+  /// Creates a typed reference to an existing [DomainVerification] resource.
+  DomainVerification.reference(String urn)
+    : super(
+        'aws:vpclattice/domainVerification:DomainVerification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    domainName = registerOutput<String>('domainName');
+    lastVerifiedTime = registerOutput<String>('lastVerifiedTime');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     txtRecordName = registerOutput<String>('txtRecordName');
     txtRecordValue = registerOutput<String>('txtRecordValue');
   }

@@ -32,9 +32,9 @@ class GetInstanceTypeGpus {
 
   factory GetInstanceTypeGpus.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeGpus(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       manufacturer: pulumi.Input.fromValue(map['manufacturer'] as String),
-      memorySize: pulumi.Input.fromValue(map['memorySize'] as int),
+      memorySize: pulumi.Input.fromValue((map['memorySize'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

@@ -9,16 +9,16 @@ import 'guardrail_version_timeouts.dart';
 /// {@macro pulumi_bedrock_guardrail_version_guardrail_version_args_doc}
 class GuardrailVersionArgs {
   /// Description of the Guardrail version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Guardrail ARN.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> guardrailArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
-  final pulumi.Input<bool>? skipDestroy;
-  final pulumi.Input<GuardrailVersionTimeouts>? timeouts;
+  final pulumi.Input<bool?>? skipDestroy;
+  final pulumi.Input<GuardrailVersionTimeouts?>? timeouts;
 
   /// Creates a new [GuardrailVersionArgs].
   /// [description] Description of the Guardrail version.

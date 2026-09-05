@@ -6,33 +6,33 @@ import 'user_authentication_mode.dart';
 /// Input properties used for looking up and filtering User resources.
 class UserState {
   /// Access permissions string used for this user. See [Specifying Permissions Using an Access String](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html#Access-string) for more details.
-  final pulumi.Input<String>? accessString;
+  final pulumi.Input<String?>? accessString;
   /// The ARN of the created ElastiCache User.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Denotes the user's authentication properties. Detailed below.
-  final pulumi.Input<UserAuthenticationMode>? authenticationMode;
+  final pulumi.Input<UserAuthenticationMode?>? authenticationMode;
   /// The current supported values are `redis`, `valkey` (case insensitive).
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Indicates a password is not required for this user.
-  final pulumi.Input<bool>? noPasswordRequired;
+  final pulumi.Input<bool?>? noPasswordRequired;
   /// Passwords used for this user. You can create up to two passwords for each user.
-  final pulumi.Input<List<String>>? passwords;
+  final pulumi.Input<List<String>?>? passwords;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only password for this user. This argument is not stored in state. Conflicts with `passwords` and `authenticationMode`. See Write-Only Arguments for more information. Requires Terraform 1.11+.
-  final pulumi.Input<String>? passwordsWo;
+  final pulumi.Input<String?>? passwordsWo;
   /// Version number for `passwordsWo`. Increment this value to trigger a password update. Required when using `passwordsWo`.
-  final pulumi.Input<int>? passwordsWoVersion;
+  final pulumi.Input<int?>? passwordsWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of tags to be added to this resource. A tag is a key-value pair.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The ID of the user.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// The username of the user.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserState].
   /// [accessString] Access permissions string used for this user. See [Specifying Permissions Using an Access String](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html#Access-string) for more details.
@@ -91,7 +91,7 @@ class UserState {
       noPasswordRequired: (() { final guardedValue = map['noPasswordRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       passwords: (() { final guardedValue = map['passwords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       passwordsWo: (() { final guardedValue = map['passwordsWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordsWoVersion: (() { final guardedValue = map['passwordsWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordsWoVersion: (() { final guardedValue = map['passwordsWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

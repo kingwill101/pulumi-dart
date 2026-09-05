@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   /// string value
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Valid values include: `equals`, `not-equals`, `contains`, `begins-with`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Must be `routing-policy-label`.
   final pulumi.Input<String> type;
   /// Routing policy label to match.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentAttachmentPolicyCondition].
   /// [key] string value

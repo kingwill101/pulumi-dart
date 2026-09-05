@@ -6,24 +6,24 @@ import 'thesaurus_source_s3_path.dart';
 /// Input properties used for looking up and filtering Thesaurus resources.
 class ThesaurusState {
   /// ARN of the thesaurus.
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<String?>? description;
   /// The identifier of the index for a thesaurus.
-  final pulumi.Input<String>? indexId;
+  final pulumi.Input<String?>? indexId;
   /// The name for the thesaurus.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The S3 path where your thesaurus file sits in S3. Detailed below.
-  final pulumi.Input<ThesaurusSourceS3Path>? sourceS3Path;
+  final pulumi.Input<ThesaurusSourceS3Path?>? sourceS3Path;
   /// The current status of the thesaurus.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<String>? thesaurusId;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<String?>? thesaurusId;
 
   /// Creates a new [ThesaurusState].
   /// [arn] ARN of the thesaurus.

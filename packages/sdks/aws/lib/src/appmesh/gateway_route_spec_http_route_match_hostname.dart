@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteMatchHostname {
   /// Exact query parameter to match on.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Specified ending characters of the host name to match on.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHostname].
   /// [exact] Exact query parameter to match on.

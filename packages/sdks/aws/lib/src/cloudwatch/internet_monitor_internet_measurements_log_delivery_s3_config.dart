@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
   final pulumi.Input<String> bucketName;
-  final pulumi.Input<String>? bucketPrefix;
-  final pulumi.Input<String>? logDeliveryStatus;
+  final pulumi.Input<String?>? bucketPrefix;
+  final pulumi.Input<String?>? logDeliveryStatus;
 
   /// Creates a new [InternetMonitorInternetMeasurementsLogDeliveryS3Config].
   /// [bucketName] Required.

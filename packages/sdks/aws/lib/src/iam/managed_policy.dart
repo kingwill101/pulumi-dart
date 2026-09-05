@@ -1,4 +1,6 @@
-enum ManagedPolicy {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ManagedPolicy implements pulumi.PulumiEnum<String> {
   aPIGatewayServiceRolePolicy("arn:aws:iam::aws:policy/aws-service-role/APIGatewayServiceRolePolicy"),
   aWSAccountActivityAccess("arn:aws:iam::aws:policy/AWSAccountActivityAccess"),
   aWSAccountManagementFullAccess("arn:aws:iam::aws:policy/AWSAccountManagementFullAccess"),
@@ -1163,6 +1165,7 @@ enum ManagedPolicy {
   wellArchitectedConsoleReadOnlyAccess("arn:aws:iam::aws:policy/WellArchitectedConsoleReadOnlyAccess");
 
   const ManagedPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedPolicy fromValue(String value) {

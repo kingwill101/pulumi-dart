@@ -14,7 +14,7 @@ class TopicRuleTimestream {
   /// The name of the database table into which to write the measure records.
   final pulumi.Input<String> tableName;
   /// Configuration block specifying an application-defined value to replace the default value assigned to the Timestream record's timestamp in the time column. Nested arguments below.
-  final pulumi.Input<TopicRuleTimestreamTimestamp>? timestamp;
+  final pulumi.Input<TopicRuleTimestreamTimestamp?>? timestamp;
 
   /// Creates a new [TopicRuleTimestream].
   /// [databaseName] The name of an Amazon Timestream database.

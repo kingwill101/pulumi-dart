@@ -5,9 +5,9 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec {
   /// The description of the tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The input schema of the tool. See Tool Input Schema for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema>? inputSchema;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema?>? inputSchema;
   /// The name of the tool.
   final pulumi.Input<String> name;
 

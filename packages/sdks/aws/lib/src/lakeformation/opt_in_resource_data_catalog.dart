@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataCatalog {
   /// Identifier for the catalog resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [OptInResourceDataCatalog].
   /// [id] Identifier for the catalog resource.

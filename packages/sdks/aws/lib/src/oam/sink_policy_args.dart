@@ -10,7 +10,7 @@ class SinkPolicyArgs {
   /// JSON policy to use. If you are updating an existing policy, the entire existing policy is replaced by what you specify here.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the sink to attach this policy to.
   final pulumi.Input<String> sinkIdentifier;
 

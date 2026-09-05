@@ -329,15 +329,16 @@ class ServiceSpecificCredential extends pulumi.CustomResource {
           'aws:iam/serviceSpecificCredential:ServiceSpecificCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['serviceCredentialSecret', 'servicePassword'],
         ) {
     createDate = registerOutput<String>('createDate');
     credentialAgeDays = registerOutput<int?>('credentialAgeDays');
     expirationDate = registerOutput<String>('expirationDate');
     serviceCredentialAlias = registerOutput<String>('serviceCredentialAlias');
-    serviceCredentialSecret = registerOutput<String>('serviceCredentialSecret');
+    serviceCredentialSecret = registerOutput<String>('serviceCredentialSecret', isSecret: true);
     serviceName = registerOutput<String>('serviceName');
-    servicePassword = registerOutput<String>('servicePassword');
+    servicePassword = registerOutput<String>('servicePassword', isSecret: true);
     serviceSpecificCredentialId = registerOutput<String>('serviceSpecificCredentialId');
     serviceUserName = registerOutput<String>('serviceUserName');
     status = registerOutput<String?>('status');
@@ -349,11 +350,12 @@ class ServiceSpecificCredential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceSpecificCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceSpecificCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,9 +373,32 @@ class ServiceSpecificCredential extends pulumi.CustomResource {
     credentialAgeDays = registerOutput<int?>('credentialAgeDays');
     expirationDate = registerOutput<String>('expirationDate');
     serviceCredentialAlias = registerOutput<String>('serviceCredentialAlias');
-    serviceCredentialSecret = registerOutput<String>('serviceCredentialSecret');
+    serviceCredentialSecret = registerOutput<String>('serviceCredentialSecret', isSecret: true);
     serviceName = registerOutput<String>('serviceName');
-    servicePassword = registerOutput<String>('servicePassword');
+    servicePassword = registerOutput<String>('servicePassword', isSecret: true);
+    serviceSpecificCredentialId = registerOutput<String>('serviceSpecificCredentialId');
+    serviceUserName = registerOutput<String>('serviceUserName');
+    status = registerOutput<String?>('status');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [ServiceSpecificCredential] resource.
+  ServiceSpecificCredential.reference(String urn)
+    : super(
+        'aws:iam/serviceSpecificCredential:ServiceSpecificCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['serviceCredentialSecret', 'servicePassword'],
+        isResourceReference: true,
+      ) {
+    createDate = registerOutput<String>('createDate');
+    credentialAgeDays = registerOutput<int?>('credentialAgeDays');
+    expirationDate = registerOutput<String>('expirationDate');
+    serviceCredentialAlias = registerOutput<String>('serviceCredentialAlias');
+    serviceCredentialSecret = registerOutput<String>('serviceCredentialSecret', isSecret: true);
+    serviceName = registerOutput<String>('serviceName');
+    servicePassword = registerOutput<String>('servicePassword', isSecret: true);
     serviceSpecificCredentialId = registerOutput<String>('serviceSpecificCredentialId');
     serviceUserName = registerOutput<String>('serviceUserName');
     status = registerOutput<String?>('status');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
+import 'certificate_domain_validation_option.dart';
 import 'certificate_state.dart';
 
 /// Manages a Lightsail certificate. Use this resource to create and manage SSL/TLS certificates for securing custom domains with your Lightsail resources.
@@ -142,7 +143,7 @@ class Certificate extends pulumi.CustomResource {
   /// Domain name for which the certificate should be issued.
   late final pulumi.Output<String> domainName;
   /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> domainValidationOptions;
+  late final pulumi.Output<List<CertificateDomainValidationOption>> domainValidationOptions;
   /// Name of the certificate.
   ///
   /// The following arguments are optional:
@@ -168,17 +169,17 @@ class Certificate extends pulumi.CustomResource {
           'aws:lightsail/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     domainName = registerOutput<String>('domainName');
-    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>('domainValidationOptions');
+    domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateDomainValidationOption>(guardedValue, (value) => CertificateDomainValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -186,11 +187,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,11 +209,31 @@ class Certificate extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     domainName = registerOutput<String>('domainName');
-    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>('domainValidationOptions');
+    domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateDomainValidationOption>(guardedValue, (value) => CertificateDomainValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:lightsail/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    domainName = registerOutput<String>('domainName');
+    domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateDomainValidationOption>(guardedValue, (value) => CertificateDomainValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

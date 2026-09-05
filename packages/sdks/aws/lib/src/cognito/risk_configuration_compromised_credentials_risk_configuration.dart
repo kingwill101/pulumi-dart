@@ -7,7 +7,7 @@ class RiskConfigurationCompromisedCredentialsRiskConfiguration {
   /// The compromised credentials risk configuration actions. See details below.
   final pulumi.Input<RiskConfigurationCompromisedCredentialsRiskConfigurationActions> actions;
   /// Perform the action for these events. The default is to perform all events if no event filter is specified. Valid values are `SIGN_IN`, `PASSWORD_CHANGE`, and `SIGN_UP`.
-  final pulumi.Input<List<String>>? eventFilters;
+  final pulumi.Input<List<String>?>? eventFilters;
 
   /// Creates a new [RiskConfigurationCompromisedCredentialsRiskConfiguration].
   /// [actions] The compromised credentials risk configuration actions. See details below.

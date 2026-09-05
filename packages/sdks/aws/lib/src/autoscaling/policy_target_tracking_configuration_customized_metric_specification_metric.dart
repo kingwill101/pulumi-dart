@@ -5,15 +5,15 @@ import 'policy_target_tracking_configuration_customized_metric_specification_met
 
 class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric {
   /// Math expression used on the returned metric. You must specify either `expression` or `metricStat`, but not both.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// Short name for the metric used in target tracking scaling policy.
   final pulumi.Input<String> id;
   /// Human-readable label for this metric or expression.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Structure that defines CloudWatch metric to be used in target tracking scaling policy. You must specify either `expression` or `metricStat`, but not both.
-  final pulumi.Input<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat>? metricStat;
+  final pulumi.Input<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat?>? metricStat;
   /// Boolean that indicates whether to return the timestamps and raw data values of this metric, the default is true
-  final pulumi.Input<bool>? returnData;
+  final pulumi.Input<bool?>? returnData;
 
   /// Creates a new [PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric].
   /// [expression] Math expression used on the returned metric. You must specify either `expression` or `metricStat`, but not both.

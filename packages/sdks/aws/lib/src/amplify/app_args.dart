@@ -12,51 +12,51 @@ import 'app_job_config.dart';
 /// {@macro pulumi_amplify_app_app_args_doc}
 class AppArgs {
   /// Personal access token for a third-party source control system for an Amplify app. This token must have write access to the relevant repo to create a webhook and a read-only deploy key for the Amplify project. The token is not stored, so after applying this attribute can be removed and the setup token deleted.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// Automated branch creation configuration for an Amplify app. See `autoBranchCreationConfig` Block for details.
-  final pulumi.Input<AppAutoBranchCreationConfig>? autoBranchCreationConfig;
+  final pulumi.Input<AppAutoBranchCreationConfig?>? autoBranchCreationConfig;
   /// Automated branch creation glob patterns for an Amplify app.
-  final pulumi.Input<List<String>>? autoBranchCreationPatterns;
+  final pulumi.Input<List<String>?>? autoBranchCreationPatterns;
   /// Credentials for basic authorization for an Amplify app.
-  final pulumi.Input<String>? basicAuthCredentials;
+  final pulumi.Input<String?>? basicAuthCredentials;
   /// The [build specification](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html) (build spec) for an Amplify app.
-  final pulumi.Input<String>? buildSpec;
+  final pulumi.Input<String?>? buildSpec;
   /// Cache configuration for the Amplify app. See `cacheConfig` Block for details.
-  final pulumi.Input<AppCacheConfig>? cacheConfig;
+  final pulumi.Input<AppCacheConfig?>? cacheConfig;
   /// AWS Identity and Access Management (IAM) SSR compute role for an Amplify app.
-  final pulumi.Input<String>? computeRoleArn;
+  final pulumi.Input<String?>? computeRoleArn;
   /// The [custom HTTP headers](https://docs.aws.amazon.com/amplify/latest/userguide/custom-headers.html) for an Amplify app.
-  final pulumi.Input<String>? customHeaders;
+  final pulumi.Input<String?>? customHeaders;
   /// Custom rewrite and redirect rules for an Amplify app. See `customRule` Block for details.
-  final pulumi.Input<List<AppCustomRule>>? customRules;
+  final pulumi.Input<List<AppCustomRule>?>? customRules;
   /// Description for an Amplify app.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enables automated branch creation for an Amplify app.
-  final pulumi.Input<bool>? enableAutoBranchCreation;
+  final pulumi.Input<bool?>? enableAutoBranchCreation;
   /// Enables basic authorization for an Amplify app. This will apply to all branches that are part of this app.
-  final pulumi.Input<bool>? enableBasicAuth;
+  final pulumi.Input<bool?>? enableBasicAuth;
   /// Enables auto-building of branches for the Amplify App.
-  final pulumi.Input<bool>? enableBranchAutoBuild;
+  final pulumi.Input<bool?>? enableBranchAutoBuild;
   /// Automatically disconnects a branch in the Amplify Console when you delete a branch from your Git repository.
-  final pulumi.Input<bool>? enableBranchAutoDeletion;
+  final pulumi.Input<bool?>? enableBranchAutoDeletion;
   /// Environment variables map for an Amplify app.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// AWS Identity and Access Management (IAM) service role for an Amplify app.
-  final pulumi.Input<String>? iamServiceRoleArn;
+  final pulumi.Input<String?>? iamServiceRoleArn;
   /// Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See `jobConfig` Block for details.
-  final pulumi.Input<AppJobConfig>? jobConfig;
+  final pulumi.Input<AppJobConfig?>? jobConfig;
   /// Name for an Amplify app.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OAuth token for a third-party source control system for an Amplify app. The OAuth token is used to create a webhook and a read-only deploy key. The OAuth token is not stored.
-  final pulumi.Input<String>? oauthToken;
+  final pulumi.Input<String?>? oauthToken;
   /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Repository for an Amplify app.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppArgs].
   /// [accessToken] Personal access token for a third-party source control system for an Amplify app. This token must have write access to the relevant repo to create a webhook and a read-only deploy key for the Amplify project. The token is not stored, so after applying this attribute can be removed and the setup token deleted.

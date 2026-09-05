@@ -5,9 +5,9 @@ import 'route_spec_http2_route_match_header_match.dart';
 
 class RouteSpecHttp2RouteMatchHeader {
   /// Whether to match on the opposite of the `match` method and value. Default is `false`.
-  final pulumi.Input<bool>? invert;
+  final pulumi.Input<bool?>? invert;
   /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
-  final pulumi.Input<RouteSpecHttp2RouteMatchHeaderMatch>? match;
+  final pulumi.Input<RouteSpecHttp2RouteMatchHeaderMatch?>? match;
   /// Name to use for the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
 

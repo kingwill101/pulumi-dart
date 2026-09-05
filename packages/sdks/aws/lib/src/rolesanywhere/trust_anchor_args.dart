@@ -10,14 +10,14 @@ import 'trust_anchor_source.dart';
 /// {@macro pulumi_rolesanywhere_trust_anchor_trust_anchor_args_doc}
 class TrustAnchorArgs {
   /// Whether or not the Trust Anchor should be enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the Trust Anchor.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<TrustAnchorNotificationSetting>>? notificationSettings;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<TrustAnchorNotificationSetting>?>? notificationSettings;
   /// The source of trust, documented below
   final pulumi.Input<TrustAnchorSource> source;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TrustAnchorArgs].
   /// [enabled] Whether or not the Trust Anchor should be enabled.

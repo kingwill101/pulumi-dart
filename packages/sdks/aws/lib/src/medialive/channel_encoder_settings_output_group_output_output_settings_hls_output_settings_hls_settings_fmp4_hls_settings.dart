@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings {
-  final pulumi.Input<String>? audioRenditionSets;
-  final pulumi.Input<String>? nielsenId3Behavior;
-  final pulumi.Input<String>? timedMetadataBehavior;
+  final pulumi.Input<String?>? audioRenditionSets;
+  final pulumi.Input<String?>? nielsenId3Behavior;
+  final pulumi.Input<String?>? timedMetadataBehavior;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings].
   /// [audioRenditionSets] Optional.

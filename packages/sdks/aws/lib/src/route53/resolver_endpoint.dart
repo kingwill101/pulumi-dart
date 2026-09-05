@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resolver_endpoint_args.dart';
+import 'resolver_endpoint_ip_address.dart';
 import 'resolver_endpoint_state.dart';
 
 /// Provides a Route 53 Resolver endpoint resource.
@@ -12,13 +13,6 @@ import 'resolver_endpoint_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.route53.ResolverEndpoint("foo", {
-///     name: "foo",
-///     direction: "INBOUND",
-///     resolverEndpointType: "IPV4",
-///     securityGroupIds: [
-///         sg1.id,
-///         sg2.id,
-///     ],
 ///     ipAddresses: [
 ///         {
 ///             subnetId: sn1.id,
@@ -27,6 +21,13 @@ import 'resolver_endpoint_state.dart';
 ///             subnetId: sn2.id,
 ///             ip: "10.0.64.4",
 ///         },
+///     ],
+///     name: "foo",
+///     direction: "INBOUND",
+///     resolverEndpointType: "IPV4",
+///     securityGroupIds: [
+///         sg1.id,
+///         sg2.id,
 ///     ],
 ///     protocols: [
 ///         "Do53",
@@ -42,13 +43,6 @@ import 'resolver_endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.route53.ResolverEndpoint("foo",
-///     name="foo",
-///     direction="INBOUND",
-///     resolver_endpoint_type="IPV4",
-///     security_group_ids=[
-///         sg1["id"],
-///         sg2["id"],
-///     ],
 ///     ip_addresses=[
 ///         {
 ///             "subnet_id": sn1["id"],
@@ -57,6 +51,13 @@ import 'resolver_endpoint_state.dart';
 ///             "subnet_id": sn2["id"],
 ///             "ip": "10.0.64.4",
 ///         },
+///     ],
+///     name="foo",
+///     direction="INBOUND",
+///     resolver_endpoint_type="IPV4",
+///     security_group_ids=[
+///         sg1["id"],
+///         sg2["id"],
 ///     ],
 ///     protocols=[
 ///         "Do53",
@@ -76,14 +77,6 @@ import 'resolver_endpoint_state.dart';
 /// {
 ///     var foo = new Aws.Route53.ResolverEndpoint("foo", new()
 ///     {
-///         Name = "foo",
-///         Direction = "INBOUND",
-///         ResolverEndpointType = "IPV4",
-///         SecurityGroupIds = new[]
-///         {
-///             sg1.Id,
-///             sg2.Id,
-///         },
 ///         IpAddresses = new[]
 ///         {
 ///             new Aws.Route53.Inputs.ResolverEndpointIpAddressArgs
@@ -95,6 +88,14 @@ import 'resolver_endpoint_state.dart';
 ///                 SubnetId = sn2.Id,
 ///                 Ip = "10.0.64.4",
 ///             },
+///         },
+///         Name = "foo",
+///         Direction = "INBOUND",
+///         ResolverEndpointType = "IPV4",
+///         SecurityGroupIds = new[]
+///         {
+///             sg1.Id,
+///             sg2.Id,
 ///         },
 ///         Protocols = new[]
 ///         {
@@ -120,13 +121,6 @@ import 'resolver_endpoint_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53.NewResolverEndpoint(ctx, "foo", &route53.ResolverEndpointArgs{
-/// 			Name:                 pulumi.String("foo"),
-/// 			Direction:            pulumi.String("INBOUND"),
-/// 			ResolverEndpointType: pulumi.String("IPV4"),
-/// 			SecurityGroupIds: pulumi.StringArray{
-/// 				sg1.Id,
-/// 				sg2.Id,
-/// 			},
 /// 			IpAddresses: route53.ResolverEndpointIpAddressArray{
 /// 				&route53.ResolverEndpointIpAddressArgs{
 /// 					SubnetId: pulumi.Any(sn1.Id),
@@ -135,6 +129,13 @@ import 'resolver_endpoint_state.dart';
 /// 					SubnetId: pulumi.Any(sn2.Id),
 /// 					Ip:       pulumi.String("10.0.64.4"),
 /// 				},
+/// 			},
+/// 			Name:                 pulumi.String("foo"),
+/// 			Direction:            pulumi.String("INBOUND"),
+/// 			ResolverEndpointType: pulumi.String("IPV4"),
+/// 			SecurityGroupIds: pulumi.StringArray{
+/// 				sg1.Id,
+/// 				sg2.Id,
 /// 			},
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("Do53"),
@@ -161,10 +162,6 @@ import 'resolver_endpoint_state.dart';
 /// }
 ///
 /// resource "aws_route53_resolverendpoint" "foo" {
-///   name                   = "foo"
-///   direction              = "INBOUND"
-///   resolver_endpoint_type = "IPV4"
-///   security_group_ids     = [sg1.id, sg2.id]
 ///   ip_addresses {
 ///     subnet_id = sn1.id
 ///   }
@@ -172,7 +169,11 @@ import 'resolver_endpoint_state.dart';
 ///     subnet_id = sn2.id
 ///     ip        = "10.0.64.4"
 ///   }
-///   protocols = ["Do53", "DoH"]
+///   name                   = "foo"
+///   direction              = "INBOUND"
+///   resolver_endpoint_type = "IPV4"
+///   security_group_ids     = [sg1.id, sg2.id]
+///   protocols              = ["Do53", "DoH"]
 ///   tags = {
 ///     "Environment" = "Prod"
 ///   }
@@ -201,12 +202,6 @@ import 'resolver_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new ResolverEndpoint("foo", ResolverEndpointArgs.builder()
-///             .name("foo")
-///             .direction("INBOUND")
-///             .resolverEndpointType("IPV4")
-///             .securityGroupIds(
-///                 sg1.id(),
-///                 sg2.id())
 ///             .ipAddresses(
 ///                 ResolverEndpointIpAddressArgs.builder()
 ///                     .subnetId(sn1.id())
@@ -215,6 +210,12 @@ import 'resolver_endpoint_state.dart';
 ///                     .subnetId(sn2.id())
 ///                     .ip("10.0.64.4")
 ///                     .build())
+///             .name("foo")
+///             .direction("INBOUND")
+///             .resolverEndpointType("IPV4")
+///             .securityGroupIds(
+///                 sg1.id(),
+///                 sg2.id())
 ///             .protocols(
 ///                 "Do53",
 ///                 "DoH")
@@ -229,16 +230,16 @@ import 'resolver_endpoint_state.dart';
 ///   foo:
 ///     type: aws:route53:ResolverEndpoint
 ///     properties:
+///       ipAddresses:
+///         - subnetId: ${sn1.id}
+///         - subnetId: ${sn2.id}
+///           ip: 10.0.64.4
 ///       name: foo
 ///       direction: INBOUND
 ///       resolverEndpointType: IPV4
 ///       securityGroupIds:
 ///         - ${sg1.id}
 ///         - ${sg2.id}
-///       ipAddresses:
-///         - subnetId: ${sn1.id}
-///         - subnetId: ${sn2.id}
-///           ip: 10.0.64.4
 ///       protocols:
 ///         - Do53
 ///         - DoH
@@ -264,7 +265,7 @@ class ResolverEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> hostVpcId;
   /// Subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
   /// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipAddresses;
+  late final pulumi.Output<List<ResolverEndpointIpAddress>> ipAddresses;
   /// Friendly name of the Route 53 Resolver endpoint.
   late final pulumi.Output<String> name;
   /// Protocols you want to use for the Route 53 Resolver endpoint.
@@ -298,20 +299,20 @@ class ResolverEndpoint extends pulumi.CustomResource {
           'aws:route53/resolverEndpoint:ResolverEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     direction = registerOutput<String>('direction');
     hostVpcId = registerOutput<String>('hostVpcId');
-    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
+    ipAddresses = registerOutput<List<ResolverEndpointIpAddress>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolverEndpointIpAddress>(guardedValue, (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     resolverEndpointType = registerOutput<String>('resolverEndpointType');
     rniEnhancedMetricsEnabled = registerOutput<bool>('rniEnhancedMetricsEnabled');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetNameServerMetricsEnabled = registerOutput<bool>('targetNameServerMetricsEnabled');
   }
 
@@ -320,11 +321,12 @@ class ResolverEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,15 +343,39 @@ class ResolverEndpoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     direction = registerOutput<String>('direction');
     hostVpcId = registerOutput<String>('hostVpcId');
-    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
+    ipAddresses = registerOutput<List<ResolverEndpointIpAddress>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolverEndpointIpAddress>(guardedValue, (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     resolverEndpointType = registerOutput<String>('resolverEndpointType');
     rniEnhancedMetricsEnabled = registerOutput<bool>('rniEnhancedMetricsEnabled');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetNameServerMetricsEnabled = registerOutput<bool>('targetNameServerMetricsEnabled');
+  }
+
+  /// Creates a typed reference to an existing [ResolverEndpoint] resource.
+  ResolverEndpoint.reference(String urn)
+    : super(
+        'aws:route53/resolverEndpoint:ResolverEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    direction = registerOutput<String>('direction');
+    hostVpcId = registerOutput<String>('hostVpcId');
+    ipAddresses = registerOutput<List<ResolverEndpointIpAddress>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolverEndpointIpAddress>(guardedValue, (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    resolverEndpointType = registerOutput<String>('resolverEndpointType');
+    rniEnhancedMetricsEnabled = registerOutput<bool>('rniEnhancedMetricsEnabled');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetNameServerMetricsEnabled = registerOutput<bool>('targetNameServerMetricsEnabled');
   }
 }

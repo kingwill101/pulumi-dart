@@ -780,10 +780,10 @@ import 'bucket_objectv2_state.dart';
 ///     acl: "private",
 /// });
 /// const exampleBucketVersioning = new aws.s3.BucketVersioning("example", {
-///     bucket: examplebucket.id,
 ///     versioningConfiguration: {
 ///         status: "Enabled",
 ///     },
+///     bucket: examplebucket.id,
 /// });
 /// const examplebucketObject = new aws.s3.BucketObjectv2("examplebucket_object", {
 ///     key: "someobject",
@@ -808,10 +808,10 @@ import 'bucket_objectv2_state.dart';
 ///     bucket=examplebucket.id,
 ///     acl="private")
 /// example_bucket_versioning = aws.s3.BucketVersioning("example",
-///     bucket=examplebucket.id,
 ///     versioning_configuration={
 ///         "status": "Enabled",
-///     })
+///     },
+///     bucket=examplebucket.id)
 /// examplebucket_object = aws.s3.BucketObjectv2("examplebucket_object",
 ///     key="someobject",
 ///     bucket=examplebucket.id,
@@ -844,11 +844,11 @@ import 'bucket_objectv2_state.dart';
 ///
 ///     var exampleBucketVersioning = new Aws.S3.BucketVersioning("example", new()
 ///     {
-///         Bucket = examplebucket.Id,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Enabled",
 ///         },
+///         Bucket = examplebucket.Id,
 ///     });
 ///
 ///     var examplebucketObject = new Aws.S3.BucketObjectv2("examplebucket_object", new()
@@ -895,10 +895,10 @@ import 'bucket_objectv2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketVersioning, err := s3.NewBucketVersioning(ctx, "example", &s3.BucketVersioningArgs{
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
+/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -939,10 +939,10 @@ import 'bucket_objectv2_state.dart';
 ///   acl    = "private"
 /// }
 /// resource "aws_s3_bucketversioning" "example" {
-///   bucket = aws_s3_bucket.examplebucket.id
 ///   versioning_configuration = {
 ///     status = "Enabled"
 ///   }
+///   bucket = aws_s3_bucket.examplebucket.id
 /// }
 /// resource "aws_s3_bucketobjectv2" "examplebucket_object" {
 ///   depends_on                    = [aws_s3_bucketversioning.example]
@@ -996,10 +996,10 @@ import 'bucket_objectv2_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketVersioning = new BucketVersioning("exampleBucketVersioning", BucketVersioningArgs.builder()
-///             .bucket(examplebucket.id())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
+///             .bucket(examplebucket.id())
 ///             .build());
 ///
 ///         var examplebucketObject = new BucketObjectv2("examplebucketObject", BucketObjectv2Args.builder()
@@ -1033,9 +1033,9 @@ import 'bucket_objectv2_state.dart';
 ///     type: aws:s3:BucketVersioning
 ///     name: example
 ///     properties:
-///       bucket: ${examplebucket.id}
 ///       versioningConfiguration:
 ///         status: Enabled
+///       bucket: ${examplebucket.id}
 ///   examplebucketObject:
 ///     type: aws:s3:BucketObjectv2
 ///     name: examplebucket_object
@@ -1068,16 +1068,16 @@ import 'bucket_objectv2_state.dart';
 ///
 /// const examplebucket = new aws.s3.Bucket("examplebucket", {bucket: "examplebuckettftest"});
 /// const examplebucketObject = new aws.s3.BucketObjectv2("examplebucket_object", {
+///     overrideProvider: {
+///         defaultTags: {
+///             tags: {},
+///         },
+///     },
 ///     key: "someobject",
 ///     bucket: examplebucket.id,
 ///     source: new pulumi.asset.FileAsset("important.txt"),
 ///     tags: {
 ///         Env: "test",
-///     },
-///     overrideProvider: {
-///         defaultTags: {
-///             tags: {},
-///         },
 ///     },
 /// });
 /// ```
@@ -1087,16 +1087,16 @@ import 'bucket_objectv2_state.dart';
 ///
 /// examplebucket = aws.s3.Bucket("examplebucket", bucket="examplebuckettftest")
 /// examplebucket_object = aws.s3.BucketObjectv2("examplebucket_object",
+///     override_provider={
+///         "default_tags": {
+///             "tags": {},
+///         },
+///     },
 ///     key="someobject",
 ///     bucket=examplebucket.id,
 ///     source=pulumi.FileAsset("important.txt"),
 ///     tags={
 ///         "Env": "test",
-///     },
-///     override_provider={
-///         "default_tags": {
-///             "tags": {},
-///         },
 ///     })
 /// ```
 /// ```csharp
@@ -1114,19 +1114,19 @@ import 'bucket_objectv2_state.dart';
 ///
 ///     var examplebucketObject = new Aws.S3.BucketObjectv2("examplebucket_object", new()
 ///     {
-///         Key = "someobject",
-///         Bucket = examplebucket.Id,
-///         Source = new FileAsset("important.txt"),
-///         Tags =
-///         {
-///             { "Env", "test" },
-///         },
 ///         OverrideProvider = new Aws.S3.Inputs.BucketObjectv2OverrideProviderArgs
 ///         {
 ///             DefaultTags = new Aws.S3.Inputs.BucketObjectv2OverrideProviderDefaultTagsArgs
 ///             {
 ///                 Tags = null,
 ///             },
+///         },
+///         Key = "someobject",
+///         Bucket = examplebucket.Id,
+///         Source = new FileAsset("important.txt"),
+///         Tags =
+///         {
+///             { "Env", "test" },
 ///         },
 ///     });
 ///
@@ -1149,16 +1149,16 @@ import 'bucket_objectv2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "examplebucket_object", &s3.BucketObjectv2Args{
+/// 			OverrideProvider: &s3.BucketObjectv2OverrideProviderArgs{
+/// 				DefaultTags: &s3.BucketObjectv2OverrideProviderDefaultTagsArgs{
+/// 					Tags: pulumi.StringMap{},
+/// 				},
+/// 			},
 /// 			Key:    pulumi.String("someobject"),
 /// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("important.txt"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Env": pulumi.String("test"),
-/// 			},
-/// 			OverrideProvider: &s3.BucketObjectv2OverrideProviderArgs{
-/// 				DefaultTags: &s3.BucketObjectv2OverrideProviderDefaultTagsArgs{
-/// 					Tags: pulumi.StringMap{},
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1181,16 +1181,16 @@ import 'bucket_objectv2_state.dart';
 ///   bucket = "examplebuckettftest"
 /// }
 /// resource "aws_s3_bucketobjectv2" "examplebucket_object" {
+///   override_provider = {
+///     default_tags = {
+///       tags = {}
+///     }
+///   }
 ///   key    = "someobject"
 ///   bucket = aws_s3_bucket.examplebucket.id
 ///   source = fileAsset("important.txt")
 ///   tags = {
 ///     "Env" = "test"
-///   }
-///   override_provider = {
-///     default_tags = {
-///       tags = {}
-///     }
 ///   }
 /// }
 /// ```
@@ -1225,16 +1225,16 @@ import 'bucket_objectv2_state.dart';
 ///             .build());
 ///
 ///         var examplebucketObject = new BucketObjectv2("examplebucketObject", BucketObjectv2Args.builder()
-///             .key("someobject")
-///             .bucket(examplebucket.id())
-///             .source(new FileAsset("important.txt"))
-///             .tags(Map.of("Env", "test"))
 ///             .overrideProvider(BucketObjectv2OverrideProviderArgs.builder()
 ///                 .defaultTags(BucketObjectv2OverrideProviderDefaultTagsArgs.builder()
 ///                     .tags(Map.ofEntries(
 ///                     ))
 ///                     .build())
 ///                 .build())
+///             .key("someobject")
+///             .bucket(examplebucket.id())
+///             .source(new FileAsset("important.txt"))
+///             .tags(Map.of("Env", "test"))
 ///             .build());
 ///
 ///     }
@@ -1250,15 +1250,15 @@ import 'bucket_objectv2_state.dart';
 ///     type: aws:s3:BucketObjectv2
 ///     name: examplebucket_object
 ///     properties:
+///       overrideProvider:
+///         defaultTags:
+///           tags: {}
 ///       key: someobject
 ///       bucket: ${examplebucket.id}
 ///       source:
 ///         fn::fileAsset: important.txt
 ///       tags:
 ///         Env: test
-///       overrideProvider:
-///         defaultTags:
-///           tags: {}
 /// ```
 ///
 ///
@@ -1385,7 +1385,7 @@ class BucketObjectv2 extends pulumi.CustomResource {
           'aws:s3/bucketObjectv2:BucketObjectv2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acl = registerOutput<String>('acl');
     arn = registerOutput<String>('arn');
@@ -1408,7 +1408,7 @@ class BucketObjectv2 extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     key = registerOutput<String>('key');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     objectLockLegalHoldStatus = registerOutput<String?>('objectLockLegalHoldStatus');
     objectLockMode = registerOutput<String?>('objectLockMode');
     objectLockRetainUntilDate = registerOutput<String?>('objectLockRetainUntilDate');
@@ -1418,8 +1418,8 @@ class BucketObjectv2 extends pulumi.CustomResource {
     source = registerOutput<dynamic>('source');
     sourceHash = registerOutput<String?>('sourceHash');
     storageClass = registerOutput<String>('storageClass');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<String>('versionId');
     websiteRedirect = registerOutput<String?>('websiteRedirect');
   }
@@ -1429,11 +1429,12 @@ class BucketObjectv2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketObjectv2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketObjectv2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1468,7 +1469,7 @@ class BucketObjectv2 extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     key = registerOutput<String>('key');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     objectLockLegalHoldStatus = registerOutput<String?>('objectLockLegalHoldStatus');
     objectLockMode = registerOutput<String?>('objectLockMode');
     objectLockRetainUntilDate = registerOutput<String?>('objectLockRetainUntilDate');
@@ -1478,8 +1479,54 @@ class BucketObjectv2 extends pulumi.CustomResource {
     source = registerOutput<dynamic>('source');
     sourceHash = registerOutput<String?>('sourceHash');
     storageClass = registerOutput<String>('storageClass');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionId = registerOutput<String>('versionId');
+    websiteRedirect = registerOutput<String?>('websiteRedirect');
+  }
+
+  /// Creates a typed reference to an existing [BucketObjectv2] resource.
+  BucketObjectv2.reference(String urn)
+    : super(
+        'aws:s3/bucketObjectv2:BucketObjectv2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acl = registerOutput<String>('acl');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    bucketKeyEnabled = registerOutput<bool>('bucketKeyEnabled');
+    cacheControl = registerOutput<String?>('cacheControl');
+    checksumAlgorithm = registerOutput<String?>('checksumAlgorithm');
+    checksumCrc32 = registerOutput<String>('checksumCrc32');
+    checksumCrc32c = registerOutput<String>('checksumCrc32c');
+    checksumCrc64nvme = registerOutput<String>('checksumCrc64nvme');
+    checksumSha1 = registerOutput<String>('checksumSha1');
+    checksumSha256 = registerOutput<String>('checksumSha256');
+    content = registerOutput<String?>('content');
+    contentBase64 = registerOutput<String?>('contentBase64');
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLanguage = registerOutput<String?>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    etag = registerOutput<String>('etag');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    key = registerOutput<String>('key');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    objectLockLegalHoldStatus = registerOutput<String?>('objectLockLegalHoldStatus');
+    objectLockMode = registerOutput<String?>('objectLockMode');
+    objectLockRetainUntilDate = registerOutput<String?>('objectLockRetainUntilDate');
+    overrideProvider = registerOutput<BucketObjectv2OverrideProvider?>('overrideProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectv2OverrideProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    serverSideEncryption = registerOutput<String>('serverSideEncryption');
+    source = registerOutput<dynamic>('source');
+    sourceHash = registerOutput<String?>('sourceHash');
+    storageClass = registerOutput<String>('storageClass');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<String>('versionId');
     websiteRedirect = registerOutput<String?>('websiteRedirect');
   }

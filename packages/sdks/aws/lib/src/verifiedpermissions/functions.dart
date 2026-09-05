@@ -121,3 +121,14 @@ Future<GetPolicyStoreResult> getPolicyStore(
   );
   return GetPolicyStoreResult.fromMap(result);
 }
+
+pulumi.Output<GetPolicyStoreResult> getPolicyStoreOutput(
+  GetPolicyStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:verifiedpermissions/getPolicyStore:getPolicyStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyStoreResult.fromMap);
+}

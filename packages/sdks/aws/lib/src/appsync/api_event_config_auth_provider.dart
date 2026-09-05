@@ -9,11 +9,11 @@ class ApiEventConfigAuthProvider {
   /// Type of authentication provider. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
   final pulumi.Input<String> authType;
   /// Configuration for Cognito user pool authentication. Required when `authType` is `AMAZON_COGNITO_USER_POOLS`. See `cognitoConfig` Block below.
-  final pulumi.Input<ApiEventConfigAuthProviderCognitoConfig>? cognitoConfig;
+  final pulumi.Input<ApiEventConfigAuthProviderCognitoConfig?>? cognitoConfig;
   /// Configuration for Lambda authorization. Required when `authType` is `AWS_LAMBDA`. See `lambdaAuthorizerConfig` Block below.
-  final pulumi.Input<ApiEventConfigAuthProviderLambdaAuthorizerConfig>? lambdaAuthorizerConfig;
+  final pulumi.Input<ApiEventConfigAuthProviderLambdaAuthorizerConfig?>? lambdaAuthorizerConfig;
   /// Configuration for OpenID Connect. Required when `authType` is `OPENID_CONNECT`. See `openidConnectConfig` Block below.
-  final pulumi.Input<ApiEventConfigAuthProviderOpenidConnectConfig>? openidConnectConfig;
+  final pulumi.Input<ApiEventConfigAuthProviderOpenidConnectConfig?>? openidConnectConfig;
 
   /// Creates a new [ApiEventConfigAuthProvider].
   /// [authType] Type of authentication provider. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.

@@ -5,19 +5,19 @@ import 'domain_saml_options_saml_options_idp.dart';
 
 class DomainSamlOptionsSamlOptions {
   /// Whether SAML authentication is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Information from your identity provider.
-  final pulumi.Input<DomainSamlOptionsSamlOptionsIdp>? idp;
+  final pulumi.Input<DomainSamlOptionsSamlOptionsIdp?>? idp;
   /// This backend role from the SAML IdP receives full permissions to the cluster, equivalent to a new master user.
-  final pulumi.Input<String>? masterBackendRole;
+  final pulumi.Input<String?>? masterBackendRole;
   /// This username from the SAML IdP receives full permissions to the cluster, equivalent to a new master user.
-  final pulumi.Input<String>? masterUserName;
+  final pulumi.Input<String?>? masterUserName;
   /// Element of the SAML assertion to use for backend roles. Default is roles.
-  final pulumi.Input<String>? rolesKey;
+  final pulumi.Input<String?>? rolesKey;
   /// Duration of a session in minutes after a user logs in. Default is 60. Maximum value is 1,440.
-  final pulumi.Input<int>? sessionTimeoutMinutes;
+  final pulumi.Input<int?>? sessionTimeoutMinutes;
   /// Element of the SAML assertion to use for username. Default is NameID.
-  final pulumi.Input<String>? subjectKey;
+  final pulumi.Input<String?>? subjectKey;
 
   /// Creates a new [DomainSamlOptionsSamlOptions].
   /// [enabled] Whether SAML authentication is enabled.
@@ -56,7 +56,7 @@ class DomainSamlOptionsSamlOptions {
       masterBackendRole: (() { final guardedValue = map['masterBackendRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterUserName: (() { final guardedValue = map['masterUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rolesKey: (() { final guardedValue = map['rolesKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionTimeoutMinutes: (() { final guardedValue = map['sessionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionTimeoutMinutes: (() { final guardedValue = map['sessionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       subjectKey: (() { final guardedValue = map['subjectKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

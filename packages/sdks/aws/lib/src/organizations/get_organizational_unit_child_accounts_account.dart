@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOrganizationalUnitChildAccountsAccount {
-  /// The Amazon Resource Name (ARN) of the account.
+  /// The ARN of the account.
   final pulumi.Input<String> arn;
   /// The email address associated with the AWS account.
   final pulumi.Input<String> email;
@@ -21,7 +21,7 @@ class GetOrganizationalUnitChildAccountsAccount {
   final pulumi.Input<String> status;
 
   /// Creates a new [GetOrganizationalUnitChildAccountsAccount].
-  /// [arn] The Amazon Resource Name (ARN) of the account.
+  /// [arn] The ARN of the account.
   /// [email] The email address associated with the AWS account.
   /// [id] Parent identifier of the organizational units.
   /// [joinedMethod] Method by which the account joined the organization.

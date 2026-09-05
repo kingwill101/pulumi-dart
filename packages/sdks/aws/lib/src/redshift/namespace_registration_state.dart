@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NamespaceRegistration resources.
 class NamespaceRegistrationState {
   /// Consumer identifier for the registration. Typically in the format `DataCatalog/&lt;account-id&gt;`.
-  final pulumi.Input<String>? consumerIdentifier;
+  final pulumi.Input<String?>? consumerIdentifier;
   /// Type of namespace being registered. Valid values: `serverless`, `provisioned`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? namespaceType;
+  final pulumi.Input<String?>? namespaceType;
   /// Identifier of the provisioned cluster. Required when `namespaceType` is `provisioned`.
-  final pulumi.Input<String>? provisionedClusterIdentifier;
+  final pulumi.Input<String?>? provisionedClusterIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the serverless namespace. Required when `namespaceType` is `serverless`. Can be either the namespace name or namespace ID (UUID).
-  final pulumi.Input<String>? serverlessNamespaceIdentifier;
+  final pulumi.Input<String?>? serverlessNamespaceIdentifier;
   /// Identifier of the serverless workgroup. Required when `namespaceType` is `serverless`.
-  final pulumi.Input<String>? serverlessWorkgroupIdentifier;
+  final pulumi.Input<String?>? serverlessWorkgroupIdentifier;
 
   /// Creates a new [NamespaceRegistrationState].
   /// [consumerIdentifier] Consumer identifier for the registration. Typically in the format `DataCatalog/&lt;account-id&gt;`.

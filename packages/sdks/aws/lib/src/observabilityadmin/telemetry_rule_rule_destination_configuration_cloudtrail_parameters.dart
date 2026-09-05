@@ -5,7 +5,7 @@ import 'telemetry_rule_rule_destination_configuration_cloudtrail_parameters_adva
 
 class TelemetryRuleRuleDestinationConfigurationCloudtrailParameters {
   /// List of advanced event selectors used to filter CloudTrail events. See `advancedEventSelectors` below.
-  final pulumi.Input<List<TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelector>>? advancedEventSelectors;
+  final pulumi.Input<List<TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelector>?>? advancedEventSelectors;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationCloudtrailParameters].
   /// [advancedEventSelectors] List of advanced event selectors used to filter CloudTrail events. See `advancedEventSelectors` below.

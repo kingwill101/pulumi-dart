@@ -12,9 +12,9 @@ class GetConfigurationProfileArgs {
   /// ID of the Configuration Profile.
   final pulumi.Input<String> configurationProfileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetConfigurationProfileArgs].
   /// [applicationId] ID of the AppConfig application to which this configuration profile belongs.

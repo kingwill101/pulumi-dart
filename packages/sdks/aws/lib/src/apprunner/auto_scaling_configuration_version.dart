@@ -153,7 +153,7 @@ import 'auto_scaling_configuration_version_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the App Runner auto scaling configuration version.
+/// - `arn` (String) ARN of the App Runner auto scaling configuration version.
 ///
 ///
 /// Using `pulumi import`, import App Runner AutoScaling Configuration Versions using the `arn`. For example:
@@ -201,7 +201,7 @@ class AutoScalingConfigurationVersion extends pulumi.CustomResource {
           'aws:apprunner/autoScalingConfigurationVersion:AutoScalingConfigurationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingConfigurationName = registerOutput<String>('autoScalingConfigurationName');
@@ -214,8 +214,8 @@ class AutoScalingConfigurationVersion extends pulumi.CustomResource {
     minSize = registerOutput<int?>('minSize');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AutoScalingConfigurationVersion] resource's state with the given [name] and [id].
@@ -223,11 +223,12 @@ class AutoScalingConfigurationVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoScalingConfigurationVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoScalingConfigurationVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,7 +253,31 @@ class AutoScalingConfigurationVersion extends pulumi.CustomResource {
     minSize = registerOutput<int?>('minSize');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AutoScalingConfigurationVersion] resource.
+  AutoScalingConfigurationVersion.reference(String urn)
+    : super(
+        'aws:apprunner/autoScalingConfigurationVersion:AutoScalingConfigurationVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoScalingConfigurationName = registerOutput<String>('autoScalingConfigurationName');
+    autoScalingConfigurationRevision = registerOutput<int>('autoScalingConfigurationRevision');
+    hasAssociatedService = registerOutput<bool>('hasAssociatedService');
+    isDefault = registerOutput<bool>('isDefault');
+    latest = registerOutput<bool>('latest');
+    maxConcurrency = registerOutput<int?>('maxConcurrency');
+    maxSize = registerOutput<int?>('maxSize');
+    minSize = registerOutput<int?>('minSize');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

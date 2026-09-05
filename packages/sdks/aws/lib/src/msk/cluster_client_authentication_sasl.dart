@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClientAuthenticationSasl {
-  final pulumi.Input<bool>? iam;
-  final pulumi.Input<bool>? scram;
+  final pulumi.Input<bool?>? iam;
+  final pulumi.Input<bool?>? scram;
 
   /// Creates a new [ClusterClientAuthenticationSasl].
   /// [iam] Optional.

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetVdmOptionsDashboardOptions {
-  /// Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? engagementMetrics;
+  /// Status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
+  final pulumi.Input<String?>? engagementMetrics;
 
   /// Creates a new [ConfigurationSetVdmOptionsDashboardOptions].
-  /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
+  /// [engagementMetrics] Status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
   const ConfigurationSetVdmOptionsDashboardOptions({
     this.engagementMetrics,
   });

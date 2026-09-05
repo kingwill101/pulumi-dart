@@ -4,7 +4,9 @@ import 'custom_model_output_data_config.dart';
 import 'custom_model_state.dart';
 import 'custom_model_timeouts.dart';
 import 'custom_model_training_data_config.dart';
+import 'custom_model_training_metric.dart';
 import 'custom_model_validation_data_config.dart';
+import 'custom_model_validation_metric.dart';
 import 'custom_model_vpc_config.dart';
 
 /// Manages an Amazon Bedrock custom model.
@@ -33,6 +35,12 @@ import 'custom_model_vpc_config.dart';
 ///     modelId: "amazon.titan-text-express-v1",
 /// });
 /// const exampleCustomModel = new aws.bedrock.CustomModel("example", {
+///     outputDataConfig: {
+///         s3Uri: `s3://${output.id}/data/`,
+///     },
+///     trainingDataConfig: {
+///         s3Uri: `s3://${training.id}/data/train.jsonl`,
+///     },
 ///     customModelName: "example-model",
 ///     jobName: "example-job-1",
 ///     baseModelIdentifier: example.then(example => example.modelArn),
@@ -43,12 +51,6 @@ import 'custom_model_vpc_config.dart';
 ///         learningRate: "0.005",
 ///         learningRateWarmupSteps: "0",
 ///     },
-///     outputDataConfig: {
-///         s3Uri: `s3://${output.id}/data/`,
-///     },
-///     trainingDataConfig: {
-///         s3Uri: `s3://${training.id}/data/train.jsonl`,
-///     },
 /// });
 /// ```
 /// ```python
@@ -57,6 +59,12 @@ import 'custom_model_vpc_config.dart';
 ///
 /// example = aws.bedrockfoundation.get_model(model_id="amazon.titan-text-express-v1")
 /// example_custom_model = aws.bedrock.CustomModel("example",
+///     output_data_config={
+///         "s3_uri": f"s3://{output['id']}/data/",
+///     },
+///     training_data_config={
+///         "s3_uri": f"s3://{training['id']}/data/train.jsonl",
+///     },
 ///     custom_model_name="example-model",
 ///     job_name="example-job-1",
 ///     base_model_identifier=example.model_arn,
@@ -66,12 +74,6 @@ import 'custom_model_vpc_config.dart';
 ///         "batchSize": "1",
 ///         "learningRate": "0.005",
 ///         "learningRateWarmupSteps": "0",
-///     },
-///     output_data_config={
-///         "s3_uri": f"s3://{output['id']}/data/",
-///     },
-///     training_data_config={
-///         "s3_uri": f"s3://{training['id']}/data/train.jsonl",
 ///     })
 /// ```
 /// ```csharp
@@ -89,6 +91,14 @@ import 'custom_model_vpc_config.dart';
 ///
 ///     var exampleCustomModel = new Aws.Bedrock.CustomModel("example", new()
 ///     {
+///         OutputDataConfig = new Aws.Bedrock.Inputs.CustomModelOutputDataConfigArgs
+///         {
+///             S3Uri = $"s3://{output.Id}/data/",
+///         },
+///         TrainingDataConfig = new Aws.Bedrock.Inputs.CustomModelTrainingDataConfigArgs
+///         {
+///             S3Uri = $"s3://{training.Id}/data/train.jsonl",
+///         },
 ///         CustomModelName = "example-model",
 ///         JobName = "example-job-1",
 ///         BaseModelIdentifier = example.Apply(getModelResult => getModelResult.ModelArn),
@@ -99,14 +109,6 @@ import 'custom_model_vpc_config.dart';
 ///             { "batchSize", "1" },
 ///             { "learningRate", "0.005" },
 ///             { "learningRateWarmupSteps", "0" },
-///         },
-///         OutputDataConfig = new Aws.Bedrock.Inputs.CustomModelOutputDataConfigArgs
-///         {
-///             S3Uri = $"s3://{output.Id}/data/",
-///         },
-///         TrainingDataConfig = new Aws.Bedrock.Inputs.CustomModelTrainingDataConfigArgs
-///         {
-///             S3Uri = $"s3://{training.Id}/data/train.jsonl",
 ///         },
 ///     });
 ///
@@ -130,6 +132,12 @@ import 'custom_model_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewCustomModel(ctx, "example", &bedrock.CustomModelArgs{
+/// 			OutputDataConfig: &bedrock.CustomModelOutputDataConfigArgs{
+/// 				S3Uri: pulumi.Sprintf("s3://%v/data/", output.Id),
+/// 			},
+/// 			TrainingDataConfig: &bedrock.CustomModelTrainingDataConfigArgs{
+/// 				S3Uri: pulumi.Sprintf("s3://%v/data/train.jsonl", training.Id),
+/// 			},
 /// 			CustomModelName:     pulumi.String("example-model"),
 /// 			JobName:             pulumi.String("example-job-1"),
 /// 			BaseModelIdentifier: pulumi.String(example.ModelArn),
@@ -139,12 +147,6 @@ import 'custom_model_vpc_config.dart';
 /// 				"batchSize":               pulumi.String("1"),
 /// 				"learningRate":            pulumi.String("0.005"),
 /// 				"learningRateWarmupSteps": pulumi.String("0"),
-/// 			},
-/// 			OutputDataConfig: &bedrock.CustomModelOutputDataConfigArgs{
-/// 				S3Uri: pulumi.Sprintf("s3://%v/data/", output.Id),
-/// 			},
-/// 			TrainingDataConfig: &bedrock.CustomModelTrainingDataConfigArgs{
-/// 				S3Uri: pulumi.Sprintf("s3://%v/data/train.jsonl", training.Id),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -168,6 +170,12 @@ import 'custom_model_vpc_config.dart';
 /// }
 ///
 /// resource "aws_bedrock_custommodel" "example" {
+///   output_data_config = {
+///     s3_uri ="s3://${output.id}/data/"
+///   }
+///   training_data_config = {
+///     s3_uri ="s3://${training.id}/data/train.jsonl"
+///   }
 ///   custom_model_name     = "example-model"
 ///   job_name              = "example-job-1"
 ///   base_model_identifier = data.aws_bedrockfoundation_getmodel.example.model_arn
@@ -177,12 +185,6 @@ import 'custom_model_vpc_config.dart';
 ///     "batchSize"               = "1"
 ///     "learningRate"            = "0.005"
 ///     "learningRateWarmupSteps" = "0"
-///   }
-///   output_data_config = {
-///     s3_uri ="s3://${output.id}/data/"
-///   }
-///   training_data_config = {
-///     s3_uri ="s3://${training.id}/data/train.jsonl"
 ///   }
 /// }
 /// ```
@@ -216,6 +218,12 @@ import 'custom_model_vpc_config.dart';
 ///             .build());
 ///
 ///         var exampleCustomModel = new CustomModel("exampleCustomModel", CustomModelArgs.builder()
+///             .outputDataConfig(CustomModelOutputDataConfigArgs.builder()
+///                 .s3Uri(String.format("s3://%s/data/", output.id()))
+///                 .build())
+///             .trainingDataConfig(CustomModelTrainingDataConfigArgs.builder()
+///                 .s3Uri(String.format("s3://%s/data/train.jsonl", training.id()))
+///                 .build())
 ///             .customModelName("example-model")
 ///             .jobName("example-job-1")
 ///             .baseModelIdentifier(example.modelArn())
@@ -226,12 +234,6 @@ import 'custom_model_vpc_config.dart';
 ///                 Map.entry("learningRate", "0.005"),
 ///                 Map.entry("learningRateWarmupSteps", "0")
 ///             ))
-///             .outputDataConfig(CustomModelOutputDataConfigArgs.builder()
-///                 .s3Uri(String.format("s3://%s/data/", output.id()))
-///                 .build())
-///             .trainingDataConfig(CustomModelTrainingDataConfigArgs.builder()
-///                 .s3Uri(String.format("s3://%s/data/train.jsonl", training.id()))
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -243,6 +245,10 @@ import 'custom_model_vpc_config.dart';
 ///     type: aws:bedrock:CustomModel
 ///     name: example
 ///     properties:
+///       outputDataConfig:
+///         s3Uri: s3://${output.id}/data/
+///       trainingDataConfig:
+///         s3Uri: s3://${training.id}/data/train.jsonl
 ///       customModelName: example-model
 ///       jobName: example-job-1
 ///       baseModelIdentifier: ${example.modelArn}
@@ -252,10 +258,6 @@ import 'custom_model_vpc_config.dart';
 ///         batchSize: '1'
 ///         learningRate: '0.005'
 ///         learningRateWarmupSteps: '0'
-///       outputDataConfig:
-///         s3Uri: s3://${output.id}/data/
-///       trainingDataConfig:
-///         s3Uri: s3://${training.id}/data/train.jsonl
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -271,7 +273,7 @@ import 'custom_model_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// - `jobArn` (String) Amazon Resource Name (ARN) of the Bedrock custom model job.
+/// - `jobArn` (String) ARN of the Bedrock custom model job.
 ///
 ///
 /// Using `pulumi import`, import Bedrock custom model using the `jobArn`. For example:
@@ -280,7 +282,7 @@ import 'custom_model_vpc_config.dart';
 /// $ pulumi import aws:bedrock/customModel:CustomModel example arn:aws:bedrock:us-west-2:123456789012:model-customization-job/amazon.titan-text-express-v1:0:8k/1y5n57gh5y2e
 /// ```
 class CustomModel extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the base model.
+  /// ARN of the base model.
   late final pulumi.Output<String> baseModelIdentifier;
   /// The ARN of the output model.
   late final pulumi.Output<String> customModelArn;
@@ -302,7 +304,7 @@ class CustomModel extends pulumi.CustomResource {
   late final pulumi.Output<CustomModelOutputDataConfig> outputDataConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of an IAM role that Bedrock can assume to perform tasks on your behalf.
+  /// ARN of an IAM role that Bedrock can assume to perform tasks on your behalf.
   late final pulumi.Output<String> roleArn;
   /// A map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -312,12 +314,12 @@ class CustomModel extends pulumi.CustomResource {
   /// Information about the training dataset.
   late final pulumi.Output<CustomModelTrainingDataConfig> trainingDataConfig;
   /// Metrics associated with the customization job.
-  late final pulumi.Output<List<Map<String, dynamic>>> trainingMetrics;
+  late final pulumi.Output<List<CustomModelTrainingMetric>> trainingMetrics;
   /// Information about the validation dataset.
   late final pulumi.Output<CustomModelValidationDataConfig?> validationDataConfig;
   /// The loss metric for each validator that you provided.
-  late final pulumi.Output<List<Map<String, dynamic>>> validationMetrics;
-  /// Configuration parameters for the private Virtual Private Cloud (VPC) that contains the resources you are using for this job.
+  late final pulumi.Output<List<CustomModelValidationMetric>> validationMetrics;
+  /// Configuration parameters for the private VPC that contains the resources you are using for this job.
   late final pulumi.Output<CustomModelVpcConfig?> vpcConfig;
 
   /// Creates a new [CustomModel].
@@ -332,27 +334,27 @@ class CustomModel extends pulumi.CustomResource {
           'aws:bedrock/customModel:CustomModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
     customModelArn = registerOutput<String>('customModelArn');
     customModelKmsKeyId = registerOutput<String?>('customModelKmsKeyId');
     customModelName = registerOutput<String>('customModelName');
     customizationType = registerOutput<String>('customizationType');
-    hyperparameters = registerOutput<Map<String, String>>('hyperparameters');
+    hyperparameters = registerOutput<Map<String, String>>('hyperparameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     jobArn = registerOutput<String>('jobArn');
     jobName = registerOutput<String>('jobName');
     jobStatus = registerOutput<String>('jobStatus');
     outputDataConfig = registerOutput<CustomModelOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CustomModelTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>('trainingDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTrainingDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    trainingMetrics = registerOutput<List<Map<String, dynamic>>>('trainingMetrics');
+    trainingMetrics = registerOutput<List<CustomModelTrainingMetric>>('trainingMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomModelTrainingMetric>(guardedValue, (value) => CustomModelTrainingMetric.fromMap((value as Map).cast<String, dynamic>())); });
     validationDataConfig = registerOutput<CustomModelValidationDataConfig?>('validationDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelValidationDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    validationMetrics = registerOutput<List<Map<String, dynamic>>>('validationMetrics');
+    validationMetrics = registerOutput<List<CustomModelValidationMetric>>('validationMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomModelValidationMetric>(guardedValue, (value) => CustomModelValidationMetric.fromMap((value as Map).cast<String, dynamic>())); });
     vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -361,11 +363,12 @@ class CustomModel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomModel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -384,20 +387,51 @@ class CustomModel extends pulumi.CustomResource {
     customModelKmsKeyId = registerOutput<String?>('customModelKmsKeyId');
     customModelName = registerOutput<String>('customModelName');
     customizationType = registerOutput<String>('customizationType');
-    hyperparameters = registerOutput<Map<String, String>>('hyperparameters');
+    hyperparameters = registerOutput<Map<String, String>>('hyperparameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     jobArn = registerOutput<String>('jobArn');
     jobName = registerOutput<String>('jobName');
     jobStatus = registerOutput<String>('jobStatus');
     outputDataConfig = registerOutput<CustomModelOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CustomModelTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>('trainingDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTrainingDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    trainingMetrics = registerOutput<List<Map<String, dynamic>>>('trainingMetrics');
+    trainingMetrics = registerOutput<List<CustomModelTrainingMetric>>('trainingMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomModelTrainingMetric>(guardedValue, (value) => CustomModelTrainingMetric.fromMap((value as Map).cast<String, dynamic>())); });
     validationDataConfig = registerOutput<CustomModelValidationDataConfig?>('validationDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelValidationDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    validationMetrics = registerOutput<List<Map<String, dynamic>>>('validationMetrics');
+    validationMetrics = registerOutput<List<CustomModelValidationMetric>>('validationMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomModelValidationMetric>(guardedValue, (value) => CustomModelValidationMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CustomModel] resource.
+  CustomModel.reference(String urn)
+    : super(
+        'aws:bedrock/customModel:CustomModel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
+    customModelArn = registerOutput<String>('customModelArn');
+    customModelKmsKeyId = registerOutput<String?>('customModelKmsKeyId');
+    customModelName = registerOutput<String>('customModelName');
+    customizationType = registerOutput<String>('customizationType');
+    hyperparameters = registerOutput<Map<String, String>>('hyperparameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    jobArn = registerOutput<String>('jobArn');
+    jobName = registerOutput<String>('jobName');
+    jobStatus = registerOutput<String>('jobStatus');
+    outputDataConfig = registerOutput<CustomModelOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<CustomModelTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>('trainingDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTrainingDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingMetrics = registerOutput<List<CustomModelTrainingMetric>>('trainingMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomModelTrainingMetric>(guardedValue, (value) => CustomModelTrainingMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    validationDataConfig = registerOutput<CustomModelValidationDataConfig?>('validationDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelValidationDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationMetrics = registerOutput<List<CustomModelValidationMetric>>('validationMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomModelValidationMetric>(guardedValue, (value) => CustomModelValidationMetric.fromMap((value as Map).cast<String, dynamic>())); });
     vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_key_group_key_group_args_doc}
 class KeyGroupArgs {
   /// A comment to describe the key group..
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// A list of the identifiers of the public keys in the key group.
   final pulumi.Input<List<String>> items;
   /// A name to identify the key group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [KeyGroupArgs].
   /// [comment] A comment to describe the key group..

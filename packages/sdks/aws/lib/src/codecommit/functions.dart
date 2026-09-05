@@ -122,6 +122,17 @@ Future<GetApprovalRuleTemplateResult> getApprovalRuleTemplate(
   return GetApprovalRuleTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetApprovalRuleTemplateResult> getApprovalRuleTemplateOutput(
+  GetApprovalRuleTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codecommit/getApprovalRuleTemplate:getApprovalRuleTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApprovalRuleTemplateResult.fromMap);
+}
+
 /// The CodeCommit Repository data source allows the ARN, Repository ID, Repository URL for HTTP and Repository URL for SSH to be retrieved for an CodeCommit repository.
 ///
 /// ## Example Usage
@@ -238,4 +249,15 @@ Future<GetRepositoryResult> getRepository(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryResult> getRepositoryOutput(
+  GetRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codecommit/getRepository:getRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryResult.fromMap);
 }

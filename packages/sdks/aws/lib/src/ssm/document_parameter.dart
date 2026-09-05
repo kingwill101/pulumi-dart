@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentParameter {
   /// If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the document.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of parameter. Valid values: `String`, `StringList`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DocumentParameter].
   /// [defaultValue] If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.

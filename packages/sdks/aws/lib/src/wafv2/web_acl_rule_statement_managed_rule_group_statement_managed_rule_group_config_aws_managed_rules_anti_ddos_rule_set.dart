@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_anti_ddos_rule_set_client_side_action_config.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet {
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfig>? clientSideActionConfig;
-  final pulumi.Input<String>? sensitivityToBlock;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfig?>? clientSideActionConfig;
+  final pulumi.Input<String?>? sensitivityToBlock;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet].
   /// [clientSideActionConfig] Optional.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackSetAutoDeployment {
   /// A list of StackSet ARNs that this StackSet depends on for auto-deployment operations. When auto-deployment is triggered, operations will be sequenced to ensure all dependencies complete successfully before this StackSet's operation begins.
-  final pulumi.Input<List<String>>? dependsOnStackSets;
+  final pulumi.Input<List<String>?>? dependsOnStackSets;
   /// Whether or not auto-deployment is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Whether or not to retain stacks when the account is removed.
-  final pulumi.Input<bool>? retainStacksOnAccountRemoval;
+  final pulumi.Input<bool?>? retainStacksOnAccountRemoval;
 
   /// Creates a new [StackSetAutoDeployment].
   /// [dependsOnStackSets] A list of StackSet ARNs that this StackSet depends on for auto-deployment operations. When auto-deployment is triggered, operations will be sequenced to ensure all dependencies complete successfully before this StackSet's operation begins.

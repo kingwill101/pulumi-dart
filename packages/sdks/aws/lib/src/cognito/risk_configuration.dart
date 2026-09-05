@@ -15,10 +15,10 @@ import 'risk_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cognito.RiskConfiguration("example", {
-///     userPoolId: exampleAwsCognitoUserPool.id,
 ///     riskExceptionConfiguration: {
 ///         blockedIpRangeLists: ["10.10.10.10/32"],
 ///     },
+///     userPoolId: exampleAwsCognitoUserPool.id,
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'risk_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cognito.RiskConfiguration("example",
-///     user_pool_id=example_aws_cognito_user_pool["id"],
 ///     risk_exception_configuration={
 ///         "blocked_ip_range_lists": ["10.10.10.10/32"],
-///     })
+///     },
+///     user_pool_id=example_aws_cognito_user_pool["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,7 +41,6 @@ import 'risk_configuration_state.dart';
 /// {
 ///     var example = new Aws.Cognito.RiskConfiguration("example", new()
 ///     {
-///         UserPoolId = exampleAwsCognitoUserPool.Id,
 ///         RiskExceptionConfiguration = new Aws.Cognito.Inputs.RiskConfigurationRiskExceptionConfigurationArgs
 ///         {
 ///             BlockedIpRangeLists = new[]
@@ -49,6 +48,7 @@ import 'risk_configuration_state.dart';
 ///                 "10.10.10.10/32",
 ///             },
 ///         },
+///         UserPoolId = exampleAwsCognitoUserPool.Id,
 ///     });
 ///
 /// });
@@ -64,12 +64,12 @@ import 'risk_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cognito.NewRiskConfiguration(ctx, "example", &cognito.RiskConfigurationArgs{
-/// 			UserPoolId: pulumi.Any(exampleAwsCognitoUserPool.Id),
 /// 			RiskExceptionConfiguration: &cognito.RiskConfigurationRiskExceptionConfigurationArgs{
 /// 				BlockedIpRangeLists: pulumi.StringArray{
 /// 					pulumi.String("10.10.10.10/32"),
 /// 				},
 /// 			},
+/// 			UserPoolId: pulumi.Any(exampleAwsCognitoUserPool.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -88,10 +88,10 @@ import 'risk_configuration_state.dart';
 /// }
 ///
 /// resource "aws_cognito_riskconfiguration" "example" {
-///   user_pool_id = exampleAwsCognitoUserPool.id
 ///   risk_exception_configuration = {
 ///     blocked_ip_range_lists = ["10.10.10.10/32"]
 ///   }
+///   user_pool_id = exampleAwsCognitoUserPool.id
 /// }
 /// ```
 /// ```java
@@ -117,10 +117,10 @@ import 'risk_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RiskConfiguration("example", RiskConfigurationArgs.builder()
-///             .userPoolId(exampleAwsCognitoUserPool.id())
 ///             .riskExceptionConfiguration(RiskConfigurationRiskExceptionConfigurationArgs.builder()
 ///                 .blockedIpRangeLists("10.10.10.10/32")
 ///                 .build())
+///             .userPoolId(exampleAwsCognitoUserPool.id())
 ///             .build());
 ///
 ///     }
@@ -131,10 +131,10 @@ import 'risk_configuration_state.dart';
 ///   example:
 ///     type: aws:cognito:RiskConfiguration
 ///     properties:
-///       userPoolId: ${exampleAwsCognitoUserPool.id}
 ///       riskExceptionConfiguration:
 ///         blockedIpRangeLists:
 ///           - 10.10.10.10/32
+///       userPoolId: ${exampleAwsCognitoUserPool.id}
 /// ```
 ///
 ///
@@ -182,7 +182,7 @@ class RiskConfiguration extends pulumi.CustomResource {
           'aws:cognito/riskConfiguration:RiskConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String?>('clientId');
@@ -197,11 +197,12 @@ class RiskConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RiskConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RiskConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,6 +216,23 @@ class RiskConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientId = registerOutput<String?>('clientId');
+    compromisedCredentialsRiskConfiguration = registerOutput<RiskConfigurationCompromisedCredentialsRiskConfiguration?>('compromisedCredentialsRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    riskExceptionConfiguration = registerOutput<RiskConfigurationRiskExceptionConfiguration?>('riskExceptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationRiskExceptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [RiskConfiguration] resource.
+  RiskConfiguration.reference(String urn)
+    : super(
+        'aws:cognito/riskConfiguration:RiskConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String?>('clientId');
     compromisedCredentialsRiskConfiguration = registerOutput<RiskConfigurationCompromisedCredentialsRiskConfiguration?>('compromisedCredentialsRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

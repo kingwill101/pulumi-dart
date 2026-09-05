@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningProfileRevocationRecord {
   /// The time when revocation becomes effective.
-  final pulumi.Input<String>? revocationEffectiveFrom;
+  final pulumi.Input<String?>? revocationEffectiveFrom;
   /// The time when the signing profile was revoked.
-  final pulumi.Input<String>? revokedAt;
+  final pulumi.Input<String?>? revokedAt;
   /// The identity of the revoker.
-  final pulumi.Input<String>? revokedBy;
+  final pulumi.Input<String?>? revokedBy;
 
   /// Creates a new [SigningProfileRevocationRecord].
   /// [revocationEffectiveFrom] The time when revocation becomes effective.

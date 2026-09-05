@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_s3_get_account_public_access_block_get_account_public_access_block_args_doc}
 class GetAccountPublicAccessBlockArgs {
   /// AWS account ID to configure. Defaults to automatically determined account ID of the AWS provider.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
 
   /// Creates a new [GetAccountPublicAccessBlockArgs].
   /// [accountId] AWS account ID to configure. Defaults to automatically determined account ID of the AWS provider.

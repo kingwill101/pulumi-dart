@@ -12,44 +12,44 @@ import 'scheduled_query_timeouts.dart';
 /// Input properties used for looking up and filtering ScheduledQuery resources.
 class ScheduledQueryState {
   /// ARN of the Scheduled Query.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Creation time for the scheduled query.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Configuration block for error reporting configuration. See below.
-  final pulumi.Input<ScheduledQueryErrorReportConfiguration>? errorReportConfiguration;
+  final pulumi.Input<ScheduledQueryErrorReportConfiguration?>? errorReportConfiguration;
   /// ARN for the IAM role that Timestream will assume when running the scheduled query.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If `errorReportConfiguration` uses `SSE_KMS` as the encryption type, the same `kmsKeyId` is used to encrypt the error report at rest.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Runtime summary for the last scheduled query run.
-  final pulumi.Input<List<ScheduledQueryLastRunSummary>>? lastRunSummaries;
+  final pulumi.Input<List<ScheduledQueryLastRunSummary>?>? lastRunSummaries;
   /// Name of the scheduled query.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Next time the scheduled query is scheduled to run.
-  final pulumi.Input<String>? nextInvocationTime;
+  final pulumi.Input<String?>? nextInvocationTime;
   /// Configuration block for notification configuration for a scheduled query. A notification is sent by Timestream when a scheduled query is created, its state is updated, or when it is deleted. See below.
-  final pulumi.Input<ScheduledQueryNotificationConfiguration>? notificationConfiguration;
+  final pulumi.Input<ScheduledQueryNotificationConfiguration?>? notificationConfiguration;
   /// Last time the scheduled query was run.
-  final pulumi.Input<String>? previousInvocationTime;
+  final pulumi.Input<String?>? previousInvocationTime;
   /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `scheduleConfiguration` parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
-  final pulumi.Input<String>? queryString;
+  final pulumi.Input<String?>? queryString;
   /// Runtime summary for the last five failed scheduled query runs.
-  final pulumi.Input<List<ScheduledQueryRecentlyFailedRun>>? recentlyFailedRuns;
+  final pulumi.Input<List<ScheduledQueryRecentlyFailedRun>?>? recentlyFailedRuns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for schedule configuration for the query. See below.
-  final pulumi.Input<ScheduledQueryScheduleConfiguration>? scheduleConfiguration;
+  final pulumi.Input<ScheduledQueryScheduleConfiguration?>? scheduleConfiguration;
   /// State of the scheduled query, either `ENABLED` or `DISABLED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration block for writing the result of a query. See below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ScheduledQueryTargetConfiguration>? targetConfiguration;
-  final pulumi.Input<ScheduledQueryTimeouts>? timeouts;
+  final pulumi.Input<ScheduledQueryTargetConfiguration?>? targetConfiguration;
+  final pulumi.Input<ScheduledQueryTimeouts?>? timeouts;
 
   /// Creates a new [ScheduledQueryState].
   /// [arn] ARN of the Scheduled Query.

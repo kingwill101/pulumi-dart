@@ -7,7 +7,7 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfig
   /// The configuration of specific filters applied to your data source content. Minimum of 1 filter and maximum of 25 filters.
   ///
   /// Each filter object should contain the following configuration:
-  final pulumi.Input<List<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter>>? filters;
+  final pulumi.Input<List<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter>?>? filters;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter].
   /// [filters] The configuration of specific filters applied to your data source content. Minimum of 1 filter and maximum of 25 filters.

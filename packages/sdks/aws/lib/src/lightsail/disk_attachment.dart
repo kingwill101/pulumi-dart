@@ -12,11 +12,11 @@ import 'disk_attachment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example = new aws.lightsail.Disk("example", {
 ///     name: "example-disk",
@@ -39,11 +39,11 @@ import 'disk_attachment_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example = aws.lightsail.Disk("example",
 ///     name="example-disk",
 ///     size_in_gb=8,
@@ -68,7 +68,6 @@ import 'disk_attachment_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -80,6 +79,7 @@ import 'disk_attachment_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.LightSail.Disk("example", new()
@@ -118,7 +118,6 @@ import 'disk_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -127,6 +126,7 @@ import 'disk_attachment_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -170,11 +170,11 @@ import 'disk_attachment_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_lightsail_disk" "example" {
@@ -223,11 +223,11 @@ import 'disk_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new Disk("example", DiskArgs.builder()
@@ -280,11 +280,11 @@ import 'disk_attachment_state.dart';
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         state: available
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - opt-in-not-required
+///         state: available
 /// ```
 ///
 ///
@@ -317,7 +317,7 @@ class DiskAttachment extends pulumi.CustomResource {
           'aws:lightsail/disk_attachment:Disk_attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     diskName = registerOutput<String>('diskName');
     diskPath = registerOutput<String>('diskPath');
@@ -330,11 +330,12 @@ class DiskAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiskAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiskAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -348,6 +349,21 @@ class DiskAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    diskName = registerOutput<String>('diskName');
+    diskPath = registerOutput<String>('diskPath');
+    instanceName = registerOutput<String>('instanceName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DiskAttachment] resource.
+  DiskAttachment.reference(String urn)
+    : super(
+        'aws:lightsail/disk_attachment:Disk_attachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     diskName = registerOutput<String>('diskName');
     diskPath = registerOutput<String>('diskPath');
     instanceName = registerOutput<String>('instanceName');

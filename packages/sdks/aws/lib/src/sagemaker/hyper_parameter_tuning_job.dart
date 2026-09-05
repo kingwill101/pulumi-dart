@@ -21,9 +21,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.HyperParameterTuningJob("example", {
-///     name: "example",
 ///     config: {
-///         strategy: "Bayesian",
 ///         objective: {
 ///             metricName: "test:msd",
 ///             type: "Minimize",
@@ -61,41 +59,13 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///             maxNumberOfTrainingJobs: 2,
 ///             maxParallelTrainingJobs: 1,
 ///         },
+///         strategy: "Bayesian",
 ///     },
 ///     trainingJobDefinition: {
-///         roleArn: "arn:aws:iam::123456789012:role/example-sagemaker-execution-role",
 ///         algorithmSpecification: {
 ///             trainingImage: "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
 ///             trainingInputMode: "File",
 ///         },
-///         staticHyperParameters: {
-///             feature_dim: "3",
-///             k: "2",
-///         },
-///         inputDataConfigs: [
-///             {
-///                 channelName: "train",
-///                 contentType: "text/csv",
-///                 inputMode: "File",
-///                 dataSource: {
-///                     s3DataSource: {
-///                         s3DataType: "S3Prefix",
-///                         s3Uri: "s3://example-bucket/input/",
-///                     },
-///                 },
-///             },
-///             {
-///                 channelName: "test",
-///                 contentType: "text/csv",
-///                 inputMode: "File",
-///                 dataSource: {
-///                     s3DataSource: {
-///                         s3DataType: "S3Prefix",
-///                         s3Uri: "s3://example-bucket/input/",
-///                     },
-///                 },
-///             },
-///         ],
 ///         outputDataConfig: {
 ///             s3OutputPath: "s3://example-bucket/output/",
 ///         },
@@ -107,7 +77,37 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///         stoppingCondition: {
 ///             maxRuntimeInSeconds: 3600,
 ///         },
+///         inputDataConfigs: [
+///             {
+///                 dataSource: {
+///                     s3DataSource: {
+///                         s3DataType: "S3Prefix",
+///                         s3Uri: "s3://example-bucket/input/",
+///                     },
+///                 },
+///                 channelName: "train",
+///                 contentType: "text/csv",
+///                 inputMode: "File",
+///             },
+///             {
+///                 dataSource: {
+///                     s3DataSource: {
+///                         s3DataType: "S3Prefix",
+///                         s3Uri: "s3://example-bucket/input/",
+///                     },
+///                 },
+///                 channelName: "test",
+///                 contentType: "text/csv",
+///                 inputMode: "File",
+///             },
+///         ],
+///         roleArn: "arn:aws:iam::123456789012:role/example-sagemaker-execution-role",
+///         staticHyperParameters: {
+///             feature_dim: "3",
+///             k: "2",
+///         },
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -115,9 +115,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.HyperParameterTuningJob("example",
-///     name="example",
 ///     config={
-///         "strategy": "Bayesian",
 ///         "objective": {
 ///             "metric_name": "test:msd",
 ///             "type": "Minimize",
@@ -155,41 +153,13 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///             "max_number_of_training_jobs": 2,
 ///             "max_parallel_training_jobs": 1,
 ///         },
+///         "strategy": "Bayesian",
 ///     },
 ///     training_job_definition={
-///         "role_arn": "arn:aws:iam::123456789012:role/example-sagemaker-execution-role",
 ///         "algorithm_specification": {
 ///             "training_image": "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
 ///             "training_input_mode": "File",
 ///         },
-///         "static_hyper_parameters": {
-///             "feature_dim": "3",
-///             "k": "2",
-///         },
-///         "input_data_configs": [
-///             {
-///                 "channel_name": "train",
-///                 "content_type": "text/csv",
-///                 "input_mode": "File",
-///                 "data_source": {
-///                     "s3_data_source": {
-///                         "s3_data_type": "S3Prefix",
-///                         "s3_uri": "s3://example-bucket/input/",
-///                     },
-///                 },
-///             },
-///             {
-///                 "channel_name": "test",
-///                 "content_type": "text/csv",
-///                 "input_mode": "File",
-///                 "data_source": {
-///                     "s3_data_source": {
-///                         "s3_data_type": "S3Prefix",
-///                         "s3_uri": "s3://example-bucket/input/",
-///                     },
-///                 },
-///             },
-///         ],
 ///         "output_data_config": {
 ///             "s3_output_path": "s3://example-bucket/output/",
 ///         },
@@ -201,7 +171,37 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///         "stopping_condition": {
 ///             "max_runtime_in_seconds": 3600,
 ///         },
-///     })
+///         "input_data_configs": [
+///             {
+///                 "data_source": {
+///                     "s3_data_source": {
+///                         "s3_data_type": "S3Prefix",
+///                         "s3_uri": "s3://example-bucket/input/",
+///                     },
+///                 },
+///                 "channel_name": "train",
+///                 "content_type": "text/csv",
+///                 "input_mode": "File",
+///             },
+///             {
+///                 "data_source": {
+///                     "s3_data_source": {
+///                         "s3_data_type": "S3Prefix",
+///                         "s3_uri": "s3://example-bucket/input/",
+///                     },
+///                 },
+///                 "channel_name": "test",
+///                 "content_type": "text/csv",
+///                 "input_mode": "File",
+///             },
+///         ],
+///         "role_arn": "arn:aws:iam::123456789012:role/example-sagemaker-execution-role",
+///         "static_hyper_parameters": {
+///             "feature_dim": "3",
+///             "k": "2",
+///         },
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -213,10 +213,8 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.HyperParameterTuningJob("example", new()
 ///     {
-///         Name = "example",
 ///         Config = new Aws.Sagemaker.Inputs.HyperParameterTuningJobConfigArgs
 ///         {
-///             Strategy = "Bayesian",
 ///             Objective = new Aws.Sagemaker.Inputs.HyperParameterTuningJobConfigObjectiveArgs
 ///             {
 ///                 MetricName = "test:msd",
@@ -266,50 +264,14 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///                 MaxNumberOfTrainingJobs = 2,
 ///                 MaxParallelTrainingJobs = 1,
 ///             },
+///             Strategy = "Bayesian",
 ///         },
 ///         TrainingJobDefinition = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionArgs
 ///         {
-///             RoleArn = "arn:aws:iam::123456789012:role/example-sagemaker-execution-role",
 ///             AlgorithmSpecification = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecificationArgs
 ///             {
 ///                 TrainingImage = "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
 ///                 TrainingInputMode = "File",
-///             },
-///             StaticHyperParameters =
-///             {
-///                 { "feature_dim", "3" },
-///                 { "k", "2" },
-///             },
-///             InputDataConfigs = new[]
-///             {
-///                 new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs
-///                 {
-///                     ChannelName = "train",
-///                     ContentType = "text/csv",
-///                     InputMode = "File",
-///                     DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs
-///                     {
-///                         S3DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs
-///                         {
-///                             S3DataType = "S3Prefix",
-///                             S3Uri = "s3://example-bucket/input/",
-///                         },
-///                     },
-///                 },
-///                 new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs
-///                 {
-///                     ChannelName = "test",
-///                     ContentType = "text/csv",
-///                     InputMode = "File",
-///                     DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs
-///                     {
-///                         S3DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs
-///                         {
-///                             S3DataType = "S3Prefix",
-///                             S3Uri = "s3://example-bucket/input/",
-///                         },
-///                     },
-///                 },
 ///             },
 ///             OutputDataConfig = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionOutputDataConfigArgs
 ///             {
@@ -325,7 +287,45 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///             {
 ///                 MaxRuntimeInSeconds = 3600,
 ///             },
+///             InputDataConfigs = new[]
+///             {
+///                 new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs
+///                 {
+///                     DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs
+///                     {
+///                         S3DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs
+///                         {
+///                             S3DataType = "S3Prefix",
+///                             S3Uri = "s3://example-bucket/input/",
+///                         },
+///                     },
+///                     ChannelName = "train",
+///                     ContentType = "text/csv",
+///                     InputMode = "File",
+///                 },
+///                 new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs
+///                 {
+///                     DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs
+///                     {
+///                         S3DataSource = new Aws.Sagemaker.Inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs
+///                         {
+///                             S3DataType = "S3Prefix",
+///                             S3Uri = "s3://example-bucket/input/",
+///                         },
+///                     },
+///                     ChannelName = "test",
+///                     ContentType = "text/csv",
+///                     InputMode = "File",
+///                 },
+///             },
+///             RoleArn = "arn:aws:iam::123456789012:role/example-sagemaker-execution-role",
+///             StaticHyperParameters =
+///             {
+///                 { "feature_dim", "3" },
+///                 { "k", "2" },
+///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -341,9 +341,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewHyperParameterTuningJob(ctx, "example", &sagemaker.HyperParameterTuningJobArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Config: &sagemaker.HyperParameterTuningJobConfigArgs{
-/// 				Strategy: pulumi.String("Bayesian"),
 /// 				Objective: &sagemaker.HyperParameterTuningJobConfigObjectiveArgs{
 /// 					MetricName: pulumi.String("test:msd"),
 /// 					Type:       pulumi.String("Minimize"),
@@ -383,40 +381,12 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// 					MaxNumberOfTrainingJobs: pulumi.Int(2),
 /// 					MaxParallelTrainingJobs: pulumi.Int(1),
 /// 				},
+/// 				Strategy: pulumi.String("Bayesian"),
 /// 			},
 /// 			TrainingJobDefinition: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionArgs{
-/// 				RoleArn: pulumi.String("arn:aws:iam::123456789012:role/example-sagemaker-execution-role"),
 /// 				AlgorithmSpecification: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecificationArgs{
 /// 					TrainingImage:     pulumi.String("174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1"),
 /// 					TrainingInputMode: pulumi.String("File"),
-/// 				},
-/// 				StaticHyperParameters: pulumi.StringMap{
-/// 					"feature_dim": pulumi.String("3"),
-/// 					"k":           pulumi.String("2"),
-/// 				},
-/// 				InputDataConfigs: sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArray{
-/// 					&sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs{
-/// 						ChannelName: pulumi.String("train"),
-/// 						ContentType: pulumi.String("text/csv"),
-/// 						InputMode:   pulumi.String("File"),
-/// 						DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs{
-/// 							S3DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs{
-/// 								S3DataType: pulumi.String("S3Prefix"),
-/// 								S3Uri:      pulumi.String("s3://example-bucket/input/"),
-/// 							},
-/// 						},
-/// 					},
-/// 					&sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs{
-/// 						ChannelName: pulumi.String("test"),
-/// 						ContentType: pulumi.String("text/csv"),
-/// 						InputMode:   pulumi.String("File"),
-/// 						DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs{
-/// 							S3DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs{
-/// 								S3DataType: pulumi.String("S3Prefix"),
-/// 								S3Uri:      pulumi.String("s3://example-bucket/input/"),
-/// 							},
-/// 						},
-/// 					},
 /// 				},
 /// 				OutputDataConfig: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionOutputDataConfigArgs{
 /// 					S3OutputPath: pulumi.String("s3://example-bucket/output/"),
@@ -429,7 +399,37 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// 				StoppingCondition: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionStoppingConditionArgs{
 /// 					MaxRuntimeInSeconds: pulumi.Int(3600),
 /// 				},
+/// 				InputDataConfigs: sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArray{
+/// 					&sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs{
+/// 						DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs{
+/// 							S3DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs{
+/// 								S3DataType: pulumi.String("S3Prefix"),
+/// 								S3Uri:      pulumi.String("s3://example-bucket/input/"),
+/// 							},
+/// 						},
+/// 						ChannelName: pulumi.String("train"),
+/// 						ContentType: pulumi.String("text/csv"),
+/// 						InputMode:   pulumi.String("File"),
+/// 					},
+/// 					&sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs{
+/// 						DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs{
+/// 							S3DataSource: &sagemaker.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs{
+/// 								S3DataType: pulumi.String("S3Prefix"),
+/// 								S3Uri:      pulumi.String("s3://example-bucket/input/"),
+/// 							},
+/// 						},
+/// 						ChannelName: pulumi.String("test"),
+/// 						ContentType: pulumi.String("text/csv"),
+/// 						InputMode:   pulumi.String("File"),
+/// 					},
+/// 				},
+/// 				RoleArn: pulumi.String("arn:aws:iam::123456789012:role/example-sagemaker-execution-role"),
+/// 				StaticHyperParameters: pulumi.StringMap{
+/// 					"feature_dim": pulumi.String("3"),
+/// 					"k":           pulumi.String("2"),
+/// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -448,9 +448,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_hyperparametertuningjob" "example" {
-///   name = "example"
 ///   config = {
-///     strategy = "Bayesian"
 ///     objective = {
 ///       metric_name = "test:msd"
 ///       type        = "Minimize"
@@ -481,38 +479,13 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///       max_number_of_training_jobs = 2
 ///       max_parallel_training_jobs  = 1
 ///     }
+///     strategy = "Bayesian"
 ///   }
 ///   training_job_definition = {
-///     role_arn = "arn:aws:iam::123456789012:role/example-sagemaker-execution-role"
 ///     algorithm_specification = {
 ///       training_image      = "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1"
 ///       training_input_mode = "File"
 ///     }
-///     static_hyper_parameters = {
-///       "feature_dim" = "3"
-///       "k"           = "2"
-///     }
-///     input_data_configs = [{
-///       "channelName" = "train"
-///       "contentType" = "text/csv"
-///       "inputMode"   = "File"
-///       "dataSource" = {
-///         "s3DataSource" = {
-///           "s3DataType" = "S3Prefix"
-///           "s3Uri"      = "s3://example-bucket/input/"
-///         }
-///       }
-///       }, {
-///       "channelName" = "test"
-///       "contentType" = "text/csv"
-///       "inputMode"   = "File"
-///       "dataSource" = {
-///         "s3DataSource" = {
-///           "s3DataType" = "S3Prefix"
-///           "s3Uri"      = "s3://example-bucket/input/"
-///         }
-///       }
-///     }]
 ///     output_data_config = {
 ///       s3_output_path = "s3://example-bucket/output/"
 ///     }
@@ -524,7 +497,34 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///     stopping_condition = {
 ///       max_runtime_in_seconds = 3600
 ///     }
+///     input_data_configs = [{
+///       "dataSource" = {
+///         "s3DataSource" = {
+///           "s3DataType" = "S3Prefix"
+///           "s3Uri"      = "s3://example-bucket/input/"
+///         }
+///       }
+///       "channelName" = "train"
+///       "contentType" = "text/csv"
+///       "inputMode"   = "File"
+///       }, {
+///       "dataSource" = {
+///         "s3DataSource" = {
+///           "s3DataType" = "S3Prefix"
+///           "s3Uri"      = "s3://example-bucket/input/"
+///         }
+///       }
+///       "channelName" = "test"
+///       "contentType" = "text/csv"
+///       "inputMode"   = "File"
+///     }]
+///     role_arn = "arn:aws:iam::123456789012:role/example-sagemaker-execution-role"
+///     static_hyper_parameters = {
+///       "feature_dim" = "3"
+///       "k"           = "2"
+///     }
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -543,12 +543,12 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobConfigResourceLimitsArgs;
 /// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionArgs;
 /// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecificationArgs;
-/// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs;
-/// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs;
-/// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionOutputDataConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionResourceConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionStoppingConditionArgs;
+/// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs;
+/// import com.pulumi.aws.sagemaker.inputs.HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -563,9 +563,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HyperParameterTuningJob("example", HyperParameterTuningJobArgs.builder()
-///             .name("example")
 ///             .config(HyperParameterTuningJobConfigArgs.builder()
-///                 .strategy("Bayesian")
 ///                 .objective(HyperParameterTuningJobConfigObjectiveArgs.builder()
 ///                     .metricName("test:msd")
 ///                     .type("Minimize")
@@ -601,40 +599,13 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///                     .maxNumberOfTrainingJobs(2)
 ///                     .maxParallelTrainingJobs(1)
 ///                     .build())
+///                 .strategy("Bayesian")
 ///                 .build())
 ///             .trainingJobDefinition(HyperParameterTuningJobTrainingJobDefinitionArgs.builder()
-///                 .roleArn("arn:aws:iam::123456789012:role/example-sagemaker-execution-role")
 ///                 .algorithmSpecification(HyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecificationArgs.builder()
 ///                     .trainingImage("174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1")
 ///                     .trainingInputMode("File")
 ///                     .build())
-///                 .staticHyperParameters(Map.ofEntries(
-///                     Map.entry("feature_dim", "3"),
-///                     Map.entry("k", "2")
-///                 ))
-///                 .inputDataConfigs(
-///                     HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs.builder()
-///                         .channelName("train")
-///                         .contentType("text/csv")
-///                         .inputMode("File")
-///                         .dataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs.builder()
-///                             .s3DataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs.builder()
-///                                 .s3DataType("S3Prefix")
-///                                 .s3Uri("s3://example-bucket/input/")
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs.builder()
-///                         .channelName("test")
-///                         .contentType("text/csv")
-///                         .inputMode("File")
-///                         .dataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs.builder()
-///                             .s3DataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs.builder()
-///                                 .s3DataType("S3Prefix")
-///                                 .s3Uri("s3://example-bucket/input/")
-///                                 .build())
-///                             .build())
-///                         .build())
 ///                 .outputDataConfig(HyperParameterTuningJobTrainingJobDefinitionOutputDataConfigArgs.builder()
 ///                     .s3OutputPath("s3://example-bucket/output/")
 ///                     .build())
@@ -646,7 +617,36 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///                 .stoppingCondition(HyperParameterTuningJobTrainingJobDefinitionStoppingConditionArgs.builder()
 ///                     .maxRuntimeInSeconds(3600)
 ///                     .build())
+///                 .inputDataConfigs(
+///                     HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs.builder()
+///                         .dataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs.builder()
+///                             .s3DataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs.builder()
+///                                 .s3DataType("S3Prefix")
+///                                 .s3Uri("s3://example-bucket/input/")
+///                                 .build())
+///                             .build())
+///                         .channelName("train")
+///                         .contentType("text/csv")
+///                         .inputMode("File")
+///                         .build(),
+///                     HyperParameterTuningJobTrainingJobDefinitionInputDataConfigArgs.builder()
+///                         .dataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceArgs.builder()
+///                             .s3DataSource(HyperParameterTuningJobTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs.builder()
+///                                 .s3DataType("S3Prefix")
+///                                 .s3Uri("s3://example-bucket/input/")
+///                                 .build())
+///                             .build())
+///                         .channelName("test")
+///                         .contentType("text/csv")
+///                         .inputMode("File")
+///                         .build())
+///                 .roleArn("arn:aws:iam::123456789012:role/example-sagemaker-execution-role")
+///                 .staticHyperParameters(Map.ofEntries(
+///                     Map.entry("feature_dim", "3"),
+///                     Map.entry("k", "2")
+///                 ))
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -657,9 +657,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///   example:
 ///     type: aws:sagemaker:HyperParameterTuningJob
 ///     properties:
-///       name: example
 ///       config:
-///         strategy: Bayesian
 ///         objective:
 ///           metricName: test:msd
 ///           type: Minimize
@@ -685,29 +683,11 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///         resourceLimits:
 ///           maxNumberOfTrainingJobs: 2
 ///           maxParallelTrainingJobs: 1
+///         strategy: Bayesian
 ///       trainingJobDefinition:
-///         roleArn: arn:aws:iam::123456789012:role/example-sagemaker-execution-role
 ///         algorithmSpecification:
 ///           trainingImage: 174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1
 ///           trainingInputMode: File
-///         staticHyperParameters:
-///           feature_dim: '3'
-///           k: '2'
-///         inputDataConfigs:
-///           - channelName: train
-///             contentType: text/csv
-///             inputMode: File
-///             dataSource:
-///               s3DataSource:
-///                 s3DataType: S3Prefix
-///                 s3Uri: s3://example-bucket/input/
-///           - channelName: test
-///             contentType: text/csv
-///             inputMode: File
-///             dataSource:
-///               s3DataSource:
-///                 s3DataType: S3Prefix
-///                 s3Uri: s3://example-bucket/input/
 ///         outputDataConfig:
 ///           s3OutputPath: s3://example-bucket/output/
 ///         resourceConfig:
@@ -716,6 +696,26 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///           volumeSizeInGb: 30
 ///         stoppingCondition:
 ///           maxRuntimeInSeconds: 3600
+///         inputDataConfigs:
+///           - dataSource:
+///               s3DataSource:
+///                 s3DataType: S3Prefix
+///                 s3Uri: s3://example-bucket/input/
+///             channelName: train
+///             contentType: text/csv
+///             inputMode: File
+///           - dataSource:
+///               s3DataSource:
+///                 s3DataType: S3Prefix
+///                 s3Uri: s3://example-bucket/input/
+///             channelName: test
+///             contentType: text/csv
+///             inputMode: File
+///         roleArn: arn:aws:iam::123456789012:role/example-sagemaker-execution-role
+///         staticHyperParameters:
+///           feature_dim: '3'
+///           k: '2'
+///       name: example
 /// ```
 ///
 ///
@@ -763,7 +763,7 @@ class HyperParameterTuningJob extends pulumi.CustomResource {
   /// Single training job definition for tuning. See `trainingJobDefinition`.
   late final pulumi.Output<HyperParameterTuningJobTrainingJobDefinition?> trainingJobDefinition;
   /// Multiple training job definitions for tuning. See `trainingJobDefinition`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> trainingJobDefinitions;
+  late final pulumi.Output<List<HyperParameterTuningJobTrainingJobDefinition>?> trainingJobDefinitions;
   /// Warm start settings. See `warmStartConfig`.
   late final pulumi.Output<HyperParameterTuningJobWarmStartConfig?> warmStartConfig;
 
@@ -779,7 +779,7 @@ class HyperParameterTuningJob extends pulumi.CustomResource {
           'aws:sagemaker/hyperParameterTuningJob:HyperParameterTuningJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autotune = registerOutput<HyperParameterTuningJobAutotune?>('autotune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobAutotune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -788,11 +788,11 @@ class HyperParameterTuningJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<HyperParameterTuningJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingJobDefinition = registerOutput<HyperParameterTuningJobTrainingJobDefinition?>('trainingJobDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobTrainingJobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    trainingJobDefinitions = registerOutput<List<Map<String, dynamic>>?>('trainingJobDefinitions');
+    trainingJobDefinitions = registerOutput<List<HyperParameterTuningJobTrainingJobDefinition>?>('trainingJobDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HyperParameterTuningJobTrainingJobDefinition>(guardedValue, (value) => HyperParameterTuningJobTrainingJobDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     warmStartConfig = registerOutput<HyperParameterTuningJobWarmStartConfig?>('warmStartConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobWarmStartConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -801,11 +801,12 @@ class HyperParameterTuningJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HyperParameterTuningJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HyperParameterTuningJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -826,11 +827,35 @@ class HyperParameterTuningJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<HyperParameterTuningJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingJobDefinition = registerOutput<HyperParameterTuningJobTrainingJobDefinition?>('trainingJobDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobTrainingJobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    trainingJobDefinitions = registerOutput<List<Map<String, dynamic>>?>('trainingJobDefinitions');
+    trainingJobDefinitions = registerOutput<List<HyperParameterTuningJobTrainingJobDefinition>?>('trainingJobDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HyperParameterTuningJobTrainingJobDefinition>(guardedValue, (value) => HyperParameterTuningJobTrainingJobDefinition.fromMap((value as Map).cast<String, dynamic>())); });
+    warmStartConfig = registerOutput<HyperParameterTuningJobWarmStartConfig?>('warmStartConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobWarmStartConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [HyperParameterTuningJob] resource.
+  HyperParameterTuningJob.reference(String urn)
+    : super(
+        'aws:sagemaker/hyperParameterTuningJob:HyperParameterTuningJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autotune = registerOutput<HyperParameterTuningJobAutotune?>('autotune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobAutotune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    config = registerOutput<HyperParameterTuningJobConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failureReason = registerOutput<String>('failureReason');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<HyperParameterTuningJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingJobDefinition = registerOutput<HyperParameterTuningJobTrainingJobDefinition?>('trainingJobDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobTrainingJobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingJobDefinitions = registerOutput<List<HyperParameterTuningJobTrainingJobDefinition>?>('trainingJobDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HyperParameterTuningJobTrainingJobDefinition>(guardedValue, (value) => HyperParameterTuningJobTrainingJobDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     warmStartConfig = registerOutput<HyperParameterTuningJobWarmStartConfig?>('warmStartConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobWarmStartConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

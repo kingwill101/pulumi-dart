@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault {
   /// AWS KMS master key ID used for the SSE-KMS encryption. This can only be used when you set the value of `sseAlgorithm` as `aws:kms`. The default `aws/s3` AWS KMS master key is used if this element is absent while the `sseAlgorithm` is `aws:kms`.
-  final pulumi.Input<String>? kmsMasterKeyId;
+  final pulumi.Input<String?>? kmsMasterKeyId;
   /// Server-side encryption algorithm to use. Valid values are `AES256` and `aws:kms`
   final pulumi.Input<String> sseAlgorithm;
 

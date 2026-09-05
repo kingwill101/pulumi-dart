@@ -7,19 +7,19 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement.dart
 
 class RuleGroupRuleStatementRateBasedStatement {
   /// Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP` or `IP`. Default: `IP`.
-  final pulumi.Input<String>? aggregateKeyType;
+  final pulumi.Input<String?>? aggregateKeyType;
   /// Aggregate the request counts using one or more web request components as the aggregate keys. See `customKey` below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementCustomKey>>? customKeys;
+  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementCustomKey>?>? customKeys;
   /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are `60`, `120`, `300`, and `600`. Defaults to `300` (5 minutes).
   ///
   /// **NOTE:** This setting doesn't determine how often AWS WAF checks the rate, but how far back it looks each time it checks. AWS WAF checks the rate about every 10 seconds.
-  final pulumi.Input<int>? evaluationWindowSec;
+  final pulumi.Input<int?>? evaluationWindowSec;
   /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If `aggregateKeyType` is set to `FORWARDED_IP`, this block is required. See Forwarded IP Config below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementForwardedIpConfig>? forwardedIpConfig;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementForwardedIpConfig?>? forwardedIpConfig;
   /// Limit on requests per 5-minute (or `evaluationWindowSec`) period for a single originating IP address (or for other aggregate key, depending on `aggregateKeyType` and `customKey`).
   final pulumi.Input<int> limit;
   /// An optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See Statement above for details. If `aggregateKeyType` is set to `CONSTANT`, this block is required.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatement>? scopeDownStatement;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatement?>? scopeDownStatement;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatement].
   /// [aggregateKeyType] Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP` or `IP`. Default: `IP`.
@@ -52,9 +52,9 @@ class RuleGroupRuleStatementRateBasedStatement {
     return RuleGroupRuleStatementRateBasedStatement(
       aggregateKeyType: (() { final guardedValue = map['aggregateKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customKeys: (() { final guardedValue = map['customKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKey>(guardedValue, (value) => RuleGroupRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      evaluationWindowSec: (() { final guardedValue = map['evaluationWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationWindowSec: (() { final guardedValue = map['evaluationWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       forwardedIpConfig: (() { final guardedValue = map['forwardedIpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRateBasedStatementForwardedIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      limit: pulumi.Input.fromValue(map['limit'] as int),
+      limit: pulumi.Input.fromValue((map['limit'] as num).toInt()),
       scopeDownStatement: (() { final guardedValue = map['scopeDownStatement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRateBasedStatementScopeDownStatement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

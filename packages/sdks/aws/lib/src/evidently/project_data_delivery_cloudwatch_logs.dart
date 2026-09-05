@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectDataDeliveryCloudwatchLogs {
   /// The name of the log group where the project stores evaluation events.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
 
   /// Creates a new [ProjectDataDeliveryCloudwatchLogs].
   /// [logGroup] The name of the log group where the project stores evaluation events.

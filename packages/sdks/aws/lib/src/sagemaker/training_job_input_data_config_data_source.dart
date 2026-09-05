@@ -6,9 +6,9 @@ import 'training_job_input_data_config_data_source_s3_data_source.dart';
 
 class TrainingJobInputDataConfigDataSource {
   /// File system data source. See `fileSystemDataSource` below.
-  final pulumi.Input<TrainingJobInputDataConfigDataSourceFileSystemDataSource>? fileSystemDataSource;
+  final pulumi.Input<TrainingJobInputDataConfigDataSourceFileSystemDataSource?>? fileSystemDataSource;
   /// S3 data source. See `s3DataSource` below.
-  final pulumi.Input<TrainingJobInputDataConfigDataSourceS3DataSource>? s3DataSource;
+  final pulumi.Input<TrainingJobInputDataConfigDataSourceS3DataSource?>? s3DataSource;
 
   /// Creates a new [TrainingJobInputDataConfigDataSource].
   /// [fileSystemDataSource] File system data source. See `fileSystemDataSource` below.

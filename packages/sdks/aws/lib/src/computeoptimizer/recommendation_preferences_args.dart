@@ -12,25 +12,25 @@ import 'recommendation_preferences_utilization_preference.dart';
 /// {@macro pulumi_computeoptimizer_recommendation_preferences_recommendation_preferences_args_doc}
 class RecommendationPreferencesArgs {
   /// The status of the enhanced infrastructure metrics recommendation preference. Valid values: `Active`, `Inactive`.
-  final pulumi.Input<String>? enhancedInfrastructureMetrics;
+  final pulumi.Input<String?>? enhancedInfrastructureMetrics;
   /// The provider of the external metrics recommendation preference. See External Metrics Preference below.
-  final pulumi.Input<RecommendationPreferencesExternalMetricsPreference>? externalMetricsPreference;
+  final pulumi.Input<RecommendationPreferencesExternalMetricsPreference?>? externalMetricsPreference;
   /// The status of the inferred workload types recommendation preference. Valid values: `Active`, `Inactive`.
-  final pulumi.Input<String>? inferredWorkloadTypes;
+  final pulumi.Input<String?>? inferredWorkloadTypes;
   /// The preference to control the number of days the utilization metrics of the AWS resource are analyzed. Valid values: `DAYS_14`, `DAYS_32`, `DAYS_93`.
-  final pulumi.Input<String>? lookBackPeriod;
+  final pulumi.Input<String?>? lookBackPeriod;
   /// The preference to control which resource type values are considered when generating rightsizing recommendations. See Preferred Resources below.
-  final pulumi.Input<List<RecommendationPreferencesPreferredResource>>? preferredResources;
+  final pulumi.Input<List<RecommendationPreferencesPreferredResource>?>? preferredResources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The target resource type of the recommendation preferences. Valid values: `Ec2Instance`, `AutoScalingGroup`, `RdsDBInstance`, `AuroraDBClusterStorage`.
   final pulumi.Input<String> resourceType;
   /// The status of the savings estimation mode preference. Valid values: `AfterDiscounts`, `BeforeDiscounts`.
-  final pulumi.Input<String>? savingsEstimationMode;
+  final pulumi.Input<String?>? savingsEstimationMode;
   /// The scope of the recommendation preferences. See Scope below.
   final pulumi.Input<RecommendationPreferencesScope> scope;
   /// The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. See Utilization Preferences below.
-  final pulumi.Input<List<RecommendationPreferencesUtilizationPreference>>? utilizationPreferences;
+  final pulumi.Input<List<RecommendationPreferencesUtilizationPreference>?>? utilizationPreferences;
 
   /// Creates a new [RecommendationPreferencesArgs].
   /// [enhancedInfrastructureMetrics] The status of the enhanced infrastructure metrics recommendation preference. Valid values: `Active`, `Inactive`.

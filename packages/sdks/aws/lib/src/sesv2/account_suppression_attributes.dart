@@ -120,7 +120,7 @@ import 'account_suppression_attributes_state.dart';
 class AccountSuppressionAttributes extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A list that contains the reasons that email addresses will be automatically added to the suppression list for your account. Valid values: `COMPLAINT`, `BOUNCE`.
+  /// Reasons that email addresses are automatically added to the suppression list for your account. Valid values: `COMPLAINT`, `BOUNCE`.
   late final pulumi.Output<List<String>> suppressedReasons;
 
   /// Creates a new [AccountSuppressionAttributes].
@@ -135,10 +135,10 @@ class AccountSuppressionAttributes extends pulumi.CustomResource {
           'aws:sesv2/accountSuppressionAttributes:AccountSuppressionAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
-    suppressedReasons = registerOutput<List<String>>('suppressedReasons');
+    suppressedReasons = registerOutput<List<String>>('suppressedReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AccountSuppressionAttributes] resource's state with the given [name] and [id].
@@ -146,11 +146,12 @@ class AccountSuppressionAttributes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountSuppressionAttributesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountSuppressionAttributes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -165,6 +166,19 @@ class AccountSuppressionAttributes extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     region = registerOutput<String>('region');
-    suppressedReasons = registerOutput<List<String>>('suppressedReasons');
+    suppressedReasons = registerOutput<List<String>>('suppressedReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountSuppressionAttributes] resource.
+  AccountSuppressionAttributes.reference(String urn)
+    : super(
+        'aws:sesv2/accountSuppressionAttributes:AccountSuppressionAttributes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    suppressedReasons = registerOutput<List<String>>('suppressedReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

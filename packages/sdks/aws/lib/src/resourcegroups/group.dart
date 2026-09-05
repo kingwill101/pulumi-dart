@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_args.dart';
+import 'group_configuration.dart';
 import 'group_resource_query.dart';
 import 'group_state.dart';
 
@@ -13,7 +14,6 @@ import 'group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.resourcegroups.Group("test", {
-///     name: "test-group",
 ///     resourceQuery: {
 ///         query: `{
 ///   \\"ResourceTypeFilters\\": [
@@ -28,6 +28,7 @@ import 'group_state.dart';
 /// }
 /// `,
 ///     },
+///     name: "test-group",
 /// });
 /// ```
 /// ```python
@@ -35,7 +36,6 @@ import 'group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.resourcegroups.Group("test",
-///     name="test-group",
 ///     resource_query={
 ///         "query": """{
 ///   \"ResourceTypeFilters\": [
@@ -49,7 +49,8 @@ import 'group_state.dart';
 ///   ]
 /// }
 /// """,
-///     })
+///     },
+///     name="test-group")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,7 +62,6 @@ import 'group_state.dart';
 /// {
 ///     var test = new Aws.ResourceGroups.Group("test", new()
 ///     {
-///         Name = "test-group",
 ///         ResourceQuery = new Aws.ResourceGroups.Inputs.GroupResourceQueryArgs
 ///         {
 ///             Query = @"{
@@ -77,6 +77,7 @@ import 'group_state.dart';
 /// }
 /// ",
 ///         },
+///         Name = "test-group",
 ///     });
 ///
 /// });
@@ -92,7 +93,6 @@ import 'group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resourcegroups.NewGroup(ctx, "test", &resourcegroups.GroupArgs{
-/// 			Name: pulumi.String("test-group"),
 /// 			ResourceQuery: &resourcegroups.GroupResourceQueryArgs{
 /// 				Query: pulumi.String(`{
 ///   \"ResourceTypeFilters\": [
@@ -107,6 +107,7 @@ import 'group_state.dart';
 /// }
 /// `),
 /// 			},
+/// 			Name: pulumi.String("test-group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -125,10 +126,10 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "aws_resourcegroups_group" "test" {
-///   name = "test-group"
 ///   resource_query = {
 ///     query = "{\n  \\\"ResourceTypeFilters\\\": [\n    \\\"AWS::EC2::Instance\\\"\n  ],\n  \\\"TagFilters\\\": [\n    {\n      \\\"Key\\\": \\\"Stage\\\",\n      \\\"Values\\\": [\\\"Test\\\"]\n    }\n  ]\n}\n"
 ///   }
+///   name = "test-group"
 /// }
 /// ```
 /// ```java
@@ -154,7 +155,6 @@ import 'group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Group("test", GroupArgs.builder()
-///             .name("test-group")
 ///             .resourceQuery(GroupResourceQueryArgs.builder()
 ///                 .query("""
 /// {
@@ -170,6 +170,7 @@ import 'group_state.dart';
 /// }
 ///                 """)
 ///                 .build())
+///             .name("test-group")
 ///             .build());
 ///
 ///     }
@@ -180,7 +181,6 @@ import 'group_state.dart';
 ///   test:
 ///     type: aws:resourcegroups:Group
 ///     properties:
-///       name: test-group
 ///       resourceQuery:
 ///         query: |
 ///           {
@@ -194,6 +194,7 @@ import 'group_state.dart';
 ///               }
 ///             ]
 ///           }
+///       name: test-group
 /// ```
 ///
 ///
@@ -208,7 +209,7 @@ class Group extends pulumi.CustomResource {
   /// The ARN assigned by AWS for this resource group.
   late final pulumi.Output<String> arn;
   /// A configuration associates the resource group with an AWS service and specifies how the service can interact with the resources in the group. See below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> configurations;
+  late final pulumi.Output<List<GroupConfiguration>?> configurations;
   /// A description of the resource group.
   late final pulumi.Output<String?> description;
   /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
@@ -234,16 +235,16 @@ class Group extends pulumi.CustomResource {
           'aws:resourcegroups/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    configurations = registerOutput<List<Map<String, dynamic>>?>('configurations');
+    configurations = registerOutput<List<GroupConfiguration>?>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupConfiguration>(guardedValue, (value) => GroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceQuery = registerOutput<GroupResourceQuery?>('resourceQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupResourceQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
@@ -251,11 +252,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -270,12 +272,31 @@ class Group extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    configurations = registerOutput<List<Map<String, dynamic>>?>('configurations');
+    configurations = registerOutput<List<GroupConfiguration>?>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupConfiguration>(guardedValue, (value) => GroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceQuery = registerOutput<GroupResourceQuery?>('resourceQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupResourceQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'aws:resourcegroups/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configurations = registerOutput<List<GroupConfiguration>?>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupConfiguration>(guardedValue, (value) => GroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceQuery = registerOutput<GroupResourceQuery?>('resourceQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupResourceQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

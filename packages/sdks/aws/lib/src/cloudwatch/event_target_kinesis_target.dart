@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetKinesisTarget {
   /// The JSON path to be extracted from the event and used as the partition key.
-  final pulumi.Input<String>? partitionKeyPath;
+  final pulumi.Input<String?>? partitionKeyPath;
 
   /// Creates a new [EventTargetKinesisTarget].
   /// [partitionKeyPath] The JSON path to be extracted from the event and used as the partition key.

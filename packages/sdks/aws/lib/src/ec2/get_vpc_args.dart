@@ -8,38 +8,32 @@ import 'get_vpc_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_get_vpc_get_vpc_args_doc}
 class GetVpcArgs {
-  /// Cidr block of the desired VPC.
-  final pulumi.Input<String>? cidrBlock;
-  /// Boolean constraint on whether the desired VPC is
-  /// the default VPC for the region.
-  final pulumi.Input<bool>? default_;
+  /// CIDR block of the desired VPC.
+  final pulumi.Input<String?>? cidrBlock;
+  /// Boolean constraint on whether the desired VPC is the default VPC for the region.
+  final pulumi.Input<bool?>? default_;
   /// DHCP options id of the desired VPC.
-  final pulumi.Input<String>? dhcpOptionsId;
-  /// Custom filter block as described below.
-  final pulumi.Input<List<GetVpcFilter>>? filters;
+  final pulumi.Input<String?>? dhcpOptionsId;
+  /// Custom filter block as described below. See `filter` Block below.
+  final pulumi.Input<List<GetVpcFilter>?>? filters;
   /// ID of the specific VPC to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Current state of the desired VPC.
-  /// Can be either `"pending"` or `"available"`.
-  final pulumi.Input<String>? state;
-  /// Map of tags, each pair of which must exactly match
-  /// a pair on the desired VPC.
-  ///
-  /// More complex filters can be expressed using one or more `filter` sub-blocks,
-  /// which take the following arguments:
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  /// Current state of the desired VPC. Can be either `"pending"` or `"available"`.
+  final pulumi.Input<String?>? state;
+  /// Map of tags, each pair of which must exactly match a pair on the desired VPC.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcArgs].
-  /// [cidrBlock] Cidr block of the desired VPC.
-  /// [default_] Boolean constraint on whether the desired VPC is
+  /// [cidrBlock] CIDR block of the desired VPC.
+  /// [default_] Boolean constraint on whether the desired VPC is the default VPC for the region.
   /// [dhcpOptionsId] DHCP options id of the desired VPC.
-  /// [filters] Custom filter block as described below.
+  /// [filters] Custom filter block as described below. See `filter` Block below.
   /// [id] ID of the specific VPC to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [state] Current state of the desired VPC.
-  /// [tags] Map of tags, each pair of which must exactly match
+  /// [state] Current state of the desired VPC. Can be either `"pending"` or `"available"`.
+  /// [tags] Map of tags, each pair of which must exactly match a pair on the desired VPC.
   const GetVpcArgs({
     this.cidrBlock,
     this.default_,

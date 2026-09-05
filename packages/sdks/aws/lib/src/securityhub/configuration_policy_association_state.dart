@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ConfigurationPolicyAssociation resources.
 class ConfigurationPolicyAssociationState {
   /// The universally unique identifier (UUID) of the configuration policy, or `SELF_MANAGED_SECURITY_HUB` for a self-managed configuration.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
 
   /// Creates a new [ConfigurationPolicyAssociationState].
   /// [policyId] The universally unique identifier (UUID) of the configuration policy, or `SELF_MANAGED_SECURITY_HUB` for a self-managed configuration.

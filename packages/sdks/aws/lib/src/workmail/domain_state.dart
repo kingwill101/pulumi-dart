@@ -6,21 +6,21 @@ import 'domain_record.dart';
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// DKIM verification status. Values: `PENDING`, `VERIFIED`, `FAILED`.
-  final pulumi.Input<String>? dkimVerificationStatus;
+  final pulumi.Input<String?>? dkimVerificationStatus;
   /// Mail domain name to register. Changing this forces a new resource.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Whether this domain is the default mail domain for the organization.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// Whether this is the auto-provisioned test domain.
-  final pulumi.Input<bool>? isTestDomain;
+  final pulumi.Input<bool?>? isTestDomain;
   /// Identifier of the WorkMail organization. Changing this forces a new resource.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// Domain ownership verification status. Values: `PENDING`, `VERIFIED`, `FAILED`.
-  final pulumi.Input<String>? ownershipVerificationStatus;
+  final pulumi.Input<String?>? ownershipVerificationStatus;
   /// List of DNS records required for domain verification. See `records` Block below.
-  final pulumi.Input<List<DomainRecord>>? records;
+  final pulumi.Input<List<DomainRecord>?>? records;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainState].
   /// [dkimVerificationStatus] DKIM verification status. Values: `PENDING`, `VERIFIED`, `FAILED`.

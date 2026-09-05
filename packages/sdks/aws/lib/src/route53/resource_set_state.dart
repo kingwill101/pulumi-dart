@@ -7,19 +7,19 @@ import 'resource_set_resource.dart';
 class ResourceSetState {
   /// ARN of the resource set
   /// * `resources.#.component_id` - Unique identified for DNS Target Resources, use for readiness checks.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Unique name describing the resource set.
-  final pulumi.Input<String>? resourceSetName;
+  final pulumi.Input<String?>? resourceSetName;
   /// Type of the resources in the resource set.
-  final pulumi.Input<String>? resourceSetType;
+  final pulumi.Input<String?>? resourceSetType;
   /// List of resources to add to this resource set. See below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<ResourceSetResource>>? resources;
+  final pulumi.Input<List<ResourceSetResource>?>? resources;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ResourceSetState].
   /// [arn] ARN of the resource set

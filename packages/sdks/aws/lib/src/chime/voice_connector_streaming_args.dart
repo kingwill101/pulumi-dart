@@ -11,13 +11,13 @@ class VoiceConnectorStreamingArgs {
   /// The retention period, in hours, for the Amazon Kinesis data.
   final pulumi.Input<int> dataRetention;
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The media insights configuration. See `mediaInsightsConfiguration`.
-  final pulumi.Input<VoiceConnectorStreamingMediaInsightsConfiguration>? mediaInsightsConfiguration;
+  final pulumi.Input<VoiceConnectorStreamingMediaInsightsConfiguration?>? mediaInsightsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
-  final pulumi.Input<List<String>>? streamingNotificationTargets;
+  final pulumi.Input<List<String>?>? streamingNotificationTargets;
   /// The Amazon Chime Voice Connector ID.
   final pulumi.Input<String> voiceConnectorId;
 
@@ -50,7 +50,7 @@ class VoiceConnectorStreamingArgs {
 
   factory VoiceConnectorStreamingArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingArgs(
-      dataRetention: pulumi.Input.fromValue(map['dataRetention'] as int),
+      dataRetention: pulumi.Input.fromValue((map['dataRetention'] as num).toInt()),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mediaInsightsConfiguration: (() { final guardedValue = map['mediaInsightsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

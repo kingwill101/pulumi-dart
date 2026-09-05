@@ -9,7 +9,7 @@ class EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveAndGenerat
   /// ARN of the foundation model, or inference profile, used to generate responses.
   final pulumi.Input<String> modelArn;
   /// Knowledge base retrieval configuration. See `retrievalConfiguration` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveAndGenerateConfigRetrievalConfiguration>? retrievalConfiguration;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveAndGenerateConfigRetrievalConfiguration?>? retrievalConfiguration;
 
   /// Creates a new [EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveAndGenerateConfig].
   /// [knowledgeBaseId] Identifier of the knowledge base.

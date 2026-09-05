@@ -5,9 +5,9 @@ import 'lifecycle_policy_resource_selection_recipe.dart';
 
 class LifecyclePolicyResourceSelection {
   /// A list of recipe that are used as selection criteria for the output images that the lifecycle policy applies to. Detailed below.
-  final pulumi.Input<List<LifecyclePolicyResourceSelectionRecipe>>? recipes;
+  final pulumi.Input<List<LifecyclePolicyResourceSelectionRecipe>?>? recipes;
   /// A list of tags that are used as selection criteria for the Image Builder image resources that the lifecycle policy applies to.
-  final pulumi.Input<Map<String, String>>? tagMap;
+  final pulumi.Input<Map<String, String>?>? tagMap;
 
   /// Creates a new [LifecyclePolicyResourceSelection].
   /// [recipes] A list of recipe that are used as selection criteria for the output images that the lifecycle policy applies to. Detailed below.

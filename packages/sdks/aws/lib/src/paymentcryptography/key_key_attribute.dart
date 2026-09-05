@@ -9,7 +9,7 @@ class KeyKeyAttribute {
   /// Type of AWS Payment Cryptography key to create.
   final pulumi.Input<String> keyClass;
   /// List of cryptographic operations that you can perform using the key.
-  final pulumi.Input<List<KeyKeyAttributeKeyModesOfUse>>? keyModesOfUses;
+  final pulumi.Input<List<KeyKeyAttributeKeyModesOfUse>?>? keyModesOfUses;
   /// Cryptographic usage of an AWS Payment Cryptography key as defined in section A.5.2 of the TR-31 spec.
   final pulumi.Input<String> keyUsage;
 

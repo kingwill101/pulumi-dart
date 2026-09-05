@@ -26,9 +26,6 @@ import 'data_repository_association_state.dart';
 ///     perUnitStorageThroughput: 125,
 /// });
 /// const exampleDataRepositoryAssociation = new aws.fsx.DataRepositoryAssociation("example", {
-///     fileSystemId: exampleLustreFileSystem.id,
-///     dataRepositoryPath: pulumi.interpolate`s3://${example.id}`,
-///     fileSystemPath: "/my-bucket",
 ///     s3: {
 ///         autoExportPolicy: {
 ///             events: [
@@ -45,6 +42,9 @@ import 'data_repository_association_state.dart';
 ///             ],
 ///         },
 ///     },
+///     fileSystemId: exampleLustreFileSystem.id,
+///     dataRepositoryPath: pulumi.interpolate`s3://${example.id}`,
+///     fileSystemPath: "/my-bucket",
 /// });
 /// ```
 /// ```python
@@ -61,9 +61,6 @@ import 'data_repository_association_state.dart';
 ///     deployment_type="PERSISTENT_2",
 ///     per_unit_storage_throughput=125)
 /// example_data_repository_association = aws.fsx.DataRepositoryAssociation("example",
-///     file_system_id=example_lustre_file_system.id,
-///     data_repository_path=example.id.apply(lambda id: f"s3://{id}"),
-///     file_system_path="/my-bucket",
 ///     s3={
 ///         "auto_export_policy": {
 ///             "events": [
@@ -79,7 +76,10 @@ import 'data_repository_association_state.dart';
 ///                 "DELETED",
 ///             ],
 ///         },
-///     })
+///     },
+///     file_system_id=example_lustre_file_system.id,
+///     data_repository_path=example.id.apply(lambda id: f"s3://{id}"),
+///     file_system_path="/my-bucket")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -110,9 +110,6 @@ import 'data_repository_association_state.dart';
 ///
 ///     var exampleDataRepositoryAssociation = new Aws.Fsx.DataRepositoryAssociation("example", new()
 ///     {
-///         FileSystemId = exampleLustreFileSystem.Id,
-///         DataRepositoryPath = example.Id.Apply(id => $"s3://{id}"),
-///         FileSystemPath = "/my-bucket",
 ///         S3 = new Aws.Fsx.Inputs.DataRepositoryAssociationS3Args
 ///         {
 ///             AutoExportPolicy = new Aws.Fsx.Inputs.DataRepositoryAssociationS3AutoExportPolicyArgs
@@ -134,6 +131,9 @@ import 'data_repository_association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         FileSystemId = exampleLustreFileSystem.Id,
+///         DataRepositoryPath = example.Id.Apply(id => $"s3://{id}"),
+///         FileSystemPath = "/my-bucket",
 ///     });
 ///
 /// });
@@ -174,11 +174,6 @@ import 'data_repository_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewDataRepositoryAssociation(ctx, "example", &fsx.DataRepositoryAssociationArgs{
-/// 			FileSystemId: exampleLustreFileSystem.ID().ToIDOutput().ToStringOutput(),
-/// 			DataRepositoryPath: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
-/// 				return fmt.Sprintf("s3://%v", id), nil
-/// 			}).(pulumi.StringOutput),
-/// 			FileSystemPath: pulumi.String("/my-bucket"),
 /// 			S3: &fsx.DataRepositoryAssociationS3Args{
 /// 				AutoExportPolicy: &fsx.DataRepositoryAssociationS3AutoExportPolicyArgs{
 /// 					Events: pulumi.StringArray{
@@ -195,6 +190,11 @@ import 'data_repository_association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			FileSystemId: exampleLustreFileSystem.ID().ToIDOutput().ToStringOutput(),
+/// 			DataRepositoryPath: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
+/// 				return fmt.Sprintf("s3://%v", id), nil
+/// 			}).(pulumi.StringOutput),
+/// 			FileSystemPath: pulumi.String("/my-bucket"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -226,9 +226,6 @@ import 'data_repository_association_state.dart';
 ///   per_unit_storage_throughput = 125
 /// }
 /// resource "aws_fsx_datarepositoryassociation" "example" {
-///   file_system_id       = aws_fsx_lustrefilesystem.example.id
-///   data_repository_path ="s3://${aws_s3_bucket.example.id}"
-///   file_system_path     = "/my-bucket"
 ///   s3 = {
 ///     auto_export_policy = {
 ///       events = ["NEW", "CHANGED", "DELETED"]
@@ -237,6 +234,9 @@ import 'data_repository_association_state.dart';
 ///       events = ["NEW", "CHANGED", "DELETED"]
 ///     }
 ///   }
+///   file_system_id       = aws_fsx_lustrefilesystem.example.id
+///   data_repository_path ="s3://${aws_s3_bucket.example.id}"
+///   file_system_path     = "/my-bucket"
 /// }
 /// ```
 /// ```java
@@ -286,9 +286,6 @@ import 'data_repository_association_state.dart';
 ///             .build());
 ///
 ///         var exampleDataRepositoryAssociation = new DataRepositoryAssociation("exampleDataRepositoryAssociation", DataRepositoryAssociationArgs.builder()
-///             .fileSystemId(exampleLustreFileSystem.id())
-///             .dataRepositoryPath(example.id().applyValue(_id -> String.format("s3://%s", _id)))
-///             .fileSystemPath("/my-bucket")
 ///             .s3(DataRepositoryAssociationS3Args.builder()
 ///                 .autoExportPolicy(DataRepositoryAssociationS3AutoExportPolicyArgs.builder()
 ///                     .events(
@@ -303,6 +300,9 @@ import 'data_repository_association_state.dart';
 ///                         "DELETED")
 ///                     .build())
 ///                 .build())
+///             .fileSystemId(exampleLustreFileSystem.id())
+///             .dataRepositoryPath(example.id().applyValue(_id -> String.format("s3://%s", _id)))
+///             .fileSystemPath("/my-bucket")
 ///             .build());
 ///
 ///     }
@@ -332,9 +332,6 @@ import 'data_repository_association_state.dart';
 ///     type: aws:fsx:DataRepositoryAssociation
 ///     name: example
 ///     properties:
-///       fileSystemId: ${exampleLustreFileSystem.id}
-///       dataRepositoryPath: s3://${example.id}
-///       fileSystemPath: /my-bucket
 ///       s3:
 ///         autoExportPolicy:
 ///           events:
@@ -346,6 +343,9 @@ import 'data_repository_association_state.dart';
 ///             - NEW
 ///             - CHANGED
 ///             - DELETED
+///       fileSystemId: ${exampleLustreFileSystem.id}
+///       dataRepositoryPath: s3://${example.id}
+///       fileSystemPath: /my-bucket
 /// ```
 ///
 ///
@@ -357,7 +357,7 @@ import 'data_repository_association_state.dart';
 /// $ pulumi import aws:fsx/dataRepositoryAssociation:DataRepositoryAssociation example dra-0b1cfaeca11088b10
 /// ```
 class DataRepositoryAssociation extends pulumi.CustomResource {
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// Identifier of the data repository association.
   late final pulumi.Output<String> associationId;
@@ -394,7 +394,7 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
           'aws:fsx/dataRepositoryAssociation:DataRepositoryAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');
@@ -406,8 +406,8 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
     importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
     region = registerOutput<String>('region');
     s3 = registerOutput<DataRepositoryAssociationS3>('s3', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataRepositoryAssociationS3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DataRepositoryAssociation] resource's state with the given [name] and [id].
@@ -415,11 +415,12 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataRepositoryAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataRepositoryAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -443,7 +444,30 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
     importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
     region = registerOutput<String>('region');
     s3 = registerOutput<DataRepositoryAssociationS3>('s3', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataRepositoryAssociationS3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataRepositoryAssociation] resource.
+  DataRepositoryAssociation.reference(String urn)
+    : super(
+        'aws:fsx/dataRepositoryAssociation:DataRepositoryAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associationId = registerOutput<String>('associationId');
+    batchImportMetaDataOnCreate = registerOutput<bool?>('batchImportMetaDataOnCreate');
+    dataRepositoryPath = registerOutput<String>('dataRepositoryPath');
+    deleteDataInFilesystem = registerOutput<bool?>('deleteDataInFilesystem');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fileSystemPath = registerOutput<String>('fileSystemPath');
+    importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
+    region = registerOutput<String>('region');
+    s3 = registerOutput<DataRepositoryAssociationS3>('s3', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataRepositoryAssociationS3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

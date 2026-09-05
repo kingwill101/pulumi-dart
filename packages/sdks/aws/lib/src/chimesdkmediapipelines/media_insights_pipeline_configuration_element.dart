@@ -12,23 +12,23 @@ import 'media_insights_pipeline_configuration_element_voice_analytics_processor_
 
 class MediaInsightsPipelineConfigurationElement {
   /// Configuration for Amazon Transcribe Call Analytics processor.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration>? amazonTranscribeCallAnalyticsProcessorConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration?>? amazonTranscribeCallAnalyticsProcessorConfiguration;
   /// Configuration for Amazon Transcribe processor.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration>? amazonTranscribeProcessorConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration?>? amazonTranscribeProcessorConfiguration;
   /// Configuration for Kinesis Data Stream sink.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration>? kinesisDataStreamSinkConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration?>? kinesisDataStreamSinkConfiguration;
   /// Configuration for Lambda Function sink.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration>? lambdaFunctionSinkConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration?>? lambdaFunctionSinkConfiguration;
   /// Configuration for S3 recording sink.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration>? s3RecordingSinkConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration?>? s3RecordingSinkConfiguration;
   /// Configuration for SNS Topic sink.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration>? snsTopicSinkConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration?>? snsTopicSinkConfiguration;
   /// Configuration for SQS Queue sink.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration>? sqsQueueSinkConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration?>? sqsQueueSinkConfiguration;
   /// Element type.
   final pulumi.Input<String> type;
   /// Configuration for Voice analytics processor.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration>? voiceAnalyticsProcessorConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration?>? voiceAnalyticsProcessorConfiguration;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElement].
   /// [amazonTranscribeCallAnalyticsProcessorConfiguration] Configuration for Amazon Transcribe Call Analytics processor.

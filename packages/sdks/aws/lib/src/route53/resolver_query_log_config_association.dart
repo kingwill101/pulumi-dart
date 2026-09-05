@@ -141,7 +141,7 @@ class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
           'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resolverQueryLogConfigId = registerOutput<String>('resolverQueryLogConfigId');
@@ -153,11 +153,12 @@ class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverQueryLogConfigAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverQueryLogConfigAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,6 +172,20 @@ class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resolverQueryLogConfigId = registerOutput<String>('resolverQueryLogConfigId');
+    resourceId = registerOutput<String>('resourceId');
+  }
+
+  /// Creates a typed reference to an existing [ResolverQueryLogConfigAssociation] resource.
+  ResolverQueryLogConfigAssociation.reference(String urn)
+    : super(
+        'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resolverQueryLogConfigId = registerOutput<String>('resolverQueryLogConfigId');
     resourceId = registerOutput<String>('resourceId');

@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderSseSpecification {
-  final pulumi.Input<bool>? customerManagedKeyEnabled;
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<bool?>? customerManagedKeyEnabled;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [TrustProviderSseSpecification].
   /// [customerManagedKeyEnabled] Optional.

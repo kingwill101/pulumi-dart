@@ -5,9 +5,9 @@ import 'hyper_parameter_tuning_job_warm_start_config_parent_hyper_parameter_tuni
 
 class HyperParameterTuningJobWarmStartConfig {
   /// Parent tuning jobs for warm start.
-  final pulumi.Input<List<HyperParameterTuningJobWarmStartConfigParentHyperParameterTuningJob>>? parentHyperParameterTuningJobs;
+  final pulumi.Input<List<HyperParameterTuningJobWarmStartConfigParentHyperParameterTuningJob>?>? parentHyperParameterTuningJobs;
   /// Warm start mode.
-  final pulumi.Input<String>? warmStartType;
+  final pulumi.Input<String?>? warmStartType;
 
   /// Creates a new [HyperParameterTuningJobWarmStartConfig].
   /// [parentHyperParameterTuningJobs] Parent tuning jobs for warm start.

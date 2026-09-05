@@ -6,9 +6,9 @@ import 'project_data_delivery_s3_destination.dart';
 
 class ProjectDataDelivery {
   /// A block that defines the CloudWatch Log Group that stores the evaluation events. See below.
-  final pulumi.Input<ProjectDataDeliveryCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<ProjectDataDeliveryCloudwatchLogs?>? cloudwatchLogs;
   /// A block that defines the S3 bucket and prefix that stores the evaluation events. See below.
-  final pulumi.Input<ProjectDataDeliveryS3Destination>? s3Destination;
+  final pulumi.Input<ProjectDataDeliveryS3Destination?>? s3Destination;
 
   /// Creates a new [ProjectDataDelivery].
   /// [cloudwatchLogs] A block that defines the CloudWatch Log Group that stores the evaluation events. See below.

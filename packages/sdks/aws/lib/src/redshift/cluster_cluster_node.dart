@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterNode {
   /// Whether the node is a leader node or a compute node
-  final pulumi.Input<String>? nodeRole;
+  final pulumi.Input<String?>? nodeRole;
   /// The private IP address of a node within a cluster
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The public IP address of a node within a cluster
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
 
   /// Creates a new [ClusterClusterNode].
   /// [nodeRole] Whether the node is a leader node or a compute node

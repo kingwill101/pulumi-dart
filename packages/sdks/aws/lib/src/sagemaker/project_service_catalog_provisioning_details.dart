@@ -5,13 +5,13 @@ import 'project_service_catalog_provisioning_details_provisioning_parameter.dart
 
 class ProjectServiceCatalogProvisioningDetails {
   /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
-  final pulumi.Input<String>? pathId;
+  final pulumi.Input<String?>? pathId;
   /// The ID of the product to provision.
   final pulumi.Input<String> productId;
   /// The ID of the provisioning artifact.
-  final pulumi.Input<String>? provisioningArtifactId;
+  final pulumi.Input<String?>? provisioningArtifactId;
   /// A list of key value pairs that you specify when you provision a product. See Provisioning Parameter below.
-  final pulumi.Input<List<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>>? provisioningParameters;
+  final pulumi.Input<List<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>?>? provisioningParameters;
 
   /// Creates a new [ProjectServiceCatalogProvisioningDetails].
   /// [pathId] The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.

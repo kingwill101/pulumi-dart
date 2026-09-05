@@ -6,9 +6,9 @@ import 'stream_processor_settings_face_search.dart';
 
 class StreamProcessorSettings {
   /// Label detection settings to use on a streaming video. See `connectedHome`.
-  final pulumi.Input<StreamProcessorSettingsConnectedHome>? connectedHome;
+  final pulumi.Input<StreamProcessorSettingsConnectedHome?>? connectedHome;
   /// Input face recognition parameters for an Amazon Rekognition stream processor. See `faceSearch`.
-  final pulumi.Input<StreamProcessorSettingsFaceSearch>? faceSearch;
+  final pulumi.Input<StreamProcessorSettingsFaceSearch?>? faceSearch;
 
   /// Creates a new [StreamProcessorSettings].
   /// [connectedHome] Label detection settings to use on a streaming video. See `connectedHome`.

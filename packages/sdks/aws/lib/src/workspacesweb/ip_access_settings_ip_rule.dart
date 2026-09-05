@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IpAccessSettingsIpRule {
   /// The description of the IP access settings.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP range of the IP rule.
   final pulumi.Input<String> ipRange;
 

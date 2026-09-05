@@ -5,7 +5,7 @@ import 'virtual_gateway_spec_logging_access_log_file.dart';
 
 class VirtualGatewaySpecLoggingAccessLog {
   /// File object to send virtual gateway access logs to. See `spec.logging.access_log.file` Block for details.
-  final pulumi.Input<VirtualGatewaySpecLoggingAccessLogFile>? file;
+  final pulumi.Input<VirtualGatewaySpecLoggingAccessLogFile?>? file;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLog].
   /// [file] File object to send virtual gateway access logs to. See `spec.logging.access_log.file` Block for details.

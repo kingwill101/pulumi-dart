@@ -6,39 +6,39 @@ import 'get_user_groups_group.dart';
 /// Result data returned by getUserGroups.
 class GetUserGroupsResult {
   /// List of groups. See `groups` below.
-  final List<GetUserGroupsGroup> groups;
+  final List<GetUserGroupsGroup>? groups;
   /// User pool identifier.
-  final String id;
-  final String region;
-  final String userPoolId;
+  final String? id;
+  final String? region;
+  final String? userPoolId;
 
   /// Creates a new [GetUserGroupsResult].
   /// [groups] List of groups. See `groups` below.
   /// [id] User pool identifier.
-  /// [region] Required.
-  /// [userPoolId] Required.
+  /// [region] Optional.
+  /// [userPoolId] Optional.
   const GetUserGroupsResult({
-    required this.groups,
-    required this.id,
-    required this.region,
-    required this.userPoolId,
+    this.groups,
+    this.id,
+    this.region,
+    this.userPoolId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetUserGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
-      'id': id,
-      'region': region,
-      'userPoolId': userPoolId,
+      'groups': ?(() { final guardedValue = groups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserGroupsGroup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'region': ?region,
+      'userPoolId': ?userPoolId,
     };
   }
 
   factory GetUserGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsResult(
-      groups: pulumi.Input.decodeList<GetUserGroupsGroup>(map['groups']!, (value) => GetUserGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      region: map['region'] as String,
-      userPoolId: map['userPoolId'] as String,
+      groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserGroupsGroup>(guardedValue, (value) => GetUserGroupsGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userPoolId: (() { final guardedValue = map['userPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

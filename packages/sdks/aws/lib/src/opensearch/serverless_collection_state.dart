@@ -7,40 +7,40 @@ import 'serverless_collection_vector_option.dart';
 
 /// Input properties used for looking up and filtering ServerlessCollection resources.
 class ServerlessCollectionState {
-  /// Amazon Resource Name (ARN) of the collection.
-  final pulumi.Input<String>? arn;
+  /// ARN of the collection.
+  final pulumi.Input<String?>? arn;
   /// Collection-specific endpoint used to submit index, search, and data upload requests to an OpenSearch Serverless collection.
-  final pulumi.Input<String>? collectionEndpoint;
+  final pulumi.Input<String?>? collectionEndpoint;
   /// Name of the collection group to associate with this collection.
-  final pulumi.Input<String>? collectionGroupName;
+  final pulumi.Input<String?>? collectionGroupName;
   /// Collection-specific endpoint used to access OpenSearch Dashboards.
-  final pulumi.Input<String>? dashboardEndpoint;
+  final pulumi.Input<String?>? dashboardEndpoint;
   /// Description of the collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block for direct collection encryption settings. See `encryptionConfig` below for details.
-  final pulumi.Input<List<ServerlessCollectionEncryptionConfig>>? encryptionConfigs;
+  final pulumi.Input<List<ServerlessCollectionEncryptionConfig>?>? encryptionConfigs;
   /// ARN of the Amazon Web Services KMS key used to encrypt the collection.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Name of the collection.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether standby replicas should be used for a collection. One of `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-  final pulumi.Input<String>? standbyReplicas;
+  final pulumi.Input<String?>? standbyReplicas;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ServerlessCollectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ServerlessCollectionTimeouts?>? timeouts;
   /// Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Configuration block for vector search options. Only valid when `type` is `VECTORSEARCH`. See `vectorOptions` below for details.
-  final pulumi.Input<List<ServerlessCollectionVectorOption>>? vectorOptions;
+  final pulumi.Input<List<ServerlessCollectionVectorOption>?>? vectorOptions;
 
   /// Creates a new [ServerlessCollectionState].
-  /// [arn] Amazon Resource Name (ARN) of the collection.
+  /// [arn] ARN of the collection.
   /// [collectionEndpoint] Collection-specific endpoint used to submit index, search, and data upload requests to an OpenSearch Serverless collection.
   /// [collectionGroupName] Name of the collection group to associate with this collection.
   /// [dashboardEndpoint] Collection-specific endpoint used to access OpenSearch Dashboards.

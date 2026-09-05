@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicequotas_get_templates_get_templates_args_doc}
 class GetTemplatesArgs {
   /// AWS Region to which the quota increases apply.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetTemplatesArgs].
   /// [awsRegion] AWS Region to which the quota increases apply.

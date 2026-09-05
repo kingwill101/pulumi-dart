@@ -7,37 +7,37 @@ import 'theme_permission.dart';
 /// Input properties used for looking up and filtering Theme resources.
 class ThemeState {
   /// ARN of the theme.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
-  final pulumi.Input<String>? baseThemeId;
+  final pulumi.Input<String?>? baseThemeId;
   /// The theme configuration, which contains the theme display properties. See configuration.
-  final pulumi.Input<ThemeConfiguration>? configuration;
+  final pulumi.Input<ThemeConfiguration?>? configuration;
   /// The time that the theme was created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// The time that the theme was last updated.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// Display name of the theme.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A set of resource permissions on the theme. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<ThemePermission>>? permissions;
+  final pulumi.Input<List<ThemePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The theme creation status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Identifier of the theme.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? themeId;
+  final pulumi.Input<String?>? themeId;
   /// A description of the current theme version being created/updated.
-  final pulumi.Input<String>? versionDescription;
+  final pulumi.Input<String?>? versionDescription;
   /// The version number of the theme version.
-  final pulumi.Input<int>? versionNumber;
+  final pulumi.Input<int?>? versionNumber;
 
   /// Creates a new [ThemeState].
   /// [arn] ARN of the theme.
@@ -109,7 +109,7 @@ class ThemeState {
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       themeId: (() { final guardedValue = map['themeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionDescription: (() { final guardedValue = map['versionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

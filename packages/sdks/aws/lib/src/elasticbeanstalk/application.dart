@@ -18,13 +18,13 @@ import 'application_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const tftest = new aws.elasticbeanstalk.Application("tftest", {
-///     name: "tf-test-name",
-///     description: "tf-test-desc",
 ///     appversionLifecycle: {
 ///         serviceRole: beanstalkService.arn,
 ///         maxCount: 128,
 ///         deleteSourceFromS3: true,
 ///     },
+///     name: "tf-test-name",
+///     description: "tf-test-desc",
 /// });
 /// ```
 /// ```python
@@ -32,13 +32,13 @@ import 'application_state.dart';
 /// import pulumi_aws as aws
 ///
 /// tftest = aws.elasticbeanstalk.Application("tftest",
-///     name="tf-test-name",
-///     description="tf-test-desc",
 ///     appversion_lifecycle={
 ///         "service_role": beanstalk_service["arn"],
 ///         "max_count": 128,
 ///         "delete_source_from_s3": True,
-///     })
+///     },
+///     name="tf-test-name",
+///     description="tf-test-desc")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,14 +50,14 @@ import 'application_state.dart';
 /// {
 ///     var tftest = new Aws.ElasticBeanstalk.Application("tftest", new()
 ///     {
-///         Name = "tf-test-name",
-///         Description = "tf-test-desc",
 ///         AppversionLifecycle = new Aws.ElasticBeanstalk.Inputs.ApplicationAppversionLifecycleArgs
 ///         {
 ///             ServiceRole = beanstalkService.Arn,
 ///             MaxCount = 128,
 ///             DeleteSourceFromS3 = true,
 ///         },
+///         Name = "tf-test-name",
+///         Description = "tf-test-desc",
 ///     });
 ///
 /// });
@@ -73,13 +73,13 @@ import 'application_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticbeanstalk.NewApplication(ctx, "tftest", &elasticbeanstalk.ApplicationArgs{
-/// 			Name:        pulumi.String("tf-test-name"),
-/// 			Description: pulumi.String("tf-test-desc"),
 /// 			AppversionLifecycle: &elasticbeanstalk.ApplicationAppversionLifecycleArgs{
 /// 				ServiceRole:        pulumi.Any(beanstalkService.Arn),
 /// 				MaxCount:           pulumi.Int(128),
 /// 				DeleteSourceFromS3: pulumi.Bool(true),
 /// 			},
+/// 			Name:        pulumi.String("tf-test-name"),
+/// 			Description: pulumi.String("tf-test-desc"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,13 +98,13 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_elasticbeanstalk_application" "tftest" {
-///   name        = "tf-test-name"
-///   description = "tf-test-desc"
 ///   appversion_lifecycle = {
 ///     service_role          = beanstalkService.arn
 ///     max_count             = 128
 ///     delete_source_from_s3 = true
 ///   }
+///   name        = "tf-test-name"
+///   description = "tf-test-desc"
 /// }
 /// ```
 /// ```java
@@ -130,13 +130,13 @@ import 'application_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var tftest = new Application("tftest", ApplicationArgs.builder()
-///             .name("tf-test-name")
-///             .description("tf-test-desc")
 ///             .appversionLifecycle(ApplicationAppversionLifecycleArgs.builder()
 ///                 .serviceRole(beanstalkService.arn())
 ///                 .maxCount(128)
 ///                 .deleteSourceFromS3(true)
 ///                 .build())
+///             .name("tf-test-name")
+///             .description("tf-test-desc")
 ///             .build());
 ///
 ///     }
@@ -147,12 +147,12 @@ import 'application_state.dart';
 ///   tftest:
 ///     type: aws:elasticbeanstalk:Application
 ///     properties:
-///       name: tf-test-name
-///       description: tf-test-desc
 ///       appversionLifecycle:
 ///         serviceRole: ${beanstalkService.arn}
 ///         maxCount: 128
 ///         deleteSourceFromS3: true
+///       name: tf-test-name
+///       description: tf-test-desc
 /// ```
 ///
 ///
@@ -190,15 +190,15 @@ class Application extends pulumi.CustomResource {
           'aws:elasticbeanstalk/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>('appversionLifecycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAppversionLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -206,11 +206,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -229,7 +230,25 @@ class Application extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:elasticbeanstalk/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>('appversionLifecycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAppversionLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAdvancedSecurityOptionsMasterUserOptions {
   /// ARN for the main user. Only specify if `internalUserDatabaseEnabled` is not set or set to `false`.
-  final pulumi.Input<String>? masterUserArn;
+  final pulumi.Input<String?>? masterUserArn;
   /// Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internalUserDatabaseEnabled` is set to `true`.
-  final pulumi.Input<String>? masterUserName;
+  final pulumi.Input<String?>? masterUserName;
   /// Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internalUserDatabaseEnabled` is set to `true`.
-  final pulumi.Input<String>? masterUserPassword;
+  final pulumi.Input<String?>? masterUserPassword;
 
   /// Creates a new [DomainAdvancedSecurityOptionsMasterUserOptions].
   /// [masterUserArn] ARN for the main user. Only specify if `internalUserDatabaseEnabled` is not set or set to `false`.

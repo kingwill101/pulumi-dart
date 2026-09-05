@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Tenant resources.
 class TenantState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current sending status of the tenant.
-  final pulumi.Input<String>? sendingStatus;
+  final pulumi.Input<String?>? sendingStatus;
   /// Map of tags to assign to the tenant.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the tenant, including provider default tags.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the Tenant.
-  final pulumi.Input<String>? tenantArn;
+  final pulumi.Input<String?>? tenantArn;
   /// ID of the Tenant.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Name of the SESV2 tenant.  The name must be unique within the AWS account and Region.  Changing the tenant name forces creation of a new tenant.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? tenantName;
+  final pulumi.Input<String?>? tenantName;
 
   /// Creates a new [TenantState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

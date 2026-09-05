@@ -6,25 +6,25 @@ import 'bot_alias_conversation_logs.dart';
 /// Input properties used for looking up and filtering BotAlias resources.
 class BotAliasState {
   /// The ARN of the bot alias.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of the bot.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The version of the bot.
-  final pulumi.Input<String>? botVersion;
+  final pulumi.Input<String?>? botVersion;
   /// Checksum of the bot alias.
-  final pulumi.Input<String>? checksum;
+  final pulumi.Input<String?>? checksum;
   /// The settings that determine how Amazon Lex uses conversation logs for the alias. Attributes are documented under conversation_logs.
-  final pulumi.Input<BotAliasConversationLogs>? conversationLogs;
+  final pulumi.Input<BotAliasConversationLogs?>? conversationLogs;
   /// The date that the bot alias was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// A description of the alias. Must be less than or equal to 200 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
-  final pulumi.Input<String>? lastUpdatedDate;
+  final pulumi.Input<String?>? lastUpdatedDate;
   /// The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BotAliasState].
   /// [arn] The ARN of the bot alias.

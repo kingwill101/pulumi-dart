@@ -5,7 +5,7 @@ import 'pipe_target_parameters_ecs_task_parameters_network_configuration_aws_vpc
 
 class PipeTargetParametersEcsTaskParametersNetworkConfiguration {
   /// Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode. Detailed below.
-  final pulumi.Input<PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration>? awsVpcConfiguration;
+  final pulumi.Input<PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration?>? awsVpcConfiguration;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersNetworkConfiguration].
   /// [awsVpcConfiguration] Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode. Detailed below.

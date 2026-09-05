@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings_filter_settings_temporal_filter_settings.dart';
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings {
-  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings>? temporalFilterSettings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings?>? temporalFilterSettings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings].
   /// [temporalFilterSettings] Optional.

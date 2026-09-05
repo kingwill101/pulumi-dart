@@ -10,7 +10,7 @@ class GetIamRoleAssociationArgs {
   /// IAM role ARN to look up.
   final pulumi.Input<String> iamRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Oracle Database@AWS resource ARN associated with the IAM role.
   ///
   /// The following arguments are optional:

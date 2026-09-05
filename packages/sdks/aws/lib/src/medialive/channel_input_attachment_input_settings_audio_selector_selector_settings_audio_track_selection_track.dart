@@ -20,7 +20,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack(
-      track: pulumi.Input.fromValue(map['track'] as int),
+      track: pulumi.Input.fromValue((map['track'] as num).toInt()),
     );
   }
 }

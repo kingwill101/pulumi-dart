@@ -7,13 +7,13 @@ import 'v2models_intent_closing_setting_conditional_conditional_branch_response.
 
 class V2modelsIntentClosingSettingConditionalConditionalBranch {
   /// Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchCondition>? condition;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchCondition?>? condition;
   /// Name of the branch.
   final pulumi.Input<String> name;
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalConditionalBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalConditionalBranch].
   /// [condition] Configuration block for the expression to evaluate. If the condition is true, the branch's actions are taken. See `condition`.

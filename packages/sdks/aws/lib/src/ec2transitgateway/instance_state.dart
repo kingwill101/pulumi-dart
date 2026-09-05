@@ -14,7 +14,6 @@ import 'instance_state_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ubuntu = aws.ec2.getAmi({
-///     mostRecent: true,
 ///     filters: [
 ///         {
 ///             name: "name",
@@ -25,6 +24,7 @@ import 'instance_state_state.dart';
 ///             values: ["hvm"],
 ///         },
 ///     ],
+///     mostRecent: true,
 ///     owners: ["099720109477"],
 /// });
 /// const test = new aws.ec2.Instance("test", {
@@ -43,8 +43,7 @@ import 'instance_state_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ubuntu = aws.ec2.get_ami(most_recent=True,
-///     filters=[
+/// ubuntu = aws.ec2.get_ami(filters=[
 ///         {
 ///             "name": "name",
 ///             "values": ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"],
@@ -54,6 +53,7 @@ import 'instance_state_state.dart';
 ///             "values": ["hvm"],
 ///         },
 ///     ],
+///     most_recent=True,
 ///     owners=["099720109477"])
 /// test = aws.ec2.Instance("test",
 ///     ami=ubuntu.id,
@@ -75,7 +75,6 @@ import 'instance_state_state.dart';
 /// {
 ///     var ubuntu = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -95,6 +94,7 @@ import 'instance_state_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
 ///         Owners = new[]
 ///         {
 ///             "099720109477",
@@ -131,7 +131,6 @@ import 'instance_state_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ubuntu, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -146,6 +145,7 @@ import 'instance_state_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Owners: []string{
 /// 				"099720109477",
 /// 			},
@@ -184,7 +184,6 @@ import 'instance_state_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "ubuntu" {
-///   most_recent = true
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -193,7 +192,8 @@ import 'instance_state_state.dart';
 ///     name   = "virtualization-type"
 ///     values = ["hvm"]
 ///   }
-///   owners = ["099720109477"]
+///   most_recent = true
+///   owners      = ["099720109477"]
 /// }
 ///
 /// # Canonical
@@ -236,7 +236,6 @@ import 'instance_state_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ubuntu = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
 ///             .filters(
 ///                 GetAmiFilterArgs.builder()
 ///                     .name("name")
@@ -246,6 +245,7 @@ import 'instance_state_state.dart';
 ///                     .name("virtualization-type")
 ///                     .values("hvm")
 ///                     .build())
+///             .mostRecent(true)
 ///             .owners("099720109477")
 ///             .build());
 ///
@@ -283,7 +283,6 @@ import 'instance_state_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
 ///         filters:
 ///           - name: name
 ///             values:
@@ -291,6 +290,7 @@ import 'instance_state_state.dart';
 ///           - name: virtualization-type
 ///             values:
 ///               - hvm
+///         mostRecent: true
 ///         owners:
 ///           - '099720109477'
 /// ```
@@ -327,7 +327,7 @@ class InstanceState extends pulumi.CustomResource {
           'aws:ec2transitgateway/instanceState:InstanceState',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     force = registerOutput<bool?>('force');
     instanceId = registerOutput<String>('instanceId');
@@ -340,11 +340,12 @@ class InstanceState extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceStateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceState._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -362,5 +363,20 @@ class InstanceState extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [InstanceState] resource.
+  InstanceState.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/instanceState:InstanceState',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    force = registerOutput<bool?>('force');
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 }

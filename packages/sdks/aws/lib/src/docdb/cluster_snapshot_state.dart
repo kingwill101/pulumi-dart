@@ -5,36 +5,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClusterSnapshot resources.
 class ClusterSnapshotState {
   /// List of EC2 Availability Zones that instances in the DocumentDB cluster snapshot can be restored in.
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The DocumentDB Cluster Identifier from which to take the snapshot.
-  final pulumi.Input<String>? dbClusterIdentifier;
-  /// The Amazon Resource Name (ARN) for the DocumentDB Cluster Snapshot.
-  final pulumi.Input<String>? dbClusterSnapshotArn;
+  final pulumi.Input<String?>? dbClusterIdentifier;
+  /// ARN for the DocumentDB Cluster Snapshot.
+  final pulumi.Input<String?>? dbClusterSnapshotArn;
   /// The Identifier for the snapshot.
-  final pulumi.Input<String>? dbClusterSnapshotIdentifier;
+  final pulumi.Input<String?>? dbClusterSnapshotIdentifier;
   /// Specifies the name of the database engine.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Version of the database engine for this DocumentDB cluster snapshot.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Port that the DocumentDB cluster was listening on at the time of the snapshot.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? snapshotType;
-  final pulumi.Input<String>? sourceDbClusterSnapshotArn;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? snapshotType;
+  final pulumi.Input<String?>? sourceDbClusterSnapshotArn;
   /// The status of this DocumentDB Cluster Snapshot.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Specifies whether the DocumentDB cluster snapshot is encrypted.
-  final pulumi.Input<bool>? storageEncrypted;
+  final pulumi.Input<bool?>? storageEncrypted;
   /// The VPC ID associated with the DocumentDB cluster snapshot.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ClusterSnapshotState].
   /// [availabilityZones] List of EC2 Availability Zones that instances in the DocumentDB cluster snapshot can be restored in.
   /// [dbClusterIdentifier] The DocumentDB Cluster Identifier from which to take the snapshot.
-  /// [dbClusterSnapshotArn] The Amazon Resource Name (ARN) for the DocumentDB Cluster Snapshot.
+  /// [dbClusterSnapshotArn] ARN for the DocumentDB Cluster Snapshot.
   /// [dbClusterSnapshotIdentifier] The Identifier for the snapshot.
   /// [engine] Specifies the name of the database engine.
   /// [engineVersion] Version of the database engine for this DocumentDB cluster snapshot.
@@ -91,7 +91,7 @@ class ClusterSnapshotState {
       engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceDbClusterSnapshotArn: (() { final guardedValue = map['sourceDbClusterSnapshotArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

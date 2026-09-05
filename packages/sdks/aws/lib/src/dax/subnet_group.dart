@@ -162,12 +162,12 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:dax/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -176,11 +176,12 @@ class SubnetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,7 +198,23 @@ class SubnetGroup extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [SubnetGroup] resource.
+  SubnetGroup.reference(String urn)
+    : super(
+        'aws:dax/subnetGroup:SubnetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

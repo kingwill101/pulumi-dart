@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretReplica {
   /// ARN, Key ID, or Alias of the AWS KMS key within the region secret is replicated to. If one is not specified, then Secrets Manager defaults to using the AWS account's default KMS key (`aws/secretsmanager`) in the region or creates one for use if non-existent.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Date that you last accessed the secret in the Region.
-  final pulumi.Input<String>? lastAccessedDate;
+  final pulumi.Input<String?>? lastAccessedDate;
   /// Region for replicating the secret.
   final pulumi.Input<String> region;
   /// Status can be `InProgress`, `Failed`, or `InSync`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Message such as `Replication succeeded` or `Secret with this name already exists in this region`.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
 
   /// Creates a new [SecretReplica].
   /// [kmsKeyId] ARN, Key ID, or Alias of the AWS KMS key within the region secret is replicated to. If one is not specified, then Secrets Manager defaults to using the AWS account's default KMS key (`aws/secretsmanager`) in the region or creates one for use if non-existent.

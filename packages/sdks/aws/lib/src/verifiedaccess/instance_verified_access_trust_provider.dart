@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceVerifiedAccessTrustProvider {
   /// A description for the AWS Verified Access Instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of device-based trust provider.
-  final pulumi.Input<String>? deviceTrustProviderType;
+  final pulumi.Input<String?>? deviceTrustProviderType;
   /// The type of trust provider (user- or device-based).
-  final pulumi.Input<String>? trustProviderType;
+  final pulumi.Input<String?>? trustProviderType;
   /// The type of user-based trust provider.
-  final pulumi.Input<String>? userTrustProviderType;
+  final pulumi.Input<String?>? userTrustProviderType;
   /// The ID of the trust provider.
-  final pulumi.Input<String>? verifiedAccessTrustProviderId;
+  final pulumi.Input<String?>? verifiedAccessTrustProviderId;
 
   /// Creates a new [InstanceVerifiedAccessTrustProvider].
   /// [description] A description for the AWS Verified Access Instance.

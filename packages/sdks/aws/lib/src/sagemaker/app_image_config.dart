@@ -17,12 +17,12 @@ import 'app_image_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.sagemaker.AppImageConfig("test", {
-///     appImageConfigName: "example",
 ///     kernelGatewayImageConfig: {
 ///         kernelSpecs: [{
 ///             name: "example",
 ///         }],
 ///     },
+///     appImageConfigName: "example",
 /// });
 /// ```
 /// ```python
@@ -30,12 +30,12 @@ import 'app_image_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.sagemaker.AppImageConfig("test",
-///     app_image_config_name="example",
 ///     kernel_gateway_image_config={
 ///         "kernel_specs": [{
 ///             "name": "example",
 ///         }],
-///     })
+///     },
+///     app_image_config_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,7 +47,6 @@ import 'app_image_config_state.dart';
 /// {
 ///     var test = new Aws.Sagemaker.AppImageConfig("test", new()
 ///     {
-///         AppImageConfigName = "example",
 ///         KernelGatewayImageConfig = new Aws.Sagemaker.Inputs.AppImageConfigKernelGatewayImageConfigArgs
 ///         {
 ///             KernelSpecs = new[]
@@ -58,6 +57,7 @@ import 'app_image_config_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AppImageConfigName = "example",
 ///     });
 ///
 /// });
@@ -73,7 +73,6 @@ import 'app_image_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewAppImageConfig(ctx, "test", &sagemaker.AppImageConfigArgs{
-/// 			AppImageConfigName: pulumi.String("example"),
 /// 			KernelGatewayImageConfig: &sagemaker.AppImageConfigKernelGatewayImageConfigArgs{
 /// 				KernelSpecs: sagemaker.AppImageConfigKernelGatewayImageConfigKernelSpecArray{
 /// 					&sagemaker.AppImageConfigKernelGatewayImageConfigKernelSpecArgs{
@@ -81,6 +80,7 @@ import 'app_image_config_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AppImageConfigName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -99,12 +99,12 @@ import 'app_image_config_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_appimageconfig" "test" {
-///   app_image_config_name = "example"
 ///   kernel_gateway_image_config = {
 ///     kernel_specs = [{
 ///       "name" = "example"
 ///     }]
 ///   }
+///   app_image_config_name = "example"
 /// }
 /// ```
 /// ```java
@@ -131,12 +131,12 @@ import 'app_image_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new AppImageConfig("test", AppImageConfigArgs.builder()
-///             .appImageConfigName("example")
 ///             .kernelGatewayImageConfig(AppImageConfigKernelGatewayImageConfigArgs.builder()
 ///                 .kernelSpecs(AppImageConfigKernelGatewayImageConfigKernelSpecArgs.builder()
 ///                     .name("example")
 ///                     .build())
 ///                 .build())
+///             .appImageConfigName("example")
 ///             .build());
 ///
 ///     }
@@ -147,10 +147,10 @@ import 'app_image_config_state.dart';
 ///   test:
 ///     type: aws:sagemaker:AppImageConfig
 ///     properties:
-///       appImageConfigName: example
 ///       kernelGatewayImageConfig:
 ///         kernelSpecs:
 ///           - name: example
+///       appImageConfigName: example
 /// ```
 ///
 ///
@@ -162,8 +162,8 @@ import 'app_image_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.sagemaker.AppImageConfig("test", {
-///     appImageConfigName: "example",
 ///     codeEditorAppImageConfig: {},
+///     appImageConfigName: "example",
 /// });
 /// ```
 /// ```python
@@ -171,8 +171,8 @@ import 'app_image_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.sagemaker.AppImageConfig("test",
-///     app_image_config_name="example",
-///     code_editor_app_image_config={})
+///     code_editor_app_image_config={},
+///     app_image_config_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -184,8 +184,8 @@ import 'app_image_config_state.dart';
 /// {
 ///     var test = new Aws.Sagemaker.AppImageConfig("test", new()
 ///     {
-///         AppImageConfigName = "example",
 ///         CodeEditorAppImageConfig = null,
+///         AppImageConfigName = "example",
 ///     });
 ///
 /// });
@@ -201,8 +201,8 @@ import 'app_image_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewAppImageConfig(ctx, "test", &sagemaker.AppImageConfigArgs{
-/// 			AppImageConfigName:       pulumi.String("example"),
 /// 			CodeEditorAppImageConfig: &sagemaker.AppImageConfigCodeEditorAppImageConfigArgs{},
+/// 			AppImageConfigName:       pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -221,8 +221,8 @@ import 'app_image_config_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_appimageconfig" "test" {
-///   app_image_config_name        = "example"
 ///   code_editor_app_image_config = {}
+///   app_image_config_name        = "example"
 /// }
 /// ```
 /// ```java
@@ -248,9 +248,9 @@ import 'app_image_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new AppImageConfig("test", AppImageConfigArgs.builder()
-///             .appImageConfigName("example")
 ///             .codeEditorAppImageConfig(AppImageConfigCodeEditorAppImageConfigArgs.builder()
 ///                 .build())
+///             .appImageConfigName("example")
 ///             .build());
 ///
 ///     }
@@ -261,8 +261,8 @@ import 'app_image_config_state.dart';
 ///   test:
 ///     type: aws:sagemaker:AppImageConfig
 ///     properties:
-///       appImageConfigName: example
 ///       codeEditorAppImageConfig: {}
+///       appImageConfigName: example
 /// ```
 ///
 ///
@@ -274,13 +274,13 @@ import 'app_image_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.sagemaker.AppImageConfig("test", {
-///     appImageConfigName: "example",
 ///     kernelGatewayImageConfig: {
+///         fileSystemConfig: {},
 ///         kernelSpecs: [{
 ///             name: "example",
 ///         }],
-///         fileSystemConfig: {},
 ///     },
+///     appImageConfigName: "example",
 /// });
 /// ```
 /// ```python
@@ -288,13 +288,13 @@ import 'app_image_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.sagemaker.AppImageConfig("test",
-///     app_image_config_name="example",
 ///     kernel_gateway_image_config={
+///         "file_system_config": {},
 ///         "kernel_specs": [{
 ///             "name": "example",
 ///         }],
-///         "file_system_config": {},
-///     })
+///     },
+///     app_image_config_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -306,9 +306,9 @@ import 'app_image_config_state.dart';
 /// {
 ///     var test = new Aws.Sagemaker.AppImageConfig("test", new()
 ///     {
-///         AppImageConfigName = "example",
 ///         KernelGatewayImageConfig = new Aws.Sagemaker.Inputs.AppImageConfigKernelGatewayImageConfigArgs
 ///         {
+///             FileSystemConfig = null,
 ///             KernelSpecs = new[]
 ///             {
 ///                 new Aws.Sagemaker.Inputs.AppImageConfigKernelGatewayImageConfigKernelSpecArgs
@@ -316,8 +316,8 @@ import 'app_image_config_state.dart';
 ///                     Name = "example",
 ///                 },
 ///             },
-///             FileSystemConfig = null,
 ///         },
+///         AppImageConfigName = "example",
 ///     });
 ///
 /// });
@@ -333,15 +333,15 @@ import 'app_image_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewAppImageConfig(ctx, "test", &sagemaker.AppImageConfigArgs{
-/// 			AppImageConfigName: pulumi.String("example"),
 /// 			KernelGatewayImageConfig: &sagemaker.AppImageConfigKernelGatewayImageConfigArgs{
+/// 				FileSystemConfig: &sagemaker.AppImageConfigKernelGatewayImageConfigFileSystemConfigArgs{},
 /// 				KernelSpecs: sagemaker.AppImageConfigKernelGatewayImageConfigKernelSpecArray{
 /// 					&sagemaker.AppImageConfigKernelGatewayImageConfigKernelSpecArgs{
 /// 						Name: pulumi.String("example"),
 /// 					},
 /// 				},
-/// 				FileSystemConfig: &sagemaker.AppImageConfigKernelGatewayImageConfigFileSystemConfigArgs{},
 /// 			},
+/// 			AppImageConfigName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -360,13 +360,13 @@ import 'app_image_config_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_appimageconfig" "test" {
-///   app_image_config_name = "example"
 ///   kernel_gateway_image_config = {
+///     file_system_config = {}
 ///     kernel_specs = [{
 ///       "name" = "example"
 ///     }]
-///     file_system_config = {}
 ///   }
+///   app_image_config_name = "example"
 /// }
 /// ```
 /// ```java
@@ -378,8 +378,8 @@ import 'app_image_config_state.dart';
 /// import com.pulumi.aws.sagemaker.AppImageConfig;
 /// import com.pulumi.aws.sagemaker.AppImageConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigArgs;
-/// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigKernelSpecArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigFileSystemConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigKernelSpecArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -394,14 +394,14 @@ import 'app_image_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new AppImageConfig("test", AppImageConfigArgs.builder()
-///             .appImageConfigName("example")
 ///             .kernelGatewayImageConfig(AppImageConfigKernelGatewayImageConfigArgs.builder()
+///                 .fileSystemConfig(AppImageConfigKernelGatewayImageConfigFileSystemConfigArgs.builder()
+///                     .build())
 ///                 .kernelSpecs(AppImageConfigKernelGatewayImageConfigKernelSpecArgs.builder()
 ///                     .name("example")
 ///                     .build())
-///                 .fileSystemConfig(AppImageConfigKernelGatewayImageConfigFileSystemConfigArgs.builder()
-///                     .build())
 ///                 .build())
+///             .appImageConfigName("example")
 ///             .build());
 ///
 ///     }
@@ -412,11 +412,11 @@ import 'app_image_config_state.dart';
 ///   test:
 ///     type: aws:sagemaker:AppImageConfig
 ///     properties:
-///       appImageConfigName: example
 ///       kernelGatewayImageConfig:
+///         fileSystemConfig: {}
 ///         kernelSpecs:
 ///           - name: example
-///         fileSystemConfig: {}
+///       appImageConfigName: example
 /// ```
 ///
 ///
@@ -430,7 +430,7 @@ import 'app_image_config_state.dart';
 class AppImageConfig extends pulumi.CustomResource {
   /// The name of the App Image Config.
   late final pulumi.Output<String> appImageConfigName;
-  /// The Amazon Resource Name (ARN) assigned by AWS to this App Image Config.
+  /// ARN assigned by AWS to this App Image Config.
   late final pulumi.Output<String> arn;
   /// The CodeEditorAppImageConfig. See Code Editor App Image Config details below.
   late final pulumi.Output<AppImageConfigCodeEditorAppImageConfig?> codeEditorAppImageConfig;
@@ -459,7 +459,7 @@ class AppImageConfig extends pulumi.CustomResource {
           'aws:sagemaker/appImageConfig:AppImageConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appImageConfigName = registerOutput<String>('appImageConfigName');
     arn = registerOutput<String>('arn');
@@ -467,8 +467,8 @@ class AppImageConfig extends pulumi.CustomResource {
     jupyterLabImageConfig = registerOutput<AppImageConfigJupyterLabImageConfig?>('jupyterLabImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigJupyterLabImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kernelGatewayImageConfig = registerOutput<AppImageConfigKernelGatewayImageConfig?>('kernelGatewayImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigKernelGatewayImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AppImageConfig] resource's state with the given [name] and [id].
@@ -476,11 +476,12 @@ class AppImageConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppImageConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppImageConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -500,7 +501,26 @@ class AppImageConfig extends pulumi.CustomResource {
     jupyterLabImageConfig = registerOutput<AppImageConfigJupyterLabImageConfig?>('jupyterLabImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigJupyterLabImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kernelGatewayImageConfig = registerOutput<AppImageConfigKernelGatewayImageConfig?>('kernelGatewayImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigKernelGatewayImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AppImageConfig] resource.
+  AppImageConfig.reference(String urn)
+    : super(
+        'aws:sagemaker/appImageConfig:AppImageConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appImageConfigName = registerOutput<String>('appImageConfigName');
+    arn = registerOutput<String>('arn');
+    codeEditorAppImageConfig = registerOutput<AppImageConfigCodeEditorAppImageConfig?>('codeEditorAppImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigCodeEditorAppImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jupyterLabImageConfig = registerOutput<AppImageConfigJupyterLabImageConfig?>('jupyterLabImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigJupyterLabImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kernelGatewayImageConfig = registerOutput<AppImageConfigKernelGatewayImageConfig?>('kernelGatewayImageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppImageConfigKernelGatewayImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

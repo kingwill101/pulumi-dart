@@ -149,12 +149,13 @@ class ApiKey extends pulumi.CustomResource {
           'aws:wafv2/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['apiKey'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     region = registerOutput<String>('region');
     scope = registerOutput<String>('scope');
-    tokenDomains = registerOutput<List<String>>('tokenDomains');
+    tokenDomains = registerOutput<List<String>>('tokenDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApiKey] resource's state with the given [name] and [id].
@@ -162,11 +163,12 @@ class ApiKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -180,9 +182,25 @@ class ApiKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     region = registerOutput<String>('region');
     scope = registerOutput<String>('scope');
-    tokenDomains = registerOutput<List<String>>('tokenDomains');
+    tokenDomains = registerOutput<List<String>>('tokenDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApiKey] resource.
+  ApiKey.reference(String urn)
+    : super(
+        'aws:wafv2/apiKey:ApiKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    region = registerOutput<String>('region');
+    scope = registerOutput<String>('scope');
+    tokenDomains = registerOutput<List<String>>('tokenDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

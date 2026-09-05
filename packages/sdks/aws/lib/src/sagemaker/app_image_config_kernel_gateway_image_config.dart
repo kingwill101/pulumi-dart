@@ -6,7 +6,7 @@ import 'app_image_config_kernel_gateway_image_config_kernel_spec.dart';
 
 class AppImageConfigKernelGatewayImageConfig {
   /// The URL where the Git repository is located. See File System Config details below.
-  final pulumi.Input<AppImageConfigKernelGatewayImageConfigFileSystemConfig>? fileSystemConfig;
+  final pulumi.Input<AppImageConfigKernelGatewayImageConfigFileSystemConfig?>? fileSystemConfig;
   /// The default branch for the Git repository. See Kernel Spec details below.
   final pulumi.Input<List<AppImageConfigKernelGatewayImageConfigKernelSpec>> kernelSpecs;
 

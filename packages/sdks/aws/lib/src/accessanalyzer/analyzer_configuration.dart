@@ -6,9 +6,9 @@ import 'analyzer_configuration_unused_access.dart';
 
 class AnalyzerConfiguration {
   /// Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internalAccess` Block for details.
-  final pulumi.Input<AnalyzerConfigurationInternalAccess>? internalAccess;
+  final pulumi.Input<AnalyzerConfigurationInternalAccess?>? internalAccess;
   /// Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unusedAccess` Block for details.
-  final pulumi.Input<AnalyzerConfigurationUnusedAccess>? unusedAccess;
+  final pulumi.Input<AnalyzerConfigurationUnusedAccess?>? unusedAccess;
 
   /// Creates a new [AnalyzerConfiguration].
   /// [internalAccess] Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internalAccess` Block for details.

@@ -12,24 +12,24 @@ class DaemonArgs {
   /// Set of capacity provider ARNs to use for the daemon.
   final pulumi.Input<List<String>> capacityProviderArns;
   /// ARN of the ECS cluster where the daemon will run.
-  final pulumi.Input<String>? clusterArn;
+  final pulumi.Input<String?>? clusterArn;
   /// ARN of the daemon task definition to use for the daemon. Drift is not detected on this attribute because the API may report a stale revision while a deployment is in progress.
   final pulumi.Input<String> daemonTaskDefinitionArn;
   /// Configuration for daemon deployments. See Deployment Configuration below.
-  final pulumi.Input<DaemonDeploymentConfiguration>? deploymentConfiguration;
+  final pulumi.Input<DaemonDeploymentConfiguration?>? deploymentConfiguration;
   /// Whether to enable Amazon ECS managed tags for the tasks within the daemon.
-  final pulumi.Input<bool>? enableEcsManagedTags;
+  final pulumi.Input<bool?>? enableEcsManagedTags;
   /// Whether to enable Amazon ECS Exec for the tasks within the daemon.
-  final pulumi.Input<bool>? enableExecuteCommand;
+  final pulumi.Input<bool?>? enableExecuteCommand;
   /// Name of the daemon.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to propagate tags from the daemon to tasks. Valid values are `DAEMON` or `NONE`.
-  final pulumi.Input<String>? propagateTags;
+  final pulumi.Input<String?>? propagateTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<DaemonTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<DaemonTimeouts?>? timeouts;
 
   /// Creates a new [DaemonArgs].
   /// [capacityProviderArns] Set of capacity provider ARNs to use for the daemon.

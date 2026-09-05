@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UserPoolUICustomization resources.
 class UserPoolUICustomizationState {
   /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The creation date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
-  final pulumi.Input<String>? css;
+  final pulumi.Input<String?>? css;
   /// The CSS version number.
-  final pulumi.Input<String>? cssVersion;
+  final pulumi.Input<String?>? cssVersion;
   /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
-  final pulumi.Input<String>? imageFile;
+  final pulumi.Input<String?>? imageFile;
   /// The logo image URL for the UI customization.
-  final pulumi.Input<String>? imageUrl;
+  final pulumi.Input<String?>? imageUrl;
   /// The last-modified date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
-  final pulumi.Input<String>? lastModifiedDate;
+  final pulumi.Input<String?>? lastModifiedDate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The user pool ID for the user pool.
-  final pulumi.Input<String>? userPoolId;
+  final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [UserPoolUICustomizationState].
   /// [clientId] The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.

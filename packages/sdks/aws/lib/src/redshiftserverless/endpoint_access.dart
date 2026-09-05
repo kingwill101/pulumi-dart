@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_access_args.dart';
 import 'endpoint_access_state.dart';
+import 'endpoint_access_vpc_endpoint.dart';
 
 /// Creates a new Amazon Redshift Serverless Endpoint Access.
 ///
@@ -124,7 +125,7 @@ import 'endpoint_access_state.dart';
 class EndpointAccess extends pulumi.CustomResource {
   /// The DNS address of the VPC endpoint.
   late final pulumi.Output<String> address;
-  /// Amazon Resource Name (ARN) of the Redshift Serverless Endpoint Access.
+  /// ARN of the Redshift Serverless Endpoint Access.
   late final pulumi.Output<String> arn;
   /// The name of the endpoint.
   late final pulumi.Output<String> endpointName;
@@ -137,7 +138,7 @@ class EndpointAccess extends pulumi.CustomResource {
   /// An array of VPC subnet IDs to associate with the endpoint.
   late final pulumi.Output<List<String>> subnetIds;
   /// The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpcEndpoints;
+  late final pulumi.Output<List<EndpointAccessVpcEndpoint>> vpcEndpoints;
   /// An array of security group IDs to associate with the workgroup.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
   /// The name of the workgroup.
@@ -155,7 +156,7 @@ class EndpointAccess extends pulumi.CustomResource {
           'aws:redshiftserverless/endpointAccess:EndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     arn = registerOutput<String>('arn');
@@ -163,9 +164,9 @@ class EndpointAccess extends pulumi.CustomResource {
     ownerAccount = registerOutput<String?>('ownerAccount');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    vpcEndpoints = registerOutput<List<Map<String, dynamic>>>('vpcEndpoints');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcEndpoints = registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(guardedValue, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workgroupName = registerOutput<String>('workgroupName');
   }
 
@@ -174,11 +175,12 @@ class EndpointAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -198,9 +200,30 @@ class EndpointAccess extends pulumi.CustomResource {
     ownerAccount = registerOutput<String?>('ownerAccount');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    vpcEndpoints = registerOutput<List<Map<String, dynamic>>>('vpcEndpoints');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcEndpoints = registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(guardedValue, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workgroupName = registerOutput<String>('workgroupName');
+  }
+
+  /// Creates a typed reference to an existing [EndpointAccess] resource.
+  EndpointAccess.reference(String urn)
+    : super(
+        'aws:redshiftserverless/endpointAccess:EndpointAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    arn = registerOutput<String>('arn');
+    endpointName = registerOutput<String>('endpointName');
+    ownerAccount = registerOutput<String?>('ownerAccount');
+    port = registerOutput<int>('port');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcEndpoints = registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(guardedValue, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workgroupName = registerOutput<String>('workgroupName');
   }
 }

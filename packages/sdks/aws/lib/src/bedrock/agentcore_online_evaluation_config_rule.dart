@@ -7,11 +7,11 @@ import 'agentcore_online_evaluation_config_rule_session_config.dart';
 
 class AgentcoreOnlineEvaluationConfigRule {
   /// List of filters determining which agent traces to evaluate. Maximum 5. See `filter` Block below.
-  final pulumi.Input<List<AgentcoreOnlineEvaluationConfigRuleFilter>>? filters;
+  final pulumi.Input<List<AgentcoreOnlineEvaluationConfigRuleFilter>?>? filters;
   /// Sampling configuration determining what percentage of agent traces to evaluate. See `samplingConfig` Block below.
   final pulumi.Input<AgentcoreOnlineEvaluationConfigRuleSamplingConfig> samplingConfig;
   /// Session configuration defining timeout settings for detecting when agent sessions are complete. See `sessionConfig` Block below.
-  final pulumi.Input<AgentcoreOnlineEvaluationConfigRuleSessionConfig>? sessionConfig;
+  final pulumi.Input<AgentcoreOnlineEvaluationConfigRuleSessionConfig?>? sessionConfig;
 
   /// Creates a new [AgentcoreOnlineEvaluationConfigRule].
   /// [filters] List of filters determining which agent traces to evaluate. Maximum 5. See `filter` Block below.

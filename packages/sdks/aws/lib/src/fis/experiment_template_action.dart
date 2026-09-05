@@ -8,15 +8,15 @@ class ExperimentTemplateAction {
   /// ID of the action. To find out what actions are supported see [AWS FIS actions reference](https://docs.aws.amazon.com/fis/latest/userguide/fis-actions-reference.html).
   final pulumi.Input<String> actionId;
   /// Description of the action.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Friendly name of the action.
   final pulumi.Input<String> name;
   /// Parameter(s) for the action, if applicable. See below.
-  final pulumi.Input<List<ExperimentTemplateActionParameter>>? parameters;
+  final pulumi.Input<List<ExperimentTemplateActionParameter>?>? parameters;
   /// Set of action names that must complete before this action can be executed.
-  final pulumi.Input<List<String>>? startAfters;
+  final pulumi.Input<List<String>?>? startAfters;
   /// Action's target, if applicable. See below.
-  final pulumi.Input<ExperimentTemplateActionTarget>? target;
+  final pulumi.Input<ExperimentTemplateActionTarget?>? target;
 
   /// Creates a new [ExperimentTemplateAction].
   /// [actionId] ID of the action. To find out what actions are supported see [AWS FIS actions reference](https://docs.aws.amazon.com/fis/latest/userguide/fis-actions-reference.html).

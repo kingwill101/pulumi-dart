@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
+import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Provides an RDS DB parameter group resource. Documentation of the available parameters for various RDS engines can be found at:
@@ -24,8 +25,6 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const _default = new aws.rds.ParameterGroup("default", {
-///     name: "rds-pg",
-///     family: "mysql5.6",
 ///     parameters: [
 ///         {
 ///             name: "character_set_server",
@@ -36,6 +35,8 @@ import 'parameter_group_state.dart';
 ///             value: "utf8",
 ///         },
 ///     ],
+///     name: "rds-pg",
+///     family: "mysql5.6",
 /// });
 /// ```
 /// ```python
@@ -43,8 +44,6 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// default = aws.rds.ParameterGroup("default",
-///     name="rds-pg",
-///     family="mysql5.6",
 ///     parameters=[
 ///         {
 ///             "name": "character_set_server",
@@ -54,7 +53,9 @@ import 'parameter_group_state.dart';
 ///             "name": "character_set_client",
 ///             "value": "utf8",
 ///         },
-///     ])
+///     ],
+///     name="rds-pg",
+///     family="mysql5.6")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -66,8 +67,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var @default = new Aws.Rds.ParameterGroup("default", new()
 ///     {
-///         Name = "rds-pg",
-///         Family = "mysql5.6",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.ParameterGroupParameterArgs
@@ -81,6 +80,8 @@ import 'parameter_group_state.dart';
 ///                 Value = "utf8",
 ///             },
 ///         },
+///         Name = "rds-pg",
+///         Family = "mysql5.6",
 ///     });
 ///
 /// });
@@ -96,8 +97,6 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewParameterGroup(ctx, "default", &rds.ParameterGroupArgs{
-/// 			Name:   pulumi.String("rds-pg"),
-/// 			Family: pulumi.String("mysql5.6"),
 /// 			Parameters: rds.ParameterGroupParameterArray{
 /// 				&rds.ParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("character_set_server"),
@@ -108,6 +107,8 @@ import 'parameter_group_state.dart';
 /// 					Value: pulumi.String("utf8"),
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("rds-pg"),
+/// 			Family: pulumi.String("mysql5.6"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -126,8 +127,6 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_rds_parametergroup" "default" {
-///   name   = "rds-pg"
-///   family = "mysql5.6"
 ///   parameters {
 ///     name  = "character_set_server"
 ///     value = "utf8"
@@ -136,6 +135,8 @@ import 'parameter_group_state.dart';
 ///     name  = "character_set_client"
 ///     value = "utf8"
 ///   }
+///   name   = "rds-pg"
+///   family = "mysql5.6"
 /// }
 /// ```
 /// ```java
@@ -161,8 +162,6 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new ParameterGroup("default", ParameterGroupArgs.builder()
-///             .name("rds-pg")
-///             .family("mysql5.6")
 ///             .parameters(
 ///                 ParameterGroupParameterArgs.builder()
 ///                     .name("character_set_server")
@@ -172,6 +171,8 @@ import 'parameter_group_state.dart';
 ///                     .name("character_set_client")
 ///                     .value("utf8")
 ///                     .build())
+///             .name("rds-pg")
+///             .family("mysql5.6")
 ///             .build());
 ///
 ///     }
@@ -182,13 +183,13 @@ import 'parameter_group_state.dart';
 ///   default:
 ///     type: aws:rds:ParameterGroup
 ///     properties:
-///       name: rds-pg
-///       family: mysql5.6
 ///       parameters:
 ///         - name: character_set_server
 ///           value: utf8
 ///         - name: character_set_client
 ///           value: utf8
+///       name: rds-pg
+///       family: mysql5.6
 /// ```
 ///
 ///
@@ -207,12 +208,12 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.rds.ParameterGroup("test", {
-///     name: "random-test-parameter",
-///     family: "mysql5.7",
 ///     parameters: [{
 ///         name: "default_password_lifetime",
 ///         value: "0",
 ///     }],
+///     name: "random-test-parameter",
+///     family: "mysql5.7",
 /// });
 /// ```
 /// ```python
@@ -220,12 +221,12 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.rds.ParameterGroup("test",
-///     name="random-test-parameter",
-///     family="mysql5.7",
 ///     parameters=[{
 ///         "name": "default_password_lifetime",
 ///         "value": "0",
-///     }])
+///     }],
+///     name="random-test-parameter",
+///     family="mysql5.7")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -237,8 +238,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var test = new Aws.Rds.ParameterGroup("test", new()
 ///     {
-///         Name = "random-test-parameter",
-///         Family = "mysql5.7",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.ParameterGroupParameterArgs
@@ -247,6 +246,8 @@ import 'parameter_group_state.dart';
 ///                 Value = "0",
 ///             },
 ///         },
+///         Name = "random-test-parameter",
+///         Family = "mysql5.7",
 ///     });
 ///
 /// });
@@ -262,14 +263,14 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewParameterGroup(ctx, "test", &rds.ParameterGroupArgs{
-/// 			Name:   pulumi.String("random-test-parameter"),
-/// 			Family: pulumi.String("mysql5.7"),
 /// 			Parameters: rds.ParameterGroupParameterArray{
 /// 				&rds.ParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("default_password_lifetime"),
 /// 					Value: pulumi.String("0"),
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("random-test-parameter"),
+/// 			Family: pulumi.String("mysql5.7"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -288,12 +289,14 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_rds_parametergroup" "test" {
-///   name   = "random-test-parameter"
-///   family = "mysql5.7"
 ///   parameters {
 ///     name  = "default_password_lifetime"
 ///     value = "0"
 ///   }
+///   # By default, the apply_method is being set to "immediate"
+///   # same as AWS default
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
 /// }
 /// ```
 /// ```java
@@ -319,12 +322,12 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ParameterGroup("test", ParameterGroupArgs.builder()
-///             .name("random-test-parameter")
-///             .family("mysql5.7")
 ///             .parameters(ParameterGroupParameterArgs.builder()
 ///                 .name("default_password_lifetime")
 ///                 .value("0")
 ///                 .build())
+///             .name("random-test-parameter")
+///             .family("mysql5.7")
 ///             .build());
 ///
 ///     }
@@ -335,11 +338,11 @@ import 'parameter_group_state.dart';
 ///   test:
 ///     type: aws:rds:ParameterGroup
 ///     properties:
-///       name: random-test-parameter
-///       family: mysql5.7
 ///       parameters:
 ///         - name: default_password_lifetime
 ///           value: '0'
+///       name: random-test-parameter
+///       family: mysql5.7
 /// ```
 ///
 ///
@@ -465,12 +468,12 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.rds.ParameterGroup("test", {
-///     name: "random-test-parameter",
-///     family: "mysql5.7",
 ///     parameters: [{
 ///         name: "default_password_lifetime",
 ///         value: "1",
 ///     }],
+///     name: "random-test-parameter",
+///     family: "mysql5.7",
 /// });
 /// ```
 /// ```python
@@ -478,12 +481,12 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.rds.ParameterGroup("test",
-///     name="random-test-parameter",
-///     family="mysql5.7",
 ///     parameters=[{
 ///         "name": "default_password_lifetime",
 ///         "value": "1",
-///     }])
+///     }],
+///     name="random-test-parameter",
+///     family="mysql5.7")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -495,8 +498,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var test = new Aws.Rds.ParameterGroup("test", new()
 ///     {
-///         Name = "random-test-parameter",
-///         Family = "mysql5.7",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.ParameterGroupParameterArgs
@@ -505,6 +506,8 @@ import 'parameter_group_state.dart';
 ///                 Value = "1",
 ///             },
 ///         },
+///         Name = "random-test-parameter",
+///         Family = "mysql5.7",
 ///     });
 ///
 /// });
@@ -520,14 +523,14 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewParameterGroup(ctx, "test", &rds.ParameterGroupArgs{
-/// 			Name:   pulumi.String("random-test-parameter"),
-/// 			Family: pulumi.String("mysql5.7"),
 /// 			Parameters: rds.ParameterGroupParameterArray{
 /// 				&rds.ParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("default_password_lifetime"),
 /// 					Value: pulumi.String("1"),
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("random-test-parameter"),
+/// 			Family: pulumi.String("mysql5.7"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -546,12 +549,14 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_rds_parametergroup" "test" {
-///   name   = "random-test-parameter"
-///   family = "mysql5.7"
 ///   parameters {
 ///     name  = "default_password_lifetime"
 ///     value = "1"
 ///   }
+///   # Because of the default, the apply_method will also be changed from `pending-reboot` to `immediate`
+///   # same as AWS default
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
 /// }
 /// ```
 /// ```java
@@ -577,12 +582,12 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ParameterGroup("test", ParameterGroupArgs.builder()
-///             .name("random-test-parameter")
-///             .family("mysql5.7")
 ///             .parameters(ParameterGroupParameterArgs.builder()
 ///                 .name("default_password_lifetime")
 ///                 .value("1")
 ///                 .build())
+///             .name("random-test-parameter")
+///             .family("mysql5.7")
 ///             .build());
 ///
 ///     }
@@ -593,11 +598,11 @@ import 'parameter_group_state.dart';
 ///   test:
 ///     type: aws:rds:ParameterGroup
 ///     properties:
-///       name: random-test-parameter
-///       family: mysql5.7
 ///       parameters:
 ///         - name: default_password_lifetime
 ///           value: '1'
+///       name: random-test-parameter
+///       family: mysql5.7
 /// ```
 ///
 ///
@@ -611,13 +616,13 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.rds.ParameterGroup("test", {
-///     name: "random-test-parameter",
-///     family: "mysql5.7",
 ///     parameters: [{
 ///         applyMethod: "pending-reboot",
 ///         name: "default_password_lifetime",
 ///         value: "0",
 ///     }],
+///     name: "random-test-parameter",
+///     family: "mysql5.7",
 /// });
 /// ```
 /// ```python
@@ -625,13 +630,13 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.rds.ParameterGroup("test",
-///     name="random-test-parameter",
-///     family="mysql5.7",
 ///     parameters=[{
 ///         "apply_method": "pending-reboot",
 ///         "name": "default_password_lifetime",
 ///         "value": "0",
-///     }])
+///     }],
+///     name="random-test-parameter",
+///     family="mysql5.7")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -643,8 +648,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var test = new Aws.Rds.ParameterGroup("test", new()
 ///     {
-///         Name = "random-test-parameter",
-///         Family = "mysql5.7",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.ParameterGroupParameterArgs
@@ -654,6 +657,8 @@ import 'parameter_group_state.dart';
 ///                 Value = "0",
 ///             },
 ///         },
+///         Name = "random-test-parameter",
+///         Family = "mysql5.7",
 ///     });
 ///
 /// });
@@ -669,8 +674,6 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewParameterGroup(ctx, "test", &rds.ParameterGroupArgs{
-/// 			Name:   pulumi.String("random-test-parameter"),
-/// 			Family: pulumi.String("mysql5.7"),
 /// 			Parameters: rds.ParameterGroupParameterArray{
 /// 				&rds.ParameterGroupParameterArgs{
 /// 					ApplyMethod: pulumi.String("pending-reboot"),
@@ -678,6 +681,8 @@ import 'parameter_group_state.dart';
 /// 					Value:       pulumi.String("0"),
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("random-test-parameter"),
+/// 			Family: pulumi.String("mysql5.7"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -696,13 +701,15 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_rds_parametergroup" "test" {
-///   name   = "random-test-parameter"
-///   family = "mysql5.7"
 ///   parameters {
 ///     apply_method = "pending-reboot"
 ///     name         = "default_password_lifetime"
 ///     value        = "0"
 ///   }
+///   # same as AWS default
+///   # same as AWS default
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
 /// }
 /// ```
 /// ```java
@@ -728,13 +735,13 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ParameterGroup("test", ParameterGroupArgs.builder()
-///             .name("random-test-parameter")
-///             .family("mysql5.7")
 ///             .parameters(ParameterGroupParameterArgs.builder()
 ///                 .applyMethod("pending-reboot")
 ///                 .name("default_password_lifetime")
 ///                 .value("0")
 ///                 .build())
+///             .name("random-test-parameter")
+///             .family("mysql5.7")
 ///             .build());
 ///
 ///     }
@@ -745,12 +752,12 @@ import 'parameter_group_state.dart';
 ///   test:
 ///     type: aws:rds:ParameterGroup
 ///     properties:
-///       name: random-test-parameter
-///       family: mysql5.7
 ///       parameters:
 ///         - applyMethod: pending-reboot
 ///           name: default_password_lifetime
 ///           value: '0'
+///       name: random-test-parameter
+///       family: mysql5.7
 /// ```
 ///
 ///
@@ -785,7 +792,7 @@ class ParameterGroup extends pulumi.CustomResource {
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// The DB parameters to apply. See `parameter` Block below for more details. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<ParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Set to true if you do not wish the parameter group to be deleted at destroy time, and instead just remove the parameter group from the Terraform state.
@@ -807,18 +814,18 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:rds/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ParameterGroup] resource's state with the given [name] and [id].
@@ -826,11 +833,12 @@ class ParameterGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParameterGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ParameterGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -849,10 +857,31 @@ class ParameterGroup extends pulumi.CustomResource {
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ParameterGroup] resource.
+  ParameterGroup.reference(String urn)
+    : super(
+        'aws:rds/parameterGroup:ParameterGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    family = registerOutput<String>('family');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

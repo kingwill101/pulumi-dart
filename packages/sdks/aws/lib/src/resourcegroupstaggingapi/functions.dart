@@ -114,6 +114,17 @@ Future<GetRequiredTagsResult> getRequiredTags(
   return GetRequiredTagsResult.fromMap(result);
 }
 
+pulumi.Output<GetRequiredTagsResult> getRequiredTagsOutput(
+  GetRequiredTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:resourcegroupstaggingapi/getRequiredTags:getRequiredTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRequiredTagsResult.fromMap);
+}
+
 /// Provides details about resource tagging.
 ///
 /// ## Example Usage
@@ -478,4 +489,15 @@ Future<GetResourcesResult> getResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcesResult> getResourcesOutput(
+  GetResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:resourcegroupstaggingapi/getResources:getResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcesResult.fromMap);
 }

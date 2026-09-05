@@ -6,32 +6,32 @@ import 'vpc_connection_timeouts.dart';
 /// Input properties used for looking up and filtering VpcConnection resources.
 class VpcConnectionState {
   /// ARN of the VPC connection.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The availability status of the VPC connection. Valid values are `AVAILABLE`, `UNAVAILABLE` or `PARTIALLY_AVAILABLE`.
-  final pulumi.Input<String>? availabilityStatus;
+  final pulumi.Input<String?>? availabilityStatus;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// A list of IP addresses of DNS resolver endpoints for the VPC connection.
-  final pulumi.Input<List<String>>? dnsResolvers;
+  final pulumi.Input<List<String>?>? dnsResolvers;
   /// The display name for the VPC connection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The IAM role to associate with the VPC connection.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// A list of security group IDs for the VPC connection.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// A list of subnet IDs for the VPC connection.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<VpcConnectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<VpcConnectionTimeouts?>? timeouts;
   /// The ID of the VPC connection.
-  final pulumi.Input<String>? vpcConnectionId;
+  final pulumi.Input<String?>? vpcConnectionId;
 
   /// Creates a new [VpcConnectionState].
   /// [arn] ARN of the VPC connection.

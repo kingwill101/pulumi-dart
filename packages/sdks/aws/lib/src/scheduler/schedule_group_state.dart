@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ScheduleGroup resources.
 class ScheduleGroupState {
   /// ARN of the schedule group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Time at which the schedule group was created.
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// Time at which the schedule group was last modified.
-  final pulumi.Input<String>? lastModificationDate;
+  final pulumi.Input<String?>? lastModificationDate;
   /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the schedule group. Can be `ACTIVE` or `DELETING`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ScheduleGroupState].
   /// [arn] ARN of the schedule group.

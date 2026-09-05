@@ -16,13 +16,13 @@ import 'alarm_mute_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudwatch.AlarmMuteRule("example", {
-///     name: "example",
 ///     rule: {
 ///         schedule: {
 ///             duration: "PT4H",
 ///             expression: "cron(0 2 * * *)",
 ///         },
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -30,13 +30,13 @@ import 'alarm_mute_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudwatch.AlarmMuteRule("example",
-///     name="example",
 ///     rule={
 ///         "schedule": {
 ///             "duration": "PT4H",
 ///             "expression": "cron(0 2 * * *)",
 ///         },
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,7 +48,6 @@ import 'alarm_mute_rule_state.dart';
 /// {
 ///     var example = new Aws.CloudWatch.AlarmMuteRule("example", new()
 ///     {
-///         Name = "example",
 ///         Rule = new Aws.CloudWatch.Inputs.AlarmMuteRuleRuleArgs
 ///         {
 ///             Schedule = new Aws.CloudWatch.Inputs.AlarmMuteRuleRuleScheduleArgs
@@ -57,6 +56,7 @@ import 'alarm_mute_rule_state.dart';
 ///                 Expression = "cron(0 2 * * *)",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -72,13 +72,13 @@ import 'alarm_mute_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewAlarmMuteRule(ctx, "example", &cloudwatch.AlarmMuteRuleArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Rule: &cloudwatch.AlarmMuteRuleRuleArgs{
 /// 				Schedule: &cloudwatch.AlarmMuteRuleRuleScheduleArgs{
 /// 					Duration:   pulumi.String("PT4H"),
 /// 					Expression: pulumi.String("cron(0 2 * * *)"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -97,13 +97,13 @@ import 'alarm_mute_rule_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_alarmmuterule" "example" {
-///   name = "example"
 ///   rule = {
 ///     schedule = {
 ///       duration   = "PT4H"
 ///       expression = "cron(0 2 * * *)"
 ///     }
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -130,13 +130,13 @@ import 'alarm_mute_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AlarmMuteRule("example", AlarmMuteRuleArgs.builder()
-///             .name("example")
 ///             .rule(AlarmMuteRuleRuleArgs.builder()
 ///                 .schedule(AlarmMuteRuleRuleScheduleArgs.builder()
 ///                     .duration("PT4H")
 ///                     .expression("cron(0 2 * * *)")
 ///                     .build())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -147,11 +147,11 @@ import 'alarm_mute_rule_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:AlarmMuteRule
 ///     properties:
-///       name: example
 ///       rule:
 ///         schedule:
 ///           duration: PT4H
 ///           expression: cron(0 2 * * *)
+///       name: example
 /// ```
 ///
 ///
@@ -173,10 +173,6 @@ import 'alarm_mute_rule_state.dart';
 ///     threshold: 80,
 /// });
 /// const exampleAlarmMuteRule = new aws.cloudwatch.AlarmMuteRule("example", {
-///     name: "example",
-///     description: "Mute alarms during maintenance window",
-///     startDate: "2026-01-01T00:00:00Z",
-///     expireDate: "2026-12-31T23:59:00Z",
 ///     rule: {
 ///         schedule: {
 ///             duration: "PT4H",
@@ -187,6 +183,10 @@ import 'alarm_mute_rule_state.dart';
 ///     muteTargets: {
 ///         alarmNames: [example.name],
 ///     },
+///     name: "example",
+///     description: "Mute alarms during maintenance window",
+///     startDate: "2026-01-01T00:00:00Z",
+///     expireDate: "2026-12-31T23:59:00Z",
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -206,10 +206,6 @@ import 'alarm_mute_rule_state.dart';
 ///     statistic="Average",
 ///     threshold=float(80))
 /// example_alarm_mute_rule = aws.cloudwatch.AlarmMuteRule("example",
-///     name="example",
-///     description="Mute alarms during maintenance window",
-///     start_date="2026-01-01T00:00:00Z",
-///     expire_date="2026-12-31T23:59:00Z",
 ///     rule={
 ///         "schedule": {
 ///             "duration": "PT4H",
@@ -220,6 +216,10 @@ import 'alarm_mute_rule_state.dart';
 ///     mute_targets={
 ///         "alarm_names": [example.name],
 ///     },
+///     name="example",
+///     description="Mute alarms during maintenance window",
+///     start_date="2026-01-01T00:00:00Z",
+///     expire_date="2026-12-31T23:59:00Z",
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -246,10 +246,6 @@ import 'alarm_mute_rule_state.dart';
 ///
 ///     var exampleAlarmMuteRule = new Aws.CloudWatch.AlarmMuteRule("example", new()
 ///     {
-///         Name = "example",
-///         Description = "Mute alarms during maintenance window",
-///         StartDate = "2026-01-01T00:00:00Z",
-///         ExpireDate = "2026-12-31T23:59:00Z",
 ///         Rule = new Aws.CloudWatch.Inputs.AlarmMuteRuleRuleArgs
 ///         {
 ///             Schedule = new Aws.CloudWatch.Inputs.AlarmMuteRuleRuleScheduleArgs
@@ -266,6 +262,10 @@ import 'alarm_mute_rule_state.dart';
 ///                 example.Name,
 ///             },
 ///         },
+///         Name = "example",
+///         Description = "Mute alarms during maintenance window",
+///         StartDate = "2026-01-01T00:00:00Z",
+///         ExpireDate = "2026-12-31T23:59:00Z",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -298,10 +298,6 @@ import 'alarm_mute_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudwatch.NewAlarmMuteRule(ctx, "example", &cloudwatch.AlarmMuteRuleArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("Mute alarms during maintenance window"),
-/// 			StartDate:   pulumi.String("2026-01-01T00:00:00Z"),
-/// 			ExpireDate:  pulumi.String("2026-12-31T23:59:00Z"),
 /// 			Rule: &cloudwatch.AlarmMuteRuleRuleArgs{
 /// 				Schedule: &cloudwatch.AlarmMuteRuleRuleScheduleArgs{
 /// 					Duration:   pulumi.String("PT4H"),
@@ -314,6 +310,10 @@ import 'alarm_mute_rule_state.dart';
 /// 					example.Name,
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("Mute alarms during maintenance window"),
+/// 			StartDate:   pulumi.String("2026-01-01T00:00:00Z"),
+/// 			ExpireDate:  pulumi.String("2026-12-31T23:59:00Z"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -345,10 +345,6 @@ import 'alarm_mute_rule_state.dart';
 ///   threshold           = 80
 /// }
 /// resource "aws_cloudwatch_alarmmuterule" "example" {
-///   name        = "example"
-///   description = "Mute alarms during maintenance window"
-///   start_date  = "2026-01-01T00:00:00Z"
-///   expire_date = "2026-12-31T23:59:00Z"
 ///   rule = {
 ///     schedule = {
 ///       duration   = "PT4H"
@@ -359,6 +355,10 @@ import 'alarm_mute_rule_state.dart';
 ///   mute_targets = {
 ///     alarm_names = [aws_cloudwatch_metricalarm.example.name]
 ///   }
+///   name        = "example"
+///   description = "Mute alarms during maintenance window"
+///   start_date  = "2026-01-01T00:00:00Z"
+///   expire_date = "2026-12-31T23:59:00Z"
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -402,10 +402,6 @@ import 'alarm_mute_rule_state.dart';
 ///             .build());
 ///
 ///         var exampleAlarmMuteRule = new AlarmMuteRule("exampleAlarmMuteRule", AlarmMuteRuleArgs.builder()
-///             .name("example")
-///             .description("Mute alarms during maintenance window")
-///             .startDate("2026-01-01T00:00:00Z")
-///             .expireDate("2026-12-31T23:59:00Z")
 ///             .rule(AlarmMuteRuleRuleArgs.builder()
 ///                 .schedule(AlarmMuteRuleRuleScheduleArgs.builder()
 ///                     .duration("PT4H")
@@ -416,6 +412,10 @@ import 'alarm_mute_rule_state.dart';
 ///             .muteTargets(AlarmMuteRuleMuteTargetsArgs.builder()
 ///                 .alarmNames(example.name())
 ///                 .build())
+///             .name("example")
+///             .description("Mute alarms during maintenance window")
+///             .startDate("2026-01-01T00:00:00Z")
+///             .expireDate("2026-12-31T23:59:00Z")
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -439,10 +439,6 @@ import 'alarm_mute_rule_state.dart';
 ///     type: aws:cloudwatch:AlarmMuteRule
 ///     name: example
 ///     properties:
-///       name: example
-///       description: Mute alarms during maintenance window
-///       startDate: 2026-01-01T00:00:00Z
-///       expireDate: 2026-12-31T23:59:00Z
 ///       rule:
 ///         schedule:
 ///           duration: PT4H
@@ -451,6 +447,10 @@ import 'alarm_mute_rule_state.dart';
 ///       muteTargets:
 ///         alarmNames:
 ///           - ${example.name}
+///       name: example
+///       description: Mute alarms during maintenance window
+///       startDate: 2026-01-01T00:00:00Z
+///       expireDate: 2026-12-31T23:59:00Z
 ///       tags:
 ///         Environment: production
 /// ```
@@ -466,13 +466,13 @@ import 'alarm_mute_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudwatch.AlarmMuteRule("example", {
-///     name: "example",
 ///     rule: {
 ///         schedule: {
 ///             duration: "PT4H",
 ///             expression: "at(2026-12-31T23:59:59)",
 ///         },
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -480,13 +480,13 @@ import 'alarm_mute_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudwatch.AlarmMuteRule("example",
-///     name="example",
 ///     rule={
 ///         "schedule": {
 ///             "duration": "PT4H",
 ///             "expression": "at(2026-12-31T23:59:59)",
 ///         },
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -498,7 +498,6 @@ import 'alarm_mute_rule_state.dart';
 /// {
 ///     var example = new Aws.CloudWatch.AlarmMuteRule("example", new()
 ///     {
-///         Name = "example",
 ///         Rule = new Aws.CloudWatch.Inputs.AlarmMuteRuleRuleArgs
 ///         {
 ///             Schedule = new Aws.CloudWatch.Inputs.AlarmMuteRuleRuleScheduleArgs
@@ -507,6 +506,7 @@ import 'alarm_mute_rule_state.dart';
 ///                 Expression = "at(2026-12-31T23:59:59)",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -522,13 +522,13 @@ import 'alarm_mute_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewAlarmMuteRule(ctx, "example", &cloudwatch.AlarmMuteRuleArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Rule: &cloudwatch.AlarmMuteRuleRuleArgs{
 /// 				Schedule: &cloudwatch.AlarmMuteRuleRuleScheduleArgs{
 /// 					Duration:   pulumi.String("PT4H"),
 /// 					Expression: pulumi.String("at(2026-12-31T23:59:59)"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -547,13 +547,13 @@ import 'alarm_mute_rule_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_alarmmuterule" "example" {
-///   name = "example"
 ///   rule = {
 ///     schedule = {
 ///       duration   = "PT4H"
 ///       expression = "at(2026-12-31T23:59:59)"
 ///     }
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -580,13 +580,13 @@ import 'alarm_mute_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AlarmMuteRule("example", AlarmMuteRuleArgs.builder()
-///             .name("example")
 ///             .rule(AlarmMuteRuleRuleArgs.builder()
 ///                 .schedule(AlarmMuteRuleRuleScheduleArgs.builder()
 ///                     .duration("PT4H")
 ///                     .expression("at(2026-12-31T23:59:59)")
 ///                     .build())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -597,11 +597,11 @@ import 'alarm_mute_rule_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:AlarmMuteRule
 ///     properties:
-///       name: example
 ///       rule:
 ///         schedule:
 ///           duration: PT4H
 ///           expression: at(2026-12-31T23:59:59)
+///       name: example
 /// ```
 ///
 ///
@@ -666,7 +666,7 @@ class AlarmMuteRule extends pulumi.CustomResource {
           'aws:cloudwatch/alarmMuteRule:AlarmMuteRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -679,8 +679,8 @@ class AlarmMuteRule extends pulumi.CustomResource {
     rule = registerOutput<AlarmMuteRuleRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlarmMuteRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startDate = registerOutput<String?>('startDate');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AlarmMuteRule] resource's state with the given [name] and [id].
@@ -688,11 +688,12 @@ class AlarmMuteRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlarmMuteRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlarmMuteRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -717,7 +718,31 @@ class AlarmMuteRule extends pulumi.CustomResource {
     rule = registerOutput<AlarmMuteRuleRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlarmMuteRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startDate = registerOutput<String?>('startDate');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AlarmMuteRule] resource.
+  AlarmMuteRule.reference(String urn)
+    : super(
+        'aws:cloudwatch/alarmMuteRule:AlarmMuteRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    expireDate = registerOutput<String?>('expireDate');
+    lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
+    muteTargets = registerOutput<AlarmMuteRuleMuteTargets?>('muteTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlarmMuteRuleMuteTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    muteType = registerOutput<String>('muteType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rule = registerOutput<AlarmMuteRuleRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlarmMuteRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startDate = registerOutput<String?>('startDate');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

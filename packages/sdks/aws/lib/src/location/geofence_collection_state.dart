@@ -4,28 +4,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering GeofenceCollection resources.
 class GeofenceCollectionState {
-  /// The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.
-  final pulumi.Input<String>? collectionArn;
+  /// ARN for the geofence collection resource. Used when you need to specify a resource across all AWS.
+  final pulumi.Input<String?>? collectionArn;
   /// The name of the geofence collection.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? collectionName;
+  final pulumi.Input<String?>? collectionName;
   /// The timestamp for when the geofence collection resource was created in ISO 8601 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The optional description for the geofence collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the geofence collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The timestamp for when the geofence collection resource was last updated in ISO 8601 format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GeofenceCollectionState].
-  /// [collectionArn] The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.
+  /// [collectionArn] ARN for the geofence collection resource. Used when you need to specify a resource across all AWS.
   /// [collectionName] The name of the geofence collection.
   /// [createTime] The timestamp for when the geofence collection resource was created in ISO 8601 format.
   /// [description] The optional description for the geofence collection.

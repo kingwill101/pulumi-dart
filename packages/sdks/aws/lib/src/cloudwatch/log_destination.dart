@@ -142,7 +142,7 @@ import 'log_destination_state.dart';
 /// $ pulumi import aws:cloudwatch/logDestination:LogDestination test_destination test_destination
 /// ```
 class LogDestination extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the log destination.
+  /// ARN specifying the log destination.
   late final pulumi.Output<String> arn;
   /// A name for the log destination.
   late final pulumi.Output<String> name;
@@ -169,14 +169,14 @@ class LogDestination extends pulumi.CustomResource {
           'aws:cloudwatch/logDestination:LogDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
   }
 
@@ -185,11 +185,12 @@ class LogDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,8 +208,26 @@ class LogDestination extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetArn = registerOutput<String>('targetArn');
+  }
+
+  /// Creates a typed reference to an existing [LogDestination] resource.
+  LogDestination.reference(String urn)
+    : super(
+        'aws:cloudwatch/logDestination:LogDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
   }
 }

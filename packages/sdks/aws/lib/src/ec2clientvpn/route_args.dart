@@ -10,13 +10,13 @@ class RouteArgs {
   /// The ID of the Client VPN endpoint.
   final pulumi.Input<String> clientVpnEndpointId;
   /// A brief description of the route.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
   final pulumi.Input<String> destinationCidrBlock;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN. Required for VPC-based Client VPN endpoints. Not applicable for Transit Gateway-based Client VPN endpoints.
-  final pulumi.Input<String>? targetVpcSubnetId;
+  final pulumi.Input<String?>? targetVpcSubnetId;
 
   /// Creates a new [RouteArgs].
   /// [clientVpnEndpointId] The ID of the Client VPN endpoint.

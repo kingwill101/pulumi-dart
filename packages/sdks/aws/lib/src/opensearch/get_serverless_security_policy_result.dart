@@ -4,68 +4,68 @@
 /// Result data returned by getServerlessSecurityPolicy.
 class GetServerlessSecurityPolicyResult {
   /// The date the security policy was created.
-  final String createdDate;
+  final String? createdDate;
   /// Description of the security policy.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The date the security policy was last modified.
-  final String lastModifiedDate;
-  final String name;
+  final String? lastModifiedDate;
+  final String? name;
   /// The JSON policy document without any whitespaces.
-  final String policy;
+  final String? policy;
   /// Version of the policy.
-  final String policyVersion;
-  final String region;
-  final String type;
+  final String? policyVersion;
+  final String? region;
+  final String? type;
 
   /// Creates a new [GetServerlessSecurityPolicyResult].
   /// [createdDate] The date the security policy was created.
   /// [description] Description of the security policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lastModifiedDate] The date the security policy was last modified.
-  /// [name] Required.
+  /// [name] Optional.
   /// [policy] The JSON policy document without any whitespaces.
   /// [policyVersion] Version of the policy.
-  /// [region] Required.
-  /// [type] Required.
+  /// [region] Optional.
+  /// [type] Optional.
   const GetServerlessSecurityPolicyResult({
-    required this.createdDate,
-    required this.description,
-    required this.id,
-    required this.lastModifiedDate,
-    required this.name,
-    required this.policy,
-    required this.policyVersion,
-    required this.region,
-    required this.type,
+    this.createdDate,
+    this.description,
+    this.id,
+    this.lastModifiedDate,
+    this.name,
+    this.policy,
+    this.policyVersion,
+    this.region,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createdDate': createdDate,
-      'description': description,
-      'id': id,
-      'lastModifiedDate': lastModifiedDate,
-      'name': name,
-      'policy': policy,
-      'policyVersion': policyVersion,
-      'region': region,
-      'type': type,
+      'createdDate': ?createdDate,
+      'description': ?description,
+      'id': ?id,
+      'lastModifiedDate': ?lastModifiedDate,
+      'name': ?name,
+      'policy': ?policy,
+      'policyVersion': ?policyVersion,
+      'region': ?region,
+      'type': ?type,
     };
   }
 
   factory GetServerlessSecurityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetServerlessSecurityPolicyResult(
-      createdDate: map['createdDate'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      lastModifiedDate: map['lastModifiedDate'] as String,
-      name: map['name'] as String,
-      policy: map['policy'] as String,
-      policyVersion: map['policyVersion'] as String,
-      region: map['region'] as String,
-      type: map['type'] as String,
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedDate: (() { final guardedValue = map['lastModifiedDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyVersion: (() { final guardedValue = map['policyVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

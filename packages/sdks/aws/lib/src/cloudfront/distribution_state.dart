@@ -18,79 +18,79 @@ import 'distribution_viewer_mtls_config.dart';
 /// Input properties used for looking up and filtering Distribution resources.
 class DistributionState {
   /// Extra CNAMEs (alternate domain names), if any, for this distribution.
-  final pulumi.Input<List<String>>? aliases;
+  final pulumi.Input<List<String>?>? aliases;
   /// ID of the Anycast static IP list that is associated with the distribution.
-  final pulumi.Input<String>? anycastIpListId;
+  final pulumi.Input<String?>? anycastIpListId;
   /// ARN for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Cache tag configuration block for cache tag extraction from origin responses (maximum one). See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-by-tags.html) for more information about cache tags.
-  final pulumi.Input<DistributionCacheTagConfig>? cacheTagConfig;
+  final pulumi.Input<DistributionCacheTagConfig?>? cacheTagConfig;
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
-  final pulumi.Input<String>? callerReference;
+  final pulumi.Input<String?>? callerReference;
   /// Any comments you want to include about the distribution.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// A connection function association configuration block (maximum one).
-  final pulumi.Input<DistributionConnectionFunctionAssociation>? connectionFunctionAssociation;
+  final pulumi.Input<DistributionConnectionFunctionAssociation?>? connectionFunctionAssociation;
   /// Identifier of a continuous deployment policy. This argument should only be set on a production distribution. See the `aws.cloudfront.ContinuousDeploymentPolicy` resource for additional details.
-  final pulumi.Input<String>? continuousDeploymentPolicyId;
+  final pulumi.Input<String?>? continuousDeploymentPolicyId;
   /// One or more custom error response elements (multiples allowed).
-  final pulumi.Input<List<DistributionCustomErrorResponse>>? customErrorResponses;
+  final pulumi.Input<List<DistributionCustomErrorResponse>?>? customErrorResponses;
   /// Default cache behavior for this distribution (maximum one). Requires either `cachePolicyId` (preferred) or `forwardedValues` (deprecated) be set.
-  final pulumi.Input<DistributionDefaultCacheBehavior>? defaultCacheBehavior;
+  final pulumi.Input<DistributionDefaultCacheBehavior?>? defaultCacheBehavior;
   /// Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-  final pulumi.Input<String>? defaultRootObject;
+  final pulumi.Input<String?>? defaultRootObject;
   /// Domain name corresponding to the distribution. For example: `d604721fxaaqy9.cloudfront.net`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Whether the distribution is enabled to accept end user requests for content.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Current version of the distribution's information. For example: `E2QWRUHAPOMQZL`.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// CloudFront Route 53 zone ID that can be used to route an [Alias Resource Record Set](http://docs.aws.amazon.com/Route53/latest/APIReference/CreateAliasRRSAPI.html) to. This attribute is simply an alias for the zone ID `Z2FDTNDATAQYW2`.
-  final pulumi.Input<String>? hostedZoneId;
+  final pulumi.Input<String?>? hostedZoneId;
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3` and `http3`. The default is `http2`.
-  final pulumi.Input<String>? httpVersion;
+  final pulumi.Input<String?>? httpVersion;
   /// Number of invalidation batches currently in progress.
-  final pulumi.Input<int>? inProgressValidationBatches;
+  final pulumi.Input<int?>? inProgressValidationBatches;
   /// Whether the IPv6 is enabled for the distribution.
-  final pulumi.Input<bool>? isIpv6Enabled;
+  final pulumi.Input<bool?>? isIpv6Enabled;
   /// Date and time the distribution was last modified.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// The logging configuration that controls how logs are written to your distribution (maximum one). AWS provides two versions of access logs for CloudFront: Legacy and v2. This argument configures legacy version standard logs.
-  final pulumi.Input<DistributionLoggingConfig>? loggingConfig;
+  final pulumi.Input<DistributionLoggingConfig?>? loggingConfig;
   /// Whether V1 logging is enabled for the distribution.
-  final pulumi.Input<bool>? loggingV1Enabled;
+  final pulumi.Input<bool?>? loggingV1Enabled;
   /// Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
-  final pulumi.Input<List<DistributionOrderedCacheBehavior>>? orderedCacheBehaviors;
+  final pulumi.Input<List<DistributionOrderedCacheBehavior>?>? orderedCacheBehaviors;
   /// One or more originGroup for this distribution (multiples allowed).
-  final pulumi.Input<List<DistributionOriginGroup>>? originGroups;
+  final pulumi.Input<List<DistributionOriginGroup>?>? originGroups;
   /// One or more origins for this distribution (multiples allowed).
-  final pulumi.Input<List<DistributionOrigin>>? origins;
+  final pulumi.Input<List<DistributionOrigin>?>? origins;
   /// Price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100`.
-  final pulumi.Input<String>? priceClass;
+  final pulumi.Input<String?>? priceClass;
   /// The restriction configuration for this distribution (maximum one).
-  final pulumi.Input<DistributionRestrictions>? restrictions;
+  final pulumi.Input<DistributionRestrictions?>? restrictions;
   /// Disables the distribution instead of deleting it when destroying the resource through the provider. If this is set, the distribution needs to be deleted manually afterwards. Default: `false`.
-  final pulumi.Input<bool>? retainOnDelete;
+  final pulumi.Input<bool?>? retainOnDelete;
   /// A Boolean that indicates whether this is a staging distribution. Defaults to `false`.
-  final pulumi.Input<bool>? staging;
+  final pulumi.Input<bool?>? staging;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
-  final pulumi.Input<List<DistributionTrustedKeyGroup>>? trustedKeyGroups;
+  final pulumi.Input<List<DistributionTrustedKeyGroup>?>? trustedKeyGroups;
   /// List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs.
-  final pulumi.Input<List<DistributionTrustedSigner>>? trustedSigners;
+  final pulumi.Input<List<DistributionTrustedSigner>?>? trustedSigners;
   /// The SSL configuration for this distribution (maximum one).
-  final pulumi.Input<DistributionViewerCertificate>? viewerCertificate;
+  final pulumi.Input<DistributionViewerCertificate?>? viewerCertificate;
   /// The viewer mTLS configuration for this distribution (maximum one).
-  final pulumi.Input<DistributionViewerMtlsConfig>? viewerMtlsConfig;
+  final pulumi.Input<DistributionViewerMtlsConfig?>? viewerMtlsConfig;
   /// If enabled, the resource will wait for the distribution status to change from `InProgress` to `Deployed`. Setting this to`false` will skip the process. Default: `true`.
-  final pulumi.Input<bool>? waitForDeployment;
+  final pulumi.Input<bool?>? waitForDeployment;
   /// Unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution. To specify a web ACL created using the latest version of AWS WAF (WAFv2), use the ACL ARN, for example `aws_wafv2_web_acl.example.arn`. To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example `aws_waf_web_acl.example.id`. The WAF Web ACL must exist in the WAF Global (CloudFront) region and the credentials configuring this argument must have `waf:GetWebACL` permissions assigned.
-  final pulumi.Input<String>? webAclId;
+  final pulumi.Input<String?>? webAclId;
 
   /// Creates a new [DistributionState].
   /// [aliases] Extra CNAMEs (alternate domain names), if any, for this distribution.
@@ -230,7 +230,7 @@ class DistributionState {
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostedZoneId: (() { final guardedValue = map['hostedZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpVersion: (() { final guardedValue = map['httpVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inProgressValidationBatches: (() { final guardedValue = map['inProgressValidationBatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inProgressValidationBatches: (() { final guardedValue = map['inProgressValidationBatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       isIpv6Enabled: (() { final guardedValue = map['isIpv6Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

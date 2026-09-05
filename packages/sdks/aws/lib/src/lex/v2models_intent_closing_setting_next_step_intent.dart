@@ -5,9 +5,9 @@ import 'v2models_intent_closing_setting_next_step_intent_slot.dart';
 
 class V2modelsIntentClosingSettingNextStepIntent {
   /// Name of the intent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final pulumi.Input<List<V2modelsIntentClosingSettingNextStepIntentSlot>>? slots;
+  final pulumi.Input<List<V2modelsIntentClosingSettingNextStepIntentSlot>?>? slots;
 
   /// Creates a new [V2modelsIntentClosingSettingNextStepIntent].
   /// [name] Name of the intent.

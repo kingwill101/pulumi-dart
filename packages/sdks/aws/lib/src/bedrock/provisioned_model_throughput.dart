@@ -135,7 +135,7 @@ import 'provisioned_model_throughput_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `provisionedModelArn` (String) Amazon Resource Name (ARN) of the Bedrock provisioned model throughput.
+/// - `provisionedModelArn` (String) ARN of the Bedrock provisioned model throughput.
 ///
 ///
 /// Using `pulumi import`, import Provisioned Throughput using the `provisionedModelArn`. For example:
@@ -174,7 +174,7 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
           'aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     commitmentDuration = registerOutput<String?>('commitmentDuration');
     modelArn = registerOutput<String>('modelArn');
@@ -182,8 +182,8 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
     provisionedModelArn = registerOutput<String>('provisionedModelArn');
     provisionedModelName = registerOutput<String>('provisionedModelName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedModelThroughputTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -192,11 +192,12 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisionedModelThroughputState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisionedModelThroughput._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,8 +217,28 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
     provisionedModelArn = registerOutput<String>('provisionedModelArn');
     provisionedModelName = registerOutput<String>('provisionedModelName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedModelThroughputTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ProvisionedModelThroughput] resource.
+  ProvisionedModelThroughput.reference(String urn)
+    : super(
+        'aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    commitmentDuration = registerOutput<String?>('commitmentDuration');
+    modelArn = registerOutput<String>('modelArn');
+    modelUnits = registerOutput<int>('modelUnits');
+    provisionedModelArn = registerOutput<String>('provisionedModelArn');
+    provisionedModelName = registerOutput<String>('provisionedModelName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedModelThroughputTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceVpcConnectionProperties {
-  /// The Amazon Resource Name (ARN) for the VPC connection.
+  /// ARN for the VPC connection.
   final pulumi.Input<String> vpcConnectionArn;
 
   /// Creates a new [DataSourceVpcConnectionProperties].
-  /// [vpcConnectionArn] The Amazon Resource Name (ARN) for the VPC connection.
+  /// [vpcConnectionArn] ARN for the VPC connection.
   const DataSourceVpcConnectionProperties({
     required this.vpcConnectionArn,
   });

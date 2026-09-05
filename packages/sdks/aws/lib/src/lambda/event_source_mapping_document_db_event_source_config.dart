@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceMappingDocumentDbEventSourceConfig {
   /// Name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
-  final pulumi.Input<String>? collectionName;
+  final pulumi.Input<String?>? collectionName;
   /// Name of the database to consume within the DocumentDB cluster.
   final pulumi.Input<String> databaseName;
-  /// Determines what DocumentDB sends to your event stream during document update operations. If set to `UpdateLookup`, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes. Valid values: `UpdateLookup`, `Default`.
-  final pulumi.Input<String>? fullDocument;
+  /// DocumentDB behavior during document update operations. If set to `UpdateLookup`, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes. Valid values: `UpdateLookup`, `Default`.
+  final pulumi.Input<String?>? fullDocument;
 
   /// Creates a new [EventSourceMappingDocumentDbEventSourceConfig].
   /// [collectionName] Name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
   /// [databaseName] Name of the database to consume within the DocumentDB cluster.
-  /// [fullDocument] Determines what DocumentDB sends to your event stream during document update operations. If set to `UpdateLookup`, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes. Valid values: `UpdateLookup`, `Default`.
+  /// [fullDocument] DocumentDB behavior during document update operations. If set to `UpdateLookup`, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes. Valid values: `UpdateLookup`, `Default`.
   const EventSourceMappingDocumentDbEventSourceConfig({
     this.collectionName,
     required this.databaseName,

@@ -425,7 +425,7 @@ import 'instance_state.dart';
 /// $ pulumi import aws:connect/instance:Instance example f1288a1f-6193-445a-b47e-af739b2
 /// ```
 class Instance extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the instance.
+  /// ARN of the instance.
   late final pulumi.Output<String> arn;
   /// Specifies whether auto resolve best voices is enabled. Defaults to `true`.
   late final pulumi.Output<bool?> autoResolveBestVoicesEnabled;
@@ -473,7 +473,7 @@ class Instance extends pulumi.CustomResource {
           'aws:connect/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoResolveBestVoicesEnabled = registerOutput<bool?>('autoResolveBestVoicesEnabled');
@@ -490,8 +490,8 @@ class Instance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceRole = registerOutput<String>('serviceRole');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -499,11 +499,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -532,7 +533,35 @@ class Instance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceRole = registerOutput<String>('serviceRole');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'aws:connect/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoResolveBestVoicesEnabled = registerOutput<bool?>('autoResolveBestVoicesEnabled');
+    contactFlowLogsEnabled = registerOutput<bool?>('contactFlowLogsEnabled');
+    contactLensEnabled = registerOutput<bool?>('contactLensEnabled');
+    createdTime = registerOutput<String>('createdTime');
+    directoryId = registerOutput<String?>('directoryId');
+    earlyMediaEnabled = registerOutput<bool?>('earlyMediaEnabled');
+    identityManagementType = registerOutput<String>('identityManagementType');
+    inboundCallsEnabled = registerOutput<bool>('inboundCallsEnabled');
+    instanceAlias = registerOutput<String?>('instanceAlias');
+    multiPartyConferenceEnabled = registerOutput<bool?>('multiPartyConferenceEnabled');
+    outboundCallsEnabled = registerOutput<bool>('outboundCallsEnabled');
+    region = registerOutput<String>('region');
+    serviceRole = registerOutput<String>('serviceRole');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

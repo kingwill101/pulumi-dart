@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ContactsEmailContact resources.
 class ContactsEmailContactState {
   /// ARN of the Email Contact.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Email address for the contact. Must be between 6 and 254 characters and match an email
   /// pattern.
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// Name of the email contact. Must be between 1 and 64 characters and can contain alphanumeric
   /// characters, underscores, tildes, periods, and hyphens.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of tags to assign to the resource. If configured with a provider
   /// `defaultTags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider
   /// `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ContactsEmailContactState].
   /// [arn] ARN of the Email Contact.

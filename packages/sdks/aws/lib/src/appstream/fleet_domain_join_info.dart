@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetDomainJoinInfo {
   /// Fully qualified name of the directory (for example, corp.example.com).
-  final pulumi.Input<String>? directoryName;
+  final pulumi.Input<String?>? directoryName;
   /// Distinguished name of the organizational unit for computer accounts.
-  final pulumi.Input<String>? organizationalUnitDistinguishedName;
+  final pulumi.Input<String?>? organizationalUnitDistinguishedName;
 
   /// Creates a new [FleetDomainJoinInfo].
   /// [directoryName] Fully qualified name of the directory (for example, corp.example.com).

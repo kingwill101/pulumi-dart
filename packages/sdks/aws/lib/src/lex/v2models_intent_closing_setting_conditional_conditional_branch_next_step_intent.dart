@@ -5,9 +5,9 @@ import 'v2models_intent_closing_setting_conditional_conditional_branch_next_step
 
 class V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntent {
   /// Name of the intent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final pulumi.Input<List<V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlot>>? slots;
+  final pulumi.Input<List<V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlot>?>? slots;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntent].
   /// [name] Name of the intent.

@@ -229,7 +229,7 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
   late final pulumi.Output<int> allocatedStorage;
   /// Whether to copy existing tags. Defaults to `false`.
   late final pulumi.Output<bool?> copyTags;
-  /// The Amazon Resource Name (ARN) for the DB cluster snapshot.
+  /// ARN for the DB cluster snapshot.
   late final pulumi.Output<String> dbClusterSnapshotArn;
   /// The Destination region to place snapshot copy.
   late final pulumi.Output<String?> destinationRegion;
@@ -278,7 +278,7 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
           'aws:rds/clusterSnapshotCopy:ClusterSnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     copyTags = registerOutput<bool?>('copyTags');
@@ -290,13 +290,13 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
     licenseModel = registerOutput<String>('licenseModel');
     presignedUrl = registerOutput<String?>('presignedUrl');
     region = registerOutput<String>('region');
-    sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
+    sharedAccounts = registerOutput<List<String>?>('sharedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotType = registerOutput<String>('snapshotType');
     sourceDbClusterSnapshotIdentifier = registerOutput<String>('sourceDbClusterSnapshotIdentifier');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetDbClusterSnapshotIdentifier = registerOutput<String>('targetDbClusterSnapshotIdentifier');
     timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSnapshotCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
@@ -307,11 +307,12 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterSnapshotCopyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterSnapshotCopy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,13 +336,44 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
     licenseModel = registerOutput<String>('licenseModel');
     presignedUrl = registerOutput<String?>('presignedUrl');
     region = registerOutput<String>('region');
-    sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
+    sharedAccounts = registerOutput<List<String>?>('sharedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotType = registerOutput<String>('snapshotType');
     sourceDbClusterSnapshotIdentifier = registerOutput<String>('sourceDbClusterSnapshotIdentifier');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetDbClusterSnapshotIdentifier = registerOutput<String>('targetDbClusterSnapshotIdentifier');
+    timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSnapshotCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [ClusterSnapshotCopy] resource.
+  ClusterSnapshotCopy.reference(String urn)
+    : super(
+        'aws:rds/clusterSnapshotCopy:ClusterSnapshotCopy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatedStorage = registerOutput<int>('allocatedStorage');
+    copyTags = registerOutput<bool?>('copyTags');
+    dbClusterSnapshotArn = registerOutput<String>('dbClusterSnapshotArn');
+    destinationRegion = registerOutput<String?>('destinationRegion');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    licenseModel = registerOutput<String>('licenseModel');
+    presignedUrl = registerOutput<String?>('presignedUrl');
+    region = registerOutput<String>('region');
+    sharedAccounts = registerOutput<List<String>?>('sharedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotType = registerOutput<String>('snapshotType');
+    sourceDbClusterSnapshotIdentifier = registerOutput<String>('sourceDbClusterSnapshotIdentifier');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetDbClusterSnapshotIdentifier = registerOutput<String>('targetDbClusterSnapshotIdentifier');
     timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSnapshotCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');

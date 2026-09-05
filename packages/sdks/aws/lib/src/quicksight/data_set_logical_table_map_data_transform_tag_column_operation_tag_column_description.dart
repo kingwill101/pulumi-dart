@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription {
   /// The text of a description for a column.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription].
   /// [text] The text of a description for a column.

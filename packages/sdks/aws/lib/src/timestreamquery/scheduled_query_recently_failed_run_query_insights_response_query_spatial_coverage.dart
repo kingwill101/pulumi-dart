@@ -5,7 +5,7 @@ import 'scheduled_query_recently_failed_run_query_insights_response_query_spatia
 
 class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage {
   /// Insights into the most sub-optimal performing table on the temporal axis:
-  final pulumi.Input<List<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis>>? maxes;
+  final pulumi.Input<List<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis>?>? maxes;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:

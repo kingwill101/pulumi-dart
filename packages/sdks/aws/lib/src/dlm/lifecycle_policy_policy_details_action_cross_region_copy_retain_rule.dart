@@ -23,7 +23,7 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule {
 
   factory LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule(
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
       intervalUnit: pulumi.Input.fromValue(map['intervalUnit'] as String),
     );
   }

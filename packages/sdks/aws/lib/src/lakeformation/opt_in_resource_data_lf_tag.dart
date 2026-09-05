@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Key name for the LF-Tag.
   final pulumi.Input<String> key;
   /// Set of tag values for the LF-Tag key. At least one value is required. Each value can be 1-255 characters.

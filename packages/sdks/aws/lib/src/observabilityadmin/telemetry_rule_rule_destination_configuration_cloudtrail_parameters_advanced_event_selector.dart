@@ -5,9 +5,9 @@ import 'telemetry_rule_rule_destination_configuration_cloudtrail_parameters_adva
 
 class TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelector {
   /// List of field selectors that compose the selector statement. See `fieldSelectors` below.
-  final pulumi.Input<List<TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelectorFieldSelector>>? fieldSelectors;
+  final pulumi.Input<List<TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelectorFieldSelector>?>? fieldSelectors;
   /// Descriptive name for the advanced event selector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationCloudtrailParametersAdvancedEventSelector].
   /// [fieldSelectors] List of field selectors that compose the selector statement. See `fieldSelectors` below.

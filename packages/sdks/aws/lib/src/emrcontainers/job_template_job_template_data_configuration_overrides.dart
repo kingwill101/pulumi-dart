@@ -6,9 +6,9 @@ import 'job_template_job_template_data_configuration_overrides_monitoring_config
 
 class JobTemplateJobTemplateDataConfigurationOverrides {
   /// The configurations for the application running by the job run.
-  final pulumi.Input<List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>>? applicationConfigurations;
+  final pulumi.Input<List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>?>? applicationConfigurations;
   /// The configurations for monitoring.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration>? monitoringConfiguration;
+  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration?>? monitoringConfiguration;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverrides].
   /// [applicationConfigurations] The configurations for the application running by the job run.

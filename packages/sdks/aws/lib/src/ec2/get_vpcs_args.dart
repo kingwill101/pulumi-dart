@@ -9,12 +9,12 @@ import 'get_vpcs_filter.dart';
 /// {@macro pulumi_ec2_get_vpcs_get_vpcs_args_doc}
 class GetVpcsArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetVpcsFilter>>? filters;
+  final pulumi.Input<List<GetVpcsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired vpcs.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcsArgs].
   /// [filters] Custom filter block as described below.

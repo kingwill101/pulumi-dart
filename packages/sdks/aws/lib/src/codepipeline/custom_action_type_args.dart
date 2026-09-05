@@ -14,14 +14,14 @@ class CustomActionTypeArgs {
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
   final pulumi.Input<String> category;
   /// The configuration properties for the custom action. Max 10 items.
-  final pulumi.Input<List<CustomActionTypeConfigurationProperty>>? configurationProperties;
+  final pulumi.Input<List<CustomActionTypeConfigurationProperty>?>? configurationProperties;
   final pulumi.Input<CustomActionTypeInputArtifactDetails> inputArtifactDetails;
   final pulumi.Input<CustomActionTypeOutputArtifactDetails> outputArtifactDetails;
   final pulumi.Input<String> providerName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<CustomActionTypeSettings>? settings;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<CustomActionTypeSettings?>? settings;
+  final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<String> version;
 
   /// Creates a new [CustomActionTypeArgs].

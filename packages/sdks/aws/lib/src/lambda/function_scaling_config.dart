@@ -20,7 +20,6 @@ import 'function_scaling_config_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.CapacityProvider("example", {
-///     name: "example",
 ///     vpcConfig: {
 ///         subnetIds: exampleAwsSubnet.map(__item => __item.id),
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
@@ -28,8 +27,14 @@ import 'function_scaling_config_timeouts.dart';
 ///     permissionsConfig: {
 ///         capacityProviderOperatorRoleArn: exampleAwsIamRole.arn,
 ///     },
+///     name: "example",
 /// });
 /// const exampleFunction = new aws.lambda.Function("example", {
+///     capacityProviderConfig: {
+///         lambdaManagedInstancesCapacityProviderConfig: {
+///             capacityProviderArn: example.arn,
+///         },
+///     },
 ///     code: new pulumi.asset.FileArchive("lambda_function.zip"),
 ///     name: "example",
 ///     role: exampleAwsIamRole.arn,
@@ -38,19 +43,14 @@ import 'function_scaling_config_timeouts.dart';
 ///     memorySize: 32768,
 ///     publish: true,
 ///     publishTo: "LATEST_PUBLISHED",
-///     capacityProviderConfig: {
-///         lambdaManagedInstancesCapacityProviderConfig: {
-///             capacityProviderArn: example.arn,
-///         },
-///     },
 /// });
 /// const exampleFunctionScalingConfig = new aws.lambda.FunctionScalingConfig("example", {
-///     functionName: exampleFunction.name,
-///     qualifier: "$LATEST.PUBLISHED",
 ///     functionScalingConfig: {
 ///         minExecutionEnvironments: 3,
 ///         maxExecutionEnvironments: 100,
 ///     },
+///     functionName: exampleFunction.name,
+///     qualifier: "$LATEST.PUBLISHED",
 /// });
 /// ```
 /// ```python
@@ -58,15 +58,20 @@ import 'function_scaling_config_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.CapacityProvider("example",
-///     name="example",
 ///     vpc_config={
 ///         "subnet_ids": [__item["id"] for __item in example_aws_subnet],
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///     },
 ///     permissions_config={
 ///         "capacity_provider_operator_role_arn": example_aws_iam_role["arn"],
-///     })
+///     },
+///     name="example")
 /// example_function = aws.lambda_.Function("example",
+///     capacity_provider_config={
+///         "lambda_managed_instances_capacity_provider_config": {
+///             "capacity_provider_arn": example.arn,
+///         },
+///     },
 ///     code=pulumi.FileArchive("lambda_function.zip"),
 ///     name="example",
 ///     role=example_aws_iam_role["arn"],
@@ -74,19 +79,14 @@ import 'function_scaling_config_timeouts.dart';
 ///     runtime=aws.lambda_.Runtime.PYTHON3D14,
 ///     memory_size=32768,
 ///     publish=True,
-///     publish_to="LATEST_PUBLISHED",
-///     capacity_provider_config={
-///         "lambda_managed_instances_capacity_provider_config": {
-///             "capacity_provider_arn": example.arn,
-///         },
-///     })
+///     publish_to="LATEST_PUBLISHED")
 /// example_function_scaling_config = aws.lambda_.FunctionScalingConfig("example",
-///     function_name=example_function.name,
-///     qualifier="$LATEST.PUBLISHED",
 ///     function_scaling_config={
 ///         "min_execution_environments": 3,
 ///         "max_execution_environments": 100,
-///     })
+///     },
+///     function_name=example_function.name,
+///     qualifier="$LATEST.PUBLISHED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -98,7 +98,6 @@ import 'function_scaling_config_timeouts.dart';
 /// {
 ///     var example = new Aws.Lambda.CapacityProvider("example", new()
 ///     {
-///         Name = "example",
 ///         VpcConfig = new Aws.Lambda.Inputs.CapacityProviderVpcConfigArgs
 ///         {
 ///             SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
@@ -111,10 +110,18 @@ import 'function_scaling_config_timeouts.dart';
 ///         {
 ///             CapacityProviderOperatorRoleArn = exampleAwsIamRole.Arn,
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var exampleFunction = new Aws.Lambda.Function("example", new()
 ///     {
+///         CapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigArgs
+///         {
+///             LambdaManagedInstancesCapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs
+///             {
+///                 CapacityProviderArn = example.Arn,
+///             },
+///         },
 ///         Code = new FileArchive("lambda_function.zip"),
 ///         Name = "example",
 ///         Role = exampleAwsIamRole.Arn,
@@ -123,24 +130,17 @@ import 'function_scaling_config_timeouts.dart';
 ///         MemorySize = 32768,
 ///         Publish = true,
 ///         PublishTo = "LATEST_PUBLISHED",
-///         CapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigArgs
-///         {
-///             LambdaManagedInstancesCapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs
-///             {
-///                 CapacityProviderArn = example.Arn,
-///             },
-///         },
 ///     });
 ///
 ///     var exampleFunctionScalingConfig = new Aws.Lambda.FunctionScalingConfig("example", new()
 ///     {
-///         FunctionName = exampleFunction.Name,
-///         Qualifier = "$LATEST.PUBLISHED",
 ///         FunctionScalingConfigDetails = new Aws.Lambda.Inputs.FunctionScalingConfigFunctionScalingConfigArgs
 ///         {
 ///             MinExecutionEnvironments = 3,
 ///             MaxExecutionEnvironments = 100,
 ///         },
+///         FunctionName = exampleFunction.Name,
+///         Qualifier = "$LATEST.PUBLISHED",
 ///     });
 ///
 /// });
@@ -155,9 +155,8 @@ import 'function_scaling_config_timeouts.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// example, err := lambda.NewCapacityProvider(ctx, "example", &lambda.CapacityProviderArgs{
-/// Name: pulumi.String("example"),
 /// VpcConfig: &lambda.CapacityProviderVpcConfigArgs{
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:2,24-46)),
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
@@ -165,11 +164,17 @@ import 'function_scaling_config_timeouts.dart';
 /// PermissionsConfig: &lambda.CapacityProviderPermissionsConfigArgs{
 /// CapacityProviderOperatorRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// },
+/// Name: pulumi.String("example"),
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// exampleFunction, err := lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
+/// CapacityProviderConfig: &lambda.FunctionCapacityProviderConfigArgs{
+/// LambdaManagedInstancesCapacityProviderConfig: &lambda.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs{
+/// CapacityProviderArn: example.Arn,
+/// },
+/// },
 /// Code: pulumi.NewFileArchive("lambda_function.zip"),
 /// Name: pulumi.String("example"),
 /// Role: pulumi.Any(exampleAwsIamRole.Arn),
@@ -178,22 +183,17 @@ import 'function_scaling_config_timeouts.dart';
 /// MemorySize: pulumi.Int(32768),
 /// Publish: pulumi.Bool(true),
 /// PublishTo: pulumi.String("LATEST_PUBLISHED"),
-/// CapacityProviderConfig: &lambda.FunctionCapacityProviderConfigArgs{
-/// LambdaManagedInstancesCapacityProviderConfig: &lambda.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs{
-/// CapacityProviderArn: example.Arn,
-/// },
-/// },
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// _, err = lambda.NewFunctionScalingConfig(ctx, "example", &lambda.FunctionScalingConfigArgs{
-/// FunctionName: exampleFunction.Name,
-/// Qualifier: pulumi.String("$LATEST.PUBLISHED"),
 /// FunctionScalingConfig: &lambda.FunctionScalingConfigFunctionScalingConfigArgs{
 /// MinExecutionEnvironments: pulumi.Int(3),
 /// MaxExecutionEnvironments: pulumi.Int(100),
 /// },
+/// FunctionName: exampleFunction.Name,
+/// Qualifier: pulumi.String("$LATEST.PUBLISHED"),
 /// })
 /// if err != nil {
 /// return err
@@ -212,7 +212,6 @@ import 'function_scaling_config_timeouts.dart';
 /// }
 ///
 /// resource "aws_lambda_capacityprovider" "example" {
-///   name = "example"
 ///   vpc_config = {
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
@@ -220,8 +219,14 @@ import 'function_scaling_config_timeouts.dart';
 ///   permissions_config = {
 ///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_lambda_function" "example" {
+///   capacity_provider_config = {
+///     lambda_managed_instances_capacity_provider_config = {
+///       capacity_provider_arn = aws_lambda_capacityprovider.example.arn
+///     }
+///   }
 ///   code        = fileArchive("lambda_function.zip")
 ///   name        = "example"
 ///   role        = exampleAwsIamRole.arn
@@ -230,19 +235,14 @@ import 'function_scaling_config_timeouts.dart';
 ///   memory_size = 32768
 ///   publish     = true
 ///   publish_to  = "LATEST_PUBLISHED"
-///   capacity_provider_config = {
-///     lambda_managed_instances_capacity_provider_config = {
-///       capacity_provider_arn = aws_lambda_capacityprovider.example.arn
-///     }
-///   }
 /// }
 /// resource "aws_lambda_functionscalingconfig" "example" {
-///   function_name = aws_lambda_function.example.name
-///   qualifier     = "$LATEST.PUBLISHED"
 ///   function_scaling_config = {
 ///     min_execution_environments = 3
 ///     max_execution_environments = 100
 ///   }
+///   function_name = aws_lambda_function.example.name
+///   qualifier     = "$LATEST.PUBLISHED"
 /// }
 /// ```
 /// ```java
@@ -277,7 +277,6 @@ import 'function_scaling_config_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CapacityProvider("example", CapacityProviderArgs.builder()
-///             .name("example")
 ///             .vpcConfig(CapacityProviderVpcConfigArgs.builder()
 ///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
@@ -285,9 +284,15 @@ import 'function_scaling_config_timeouts.dart';
 ///             .permissionsConfig(CapacityProviderPermissionsConfigArgs.builder()
 ///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var exampleFunction = new Function("exampleFunction", FunctionArgs.builder()
+///             .capacityProviderConfig(FunctionCapacityProviderConfigArgs.builder()
+///                 .lambdaManagedInstancesCapacityProviderConfig(FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs.builder()
+///                     .capacityProviderArn(example.arn())
+///                     .build())
+///                 .build())
 ///             .code(new FileArchive("lambda_function.zip"))
 ///             .name("example")
 ///             .role(exampleAwsIamRole.arn())
@@ -296,20 +301,15 @@ import 'function_scaling_config_timeouts.dart';
 ///             .memorySize(32768)
 ///             .publish(true)
 ///             .publishTo("LATEST_PUBLISHED")
-///             .capacityProviderConfig(FunctionCapacityProviderConfigArgs.builder()
-///                 .lambdaManagedInstancesCapacityProviderConfig(FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs.builder()
-///                     .capacityProviderArn(example.arn())
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///         var exampleFunctionScalingConfig = new FunctionScalingConfig("exampleFunctionScalingConfig", FunctionScalingConfigArgs.builder()
-///             .functionName(exampleFunction.name())
-///             .qualifier("$LATEST.PUBLISHED")
 ///             .functionScalingConfig(FunctionScalingConfigFunctionScalingConfigArgs.builder()
 ///                 .minExecutionEnvironments(3)
 ///                 .maxExecutionEnvironments(100)
 ///                 .build())
+///             .functionName(exampleFunction.name())
+///             .qualifier("$LATEST.PUBLISHED")
 ///             .build());
 ///
 ///     }
@@ -366,7 +366,7 @@ class FunctionScalingConfig extends pulumi.CustomResource {
           'aws:lambda/functionScalingConfig:FunctionScalingConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
@@ -382,11 +382,12 @@ class FunctionScalingConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionScalingConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionScalingConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,6 +401,24 @@ class FunctionScalingConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    functionScalingConfig = registerOutput<FunctionScalingConfigFunctionScalingConfig>('functionScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionScalingConfigFunctionScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functionState = registerOutput<String>('functionState');
+    qualifier = registerOutput<String>('qualifier');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<FunctionScalingConfigTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionScalingConfigTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FunctionScalingConfig] resource.
+  FunctionScalingConfig.reference(String urn)
+    : super(
+        'aws:lambda/functionScalingConfig:FunctionScalingConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     functionScalingConfig = registerOutput<FunctionScalingConfigFunctionScalingConfig>('functionScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionScalingConfigFunctionScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

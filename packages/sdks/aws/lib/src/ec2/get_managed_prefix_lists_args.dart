@@ -9,15 +9,15 @@ import 'get_managed_prefix_lists_filter.dart';
 /// {@macro pulumi_ec2_get_managed_prefix_lists_get_managed_prefix_lists_args_doc}
 class GetManagedPrefixListsArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetManagedPrefixListsFilter>>? filters;
+  final pulumi.Input<List<GetManagedPrefixListsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired .
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetManagedPrefixListsArgs].
   /// [filters] Custom filter block as described below.

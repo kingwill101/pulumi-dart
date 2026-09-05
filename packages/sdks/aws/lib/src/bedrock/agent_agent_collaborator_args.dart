@@ -12,7 +12,7 @@ class AgentAgentCollaboratorArgs {
   final pulumi.Input<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
   /// ID if the agent to associate the collaborator.
   final pulumi.Input<String> agentId;
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Instruction to give the collaborator.
   final pulumi.Input<String> collaborationInstruction;
   /// Name of this collaborator.
@@ -20,12 +20,12 @@ class AgentAgentCollaboratorArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> collaboratorName;
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
-  final pulumi.Input<bool>? prepareAgent;
+  final pulumi.Input<bool?>? prepareAgent;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configure relaying the history to the collaborator.
-  final pulumi.Input<String>? relayConversationHistory;
-  final pulumi.Input<AgentAgentCollaboratorTimeouts>? timeouts;
+  final pulumi.Input<String?>? relayConversationHistory;
+  final pulumi.Input<AgentAgentCollaboratorTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentCollaboratorArgs].
   /// [agentDescriptor] Required.

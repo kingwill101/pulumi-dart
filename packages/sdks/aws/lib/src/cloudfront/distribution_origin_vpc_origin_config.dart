@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOriginVpcOriginConfig {
-  final pulumi.Input<int>? originKeepaliveTimeout;
-  final pulumi.Input<int>? originReadTimeout;
+  final pulumi.Input<int?>? originKeepaliveTimeout;
+  final pulumi.Input<int?>? originReadTimeout;
   /// The AWS account ID that owns the VPC origin. Required when referencing a VPC origin from a different AWS account for cross-account VPC origin access.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// The VPC origin ID.
   final pulumi.Input<String> vpcOriginId;
 
@@ -33,8 +33,8 @@ class DistributionOriginVpcOriginConfig {
 
   factory DistributionOriginVpcOriginConfig.fromMap(Map<String, dynamic> map) {
     return DistributionOriginVpcOriginConfig(
-      originKeepaliveTimeout: (() { final guardedValue = map['originKeepaliveTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      originReadTimeout: (() { final guardedValue = map['originReadTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      originKeepaliveTimeout: (() { final guardedValue = map['originKeepaliveTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      originReadTimeout: (() { final guardedValue = map['originReadTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ownerAccountId: (() { final guardedValue = map['ownerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcOriginId: pulumi.Input.fromValue(map['vpcOriginId'] as String),
     );

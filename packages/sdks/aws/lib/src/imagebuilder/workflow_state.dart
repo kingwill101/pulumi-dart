@@ -4,43 +4,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Workflow resources.
 class WorkflowState {
-  /// Amazon Resource Name (ARN) of the workflow.
-  final pulumi.Input<String>? arn;
+  /// ARN of the workflow.
+  final pulumi.Input<String?>? arn;
   /// Change description of the workflow.
-  final pulumi.Input<String>? changeDescription;
+  final pulumi.Input<String?>? changeDescription;
   /// Inline YAML string with data of the workflow. Exactly one of `data` and `uri` can be specified.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Date the workflow was created.
-  final pulumi.Input<String>? dateCreated;
+  final pulumi.Input<String?>? dateCreated;
   /// Description of the workflow.
-  final pulumi.Input<String>? description;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the workflow.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? description;
+  /// ARN of the KMS Key used to encrypt the workflow.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the workflow.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the workflow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of the workflow. Valid values: `BUILD`, `TEST`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Version of the workflow.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WorkflowState].
-  /// [arn] Amazon Resource Name (ARN) of the workflow.
+  /// [arn] ARN of the workflow.
   /// [changeDescription] Change description of the workflow.
   /// [data] Inline YAML string with data of the workflow. Exactly one of `data` and `uri` can be specified.
   /// [dateCreated] Date the workflow was created.
   /// [description] Description of the workflow.
-  /// [kmsKeyId] Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the workflow.
+  /// [kmsKeyId] ARN of the KMS Key used to encrypt the workflow.
   /// [name] Name of the workflow.
   /// [owner] Owner of the workflow.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

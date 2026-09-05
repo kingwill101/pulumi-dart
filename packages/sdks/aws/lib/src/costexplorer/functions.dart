@@ -122,6 +122,17 @@ Future<GetCostCategoryResult> getCostCategory(
   return GetCostCategoryResult.fromMap(result);
 }
 
+pulumi.Output<GetCostCategoryResult> getCostCategoryOutput(
+  GetCostCategoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:costexplorer/getCostCategory:getCostCategory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCostCategoryResult.fromMap);
+}
+
 /// Provides the available cost allocation tag keys and tag values for a specified period.
 ///
 /// ## Example Usage
@@ -260,4 +271,15 @@ Future<GetTagsResult> getTags(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagsResult.fromMap(result);
+}
+
+pulumi.Output<GetTagsResult> getTagsOutput(
+  GetTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:costexplorer/getTags:getTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagsResult.fromMap);
 }

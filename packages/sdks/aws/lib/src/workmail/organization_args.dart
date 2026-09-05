@@ -9,24 +9,24 @@ import 'organization_timeouts.dart';
 /// {@macro pulumi_workmail_organization_organization_args_doc}
 class OrganizationArgs {
   /// Whether to delete the AWS Directory Service directory associated with the organization on destroy. To update this value after creation, run `pulumi up` before running `terraform destroy`. Defaults to `false`.
-  final pulumi.Input<bool>? deleteDirectory;
+  final pulumi.Input<bool?>? deleteDirectory;
   /// Whether to delete the IAM Identity Center application associated with the organization on destroy. To update this value after creation, run `pulumi up` before running `terraform destroy`. Defaults to `false`.
-  final pulumi.Input<bool>? deleteIdentityCenterApplication;
+  final pulumi.Input<bool?>? deleteIdentityCenterApplication;
   /// ID of an existing directory to associate with the organization. Changing this creates a new resource.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// Whether to enable interoperability between WorkMail and Microsoft Exchange. Changing this creates a new resource.
-  final pulumi.Input<bool>? interoperabilityEnabled;
+  final pulumi.Input<bool?>? interoperabilityEnabled;
   /// ARN of a customer-managed KMS key to encrypt the organization's data. If omitted, AWS managed keys are used. Changing this creates a new resource.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Alias for the organization. Must be unique globally. Changing this creates a new resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> organizationAlias;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<OrganizationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<OrganizationTimeouts?>? timeouts;
 
   /// Creates a new [OrganizationArgs].
   /// [deleteDirectory] Whether to delete the AWS Directory Service directory associated with the organization on destroy. To update this value after creation, run `pulumi up` before running `terraform destroy`. Defaults to `false`.

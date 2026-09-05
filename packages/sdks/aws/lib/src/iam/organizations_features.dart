@@ -190,9 +190,9 @@ class OrganizationsFeatures extends pulumi.CustomResource {
           'aws:iam/organizationsFeatures:OrganizationsFeatures',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [OrganizationsFeatures] resource's state with the given [name] and [id].
@@ -200,11 +200,12 @@ class OrganizationsFeatures extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationsFeaturesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationsFeatures._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -218,6 +219,18 @@ class OrganizationsFeatures extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [OrganizationsFeatures] resource.
+  OrganizationsFeatures.reference(String urn)
+    : super(
+        'aws:iam/organizationsFeatures:OrganizationsFeatures',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

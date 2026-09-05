@@ -16,12 +16,12 @@ class ModelCardArgs {
   /// Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
   final pulumi.Input<String> modelCardStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
-  final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
+  final pulumi.Input<ModelCardSecurityConfig?>? securityConfig;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ModelCardTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ModelCardTimeouts?>? timeouts;
 
   /// Creates a new [ModelCardArgs].
   /// [content] Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).

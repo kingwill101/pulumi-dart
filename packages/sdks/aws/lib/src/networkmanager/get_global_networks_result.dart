@@ -4,9 +4,9 @@
 /// Result data returned by getGlobalNetworks.
 class GetGlobalNetworksResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// IDs of the global networks.
-  final List<String> ids;
+  final List<String>? ids;
   final Map<String, String>? tags;
 
   /// Creates a new [GetGlobalNetworksResult].
@@ -14,23 +14,23 @@ class GetGlobalNetworksResult {
   /// [ids] IDs of the global networks.
   /// [tags] Optional.
   const GetGlobalNetworksResult({
-    required this.id,
-    required this.ids,
+    this.id,
+    this.ids,
     this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'ids': ids,
+      'id': ?id,
+      'ids': ?ids,
       'tags': ?tags,
     };
   }
 
   factory GetGlobalNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworksResult(
-      id: map['id'] as String,
-      ids: (map['ids'] as List).cast<String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

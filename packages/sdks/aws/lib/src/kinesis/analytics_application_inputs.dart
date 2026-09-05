@@ -10,27 +10,27 @@ import 'analytics_application_inputs_starting_position_configuration.dart';
 
 class AnalyticsApplicationInputs {
   /// The ARN of the Kinesis Analytics Application.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`.
   /// See Kinesis Firehose below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsKinesisFirehose>? kinesisFirehose;
+  final pulumi.Input<AnalyticsApplicationInputsKinesisFirehose?>? kinesisFirehose;
   /// The Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`.
   /// See Kinesis Stream below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsKinesisStream>? kinesisStream;
+  final pulumi.Input<AnalyticsApplicationInputsKinesisStream?>? kinesisStream;
   /// The Name Prefix to use when creating an in-application stream.
   final pulumi.Input<String> namePrefix;
   /// The number of Parallel in-application streams to create.
   /// See Parallelism below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsParallelism>? parallelism;
+  final pulumi.Input<AnalyticsApplicationInputsParallelism?>? parallelism;
   /// The Processing Configuration to transform records as they are received from the stream.
   /// See Processing Configuration below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsProcessingConfiguration>? processingConfiguration;
+  final pulumi.Input<AnalyticsApplicationInputsProcessingConfiguration?>? processingConfiguration;
   /// The Schema format of the data in the streaming source. See Source Schema below for more details.
   final pulumi.Input<AnalyticsApplicationInputsSchema> schema;
   /// The point at which the application starts processing records from the streaming source.
   /// See Starting Position Configuration below for more details.
-  final pulumi.Input<List<AnalyticsApplicationInputsStartingPositionConfiguration>>? startingPositionConfigurations;
-  final pulumi.Input<List<String>>? streamNames;
+  final pulumi.Input<List<AnalyticsApplicationInputsStartingPositionConfiguration>?>? startingPositionConfigurations;
+  final pulumi.Input<List<String>?>? streamNames;
 
   /// Creates a new [AnalyticsApplicationInputs].
   /// [id] The ARN of the Kinesis Analytics Application.

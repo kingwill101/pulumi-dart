@@ -5,7 +5,7 @@ import 'policy_security_service_policy_data_policy_option_network_acl_common_pol
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
   /// Network ACL entries for the Network ACL policy. See the `networkAclEntrySet` block.
-  final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet>? networkAclEntrySet;
+  final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet?>? networkAclEntrySet;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy].
   /// [networkAclEntrySet] Network ACL entries for the Network ACL policy. See the `networkAclEntrySet` block.

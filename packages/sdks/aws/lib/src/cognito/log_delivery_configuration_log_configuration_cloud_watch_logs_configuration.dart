@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration {
   /// The ARN of the CloudWatch Logs log group to which the logs should be delivered.
-  final pulumi.Input<String>? logGroupArn;
+  final pulumi.Input<String?>? logGroupArn;
 
   /// Creates a new [LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration].
   /// [logGroupArn] The ARN of the CloudWatch Logs log group to which the logs should be delivered.

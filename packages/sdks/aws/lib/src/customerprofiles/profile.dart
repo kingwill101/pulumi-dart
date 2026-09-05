@@ -205,12 +205,12 @@ class Profile extends pulumi.CustomResource {
           'aws:customerprofiles/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountNumber = registerOutput<String?>('accountNumber');
     additionalInformation = registerOutput<String?>('additionalInformation');
     address = registerOutput<ProfileAddress?>('address', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    attributes = registerOutput<Map<String, String>?>('attributes');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     billingAddress = registerOutput<ProfileBillingAddress?>('billingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileBillingAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     birthDate = registerOutput<String?>('birthDate');
     businessEmailAddress = registerOutput<String?>('businessEmailAddress');
@@ -237,11 +237,12 @@ class Profile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Profile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,7 +259,41 @@ class Profile extends pulumi.CustomResource {
     accountNumber = registerOutput<String?>('accountNumber');
     additionalInformation = registerOutput<String?>('additionalInformation');
     address = registerOutput<ProfileAddress?>('address', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    attributes = registerOutput<Map<String, String>?>('attributes');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    billingAddress = registerOutput<ProfileBillingAddress?>('billingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileBillingAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    birthDate = registerOutput<String?>('birthDate');
+    businessEmailAddress = registerOutput<String?>('businessEmailAddress');
+    businessName = registerOutput<String?>('businessName');
+    businessPhoneNumber = registerOutput<String?>('businessPhoneNumber');
+    domainName = registerOutput<String>('domainName');
+    emailAddress = registerOutput<String?>('emailAddress');
+    firstName = registerOutput<String?>('firstName');
+    genderString = registerOutput<String?>('genderString');
+    homePhoneNumber = registerOutput<String?>('homePhoneNumber');
+    lastName = registerOutput<String?>('lastName');
+    mailingAddress = registerOutput<ProfileMailingAddress?>('mailingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileMailingAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    middleName = registerOutput<String?>('middleName');
+    mobilePhoneNumber = registerOutput<String?>('mobilePhoneNumber');
+    partyTypeString = registerOutput<String?>('partyTypeString');
+    personalEmailAddress = registerOutput<String?>('personalEmailAddress');
+    phoneNumber = registerOutput<String?>('phoneNumber');
+    region = registerOutput<String>('region');
+    shippingAddress = registerOutput<ProfileShippingAddress?>('shippingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileShippingAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'aws:customerprofiles/profile:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountNumber = registerOutput<String?>('accountNumber');
+    additionalInformation = registerOutput<String?>('additionalInformation');
+    address = registerOutput<ProfileAddress?>('address', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     billingAddress = registerOutput<ProfileBillingAddress?>('billingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileBillingAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     birthDate = registerOutput<String?>('birthDate');
     businessEmailAddress = registerOutput<String?>('businessEmailAddress');

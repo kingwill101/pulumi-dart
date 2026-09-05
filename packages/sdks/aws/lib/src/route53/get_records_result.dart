@@ -7,32 +7,32 @@ import 'get_records_resource_record_set.dart';
 class GetRecordsResult {
   final String? nameRegex;
   /// The resource records sets.
-  final List<GetRecordsResourceRecordSet> resourceRecordSets;
-  final String zoneId;
+  final List<GetRecordsResourceRecordSet>? resourceRecordSets;
+  final String? zoneId;
 
   /// Creates a new [GetRecordsResult].
   /// [nameRegex] Optional.
   /// [resourceRecordSets] The resource records sets.
-  /// [zoneId] Required.
+  /// [zoneId] Optional.
   const GetRecordsResult({
     this.nameRegex,
-    required this.resourceRecordSets,
-    required this.zoneId,
+    this.resourceRecordSets,
+    this.zoneId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nameRegex': ?nameRegex,
-      'resourceRecordSets': pulumi.Input.encodeList<GetRecordsResourceRecordSet, Map<String, dynamic>>(resourceRecordSets, (value) => value.toMap()),
-      'zoneId': zoneId,
+      'resourceRecordSets': ?(() { final guardedValue = resourceRecordSets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRecordsResourceRecordSet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'zoneId': ?zoneId,
     };
   }
 
   factory GetRecordsResult.fromMap(Map<String, dynamic> map) {
     return GetRecordsResult(
       nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceRecordSets: pulumi.Input.decodeList<GetRecordsResourceRecordSet>(map['resourceRecordSets']!, (value) => GetRecordsResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())),
-      zoneId: map['zoneId'] as String,
+      resourceRecordSets: (() { final guardedValue = map['resourceRecordSets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRecordsResourceRecordSet>(guardedValue, (value) => GetRecordsResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -20,12 +20,12 @@ import 'method_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const pathSpecific = new aws.apigateway.MethodSettings("path_specific", {
-///     restApi: example.id,
-///     stageName: exampleAwsApiGatewayStage.stageName,
-///     methodPath: "path1/GET",
 ///     settings: {
 ///         loggingLevel: "OFF",
 ///     },
+///     restApi: example.id,
+///     stageName: exampleAwsApiGatewayStage.stageName,
+///     methodPath: "path1/GET",
 /// });
 /// ```
 /// ```python
@@ -33,12 +33,12 @@ import 'method_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// path_specific = aws.apigateway.MethodSettings("path_specific",
-///     rest_api=example["id"],
-///     stage_name=example_aws_api_gateway_stage["stageName"],
-///     method_path="path1/GET",
 ///     settings={
 ///         "logging_level": "OFF",
-///     })
+///     },
+///     rest_api=example["id"],
+///     stage_name=example_aws_api_gateway_stage["stageName"],
+///     method_path="path1/GET")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,13 +50,13 @@ import 'method_settings_state.dart';
 /// {
 ///     var pathSpecific = new Aws.ApiGateway.MethodSettings("path_specific", new()
 ///     {
-///         RestApi = example.Id,
-///         StageName = exampleAwsApiGatewayStage.StageName,
-///         MethodPath = "path1/GET",
 ///         Settings = new Aws.ApiGateway.Inputs.MethodSettingsSettingsArgs
 ///         {
 ///             LoggingLevel = "OFF",
 ///         },
+///         RestApi = example.Id,
+///         StageName = exampleAwsApiGatewayStage.StageName,
+///         MethodPath = "path1/GET",
 ///     });
 ///
 /// });
@@ -72,12 +72,12 @@ import 'method_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigateway.NewMethodSettings(ctx, "path_specific", &apigateway.MethodSettingsArgs{
-/// 			RestApi:    pulumi.Any(example.Id),
-/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
-/// 			MethodPath: pulumi.String("path1/GET"),
 /// 			Settings: &apigateway.MethodSettingsSettingsArgs{
 /// 				LoggingLevel: pulumi.String("OFF"),
 /// 			},
+/// 			RestApi:    pulumi.Any(example.Id),
+/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
+/// 			MethodPath: pulumi.String("path1/GET"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -96,12 +96,12 @@ import 'method_settings_state.dart';
 /// }
 ///
 /// resource "aws_apigateway_methodsettings" "path_specific" {
-///   rest_api    = example.id
-///   stage_name  = exampleAwsApiGatewayStage.stageName
-///   method_path = "path1/GET"
 ///   settings = {
 ///     logging_level = "OFF"
 ///   }
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
 /// }
 /// ```
 /// ```java
@@ -127,12 +127,12 @@ import 'method_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var pathSpecific = new MethodSettings("pathSpecific", MethodSettingsArgs.builder()
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
-///             .methodPath("path1/GET")
 ///             .settings(MethodSettingsSettingsArgs.builder()
 ///                 .loggingLevel("OFF")
 ///                 .build())
+///             .restApi(example.id())
+///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .methodPath("path1/GET")
 ///             .build());
 ///
 ///     }
@@ -144,11 +144,11 @@ import 'method_settings_state.dart';
 ///     type: aws:apigateway:MethodSettings
 ///     name: path_specific
 ///     properties:
+///       settings:
+///         loggingLevel: OFF
 ///       restApi: ${example.id}
 ///       stageName: ${exampleAwsApiGatewayStage.stageName}
 ///       methodPath: path1/GET
-///       settings:
-///         loggingLevel: OFF
 /// ```
 ///
 ///
@@ -160,14 +160,14 @@ import 'method_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const pathSpecific = new aws.apigateway.MethodSettings("path_specific", {
-///     restApi: example.id,
-///     stageName: exampleAwsApiGatewayStage.stageName,
-///     methodPath: "path1/GET",
 ///     settings: {
 ///         loggingLevel: "ERROR",
 ///         metricsEnabled: true,
 ///         dataTraceEnabled: false,
 ///     },
+///     restApi: example.id,
+///     stageName: exampleAwsApiGatewayStage.stageName,
+///     methodPath: "path1/GET",
 /// });
 /// ```
 /// ```python
@@ -175,14 +175,14 @@ import 'method_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// path_specific = aws.apigateway.MethodSettings("path_specific",
-///     rest_api=example["id"],
-///     stage_name=example_aws_api_gateway_stage["stageName"],
-///     method_path="path1/GET",
 ///     settings={
 ///         "logging_level": "ERROR",
 ///         "metrics_enabled": True,
 ///         "data_trace_enabled": False,
-///     })
+///     },
+///     rest_api=example["id"],
+///     stage_name=example_aws_api_gateway_stage["stageName"],
+///     method_path="path1/GET")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -194,15 +194,15 @@ import 'method_settings_state.dart';
 /// {
 ///     var pathSpecific = new Aws.ApiGateway.MethodSettings("path_specific", new()
 ///     {
-///         RestApi = example.Id,
-///         StageName = exampleAwsApiGatewayStage.StageName,
-///         MethodPath = "path1/GET",
 ///         Settings = new Aws.ApiGateway.Inputs.MethodSettingsSettingsArgs
 ///         {
 ///             LoggingLevel = "ERROR",
 ///             MetricsEnabled = true,
 ///             DataTraceEnabled = false,
 ///         },
+///         RestApi = example.Id,
+///         StageName = exampleAwsApiGatewayStage.StageName,
+///         MethodPath = "path1/GET",
 ///     });
 ///
 /// });
@@ -218,14 +218,14 @@ import 'method_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigateway.NewMethodSettings(ctx, "path_specific", &apigateway.MethodSettingsArgs{
-/// 			RestApi:    pulumi.Any(example.Id),
-/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
-/// 			MethodPath: pulumi.String("path1/GET"),
 /// 			Settings: &apigateway.MethodSettingsSettingsArgs{
 /// 				LoggingLevel:     pulumi.String("ERROR"),
 /// 				MetricsEnabled:   pulumi.Bool(true),
 /// 				DataTraceEnabled: pulumi.Bool(false),
 /// 			},
+/// 			RestApi:    pulumi.Any(example.Id),
+/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
+/// 			MethodPath: pulumi.String("path1/GET"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -244,14 +244,14 @@ import 'method_settings_state.dart';
 /// }
 ///
 /// resource "aws_apigateway_methodsettings" "path_specific" {
-///   rest_api    = example.id
-///   stage_name  = exampleAwsApiGatewayStage.stageName
-///   method_path = "path1/GET"
 ///   settings = {
 ///     logging_level      = "ERROR"
 ///     metrics_enabled    = true
 ///     data_trace_enabled = false
 ///   }
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
 /// }
 /// ```
 /// ```java
@@ -277,14 +277,14 @@ import 'method_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var pathSpecific = new MethodSettings("pathSpecific", MethodSettingsArgs.builder()
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
-///             .methodPath("path1/GET")
 ///             .settings(MethodSettingsSettingsArgs.builder()
 ///                 .loggingLevel("ERROR")
 ///                 .metricsEnabled(true)
 ///                 .dataTraceEnabled(false)
 ///                 .build())
+///             .restApi(example.id())
+///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .methodPath("path1/GET")
 ///             .build());
 ///
 ///     }
@@ -296,13 +296,13 @@ import 'method_settings_state.dart';
 ///     type: aws:apigateway:MethodSettings
 ///     name: path_specific
 ///     properties:
-///       restApi: ${example.id}
-///       stageName: ${exampleAwsApiGatewayStage.stageName}
-///       methodPath: path1/GET
 ///       settings:
 ///         loggingLevel: ERROR
 ///         metricsEnabled: true
 ///         dataTraceEnabled: false
+///       restApi: ${example.id}
+///       stageName: ${exampleAwsApiGatewayStage.stageName}
+///       methodPath: path1/GET
 /// ```
 ///
 ///
@@ -314,14 +314,14 @@ import 'method_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const pathSpecific = new aws.apigateway.MethodSettings("path_specific", {
-///     restApi: example.id,
-///     stageName: exampleAwsApiGatewayStage.stageName,
-///     methodPath: "path1/GET",
 ///     settings: {
 ///         loggingLevel: "INFO",
 ///         metricsEnabled: true,
 ///         dataTraceEnabled: false,
 ///     },
+///     restApi: example.id,
+///     stageName: exampleAwsApiGatewayStage.stageName,
+///     methodPath: "path1/GET",
 /// });
 /// ```
 /// ```python
@@ -329,14 +329,14 @@ import 'method_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// path_specific = aws.apigateway.MethodSettings("path_specific",
-///     rest_api=example["id"],
-///     stage_name=example_aws_api_gateway_stage["stageName"],
-///     method_path="path1/GET",
 ///     settings={
 ///         "logging_level": "INFO",
 ///         "metrics_enabled": True,
 ///         "data_trace_enabled": False,
-///     })
+///     },
+///     rest_api=example["id"],
+///     stage_name=example_aws_api_gateway_stage["stageName"],
+///     method_path="path1/GET")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -348,15 +348,15 @@ import 'method_settings_state.dart';
 /// {
 ///     var pathSpecific = new Aws.ApiGateway.MethodSettings("path_specific", new()
 ///     {
-///         RestApi = example.Id,
-///         StageName = exampleAwsApiGatewayStage.StageName,
-///         MethodPath = "path1/GET",
 ///         Settings = new Aws.ApiGateway.Inputs.MethodSettingsSettingsArgs
 ///         {
 ///             LoggingLevel = "INFO",
 ///             MetricsEnabled = true,
 ///             DataTraceEnabled = false,
 ///         },
+///         RestApi = example.Id,
+///         StageName = exampleAwsApiGatewayStage.StageName,
+///         MethodPath = "path1/GET",
 ///     });
 ///
 /// });
@@ -372,14 +372,14 @@ import 'method_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigateway.NewMethodSettings(ctx, "path_specific", &apigateway.MethodSettingsArgs{
-/// 			RestApi:    pulumi.Any(example.Id),
-/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
-/// 			MethodPath: pulumi.String("path1/GET"),
 /// 			Settings: &apigateway.MethodSettingsSettingsArgs{
 /// 				LoggingLevel:     pulumi.String("INFO"),
 /// 				MetricsEnabled:   pulumi.Bool(true),
 /// 				DataTraceEnabled: pulumi.Bool(false),
 /// 			},
+/// 			RestApi:    pulumi.Any(example.Id),
+/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
+/// 			MethodPath: pulumi.String("path1/GET"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -398,14 +398,14 @@ import 'method_settings_state.dart';
 /// }
 ///
 /// resource "aws_apigateway_methodsettings" "path_specific" {
-///   rest_api    = example.id
-///   stage_name  = exampleAwsApiGatewayStage.stageName
-///   method_path = "path1/GET"
 ///   settings = {
 ///     logging_level      = "INFO"
 ///     metrics_enabled    = true
 ///     data_trace_enabled = false
 ///   }
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
 /// }
 /// ```
 /// ```java
@@ -431,14 +431,14 @@ import 'method_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var pathSpecific = new MethodSettings("pathSpecific", MethodSettingsArgs.builder()
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
-///             .methodPath("path1/GET")
 ///             .settings(MethodSettingsSettingsArgs.builder()
 ///                 .loggingLevel("INFO")
 ///                 .metricsEnabled(true)
 ///                 .dataTraceEnabled(false)
 ///                 .build())
+///             .restApi(example.id())
+///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .methodPath("path1/GET")
 ///             .build());
 ///
 ///     }
@@ -450,13 +450,13 @@ import 'method_settings_state.dart';
 ///     type: aws:apigateway:MethodSettings
 ///     name: path_specific
 ///     properties:
-///       restApi: ${example.id}
-///       stageName: ${exampleAwsApiGatewayStage.stageName}
-///       methodPath: path1/GET
 ///       settings:
 ///         loggingLevel: INFO
 ///         metricsEnabled: true
 ///         dataTraceEnabled: false
+///       restApi: ${example.id}
+///       stageName: ${exampleAwsApiGatewayStage.stageName}
+///       methodPath: path1/GET
 /// ```
 ///
 ///
@@ -468,14 +468,14 @@ import 'method_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const pathSpecific = new aws.apigateway.MethodSettings("path_specific", {
-///     restApi: example.id,
-///     stageName: exampleAwsApiGatewayStage.stageName,
-///     methodPath: "path1/GET",
 ///     settings: {
 ///         loggingLevel: "INFO",
 ///         metricsEnabled: true,
 ///         dataTraceEnabled: true,
 ///     },
+///     restApi: example.id,
+///     stageName: exampleAwsApiGatewayStage.stageName,
+///     methodPath: "path1/GET",
 /// });
 /// ```
 /// ```python
@@ -483,14 +483,14 @@ import 'method_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// path_specific = aws.apigateway.MethodSettings("path_specific",
-///     rest_api=example["id"],
-///     stage_name=example_aws_api_gateway_stage["stageName"],
-///     method_path="path1/GET",
 ///     settings={
 ///         "logging_level": "INFO",
 ///         "metrics_enabled": True,
 ///         "data_trace_enabled": True,
-///     })
+///     },
+///     rest_api=example["id"],
+///     stage_name=example_aws_api_gateway_stage["stageName"],
+///     method_path="path1/GET")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -502,15 +502,15 @@ import 'method_settings_state.dart';
 /// {
 ///     var pathSpecific = new Aws.ApiGateway.MethodSettings("path_specific", new()
 ///     {
-///         RestApi = example.Id,
-///         StageName = exampleAwsApiGatewayStage.StageName,
-///         MethodPath = "path1/GET",
 ///         Settings = new Aws.ApiGateway.Inputs.MethodSettingsSettingsArgs
 ///         {
 ///             LoggingLevel = "INFO",
 ///             MetricsEnabled = true,
 ///             DataTraceEnabled = true,
 ///         },
+///         RestApi = example.Id,
+///         StageName = exampleAwsApiGatewayStage.StageName,
+///         MethodPath = "path1/GET",
 ///     });
 ///
 /// });
@@ -526,14 +526,14 @@ import 'method_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigateway.NewMethodSettings(ctx, "path_specific", &apigateway.MethodSettingsArgs{
-/// 			RestApi:    pulumi.Any(example.Id),
-/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
-/// 			MethodPath: pulumi.String("path1/GET"),
 /// 			Settings: &apigateway.MethodSettingsSettingsArgs{
 /// 				LoggingLevel:     pulumi.String("INFO"),
 /// 				MetricsEnabled:   pulumi.Bool(true),
 /// 				DataTraceEnabled: pulumi.Bool(true),
 /// 			},
+/// 			RestApi:    pulumi.Any(example.Id),
+/// 			StageName:  pulumi.Any(exampleAwsApiGatewayStage.StageName),
+/// 			MethodPath: pulumi.String("path1/GET"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -552,14 +552,14 @@ import 'method_settings_state.dart';
 /// }
 ///
 /// resource "aws_apigateway_methodsettings" "path_specific" {
-///   rest_api    = example.id
-///   stage_name  = exampleAwsApiGatewayStage.stageName
-///   method_path = "path1/GET"
 ///   settings = {
 ///     logging_level      = "INFO"
 ///     metrics_enabled    = true
 ///     data_trace_enabled = true
 ///   }
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
 /// }
 /// ```
 /// ```java
@@ -585,14 +585,14 @@ import 'method_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var pathSpecific = new MethodSettings("pathSpecific", MethodSettingsArgs.builder()
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
-///             .methodPath("path1/GET")
 ///             .settings(MethodSettingsSettingsArgs.builder()
 ///                 .loggingLevel("INFO")
 ///                 .metricsEnabled(true)
 ///                 .dataTraceEnabled(true)
 ///                 .build())
+///             .restApi(example.id())
+///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .methodPath("path1/GET")
 ///             .build());
 ///
 ///     }
@@ -604,13 +604,13 @@ import 'method_settings_state.dart';
 ///     type: aws:apigateway:MethodSettings
 ///     name: path_specific
 ///     properties:
-///       restApi: ${example.id}
-///       stageName: ${exampleAwsApiGatewayStage.stageName}
-///       methodPath: path1/GET
 ///       settings:
 ///         loggingLevel: INFO
 ///         metricsEnabled: true
 ///         dataTraceEnabled: true
+///       restApi: ${example.id}
+///       stageName: ${exampleAwsApiGatewayStage.stageName}
+///       methodPath: path1/GET
 /// ```
 ///
 ///
@@ -645,7 +645,7 @@ class MethodSettings extends pulumi.CustomResource {
           'aws:apigateway/methodSettings:MethodSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');
@@ -659,11 +659,12 @@ class MethodSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MethodSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MethodSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -677,6 +678,22 @@ class MethodSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    methodPath = registerOutput<String>('methodPath');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    settings = registerOutput<MethodSettingsSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MethodSettingsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stageName = registerOutput<String>('stageName');
+  }
+
+  /// Creates a typed reference to an existing [MethodSettings] resource.
+  MethodSettings.reference(String urn)
+    : super(
+        'aws:apigateway/methodSettings:MethodSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');

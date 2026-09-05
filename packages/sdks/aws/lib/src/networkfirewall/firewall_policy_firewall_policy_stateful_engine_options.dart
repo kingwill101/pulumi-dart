@@ -5,11 +5,11 @@ import 'firewall_policy_firewall_policy_stateful_engine_options_flow_timeouts.da
 
 class FirewallPolicyFirewallPolicyStatefulEngineOptions {
   /// Amount of time that can pass without any traffic sent through the firewall before the firewall determines that the connection is idle.
-  final pulumi.Input<FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts>? flowTimeouts;
+  final pulumi.Input<FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts?>? flowTimeouts;
   /// Indicates how to manage the order of stateful rule evaluation for the policy. Default value: `DEFAULT_ACTION_ORDER`. Valid values: `DEFAULT_ACTION_ORDER`, `STRICT_ORDER`.
-  final pulumi.Input<String>? ruleOrder;
+  final pulumi.Input<String?>? ruleOrder;
   /// Describes how to treat traffic which has broken midstream. Default value: `DROP`. Valid values: `DROP`, `CONTINUE`, `REJECT`.
-  final pulumi.Input<String>? streamExceptionPolicy;
+  final pulumi.Input<String?>? streamExceptionPolicy;
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatefulEngineOptions].
   /// [flowTimeouts] Amount of time that can pass without any traffic sent through the firewall before the firewall determines that the connection is idle.

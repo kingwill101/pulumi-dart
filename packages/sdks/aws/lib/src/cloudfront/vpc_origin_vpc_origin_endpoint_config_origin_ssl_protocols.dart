@@ -24,7 +24,7 @@ class VpcOriginVpcOriginEndpointConfigOriginSslProtocols {
   factory VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(Map<String, dynamic> map) {
     return VpcOriginVpcOriginEndpointConfigOriginSslProtocols(
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
-      quantity: pulumi.Input.fromValue(map['quantity'] as int),
+      quantity: pulumi.Input.fromValue((map['quantity'] as num).toInt()),
     );
   }
 }

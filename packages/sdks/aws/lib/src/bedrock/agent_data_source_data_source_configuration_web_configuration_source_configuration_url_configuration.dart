@@ -5,7 +5,7 @@ import 'agent_data_source_data_source_configuration_web_configuration_source_con
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration {
   /// List of one or more seed URLs to crawl. See `seedUrls` block for details.
-  final pulumi.Input<List<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>>? seedUrls;
+  final pulumi.Input<List<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>?>? seedUrls;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration].
   /// [seedUrls] List of one or more seed URLs to crawl. See `seedUrls` block for details.

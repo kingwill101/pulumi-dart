@@ -6,9 +6,9 @@ import 'virtual_node_spec_backend_virtual_service_client_policy_tls_certificate_
 
 class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
   /// File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile>? file;
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile?>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds>? sds;
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds?>? sds;
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate].
   /// [file] File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.

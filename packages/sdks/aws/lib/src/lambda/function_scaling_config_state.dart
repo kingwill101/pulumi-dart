@@ -7,20 +7,20 @@ import 'function_scaling_config_timeouts.dart';
 /// Input properties used for looking up and filtering FunctionScalingConfig resources.
 class FunctionScalingConfigState {
   /// ARN of the Lambda function.
-  final pulumi.Input<String>? functionArn;
+  final pulumi.Input<String?>? functionArn;
   /// Name or ARN of the Lambda function. Changing this forces a new resource.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// Scaling configuration block. See `functionScalingConfig` Block below.
-  final pulumi.Input<FunctionScalingConfigFunctionScalingConfig>? functionScalingConfig;
+  final pulumi.Input<FunctionScalingConfigFunctionScalingConfig?>? functionScalingConfig;
   /// State of the function after the scaling configuration was applied. This reflects the state reported by the most recent create or update and is not refreshed on read.
-  final pulumi.Input<String>? functionState;
+  final pulumi.Input<String?>? functionState;
   /// Qualifier for the scaling configuration. Valid values: `$LATEST.PUBLISHED` to target the latest published version, or a specific numeric version number (e.g., `1`). Changing this forces a new resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? qualifier;
+  final pulumi.Input<String?>? qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<FunctionScalingConfigTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<FunctionScalingConfigTimeouts?>? timeouts;
 
   /// Creates a new [FunctionScalingConfigState].
   /// [functionArn] ARN of the Lambda function.

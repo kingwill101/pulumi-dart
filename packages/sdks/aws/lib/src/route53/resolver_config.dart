@@ -188,7 +188,7 @@ class ResolverConfig extends pulumi.CustomResource {
           'aws:route53/resolverConfig:ResolverConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autodefinedReverseFlag = registerOutput<String>('autodefinedReverseFlag');
     ownerId = registerOutput<String>('ownerId');
@@ -201,11 +201,12 @@ class ResolverConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -219,6 +220,21 @@ class ResolverConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autodefinedReverseFlag = registerOutput<String>('autodefinedReverseFlag');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+  }
+
+  /// Creates a typed reference to an existing [ResolverConfig] resource.
+  ResolverConfig.reference(String urn)
+    : super(
+        'aws:route53/resolverConfig:ResolverConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autodefinedReverseFlag = registerOutput<String>('autodefinedReverseFlag');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');

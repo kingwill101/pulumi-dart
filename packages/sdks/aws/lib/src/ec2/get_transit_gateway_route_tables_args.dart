@@ -9,15 +9,15 @@ import 'get_transit_gateway_route_tables_filter.dart';
 /// {@macro pulumi_ec2_get_transit_gateway_route_tables_get_transit_gateway_route_tables_args_doc}
 class GetTransitGatewayRouteTablesArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetTransitGatewayRouteTablesFilter>>? filters;
+  final pulumi.Input<List<GetTransitGatewayRouteTablesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired transit gateway route table.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetTransitGatewayRouteTablesArgs].
   /// [filters] Custom filter block as described below.

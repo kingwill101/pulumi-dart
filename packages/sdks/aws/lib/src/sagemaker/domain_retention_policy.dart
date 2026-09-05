@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainRetentionPolicy {
   /// The retention policy for data stored on an Amazon Elastic File System (EFS) volume. Valid values are `Retain` or `Delete`.  Default value is `Retain`.
-  final pulumi.Input<String>? homeEfsFileSystem;
+  final pulumi.Input<String?>? homeEfsFileSystem;
 
   /// Creates a new [DomainRetentionPolicy].
   /// [homeEfsFileSystem] The retention policy for data stored on an Amazon Elastic File System (EFS) volume. Valid values are `Retain` or `Delete`.  Default value is `Retain`.

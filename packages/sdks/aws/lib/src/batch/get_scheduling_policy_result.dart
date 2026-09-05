@@ -5,51 +5,51 @@ import 'get_scheduling_policy_fair_share_policy.dart';
 
 /// Result data returned by getSchedulingPolicy.
 class GetSchedulingPolicyResult {
-  final String arn;
-  final List<GetSchedulingPolicyFairSharePolicy> fairSharePolicies;
+  final String? arn;
+  final List<GetSchedulingPolicyFairSharePolicy>? fairSharePolicies;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the scheduling policy.
-  final String name;
-  final String region;
+  final String? name;
+  final String? region;
   /// Key-value map of resource tags
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetSchedulingPolicyResult].
-  /// [arn] Required.
-  /// [fairSharePolicies] Required.
+  /// [arn] Optional.
+  /// [fairSharePolicies] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the scheduling policy.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value map of resource tags
   const GetSchedulingPolicyResult({
-    required this.arn,
-    required this.fairSharePolicies,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.tags,
+    this.arn,
+    this.fairSharePolicies,
+    this.id,
+    this.name,
+    this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'fairSharePolicies': pulumi.Input.encodeList<GetSchedulingPolicyFairSharePolicy, Map<String, dynamic>>(fairSharePolicies, (value) => value.toMap()),
-      'id': id,
-      'name': name,
-      'region': region,
-      'tags': tags,
+      'arn': ?arn,
+      'fairSharePolicies': ?(() { final guardedValue = fairSharePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSchedulingPolicyFairSharePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
     };
   }
 
   factory GetSchedulingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSchedulingPolicyResult(
-      arn: map['arn'] as String,
-      fairSharePolicies: pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicy>(map['fairSharePolicies']!, (value) => GetSchedulingPolicyFairSharePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fairSharePolicies: (() { final guardedValue = map['fairSharePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicy>(guardedValue, (value) => GetSchedulingPolicyFairSharePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

@@ -19,11 +19,11 @@ import 'certificate_authority_state.dart';
 ///
 /// const example = new aws.acmpca.CertificateAuthority("example", {
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
 ///     permanentDeletionTimeInDays: 7,
 /// });
@@ -34,11 +34,11 @@ import 'certificate_authority_state.dart';
 ///
 /// example = aws.acmpca.CertificateAuthority("example",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
 ///     },
 ///     permanent_deletion_time_in_days=7)
 /// ```
@@ -54,12 +54,12 @@ import 'certificate_authority_state.dart';
 ///     {
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
 ///         PermanentDeletionTimeInDays = 7,
 ///     });
@@ -78,11 +78,11 @@ import 'certificate_authority_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
 /// 			PermanentDeletionTimeInDays: pulumi.Int(7),
 /// 		})
@@ -104,11 +104,11 @@ import 'certificate_authority_state.dart';
 ///
 /// resource "aws_acmpca_certificateauthority" "example" {
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
 ///   permanent_deletion_time_in_days = 7
 /// }
@@ -138,11 +138,11 @@ import 'certificate_authority_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new CertificateAuthority("example", CertificateAuthorityArgs.builder()
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
 ///             .permanentDeletionTimeInDays(7)
 ///             .build());
@@ -156,10 +156,10 @@ import 'certificate_authority_state.dart';
 ///     type: aws:acmpca:CertificateAuthority
 ///     properties:
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
 ///       permanentDeletionTimeInDays: 7
 /// ```
 ///
@@ -172,14 +172,14 @@ import 'certificate_authority_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.acmpca.CertificateAuthority("example", {
-///     usageMode: "SHORT_LIVED_CERTIFICATE",
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
+///     usageMode: "SHORT_LIVED_CERTIFICATE",
 /// });
 /// ```
 /// ```python
@@ -187,14 +187,14 @@ import 'certificate_authority_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.acmpca.CertificateAuthority("example",
-///     usage_mode="SHORT_LIVED_CERTIFICATE",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
-///     })
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
+///     },
+///     usage_mode="SHORT_LIVED_CERTIFICATE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -206,16 +206,16 @@ import 'certificate_authority_state.dart';
 /// {
 ///     var example = new Aws.Acmpca.CertificateAuthority("example", new()
 ///     {
-///         UsageMode = "SHORT_LIVED_CERTIFICATE",
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
+///         UsageMode = "SHORT_LIVED_CERTIFICATE",
 ///     });
 ///
 /// });
@@ -231,14 +231,14 @@ import 'certificate_authority_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
-/// 			UsageMode: pulumi.String("SHORT_LIVED_CERTIFICATE"),
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
+/// 			UsageMode: pulumi.String("SHORT_LIVED_CERTIFICATE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -257,14 +257,14 @@ import 'certificate_authority_state.dart';
 /// }
 ///
 /// resource "aws_acmpca_certificateauthority" "example" {
-///   usage_mode = "SHORT_LIVED_CERTIFICATE"
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
+///   usage_mode = "SHORT_LIVED_CERTIFICATE"
 /// }
 /// ```
 /// ```java
@@ -291,14 +291,14 @@ import 'certificate_authority_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CertificateAuthority("example", CertificateAuthorityArgs.builder()
-///             .usageMode("SHORT_LIVED_CERTIFICATE")
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
+///             .usageMode("SHORT_LIVED_CERTIFICATE")
 ///             .build());
 ///
 ///     }
@@ -309,12 +309,12 @@ import 'certificate_authority_state.dart';
 ///   example:
 ///     type: aws:acmpca:CertificateAuthority
 ///     properties:
-///       usageMode: SHORT_LIVED_CERTIFICATE
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
+///       usageMode: SHORT_LIVED_CERTIFICATE
 /// ```
 ///
 ///
@@ -331,6 +331,10 @@ import 'certificate_authority_state.dart';
 /// });
 /// const acmpcaBucketAccess = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
+///         principals: [{
+///             identifiers: ["acm-pca.amazonaws.com"],
+///             type: "Service",
+///         }],
 ///         actions: [
 ///             "s3:GetBucketAcl",
 ///             "s3:GetBucketLocation",
@@ -341,10 +345,6 @@ import 'certificate_authority_state.dart';
 ///             example.arn,
 ///             pulumi.interpolate`${example.arn}/*`,
 ///         ],
-///         principals: [{
-///             identifiers: ["acm-pca.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///     }],
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
@@ -353,11 +353,11 @@ import 'certificate_authority_state.dart';
 /// });
 /// const exampleCertificateAuthority = new aws.acmpca.CertificateAuthority("example", {
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
 ///     revocationConfiguration: {
 ///         crlConfiguration: {
@@ -380,6 +380,10 @@ import 'certificate_authority_state.dart';
 ///     bucket="example",
 ///     force_destroy=True)
 /// acmpca_bucket_access = aws.iam.get_policy_document_output(statements=[{
+///     "principals": [{
+///         "identifiers": ["acm-pca.amazonaws.com"],
+///         "type": "Service",
+///     }],
 ///     "actions": [
 ///         "s3:GetBucketAcl",
 ///         "s3:GetBucketLocation",
@@ -390,21 +394,17 @@ import 'certificate_authority_state.dart';
 ///         example.arn,
 ///         example.arn.apply(lambda arn: f"{arn}/*"),
 ///     ],
-///     "principals": [{
-///         "identifiers": ["acm-pca.amazonaws.com"],
-///         "type": "Service",
-///     }],
 /// }])
 /// example_bucket_policy = aws.s3.BucketPolicy("example",
 ///     bucket=example.id,
 ///     policy=acmpca_bucket_access.json)
 /// example_certificate_authority = aws.acmpca.CertificateAuthority("example",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
 ///     },
 ///     revocation_configuration={
 ///         "crl_configuration": {
@@ -437,6 +437,17 @@ import 'certificate_authority_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Identifiers = new[]
+///                         {
+///                             "acm-pca.amazonaws.com",
+///                         },
+///                         Type = "Service",
+///                     },
+///                 },
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:GetBucketAcl",
@@ -448,17 +459,6 @@ import 'certificate_authority_state.dart';
 ///                 {
 ///                     example.Arn,
 ///                     $"{example.Arn}/*",
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Identifiers = new[]
-///                         {
-///                             "acm-pca.amazonaws.com",
-///                         },
-///                         Type = "Service",
-///                     },
 ///                 },
 ///             },
 ///         },
@@ -474,12 +474,12 @@ import 'certificate_authority_state.dart';
 ///     {
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
 ///         RevocationConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityRevocationConfigurationArgs
 ///         {
@@ -526,6 +526,14 @@ import 'certificate_authority_state.dart';
 /// 		acmpcaBucketAccess := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("acm-pca.amazonaws.com"),
+/// 							},
+/// 							Type: pulumi.String("Service"),
+/// 						},
+/// 					},
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:GetBucketAcl"),
 /// 						pulumi.String("s3:GetBucketLocation"),
@@ -537,14 +545,6 @@ import 'certificate_authority_state.dart';
 /// 						example.Arn.ApplyT(func(arn string) (string, error) {
 /// 							return fmt.Sprintf("%v/*", arn), nil
 /// 						}).(pulumi.StringOutput),
-/// 					},
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("acm-pca.amazonaws.com"),
-/// 							},
-/// 							Type: pulumi.String("Service"),
-/// 						},
 /// 					},
 /// 				},
 /// 			},
@@ -558,11 +558,11 @@ import 'certificate_authority_state.dart';
 /// 		}
 /// 		_, err = acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
 /// 			RevocationConfiguration: &acmpca.CertificateAuthorityRevocationConfigurationArgs{
 /// 				CrlConfiguration: &acmpca.CertificateAuthorityRevocationConfigurationCrlConfigurationArgs{
@@ -594,12 +594,12 @@ import 'certificate_authority_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "acmpcaBucketAccess" {
 ///   statements {
-///     actions   = ["s3:GetBucketAcl", "s3:GetBucketLocation", "s3:PutObject", "s3:PutObjectAcl"]
-///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
 ///     principals {
 ///       identifiers = ["acm-pca.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions   = ["s3:GetBucketAcl", "s3:GetBucketLocation", "s3:PutObject", "s3:PutObjectAcl"]
+///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
 ///   }
 /// }
 ///
@@ -614,11 +614,11 @@ import 'certificate_authority_state.dart';
 /// resource "aws_acmpca_certificateauthority" "example" {
 ///   depends_on = [aws_s3_bucketpolicy.example]
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
 ///   revocation_configuration = {
 ///     crl_configuration = {
@@ -672,6 +672,10 @@ import 'certificate_authority_state.dart';
 ///
 ///         final var acmpcaBucketAccess = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .identifiers("acm-pca.amazonaws.com")
+///                     .type("Service")
+///                     .build())
 ///                 .actions(
 ///                     "s3:GetBucketAcl",
 ///                     "s3:GetBucketLocation",
@@ -680,10 +684,6 @@ import 'certificate_authority_state.dart';
 ///                 .resources(
 ///                     example.arn(),
 ///                     example.arn().applyValue(_arn -> String.format("%s/*", _arn)))
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .identifiers("acm-pca.amazonaws.com")
-///                     .type("Service")
-///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -694,11 +694,11 @@ import 'certificate_authority_state.dart';
 ///
 ///         var exampleCertificateAuthority = new CertificateAuthority("exampleCertificateAuthority", CertificateAuthorityArgs.builder()
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
 ///             .revocationConfiguration(CertificateAuthorityRevocationConfigurationArgs.builder()
 ///                 .crlConfiguration(CertificateAuthorityRevocationConfigurationCrlConfigurationArgs.builder()
@@ -734,10 +734,10 @@ import 'certificate_authority_state.dart';
 ///     name: example
 ///     properties:
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
 ///       revocationConfiguration:
 ///         crlConfiguration:
 ///           customCname: crl.example.com
@@ -754,7 +754,11 @@ import 'certificate_authority_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
+///           - principals:
+///               - identifiers:
+///                   - acm-pca.amazonaws.com
+///                 type: Service
+///             actions:
 ///               - s3:GetBucketAcl
 ///               - s3:GetBucketLocation
 ///               - s3:PutObject
@@ -762,10 +766,6 @@ import 'certificate_authority_state.dart';
 ///             resources:
 ///               - ${example.arn}
 ///               - ${example.arn}/*
-///             principals:
-///               - identifiers:
-///                   - acm-pca.amazonaws.com
-///                 type: Service
 /// ```
 ///
 ///
@@ -775,7 +775,7 @@ import 'certificate_authority_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the ACM PCA certificate authority.
+/// - `arn` (String) ARN of the ACM PCA certificate authority.
 ///
 ///
 /// Using `pulumi import`, import `aws.acmpca.CertificateAuthority` using the certificate authority ARN. For example:
@@ -831,7 +831,7 @@ class CertificateAuthority extends pulumi.CustomResource {
           'aws:acmpca/certificateAuthority:CertificateAuthority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     certificate = registerOutput<String>('certificate');
@@ -846,8 +846,8 @@ class CertificateAuthority extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     revocationConfiguration = registerOutput<CertificateAuthorityRevocationConfiguration?>('revocationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateAuthorityRevocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serial = registerOutput<String>('serial');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     usageMode = registerOutput<String>('usageMode');
   }
@@ -857,11 +857,12 @@ class CertificateAuthority extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateAuthorityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateAuthority._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -888,8 +889,36 @@ class CertificateAuthority extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     revocationConfiguration = registerOutput<CertificateAuthorityRevocationConfiguration?>('revocationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateAuthorityRevocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serial = registerOutput<String>('serial');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    usageMode = registerOutput<String>('usageMode');
+  }
+
+  /// Creates a typed reference to an existing [CertificateAuthority] resource.
+  CertificateAuthority.reference(String urn)
+    : super(
+        'aws:acmpca/certificateAuthority:CertificateAuthority',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityConfiguration = registerOutput<CertificateAuthorityCertificateAuthorityConfiguration>('certificateAuthorityConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateAuthorityCertificateAuthorityConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateChain = registerOutput<String>('certificateChain');
+    certificateSigningRequest = registerOutput<String>('certificateSigningRequest');
+    enabled = registerOutput<bool?>('enabled');
+    keyStorageSecurityStandard = registerOutput<String>('keyStorageSecurityStandard');
+    notAfter = registerOutput<String>('notAfter');
+    notBefore = registerOutput<String>('notBefore');
+    permanentDeletionTimeInDays = registerOutput<int?>('permanentDeletionTimeInDays');
+    region = registerOutput<String>('region');
+    revocationConfiguration = registerOutput<CertificateAuthorityRevocationConfiguration?>('revocationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateAuthorityRevocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serial = registerOutput<String>('serial');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     usageMode = registerOutput<String>('usageMode');
   }

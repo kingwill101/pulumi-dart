@@ -10,11 +10,11 @@ class DeploymentArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
   /// Description for the deployment resource. Must be less than or equal to 1024 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [DeploymentArgs].
   /// [apiId] API identifier.

@@ -25,8 +25,8 @@ class AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfi
 
   factory AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfiguration(
-      idleRuntimeSessionTimeout: pulumi.Input.fromValue(map['idleRuntimeSessionTimeout'] as int),
-      maxLifetime: pulumi.Input.fromValue(map['maxLifetime'] as int),
+      idleRuntimeSessionTimeout: pulumi.Input.fromValue((map['idleRuntimeSessionTimeout'] as num).toInt()),
+      maxLifetime: pulumi.Input.fromValue((map['maxLifetime'] as num).toInt()),
     );
   }
 }

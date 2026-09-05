@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bot_abort_statement.dart';
 import 'bot_args.dart';
 import 'bot_clarification_prompt.dart';
+import 'bot_intent.dart';
 import 'bot_state.dart';
 
 /// Provides an Amazon Lex Bot resource. For more information see
@@ -21,21 +22,21 @@ import 'bot_state.dart';
 ///             contentType: "PlainText",
 ///         }],
 ///     },
-///     childDirected: false,
 ///     clarificationPrompt: {
-///         maxAttempts: 2,
 ///         messages: [{
 ///             content: "I didn't understand you, what would you like to do?",
 ///             contentType: "PlainText",
 ///         }],
+///         maxAttempts: 2,
 ///     },
-///     createVersion: false,
-///     description: "Bot to order flowers on the behalf of a user",
-///     idleSessionTtlInSeconds: 600,
 ///     intents: [{
 ///         intentName: "OrderFlowers",
 ///         intentVersion: "1",
 ///     }],
+///     childDirected: false,
+///     createVersion: false,
+///     description: "Bot to order flowers on the behalf of a user",
+///     idleSessionTtlInSeconds: 600,
 ///     locale: "en-US",
 ///     name: "OrderFlowers",
 ///     processBehavior: "BUILD",
@@ -53,21 +54,21 @@ import 'bot_state.dart';
 ///             "content_type": "PlainText",
 ///         }],
 ///     },
-///     child_directed=False,
 ///     clarification_prompt={
-///         "max_attempts": 2,
 ///         "messages": [{
 ///             "content": "I didn't understand you, what would you like to do?",
 ///             "content_type": "PlainText",
 ///         }],
+///         "max_attempts": 2,
 ///     },
-///     create_version=False,
-///     description="Bot to order flowers on the behalf of a user",
-///     idle_session_ttl_in_seconds=600,
 ///     intents=[{
 ///         "intent_name": "OrderFlowers",
 ///         "intent_version": "1",
 ///     }],
+///     child_directed=False,
+///     create_version=False,
+///     description="Bot to order flowers on the behalf of a user",
+///     idle_session_ttl_in_seconds=600,
 ///     locale="en-US",
 ///     name="OrderFlowers",
 ///     process_behavior="BUILD",
@@ -94,10 +95,8 @@ import 'bot_state.dart';
 ///                 },
 ///             },
 ///         },
-///         ChildDirected = false,
 ///         ClarificationPrompt = new Aws.Lex.Inputs.BotClarificationPromptArgs
 ///         {
-///             MaxAttempts = 2,
 ///             Messages = new[]
 ///             {
 ///                 new Aws.Lex.Inputs.BotClarificationPromptMessageArgs
@@ -106,10 +105,8 @@ import 'bot_state.dart';
 ///                     ContentType = "PlainText",
 ///                 },
 ///             },
+///             MaxAttempts = 2,
 ///         },
-///         CreateVersion = false,
-///         Description = "Bot to order flowers on the behalf of a user",
-///         IdleSessionTtlInSeconds = 600,
 ///         Intents = new[]
 ///         {
 ///             new Aws.Lex.Inputs.BotIntentArgs
@@ -118,6 +115,10 @@ import 'bot_state.dart';
 ///                 IntentVersion = "1",
 ///             },
 ///         },
+///         ChildDirected = false,
+///         CreateVersion = false,
+///         Description = "Bot to order flowers on the behalf of a user",
+///         IdleSessionTtlInSeconds = 600,
 ///         Locale = "en-US",
 ///         Name = "OrderFlowers",
 ///         ProcessBehavior = "BUILD",
@@ -145,29 +146,29 @@ import 'bot_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			ChildDirected: pulumi.Bool(false),
 /// 			ClarificationPrompt: &lex.BotClarificationPromptArgs{
-/// 				MaxAttempts: pulumi.Int(2),
 /// 				Messages: lex.BotClarificationPromptMessageArray{
 /// 					&lex.BotClarificationPromptMessageArgs{
 /// 						Content:     pulumi.String("I didn't understand you, what would you like to do?"),
 /// 						ContentType: pulumi.String("PlainText"),
 /// 					},
 /// 				},
+/// 				MaxAttempts: pulumi.Int(2),
 /// 			},
-/// 			CreateVersion:           pulumi.Bool(false),
-/// 			Description:             pulumi.String("Bot to order flowers on the behalf of a user"),
-/// 			IdleSessionTtlInSeconds: pulumi.Int(600),
 /// 			Intents: lex.BotIntentArray{
 /// 				&lex.BotIntentArgs{
 /// 					IntentName:    pulumi.String("OrderFlowers"),
 /// 					IntentVersion: pulumi.String("1"),
 /// 				},
 /// 			},
-/// 			Locale:          pulumi.String("en-US"),
-/// 			Name:            pulumi.String("OrderFlowers"),
-/// 			ProcessBehavior: pulumi.String("BUILD"),
-/// 			VoiceId:         pulumi.String("Salli"),
+/// 			ChildDirected:           pulumi.Bool(false),
+/// 			CreateVersion:           pulumi.Bool(false),
+/// 			Description:             pulumi.String("Bot to order flowers on the behalf of a user"),
+/// 			IdleSessionTtlInSeconds: pulumi.Int(600),
+/// 			Locale:                  pulumi.String("en-US"),
+/// 			Name:                    pulumi.String("OrderFlowers"),
+/// 			ProcessBehavior:         pulumi.String("BUILD"),
+/// 			VoiceId:                 pulumi.String("Salli"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -192,25 +193,25 @@ import 'bot_state.dart';
 ///       "contentType" = "PlainText"
 ///     }]
 ///   }
-///   child_directed = false
 ///   clarification_prompt = {
-///     max_attempts = 2
 ///     messages = [{
 ///       "content"     = "I didn't understand you, what would you like to do?"
 ///       "contentType" = "PlainText"
 ///     }]
+///     max_attempts = 2
 ///   }
-///   create_version              = false
-///   description                 = "Bot to order flowers on the behalf of a user"
-///   idle_session_ttl_in_seconds = 600
 ///   intents {
 ///     intent_name    = "OrderFlowers"
 ///     intent_version = "1"
 ///   }
-///   locale           = "en-US"
-///   name             = "OrderFlowers"
-///   process_behavior = "BUILD"
-///   voice_id         = "Salli"
+///   child_directed              = false
+///   create_version              = false
+///   description                 = "Bot to order flowers on the behalf of a user"
+///   idle_session_ttl_in_seconds = 600
+///   locale                      = "en-US"
+///   name                        = "OrderFlowers"
+///   process_behavior            = "BUILD"
+///   voice_id                    = "Salli"
 /// }
 /// ```
 /// ```java
@@ -246,21 +247,21 @@ import 'bot_state.dart';
 ///                     .contentType("PlainText")
 ///                     .build())
 ///                 .build())
-///             .childDirected(false)
 ///             .clarificationPrompt(BotClarificationPromptArgs.builder()
-///                 .maxAttempts(2)
 ///                 .messages(BotClarificationPromptMessageArgs.builder()
 ///                     .content("I didn't understand you, what would you like to do?")
 ///                     .contentType("PlainText")
 ///                     .build())
+///                 .maxAttempts(2)
 ///                 .build())
-///             .createVersion(false)
-///             .description("Bot to order flowers on the behalf of a user")
-///             .idleSessionTtlInSeconds(600)
 ///             .intents(BotIntentArgs.builder()
 ///                 .intentName("OrderFlowers")
 ///                 .intentVersion("1")
 ///                 .build())
+///             .childDirected(false)
+///             .createVersion(false)
+///             .description("Bot to order flowers on the behalf of a user")
+///             .idleSessionTtlInSeconds(600)
 ///             .locale("en-US")
 ///             .name("OrderFlowers")
 ///             .processBehavior("BUILD")
@@ -280,18 +281,18 @@ import 'bot_state.dart';
 ///         messages:
 ///           - content: Sorry, I am not able to assist at this time
 ///             contentType: PlainText
-///       childDirected: false
 ///       clarificationPrompt:
-///         maxAttempts: 2
 ///         messages:
 ///           - content: I didn't understand you, what would you like to do?
 ///             contentType: PlainText
-///       createVersion: false
-///       description: Bot to order flowers on the behalf of a user
-///       idleSessionTtlInSeconds: 600
+///         maxAttempts: 2
 ///       intents:
 ///         - intentName: OrderFlowers
 ///           intentVersion: '1'
+///       childDirected: false
+///       createVersion: false
+///       description: Bot to order flowers on the behalf of a user
+///       idleSessionTtlInSeconds: 600
 ///       locale: en-US
 ///       name: OrderFlowers
 ///       processBehavior: BUILD
@@ -332,7 +333,7 @@ class Bot extends pulumi.CustomResource {
   /// The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. Default is `300`. Must be a number between 60 and 86400 (inclusive).
   late final pulumi.Output<int?> idleSessionTtlInSeconds;
   /// A set of Intent objects. Each intent represents a command that a user can express. Attributes are documented under intent. Can have up to 250 Intent objects.
-  late final pulumi.Output<List<Map<String, dynamic>>> intents;
+  late final pulumi.Output<List<BotIntent>> intents;
   /// The date when the $LATEST version of this bot was updated.
   late final pulumi.Output<String> lastUpdatedDate;
   /// Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot. For available locales, see [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-locale). Default is `en-US`.
@@ -367,7 +368,7 @@ class Bot extends pulumi.CustomResource {
           'aws:lex/bot:Bot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     abortStatement = registerOutput<BotAbortStatement>('abortStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAbortStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -381,7 +382,7 @@ class Bot extends pulumi.CustomResource {
     enableModelImprovements = registerOutput<bool?>('enableModelImprovements');
     failureReason = registerOutput<String>('failureReason');
     idleSessionTtlInSeconds = registerOutput<int?>('idleSessionTtlInSeconds');
-    intents = registerOutput<List<Map<String, dynamic>>>('intents');
+    intents = registerOutput<List<BotIntent>>('intents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BotIntent>(guardedValue, (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>())); });
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     locale = registerOutput<String?>('locale');
     this.name = registerOutput<String>('name');
@@ -398,11 +399,12 @@ class Bot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Bot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -428,7 +430,40 @@ class Bot extends pulumi.CustomResource {
     enableModelImprovements = registerOutput<bool?>('enableModelImprovements');
     failureReason = registerOutput<String>('failureReason');
     idleSessionTtlInSeconds = registerOutput<int?>('idleSessionTtlInSeconds');
-    intents = registerOutput<List<Map<String, dynamic>>>('intents');
+    intents = registerOutput<List<BotIntent>>('intents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BotIntent>(guardedValue, (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>())); });
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    locale = registerOutput<String?>('locale');
+    this.name = registerOutput<String>('name');
+    nluIntentConfidenceThreshold = registerOutput<double?>('nluIntentConfidenceThreshold');
+    processBehavior = registerOutput<String?>('processBehavior');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    version = registerOutput<String>('version');
+    voiceId = registerOutput<String>('voiceId');
+  }
+
+  /// Creates a typed reference to an existing [Bot] resource.
+  Bot.reference(String urn)
+    : super(
+        'aws:lex/bot:Bot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    abortStatement = registerOutput<BotAbortStatement>('abortStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAbortStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    checksum = registerOutput<String>('checksum');
+    childDirected = registerOutput<bool>('childDirected');
+    clarificationPrompt = registerOutput<BotClarificationPrompt?>('clarificationPrompt', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotClarificationPrompt.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createVersion = registerOutput<bool?>('createVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    detectSentiment = registerOutput<bool?>('detectSentiment');
+    enableModelImprovements = registerOutput<bool?>('enableModelImprovements');
+    failureReason = registerOutput<String>('failureReason');
+    idleSessionTtlInSeconds = registerOutput<int?>('idleSessionTtlInSeconds');
+    intents = registerOutput<List<BotIntent>>('intents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BotIntent>(guardedValue, (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>())); });
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     locale = registerOutput<String?>('locale');
     this.name = registerOutput<String>('name');

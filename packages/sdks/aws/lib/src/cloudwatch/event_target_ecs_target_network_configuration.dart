@@ -6,9 +6,9 @@ class EventTargetEcsTargetNetworkConfiguration {
   /// Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Defaults to `false`.
   ///
   /// For more information, see [Task Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
-  final pulumi.Input<bool>? assignPublicIp;
+  final pulumi.Input<bool?>? assignPublicIp;
   /// The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The subnets associated with the task or service.
   final pulumi.Input<List<String>> subnets;
 

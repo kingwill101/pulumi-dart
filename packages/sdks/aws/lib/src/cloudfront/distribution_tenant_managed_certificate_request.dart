@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTenantManagedCertificateRequest {
   /// Certificate transparency logging preference. Valid values: `enabled`, `disabled`.
-  final pulumi.Input<String>? certificateTransparencyLoggingPreference;
+  final pulumi.Input<String?>? certificateTransparencyLoggingPreference;
   /// Primary domain name for the certificate.
-  final pulumi.Input<String>? primaryDomainName;
+  final pulumi.Input<String?>? primaryDomainName;
   /// Host for validation token. Valid values: `cloudfront`, `self-hosted`.
-  final pulumi.Input<String>? validationTokenHost;
+  final pulumi.Input<String?>? validationTokenHost;
 
   /// Creates a new [DistributionTenantManagedCertificateRequest].
   /// [certificateTransparencyLoggingPreference] Certificate transparency logging preference. Valid values: `enabled`, `disabled`.

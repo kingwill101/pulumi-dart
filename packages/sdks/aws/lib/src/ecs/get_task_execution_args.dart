@@ -13,41 +13,41 @@ import 'get_task_execution_placement_strategy.dart';
 /// {@macro pulumi_ecs_get_task_execution_get_task_execution_args_doc}
 class GetTaskExecutionArgs {
   /// Set of capacity provider strategies to use for the cluster. See below.
-  final pulumi.Input<List<GetTaskExecutionCapacityProviderStrategy>>? capacityProviderStrategies;
+  final pulumi.Input<List<GetTaskExecutionCapacityProviderStrategy>?>? capacityProviderStrategies;
   /// Identifier that you provide to ensure the idempotency of the request. It must be unique and is case sensitive. Up to 64 characters are allowed. The valid characters are characters in the range of 33-126, inclusive. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html).
-  final pulumi.Input<String>? clientToken;
-  /// Short name or full Amazon Resource Name (ARN) of the cluster to run the task on.
+  final pulumi.Input<String?>? clientToken;
+  /// Short name or full ARN of the cluster to run the task on.
   final pulumi.Input<String> cluster;
   /// Number of instantiations of the specified task to place on your cluster. You can specify up to 10 tasks for each call.
-  final pulumi.Input<int>? desiredCount;
+  final pulumi.Input<int?>? desiredCount;
   /// Whether to enable Amazon ECS managed tags for the tasks within the service.
-  final pulumi.Input<bool>? enableEcsManagedTags;
+  final pulumi.Input<bool?>? enableEcsManagedTags;
   /// Whether to enable Amazon ECS Exec for the tasks within the service.
-  final pulumi.Input<bool>? enableExecuteCommand;
+  final pulumi.Input<bool?>? enableExecuteCommand;
   /// Name of the task group to associate with the task. The default value is the family name of the task definition.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`.
-  final pulumi.Input<String>? launchType;
+  final pulumi.Input<String?>? launchType;
   /// Network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. See below.
-  final pulumi.Input<GetTaskExecutionNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<GetTaskExecutionNetworkConfiguration?>? networkConfiguration;
   /// List of container overrides that specify the name of a container in the specified task definition and the overrides it should receive.
-  final pulumi.Input<GetTaskExecutionOverrides>? overrides;
+  final pulumi.Input<GetTaskExecutionOverrides?>? overrides;
   /// Array of placement constraint objects to use for the task. You can specify up to 10 constraints for each task. See below.
-  final pulumi.Input<List<GetTaskExecutionPlacementConstraint>>? placementConstraints;
+  final pulumi.Input<List<GetTaskExecutionPlacementConstraint>?>? placementConstraints;
   /// Placement strategy objects to use for the task. You can specify a maximum of 5 strategy rules for each task. See below.
-  final pulumi.Input<List<GetTaskExecutionPlacementStrategy>>? placementStrategies;
+  final pulumi.Input<List<GetTaskExecutionPlacementStrategy>?>? placementStrategies;
   /// Platform version the task uses. A platform version is only specified for tasks hosted on Fargate. If one isn't specified, the `LATEST` platform version is used.
-  final pulumi.Input<String>? platformVersion;
+  final pulumi.Input<String?>? platformVersion;
   /// Whether to propagate the tags from the task definition to the task. If no value is specified, the tags aren't propagated. An error will be received if you specify the `SERVICE` option when running a task. Valid values are `TASK_DEFINITION` or `NONE`.
-  final pulumi.Input<String>? propagateTags;
+  final pulumi.Input<String?>? propagateTags;
   /// Reference ID to use for the task.
-  final pulumi.Input<String>? referenceId;
+  final pulumi.Input<String?>? referenceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Optional tag specified when a task is started.
-  final pulumi.Input<String>? startedBy;
+  final pulumi.Input<String?>? startedBy;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Family and revision (`family:revision`) or full ARN of the task definition to run. If a revision isn't specified, the latest `ACTIVE` revision is used.
   ///
   /// The following arguments are optional:
@@ -56,7 +56,7 @@ class GetTaskExecutionArgs {
   /// Creates a new [GetTaskExecutionArgs].
   /// [capacityProviderStrategies] Set of capacity provider strategies to use for the cluster. See below.
   /// [clientToken] Identifier that you provide to ensure the idempotency of the request. It must be unique and is case sensitive. Up to 64 characters are allowed. The valid characters are characters in the range of 33-126, inclusive. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html).
-  /// [cluster] Short name or full Amazon Resource Name (ARN) of the cluster to run the task on.
+  /// [cluster] Short name or full ARN of the cluster to run the task on.
   /// [desiredCount] Number of instantiations of the specified task to place on your cluster. You can specify up to 10 tasks for each call.
   /// [enableEcsManagedTags] Whether to enable Amazon ECS managed tags for the tasks within the service.
   /// [enableExecuteCommand] Whether to enable Amazon ECS Exec for the tasks within the service.
@@ -124,7 +124,7 @@ class GetTaskExecutionArgs {
       capacityProviderStrategies: (() { final guardedValue = map['capacityProviderStrategies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(guardedValue, (value) => GetTaskExecutionCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       clientToken: (() { final guardedValue = map['clientToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
-      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enableEcsManagedTags: (() { final guardedValue = map['enableEcsManagedTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableExecuteCommand: (() { final guardedValue = map['enableExecuteCommand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

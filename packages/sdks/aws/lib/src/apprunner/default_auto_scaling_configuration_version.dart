@@ -183,7 +183,7 @@ class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
           'aws:apprunner/defaultAutoScalingConfigurationVersion:DefaultAutoScalingConfigurationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
     region = registerOutput<String>('region');
@@ -194,11 +194,12 @@ class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultAutoScalingConfigurationVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultAutoScalingConfigurationVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -212,6 +213,19 @@ class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DefaultAutoScalingConfigurationVersion] resource.
+  DefaultAutoScalingConfigurationVersion.reference(String urn)
+    : super(
+        'aws:apprunner/defaultAutoScalingConfigurationVersion:DefaultAutoScalingConfigurationVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
     region = registerOutput<String>('region');
   }

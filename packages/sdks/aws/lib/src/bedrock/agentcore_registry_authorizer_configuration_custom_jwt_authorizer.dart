@@ -7,14 +7,14 @@ import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_privat
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_private_endpoint_override.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer {
-  final pulumi.Input<List<String>>? allowedAudiences;
-  final pulumi.Input<List<String>>? allowedClients;
-  final pulumi.Input<List<String>>? allowedScopes;
-  final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration>? allowedWorkloadConfiguration;
-  final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaim>>? customClaims;
+  final pulumi.Input<List<String>?>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedClients;
+  final pulumi.Input<List<String>?>? allowedScopes;
+  final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration?>? allowedWorkloadConfiguration;
+  final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaim>?>? customClaims;
   final pulumi.Input<String> discoveryUrl;
-  final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpoint>? privateEndpoint;
-  final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride>>? privateEndpointOverrides;
+  final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpoint?>? privateEndpoint;
+  final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride>?>? privateEndpointOverrides;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer].
   /// [allowedAudiences] Optional.

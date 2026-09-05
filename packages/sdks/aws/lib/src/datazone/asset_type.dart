@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asset_type_args.dart';
+import 'asset_type_forms_input.dart';
 import 'asset_type_state.dart';
 import 'asset_type_timeouts.dart';
 
@@ -161,7 +162,7 @@ class AssetType extends pulumi.CustomResource {
   /// The unique identifier of the Amazon DataZone domain where the custom asset type is being created.
   late final pulumi.Output<String> domainIdentifier;
   /// The metadata forms that are to be attached to the custom asset type.
-  late final pulumi.Output<List<Map<String, dynamic>>?> formsInputs;
+  late final pulumi.Output<List<AssetTypeFormsInput>?> formsInputs;
   /// The name of the custom asset type.
   late final pulumi.Output<String> name;
   /// The unique identifier of the Amazon DataZone project that owns the custom asset type.
@@ -186,13 +187,13 @@ class AssetType extends pulumi.CustomResource {
           'aws:datazone/assetType:AssetType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    formsInputs = registerOutput<List<Map<String, dynamic>>?>('formsInputs');
+    formsInputs = registerOutput<List<AssetTypeFormsInput>?>('formsInputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetTypeFormsInput>(guardedValue, (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
     region = registerOutput<String>('region');
@@ -205,11 +206,12 @@ class AssetType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssetTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssetType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,7 +229,28 @@ class AssetType extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    formsInputs = registerOutput<List<Map<String, dynamic>>?>('formsInputs');
+    formsInputs = registerOutput<List<AssetTypeFormsInput>?>('formsInputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetTypeFormsInput>(guardedValue, (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
+    region = registerOutput<String>('region');
+    revision = registerOutput<String>('revision');
+    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetTypeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AssetType] resource.
+  AssetType.reference(String urn)
+    : super(
+        'aws:datazone/assetType:AssetType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    formsInputs = registerOutput<List<AssetTypeFormsInput>?>('formsInputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetTypeFormsInput>(guardedValue, (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
     region = registerOutput<String>('region');

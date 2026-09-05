@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventConnectionAuthParametersInvocationHttpParametersHeader {
   /// Specified whether the value is secret.
-  final pulumi.Input<bool>? isValueSecret;
+  final pulumi.Input<bool?>? isValueSecret;
   /// The key for the parameter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The value associated with the key. Created and stored in AWS Secrets Manager if is secret.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EventConnectionAuthParametersInvocationHttpParametersHeader].
   /// [isValueSecret] Specified whether the value is secret.

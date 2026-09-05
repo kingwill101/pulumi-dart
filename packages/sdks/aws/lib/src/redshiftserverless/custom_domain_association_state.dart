@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CustomDomainAssociation resources.
 class CustomDomainAssociationState {
   /// ARN of the certificate for the custom domain association.
-  final pulumi.Input<String>? customDomainCertificateArn;
+  final pulumi.Input<String?>? customDomainCertificateArn;
   /// Expiration time for the certificate.
-  final pulumi.Input<String>? customDomainCertificateExpiryTime;
+  final pulumi.Input<String?>? customDomainCertificateExpiryTime;
   /// Custom domain to associate with the workgroup.
-  final pulumi.Input<String>? customDomainName;
+  final pulumi.Input<String?>? customDomainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the workgroup.
-  final pulumi.Input<String>? workgroupName;
+  final pulumi.Input<String?>? workgroupName;
 
   /// Creates a new [CustomDomainAssociationState].
   /// [customDomainCertificateArn] ARN of the certificate for the custom domain association.

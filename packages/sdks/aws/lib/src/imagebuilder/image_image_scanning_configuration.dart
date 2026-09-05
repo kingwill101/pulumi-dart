@@ -5,9 +5,9 @@ import 'image_image_scanning_configuration_ecr_configuration.dart';
 
 class ImageImageScanningConfiguration {
   /// Configuration block with ECR configuration. Detailed below.
-  final pulumi.Input<ImageImageScanningConfigurationEcrConfiguration>? ecrConfiguration;
+  final pulumi.Input<ImageImageScanningConfigurationEcrConfiguration?>? ecrConfiguration;
   /// Indicates whether Image Builder keeps a snapshot of the vulnerability scans that Amazon Inspector runs against the build instance when you create a new image. Defaults to `false`.
-  final pulumi.Input<bool>? imageScanningEnabled;
+  final pulumi.Input<bool?>? imageScanningEnabled;
 
   /// Creates a new [ImageImageScanningConfiguration].
   /// [ecrConfiguration] Configuration block with ECR configuration. Detailed below.

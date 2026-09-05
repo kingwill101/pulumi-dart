@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SubnetGroup resources.
 class SubnetGroupState {
   /// The ARN of the docDB subnet group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The description of the docDB subnet group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the docDB subnet group. If omitted, this provider will assign a random, unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of VPC subnet IDs.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// The network type of the docDB subnet group (`IPV4` or `DUAL`).
-  final pulumi.Input<List<String>>? supportedNetworkTypes;
+  final pulumi.Input<List<String>?>? supportedNetworkTypes;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SubnetGroupState].
   /// [arn] The ARN of the docDB subnet group.
@@ -33,9 +33,9 @@ class SubnetGroupState {
   /// [supportedNetworkTypes] The network type of the docDB subnet group (`IPV4` or `DUAL`).
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  const SubnetGroupState({
+  SubnetGroupState({
     this.arn,
-    this.description,
+    pulumi.Input<String?>? description,
     this.name,
     this.namePrefix,
     this.region,
@@ -43,7 +43,7 @@ class SubnetGroupState {
     this.supportedNetworkTypes,
     this.tags,
     this.tagsAll,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

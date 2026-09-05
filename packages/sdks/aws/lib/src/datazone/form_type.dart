@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'form_type_args.dart';
+import 'form_type_import.dart';
 import 'form_type_model.dart';
 import 'form_type_state.dart';
 import 'form_type_timeouts.dart';
@@ -16,6 +17,22 @@ import 'form_type_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const domainExecutionRole = new aws.iam.Role("domain_execution_role", {
+///     inlinePolicies: [{
+///         name: "example-policy",
+///         policy: JSON.stringify({
+///             Version: "2012-10-17",
+///             Statement: [{
+///                 Action: [
+///                     "datazone:*",
+///                     "ram:*",
+///                     "sso:*",
+///                     "kms:*",
+///                 ],
+///                 Effect: "Allow",
+///                 Resource: "*",
+///             }],
+///         }),
+///     }],
 ///     name: "example-role",
 ///     assumeRolePolicy: JSON.stringify({
 ///         Version: "2012-10-17",
@@ -42,22 +59,6 @@ import 'form_type_timeouts.dart';
 ///             },
 ///         ],
 ///     }),
-///     inlinePolicies: [{
-///         name: "example-policy",
-///         policy: JSON.stringify({
-///             Version: "2012-10-17",
-///             Statement: [{
-///                 Action: [
-///                     "datazone:*",
-///                     "ram:*",
-///                     "sso:*",
-///                     "kms:*",
-///                 ],
-///                 Effect: "Allow",
-///                 Resource: "*",
-///             }],
-///         }),
-///     }],
 /// });
 /// const test = new aws.datazone.Domain("test", {
 ///     name: "example",
@@ -72,11 +73,6 @@ import 'form_type_timeouts.dart';
 ///     skipDeletionCheck: true,
 /// });
 /// const testFormType = new aws.datazone.FormType("test", {
-///     description: "desc",
-///     name: "SageMakerModelFormType",
-///     domainIdentifier: test.id,
-///     owningProjectIdentifier: testProject.id,
-///     status: "DISABLED",
 ///     model: {
 ///         smithy: `\\tstructure SageMakerModelFormType {
 /// \\t\\t\\t@required
@@ -91,6 +87,11 @@ import 'form_type_timeouts.dart';
 /// \\t\\t\\t}
 /// `,
 ///     },
+///     description: "desc",
+///     name: "SageMakerModelFormType",
+///     domainIdentifier: test.id,
+///     owningProjectIdentifier: testProject.id,
+///     status: "DISABLED",
 /// });
 /// ```
 /// ```python
@@ -99,6 +100,22 @@ import 'form_type_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// domain_execution_role = aws.iam.Role("domain_execution_role",
+///     inline_policies=[{
+///         "name": "example-policy",
+///         "policy": json.dumps({
+///             "Version": "2012-10-17",
+///             "Statement": [{
+///                 "Action": [
+///                     "datazone:*",
+///                     "ram:*",
+///                     "sso:*",
+///                     "kms:*",
+///                 ],
+///                 "Effect": "Allow",
+///                 "Resource": "*",
+///             }],
+///         }),
+///     }],
 ///     name="example-role",
 ///     assume_role_policy=json.dumps({
 ///         "Version": "2012-10-17",
@@ -124,23 +141,7 @@ import 'form_type_timeouts.dart';
 ///                 },
 ///             },
 ///         ],
-///     }),
-///     inline_policies=[{
-///         "name": "example-policy",
-///         "policy": json.dumps({
-///             "Version": "2012-10-17",
-///             "Statement": [{
-///                 "Action": [
-///                     "datazone:*",
-///                     "ram:*",
-///                     "sso:*",
-///                     "kms:*",
-///                 ],
-///                 "Effect": "Allow",
-///                 "Resource": "*",
-///             }],
-///         }),
-///     }])
+///     }))
 /// test = aws.datazone.Domain("test",
 ///     name="example",
 ///     domain_execution_role=domain_execution_role.arn)
@@ -152,11 +153,6 @@ import 'form_type_timeouts.dart';
 ///     description="desc",
 ///     skip_deletion_check=True)
 /// test_form_type = aws.datazone.FormType("test",
-///     description="desc",
-///     name="SageMakerModelFormType",
-///     domain_identifier=test.id,
-///     owning_project_identifier=test_project.id,
-///     status="DISABLED",
 ///     model={
 ///         "smithy": """\tstructure SageMakerModelFormType {
 /// \t\t\t@required
@@ -170,7 +166,12 @@ import 'form_type_timeouts.dart';
 /// \t\t\tcreationTime: String
 /// \t\t\t}
 /// """,
-///     })
+///     },
+///     description="desc",
+///     name="SageMakerModelFormType",
+///     domain_identifier=test.id,
+///     owning_project_identifier=test_project.id,
+///     status="DISABLED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -183,6 +184,32 @@ import 'form_type_timeouts.dart';
 /// {
 ///     var domainExecutionRole = new Aws.Iam.Role("domain_execution_role", new()
 ///     {
+///         InlinePolicies = new[]
+///         {
+///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
+///             {
+///                 Name = "example-policy",
+///                 Policy = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                 {
+///                     ["Version"] = "2012-10-17",
+///                     ["Statement"] = new[]
+///                     {
+///                         new Dictionary<string, object?>
+///                         {
+///                             ["Action"] = new[]
+///                             {
+///                                 "datazone:*",
+///                                 "ram:*",
+///                                 "sso:*",
+///                                 "kms:*",
+///                             },
+///                             ["Effect"] = "Allow",
+///                             ["Resource"] = "*",
+///                         },
+///                     },
+///                 }),
+///             },
+///         },
 ///         Name = "example-role",
 ///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///         {
@@ -217,32 +244,6 @@ import 'form_type_timeouts.dart';
 ///                 },
 ///             },
 ///         }),
-///         InlinePolicies = new[]
-///         {
-///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
-///             {
-///                 Name = "example-policy",
-///                 Policy = JsonSerializer.Serialize(new Dictionary<string, object?>
-///                 {
-///                     ["Version"] = "2012-10-17",
-///                     ["Statement"] = new[]
-///                     {
-///                         new Dictionary<string, object?>
-///                         {
-///                             ["Action"] = new[]
-///                             {
-///                                 "datazone:*",
-///                                 "ram:*",
-///                                 "sso:*",
-///                                 "kms:*",
-///                             },
-///                             ["Effect"] = "Allow",
-///                             ["Resource"] = "*",
-///                         },
-///                     },
-///                 }),
-///             },
-///         },
 ///     });
 ///
 ///     var test = new Aws.DataZone.Domain("test", new()
@@ -270,11 +271,6 @@ import 'form_type_timeouts.dart';
 ///
 ///     var testFormType = new Aws.DataZone.FormType("test", new()
 ///     {
-///         Description = "desc",
-///         Name = "SageMakerModelFormType",
-///         DomainIdentifier = test.Id,
-///         OwningProjectIdentifier = testProject.Id,
-///         Status = "DISABLED",
 ///         Model = new Aws.DataZone.Inputs.FormTypeModelArgs
 ///         {
 ///             Smithy = @"\tstructure SageMakerModelFormType {
@@ -290,6 +286,11 @@ import 'form_type_timeouts.dart';
 /// \t\t\t}
 /// ",
 ///         },
+///         Description = "desc",
+///         Name = "SageMakerModelFormType",
+///         DomainIdentifier = test.Id,
+///         OwningProjectIdentifier = testProject.Id,
+///         Status = "DISABLED",
 ///     });
 ///
 /// });
@@ -309,6 +310,25 @@ import 'form_type_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"Version": "2012-10-17",
+/// 			"Statement": []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"Action": []string{
+/// 						"datazone:*",
+/// 						"ram:*",
+/// 						"sso:*",
+/// 						"kms:*",
+/// 					},
+/// 					"Effect":   "Allow",
+/// 					"Resource": "*",
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
@@ -336,35 +356,16 @@ import 'form_type_timeouts.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
-/// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
-/// 				map[string]interface{}{
-/// 					"Action": []string{
-/// 						"datazone:*",
-/// 						"ram:*",
-/// 						"sso:*",
-/// 						"kms:*",
-/// 					},
-/// 					"Effect":   "Allow",
-/// 					"Resource": "*",
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		json1 := string(tmpJSON1)
 /// 		domainExecutionRole, err := iam.NewRole(ctx, "domain_execution_role", &iam.RoleArgs{
-/// 			Name:             pulumi.String("example-role"),
-/// 			AssumeRolePolicy: pulumi.String(json0),
 /// 			InlinePolicies: iam.RoleInlinePolicyArray{
 /// 				&iam.RoleInlinePolicyArgs{
 /// 					Name:   pulumi.String("example-policy"),
-/// 					Policy: pulumi.String(json1),
+/// 					Policy: pulumi.String(json0),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example-role"),
+/// 			AssumeRolePolicy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -395,11 +396,6 @@ import 'form_type_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datazone.NewFormType(ctx, "test", &datazone.FormTypeArgs{
-/// 			Description:             pulumi.String("desc"),
-/// 			Name:                    pulumi.String("SageMakerModelFormType"),
-/// 			DomainIdentifier:        test.ID().ToIDOutput().ToStringOutput(),
-/// 			OwningProjectIdentifier: testProject.ID().ToIDOutput().ToStringOutput(),
-/// 			Status:                  pulumi.String("DISABLED"),
 /// 			Model: &datazone.FormTypeModelArgs{
 /// 				Smithy: pulumi.String(`\tstructure SageMakerModelFormType {
 /// \t\t\t@required
@@ -414,6 +410,11 @@ import 'form_type_timeouts.dart';
 /// \t\t\t}
 /// `),
 /// 			},
+/// 			Description:             pulumi.String("desc"),
+/// 			Name:                    pulumi.String("SageMakerModelFormType"),
+/// 			DomainIdentifier:        test.ID().ToIDOutput().ToStringOutput(),
+/// 			OwningProjectIdentifier: testProject.ID().ToIDOutput().ToStringOutput(),
+/// 			Status:                  pulumi.String("DISABLED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -432,6 +433,17 @@ import 'form_type_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "domain_execution_role" {
+///   inline_policies {
+///     name = "example-policy"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
+///         "Effect"   = "Allow"
+///         "Resource" = "*"
+///       }]
+///     })
+///   }
 ///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -449,17 +461,6 @@ import 'form_type_timeouts.dart';
 ///       }
 ///     }]
 ///   })
-///   inline_policies {
-///     name = "example-policy"
-///     policy = jsonencode({
-///       "Version" = "2012-10-17"
-///       "Statement" = [{
-///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
-///         "Effect"   = "Allow"
-///         "Resource" = "*"
-///       }]
-///     })
-///   }
 /// }
 /// resource "aws_datazone_domain" "test" {
 ///   name                  = "example"
@@ -476,14 +477,14 @@ import 'form_type_timeouts.dart';
 ///   skip_deletion_check = true
 /// }
 /// resource "aws_datazone_formtype" "test" {
+///   model = {
+///     smithy = "\\tstructure SageMakerModelFormType {\n\\t\\t\\t@required\n\\t\\t\\t@amazon.datazone#searchable\n\\t\\t\\tmodelName: String\n\n\\t\\t\\t@required\n\\t\\t\\tmodelArn: String\n\n\\t\\t\\t@required\n\\t\\t\\tcreationTime: String\n\\t\\t\\t}\n"
+///   }
 ///   description               = "desc"
 ///   name                      = "SageMakerModelFormType"
 ///   domain_identifier         = aws_datazone_domain.test.id
 ///   owning_project_identifier = aws_datazone_project.test.id
 ///   status                    = "DISABLED"
-///   model = {
-///     smithy = "\\tstructure SageMakerModelFormType {\n\\t\\t\\t@required\n\\t\\t\\t@amazon.datazone#searchable\n\\t\\t\\tmodelName: String\n\n\\t\\t\\t@required\n\\t\\t\\tmodelArn: String\n\n\\t\\t\\t@required\n\\t\\t\\tcreationTime: String\n\\t\\t\\t}\n"
-///   }
 /// }
 /// ```
 /// ```java
@@ -519,6 +520,23 @@ import 'form_type_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var domainExecutionRole = new Role("domainExecutionRole", RoleArgs.builder()
+///             .inlinePolicies(RoleInlinePolicyArgs.builder()
+///                 .name("example-policy")
+///                 .policy(serializeJson(
+///                     jsonObject(
+///                         jsonProperty("Version", "2012-10-17"),
+///                         jsonProperty("Statement", jsonArray(jsonObject(
+///                             jsonProperty("Action", jsonArray(
+///                                 "datazone:*",
+///                                 "ram:*",
+///                                 "sso:*",
+///                                 "kms:*"
+///                             )),
+///                             jsonProperty("Effect", "Allow"),
+///                             jsonProperty("Resource", "*")
+///                         )))
+///                     )))
+///                 .build())
 ///             .name("example-role")
 ///             .assumeRolePolicy(serializeJson(
 ///                 jsonObject(
@@ -546,23 +564,6 @@ import 'form_type_timeouts.dart';
 ///                         )
 ///                     ))
 ///                 )))
-///             .inlinePolicies(RoleInlinePolicyArgs.builder()
-///                 .name("example-policy")
-///                 .policy(serializeJson(
-///                     jsonObject(
-///                         jsonProperty("Version", "2012-10-17"),
-///                         jsonProperty("Statement", jsonArray(jsonObject(
-///                             jsonProperty("Action", jsonArray(
-///                                 "datazone:*",
-///                                 "ram:*",
-///                                 "sso:*",
-///                                 "kms:*"
-///                             )),
-///                             jsonProperty("Effect", "Allow"),
-///                             jsonProperty("Resource", "*")
-///                         )))
-///                     )))
-///                 .build())
 ///             .build());
 ///
 ///         var test = new Domain("test", DomainArgs.builder()
@@ -583,11 +584,6 @@ import 'form_type_timeouts.dart';
 ///             .build());
 ///
 ///         var testFormType = new FormType("testFormType", FormTypeArgs.builder()
-///             .description("desc")
-///             .name("SageMakerModelFormType")
-///             .domainIdentifier(test.id())
-///             .owningProjectIdentifier(testProject.id())
-///             .status("DISABLED")
 ///             .model(FormTypeModelArgs.builder()
 ///                 .smithy("""
 /// \tstructure SageMakerModelFormType {
@@ -603,6 +599,11 @@ import 'form_type_timeouts.dart';
 /// \t\t\t}
 ///                 """)
 ///                 .build())
+///             .description("desc")
+///             .name("SageMakerModelFormType")
+///             .domainIdentifier(test.id())
+///             .owningProjectIdentifier(testProject.id())
+///             .status("DISABLED")
 ///             .build());
 ///
 ///     }
@@ -614,6 +615,19 @@ import 'form_type_timeouts.dart';
 ///     type: aws:iam:Role
 ///     name: domain_execution_role
 ///     properties:
+///       inlinePolicies:
+///         - name: example-policy
+///           policy:
+///             fn::toJSON:
+///               Version: 2012-10-17
+///               Statement:
+///                 - Action:
+///                     - datazone:*
+///                     - ram:*
+///                     - sso:*
+///                     - kms:*
+///                   Effect: Allow
+///                   Resource: '*'
 ///       name: example-role
 ///       assumeRolePolicy:
 ///         fn::toJSON:
@@ -631,19 +645,6 @@ import 'form_type_timeouts.dart';
 ///               Effect: Allow
 ///               Principal:
 ///                 Service: cloudformation.amazonaws.com
-///       inlinePolicies:
-///         - name: example-policy
-///           policy:
-///             fn::toJSON:
-///               Version: 2012-10-17
-///               Statement:
-///                 - Action:
-///                     - datazone:*
-///                     - ram:*
-///                     - sso:*
-///                     - kms:*
-///                   Effect: Allow
-///                   Resource: '*'
 ///   test:
 ///     type: aws:datazone:Domain
 ///     properties:
@@ -668,11 +669,6 @@ import 'form_type_timeouts.dart';
 ///     type: aws:datazone:FormType
 ///     name: test
 ///     properties:
-///       description: desc
-///       name: SageMakerModelFormType
-///       domainIdentifier: ${test.id}
-///       owningProjectIdentifier: ${testProject.id}
-///       status: DISABLED
 ///       model:
 ///         smithy: |
 ///           \tstructure SageMakerModelFormType {
@@ -686,6 +682,11 @@ import 'form_type_timeouts.dart';
 ///           \t\t\t@required
 ///           \t\t\tcreationTime: String
 ///           \t\t\t}
+///       description: desc
+///       name: SageMakerModelFormType
+///       domainIdentifier: ${test.id}
+///       owningProjectIdentifier: ${testProject.id}
+///       status: DISABLED
 /// ```
 ///
 ///
@@ -719,7 +720,7 @@ class FormType extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Identifier of the domain.
   late final pulumi.Output<String> domainIdentifier;
-  late final pulumi.Output<List<Map<String, dynamic>>> imports;
+  late final pulumi.Output<List<FormTypeImport>> imports;
   /// Object of the model of the form type that contains the following attributes.
   late final pulumi.Output<FormTypeModel> model;
   /// Name of the form type. Must be the name of the structure in smithy document.
@@ -750,13 +751,13 @@ class FormType extends pulumi.CustomResource {
           'aws:datazone/formType:FormType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    imports = registerOutput<List<Map<String, dynamic>>>('imports');
+    imports = registerOutput<List<FormTypeImport>>('imports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FormTypeImport>(guardedValue, (value) => FormTypeImport.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<FormTypeModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FormTypeModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     originDomainId = registerOutput<String>('originDomainId');
@@ -773,11 +774,12 @@ class FormType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FormTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FormType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -795,7 +797,32 @@ class FormType extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    imports = registerOutput<List<Map<String, dynamic>>>('imports');
+    imports = registerOutput<List<FormTypeImport>>('imports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FormTypeImport>(guardedValue, (value) => FormTypeImport.fromMap((value as Map).cast<String, dynamic>())); });
+    model = registerOutput<FormTypeModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FormTypeModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    originDomainId = registerOutput<String>('originDomainId');
+    originProjectId = registerOutput<String>('originProjectId');
+    owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
+    region = registerOutput<String>('region');
+    revision = registerOutput<String>('revision');
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<FormTypeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FormTypeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FormType] resource.
+  FormType.reference(String urn)
+    : super(
+        'aws:datazone/formType:FormType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    imports = registerOutput<List<FormTypeImport>>('imports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FormTypeImport>(guardedValue, (value) => FormTypeImport.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<FormTypeModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FormTypeModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     originDomainId = registerOutput<String>('originDomainId');

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment {
   /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline. Maximum length of 1024.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment].
   /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.

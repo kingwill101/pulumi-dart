@@ -6,9 +6,9 @@ import 'theme_configuration_sheet_tile_layout.dart';
 
 class ThemeConfigurationSheet {
   /// The display options for tiles. See tile.
-  final pulumi.Input<ThemeConfigurationSheetTile>? tile;
+  final pulumi.Input<ThemeConfigurationSheetTile?>? tile;
   /// The layout options for tiles. See tile_layout.
-  final pulumi.Input<ThemeConfigurationSheetTileLayout>? tileLayout;
+  final pulumi.Input<ThemeConfigurationSheetTileLayout?>? tileLayout;
 
   /// Creates a new [ThemeConfigurationSheet].
   /// [tile] The display options for tiles. See tile.

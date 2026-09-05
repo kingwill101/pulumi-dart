@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zonal_autoshift_configuration_args.dart';
+import 'zonal_autoshift_configuration_blocking_alarm.dart';
+import 'zonal_autoshift_configuration_outcome_alarm.dart';
 import 'zonal_autoshift_configuration_state.dart';
 
 /// Manages an AWS Application Recovery Controller Zonal Shift Zonal Autoshift Configuration for a managed resource (such as a load balancer).
@@ -37,12 +39,12 @@ import 'zonal_autoshift_configuration_state.dart';
 ///     },
 /// });
 /// const example = new aws.arczonalshift.ZonalAutoshiftConfiguration("example", {
-///     resourceArn: exampleLoadBalancer.arn,
-///     zonalAutoshiftStatus: "ENABLED",
 ///     outcomeAlarms: [{
 ///         alarmIdentifier: exampleMetricAlarm.arn,
 ///         type: "CLOUDWATCH",
 ///     }],
+///     resourceArn: exampleLoadBalancer.arn,
+///     zonalAutoshiftStatus: "ENABLED",
 /// });
 /// ```
 /// ```python
@@ -69,12 +71,12 @@ import 'zonal_autoshift_configuration_state.dart';
 ///         "LoadBalancer": example_load_balancer.arn_suffix,
 ///     })
 /// example = aws.arczonalshift.ZonalAutoshiftConfiguration("example",
-///     resource_arn=example_load_balancer.arn,
-///     zonal_autoshift_status="ENABLED",
 ///     outcome_alarms=[{
 ///         "alarm_identifier": example_metric_alarm.arn,
 ///         "type": "CLOUDWATCH",
-///     }])
+///     }],
+///     resource_arn=example_load_balancer.arn,
+///     zonal_autoshift_status="ENABLED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -112,8 +114,6 @@ import 'zonal_autoshift_configuration_state.dart';
 ///
 ///     var example = new Aws.ArcZonalShift.ZonalAutoshiftConfiguration("example", new()
 ///     {
-///         ResourceArn = exampleLoadBalancer.Arn,
-///         ZonalAutoshiftStatus = "ENABLED",
 ///         OutcomeAlarms = new[]
 ///         {
 ///             new Aws.ArcZonalShift.Inputs.ZonalAutoshiftConfigurationOutcomeAlarmArgs
@@ -122,6 +122,8 @@ import 'zonal_autoshift_configuration_state.dart';
 ///                 Type = "CLOUDWATCH",
 ///             },
 ///         },
+///         ResourceArn = exampleLoadBalancer.Arn,
+///         ZonalAutoshiftStatus = "ENABLED",
 ///     });
 ///
 /// });
@@ -169,14 +171,14 @@ import 'zonal_autoshift_configuration_state.dart';
 /// return err
 /// }
 /// _, err = arczonalshift.NewZonalAutoshiftConfiguration(ctx, "example", &arczonalshift.ZonalAutoshiftConfigurationArgs{
-/// ResourceArn: exampleLoadBalancer.Arn,
-/// ZonalAutoshiftStatus: pulumi.String("ENABLED"),
 /// OutcomeAlarms: arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArray{
 /// &arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArgs{
 /// AlarmIdentifier: exampleMetricAlarm.Arn,
 /// Type: pulumi.String("CLOUDWATCH"),
 /// },
 /// },
+/// ResourceArn: exampleLoadBalancer.Arn,
+/// ZonalAutoshiftStatus: pulumi.String("ENABLED"),
 /// })
 /// if err != nil {
 /// return err
@@ -202,12 +204,12 @@ import 'zonal_autoshift_configuration_state.dart';
 /// }
 ///
 /// resource "aws_arczonalshift_zonalautoshiftconfiguration" "example" {
-///   resource_arn           = aws_lb_loadbalancer.example.arn
-///   zonal_autoshift_status = "ENABLED"
 ///   outcome_alarms {
 ///     alarm_identifier = aws_cloudwatch_metricalarm.example.arn
 ///     type             = "CLOUDWATCH"
 ///   }
+///   resource_arn           = aws_lb_loadbalancer.example.arn
+///   zonal_autoshift_status = "ENABLED"
 /// }
 /// resource "aws_lb_loadbalancer" "example" {
 ///   name               = "example"
@@ -279,12 +281,12 @@ import 'zonal_autoshift_configuration_state.dart';
 ///             .build());
 ///
 ///         var example = new ZonalAutoshiftConfiguration("example", ZonalAutoshiftConfigurationArgs.builder()
-///             .resourceArn(exampleLoadBalancer.arn())
-///             .zonalAutoshiftStatus("ENABLED")
 ///             .outcomeAlarms(ZonalAutoshiftConfigurationOutcomeAlarmArgs.builder()
 ///                 .alarmIdentifier(exampleMetricAlarm.arn())
 ///                 .type("CLOUDWATCH")
 ///                 .build())
+///             .resourceArn(exampleLoadBalancer.arn())
+///             .zonalAutoshiftStatus("ENABLED")
 ///             .build());
 ///
 ///     }
@@ -300,16 +302,16 @@ import 'zonal_autoshift_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.arczonalshift.ZonalAutoshiftConfiguration("example", {
-///     resourceArn: exampleAwsLb.arn,
-///     zonalAutoshiftStatus: "ENABLED",
-///     outcomeAlarms: [{
-///         alarmIdentifier: outcome.arn,
-///         type: "CLOUDWATCH",
-///     }],
 ///     blockingAlarms: [{
 ///         alarmIdentifier: blocking.arn,
 ///         type: "CLOUDWATCH",
 ///     }],
+///     outcomeAlarms: [{
+///         alarmIdentifier: outcome.arn,
+///         type: "CLOUDWATCH",
+///     }],
+///     resourceArn: exampleAwsLb.arn,
+///     zonalAutoshiftStatus: "ENABLED",
 /// });
 /// ```
 /// ```python
@@ -317,16 +319,16 @@ import 'zonal_autoshift_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.arczonalshift.ZonalAutoshiftConfiguration("example",
-///     resource_arn=example_aws_lb["arn"],
-///     zonal_autoshift_status="ENABLED",
+///     blocking_alarms=[{
+///         "alarm_identifier": blocking["arn"],
+///         "type": "CLOUDWATCH",
+///     }],
 ///     outcome_alarms=[{
 ///         "alarm_identifier": outcome["arn"],
 ///         "type": "CLOUDWATCH",
 ///     }],
-///     blocking_alarms=[{
-///         "alarm_identifier": blocking["arn"],
-///         "type": "CLOUDWATCH",
-///     }])
+///     resource_arn=example_aws_lb["arn"],
+///     zonal_autoshift_status="ENABLED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -338,16 +340,6 @@ import 'zonal_autoshift_configuration_state.dart';
 /// {
 ///     var example = new Aws.ArcZonalShift.ZonalAutoshiftConfiguration("example", new()
 ///     {
-///         ResourceArn = exampleAwsLb.Arn,
-///         ZonalAutoshiftStatus = "ENABLED",
-///         OutcomeAlarms = new[]
-///         {
-///             new Aws.ArcZonalShift.Inputs.ZonalAutoshiftConfigurationOutcomeAlarmArgs
-///             {
-///                 AlarmIdentifier = outcome.Arn,
-///                 Type = "CLOUDWATCH",
-///             },
-///         },
 ///         BlockingAlarms = new[]
 ///         {
 ///             new Aws.ArcZonalShift.Inputs.ZonalAutoshiftConfigurationBlockingAlarmArgs
@@ -356,6 +348,16 @@ import 'zonal_autoshift_configuration_state.dart';
 ///                 Type = "CLOUDWATCH",
 ///             },
 ///         },
+///         OutcomeAlarms = new[]
+///         {
+///             new Aws.ArcZonalShift.Inputs.ZonalAutoshiftConfigurationOutcomeAlarmArgs
+///             {
+///                 AlarmIdentifier = outcome.Arn,
+///                 Type = "CLOUDWATCH",
+///             },
+///         },
+///         ResourceArn = exampleAwsLb.Arn,
+///         ZonalAutoshiftStatus = "ENABLED",
 ///     });
 ///
 /// });
@@ -371,20 +373,20 @@ import 'zonal_autoshift_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := arczonalshift.NewZonalAutoshiftConfiguration(ctx, "example", &arczonalshift.ZonalAutoshiftConfigurationArgs{
-/// 			ResourceArn:          pulumi.Any(exampleAwsLb.Arn),
-/// 			ZonalAutoshiftStatus: pulumi.String("ENABLED"),
-/// 			OutcomeAlarms: arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArray{
-/// 				&arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArgs{
-/// 					AlarmIdentifier: pulumi.Any(outcome.Arn),
-/// 					Type:            pulumi.String("CLOUDWATCH"),
-/// 				},
-/// 			},
 /// 			BlockingAlarms: arczonalshift.ZonalAutoshiftConfigurationBlockingAlarmArray{
 /// 				&arczonalshift.ZonalAutoshiftConfigurationBlockingAlarmArgs{
 /// 					AlarmIdentifier: pulumi.Any(blocking.Arn),
 /// 					Type:            pulumi.String("CLOUDWATCH"),
 /// 				},
 /// 			},
+/// 			OutcomeAlarms: arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArray{
+/// 				&arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArgs{
+/// 					AlarmIdentifier: pulumi.Any(outcome.Arn),
+/// 					Type:            pulumi.String("CLOUDWATCH"),
+/// 				},
+/// 			},
+/// 			ResourceArn:          pulumi.Any(exampleAwsLb.Arn),
+/// 			ZonalAutoshiftStatus: pulumi.String("ENABLED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -403,16 +405,16 @@ import 'zonal_autoshift_configuration_state.dart';
 /// }
 ///
 /// resource "aws_arczonalshift_zonalautoshiftconfiguration" "example" {
-///   resource_arn           = exampleAwsLb.arn
-///   zonal_autoshift_status = "ENABLED"
-///   outcome_alarms {
-///     alarm_identifier = outcome.arn
-///     type             = "CLOUDWATCH"
-///   }
 ///   blocking_alarms {
 ///     alarm_identifier = blocking.arn
 ///     type             = "CLOUDWATCH"
 ///   }
+///   outcome_alarms {
+///     alarm_identifier = outcome.arn
+///     type             = "CLOUDWATCH"
+///   }
+///   resource_arn           = exampleAwsLb.arn
+///   zonal_autoshift_status = "ENABLED"
 /// }
 /// ```
 /// ```java
@@ -423,8 +425,8 @@ import 'zonal_autoshift_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.arczonalshift.ZonalAutoshiftConfiguration;
 /// import com.pulumi.aws.arczonalshift.ZonalAutoshiftConfigurationArgs;
-/// import com.pulumi.aws.arczonalshift.inputs.ZonalAutoshiftConfigurationOutcomeAlarmArgs;
 /// import com.pulumi.aws.arczonalshift.inputs.ZonalAutoshiftConfigurationBlockingAlarmArgs;
+/// import com.pulumi.aws.arczonalshift.inputs.ZonalAutoshiftConfigurationOutcomeAlarmArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -439,16 +441,16 @@ import 'zonal_autoshift_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ZonalAutoshiftConfiguration("example", ZonalAutoshiftConfigurationArgs.builder()
-///             .resourceArn(exampleAwsLb.arn())
-///             .zonalAutoshiftStatus("ENABLED")
-///             .outcomeAlarms(ZonalAutoshiftConfigurationOutcomeAlarmArgs.builder()
-///                 .alarmIdentifier(outcome.arn())
-///                 .type("CLOUDWATCH")
-///                 .build())
 ///             .blockingAlarms(ZonalAutoshiftConfigurationBlockingAlarmArgs.builder()
 ///                 .alarmIdentifier(blocking.arn())
 ///                 .type("CLOUDWATCH")
 ///                 .build())
+///             .outcomeAlarms(ZonalAutoshiftConfigurationOutcomeAlarmArgs.builder()
+///                 .alarmIdentifier(outcome.arn())
+///                 .type("CLOUDWATCH")
+///                 .build())
+///             .resourceArn(exampleAwsLb.arn())
+///             .zonalAutoshiftStatus("ENABLED")
 ///             .build());
 ///
 ///     }
@@ -459,14 +461,14 @@ import 'zonal_autoshift_configuration_state.dart';
 ///   example:
 ///     type: aws:arczonalshift:ZonalAutoshiftConfiguration
 ///     properties:
-///       resourceArn: ${exampleAwsLb.arn}
-///       zonalAutoshiftStatus: ENABLED
-///       outcomeAlarms:
-///         - alarmIdentifier: ${outcome.arn}
-///           type: CLOUDWATCH
 ///       blockingAlarms:
 ///         - alarmIdentifier: ${blocking.arn}
 ///           type: CLOUDWATCH
+///       outcomeAlarms:
+///         - alarmIdentifier: ${outcome.arn}
+///           type: CLOUDWATCH
+///       resourceArn: ${exampleAwsLb.arn}
+///       zonalAutoshiftStatus: ENABLED
 /// ```
 ///
 ///
@@ -478,13 +480,13 @@ import 'zonal_autoshift_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.arczonalshift.ZonalAutoshiftConfiguration("example", {
-///     resourceArn: exampleAwsLb.arn,
-///     zonalAutoshiftStatus: "ENABLED",
-///     blockedWindows: ["Mon:00:00-Mon:08:00"],
 ///     outcomeAlarms: [{
 ///         alarmIdentifier: exampleAwsCloudwatchMetricAlarm.arn,
 ///         type: "CLOUDWATCH",
 ///     }],
+///     resourceArn: exampleAwsLb.arn,
+///     zonalAutoshiftStatus: "ENABLED",
+///     blockedWindows: ["Mon:00:00-Mon:08:00"],
 /// });
 /// ```
 /// ```python
@@ -492,13 +494,13 @@ import 'zonal_autoshift_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.arczonalshift.ZonalAutoshiftConfiguration("example",
-///     resource_arn=example_aws_lb["arn"],
-///     zonal_autoshift_status="ENABLED",
-///     blocked_windows=["Mon:00:00-Mon:08:00"],
 ///     outcome_alarms=[{
 ///         "alarm_identifier": example_aws_cloudwatch_metric_alarm["arn"],
 ///         "type": "CLOUDWATCH",
-///     }])
+///     }],
+///     resource_arn=example_aws_lb["arn"],
+///     zonal_autoshift_status="ENABLED",
+///     blocked_windows=["Mon:00:00-Mon:08:00"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -510,12 +512,6 @@ import 'zonal_autoshift_configuration_state.dart';
 /// {
 ///     var example = new Aws.ArcZonalShift.ZonalAutoshiftConfiguration("example", new()
 ///     {
-///         ResourceArn = exampleAwsLb.Arn,
-///         ZonalAutoshiftStatus = "ENABLED",
-///         BlockedWindows = new[]
-///         {
-///             "Mon:00:00-Mon:08:00",
-///         },
 ///         OutcomeAlarms = new[]
 ///         {
 ///             new Aws.ArcZonalShift.Inputs.ZonalAutoshiftConfigurationOutcomeAlarmArgs
@@ -523,6 +519,12 @@ import 'zonal_autoshift_configuration_state.dart';
 ///                 AlarmIdentifier = exampleAwsCloudwatchMetricAlarm.Arn,
 ///                 Type = "CLOUDWATCH",
 ///             },
+///         },
+///         ResourceArn = exampleAwsLb.Arn,
+///         ZonalAutoshiftStatus = "ENABLED",
+///         BlockedWindows = new[]
+///         {
+///             "Mon:00:00-Mon:08:00",
 ///         },
 ///     });
 ///
@@ -539,16 +541,16 @@ import 'zonal_autoshift_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := arczonalshift.NewZonalAutoshiftConfiguration(ctx, "example", &arczonalshift.ZonalAutoshiftConfigurationArgs{
-/// 			ResourceArn:          pulumi.Any(exampleAwsLb.Arn),
-/// 			ZonalAutoshiftStatus: pulumi.String("ENABLED"),
-/// 			BlockedWindows: pulumi.StringArray{
-/// 				pulumi.String("Mon:00:00-Mon:08:00"),
-/// 			},
 /// 			OutcomeAlarms: arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArray{
 /// 				&arczonalshift.ZonalAutoshiftConfigurationOutcomeAlarmArgs{
 /// 					AlarmIdentifier: pulumi.Any(exampleAwsCloudwatchMetricAlarm.Arn),
 /// 					Type:            pulumi.String("CLOUDWATCH"),
 /// 				},
+/// 			},
+/// 			ResourceArn:          pulumi.Any(exampleAwsLb.Arn),
+/// 			ZonalAutoshiftStatus: pulumi.String("ENABLED"),
+/// 			BlockedWindows: pulumi.StringArray{
+/// 				pulumi.String("Mon:00:00-Mon:08:00"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -568,13 +570,13 @@ import 'zonal_autoshift_configuration_state.dart';
 /// }
 ///
 /// resource "aws_arczonalshift_zonalautoshiftconfiguration" "example" {
-///   resource_arn           = exampleAwsLb.arn
-///   zonal_autoshift_status = "ENABLED"
-///   blocked_windows        = ["Mon:00:00-Mon:08:00"]
 ///   outcome_alarms {
 ///     alarm_identifier = exampleAwsCloudwatchMetricAlarm.arn
 ///     type             = "CLOUDWATCH"
 ///   }
+///   resource_arn           = exampleAwsLb.arn
+///   zonal_autoshift_status = "ENABLED"
+///   blocked_windows        = ["Mon:00:00-Mon:08:00"]
 /// }
 /// ```
 /// ```java
@@ -600,13 +602,13 @@ import 'zonal_autoshift_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ZonalAutoshiftConfiguration("example", ZonalAutoshiftConfigurationArgs.builder()
-///             .resourceArn(exampleAwsLb.arn())
-///             .zonalAutoshiftStatus("ENABLED")
-///             .blockedWindows("Mon:00:00-Mon:08:00")
 ///             .outcomeAlarms(ZonalAutoshiftConfigurationOutcomeAlarmArgs.builder()
 ///                 .alarmIdentifier(exampleAwsCloudwatchMetricAlarm.arn())
 ///                 .type("CLOUDWATCH")
 ///                 .build())
+///             .resourceArn(exampleAwsLb.arn())
+///             .zonalAutoshiftStatus("ENABLED")
+///             .blockedWindows("Mon:00:00-Mon:08:00")
 ///             .build());
 ///
 ///     }
@@ -617,13 +619,13 @@ import 'zonal_autoshift_configuration_state.dart';
 ///   example:
 ///     type: aws:arczonalshift:ZonalAutoshiftConfiguration
 ///     properties:
+///       outcomeAlarms:
+///         - alarmIdentifier: ${exampleAwsCloudwatchMetricAlarm.arn}
+///           type: CLOUDWATCH
 ///       resourceArn: ${exampleAwsLb.arn}
 ///       zonalAutoshiftStatus: ENABLED
 ///       blockedWindows:
 ///         - Mon:00:00-Mon:08:00
-///       outcomeAlarms:
-///         - alarmIdentifier: ${exampleAwsCloudwatchMetricAlarm.arn}
-///           type: CLOUDWATCH
 /// ```
 ///
 ///
@@ -649,9 +651,9 @@ class ZonalAutoshiftConfiguration extends pulumi.CustomResource {
   /// List of time windows during which practice runs should not be started, in the format `Day:HH:MM-Day:HH:MM` (e.g., `Mon:00:00-Mon:08:00`). Cannot be used together with `allowedWindows`.
   late final pulumi.Output<List<String>?> blockedWindows;
   /// List of CloudWatch alarms that can block practice runs when in alarm state. See `blockingAlarms` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> blockingAlarms;
+  late final pulumi.Output<List<ZonalAutoshiftConfigurationBlockingAlarm>?> blockingAlarms;
   /// List of CloudWatch alarms monitored during practice runs. See `outcomeAlarms` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> outcomeAlarms;
+  late final pulumi.Output<List<ZonalAutoshiftConfigurationOutcomeAlarm>?> outcomeAlarms;
   /// AWS region where the resource is deployed.
   late final pulumi.Output<String> region;
   /// The ARN of the managed resource to configure zonal autoshift for (e.g., an Application Load Balancer). Changing this creates a new resource.
@@ -673,13 +675,13 @@ class ZonalAutoshiftConfiguration extends pulumi.CustomResource {
           'aws:arczonalshift/zonalAutoshiftConfiguration:ZonalAutoshiftConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    allowedWindows = registerOutput<List<String>?>('allowedWindows');
-    blockedDates = registerOutput<List<String>?>('blockedDates');
-    blockedWindows = registerOutput<List<String>?>('blockedWindows');
-    blockingAlarms = registerOutput<List<Map<String, dynamic>>?>('blockingAlarms');
-    outcomeAlarms = registerOutput<List<Map<String, dynamic>>?>('outcomeAlarms');
+    allowedWindows = registerOutput<List<String>?>('allowedWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockedDates = registerOutput<List<String>?>('blockedDates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockedWindows = registerOutput<List<String>?>('blockedWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockingAlarms = registerOutput<List<ZonalAutoshiftConfigurationBlockingAlarm>?>('blockingAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonalAutoshiftConfigurationBlockingAlarm>(guardedValue, (value) => ZonalAutoshiftConfigurationBlockingAlarm.fromMap((value as Map).cast<String, dynamic>())); });
+    outcomeAlarms = registerOutput<List<ZonalAutoshiftConfigurationOutcomeAlarm>?>('outcomeAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonalAutoshiftConfigurationOutcomeAlarm>(guardedValue, (value) => ZonalAutoshiftConfigurationOutcomeAlarm.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     zonalAutoshiftStatus = registerOutput<String>('zonalAutoshiftStatus');
@@ -690,11 +692,12 @@ class ZonalAutoshiftConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZonalAutoshiftConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ZonalAutoshiftConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -708,11 +711,30 @@ class ZonalAutoshiftConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedWindows = registerOutput<List<String>?>('allowedWindows');
-    blockedDates = registerOutput<List<String>?>('blockedDates');
-    blockedWindows = registerOutput<List<String>?>('blockedWindows');
-    blockingAlarms = registerOutput<List<Map<String, dynamic>>?>('blockingAlarms');
-    outcomeAlarms = registerOutput<List<Map<String, dynamic>>?>('outcomeAlarms');
+    allowedWindows = registerOutput<List<String>?>('allowedWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockedDates = registerOutput<List<String>?>('blockedDates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockedWindows = registerOutput<List<String>?>('blockedWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockingAlarms = registerOutput<List<ZonalAutoshiftConfigurationBlockingAlarm>?>('blockingAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonalAutoshiftConfigurationBlockingAlarm>(guardedValue, (value) => ZonalAutoshiftConfigurationBlockingAlarm.fromMap((value as Map).cast<String, dynamic>())); });
+    outcomeAlarms = registerOutput<List<ZonalAutoshiftConfigurationOutcomeAlarm>?>('outcomeAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonalAutoshiftConfigurationOutcomeAlarm>(guardedValue, (value) => ZonalAutoshiftConfigurationOutcomeAlarm.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    zonalAutoshiftStatus = registerOutput<String>('zonalAutoshiftStatus');
+  }
+
+  /// Creates a typed reference to an existing [ZonalAutoshiftConfiguration] resource.
+  ZonalAutoshiftConfiguration.reference(String urn)
+    : super(
+        'aws:arczonalshift/zonalAutoshiftConfiguration:ZonalAutoshiftConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedWindows = registerOutput<List<String>?>('allowedWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockedDates = registerOutput<List<String>?>('blockedDates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockedWindows = registerOutput<List<String>?>('blockedWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blockingAlarms = registerOutput<List<ZonalAutoshiftConfigurationBlockingAlarm>?>('blockingAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonalAutoshiftConfigurationBlockingAlarm>(guardedValue, (value) => ZonalAutoshiftConfigurationBlockingAlarm.fromMap((value as Map).cast<String, dynamic>())); });
+    outcomeAlarms = registerOutput<List<ZonalAutoshiftConfigurationOutcomeAlarm>?>('outcomeAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonalAutoshiftConfigurationOutcomeAlarm>(guardedValue, (value) => ZonalAutoshiftConfigurationOutcomeAlarm.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     zonalAutoshiftStatus = registerOutput<String>('zonalAutoshiftStatus');

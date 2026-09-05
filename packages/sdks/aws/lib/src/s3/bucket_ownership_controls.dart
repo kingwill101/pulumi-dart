@@ -16,10 +16,10 @@ import 'bucket_ownership_controls_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "example"});
 /// const exampleBucketOwnershipControls = new aws.s3.BucketOwnershipControls("example", {
-///     bucket: example.id,
 ///     rule: {
 ///         objectOwnership: "BucketOwnerPreferred",
 ///     },
+///     bucket: example.id,
 /// });
 /// ```
 /// ```python
@@ -28,10 +28,10 @@ import 'bucket_ownership_controls_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="example")
 /// example_bucket_ownership_controls = aws.s3.BucketOwnershipControls("example",
-///     bucket=example.id,
 ///     rule={
 ///         "object_ownership": "BucketOwnerPreferred",
-///     })
+///     },
+///     bucket=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,11 +48,11 @@ import 'bucket_ownership_controls_state.dart';
 ///
 ///     var exampleBucketOwnershipControls = new Aws.S3.BucketOwnershipControls("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         Rule = new Aws.S3.Inputs.BucketOwnershipControlsRuleArgs
 ///         {
 ///             ObjectOwnership = "BucketOwnerPreferred",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 /// });
@@ -74,10 +74,10 @@ import 'bucket_ownership_controls_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -99,10 +99,10 @@ import 'bucket_ownership_controls_state.dart';
 ///   bucket = "example"
 /// }
 /// resource "aws_s3_bucketownershipcontrols" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   rule = {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -134,10 +134,10 @@ import 'bucket_ownership_controls_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketOwnershipControls = new BucketOwnershipControls("exampleBucketOwnershipControls", BucketOwnershipControlsArgs.builder()
-///             .bucket(example.id())
 ///             .rule(BucketOwnershipControlsRuleArgs.builder()
 ///                 .objectOwnership("BucketOwnerPreferred")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///     }
@@ -153,9 +153,9 @@ import 'bucket_ownership_controls_state.dart';
 ///     type: aws:s3:BucketOwnershipControls
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       rule:
 ///         objectOwnership: BucketOwnerPreferred
+///       bucket: ${example.id}
 /// ```
 ///
 ///
@@ -198,7 +198,7 @@ class BucketOwnershipControls extends pulumi.CustomResource {
           'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
@@ -210,11 +210,12 @@ class BucketOwnershipControls extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketOwnershipControlsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketOwnershipControls._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,6 +229,20 @@ class BucketOwnershipControls extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    region = registerOutput<String>('region');
+    rule = registerOutput<BucketOwnershipControlsRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOwnershipControlsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BucketOwnershipControls] resource.
+  BucketOwnershipControls.reference(String urn)
+    : super(
+        'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
     rule = registerOutput<BucketOwnershipControlsRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOwnershipControlsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

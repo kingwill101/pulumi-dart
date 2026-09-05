@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vpclattice_get_resource_policy_get_resource_policy_args_doc}
 class GetResourcePolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource ARN of the resource for which a policy is retrieved.
   final pulumi.Input<String> resourceArn;
 

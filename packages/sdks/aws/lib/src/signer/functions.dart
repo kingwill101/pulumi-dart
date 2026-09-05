@@ -122,6 +122,17 @@ Future<GetSigningJobResult> getSigningJob(
   return GetSigningJobResult.fromMap(result);
 }
 
+pulumi.Output<GetSigningJobResult> getSigningJobOutput(
+  GetSigningJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:signer/getSigningJob:getSigningJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSigningJobResult.fromMap);
+}
+
 /// Provides information about a Signer Signing Profile.
 ///
 /// ## Example Usage
@@ -238,4 +249,15 @@ Future<GetSigningProfileResult> getSigningProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSigningProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetSigningProfileResult> getSigningProfileOutput(
+  GetSigningProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:signer/getSigningProfile:getSigningProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSigningProfileResult.fromMap);
 }

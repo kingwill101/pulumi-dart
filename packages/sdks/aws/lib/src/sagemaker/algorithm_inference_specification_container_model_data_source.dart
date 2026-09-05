@@ -5,7 +5,7 @@ import 'algorithm_inference_specification_container_model_data_source_s3_data_so
 
 class AlgorithmInferenceSpecificationContainerModelDataSource {
   /// S3-backed model data source. See Model Data Source S3 Data Source.
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSource>? s3DataSource;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSource?>? s3DataSource;
 
   /// Creates a new [AlgorithmInferenceSpecificationContainerModelDataSource].
   /// [s3DataSource] S3-backed model data source. See Model Data Source S3 Data Source.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_quicksight_get_quicksight_user_get_quicksight_user_args_doc}
 class GetQuicksightUserArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// QuickSight namespace. Defaults to `default`.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the user that you want to match.
   ///
   /// The following arguments are optional:

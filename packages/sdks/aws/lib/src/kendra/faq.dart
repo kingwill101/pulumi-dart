@@ -15,13 +15,13 @@ import 'faq_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Faq("example", {
-///     indexId: exampleAwsKendraIndex.id,
-///     name: "Example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     s3Path: {
 ///         bucket: exampleAwsS3Bucket.id,
 ///         key: exampleAwsS3Object.key,
 ///     },
+///     indexId: exampleAwsKendraIndex.id,
+///     name: "Example",
+///     roleArn: exampleAwsIamRole.arn,
 ///     tags: {
 ///         Name: "Example Kendra Faq",
 ///     },
@@ -32,13 +32,13 @@ import 'faq_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Faq("example",
-///     index_id=example_aws_kendra_index["id"],
-///     name="Example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     s3_path={
 ///         "bucket": example_aws_s3_bucket["id"],
 ///         "key": example_aws_s3_object["key"],
 ///     },
+///     index_id=example_aws_kendra_index["id"],
+///     name="Example",
+///     role_arn=example_aws_iam_role["arn"],
 ///     tags={
 ///         "Name": "Example Kendra Faq",
 ///     })
@@ -53,14 +53,14 @@ import 'faq_state.dart';
 /// {
 ///     var example = new Aws.Kendra.Faq("example", new()
 ///     {
-///         IndexId = exampleAwsKendraIndex.Id,
-///         Name = "Example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         S3Path = new Aws.Kendra.Inputs.FaqS3PathArgs
 ///         {
 ///             Bucket = exampleAwsS3Bucket.Id,
 ///             Key = exampleAwsS3Object.Key,
 ///         },
+///         IndexId = exampleAwsKendraIndex.Id,
+///         Name = "Example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///         Tags =
 ///         {
 ///             { "Name", "Example Kendra Faq" },
@@ -80,13 +80,13 @@ import 'faq_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewFaq(ctx, "example", &kendra.FaqArgs{
-/// 			IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
-/// 			Name:    pulumi.String("Example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			S3Path: &kendra.FaqS3PathArgs{
 /// 				Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 				Key:    pulumi.Any(exampleAwsS3Object.Key),
 /// 			},
+/// 			IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
+/// 			Name:    pulumi.String("Example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Kendra Faq"),
 /// 			},
@@ -108,13 +108,13 @@ import 'faq_state.dart';
 /// }
 ///
 /// resource "aws_kendra_faq" "example" {
-///   index_id = exampleAwsKendraIndex.id
-///   name     = "Example"
-///   role_arn = exampleAwsIamRole.arn
 ///   s3_path = {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "Example"
+///   role_arn = exampleAwsIamRole.arn
 ///   tags = {
 ///     "Name" = "Example Kendra Faq"
 ///   }
@@ -143,13 +143,13 @@ import 'faq_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Faq("example", FaqArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
-///             .name("Example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .s3Path(FaqS3PathArgs.builder()
 ///                 .bucket(exampleAwsS3Bucket.id())
 ///                 .key(exampleAwsS3Object.key())
 ///                 .build())
+///             .indexId(exampleAwsKendraIndex.id())
+///             .name("Example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .tags(Map.of("Name", "Example Kendra Faq"))
 ///             .build());
 ///
@@ -161,12 +161,12 @@ import 'faq_state.dart';
 ///   example:
 ///     type: aws:kendra:Faq
 ///     properties:
-///       indexId: ${exampleAwsKendraIndex.id}
-///       name: Example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       s3Path:
 ///         bucket: ${exampleAwsS3Bucket.id}
 ///         key: ${exampleAwsS3Object.key}
+///       indexId: ${exampleAwsKendraIndex.id}
+///       name: Example
+///       roleArn: ${exampleAwsIamRole.arn}
 ///       tags:
 ///         Name: Example Kendra Faq
 /// ```
@@ -180,14 +180,14 @@ import 'faq_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Faq("example", {
-///     indexId: exampleAwsKendraIndex.id,
-///     name: "Example",
-///     fileFormat: "CSV",
-///     roleArn: exampleAwsIamRole.arn,
 ///     s3Path: {
 ///         bucket: exampleAwsS3Bucket.id,
 ///         key: exampleAwsS3Object.key,
 ///     },
+///     indexId: exampleAwsKendraIndex.id,
+///     name: "Example",
+///     fileFormat: "CSV",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -195,14 +195,14 @@ import 'faq_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Faq("example",
-///     index_id=example_aws_kendra_index["id"],
-///     name="Example",
-///     file_format="CSV",
-///     role_arn=example_aws_iam_role["arn"],
 ///     s3_path={
 ///         "bucket": example_aws_s3_bucket["id"],
 ///         "key": example_aws_s3_object["key"],
-///     })
+///     },
+///     index_id=example_aws_kendra_index["id"],
+///     name="Example",
+///     file_format="CSV",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -214,15 +214,15 @@ import 'faq_state.dart';
 /// {
 ///     var example = new Aws.Kendra.Faq("example", new()
 ///     {
-///         IndexId = exampleAwsKendraIndex.Id,
-///         Name = "Example",
-///         FileFormat = "CSV",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         S3Path = new Aws.Kendra.Inputs.FaqS3PathArgs
 ///         {
 ///             Bucket = exampleAwsS3Bucket.Id,
 ///             Key = exampleAwsS3Object.Key,
 ///         },
+///         IndexId = exampleAwsKendraIndex.Id,
+///         Name = "Example",
+///         FileFormat = "CSV",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -238,14 +238,14 @@ import 'faq_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewFaq(ctx, "example", &kendra.FaqArgs{
-/// 			IndexId:    pulumi.Any(exampleAwsKendraIndex.Id),
-/// 			Name:       pulumi.String("Example"),
-/// 			FileFormat: pulumi.String("CSV"),
-/// 			RoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			S3Path: &kendra.FaqS3PathArgs{
 /// 				Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 				Key:    pulumi.Any(exampleAwsS3Object.Key),
 /// 			},
+/// 			IndexId:    pulumi.Any(exampleAwsKendraIndex.Id),
+/// 			Name:       pulumi.String("Example"),
+/// 			FileFormat: pulumi.String("CSV"),
+/// 			RoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -264,14 +264,14 @@ import 'faq_state.dart';
 /// }
 ///
 /// resource "aws_kendra_faq" "example" {
-///   index_id    = exampleAwsKendraIndex.id
-///   name        = "Example"
-///   file_format = "CSV"
-///   role_arn    = exampleAwsIamRole.arn
 ///   s3_path = {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
+///   index_id    = exampleAwsKendraIndex.id
+///   name        = "Example"
+///   file_format = "CSV"
+///   role_arn    = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -297,14 +297,14 @@ import 'faq_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Faq("example", FaqArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
-///             .name("Example")
-///             .fileFormat("CSV")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .s3Path(FaqS3PathArgs.builder()
 ///                 .bucket(exampleAwsS3Bucket.id())
 ///                 .key(exampleAwsS3Object.key())
 ///                 .build())
+///             .indexId(exampleAwsKendraIndex.id())
+///             .name("Example")
+///             .fileFormat("CSV")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -315,13 +315,13 @@ import 'faq_state.dart';
 ///   example:
 ///     type: aws:kendra:Faq
 ///     properties:
+///       s3Path:
+///         bucket: ${exampleAwsS3Bucket.id}
+///         key: ${exampleAwsS3Object.key}
 ///       indexId: ${exampleAwsKendraIndex.id}
 ///       name: Example
 ///       fileFormat: CSV
 ///       roleArn: ${exampleAwsIamRole.arn}
-///       s3Path:
-///         bucket: ${exampleAwsS3Bucket.id}
-///         key: ${exampleAwsS3Object.key}
 /// ```
 ///
 ///
@@ -333,14 +333,14 @@ import 'faq_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Faq("example", {
-///     indexId: exampleAwsKendraIndex.id,
-///     name: "Example",
-///     languageCode: "en",
-///     roleArn: exampleAwsIamRole.arn,
 ///     s3Path: {
 ///         bucket: exampleAwsS3Bucket.id,
 ///         key: exampleAwsS3Object.key,
 ///     },
+///     indexId: exampleAwsKendraIndex.id,
+///     name: "Example",
+///     languageCode: "en",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -348,14 +348,14 @@ import 'faq_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Faq("example",
-///     index_id=example_aws_kendra_index["id"],
-///     name="Example",
-///     language_code="en",
-///     role_arn=example_aws_iam_role["arn"],
 ///     s3_path={
 ///         "bucket": example_aws_s3_bucket["id"],
 ///         "key": example_aws_s3_object["key"],
-///     })
+///     },
+///     index_id=example_aws_kendra_index["id"],
+///     name="Example",
+///     language_code="en",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -367,15 +367,15 @@ import 'faq_state.dart';
 /// {
 ///     var example = new Aws.Kendra.Faq("example", new()
 ///     {
-///         IndexId = exampleAwsKendraIndex.Id,
-///         Name = "Example",
-///         LanguageCode = "en",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         S3Path = new Aws.Kendra.Inputs.FaqS3PathArgs
 ///         {
 ///             Bucket = exampleAwsS3Bucket.Id,
 ///             Key = exampleAwsS3Object.Key,
 ///         },
+///         IndexId = exampleAwsKendraIndex.Id,
+///         Name = "Example",
+///         LanguageCode = "en",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -391,14 +391,14 @@ import 'faq_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewFaq(ctx, "example", &kendra.FaqArgs{
-/// 			IndexId:      pulumi.Any(exampleAwsKendraIndex.Id),
-/// 			Name:         pulumi.String("Example"),
-/// 			LanguageCode: pulumi.String("en"),
-/// 			RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 			S3Path: &kendra.FaqS3PathArgs{
 /// 				Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 				Key:    pulumi.Any(exampleAwsS3Object.Key),
 /// 			},
+/// 			IndexId:      pulumi.Any(exampleAwsKendraIndex.Id),
+/// 			Name:         pulumi.String("Example"),
+/// 			LanguageCode: pulumi.String("en"),
+/// 			RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -417,14 +417,14 @@ import 'faq_state.dart';
 /// }
 ///
 /// resource "aws_kendra_faq" "example" {
-///   index_id      = exampleAwsKendraIndex.id
-///   name          = "Example"
-///   language_code = "en"
-///   role_arn      = exampleAwsIamRole.arn
 ///   s3_path = {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
+///   index_id      = exampleAwsKendraIndex.id
+///   name          = "Example"
+///   language_code = "en"
+///   role_arn      = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -450,14 +450,14 @@ import 'faq_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Faq("example", FaqArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
-///             .name("Example")
-///             .languageCode("en")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .s3Path(FaqS3PathArgs.builder()
 ///                 .bucket(exampleAwsS3Bucket.id())
 ///                 .key(exampleAwsS3Object.key())
 ///                 .build())
+///             .indexId(exampleAwsKendraIndex.id())
+///             .name("Example")
+///             .languageCode("en")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -468,13 +468,13 @@ import 'faq_state.dart';
 ///   example:
 ///     type: aws:kendra:Faq
 ///     properties:
+///       s3Path:
+///         bucket: ${exampleAwsS3Bucket.id}
+///         key: ${exampleAwsS3Object.key}
 ///       indexId: ${exampleAwsKendraIndex.id}
 ///       name: Example
 ///       languageCode: en
 ///       roleArn: ${exampleAwsIamRole.arn}
-///       s3Path:
-///         bucket: ${exampleAwsS3Bucket.id}
-///         key: ${exampleAwsS3Object.key}
 /// ```
 ///
 ///
@@ -503,7 +503,7 @@ class Faq extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+  /// ARN of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   late final pulumi.Output<String> roleArn;
   /// The S3 location of the FAQ input data. Detailed below.
   late final pulumi.Output<FaqS3Path> s3Path;
@@ -527,7 +527,7 @@ class Faq extends pulumi.CustomResource {
           'aws:kendra/faq:Faq',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -542,8 +542,8 @@ class Faq extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     s3Path = registerOutput<FaqS3Path>('s3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FaqS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -552,11 +552,12 @@ class Faq extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FaqState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Faq._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -583,8 +584,35 @@ class Faq extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     s3Path = registerOutput<FaqS3Path>('s3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FaqS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [Faq] resource.
+  Faq.reference(String urn)
+    : super(
+        'aws:kendra/faq:Faq',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    errorMessage = registerOutput<String>('errorMessage');
+    faqId = registerOutput<String>('faqId');
+    fileFormat = registerOutput<String?>('fileFormat');
+    indexId = registerOutput<String>('indexId');
+    languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    s3Path = registerOutput<FaqS3Path>('s3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FaqS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

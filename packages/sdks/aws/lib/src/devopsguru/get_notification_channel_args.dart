@@ -10,13 +10,13 @@ import 'get_notification_channel_sn.dart';
 /// {@macro pulumi_devopsguru_get_notification_channel_get_notification_channel_args_doc}
 class GetNotificationChannelArgs {
   /// Filter configurations for the Amazon SNS notification topic. See the `filters` attribute reference below.
-  final pulumi.Input<List<GetNotificationChannelFilter>>? filters;
+  final pulumi.Input<List<GetNotificationChannelFilter>?>? filters;
   /// Unique identifier for the notification channel.
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// SNS noficiation channel configurations. See the `sns` attribute reference below.
-  final pulumi.Input<List<GetNotificationChannelSn>>? sns;
+  final pulumi.Input<List<GetNotificationChannelSn>?>? sns;
 
   /// Creates a new [GetNotificationChannelArgs].
   /// [filters] Filter configurations for the Amazon SNS notification topic. See the `filters` attribute reference below.

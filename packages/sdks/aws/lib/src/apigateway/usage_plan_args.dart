@@ -11,21 +11,21 @@ import 'usage_plan_throttle_settings.dart';
 /// {@macro pulumi_apigateway_usage_plan_usage_plan_args_doc}
 class UsagePlanArgs {
   /// Associated API stages of the usage plan. See `apiStages` Block below.
-  final pulumi.Input<List<UsagePlanApiStage>>? apiStages;
+  final pulumi.Input<List<UsagePlanApiStage>?>? apiStages;
   /// Description of a usage plan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the usage plan.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// Quota settings of the usage plan. See `quotaSettings` Block below.
-  final pulumi.Input<UsagePlanQuotaSettings>? quotaSettings;
+  final pulumi.Input<UsagePlanQuotaSettings?>? quotaSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Throttling limits of the usage plan. See `throttleSettings` Block below.
-  final pulumi.Input<UsagePlanThrottleSettings>? throttleSettings;
+  final pulumi.Input<UsagePlanThrottleSettings?>? throttleSettings;
 
   /// Creates a new [UsagePlanArgs].
   /// [apiStages] Associated API stages of the usage plan. See `apiStages` Block below.

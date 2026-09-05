@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSecondaryIndexProjection {
   /// Specifies which additional attributes to include in the index.
   /// Only valid when `projectionType` is `INCLUDE`.`
-  final pulumi.Input<List<String>>? nonKeyAttributes;
+  final pulumi.Input<List<String>?>? nonKeyAttributes;
   /// The set of attributes represented in the index.
   /// One of `ALL`, `INCLUDE`, or `KEYS_ONLY`.
   final pulumi.Input<String> projectionType;

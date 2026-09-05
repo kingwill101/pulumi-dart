@@ -305,9 +305,9 @@ class Policy extends pulumi.CustomResource {
           'aws:appautoscaling/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    alarmArns = registerOutput<List<String>>('alarmArns');
+    alarmArns = registerOutput<List<String>>('alarmArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     policyType = registerOutput<String?>('policyType');
@@ -325,11 +325,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,7 +344,29 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    alarmArns = registerOutput<List<String>>('alarmArns');
+    alarmArns = registerOutput<List<String>>('alarmArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    policyType = registerOutput<String?>('policyType');
+    predictiveScalingPolicyConfiguration = registerOutput<PolicyPredictiveScalingPolicyConfiguration?>('predictiveScalingPolicyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPredictiveScalingPolicyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    scalableDimension = registerOutput<String>('scalableDimension');
+    serviceNamespace = registerOutput<String>('serviceNamespace');
+    stepScalingPolicyConfiguration = registerOutput<PolicyStepScalingPolicyConfiguration?>('stepScalingPolicyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyStepScalingPolicyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetTrackingScalingPolicyConfiguration = registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>('targetTrackingScalingPolicyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTargetTrackingScalingPolicyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'aws:appautoscaling/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alarmArns = registerOutput<List<String>>('alarmArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     policyType = registerOutput<String?>('policyType');
