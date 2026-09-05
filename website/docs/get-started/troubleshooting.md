@@ -62,17 +62,17 @@ Keep this consistent for a given stack to avoid decrypt/encrypt mismatch errors.
 
 ## Generated package missing a transitive dependency
 
-First update the relevant provider deliberately so schema references and
-generated metadata are refreshed together:
+Regenerate the relevant provider so generated metadata is refreshed even when
+its upstream schema is already current:
 
 ```bash
-repodoc packages:update --provider <provider>
+dart run repodoc packages:generate --provider <provider>
 ```
 
 If the upstream schema still lacks Dart-specific dependency metadata, supply an
 external registry with `PULUMI_DART_DEPENDENCY_REGISTRY` or
-`PULUMI_DART_DEPENDENCY_REGISTRY_URL`, regenerate the package, and rerun
-`dart pub get`.
+`PULUMI_DART_DEPENDENCY_REGISTRY_URL`, run the generation command again, and
+rerun `dart pub get`.
 
 ## Next steps
 

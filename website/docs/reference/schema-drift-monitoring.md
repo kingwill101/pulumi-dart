@@ -67,6 +67,13 @@ dart run repodoc packages:update --provider <provider>
 dart run repodoc schema:check --provider <provider>
 ```
 
+If the schema checksum changed without an upstream version bump, explicitly
+allow that exceptional update:
+
+```bash
+dart run repodoc packages:update --provider <provider> --allow-same-version
+```
+
 Commit the updated schema under `packages/sdks/schemas/` together with the
 regenerated package under `packages/sdks/<provider>/`.
 
