@@ -10,17 +10,17 @@ import 'resource_metric_source_patch_autoscaling_v2beta1.dart';
 /// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).
 class MetricSpecPatchAutoscalingV2beta1 {
   /// container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.
-  final pulumi.Input<ContainerResourceMetricSourcePatchAutoscalingV2beta1>? containerResource;
+  final pulumi.Input<ContainerResourceMetricSourcePatchAutoscalingV2beta1?>? containerResource;
   /// external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
-  final pulumi.Input<ExternalMetricSourcePatchAutoscalingV2beta1>? external;
+  final pulumi.Input<ExternalMetricSourcePatchAutoscalingV2beta1?>? external;
   /// object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
-  final pulumi.Input<ObjectMetricSourcePatchAutoscalingV2beta1>? object_;
+  final pulumi.Input<ObjectMetricSourcePatchAutoscalingV2beta1?>? object_;
   /// pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value.
-  final pulumi.Input<PodsMetricSourcePatchAutoscalingV2beta1>? pods;
+  final pulumi.Input<PodsMetricSourcePatchAutoscalingV2beta1?>? pods;
   /// resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
-  final pulumi.Input<ResourceMetricSourcePatchAutoscalingV2beta1>? resource;
+  final pulumi.Input<ResourceMetricSourcePatchAutoscalingV2beta1?>? resource;
   /// type is the type of metric source.  It should be one of "Object", "Pods" or "Resource", each mapping to a matching field in the object.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [MetricSpecPatchAutoscalingV2beta1].
   /// [containerResource] container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.

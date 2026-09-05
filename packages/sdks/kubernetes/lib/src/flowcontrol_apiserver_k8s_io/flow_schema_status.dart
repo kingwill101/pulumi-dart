@@ -6,7 +6,7 @@ import 'flow_schema_condition.dart';
 /// FlowSchemaStatus represents the current state of a FlowSchema.
 class FlowSchemaStatus {
   /// `conditions` is a list of the current states of FlowSchema.
-  final pulumi.Input<List<FlowSchemaCondition>>? conditions;
+  final pulumi.Input<List<FlowSchemaCondition>?>? conditions;
 
   /// Creates a new [FlowSchemaStatus].
   /// [conditions] `conditions` is a list of the current states of FlowSchema.

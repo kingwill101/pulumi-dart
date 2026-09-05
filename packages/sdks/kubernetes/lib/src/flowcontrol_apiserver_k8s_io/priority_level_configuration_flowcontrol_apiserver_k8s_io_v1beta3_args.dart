@@ -10,13 +10,13 @@ import 'priority_level_configuration_spec_flowcontrol_apiserver_k8s_io_v1beta3.d
 /// {@macro pulumi_flowcontrol_apiserver_k8s_io_v1beta3_priority_level_configuration_flowcontrol_apiserver_k8s_io_v1beta3_args_doc}
 class PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta3>? spec;
+  final pulumi.Input<PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta3?>? spec;
 
   /// Creates a new [PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

@@ -45,4 +45,19 @@ class DeviceClassPatchResource extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<DeviceClassSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceClassSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [DeviceClassPatchResource] resource.
+  DeviceClassPatchResource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha3:DeviceClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<DeviceClassSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceClassSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -32,4 +32,19 @@ class AuditSinkAuditregistrationK8sIoV1alpha1 extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<AuditSinkSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuditSinkSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [AuditSinkAuditregistrationK8sIoV1alpha1] resource.
+  AuditSinkAuditregistrationK8sIoV1alpha1.reference(String urn)
+    : super(
+        'kubernetes:auditregistration.k8s.io/v1alpha1:AuditSink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<AuditSinkSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuditSinkSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

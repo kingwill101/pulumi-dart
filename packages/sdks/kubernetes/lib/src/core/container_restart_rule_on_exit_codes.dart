@@ -10,7 +10,7 @@ class ContainerRestartRuleOnExitCodes {
   /// not in the set of specified values.
   final pulumi.Input<String> operator;
   /// Specifies the set of values to check for container exit codes. At most 255 elements are allowed.
-  final pulumi.Input<List<int>>? values;
+  final pulumi.Input<List<int>?>? values;
 
   /// Creates a new [ContainerRestartRuleOnExitCodes].
   /// [operator] Represents the relationship between the container exit code(s) and the specified values. Possible values are: - In: the requirement is satisfied if the container exit code is in the

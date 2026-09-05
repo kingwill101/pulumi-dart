@@ -7,9 +7,9 @@ import 'resource_claim_spec_patch.dart';
 /// ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.
 class ResourceClaimTemplateSpecPatch {
   /// ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation.
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.
-  final pulumi.Input<ResourceClaimSpecPatch>? spec;
+  final pulumi.Input<ResourceClaimSpecPatch?>? spec;
 
   /// Creates a new [ResourceClaimTemplateSpecPatch].
   /// [metadata] ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation.

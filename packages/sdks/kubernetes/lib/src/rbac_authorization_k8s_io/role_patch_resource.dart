@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
+import 'policy_rule_patch_rbac_authorization_k8s_io_v1alpha1.dart';
 import 'role_patch_rbac_authorization_k8s_io_v1alpha1_args.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
@@ -17,7 +18,7 @@ class RolePatchResource extends pulumi.CustomResource {
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// Rules holds all the PolicyRules for this Role
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?> rules;
 
   /// Creates a new [RolePatchResource].
   /// [name] The Pulumi resource name.
@@ -36,6 +37,21 @@ class RolePatchResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>(guardedValue, (value) => PolicyRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RolePatchResource] resource.
+  RolePatchResource.reference(String urn)
+    : super(
+        'kubernetes:rbac.authorization.k8s.io/v1alpha1:RolePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rules = registerOutput<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>(guardedValue, (value) => PolicyRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

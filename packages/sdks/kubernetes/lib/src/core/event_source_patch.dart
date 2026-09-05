@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// EventSource contains information for an event.
 class EventSourcePatch {
   /// Component from which the event is generated.
-  final pulumi.Input<String>? component;
+  final pulumi.Input<String?>? component;
   /// Node name on which the event is generated.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
 
   /// Creates a new [EventSourcePatch].
   /// [component] Component from which the event is generated.

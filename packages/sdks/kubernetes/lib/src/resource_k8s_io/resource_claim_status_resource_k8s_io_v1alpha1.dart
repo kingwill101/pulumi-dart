@@ -7,19 +7,19 @@ import 'resource_claim_consumer_reference_resource_k8s_io_v1alpha1.dart';
 /// ResourceClaimStatus tracks whether the resource has been allocated and what the resulting attributes are.
 class ResourceClaimStatusResourceK8sIoV1alpha1 {
   /// Allocation is set by the resource driver once a resource has been allocated successfully. If this is not specified, the resource is not yet allocated.
-  final pulumi.Input<AllocationResultResourceK8sIoV1alpha1>? allocation;
+  final pulumi.Input<AllocationResultResourceK8sIoV1alpha1?>? allocation;
   /// DeallocationRequested indicates that a ResourceClaim is to be deallocated.
   ///
   /// The driver then must deallocate this claim and reset the field together with clearing the Allocation field.
   ///
   /// While DeallocationRequested is set, no new consumers may be added to ReservedFor.
-  final pulumi.Input<bool>? deallocationRequested;
+  final pulumi.Input<bool?>? deallocationRequested;
   /// DriverName is a copy of the driver name from the ResourceClass at the time when allocation started.
-  final pulumi.Input<String>? driverName;
+  final pulumi.Input<String?>? driverName;
   /// ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started.
   ///
   /// There can be at most 32 such reservations. This may get increased in the future, but not reduced.
-  final pulumi.Input<List<ResourceClaimConsumerReferenceResourceK8sIoV1alpha1>>? reservedFor;
+  final pulumi.Input<List<ResourceClaimConsumerReferenceResourceK8sIoV1alpha1>?>? reservedFor;
 
   /// Creates a new [ResourceClaimStatusResourceK8sIoV1alpha1].
   /// [allocation] Allocation is set by the resource driver once a resource has been allocated successfully. If this is not specified, the resource is not yet allocated.

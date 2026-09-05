@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeAddress contains information for the node's address.
 class NodeAddressPatch {
   /// The node address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Node address type, one of Hostname, ExternalIP or InternalIP.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NodeAddressPatch].
   /// [address] The node address.

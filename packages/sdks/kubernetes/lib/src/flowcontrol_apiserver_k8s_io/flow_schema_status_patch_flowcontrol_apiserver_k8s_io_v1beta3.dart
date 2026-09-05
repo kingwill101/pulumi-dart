@@ -6,7 +6,7 @@ import 'flow_schema_condition_patch_flowcontrol_apiserver_k8s_io_v1beta3.dart';
 /// FlowSchemaStatus represents the current state of a FlowSchema.
 class FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta3 {
   /// `conditions` is a list of the current states of FlowSchema.
-  final pulumi.Input<List<FlowSchemaConditionPatchFlowcontrolApiserverK8sIoV1beta3>>? conditions;
+  final pulumi.Input<List<FlowSchemaConditionPatchFlowcontrolApiserverK8sIoV1beta3>?>? conditions;
 
   /// Creates a new [FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta3].
   /// [conditions] `conditions` is a list of the current states of FlowSchema.

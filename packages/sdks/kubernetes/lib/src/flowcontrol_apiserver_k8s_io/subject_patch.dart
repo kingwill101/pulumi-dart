@@ -8,13 +8,13 @@ import 'user_subject_patch.dart';
 /// Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
 class SubjectPatch {
   /// `group` matches based on user group name.
-  final pulumi.Input<GroupSubjectPatch>? group;
+  final pulumi.Input<GroupSubjectPatch?>? group;
   /// `kind` indicates which one of the other fields is non-empty. Required
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// `serviceAccount` matches ServiceAccounts.
-  final pulumi.Input<ServiceAccountSubjectPatch>? serviceAccount;
+  final pulumi.Input<ServiceAccountSubjectPatch?>? serviceAccount;
   /// `user` matches based on username.
-  final pulumi.Input<UserSubjectPatch>? user;
+  final pulumi.Input<UserSubjectPatch?>? user;
 
   /// Creates a new [SubjectPatch].
   /// [group] `group` matches based on user group name.

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// JobCondition describes current state of a job.
 class JobConditionPatch {
   /// Last time the condition was checked.
-  final pulumi.Input<String>? lastProbeTime;
+  final pulumi.Input<String?>? lastProbeTime;
   /// Last time the condition transit from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// Human readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (brief) reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of job condition, Complete or Failed.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JobConditionPatch].
   /// [lastProbeTime] Last time the condition was checked.

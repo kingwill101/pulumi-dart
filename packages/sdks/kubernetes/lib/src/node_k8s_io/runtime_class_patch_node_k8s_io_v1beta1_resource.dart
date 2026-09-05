@@ -46,4 +46,21 @@ class RuntimeClassPatchNodeK8sIoV1beta1Resource extends pulumi.CustomResource {
     overhead = registerOutput<OverheadPatchNodeK8sIoV1beta1?>('overhead', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OverheadPatchNodeK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduling = registerOutput<SchedulingPatchNodeK8sIoV1beta1?>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPatchNodeK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [RuntimeClassPatchNodeK8sIoV1beta1Resource] resource.
+  RuntimeClassPatchNodeK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:node.k8s.io/v1beta1:RuntimeClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    handler = registerOutput<String?>('handler');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overhead = registerOutput<OverheadPatchNodeK8sIoV1beta1?>('overhead', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OverheadPatchNodeK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduling = registerOutput<SchedulingPatchNodeK8sIoV1beta1?>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPatchNodeK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

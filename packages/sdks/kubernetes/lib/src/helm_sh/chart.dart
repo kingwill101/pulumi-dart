@@ -368,7 +368,7 @@ import 'chart_args.dart';
 /// // Create a ConfigMap depending on the Chart. The ConfigMap will not be created until after all of the Chart
 /// // resources are ready. Note the use of the `ready` attribute; depending on the Chart resource directly will not work.
 /// new k8s.core.v1.ConfigMap("foo", {
-///     metadata: { namespace: namespaceName },
+///     metadata: { namespace: "test-namespace" },
 ///     data: {foo: "bar"}
 /// }, {dependsOn: nginxIngress.ready})
 /// ```
@@ -443,7 +443,7 @@ import 'chart_args.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := helm.NewChart(ctx, "nginx-ingress", helm.ChartArgs{
+/// 		nginxIngress, err := helm.NewChart(ctx, "nginx-ingress", helm.ChartArgs{
 /// 			Chart:     pulumi.String("nginx-ingress"),
 /// 			Version:   pulumi.String("1.24.4"),
 /// 			Namespace: pulumi.String("test-namespace"),
@@ -462,7 +462,7 @@ import 'chart_args.dart';
 /// 			Data: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
-/// 		}, pulumi.DependsOnInputs(chart.Ready))
+/// 		}, pulumi.DependsOnInputs(nginxIngress.Ready))
 /// 		if err != nil {
 /// 			return err
 /// 		}

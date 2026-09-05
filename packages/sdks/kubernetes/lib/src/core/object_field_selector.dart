@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ObjectFieldSelector selects an APIVersioned field of an object.
 class ObjectFieldSelector {
   /// Version of the schema the FieldPath is written in terms of, defaults to "v1".
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Path of the field to select in the specified API version.
   final pulumi.Input<String> fieldPath;
 

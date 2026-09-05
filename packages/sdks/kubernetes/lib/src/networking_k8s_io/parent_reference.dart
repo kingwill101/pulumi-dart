@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ParentReference describes a reference to a parent object.
 class ParentReference {
-  /// Group is the group of the object being referenced.
-  final pulumi.Input<String>? group;
-  /// Name is the name of the object being referenced.
+  /// group is the group of the object being referenced.
+  final pulumi.Input<String?>? group;
+  /// name is the name of the object being referenced.
   final pulumi.Input<String> name;
-  /// Namespace is the namespace of the object being referenced.
-  final pulumi.Input<String>? namespace;
-  /// Resource is the resource of the object being referenced.
+  /// namespace is the namespace of the object being referenced.
+  final pulumi.Input<String?>? namespace;
+  /// resource is the resource of the object being referenced.
   final pulumi.Input<String> resource;
 
   /// Creates a new [ParentReference].
-  /// [group] Group is the group of the object being referenced.
-  /// [name] Name is the name of the object being referenced.
-  /// [namespace] Namespace is the namespace of the object being referenced.
-  /// [resource] Resource is the resource of the object being referenced.
+  /// [group] group is the group of the object being referenced.
+  /// [name] name is the name of the object being referenced.
+  /// [namespace] namespace is the namespace of the object being referenced.
+  /// [resource] resource is the resource of the object being referenced.
   const ParentReference({
     this.group,
     required this.name,

@@ -7,17 +7,17 @@ import 'resource_attributes_patch.dart';
 /// SubjectAccessReviewSpec is a description of the access request.  Exactly one of resourceAttributes and nonResourceAttributes must be set
 class SubjectAccessReviewSpecPatch {
   /// extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.
-  final pulumi.Input<Map<String, List<String>>>? extra;
+  final pulumi.Input<Map<String, List<String>>?>? extra;
   /// groups is the groups you're testing for.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// nonResourceAttributes describes information for a non-resource access request
-  final pulumi.Input<NonResourceAttributesPatch>? nonResourceAttributes;
+  final pulumi.Input<NonResourceAttributesPatch?>? nonResourceAttributes;
   /// resourceAttributes describes information for a resource access request
-  final pulumi.Input<ResourceAttributesPatch>? resourceAttributes;
+  final pulumi.Input<ResourceAttributesPatch?>? resourceAttributes;
   /// uid information about the requesting user.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// user is the user you're testing for. If you specify "User" but not "Groups", then is it interpreted as "What if User were not a member of any groups
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [SubjectAccessReviewSpecPatch].
   /// [extra] extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.
@@ -48,7 +48,7 @@ class SubjectAccessReviewSpecPatch {
 
   factory SubjectAccessReviewSpecPatch.fromMap(Map<String, dynamic> map) {
     return SubjectAccessReviewSpecPatch(
-      extra: (() { final guardedValue = map['extra']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      extra: (() { final guardedValue = map['extra']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       nonResourceAttributes: (() { final guardedValue = map['nonResourceAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NonResourceAttributesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceAttributes: (() { final guardedValue = map['resourceAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceAttributesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

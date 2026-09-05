@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// LimitRangeItem defines a min/max usage limit for any resource that matches on kind.
 class LimitRangeItem {
   /// Default resource requirement limit value by resource name if resource limit is omitted.
-  final pulumi.Input<Map<String, String>>? default_;
+  final pulumi.Input<Map<String, String>?>? default_;
   /// DefaultRequest is the default resource requirement request value by resource name if resource request is omitted.
-  final pulumi.Input<Map<String, String>>? defaultRequest;
+  final pulumi.Input<Map<String, String>?>? defaultRequest;
   /// Max usage constraints on this kind by resource name.
-  final pulumi.Input<Map<String, String>>? max;
+  final pulumi.Input<Map<String, String>?>? max;
   /// MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource.
-  final pulumi.Input<Map<String, String>>? maxLimitRequestRatio;
+  final pulumi.Input<Map<String, String>?>? maxLimitRequestRatio;
   /// Min usage constraints on this kind by resource name.
-  final pulumi.Input<Map<String, String>>? min;
+  final pulumi.Input<Map<String, String>?>? min;
   /// Type of resource that this limit applies to.
   final pulumi.Input<String> type;
 

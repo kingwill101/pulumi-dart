@@ -21,7 +21,7 @@ class GangSchedulingPolicy {
 
   factory GangSchedulingPolicy.fromMap(Map<String, dynamic> map) {
     return GangSchedulingPolicy(
-      minCount: pulumi.Input.fromValue(map['minCount'] as int),
+      minCount: pulumi.Input.fromValue((map['minCount'] as num).toInt()),
     );
   }
 }

@@ -52,4 +52,20 @@ class StatefulSetResource extends pulumi.CustomResource {
     spec = registerOutput<StatefulSetSpecAppsV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulSetSpecAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<StatefulSetStatusAppsV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulSetStatusAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [StatefulSetResource] resource.
+  StatefulSetResource.reference(String urn)
+    : super(
+        'kubernetes:apps/v1beta1:StatefulSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<StatefulSetSpecAppsV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulSetSpecAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StatefulSetStatusAppsV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulSetStatusAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

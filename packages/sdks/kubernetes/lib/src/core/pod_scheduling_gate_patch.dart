@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PodSchedulingGate is associated to a Pod to guard its scheduling.
 class PodSchedulingGatePatch {
   /// Name of the scheduling gate. Each scheduling gate must have a unique name field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PodSchedulingGatePatch].
   /// [name] Name of the scheduling gate. Each scheduling gate must have a unique name field.

@@ -10,15 +10,15 @@ import 'secret_key_selector_patch.dart';
 /// EnvVarSource represents a source for the value of an EnvVar.
 class EnvVarSourcePatch {
   /// Selects a key of a ConfigMap.
-  final pulumi.Input<ConfigMapKeySelectorPatch>? configMapKeyRef;
+  final pulumi.Input<ConfigMapKeySelectorPatch?>? configMapKeyRef;
   /// Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['&lt;KEY&gt;']`, `metadata.annotations['&lt;KEY&gt;']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
-  final pulumi.Input<ObjectFieldSelectorPatch>? fieldRef;
+  final pulumi.Input<ObjectFieldSelectorPatch?>? fieldRef;
   /// FileKeyRef selects a key of the env file. Requires the EnvFiles feature gate to be enabled.
-  final pulumi.Input<FileKeySelectorPatch>? fileKeyRef;
+  final pulumi.Input<FileKeySelectorPatch?>? fileKeyRef;
   /// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
-  final pulumi.Input<ResourceFieldSelectorPatch>? resourceFieldRef;
+  final pulumi.Input<ResourceFieldSelectorPatch?>? resourceFieldRef;
   /// Selects a key of a secret in the pod's namespace
-  final pulumi.Input<SecretKeySelectorPatch>? secretKeyRef;
+  final pulumi.Input<SecretKeySelectorPatch?>? secretKeyRef;
 
   /// Creates a new [EnvVarSourcePatch].
   /// [configMapKeyRef] Selects a key of a ConfigMap.

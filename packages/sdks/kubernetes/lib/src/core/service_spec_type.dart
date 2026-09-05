@@ -1,10 +1,13 @@
-enum ServiceSpecType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ServiceSpecType implements pulumi.PulumiEnum<String> {
   valueExternalName("ExternalName"),
   valueClusterIP("ClusterIP"),
   valueNodePort("NodePort"),
   valueLoadBalancer("LoadBalancer");
 
   const ServiceSpecType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceSpecType fromValue(String value) {

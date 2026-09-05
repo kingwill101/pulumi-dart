@@ -8,7 +8,7 @@ class SELinuxStrategyOptions {
   /// rule is the strategy that will dictate the allowable labels that may be set.
   final pulumi.Input<String> rule;
   /// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-  final pulumi.Input<SELinuxOptions>? seLinuxOptions;
+  final pulumi.Input<SELinuxOptions?>? seLinuxOptions;
 
   /// Creates a new [SELinuxStrategyOptions].
   /// [rule] rule is the strategy that will dictate the allowable labels that may be set.

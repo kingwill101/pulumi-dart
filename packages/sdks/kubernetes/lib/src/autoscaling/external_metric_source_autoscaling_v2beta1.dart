@@ -8,11 +8,11 @@ class ExternalMetricSourceAutoscalingV2beta1 {
   /// metricName is the name of the metric in question.
   final pulumi.Input<String> metricName;
   /// metricSelector is used to identify a specific time series within a given metric.
-  final pulumi.Input<LabelSelector>? metricSelector;
+  final pulumi.Input<LabelSelector?>? metricSelector;
   /// targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.
-  final pulumi.Input<String>? targetAverageValue;
+  final pulumi.Input<String?>? targetAverageValue;
   /// targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.
-  final pulumi.Input<String>? targetValue;
+  final pulumi.Input<String?>? targetValue;
 
   /// Creates a new [ExternalMetricSourceAutoscalingV2beta1].
   /// [metricName] metricName is the name of the metric in question.

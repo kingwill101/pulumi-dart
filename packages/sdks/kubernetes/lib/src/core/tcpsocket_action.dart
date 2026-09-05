@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// TCPSocketAction describes an action based on opening a socket
 class TCPSocketAction {
   /// Optional: Host name to connect to, defaults to the pod IP.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-  final pulumi.Input<int> port;
+  final pulumi.Input<dynamic> port;
 
   /// Creates a new [TCPSocketAction].
   /// [host] Optional: Host name to connect to, defaults to the pod IP.
@@ -27,7 +27,7 @@ class TCPSocketAction {
   factory TCPSocketAction.fromMap(Map<String, dynamic> map) {
     return TCPSocketAction(
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(map['port']),
     );
   }
 }

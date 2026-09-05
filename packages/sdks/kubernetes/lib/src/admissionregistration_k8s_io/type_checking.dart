@@ -6,7 +6,7 @@ import 'expression_warning.dart';
 /// TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy
 class TypeChecking {
   /// expressionWarnings contains the type checking warnings for each expression.
-  final pulumi.Input<List<ExpressionWarning>>? expressionWarnings;
+  final pulumi.Input<List<ExpressionWarning>?>? expressionWarnings;
 
   /// Creates a new [TypeChecking].
   /// [expressionWarnings] expressionWarnings contains the type checking warnings for each expression.

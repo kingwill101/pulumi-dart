@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DaemonSetCondition describes the state of a DaemonSet at a certain point.
 class DaemonSetConditionPatch {
   /// Last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// A human readable message indicating details about the transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of DaemonSet condition.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DaemonSetConditionPatch].
   /// [lastTransitionTime] Last time the condition transitioned from one status to another.

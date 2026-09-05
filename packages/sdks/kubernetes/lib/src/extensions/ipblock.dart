@@ -7,7 +7,7 @@ class IPBlock {
   /// CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
   final pulumi.Input<String> cidr;
   /// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
-  final pulumi.Input<List<String>>? except;
+  final pulumi.Input<List<String>?>? except;
 
   /// Creates a new [IPBlock].
   /// [cidr] CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"

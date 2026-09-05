@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification defining the Helm chart repository to use.
 class RepositoryOpts {
   /// The Repository's CA File
-  final pulumi.Input<String>? caFile;
+  final pulumi.Input<String?>? caFile;
   /// The repository's cert file
-  final pulumi.Input<String>? certFile;
+  final pulumi.Input<String?>? certFile;
   /// The repository's cert key file
-  final pulumi.Input<String>? keyFile;
+  final pulumi.Input<String?>? keyFile;
   /// Password for HTTP basic authentication
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Repository where to locate the requested chart. If it's a URL the chart is installed without installing the repository.
-  final pulumi.Input<String>? repo;
+  final pulumi.Input<String?>? repo;
   /// Username for HTTP basic authentication
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [RepositoryOpts].
   /// [caFile] The Repository's CA File

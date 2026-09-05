@@ -13,11 +13,11 @@ class MatchConditionPatch {
   /// Documentation on CEL: https://kubernetes.io/docs/reference/using-api/cel/
   ///
   /// Required.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// name is an identifier for this match condition, used for strategic merging of MatchConditions, as well as providing an identifier for logging purposes. A good name should be descriptive of the associated expression. Name must be a qualified name consisting of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]') with an optional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')
   ///
   /// Required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MatchConditionPatch].
   /// [expression] expression represents the expression which will be evaluated by CEL. Must evaluate to bool. CEL expressions have access to the contents of the AdmissionRequest and Authorizer, organized into CEL variables:

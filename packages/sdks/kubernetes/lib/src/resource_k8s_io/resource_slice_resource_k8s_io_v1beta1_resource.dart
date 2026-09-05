@@ -45,4 +45,19 @@ class ResourceSliceResourceK8sIoV1beta1Resource extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<ResourceSliceSpecResourceK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSliceSpecResourceK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ResourceSliceResourceK8sIoV1beta1Resource] resource.
+  ResourceSliceResourceK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1beta1:ResourceSlice',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ResourceSliceSpecResourceK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSliceSpecResourceK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

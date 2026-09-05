@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// volumeDevice describes a mapping of a raw block device within a container.
 class VolumeDevicePatch {
   /// devicePath is the path inside of the container that the device will be mapped to.
-  final pulumi.Input<String>? devicePath;
+  final pulumi.Input<String?>? devicePath;
   /// name must match the name of a persistentVolumeClaim in the pod
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VolumeDevicePatch].
   /// [devicePath] devicePath is the path inside of the container that the device will be mapped to.

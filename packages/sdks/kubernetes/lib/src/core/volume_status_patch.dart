@@ -6,7 +6,7 @@ import 'image_volume_status_patch.dart';
 /// VolumeStatus represents the status of a mounted volume. At most one of its members must be specified.
 class VolumeStatusPatch {
   /// image represents an OCI object (a container image or artifact) pulled and mounted on the kubelet's host machine.
-  final pulumi.Input<ImageVolumeStatusPatch>? image;
+  final pulumi.Input<ImageVolumeStatusPatch?>? image;
 
   /// Creates a new [VolumeStatusPatch].
   /// [image] image represents an OCI object (a container image or artifact) pulled and mounted on the kubelet's host machine.

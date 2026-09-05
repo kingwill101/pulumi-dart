@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// CustomResourceDefinitionCondition contains details for the current condition of this pod.
 class CustomResourceDefinitionConditionApiextensionsK8sIoV1beta1 {
   /// lastTransitionTime last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// message is a human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// reason is a unique, one-word, CamelCase reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// status is the status of the condition. Can be True, False, Unknown.
   final pulumi.Input<String> status;
   /// type is the type of the condition. Types include Established, NamesAccepted and Terminating.

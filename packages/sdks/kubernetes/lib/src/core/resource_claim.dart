@@ -7,7 +7,7 @@ class ResourceClaim {
   /// Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
   final pulumi.Input<String> name;
   /// Request is the name chosen for a request in the referenced claim. If empty, everything from the claim is made available, otherwise only the result of this request.
-  final pulumi.Input<String>? request;
+  final pulumi.Input<String?>? request;
 
   /// Creates a new [ResourceClaim].
   /// [name] Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.

@@ -11,23 +11,23 @@ import 'resource_class_parameters_reference_resource_k8s_io_v1alpha2.dart';
 /// {@macro pulumi_resource_k8s_io_v1alpha2_resource_class_resource_k8s_io_v1alpha2_args_doc}
 class ResourceClassResourceK8sIoV1alpha2Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// DriverName defines the name of the dynamic resource driver that is used for allocation of a ResourceClaim that uses this class.
   ///
   /// Resource drivers have a unique name in forward domain order (acme.example.com).
   final pulumi.Input<String> driverName;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// ParametersRef references an arbitrary separate object that may hold parameters that will be used by the driver when allocating a resource that uses this class. A dynamic resource driver can distinguish between parameters stored here and and those stored in ResourceClaimSpec.
-  final pulumi.Input<ResourceClassParametersReferenceResourceK8sIoV1alpha2>? parametersRef;
+  final pulumi.Input<ResourceClassParametersReferenceResourceK8sIoV1alpha2?>? parametersRef;
   /// If and only if allocation of claims using this class is handled via structured parameters, then StructuredParameters must be set to true.
-  final pulumi.Input<bool>? structuredParameters;
+  final pulumi.Input<bool?>? structuredParameters;
   /// Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.
   ///
   /// Setting this field is optional. If null, all nodes are candidates.
-  final pulumi.Input<NodeSelector>? suitableNodes;
+  final pulumi.Input<NodeSelector?>? suitableNodes;
 
   /// Creates a new [ResourceClassResourceK8sIoV1alpha2Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

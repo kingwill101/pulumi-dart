@@ -6,9 +6,9 @@ import 'idrange.dart';
 /// SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.
 class SupplementalGroupsStrategyOptions {
   /// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
-  final pulumi.Input<List<IDRange>>? ranges;
+  final pulumi.Input<List<IDRange>?>? ranges;
   /// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
-  final pulumi.Input<String>? rule;
+  final pulumi.Input<String?>? rule;
 
   /// Creates a new [SupplementalGroupsStrategyOptions].
   /// [ranges] ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.

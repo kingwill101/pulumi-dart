@@ -6,9 +6,9 @@ import 'node_runtime_handler_features_patch.dart';
 /// NodeRuntimeHandler is a set of runtime handler information.
 class NodeRuntimeHandlerPatch {
   /// Supported features.
-  final pulumi.Input<NodeRuntimeHandlerFeaturesPatch>? features;
+  final pulumi.Input<NodeRuntimeHandlerFeaturesPatch?>? features;
   /// Runtime handler name. Empty for the default runtime handler.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NodeRuntimeHandlerPatch].
   /// [features] Supported features.

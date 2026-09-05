@@ -17,11 +17,11 @@ class VolumeProjection {
   /// ClusterTrustBundle objects can either be selected by name, or by the combination of signer name and a label selector.
   ///
   /// Kubelet performs aggressive normalization of the PEM contents written into the pod filesystem.  Esoteric PEM features such as inter-block comments and block headers are stripped.  Certificates are deduplicated. The ordering of certificates within the file is arbitrary, and Kubelet may change the order over time.
-  final pulumi.Input<ClusterTrustBundleProjection>? clusterTrustBundle;
+  final pulumi.Input<ClusterTrustBundleProjection?>? clusterTrustBundle;
   /// configMap information about the configMap data to project
-  final pulumi.Input<ConfigMapProjection>? configMap;
+  final pulumi.Input<ConfigMapProjection?>? configMap;
   /// downwardAPI information about the downwardAPI data to project
-  final pulumi.Input<DownwardAPIProjection>? downwardAPI;
+  final pulumi.Input<DownwardAPIProjection?>? downwardAPI;
   /// Projects an auto-rotating credential bundle (private key and certificate chain) that the pod can use either as a TLS client or server.
   ///
   /// Kubelet generates a private key and uses it to send a PodCertificateRequest to the named signer.  Once the signer approves the request and issues a certificate chain, Kubelet writes the key and certificate chain to the pod filesystem.  The pod does not start until certificates have been issued for each podCertificate projected volume source in its spec.
@@ -35,11 +35,11 @@ class VolumeProjection {
   /// Prefer using the credential bundle format, since your application code can read it atomically.  If you use keyPath and certificateChainPath, your application must make two separate file reads. If these coincide with a certificate rotation, it is possible that the private key and leaf certificate you read may not correspond to each other.  Your application will need to check for this condition, and re-read until they are consistent.
   ///
   /// The named signer controls chooses the format of the certificate it issues; consult the signer implementation's documentation to learn how to use the certificates it issues.
-  final pulumi.Input<PodCertificateProjection>? podCertificate;
+  final pulumi.Input<PodCertificateProjection?>? podCertificate;
   /// secret information about the secret data to project
-  final pulumi.Input<SecretProjection>? secret;
+  final pulumi.Input<SecretProjection?>? secret;
   /// serviceAccountToken is information about the serviceAccountToken data to project
-  final pulumi.Input<ServiceAccountTokenProjection>? serviceAccountToken;
+  final pulumi.Input<ServiceAccountTokenProjection?>? serviceAccountToken;
 
   /// Creates a new [VolumeProjection].
   /// [clusterTrustBundle] ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field of ClusterTrustBundle objects in an auto-updating file.

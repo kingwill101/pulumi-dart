@@ -31,9 +31,9 @@ class HPAScalingPolicy {
 
   factory HPAScalingPolicy.fromMap(Map<String, dynamic> map) {
     return HPAScalingPolicy(
-      periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
+      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

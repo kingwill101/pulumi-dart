@@ -10,13 +10,13 @@ import 'daemon_set_spec.dart';
 /// {@macro pulumi_apps_v1_daemon_set_args_doc}
 class DaemonSetArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<DaemonSetSpec>? spec;
+  final pulumi.Input<DaemonSetSpec> spec;
 
   /// Creates a new [DaemonSetArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -27,7 +27,7 @@ class DaemonSetArgs {
     this.apiVersion,
     this.kind,
     this.metadata,
-    this.spec,
+    required this.spec,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,7 +35,7 @@ class DaemonSetArgs {
       'apiVersion': ?apiVersion,
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<DaemonSetSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<DaemonSetSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
@@ -44,7 +44,7 @@ class DaemonSetArgs {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonSetSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(DaemonSetSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())),
     );
   }
 }

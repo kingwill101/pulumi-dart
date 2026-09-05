@@ -7,15 +7,15 @@ import 'ipblock.dart';
 /// DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated by networking/v1/NetworkPolicyPeer.
 class NetworkPolicyPeer {
   /// IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
-  final pulumi.Input<IPBlock>? ipBlock;
+  final pulumi.Input<IPBlock?>? ipBlock;
   /// Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.
   ///
   /// If PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
-  final pulumi.Input<LabelSelector>? namespaceSelector;
+  final pulumi.Input<LabelSelector?>? namespaceSelector;
   /// This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.
   ///
   /// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.
-  final pulumi.Input<LabelSelector>? podSelector;
+  final pulumi.Input<LabelSelector?>? podSelector;
 
   /// Creates a new [NetworkPolicyPeer].
   /// [ipBlock] IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.

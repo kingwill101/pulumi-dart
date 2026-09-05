@@ -10,15 +10,15 @@ import 'pod_certificate_request_status.dart';
 /// Kubelets use this API to implement podCertificate projected volumes
 class PodCertificateRequest {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// metadata contains the object metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// spec contains the details about the certificate being requested.
   final pulumi.Input<PodCertificateRequestSpec> spec;
   /// status contains the issued certificate, and a standard set of conditions.
-  final pulumi.Input<PodCertificateRequestStatus>? status;
+  final pulumi.Input<PodCertificateRequestStatus?>? status;
 
   /// Creates a new [PodCertificateRequest].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

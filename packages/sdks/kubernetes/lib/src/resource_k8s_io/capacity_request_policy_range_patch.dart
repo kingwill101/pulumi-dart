@@ -4,6 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CapacityRequestPolicyRange defines a valid range for consumable capacity values.
 ///
+/// If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value().
+///
 /// - If the requested amount is less than Min, it is rounded up to the Min value.
 /// - If Step is set and the requested amount is between Min and Max but not aligned with Step,
 /// it will be rounded up to the next value equal to Min + (n * Step).
@@ -14,15 +16,15 @@ class CapacityRequestPolicyRangePatch {
   /// Max defines the upper limit for capacity that can be requested.
   ///
   /// Max must be less than or equal to the capacity value. Min and requestPolicy.default must be less than or equal to the maximum.
-  final pulumi.Input<String>? max;
+  final pulumi.Input<String?>? max;
   /// Min specifies the minimum capacity allowed for a consumption request.
   ///
   /// Min must be greater than or equal to zero, and less than or equal to the capacity value. requestPolicy.default must be more than or equal to the minimum.
-  final pulumi.Input<String>? min;
+  final pulumi.Input<String?>? min;
   /// Step defines the step size between valid capacity amounts within the range.
   ///
   /// Max (if set) and requestPolicy.default must be a multiple of Step. Min + Step must be less than or equal to the capacity value.
-  final pulumi.Input<String>? step;
+  final pulumi.Input<String?>? step;
 
   /// Creates a new [CapacityRequestPolicyRangePatch].
   /// [max] Max defines the upper limit for capacity that can be requested.

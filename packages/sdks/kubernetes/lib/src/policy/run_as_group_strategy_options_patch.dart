@@ -6,9 +6,9 @@ import 'idrange_patch.dart';
 /// RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
 class RunAsGroupStrategyOptionsPatch {
   /// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
-  final pulumi.Input<List<IDRangePatch>>? ranges;
+  final pulumi.Input<List<IDRangePatch>?>? ranges;
   /// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
-  final pulumi.Input<String>? rule;
+  final pulumi.Input<String?>? rule;
 
   /// Creates a new [RunAsGroupStrategyOptionsPatch].
   /// [ranges] ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.

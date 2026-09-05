@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.
 class PodFailurePolicyOnPodConditionsPattern {
   /// Specifies the required Pod condition status. To match a pod condition it is required that the specified status equals the pod condition status. Defaults to True.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Specifies the required Pod condition type. To match a pod condition it is required that specified type equals the pod condition type.
   final pulumi.Input<String> type;
 

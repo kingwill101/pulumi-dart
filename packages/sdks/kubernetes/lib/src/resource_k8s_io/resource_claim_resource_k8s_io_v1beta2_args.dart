@@ -10,11 +10,11 @@ import 'resource_claim_spec_resource_k8s_io_v1beta2.dart';
 /// {@macro pulumi_resource_k8s_io_v1beta2_resource_claim_resource_k8s_io_v1beta2_args_doc}
 class ResourceClaimResourceK8sIoV1beta2Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Spec describes what is being requested and how to configure it. The spec is immutable.
   final pulumi.Input<ResourceClaimSpecResourceK8sIoV1beta2> spec;
 

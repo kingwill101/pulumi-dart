@@ -37,4 +37,20 @@ class FlowSchemaFlowcontrolApiserverK8sIoV1beta3Resource extends pulumi.CustomRe
     spec = registerOutput<FlowSchemaSpecFlowcontrolApiserverK8sIoV1beta3>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaSpecFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [FlowSchemaFlowcontrolApiserverK8sIoV1beta3Resource] resource.
+  FlowSchemaFlowcontrolApiserverK8sIoV1beta3Resource.reference(String urn)
+    : super(
+        'kubernetes:flowcontrol.apiserver.k8s.io/v1beta3:FlowSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<FlowSchemaSpecFlowcontrolApiserverK8sIoV1beta3>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaSpecFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

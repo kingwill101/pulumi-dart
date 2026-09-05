@@ -8,11 +8,11 @@ import 'pod_anti_affinity.dart';
 /// Affinity is a group of affinity scheduling rules.
 class Affinity {
   /// Describes node affinity scheduling rules for the pod.
-  final pulumi.Input<NodeAffinity>? nodeAffinity;
+  final pulumi.Input<NodeAffinity?>? nodeAffinity;
   /// Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
-  final pulumi.Input<PodAffinity>? podAffinity;
+  final pulumi.Input<PodAffinity?>? podAffinity;
   /// Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
-  final pulumi.Input<PodAntiAffinity>? podAntiAffinity;
+  final pulumi.Input<PodAntiAffinity?>? podAntiAffinity;
 
   /// Creates a new [Affinity].
   /// [nodeAffinity] Describes node affinity scheduling rules for the pod.

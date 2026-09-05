@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Policy defines the configuration of how audit events are logged
 class PolicyPatch {
   /// The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// Stages is a list of stages for which events are created.
-  final pulumi.Input<List<String>>? stages;
+  final pulumi.Input<List<String>?>? stages;
 
   /// Creates a new [PolicyPatch].
   /// [level] The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required

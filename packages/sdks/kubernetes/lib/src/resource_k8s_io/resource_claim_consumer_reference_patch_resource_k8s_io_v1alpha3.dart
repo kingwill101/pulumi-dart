@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim.
 class ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha3 {
   /// APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
-  final pulumi.Input<String>? apiGroup;
+  final pulumi.Input<String?>? apiGroup;
   /// Name is the name of resource being referenced.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource is the type of resource being referenced, for example "pods".
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// UID identifies exactly one incarnation of the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha3].
   /// [apiGroup] APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.

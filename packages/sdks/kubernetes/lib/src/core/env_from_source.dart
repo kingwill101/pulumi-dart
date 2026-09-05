@@ -7,11 +7,11 @@ import 'secret_env_source.dart';
 /// EnvFromSource represents the source of a set of ConfigMaps or Secrets
 class EnvFromSource {
   /// The ConfigMap to select from
-  final pulumi.Input<ConfigMapEnvSource>? configMapRef;
+  final pulumi.Input<ConfigMapEnvSource?>? configMapRef;
   /// Optional text to prepend to the name of each environment variable. May consist of any printable ASCII characters except '='.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The Secret to select from
-  final pulumi.Input<SecretEnvSource>? secretRef;
+  final pulumi.Input<SecretEnvSource?>? secretRef;
 
   /// Creates a new [EnvFromSource].
   /// [configMapRef] The ConfigMap to select from

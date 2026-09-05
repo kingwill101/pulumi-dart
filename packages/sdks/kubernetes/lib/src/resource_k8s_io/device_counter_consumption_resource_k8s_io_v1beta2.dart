@@ -5,6 +5,16 @@ import 'counter_resource_k8s_io_v1beta2.dart';
 
 /// DeviceCounterConsumption defines a set of counters that a device will consume from a CounterSet.
 class DeviceCounterConsumptionResourceK8sIoV1beta2 {
+  /// CompatibilityGroups is a list of opaque group names for this counter set consumption.
+  ///
+  /// Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field.
+  ///
+  /// An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups.
+  ///
+  /// Group names are opaque and meaningful only within the publishing driver's pool.
+  ///
+  /// The maximum number of groups is 2, and the names must be unique.
+  final pulumi.Input<List<String>?>? compatibilityGroups;
   /// CounterSet is the name of the set from which the counters defined will be consumed.
   final pulumi.Input<String> counterSet;
   /// Counters defines the counters that will be consumed by the device.
@@ -13,15 +23,18 @@ class DeviceCounterConsumptionResourceK8sIoV1beta2 {
   final pulumi.Input<Map<String, CounterResourceK8sIoV1beta2>> counters;
 
   /// Creates a new [DeviceCounterConsumptionResourceK8sIoV1beta2].
+  /// [compatibilityGroups] CompatibilityGroups is a list of opaque group names for this counter set consumption.
   /// [counterSet] CounterSet is the name of the set from which the counters defined will be consumed.
   /// [counters] Counters defines the counters that will be consumed by the device.
   const DeviceCounterConsumptionResourceK8sIoV1beta2({
+    this.compatibilityGroups,
     required this.counterSet,
     required this.counters,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'compatibilityGroups': ?compatibilityGroups,
       'counterSet': counterSet,
       'counters': pulumi.Input.mapInputValue<Map<String, CounterResourceK8sIoV1beta2>, Map<String, Map<String, dynamic>>>(counters, (value) => pulumi.Input.encodeMapValues<CounterResourceK8sIoV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -29,6 +42,7 @@ class DeviceCounterConsumptionResourceK8sIoV1beta2 {
 
   factory DeviceCounterConsumptionResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceCounterConsumptionResourceK8sIoV1beta2(
+      compatibilityGroups: (() { final guardedValue = map['compatibilityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       counterSet: pulumi.Input.fromValue(map['counterSet'] as String),
       counters: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters']!, (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
     );

@@ -9,11 +9,11 @@ class ResourcePoolStatusRequestStatus {
   /// Conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated.
   ///
   /// Known condition types: - "Complete": True when the request has been processed successfully - "Failed": True when the request could not be processed
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// PoolCount is the total number of pools that matched the filter criteria, regardless of truncation. This helps users understand how many pools exist even when the response is truncated. A value of 0 means no pools matched the filter criteria.
   final pulumi.Input<int> poolCount;
   /// Pools contains the first `spec.limit` matching pools, sorted by driver then pool name. If `len(pools) &lt; poolCount`, the list was truncated. When omitted, no pools matched the request filters.
-  final pulumi.Input<List<PoolStatus>>? pools;
+  final pulumi.Input<List<PoolStatus>?>? pools;
 
   /// Creates a new [ResourcePoolStatusRequestStatus].
   /// [conditions] Conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated.
@@ -36,7 +36,7 @@ class ResourcePoolStatusRequestStatus {
   factory ResourcePoolStatusRequestStatus.fromMap(Map<String, dynamic> map) {
     return ResourcePoolStatusRequestStatus(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      poolCount: pulumi.Input.fromValue(map['poolCount'] as int),
+      poolCount: pulumi.Input.fromValue((map['poolCount'] as num).toInt()),
       pools: (() { final guardedValue = map['pools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolStatus>(guardedValue, (value) => PoolStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

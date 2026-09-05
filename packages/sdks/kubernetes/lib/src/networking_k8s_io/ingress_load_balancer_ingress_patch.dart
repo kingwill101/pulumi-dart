@@ -6,11 +6,11 @@ import 'ingress_port_status_patch.dart';
 /// IngressLoadBalancerIngress represents the status of a load-balancer ingress point.
 class IngressLoadBalancerIngressPatch {
   /// hostname is set for load-balancer ingress points that are DNS based.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// ip is set for load-balancer ingress points that are IP based.
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
   /// ports provides information about the ports exposed by this LoadBalancer.
-  final pulumi.Input<List<IngressPortStatusPatch>>? ports;
+  final pulumi.Input<List<IngressPortStatusPatch>?>? ports;
 
   /// Creates a new [IngressLoadBalancerIngressPatch].
   /// [hostname] hostname is set for load-balancer ingress points that are DNS based.

@@ -9,9 +9,9 @@ class ContainerResourceMetricSourceAutoscalingV2beta1 {
   /// name is the name of the resource in question.
   final pulumi.Input<String> name;
   /// targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
-  final pulumi.Input<int>? targetAverageUtilization;
+  final pulumi.Input<int?>? targetAverageUtilization;
   /// targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type.
-  final pulumi.Input<String>? targetAverageValue;
+  final pulumi.Input<String?>? targetAverageValue;
 
   /// Creates a new [ContainerResourceMetricSourceAutoscalingV2beta1].
   /// [container] container is the name of the container in the pods of the scaling target
@@ -38,7 +38,7 @@ class ContainerResourceMetricSourceAutoscalingV2beta1 {
     return ContainerResourceMetricSourceAutoscalingV2beta1(
       container: pulumi.Input.fromValue(map['container'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      targetAverageUtilization: (() { final guardedValue = map['targetAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetAverageUtilization: (() { final guardedValue = map['targetAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       targetAverageValue: (() { final guardedValue = map['targetAverageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

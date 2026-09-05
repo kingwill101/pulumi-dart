@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ContainerStateTerminated is a terminated state of a container.
 class ContainerStateTerminatedPatch {
   /// Container's ID in the format '&lt;type&gt;://&lt;container_id&gt;'
-  final pulumi.Input<String>? containerID;
+  final pulumi.Input<String?>? containerID;
   /// Exit status from the last termination of the container
-  final pulumi.Input<int>? exitCode;
+  final pulumi.Input<int?>? exitCode;
   /// Time at which the container last terminated
-  final pulumi.Input<String>? finishedAt;
+  final pulumi.Input<String?>? finishedAt;
   /// Message regarding the last termination of the container
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (brief) reason from the last termination of the container
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Signal from the last termination of the container
-  final pulumi.Input<int>? signal;
+  final pulumi.Input<int?>? signal;
   /// Time at which previous execution of the container started
-  final pulumi.Input<String>? startedAt;
+  final pulumi.Input<String?>? startedAt;
 
   /// Creates a new [ContainerStateTerminatedPatch].
   /// [containerID] Container's ID in the format '&lt;type&gt;://&lt;container_id&gt;'
@@ -52,11 +52,11 @@ class ContainerStateTerminatedPatch {
   factory ContainerStateTerminatedPatch.fromMap(Map<String, dynamic> map) {
     return ContainerStateTerminatedPatch(
       containerID: (() { final guardedValue = map['containerID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       finishedAt: (() { final guardedValue = map['finishedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      signal: (() { final guardedValue = map['signal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      signal: (() { final guardedValue = map['signal']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       startedAt: (() { final guardedValue = map['startedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

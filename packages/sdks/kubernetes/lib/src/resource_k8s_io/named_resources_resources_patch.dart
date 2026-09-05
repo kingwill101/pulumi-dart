@@ -6,7 +6,7 @@ import 'named_resources_instance_patch.dart';
 /// NamedResourcesResources is used in ResourceModel.
 class NamedResourcesResourcesPatch {
   /// The list of all individual resources instances currently available.
-  final pulumi.Input<List<NamedResourcesInstancePatch>>? instances;
+  final pulumi.Input<List<NamedResourcesInstancePatch>?>? instances;
 
   /// Creates a new [NamedResourcesResourcesPatch].
   /// [instances] The list of all individual resources instances currently available.

@@ -7,9 +7,9 @@ import 'jsonpatch.dart';
 /// Mutation specifies the CEL expression which is used to apply the Mutation.
 class Mutation {
   /// applyConfiguration defines the desired configuration values of an object. The configuration is applied to the admission object using [structured merge diff](https://github.com/kubernetes-sigs/structured-merge-diff). A CEL expression is used to create apply configuration.
-  final pulumi.Input<ApplyConfiguration>? applyConfiguration;
+  final pulumi.Input<ApplyConfiguration?>? applyConfiguration;
   /// jsonPatch defines a [JSON patch](https://jsonpatch.com/) operation to perform a mutation to the object. A CEL expression is used to create the JSON patch.
-  final pulumi.Input<JSONPatch>? jsonPatch;
+  final pulumi.Input<JSONPatch?>? jsonPatch;
   /// patchType indicates the patch strategy used. Allowed values are "ApplyConfiguration" and "JSONPatch". Required.
   final pulumi.Input<String> patchType;
 

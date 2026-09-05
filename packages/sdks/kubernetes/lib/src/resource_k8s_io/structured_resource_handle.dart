@@ -6,7 +6,7 @@ import 'driver_allocation_result.dart';
 /// StructuredResourceHandle is the in-tree representation of the allocation result.
 class StructuredResourceHandle {
   /// NodeName is the name of the node providing the necessary resources if the resources are local to a node.
-  final pulumi.Input<String>? nodeName;
+  final pulumi.Input<String?>? nodeName;
   /// Results lists all allocated driver resources.
   final pulumi.Input<List<DriverAllocationResult>> results;
   /// VendorClaimParameters are the per-claim configuration parameters from the resource claim parameters at the time that the claim was allocated.

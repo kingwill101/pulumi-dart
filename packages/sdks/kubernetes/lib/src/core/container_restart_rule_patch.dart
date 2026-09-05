@@ -6,9 +6,9 @@ import 'container_restart_rule_on_exit_codes_patch.dart';
 /// ContainerRestartRule describes how a container exit is handled.
 class ContainerRestartRulePatch {
   /// Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Represents the exit codes to check on container exits.
-  final pulumi.Input<ContainerRestartRuleOnExitCodesPatch>? exitCodes;
+  final pulumi.Input<ContainerRestartRuleOnExitCodesPatch?>? exitCodes;
 
   /// Creates a new [ContainerRestartRulePatch].
   /// [action] Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.

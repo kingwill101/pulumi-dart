@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ExternalDocumentation allows referencing an external resource for extended documentation.
 class ExternalDocumentationPatchApiextensionsK8sIoV1beta1 {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ExternalDocumentationPatchApiextensionsK8sIoV1beta1].
   /// [description] Optional.

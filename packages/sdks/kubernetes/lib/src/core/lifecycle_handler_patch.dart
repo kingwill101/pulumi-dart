@@ -9,13 +9,13 @@ import 'tcpsocket_action_patch.dart';
 /// LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.
 class LifecycleHandlerPatch {
   /// Exec specifies a command to execute in the container.
-  final pulumi.Input<ExecActionPatch>? exec;
+  final pulumi.Input<ExecActionPatch?>? exec;
   /// HTTPGet specifies an HTTP GET request to perform.
-  final pulumi.Input<HTTPGetActionPatch>? httpGet;
+  final pulumi.Input<HTTPGetActionPatch?>? httpGet;
   /// Sleep represents a duration that the container should sleep.
-  final pulumi.Input<SleepActionPatch>? sleep;
+  final pulumi.Input<SleepActionPatch?>? sleep;
   /// Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for backward compatibility. There is no validation of this field and lifecycle hooks will fail at runtime when it is specified.
-  final pulumi.Input<TCPSocketActionPatch>? tcpSocket;
+  final pulumi.Input<TCPSocketActionPatch?>? tcpSocket;
 
   /// Creates a new [LifecycleHandlerPatch].
   /// [exec] Exec specifies a command to execute in the container.

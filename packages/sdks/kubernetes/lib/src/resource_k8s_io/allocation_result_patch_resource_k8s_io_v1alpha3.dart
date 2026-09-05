@@ -11,11 +11,11 @@ class AllocationResultPatchResourceK8sIoV1alpha3 {
   /// A driver may allocate devices provided by other drivers, so this driver name here can be different from the driver names listed for the results.
   ///
   /// This is an alpha field and requires enabling the DRAControlPlaneController feature gate.
-  final pulumi.Input<String>? controller;
+  final pulumi.Input<String?>? controller;
   /// Devices is the result of allocating devices.
-  final pulumi.Input<DeviceAllocationResultPatchResourceK8sIoV1alpha3>? devices;
+  final pulumi.Input<DeviceAllocationResultPatchResourceK8sIoV1alpha3?>? devices;
   /// NodeSelector defines where the allocated resources are available. If unset, they are available everywhere.
-  final pulumi.Input<NodeSelectorPatch>? nodeSelector;
+  final pulumi.Input<NodeSelectorPatch?>? nodeSelector;
 
   /// Creates a new [AllocationResultPatchResourceK8sIoV1alpha3].
   /// [controller] Controller is the name of the DRA driver which handled the allocation. That driver is also responsible for deallocating the claim. It is empty when the claim can be deallocated without involving a driver.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
+import 'validating_webhook.dart';
 import 'validating_webhook_configuration_args.dart';
 
 /// ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it.
@@ -11,7 +12,7 @@ class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1 extends pulumi.
   /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMeta> metadata;
   /// webhooks is a list of webhooks and the affected resources and operations.
-  late final pulumi.Output<List<Map<String, dynamic>>> webhooks;
+  late final pulumi.Output<List<ValidatingWebhook>> webhooks;
 
   /// Creates a new [ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1].
   /// [name] The Pulumi resource name.
@@ -30,6 +31,21 @@ class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1 extends pulumi.
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    webhooks = registerOutput<List<Map<String, dynamic>>>('webhooks');
+    webhooks = registerOutput<List<ValidatingWebhook>>('webhooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidatingWebhook>(guardedValue, (value) => ValidatingWebhook.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1] resource.
+  ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1:ValidatingWebhookConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webhooks = registerOutput<List<ValidatingWebhook>>('webhooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidatingWebhook>(guardedValue, (value) => ValidatingWebhook.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

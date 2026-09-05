@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HostIP represents a single IP address allocated to the host.
 class HostIPPatch {
   /// IP is the IP address assigned to the host
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
 
   /// Creates a new [HostIPPatch].
   /// [ip] IP is the IP address assigned to the host

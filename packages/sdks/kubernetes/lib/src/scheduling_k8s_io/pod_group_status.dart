@@ -18,9 +18,9 @@ class PodGroupStatus {
   ///
   /// Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for
   /// higher-priority PodGroups or Pods.
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// Status of resource claims.
-  final pulumi.Input<List<PodGroupResourceClaimStatus>>? resourceClaimStatuses;
+  final pulumi.Input<List<PodGroupResourceClaimStatus>?>? resourceClaimStatuses;
 
   /// Creates a new [PodGroupStatus].
   /// [conditions] Conditions represent the latest observations of the PodGroup's state.

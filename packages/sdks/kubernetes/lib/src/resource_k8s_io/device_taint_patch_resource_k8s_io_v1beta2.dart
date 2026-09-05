@@ -7,15 +7,15 @@ class DeviceTaintPatchResourceK8sIoV1beta2 {
   /// The effect of the taint on claims that do not tolerate the taint and through such claims on the pods using them.
   ///
   /// Valid effects are None, NoSchedule and NoExecute. PreferNoSchedule as used for nodes is not valid here. More effects may get added in the future. Consumers must treat unknown effects like None.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// The taint key to be applied to a device. Must be a label name.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// TimeAdded represents the time at which the taint was added or (only in a DeviceTaintRule) the effect was modified. Added automatically during create or update if not set.
   ///
   /// In addition, in a DeviceTaintRule a value provided during an update gets replaced with the current time if the provided value is the same as the old one and the new effect is different. Changing the key and/or value while keeping the effect unchanged is possible and does not update the time stamp because the eviction which uses it is either already started (NoExecute) or not started yet (NoEffect, NoSchedule).
-  final pulumi.Input<String>? timeAdded;
+  final pulumi.Input<String?>? timeAdded;
   /// The taint value corresponding to the taint key. Must be a label value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DeviceTaintPatchResourceK8sIoV1beta2].
   /// [effect] The effect of the taint on claims that do not tolerate the taint and through such claims on the pods using them.

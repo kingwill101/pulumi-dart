@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Selects a key from a ConfigMap.
 class ConfigMapKeySelector {
-  /// The key to select.
+  /// The key to select from the ConfigMap's Data field. Keys in the BinaryData field are not currently propagated to container env vars.
   final pulumi.Input<String> key;
   /// Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify whether the ConfigMap or its key must be defined
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [ConfigMapKeySelector].
-  /// [key] The key to select.
+  /// [key] The key to select from the ConfigMap's Data field. Keys in the BinaryData field are not currently propagated to container env vars.
   /// [name] Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   /// [optional] Specify whether the ConfigMap or its key must be defined
   const ConfigMapKeySelector({

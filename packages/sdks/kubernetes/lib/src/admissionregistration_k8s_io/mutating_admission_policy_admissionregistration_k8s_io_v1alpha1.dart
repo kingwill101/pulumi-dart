@@ -7,13 +7,13 @@ import 'mutating_admission_policy_spec_admissionregistration_k8s_io_v1alpha1.dar
 /// MutatingAdmissionPolicy describes the definition of an admission mutation policy that mutates the object coming into admission chain.
 class MutatingAdmissionPolicyAdmissionregistrationK8sIoV1alpha1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// spec defines the desired behavior of the MutatingAdmissionPolicy.
-  final pulumi.Input<MutatingAdmissionPolicySpecAdmissionregistrationK8sIoV1alpha1>? spec;
+  final pulumi.Input<MutatingAdmissionPolicySpecAdmissionregistrationK8sIoV1alpha1?>? spec;
 
   /// Creates a new [MutatingAdmissionPolicyAdmissionregistrationK8sIoV1alpha1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

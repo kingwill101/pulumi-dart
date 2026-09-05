@@ -7,23 +7,23 @@ import 'label_selector_attributes.dart';
 /// ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface
 class ResourceAttributes {
   /// fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.
-  final pulumi.Input<FieldSelectorAttributes>? fieldSelector;
+  final pulumi.Input<FieldSelectorAttributes?>? fieldSelector;
   /// group is the API Group of the Resource.  "*" means all.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// labelSelector describes the limitation on access based on labels.  It can only limit access, not broaden it.
-  final pulumi.Input<LabelSelectorAttributes>? labelSelector;
+  final pulumi.Input<LabelSelectorAttributes?>? labelSelector;
   /// name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// resource is one of the existing resource types.  "*" means all.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// subresource is one of the existing resource types.  "" means none.
-  final pulumi.Input<String>? subresource;
+  final pulumi.Input<String?>? subresource;
   /// verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
-  final pulumi.Input<String>? verb;
+  final pulumi.Input<String?>? verb;
   /// version is the API Version of the Resource.  "*" means all.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ResourceAttributes].
   /// [fieldSelector] fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.

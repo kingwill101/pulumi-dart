@@ -37,4 +37,20 @@ class CronJobBatchV1 extends pulumi.CustomResource {
     spec = registerOutput<CronJobSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CronJobSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<CronJobStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CronJobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [CronJobBatchV1] resource.
+  CronJobBatchV1.reference(String urn)
+    : super(
+        'kubernetes:batch/v1:CronJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<CronJobSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CronJobSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CronJobStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CronJobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

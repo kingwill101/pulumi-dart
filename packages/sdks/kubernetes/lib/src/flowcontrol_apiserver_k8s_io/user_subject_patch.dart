@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// UserSubject holds detailed information for user-kind subject.
 class UserSubjectPatch {
   /// `name` is the username that matches, or "*" to match all usernames. Required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [UserSubjectPatch].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.

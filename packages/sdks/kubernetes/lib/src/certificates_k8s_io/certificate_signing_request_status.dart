@@ -27,9 +27,9 @@ class CertificateSigningRequestStatus {
   /// ...
   /// -----END CERTIFICATE-----
   /// )
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
-  final pulumi.Input<List<CertificateSigningRequestCondition>>? conditions;
+  final pulumi.Input<List<CertificateSigningRequestCondition>?>? conditions;
 
   /// Creates a new [CertificateSigningRequestStatus].
   /// [certificate] certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.

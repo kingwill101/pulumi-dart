@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RoleRef contains information that points to the role being used
 class RoleRefPatchRbacAuthorizationK8sIoV1beta1 {
   /// APIGroup is the group for the resource being referenced
-  final pulumi.Input<String>? apiGroup;
+  final pulumi.Input<String?>? apiGroup;
   /// Kind is the type of resource being referenced
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name is the name of resource being referenced
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RoleRefPatchRbacAuthorizationK8sIoV1beta1].
   /// [apiGroup] APIGroup is the group for the resource being referenced

@@ -6,9 +6,9 @@ import 'rolling_update_deployment_patch.dart';
 /// DeploymentStrategy describes how to replace existing pods with new ones.
 class DeploymentStrategyPatch {
   /// Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
-  final pulumi.Input<RollingUpdateDeploymentPatch>? rollingUpdate;
+  final pulumi.Input<RollingUpdateDeploymentPatch?>? rollingUpdate;
   /// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DeploymentStrategyPatch].
   /// [rollingUpdate] Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.

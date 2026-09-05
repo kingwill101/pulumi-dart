@@ -6,7 +6,7 @@ import '../core/load_balancer_status_patch.dart';
 /// IngressStatus describe the current state of the Ingress.
 class IngressStatusPatchNetworkingK8sIoV1beta1 {
   /// LoadBalancer contains the current status of the load-balancer.
-  final pulumi.Input<LoadBalancerStatusPatch>? loadBalancer;
+  final pulumi.Input<LoadBalancerStatusPatch?>? loadBalancer;
 
   /// Creates a new [IngressStatusPatchNetworkingK8sIoV1beta1].
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer.

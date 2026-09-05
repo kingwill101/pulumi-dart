@@ -37,4 +37,20 @@ class ValidatingAdmissionPolicyAdmissionregistrationK8sIoV1 extends pulumi.Custo
     spec = registerOutput<ValidatingAdmissionPolicySpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ValidatingAdmissionPolicyStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ValidatingAdmissionPolicyAdmissionregistrationK8sIoV1] resource.
+  ValidatingAdmissionPolicyAdmissionregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1:ValidatingAdmissionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ValidatingAdmissionPolicySpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ValidatingAdmissionPolicyStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

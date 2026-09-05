@@ -7,11 +7,11 @@ import 'custom_resource_definition_names_patch_apiextensions_k8s_io_v1beta1.dart
 /// CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
 class CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1 {
   /// acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
-  final pulumi.Input<CustomResourceDefinitionNamesPatchApiextensionsK8sIoV1beta1>? acceptedNames;
+  final pulumi.Input<CustomResourceDefinitionNamesPatchApiextensionsK8sIoV1beta1?>? acceptedNames;
   /// conditions indicate state for particular aspects of a CustomResourceDefinition
-  final pulumi.Input<List<CustomResourceDefinitionConditionPatchApiextensionsK8sIoV1beta1>>? conditions;
+  final pulumi.Input<List<CustomResourceDefinitionConditionPatchApiextensionsK8sIoV1beta1>?>? conditions;
   /// storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
-  final pulumi.Input<List<String>>? storedVersions;
+  final pulumi.Input<List<String>?>? storedVersions;
 
   /// Creates a new [CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1].
   /// [acceptedNames] acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.

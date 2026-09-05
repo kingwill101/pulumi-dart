@@ -43,4 +43,20 @@ class FlowSchemaPatchFlowcontrolApiserverK8sIoV1beta3Resource extends pulumi.Cus
     spec = registerOutput<FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [FlowSchemaPatchFlowcontrolApiserverK8sIoV1beta3Resource] resource.
+  FlowSchemaPatchFlowcontrolApiserverK8sIoV1beta3Resource.reference(String urn)
+    : super(
+        'kubernetes:flowcontrol.apiserver.k8s.io/v1beta3:FlowSchemaPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

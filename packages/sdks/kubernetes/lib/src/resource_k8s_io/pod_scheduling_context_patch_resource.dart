@@ -45,4 +45,20 @@ class PodSchedulingContextPatchResource extends pulumi.CustomResource {
     spec = registerOutput<PodSchedulingContextSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodSchedulingContextSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<PodSchedulingContextStatusPatchResourceK8sIoV1alpha3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodSchedulingContextStatusPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [PodSchedulingContextPatchResource] resource.
+  PodSchedulingContextPatchResource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha3:PodSchedulingContextPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PodSchedulingContextSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodSchedulingContextSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PodSchedulingContextStatusPatchResourceK8sIoV1alpha3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodSchedulingContextStatusPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

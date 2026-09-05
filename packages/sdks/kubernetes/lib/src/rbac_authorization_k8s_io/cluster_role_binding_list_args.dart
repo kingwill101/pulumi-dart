@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'cluster_role_binding_rbac_authorization_k8s_io_v1.dart';
+import 'cluster_role_binding.dart';
 
 /// {@template pulumi_rbac_authorization_k8s_io_v1_cluster_role_binding_list_args_doc}
 /// The set of arguments for ClusterRoleBindingList.
@@ -10,13 +10,13 @@ import 'cluster_role_binding_rbac_authorization_k8s_io_v1.dart';
 /// {@macro pulumi_rbac_authorization_k8s_io_v1_cluster_role_binding_list_args_doc}
 class ClusterRoleBindingListArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Items is a list of ClusterRoleBindings
-  final pulumi.Input<List<ClusterRoleBindingRbacAuthorizationK8sIoV1>> items;
+  final pulumi.Input<List<ClusterRoleBinding>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata.
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [ClusterRoleBindingListArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class ClusterRoleBindingListArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<ClusterRoleBinding>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ClusterRoleBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class ClusterRoleBindingListArgs {
   factory ClusterRoleBindingListArgs.fromMap(Map<String, dynamic> map) {
     return ClusterRoleBindingListArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<ClusterRoleBindingRbacAuthorizationK8sIoV1>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterRoleBinding>(map['items']!, (value) => ClusterRoleBinding.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

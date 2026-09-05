@@ -6,15 +6,15 @@ import 'rollback_config.dart';
 /// DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.
 class DeploymentRollback {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Required: This must match the Name of a deployment.
   final pulumi.Input<String> name;
   /// The config of this deployment rollback.
   final pulumi.Input<RollbackConfig> rollbackTo;
   /// The annotations to be updated to a deployment
-  final pulumi.Input<Map<String, String>>? updatedAnnotations;
+  final pulumi.Input<Map<String, String>?>? updatedAnnotations;
 
   /// Creates a new [DeploymentRollback].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

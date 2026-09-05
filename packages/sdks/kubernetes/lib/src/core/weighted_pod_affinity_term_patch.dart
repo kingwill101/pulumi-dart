@@ -6,9 +6,9 @@ import 'pod_affinity_term_patch.dart';
 /// The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 class WeightedPodAffinityTermPatch {
   /// Required. A pod affinity term, associated with the corresponding weight.
-  final pulumi.Input<PodAffinityTermPatch>? podAffinityTerm;
+  final pulumi.Input<PodAffinityTermPatch?>? podAffinityTerm;
   /// weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [WeightedPodAffinityTermPatch].
   /// [podAffinityTerm] Required. A pod affinity term, associated with the corresponding weight.
@@ -28,7 +28,7 @@ class WeightedPodAffinityTermPatch {
   factory WeightedPodAffinityTermPatch.fromMap(Map<String, dynamic> map) {
     return WeightedPodAffinityTermPatch(
       podAffinityTerm: (() { final guardedValue = map['podAffinityTerm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodAffinityTermPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

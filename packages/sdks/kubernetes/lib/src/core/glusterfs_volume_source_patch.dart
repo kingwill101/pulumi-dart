@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.
 class GlusterfsVolumeSourcePatch {
   /// endpoints is the endpoint name that details Glusterfs topology.
-  final pulumi.Input<String>? endpoints;
+  final pulumi.Input<String?>? endpoints;
   /// path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
 
   /// Creates a new [GlusterfsVolumeSourcePatch].
   /// [endpoints] endpoints is the endpoint name that details Glusterfs topology.

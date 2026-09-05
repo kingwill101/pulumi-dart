@@ -43,4 +43,20 @@ class PersistentVolumePatchCoreV1 extends pulumi.CustomResource {
     spec = registerOutput<PersistentVolumeSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistentVolumeSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<PersistentVolumeStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistentVolumeStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [PersistentVolumePatchCoreV1] resource.
+  PersistentVolumePatchCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:PersistentVolumePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PersistentVolumeSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistentVolumeSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PersistentVolumeStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistentVolumeStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

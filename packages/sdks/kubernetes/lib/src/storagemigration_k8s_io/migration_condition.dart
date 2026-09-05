@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the state of a migration at a certain point.
 class MigrationCondition {
   /// The last time this condition was updated.
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// A human readable message indicating details about the transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
   /// Type of the condition.

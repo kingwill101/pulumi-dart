@@ -8,11 +8,11 @@ import 'container_state_waiting_patch.dart';
 /// ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.
 class ContainerStatePatch {
   /// Details about a running container
-  final pulumi.Input<ContainerStateRunningPatch>? running;
+  final pulumi.Input<ContainerStateRunningPatch?>? running;
   /// Details about a terminated container
-  final pulumi.Input<ContainerStateTerminatedPatch>? terminated;
+  final pulumi.Input<ContainerStateTerminatedPatch?>? terminated;
   /// Details about a waiting container
-  final pulumi.Input<ContainerStateWaitingPatch>? waiting;
+  final pulumi.Input<ContainerStateWaitingPatch?>? waiting;
 
   /// Creates a new [ContainerStatePatch].
   /// [running] Details about a running container

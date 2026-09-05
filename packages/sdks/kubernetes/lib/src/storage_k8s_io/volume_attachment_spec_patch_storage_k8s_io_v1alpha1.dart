@@ -6,11 +6,11 @@ import 'volume_attachment_source_patch_storage_k8s_io_v1alpha1.dart';
 /// VolumeAttachmentSpec is the specification of a VolumeAttachment request.
 class VolumeAttachmentSpecPatchStorageK8sIoV1alpha1 {
   /// Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
-  final pulumi.Input<String>? attacher;
+  final pulumi.Input<String?>? attacher;
   /// The node that the volume should be attached to.
-  final pulumi.Input<String>? nodeName;
+  final pulumi.Input<String?>? nodeName;
   /// Source represents the volume that should be attached.
-  final pulumi.Input<VolumeAttachmentSourcePatchStorageK8sIoV1alpha1>? source;
+  final pulumi.Input<VolumeAttachmentSourcePatchStorageK8sIoV1alpha1?>? source;
 
   /// Creates a new [VolumeAttachmentSpecPatchStorageK8sIoV1alpha1].
   /// [attacher] Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().

@@ -6,17 +6,17 @@ import 'service_reference_apiregistration_k8s_io_v1beta1.dart';
 /// APIServiceSpec contains information for locating and communicating with a server. Only https is supported, though you are able to disable certificate verification.
 class APIServiceSpecApiregistrationK8sIoV1beta1 {
   /// CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.
-  final pulumi.Input<String>? caBundle;
+  final pulumi.Input<String?>? caBundle;
   /// Group is the API group name this server hosts
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// GroupPriorityMininum is the priority this group should have at least. Higher priority means that the group is preferred by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMininum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s
   final pulumi.Input<int> groupPriorityMinimum;
   /// InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.
-  final pulumi.Input<bool>? insecureSkipTLSVerify;
+  final pulumi.Input<bool?>? insecureSkipTLSVerify;
   /// Service is a reference to the service for this API server.  It must communicate on port 443 If the Service is nil, that means the handling for the API groupversion is handled locally on this server. The call will simply delegate to the normal handler chain to be fulfilled.
   final pulumi.Input<ServiceReferenceApiregistrationK8sIoV1beta1> service;
   /// Version is the API version this server hosts.  For example, "v1"
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
   final pulumi.Input<int> versionPriority;
 
@@ -54,11 +54,11 @@ class APIServiceSpecApiregistrationK8sIoV1beta1 {
     return APIServiceSpecApiregistrationK8sIoV1beta1(
       caBundle: (() { final guardedValue = map['caBundle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      groupPriorityMinimum: pulumi.Input.fromValue(map['groupPriorityMinimum'] as int),
+      groupPriorityMinimum: pulumi.Input.fromValue((map['groupPriorityMinimum'] as num).toInt()),
       insecureSkipTLSVerify: (() { final guardedValue = map['insecureSkipTLSVerify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       service: pulumi.Input.fromValue(ServiceReferenceApiregistrationK8sIoV1beta1.fromMap((map['service']! as Map).cast<String, dynamic>())),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionPriority: pulumi.Input.fromValue(map['versionPriority'] as int),
+      versionPriority: pulumi.Input.fromValue((map['versionPriority'] as num).toInt()),
     );
   }
 }

@@ -6,27 +6,29 @@ import 'node_swap_status_patch.dart';
 /// NodeSystemInfo is a set of ids/uuids to uniquely identify the node.
 class NodeSystemInfoPatch {
   /// The Architecture reported by the node
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// Boot ID reported by the node.
-  final pulumi.Input<String>? bootID;
+  final pulumi.Input<String?>? bootID;
   /// ContainerRuntime Version reported by the node through runtime remote API (e.g. containerd://1.4.2).
-  final pulumi.Input<String>? containerRuntimeVersion;
+  final pulumi.Input<String?>? containerRuntimeVersion;
   /// Kernel Version reported by the node from 'uname -r' (e.g. 3.16.0-0.bpo.4-amd64).
-  final pulumi.Input<String>? kernelVersion;
+  final pulumi.Input<String?>? kernelVersion;
   /// Deprecated: KubeProxy Version reported by the node.
-  final pulumi.Input<String>? kubeProxyVersion;
+  final pulumi.Input<String?>? kubeProxyVersion;
   /// Kubelet Version reported by the node.
-  final pulumi.Input<String>? kubeletVersion;
+  final pulumi.Input<String?>? kubeletVersion;
   /// MachineID reported by the node. For unique machine identification in the cluster this field is preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html
-  final pulumi.Input<String>? machineID;
+  final pulumi.Input<String?>? machineID;
   /// The Operating System reported by the node
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
-  final pulumi.Input<String>? osImage;
+  final pulumi.Input<String?>? osImage;
+  /// Whether the node is running in a user namespace.
+  final pulumi.Input<bool?>? runningInUserNamespace;
   /// Swap Info reported by the node.
-  final pulumi.Input<NodeSwapStatusPatch>? swap;
+  final pulumi.Input<NodeSwapStatusPatch?>? swap;
   /// SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
-  final pulumi.Input<String>? systemUUID;
+  final pulumi.Input<String?>? systemUUID;
 
   /// Creates a new [NodeSystemInfoPatch].
   /// [architecture] The Architecture reported by the node
@@ -38,6 +40,7 @@ class NodeSystemInfoPatch {
   /// [machineID] MachineID reported by the node. For unique machine identification in the cluster this field is preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html
   /// [operatingSystem] The Operating System reported by the node
   /// [osImage] OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
+  /// [runningInUserNamespace] Whether the node is running in a user namespace.
   /// [swap] Swap Info reported by the node.
   /// [systemUUID] SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
   const NodeSystemInfoPatch({
@@ -50,6 +53,7 @@ class NodeSystemInfoPatch {
     this.machineID,
     this.operatingSystem,
     this.osImage,
+    this.runningInUserNamespace,
     this.swap,
     this.systemUUID,
   });
@@ -65,6 +69,7 @@ class NodeSystemInfoPatch {
       'machineID': ?machineID,
       'operatingSystem': ?operatingSystem,
       'osImage': ?osImage,
+      'runningInUserNamespace': ?runningInUserNamespace,
       'swap': ?pulumi.Input.mapOptionalInputValue<NodeSwapStatusPatch, Map<String, dynamic>>(swap, (value) => value.toMap()),
       'systemUUID': ?systemUUID,
     };
@@ -81,6 +86,7 @@ class NodeSystemInfoPatch {
       machineID: (() { final guardedValue = map['machineID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatingSystem: (() { final guardedValue = map['operatingSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osImage: (() { final guardedValue = map['osImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runningInUserNamespace: (() { final guardedValue = map['runningInUserNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       swap: (() { final guardedValue = map['swap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeSwapStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       systemUUID: (() { final guardedValue = map['systemUUID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

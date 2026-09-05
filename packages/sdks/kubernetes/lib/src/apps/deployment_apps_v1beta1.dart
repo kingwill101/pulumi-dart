@@ -30,15 +30,15 @@ import 'deployment_status_apps_v1beta1.dart';
 /// by setting the 'customTimeouts' option on the resource.
 class DeploymentAppsV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Specification of the desired behavior of the Deployment.
-  final pulumi.Input<DeploymentSpecAppsV1beta1>? spec;
+  final pulumi.Input<DeploymentSpecAppsV1beta1?>? spec;
   /// Most recently observed status of the Deployment.
-  final pulumi.Input<DeploymentStatusAppsV1beta1>? status;
+  final pulumi.Input<DeploymentStatusAppsV1beta1?>? status;
 
   /// Creates a new [DeploymentAppsV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

@@ -7,7 +7,7 @@ class PersistentVolumeClaimVolumeSource {
   /// claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   final pulumi.Input<String> claimName;
   /// readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
 
   /// Creates a new [PersistentVolumeClaimVolumeSource].
   /// [claimName] claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims

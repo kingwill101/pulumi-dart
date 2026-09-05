@@ -7,9 +7,9 @@ import 'resource_attributes.dart';
 /// SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of resourceAttributes and nonResourceAttributes must be set
 class SelfSubjectAccessReviewSpec {
   /// nonResourceAttributes describes information for a non-resource access request
-  final pulumi.Input<NonResourceAttributes>? nonResourceAttributes;
+  final pulumi.Input<NonResourceAttributes?>? nonResourceAttributes;
   /// resourceAttributes describes information for a resource access request
-  final pulumi.Input<ResourceAttributes>? resourceAttributes;
+  final pulumi.Input<ResourceAttributes?>? resourceAttributes;
 
   /// Creates a new [SelfSubjectAccessReviewSpec].
   /// [nonResourceAttributes] nonResourceAttributes describes information for a non-resource access request

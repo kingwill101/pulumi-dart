@@ -13,11 +13,11 @@ class DirectoryArgs {
   /// Example: https://github.com/kubernetes-sigs/kustomize/tree/master/examples/helloWorld
   final pulumi.Input<String> directory;
   /// The default namespace to apply to the resources. Defaults to the provider's namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// A prefix for the auto-generated resource names. Defaults to the name of the Directory resource. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo:resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// Indicates that child resources should skip the await logic. Defaults to `false`.
-  final pulumi.Input<bool>? skipAwait;
+  final pulumi.Input<bool?>? skipAwait;
 
   /// Creates a new [DirectoryArgs].
   /// [directory] The directory containing the kustomization to apply. The value can be a local directory or a folder in a

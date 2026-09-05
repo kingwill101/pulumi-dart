@@ -1,42 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
-import 'workload_patch_args.dart';
-import 'workload_spec_patch.dart';
+import 'workload_spec_patch_scheduling_k8s_io_v1alpha2.dart';
 
-/// Patch resources are used to modify existing Kubernetes resources by using
-/// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
-/// one patch may be applied to the same resource, and a random FieldManager name will be used for each Patch resource.
-/// Conflicts will result in an error by default, but can be forced using the "pulumi.com/patchForce" annotation. See the
-/// [Server-Side Apply Docs](https://www.pulumi.com/registry/packages/kubernetes/how-to-guides/managing-resources-with-server-side-apply/) for
-/// additional information about using Server-Side Apply to manage Kubernetes resources with Pulumi.
 /// Workload allows for expressing scheduling constraints that should be used when managing the lifecycle of workloads from the scheduling perspective, including scheduling, preemption, eviction and other phases. Workload API enablement is toggled by the GenericWorkload feature gate.
-class WorkloadPatchSchedulingK8sIoV1alpha2 extends pulumi.CustomResource {
+class WorkloadPatchSchedulingK8sIoV1alpha2 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  late final pulumi.Output<String?> apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  late final pulumi.Output<String?> kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  late final pulumi.Output<ObjectMetaPatch?> metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Spec defines the desired behavior of a Workload.
-  late final pulumi.Output<WorkloadSpecPatch?> spec;
+  final pulumi.Input<WorkloadSpecPatchSchedulingK8sIoV1alpha2?>? spec;
 
   /// Creates a new [WorkloadPatchSchedulingK8sIoV1alpha2].
-  /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [WorkloadPatchSchedulingK8sIoV1alpha2]. {@macro pulumi_scheduling_k8s_io_v1alpha2_workload_patch_args_doc}
-  /// [options] Resource options controlling this resource's behavior.
-  WorkloadPatchSchedulingK8sIoV1alpha2(
-    String name, {
-    WorkloadPatchArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'kubernetes:scheduling.k8s.io/v1alpha2:WorkloadPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    apiVersion = registerOutput<String?>('apiVersion');
-    kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spec = registerOutput<WorkloadSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] Spec defines the desired behavior of a Workload.
+  const WorkloadPatchSchedulingK8sIoV1alpha2({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<WorkloadSpecPatchSchedulingK8sIoV1alpha2, Map<String, dynamic>>(spec, (value) => value.toMap()),
+    };
+  }
+
+  factory WorkloadPatchSchedulingK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
+    return WorkloadPatchSchedulingK8sIoV1alpha2(
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkloadSpecPatchSchedulingK8sIoV1alpha2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+    );
   }
 }

@@ -6,7 +6,7 @@ import 'celdevice_selector_patch_resource_k8s_io_v1alpha3.dart';
 /// DeviceSelector must have exactly one field set.
 class DeviceSelectorPatchResourceK8sIoV1alpha3 {
   /// CEL contains a CEL expression for selecting a device.
-  final pulumi.Input<CELDeviceSelectorPatchResourceK8sIoV1alpha3>? cel;
+  final pulumi.Input<CELDeviceSelectorPatchResourceK8sIoV1alpha3?>? cel;
 
   /// Creates a new [DeviceSelectorPatchResourceK8sIoV1alpha3].
   /// [cel] CEL contains a CEL expression for selecting a device.

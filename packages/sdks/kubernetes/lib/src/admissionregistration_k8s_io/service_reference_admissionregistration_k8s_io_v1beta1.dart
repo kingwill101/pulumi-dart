@@ -9,9 +9,9 @@ class ServiceReferenceAdmissionregistrationK8sIoV1beta1 {
   /// `namespace` is the namespace of the service. Required
   final pulumi.Input<String> namespace;
   /// `path` is an optional URL path which will be sent in any request to this service.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [ServiceReferenceAdmissionregistrationK8sIoV1beta1].
   /// [name] `name` is the name of the service. Required
@@ -39,7 +39,7 @@ class ServiceReferenceAdmissionregistrationK8sIoV1beta1 {
       name: pulumi.Input.fromValue(map['name'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

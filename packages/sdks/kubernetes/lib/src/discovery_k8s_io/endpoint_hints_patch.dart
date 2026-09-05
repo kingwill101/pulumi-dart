@@ -7,9 +7,9 @@ import 'for_zone_patch.dart';
 /// EndpointHints provides hints describing how an endpoint should be consumed.
 class EndpointHintsPatch {
   /// forNodes indicates the node(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.
-  final pulumi.Input<List<ForNodePatch>>? forNodes;
+  final pulumi.Input<List<ForNodePatch>?>? forNodes;
   /// forZones indicates the zone(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.
-  final pulumi.Input<List<ForZonePatch>>? forZones;
+  final pulumi.Input<List<ForZonePatch>?>? forZones;
 
   /// Creates a new [EndpointHintsPatch].
   /// [forNodes] forNodes indicates the node(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.

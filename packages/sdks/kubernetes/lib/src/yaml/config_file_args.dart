@@ -10,9 +10,9 @@ class ConfigFileArgs {
   /// Path or URL to a Kubernetes manifest file. File must exist.
   final pulumi.Input<String> file;
   /// A prefix for the auto-generated resource names. Defaults to the name of the ConfigFile. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// Indicates that child resources should skip the await logic. Defaults to `false`.
-  final pulumi.Input<bool>? skipAwait;
+  final pulumi.Input<bool?>? skipAwait;
 
   /// Creates a new [ConfigFileArgs].
   /// [file] Path or URL to a Kubernetes manifest file. File must exist.

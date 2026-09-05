@@ -7,7 +7,7 @@ class ContainerImage {
   /// Names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"]
   final pulumi.Input<List<String>> names;
   /// The size of the image in bytes.
-  final pulumi.Input<int>? sizeBytes;
+  final pulumi.Input<int?>? sizeBytes;
 
   /// Creates a new [ContainerImage].
   /// [names] Names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"]
@@ -27,7 +27,7 @@ class ContainerImage {
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
       names: pulumi.Input.fromValue((map['names'] as List).cast<String>()),
-      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

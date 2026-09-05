@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'deployment_resource.dart';
+import 'deployment_apps_v1beta1.dart';
 
 /// {@template pulumi_apps_v1beta1_deployment_list_apps_v1beta1_args_doc}
 /// The set of arguments for DeploymentList.
@@ -10,13 +10,13 @@ import 'deployment_resource.dart';
 /// {@macro pulumi_apps_v1beta1_deployment_list_apps_v1beta1_args_doc}
 class DeploymentListAppsV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Items is the list of Deployments.
-  final pulumi.Input<List<DeploymentResource>> items;
+  final pulumi.Input<List<DeploymentAppsV1beta1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata.
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [DeploymentListAppsV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class DeploymentListAppsV1beta1Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<DeploymentAppsV1beta1>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<DeploymentAppsV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class DeploymentListAppsV1beta1Args {
   factory DeploymentListAppsV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DeploymentListAppsV1beta1Args(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<DeploymentResource>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentAppsV1beta1>(map['items']!, (value) => DeploymentAppsV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

@@ -6,7 +6,7 @@ import 'load_balancer_ingress.dart';
 /// LoadBalancerStatus represents the status of a load-balancer.
 class LoadBalancerStatus {
   /// Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.
-  final pulumi.Input<List<LoadBalancerIngress>>? ingress;
+  final pulumi.Input<List<LoadBalancerIngress>?>? ingress;
 
   /// Creates a new [LoadBalancerStatus].
   /// [ingress] Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.

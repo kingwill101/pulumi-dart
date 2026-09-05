@@ -10,15 +10,15 @@ import '../meta/label_selector.dart';
 /// PodPresetSpec is a description of a pod preset.
 class PodPresetSpec {
   /// Env defines the collection of EnvVar to inject into containers.
-  final pulumi.Input<List<EnvVar>>? env;
+  final pulumi.Input<List<EnvVar>?>? env;
   /// EnvFrom defines the collection of EnvFromSource to inject into containers.
-  final pulumi.Input<List<EnvFromSource>>? envFrom;
+  final pulumi.Input<List<EnvFromSource>?>? envFrom;
   /// Selector is a label query over a set of resources, in this case pods. Required.
-  final pulumi.Input<LabelSelector>? selector;
+  final pulumi.Input<LabelSelector?>? selector;
   /// VolumeMounts defines the collection of VolumeMount to inject into containers.
-  final pulumi.Input<List<VolumeMount>>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>?>? volumeMounts;
   /// Volumes defines the collection of Volume to inject into the pod.
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<List<Volume>?>? volumes;
 
   /// Creates a new [PodPresetSpec].
   /// [env] Env defines the collection of EnvVar to inject into containers.

@@ -6,7 +6,7 @@ import 'opaque_device_configuration.dart';
 /// DeviceClassConfiguration is used in DeviceClass.
 class DeviceClassConfiguration {
   /// Opaque provides driver-specific configuration parameters.
-  final pulumi.Input<OpaqueDeviceConfiguration>? opaque;
+  final pulumi.Input<OpaqueDeviceConfiguration?>? opaque;
 
   /// Creates a new [DeviceClassConfiguration].
   /// [opaque] Opaque provides driver-specific configuration parameters.

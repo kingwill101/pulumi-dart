@@ -10,7 +10,7 @@ class CELDeviceSelectorPatchResourceK8sIoV1beta2 {
   /// - driver (string): the name of the driver which defines this device.
   /// - attributes (map[string]object): the device's attributes, grouped by prefix
   /// (e.g. device.attributes["dra.example.com"] evaluates to an object with all
-  /// of the attributes which were prefixed by "dra.example.com".
+  /// of the attributes which were prefixed by "dra.example.com").
   /// - capacity (map[string]object): the device's capacities, grouped by prefix.
   /// - allowMultipleAllocations (bool): the allowMultipleAllocations property of the device
   /// (v1.34+ with the DRAConsumableCapacity feature enabled).
@@ -30,6 +30,13 @@ class CELDeviceSelectorPatchResourceK8sIoV1beta2 {
   ///
   /// A robust expression should check for the existence of attributes before referencing them.
   ///
+  /// Common errors: - "no such key": Use optional chaining (.? followed by orValue())
+  /// or guarding the check with has() for optional fields.
+  /// See CEL Optional Types for details:
+  /// https://pkg.go.dev/github.com/google/cel-go@v0.17.4/cel#OptionalTypes
+  ///
+  /// For more CEL expression syntax and examples, see: https://kubernetes.io/docs/reference/using-api/cel/
+  ///
   /// For ease of use, the cel.bind() function is enabled, and can be used to simplify expressions that access multiple attributes with the same domain. For example:
   ///
   /// cel.bind(dra, device.attributes["dra.example.com"], dra.someBool && dra.anotherBool)
@@ -39,7 +46,7 @@ class CELDeviceSelectorPatchResourceK8sIoV1beta2 {
   /// device.attributes["dra.example.com"].models.includes("some-model")
   ///
   /// The length of the expression must be smaller or equal to 10 Ki. The cost of evaluating it is also limited based on the estimated number of logical steps.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
 
   /// Creates a new [CELDeviceSelectorPatchResourceK8sIoV1beta2].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.

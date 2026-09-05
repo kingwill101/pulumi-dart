@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
-import 'cluster_trust_bundle_patch_certificates_k8s_io_v1beta1_args.dart';
-import 'cluster_trust_bundle_spec_patch_certificates_k8s_io_v1beta1.dart';
+import 'cluster_trust_bundle_patch_certificates_k8s_io_v1alpha1_args.dart';
+import 'cluster_trust_bundle_spec_patch_certificates_k8s_io_v1alpha1.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -22,18 +22,18 @@ class ClusterTrustBundlePatchResource extends pulumi.CustomResource {
   /// metadata contains the object metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// spec contains the signer (if any) and trust anchors.
-  late final pulumi.Output<ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1?> spec;
+  late final pulumi.Output<ClusterTrustBundleSpecPatchCertificatesK8sIoV1alpha1?> spec;
 
   /// Creates a new [ClusterTrustBundlePatchResource].
   /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [ClusterTrustBundlePatchResource]. {@macro pulumi_certificates_k8s_io_v1beta1_cluster_trust_bundle_patch_certificates_k8s_io_v1beta1_args_doc}
+  /// [args] Arguments used to configure this [ClusterTrustBundlePatchResource]. {@macro pulumi_certificates_k8s_io_v1alpha1_cluster_trust_bundle_patch_certificates_k8s_io_v1alpha1_args_doc}
   /// [options] Resource options controlling this resource's behavior.
   ClusterTrustBundlePatchResource(
     String name, {
-    ClusterTrustBundlePatchCertificatesK8sIoV1beta1Args? args,
+    ClusterTrustBundlePatchCertificatesK8sIoV1alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:certificates.k8s.io/v1beta1:ClusterTrustBundlePatch',
+          'kubernetes:certificates.k8s.io/v1alpha1:ClusterTrustBundlePatch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
@@ -41,6 +41,21 @@ class ClusterTrustBundlePatchResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spec = registerOutput<ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ClusterTrustBundleSpecPatchCertificatesK8sIoV1alpha1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTrustBundleSpecPatchCertificatesK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterTrustBundlePatchResource] resource.
+  ClusterTrustBundlePatchResource.reference(String urn)
+    : super(
+        'kubernetes:certificates.k8s.io/v1alpha1:ClusterTrustBundlePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ClusterTrustBundleSpecPatchCertificatesK8sIoV1alpha1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTrustBundleSpecPatchCertificatesK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

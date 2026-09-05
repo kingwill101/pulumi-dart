@@ -6,7 +6,7 @@ import 'user_info_patch.dart';
 /// SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.
 class SelfSubjectReviewStatusPatch {
   /// userInfo is a set of attributes belonging to the user making this request.
-  final pulumi.Input<UserInfoPatch>? userInfo;
+  final pulumi.Input<UserInfoPatch?>? userInfo;
 
   /// Creates a new [SelfSubjectReviewStatusPatch].
   /// [userInfo] userInfo is a set of attributes belonging to the user making this request.

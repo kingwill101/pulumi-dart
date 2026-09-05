@@ -16,7 +16,7 @@ class ModifyVolumeStatus {
   /// Note: New statuses can be added in the future. Consumers should check for unknown statuses and fail appropriately.
   final pulumi.Input<String> status;
   /// targetVolumeAttributesClassName is the name of the VolumeAttributesClass the PVC currently being reconciled
-  final pulumi.Input<String>? targetVolumeAttributesClassName;
+  final pulumi.Input<String?>? targetVolumeAttributesClassName;
 
   /// Creates a new [ModifyVolumeStatus].
   /// [status] status is the status of the ControllerModifyVolume operation. It can be in any of following states:

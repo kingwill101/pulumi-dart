@@ -58,7 +58,7 @@ class JSONPatch {
   /// - 'jsonpatch.escapeKey' - Performs JSONPatch key escaping. '~' and  '/' are escaped as '~0' and `~1' respectively).
   ///
   /// Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
 
   /// Creates a new [JSONPatch].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec

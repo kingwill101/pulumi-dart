@@ -11,11 +11,11 @@ class RepositoryOptsHelmShV4 {
   /// The repository's cert key file
   final pulumi.Input<dynamic>? keyFile;
   /// Password for HTTP basic authentication
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Repository where to locate the requested chart. If it's a URL the chart is installed without installing the repository.
-  final pulumi.Input<String>? repo;
+  final pulumi.Input<String?>? repo;
   /// Username for HTTP basic authentication
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [RepositoryOptsHelmShV4].
   /// [caFile] The Repository's CA File

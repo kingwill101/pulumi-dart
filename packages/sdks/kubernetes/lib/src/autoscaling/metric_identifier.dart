@@ -8,7 +8,7 @@ class MetricIdentifier {
   /// name is the name of the given metric
   final pulumi.Input<String> name;
   /// selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
-  final pulumi.Input<LabelSelector>? selector;
+  final pulumi.Input<LabelSelector?>? selector;
 
   /// Creates a new [MetricIdentifier].
   /// [name] name is the name of the given metric

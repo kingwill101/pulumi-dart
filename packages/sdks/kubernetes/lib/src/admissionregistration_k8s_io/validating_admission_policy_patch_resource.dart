@@ -43,4 +43,20 @@ class ValidatingAdmissionPolicyPatchResource extends pulumi.CustomResource {
     spec = registerOutput<ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ValidatingAdmissionPolicyPatchResource] resource.
+  ValidatingAdmissionPolicyPatchResource.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1alpha1:ValidatingAdmissionPolicyPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

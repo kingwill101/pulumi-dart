@@ -10,12 +10,12 @@ import 'custom_resource_definition_spec_patch_apiextensions_k8s_io_v1beta1.dart'
 /// {@macro pulumi_apiextensions_k8s_io_v1beta1_custom_resource_definition_patch_apiextensions_k8s_io_v1beta1_args_doc}
 class CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// spec describes how the user wants the resources to appear
-  final pulumi.Input<CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1>? spec;
+  final pulumi.Input<CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1?>? spec;
 
   /// Creates a new [CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

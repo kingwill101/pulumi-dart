@@ -6,13 +6,13 @@ import '../meta/label_selector.dart';
 /// ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
 class ExternalMetricStatusAutoscalingV2beta1 {
   /// currentAverageValue is the current value of metric averaged over autoscaled pods.
-  final pulumi.Input<String>? currentAverageValue;
+  final pulumi.Input<String?>? currentAverageValue;
   /// currentValue is the current value of the metric (as a quantity)
   final pulumi.Input<String> currentValue;
   /// metricName is the name of a metric used for autoscaling in metric system.
   final pulumi.Input<String> metricName;
   /// metricSelector is used to identify a specific time series within a given metric.
-  final pulumi.Input<LabelSelector>? metricSelector;
+  final pulumi.Input<LabelSelector?>? metricSelector;
 
   /// Creates a new [ExternalMetricStatusAutoscalingV2beta1].
   /// [currentAverageValue] currentAverageValue is the current value of metric averaged over autoscaled pods.

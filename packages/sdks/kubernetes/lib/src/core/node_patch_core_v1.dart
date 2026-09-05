@@ -43,4 +43,20 @@ class NodePatchCoreV1 extends pulumi.CustomResource {
     spec = registerOutput<NodeSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<NodeStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [NodePatchCoreV1] resource.
+  NodePatchCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:NodePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<NodeSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<NodeStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

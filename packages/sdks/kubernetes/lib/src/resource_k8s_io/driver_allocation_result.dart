@@ -6,7 +6,7 @@ import 'named_resources_allocation_result.dart';
 /// DriverAllocationResult contains vendor parameters and the allocation result for one request.
 class DriverAllocationResult {
   /// NamedResources describes the allocation result when using the named resources model.
-  final pulumi.Input<NamedResourcesAllocationResult>? namedResources;
+  final pulumi.Input<NamedResourcesAllocationResult?>? namedResources;
   /// VendorRequestParameters are the per-request configuration parameters from the time that the claim was allocated.
   final pulumi.Input<dynamic>? vendorRequestParameters;
 

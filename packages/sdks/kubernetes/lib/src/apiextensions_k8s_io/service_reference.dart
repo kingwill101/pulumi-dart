@@ -9,9 +9,9 @@ class ServiceReference {
   /// namespace is the namespace of the service. Required
   final pulumi.Input<String> namespace;
   /// path is an optional URL path at which the webhook will be contacted.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [ServiceReference].
   /// [name] name is the name of the service. Required
@@ -39,7 +39,7 @@ class ServiceReference {
       name: pulumi.Input.fromValue(map['name'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -7,7 +7,7 @@ import 'device_taint_selector_resource_k8s_io_v1beta2.dart';
 /// DeviceTaintRuleSpec specifies the selector and one taint.
 class DeviceTaintRuleSpecResourceK8sIoV1beta2 {
   /// DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.
-  final pulumi.Input<DeviceTaintSelectorResourceK8sIoV1beta2>? deviceSelector;
+  final pulumi.Input<DeviceTaintSelectorResourceK8sIoV1beta2?>? deviceSelector;
   /// The taint that gets applied to matching devices.
   final pulumi.Input<DeviceTaintResourceK8sIoV1beta2> taint;
 

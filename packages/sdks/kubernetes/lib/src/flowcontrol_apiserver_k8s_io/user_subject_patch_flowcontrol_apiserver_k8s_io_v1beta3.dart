@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// UserSubject holds detailed information for user-kind subject.
 class UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3 {
   /// `name` is the username that matches, or "*" to match all usernames. Required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.

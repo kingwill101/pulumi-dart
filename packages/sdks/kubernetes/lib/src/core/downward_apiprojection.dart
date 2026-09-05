@@ -6,7 +6,7 @@ import 'downward_apivolume_file.dart';
 /// Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.
 class DownwardAPIProjection {
   /// Items is a list of DownwardAPIVolume file
-  final pulumi.Input<List<DownwardAPIVolumeFile>>? items;
+  final pulumi.Input<List<DownwardAPIVolumeFile>?>? items;
 
   /// Creates a new [DownwardAPIProjection].
   /// [items] Items is a list of DownwardAPIVolume file

@@ -9,9 +9,9 @@ class Taint {
   /// Required. The taint key to be applied to a node.
   final pulumi.Input<String> key;
   /// TimeAdded represents the time at which the taint was added.
-  final pulumi.Input<String>? timeAdded;
+  final pulumi.Input<String?>? timeAdded;
   /// The taint value corresponding to the taint key.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Taint].
   /// [effect] Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.

@@ -7,11 +7,11 @@ import 'type_checking_patch.dart';
 /// ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.
 class ValidatingAdmissionPolicyStatusPatch {
   /// conditions represent the latest available observations of a policy's current state.
-  final pulumi.Input<List<ConditionPatch>>? conditions;
+  final pulumi.Input<List<ConditionPatch>?>? conditions;
   /// observedGeneration is the generation observed by the controller.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// typeChecking contains the results of type checking for each expression. Presence of this field indicates the completion of the type checking.
-  final pulumi.Input<TypeCheckingPatch>? typeChecking;
+  final pulumi.Input<TypeCheckingPatch?>? typeChecking;
 
   /// Creates a new [ValidatingAdmissionPolicyStatusPatch].
   /// [conditions] conditions represent the latest available observations of a policy's current state.
@@ -34,7 +34,7 @@ class ValidatingAdmissionPolicyStatusPatch {
   factory ValidatingAdmissionPolicyStatusPatch.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatusPatch(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionPatch>(guardedValue, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       typeChecking: (() { final guardedValue = map['typeChecking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TypeCheckingPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

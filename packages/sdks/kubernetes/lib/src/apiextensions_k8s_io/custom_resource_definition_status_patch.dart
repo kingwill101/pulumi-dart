@@ -7,13 +7,13 @@ import 'custom_resource_definition_names_patch.dart';
 /// CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
 class CustomResourceDefinitionStatusPatch {
   /// acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
-  final pulumi.Input<CustomResourceDefinitionNamesPatch>? acceptedNames;
+  final pulumi.Input<CustomResourceDefinitionNamesPatch?>? acceptedNames;
   /// conditions indicate state for particular aspects of a CustomResourceDefinition
-  final pulumi.Input<List<CustomResourceDefinitionConditionPatch>>? conditions;
+  final pulumi.Input<List<CustomResourceDefinitionConditionPatch>?>? conditions;
   /// The generation observed by the CRD controller.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
-  final pulumi.Input<List<String>>? storedVersions;
+  final pulumi.Input<List<String>?>? storedVersions;
 
   /// Creates a new [CustomResourceDefinitionStatusPatch].
   /// [acceptedNames] acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
@@ -40,7 +40,7 @@ class CustomResourceDefinitionStatusPatch {
     return CustomResourceDefinitionStatusPatch(
       acceptedNames: (() { final guardedValue = map['acceptedNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomResourceDefinitionNamesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomResourceDefinitionConditionPatch>(guardedValue, (value) => CustomResourceDefinitionConditionPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storedVersions: (() { final guardedValue = map['storedVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

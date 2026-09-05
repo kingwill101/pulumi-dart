@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
+import 'endpoint_patch_discovery_k8s_io_v1beta1.dart';
+import 'endpoint_port_patch_discovery_k8s_io_v1beta1.dart';
 import 'endpoint_slice_patch_discovery_k8s_io_v1beta1_args.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
@@ -15,13 +17,13 @@ class EndpointSlicePatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
   /// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
+  late final pulumi.Output<List<EndpointPatchDiscoveryK8sIoV1beta1>?> endpoints;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ports;
+  late final pulumi.Output<List<EndpointPortPatchDiscoveryK8sIoV1beta1>?> ports;
 
   /// Creates a new [EndpointSlicePatchResource].
   /// [name] The Pulumi resource name.
@@ -39,9 +41,26 @@ class EndpointSlicePatchResource extends pulumi.CustomResource {
         ) {
     addressType = registerOutput<String?>('addressType');
     apiVersion = registerOutput<String?>('apiVersion');
-    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
+    endpoints = registerOutput<List<EndpointPatchDiscoveryK8sIoV1beta1>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPatchDiscoveryK8sIoV1beta1>(guardedValue, (value) => EndpointPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ports = registerOutput<List<Map<String, dynamic>>?>('ports');
+    ports = registerOutput<List<EndpointPortPatchDiscoveryK8sIoV1beta1>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPortPatchDiscoveryK8sIoV1beta1>(guardedValue, (value) => EndpointPortPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointSlicePatchResource] resource.
+  EndpointSlicePatchResource.reference(String urn)
+    : super(
+        'kubernetes:discovery.k8s.io/v1beta1:EndpointSlicePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressType = registerOutput<String?>('addressType');
+    apiVersion = registerOutput<String?>('apiVersion');
+    endpoints = registerOutput<List<EndpointPatchDiscoveryK8sIoV1beta1>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPatchDiscoveryK8sIoV1beta1>(guardedValue, (value) => EndpointPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ports = registerOutput<List<EndpointPortPatchDiscoveryK8sIoV1beta1>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPortPatchDiscoveryK8sIoV1beta1>(guardedValue, (value) => EndpointPortPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// FlowDistinguisherMethod specifies the method of a flow distinguisher.
 class FlowDistinguisherMethodPatch {
   /// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FlowDistinguisherMethodPatch].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility.
 class GroupVersionForDiscoveryPatch {
   /// groupVersion specifies the API group and version in the form "group/version"
-  final pulumi.Input<String>? groupVersion;
+  final pulumi.Input<String?>? groupVersion;
   /// version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GroupVersionForDiscoveryPatch].
   /// [groupVersion] groupVersion specifies the API group and version in the form "group/version"

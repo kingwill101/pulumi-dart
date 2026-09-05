@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// BoundObjectReference is a reference to an object that a token is bound to.
 class BoundObjectReference {
   /// apiVersion is API version of the referent.
-  final pulumi.Input<String>? apiVersion;
-  /// kind of the referent. Valid kinds are 'Pod' and 'Secret'.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? apiVersion;
+  /// kind of the referent. Valid kinds are 'Pod', 'Secret', 'Node', 'ValidatingWebhookConfiguration', and 'MutatingWebhookConfiguration'.
+  final pulumi.Input<String?>? kind;
   /// name of the referent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// uid of the referent.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [BoundObjectReference].
   /// [apiVersion] apiVersion is API version of the referent.
-  /// [kind] kind of the referent. Valid kinds are 'Pod' and 'Secret'.
+  /// [kind] kind of the referent. Valid kinds are 'Pod', 'Secret', 'Node', 'ValidatingWebhookConfiguration', and 'MutatingWebhookConfiguration'.
   /// [name] name of the referent.
   /// [uid] uid of the referent.
   const BoundObjectReference({

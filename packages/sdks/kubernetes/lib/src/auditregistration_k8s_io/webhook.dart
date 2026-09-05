@@ -9,7 +9,7 @@ class Webhook {
   /// ClientConfig holds the connection parameters for the webhook required
   final pulumi.Input<WebhookClientConfig> clientConfig;
   /// Throttle holds the options for throttling the webhook
-  final pulumi.Input<WebhookThrottleConfig>? throttle;
+  final pulumi.Input<WebhookThrottleConfig?>? throttle;
 
   /// Creates a new [Webhook].
   /// [clientConfig] ClientConfig holds the connection parameters for the webhook required

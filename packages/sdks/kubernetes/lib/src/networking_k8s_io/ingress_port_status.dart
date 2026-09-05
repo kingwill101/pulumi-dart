@@ -8,7 +8,7 @@ class IngressPortStatus {
   /// CamelCase names
   /// - cloud provider specific error values must have names that comply with the
   /// format foo.example.com/CamelCase.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// port is the port number of the ingress port.
   final pulumi.Input<int> port;
   /// protocol is the protocol of the ingress port. The supported values are: "TCP", "UDP", "SCTP"
@@ -35,7 +35,7 @@ class IngressPortStatus {
   factory IngressPortStatus.fromMap(Map<String, dynamic> map) {
     return IngressPortStatus(
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }

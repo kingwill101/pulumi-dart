@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ResourceClaimSchedulingStatus contains information about one particular ResourceClaim with "WaitForFirstConsumer" allocation mode.
 class ResourceClaimSchedulingStatusPatchResourceK8sIoV1alpha3 {
   /// Name matches the pod.spec.resourceClaims[*].Name field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.
   ///
   /// The size of this field is limited to 128, the same as for PodSchedulingSpec.PotentialNodes. This may get increased in the future, but not reduced.
-  final pulumi.Input<List<String>>? unsuitableNodes;
+  final pulumi.Input<List<String>?>? unsuitableNodes;
 
   /// Creates a new [ResourceClaimSchedulingStatusPatchResourceK8sIoV1alpha3].
   /// [name] Name matches the pod.spec.resourceClaims[*].Name field.

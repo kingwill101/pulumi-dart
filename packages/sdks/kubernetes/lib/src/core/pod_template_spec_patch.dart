@@ -7,9 +7,9 @@ import 'pod_spec_patch.dart';
 /// PodTemplateSpec describes the data a pod should have when created from a template
 class PodTemplateSpecPatch {
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<PodSpecPatch>? spec;
+  final pulumi.Input<PodSpecPatch?>? spec;
 
   /// Creates a new [PodTemplateSpecPatch].
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata

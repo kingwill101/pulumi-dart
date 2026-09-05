@@ -37,4 +37,20 @@ class ServiceCIDRNetworkingK8sIoV1beta1Resource extends pulumi.CustomResource {
     spec = registerOutput<ServiceCIDRSpecNetworkingK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCIDRSpecNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ServiceCIDRStatusNetworkingK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCIDRStatusNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ServiceCIDRNetworkingK8sIoV1beta1Resource] resource.
+  ServiceCIDRNetworkingK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:networking.k8s.io/v1beta1:ServiceCIDR',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ServiceCIDRSpecNetworkingK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCIDRSpecNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ServiceCIDRStatusNetworkingK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCIDRStatusNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

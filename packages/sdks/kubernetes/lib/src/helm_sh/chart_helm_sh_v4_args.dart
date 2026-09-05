@@ -12,37 +12,37 @@ class ChartHelmShV4Args {
   /// Chart name to be installed. A path may be used.
   final pulumi.Input<String> chart;
   /// Run helm dependency update before installing the chart.
-  final pulumi.Input<bool>? dependencyUpdate;
+  final pulumi.Input<bool?>? dependencyUpdate;
   /// Use chart development versions, too. Equivalent to version '&gt;0.0.0-0'. If `version` is set, this is ignored.
-  final pulumi.Input<bool>? devel;
+  final pulumi.Input<bool?>? devel;
   /// By default, Helm hook resources (those annotated with `helm.sh/hook`) are omitted from the rendered output. When the provider is configured with `renderYamlToDirectory`, set this to true to include hook resources in the rendered manifests so that another tool (e.g. Argo CD) can apply them. Test hooks (`helm.sh/hook: test`) are always excluded. This setting has no effect outside of render mode, where hooks are not supported.
-  final pulumi.Input<bool>? includeHooks;
+  final pulumi.Input<bool?>? includeHooks;
   /// Location of public keys used for verification. Used only if `verify` is true
   final pulumi.Input<dynamic>? keyring;
   /// Release name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace for the release.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Use insecure HTTP for the chart download instead of HTTPS.
-  final pulumi.Input<bool>? plainHttp;
+  final pulumi.Input<bool?>? plainHttp;
   /// Specification defining the post-renderer to use.
-  final pulumi.Input<PostRenderer>? postRenderer;
+  final pulumi.Input<PostRenderer?>? postRenderer;
   /// Specification defining the Helm chart repository to use.
-  final pulumi.Input<RepositoryOptsHelmShV4>? repositoryOpts;
+  final pulumi.Input<RepositoryOptsHelmShV4?>? repositoryOpts;
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo:resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// By default, the provider waits until all resources are in a ready state before marking the release as successful. Setting this to true will skip such await logic.
-  final pulumi.Input<bool>? skipAwait;
+  final pulumi.Input<bool?>? skipAwait;
   /// If set, no CRDs will be installed. By default, CRDs are installed if not already present.
-  final pulumi.Input<bool>? skipCrds;
+  final pulumi.Input<bool?>? skipCrds;
   /// List of assets (raw yaml files). Content is read and merged with values.
-  final pulumi.Input<List<dynamic>>? valueYamlFiles;
+  final pulumi.Input<List<dynamic>?>? valueYamlFiles;
   /// Custom values set for the release.
-  final pulumi.Input<Map<String, dynamic>>? values;
+  final pulumi.Input<Map<String, dynamic>?>? values;
   /// Verify the chart's integrity.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
   /// Specify the chart version to install. If this is not specified, the latest version is installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ChartHelmShV4Args].
   /// [chart] Chart name to be installed. A path may be used.

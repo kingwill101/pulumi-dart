@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeRuntimeHandlerFeatures is a set of features implemented by the runtime handler.
 class NodeRuntimeHandlerFeatures {
   /// RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.
-  final pulumi.Input<bool>? recursiveReadOnlyMounts;
+  final pulumi.Input<bool?>? recursiveReadOnlyMounts;
   /// UserNamespaces is set to true if the runtime handler supports UserNamespaces, including for volumes.
-  final pulumi.Input<bool>? userNamespaces;
+  final pulumi.Input<bool?>? userNamespaces;
 
   /// Creates a new [NodeRuntimeHandlerFeatures].
   /// [recursiveReadOnlyMounts] RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.

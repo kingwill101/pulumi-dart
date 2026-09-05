@@ -3,11 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'modify_volume_status.dart';
 import 'persistent_volume_claim_condition.dart';
+import 'volume_health_status.dart';
 
 /// PersistentVolumeClaimStatus is the current status of a persistent volume claim.
 class PersistentVolumeClaimStatus {
   /// accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
-  final pulumi.Input<List<String>>? accessModes;
+  final pulumi.Input<List<String>?>? accessModes;
   /// allocatedResourceStatuses stores status of resource being resized for the given PVC. Key names follow standard Kubernetes label syntax. Valid values are either:
   /// * Un-prefixed keys:
   /// - storage - the capacity of the volume.
@@ -36,7 +37,7 @@ class PersistentVolumeClaimStatus {
   /// When this field is not set, it means that no resize operation is in progress for the given PVC.
   ///
   /// A controller that receives PVC update with previously unknown resourceName or ClaimResourceStatus should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.
-  final pulumi.Input<Map<String, String>>? allocatedResourceStatuses;
+  final pulumi.Input<Map<String, String>?>? allocatedResourceStatuses;
   /// allocatedResources tracks the resources allocated to a PVC including its capacity. Key names follow standard Kubernetes label syntax. Valid values are either:
   /// * Un-prefixed keys:
   /// - storage - the capacity of the volume.
@@ -46,19 +47,21 @@ class PersistentVolumeClaimStatus {
   /// Capacity reported here may be larger than the actual capacity when a volume expansion operation is requested. For storage quota, the larger value from allocatedResources and PVC.spec.resources is used. If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation. If a volume expansion capacity request is lowered, allocatedResources is only lowered if there are no expansion operations in progress and if the actual volume capacity is equal or lower than the requested capacity.
   ///
   /// A controller that receives PVC update with previously unknown resourceName should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.
-  final pulumi.Input<Map<String, String>>? allocatedResources;
+  final pulumi.Input<Map<String, String>?>? allocatedResources;
   /// capacity represents the actual resources of the underlying volume.
-  final pulumi.Input<Map<String, String>>? capacity;
+  final pulumi.Input<Map<String, String>?>? capacity;
   /// conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'Resizing'.
-  final pulumi.Input<List<PersistentVolumeClaimCondition>>? conditions;
+  final pulumi.Input<List<PersistentVolumeClaimCondition>?>? conditions;
   /// currentVolumeAttributesClassName is the current name of the VolumeAttributesClass the PVC is using. When unset, there is no VolumeAttributeClass applied to this PersistentVolumeClaim
-  final pulumi.Input<String>? currentVolumeAttributesClassName;
+  final pulumi.Input<String?>? currentVolumeAttributesClassName;
+  /// healthStatus contains the latest controller-reported health information for the volume bound to this claim.
+  final pulumi.Input<VolumeHealthStatus?>? healthStatus;
   /// ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted.
-  final pulumi.Input<ModifyVolumeStatus>? modifyVolumeStatus;
+  final pulumi.Input<ModifyVolumeStatus?>? modifyVolumeStatus;
   /// phase represents the current phase of PersistentVolumeClaim.
-  final pulumi.Input<String>? phase;
+  final pulumi.Input<String?>? phase;
   /// resizeStatus stores status of resize operation. ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty string by resize controller or kubelet. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
-  final pulumi.Input<String>? resizeStatus;
+  final pulumi.Input<String?>? resizeStatus;
 
   /// Creates a new [PersistentVolumeClaimStatus].
   /// [accessModes] accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
@@ -67,6 +70,7 @@ class PersistentVolumeClaimStatus {
   /// [capacity] capacity represents the actual resources of the underlying volume.
   /// [conditions] conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'Resizing'.
   /// [currentVolumeAttributesClassName] currentVolumeAttributesClassName is the current name of the VolumeAttributesClass the PVC is using. When unset, there is no VolumeAttributeClass applied to this PersistentVolumeClaim
+  /// [healthStatus] healthStatus contains the latest controller-reported health information for the volume bound to this claim.
   /// [modifyVolumeStatus] ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted.
   /// [phase] phase represents the current phase of PersistentVolumeClaim.
   /// [resizeStatus] resizeStatus stores status of resize operation. ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty string by resize controller or kubelet. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
@@ -77,6 +81,7 @@ class PersistentVolumeClaimStatus {
     this.capacity,
     this.conditions,
     this.currentVolumeAttributesClassName,
+    this.healthStatus,
     this.modifyVolumeStatus,
     this.phase,
     this.resizeStatus,
@@ -90,6 +95,7 @@ class PersistentVolumeClaimStatus {
       'capacity': ?capacity,
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<PersistentVolumeClaimCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<PersistentVolumeClaimCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'currentVolumeAttributesClassName': ?currentVolumeAttributesClassName,
+      'healthStatus': ?pulumi.Input.mapOptionalInputValue<VolumeHealthStatus, Map<String, dynamic>>(healthStatus, (value) => value.toMap()),
       'modifyVolumeStatus': ?pulumi.Input.mapOptionalInputValue<ModifyVolumeStatus, Map<String, dynamic>>(modifyVolumeStatus, (value) => value.toMap()),
       'phase': ?phase,
       'resizeStatus': ?resizeStatus,
@@ -104,6 +110,7 @@ class PersistentVolumeClaimStatus {
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PersistentVolumeClaimCondition>(guardedValue, (value) => PersistentVolumeClaimCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       currentVolumeAttributesClassName: (() { final guardedValue = map['currentVolumeAttributesClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeHealthStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       modifyVolumeStatus: (() { final guardedValue = map['modifyVolumeStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModifyVolumeStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       phase: (() { final guardedValue = map['phase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resizeStatus: (() { final guardedValue = map['resizeStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

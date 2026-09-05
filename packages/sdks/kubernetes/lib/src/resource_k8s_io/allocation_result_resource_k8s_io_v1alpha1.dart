@@ -8,13 +8,13 @@ class AllocationResultResourceK8sIoV1alpha1 {
   /// This field will get set by the resource driver after it has allocated the resource driver to inform the scheduler where it can schedule Pods using the ResourceClaim.
   ///
   /// Setting this field is optional. If null, the resource is available everywhere.
-  final pulumi.Input<NodeSelector>? availableOnNodes;
+  final pulumi.Input<NodeSelector?>? availableOnNodes;
   /// ResourceHandle contains arbitrary data returned by the driver after a successful allocation. This is opaque for Kubernetes. Driver documentation may explain to users how to interpret this data if needed.
   ///
   /// The maximum size of this field is 16KiB. This may get increased in the future, but not reduced.
-  final pulumi.Input<String>? resourceHandle;
+  final pulumi.Input<String?>? resourceHandle;
   /// Shareable determines whether the resource supports more than one consumer at a time.
-  final pulumi.Input<bool>? shareable;
+  final pulumi.Input<bool?>? shareable;
 
   /// Creates a new [AllocationResultResourceK8sIoV1alpha1].
   /// [availableOnNodes] This field will get set by the resource driver after it has allocated the resource driver to inform the scheduler where it can schedule Pods using the ResourceClaim.

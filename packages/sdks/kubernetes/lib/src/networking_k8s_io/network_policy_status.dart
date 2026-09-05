@@ -6,7 +6,7 @@ import '../meta/condition.dart';
 /// NetworkPolicyStatus describe the current state of the NetworkPolicy.
 class NetworkPolicyStatus {
   /// Conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
 
   /// Creates a new [NetworkPolicyStatus].
   /// [conditions] Conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state

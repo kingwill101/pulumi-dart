@@ -6,7 +6,7 @@ import 'device_claim_resource_k8s_io_v1beta2.dart';
 /// ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it.
 class ResourceClaimSpecResourceK8sIoV1beta2 {
   /// Devices defines how to request devices.
-  final pulumi.Input<DeviceClaimResourceK8sIoV1beta2>? devices;
+  final pulumi.Input<DeviceClaimResourceK8sIoV1beta2?>? devices;
 
   /// Creates a new [ResourceClaimSpecResourceK8sIoV1beta2].
   /// [devices] Devices defines how to request devices.

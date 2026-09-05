@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VolumeError captures an error encountered during a volume operation.
 class VolumeErrorStorageK8sIoV1alpha1 {
   /// String detailing the error encountered during Attach or Detach operation. This string maybe logged, so it should not contain sensitive information.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Time the error was encountered.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [VolumeErrorStorageK8sIoV1alpha1].
   /// [message] String detailing the error encountered during Attach or Detach operation. This string maybe logged, so it should not contain sensitive information.

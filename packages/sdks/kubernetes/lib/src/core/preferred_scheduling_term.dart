@@ -28,7 +28,7 @@ class PreferredSchedulingTerm {
   factory PreferredSchedulingTerm.fromMap(Map<String, dynamic> map) {
     return PreferredSchedulingTerm(
       preference: pulumi.Input.fromValue(NodeSelectorTerm.fromMap((map['preference']! as Map).cast<String, dynamic>())),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

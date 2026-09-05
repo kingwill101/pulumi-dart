@@ -6,9 +6,9 @@ import 'rolling_update_stateful_set_strategy_patch_apps_v1beta1.dart';
 /// StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.
 class StatefulSetUpdateStrategyPatchAppsV1beta1 {
   /// RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
-  final pulumi.Input<RollingUpdateStatefulSetStrategyPatchAppsV1beta1>? rollingUpdate;
+  final pulumi.Input<RollingUpdateStatefulSetStrategyPatchAppsV1beta1?>? rollingUpdate;
   /// Type indicates the type of the StatefulSetUpdateStrategy.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [StatefulSetUpdateStrategyPatchAppsV1beta1].
   /// [rollingUpdate] RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.

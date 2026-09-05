@@ -8,15 +8,15 @@ import 'replica_set_status.dart';
 /// ReplicaSet ensures that a specified number of pod replicas are running at any given time.
 class ReplicaSet {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<ReplicaSetSpec>? spec;
+  final pulumi.Input<ReplicaSetSpec> spec;
   /// Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<ReplicaSetStatus>? status;
+  final pulumi.Input<ReplicaSetStatus?>? status;
 
   /// Creates a new [ReplicaSet].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -28,7 +28,7 @@ class ReplicaSet {
     this.apiVersion,
     this.kind,
     this.metadata,
-    this.spec,
+    required this.spec,
     this.status,
   });
 
@@ -37,7 +37,7 @@ class ReplicaSet {
       'apiVersion': ?apiVersion,
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<ReplicaSetSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<ReplicaSetSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
       'status': ?pulumi.Input.mapOptionalInputValue<ReplicaSetStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
@@ -47,7 +47,7 @@ class ReplicaSet {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicaSetSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(ReplicaSetSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicaSetStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

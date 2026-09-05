@@ -7,9 +7,9 @@ import 'metric_target_patch_autoscaling_v2beta2.dart';
 /// PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.
 class PodsMetricSourcePatchAutoscalingV2beta2 {
   /// metric identifies the target metric by name and selector
-  final pulumi.Input<MetricIdentifierPatchAutoscalingV2beta2>? metric;
+  final pulumi.Input<MetricIdentifierPatchAutoscalingV2beta2?>? metric;
   /// target specifies the target value for the given metric
-  final pulumi.Input<MetricTargetPatchAutoscalingV2beta2>? target;
+  final pulumi.Input<MetricTargetPatchAutoscalingV2beta2?>? target;
 
   /// Creates a new [PodsMetricSourcePatchAutoscalingV2beta2].
   /// [metric] metric identifies the target metric by name and selector

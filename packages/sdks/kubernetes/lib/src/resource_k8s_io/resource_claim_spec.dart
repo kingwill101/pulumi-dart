@@ -6,7 +6,7 @@ import 'device_claim.dart';
 /// ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it.
 class ResourceClaimSpec {
   /// Devices defines how to request devices.
-  final pulumi.Input<DeviceClaim>? devices;
+  final pulumi.Input<DeviceClaim?>? devices;
 
   /// Creates a new [ResourceClaimSpec].
   /// [devices] Devices defines how to request devices.

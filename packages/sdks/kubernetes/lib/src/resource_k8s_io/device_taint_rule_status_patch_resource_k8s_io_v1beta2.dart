@@ -15,7 +15,7 @@ class DeviceTaintRuleStatusPatchResourceK8sIoV1beta2 {
   /// For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status.
   ///
   /// Must have 8 or fewer entries.
-  final pulumi.Input<List<ConditionPatch>>? conditions;
+  final pulumi.Input<List<ConditionPatch>?>? conditions;
 
   /// Creates a new [DeviceTaintRuleStatusPatchResourceK8sIoV1beta2].
   /// [conditions] Conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format.

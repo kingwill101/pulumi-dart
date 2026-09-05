@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'aggregation_rule_rbac_authorization_k8s_io_v1beta1.dart';
 import 'cluster_role_rbac_authorization_k8s_io_v1beta1_args.dart';
+import 'policy_rule_rbac_authorization_k8s_io_v1beta1.dart';
 
 /// ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRole, and will no longer be served in v1.20.
 class ClusterRoleRbacAuthorizationK8sIoV1beta1Resource extends pulumi.CustomResource {
@@ -14,7 +15,7 @@ class ClusterRoleRbacAuthorizationK8sIoV1beta1Resource extends pulumi.CustomReso
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMeta> metadata;
   /// Rules holds all the PolicyRules for this ClusterRole
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<PolicyRuleRbacAuthorizationK8sIoV1beta1>> rules;
 
   /// Creates a new [ClusterRoleRbacAuthorizationK8sIoV1beta1Resource].
   /// [name] The Pulumi resource name.
@@ -34,6 +35,22 @@ class ClusterRoleRbacAuthorizationK8sIoV1beta1Resource extends pulumi.CustomReso
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<PolicyRuleRbacAuthorizationK8sIoV1beta1>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1beta1>(guardedValue, (value) => PolicyRuleRbacAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterRoleRbacAuthorizationK8sIoV1beta1Resource] resource.
+  ClusterRoleRbacAuthorizationK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:rbac.authorization.k8s.io/v1beta1:ClusterRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregationRule = registerOutput<AggregationRuleRbacAuthorizationK8sIoV1beta1>('aggregationRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AggregationRuleRbacAuthorizationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rules = registerOutput<List<PolicyRuleRbacAuthorizationK8sIoV1beta1>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1beta1>(guardedValue, (value) => PolicyRuleRbacAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

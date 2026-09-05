@@ -13,9 +13,9 @@ class DirectoryKustomizeArgs {
   /// Example: https://github.com/kubernetes-sigs/kustomize/tree/master/examples/helloWorld
   final pulumi.Input<String> directory;
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  final pulumi.Input<List<dynamic>>? transformations_;
+  final pulumi.Input<List<dynamic>?>? transformations_;
 
   /// Creates a new [DirectoryKustomizeArgs].
   /// [directory] The directory containing the kustomization to apply. The value can be a local directory or a folder in a

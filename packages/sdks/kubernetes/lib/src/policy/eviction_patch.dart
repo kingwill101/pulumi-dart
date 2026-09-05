@@ -7,19 +7,19 @@ import '../meta/object_meta_patch.dart';
 /// Eviction evicts a pod from its node subject to certain policies and safety constraints. This is a subresource of Pod.  A request to cause such an eviction is created by POSTing to .../pods/&lt;pod name&gt;/evictions.
 class EvictionPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
-  /// DeleteOptions may be provided
-  final pulumi.Input<DeleteOptionsPatch>? deleteOptions;
+  final pulumi.Input<String?>? apiVersion;
+  /// deleteOptions may be provided
+  final pulumi.Input<DeleteOptionsPatch?>? deleteOptions;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  /// ObjectMeta describes the pod that is being evicted.
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<String?>? kind;
+  /// metadata describes the pod that is being evicted.
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
 
   /// Creates a new [EvictionPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  /// [deleteOptions] DeleteOptions may be provided
+  /// [deleteOptions] deleteOptions may be provided
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] ObjectMeta describes the pod that is being evicted.
+  /// [metadata] metadata describes the pod that is being evicted.
   const EvictionPatch({
     this.apiVersion,
     this.deleteOptions,

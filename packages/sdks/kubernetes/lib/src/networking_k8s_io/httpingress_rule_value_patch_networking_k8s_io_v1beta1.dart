@@ -6,7 +6,7 @@ import 'httpingress_path_patch_networking_k8s_io_v1beta1.dart';
 /// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://&lt;host&gt;/&lt;path&gt;?&lt;searchpart&gt; -&gt; backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.
 class HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1 {
   /// A collection of paths that map requests to backends.
-  final pulumi.Input<List<HTTPIngressPathPatchNetworkingK8sIoV1beta1>>? paths;
+  final pulumi.Input<List<HTTPIngressPathPatchNetworkingK8sIoV1beta1>?>? paths;
 
   /// Creates a new [HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1].
   /// [paths] A collection of paths that map requests to backends.

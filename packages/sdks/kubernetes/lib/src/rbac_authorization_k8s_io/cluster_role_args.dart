@@ -10,23 +10,23 @@ import 'policy_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_rbac_authorization_k8s_io_v1_cluster_role_args_doc}
 class ClusterRoleArgs {
-  /// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-  final pulumi.Input<AggregationRule>? aggregationRule;
+  /// aggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
+  final pulumi.Input<AggregationRule?>? aggregationRule;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  /// Standard object's metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
-  /// Rules holds all the PolicyRules for this ClusterRole
-  final pulumi.Input<List<PolicyRule>>? rules;
+  final pulumi.Input<String?>? kind;
+  /// metadata is the standard object's metadata.
+  final pulumi.Input<ObjectMeta?>? metadata;
+  /// rules holds all the PolicyRules for this ClusterRole
+  final pulumi.Input<List<PolicyRule>?>? rules;
 
   /// Creates a new [ClusterRoleArgs].
-  /// [aggregationRule] AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
+  /// [aggregationRule] aggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard object's metadata.
-  /// [rules] Rules holds all the PolicyRules for this ClusterRole
+  /// [metadata] metadata is the standard object's metadata.
+  /// [rules] rules holds all the PolicyRules for this ClusterRole
   const ClusterRoleArgs({
     this.aggregationRule,
     this.apiVersion,

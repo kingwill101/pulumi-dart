@@ -19,9 +19,9 @@ class NodeAllocatableResourceMapping {
   /// and each "core" provides 2 "cpu"s, the mapping would be:
   /// {ResourceName: "cpu", capacityKey: "dra.example.com/cores", allocationMultiplier: "2"}.
   /// If a claim consumes 8 "dra.example.com/cores", the CPU footprint is 8 * 2 = 16.
-  final pulumi.Input<String>? allocationMultiplier;
+  final pulumi.Input<String?>? allocationMultiplier;
   /// CapacityKey references a capacity name defined as a key in the `spec.devices[*].capacity` map. When this field is set, the value associated with this key in the `status.allocation.devices.results[*].consumedCapacity` map (for a specific claim allocation) determines the base quantity for the node allocatable resource. If `allocationMultiplier` is also set, it is multiplied with the base quantity. For example, if `spec.devices[*].capacity` has an entry "dra.example.com/memory": "128Gi", and this field is set to "dra.example.com/memory", then for a claim allocation that consumes { "dra.example.com/memory": "4Gi" } the base quantity for the node allocatable resource mapping will be "4Gi", and `allocationMultiplier` should be omitted or set to "1".
-  final pulumi.Input<String>? capacityKey;
+  final pulumi.Input<String?>? capacityKey;
 
   /// Creates a new [NodeAllocatableResourceMapping].
   /// [allocationMultiplier] AllocationMultiplier is used as a multiplier for the allocated device count or the allocated capacity in the claim. It defaults to 1 if not specified. How the field is used also depends on whether `capacityKey` is set. 1.  If `capacityKey` is NOT set: `allocationMultiplier` multiplies the device count allocated to the claim.

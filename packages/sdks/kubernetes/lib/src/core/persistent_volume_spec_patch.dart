@@ -29,67 +29,67 @@ import 'vsphere_virtual_disk_volume_source_patch.dart';
 /// PersistentVolumeSpec is the specification of a persistent volume.
 class PersistentVolumeSpecPatch {
   /// accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes
-  final pulumi.Input<List<String>>? accessModes;
+  final pulumi.Input<List<String>?>? accessModes;
   /// awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-  final pulumi.Input<AWSElasticBlockStoreVolumeSourcePatch>? awsElasticBlockStore;
+  final pulumi.Input<AWSElasticBlockStoreVolumeSourcePatch?>? awsElasticBlockStore;
   /// azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver.
-  final pulumi.Input<AzureDiskVolumeSourcePatch>? azureDisk;
+  final pulumi.Input<AzureDiskVolumeSourcePatch?>? azureDisk;
   /// azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver.
-  final pulumi.Input<AzureFilePersistentVolumeSourcePatch>? azureFile;
+  final pulumi.Input<AzureFilePersistentVolumeSourcePatch?>? azureFile;
   /// capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
-  final pulumi.Input<Map<String, String>>? capacity;
+  final pulumi.Input<Map<String, String>?>? capacity;
   /// cephFS represents a Ceph FS mount on the host that shares a pod's lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.
-  final pulumi.Input<CephFSPersistentVolumeSourcePatch>? cephfs;
+  final pulumi.Input<CephFSPersistentVolumeSourcePatch?>? cephfs;
   /// cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
-  final pulumi.Input<CinderPersistentVolumeSourcePatch>? cinder;
+  final pulumi.Input<CinderPersistentVolumeSourcePatch?>? cinder;
   /// claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding
-  final pulumi.Input<ObjectReferencePatch>? claimRef;
+  final pulumi.Input<ObjectReferencePatch?>? claimRef;
   /// csi represents storage that is handled by an external CSI driver.
-  final pulumi.Input<CSIPersistentVolumeSourcePatch>? csi;
+  final pulumi.Input<CSIPersistentVolumeSourcePatch?>? csi;
   /// fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
-  final pulumi.Input<FCVolumeSourcePatch>? fc;
+  final pulumi.Input<FCVolumeSourcePatch?>? fc;
   /// flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.
-  final pulumi.Input<FlexPersistentVolumeSourcePatch>? flexVolume;
+  final pulumi.Input<FlexPersistentVolumeSourcePatch?>? flexVolume;
   /// flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.
-  final pulumi.Input<FlockerVolumeSourcePatch>? flocker;
+  final pulumi.Input<FlockerVolumeSourcePatch?>? flocker;
   /// gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-  final pulumi.Input<GCEPersistentDiskVolumeSourcePatch>? gcePersistentDisk;
+  final pulumi.Input<GCEPersistentDiskVolumeSourcePatch?>? gcePersistentDisk;
   /// glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported. More info: https://examples.k8s.io/volumes/glusterfs/README.md
-  final pulumi.Input<GlusterfsPersistentVolumeSourcePatch>? glusterfs;
+  final pulumi.Input<GlusterfsPersistentVolumeSourcePatch?>? glusterfs;
   /// hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
-  final pulumi.Input<HostPathVolumeSourcePatch>? hostPath;
+  final pulumi.Input<HostPathVolumeSourcePatch?>? hostPath;
   /// iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
-  final pulumi.Input<ISCSIPersistentVolumeSourcePatch>? iscsi;
+  final pulumi.Input<ISCSIPersistentVolumeSourcePatch?>? iscsi;
   /// local represents directly-attached storage with node affinity
-  final pulumi.Input<LocalVolumeSourcePatch>? local;
+  final pulumi.Input<LocalVolumeSourcePatch?>? local;
   /// mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// nfs represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
-  final pulumi.Input<NFSVolumeSourcePatch>? nfs;
+  final pulumi.Input<NFSVolumeSourcePatch?>? nfs;
   /// nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume. This field is mutable if MutablePVNodeAffinity feature gate is enabled.
-  final pulumi.Input<VolumeNodeAffinityPatch>? nodeAffinity;
+  final pulumi.Input<VolumeNodeAffinityPatch?>? nodeAffinity;
   /// persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
-  final pulumi.Input<String>? persistentVolumeReclaimPolicy;
+  final pulumi.Input<String?>? persistentVolumeReclaimPolicy;
   /// photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.
-  final pulumi.Input<PhotonPersistentDiskVolumeSourcePatch>? photonPersistentDisk;
+  final pulumi.Input<PhotonPersistentDiskVolumeSourcePatch?>? photonPersistentDisk;
   /// portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver.
-  final pulumi.Input<PortworxVolumeSourcePatch>? portworxVolume;
+  final pulumi.Input<PortworxVolumeSourcePatch?>? portworxVolume;
   /// quobyte represents a Quobyte mount on the host that shares a pod's lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.
-  final pulumi.Input<QuobyteVolumeSourcePatch>? quobyte;
+  final pulumi.Input<QuobyteVolumeSourcePatch?>? quobyte;
   /// rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported. More info: https://examples.k8s.io/volumes/rbd/README.md
-  final pulumi.Input<RBDPersistentVolumeSourcePatch>? rbd;
+  final pulumi.Input<RBDPersistentVolumeSourcePatch?>? rbd;
   /// scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.
-  final pulumi.Input<ScaleIOPersistentVolumeSourcePatch>? scaleIO;
+  final pulumi.Input<ScaleIOPersistentVolumeSourcePatch?>? scaleIO;
   /// storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.
-  final pulumi.Input<String>? storageClassName;
+  final pulumi.Input<String?>? storageClassName;
   /// storageOS represents a StorageOS volume that is attached to the kubelet's host machine and mounted into the pod. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported. More info: https://examples.k8s.io/volumes/storageos/README.md
-  final pulumi.Input<StorageOSPersistentVolumeSourcePatch>? storageos;
+  final pulumi.Input<StorageOSPersistentVolumeSourcePatch?>? storageos;
   /// Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process.
-  final pulumi.Input<String>? volumeAttributesClassName;
+  final pulumi.Input<String?>? volumeAttributesClassName;
   /// volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec.
-  final pulumi.Input<String>? volumeMode;
+  final pulumi.Input<String?>? volumeMode;
   /// vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver.
-  final pulumi.Input<VsphereVirtualDiskVolumeSourcePatch>? vsphereVolume;
+  final pulumi.Input<VsphereVirtualDiskVolumeSourcePatch?>? vsphereVolume;
 
   /// Creates a new [PersistentVolumeSpecPatch].
   /// [accessModes] accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes

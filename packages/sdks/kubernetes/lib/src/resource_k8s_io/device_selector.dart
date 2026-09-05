@@ -6,7 +6,7 @@ import 'celdevice_selector.dart';
 /// DeviceSelector must have exactly one field set.
 class DeviceSelector {
   /// CEL contains a CEL expression for selecting a device.
-  final pulumi.Input<CELDeviceSelector>? cel;
+  final pulumi.Input<CELDeviceSelector?>? cel;
 
   /// Creates a new [DeviceSelector].
   /// [cel] CEL contains a CEL expression for selecting a device.

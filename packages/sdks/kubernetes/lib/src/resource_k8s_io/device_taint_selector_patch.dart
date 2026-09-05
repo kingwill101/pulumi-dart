@@ -7,13 +7,13 @@ class DeviceTaintSelectorPatch {
   /// If device is set, only devices with that name are selected. This field corresponds to slice.spec.devices[].name.
   ///
   /// Setting also driver and pool may be required to avoid ambiguity, but is not required.
-  final pulumi.Input<String>? device;
+  final pulumi.Input<String?>? device;
   /// If driver is set, only devices from that driver are selected. This fields corresponds to slice.spec.driver.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
   /// If pool is set, only devices in that pool are selected.
   ///
   /// Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name.
-  final pulumi.Input<String>? pool;
+  final pulumi.Input<String?>? pool;
 
   /// Creates a new [DeviceTaintSelectorPatch].
   /// [device] If device is set, only devices with that name are selected. This field corresponds to slice.spec.devices[].name.

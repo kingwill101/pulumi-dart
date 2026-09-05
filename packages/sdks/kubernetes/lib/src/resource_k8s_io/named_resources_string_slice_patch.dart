@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NamedResourcesStringSlice contains a slice of strings.
 class NamedResourcesStringSlicePatch {
   /// Strings is the slice of strings.
-  final pulumi.Input<List<String>>? strings;
+  final pulumi.Input<List<String>?>? strings;
 
   /// Creates a new [NamedResourcesStringSlicePatch].
   /// [strings] Strings is the slice of strings.

@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'custom_resource_definition_resource.dart';
+import 'custom_resource_definition_apiextensions_k8s_io_v1beta1.dart';
 
 /// {@template pulumi_apiextensions_k8s_io_v1beta1_custom_resource_definition_list_apiextensions_k8s_io_v1beta1_args_doc}
 /// The set of arguments for CustomResourceDefinitionList.
@@ -10,12 +10,12 @@ import 'custom_resource_definition_resource.dart';
 /// {@macro pulumi_apiextensions_k8s_io_v1beta1_custom_resource_definition_list_apiextensions_k8s_io_v1beta1_args_doc}
 class CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// items list individual CustomResourceDefinition objects
-  final pulumi.Input<List<CustomResourceDefinitionResource>> items;
+  final pulumi.Input<List<CustomResourceDefinitionApiextensionsK8sIoV1beta1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -32,7 +32,7 @@ class CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<CustomResourceDefinitionApiextensionsK8sIoV1beta1>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<CustomResourceDefinitionApiextensionsK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -41,7 +41,7 @@ class CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args {
   factory CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<CustomResourceDefinitionResource>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<CustomResourceDefinitionApiextensionsK8sIoV1beta1>(map['items']!, (value) => CustomResourceDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

@@ -36,4 +36,20 @@ class CertificateSigningRequestResource extends pulumi.CustomResource {
     spec = registerOutput<CertificateSigningRequestSpecCertificatesK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestSpecCertificatesK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<CertificateSigningRequestStatusCertificatesK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestStatusCertificatesK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [CertificateSigningRequestResource] resource.
+  CertificateSigningRequestResource.reference(String urn)
+    : super(
+        'kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<CertificateSigningRequestSpecCertificatesK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestSpecCertificatesK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CertificateSigningRequestStatusCertificatesK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestStatusCertificatesK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

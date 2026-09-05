@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ContainerStateRunning is a running state of a container.
 class ContainerStateRunning {
   /// Time at which the container was last (re-)started
-  final pulumi.Input<String>? startedAt;
+  final pulumi.Input<String?>? startedAt;
 
   /// Creates a new [ContainerStateRunning].
   /// [startedAt] Time at which the container was last (re-)started

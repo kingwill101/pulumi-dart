@@ -39,4 +39,19 @@ class BindingPatchCoreV1 extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<ObjectReferencePatch?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [BindingPatchCoreV1] resource.
+  BindingPatchCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:BindingPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    target = registerOutput<ObjectReferencePatch?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

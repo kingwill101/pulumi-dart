@@ -14,13 +14,13 @@ class EndpointPortPatch {
   /// * 'kubernetes.io/wss' - WebSocket over TLS as described in https://www.rfc-editor.org/rfc/rfc6455
   ///
   /// * Other protocols should use implementation-defined prefixed names such as mycompany.com/my-custom-protocol.
-  final pulumi.Input<String>? appProtocol;
+  final pulumi.Input<String?>? appProtocol;
   /// The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The port number of the endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [EndpointPortPatch].
   /// [appProtocol] The application protocol for this port. This is used as a hint for implementations to offer richer behavior for protocols that they understand. This field follows standard Kubernetes label syntax. Valid values are either:
@@ -47,7 +47,7 @@ class EndpointPortPatch {
     return EndpointPortPatch(
       appProtocol: (() { final guardedValue = map['appProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -7,9 +7,9 @@ import 'job_spec_patch.dart';
 /// JobTemplateSpec describes the data a Job should have when created from a template
 class JobTemplateSpecPatchBatchV2alpha1 {
   /// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<JobSpecPatch>? spec;
+  final pulumi.Input<JobSpecPatch?>? spec;
 
   /// Creates a new [JobTemplateSpecPatchBatchV2alpha1].
   /// [metadata] Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata

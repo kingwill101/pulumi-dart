@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ServiceBackendPort is the service port being referenced.
 class ServiceBackendPortPatch {
   /// name is the name of the port on the Service. This is a mutually exclusive setting with "Number".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name".
-  final pulumi.Input<int>? number;
+  final pulumi.Input<int?>? number;
 
   /// Creates a new [ServiceBackendPortPatch].
   /// [name] name is the name of the port on the Service. This is a mutually exclusive setting with "Number".
@@ -27,7 +27,7 @@ class ServiceBackendPortPatch {
   factory ServiceBackendPortPatch.fromMap(Map<String, dynamic> map) {
     return ServiceBackendPortPatch(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

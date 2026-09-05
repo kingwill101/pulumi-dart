@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ParamKind is a tuple of Group Kind and Version.
 class ParamKindPatch {
   /// apiVersion is the API group version the resources belong to. In format of "group/version". Required.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// kind is the API kind the resources belong to. Required.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [ParamKindPatch].
   /// [apiVersion] apiVersion is the API group version the resources belong to. In format of "group/version". Required.

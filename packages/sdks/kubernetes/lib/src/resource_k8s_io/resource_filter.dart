@@ -6,9 +6,9 @@ import 'named_resources_filter.dart';
 /// ResourceFilter is a filter for resources from one particular driver.
 class ResourceFilter {
   /// DriverName is the name used by the DRA driver kubelet plugin.
-  final pulumi.Input<String>? driverName;
+  final pulumi.Input<String?>? driverName;
   /// NamedResources describes a resource filter using the named resources model.
-  final pulumi.Input<NamedResourcesFilter>? namedResources;
+  final pulumi.Input<NamedResourcesFilter?>? namedResources;
 
   /// Creates a new [ResourceFilter].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.

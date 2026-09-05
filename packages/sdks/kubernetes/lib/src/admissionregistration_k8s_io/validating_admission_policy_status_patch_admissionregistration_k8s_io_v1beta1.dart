@@ -7,11 +7,11 @@ import 'type_checking_patch_admissionregistration_k8s_io_v1beta1.dart';
 /// ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.
 class ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1 {
   /// The conditions represent the latest available observations of a policy's current state.
-  final pulumi.Input<List<ConditionPatch>>? conditions;
+  final pulumi.Input<List<ConditionPatch>?>? conditions;
   /// The generation observed by the controller.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
-  final pulumi.Input<TypeCheckingPatchAdmissionregistrationK8sIoV1beta1>? typeChecking;
+  final pulumi.Input<TypeCheckingPatchAdmissionregistrationK8sIoV1beta1?>? typeChecking;
 
   /// Creates a new [ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1].
   /// [conditions] The conditions represent the latest available observations of a policy's current state.
@@ -34,7 +34,7 @@ class ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1 {
   factory ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionPatch>(guardedValue, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       typeChecking: (() { final guardedValue = map['typeChecking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TypeCheckingPatchAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

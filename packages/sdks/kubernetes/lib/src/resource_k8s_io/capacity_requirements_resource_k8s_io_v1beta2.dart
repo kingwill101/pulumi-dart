@@ -15,7 +15,7 @@ class CapacityRequirementsResourceK8sIoV1beta2 {
   /// - If a requestPolicy is set, the default consumed capacity is determined according to that policy.
   ///
   /// If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim’s status.devices[*].consumedCapacity field.
-  final pulumi.Input<Map<String, String>>? requests;
+  final pulumi.Input<Map<String, String>?>? requests;
 
   /// Creates a new [CapacityRequirementsResourceK8sIoV1beta2].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.

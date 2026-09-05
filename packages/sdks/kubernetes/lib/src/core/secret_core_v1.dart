@@ -42,13 +42,33 @@ class SecretCoreV1 extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['data', 'stringData'],
         ) {
     apiVersion = registerOutput<String>('apiVersion');
-    data = registerOutput<Map<String, String>>('data');
+    data = registerOutput<Map<String, String>>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     immutable = registerOutput<bool>('immutable');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    stringData = registerOutput<Map<String, String>>('stringData');
+    stringData = registerOutput<Map<String, String>>('stringData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecretCoreV1] resource.
+  SecretCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['data', 'stringData'],
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    data = registerOutput<Map<String, String>>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    immutable = registerOutput<bool>('immutable');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stringData = registerOutput<Map<String, String>>('stringData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     type = registerOutput<String>('type');
   }
 }

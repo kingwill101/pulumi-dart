@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../meta/object_meta.dart';
+import 'workload_spec_scheduling_k8s_io_v1beta1.dart';
+
+/// Workload allows for expressing scheduling constraints that should be used when managing the lifecycle of workloads from the scheduling perspective, including scheduling, preemption, eviction and other phases. Workload API enablement is toggled by the GenericWorkload feature gate.
+class WorkloadSchedulingK8sIoV1beta1 {
+  /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  final pulumi.Input<String?>? apiVersion;
+  /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  final pulumi.Input<String?>? kind;
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  final pulumi.Input<ObjectMeta?>? metadata;
+  /// spec defines the desired behavior of a Workload.
+  final pulumi.Input<WorkloadSpecSchedulingK8sIoV1beta1> spec;
+
+  /// Creates a new [WorkloadSchedulingK8sIoV1beta1].
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] spec defines the desired behavior of a Workload.
+  const WorkloadSchedulingK8sIoV1beta1({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    required this.spec,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<WorkloadSpecSchedulingK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+    };
+  }
+
+  factory WorkloadSchedulingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+    return WorkloadSchedulingK8sIoV1beta1(
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(WorkloadSpecSchedulingK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())),
+    );
+  }
+}

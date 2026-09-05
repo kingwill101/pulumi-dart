@@ -23,8 +23,10 @@ class NodeSystemInfo {
   final pulumi.Input<String> operatingSystem;
   /// OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
   final pulumi.Input<String> osImage;
+  /// Whether the node is running in a user namespace.
+  final pulumi.Input<bool?>? runningInUserNamespace;
   /// Swap Info reported by the node.
-  final pulumi.Input<NodeSwapStatus>? swap;
+  final pulumi.Input<NodeSwapStatus?>? swap;
   /// SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
   final pulumi.Input<String> systemUUID;
 
@@ -38,6 +40,7 @@ class NodeSystemInfo {
   /// [machineID] MachineID reported by the node. For unique machine identification in the cluster this field is preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html
   /// [operatingSystem] The Operating System reported by the node
   /// [osImage] OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
+  /// [runningInUserNamespace] Whether the node is running in a user namespace.
   /// [swap] Swap Info reported by the node.
   /// [systemUUID] SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
   const NodeSystemInfo({
@@ -50,6 +53,7 @@ class NodeSystemInfo {
     required this.machineID,
     required this.operatingSystem,
     required this.osImage,
+    this.runningInUserNamespace,
     this.swap,
     required this.systemUUID,
   });
@@ -65,6 +69,7 @@ class NodeSystemInfo {
       'machineID': machineID,
       'operatingSystem': operatingSystem,
       'osImage': osImage,
+      'runningInUserNamespace': ?runningInUserNamespace,
       'swap': ?pulumi.Input.mapOptionalInputValue<NodeSwapStatus, Map<String, dynamic>>(swap, (value) => value.toMap()),
       'systemUUID': systemUUID,
     };
@@ -81,6 +86,7 @@ class NodeSystemInfo {
       machineID: pulumi.Input.fromValue(map['machineID'] as String),
       operatingSystem: pulumi.Input.fromValue(map['operatingSystem'] as String),
       osImage: pulumi.Input.fromValue(map['osImage'] as String),
+      runningInUserNamespace: (() { final guardedValue = map['runningInUserNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       swap: (() { final guardedValue = map['swap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeSwapStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       systemUUID: pulumi.Input.fromValue(map['systemUUID'] as String),
     );

@@ -6,7 +6,7 @@ import 'daemon_endpoint.dart';
 /// NodeDaemonEndpoints lists ports opened by daemons running on the Node.
 class NodeDaemonEndpoints {
   /// Endpoint on which Kubelet is listening.
-  final pulumi.Input<DaemonEndpoint>? kubeletEndpoint;
+  final pulumi.Input<DaemonEndpoint?>? kubeletEndpoint;
 
   /// Creates a new [NodeDaemonEndpoints].
   /// [kubeletEndpoint] Endpoint on which Kubelet is listening.

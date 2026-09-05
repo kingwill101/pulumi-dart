@@ -6,13 +6,13 @@ import 'volume_error_patch.dart';
 /// VolumeAttachmentStatus is the status of a VolumeAttachment request.
 class VolumeAttachmentStatusPatch {
   /// attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
-  final pulumi.Input<VolumeErrorPatch>? attachError;
+  final pulumi.Input<VolumeErrorPatch?>? attachError;
   /// attached indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
-  final pulumi.Input<bool>? attached;
+  final pulumi.Input<bool?>? attached;
   /// attachmentMetadata is populated with any information returned by the attach operation, upon successful attach, that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
-  final pulumi.Input<Map<String, String>>? attachmentMetadata;
+  final pulumi.Input<Map<String, String>?>? attachmentMetadata;
   /// detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.
-  final pulumi.Input<VolumeErrorPatch>? detachError;
+  final pulumi.Input<VolumeErrorPatch?>? detachError;
 
   /// Creates a new [VolumeAttachmentStatusPatch].
   /// [attachError] attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.

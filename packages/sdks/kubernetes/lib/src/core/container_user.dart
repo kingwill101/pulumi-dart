@@ -6,7 +6,7 @@ import 'linux_container_user.dart';
 /// ContainerUser represents user identity information
 class ContainerUser {
   /// Linux holds user identity information initially attached to the first process of the containers in Linux. Note that the actual running identity can be changed if the process has enough privilege to do so.
-  final pulumi.Input<LinuxContainerUser>? linux;
+  final pulumi.Input<LinuxContainerUser?>? linux;
 
   /// Creates a new [ContainerUser].
   /// [linux] Linux holds user identity information initially attached to the first process of the containers in Linux. Note that the actual running identity can be changed if the process has enough privilege to do so.

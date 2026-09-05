@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'resource_class_parameters_resource_k8s_io_v1alpha2.dart';
+import 'resource_class_parameters.dart';
 
 /// {@template pulumi_resource_k8s_io_v1alpha2_resource_class_parameters_list_args_doc}
 /// The set of arguments for ResourceClassParametersList.
@@ -10,13 +10,13 @@ import 'resource_class_parameters_resource_k8s_io_v1alpha2.dart';
 /// {@macro pulumi_resource_k8s_io_v1alpha2_resource_class_parameters_list_args_doc}
 class ResourceClassParametersListArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Items is the list of node resource capacity objects.
-  final pulumi.Input<List<ResourceClassParametersResourceK8sIoV1alpha2>> items;
+  final pulumi.Input<List<ResourceClassParameters>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [ResourceClassParametersListArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class ResourceClassParametersListArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<ResourceClassParameters>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ResourceClassParameters, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class ResourceClassParametersListArgs {
   factory ResourceClassParametersListArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersListArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<ResourceClassParametersResourceK8sIoV1alpha2>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceClassParameters>(map['items']!, (value) => ResourceClassParameters.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

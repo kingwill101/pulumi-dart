@@ -8,11 +8,11 @@ import 'device_request_patch.dart';
 /// DeviceClaim defines how to request devices with a ResourceClaim.
 class DeviceClaimPatch {
   /// This field holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim.
-  final pulumi.Input<List<DeviceClaimConfigurationPatch>>? config;
+  final pulumi.Input<List<DeviceClaimConfigurationPatch>?>? config;
   /// These constraints must be satisfied by the set of devices that get allocated for the claim.
-  final pulumi.Input<List<DeviceConstraintPatch>>? constraints;
+  final pulumi.Input<List<DeviceConstraintPatch>?>? constraints;
   /// Requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated.
-  final pulumi.Input<List<DeviceRequestPatch>>? requests;
+  final pulumi.Input<List<DeviceRequestPatch>?>? requests;
 
   /// Creates a new [DeviceClaimPatch].
   /// [config] This field holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim.

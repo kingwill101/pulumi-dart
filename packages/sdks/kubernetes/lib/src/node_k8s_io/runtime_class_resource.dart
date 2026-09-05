@@ -33,4 +33,19 @@ class RuntimeClassResource extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<RuntimeClassSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeClassSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [RuntimeClassResource] resource.
+  RuntimeClassResource.reference(String urn)
+    : super(
+        'kubernetes:node.k8s.io/v1alpha1:RuntimeClass',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<RuntimeClassSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeClassSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

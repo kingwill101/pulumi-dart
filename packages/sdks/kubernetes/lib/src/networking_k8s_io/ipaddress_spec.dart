@@ -5,11 +5,11 @@ import 'parent_reference.dart';
 
 /// IPAddressSpec describe the attributes in an IP Address.
 class IPAddressSpec {
-  /// ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
+  /// parentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
   final pulumi.Input<ParentReference> parentRef;
 
   /// Creates a new [IPAddressSpec].
-  /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
+  /// [parentRef] parentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
   const IPAddressSpec({
     required this.parentRef,
   });

@@ -7,15 +7,15 @@ import 'cross_version_object_reference_patch_autoscaling_v2beta1.dart';
 /// ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
 class ObjectMetricStatusPatchAutoscalingV2beta1 {
   /// averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
-  final pulumi.Input<String>? averageValue;
+  final pulumi.Input<String?>? averageValue;
   /// currentValue is the current value of the metric (as a quantity).
-  final pulumi.Input<String>? currentValue;
+  final pulumi.Input<String?>? currentValue;
   /// metricName is the name of the metric in question.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the ObjectMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
-  final pulumi.Input<LabelSelectorPatch>? selector;
+  final pulumi.Input<LabelSelectorPatch?>? selector;
   /// target is the described Kubernetes object.
-  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2beta1>? target;
+  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2beta1?>? target;
 
   /// Creates a new [ObjectMetricStatusPatchAutoscalingV2beta1].
   /// [averageValue] averageValue is the current value of the average of the metric across all relevant pods (as a quantity)

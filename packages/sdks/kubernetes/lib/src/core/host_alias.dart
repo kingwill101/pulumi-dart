@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file.
 class HostAlias {
   /// Hostnames for the above IP address.
-  final pulumi.Input<List<String>>? hostnames;
+  final pulumi.Input<List<String>?>? hostnames;
   /// IP address of the host file entry.
   final pulumi.Input<String> ip;
 

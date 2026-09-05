@@ -59,4 +59,20 @@ class DeploymentResource extends pulumi.CustomResource {
     spec = registerOutput<DeploymentSpecAppsV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSpecAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<DeploymentStatusAppsV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentStatusAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [DeploymentResource] resource.
+  DeploymentResource.reference(String urn)
+    : super(
+        'kubernetes:apps/v1beta1:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<DeploymentSpecAppsV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSpecAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<DeploymentStatusAppsV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentStatusAppsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

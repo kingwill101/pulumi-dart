@@ -6,27 +6,31 @@ import 'httpheader.dart';
 /// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetAction {
   /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Custom headers to set in the request. HTTP allows repeated headers.
-  final pulumi.Input<List<HTTPHeader>>? httpHeaders;
+  final pulumi.Input<List<HTTPHeader>?>? httpHeaders;
   /// Path to access on the HTTP server.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-  final pulumi.Input<int> port;
+  final pulumi.Input<dynamic> port;
+  /// Protocol selects the wire protocol for the probe connection. Nil defaults to HTTP/1.1.
+  final pulumi.Input<String?>? protocol;
   /// Scheme to use for connecting to the host. Defaults to HTTP.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
 
   /// Creates a new [HTTPGetAction].
   /// [host] Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
   /// [httpHeaders] Custom headers to set in the request. HTTP allows repeated headers.
   /// [path] Path to access on the HTTP server.
   /// [port] Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+  /// [protocol] Protocol selects the wire protocol for the probe connection. Nil defaults to HTTP/1.1.
   /// [scheme] Scheme to use for connecting to the host. Defaults to HTTP.
   const HTTPGetAction({
     this.host,
     this.httpHeaders,
     this.path,
     required this.port,
+    this.protocol,
     this.scheme,
   });
 
@@ -36,6 +40,7 @@ class HTTPGetAction {
       'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<HTTPHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<HTTPHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': ?path,
       'port': port,
+      'protocol': ?protocol,
       'scheme': ?scheme,
     };
   }
@@ -45,7 +50,8 @@ class HTTPGetAction {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HTTPHeader>(guardedValue, (value) => HTTPHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(map['port']),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

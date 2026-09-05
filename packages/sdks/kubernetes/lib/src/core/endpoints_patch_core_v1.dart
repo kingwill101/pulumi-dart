@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
+import 'endpoint_subset_patch.dart';
 import 'endpoints_patch_args.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
@@ -33,7 +34,7 @@ class EndpointsPatchCoreV1 extends pulumi.CustomResource {
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subsets;
+  late final pulumi.Output<List<EndpointSubsetPatch>?> subsets;
 
   /// Creates a new [EndpointsPatchCoreV1].
   /// [name] The Pulumi resource name.
@@ -52,6 +53,21 @@ class EndpointsPatchCoreV1 extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subsets = registerOutput<List<Map<String, dynamic>>?>('subsets');
+    subsets = registerOutput<List<EndpointSubsetPatch>?>('subsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointSubsetPatch>(guardedValue, (value) => EndpointSubsetPatch.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointsPatchCoreV1] resource.
+  EndpointsPatchCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:EndpointsPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subsets = registerOutput<List<EndpointSubsetPatch>?>('subsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointSubsetPatch>(guardedValue, (value) => EndpointSubsetPatch.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

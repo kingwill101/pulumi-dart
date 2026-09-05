@@ -7,21 +7,21 @@ import 'named_resources_string_slice_patch.dart';
 /// NamedResourcesAttribute is a combination of an attribute name and its value.
 class NamedResourcesAttributePatch {
   /// BoolValue is a true/false value.
-  final pulumi.Input<bool>? bool_;
+  final pulumi.Input<bool?>? bool_;
   /// IntValue is a 64-bit integer.
-  final pulumi.Input<int>? int_;
+  final pulumi.Input<int?>? int_;
   /// IntSliceValue is an array of 64-bit integers.
-  final pulumi.Input<NamedResourcesIntSlicePatch>? intSlice;
+  final pulumi.Input<NamedResourcesIntSlicePatch?>? intSlice;
   /// Name is unique identifier among all resource instances managed by the driver on the node. It must be a DNS subdomain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// QuantityValue is a quantity.
-  final pulumi.Input<String>? quantity;
+  final pulumi.Input<String?>? quantity;
   /// StringValue is a string.
-  final pulumi.Input<String>? string_;
+  final pulumi.Input<String?>? string_;
   /// StringSliceValue is an array of strings.
-  final pulumi.Input<NamedResourcesStringSlicePatch>? stringSlice;
+  final pulumi.Input<NamedResourcesStringSlicePatch?>? stringSlice;
   /// VersionValue is a semantic version according to semver.org spec 2.0.0.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [NamedResourcesAttributePatch].
   /// [bool_] BoolValue is a true/false value.
@@ -59,7 +59,7 @@ class NamedResourcesAttributePatch {
   factory NamedResourcesAttributePatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesAttributePatch(
       bool_: (() { final guardedValue = map['bool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       intSlice: (() { final guardedValue = map['intSlice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamedResourcesIntSlicePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

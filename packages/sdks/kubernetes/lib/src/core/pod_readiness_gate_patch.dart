@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PodReadinessGate contains the reference to a pod condition
 class PodReadinessGatePatch {
   /// ConditionType refers to a condition in the pod's condition list with matching type.
-  final pulumi.Input<String>? conditionType;
+  final pulumi.Input<String?>? conditionType;
 
   /// Creates a new [PodReadinessGatePatch].
   /// [conditionType] ConditionType refers to a condition in the pod's condition list with matching type.

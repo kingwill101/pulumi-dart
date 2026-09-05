@@ -7,9 +7,9 @@ import 'webhook_patch.dart';
 /// AuditSinkSpec holds the spec for the audit sink
 class AuditSinkSpecPatch {
   /// Policy defines the policy for selecting which events should be sent to the webhook required
-  final pulumi.Input<PolicyPatch>? policy;
+  final pulumi.Input<PolicyPatch?>? policy;
   /// Webhook to send events required
-  final pulumi.Input<WebhookPatch>? webhook;
+  final pulumi.Input<WebhookPatch?>? webhook;
 
   /// Creates a new [AuditSinkSpecPatch].
   /// [policy] Policy defines the policy for selecting which events should be sent to the webhook required

@@ -43,4 +43,20 @@ class APIServicePatchApiregistrationK8sIoV1 extends pulumi.CustomResource {
     spec = registerOutput<APIServiceSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return APIServiceSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<APIServiceStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return APIServiceStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [APIServicePatchApiregistrationK8sIoV1] resource.
+  APIServicePatchApiregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:apiregistration.k8s.io/v1:APIServicePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<APIServiceSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return APIServiceSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<APIServiceStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return APIServiceStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

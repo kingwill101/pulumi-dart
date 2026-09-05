@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PriorityLevelConfigurationCondition defines the condition of priority level.
 class PriorityLevelConfigurationCondition {
   /// `lastTransitionTime` is the last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// `message` is a human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
-  /// `status` is the status of the condition. Can be True, False, Unknown. Required.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? reason;
+  /// `status` is the status of the condition. Should be specified and set to one of True, False, Unknown.
+  final pulumi.Input<String?>? status;
   /// `type` is the type of the condition. Required.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PriorityLevelConfigurationCondition].
   /// [lastTransitionTime] `lastTransitionTime` is the last time the condition transitioned from one status to another.
   /// [message] `message` is a human-readable message indicating details about last transition.
   /// [reason] `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
-  /// [status] `status` is the status of the condition. Can be True, False, Unknown. Required.
+  /// [status] `status` is the status of the condition. Should be specified and set to one of True, False, Unknown.
   /// [type] `type` is the type of the condition. Required.
   const PriorityLevelConfigurationCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,
     this.status,
-    this.type,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,7 +35,7 @@ class PriorityLevelConfigurationCondition {
       'message': ?message,
       'reason': ?reason,
       'status': ?status,
-      'type': ?type,
+      'type': type,
     };
   }
 
@@ -45,7 +45,7 @@ class PriorityLevelConfigurationCondition {
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }

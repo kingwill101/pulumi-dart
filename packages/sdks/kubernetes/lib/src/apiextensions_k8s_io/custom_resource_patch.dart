@@ -32,4 +32,18 @@ class CustomResourcePatch extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [CustomResourcePatch] resource.
+  CustomResourcePatch.reference(String urn)
+    : super(
+        'kubernetes:apiextensions.k8s.io:CustomResourcePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

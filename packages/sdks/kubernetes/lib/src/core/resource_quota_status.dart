@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ResourceQuotaStatus defines the enforced hard limits and observed use.
 class ResourceQuotaStatus {
   /// Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
-  final pulumi.Input<Map<String, String>>? hard;
+  final pulumi.Input<Map<String, String>?>? hard;
   /// Used is the current observed total usage of the resource in the namespace.
-  final pulumi.Input<Map<String, String>>? used;
+  final pulumi.Input<Map<String, String>?>? used;
 
   /// Creates a new [ResourceQuotaStatus].
   /// [hard] Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/

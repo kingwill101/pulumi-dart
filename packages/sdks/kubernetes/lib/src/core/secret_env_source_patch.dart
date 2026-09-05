@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 class SecretEnvSourcePatch {
   /// Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify whether the Secret must be defined
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [SecretEnvSourcePatch].
   /// [name] Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names

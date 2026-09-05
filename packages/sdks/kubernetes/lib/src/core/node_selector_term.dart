@@ -6,9 +6,9 @@ import 'node_selector_requirement.dart';
 /// A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 class NodeSelectorTerm {
   /// A list of node selector requirements by node's labels.
-  final pulumi.Input<List<NodeSelectorRequirement>>? matchExpressions;
+  final pulumi.Input<List<NodeSelectorRequirement>?>? matchExpressions;
   /// A list of node selector requirements by node's fields.
-  final pulumi.Input<List<NodeSelectorRequirement>>? matchFields;
+  final pulumi.Input<List<NodeSelectorRequirement>?>? matchFields;
 
   /// Creates a new [NodeSelectorTerm].
   /// [matchExpressions] A list of node selector requirements by node's labels.

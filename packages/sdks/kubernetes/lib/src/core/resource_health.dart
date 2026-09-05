@@ -13,9 +13,9 @@ class ResourceHealth {
   /// For example, Device Plugin got unregistered and hasn't been re-registered since.
   ///
   /// In future we may want to introduce the PermanentlyUnhealthy Status.
-  final pulumi.Input<String>? health;
+  final pulumi.Input<String?>? health;
   /// Message provides human-readable context for Health (e.g. "ECC error count exceeded threshold"). This field is populated by the kubelet when ResourceHealthStatusMessage is enabled if the DRA plugin returns a message, and is null otherwise.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
   final pulumi.Input<String> resourceID;
 

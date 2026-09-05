@@ -9,38 +9,38 @@ import 'event_series_events_k8s_io_v1beta1.dart';
 /// Event is a report of an event somewhere in the cluster. It generally denotes some state change in the system.
 class EventEventsK8sIoV1beta1 {
   /// What action was taken/failed regarding to the regarding object.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Deprecated field assuring backward compatibility with core.v1 Event type
-  final pulumi.Input<int>? deprecatedCount;
+  final pulumi.Input<int?>? deprecatedCount;
   /// Deprecated field assuring backward compatibility with core.v1 Event type
-  final pulumi.Input<String>? deprecatedFirstTimestamp;
+  final pulumi.Input<String?>? deprecatedFirstTimestamp;
   /// Deprecated field assuring backward compatibility with core.v1 Event type
-  final pulumi.Input<String>? deprecatedLastTimestamp;
+  final pulumi.Input<String?>? deprecatedLastTimestamp;
   /// Deprecated field assuring backward compatibility with core.v1 Event type
-  final pulumi.Input<EventSource>? deprecatedSource;
+  final pulumi.Input<EventSource?>? deprecatedSource;
   /// Required. Time when this Event was first observed.
   final pulumi.Input<String> eventTime;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Optional. A human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
-  final pulumi.Input<String>? note;
+  final pulumi.Input<String?>? note;
   /// Why the action was taken.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// The object this Event is about. In most cases it's an Object reporting controller implements. E.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
-  final pulumi.Input<ObjectReference>? regarding;
+  final pulumi.Input<ObjectReference?>? regarding;
   /// Optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
-  final pulumi.Input<ObjectReference>? related;
+  final pulumi.Input<ObjectReference?>? related;
   /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
-  final pulumi.Input<String>? reportingController;
+  final pulumi.Input<String?>? reportingController;
   /// ID of the controller instance, e.g. `kubelet-xyzf`.
-  final pulumi.Input<String>? reportingInstance;
+  final pulumi.Input<String?>? reportingInstance;
   /// Data about the Event series this event represents or nil if it's a singleton Event.
-  final pulumi.Input<EventSeriesEventsK8sIoV1beta1>? series;
+  final pulumi.Input<EventSeriesEventsK8sIoV1beta1?>? series;
   /// Type of this event (Normal, Warning), new types could be added in the future.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EventEventsK8sIoV1beta1].
   /// [action] What action was taken/failed regarding to the regarding object.
@@ -106,7 +106,7 @@ class EventEventsK8sIoV1beta1 {
     return EventEventsK8sIoV1beta1(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deprecatedCount: (() { final guardedValue = map['deprecatedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deprecatedCount: (() { final guardedValue = map['deprecatedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deprecatedFirstTimestamp: (() { final guardedValue = map['deprecatedFirstTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deprecatedLastTimestamp: (() { final guardedValue = map['deprecatedLastTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deprecatedSource: (() { final guardedValue = map['deprecatedSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

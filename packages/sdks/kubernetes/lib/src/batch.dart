@@ -48,6 +48,8 @@ export 'batch/job_list_batch_v1.dart';
 export 'batch/job_patch.dart';
 export 'batch/job_patch_args.dart';
 export 'batch/job_patch_batch_v1.dart';
+export 'batch/job_scheduling_configuration.dart';
+export 'batch/job_scheduling_configuration_patch.dart';
 export 'batch/job_spec.dart';
 export 'batch/job_spec_patch.dart';
 export 'batch/job_status.dart';

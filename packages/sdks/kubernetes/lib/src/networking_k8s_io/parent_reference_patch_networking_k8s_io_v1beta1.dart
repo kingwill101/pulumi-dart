@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ParentReference describes a reference to a parent object.
 class ParentReferencePatchNetworkingK8sIoV1beta1 {
   /// Group is the group of the object being referenced.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Name is the name of the object being referenced.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace is the namespace of the object being referenced.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Resource is the resource of the object being referenced.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ParentReferencePatchNetworkingK8sIoV1beta1].
   /// [group] Group is the group of the object being referenced.

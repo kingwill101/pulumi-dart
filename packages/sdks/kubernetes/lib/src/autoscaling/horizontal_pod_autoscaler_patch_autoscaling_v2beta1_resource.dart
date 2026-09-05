@@ -43,4 +43,20 @@ class HorizontalPodAutoscalerPatchAutoscalingV2beta1Resource extends pulumi.Cust
     spec = registerOutput<HorizontalPodAutoscalerSpecPatchAutoscalingV2beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HorizontalPodAutoscalerSpecPatchAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<HorizontalPodAutoscalerStatusPatchAutoscalingV2beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HorizontalPodAutoscalerStatusPatchAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [HorizontalPodAutoscalerPatchAutoscalingV2beta1Resource] resource.
+  HorizontalPodAutoscalerPatchAutoscalingV2beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:autoscaling/v2beta1:HorizontalPodAutoscalerPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<HorizontalPodAutoscalerSpecPatchAutoscalingV2beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HorizontalPodAutoscalerSpecPatchAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<HorizontalPodAutoscalerStatusPatchAutoscalingV2beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HorizontalPodAutoscalerStatusPatchAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -6,7 +6,7 @@ import 'workload_pod_group_template_reference_patch.dart';
 /// PodGroupTemplateReference references a PodGroup template defined in some object (e.g. Workload). Exactly one reference must be set.
 class PodGroupTemplateReferencePatch {
   /// Workload references the PodGroupTemplate within the Workload object that was used to create the PodGroup.
-  final pulumi.Input<WorkloadPodGroupTemplateReferencePatch>? workload;
+  final pulumi.Input<WorkloadPodGroupTemplateReferencePatch?>? workload;
 
   /// Creates a new [PodGroupTemplateReferencePatch].
   /// [workload] Workload references the PodGroupTemplate within the Workload object that was used to create the PodGroup.

@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DeviceAttribute must have exactly one field set.
 class DeviceAttributePatchResourceK8sIoV1beta2 {
   /// BoolValue is a true/false value.
-  final pulumi.Input<bool>? bool_;
+  final pulumi.Input<bool?>? bool_;
   /// BoolValues is a non-empty list of true/false values.
-  final pulumi.Input<List<bool>>? bools;
+  final pulumi.Input<List<bool>?>? bools;
   /// IntValue is a number.
-  final pulumi.Input<int>? int_;
+  final pulumi.Input<int?>? int_;
   /// IntValues is a non-empty list of numbers.
   ///
   /// This is an alpha field and requires enabling the DRAListTypeAttributes feature gate.
-  final pulumi.Input<List<int>>? ints;
+  final pulumi.Input<List<int>?>? ints;
   /// StringValue is a string. Must not be longer than 64 characters.
-  final pulumi.Input<String>? string_;
+  final pulumi.Input<String?>? string_;
   /// StringValues is a non-empty list of strings. Each string must not be longer than 64 characters.
   ///
   /// This is an alpha field and requires enabling the DRAListTypeAttributes feature gate.
-  final pulumi.Input<List<String>>? strings;
+  final pulumi.Input<List<String>?>? strings;
   /// VersionValue is a semantic version according to semver.org spec 2.0.0. Must not be longer than 64 characters.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// VersionValues is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters.
   ///
   /// This is an alpha field and requires enabling the DRAListTypeAttributes feature gate.
-  final pulumi.Input<List<String>>? versions;
+  final pulumi.Input<List<String>?>? versions;
 
   /// Creates a new [DeviceAttributePatchResourceK8sIoV1beta2].
   /// [bool_] BoolValue is a true/false value.
@@ -64,7 +64,7 @@ class DeviceAttributePatchResourceK8sIoV1beta2 {
     return DeviceAttributePatchResourceK8sIoV1beta2(
       bool_: (() { final guardedValue = map['bool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       bools: (() { final guardedValue = map['bools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<bool>()); })(),
-      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ints: (() { final guardedValue = map['ints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       string_: (() { final guardedValue = map['string']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       strings: (() { final guardedValue = map['strings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

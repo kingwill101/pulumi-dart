@@ -47,4 +47,21 @@ class ResourceSlicePatchResource extends pulumi.CustomResource {
     namedResources = registerOutput<NamedResourcesResourcesPatch?>('namedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedResourcesResourcesPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeName = registerOutput<String?>('nodeName');
   }
+
+  /// Creates a typed reference to an existing [ResourceSlicePatchResource] resource.
+  ResourceSlicePatchResource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha2:ResourceSlicePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    driverName = registerOutput<String?>('driverName');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    namedResources = registerOutput<NamedResourcesResourcesPatch?>('namedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedResourcesResourcesPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeName = registerOutput<String?>('nodeName');
+  }
 }

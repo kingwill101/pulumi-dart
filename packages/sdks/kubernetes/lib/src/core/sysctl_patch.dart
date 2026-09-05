@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sysctl defines a kernel parameter to be set
 class SysctlPatch {
   /// Name of a property to set
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of a property to set
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SysctlPatch].
   /// [name] Name of a property to set
