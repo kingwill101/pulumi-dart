@@ -6,8 +6,10 @@ import 'get_share_recipients_result_resource.dart';
 class GetShareRecipientsResult {
   /// Account identifier.
   final pulumi.Input<String> accountId;
-  /// Share Recipient association status.
-  /// Available values: "associating", "associated", "disassociating", "disassociated".
+  /// The current state of the recipient relative to the share. The
+  /// `desiredAssociationStatus` (not exposed in the response) tracks the
+  /// target state set by the API; the background reconciliation workflow
+  /// drives `currentAssociationStatus` toward it.
   final pulumi.Input<String> associationStatus;
   /// When the share was created.
   final pulumi.Input<String> created;
@@ -19,7 +21,7 @@ class GetShareRecipientsResult {
 
   /// Creates a new [GetShareRecipientsResult].
   /// [accountId] Account identifier.
-  /// [associationStatus] Share Recipient association status.
+  /// [associationStatus] The current state of the recipient relative to the share. The
   /// [created] When the share was created.
   /// [id] Share Recipient identifier tag.
   /// [modified] When the share was modified.

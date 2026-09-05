@@ -542,7 +542,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<List<ZeroTrustAccessPolicyRequire>> requires;
   late final pulumi.Output<bool> reusable;
   /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
-  late final pulumi.Output<String> sessionDuration;
+  late final pulumi.Output<String?> sessionDuration;
   late final pulumi.Output<String> updatedAt;
 
   /// Creates a new [ZeroTrustAccessPolicy].
@@ -557,7 +557,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     appCount = registerOutput<int>('appCount');
@@ -575,7 +575,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     purposeJustificationRequired = registerOutput<bool?>('purposeJustificationRequired');
     requires = registerOutput<List<ZeroTrustAccessPolicyRequire>>('requires', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyRequire>(guardedValue, (value) => ZeroTrustAccessPolicyRequire.fromMap((value as Map).cast<String, dynamic>())); });
     reusable = registerOutput<bool>('reusable');
-    sessionDuration = registerOutput<String>('sessionDuration');
+    sessionDuration = registerOutput<String?>('sessionDuration');
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -619,7 +619,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     purposeJustificationRequired = registerOutput<bool?>('purposeJustificationRequired');
     requires = registerOutput<List<ZeroTrustAccessPolicyRequire>>('requires', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyRequire>(guardedValue, (value) => ZeroTrustAccessPolicyRequire.fromMap((value as Map).cast<String, dynamic>())); });
     reusable = registerOutput<bool>('reusable');
-    sessionDuration = registerOutput<String>('sessionDuration');
+    sessionDuration = registerOutput<String?>('sessionDuration');
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -648,7 +648,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     purposeJustificationRequired = registerOutput<bool?>('purposeJustificationRequired');
     requires = registerOutput<List<ZeroTrustAccessPolicyRequire>>('requires', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyRequire>(guardedValue, (value) => ZeroTrustAccessPolicyRequire.fromMap((value as Map).cast<String, dynamic>())); });
     reusable = registerOutput<bool>('reusable');
-    sessionDuration = registerOutput<String>('sessionDuration');
+    sessionDuration = registerOutput<String?>('sessionDuration');
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

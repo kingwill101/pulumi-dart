@@ -14,12 +14,14 @@ class GetZeroTrustAccessApplicationDestination {
   final pulumi.Input<String?>? mcpServerId;
   /// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
   final pulumi.Input<String> portRange;
-  /// Available values: "public", "private".
+  /// Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
   final pulumi.Input<String> type;
   /// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
   final pulumi.Input<String> uri;
   /// The VNET ID to match the destination. When omitted, all VNETs will match.
   final pulumi.Input<String> vnetId;
+  /// The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+  final pulumi.Input<String> workerId;
 
   /// Creates a new [GetZeroTrustAccessApplicationDestination].
   /// [cidr] The CIDR range of the destination. Single IPs will be computed as /32.
@@ -27,9 +29,10 @@ class GetZeroTrustAccessApplicationDestination {
   /// [l4Protocol] The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
   /// [mcpServerId] A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
   /// [portRange] The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
-  /// [type] Available values: "public", "private".
+  /// [type] Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
   /// [uri] The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
   /// [vnetId] The VNET ID to match the destination. When omitted, all VNETs will match.
+  /// [workerId] The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
   const GetZeroTrustAccessApplicationDestination({
     required this.cidr,
     required this.hostname,
@@ -39,6 +42,7 @@ class GetZeroTrustAccessApplicationDestination {
     required this.type,
     required this.uri,
     required this.vnetId,
+    required this.workerId,
   });
 
   Map<String, dynamic> toMap() {
@@ -51,6 +55,7 @@ class GetZeroTrustAccessApplicationDestination {
       'type': type,
       'uri': uri,
       'vnetId': vnetId,
+      'workerId': workerId,
     };
   }
 
@@ -64,6 +69,7 @@ class GetZeroTrustAccessApplicationDestination {
       type: pulumi.Input.fromValue(map['type'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
       vnetId: pulumi.Input.fromValue(map['vnetId'] as String),
+      workerId: pulumi.Input.fromValue(map['workerId'] as String),
     );
   }
 }

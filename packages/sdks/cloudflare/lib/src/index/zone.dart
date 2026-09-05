@@ -256,7 +256,7 @@ class Zone extends pulumi.CustomResource {
           'cloudflare:index/zone:Zone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     account = registerOutput<ZoneAccount>('account', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activatedOn = registerOutput<String>('activatedOn');

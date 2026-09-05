@@ -119,7 +119,7 @@ class WorkerScript extends pulumi.CustomResource {
           'cloudflare:index/workerScript:WorkerScript',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkerScriptAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerScriptAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -16,7 +16,7 @@ class GetResourceGroupResult {
   final String? name;
   /// Resource Group identifier tag.
   final String? resourceGroupId;
-  /// A scope is a combination of scope objects which provides additional context.
+  /// The scope associated to the resource group
   final List<GetResourceGroupScope>? scopes;
 
   /// Creates a new [GetResourceGroupResult].
@@ -25,7 +25,7 @@ class GetResourceGroupResult {
   /// [meta] Attributes associated to the resource group.
   /// [name] Name of the resource group.
   /// [resourceGroupId] Resource Group identifier tag.
-  /// [scopes] A scope is a combination of scope objects which provides additional context.
+  /// [scopes] The scope associated to the resource group
   const GetResourceGroupResult({
     this.accountId,
     this.id,

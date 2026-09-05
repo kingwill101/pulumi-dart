@@ -150,7 +150,7 @@ class D1Database extends pulumi.CustomResource {
   /// The D1 database's size, in bytes.
   late final pulumi.Output<double> fileSize;
   /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-  /// Available values: "eu", "fedramp".
+  /// Available values: "eu", "fedramp", "us".
   late final pulumi.Output<String?> jurisdiction;
   /// D1 database name.
   late final pulumi.Output<String> name;
@@ -176,7 +176,7 @@ class D1Database extends pulumi.CustomResource {
           'cloudflare:index/d1Database:D1Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

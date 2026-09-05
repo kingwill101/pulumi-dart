@@ -260,7 +260,7 @@ class Record extends pulumi.CustomResource {
           'cloudflare:index/record:Record',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     commentModifiedOn = registerOutput<String>('commentModifiedOn');

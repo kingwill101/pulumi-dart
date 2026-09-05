@@ -199,7 +199,7 @@ class ClientCertificate extends pulumi.CustomResource {
           'cloudflare:index/clientCertificate:ClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     certificateAuthority = registerOutput<ClientCertificateCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCertificateCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });

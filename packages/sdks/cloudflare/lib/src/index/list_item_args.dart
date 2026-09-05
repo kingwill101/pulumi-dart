@@ -15,7 +15,7 @@ class ListItemArgs {
   final pulumi.Input<int?>? asn;
   /// An informative summary of the list item.
   final pulumi.Input<String?>? comment;
-  /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   final pulumi.Input<ListItemHostname?>? hostname;
   /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
   final pulumi.Input<String?>? ip;
@@ -28,7 +28,7 @@ class ListItemArgs {
   /// [accountId] The Account ID for this resource.
   /// [asn] A non-negative 32 bit integer
   /// [comment] An informative summary of the list item.
-  /// [hostname] Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// [hostname] Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   /// [ip] An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
   /// [listId] The unique ID of the list.
   /// [redirect] The definition of the redirect.

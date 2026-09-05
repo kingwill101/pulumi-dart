@@ -66,6 +66,7 @@ import 'access_organization_state.dart';
 ///     sessionDuration: "24h",
 ///     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
 ///     userSeatExpirationInactiveTime: "730h",
+///     warpAuthNonBrowser401: false,
 ///     warpAuthSessionDuration: "24h",
 /// });
 /// ```
@@ -120,6 +121,7 @@ import 'access_organization_state.dart';
 ///     session_duration="24h",
 ///     ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
 ///     user_seat_expiration_inactive_time="730h",
+///     warp_auth_non_browser401=False,
 ///     warp_auth_session_duration="24h")
 /// ```
 /// ```csharp
@@ -188,6 +190,7 @@ import 'access_organization_state.dart';
 ///         SessionDuration = "24h",
 ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
 ///         UserSeatExpirationInactiveTime = "730h",
+///         WarpAuthNonBrowser401 = false,
 ///         WarpAuthSessionDuration = "24h",
 ///     });
 ///
@@ -252,6 +255,7 @@ import 'access_organization_state.dart';
 /// 			SessionDuration:                pulumi.String("24h"),
 /// 			UiReadOnlyToggleReason:         pulumi.String("Temporarily turn off the UI read only lock to make a change via the UI"),
 /// 			UserSeatExpirationInactiveTime: pulumi.String("730h"),
+/// 			WarpAuthNonBrowser401:          pulumi.Bool(false),
 /// 			WarpAuthSessionDuration:        pulumi.String("24h"),
 /// 		})
 /// 		if err != nil {
@@ -307,6 +311,7 @@ import 'access_organization_state.dart';
 ///   session_duration                   = "24h"
 ///   ui_read_only_toggle_reason         = "Temporarily turn off the UI read only lock to make a change via the UI"
 ///   user_seat_expiration_inactive_time = "730h"
+///   warp_auth_non_browser401           = false
 ///   warp_auth_session_duration         = "24h"
 /// }
 /// ```
@@ -379,6 +384,7 @@ import 'access_organization_state.dart';
 ///             .sessionDuration("24h")
 ///             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
 ///             .userSeatExpirationInactiveTime("730h")
+///             .warpAuthNonBrowser401(false)
 ///             .warpAuthSessionDuration("24h")
 ///             .build());
 ///
@@ -431,6 +437,7 @@ import 'access_organization_state.dart';
 ///       sessionDuration: 24h
 ///       uiReadOnlyToggleReason: Temporarily turn off the UI read only lock to make a change via the UI
 ///       userSeatExpirationInactiveTime: 730h
+///       warpAuthNonBrowser401: false
 ///       warpAuthSessionDuration: 24h
 /// ```
 ///
@@ -459,7 +466,7 @@ class AccessOrganization extends pulumi.CustomResource {
   late final pulumi.Output<AccessOrganizationMfaConfig?> mfaConfig;
   /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
   late final pulumi.Output<bool> mfaConfigurationAllowed;
-  /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+  /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
   late final pulumi.Output<bool> mfaRequiredForAllApps;
   /// Configures SSH PIV key requirements for MFA using hardware security keys.
   late final pulumi.Output<AccessOrganizationMfaSshPivKeyRequirements?> mfaSshPivKeyRequirements;
@@ -471,6 +478,8 @@ class AccessOrganization extends pulumi.CustomResource {
   late final pulumi.Output<String> uiReadOnlyToggleReason;
   /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
   late final pulumi.Output<String?> userSeatExpirationInactiveTime;
+  /// When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+  late final pulumi.Output<bool> warpAuthNonBrowser401;
   /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
   late final pulumi.Output<String?> warpAuthSessionDuration;
   /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -488,7 +497,7 @@ class AccessOrganization extends pulumi.CustomResource {
           'cloudflare:index/accessOrganization:AccessOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     allowAuthenticateViaWarp = registerOutput<bool>('allowAuthenticateViaWarp');
@@ -507,6 +516,7 @@ class AccessOrganization extends pulumi.CustomResource {
     sessionDuration = registerOutput<String?>('sessionDuration');
     uiReadOnlyToggleReason = registerOutput<String>('uiReadOnlyToggleReason');
     userSeatExpirationInactiveTime = registerOutput<String?>('userSeatExpirationInactiveTime');
+    warpAuthNonBrowser401 = registerOutput<bool>('warpAuthNonBrowser401');
     warpAuthSessionDuration = registerOutput<String?>('warpAuthSessionDuration');
     zoneId = registerOutput<String?>('zoneId');
   }
@@ -552,6 +562,7 @@ class AccessOrganization extends pulumi.CustomResource {
     sessionDuration = registerOutput<String?>('sessionDuration');
     uiReadOnlyToggleReason = registerOutput<String>('uiReadOnlyToggleReason');
     userSeatExpirationInactiveTime = registerOutput<String?>('userSeatExpirationInactiveTime');
+    warpAuthNonBrowser401 = registerOutput<bool>('warpAuthNonBrowser401');
     warpAuthSessionDuration = registerOutput<String?>('warpAuthSessionDuration');
     zoneId = registerOutput<String?>('zoneId');
   }
@@ -582,6 +593,7 @@ class AccessOrganization extends pulumi.CustomResource {
     sessionDuration = registerOutput<String?>('sessionDuration');
     uiReadOnlyToggleReason = registerOutput<String>('uiReadOnlyToggleReason');
     userSeatExpirationInactiveTime = registerOutput<String?>('userSeatExpirationInactiveTime');
+    warpAuthNonBrowser401 = registerOutput<bool>('warpAuthNonBrowser401');
     warpAuthSessionDuration = registerOutput<String?>('warpAuthSessionDuration');
     zoneId = registerOutput<String?>('zoneId');
   }

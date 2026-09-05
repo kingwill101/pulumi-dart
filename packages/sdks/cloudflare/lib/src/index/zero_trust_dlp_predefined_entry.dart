@@ -149,6 +149,9 @@ class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
   late final pulumi.Output<bool> caseSensitive;
   late final pulumi.Output<ZeroTrustDlpPredefinedEntryConfidence> confidence;
   late final pulumi.Output<String> createdAt;
+  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// emitted only when true.
+  late final pulumi.Output<bool> deprecated;
   late final pulumi.Output<String> description;
   late final pulumi.Output<bool> enabled;
   late final pulumi.Output<String> entryId;
@@ -180,12 +183,13 @@ class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool>('caseSensitive');
     confidence = registerOutput<ZeroTrustDlpPredefinedEntryConfidence>('confidence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpPredefinedEntryConfidence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
+    deprecated = registerOutput<bool>('deprecated');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool>('enabled');
     entryId = registerOutput<String>('entryId');
@@ -229,6 +233,7 @@ class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
     caseSensitive = registerOutput<bool>('caseSensitive');
     confidence = registerOutput<ZeroTrustDlpPredefinedEntryConfidence>('confidence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpPredefinedEntryConfidence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
+    deprecated = registerOutput<bool>('deprecated');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool>('enabled');
     entryId = registerOutput<String>('entryId');
@@ -257,6 +262,7 @@ class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
     caseSensitive = registerOutput<bool>('caseSensitive');
     confidence = registerOutput<ZeroTrustDlpPredefinedEntryConfidence>('confidence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpPredefinedEntryConfidence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
+    deprecated = registerOutput<bool>('deprecated');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool>('enabled');
     entryId = registerOutput<String>('entryId');

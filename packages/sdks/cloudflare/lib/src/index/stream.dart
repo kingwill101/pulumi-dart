@@ -183,7 +183,7 @@ class Stream extends pulumi.CustomResource {
           'cloudflare:index/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowedOrigins = registerOutput<List<String>?>('allowedOrigins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -239,7 +239,7 @@ class CertificatePack extends pulumi.CustomResource {
           'cloudflare:index/certificatePack:CertificatePack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     certificateAuthority = registerOutput<String>('certificateAuthority');
     certificates = registerOutput<List<CertificatePackCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificatePackCertificate>(guardedValue, (value) => CertificatePackCertificate.fromMap((value as Map).cast<String, dynamic>())); });

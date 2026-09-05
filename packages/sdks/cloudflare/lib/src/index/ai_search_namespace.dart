@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_search_namespace_args.dart';
+import 'ai_search_namespace_public_endpoint_params.dart';
 import 'ai_search_namespace_state.dart';
 
 /// ## Import
@@ -11,6 +12,8 @@ class AiSearchNamespace extends pulumi.CustomResource {
   /// Optional description for the namespace. Max 256 characters.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<String> name;
+  late final pulumi.Output<String> publicEndpointId;
+  late final pulumi.Output<AiSearchNamespacePublicEndpointParams> publicEndpointParams;
 
   /// Creates a new [AiSearchNamespace].
   /// [name] The Pulumi resource name.
@@ -24,12 +27,14 @@ class AiSearchNamespace extends pulumi.CustomResource {
           'cloudflare:index/aiSearchNamespace:AiSearchNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
+    publicEndpointId = registerOutput<String>('publicEndpointId');
+    publicEndpointParams = registerOutput<AiSearchNamespacePublicEndpointParams>('publicEndpointParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiSearchNamespacePublicEndpointParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AiSearchNamespace] resource's state with the given [name] and [id].
@@ -60,6 +65,8 @@ class AiSearchNamespace extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
+    publicEndpointId = registerOutput<String>('publicEndpointId');
+    publicEndpointParams = registerOutput<AiSearchNamespacePublicEndpointParams>('publicEndpointParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiSearchNamespacePublicEndpointParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [AiSearchNamespace] resource.
@@ -75,5 +82,7 @@ class AiSearchNamespace extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
+    publicEndpointId = registerOutput<String>('publicEndpointId');
+    publicEndpointParams = registerOutput<AiSearchNamespacePublicEndpointParams>('publicEndpointParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiSearchNamespacePublicEndpointParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

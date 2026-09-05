@@ -287,7 +287,7 @@ class OriginCaCertificate extends pulumi.CustomResource {
           'cloudflare:index/originCaCertificate:OriginCaCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     csr = registerOutput<String>('csr');

@@ -411,7 +411,7 @@ class Healthcheck extends pulumi.CustomResource {
           'cloudflare:index/healthcheck:Healthcheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     checkRegions = registerOutput<List<String>?>('checkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

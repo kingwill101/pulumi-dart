@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class R2BucketSippySource {
   /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
   final pulumi.Input<String?>? accessKeyId;
-  /// Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+  /// Access key for the Azure Storage account. Mutually exclusive with sasToken.
   final pulumi.Input<String?>? accountKey;
   /// Name of the Azure Storage account.
   final pulumi.Input<String?>? accountName;
@@ -23,14 +23,14 @@ class R2BucketSippySource {
   final pulumi.Input<String?>? privateKey;
   /// Name of the AWS availability zone.
   final pulumi.Input<String?>? region;
-  /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+  /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
   final pulumi.Input<String?>? sasToken;
   /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
   final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [R2BucketSippySource].
   /// [accessKeyId] Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
-  /// [accountKey] Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+  /// [accountKey] Access key for the Azure Storage account. Mutually exclusive with sasToken.
   /// [accountName] Name of the Azure Storage account.
   /// [bucket] Name of the AWS S3 bucket.
   /// [bucketUrl] URL to the S3-compatible API of the bucket.
@@ -39,7 +39,7 @@ class R2BucketSippySource {
   /// [container] Name of the Azure Blob Storage container.
   /// [privateKey] Private Key of an IAM credential (ideally scoped to a single GCS bucket).
   /// [region] Name of the AWS availability zone.
-  /// [sasToken] Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+  /// [sasToken] Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
   /// [secretAccessKey] Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
   const R2BucketSippySource({
     this.accessKeyId,

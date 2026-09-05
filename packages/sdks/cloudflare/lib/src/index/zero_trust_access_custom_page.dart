@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zero_trust_access_custom_page_args.dart';
 import 'zero_trust_access_custom_page_state.dart';
+import 'zero_trust_access_custom_page_warning.dart';
 
 /// Accepted Permissions
 ///
@@ -19,6 +20,7 @@ import 'zero_trust_access_custom_page_state.dart';
 ///     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
 ///     name: "name",
 ///     type: "identity_denied",
+///     contractVersion: 0,
 /// });
 /// ```
 /// ```python
@@ -29,7 +31,8 @@ import 'zero_trust_access_custom_page_state.dart';
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     custom_html="<html><body><h1>Access Denied</h1></body></html>",
 ///     name="name",
-///     type="identity_denied")
+///     type="identity_denied",
+///     contract_version=0)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,6 +48,7 @@ import 'zero_trust_access_custom_page_state.dart';
 ///         CustomHtml = "<html><body><h1>Access Denied</h1></body></html>",
 ///         Name = "name",
 ///         Type = "identity_denied",
+///         ContractVersion = 0,
 ///     });
 ///
 /// });
@@ -60,10 +64,11 @@ import 'zero_trust_access_custom_page_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewZeroTrustAccessCustomPage(ctx, "example_zero_trust_access_custom_page", &cloudflare.ZeroTrustAccessCustomPageArgs{
-/// 			AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			CustomHtml: pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
-/// 			Name:       pulumi.String("name"),
-/// 			Type:       pulumi.String("identity_denied"),
+/// 			AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			CustomHtml:      pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
+/// 			Name:            pulumi.String("name"),
+/// 			Type:            pulumi.String("identity_denied"),
+/// 			ContractVersion: pulumi.Int(0),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -82,10 +87,11 @@ import 'zero_trust_access_custom_page_state.dart';
 /// }
 ///
 /// resource "cloudflare_zerotrustaccesscustompage" "example_zero_trust_access_custom_page" {
-///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
-///   custom_html = "<html><body><h1>Access Denied</h1></body></html>"
-///   name        = "name"
-///   type        = "identity_denied"
+///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
+///   custom_html      = "<html><body><h1>Access Denied</h1></body></html>"
+///   name             = "name"
+///   type             = "identity_denied"
+///   contract_version = 0
 /// }
 /// ```
 /// ```java
@@ -114,6 +120,7 @@ import 'zero_trust_access_custom_page_state.dart';
 ///             .customHtml("<html><body><h1>Access Denied</h1></body></html>")
 ///             .name("name")
 ///             .type("identity_denied")
+///             .contractVersion(0)
 ///             .build());
 ///
 ///     }
@@ -129,6 +136,7 @@ import 'zero_trust_access_custom_page_state.dart';
 ///       customHtml: <html><body><h1>Access Denied</h1></body></html>
 ///       name: name
 ///       type: identity_denied
+///       contractVersion: 0
 /// ```
 ///
 ///
@@ -140,15 +148,19 @@ import 'zero_trust_access_custom_page_state.dart';
 class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
   /// Identifier.
   late final pulumi.Output<String> accountId;
+  /// Contract version of the page's Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+  late final pulumi.Output<int> contractVersion;
   /// Custom page HTML.
   late final pulumi.Output<String> customHtml;
   /// Custom page name.
   late final pulumi.Output<String> name;
   /// Custom page type.
-  /// Available values: "identityDenied", "forbidden".
+  /// Available values: "identityDenied", "forbidden", "login", "interstitial".
   late final pulumi.Output<String> type;
   /// UUID.
   late final pulumi.Output<String> uid;
+  /// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+  late final pulumi.Output<List<ZeroTrustAccessCustomPageWarning>> warnings;
 
   /// Creates a new [ZeroTrustAccessCustomPage].
   /// [name] The Pulumi resource name.
@@ -162,13 +174,15 @@ class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
+    contractVersion = registerOutput<int>('contractVersion');
     customHtml = registerOutput<String>('customHtml');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
+    warnings = registerOutput<List<ZeroTrustAccessCustomPageWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessCustomPageWarning>(guardedValue, (value) => ZeroTrustAccessCustomPageWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ZeroTrustAccessCustomPage] resource's state with the given [name] and [id].
@@ -196,10 +210,12 @@ class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String>('accountId');
+    contractVersion = registerOutput<int>('contractVersion');
     customHtml = registerOutput<String>('customHtml');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
+    warnings = registerOutput<List<ZeroTrustAccessCustomPageWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessCustomPageWarning>(guardedValue, (value) => ZeroTrustAccessCustomPageWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Creates a typed reference to an existing [ZeroTrustAccessCustomPage] resource.
@@ -212,9 +228,11 @@ class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accountId = registerOutput<String>('accountId');
+    contractVersion = registerOutput<int>('contractVersion');
     customHtml = registerOutput<String>('customHtml');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
+    warnings = registerOutput<List<ZeroTrustAccessCustomPageWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessCustomPageWarning>(guardedValue, (value) => ZeroTrustAccessCustomPageWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

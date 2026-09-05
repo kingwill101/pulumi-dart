@@ -10,13 +10,13 @@ import 'get_zero_trust_access_ai_controls_mcp_portal_filter.dart';
 class GetZeroTrustAccessAiControlsMcpPortalArgs {
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<GetZeroTrustAccessAiControlsMcpPortalFilter?>? filter;
-  /// portal id
+  /// Unique identifier for the MCP portal.
   final pulumi.Input<String?>? id;
 
   /// Creates a new [GetZeroTrustAccessAiControlsMcpPortalArgs].
   /// [accountId] Optional.
   /// [filter] Optional.
-  /// [id] portal id
+  /// [id] Unique identifier for the MCP portal.
   const GetZeroTrustAccessAiControlsMcpPortalArgs({
     this.accountId,
     this.filter,

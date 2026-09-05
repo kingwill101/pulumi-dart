@@ -270,7 +270,7 @@ class EmailRoutingRule extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingRule:EmailRoutingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     actions = registerOutput<List<EmailRoutingRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingRuleAction>(guardedValue, (value) => EmailRoutingRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');

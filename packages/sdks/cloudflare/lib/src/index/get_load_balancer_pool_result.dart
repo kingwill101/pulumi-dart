@@ -21,6 +21,8 @@ class GetLoadBalancerPoolResult {
   /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
   final bool? enabled;
   final GetLoadBalancerPoolFilter? filter;
+  /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+  final List<String>? healthSources;
   /// The ID of this resource.
   final String? id;
   /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
@@ -58,6 +60,7 @@ class GetLoadBalancerPoolResult {
   /// [disabledAt] This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
   /// [enabled] Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
   /// [filter] Optional.
+  /// [healthSources] A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
   /// [id] The ID of this resource.
   /// [latitude] The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
   /// [loadShedding] Configures load shedding policies and percentages for the pool.
@@ -81,6 +84,7 @@ class GetLoadBalancerPoolResult {
     this.disabledAt,
     this.enabled,
     this.filter,
+    this.healthSources,
     this.id,
     this.latitude,
     this.loadShedding,
@@ -107,6 +111,7 @@ class GetLoadBalancerPoolResult {
       'disabledAt': ?disabledAt,
       'enabled': ?enabled,
       'filter': ?filter?.toMap(),
+      'healthSources': ?healthSources,
       'id': ?id,
       'latitude': ?latitude,
       'loadShedding': ?loadShedding?.toMap(),
@@ -134,6 +139,7 @@ class GetLoadBalancerPoolResult {
       disabledAt: (() { final guardedValue = map['disabledAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetLoadBalancerPoolFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      healthSources: (() { final guardedValue = map['healthSources']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       latitude: (() { final guardedValue = map['latitude']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       loadShedding: (() { final guardedValue = map['loadShedding']; if (guardedValue == null) return null; return GetLoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

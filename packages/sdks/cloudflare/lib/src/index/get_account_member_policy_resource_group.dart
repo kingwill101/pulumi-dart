@@ -11,14 +11,14 @@ class GetAccountMemberPolicyResourceGroup {
   final pulumi.Input<GetAccountMemberPolicyResourceGroupMeta> meta;
   /// Name of the resource group.
   final pulumi.Input<String> name;
-  /// A scope is a combination of scope objects which provides additional context.
+  /// The scope associated to the resource group
   final pulumi.Input<List<GetAccountMemberPolicyResourceGroupScope>> scopes;
 
   /// Creates a new [GetAccountMemberPolicyResourceGroup].
   /// [id] Identifier of the resource group.
   /// [meta] Attributes associated to the resource group.
   /// [name] Name of the resource group.
-  /// [scopes] A scope is a combination of scope objects which provides additional context.
+  /// [scopes] The scope associated to the resource group
   const GetAccountMemberPolicyResourceGroup({
     required this.id,
     required this.meta,

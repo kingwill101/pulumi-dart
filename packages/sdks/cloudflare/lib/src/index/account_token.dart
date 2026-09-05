@@ -155,7 +155,7 @@ import 'account_token_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb": "*",
 /// 		})
 /// 		if err != nil {
@@ -365,7 +365,7 @@ class AccountToken extends pulumi.CustomResource {
           'cloudflare:index/accountToken:AccountToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     accountId = registerOutput<String>('accountId');

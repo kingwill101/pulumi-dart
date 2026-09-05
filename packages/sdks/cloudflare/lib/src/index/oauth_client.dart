@@ -306,7 +306,7 @@ class OauthClient extends pulumi.CustomResource {
           'cloudflare:index/oauthClient:OauthClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accountId = registerOutput<String>('accountId');

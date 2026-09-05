@@ -14,7 +14,7 @@ class ListItemState {
   final pulumi.Input<String?>? comment;
   /// The RFC 3339 timestamp of when the item was created.
   final pulumi.Input<String?>? createdOn;
-  /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   final pulumi.Input<ListItemHostname?>? hostname;
   /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
   final pulumi.Input<String?>? ip;
@@ -32,7 +32,7 @@ class ListItemState {
   /// [asn] A non-negative 32 bit integer
   /// [comment] An informative summary of the list item.
   /// [createdOn] The RFC 3339 timestamp of when the item was created.
-  /// [hostname] Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// [hostname] Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   /// [ip] An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
   /// [listId] The unique ID of the list.
   /// [modifiedOn] The RFC 3339 timestamp of when the item was last modified.

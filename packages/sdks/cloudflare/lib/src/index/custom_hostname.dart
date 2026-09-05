@@ -623,7 +623,7 @@ class CustomHostname extends pulumi.CustomResource {
           'cloudflare:index/customHostname:CustomHostname',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     customMetadata = registerOutput<Map<String, String>?>('customMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

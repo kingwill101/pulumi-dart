@@ -10,6 +10,8 @@ class GetZeroTrustAccessServiceTokenResult {
   final String? clientId;
   /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
   final String? duration;
+  /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+  final bool? enabled;
   final String? expiresAt;
   final GetZeroTrustAccessServiceTokenFilter? filter;
   /// UUID.
@@ -25,6 +27,7 @@ class GetZeroTrustAccessServiceTokenResult {
   /// [accountId] The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   /// [clientId] The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
   /// [duration] The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+  /// [enabled] Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
   /// [expiresAt] Optional.
   /// [filter] Optional.
   /// [id] UUID.
@@ -35,6 +38,7 @@ class GetZeroTrustAccessServiceTokenResult {
     this.accountId,
     this.clientId,
     this.duration,
+    this.enabled,
     this.expiresAt,
     this.filter,
     this.id,
@@ -48,6 +52,7 @@ class GetZeroTrustAccessServiceTokenResult {
       'accountId': ?accountId,
       'clientId': ?clientId,
       'duration': ?duration,
+      'enabled': ?enabled,
       'expiresAt': ?expiresAt,
       'filter': ?filter?.toMap(),
       'id': ?id,
@@ -62,6 +67,7 @@ class GetZeroTrustAccessServiceTokenResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       expiresAt: (() { final guardedValue = map['expiresAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustAccessServiceTokenFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),

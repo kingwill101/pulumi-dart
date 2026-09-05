@@ -174,7 +174,7 @@ class Web3Hostname extends pulumi.CustomResource {
           'cloudflare:index/web3Hostname:Web3Hostname',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     description = registerOutput<String?>('description');

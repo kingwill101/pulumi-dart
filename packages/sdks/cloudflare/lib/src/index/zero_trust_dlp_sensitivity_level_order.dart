@@ -153,7 +153,7 @@ class ZeroTrustDlpSensitivityLevelOrder extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     levelIds = registerOutput<List<String>>('levelIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

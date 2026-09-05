@@ -159,7 +159,7 @@ class ContentScanningExpression extends pulumi.CustomResource {
           'cloudflare:index/contentScanningExpression:ContentScanningExpression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');

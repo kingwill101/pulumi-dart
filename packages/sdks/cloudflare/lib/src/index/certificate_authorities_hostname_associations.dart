@@ -155,7 +155,7 @@ class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomResource {
           'cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     mtlsCertificateId = registerOutput<String?>('mtlsCertificateId');

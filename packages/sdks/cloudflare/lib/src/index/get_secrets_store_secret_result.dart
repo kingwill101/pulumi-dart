@@ -4,13 +4,14 @@ import 'get_secrets_store_secret_filter.dart';
 
 /// Result data returned by getSecretsStoreSecret.
 class GetSecretsStoreSecretResult {
+  /// Account Identifier
   final String? accountId;
   /// Freeform text describing the secret.
   final String? comment;
   /// When the secret was created.
   final String? created;
   final GetSecretsStoreSecretFilter? filter;
-  /// The ID of this resource.
+  /// Secret identifier tag.
   final String? id;
   /// When the secret was modified.
   final String? modified;
@@ -18,23 +19,25 @@ class GetSecretsStoreSecretResult {
   final String? name;
   /// The list of services that can use this secret.
   final List<String>? scopes;
+  /// Secret identifier tag.
   final String? secretId;
   /// Available values: "pending", "active", "deleted".
   final String? status;
+  /// Store Identifier
   final String? storeId;
 
   /// Creates a new [GetSecretsStoreSecretResult].
-  /// [accountId] Optional.
+  /// [accountId] Account Identifier
   /// [comment] Freeform text describing the secret.
   /// [created] When the secret was created.
   /// [filter] Optional.
-  /// [id] The ID of this resource.
+  /// [id] Secret identifier tag.
   /// [modified] When the secret was modified.
   /// [name] The name of the secret.
   /// [scopes] The list of services that can use this secret.
-  /// [secretId] Optional.
+  /// [secretId] Secret identifier tag.
   /// [status] Available values: "pending", "active", "deleted".
-  /// [storeId] Optional.
+  /// [storeId] Store Identifier
   const GetSecretsStoreSecretResult({
     this.accountId,
     this.comment,

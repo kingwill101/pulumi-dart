@@ -244,7 +244,7 @@ class ManagedTransforms extends pulumi.CustomResource {
           'cloudflare:index/managedTransforms:ManagedTransforms',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     managedRequestHeaders = registerOutput<List<ManagedTransformsManagedRequestHeader>?>('managedRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedTransformsManagedRequestHeader>(guardedValue, (value) => ManagedTransformsManagedRequestHeader.fromMap((value as Map).cast<String, dynamic>())); });
     managedResponseHeaders = registerOutput<List<ManagedTransformsManagedResponseHeader>?>('managedResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedTransformsManagedResponseHeader>(guardedValue, (value) => ManagedTransformsManagedResponseHeader.fromMap((value as Map).cast<String, dynamic>())); });

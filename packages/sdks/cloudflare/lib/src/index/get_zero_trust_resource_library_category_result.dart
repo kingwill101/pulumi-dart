@@ -9,7 +9,7 @@ class GetZeroTrustResourceLibraryCategoryResult {
   /// Returns the category description.
   final String? description;
   /// The ID of this resource.
-  final String? id;
+  final int? id;
   /// Returns the category name.
   final String? name;
 
@@ -42,7 +42,7 @@ class GetZeroTrustResourceLibraryCategoryResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -150,7 +150,7 @@ class WorkersRoute extends pulumi.CustomResource {
           'cloudflare:index/workersRoute:WorkersRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     pattern = registerOutput<String>('pattern');
     script = registerOutput<String?>('script');

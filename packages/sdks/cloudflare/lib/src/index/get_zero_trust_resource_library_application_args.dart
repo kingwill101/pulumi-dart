@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZeroTrustResourceLibraryApplicationArgs {
   final pulumi.Input<String> accountId;
   /// The ID of this resource.
-  final pulumi.Input<String> id;
+  final pulumi.Input<int> id;
 
   /// Creates a new [GetZeroTrustResourceLibraryApplicationArgs].
   /// [accountId] Required.
@@ -29,7 +29,7 @@ class GetZeroTrustResourceLibraryApplicationArgs {
   factory GetZeroTrustResourceLibraryApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustResourceLibraryApplicationArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      id: pulumi.Input.fromValue(map['id'] as String),
+      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
     );
   }
 }

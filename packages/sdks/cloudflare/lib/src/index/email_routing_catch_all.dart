@@ -247,7 +247,7 @@ class EmailRoutingCatchAll extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     actions = registerOutput<List<EmailRoutingCatchAllAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingCatchAllAction>(guardedValue, (value) => EmailRoutingCatchAllAction.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');

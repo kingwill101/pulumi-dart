@@ -25,7 +25,7 @@ class GetZeroTrustOrganizationResult {
   final GetZeroTrustOrganizationLoginDesign? loginDesign;
   /// Configures multi-factor authentication (MFA) settings for an organization.
   final GetZeroTrustOrganizationMfaConfig? mfaConfig;
-  /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+  /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
   final bool? mfaRequiredForAllApps;
   /// Configures SSH PIV key requirements for MFA using hardware security keys.
   final GetZeroTrustOrganizationMfaSshPivKeyRequirements? mfaSshPivKeyRequirements;
@@ -37,6 +37,8 @@ class GetZeroTrustOrganizationResult {
   final String? uiReadOnlyToggleReason;
   /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
   final String? userSeatExpirationInactiveTime;
+  /// When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+  final bool? warpAuthNonBrowser401;
   /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
   final String? warpAuthSessionDuration;
   /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -53,12 +55,13 @@ class GetZeroTrustOrganizationResult {
   /// [isUiReadOnly] Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
   /// [loginDesign] Optional.
   /// [mfaConfig] Configures multi-factor authentication (MFA) settings for an organization.
-  /// [mfaRequiredForAllApps] Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+  /// [mfaRequiredForAllApps] Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
   /// [mfaSshPivKeyRequirements] Configures SSH PIV key requirements for MFA using hardware security keys.
   /// [name] The name of your Zero Trust organization.
   /// [sessionDuration] The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
   /// [uiReadOnlyToggleReason] A description of the reason why the UI read only field is being toggled.
   /// [userSeatExpirationInactiveTime] The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+  /// [warpAuthNonBrowser401] When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
   /// [warpAuthSessionDuration] The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
   /// [zoneId] The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   const GetZeroTrustOrganizationResult({
@@ -78,6 +81,7 @@ class GetZeroTrustOrganizationResult {
     this.sessionDuration,
     this.uiReadOnlyToggleReason,
     this.userSeatExpirationInactiveTime,
+    this.warpAuthNonBrowser401,
     this.warpAuthSessionDuration,
     this.zoneId,
   });
@@ -100,6 +104,7 @@ class GetZeroTrustOrganizationResult {
       'sessionDuration': ?sessionDuration,
       'uiReadOnlyToggleReason': ?uiReadOnlyToggleReason,
       'userSeatExpirationInactiveTime': ?userSeatExpirationInactiveTime,
+      'warpAuthNonBrowser401': ?warpAuthNonBrowser401,
       'warpAuthSessionDuration': ?warpAuthSessionDuration,
       'zoneId': ?zoneId,
     };
@@ -123,6 +128,7 @@ class GetZeroTrustOrganizationResult {
       sessionDuration: (() { final guardedValue = map['sessionDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uiReadOnlyToggleReason: (() { final guardedValue = map['uiReadOnlyToggleReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userSeatExpirationInactiveTime: (() { final guardedValue = map['userSeatExpirationInactiveTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      warpAuthNonBrowser401: (() { final guardedValue = map['warpAuthNonBrowser401']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       warpAuthSessionDuration: (() { final guardedValue = map['warpAuthSessionDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

@@ -7,6 +7,8 @@ class GetZeroTrustAccessServiceTokensResult {
   final pulumi.Input<String> clientId;
   /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
   final pulumi.Input<String> duration;
+  /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+  final pulumi.Input<bool> enabled;
   final pulumi.Input<String> expiresAt;
   /// The ID of the service token.
   final pulumi.Input<String> id;
@@ -16,12 +18,14 @@ class GetZeroTrustAccessServiceTokensResult {
   /// Creates a new [GetZeroTrustAccessServiceTokensResult].
   /// [clientId] The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
   /// [duration] The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+  /// [enabled] Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
   /// [expiresAt] Required.
   /// [id] The ID of the service token.
   /// [name] The name of the service token.
   const GetZeroTrustAccessServiceTokensResult({
     required this.clientId,
     required this.duration,
+    required this.enabled,
     required this.expiresAt,
     required this.id,
     required this.name,
@@ -31,6 +35,7 @@ class GetZeroTrustAccessServiceTokensResult {
     return <String, dynamic>{
       'clientId': clientId,
       'duration': duration,
+      'enabled': enabled,
       'expiresAt': expiresAt,
       'id': id,
       'name': name,
@@ -41,6 +46,7 @@ class GetZeroTrustAccessServiceTokensResult {
     return GetZeroTrustAccessServiceTokensResult(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),

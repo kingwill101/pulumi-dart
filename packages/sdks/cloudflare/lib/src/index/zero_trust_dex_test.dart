@@ -256,7 +256,7 @@ class ZeroTrustDexTest extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     data = registerOutput<ZeroTrustDexTestData>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDexTestData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

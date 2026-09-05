@@ -32,7 +32,7 @@ class Snippets extends pulumi.CustomResource {
           'cloudflare:index/snippets:Snippets',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     files = registerOutput<List<String>>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
