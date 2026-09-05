@@ -140,7 +140,7 @@ final class PackageUpdater {
       if (exitCode != 0) throw StateError('Generation failed ($exitCode).');
 
       final analyze = await _dart.start(
-        ['analyze', '--no-fatal-infos', plan.packagePath],
+        ['analyze', '--no-fatal-warnings', plan.packagePath],
         workingDirectory: repositoryRoot.path,
         mode: ProcessStartMode.inheritStdio,
       );

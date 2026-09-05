@@ -138,6 +138,12 @@ Future<void> main(List<String> args) async {
     final destinationPubspec = File(
       _joinPath([destinationDir.path, 'pubspec.yaml']),
     );
+    final destinationChangelog = File(
+      _joinPath([destinationDir.path, 'CHANGELOG.md']),
+    );
+    final previousChangelog = destinationChangelog.existsSync()
+        ? destinationChangelog.readAsStringSync()
+        : '';
     final dependencyConstraints = readPulumiProviderDependencyConstraints(
       destinationPubspec,
     );
@@ -241,6 +247,13 @@ Future<void> main(List<String> args) async {
     // without leaving the package half-deleted if replacement fails.
     _replaceGeneratedLib(generatedDartDir, destinationDir);
     _mergeDirectory(generatedDartDir, destinationDir);
+    if (previousChangelog.isNotEmpty && sdkVersion != null) {
+      prependChangelogRelease(
+        destinationChangelog,
+        version: sdkVersion,
+        previous: previousChangelog,
+      );
+    }
     preservePulumiProviderDependencyConstraints(
       destinationPubspec,
       dependencyConstraints,
@@ -254,6 +267,24 @@ Future<void> main(List<String> args) async {
   }
 
   stdout.writeln('Done. Regenerated ${selectedProviders.length} package(s).');
+}
+
+void prependChangelogRelease(
+  File changelog, {
+  required String version,
+  required String previous,
+}) {
+  final firstRelease = RegExp(r'^## ', multiLine: true).firstMatch(previous);
+  final history = firstRelease == null
+      ? previous.trim()
+      : previous.substring(firstRelease.start).trim();
+  changelog.writeAsStringSync(
+    '# Changelog\n\n'
+    'All notable changes to this package will be documented in this file.\n\n'
+    '## $version\n\n'
+    '- Regenerate the Dart SDK from upstream provider schema.\n\n'
+    '$history\n',
+  );
 }
 
 String _readPulumiPackageVersion(String repoRoot) {
