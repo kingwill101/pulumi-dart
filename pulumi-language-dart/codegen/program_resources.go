@@ -63,6 +63,11 @@ func (lowerer programLowerer) providerResource(
 	if !strings.HasPrefix(pkg, "pulumi_") && pkg != "pulumi" {
 		pkg = toDartPackageName("", pkg)
 	}
+	if resource.Schema != nil {
+		if err := lowerer.registerResourceOutputReferences(resource.Schema); err != nil {
+			return dartProgramResource{}, fmt.Errorf("output resource reference: %w", err)
+		}
+	}
 	inputs := make([]dartProgramResourceInput, len(resource.Inputs))
 	for index, input := range resource.Inputs {
 		expression, err := lowerer.providerInputExpression(resource, pkg, input.Name, input.Value)
