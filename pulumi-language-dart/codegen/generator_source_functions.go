@@ -37,6 +37,7 @@ func (p *sourcePlan) renderFunctions() {
 func (p *sourcePlan) recordFunctionSymbols(token, modulePath, path, name string, function packageFunctionSpec) {
 	moduleFile := moduleLibraryFilePath(modulePath)
 	p.symbols.addAlias("function", moduleFile, canonicalFunctionNameFromToken(token), name, path)
+	p.symbols.addAlias("function", moduleFile, canonicalFunctionNameFromToken(token)+"Output", name+"Output", path)
 	baseName := toDartClassName(tokenElementName(token))
 	for _, result := range []struct{ canonical, generated string }{
 		{canonicalTypeName(baseName, "Args"), function.ArgsClass},

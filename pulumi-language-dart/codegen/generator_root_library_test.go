@@ -23,6 +23,7 @@ func TestGeneratedPackageRootLibrary_EmitsModuleNamespaces(t *testing.T) {
 			{Kind: "type", CanonicalName: "Widget", GeneratedName: "Widget"},
 			{Kind: "type", CanonicalName: "WidgetMode", GeneratedName: "WidgetMode"},
 			{Kind: "function", CanonicalName: "getWidget", GeneratedName: "getWidget"},
+			{Kind: "function", CanonicalName: "getWidgetOutput", GeneratedName: "getWidgetOutput"},
 		},
 	}
 
@@ -34,4 +35,5 @@ func TestGeneratedPackageRootLibrary_EmitsModuleNamespaces(t *testing.T) {
 	assert.Contains(t, content, "final Widget = module_index.Widget.new;")
 	assert.Contains(t, content, "final WidgetMode = module_index.WidgetMode.values;")
 	assert.Contains(t, content, "final getWidget = module_index.getWidget;")
+	assert.Contains(t, content, "final getWidgetOutput = module_index.getWidgetOutput;")
 }
