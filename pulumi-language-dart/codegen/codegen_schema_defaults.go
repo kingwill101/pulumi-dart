@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
-func schemaDefaultInputExpression(value *schema.DefaultValue) string {
+func schemaDefaultExpression(value *schema.DefaultValue, typeSpec packageTypeSpec, usesInputTypes bool) string {
 	if value == nil || value.Value == nil {
 		return ""
 	}
@@ -16,7 +16,13 @@ func schemaDefaultInputExpression(value *schema.DefaultValue) string {
 	if !ok {
 		return ""
 	}
-	return "pulumi.Input.fromValue(" + literal + ")"
+	if typeSpec.Kind == "enum" && typeSpec.ReferenceType != "" {
+		literal = typeSpec.ReferenceType + ".fromValue(" + literal + ")"
+	}
+	if usesInputTypes {
+		return "pulumi.Input.fromValue(" + literal + ")"
+	}
+	return literal
 }
 
 func dartSchemaDefaultLiteral(value any) (string, bool) {

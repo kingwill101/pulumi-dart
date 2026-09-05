@@ -61,3 +61,20 @@ class WidgetArgs {
 }
 `, string(actual))
 }
+
+func TestObjectClassMakesDefaultedConstructorParametersNullable(t *testing.T) {
+	t.Parallel()
+
+	actual := string(ObjectClass(dartir.ObjectClass{
+		Name: "WidgetArgs",
+		Properties: []dartir.ObjectProperty{{
+			NameLiteral:       "'mode'",
+			FieldName:         "mode",
+			FieldType:         "pulumi.Input<WidgetMode>",
+			DefaultExpression: "pulumi.Input.fromValue(WidgetMode.standard)",
+			Required:          true,
+		}},
+	}))
+
+	require.Contains(t, actual, "pulumi.Input<WidgetMode>? mode,")
+}

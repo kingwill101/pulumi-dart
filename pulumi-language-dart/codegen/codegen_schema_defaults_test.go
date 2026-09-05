@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSchemaDefaultInputExpression(t *testing.T) {
+func TestSchemaDefaultExpression(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {
@@ -24,14 +24,23 @@ func TestSchemaDefaultInputExpression(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
-			actual := schemaDefaultInputExpression(&schema.DefaultValue{Value: test.value})
+			actual := schemaDefaultExpression(&schema.DefaultValue{Value: test.value}, packageTypeSpec{}, true)
 			require.Equal(t, test.expected, actual)
 		})
 	}
 }
 
-func TestSchemaDefaultInputExpressionRejectsUnsupportedValues(t *testing.T) {
+func TestSchemaDefaultExpressionRejectsUnsupportedValues(t *testing.T) {
 	t.Parallel()
 
-	require.Empty(t, schemaDefaultInputExpression(&schema.DefaultValue{Value: []string{"unsupported"}}))
+	require.Empty(t, schemaDefaultExpression(&schema.DefaultValue{Value: []string{"unsupported"}}, packageTypeSpec{}, true))
+}
+
+func TestSchemaDefaultExpressionUsesPlainAndEnumTypes(t *testing.T) {
+	t.Parallel()
+
+	value := &schema.DefaultValue{Value: "primary"}
+	enumType := packageTypeSpec{Kind: "enum", ReferenceType: "KeyType"}
+	require.Equal(t, "KeyType.fromValue('primary')", schemaDefaultExpression(value, enumType, false))
+	require.Equal(t, "pulumi.Input.fromValue(KeyType.fromValue('primary'))", schemaDefaultExpression(value, enumType, true))
 }
