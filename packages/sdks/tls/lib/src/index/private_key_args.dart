@@ -10,9 +10,9 @@ class PrivateKeyArgs {
   /// Name of the algorithm to use when generating the private key. Currently-supported values are: `RSA`, `ECDSA`, `ED25519`.
   final pulumi.Input<String> algorithm;
   /// When `algorithm` is `ECDSA`, the name of the elliptic curve to use. Currently-supported values are: `P224`, `P256`, `P384`, `P521`. (default: `P224`).
-  final pulumi.Input<String>? ecdsaCurve;
+  final pulumi.Input<String?>? ecdsaCurve;
   /// When `algorithm` is `RSA`, the size of the generated RSA key, in bits (default: `2048`).
-  final pulumi.Input<int>? rsaBits;
+  final pulumi.Input<int?>? rsaBits;
 
   /// Creates a new [PrivateKeyArgs].
   /// [algorithm] Name of the algorithm to use when generating the private key. Currently-supported values are: `RSA`, `ECDSA`, `ED25519`.
@@ -36,7 +36,7 @@ class PrivateKeyArgs {
     return PrivateKeyArgs(
       algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
       ecdsaCurve: (() { final guardedValue = map['ecdsaCurve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rsaBits: (() { final guardedValue = map['rsaBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rsaBits: (() { final guardedValue = map['rsaBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

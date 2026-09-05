@@ -248,9 +248,14 @@ class LocallySignedCert extends pulumi.CustomResource {
   late final pulumi.Output<String> caCertPem;
   /// Name of the algorithm used when generating the private key provided in `caPrivateKeyPem`.
   late final pulumi.Output<String> caKeyAlgorithm;
-  /// Private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
-  late final pulumi.Output<String> caPrivateKeyPem;
-  /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
+  /// Private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Exactly one of `caPrivateKeyPem` or `caPrivateKeyPemWo` must be set.
+  late final pulumi.Output<String?> caPrivateKeyPem;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// Write-only private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Unlike `caPrivateKeyPem`, the value provided here is never persisted to Terraform state. Requires `caPrivateKeyPemWoVersion` to be set, and exactly one of `caPrivateKeyPem` or `caPrivateKeyPemWo` must be set.
+  late final pulumi.Output<String?> caPrivateKeyPemWo;
+  /// The version of the `caPrivateKeyPemWo` write-only private key. Because the write-only key is not stored in state, this version is the only signal the provider has that the key changed: increment it to force the certificate to be re-issued when rotating the CA key.
+  late final pulumi.Output<int?> caPrivateKeyPemWoVersion;
+  /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using [`trimspace()`](https://www.terraform.io/language/functions/trimspace).
   late final pulumi.Output<String> certPem;
   /// Certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
   late final pulumi.Output<String> certRequestPem;
@@ -283,12 +288,15 @@ class LocallySignedCert extends pulumi.CustomResource {
           'tls:index/locallySignedCert:LocallySignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          additionalSecretOutputs: const ['caPrivateKeyPem', 'caPrivateKeyPemWo'],
         ) {
-    allowedUses = registerOutput<List<String>>('allowedUses');
+    allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     caCertPem = registerOutput<String>('caCertPem');
     caKeyAlgorithm = registerOutput<String>('caKeyAlgorithm');
-    caPrivateKeyPem = registerOutput<String>('caPrivateKeyPem');
+    caPrivateKeyPem = registerOutput<String?>('caPrivateKeyPem', isSecret: true);
+    caPrivateKeyPemWo = registerOutput<String?>('caPrivateKeyPemWo', isSecret: true);
+    caPrivateKeyPemWoVersion = registerOutput<int?>('caPrivateKeyPemWoVersion');
     certPem = registerOutput<String>('certPem');
     certRequestPem = registerOutput<String>('certRequestPem');
     earlyRenewalHours = registerOutput<int>('earlyRenewalHours');
@@ -306,11 +314,12 @@ class LocallySignedCert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocallySignedCertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocallySignedCert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -324,10 +333,40 @@ class LocallySignedCert extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedUses = registerOutput<List<String>>('allowedUses');
+    allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     caCertPem = registerOutput<String>('caCertPem');
     caKeyAlgorithm = registerOutput<String>('caKeyAlgorithm');
-    caPrivateKeyPem = registerOutput<String>('caPrivateKeyPem');
+    caPrivateKeyPem = registerOutput<String?>('caPrivateKeyPem', isSecret: true);
+    caPrivateKeyPemWo = registerOutput<String?>('caPrivateKeyPemWo', isSecret: true);
+    caPrivateKeyPemWoVersion = registerOutput<int?>('caPrivateKeyPemWoVersion');
+    certPem = registerOutput<String>('certPem');
+    certRequestPem = registerOutput<String>('certRequestPem');
+    earlyRenewalHours = registerOutput<int>('earlyRenewalHours');
+    isCaCertificate = registerOutput<bool>('isCaCertificate');
+    maxPathLength = registerOutput<int>('maxPathLength');
+    readyForRenewal = registerOutput<bool>('readyForRenewal');
+    setSubjectKeyId = registerOutput<bool>('setSubjectKeyId');
+    validityEndTime = registerOutput<String>('validityEndTime');
+    validityPeriodHours = registerOutput<int>('validityPeriodHours');
+    validityStartTime = registerOutput<String>('validityStartTime');
+  }
+
+  /// Creates a typed reference to an existing [LocallySignedCert] resource.
+  LocallySignedCert.reference(String urn)
+    : super(
+        'tls:index/locallySignedCert:LocallySignedCert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caPrivateKeyPem', 'caPrivateKeyPemWo'],
+        isResourceReference: true,
+      ) {
+    allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    caCertPem = registerOutput<String>('caCertPem');
+    caKeyAlgorithm = registerOutput<String>('caKeyAlgorithm');
+    caPrivateKeyPem = registerOutput<String?>('caPrivateKeyPem', isSecret: true);
+    caPrivateKeyPemWo = registerOutput<String?>('caPrivateKeyPemWo', isSecret: true);
+    caPrivateKeyPemWoVersion = registerOutput<int?>('caPrivateKeyPemWoVersion');
     certPem = registerOutput<String>('certPem');
     certRequestPem = registerOutput<String>('certRequestPem');
     earlyRenewalHours = registerOutput<int>('earlyRenewalHours');

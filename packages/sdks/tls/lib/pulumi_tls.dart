@@ -3,11 +3,11 @@
 import 'package:pulumi_tls/index.dart' as module_index;
 import 'package:pulumi_tls/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final CertRequest = module_index.CertRequest.new;
   final CertRequestArgs = module_index.CertRequestArgs.new;
   final CertRequestState = module_index.CertRequestState.new;
@@ -39,11 +39,13 @@ class _IndexModuleNamespace {
   final SelfSignedCertSubject = module_index.SelfSignedCertSubject.new;
   final SelfSignedCertSubjectArgs = module_index.SelfSignedCertSubject.new;
   final getCertificate = module_index.getCertificate;
+  final getCertificateOutput = module_index.getCertificateOutput;
   final getPublicKey = module_index.getPublicKey;
+  final getPublicKeyOutput = module_index.getPublicKeyOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ProviderArgs = module_providers.ProviderArgs.new;
   final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
   final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
@@ -53,4 +55,5 @@ class _ProvidersModuleNamespace {
   final Tls = module_providers.ProviderProvider.new;
   final TlsArgs = module_providers.ProviderArgs.new;
   final terraformConfig = module_providers.terraformConfig;
+  final terraformConfigOutput = module_providers.terraformConfigOutput;
 }

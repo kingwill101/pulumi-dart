@@ -226,7 +226,7 @@ import 'self_signed_cert_subject.dart';
 class SelfSignedCert extends pulumi.CustomResource {
   /// List of key usages allowed for the issued certificate. Values are defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280) and combine flags defined by both [Key Usages](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3) and [Extended Key Usages](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.12). Accepted values: `anyExtended`, `certSigning`, `clientAuth`, `codeSigning`, `contentCommitment`, `crlSigning`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `emailProtection`, `encipherOnly`, `ipsecEndSystem`, `ipsecTunnel`, `ipsecUser`, `keyAgreement`, `keyEncipherment`, `microsoftCommercialCodeSigning`, `microsoftKernelCodeSigning`, `microsoftServerGatedCrypto`, `netscapeServerGatedCrypto`, `ocspSigning`, `serverAuth`, `timestamping`.
   late final pulumi.Output<List<String>> allowedUses;
-  /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
+  /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using [`trimspace()`](https://www.terraform.io/language/functions/trimspace).
   late final pulumi.Output<String> certPem;
   /// List of DNS names for which a certificate is being requested (i.e. certificate subjects).
   late final pulumi.Output<List<String>?> dnsNames;
@@ -240,8 +240,13 @@ class SelfSignedCert extends pulumi.CustomResource {
   late final pulumi.Output<String> keyAlgorithm;
   /// Maximum number of intermediate certificates that may follow this certificate in a valid certification path. If `isCaCertificate` is `false`, this value is ignored.
   late final pulumi.Output<int> maxPathLength;
-  /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to.
-  late final pulumi.Output<String> privateKeyPem;
+  /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the [`file`](https://www.terraform.io/language/functions/file) interpolation function. Exactly one of `privateKeyPem` or `privateKeyPemWo` must be set.
+  late final pulumi.Output<String?> privateKeyPem;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// Write-only private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. Unlike `privateKeyPem`, the value provided here is never persisted to Terraform state. Requires `privateKeyPemWoVersion` to be set, and exactly one of `privateKeyPem` or `privateKeyPemWo` must be set.
+  late final pulumi.Output<String?> privateKeyPemWo;
+  /// The version of the `privateKeyPemWo` write-only private key. Because the write-only key is not stored in state, this version is the only signal the provider has that the key changed: increment it to force the certificate to be re-issued when rotating the key.
+  late final pulumi.Output<int?> privateKeyPemWoVersion;
   /// Is the certificate either expired (i.e. beyond the `validityPeriodHours`) or ready for an early renewal (i.e. within the `earlyRenewalHours`)?
   late final pulumi.Output<bool> readyForRenewal;
   /// Should the generated certificate include an [authority key identifier](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1): for self-signed certificates this is the same value as the [subject key identifier](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.2) (default: `false`).
@@ -271,22 +276,25 @@ class SelfSignedCert extends pulumi.CustomResource {
           'tls:index/selfSignedCert:SelfSignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
         ) {
-    allowedUses = registerOutput<List<String>>('allowedUses');
+    allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certPem = registerOutput<String>('certPem');
-    dnsNames = registerOutput<List<String>?>('dnsNames');
+    dnsNames = registerOutput<List<String>?>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     earlyRenewalHours = registerOutput<int>('earlyRenewalHours');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isCaCertificate = registerOutput<bool>('isCaCertificate');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     maxPathLength = registerOutput<int>('maxPathLength');
-    privateKeyPem = registerOutput<String>('privateKeyPem');
+    privateKeyPem = registerOutput<String?>('privateKeyPem', isSecret: true);
+    privateKeyPemWo = registerOutput<String?>('privateKeyPemWo', isSecret: true);
+    privateKeyPemWoVersion = registerOutput<int?>('privateKeyPemWoVersion');
     readyForRenewal = registerOutput<bool>('readyForRenewal');
     setAuthorityKeyId = registerOutput<bool>('setAuthorityKeyId');
     setSubjectKeyId = registerOutput<bool>('setSubjectKeyId');
     subject = registerOutput<SelfSignedCertSubject?>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SelfSignedCertSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    uris = registerOutput<List<String>?>('uris');
+    uris = registerOutput<List<String>?>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validityEndTime = registerOutput<String>('validityEndTime');
     validityPeriodHours = registerOutput<int>('validityPeriodHours');
     validityStartTime = registerOutput<String>('validityStartTime');
@@ -297,11 +305,12 @@ class SelfSignedCert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SelfSignedCertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SelfSignedCert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,20 +324,53 @@ class SelfSignedCert extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedUses = registerOutput<List<String>>('allowedUses');
+    allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certPem = registerOutput<String>('certPem');
-    dnsNames = registerOutput<List<String>?>('dnsNames');
+    dnsNames = registerOutput<List<String>?>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     earlyRenewalHours = registerOutput<int>('earlyRenewalHours');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isCaCertificate = registerOutput<bool>('isCaCertificate');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     maxPathLength = registerOutput<int>('maxPathLength');
-    privateKeyPem = registerOutput<String>('privateKeyPem');
+    privateKeyPem = registerOutput<String?>('privateKeyPem', isSecret: true);
+    privateKeyPemWo = registerOutput<String?>('privateKeyPemWo', isSecret: true);
+    privateKeyPemWoVersion = registerOutput<int?>('privateKeyPemWoVersion');
     readyForRenewal = registerOutput<bool>('readyForRenewal');
     setAuthorityKeyId = registerOutput<bool>('setAuthorityKeyId');
     setSubjectKeyId = registerOutput<bool>('setSubjectKeyId');
     subject = registerOutput<SelfSignedCertSubject?>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SelfSignedCertSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    uris = registerOutput<List<String>?>('uris');
+    uris = registerOutput<List<String>?>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    validityEndTime = registerOutput<String>('validityEndTime');
+    validityPeriodHours = registerOutput<int>('validityPeriodHours');
+    validityStartTime = registerOutput<String>('validityStartTime');
+  }
+
+  /// Creates a typed reference to an existing [SelfSignedCert] resource.
+  SelfSignedCert.reference(String urn)
+    : super(
+        'tls:index/selfSignedCert:SelfSignedCert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
+        isResourceReference: true,
+      ) {
+    allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certPem = registerOutput<String>('certPem');
+    dnsNames = registerOutput<List<String>?>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    earlyRenewalHours = registerOutput<int>('earlyRenewalHours');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    isCaCertificate = registerOutput<bool>('isCaCertificate');
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    maxPathLength = registerOutput<int>('maxPathLength');
+    privateKeyPem = registerOutput<String?>('privateKeyPem', isSecret: true);
+    privateKeyPemWo = registerOutput<String?>('privateKeyPemWo', isSecret: true);
+    privateKeyPemWoVersion = registerOutput<int?>('privateKeyPemWoVersion');
+    readyForRenewal = registerOutput<bool>('readyForRenewal');
+    setAuthorityKeyId = registerOutput<bool>('setAuthorityKeyId');
+    setSubjectKeyId = registerOutput<bool>('setSubjectKeyId');
+    subject = registerOutput<SelfSignedCertSubject?>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SelfSignedCertSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uris = registerOutput<List<String>?>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validityEndTime = registerOutput<String>('validityEndTime');
     validityPeriodHours = registerOutput<int>('validityPeriodHours');
     validityStartTime = registerOutput<String>('validityStartTime');

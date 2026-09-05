@@ -5,40 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LocallySignedCert resources.
 class LocallySignedCertState {
   /// List of key usages allowed for the issued certificate. Values are defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280) and combine flags defined by both [Key Usages](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3) and [Extended Key Usages](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.12). Accepted values: `anyExtended`, `certSigning`, `clientAuth`, `codeSigning`, `contentCommitment`, `crlSigning`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `emailProtection`, `encipherOnly`, `ipsecEndSystem`, `ipsecTunnel`, `ipsecUser`, `keyAgreement`, `keyEncipherment`, `microsoftCommercialCodeSigning`, `microsoftKernelCodeSigning`, `microsoftServerGatedCrypto`, `netscapeServerGatedCrypto`, `ocspSigning`, `serverAuth`, `timestamping`.
-  final pulumi.Input<List<String>>? allowedUses;
+  final pulumi.Input<List<String>?>? allowedUses;
   /// Certificate data of the Certificate Authority (CA) in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
-  final pulumi.Input<String>? caCertPem;
+  final pulumi.Input<String?>? caCertPem;
   /// Name of the algorithm used when generating the private key provided in `caPrivateKeyPem`.
-  final pulumi.Input<String>? caKeyAlgorithm;
-  /// Private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
-  final pulumi.Input<String>? caPrivateKeyPem;
-  /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
-  final pulumi.Input<String>? certPem;
+  final pulumi.Input<String?>? caKeyAlgorithm;
+  /// Private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Exactly one of `caPrivateKeyPem` or `caPrivateKeyPemWo` must be set.
+  final pulumi.Input<String?>? caPrivateKeyPem;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// Write-only private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Unlike `caPrivateKeyPem`, the value provided here is never persisted to Terraform state. Requires `caPrivateKeyPemWoVersion` to be set, and exactly one of `caPrivateKeyPem` or `caPrivateKeyPemWo` must be set.
+  final pulumi.Input<String?>? caPrivateKeyPemWo;
+  /// The version of the `caPrivateKeyPemWo` write-only private key. Because the write-only key is not stored in state, this version is the only signal the provider has that the key changed: increment it to force the certificate to be re-issued when rotating the CA key.
+  final pulumi.Input<int?>? caPrivateKeyPemWoVersion;
+  /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using [`trimspace()`](https://www.terraform.io/language/functions/trimspace).
+  final pulumi.Input<String?>? certPem;
   /// Certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
-  final pulumi.Input<String>? certRequestPem;
+  final pulumi.Input<String?>? certRequestPem;
   /// The resource will consider the certificate to have expired the given number of hours before its actual expiry time. This can be useful to deploy an updated certificate in advance of the expiration of the current certificate. However, the old certificate remains valid until its true expiration time, since this resource does not (and cannot) support certificate revocation. Also, this advance update can only be performed should the Terraform configuration be applied during the early renewal period. (default: `0`)
-  final pulumi.Input<int>? earlyRenewalHours;
+  final pulumi.Input<int?>? earlyRenewalHours;
   /// Is the generated certificate representing a Certificate Authority (CA) (default: `false`).
-  final pulumi.Input<bool>? isCaCertificate;
+  final pulumi.Input<bool?>? isCaCertificate;
   /// Maximum number of intermediate certificates that may follow this certificate in a valid certification path. If `isCaCertificate` is `false`, this value is ignored.
-  final pulumi.Input<int>? maxPathLength;
+  final pulumi.Input<int?>? maxPathLength;
   /// Is the certificate either expired (i.e. beyond the `validityPeriodHours`) or ready for an early renewal (i.e. within the `earlyRenewalHours`)?
-  final pulumi.Input<bool>? readyForRenewal;
+  final pulumi.Input<bool?>? readyForRenewal;
   /// Should the generated certificate include a [subject key identifier](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.2) (default: `false`).
-  final pulumi.Input<bool>? setSubjectKeyId;
+  final pulumi.Input<bool?>? setSubjectKeyId;
   /// The time until which the certificate is invalid, expressed as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
-  final pulumi.Input<String>? validityEndTime;
+  final pulumi.Input<String?>? validityEndTime;
   /// Number of hours, after initial issuing, that the certificate will remain valid for.
-  final pulumi.Input<int>? validityPeriodHours;
+  final pulumi.Input<int?>? validityPeriodHours;
   /// The time after which the certificate is valid, expressed as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
-  final pulumi.Input<String>? validityStartTime;
+  final pulumi.Input<String?>? validityStartTime;
 
   /// Creates a new [LocallySignedCertState].
   /// [allowedUses] List of key usages allowed for the issued certificate. Values are defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280) and combine flags defined by both [Key Usages](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3) and [Extended Key Usages](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.12). Accepted values: `anyExtended`, `certSigning`, `clientAuth`, `codeSigning`, `contentCommitment`, `crlSigning`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `emailProtection`, `encipherOnly`, `ipsecEndSystem`, `ipsecTunnel`, `ipsecUser`, `keyAgreement`, `keyEncipherment`, `microsoftCommercialCodeSigning`, `microsoftKernelCodeSigning`, `microsoftServerGatedCrypto`, `netscapeServerGatedCrypto`, `ocspSigning`, `serverAuth`, `timestamping`.
   /// [caCertPem] Certificate data of the Certificate Authority (CA) in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
   /// [caKeyAlgorithm] Name of the algorithm used when generating the private key provided in `caPrivateKeyPem`.
-  /// [caPrivateKeyPem] Private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
-  /// [certPem] Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
+  /// [caPrivateKeyPem] Private key of the Certificate Authority (CA) used to sign the certificate, in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Exactly one of `caPrivateKeyPem` or `caPrivateKeyPemWo` must be set.
+  /// [caPrivateKeyPemWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// [caPrivateKeyPemWoVersion] The version of the `caPrivateKeyPemWo` write-only private key. Because the write-only key is not stored in state, this version is the only signal the provider has that the key changed: increment it to force the certificate to be re-issued when rotating the CA key.
+  /// [certPem] Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using [`trimspace()`](https://www.terraform.io/language/functions/trimspace).
   /// [certRequestPem] Certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
   /// [earlyRenewalHours] The resource will consider the certificate to have expired the given number of hours before its actual expiry time. This can be useful to deploy an updated certificate in advance of the expiration of the current certificate. However, the old certificate remains valid until its true expiration time, since this resource does not (and cannot) support certificate revocation. Also, this advance update can only be performed should the Terraform configuration be applied during the early renewal period. (default: `0`)
   /// [isCaCertificate] Is the generated certificate representing a Certificate Authority (CA) (default: `false`).
@@ -53,6 +60,8 @@ class LocallySignedCertState {
     this.caCertPem,
     this.caKeyAlgorithm,
     this.caPrivateKeyPem,
+    this.caPrivateKeyPemWo,
+    this.caPrivateKeyPemWoVersion,
     this.certPem,
     this.certRequestPem,
     this.earlyRenewalHours,
@@ -71,6 +80,8 @@ class LocallySignedCertState {
       'caCertPem': ?caCertPem,
       'caKeyAlgorithm': ?caKeyAlgorithm,
       'caPrivateKeyPem': ?caPrivateKeyPem,
+      'caPrivateKeyPemWo': ?caPrivateKeyPemWo,
+      'caPrivateKeyPemWoVersion': ?caPrivateKeyPemWoVersion,
       'certPem': ?certPem,
       'certRequestPem': ?certRequestPem,
       'earlyRenewalHours': ?earlyRenewalHours,
@@ -90,15 +101,17 @@ class LocallySignedCertState {
       caCertPem: (() { final guardedValue = map['caCertPem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       caKeyAlgorithm: (() { final guardedValue = map['caKeyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       caPrivateKeyPem: (() { final guardedValue = map['caPrivateKeyPem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      caPrivateKeyPemWo: (() { final guardedValue = map['caPrivateKeyPemWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      caPrivateKeyPemWoVersion: (() { final guardedValue = map['caPrivateKeyPemWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       certPem: (() { final guardedValue = map['certPem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certRequestPem: (() { final guardedValue = map['certRequestPem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      earlyRenewalHours: (() { final guardedValue = map['earlyRenewalHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      earlyRenewalHours: (() { final guardedValue = map['earlyRenewalHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       isCaCertificate: (() { final guardedValue = map['isCaCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxPathLength: (() { final guardedValue = map['maxPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPathLength: (() { final guardedValue = map['maxPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       readyForRenewal: (() { final guardedValue = map['readyForRenewal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       setSubjectKeyId: (() { final guardedValue = map['setSubjectKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       validityEndTime: (() { final guardedValue = map['validityEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      validityPeriodHours: (() { final guardedValue = map['validityPeriodHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      validityPeriodHours: (() { final guardedValue = map['validityPeriodHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       validityStartTime: (() { final guardedValue = map['validityStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

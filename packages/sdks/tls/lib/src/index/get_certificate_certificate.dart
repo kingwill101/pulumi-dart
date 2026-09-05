@@ -79,7 +79,7 @@ class GetCertificateCertificate {
       certPem: pulumi.Input.fromValue(map['certPem'] as String),
       isCa: pulumi.Input.fromValue(map['isCa'] as bool),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
-      maxPathLength: pulumi.Input.fromValue(map['maxPathLength'] as int),
+      maxPathLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPathLength'])),
       notAfter: pulumi.Input.fromValue(map['notAfter'] as String),
       notBefore: pulumi.Input.fromValue(map['notBefore'] as String),
       publicKeyAlgorithm: pulumi.Input.fromValue(map['publicKeyAlgorithm'] as String),
@@ -87,7 +87,7 @@ class GetCertificateCertificate {
       sha1Fingerprint: pulumi.Input.fromValue(map['sha1Fingerprint'] as String),
       signatureAlgorithm: pulumi.Input.fromValue(map['signatureAlgorithm'] as String),
       subject: pulumi.Input.fromValue(map['subject'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

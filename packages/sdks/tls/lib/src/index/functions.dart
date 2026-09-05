@@ -354,6 +354,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'tls:index/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Get a public key from a PEM-encoded private key.
 ///
 /// Use this data source to get the public key from a [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) or [OpenSSH PEM (RFC 4716)](https://datatracker.ietf.org/doc/html/rfc4716) formatted private key, for use in other resources.
@@ -565,4 +576,15 @@ Future<GetPublicKeyResult> getPublicKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicKeyResult> getPublicKeyOutput(
+  GetPublicKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'tls:index/getPublicKey:getPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicKeyResult.fromMap);
 }
