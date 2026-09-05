@@ -39,7 +39,7 @@ description: First Pulumi program in Dart
 
 ## 3. Define `pubspec.yaml`
 
-### Option A: use published packages
+Use the published packages from pub.dev:
 
 ```yaml title="pubspec.yaml"
 name: pulumi_dart_quickstart
@@ -50,8 +50,8 @@ environment:
   sdk: ">=3.11.0 <4.0.0"
 
 dependencies:
-  pulumi: any
-  pulumi_random: any
+  pulumi: ^3.1.1
+  pulumi_random: ^4.21.1+1
 ```
 
 ### Option B: use Git source directly (community flow)

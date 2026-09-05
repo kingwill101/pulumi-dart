@@ -76,7 +76,7 @@ jobs:
       # The policy-plugin integration coverage invokes npm and Node directly.
       # Keep Node outside the Nix shell so unrelated Dart jobs do not evaluate
       # nixpkgs' platform-specific Node codesigning patches.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - uses: cachix/install-nix-action@v31
@@ -106,7 +106,7 @@ jobs:
     steps:
       - name: Load cloud test secrets from 1Password
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: 1password/load-secrets-action@v4
+        uses: 1password/load-secrets-action@v5
         with:
           export-env: true
         env:

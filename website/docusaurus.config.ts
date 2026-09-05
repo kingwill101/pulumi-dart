@@ -9,8 +9,8 @@ const config: Config = {
   future: {
     v4: true,
   },
-  url: 'https://pulumi-dart.dev',
-  baseUrl: '/',
+  url: 'https://kingwill101.github.io',
+  baseUrl: '/pulumi-dart/',
   organizationName: 'kingwill101',
   projectName: 'pulumi-dart',
   onBrokenLinks: 'throw',

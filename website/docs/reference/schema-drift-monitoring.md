@@ -59,12 +59,12 @@ Behavior:
 
 ## Update workflow when drift is detected
 
-Update one provider deliberately with `repodoc`, then review both the schema and
+Update one provider deliberately with `dart run repodoc`, then review both the schema and
 generated Dart changes:
 
 ```bash
-repodoc packages:update --provider <provider>
-repodoc schema:check --provider <provider>
+dart run repodoc packages:update --provider <provider>
+dart run repodoc schema:check --provider <provider>
 ```
 
 Commit the updated schema under `packages/sdks/schemas/` together with the
@@ -77,9 +77,9 @@ protocol, code generator, Automation API, or hand-written provider overlays.
 Review those separately:
 
 ```bash
-repodoc upstream:check --core-only
-repodoc upstream:check --provider aws
-repodoc upstream:check --details
+dart run repodoc upstream:check --core-only
+dart run repodoc upstream:check --provider aws
+dart run repodoc upstream:check --details
 ```
 
 Language conformance fixtures are generated from the Pulumi version pinned in

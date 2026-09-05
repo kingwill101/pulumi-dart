@@ -17,7 +17,7 @@ curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scri
 Pin to an explicit version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | \
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/pulumi-v3.1.1/scripts/install-pulumi-language-dart.sh | \
   bash -s -- --version v3.1.1
 ```
 
