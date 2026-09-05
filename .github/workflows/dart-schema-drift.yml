@@ -16,6 +16,7 @@ permissions:
 
 jobs:
   prepare-matrix:
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'automation/provider-')
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}

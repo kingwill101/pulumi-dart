@@ -20,6 +20,7 @@ env:
 
 jobs:
   dart-unit-tests:
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'automation/provider-')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -116,6 +117,7 @@ jobs:
           dart test
 
   proto-regeneration:
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'automation/provider-')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -155,6 +157,7 @@ jobs:
         run: git diff --exit-code -- packages/pulumi-dart/lib/src/pulumirpc
 
   website-docs:
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'automation/provider-')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -173,6 +176,61 @@ jobs:
           npm ci
           npm run build
 
+  provider-update:
+    if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'automation/provider-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: 1.25.x
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+
+      - name: Checkout required Pulumi submodule
+        run: git submodule update --init --depth 1 thirdparty/pulumi
+
+      - name: Install Pulumi CLI
+        run: |
+          curl -fsSL https://get.pulumi.com | sh -s -- --version "${PULUMI_VERSION}"
+          echo "${HOME}/.pulumi/bin" >> "${GITHUB_PATH}"
+
+      - name: Install Dart language host
+        run: |
+          cd pulumi-language-dart
+          go install .
+          echo "$(go env GOPATH)/bin" >> "${GITHUB_PATH}"
+
+      - name: Determine provider
+        id: provider
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: echo "name=${HEAD_BRANCH#automation/provider-}" >> "${GITHUB_OUTPUT}"
+
+      - name: Verify upstream schema is current
+        run: dart run repodoc schema:check --provider "${{ steps.provider.outputs.name }}" --fail-on-drift
+
+      - name: Regenerate provider SDK package
+        run: dart run repodoc packages:generate --provider "${{ steps.provider.outputs.name }}"
+
+      - name: Verify generated provider is committed
+        run: git diff --exit-code -- "packages/sdks/${{ steps.provider.outputs.name }}"
+
+      - name: Analyze provider package
+        run: dart analyze "packages/sdks/${{ steps.provider.outputs.name }}"
+
+      - name: Validate provider package publication
+        working-directory: packages/sdks/${{ steps.provider.outputs.name }}
+        run: dart pub publish --dry-run
+
   check-pr:
     if: always()
     runs-on: ubuntu-latest
@@ -180,17 +238,30 @@ jobs:
       - dart-unit-tests
       - proto-regeneration
       - website-docs
+      - provider-update
     steps:
       - name: Dart unit tests failed
-        if: needs.dart-unit-tests.result != 'success'
+        if: >-
+          !startsWith(github.head_ref, 'automation/provider-') &&
+          needs.dart-unit-tests.result != 'success'
         run: exit 1
 
       - name: Proto regeneration check failed
-        if: needs.proto-regeneration.result != 'success'
+        if: >-
+          !startsWith(github.head_ref, 'automation/provider-') &&
+          needs.proto-regeneration.result != 'success'
         run: exit 1
 
       - name: Website docs build failed
-        if: needs.website-docs.result != 'success'
+        if: >-
+          !startsWith(github.head_ref, 'automation/provider-') &&
+          needs.website-docs.result != 'success'
+        run: exit 1
+
+      - name: Provider update check failed
+        if: >-
+          startsWith(github.head_ref, 'automation/provider-') &&
+          needs.provider-update.result != 'success'
         run: exit 1
 
       - name: CI succeeded

@@ -269,7 +269,7 @@ final class PackageUpdater {
   void _updateExactDependencies(PackageUpdatePlan plan) {
     final packageName = 'pulumi_${plan.provider.replaceAll('-', '_')}';
     final pattern = RegExp(
-      '''^(\\s*${RegExp.escape(packageName)}:\\s*)(['"]?)${RegExp.escape(plan.localVersion)}(['"]?)(\\s*(?:#.*)?)\$''',
+      '''^(\\s*${RegExp.escape(packageName)}:\\s*)(['"]?)${RegExp.escape(plan.localPackageVersion)}(['"]?)(\\s*(?:#.*)?)\$''',
     );
     for (final path in plan.dependencyPubspecPaths) {
       final file = File(path);
