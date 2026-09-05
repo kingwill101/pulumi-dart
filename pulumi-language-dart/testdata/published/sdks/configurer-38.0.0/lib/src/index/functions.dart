@@ -71,7 +71,7 @@ Future<int> plainValue(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return (value as num).toInt();
+  return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(value);
 }
 
 pulumi.Output<int> plainValueOutput(
@@ -82,5 +82,5 @@ pulumi.Output<int> plainValueOutput(
     'configurer:index:Configurer/plainValue',
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
-  ).apply<int>((value) => (value as num).toInt());
+  ).apply<int>((value) => ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(value));
 }

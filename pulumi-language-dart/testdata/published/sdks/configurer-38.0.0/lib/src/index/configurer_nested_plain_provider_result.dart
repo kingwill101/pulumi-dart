@@ -25,7 +25,7 @@ class ConfigurerNestedPlainProviderResult {
   factory ConfigurerNestedPlainProviderResult.fromMap(Map<String, dynamic> map) {
     return ConfigurerNestedPlainProviderResult(
       provider: map['provider'] as pulumi.ProviderResource,
-      value: (map['value'] as num).toInt(),
+      value: ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value']),
     );
   }
 }

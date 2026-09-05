@@ -25,7 +25,7 @@ class NestedPlainProviderResult {
   factory NestedPlainProviderResult.fromMap(Map<String, dynamic> map) {
     return NestedPlainProviderResult(
       provider: (() { final guardedValue = map['provider']; if (guardedValue == null) return null; return guardedValue as pulumi.ProviderResource; })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

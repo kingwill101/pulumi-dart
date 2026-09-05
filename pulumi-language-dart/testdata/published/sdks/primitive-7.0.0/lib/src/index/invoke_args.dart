@@ -46,7 +46,7 @@ class InvokeArgs {
       boolean: pulumi.Input.fromValue(map['boolean'] as bool),
       booleanMap: pulumi.Input.fromValue((map['booleanMap'] as Map).cast<String, bool>()),
       float: pulumi.Input.fromValue((map['float'] as num).toDouble()),
-      integer: pulumi.Input.fromValue((map['integer'] as num).toInt()),
+      integer: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['integer'])),
       numberArray: pulumi.Input.fromValue((map['numberArray'] as List).cast<double>()),
       string_: pulumi.Input.fromValue(map['string'] as String),
     );

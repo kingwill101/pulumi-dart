@@ -57,7 +57,7 @@ class Data {
       float: pulumi.Input.fromValue((map['float'] as num).toDouble()),
       innerData: pulumi.Input.fromValue(InnerData.fromMap((map['innerData']! as Map).cast<String, dynamic>())),
       innerDataList: (() { final guardedValue = map['innerDataList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InnerData>(guardedValue, (value) => InnerData.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      integer: pulumi.Input.fromValue((map['integer'] as num).toInt()),
+      integer: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['integer'])),
       optionalInner: (() { final guardedValue = map['optionalInner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InnerData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       string_: pulumi.Input.fromValue(map['string'] as String),
       stringMap: pulumi.Input.fromValue((map['stringMap'] as Map).cast<String, String>()),
