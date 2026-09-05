@@ -6,9 +6,9 @@ import '../core/object_reference.dart';
 /// CronJobStatus represents the current state of a cron job.
 class CronJobStatusBatchV1beta1 {
   /// A list of pointers to currently running jobs.
-  final pulumi.Input<List<ObjectReference>>? active;
+  final pulumi.Input<List<ObjectReference>?>? active;
   /// Information when was the last time the job was successfully scheduled.
-  final pulumi.Input<String>? lastScheduleTime;
+  final pulumi.Input<String?>? lastScheduleTime;
 
   /// Creates a new [CronJobStatusBatchV1beta1].
   /// [active] A list of pointers to currently running jobs.

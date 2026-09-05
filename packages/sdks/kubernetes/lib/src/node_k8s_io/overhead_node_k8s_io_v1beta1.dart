@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Overhead structure represents the resource overhead associated with running a pod.
 class OverheadNodeK8sIoV1beta1 {
   /// PodFixed represents the fixed resource overhead associated with running a pod.
-  final pulumi.Input<Map<String, String>>? podFixed;
+  final pulumi.Input<Map<String, String>?>? podFixed;
 
   /// Creates a new [OverheadNodeK8sIoV1beta1].
   /// [podFixed] PodFixed represents the fixed resource overhead associated with running a pod.

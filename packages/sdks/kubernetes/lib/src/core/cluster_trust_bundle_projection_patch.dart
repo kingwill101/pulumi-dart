@@ -6,15 +6,17 @@ import '../meta/label_selector_patch.dart';
 /// ClusterTrustBundleProjection describes how to select a set of ClusterTrustBundle objects and project their contents into the pod filesystem.
 class ClusterTrustBundleProjectionPatch {
   /// Select all ClusterTrustBundles that match this label selector.  Only has effect if signerName is set.  Mutually-exclusive with name.  If unset, interpreted as "match nothing".  If set but empty, interpreted as "match everything".
-  final pulumi.Input<LabelSelectorPatch>? labelSelector;
+  final pulumi.Input<LabelSelectorPatch?>? labelSelector;
   /// Select a single ClusterTrustBundle by object name.  Mutually-exclusive with signerName and labelSelector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If true, don't block pod startup if the referenced ClusterTrustBundle(s) aren't available.  If using name, then the named ClusterTrustBundle is allowed not to exist.  If using signerName, then the combination of signerName and labelSelector is allowed to match zero ClusterTrustBundles.
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
   /// Relative path from the volume root to write the bundle.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Select all ClusterTrustBundles that match this signer name. Mutually-exclusive with name.  The contents of all selected ClusterTrustBundles will be unified and deduplicated.
-  final pulumi.Input<String>? signerName;
+  final pulumi.Input<String?>? signerName;
+  /// user is Optional: The owner UID of the created file. If specified, the item-level user field takes precedence over defaultUser. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled.
+  final pulumi.Input<int?>? user;
 
   /// Creates a new [ClusterTrustBundleProjectionPatch].
   /// [labelSelector] Select all ClusterTrustBundles that match this label selector.  Only has effect if signerName is set.  Mutually-exclusive with name.  If unset, interpreted as "match nothing".  If set but empty, interpreted as "match everything".
@@ -22,12 +24,14 @@ class ClusterTrustBundleProjectionPatch {
   /// [optional] If true, don't block pod startup if the referenced ClusterTrustBundle(s) aren't available.  If using name, then the named ClusterTrustBundle is allowed not to exist.  If using signerName, then the combination of signerName and labelSelector is allowed to match zero ClusterTrustBundles.
   /// [path] Relative path from the volume root to write the bundle.
   /// [signerName] Select all ClusterTrustBundles that match this signer name. Mutually-exclusive with name.  The contents of all selected ClusterTrustBundles will be unified and deduplicated.
+  /// [user] user is Optional: The owner UID of the created file. If specified, the item-level user field takes precedence over defaultUser. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled.
   const ClusterTrustBundleProjectionPatch({
     this.labelSelector,
     this.name,
     this.optional,
     this.path,
     this.signerName,
+    this.user,
   });
 
   Map<String, dynamic> toMap() {
@@ -37,6 +41,7 @@ class ClusterTrustBundleProjectionPatch {
       'optional': ?optional,
       'path': ?path,
       'signerName': ?signerName,
+      'user': ?user,
     };
   }
 
@@ -47,6 +52,7 @@ class ClusterTrustBundleProjectionPatch {
       optional: (() { final guardedValue = map['optional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signerName: (() { final guardedValue = map['signerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

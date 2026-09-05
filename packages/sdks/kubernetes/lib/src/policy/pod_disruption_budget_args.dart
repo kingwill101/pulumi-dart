@@ -10,19 +10,19 @@ import 'pod_disruption_budget_spec.dart';
 /// {@macro pulumi_policy_v1_pod_disruption_budget_args_doc}
 class PodDisruptionBudgetArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
-  /// Specification of the desired behavior of the PodDisruptionBudget.
-  final pulumi.Input<PodDisruptionBudgetSpec>? spec;
+  final pulumi.Input<String?>? kind;
+  /// metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  final pulumi.Input<ObjectMeta?>? metadata;
+  /// spec is the specification of the desired behavior of the PodDisruptionBudget.
+  final pulumi.Input<PodDisruptionBudgetSpec?>? spec;
 
   /// Creates a new [PodDisruptionBudgetArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  /// [spec] Specification of the desired behavior of the PodDisruptionBudget.
+  /// [metadata] metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] spec is the specification of the desired behavior of the PodDisruptionBudget.
   const PodDisruptionBudgetArgs({
     this.apiVersion,
     this.kind,

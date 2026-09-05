@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// WorkloadPodGroupTemplateReference references the PodGroupTemplate within the Workload object.
 class WorkloadPodGroupTemplateReferencePatch {
   /// PodGroupTemplateName defines the PodGroupTemplate name within the Workload object.
-  final pulumi.Input<String>? podGroupTemplateName;
+  final pulumi.Input<String?>? podGroupTemplateName;
   /// WorkloadName defines the name of the Workload object.
-  final pulumi.Input<String>? workloadName;
+  final pulumi.Input<String?>? workloadName;
 
   /// Creates a new [WorkloadPodGroupTemplateReferencePatch].
   /// [podGroupTemplateName] PodGroupTemplateName defines the PodGroupTemplate name within the Workload object.

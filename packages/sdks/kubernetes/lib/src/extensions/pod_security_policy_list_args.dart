@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'pod_security_policy_extensions_v1beta1.dart';
+import 'pod_security_policy.dart';
 
 /// {@template pulumi_extensions_v1beta1_pod_security_policy_list_args_doc}
 /// The set of arguments for PodSecurityPolicyList.
@@ -10,13 +10,13 @@ import 'pod_security_policy_extensions_v1beta1.dart';
 /// {@macro pulumi_extensions_v1beta1_pod_security_policy_list_args_doc}
 class PodSecurityPolicyListArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// items is a list of schema objects.
-  final pulumi.Input<List<PodSecurityPolicyExtensionsV1beta1>> items;
+  final pulumi.Input<List<PodSecurityPolicy>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [PodSecurityPolicyListArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class PodSecurityPolicyListArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<PodSecurityPolicy>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<PodSecurityPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class PodSecurityPolicyListArgs {
   factory PodSecurityPolicyListArgs.fromMap(Map<String, dynamic> map) {
     return PodSecurityPolicyListArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<PodSecurityPolicyExtensionsV1beta1>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<PodSecurityPolicy>(map['items']!, (value) => PodSecurityPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

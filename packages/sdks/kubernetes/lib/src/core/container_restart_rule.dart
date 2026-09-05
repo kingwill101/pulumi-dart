@@ -8,7 +8,7 @@ class ContainerRestartRule {
   /// Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.
   final pulumi.Input<String> action;
   /// Represents the exit codes to check on container exits.
-  final pulumi.Input<ContainerRestartRuleOnExitCodes>? exitCodes;
+  final pulumi.Input<ContainerRestartRuleOnExitCodes?>? exitCodes;
 
   /// Creates a new [ContainerRestartRule].
   /// [action] Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.

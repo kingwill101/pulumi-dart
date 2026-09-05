@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
 class UncountedTerminatedPodsPatch {
   /// failed holds UIDs of failed Pods.
-  final pulumi.Input<List<String>>? failed;
+  final pulumi.Input<List<String>?>? failed;
   /// succeeded holds UIDs of succeeded Pods.
-  final pulumi.Input<List<String>>? succeeded;
+  final pulumi.Input<List<String>?>? succeeded;
 
   /// Creates a new [UncountedTerminatedPodsPatch].
   /// [failed] failed holds UIDs of failed Pods.

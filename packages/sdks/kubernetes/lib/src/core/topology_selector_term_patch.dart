@@ -6,7 +6,7 @@ import 'topology_selector_label_requirement_patch.dart';
 /// A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future.
 class TopologySelectorTermPatch {
   /// A list of topology selector requirements by labels.
-  final pulumi.Input<List<TopologySelectorLabelRequirementPatch>>? matchLabelExpressions;
+  final pulumi.Input<List<TopologySelectorLabelRequirementPatch>?>? matchLabelExpressions;
 
   /// Creates a new [TopologySelectorTermPatch].
   /// [matchLabelExpressions] A list of topology selector requirements by labels.

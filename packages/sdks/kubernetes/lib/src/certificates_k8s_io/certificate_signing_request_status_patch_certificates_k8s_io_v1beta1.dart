@@ -5,9 +5,9 @@ import 'certificate_signing_request_condition_patch_certificates_k8s_io_v1beta1.
 
 class CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1 {
   /// If request was approved, the controller will place the issued certificate here.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Conditions applied to the request, such as approval or denial.
-  final pulumi.Input<List<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>>? conditions;
+  final pulumi.Input<List<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>?>? conditions;
 
   /// Creates a new [CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1].
   /// [certificate] If request was approved, the controller will place the issued certificate here.

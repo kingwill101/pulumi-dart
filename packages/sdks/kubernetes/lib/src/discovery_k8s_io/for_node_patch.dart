@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ForNode provides information about which nodes should consume this endpoint.
 class ForNodePatch {
   /// name represents the name of the node.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ForNodePatch].
   /// [name] name represents the name of the node.

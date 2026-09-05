@@ -8,10 +8,10 @@ import 'metric_value_status_patch_autoscaling_v2beta2.dart';
 /// ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
 class ObjectMetricStatusPatchAutoscalingV2beta2 {
   /// current contains the current value for the given metric
-  final pulumi.Input<MetricValueStatusPatchAutoscalingV2beta2>? current;
-  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2beta2>? describedObject;
+  final pulumi.Input<MetricValueStatusPatchAutoscalingV2beta2?>? current;
+  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2beta2?>? describedObject;
   /// metric identifies the target metric by name and selector
-  final pulumi.Input<MetricIdentifierPatchAutoscalingV2beta2>? metric;
+  final pulumi.Input<MetricIdentifierPatchAutoscalingV2beta2?>? metric;
 
   /// Creates a new [ObjectMetricStatusPatchAutoscalingV2beta2].
   /// [current] current contains the current value for the given metric

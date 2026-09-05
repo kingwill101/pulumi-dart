@@ -10,11 +10,11 @@ class ResourceRequirementsPatch {
   /// This field depends on the DynamicResourceAllocation feature gate.
   ///
   /// This field is immutable. It can only be set for containers.
-  final pulumi.Input<List<ResourceClaimPatch>>? claims;
+  final pulumi.Input<List<ResourceClaimPatch>?>? claims;
   /// Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-  final pulumi.Input<Map<String, String>>? limits;
+  final pulumi.Input<Map<String, String>?>? limits;
   /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-  final pulumi.Input<Map<String, String>>? requests;
+  final pulumi.Input<Map<String, String>?>? requests;
 
   /// Creates a new [ResourceRequirementsPatch].
   /// [claims] Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.

@@ -8,13 +8,13 @@ class FlexVolumeSource {
   /// driver is the name of the driver to use for this volume.
   final pulumi.Input<String> driver;
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
-  final pulumi.Input<String>? fsType;
+  final pulumi.Input<String?>? fsType;
   /// options is Optional: this field holds extra command options if any.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
-  final pulumi.Input<LocalObjectReference>? secretRef;
+  final pulumi.Input<LocalObjectReference?>? secretRef;
 
   /// Creates a new [FlexVolumeSource].
   /// [driver] driver is the name of the driver to use for this volume.

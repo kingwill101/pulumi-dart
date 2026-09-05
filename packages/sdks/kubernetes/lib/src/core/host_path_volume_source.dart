@@ -7,7 +7,7 @@ class HostPathVolumeSource {
   /// path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
   final pulumi.Input<String> path;
   /// type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [HostPathVolumeSource].
   /// [path] path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath

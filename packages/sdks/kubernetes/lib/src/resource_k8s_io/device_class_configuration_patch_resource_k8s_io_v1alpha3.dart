@@ -6,7 +6,7 @@ import 'opaque_device_configuration_patch_resource_k8s_io_v1alpha3.dart';
 /// DeviceClassConfiguration is used in DeviceClass.
 class DeviceClassConfigurationPatchResourceK8sIoV1alpha3 {
   /// Opaque provides driver-specific configuration parameters.
-  final pulumi.Input<OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3>? opaque;
+  final pulumi.Input<OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3?>? opaque;
 
   /// Creates a new [DeviceClassConfigurationPatchResourceK8sIoV1alpha3].
   /// [opaque] Opaque provides driver-specific configuration parameters.

@@ -10,9 +10,9 @@ class CounterSetPatchResourceK8sIoV1beta1 {
   /// Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.
   ///
   /// The maximum number of counters is 32.
-  final pulumi.Input<Map<String, CounterResourceK8sIoV1beta1>>? counters;
+  final pulumi.Input<Map<String, CounterResourceK8sIoV1beta1>?>? counters;
   /// Name defines the name of the counter set. It must be a DNS label.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CounterSetPatchResourceK8sIoV1beta1].
   /// [counters] Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.

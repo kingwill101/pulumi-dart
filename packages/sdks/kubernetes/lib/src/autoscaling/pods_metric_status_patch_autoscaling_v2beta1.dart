@@ -6,11 +6,11 @@ import '../meta/label_selector_patch.dart';
 /// PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).
 class PodsMetricStatusPatchAutoscalingV2beta1 {
   /// currentAverageValue is the current value of the average of the metric across all relevant pods (as a quantity)
-  final pulumi.Input<String>? currentAverageValue;
+  final pulumi.Input<String?>? currentAverageValue;
   /// metricName is the name of the metric in question
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the PodsMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
-  final pulumi.Input<LabelSelectorPatch>? selector;
+  final pulumi.Input<LabelSelectorPatch?>? selector;
 
   /// Creates a new [PodsMetricStatusPatchAutoscalingV2beta1].
   /// [currentAverageValue] currentAverageValue is the current value of the average of the metric across all relevant pods (as a quantity)

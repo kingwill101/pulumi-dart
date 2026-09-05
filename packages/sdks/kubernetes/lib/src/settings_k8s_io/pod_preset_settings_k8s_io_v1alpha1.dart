@@ -31,4 +31,19 @@ class PodPresetSettingsK8sIoV1alpha1 extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<PodPresetSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodPresetSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [PodPresetSettingsK8sIoV1alpha1] resource.
+  PodPresetSettingsK8sIoV1alpha1.reference(String urn)
+    : super(
+        'kubernetes:settings.k8s.io/v1alpha1:PodPreset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PodPresetSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodPresetSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

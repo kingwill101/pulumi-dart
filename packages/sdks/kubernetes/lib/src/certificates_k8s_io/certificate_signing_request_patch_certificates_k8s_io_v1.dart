@@ -48,4 +48,20 @@ class CertificateSigningRequestPatchCertificatesK8sIoV1 extends pulumi.CustomRes
     spec = registerOutput<CertificateSigningRequestSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<CertificateSigningRequestStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [CertificateSigningRequestPatchCertificatesK8sIoV1] resource.
+  CertificateSigningRequestPatchCertificatesK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:certificates.k8s.io/v1:CertificateSigningRequestPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<CertificateSigningRequestSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CertificateSigningRequestStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateSigningRequestStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

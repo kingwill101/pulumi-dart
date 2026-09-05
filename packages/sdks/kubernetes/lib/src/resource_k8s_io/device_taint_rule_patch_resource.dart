@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
-import 'device_taint_rule_patch_resource_k8s_io_v1beta2_args.dart';
-import 'device_taint_rule_spec_patch_resource_k8s_io_v1beta2.dart';
-import 'device_taint_rule_status_patch_resource_k8s_io_v1beta2.dart';
+import 'device_taint_rule_patch_resource_k8s_io_v1alpha3_args.dart';
+import 'device_taint_rule_spec_patch_resource_k8s_io_v1alpha3.dart';
+import 'device_taint_rule_status_patch_resource_k8s_io_v1alpha3.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -21,20 +21,20 @@ class DeviceTaintRulePatchResource extends pulumi.CustomResource {
   /// Spec specifies the selector and one taint.
   ///
   /// Changing the spec automatically increments the metadata.generation number.
-  late final pulumi.Output<DeviceTaintRuleSpecPatchResourceK8sIoV1beta2?> spec;
+  late final pulumi.Output<DeviceTaintRuleSpecPatchResourceK8sIoV1alpha3?> spec;
   /// Status provides information about what was requested in the spec.
-  late final pulumi.Output<DeviceTaintRuleStatusPatchResourceK8sIoV1beta2?> status;
+  late final pulumi.Output<DeviceTaintRuleStatusPatchResourceK8sIoV1alpha3?> status;
 
   /// Creates a new [DeviceTaintRulePatchResource].
   /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [DeviceTaintRulePatchResource]. {@macro pulumi_resource_k8s_io_v1beta2_device_taint_rule_patch_resource_k8s_io_v1beta2_args_doc}
+  /// [args] Arguments used to configure this [DeviceTaintRulePatchResource]. {@macro pulumi_resource_k8s_io_v1alpha3_device_taint_rule_patch_resource_k8s_io_v1alpha3_args_doc}
   /// [options] Resource options controlling this resource's behavior.
   DeviceTaintRulePatchResource(
     String name, {
-    DeviceTaintRulePatchResourceK8sIoV1beta2Args? args,
+    DeviceTaintRulePatchResourceK8sIoV1alpha3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:resource.k8s.io/v1beta2:DeviceTaintRulePatch',
+          'kubernetes:resource.k8s.io/v1alpha3:DeviceTaintRulePatch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
@@ -42,7 +42,23 @@ class DeviceTaintRulePatchResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spec = registerOutput<DeviceTaintRuleSpecPatchResourceK8sIoV1beta2?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceTaintRuleSpecPatchResourceK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    status = registerOutput<DeviceTaintRuleStatusPatchResourceK8sIoV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceTaintRuleStatusPatchResourceK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<DeviceTaintRuleSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceTaintRuleSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<DeviceTaintRuleStatusPatchResourceK8sIoV1alpha3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceTaintRuleStatusPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DeviceTaintRulePatchResource] resource.
+  DeviceTaintRulePatchResource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha3:DeviceTaintRulePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<DeviceTaintRuleSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceTaintRuleSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<DeviceTaintRuleStatusPatchResourceK8sIoV1alpha3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceTaintRuleStatusPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

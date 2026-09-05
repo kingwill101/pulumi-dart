@@ -43,4 +43,20 @@ class PriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1 extends pulumi.
     spec = registerOutput<PriorityLevelConfigurationSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<PriorityLevelConfigurationStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [PriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1] resource.
+  PriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:flowcontrol.apiserver.k8s.io/v1:PriorityLevelConfigurationPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PriorityLevelConfigurationSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PriorityLevelConfigurationStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

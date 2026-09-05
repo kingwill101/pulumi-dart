@@ -7,13 +7,13 @@ import 'replica_set.dart';
 /// ReplicaSetList is a collection of ReplicaSets.
 class ReplicaSetList {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller
   final pulumi.Input<List<ReplicaSet>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [ReplicaSetList].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

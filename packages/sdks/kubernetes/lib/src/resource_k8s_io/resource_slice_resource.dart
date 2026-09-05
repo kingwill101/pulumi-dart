@@ -41,4 +41,21 @@ class ResourceSliceResource extends pulumi.CustomResource {
     namedResources = registerOutput<NamedResourcesResources>('namedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedResourcesResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeName = registerOutput<String>('nodeName');
   }
+
+  /// Creates a typed reference to an existing [ResourceSliceResource] resource.
+  ResourceSliceResource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha2:ResourceSlice',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    driverName = registerOutput<String>('driverName');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    namedResources = registerOutput<NamedResourcesResources>('namedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedResourcesResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeName = registerOutput<String>('nodeName');
+  }
 }

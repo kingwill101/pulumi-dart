@@ -6,7 +6,7 @@ import 'idrange.dart';
 /// RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
 class RunAsUserStrategyOptions {
   /// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
-  final pulumi.Input<List<IDRange>>? ranges;
+  final pulumi.Input<List<IDRange>?>? ranges;
   /// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
   final pulumi.Input<String> rule;
 

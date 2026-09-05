@@ -21,7 +21,7 @@ class SleepAction {
 
   factory SleepAction.fromMap(Map<String, dynamic> map) {
     return SleepAction(
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
     );
   }
 }

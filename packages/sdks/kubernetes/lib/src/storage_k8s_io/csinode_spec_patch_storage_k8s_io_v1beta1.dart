@@ -6,7 +6,7 @@ import 'csinode_driver_patch_storage_k8s_io_v1beta1.dart';
 /// CSINodeSpec holds information about the specification of all CSI drivers installed on a node
 class CSINodeSpecPatchStorageK8sIoV1beta1 {
   /// drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
-  final pulumi.Input<List<CSINodeDriverPatchStorageK8sIoV1beta1>>? drivers;
+  final pulumi.Input<List<CSINodeDriverPatchStorageK8sIoV1beta1>?>? drivers;
 
   /// Creates a new [CSINodeSpecPatchStorageK8sIoV1beta1].
   /// [drivers] drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.

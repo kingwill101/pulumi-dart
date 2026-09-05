@@ -7,9 +7,9 @@ import 'metric_value_status_patch.dart';
 /// ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
 class ExternalMetricStatusPatch {
   /// current contains the current value for the given metric
-  final pulumi.Input<MetricValueStatusPatch>? current;
+  final pulumi.Input<MetricValueStatusPatch?>? current;
   /// metric identifies the target metric by name and selector
-  final pulumi.Input<MetricIdentifierPatch>? metric;
+  final pulumi.Input<MetricIdentifierPatch?>? metric;
 
   /// Creates a new [ExternalMetricStatusPatch].
   /// [current] current contains the current value for the given metric

@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 class GitRepoVolumeSourcePatch {
   /// directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
-  final pulumi.Input<String>? directory;
+  final pulumi.Input<String?>? directory;
   /// repository is the URL
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// revision is the commit hash for the specified revision.
-  final pulumi.Input<String>? revision;
+  final pulumi.Input<String?>? revision;
 
   /// Creates a new [GitRepoVolumeSourcePatch].
   /// [directory] directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.

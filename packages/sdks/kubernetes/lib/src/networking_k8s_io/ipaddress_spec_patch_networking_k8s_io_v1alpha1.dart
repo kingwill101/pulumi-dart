@@ -6,7 +6,7 @@ import 'parent_reference_patch_networking_k8s_io_v1alpha1.dart';
 /// IPAddressSpec describe the attributes in an IP Address.
 class IPAddressSpecPatchNetworkingK8sIoV1alpha1 {
   /// ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
-  final pulumi.Input<ParentReferencePatchNetworkingK8sIoV1alpha1>? parentRef;
+  final pulumi.Input<ParentReferencePatchNetworkingK8sIoV1alpha1?>? parentRef;
 
   /// Creates a new [IPAddressSpecPatchNetworkingK8sIoV1alpha1].
   /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.

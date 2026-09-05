@@ -6,9 +6,9 @@ import 'basic_device_patch_resource_k8s_io_v1beta1.dart';
 /// Device represents one individual hardware instance that can be selected based on its attributes. Besides the name, exactly one field must be set.
 class DevicePatchResourceK8sIoV1beta1 {
   /// Basic defines one device instance.
-  final pulumi.Input<BasicDevicePatchResourceK8sIoV1beta1>? basic;
+  final pulumi.Input<BasicDevicePatchResourceK8sIoV1beta1?>? basic;
   /// Name is unique identifier among all devices managed by the driver in the pool. It must be a DNS label.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DevicePatchResourceK8sIoV1beta1].
   /// [basic] Basic defines one device instance.

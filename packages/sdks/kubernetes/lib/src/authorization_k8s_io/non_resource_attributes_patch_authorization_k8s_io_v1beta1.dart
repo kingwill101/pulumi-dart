@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface
 class NonResourceAttributesPatchAuthorizationK8sIoV1beta1 {
   /// Path is the URL path of the request
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Verb is the standard HTTP verb
-  final pulumi.Input<String>? verb;
+  final pulumi.Input<String?>? verb;
 
   /// Creates a new [NonResourceAttributesPatchAuthorizationK8sIoV1beta1].
   /// [path] Path is the URL path of the request

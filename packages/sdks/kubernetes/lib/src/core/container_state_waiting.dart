@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ContainerStateWaiting is a waiting state of a container.
 class ContainerStateWaiting {
   /// Message regarding why the container is not yet running.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (brief) reason the container is not yet running.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [ContainerStateWaiting].
   /// [message] Message regarding why the container is not yet running.

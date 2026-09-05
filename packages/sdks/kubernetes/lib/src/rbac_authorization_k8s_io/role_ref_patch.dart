@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RoleRef contains information that points to the role being used
 class RoleRefPatch {
-  /// APIGroup is the group for the resource being referenced
-  final pulumi.Input<String>? apiGroup;
-  /// Kind is the type of resource being referenced
-  final pulumi.Input<String>? kind;
-  /// Name is the name of resource being referenced
-  final pulumi.Input<String>? name;
+  /// apiGroup is the group for the resource being referenced
+  final pulumi.Input<String?>? apiGroup;
+  /// kind is the type of resource being referenced
+  final pulumi.Input<String?>? kind;
+  /// name is the name of resource being referenced
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RoleRefPatch].
-  /// [apiGroup] APIGroup is the group for the resource being referenced
-  /// [kind] Kind is the type of resource being referenced
-  /// [name] Name is the name of resource being referenced
+  /// [apiGroup] apiGroup is the group for the resource being referenced
+  /// [kind] kind is the type of resource being referenced
+  /// [name] name is the name of resource being referenced
   const RoleRefPatch({
     this.apiGroup,
     this.kind,

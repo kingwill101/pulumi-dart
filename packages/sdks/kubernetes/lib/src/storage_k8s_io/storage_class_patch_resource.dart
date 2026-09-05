@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import '../core/topology_selector_term_patch.dart';
 import '../meta/object_meta_patch.dart';
 import 'storage_class_patch_storage_k8s_io_v1beta1_args.dart';
 
@@ -15,7 +16,7 @@ class StorageClassPatchResource extends pulumi.CustomResource {
   /// AllowVolumeExpansion shows whether the storage class allow volume expand
   late final pulumi.Output<bool?> allowVolumeExpansion;
   /// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
-  late final pulumi.Output<List<Map<String, dynamic>>?> allowedTopologies;
+  late final pulumi.Output<List<TopologySelectorTermPatch>?> allowedTopologies;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -48,12 +49,33 @@ class StorageClassPatchResource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allowVolumeExpansion = registerOutput<bool?>('allowVolumeExpansion');
-    allowedTopologies = registerOutput<List<Map<String, dynamic>>?>('allowedTopologies');
+    allowedTopologies = registerOutput<List<TopologySelectorTermPatch>?>('allowedTopologies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopologySelectorTermPatch>(guardedValue, (value) => TopologySelectorTermPatch.fromMap((value as Map).cast<String, dynamic>())); });
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mountOptions = registerOutput<List<String>?>('mountOptions');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    mountOptions = registerOutput<List<String>?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    provisioner = registerOutput<String?>('provisioner');
+    reclaimPolicy = registerOutput<String?>('reclaimPolicy');
+    volumeBindingMode = registerOutput<String?>('volumeBindingMode');
+  }
+
+  /// Creates a typed reference to an existing [StorageClassPatchResource] resource.
+  StorageClassPatchResource.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1beta1:StorageClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowVolumeExpansion = registerOutput<bool?>('allowVolumeExpansion');
+    allowedTopologies = registerOutput<List<TopologySelectorTermPatch>?>('allowedTopologies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopologySelectorTermPatch>(guardedValue, (value) => TopologySelectorTermPatch.fromMap((value as Map).cast<String, dynamic>())); });
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mountOptions = registerOutput<List<String>?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     provisioner = registerOutput<String?>('provisioner');
     reclaimPolicy = registerOutput<String?>('reclaimPolicy');
     volumeBindingMode = registerOutput<String?>('volumeBindingMode');

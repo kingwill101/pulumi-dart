@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ScaleSpec describes the attributes of a scale subresource
 class ScaleSpec {
   /// desired number of instances for the scaled object.
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
 
   /// Creates a new [ScaleSpec].
   /// [replicas] desired number of instances for the scaled object.
@@ -21,7 +21,7 @@ class ScaleSpec {
 
   factory ScaleSpec.fromMap(Map<String, dynamic> map) {
     return ScaleSpec(
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

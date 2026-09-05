@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Counter describes a quantity associated with a device.
 class CounterPatchResourceK8sIoV1beta1 {
   /// Value defines how much of a certain device counter is available.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CounterPatchResourceK8sIoV1beta1].
   /// [value] Value defines how much of a certain device counter is available.

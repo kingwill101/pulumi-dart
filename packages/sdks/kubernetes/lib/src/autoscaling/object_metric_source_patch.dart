@@ -8,11 +8,11 @@ import 'metric_target_patch.dart';
 /// ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
 class ObjectMetricSourcePatch {
   /// describedObject specifies the descriptions of a object,such as kind,name apiVersion
-  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2>? describedObject;
+  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2?>? describedObject;
   /// metric identifies the target metric by name and selector
-  final pulumi.Input<MetricIdentifierPatch>? metric;
+  final pulumi.Input<MetricIdentifierPatch?>? metric;
   /// target specifies the target value for the given metric
-  final pulumi.Input<MetricTargetPatch>? target;
+  final pulumi.Input<MetricTargetPatch?>? target;
 
   /// Creates a new [ObjectMetricSourcePatch].
   /// [describedObject] describedObject specifies the descriptions of a object,such as kind,name apiVersion

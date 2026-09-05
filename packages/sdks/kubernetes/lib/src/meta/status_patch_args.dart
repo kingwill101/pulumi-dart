@@ -10,19 +10,19 @@ import 'status_details_patch.dart';
 /// {@macro pulumi_meta_v1_status_patch_args_doc}
 class StatusPatchArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Suggested HTTP return code for this status, 0 if not set.
-  final pulumi.Input<int>? code;
+  final pulumi.Input<int?>? code;
   /// Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
-  final pulumi.Input<StatusDetailsPatch>? details;
+  final pulumi.Input<StatusDetailsPatch?>? details;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// A human-readable description of the status of this operation.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<ListMetaPatch>? metadata;
+  final pulumi.Input<ListMetaPatch?>? metadata;
   /// A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [StatusPatchArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -57,7 +57,7 @@ class StatusPatchArgs {
   factory StatusPatchArgs.fromMap(Map<String, dynamic> map) {
     return StatusPatchArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StatusDetailsPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

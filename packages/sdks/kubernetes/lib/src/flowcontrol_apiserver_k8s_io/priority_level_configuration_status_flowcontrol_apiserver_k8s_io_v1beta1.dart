@@ -6,7 +6,7 @@ import 'priority_level_configuration_condition_flowcontrol_apiserver_k8s_io_v1be
 /// PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 class PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta1 {
   /// `conditions` is the current state of "request-priority".
-  final pulumi.Input<List<PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta1>>? conditions;
+  final pulumi.Input<List<PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta1>?>? conditions;
 
   /// Creates a new [PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta1].
   /// [conditions] `conditions` is the current state of "request-priority".

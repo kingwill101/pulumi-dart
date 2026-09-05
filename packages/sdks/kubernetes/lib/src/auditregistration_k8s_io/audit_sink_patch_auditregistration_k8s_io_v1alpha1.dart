@@ -38,4 +38,19 @@ class AuditSinkPatchAuditregistrationK8sIoV1alpha1 extends pulumi.CustomResource
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<AuditSinkSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuditSinkSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [AuditSinkPatchAuditregistrationK8sIoV1alpha1] resource.
+  AuditSinkPatchAuditregistrationK8sIoV1alpha1.reference(String urn)
+    : super(
+        'kubernetes:auditregistration.k8s.io/v1alpha1:AuditSinkPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<AuditSinkSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuditSinkSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

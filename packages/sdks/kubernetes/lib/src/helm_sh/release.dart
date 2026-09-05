@@ -341,7 +341,7 @@ import 'repository_opts.dart';
 /// {{% /example %}}
 /// {{% example %}}
 ///
-/// ### Depend on a Chart resource
+/// ### Depend on a Release resource
 ///
 /// ```typescript
 /// import * as k8s from "@pulumi/kubernetes";
@@ -356,11 +356,11 @@ import 'repository_opts.dart';
 ///     skipAwait: false,
 /// });
 ///
-/// // Create a ConfigMap depending on the Chart. The ConfigMap will not be created until after all of the Chart
+/// // Create a ConfigMap depending on the Release. The ConfigMap will not be created until after all of the Release
 /// // resources are ready. Notice skipAwait is set to false above. This is the default and will cause Helm
 /// // to await the underlying resources to be available. Setting it to true will make the ConfigMap available right away.
 /// new k8s.core.v1.ConfigMap("foo", {
-///     metadata: {namespace: namespaceName},
+///     metadata: {namespace: "test-namespace"},
 ///     data: {foo: "bar"}
 /// }, {dependsOn: nginxIngress})
 /// ```
@@ -382,7 +382,7 @@ import 'repository_opts.dart';
 ///     ),
 /// )
 ///
-/// # Create a ConfigMap depending on the Chart. The ConfigMap will not be created until after all of the Chart
+/// # Create a ConfigMap depending on the Release. The ConfigMap will not be created until after all of the Release
 /// # resources are ready. Notice skip_await is set to false above. This is the default and will cause Helm
 /// # to await the underlying resources to be available. Setting it to true will make the ConfigMap available right away.
 /// ConfigMap("foo", ConfigMapInitArgs(data={"foo": "bar"}), opts=pulumi.ResourceOptions(depends_on=nginx_ingress))
@@ -410,7 +410,7 @@ import 'repository_opts.dart';
 ///             SkipAwait = false,
 ///         });
 ///
-///         // Create a ConfigMap depending on the Chart. The ConfigMap will not be created until after all of the Chart
+///         // Create a ConfigMap depending on the Release. The ConfigMap will not be created until after all of the Release
 ///         // resources are ready. Notice SkipAwait is set to false above. This is the default and will cause Helm
 ///         // to await the underlying resources to be available. Setting it to true will make the ConfigMap available right away.
 ///         new ConfigMap("foo", new Pulumi.Kubernetes.Types.Inputs.Core.V1.ConfigMapArgs
@@ -451,7 +451,7 @@ import 'repository_opts.dart';
 /// 			return err
 /// 		}
 ///
-/// 		// Create a ConfigMap depending on the Chart. The ConfigMap will not be created until after all of the Chart
+/// 		// Create a ConfigMap depending on the Release. The ConfigMap will not be created until after all of the Release
 /// 		// resources are ready. Notice SkipAwait is set to false above. This is the default and will cause Helm
 /// 		// to await the underlying resources to be available. Setting it to true will make the ConfigMap available right away.
 /// 		_, err = corev1.NewConfigMap(ctx, "cm", &corev1.ConfigMapArgs{
@@ -904,7 +904,7 @@ class Release extends pulumi.CustomResource {
   /// Time in seconds to wait for any individual kubernetes operation.
   late final pulumi.Output<int?> timeout;
   /// List of assets (raw yaml files). Content is read and merged with values (with values taking precedence).
-  late final pulumi.Output<List<Map<String, dynamic>>?> valueYamlFiles;
+  late final pulumi.Output<List<dynamic>?> valueYamlFiles;
   /// Custom values set for the release.
   late final pulumi.Output<Map<String, dynamic>?> values;
   /// Verify the package before installing it.
@@ -942,7 +942,7 @@ class Release extends pulumi.CustomResource {
     forceUpdate = registerOutput<bool?>('forceUpdate');
     keyring = registerOutput<String?>('keyring');
     lint = registerOutput<bool?>('lint');
-    manifest = registerOutput<Map<String, dynamic>?>('manifest');
+    manifest = registerOutput<Map<String, dynamic>?>('manifest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     maxHistory = registerOutput<int?>('maxHistory');
     this.name = registerOutput<String?>('name');
     namespace = registerOutput<String?>('namespace');
@@ -952,15 +952,62 @@ class Release extends pulumi.CustomResource {
     replace = registerOutput<bool?>('replace');
     repositoryOpts = registerOutput<RepositoryOpts?>('repositoryOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryOpts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resetValues = registerOutput<bool?>('resetValues');
-    resourceNames = registerOutput<Map<String, List<String>>?>('resourceNames');
+    resourceNames = registerOutput<Map<String, List<String>>?>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     reuseValues = registerOutput<bool?>('reuseValues');
     skipAwait = registerOutput<bool?>('skipAwait');
     skipCrds = registerOutput<bool?>('skipCrds');
     status = registerOutput<ReleaseStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     takeOwnership = registerOutput<bool?>('takeOwnership');
     timeout = registerOutput<int?>('timeout');
-    valueYamlFiles = registerOutput<List<Map<String, dynamic>>?>('valueYamlFiles');
-    values = registerOutput<Map<String, dynamic>?>('values');
+    valueYamlFiles = registerOutput<List<dynamic>?>('valueYamlFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    values = registerOutput<Map<String, dynamic>?>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    verify = registerOutput<bool?>('verify');
+    version = registerOutput<String?>('version');
+    waitForJobs = registerOutput<bool?>('waitForJobs');
+  }
+
+  /// Creates a typed reference to an existing [Release] resource.
+  Release.reference(String urn)
+    : super(
+        'kubernetes:helm.sh/v3:Release',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowNullValues = registerOutput<bool?>('allowNullValues');
+    atomic = registerOutput<bool?>('atomic');
+    chart = registerOutput<String>('chart');
+    cleanupOnFail = registerOutput<bool?>('cleanupOnFail');
+    createNamespace = registerOutput<bool?>('createNamespace');
+    dependencyUpdate = registerOutput<bool?>('dependencyUpdate');
+    description = registerOutput<String?>('description');
+    devel = registerOutput<bool?>('devel');
+    disableCRDHooks = registerOutput<bool?>('disableCRDHooks');
+    disableOpenapiValidation = registerOutput<bool?>('disableOpenapiValidation');
+    disableWebhooks = registerOutput<bool?>('disableWebhooks');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    keyring = registerOutput<String?>('keyring');
+    lint = registerOutput<bool?>('lint');
+    manifest = registerOutput<Map<String, dynamic>?>('manifest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    maxHistory = registerOutput<int?>('maxHistory');
+    this.name = registerOutput<String?>('name');
+    namespace = registerOutput<String?>('namespace');
+    postrender = registerOutput<String?>('postrender');
+    recreatePods = registerOutput<bool?>('recreatePods');
+    renderSubchartNotes = registerOutput<bool?>('renderSubchartNotes');
+    replace = registerOutput<bool?>('replace');
+    repositoryOpts = registerOutput<RepositoryOpts?>('repositoryOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryOpts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resetValues = registerOutput<bool?>('resetValues');
+    resourceNames = registerOutput<Map<String, List<String>>?>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
+    reuseValues = registerOutput<bool?>('reuseValues');
+    skipAwait = registerOutput<bool?>('skipAwait');
+    skipCrds = registerOutput<bool?>('skipCrds');
+    status = registerOutput<ReleaseStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    takeOwnership = registerOutput<bool?>('takeOwnership');
+    timeout = registerOutput<int?>('timeout');
+    valueYamlFiles = registerOutput<List<dynamic>?>('valueYamlFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    values = registerOutput<Map<String, dynamic>?>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     verify = registerOutput<bool?>('verify');
     version = registerOutput<String?>('version');
     waitForJobs = registerOutput<bool?>('waitForJobs');

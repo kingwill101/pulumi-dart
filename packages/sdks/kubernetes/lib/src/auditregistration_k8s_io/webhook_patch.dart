@@ -7,9 +7,9 @@ import 'webhook_throttle_config_patch.dart';
 /// Webhook holds the configuration of the webhook
 class WebhookPatch {
   /// ClientConfig holds the connection parameters for the webhook required
-  final pulumi.Input<WebhookClientConfigPatch>? clientConfig;
+  final pulumi.Input<WebhookClientConfigPatch?>? clientConfig;
   /// Throttle holds the options for throttling the webhook
-  final pulumi.Input<WebhookThrottleConfigPatch>? throttle;
+  final pulumi.Input<WebhookThrottleConfigPatch?>? throttle;
 
   /// Creates a new [WebhookPatch].
   /// [clientConfig] ClientConfig holds the connection parameters for the webhook required

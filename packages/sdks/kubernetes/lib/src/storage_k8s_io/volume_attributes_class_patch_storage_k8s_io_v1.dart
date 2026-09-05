@@ -12,11 +12,11 @@ import 'volume_attributes_class_patch_args.dart';
 class VolumeAttributesClassPatchStorageK8sIoV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-  /// Name of the CSI driver This field is immutable.
+  /// driverName is the name of the CSI driver This field is immutable.
   late final pulumi.Output<String?> driverName;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
   ///
@@ -41,6 +41,22 @@ class VolumeAttributesClassPatchStorageK8sIoV1 extends pulumi.CustomResource {
     driverName = registerOutput<String?>('driverName');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttributesClassPatchStorageK8sIoV1] resource.
+  VolumeAttributesClassPatchStorageK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1:VolumeAttributesClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    driverName = registerOutput<String?>('driverName');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

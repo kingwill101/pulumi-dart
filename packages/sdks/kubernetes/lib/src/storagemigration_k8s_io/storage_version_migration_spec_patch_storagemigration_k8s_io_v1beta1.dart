@@ -6,7 +6,7 @@ import '../meta/group_resource_patch.dart';
 /// Spec of the storage version migration.
 class StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1 {
   /// The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.
-  final pulumi.Input<GroupResourcePatch>? resource;
+  final pulumi.Input<GroupResourcePatch?>? resource;
 
   /// Creates a new [StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1].
   /// [resource] The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.

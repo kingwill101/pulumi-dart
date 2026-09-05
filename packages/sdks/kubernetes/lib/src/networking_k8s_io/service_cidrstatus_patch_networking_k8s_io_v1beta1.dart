@@ -6,7 +6,7 @@ import '../meta/condition_patch.dart';
 /// ServiceCIDRStatus describes the current state of the ServiceCIDR.
 class ServiceCIDRStatusPatchNetworkingK8sIoV1beta1 {
   /// conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
-  final pulumi.Input<List<ConditionPatch>>? conditions;
+  final pulumi.Input<List<ConditionPatch>?>? conditions;
 
   /// Creates a new [ServiceCIDRStatusPatchNetworkingK8sIoV1beta1].
   /// [conditions] conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state

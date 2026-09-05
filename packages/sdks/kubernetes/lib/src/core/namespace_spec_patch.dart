@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NamespaceSpec describes the attributes on a Namespace.
 class NamespaceSpecPatch {
   /// Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-  final pulumi.Input<List<String>>? finalizers;
+  final pulumi.Input<List<String>?>? finalizers;
 
   /// Creates a new [NamespaceSpecPatch].
   /// [finalizers] Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/

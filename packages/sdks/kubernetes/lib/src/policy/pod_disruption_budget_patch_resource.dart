@@ -42,4 +42,20 @@ class PodDisruptionBudgetPatchResource extends pulumi.CustomResource {
     spec = registerOutput<PodDisruptionBudgetSpecPatchPolicyV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodDisruptionBudgetSpecPatchPolicyV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<PodDisruptionBudgetStatusPatchPolicyV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodDisruptionBudgetStatusPatchPolicyV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [PodDisruptionBudgetPatchResource] resource.
+  PodDisruptionBudgetPatchResource.reference(String urn)
+    : super(
+        'kubernetes:policy/v1beta1:PodDisruptionBudgetPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PodDisruptionBudgetSpecPatchPolicyV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodDisruptionBudgetSpecPatchPolicyV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PodDisruptionBudgetStatusPatchPolicyV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodDisruptionBudgetStatusPatchPolicyV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

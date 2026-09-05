@@ -6,7 +6,7 @@ import 'client_ipconfig.dart';
 /// SessionAffinityConfig represents the configurations of session affinity.
 class SessionAffinityConfig {
   /// clientIP contains the configurations of Client IP based session affinity.
-  final pulumi.Input<ClientIPConfig>? clientIP;
+  final pulumi.Input<ClientIPConfig?>? clientIP;
 
   /// Creates a new [SessionAffinityConfig].
   /// [clientIP] clientIP contains the configurations of Client IP based session affinity.

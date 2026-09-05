@@ -51,4 +51,23 @@ class StatusPatchMetaV1 extends pulumi.CustomResource {
     reason = registerOutput<String?>('reason');
     status = registerOutput<String?>('status');
   }
+
+  /// Creates a typed reference to an existing [StatusPatchMetaV1] resource.
+  StatusPatchMetaV1.reference(String urn)
+    : super(
+        'kubernetes:meta/v1:StatusPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    code = registerOutput<int?>('code');
+    details = registerOutput<StatusDetailsPatch?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusDetailsPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    message = registerOutput<String?>('message');
+    metadata = registerOutput<ListMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reason = registerOutput<String?>('reason');
+    status = registerOutput<String?>('status');
+  }
 }

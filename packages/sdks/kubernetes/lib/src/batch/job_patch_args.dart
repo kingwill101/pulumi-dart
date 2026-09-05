@@ -10,13 +10,13 @@ import 'job_spec_patch.dart';
 /// {@macro pulumi_batch_v1_job_patch_args_doc}
 class JobPatchArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<JobSpecPatch>? spec;
+  final pulumi.Input<JobSpecPatch?>? spec;
 
   /// Creates a new [JobPatchArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

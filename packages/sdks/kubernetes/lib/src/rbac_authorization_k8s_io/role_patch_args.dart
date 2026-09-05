@@ -10,19 +10,19 @@ import 'policy_rule_patch.dart';
 /// {@macro pulumi_rbac_authorization_k8s_io_v1_role_patch_args_doc}
 class RolePatchArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  /// Standard object's metadata.
-  final pulumi.Input<ObjectMetaPatch>? metadata;
-  /// Rules holds all the PolicyRules for this Role
-  final pulumi.Input<List<PolicyRulePatch>>? rules;
+  final pulumi.Input<String?>? kind;
+  /// metadata is the standard object's metadata.
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
+  /// rules holds all the PolicyRules for this Role
+  final pulumi.Input<List<PolicyRulePatch>?>? rules;
 
   /// Creates a new [RolePatchArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard object's metadata.
-  /// [rules] Rules holds all the PolicyRules for this Role
+  /// [metadata] metadata is the standard object's metadata.
+  /// [rules] rules holds all the PolicyRules for this Role
   const RolePatchArgs({
     this.apiVersion,
     this.kind,

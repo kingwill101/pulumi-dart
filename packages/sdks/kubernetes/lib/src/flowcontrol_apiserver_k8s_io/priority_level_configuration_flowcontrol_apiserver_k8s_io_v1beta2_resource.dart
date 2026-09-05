@@ -37,4 +37,20 @@ class PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2Resource extends
     spec = registerOutput<PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2Resource] resource.
+  PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2Resource.reference(String urn)
+    : super(
+        'kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:PriorityLevelConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -5,9 +5,9 @@ import 'rolling_update_daemon_set.dart';
 
 class DaemonSetUpdateStrategy {
   /// Rolling update config params. Present only if type = "RollingUpdate".
-  final pulumi.Input<RollingUpdateDaemonSet>? rollingUpdate;
+  final pulumi.Input<RollingUpdateDaemonSet?>? rollingUpdate;
   /// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is OnDelete.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DaemonSetUpdateStrategy].
   /// [rollingUpdate] Rolling update config params. Present only if type = "RollingUpdate".

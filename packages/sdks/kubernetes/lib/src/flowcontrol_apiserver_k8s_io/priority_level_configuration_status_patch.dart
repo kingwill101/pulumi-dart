@@ -6,7 +6,7 @@ import 'priority_level_configuration_condition_patch.dart';
 /// PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 class PriorityLevelConfigurationStatusPatch {
   /// `conditions` is the current state of "request-priority".
-  final pulumi.Input<List<PriorityLevelConfigurationConditionPatch>>? conditions;
+  final pulumi.Input<List<PriorityLevelConfigurationConditionPatch>?>? conditions;
 
   /// Creates a new [PriorityLevelConfigurationStatusPatch].
   /// [conditions] `conditions` is the current state of "request-priority".

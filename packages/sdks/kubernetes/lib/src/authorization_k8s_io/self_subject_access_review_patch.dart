@@ -8,15 +8,15 @@ import 'subject_access_review_status_patch.dart';
 /// SelfSubjectAccessReview checks whether or the current user can perform an action.  Not filling in a spec.namespace means "in all namespaces".  Self is a special case, because users should always be able to check whether they can perform an action
 class SelfSubjectAccessReviewPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// spec holds information about the request being evaluated.  user and groups must be empty
-  final pulumi.Input<SelfSubjectAccessReviewSpecPatch>? spec;
+  final pulumi.Input<SelfSubjectAccessReviewSpecPatch?>? spec;
   /// status is filled in by the server and indicates whether the request is allowed or not
-  final pulumi.Input<SubjectAccessReviewStatusPatch>? status;
+  final pulumi.Input<SubjectAccessReviewStatusPatch?>? status;
 
   /// Creates a new [SelfSubjectAccessReviewPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

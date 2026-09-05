@@ -6,7 +6,7 @@ import 'user_info.dart';
 /// SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.
 class SelfSubjectReviewStatusAuthenticationK8sIoV1alpha1 {
   /// User attributes of the user making this request.
-  final pulumi.Input<UserInfo>? userInfo;
+  final pulumi.Input<UserInfo?>? userInfo;
 
   /// Creates a new [SelfSubjectReviewStatusAuthenticationK8sIoV1alpha1].
   /// [userInfo] User attributes of the user making this request.

@@ -8,21 +8,21 @@ import 'custom_resource_validation_apiextensions_k8s_io_v1beta1.dart';
 /// CustomResourceDefinitionVersion describes a version for CRD.
 class CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1 {
   /// additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.
-  final pulumi.Input<List<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>>? additionalPrinterColumns;
+  final pulumi.Input<List<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>?>? additionalPrinterColumns;
   /// deprecated indicates this version of the custom resource API is deprecated. When set to true, API requests to this version receive a warning header in the server response. Defaults to false.
-  final pulumi.Input<bool>? deprecated;
+  final pulumi.Input<bool?>? deprecated;
   /// deprecationWarning overrides the default warning returned to API clients. May only be set when `deprecated` is true. The default warning indicates this version is deprecated and recommends use of the newest served version of equal or greater stability, if one exists.
-  final pulumi.Input<String>? deprecationWarning;
+  final pulumi.Input<String?>? deprecationWarning;
   /// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/&lt;group&gt;/&lt;version&gt;/...` if `served` is true.
   final pulumi.Input<String> name;
   /// schema describes the schema used for validation and pruning of this version of the custom resource. Top-level and per-version schemas are mutually exclusive. Per-version schemas must not all be set to identical values (top-level validation schema should be used instead).
-  final pulumi.Input<CustomResourceValidationApiextensionsK8sIoV1beta1>? schema;
+  final pulumi.Input<CustomResourceValidationApiextensionsK8sIoV1beta1?>? schema;
   /// served is a flag enabling/disabling this version from being served via REST APIs
   final pulumi.Input<bool> served;
   /// storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.
   final pulumi.Input<bool> storage;
   /// subresources specify what subresources this version of the defined custom resource have. Top-level and per-version subresources are mutually exclusive. Per-version subresources must not all be set to identical values (top-level subresources should be used instead).
-  final pulumi.Input<CustomResourceSubresourcesApiextensionsK8sIoV1beta1>? subresources;
+  final pulumi.Input<CustomResourceSubresourcesApiextensionsK8sIoV1beta1?>? subresources;
 
   /// Creates a new [CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1].
   /// [additionalPrinterColumns] additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.

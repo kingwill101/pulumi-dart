@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// CrossVersionObjectReference contains enough information to let you identify the referred resource.
 class CrossVersionObjectReferenceAutoscalingV2beta1 {
   /// API version of the referent
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
   final pulumi.Input<String> kind;
   /// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names

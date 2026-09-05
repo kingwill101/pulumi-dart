@@ -52,4 +52,21 @@ class ResourceClassPatchResourceK8sIoV1alpha1 extends pulumi.CustomResource {
     parametersRef = registerOutput<ResourceClassParametersReferencePatch?>('parametersRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceClassParametersReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     suitableNodes = registerOutput<NodeSelectorPatch?>('suitableNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ResourceClassPatchResourceK8sIoV1alpha1] resource.
+  ResourceClassPatchResourceK8sIoV1alpha1.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha1:ResourceClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    driverName = registerOutput<String?>('driverName');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parametersRef = registerOutput<ResourceClassParametersReferencePatch?>('parametersRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceClassParametersReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    suitableNodes = registerOutput<NodeSelectorPatch?>('suitableNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Adds and removes POSIX capabilities from running containers.
 class CapabilitiesPatch {
   /// Added capabilities
-  final pulumi.Input<List<String>>? add;
+  final pulumi.Input<List<String>?>? add;
   /// Removed capabilities
-  final pulumi.Input<List<String>>? drop;
+  final pulumi.Input<List<String>?>? drop;
 
   /// Creates a new [CapabilitiesPatch].
   /// [add] Added capabilities

@@ -37,4 +37,20 @@ class ReplicaSetResource extends pulumi.CustomResource {
     spec = registerOutput<ReplicaSetSpecAppsV1beta2>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicaSetSpecAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ReplicaSetStatusAppsV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicaSetStatusAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ReplicaSetResource] resource.
+  ReplicaSetResource.reference(String urn)
+    : super(
+        'kubernetes:apps/v1beta2:ReplicaSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ReplicaSetSpecAppsV1beta2>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicaSetSpecAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ReplicaSetStatusAppsV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicaSetStatusAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

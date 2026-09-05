@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'csinode_patch_args.dart';
 import 'csinode_spec_patch.dart';
+import 'csinode_status_patch.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -15,10 +16,12 @@ class CSINodePatchStorageK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<String?> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-  /// Standard object's metadata. metadata.name must be the Kubernetes node name.
+  /// metadata is the standard object metadata. metadata.name must be the Kubernetes node name.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// spec is the specification of CSINode
   late final pulumi.Output<CSINodeSpecPatch?> spec;
+  /// status contains health and status information for the node's storage.
+  late final pulumi.Output<CSINodeStatusPatch?> status;
 
   /// Creates a new [CSINodePatchStorageK8sIoV1].
   /// [name] The Pulumi resource name.
@@ -38,5 +41,22 @@ class CSINodePatchStorageK8sIoV1 extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<CSINodeSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CSINodeSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CSINodeStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CSINodeStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CSINodePatchStorageK8sIoV1] resource.
+  CSINodePatchStorageK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1:CSINodePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<CSINodeSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CSINodeSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CSINodeStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CSINodeStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

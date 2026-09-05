@@ -7,13 +7,13 @@ import 'policy_rule_rbac_authorization_k8s_io_v1alpha1.dart';
 /// Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 Role, and will no longer be served in v1.20.
 class RoleRbacAuthorizationK8sIoV1alpha1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Rules holds all the PolicyRules for this Role
-  final pulumi.Input<List<PolicyRuleRbacAuthorizationK8sIoV1alpha1>>? rules;
+  final pulumi.Input<List<PolicyRuleRbacAuthorizationK8sIoV1alpha1>?>? rules;
 
   /// Creates a new [RoleRbacAuthorizationK8sIoV1alpha1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
+import 'endpoint_subset.dart';
 import 'endpoints_args.dart';
 
 /// Endpoints is a collection of endpoints that implement the actual service. Example:
@@ -27,7 +28,7 @@ class EndpointsCoreV1 extends pulumi.CustomResource {
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
   /// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
-  late final pulumi.Output<List<Map<String, dynamic>>> subsets;
+  late final pulumi.Output<List<EndpointSubset>> subsets;
 
   /// Creates a new [EndpointsCoreV1].
   /// [name] The Pulumi resource name.
@@ -46,6 +47,21 @@ class EndpointsCoreV1 extends pulumi.CustomResource {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subsets = registerOutput<List<Map<String, dynamic>>>('subsets');
+    subsets = registerOutput<List<EndpointSubset>>('subsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointSubset>(guardedValue, (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointsCoreV1] resource.
+  EndpointsCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:Endpoints',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subsets = registerOutput<List<EndpointSubset>>('subsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointSubset>(guardedValue, (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -10,11 +10,11 @@ class VolumeMountStatus {
   /// Name corresponds to the name of the original VolumeMount.
   final pulumi.Input<String> name;
   /// ReadOnly corresponds to the original VolumeMount.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// RecursiveReadOnly must be set to Disabled, Enabled, or unspecified (for non-readonly mounts). An IfPossible value in the original VolumeMount must be translated to Disabled or Enabled, depending on the mount result.
-  final pulumi.Input<String>? recursiveReadOnly;
+  final pulumi.Input<String?>? recursiveReadOnly;
   /// volumeStatus represents volume-type-specific status about the mounted volume.
-  final pulumi.Input<VolumeStatus>? volumeStatus;
+  final pulumi.Input<VolumeStatus?>? volumeStatus;
 
   /// Creates a new [VolumeMountStatus].
   /// [mountPath] MountPath corresponds to the original VolumeMount.

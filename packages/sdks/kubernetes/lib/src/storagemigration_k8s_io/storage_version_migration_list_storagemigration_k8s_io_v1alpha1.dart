@@ -1,35 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'storage_version_migration_list_args.dart';
+import 'storage_version_migration_storagemigration_k8s_io_v1alpha1.dart';
 
 /// StorageVersionMigrationList is a collection of storage version migrations.
-class StorageVersionMigrationListStoragemigrationK8sIoV1alpha1 extends pulumi.CustomResource {
+class StorageVersionMigrationListStoragemigrationK8sIoV1alpha1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  late final pulumi.Output<String> apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Items is the list of StorageVersionMigration
-  late final pulumi.Output<List<Map<String, dynamic>>> items;
+  final pulumi.Input<List<StorageVersionMigrationStoragemigrationK8sIoV1alpha1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  late final pulumi.Output<String> kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  late final pulumi.Output<ListMeta> metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [StorageVersionMigrationListStoragemigrationK8sIoV1alpha1].
-  /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [StorageVersionMigrationListStoragemigrationK8sIoV1alpha1]. {@macro pulumi_storagemigration_k8s_io_v1alpha1_storage_version_migration_list_args_doc}
-  /// [options] Resource options controlling this resource's behavior.
-  StorageVersionMigrationListStoragemigrationK8sIoV1alpha1(
-    String name, {
-    StorageVersionMigrationListArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'kubernetes:storagemigration.k8s.io/v1alpha1:StorageVersionMigrationList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    apiVersion = registerOutput<String>('apiVersion');
-    items = registerOutput<List<Map<String, dynamic>>>('items');
-    kind = registerOutput<String>('kind');
-    metadata = registerOutput<ListMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [items] Items is the list of StorageVersionMigration
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  const StorageVersionMigrationListStoragemigrationK8sIoV1alpha1({
+    this.apiVersion,
+    required this.items,
+    this.kind,
+    this.metadata,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'items': pulumi.Input.mapInputValue<List<StorageVersionMigrationStoragemigrationK8sIoV1alpha1>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<StorageVersionMigrationStoragemigrationK8sIoV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'kind': ?kind,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+    };
+  }
+
+  factory StorageVersionMigrationListStoragemigrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+    return StorageVersionMigrationListStoragemigrationK8sIoV1alpha1(
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<StorageVersionMigrationStoragemigrationK8sIoV1alpha1>(map['items']!, (value) => StorageVersionMigrationStoragemigrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+    );
   }
 }

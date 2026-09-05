@@ -31,7 +31,7 @@ class CSIStorageCapacityPatchStorageK8sIoV1 extends pulumi.CustomResource {
   ///
   /// This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
   late final pulumi.Output<String?> maximumVolumeSize;
-  /// Standard object's metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+  /// metadata is the standard object metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
   ///
   /// Objects are namespaced.
   ///
@@ -56,6 +56,24 @@ class CSIStorageCapacityPatchStorageK8sIoV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    capacity = registerOutput<String?>('capacity');
+    kind = registerOutput<String?>('kind');
+    maximumVolumeSize = registerOutput<String?>('maximumVolumeSize');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeTopology = registerOutput<LabelSelectorPatch?>('nodeTopology', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageClassName = registerOutput<String?>('storageClassName');
+  }
+
+  /// Creates a typed reference to an existing [CSIStorageCapacityPatchStorageK8sIoV1] resource.
+  CSIStorageCapacityPatchStorageK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1:CSIStorageCapacityPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String?>('apiVersion');
     capacity = registerOutput<String?>('capacity');
     kind = registerOutput<String?>('kind');

@@ -7,11 +7,11 @@ class VolumeErrorPatch {
   /// errorCode is a numeric gRPC code representing the error encountered during Attach or Detach operations.
   ///
   /// This field requires the MutableCSINodeAllocatableCount feature gate being enabled to be set.
-  final pulumi.Input<int>? errorCode;
+  final pulumi.Input<int?>? errorCode;
   /// message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// time represents the time the error was encountered.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [VolumeErrorPatch].
   /// [errorCode] errorCode is a numeric gRPC code representing the error encountered during Attach or Detach operations.
@@ -33,7 +33,7 @@ class VolumeErrorPatch {
 
   factory VolumeErrorPatch.fromMap(Map<String, dynamic> map) {
     return VolumeErrorPatch(
-      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'storage_version_migration_spec.dart';
 
-/// {@template pulumi_storagemigration_k8s_io_v1alpha1_storage_version_migration_args_doc}
+/// {@template pulumi_storagemigration_k8s_io_v1_storage_version_migration_args_doc}
 /// The set of arguments for StorageVersionMigration.
 /// {@endtemplate}
-/// {@macro pulumi_storagemigration_k8s_io_v1alpha1_storage_version_migration_args_doc}
+/// {@macro pulumi_storagemigration_k8s_io_v1_storage_version_migration_args_doc}
 class StorageVersionMigrationArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Specification of the migration.
-  final pulumi.Input<StorageVersionMigrationSpec>? spec;
+  final pulumi.Input<StorageVersionMigrationSpec?>? spec;
 
   /// Creates a new [StorageVersionMigrationArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

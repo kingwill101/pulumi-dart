@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HTTPHeader describes a custom header to be used in HTTP probes
 class HTTPHeaderPatch {
   /// The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The header field value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HTTPHeaderPatch].
   /// [name] The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.

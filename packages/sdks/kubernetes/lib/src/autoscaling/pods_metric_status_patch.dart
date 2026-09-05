@@ -7,9 +7,9 @@ import 'metric_value_status_patch.dart';
 /// PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).
 class PodsMetricStatusPatch {
   /// current contains the current value for the given metric
-  final pulumi.Input<MetricValueStatusPatch>? current;
+  final pulumi.Input<MetricValueStatusPatch?>? current;
   /// metric identifies the target metric by name and selector
-  final pulumi.Input<MetricIdentifierPatch>? metric;
+  final pulumi.Input<MetricIdentifierPatch?>? metric;
 
   /// Creates a new [PodsMetricStatusPatch].
   /// [current] current contains the current value for the given metric

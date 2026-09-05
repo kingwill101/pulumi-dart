@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_yaml_v2_config_group_args_doc}
 class ConfigGroupArgs {
   /// Set of paths and/or URLs to Kubernetes manifest files. Supports glob patterns.
-  final pulumi.Input<List<String>>? files;
+  final pulumi.Input<List<String>?>? files;
   /// Objects representing Kubernetes resource configurations.
-  final pulumi.Input<List<dynamic>>? objs;
+  final pulumi.Input<List<dynamic>?>? objs;
   /// A prefix for the auto-generated resource names. Defaults to the name of the ConfigGroup. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// Indicates that child resources should skip the await logic. Defaults to `false`.
-  final pulumi.Input<bool>? skipAwait;
+  final pulumi.Input<bool?>? skipAwait;
   /// A Kubernetes YAML manifest containing Kubernetes resource configuration(s).
-  final pulumi.Input<String>? yaml;
+  final pulumi.Input<String?>? yaml;
 
   /// Creates a new [ConfigGroupArgs].
   /// [files] Set of paths and/or URLs to Kubernetes manifest files. Supports glob patterns.

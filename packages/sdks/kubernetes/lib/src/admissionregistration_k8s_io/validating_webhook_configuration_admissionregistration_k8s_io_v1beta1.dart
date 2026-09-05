@@ -7,13 +7,13 @@ import 'validating_webhook_admissionregistration_k8s_io_v1beta1.dart';
 /// ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it. Deprecated in v1.16, planned for removal in v1.19. Use admissionregistration.k8s.io/v1 ValidatingWebhookConfiguration instead.
 class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Webhooks is a list of webhooks and the affected resources and operations.
-  final pulumi.Input<List<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>>? webhooks;
+  final pulumi.Input<List<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>?>? webhooks;
 
   /// Creates a new [ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Options to configure the Helm Release resource.
 class HelmReleaseSettings {
   /// The backend storage driver for Helm. Values are: configmap, secret, memory, sql.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
   /// The path to the helm plugins directory.
-  final pulumi.Input<String>? pluginsPath;
+  final pulumi.Input<String?>? pluginsPath;
   /// The path to the registry config file.
-  final pulumi.Input<String>? registryConfigPath;
+  final pulumi.Input<String?>? registryConfigPath;
   /// The path to the directory containing cached repository indexes.
-  final pulumi.Input<String>? repositoryCache;
+  final pulumi.Input<String?>? repositoryCache;
   /// The path to the file containing repository names and URLs.
-  final pulumi.Input<String>? repositoryConfigPath;
+  final pulumi.Input<String?>? repositoryConfigPath;
 
   /// Creates a new [HelmReleaseSettings].
   /// [driver] The backend storage driver for Helm. Values are: configmap, secret, memory, sql.

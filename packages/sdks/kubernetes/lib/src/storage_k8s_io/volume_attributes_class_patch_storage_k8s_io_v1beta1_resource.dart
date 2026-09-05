@@ -41,6 +41,22 @@ class VolumeAttributesClassPatchStorageK8sIoV1beta1Resource extends pulumi.Custo
     driverName = registerOutput<String?>('driverName');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttributesClassPatchStorageK8sIoV1beta1Resource] resource.
+  VolumeAttributesClassPatchStorageK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1beta1:VolumeAttributesClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    driverName = registerOutput<String?>('driverName');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

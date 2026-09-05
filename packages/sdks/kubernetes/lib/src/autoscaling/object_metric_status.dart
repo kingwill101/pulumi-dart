@@ -9,14 +9,14 @@ import 'metric_value_status.dart';
 class ObjectMetricStatus {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatus> current;
-  /// DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
+  /// describedObject specifies the descriptions of a object,such as kind,name apiVersion
   final pulumi.Input<CrossVersionObjectReferenceAutoscalingV2> describedObject;
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifier> metric;
 
   /// Creates a new [ObjectMetricStatus].
   /// [current] current contains the current value for the given metric
-  /// [describedObject] DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
+  /// [describedObject] describedObject specifies the descriptions of a object,such as kind,name apiVersion
   /// [metric] metric identifies the target metric by name and selector
   const ObjectMetricStatus({
     required this.current,

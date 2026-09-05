@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MetricValueStatus holds the current value for a metric
 class MetricValueStatusAutoscalingV2beta2 {
   /// currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
-  final pulumi.Input<int>? averageUtilization;
+  final pulumi.Input<int?>? averageUtilization;
   /// averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
-  final pulumi.Input<String>? averageValue;
+  final pulumi.Input<String?>? averageValue;
   /// value is the current value of the metric (as a quantity).
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [MetricValueStatusAutoscalingV2beta2].
   /// [averageUtilization] currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
@@ -31,7 +31,7 @@ class MetricValueStatusAutoscalingV2beta2 {
 
   factory MetricValueStatusAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return MetricValueStatusAutoscalingV2beta2(
-      averageUtilization: (() { final guardedValue = map['averageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      averageUtilization: (() { final guardedValue = map['averageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       averageValue: (() { final guardedValue = map['averageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

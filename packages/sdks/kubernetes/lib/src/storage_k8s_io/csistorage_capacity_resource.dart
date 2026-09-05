@@ -58,4 +58,22 @@ class CSIStorageCapacityResource extends pulumi.CustomResource {
     nodeTopology = registerOutput<LabelSelector>('nodeTopology', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageClassName = registerOutput<String>('storageClassName');
   }
+
+  /// Creates a typed reference to an existing [CSIStorageCapacityResource] resource.
+  CSIStorageCapacityResource.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    capacity = registerOutput<String>('capacity');
+    kind = registerOutput<String>('kind');
+    maximumVolumeSize = registerOutput<String>('maximumVolumeSize');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeTopology = registerOutput<LabelSelector>('nodeTopology', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageClassName = registerOutput<String>('storageClassName');
+  }
 }

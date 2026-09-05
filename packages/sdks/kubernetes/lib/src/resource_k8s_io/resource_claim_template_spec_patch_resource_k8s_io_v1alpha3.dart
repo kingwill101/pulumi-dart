@@ -7,9 +7,9 @@ import 'resource_claim_spec_patch_resource_k8s_io_v1alpha3.dart';
 /// ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.
 class ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3 {
   /// ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.
-  final pulumi.Input<ResourceClaimSpecPatchResourceK8sIoV1alpha3>? spec;
+  final pulumi.Input<ResourceClaimSpecPatchResourceK8sIoV1alpha3?>? spec;
 
   /// Creates a new [ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3].
   /// [metadata] ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.

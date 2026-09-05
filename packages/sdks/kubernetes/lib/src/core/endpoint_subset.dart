@@ -19,11 +19,11 @@ import 'endpoint_port.dart';
 /// Deprecated: This API is deprecated in v1.33+.
 class EndpointSubset {
   /// IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.
-  final pulumi.Input<List<EndpointAddress>>? addresses;
+  final pulumi.Input<List<EndpointAddress>?>? addresses;
   /// IP addresses which offer the related ports but are not currently marked as ready because they have not yet finished starting, have recently failed a readiness check, or have recently failed a liveness check.
-  final pulumi.Input<List<EndpointAddress>>? notReadyAddresses;
+  final pulumi.Input<List<EndpointAddress>?>? notReadyAddresses;
   /// Port numbers available on the related IP addresses.
-  final pulumi.Input<List<EndpointPort>>? ports;
+  final pulumi.Input<List<EndpointPort>?>? ports;
 
   /// Creates a new [EndpointSubset].
   /// [addresses] IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.

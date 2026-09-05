@@ -16,7 +16,7 @@ class NetworkPolicyPatchNetworkingK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<String?> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// spec represents the specification of the desired behavior for this NetworkPolicy.
   late final pulumi.Output<NetworkPolicySpecPatch?> spec;
@@ -37,6 +37,22 @@ class NetworkPolicyPatchNetworkingK8sIoV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<NetworkPolicySpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicySpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<NetworkPolicyStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkPolicyPatchNetworkingK8sIoV1] resource.
+  NetworkPolicyPatchNetworkingK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:networking.k8s.io/v1:NetworkPolicyPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });

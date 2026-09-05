@@ -6,7 +6,7 @@ import 'apiservice_condition_patch.dart';
 /// APIServiceStatus contains derived information about an API server
 class APIServiceStatusPatch {
   /// Current service state of apiService.
-  final pulumi.Input<List<APIServiceConditionPatch>>? conditions;
+  final pulumi.Input<List<APIServiceConditionPatch>?>? conditions;
 
   /// Creates a new [APIServiceStatusPatch].
   /// [conditions] Current service state of apiService.

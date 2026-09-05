@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NamedResourcesAllocationResult is used in AllocationResultModel.
 class NamedResourcesAllocationResultPatch {
   /// Name is the name of the selected resource instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NamedResourcesAllocationResultPatch].
   /// [name] Name is the name of the selected resource instance.

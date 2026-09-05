@@ -15,57 +15,57 @@ import 'supplemental_groups_strategy_options_patch.dart';
 /// PodSecurityPolicySpec defines the policy enforced.
 class PodSecurityPolicySpecPatch {
   /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
-  final pulumi.Input<bool>? allowPrivilegeEscalation;
+  final pulumi.Input<bool?>? allowPrivilegeEscalation;
   /// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only honored if the API server enables the CSIInlineVolume feature gate.
-  final pulumi.Input<List<AllowedCSIDriverPatch>>? allowedCSIDrivers;
+  final pulumi.Input<List<AllowedCSIDriverPatch>?>? allowedCSIDrivers;
   /// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
-  final pulumi.Input<List<String>>? allowedCapabilities;
+  final pulumi.Input<List<String>?>? allowedCapabilities;
   /// allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
-  final pulumi.Input<List<AllowedFlexVolumePatch>>? allowedFlexVolumes;
+  final pulumi.Input<List<AllowedFlexVolumePatch>?>? allowedFlexVolumes;
   /// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
-  final pulumi.Input<List<AllowedHostPathPatch>>? allowedHostPaths;
+  final pulumi.Input<List<AllowedHostPathPatch>?>? allowedHostPaths;
   /// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
-  final pulumi.Input<List<String>>? allowedProcMountTypes;
+  final pulumi.Input<List<String>?>? allowedProcMountTypes;
   /// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
   ///
   /// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows "foo.bar", "foo.baz", etc.
-  final pulumi.Input<List<String>>? allowedUnsafeSysctls;
+  final pulumi.Input<List<String>?>? allowedUnsafeSysctls;
   /// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list.
-  final pulumi.Input<List<String>>? defaultAddCapabilities;
+  final pulumi.Input<List<String>?>? defaultAddCapabilities;
   /// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process.
-  final pulumi.Input<bool>? defaultAllowPrivilegeEscalation;
+  final pulumi.Input<bool?>? defaultAllowPrivilegeEscalation;
   /// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.
   ///
   /// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
-  final pulumi.Input<List<String>>? forbiddenSysctls;
+  final pulumi.Input<List<String>?>? forbiddenSysctls;
   /// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
-  final pulumi.Input<FSGroupStrategyOptionsPatch>? fsGroup;
+  final pulumi.Input<FSGroupStrategyOptionsPatch?>? fsGroup;
   /// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
-  final pulumi.Input<bool>? hostIPC;
+  final pulumi.Input<bool?>? hostIPC;
   /// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
-  final pulumi.Input<bool>? hostNetwork;
+  final pulumi.Input<bool?>? hostNetwork;
   /// hostPID determines if the policy allows the use of HostPID in the pod spec.
-  final pulumi.Input<bool>? hostPID;
+  final pulumi.Input<bool?>? hostPID;
   /// hostPorts determines which host port ranges are allowed to be exposed.
-  final pulumi.Input<List<HostPortRangePatch>>? hostPorts;
+  final pulumi.Input<List<HostPortRangePatch>?>? hostPorts;
   /// privileged determines if a pod can request to be run as privileged.
-  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<bool?>? privileged;
   /// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
-  final pulumi.Input<bool>? readOnlyRootFilesystem;
+  final pulumi.Input<bool?>? readOnlyRootFilesystem;
   /// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
-  final pulumi.Input<List<String>>? requiredDropCapabilities;
+  final pulumi.Input<List<String>?>? requiredDropCapabilities;
   /// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
-  final pulumi.Input<RunAsGroupStrategyOptionsPatch>? runAsGroup;
+  final pulumi.Input<RunAsGroupStrategyOptionsPatch?>? runAsGroup;
   /// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
-  final pulumi.Input<RunAsUserStrategyOptionsPatch>? runAsUser;
+  final pulumi.Input<RunAsUserStrategyOptionsPatch?>? runAsUser;
   /// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
-  final pulumi.Input<RuntimeClassStrategyOptionsPatch>? runtimeClass;
+  final pulumi.Input<RuntimeClassStrategyOptionsPatch?>? runtimeClass;
   /// seLinux is the strategy that will dictate the allowable labels that may be set.
-  final pulumi.Input<SELinuxStrategyOptionsPatch>? seLinux;
+  final pulumi.Input<SELinuxStrategyOptionsPatch?>? seLinux;
   /// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
-  final pulumi.Input<SupplementalGroupsStrategyOptionsPatch>? supplementalGroups;
+  final pulumi.Input<SupplementalGroupsStrategyOptionsPatch?>? supplementalGroups;
   /// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
-  final pulumi.Input<List<String>>? volumes;
+  final pulumi.Input<List<String>?>? volumes;
 
   /// Creates a new [PodSecurityPolicySpecPatch].
   /// [allowPrivilegeEscalation] allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PodDNSConfigOption defines DNS resolver options of a pod.
 class PodDNSConfigOptionPatch {
   /// Name is this DNS resolver option's name. Required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value is this DNS resolver option's value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [PodDNSConfigOptionPatch].
   /// [name] Name is this DNS resolver option's name. Required.

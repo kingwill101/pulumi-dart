@@ -9,9 +9,9 @@ class CustomResourceDefinitionStatus {
   /// acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
   final pulumi.Input<CustomResourceDefinitionNames> acceptedNames;
   /// conditions indicate state for particular aspects of a CustomResourceDefinition
-  final pulumi.Input<List<CustomResourceDefinitionCondition>>? conditions;
+  final pulumi.Input<List<CustomResourceDefinitionCondition>?>? conditions;
   /// The generation observed by the CRD controller.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
   final pulumi.Input<List<String>> storedVersions;
 
@@ -40,7 +40,7 @@ class CustomResourceDefinitionStatus {
     return CustomResourceDefinitionStatus(
       acceptedNames: pulumi.Input.fromValue(CustomResourceDefinitionNames.fromMap((map['acceptedNames']! as Map).cast<String, dynamic>())),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomResourceDefinitionCondition>(guardedValue, (value) => CustomResourceDefinitionCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storedVersions: pulumi.Input.fromValue((map['storedVersions'] as List).cast<String>()),
     );
   }

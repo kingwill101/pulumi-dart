@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AttachedVolume describes a volume attached to a node
 class AttachedVolumePatch {
   /// DevicePath represents the device path where the volume should be available
-  final pulumi.Input<String>? devicePath;
+  final pulumi.Input<String?>? devicePath;
   /// Name of the attached volume
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AttachedVolumePatch].
   /// [devicePath] DevicePath represents the device path where the volume should be available

@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
-import 'storage_version_migration_spec_storagemigration_k8s_io_v1beta1.dart';
-import 'storage_version_migration_status_storagemigration_k8s_io_v1beta1.dart';
-import 'storage_version_migration_storagemigration_k8s_io_v1beta1_args.dart';
+import 'storage_version_migration_spec_storagemigration_k8s_io_v1alpha1.dart';
+import 'storage_version_migration_status_storagemigration_k8s_io_v1alpha1.dart';
+import 'storage_version_migration_storagemigration_k8s_io_v1alpha1_args.dart';
 
 /// StorageVersionMigration represents a migration of stored data to the latest storage version.
 class StorageVersionMigrationResource extends pulumi.CustomResource {
@@ -13,20 +13,20 @@ class StorageVersionMigrationResource extends pulumi.CustomResource {
   /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
   /// Specification of the migration.
-  late final pulumi.Output<StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1> spec;
+  late final pulumi.Output<StorageVersionMigrationSpecStoragemigrationK8sIoV1alpha1> spec;
   /// Status of the migration.
-  late final pulumi.Output<StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1?> status;
+  late final pulumi.Output<StorageVersionMigrationStatusStoragemigrationK8sIoV1alpha1?> status;
 
   /// Creates a new [StorageVersionMigrationResource].
   /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [StorageVersionMigrationResource]. {@macro pulumi_storagemigration_k8s_io_v1beta1_storage_version_migration_storagemigration_k8s_io_v1beta1_args_doc}
+  /// [args] Arguments used to configure this [StorageVersionMigrationResource]. {@macro pulumi_storagemigration_k8s_io_v1alpha1_storage_version_migration_storagemigration_k8s_io_v1alpha1_args_doc}
   /// [options] Resource options controlling this resource's behavior.
   StorageVersionMigrationResource(
     String name, {
-    StorageVersionMigrationStoragemigrationK8sIoV1beta1Args? args,
+    StorageVersionMigrationStoragemigrationK8sIoV1alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:storagemigration.k8s.io/v1beta1:StorageVersionMigration',
+          'kubernetes:storagemigration.k8s.io/v1alpha1:StorageVersionMigration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
@@ -34,7 +34,23 @@ class StorageVersionMigrationResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spec = registerOutput<StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    status = registerOutput<StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<StorageVersionMigrationSpecStoragemigrationK8sIoV1alpha1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageVersionMigrationSpecStoragemigrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StorageVersionMigrationStatusStoragemigrationK8sIoV1alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageVersionMigrationStatusStoragemigrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [StorageVersionMigrationResource] resource.
+  StorageVersionMigrationResource.reference(String urn)
+    : super(
+        'kubernetes:storagemigration.k8s.io/v1alpha1:StorageVersionMigration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<StorageVersionMigrationSpecStoragemigrationK8sIoV1alpha1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageVersionMigrationSpecStoragemigrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StorageVersionMigrationStatusStoragemigrationK8sIoV1alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageVersionMigrationStatusStoragemigrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

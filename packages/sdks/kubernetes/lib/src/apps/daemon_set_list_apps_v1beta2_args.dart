@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'daemon_set_resource.dart';
+import 'daemon_set_apps_v1beta2.dart';
 
 /// {@template pulumi_apps_v1beta2_daemon_set_list_apps_v1beta2_args_doc}
 /// The set of arguments for DaemonSetList.
@@ -10,13 +10,13 @@ import 'daemon_set_resource.dart';
 /// {@macro pulumi_apps_v1beta2_daemon_set_list_apps_v1beta2_args_doc}
 class DaemonSetListAppsV1beta2Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// A list of daemon sets.
-  final pulumi.Input<List<DaemonSetResource>> items;
+  final pulumi.Input<List<DaemonSetAppsV1beta2>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [DaemonSetListAppsV1beta2Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class DaemonSetListAppsV1beta2Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<DaemonSetAppsV1beta2>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<DaemonSetAppsV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class DaemonSetListAppsV1beta2Args {
   factory DaemonSetListAppsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return DaemonSetListAppsV1beta2Args(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<DaemonSetResource>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonSetAppsV1beta2>(map['items']!, (value) => DaemonSetAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

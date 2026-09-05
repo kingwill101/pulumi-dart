@@ -39,4 +39,20 @@ class VolumeAttachmentResource extends pulumi.CustomResource {
     spec = registerOutput<VolumeAttachmentSpecStorageK8sIoV1alpha1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachmentSpecStorageK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<VolumeAttachmentStatusStorageK8sIoV1alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachmentStatusStorageK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [VolumeAttachmentResource] resource.
+  VolumeAttachmentResource.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1alpha1:VolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<VolumeAttachmentSpecStorageK8sIoV1alpha1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachmentSpecStorageK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<VolumeAttachmentStatusStorageK8sIoV1alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachmentStatusStorageK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

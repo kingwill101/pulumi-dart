@@ -7,13 +7,13 @@ import '../meta/label_selector_patch.dart';
 /// ReplicaSetSpec is the specification of a ReplicaSet.
 class ReplicaSetSpecPatch {
   /// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
-  final pulumi.Input<int>? minReadySeconds;
+  final pulumi.Input<int?>? minReadySeconds;
   /// Replicas is the number of desired pods. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
   /// Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
-  final pulumi.Input<LabelSelectorPatch>? selector;
+  final pulumi.Input<LabelSelectorPatch?>? selector;
   /// Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#pod-template
-  final pulumi.Input<PodTemplateSpecPatch>? template;
+  final pulumi.Input<PodTemplateSpecPatch?>? template;
 
   /// Creates a new [ReplicaSetSpecPatch].
   /// [minReadySeconds] Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
@@ -38,8 +38,8 @@ class ReplicaSetSpecPatch {
 
   factory ReplicaSetSpecPatch.fromMap(Map<String, dynamic> map) {
     return ReplicaSetSpecPatch(
-      minReadySeconds: (() { final guardedValue = map['minReadySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minReadySeconds: (() { final guardedValue = map['minReadySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodTemplateSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

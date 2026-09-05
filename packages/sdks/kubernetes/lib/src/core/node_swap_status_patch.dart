@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeSwapStatus represents swap memory information.
 class NodeSwapStatusPatch {
   /// Total amount of swap memory in bytes.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
 
   /// Creates a new [NodeSwapStatusPatch].
   /// [capacity] Total amount of swap memory in bytes.
@@ -21,7 +21,7 @@ class NodeSwapStatusPatch {
 
   factory NodeSwapStatusPatch.fromMap(Map<String, dynamic> map) {
     return NodeSwapStatusPatch(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

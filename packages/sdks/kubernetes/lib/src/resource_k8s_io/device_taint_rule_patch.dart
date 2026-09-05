@@ -8,17 +8,17 @@ import 'device_taint_rule_status_patch.dart';
 /// DeviceTaintRule adds one taint to all devices which match the selector. This has the same effect as if the taint was specified directly in the ResourceSlice by the DRA driver.
 class DeviceTaintRulePatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Spec specifies the selector and one taint.
   ///
   /// Changing the spec automatically increments the metadata.generation number.
-  final pulumi.Input<DeviceTaintRuleSpecPatch>? spec;
+  final pulumi.Input<DeviceTaintRuleSpecPatch?>? spec;
   /// Status provides information about what was requested in the spec.
-  final pulumi.Input<DeviceTaintRuleStatusPatch>? status;
+  final pulumi.Input<DeviceTaintRuleStatusPatch?>? status;
 
   /// Creates a new [DeviceTaintRulePatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

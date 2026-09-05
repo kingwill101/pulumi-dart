@@ -7,12 +7,12 @@ import 'audit_sink_spec.dart';
 /// AuditSink represents a cluster level audit sink
 class AuditSink {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Spec defines the audit configuration spec
-  final pulumi.Input<AuditSinkSpec>? spec;
+  final pulumi.Input<AuditSinkSpec?>? spec;
 
   /// Creates a new [AuditSink].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

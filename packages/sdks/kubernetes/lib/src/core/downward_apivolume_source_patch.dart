@@ -6,28 +6,34 @@ import 'downward_apivolume_file_patch.dart';
 /// DownwardAPIVolumeSource represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
 class DownwardAPIVolumeSourcePatch {
   /// Optional: mode bits to use on created files by default. Must be a Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-  final pulumi.Input<int>? defaultMode;
+  final pulumi.Input<int?>? defaultMode;
+  /// defaultUser is Optional: The owner UID of the created files by default. The defaultUser field is only used as a fallback when the item-level user field is unset. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled.
+  final pulumi.Input<int?>? defaultUser;
   /// Items is a list of downward API volume file
-  final pulumi.Input<List<DownwardAPIVolumeFilePatch>>? items;
+  final pulumi.Input<List<DownwardAPIVolumeFilePatch>?>? items;
 
   /// Creates a new [DownwardAPIVolumeSourcePatch].
   /// [defaultMode] Optional: mode bits to use on created files by default. Must be a Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+  /// [defaultUser] defaultUser is Optional: The owner UID of the created files by default. The defaultUser field is only used as a fallback when the item-level user field is unset. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled.
   /// [items] Items is a list of downward API volume file
   const DownwardAPIVolumeSourcePatch({
     this.defaultMode,
+    this.defaultUser,
     this.items,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultMode': ?defaultMode,
+      'defaultUser': ?defaultUser,
       'items': ?pulumi.Input.mapOptionalInputValue<List<DownwardAPIVolumeFilePatch>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<DownwardAPIVolumeFilePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DownwardAPIVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return DownwardAPIVolumeSourcePatch(
-      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultUser: (() { final guardedValue = map['defaultUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DownwardAPIVolumeFilePatch>(guardedValue, (value) => DownwardAPIVolumeFilePatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

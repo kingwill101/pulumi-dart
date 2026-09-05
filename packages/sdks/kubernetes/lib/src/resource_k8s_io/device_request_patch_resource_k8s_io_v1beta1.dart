@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_requirements_patch_resource_k8s_io_v1beta1.dart';
+import 'device_derived_attribute_patch_resource_k8s_io_v1beta1.dart';
 import 'device_selector_patch_resource_k8s_io_v1beta1.dart';
 import 'device_sub_request_patch_resource_k8s_io_v1beta1.dart';
 import 'device_toleration_patch_resource_k8s_io_v1beta1.dart';
@@ -13,7 +14,7 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
   /// This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list.
   ///
   /// This is an alpha field and requires enabling the DRAAdminAccess feature gate. Admin access is disabled if this field is unset or set to false, otherwise it is enabled.
-  final pulumi.Input<bool>? adminAccess;
+  final pulumi.Input<bool?>? adminAccess;
   /// AllocationMode and its related fields define how devices are allocated to satisfy this request. Supported values are:
   ///
   /// - ExactCount: This request is for a specific number of devices.
@@ -30,37 +31,47 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
   /// This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list.
   ///
   /// More modes may get added in the future. Clients must refuse to handle requests with unknown modes.
-  final pulumi.Input<String>? allocationMode;
+  final pulumi.Input<String?>? allocationMode;
   /// Capacity define resource requirements against each capacity.
   ///
   /// If this field is unset and the device supports multiple allocations, the default value will be applied to each capacity according to requestPolicy. For the capacity that has no requestPolicy, default is the full capacity value.
   ///
   /// Applies to each device allocation. If Count &gt; 1, the request fails if there aren't enough devices that meet the requirements. If AllocationMode is set to All, the request fails if there are devices that otherwise match the request, and have this capacity, with a value &gt;= the requested amount, but which cannot be allocated to this request.
-  final pulumi.Input<CapacityRequirementsPatchResourceK8sIoV1beta1>? capacity;
+  final pulumi.Input<CapacityRequirementsPatchResourceK8sIoV1beta1?>? capacity;
   /// Count is used only when the count mode is "ExactCount". Must be greater than zero. If AllocationMode is ExactCount and this field is not specified, the default is one.
   ///
   /// This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
+  /// DerivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions.
+  ///
+  /// Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints.
+  ///
+  /// Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list.
+  ///
+  /// The maximum number of derived attributes is 32.
+  ///
+  /// This is an alpha field and requires enabling the DRADerivedAttributes feature gate.
+  final pulumi.Input<List<DeviceDerivedAttributePatchResourceK8sIoV1beta1>?>? derivedAttributes;
   /// DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this request.
   ///
   /// A class is required if no subrequests are specified in the firstAvailable list and no class can be set if subrequests are specified in the firstAvailable list. Which classes are available depends on the cluster.
   ///
   /// Administrators may use this to restrict which devices may get requested by only installing classes with selectors for permitted devices. If users are free to request anything without restrictions, then administrators can create an empty DeviceClass for users to reference.
-  final pulumi.Input<String>? deviceClassName;
+  final pulumi.Input<String?>? deviceClassName;
   /// FirstAvailable contains subrequests, of which exactly one will be satisfied by the scheduler to satisfy this request. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one cannot be used.
   ///
   /// This field may only be set in the entries of DeviceClaim.Requests.
   ///
   /// DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later.
-  final pulumi.Input<List<DeviceSubRequestPatchResourceK8sIoV1beta1>>? firstAvailable;
+  final pulumi.Input<List<DeviceSubRequestPatchResourceK8sIoV1beta1>?>? firstAvailable;
   /// Name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim.
   ///
   /// Must be a DNS label and unique among all DeviceRequests in a ResourceClaim.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered.
   ///
   /// This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list.
-  final pulumi.Input<List<DeviceSelectorPatchResourceK8sIoV1beta1>>? selectors;
+  final pulumi.Input<List<DeviceSelectorPatchResourceK8sIoV1beta1>?>? selectors;
   /// If specified, the request's tolerations.
   ///
   /// Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute.
@@ -72,13 +83,14 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
   /// This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list.
   ///
   /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
-  final pulumi.Input<List<DeviceTolerationPatchResourceK8sIoV1beta1>>? tolerations;
+  final pulumi.Input<List<DeviceTolerationPatchResourceK8sIoV1beta1>?>? tolerations;
 
   /// Creates a new [DeviceRequestPatchResourceK8sIoV1beta1].
   /// [adminAccess] AdminAccess indicates that this is a claim for administrative access to the device(s). Claims with AdminAccess are expected to be used for monitoring or other management services for a device.  They ignore all ordinary claims to the device with respect to access modes and any resource allocations.
   /// [allocationMode] AllocationMode and its related fields define how devices are allocated to satisfy this request. Supported values are:
   /// [capacity] Capacity define resource requirements against each capacity.
   /// [count] Count is used only when the count mode is "ExactCount". Must be greater than zero. If AllocationMode is ExactCount and this field is not specified, the default is one.
+  /// [derivedAttributes] DerivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions.
   /// [deviceClassName] DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this request.
   /// [firstAvailable] FirstAvailable contains subrequests, of which exactly one will be satisfied by the scheduler to satisfy this request. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one cannot be used.
   /// [name] Name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim.
@@ -89,6 +101,7 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
     this.allocationMode,
     this.capacity,
     this.count,
+    this.derivedAttributes,
     this.deviceClassName,
     this.firstAvailable,
     this.name,
@@ -102,6 +115,7 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
       'allocationMode': ?allocationMode,
       'capacity': ?pulumi.Input.mapOptionalInputValue<CapacityRequirementsPatchResourceK8sIoV1beta1, Map<String, dynamic>>(capacity, (value) => value.toMap()),
       'count': ?count,
+      'derivedAttributes': ?pulumi.Input.mapOptionalInputValue<List<DeviceDerivedAttributePatchResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(derivedAttributes, (value) => pulumi.Input.encodeList<DeviceDerivedAttributePatchResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deviceClassName': ?deviceClassName,
       'firstAvailable': ?pulumi.Input.mapOptionalInputValue<List<DeviceSubRequestPatchResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(firstAvailable, (value) => pulumi.Input.encodeList<DeviceSubRequestPatchResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
@@ -115,7 +129,8 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
       adminAccess: (() { final guardedValue = map['adminAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allocationMode: (() { final guardedValue = map['allocationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityRequirementsPatchResourceK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      derivedAttributes: (() { final guardedValue = map['derivedAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceDerivedAttributePatchResourceK8sIoV1beta1>(guardedValue, (value) => DeviceDerivedAttributePatchResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deviceClassName: (() { final guardedValue = map['deviceClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firstAvailable: (() { final guardedValue = map['firstAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceSubRequestPatchResourceK8sIoV1beta1>(guardedValue, (value) => DeviceSubRequestPatchResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

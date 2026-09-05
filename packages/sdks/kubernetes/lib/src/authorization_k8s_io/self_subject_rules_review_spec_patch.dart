@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.
 class SelfSubjectRulesReviewSpecPatch {
   /// namespace to evaluate rules for. Required.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [SelfSubjectRulesReviewSpecPatch].
   /// [namespace] namespace to evaluate rules for. Required.

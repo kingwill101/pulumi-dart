@@ -43,4 +43,20 @@ class ResourcePoolStatusRequestPatchResourceK8sIoV1alpha3 extends pulumi.CustomR
     spec = registerOutput<ResourcePoolStatusRequestSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolStatusRequestSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ResourcePoolStatusRequestStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolStatusRequestStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ResourcePoolStatusRequestPatchResourceK8sIoV1alpha3] resource.
+  ResourcePoolStatusRequestPatchResourceK8sIoV1alpha3.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha3:ResourcePoolStatusRequestPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ResourcePoolStatusRequestSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolStatusRequestSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ResourcePoolStatusRequestStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolStatusRequestStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Info contains versioning information. how we'll want to distribute that information.
 class InfoPatch {
-  final pulumi.Input<String>? buildDate;
-  final pulumi.Input<String>? compiler;
+  final pulumi.Input<String?>? buildDate;
+  final pulumi.Input<String?>? compiler;
   /// EmulationMajor is the major version of the emulation version
-  final pulumi.Input<String>? emulationMajor;
+  final pulumi.Input<String?>? emulationMajor;
   /// EmulationMinor is the minor version of the emulation version
-  final pulumi.Input<String>? emulationMinor;
-  final pulumi.Input<String>? gitCommit;
-  final pulumi.Input<String>? gitTreeState;
-  final pulumi.Input<String>? gitVersion;
-  final pulumi.Input<String>? goVersion;
+  final pulumi.Input<String?>? emulationMinor;
+  final pulumi.Input<String?>? gitCommit;
+  final pulumi.Input<String?>? gitTreeState;
+  final pulumi.Input<String?>? gitVersion;
+  final pulumi.Input<String?>? goVersion;
   /// Major is the major version of the binary version
-  final pulumi.Input<String>? major;
+  final pulumi.Input<String?>? major;
   /// MinCompatibilityMajor is the major version of the minimum compatibility version
-  final pulumi.Input<String>? minCompatibilityMajor;
+  final pulumi.Input<String?>? minCompatibilityMajor;
   /// MinCompatibilityMinor is the minor version of the minimum compatibility version
-  final pulumi.Input<String>? minCompatibilityMinor;
+  final pulumi.Input<String?>? minCompatibilityMinor;
   /// Minor is the minor version of the binary version
-  final pulumi.Input<String>? minor;
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? minor;
+  final pulumi.Input<String?>? platform;
 
   /// Creates a new [InfoPatch].
   /// [buildDate] Optional.

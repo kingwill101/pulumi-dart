@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateSigningRequestConditionCertificatesK8sIoV1beta1 {
   /// lastTransitionTime is the time the condition last transitioned from one status to another. If unset, when a new condition type is added or an existing condition's status is changed, the server defaults this to the current time.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// timestamp for the last update to this condition
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// human readable message with details about the request state
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// brief reason for the request state
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown. Approved, Denied, and Failed conditions may not be "False" or "Unknown". Defaults to "True". If unset, should be treated as "True".
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// request approval state, currently Approved or Denied.
   final pulumi.Input<String> type;
 

@@ -8,15 +8,15 @@ import 'metric_value_status_patch.dart';
 /// ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
 class ObjectMetricStatusPatch {
   /// current contains the current value for the given metric
-  final pulumi.Input<MetricValueStatusPatch>? current;
-  /// DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
-  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2>? describedObject;
+  final pulumi.Input<MetricValueStatusPatch?>? current;
+  /// describedObject specifies the descriptions of a object,such as kind,name apiVersion
+  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2?>? describedObject;
   /// metric identifies the target metric by name and selector
-  final pulumi.Input<MetricIdentifierPatch>? metric;
+  final pulumi.Input<MetricIdentifierPatch?>? metric;
 
   /// Creates a new [ObjectMetricStatusPatch].
   /// [current] current contains the current value for the given metric
-  /// [describedObject] DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
+  /// [describedObject] describedObject specifies the descriptions of a object,such as kind,name apiVersion
   /// [metric] metric identifies the target metric by name and selector
   const ObjectMetricStatusPatch({
     this.current,

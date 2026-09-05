@@ -14,33 +14,33 @@ import 'node_system_info.dart';
 /// NodeStatus is information about the current status of a node.
 class NodeStatus {
   /// List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/reference/node/node-status/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See https://pr.k8s.io/79391 for an example. Consumers should assume that addresses can change during the lifetime of a Node. However, there are some exceptions where this may not be possible, such as Pods that inherit a Node's address in its own status or consumers of the downward API (status.hostIP).
-  final pulumi.Input<List<NodeAddress>>? addresses;
+  final pulumi.Input<List<NodeAddress>?>? addresses;
   /// Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.
-  final pulumi.Input<Map<String, String>>? allocatable;
+  final pulumi.Input<Map<String, String>?>? allocatable;
   /// Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/reference/node/node-status/#capacity
-  final pulumi.Input<Map<String, String>>? capacity;
+  final pulumi.Input<Map<String, String>?>? capacity;
   /// Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/reference/node/node-status/#condition
-  final pulumi.Input<List<NodeCondition>>? conditions;
+  final pulumi.Input<List<NodeCondition>?>? conditions;
   /// Status of the config assigned to the node via the dynamic Kubelet config feature.
-  final pulumi.Input<NodeConfigStatus>? config;
+  final pulumi.Input<NodeConfigStatus?>? config;
   /// Endpoints of daemons running on the Node.
-  final pulumi.Input<NodeDaemonEndpoints>? daemonEndpoints;
+  final pulumi.Input<NodeDaemonEndpoints?>? daemonEndpoints;
   /// DeclaredFeatures represents the features related to feature gates that are declared by the node.
-  final pulumi.Input<List<String>>? declaredFeatures;
+  final pulumi.Input<List<String>?>? declaredFeatures;
   /// Features describes the set of features implemented by the CRI implementation.
-  final pulumi.Input<NodeFeatures>? features;
+  final pulumi.Input<NodeFeatures?>? features;
   /// List of container images on this node
-  final pulumi.Input<List<ContainerImage>>? images;
+  final pulumi.Input<List<ContainerImage>?>? images;
   /// Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/reference/node/node-status/#info
-  final pulumi.Input<NodeSystemInfo>? nodeInfo;
+  final pulumi.Input<NodeSystemInfo?>? nodeInfo;
   /// NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.
-  final pulumi.Input<String>? phase;
+  final pulumi.Input<String?>? phase;
   /// The available runtime handlers.
-  final pulumi.Input<List<NodeRuntimeHandler>>? runtimeHandlers;
+  final pulumi.Input<List<NodeRuntimeHandler>?>? runtimeHandlers;
   /// List of volumes that are attached to the node.
-  final pulumi.Input<List<AttachedVolume>>? volumesAttached;
+  final pulumi.Input<List<AttachedVolume>?>? volumesAttached;
   /// List of attachable volumes in use (mounted) by the node.
-  final pulumi.Input<List<String>>? volumesInUse;
+  final pulumi.Input<List<String>?>? volumesInUse;
 
   /// Creates a new [NodeStatus].
   /// [addresses] List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/reference/node/node-status/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See https://pr.k8s.io/79391 for an example. Consumers should assume that addresses can change during the lifetime of a Node. However, there are some exceptions where this may not be possible, such as Pods that inherit a Node's address in its own status or consumers of the downward API (status.hostIP).

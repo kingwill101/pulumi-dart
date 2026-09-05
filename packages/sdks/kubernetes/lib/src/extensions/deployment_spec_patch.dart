@@ -9,23 +9,23 @@ import 'rollback_config_patch.dart';
 /// DeploymentSpec is the specification of the desired behavior of the Deployment.
 class DeploymentSpecPatch {
   /// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
-  final pulumi.Input<int>? minReadySeconds;
+  final pulumi.Input<int?>? minReadySeconds;
   /// Indicates that the deployment is paused and will not be processed by the deployment controller.
-  final pulumi.Input<bool>? paused;
+  final pulumi.Input<bool?>? paused;
   /// The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is set to the max value of int32 (i.e. 2147483647) by default, which means "no deadline".
-  final pulumi.Input<int>? progressDeadlineSeconds;
+  final pulumi.Input<int?>? progressDeadlineSeconds;
   /// Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
   /// The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. This is set to the max value of int32 (i.e. 2147483647) by default, which means "retaining all old RelicaSets".
-  final pulumi.Input<int>? revisionHistoryLimit;
+  final pulumi.Input<int?>? revisionHistoryLimit;
   /// DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.
-  final pulumi.Input<RollbackConfigPatch>? rollbackTo;
+  final pulumi.Input<RollbackConfigPatch?>? rollbackTo;
   /// Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.
-  final pulumi.Input<LabelSelectorPatch>? selector;
+  final pulumi.Input<LabelSelectorPatch?>? selector;
   /// The deployment strategy to use to replace existing pods with new ones.
-  final pulumi.Input<DeploymentStrategyPatch>? strategy;
+  final pulumi.Input<DeploymentStrategyPatch?>? strategy;
   /// Template describes the pods that will be created.
-  final pulumi.Input<PodTemplateSpecPatch>? template;
+  final pulumi.Input<PodTemplateSpecPatch?>? template;
 
   /// Creates a new [DeploymentSpecPatch].
   /// [minReadySeconds] Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
@@ -65,11 +65,11 @@ class DeploymentSpecPatch {
 
   factory DeploymentSpecPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentSpecPatch(
-      minReadySeconds: (() { final guardedValue = map['minReadySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minReadySeconds: (() { final guardedValue = map['minReadySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       paused: (() { final guardedValue = map['paused']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      progressDeadlineSeconds: (() { final guardedValue = map['progressDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      revisionHistoryLimit: (() { final guardedValue = map['revisionHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      progressDeadlineSeconds: (() { final guardedValue = map['progressDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      revisionHistoryLimit: (() { final guardedValue = map['revisionHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       rollbackTo: (() { final guardedValue = map['rollbackTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RollbackConfigPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentStrategyPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

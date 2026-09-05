@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Photon Controller persistent disk resource.
 class PhotonPersistentDiskVolumeSourcePatch {
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
-  final pulumi.Input<String>? fsType;
+  final pulumi.Input<String?>? fsType;
   /// pdID is the ID that identifies Photon Controller persistent disk
-  final pulumi.Input<String>? pdID;
+  final pulumi.Input<String?>? pdID;
 
   /// Creates a new [PhotonPersistentDiskVolumeSourcePatch].
   /// [fsType] fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.

@@ -10,9 +10,9 @@ class ConfigFileYamlArgs {
   /// Path or a URL that uniquely identifies a file.
   final pulumi.Input<String> file;
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  final pulumi.Input<List<dynamic>>? transformations_;
+  final pulumi.Input<List<dynamic>?>? transformations_;
 
   /// Creates a new [ConfigFileYamlArgs].
   /// [file] Path or a URL that uniquely identifies a file.

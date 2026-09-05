@@ -11,15 +11,15 @@ import 'policy_rule_rbac_authorization_k8s_io_v1beta1.dart';
 /// {@macro pulumi_rbac_authorization_k8s_io_v1beta1_cluster_role_rbac_authorization_k8s_io_v1beta1_args_doc}
 class ClusterRoleRbacAuthorizationK8sIoV1beta1Args {
   /// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-  final pulumi.Input<AggregationRuleRbacAuthorizationK8sIoV1beta1>? aggregationRule;
+  final pulumi.Input<AggregationRuleRbacAuthorizationK8sIoV1beta1?>? aggregationRule;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Rules holds all the PolicyRules for this ClusterRole
-  final pulumi.Input<List<PolicyRuleRbacAuthorizationK8sIoV1beta1>>? rules;
+  final pulumi.Input<List<PolicyRuleRbacAuthorizationK8sIoV1beta1>?>? rules;
 
   /// Creates a new [ClusterRoleRbacAuthorizationK8sIoV1beta1Args].
   /// [aggregationRule] AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.

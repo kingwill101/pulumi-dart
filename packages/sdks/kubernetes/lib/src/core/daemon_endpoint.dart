@@ -21,7 +21,7 @@ class DaemonEndpoint {
 
   factory DaemonEndpoint.fromMap(Map<String, dynamic> map) {
     return DaemonEndpoint(
-      port: pulumi.Input.fromValue(map['Port'] as int),
+      port: pulumi.Input.fromValue((map['Port'] as num).toInt()),
     );
   }
 }

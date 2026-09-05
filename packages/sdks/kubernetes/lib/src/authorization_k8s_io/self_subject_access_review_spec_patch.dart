@@ -7,9 +7,9 @@ import 'resource_attributes_patch.dart';
 /// SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of resourceAttributes and nonResourceAttributes must be set
 class SelfSubjectAccessReviewSpecPatch {
   /// nonResourceAttributes describes information for a non-resource access request
-  final pulumi.Input<NonResourceAttributesPatch>? nonResourceAttributes;
+  final pulumi.Input<NonResourceAttributesPatch?>? nonResourceAttributes;
   /// resourceAttributes describes information for a resource access request
-  final pulumi.Input<ResourceAttributesPatch>? resourceAttributes;
+  final pulumi.Input<ResourceAttributesPatch?>? resourceAttributes;
 
   /// Creates a new [SelfSubjectAccessReviewSpecPatch].
   /// [nonResourceAttributes] nonResourceAttributes describes information for a non-resource access request

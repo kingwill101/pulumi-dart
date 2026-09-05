@@ -43,4 +43,19 @@ class ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1 extends 
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<ValidatingAdmissionPolicyBindingSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyBindingSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1] resource.
+  ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1:ValidatingAdmissionPolicyBindingPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ValidatingAdmissionPolicyBindingSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyBindingSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

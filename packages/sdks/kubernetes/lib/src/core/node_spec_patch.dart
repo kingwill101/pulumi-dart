@@ -2,30 +2,34 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_config_source_patch.dart';
+import 'node_pod_preemption_policy_patch.dart';
 import 'taint_patch.dart';
 
 /// NodeSpec describes the attributes that a node is created with.
 class NodeSpecPatch {
   /// Deprecated: Previously used to specify the source of the node's configuration for the DynamicKubeletConfig feature. This feature is removed.
-  final pulumi.Input<NodeConfigSourcePatch>? configSource;
+  final pulumi.Input<NodeConfigSourcePatch?>? configSource;
   /// Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966
-  final pulumi.Input<String>? externalID;
+  final pulumi.Input<String?>? externalID;
   /// PodCIDR represents the pod IP range assigned to the node.
-  final pulumi.Input<String>? podCIDR;
+  final pulumi.Input<String?>? podCIDR;
   /// podCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of IPv4 and IPv6.
-  final pulumi.Input<List<String>>? podCIDRs;
+  final pulumi.Input<List<String>?>? podCIDRs;
+  /// PodPreemptionPolicy controls the node-level preemption behaviors for pods on this node. This is an alpha field and requires enabling the InPlacePodVerticalScalingSchedulerPreemption feature gate.
+  final pulumi.Input<NodePodPreemptionPolicyPatch?>? podPreemptionPolicy;
   /// ID of the node assigned by the cloud provider in the format: &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
-  final pulumi.Input<String>? providerID;
+  final pulumi.Input<String?>? providerID;
   /// If specified, the node's taints.
-  final pulumi.Input<List<TaintPatch>>? taints;
+  final pulumi.Input<List<TaintPatch>?>? taints;
   /// Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
-  final pulumi.Input<bool>? unschedulable;
+  final pulumi.Input<bool?>? unschedulable;
 
   /// Creates a new [NodeSpecPatch].
   /// [configSource] Deprecated: Previously used to specify the source of the node's configuration for the DynamicKubeletConfig feature. This feature is removed.
   /// [externalID] Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966
   /// [podCIDR] PodCIDR represents the pod IP range assigned to the node.
   /// [podCIDRs] podCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of IPv4 and IPv6.
+  /// [podPreemptionPolicy] PodPreemptionPolicy controls the node-level preemption behaviors for pods on this node. This is an alpha field and requires enabling the InPlacePodVerticalScalingSchedulerPreemption feature gate.
   /// [providerID] ID of the node assigned by the cloud provider in the format: &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
   /// [taints] If specified, the node's taints.
   /// [unschedulable] Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
@@ -34,6 +38,7 @@ class NodeSpecPatch {
     this.externalID,
     this.podCIDR,
     this.podCIDRs,
+    this.podPreemptionPolicy,
     this.providerID,
     this.taints,
     this.unschedulable,
@@ -45,6 +50,7 @@ class NodeSpecPatch {
       'externalID': ?externalID,
       'podCIDR': ?podCIDR,
       'podCIDRs': ?podCIDRs,
+      'podPreemptionPolicy': ?pulumi.Input.mapOptionalInputValue<NodePodPreemptionPolicyPatch, Map<String, dynamic>>(podPreemptionPolicy, (value) => value.toMap()),
       'providerID': ?providerID,
       'taints': ?pulumi.Input.mapOptionalInputValue<List<TaintPatch>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<TaintPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'unschedulable': ?unschedulable,
@@ -57,6 +63,7 @@ class NodeSpecPatch {
       externalID: (() { final guardedValue = map['externalID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       podCIDR: (() { final guardedValue = map['podCIDR']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       podCIDRs: (() { final guardedValue = map['podCIDRs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      podPreemptionPolicy: (() { final guardedValue = map['podPreemptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePodPreemptionPolicyPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       providerID: (() { final guardedValue = map['providerID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaintPatch>(guardedValue, (value) => TaintPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       unschedulable: (() { final guardedValue = map['unschedulable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

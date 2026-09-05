@@ -10,7 +10,7 @@ class NamedResourcesRequestPatch {
   ///
   /// attributes.quantity["a"].isGreaterThan(quantity("0")) &&
   /// attributes.stringslice["b"].isSorted()
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
 
   /// Creates a new [NamedResourcesRequestPatch].
   /// [selector] Selector is a CEL expression which must evaluate to true if a resource instance is suitable. The language is as defined in https://kubernetes.io/docs/reference/using-api/cel/

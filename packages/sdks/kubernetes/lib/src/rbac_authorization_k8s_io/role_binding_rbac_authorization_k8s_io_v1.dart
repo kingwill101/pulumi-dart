@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'role_binding_args.dart';
 import 'role_ref.dart';
+import 'subject.dart';
 
 /// RoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.
 class RoleBindingRbacAuthorizationK8sIoV1 extends pulumi.CustomResource {
@@ -9,12 +10,12 @@ class RoleBindingRbacAuthorizationK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<String> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// Standard object's metadata.
+  /// metadata is the standard object's metadata.
   late final pulumi.Output<ObjectMeta> metadata;
-  /// RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
+  /// roleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
   late final pulumi.Output<RoleRef> roleRef;
-  /// Subjects holds references to the objects the role applies to.
-  late final pulumi.Output<List<Map<String, dynamic>>> subjects;
+  /// subjects holds references to the objects the role applies to.
+  late final pulumi.Output<List<Subject>> subjects;
 
   /// Creates a new [RoleBindingRbacAuthorizationK8sIoV1].
   /// [name] The Pulumi resource name.
@@ -34,6 +35,22 @@ class RoleBindingRbacAuthorizationK8sIoV1 extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleRef = registerOutput<RoleRef>('roleRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subjects = registerOutput<List<Map<String, dynamic>>>('subjects');
+    subjects = registerOutput<List<Subject>>('subjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Subject>(guardedValue, (value) => Subject.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RoleBindingRbacAuthorizationK8sIoV1] resource.
+  RoleBindingRbacAuthorizationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:rbac.authorization.k8s.io/v1:RoleBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleRef = registerOutput<RoleRef>('roleRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjects = registerOutput<List<Subject>>('subjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Subject>(guardedValue, (value) => Subject.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

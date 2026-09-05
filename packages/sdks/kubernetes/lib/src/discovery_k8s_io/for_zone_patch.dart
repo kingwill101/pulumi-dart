@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ForZone provides information about which zones should consume this endpoint.
 class ForZonePatch {
   /// name represents the name of the zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ForZonePatch].
   /// [name] name represents the name of the zone.

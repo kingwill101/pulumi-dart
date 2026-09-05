@@ -5,11 +5,11 @@ import '../meta/label_selector_patch.dart';
 
 /// AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole
 class AggregationRulePatch {
-  /// ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
-  final pulumi.Input<List<LabelSelectorPatch>>? clusterRoleSelectors;
+  /// clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
+  final pulumi.Input<List<LabelSelectorPatch>?>? clusterRoleSelectors;
 
   /// Creates a new [AggregationRulePatch].
-  /// [clusterRoleSelectors] ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
+  /// [clusterRoleSelectors] clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
   const AggregationRulePatch({
     this.clusterRoleSelectors,
   });

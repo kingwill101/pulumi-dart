@@ -18,7 +18,7 @@ class VolumeAttachmentPatchStorageK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<String?> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-  /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// spec represents specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
   late final pulumi.Output<VolumeAttachmentSpecPatch?> spec;
@@ -39,6 +39,22 @@ class VolumeAttachmentPatchStorageK8sIoV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<VolumeAttachmentSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachmentSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<VolumeAttachmentStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachmentStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttachmentPatchStorageK8sIoV1] resource.
+  VolumeAttachmentPatchStorageK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:storage.k8s.io/v1:VolumeAttachmentPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });

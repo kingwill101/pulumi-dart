@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GroupResource specifies a Group and a Resource, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types
 class GroupResourcePatch {
-  final pulumi.Input<String>? group;
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? group;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [GroupResourcePatch].
   /// [group] Optional.

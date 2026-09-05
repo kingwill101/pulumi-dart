@@ -14,14 +14,14 @@ import 'certificate_signing_request_status_patch.dart';
 /// This API can be used to request client certificates to authenticate to kube-apiserver (with the "kubernetes.io/kube-apiserver-client" signerName), or to obtain certificates from custom non-Kubernetes signers.
 class CertificateSigningRequestPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
-  final pulumi.Input<CertificateSigningRequestSpecPatch>? spec;
+  final pulumi.Input<CertificateSigningRequestSpecPatch?>? spec;
   /// status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
-  final pulumi.Input<CertificateSigningRequestStatusPatch>? status;
+  final pulumi.Input<CertificateSigningRequestStatusPatch?>? status;
 
   /// Creates a new [CertificateSigningRequestPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

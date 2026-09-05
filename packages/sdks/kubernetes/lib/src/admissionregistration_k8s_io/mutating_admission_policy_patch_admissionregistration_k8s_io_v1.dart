@@ -39,4 +39,19 @@ class MutatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1 extends pulumi.Cu
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<MutatingAdmissionPolicySpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutatingAdmissionPolicySpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [MutatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1] resource.
+  MutatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1:MutatingAdmissionPolicyPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<MutatingAdmissionPolicySpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutatingAdmissionPolicySpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

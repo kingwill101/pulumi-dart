@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'cluster_role_binding_patch_rbac_authorization_k8s_io_v1beta1_args.dart';
 import 'role_ref_patch_rbac_authorization_k8s_io_v1beta1.dart';
+import 'subject_patch_rbac_authorization_k8s_io_v1beta1.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -20,7 +21,7 @@ class ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1Resource extends pulum
   /// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
   late final pulumi.Output<RoleRefPatchRbacAuthorizationK8sIoV1beta1?> roleRef;
   /// Subjects holds references to the objects the role applies to.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subjects;
+  late final pulumi.Output<List<SubjectPatchRbacAuthorizationK8sIoV1beta1>?> subjects;
 
   /// Creates a new [ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1Resource].
   /// [name] The Pulumi resource name.
@@ -40,6 +41,22 @@ class ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1Resource extends pulum
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleRef = registerOutput<RoleRefPatchRbacAuthorizationK8sIoV1beta1?>('roleRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleRefPatchRbacAuthorizationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subjects = registerOutput<List<Map<String, dynamic>>?>('subjects');
+    subjects = registerOutput<List<SubjectPatchRbacAuthorizationK8sIoV1beta1>?>('subjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubjectPatchRbacAuthorizationK8sIoV1beta1>(guardedValue, (value) => SubjectPatchRbacAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1Resource] resource.
+  ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:rbac.authorization.k8s.io/v1beta1:ClusterRoleBindingPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleRef = registerOutput<RoleRefPatchRbacAuthorizationK8sIoV1beta1?>('roleRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleRefPatchRbacAuthorizationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjects = registerOutput<List<SubjectPatchRbacAuthorizationK8sIoV1beta1>?>('subjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubjectPatchRbacAuthorizationK8sIoV1beta1>(guardedValue, (value) => SubjectPatchRbacAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

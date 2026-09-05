@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DeploymentCondition describes the state of a deployment at a certain point.
 class DeploymentConditionPatchAppsV1beta1 {
   /// Last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// The last time this condition was updated.
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// A human readable message indicating details about the transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of deployment condition.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DeploymentConditionPatchAppsV1beta1].
   /// [lastTransitionTime] Last time the condition transitioned from one status to another.

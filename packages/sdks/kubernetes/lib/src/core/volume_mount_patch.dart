@@ -4,14 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VolumeMount describes a mounting of a Volume within a container.
 class VolumeMountPatch {
-  /// Path within the container at which the volume should be mounted.  Must not contain ':'.
-  final pulumi.Input<String>? mountPath;
+  /// bindMountOptions is the list of additional bind mount options to apply when mounting this volume into the container. Allowed values are noexec, nodev, and nosuid. These are Linux mount options and have no effect on Windows nodes. This field is not supported with image volumes. This is an alpha field and requires enabling the VolumeBindMountOptions feature gate.
+  final pulumi.Input<List<String>?>? bindMountOptions;
+  /// Path within the container at which the volume should be mounted.
+  final pulumi.Input<String?>? mountPath;
   /// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10. When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified (which defaults to None).
-  final pulumi.Input<String>? mountPropagation;
+  final pulumi.Input<String?>? mountPropagation;
   /// This must match the Name of a Volume.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// RecursiveReadOnly specifies whether read-only mounts should be handled recursively.
   ///
   /// If ReadOnly is false, this field has no meaning and must be unspecified.
@@ -21,14 +23,15 @@ class VolumeMountPatch {
   /// If this field is set to IfPossible or Enabled, MountPropagation must be set to None (or be unspecified, which defaults to None).
   ///
   /// If this field is not specified, it is treated as an equivalent of Disabled.
-  final pulumi.Input<String>? recursiveReadOnly;
+  final pulumi.Input<String?>? recursiveReadOnly;
   /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
   /// Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
-  final pulumi.Input<String>? subPathExpr;
+  final pulumi.Input<String?>? subPathExpr;
 
   /// Creates a new [VolumeMountPatch].
-  /// [mountPath] Path within the container at which the volume should be mounted.  Must not contain ':'.
+  /// [bindMountOptions] bindMountOptions is the list of additional bind mount options to apply when mounting this volume into the container. Allowed values are noexec, nodev, and nosuid. These are Linux mount options and have no effect on Windows nodes. This field is not supported with image volumes. This is an alpha field and requires enabling the VolumeBindMountOptions feature gate.
+  /// [mountPath] Path within the container at which the volume should be mounted.
   /// [mountPropagation] mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10. When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified (which defaults to None).
   /// [name] This must match the Name of a Volume.
   /// [readOnly] Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
@@ -36,6 +39,7 @@ class VolumeMountPatch {
   /// [subPath] Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   /// [subPathExpr] Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
   const VolumeMountPatch({
+    this.bindMountOptions,
     this.mountPath,
     this.mountPropagation,
     this.name,
@@ -47,6 +51,7 @@ class VolumeMountPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'bindMountOptions': ?bindMountOptions,
       'mountPath': ?mountPath,
       'mountPropagation': ?mountPropagation,
       'name': ?name,
@@ -59,6 +64,7 @@ class VolumeMountPatch {
 
   factory VolumeMountPatch.fromMap(Map<String, dynamic> map) {
     return VolumeMountPatch(
+      bindMountOptions: (() { final guardedValue = map['bindMountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountPropagation: (() { final guardedValue = map['mountPropagation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

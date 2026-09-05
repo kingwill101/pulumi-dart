@@ -661,7 +661,7 @@ import 'chart_helm_sh_v4_args.dart';
 /// {{% /examples %}}
 class ChartHelmShV4 extends pulumi.ComponentResource {
   /// Resources created by the Chart.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
+  late final pulumi.Output<List<dynamic>?> resources;
 
   /// Creates a new [ChartHelmShV4].
   /// [name] The Pulumi resource name.
@@ -678,6 +678,6 @@ class ChartHelmShV4 extends pulumi.ComponentResource {
           options ?? pulumi.ComponentResourceOptions(),
           remote: true,
         ) {
-    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    resources = registerOutput<List<dynamic>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

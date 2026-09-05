@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 class AzureFileVolumeSource {
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// secretName is the  name of secret that contains Azure Storage Account Name and Key
   final pulumi.Input<String> secretName;
   /// shareName is the azure share Name

@@ -26,7 +26,7 @@ class EventSeries {
 
   factory EventSeries.fromMap(Map<String, dynamic> map) {
     return EventSeries(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       lastObservedTime: pulumi.Input.fromValue(map['lastObservedTime'] as String),
     );
   }

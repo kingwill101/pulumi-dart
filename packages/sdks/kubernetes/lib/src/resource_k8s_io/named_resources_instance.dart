@@ -6,7 +6,7 @@ import 'named_resources_attribute.dart';
 /// NamedResourcesInstance represents one individual hardware instance that can be selected based on its attributes.
 class NamedResourcesInstance {
   /// Attributes defines the attributes of this resource instance. The name of each attribute must be unique.
-  final pulumi.Input<List<NamedResourcesAttribute>>? attributes;
+  final pulumi.Input<List<NamedResourcesAttribute>?>? attributes;
   /// Name is unique identifier among all resource instances managed by the driver on the node. It must be a DNS subdomain.
   final pulumi.Input<String> name;
 

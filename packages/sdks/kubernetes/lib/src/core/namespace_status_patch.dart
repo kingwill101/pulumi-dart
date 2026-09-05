@@ -6,9 +6,9 @@ import 'namespace_condition_patch.dart';
 /// NamespaceStatus is information about the current status of a Namespace.
 class NamespaceStatusPatch {
   /// Represents the latest available observations of a namespace's current state.
-  final pulumi.Input<List<NamespaceConditionPatch>>? conditions;
+  final pulumi.Input<List<NamespaceConditionPatch>?>? conditions;
   /// Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-  final pulumi.Input<String>? phase;
+  final pulumi.Input<String?>? phase;
 
   /// Creates a new [NamespaceStatusPatch].
   /// [conditions] Represents the latest available observations of a namespace's current state.

@@ -8,7 +8,7 @@ class IngressServiceBackend {
   /// name is the referenced service. The service must exist in the same namespace as the Ingress object.
   final pulumi.Input<String> name;
   /// port of the referenced service. A port name or port number is required for a IngressServiceBackend.
-  final pulumi.Input<ServiceBackendPort>? port;
+  final pulumi.Input<ServiceBackendPort?>? port;
 
   /// Creates a new [IngressServiceBackend].
   /// [name] name is the referenced service. The service must exist in the same namespace as the Ingress object.

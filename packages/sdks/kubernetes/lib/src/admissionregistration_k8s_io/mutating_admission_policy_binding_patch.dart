@@ -11,13 +11,13 @@ import 'mutating_admission_policy_binding_spec_patch.dart';
 /// Adding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.
 class MutatingAdmissionPolicyBindingPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// spec defines the desired behavior of the MutatingAdmissionPolicyBinding.
-  final pulumi.Input<MutatingAdmissionPolicyBindingSpecPatch>? spec;
+  final pulumi.Input<MutatingAdmissionPolicyBindingSpecPatch?>? spec;
 
   /// Creates a new [MutatingAdmissionPolicyBindingPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

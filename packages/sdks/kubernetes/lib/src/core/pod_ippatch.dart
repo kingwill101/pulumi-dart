@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PodIP represents a single IP address allocated to the pod.
 class PodIPPatch {
   /// IP is the IP address assigned to the pod
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
 
   /// Creates a new [PodIPPatch].
   /// [ip] IP is the IP address assigned to the pod

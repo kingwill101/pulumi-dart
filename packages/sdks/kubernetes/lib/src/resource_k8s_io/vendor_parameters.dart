@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VendorParameters are opaque parameters for one particular driver.
 class VendorParameters {
   /// DriverName is the name used by the DRA driver kubelet plugin.
-  final pulumi.Input<String>? driverName;
+  final pulumi.Input<String?>? driverName;
   /// Parameters can be arbitrary setup parameters. They are ignored while allocating a claim.
   final pulumi.Input<dynamic>? parameters;
 

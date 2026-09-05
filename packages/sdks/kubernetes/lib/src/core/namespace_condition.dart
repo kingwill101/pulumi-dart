@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NamespaceCondition contains details about state of namespace.
 class NamespaceCondition {
   /// Last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Unique, one-word, CamelCase reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
   /// Type of namespace controller condition.

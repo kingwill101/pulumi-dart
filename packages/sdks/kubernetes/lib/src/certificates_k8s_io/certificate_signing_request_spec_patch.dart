@@ -16,13 +16,13 @@ class CertificateSigningRequestSpecPatch {
   /// 3. Signer whose configured minimum is longer than the requested duration
   ///
   /// The minimum valid value for expirationSeconds is 600, i.e. 10 minutes.
-  final pulumi.Input<int>? expirationSeconds;
+  final pulumi.Input<int?>? expirationSeconds;
   /// extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.
-  final pulumi.Input<Map<String, List<String>>>? extra;
+  final pulumi.Input<Map<String, List<String>>?>? extra;
   /// groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// request contains an x509 certificate signing request encoded in a "CERTIFICATE REQUEST" PEM block. When serialized as JSON or YAML, the data is additionally base64-encoded.
-  final pulumi.Input<String>? request;
+  final pulumi.Input<String?>? request;
   /// signerName indicates the requested signer, and is a qualified name.
   ///
   /// List/watch requests for CertificateSigningRequests can filter on this field using a "spec.signerName=NAME" fieldSelector.
@@ -44,9 +44,9 @@ class CertificateSigningRequestSpecPatch {
   /// 4. Required, permitted, or forbidden key usages / extended key usages.
   /// 5. Expiration/certificate lifetime: whether it is fixed by the signer, configurable by the admin.
   /// 6. Whether or not requests for CA certificates are allowed.
-  final pulumi.Input<String>? signerName;
+  final pulumi.Input<String?>? signerName;
   /// uid contains the uid of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// usages specifies a set of key usages requested in the issued certificate.
   ///
   /// Requests for TLS client certificates typically request: "digital signature", "key encipherment", "client auth".
@@ -61,9 +61,9 @@ class CertificateSigningRequestSpecPatch {
   /// "code signing", "email protection", "s/mime",
   /// "ipsec end system", "ipsec tunnel", "ipsec user",
   /// "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc"
-  final pulumi.Input<List<String>>? usages;
+  final pulumi.Input<List<String>?>? usages;
   /// username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [CertificateSigningRequestSpecPatch].
   /// [expirationSeconds] expirationSeconds is the requested duration of validity of the issued certificate. The certificate signer may issue a certificate with a different validity duration so a client must check the delta between the notBefore and and notAfter fields in the issued certificate to determine the actual duration.
@@ -100,8 +100,8 @@ class CertificateSigningRequestSpecPatch {
 
   factory CertificateSigningRequestSpecPatch.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestSpecPatch(
-      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      extra: (() { final guardedValue = map['extra']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      extra: (() { final guardedValue = map['extra']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       request: (() { final guardedValue = map['request']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signerName: (() { final guardedValue = map['signerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

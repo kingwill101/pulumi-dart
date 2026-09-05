@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'cluster_trust_bundle_resource.dart';
+import 'cluster_trust_bundle_certificates_k8s_io_v1beta1.dart';
 
 /// {@template pulumi_certificates_k8s_io_v1beta1_cluster_trust_bundle_list_certificates_k8s_io_v1beta1_args_doc}
 /// The set of arguments for ClusterTrustBundleList.
@@ -10,13 +10,13 @@ import 'cluster_trust_bundle_resource.dart';
 /// {@macro pulumi_certificates_k8s_io_v1beta1_cluster_trust_bundle_list_certificates_k8s_io_v1beta1_args_doc}
 class ClusterTrustBundleListCertificatesK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// items is a collection of ClusterTrustBundle objects
-  final pulumi.Input<List<ClusterTrustBundleResource>> items;
+  final pulumi.Input<List<ClusterTrustBundleCertificatesK8sIoV1beta1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// metadata contains the list metadata.
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [ClusterTrustBundleListCertificatesK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class ClusterTrustBundleListCertificatesK8sIoV1beta1Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<ClusterTrustBundleCertificatesK8sIoV1beta1>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ClusterTrustBundleCertificatesK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class ClusterTrustBundleListCertificatesK8sIoV1beta1Args {
   factory ClusterTrustBundleListCertificatesK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleListCertificatesK8sIoV1beta1Args(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<ClusterTrustBundleResource>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterTrustBundleCertificatesK8sIoV1beta1>(map['items']!, (value) => ClusterTrustBundleCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

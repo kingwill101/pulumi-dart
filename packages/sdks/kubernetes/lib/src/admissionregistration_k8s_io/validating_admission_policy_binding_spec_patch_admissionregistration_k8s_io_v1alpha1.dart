@@ -7,11 +7,11 @@ import 'param_ref_patch_admissionregistration_k8s_io_v1alpha1.dart';
 /// ValidatingAdmissionPolicyBindingSpec is the specification of the ValidatingAdmissionPolicyBinding.
 class ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1alpha1 {
   /// MatchResources declares what resources match this binding and will be validated by it. Note that this is intersected with the policy's matchConstraints, so only requests that are matched by the policy can be selected by this. If this is unset, all resources matched by the policy are validated by this binding When resourceRules is unset, it does not constrain resource matching. If a resource is matched by the other fields of this object, it will be validated. Note that this is differs from ValidatingAdmissionPolicy matchConstraints, where resourceRules are required.
-  final pulumi.Input<MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1>? matchResources;
+  final pulumi.Input<MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1?>? matchResources;
   /// ParamRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the ValidatingAdmissionPolicy applied.
-  final pulumi.Input<ParamRefPatchAdmissionregistrationK8sIoV1alpha1>? paramRef;
+  final pulumi.Input<ParamRefPatchAdmissionregistrationK8sIoV1alpha1?>? paramRef;
   /// PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions.
   ///
   /// Failures defined by the ValidatingAdmissionPolicy's FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy.
@@ -31,7 +31,7 @@ class ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1alpha
   /// "Deny" and "Warn" may not be used together since this combination needlessly duplicates the validation failure both in the API response body and the HTTP warning headers.
   ///
   /// Required.
-  final pulumi.Input<List<String>>? validationActions;
+  final pulumi.Input<List<String>?>? validationActions;
 
   /// Creates a new [ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1alpha1].
   /// [matchResources] MatchResources declares what resources match this binding and will be validated by it. Note that this is intersected with the policy's matchConstraints, so only requests that are matched by the policy can be selected by this. If this is unset, all resources matched by the policy are validated by this binding When resourceRules is unset, it does not constrain resource matching. If a resource is matched by the other fields of this object, it will be validated. Note that this is differs from ValidatingAdmissionPolicy matchConstraints, where resourceRules are required.

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'aggregation_rule_patch_rbac_authorization_k8s_io_v1alpha1.dart';
 import 'cluster_role_patch_rbac_authorization_k8s_io_v1alpha1_args.dart';
+import 'policy_rule_patch_rbac_authorization_k8s_io_v1alpha1.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -20,7 +21,7 @@ class ClusterRolePatchResource extends pulumi.CustomResource {
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// Rules holds all the PolicyRules for this ClusterRole
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?> rules;
 
   /// Creates a new [ClusterRolePatchResource].
   /// [name] The Pulumi resource name.
@@ -40,6 +41,22 @@ class ClusterRolePatchResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>(guardedValue, (value) => PolicyRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterRolePatchResource] resource.
+  ClusterRolePatchResource.reference(String urn)
+    : super(
+        'kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRolePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregationRule = registerOutput<AggregationRulePatchRbacAuthorizationK8sIoV1alpha1?>('aggregationRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AggregationRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rules = registerOutput<List<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyRulePatchRbacAuthorizationK8sIoV1alpha1>(guardedValue, (value) => PolicyRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

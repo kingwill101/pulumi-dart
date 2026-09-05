@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
 class AllowedFlexVolumePatch {
   /// driver is the name of the Flexvolume driver.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
 
   /// Creates a new [AllowedFlexVolumePatch].
   /// [driver] driver is the name of the Flexvolume driver.

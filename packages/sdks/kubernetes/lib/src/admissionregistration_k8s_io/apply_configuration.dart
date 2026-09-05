@@ -32,7 +32,7 @@ class ApplyConfiguration {
   /// The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object. No other metadata properties are accessible.
   ///
   /// Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
 
   /// Creates a new [ApplyConfiguration].
   /// [expression] expression will be evaluated by CEL to create an apply configuration. ref: https://github.com/google/cel-spec

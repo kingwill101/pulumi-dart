@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// APIServiceCondition describes the state of an APIService at a particular point
 class APIServiceConditionPatchApiregistrationK8sIoV1beta1 {
   /// Last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Unique, one-word, CamelCase reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status is the status of the condition. Can be True, False, Unknown.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type is the type of the condition.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [APIServiceConditionPatchApiregistrationK8sIoV1beta1].
   /// [lastTransitionTime] Last time the condition transitioned from one status to another.

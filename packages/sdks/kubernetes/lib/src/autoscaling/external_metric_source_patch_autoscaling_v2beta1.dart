@@ -6,13 +6,13 @@ import '../meta/label_selector_patch.dart';
 /// ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster). Exactly one "target" type should be set.
 class ExternalMetricSourcePatchAutoscalingV2beta1 {
   /// metricName is the name of the metric in question.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// metricSelector is used to identify a specific time series within a given metric.
-  final pulumi.Input<LabelSelectorPatch>? metricSelector;
+  final pulumi.Input<LabelSelectorPatch?>? metricSelector;
   /// targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.
-  final pulumi.Input<String>? targetAverageValue;
+  final pulumi.Input<String?>? targetAverageValue;
   /// targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.
-  final pulumi.Input<String>? targetValue;
+  final pulumi.Input<String?>? targetValue;
 
   /// Creates a new [ExternalMetricSourcePatchAutoscalingV2beta1].
   /// [metricName] metricName is the name of the metric in question.

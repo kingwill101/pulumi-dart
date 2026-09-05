@@ -6,7 +6,7 @@ import 'jsonschema_props.dart';
 /// CustomResourceValidation is a list of validation methods for CustomResources.
 class CustomResourceValidation {
   /// openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-  final pulumi.Input<JSONSchemaProps>? openAPIV3Schema;
+  final pulumi.Input<JSONSchemaProps?>? openAPIV3Schema;
 
   /// Creates a new [CustomResourceValidation].
   /// [openAPIV3Schema] openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.

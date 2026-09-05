@@ -557,4 +557,20 @@ class JobBatchV1 extends pulumi.CustomResource {
     spec = registerOutput<JobSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<JobStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [JobBatchV1] resource.
+  JobBatchV1.reference(String urn)
+    : super(
+        'kubernetes:batch/v1:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<JobSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<JobStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

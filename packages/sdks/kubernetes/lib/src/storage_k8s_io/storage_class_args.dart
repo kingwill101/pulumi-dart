@@ -10,32 +10,32 @@ import '../meta/object_meta.dart';
 /// {@macro pulumi_storage_k8s_io_v1_storage_class_args_doc}
 class StorageClassArgs {
   /// allowVolumeExpansion shows whether the storage class allow volume expand.
-  final pulumi.Input<bool>? allowVolumeExpansion;
+  final pulumi.Input<bool?>? allowVolumeExpansion;
   /// allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
-  final pulumi.Input<List<TopologySelectorTerm>>? allowedTopologies;
+  final pulumi.Input<List<TopologySelectorTerm>?>? allowedTopologies;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<String?>? kind;
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// parameters holds the parameters for the provisioner that should create volumes of this storage class.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// provisioner indicates the type of the provisioner.
   final pulumi.Input<String> provisioner;
   /// reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.
-  final pulumi.Input<String>? reclaimPolicy;
+  final pulumi.Input<String?>? reclaimPolicy;
   /// volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
-  final pulumi.Input<String>? volumeBindingMode;
+  final pulumi.Input<String?>? volumeBindingMode;
 
   /// Creates a new [StorageClassArgs].
   /// [allowVolumeExpansion] allowVolumeExpansion shows whether the storage class allow volume expand.
   /// [allowedTopologies] allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [metadata] metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [mountOptions] mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
   /// [parameters] parameters holds the parameters for the provisioner that should create volumes of this storage class.
   /// [provisioner] provisioner indicates the type of the provisioner.

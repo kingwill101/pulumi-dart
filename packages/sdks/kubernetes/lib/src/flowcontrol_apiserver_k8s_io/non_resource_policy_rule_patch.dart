@@ -11,9 +11,9 @@ class NonResourcePolicyRulePatch {
   /// - "/hea/*" also matches nothing
   /// - "/healthz/*" matches all per-component health checks.
   /// "*" matches all non-resource urls. if it is present, it must be the only entry. Required.
-  final pulumi.Input<List<String>>? nonResourceURLs;
+  final pulumi.Input<List<String>?>? nonResourceURLs;
   /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
-  final pulumi.Input<List<String>>? verbs;
+  final pulumi.Input<List<String>?>? verbs;
 
   /// Creates a new [NonResourcePolicyRulePatch].
   /// [nonResourceURLs] `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty. For example:

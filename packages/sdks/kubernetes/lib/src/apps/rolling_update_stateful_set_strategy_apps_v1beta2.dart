@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.
 class RollingUpdateStatefulSetStrategyAppsV1beta2 {
   /// Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.
-  final pulumi.Input<int>? partition;
+  final pulumi.Input<int?>? partition;
 
   /// Creates a new [RollingUpdateStatefulSetStrategyAppsV1beta2].
   /// [partition] Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.
@@ -21,7 +21,7 @@ class RollingUpdateStatefulSetStrategyAppsV1beta2 {
 
   factory RollingUpdateStatefulSetStrategyAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return RollingUpdateStatefulSetStrategyAppsV1beta2(
-      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

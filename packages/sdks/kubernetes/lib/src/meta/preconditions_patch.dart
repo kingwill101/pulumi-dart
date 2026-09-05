@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.
 class PreconditionsPatch {
   /// Specifies the target ResourceVersion
-  final pulumi.Input<String>? resourceVersion;
+  final pulumi.Input<String?>? resourceVersion;
   /// Specifies the target UID.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [PreconditionsPatch].
   /// [resourceVersion] Specifies the target ResourceVersion

@@ -9,15 +9,15 @@ class HorizontalPodAutoscalerStatusAutoscalingV2beta2 {
   /// conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
   final pulumi.Input<List<HorizontalPodAutoscalerConditionAutoscalingV2beta2>> conditions;
   /// currentMetrics is the last read state of the metrics used by this autoscaler.
-  final pulumi.Input<List<MetricStatusAutoscalingV2beta2>>? currentMetrics;
+  final pulumi.Input<List<MetricStatusAutoscalingV2beta2>?>? currentMetrics;
   /// currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.
   final pulumi.Input<int> currentReplicas;
   /// desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.
   final pulumi.Input<int> desiredReplicas;
   /// lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
-  final pulumi.Input<String>? lastScaleTime;
+  final pulumi.Input<String?>? lastScaleTime;
   /// observedGeneration is the most recent generation observed by this autoscaler.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
 
   /// Creates a new [HorizontalPodAutoscalerStatusAutoscalingV2beta2].
   /// [conditions] conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
@@ -50,10 +50,10 @@ class HorizontalPodAutoscalerStatusAutoscalingV2beta2 {
     return HorizontalPodAutoscalerStatusAutoscalingV2beta2(
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<HorizontalPodAutoscalerConditionAutoscalingV2beta2>(map['conditions']!, (value) => HorizontalPodAutoscalerConditionAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))),
       currentMetrics: (() { final guardedValue = map['currentMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricStatusAutoscalingV2beta2>(guardedValue, (value) => MetricStatusAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      currentReplicas: pulumi.Input.fromValue(map['currentReplicas'] as int),
-      desiredReplicas: pulumi.Input.fromValue(map['desiredReplicas'] as int),
+      currentReplicas: pulumi.Input.fromValue((map['currentReplicas'] as num).toInt()),
+      desiredReplicas: pulumi.Input.fromValue((map['desiredReplicas'] as num).toInt()),
       lastScaleTime: (() { final guardedValue = map['lastScaleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

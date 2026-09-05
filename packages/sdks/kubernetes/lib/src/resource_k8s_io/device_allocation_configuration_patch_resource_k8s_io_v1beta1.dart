@@ -6,13 +6,13 @@ import 'opaque_device_configuration_patch_resource_k8s_io_v1beta1.dart';
 /// DeviceAllocationConfiguration gets embedded in an AllocationResult.
 class DeviceAllocationConfigurationPatchResourceK8sIoV1beta1 {
   /// Opaque provides driver-specific configuration parameters.
-  final pulumi.Input<OpaqueDeviceConfigurationPatchResourceK8sIoV1beta1>? opaque;
+  final pulumi.Input<OpaqueDeviceConfigurationPatchResourceK8sIoV1beta1?>? opaque;
   /// Requests lists the names of requests where the configuration applies. If empty, its applies to all requests.
   ///
   /// References to subrequests must include the name of the main request and may include the subrequest using the format &lt;main request&gt;[/&lt;subrequest&gt;]. If just the main request is given, the configuration applies to all subrequests.
-  final pulumi.Input<List<String>>? requests;
+  final pulumi.Input<List<String>?>? requests;
   /// Source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [DeviceAllocationConfigurationPatchResourceK8sIoV1beta1].
   /// [opaque] Opaque provides driver-specific configuration parameters.

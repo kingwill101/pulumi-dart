@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
+import 'priority_level_configuration.dart';
 import 'priority_level_configuration_list_args.dart';
 
 /// PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
@@ -7,7 +8,7 @@ class PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1 extends pulumi.C
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
   /// `items` is a list of request-priorities.
-  late final pulumi.Output<List<Map<String, dynamic>>> items;
+  late final pulumi.Output<List<PriorityLevelConfiguration>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
   /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -28,7 +29,22 @@ class PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1 extends pulumi.C
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiVersion = registerOutput<String>('apiVersion');
-    items = registerOutput<List<Map<String, dynamic>>>('items');
+    items = registerOutput<List<PriorityLevelConfiguration>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PriorityLevelConfiguration>(guardedValue, (value) => PriorityLevelConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ListMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1] resource.
+  PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:flowcontrol.apiserver.k8s.io/v1:PriorityLevelConfigurationList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    items = registerOutput<List<PriorityLevelConfiguration>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PriorityLevelConfiguration>(guardedValue, (value) => PriorityLevelConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ListMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

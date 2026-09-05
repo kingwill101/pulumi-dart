@@ -41,4 +41,19 @@ class ResourceClaimTemplatePatchResource extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ResourceClaimTemplatePatchResource] resource.
+  ResourceClaimTemplatePatchResource.reference(String urn)
+    : super(
+        'kubernetes:resource.k8s.io/v1alpha1:ResourceClaimTemplatePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -329,7 +329,7 @@ class DirectoryKustomize extends pulumi.ComponentResource {
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   late final pulumi.Output<String?> resourcePrefix;
   /// A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  late final pulumi.Output<List<Map<String, dynamic>>?> transformations_;
+  late final pulumi.Output<List<dynamic>?> transformations_;
 
   /// Creates a new [DirectoryKustomize].
   /// [name] The Pulumi resource name.
@@ -348,6 +348,6 @@ class DirectoryKustomize extends pulumi.ComponentResource {
         ) {
     directory = registerOutput<String?>('directory');
     resourcePrefix = registerOutput<String?>('resourcePrefix');
-    transformations_ = registerOutput<List<Map<String, dynamic>>?>('transformations');
+    transformations_ = registerOutput<List<dynamic>?>('transformations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

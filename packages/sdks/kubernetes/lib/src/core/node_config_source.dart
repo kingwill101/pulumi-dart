@@ -6,7 +6,7 @@ import 'config_map_node_config_source.dart';
 /// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil. This API is deprecated since 1.22
 class NodeConfigSource {
   /// ConfigMap is a reference to a Node's ConfigMap
-  final pulumi.Input<ConfigMapNodeConfigSource>? configMap;
+  final pulumi.Input<ConfigMapNodeConfigSource?>? configMap;
 
   /// Creates a new [NodeConfigSource].
   /// [configMap] ConfigMap is a reference to a Node's ConfigMap

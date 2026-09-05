@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_yaml_config_group_yaml_args_doc}
 class ConfigGroupYamlArgs {
   /// Set of paths or a URLs that uniquely identify files.
-  final pulumi.Input<String>? files;
+  final pulumi.Input<dynamic>? files;
   /// Objects representing Kubernetes resources.
   final pulumi.Input<dynamic>? objs;
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
-  final pulumi.Input<String>? resourcePrefix;
+  final pulumi.Input<String?>? resourcePrefix;
   /// A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  final pulumi.Input<List<dynamic>>? transformations_;
+  final pulumi.Input<List<dynamic>?>? transformations_;
   /// YAML text containing Kubernetes resource definitions.
-  final pulumi.Input<String>? yaml;
+  final pulumi.Input<dynamic>? yaml;
 
   /// Creates a new [ConfigGroupYamlArgs].
   /// [files] Set of paths or a URLs that uniquely identify files.
@@ -44,11 +44,11 @@ class ConfigGroupYamlArgs {
 
   factory ConfigGroupYamlArgs.fromMap(Map<String, dynamic> map) {
     return ConfigGroupYamlArgs(
-      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       objs: (() { final guardedValue = map['objs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourcePrefix: (() { final guardedValue = map['resourcePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transformations_: (() { final guardedValue = map['transformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      yaml: (() { final guardedValue = map['yaml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      yaml: (() { final guardedValue = map['yaml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -43,4 +43,20 @@ class ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1beta1Resource ex
     spec = registerOutput<ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1beta1Resource] resource.
+  ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1beta1:ValidatingAdmissionPolicyPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -19,6 +19,7 @@ import 'package:pulumi_kubernetes/flowcontrol_apiserver_k8s_io.dart' as module_f
 import 'package:pulumi_kubernetes/helm_sh.dart' as module_helm_sh;
 import 'package:pulumi_kubernetes/index.dart' as module_index;
 import 'package:pulumi_kubernetes/kustomize.dart' as module_kustomize;
+import 'package:pulumi_kubernetes/lifecycle_k8s_io.dart' as module_lifecycle_k8s_io;
 import 'package:pulumi_kubernetes/meta.dart' as module_meta;
 import 'package:pulumi_kubernetes/networking_k8s_io.dart' as module_networking_k8s_io;
 import 'package:pulumi_kubernetes/node_k8s_io.dart' as module_node_k8s_io;
@@ -33,41 +34,42 @@ import 'package:pulumi_kubernetes/storage_k8s_io.dart' as module_storage_k8s_io;
 import 'package:pulumi_kubernetes/storagemigration_k8s_io.dart' as module_storagemigration_k8s_io;
 import 'package:pulumi_kubernetes/yaml.dart' as module_yaml;
 
-final admissionregistration_k8s_io = const _AdmissionregistrationK8sIoModuleNamespace();
-final apiextensions_k8s_io = const _ApiextensionsK8sIoModuleNamespace();
-final apiregistration_k8s_io = const _ApiregistrationK8sIoModuleNamespace();
-final apps = const _AppsModuleNamespace();
-final auditregistration_k8s_io = const _AuditregistrationK8sIoModuleNamespace();
-final authentication_k8s_io = const _AuthenticationK8sIoModuleNamespace();
-final authorization_k8s_io = const _AuthorizationK8sIoModuleNamespace();
-final autoscaling = const _AutoscalingModuleNamespace();
-final batch = const _BatchModuleNamespace();
-final certificates_k8s_io = const _CertificatesK8sIoModuleNamespace();
-final coordination_k8s_io = const _CoordinationK8sIoModuleNamespace();
-final core = const _CoreModuleNamespace();
-final discovery_k8s_io = const _DiscoveryK8sIoModuleNamespace();
-final events_k8s_io = const _EventsK8sIoModuleNamespace();
-final extensions = const _ExtensionsModuleNamespace();
-final flowcontrol_apiserver_k8s_io = const _FlowcontrolApiserverK8sIoModuleNamespace();
-final helm_sh = const _HelmShModuleNamespace();
-final index = const _IndexModuleNamespace();
-final kustomize = const _KustomizeModuleNamespace();
-final meta = const _MetaModuleNamespace();
-final networking_k8s_io = const _NetworkingK8sIoModuleNamespace();
-final node_k8s_io = const _NodeK8sIoModuleNamespace();
-final pkg = const _PkgModuleNamespace();
-final policy = const _PolicyModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
-final rbac_authorization_k8s_io = const _RbacAuthorizationK8sIoModuleNamespace();
-final resource_k8s_io = const _ResourceK8sIoModuleNamespace();
-final scheduling_k8s_io = const _SchedulingK8sIoModuleNamespace();
-final settings_k8s_io = const _SettingsK8sIoModuleNamespace();
-final storage_k8s_io = const _StorageK8sIoModuleNamespace();
-final storagemigration_k8s_io = const _StoragemigrationK8sIoModuleNamespace();
-final yaml = const _YamlModuleNamespace();
+final admissionregistration_k8s_io = _AdmissionregistrationK8sIoModuleNamespace();
+final apiextensions_k8s_io = _ApiextensionsK8sIoModuleNamespace();
+final apiregistration_k8s_io = _ApiregistrationK8sIoModuleNamespace();
+final apps = _AppsModuleNamespace();
+final auditregistration_k8s_io = _AuditregistrationK8sIoModuleNamespace();
+final authentication_k8s_io = _AuthenticationK8sIoModuleNamespace();
+final authorization_k8s_io = _AuthorizationK8sIoModuleNamespace();
+final autoscaling = _AutoscalingModuleNamespace();
+final batch = _BatchModuleNamespace();
+final certificates_k8s_io = _CertificatesK8sIoModuleNamespace();
+final coordination_k8s_io = _CoordinationK8sIoModuleNamespace();
+final core = _CoreModuleNamespace();
+final discovery_k8s_io = _DiscoveryK8sIoModuleNamespace();
+final events_k8s_io = _EventsK8sIoModuleNamespace();
+final extensions = _ExtensionsModuleNamespace();
+final flowcontrol_apiserver_k8s_io = _FlowcontrolApiserverK8sIoModuleNamespace();
+final helm_sh = _HelmShModuleNamespace();
+final index = _IndexModuleNamespace();
+final kustomize = _KustomizeModuleNamespace();
+final lifecycle_k8s_io = _LifecycleK8sIoModuleNamespace();
+final meta = _MetaModuleNamespace();
+final networking_k8s_io = _NetworkingK8sIoModuleNamespace();
+final node_k8s_io = _NodeK8sIoModuleNamespace();
+final pkg = _PkgModuleNamespace();
+final policy = _PolicyModuleNamespace();
+final providers = _ProvidersModuleNamespace();
+final rbac_authorization_k8s_io = _RbacAuthorizationK8sIoModuleNamespace();
+final resource_k8s_io = _ResourceK8sIoModuleNamespace();
+final scheduling_k8s_io = _SchedulingK8sIoModuleNamespace();
+final settings_k8s_io = _SettingsK8sIoModuleNamespace();
+final storage_k8s_io = _StorageK8sIoModuleNamespace();
+final storagemigration_k8s_io = _StoragemigrationK8sIoModuleNamespace();
+final yaml = _YamlModuleNamespace();
 
 class _AdmissionregistrationK8sIoModuleNamespace {
-  const _AdmissionregistrationK8sIoModuleNamespace();
+  _AdmissionregistrationK8sIoModuleNamespace();
   final ApplyConfiguration = module_admissionregistration_k8s_io.ApplyConfiguration.new;
   final ApplyConfigurationArgs = module_admissionregistration_k8s_io.ApplyConfiguration.new;
   final ApplyConfigurationPatch = module_admissionregistration_k8s_io.ApplyConfigurationPatch.new;
@@ -199,7 +201,7 @@ class _AdmissionregistrationK8sIoModuleNamespace {
 }
 
 class _ApiextensionsK8sIoModuleNamespace {
-  const _ApiextensionsK8sIoModuleNamespace();
+  _ApiextensionsK8sIoModuleNamespace();
   final CustomResourceArgs = module_apiextensions_k8s_io.CustomResourceArgs.new;
   final CustomResourceColumnDefinition = module_apiextensions_k8s_io.CustomResourceColumnDefinition.new;
   final CustomResourceColumnDefinitionArgs = module_apiextensions_k8s_io.CustomResourceColumnDefinition.new;
@@ -281,7 +283,7 @@ class _ApiextensionsK8sIoModuleNamespace {
 }
 
 class _ApiregistrationK8sIoModuleNamespace {
-  const _ApiregistrationK8sIoModuleNamespace();
+  _ApiregistrationK8sIoModuleNamespace();
   final APIService = module_apiregistration_k8s_io.APIService.new;
   final APIServiceArgs = module_apiregistration_k8s_io.APIService.new;
   final APIServiceCondition = module_apiregistration_k8s_io.APIServiceCondition.new;
@@ -307,7 +309,7 @@ class _ApiregistrationK8sIoModuleNamespace {
 }
 
 class _AppsModuleNamespace {
-  const _AppsModuleNamespace();
+  _AppsModuleNamespace();
   final ControllerRevision = module_apps.ControllerRevision.new;
   final ControllerRevisionArgs = module_apps.ControllerRevision.new;
   final ControllerRevisionList = module_apps.ControllerRevisionList.new;
@@ -442,7 +444,7 @@ class _AppsModuleNamespace {
 }
 
 class _AuditregistrationK8sIoModuleNamespace {
-  const _AuditregistrationK8sIoModuleNamespace();
+  _AuditregistrationK8sIoModuleNamespace();
   final AuditSink = module_auditregistration_k8s_io.AuditSink.new;
   final AuditSinkArgs = module_auditregistration_k8s_io.AuditSink.new;
   final AuditSinkList = module_auditregistration_k8s_io.AuditSinkList.new;
@@ -476,7 +478,7 @@ class _AuditregistrationK8sIoModuleNamespace {
 }
 
 class _AuthenticationK8sIoModuleNamespace {
-  const _AuthenticationK8sIoModuleNamespace();
+  _AuthenticationK8sIoModuleNamespace();
   final BoundObjectReference = module_authentication_k8s_io.BoundObjectReference.new;
   final BoundObjectReferenceArgs = module_authentication_k8s_io.BoundObjectReference.new;
   final BoundObjectReferencePatch = module_authentication_k8s_io.BoundObjectReferencePatch.new;
@@ -520,7 +522,7 @@ class _AuthenticationK8sIoModuleNamespace {
 }
 
 class _AuthorizationK8sIoModuleNamespace {
-  const _AuthorizationK8sIoModuleNamespace();
+  _AuthorizationK8sIoModuleNamespace();
   final FieldSelectorAttributes = module_authorization_k8s_io.FieldSelectorAttributes.new;
   final FieldSelectorAttributesArgs = module_authorization_k8s_io.FieldSelectorAttributes.new;
   final FieldSelectorAttributesPatch = module_authorization_k8s_io.FieldSelectorAttributesPatch.new;
@@ -584,7 +586,7 @@ class _AuthorizationK8sIoModuleNamespace {
 }
 
 class _AutoscalingModuleNamespace {
-  const _AutoscalingModuleNamespace();
+  _AutoscalingModuleNamespace();
   final ContainerResourceMetricSource = module_autoscaling.ContainerResourceMetricSource.new;
   final ContainerResourceMetricSourceArgs = module_autoscaling.ContainerResourceMetricSource.new;
   final ContainerResourceMetricSourcePatch = module_autoscaling.ContainerResourceMetricSourcePatch.new;
@@ -694,7 +696,7 @@ class _AutoscalingModuleNamespace {
 }
 
 class _BatchModuleNamespace {
-  const _BatchModuleNamespace();
+  _BatchModuleNamespace();
   final CronJob = module_batch.CronJob.new;
   final CronJobArgs = module_batch.CronJob.new;
   final CronJobList = module_batch.CronJobList.new;
@@ -719,6 +721,10 @@ class _BatchModuleNamespace {
   final JobListArgs = module_batch.JobList.new;
   final JobPatch = module_batch.JobPatch.new;
   final JobPatchArgs = module_batch.JobPatch.new;
+  final JobSchedulingConfiguration = module_batch.JobSchedulingConfiguration.new;
+  final JobSchedulingConfigurationArgs = module_batch.JobSchedulingConfiguration.new;
+  final JobSchedulingConfigurationPatch = module_batch.JobSchedulingConfigurationPatch.new;
+  final JobSchedulingConfigurationPatchArgs = module_batch.JobSchedulingConfigurationPatch.new;
   final JobSpec = module_batch.JobSpec.new;
   final JobSpecArgs = module_batch.JobSpec.new;
   final JobSpecPatch = module_batch.JobSpecPatch.new;
@@ -762,7 +768,7 @@ class _BatchModuleNamespace {
 }
 
 class _CertificatesK8sIoModuleNamespace {
-  const _CertificatesK8sIoModuleNamespace();
+  _CertificatesK8sIoModuleNamespace();
   final CertificateSigningRequest = module_certificates_k8s_io.CertificateSigningRequest.new;
   final CertificateSigningRequestArgs = module_certificates_k8s_io.CertificateSigningRequest.new;
   final CertificateSigningRequestCondition = module_certificates_k8s_io.CertificateSigningRequestCondition.new;
@@ -808,7 +814,7 @@ class _CertificatesK8sIoModuleNamespace {
 }
 
 class _CoordinationK8sIoModuleNamespace {
-  const _CoordinationK8sIoModuleNamespace();
+  _CoordinationK8sIoModuleNamespace();
   final Lease = module_coordination_k8s_io.Lease.new;
   final LeaseArgs = module_coordination_k8s_io.Lease.new;
   final LeaseCandidate = module_coordination_k8s_io.LeaseCandidate.new;
@@ -832,7 +838,7 @@ class _CoordinationK8sIoModuleNamespace {
 }
 
 class _CoreModuleNamespace {
-  const _CoreModuleNamespace();
+  _CoreModuleNamespace();
   final AWSElasticBlockStoreVolumeSource = module_core.AWSElasticBlockStoreVolumeSource.new;
   final AWSElasticBlockStoreVolumeSourceArgs = module_core.AWSElasticBlockStoreVolumeSource.new;
   final AWSElasticBlockStoreVolumeSourcePatch = module_core.AWSElasticBlockStoreVolumeSourcePatch.new;
@@ -1065,6 +1071,10 @@ class _CoreModuleNamespace {
   final EventSourceArgs = module_core.EventSource.new;
   final EventSourcePatch = module_core.EventSourcePatch.new;
   final EventSourcePatchArgs = module_core.EventSourcePatch.new;
+  final EvictionResponder = module_core.EvictionResponder.new;
+  final EvictionResponderArgs = module_core.EvictionResponder.new;
+  final EvictionResponderPatch = module_core.EvictionResponderPatch.new;
+  final EvictionResponderPatchArgs = module_core.EvictionResponderPatch.new;
   final ExecAction = module_core.ExecAction.new;
   final ExecActionArgs = module_core.ExecAction.new;
   final ExecActionPatch = module_core.ExecActionPatch.new;
@@ -1230,6 +1240,14 @@ class _CoreModuleNamespace {
   final NodeAffinityArgs = module_core.NodeAffinity.new;
   final NodeAffinityPatch = module_core.NodeAffinityPatch.new;
   final NodeAffinityPatchArgs = module_core.NodeAffinityPatch.new;
+  final NodeAllocatableMappedResources = module_core.NodeAllocatableMappedResources.new;
+  final NodeAllocatableMappedResourcesArgs = module_core.NodeAllocatableMappedResources.new;
+  final NodeAllocatableMappedResourcesPatch = module_core.NodeAllocatableMappedResourcesPatch.new;
+  final NodeAllocatableMappedResourcesPatchArgs = module_core.NodeAllocatableMappedResourcesPatch.new;
+  final NodeAllocatableOverheadResources = module_core.NodeAllocatableOverheadResources.new;
+  final NodeAllocatableOverheadResourcesArgs = module_core.NodeAllocatableOverheadResources.new;
+  final NodeAllocatableOverheadResourcesPatch = module_core.NodeAllocatableOverheadResourcesPatch.new;
+  final NodeAllocatableOverheadResourcesPatchArgs = module_core.NodeAllocatableOverheadResourcesPatch.new;
   final NodeAllocatableResourceClaimStatus = module_core.NodeAllocatableResourceClaimStatus.new;
   final NodeAllocatableResourceClaimStatusArgs = module_core.NodeAllocatableResourceClaimStatus.new;
   final NodeAllocatableResourceClaimStatusPatch = module_core.NodeAllocatableResourceClaimStatusPatch.new;
@@ -1259,6 +1277,10 @@ class _CoreModuleNamespace {
   final NodeListArgs = module_core.NodeList.new;
   final NodePatch = module_core.NodePatch.new;
   final NodePatchArgs = module_core.NodePatch.new;
+  final NodePodPreemptionPolicy = module_core.NodePodPreemptionPolicy.new;
+  final NodePodPreemptionPolicyArgs = module_core.NodePodPreemptionPolicy.new;
+  final NodePodPreemptionPolicyPatch = module_core.NodePodPreemptionPolicyPatch.new;
+  final NodePodPreemptionPolicyPatchArgs = module_core.NodePodPreemptionPolicyPatch.new;
   final NodeRuntimeHandler = module_core.NodeRuntimeHandler.new;
   final NodeRuntimeHandlerArgs = module_core.NodeRuntimeHandler.new;
   final NodeRuntimeHandlerFeatures = module_core.NodeRuntimeHandlerFeatures.new;
@@ -1435,6 +1457,10 @@ class _CoreModuleNamespace {
   final PodTemplateSpecArgs = module_core.PodTemplateSpec.new;
   final PodTemplateSpecPatch = module_core.PodTemplateSpecPatch.new;
   final PodTemplateSpecPatchArgs = module_core.PodTemplateSpecPatch.new;
+  final PodVolumeHealth = module_core.PodVolumeHealth.new;
+  final PodVolumeHealthArgs = module_core.PodVolumeHealth.new;
+  final PodVolumeHealthPatch = module_core.PodVolumeHealthPatch.new;
+  final PodVolumeHealthPatchArgs = module_core.PodVolumeHealthPatch.new;
   final PortStatus = module_core.PortStatus.new;
   final PortStatusArgs = module_core.PortStatus.new;
   final PortStatusPatch = module_core.PortStatusPatch.new;
@@ -1660,6 +1686,14 @@ class _CoreModuleNamespace {
   final VolumeDeviceArgs = module_core.VolumeDevice.new;
   final VolumeDevicePatch = module_core.VolumeDevicePatch.new;
   final VolumeDevicePatchArgs = module_core.VolumeDevicePatch.new;
+  final VolumeHealthCondition = module_core.VolumeHealthCondition.new;
+  final VolumeHealthConditionArgs = module_core.VolumeHealthCondition.new;
+  final VolumeHealthConditionPatch = module_core.VolumeHealthConditionPatch.new;
+  final VolumeHealthConditionPatchArgs = module_core.VolumeHealthConditionPatch.new;
+  final VolumeHealthStatus = module_core.VolumeHealthStatus.new;
+  final VolumeHealthStatusArgs = module_core.VolumeHealthStatus.new;
+  final VolumeHealthStatusPatch = module_core.VolumeHealthStatusPatch.new;
+  final VolumeHealthStatusPatchArgs = module_core.VolumeHealthStatusPatch.new;
   final VolumeMount = module_core.VolumeMount.new;
   final VolumeMountArgs = module_core.VolumeMount.new;
   final VolumeMountPatch = module_core.VolumeMountPatch.new;
@@ -1698,10 +1732,14 @@ class _CoreModuleNamespace {
   final WindowsSecurityContextOptionsArgs = module_core.WindowsSecurityContextOptions.new;
   final WindowsSecurityContextOptionsPatch = module_core.WindowsSecurityContextOptionsPatch.new;
   final WindowsSecurityContextOptionsPatchArgs = module_core.WindowsSecurityContextOptionsPatch.new;
+  final WorkloadReference = module_core.WorkloadReference.new;
+  final WorkloadReferenceArgs = module_core.WorkloadReference.new;
+  final WorkloadReferencePatch = module_core.WorkloadReferencePatch.new;
+  final WorkloadReferencePatchArgs = module_core.WorkloadReferencePatch.new;
 }
 
 class _DiscoveryK8sIoModuleNamespace {
-  const _DiscoveryK8sIoModuleNamespace();
+  _DiscoveryK8sIoModuleNamespace();
   final Endpoint = module_discovery_k8s_io.Endpoint.new;
   final EndpointArgs = module_discovery_k8s_io.Endpoint.new;
   final EndpointConditions = module_discovery_k8s_io.EndpointConditions.new;
@@ -1735,7 +1773,7 @@ class _DiscoveryK8sIoModuleNamespace {
 }
 
 class _EventsK8sIoModuleNamespace {
-  const _EventsK8sIoModuleNamespace();
+  _EventsK8sIoModuleNamespace();
   final Event = module_events_k8s_io.Event.new;
   final EventArgs = module_events_k8s_io.Event.new;
   final EventList = module_events_k8s_io.EventList.new;
@@ -1749,7 +1787,7 @@ class _EventsK8sIoModuleNamespace {
 }
 
 class _ExtensionsModuleNamespace {
-  const _ExtensionsModuleNamespace();
+  _ExtensionsModuleNamespace();
   final AllowedCSIDriver = module_extensions.AllowedCSIDriver.new;
   final AllowedCSIDriverArgs = module_extensions.AllowedCSIDriver.new;
   final AllowedCSIDriverPatch = module_extensions.AllowedCSIDriverPatch.new;
@@ -1962,7 +2000,7 @@ class _ExtensionsModuleNamespace {
 }
 
 class _FlowcontrolApiserverK8sIoModuleNamespace {
-  const _FlowcontrolApiserverK8sIoModuleNamespace();
+  _FlowcontrolApiserverK8sIoModuleNamespace();
   final ExemptPriorityLevelConfiguration = module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
   final ExemptPriorityLevelConfigurationArgs = module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
   final ExemptPriorityLevelConfigurationPatch = module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfigurationPatch.new;
@@ -2054,7 +2092,7 @@ class _FlowcontrolApiserverK8sIoModuleNamespace {
 }
 
 class _HelmShModuleNamespace {
-  const _HelmShModuleNamespace();
+  _HelmShModuleNamespace();
   final Chart = module_helm_sh.Chart.new;
   final ChartArgs = module_helm_sh.ChartArgs.new;
   final FetchOpts = module_helm_sh.FetchOpts.new;
@@ -2070,7 +2108,7 @@ class _HelmShModuleNamespace {
 }
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final HelmReleaseSettings = module_index.HelmReleaseSettings.new;
   final HelmReleaseSettingsArgs = module_index.HelmReleaseSettings.new;
   final KubeClientSettings = module_index.KubeClientSettings.new;
@@ -2078,13 +2116,73 @@ class _IndexModuleNamespace {
 }
 
 class _KustomizeModuleNamespace {
-  const _KustomizeModuleNamespace();
+  _KustomizeModuleNamespace();
   final Directory = module_kustomize.Directory.new;
   final DirectoryArgs = module_kustomize.DirectoryArgs.new;
 }
 
+class _LifecycleK8sIoModuleNamespace {
+  _LifecycleK8sIoModuleNamespace();
+  final Eviction = module_lifecycle_k8s_io.Eviction.new;
+  final EvictionArgs = module_lifecycle_k8s_io.Eviction.new;
+  final EvictionList = module_lifecycle_k8s_io.EvictionList.new;
+  final EvictionListArgs = module_lifecycle_k8s_io.EvictionList.new;
+  final EvictionPatch = module_lifecycle_k8s_io.EvictionPatch.new;
+  final EvictionPatchArgs = module_lifecycle_k8s_io.EvictionPatch.new;
+  final EvictionPodReference = module_lifecycle_k8s_io.EvictionPodReference.new;
+  final EvictionPodReferenceArgs = module_lifecycle_k8s_io.EvictionPodReference.new;
+  final EvictionPodReferencePatch = module_lifecycle_k8s_io.EvictionPodReferencePatch.new;
+  final EvictionPodReferencePatchArgs = module_lifecycle_k8s_io.EvictionPodReferencePatch.new;
+  final EvictionRequest = module_lifecycle_k8s_io.EvictionRequest.new;
+  final EvictionRequestArgs = module_lifecycle_k8s_io.EvictionRequest.new;
+  final EvictionRequestList = module_lifecycle_k8s_io.EvictionRequestList.new;
+  final EvictionRequestListArgs = module_lifecycle_k8s_io.EvictionRequestList.new;
+  final EvictionRequestPatch = module_lifecycle_k8s_io.EvictionRequestPatch.new;
+  final EvictionRequestPatchArgs = module_lifecycle_k8s_io.EvictionRequestPatch.new;
+  final EvictionRequestPodReference = module_lifecycle_k8s_io.EvictionRequestPodReference.new;
+  final EvictionRequestPodReferenceArgs = module_lifecycle_k8s_io.EvictionRequestPodReference.new;
+  final EvictionRequestPodReferencePatch = module_lifecycle_k8s_io.EvictionRequestPodReferencePatch.new;
+  final EvictionRequestPodReferencePatchArgs = module_lifecycle_k8s_io.EvictionRequestPodReferencePatch.new;
+  final EvictionRequestSpec = module_lifecycle_k8s_io.EvictionRequestSpec.new;
+  final EvictionRequestSpecArgs = module_lifecycle_k8s_io.EvictionRequestSpec.new;
+  final EvictionRequestSpecPatch = module_lifecycle_k8s_io.EvictionRequestSpecPatch.new;
+  final EvictionRequestSpecPatchArgs = module_lifecycle_k8s_io.EvictionRequestSpecPatch.new;
+  final EvictionRequestStatus = module_lifecycle_k8s_io.EvictionRequestStatus.new;
+  final EvictionRequestStatusArgs = module_lifecycle_k8s_io.EvictionRequestStatus.new;
+  final EvictionRequestStatusPatch = module_lifecycle_k8s_io.EvictionRequestStatusPatch.new;
+  final EvictionRequestStatusPatchArgs = module_lifecycle_k8s_io.EvictionRequestStatusPatch.new;
+  final EvictionRequestTarget = module_lifecycle_k8s_io.EvictionRequestTarget.new;
+  final EvictionRequestTargetArgs = module_lifecycle_k8s_io.EvictionRequestTarget.new;
+  final EvictionRequestTargetPatch = module_lifecycle_k8s_io.EvictionRequestTargetPatch.new;
+  final EvictionRequestTargetPatchArgs = module_lifecycle_k8s_io.EvictionRequestTargetPatch.new;
+  final EvictionSpec = module_lifecycle_k8s_io.EvictionSpec.new;
+  final EvictionSpecArgs = module_lifecycle_k8s_io.EvictionSpec.new;
+  final EvictionSpecPatch = module_lifecycle_k8s_io.EvictionSpecPatch.new;
+  final EvictionSpecPatchArgs = module_lifecycle_k8s_io.EvictionSpecPatch.new;
+  final EvictionStatus = module_lifecycle_k8s_io.EvictionStatus.new;
+  final EvictionStatusArgs = module_lifecycle_k8s_io.EvictionStatus.new;
+  final EvictionStatusPatch = module_lifecycle_k8s_io.EvictionStatusPatch.new;
+  final EvictionStatusPatchArgs = module_lifecycle_k8s_io.EvictionStatusPatch.new;
+  final EvictionTarget = module_lifecycle_k8s_io.EvictionTarget.new;
+  final EvictionTargetArgs = module_lifecycle_k8s_io.EvictionTarget.new;
+  final EvictionTargetPatch = module_lifecycle_k8s_io.EvictionTargetPatch.new;
+  final EvictionTargetPatchArgs = module_lifecycle_k8s_io.EvictionTargetPatch.new;
+  final Requester = module_lifecycle_k8s_io.Requester.new;
+  final RequesterArgs = module_lifecycle_k8s_io.Requester.new;
+  final RequesterPatch = module_lifecycle_k8s_io.RequesterPatch.new;
+  final RequesterPatchArgs = module_lifecycle_k8s_io.RequesterPatch.new;
+  final ResponderStatus = module_lifecycle_k8s_io.ResponderStatus.new;
+  final ResponderStatusArgs = module_lifecycle_k8s_io.ResponderStatus.new;
+  final ResponderStatusPatch = module_lifecycle_k8s_io.ResponderStatusPatch.new;
+  final ResponderStatusPatchArgs = module_lifecycle_k8s_io.ResponderStatusPatch.new;
+  final TargetResponder = module_lifecycle_k8s_io.TargetResponder.new;
+  final TargetResponderArgs = module_lifecycle_k8s_io.TargetResponder.new;
+  final TargetResponderPatch = module_lifecycle_k8s_io.TargetResponderPatch.new;
+  final TargetResponderPatchArgs = module_lifecycle_k8s_io.TargetResponderPatch.new;
+}
+
 class _MetaModuleNamespace {
-  const _MetaModuleNamespace();
+  _MetaModuleNamespace();
   final APIGroup = module_meta.APIGroup.new;
   final APIGroupArgs = module_meta.APIGroup.new;
   final APIGroupList = module_meta.APIGroupList.new;
@@ -2176,7 +2274,7 @@ class _MetaModuleNamespace {
 }
 
 class _NetworkingK8sIoModuleNamespace {
-  const _NetworkingK8sIoModuleNamespace();
+  _NetworkingK8sIoModuleNamespace();
   final ClusterCIDR = module_networking_k8s_io.ClusterCIDR.new;
   final ClusterCIDRArgs = module_networking_k8s_io.ClusterCIDR.new;
   final ClusterCIDRList = module_networking_k8s_io.ClusterCIDRList.new;
@@ -2320,7 +2418,7 @@ class _NetworkingK8sIoModuleNamespace {
 }
 
 class _NodeK8sIoModuleNamespace {
-  const _NodeK8sIoModuleNamespace();
+  _NodeK8sIoModuleNamespace();
   final Overhead = module_node_k8s_io.Overhead.new;
   final OverheadArgs = module_node_k8s_io.Overhead.new;
   final OverheadPatch = module_node_k8s_io.OverheadPatch.new;
@@ -2342,7 +2440,7 @@ class _NodeK8sIoModuleNamespace {
 }
 
 class _PkgModuleNamespace {
-  const _PkgModuleNamespace();
+  _PkgModuleNamespace();
   final Info = module_pkg.Info.new;
   final InfoArgs = module_pkg.Info.new;
   final InfoPatch = module_pkg.InfoPatch.new;
@@ -2350,7 +2448,7 @@ class _PkgModuleNamespace {
 }
 
 class _PolicyModuleNamespace {
-  const _PolicyModuleNamespace();
+  _PolicyModuleNamespace();
   final AllowedCSIDriver = module_policy.AllowedCSIDriver.new;
   final AllowedCSIDriverArgs = module_policy.AllowedCSIDriver.new;
   final AllowedCSIDriverPatch = module_policy.AllowedCSIDriverPatch.new;
@@ -2426,14 +2524,14 @@ class _PolicyModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Kubernetes = module_providers.ProviderProvider.new;
   final KubernetesArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
 }
 
 class _RbacAuthorizationK8sIoModuleNamespace {
-  const _RbacAuthorizationK8sIoModuleNamespace();
+  _RbacAuthorizationK8sIoModuleNamespace();
   final AggregationRule = module_rbac_authorization_k8s_io.AggregationRule.new;
   final AggregationRuleArgs = module_rbac_authorization_k8s_io.AggregationRule.new;
   final AggregationRulePatch = module_rbac_authorization_k8s_io.AggregationRulePatch.new;
@@ -2477,7 +2575,7 @@ class _RbacAuthorizationK8sIoModuleNamespace {
 }
 
 class _ResourceK8sIoModuleNamespace {
-  const _ResourceK8sIoModuleNamespace();
+  _ResourceK8sIoModuleNamespace();
   final AllocatedDeviceStatus = module_resource_k8s_io.AllocatedDeviceStatus.new;
   final AllocatedDeviceStatusArgs = module_resource_k8s_io.AllocatedDeviceStatus.new;
   final AllocatedDeviceStatusPatch = module_resource_k8s_io.AllocatedDeviceStatusPatch.new;
@@ -2562,6 +2660,10 @@ class _ResourceK8sIoModuleNamespace {
   final DeviceCounterConsumptionArgs = module_resource_k8s_io.DeviceCounterConsumption.new;
   final DeviceCounterConsumptionPatch = module_resource_k8s_io.DeviceCounterConsumptionPatch.new;
   final DeviceCounterConsumptionPatchArgs = module_resource_k8s_io.DeviceCounterConsumptionPatch.new;
+  final DeviceDerivedAttribute = module_resource_k8s_io.DeviceDerivedAttribute.new;
+  final DeviceDerivedAttributeArgs = module_resource_k8s_io.DeviceDerivedAttribute.new;
+  final DeviceDerivedAttributePatch = module_resource_k8s_io.DeviceDerivedAttributePatch.new;
+  final DeviceDerivedAttributePatchArgs = module_resource_k8s_io.DeviceDerivedAttributePatch.new;
   final DevicePatch = module_resource_k8s_io.DevicePatch.new;
   final DevicePatchArgs = module_resource_k8s_io.DevicePatch.new;
   final DeviceRequest = module_resource_k8s_io.DeviceRequest.new;
@@ -2654,14 +2756,30 @@ class _ResourceK8sIoModuleNamespace {
   final NetworkDeviceDataArgs = module_resource_k8s_io.NetworkDeviceData.new;
   final NetworkDeviceDataPatch = module_resource_k8s_io.NetworkDeviceDataPatch.new;
   final NetworkDeviceDataPatchArgs = module_resource_k8s_io.NetworkDeviceDataPatch.new;
+  final NodeAllocatableMapping = module_resource_k8s_io.NodeAllocatableMapping.new;
+  final NodeAllocatableMappingArgs = module_resource_k8s_io.NodeAllocatableMapping.new;
+  final NodeAllocatableMappingPatch = module_resource_k8s_io.NodeAllocatableMappingPatch.new;
+  final NodeAllocatableMappingPatchArgs = module_resource_k8s_io.NodeAllocatableMappingPatch.new;
+  final NodeAllocatableOverhead = module_resource_k8s_io.NodeAllocatableOverhead.new;
+  final NodeAllocatableOverheadArgs = module_resource_k8s_io.NodeAllocatableOverhead.new;
+  final NodeAllocatableOverheadPatch = module_resource_k8s_io.NodeAllocatableOverheadPatch.new;
+  final NodeAllocatableOverheadPatchArgs = module_resource_k8s_io.NodeAllocatableOverheadPatch.new;
+  final NodeAllocatableResource = module_resource_k8s_io.NodeAllocatableResource.new;
+  final NodeAllocatableResourceArgs = module_resource_k8s_io.NodeAllocatableResource.new;
   final NodeAllocatableResourceMapping = module_resource_k8s_io.NodeAllocatableResourceMapping.new;
   final NodeAllocatableResourceMappingArgs = module_resource_k8s_io.NodeAllocatableResourceMapping.new;
   final NodeAllocatableResourceMappingPatch = module_resource_k8s_io.NodeAllocatableResourceMappingPatch.new;
   final NodeAllocatableResourceMappingPatchArgs = module_resource_k8s_io.NodeAllocatableResourceMappingPatch.new;
+  final NodeAllocatableResourcePatch = module_resource_k8s_io.NodeAllocatableResourcePatch.new;
+  final NodeAllocatableResourcePatchArgs = module_resource_k8s_io.NodeAllocatableResourcePatch.new;
   final OpaqueDeviceConfiguration = module_resource_k8s_io.OpaqueDeviceConfiguration.new;
   final OpaqueDeviceConfigurationArgs = module_resource_k8s_io.OpaqueDeviceConfiguration.new;
   final OpaqueDeviceConfigurationPatch = module_resource_k8s_io.OpaqueDeviceConfigurationPatch.new;
   final OpaqueDeviceConfigurationPatchArgs = module_resource_k8s_io.OpaqueDeviceConfigurationPatch.new;
+  final PartitionTypeStatus = module_resource_k8s_io.PartitionTypeStatus.new;
+  final PartitionTypeStatusArgs = module_resource_k8s_io.PartitionTypeStatus.new;
+  final PartitionTypeStatusPatch = module_resource_k8s_io.PartitionTypeStatusPatch.new;
+  final PartitionTypeStatusPatchArgs = module_resource_k8s_io.PartitionTypeStatusPatch.new;
   final PodScheduling = module_resource_k8s_io.PodScheduling.new;
   final PodSchedulingArgs = module_resource_k8s_io.PodScheduling.new;
   final PodSchedulingContext = module_resource_k8s_io.PodSchedulingContext.new;
@@ -2792,6 +2910,14 @@ class _ResourceK8sIoModuleNamespace {
   final ResourceSliceSpecArgs = module_resource_k8s_io.ResourceSliceSpec.new;
   final ResourceSliceSpecPatch = module_resource_k8s_io.ResourceSliceSpecPatch.new;
   final ResourceSliceSpecPatchArgs = module_resource_k8s_io.ResourceSliceSpecPatch.new;
+  final ShareableCapacityStatus = module_resource_k8s_io.ShareableCapacityStatus.new;
+  final ShareableCapacityStatusArgs = module_resource_k8s_io.ShareableCapacityStatus.new;
+  final ShareableCapacityStatusPatch = module_resource_k8s_io.ShareableCapacityStatusPatch.new;
+  final ShareableCapacityStatusPatchArgs = module_resource_k8s_io.ShareableCapacityStatusPatch.new;
+  final ShareableSummaryStatus = module_resource_k8s_io.ShareableSummaryStatus.new;
+  final ShareableSummaryStatusArgs = module_resource_k8s_io.ShareableSummaryStatus.new;
+  final ShareableSummaryStatusPatch = module_resource_k8s_io.ShareableSummaryStatusPatch.new;
+  final ShareableSummaryStatusPatchArgs = module_resource_k8s_io.ShareableSummaryStatusPatch.new;
   final StructuredResourceHandle = module_resource_k8s_io.StructuredResourceHandle.new;
   final StructuredResourceHandleArgs = module_resource_k8s_io.StructuredResourceHandle.new;
   final StructuredResourceHandlePatch = module_resource_k8s_io.StructuredResourceHandlePatch.new;
@@ -2803,7 +2929,45 @@ class _ResourceK8sIoModuleNamespace {
 }
 
 class _SchedulingK8sIoModuleNamespace {
-  const _SchedulingK8sIoModuleNamespace();
+  _SchedulingK8sIoModuleNamespace();
+  final CompositeDisruptionMode = module_scheduling_k8s_io.CompositeDisruptionMode.new;
+  final CompositeDisruptionModeArgs = module_scheduling_k8s_io.CompositeDisruptionMode.new;
+  final CompositeDisruptionModePatch = module_scheduling_k8s_io.CompositeDisruptionModePatch.new;
+  final CompositeDisruptionModePatchArgs = module_scheduling_k8s_io.CompositeDisruptionModePatch.new;
+  final CompositeGangSchedulingPolicy = module_scheduling_k8s_io.CompositeGangSchedulingPolicy.new;
+  final CompositeGangSchedulingPolicyArgs = module_scheduling_k8s_io.CompositeGangSchedulingPolicy.new;
+  final CompositeGangSchedulingPolicyPatch = module_scheduling_k8s_io.CompositeGangSchedulingPolicyPatch.new;
+  final CompositeGangSchedulingPolicyPatchArgs = module_scheduling_k8s_io.CompositeGangSchedulingPolicyPatch.new;
+  final CompositePodGroup = module_scheduling_k8s_io.CompositePodGroup.new;
+  final CompositePodGroupArgs = module_scheduling_k8s_io.CompositePodGroup.new;
+  final CompositePodGroupList = module_scheduling_k8s_io.CompositePodGroupList.new;
+  final CompositePodGroupListArgs = module_scheduling_k8s_io.CompositePodGroupList.new;
+  final CompositePodGroupPatch = module_scheduling_k8s_io.CompositePodGroupPatch.new;
+  final CompositePodGroupPatchArgs = module_scheduling_k8s_io.CompositePodGroupPatch.new;
+  final CompositePodGroupSchedulingConstraints = module_scheduling_k8s_io.CompositePodGroupSchedulingConstraints.new;
+  final CompositePodGroupSchedulingConstraintsArgs = module_scheduling_k8s_io.CompositePodGroupSchedulingConstraints.new;
+  final CompositePodGroupSchedulingConstraintsPatch = module_scheduling_k8s_io.CompositePodGroupSchedulingConstraintsPatch.new;
+  final CompositePodGroupSchedulingConstraintsPatchArgs = module_scheduling_k8s_io.CompositePodGroupSchedulingConstraintsPatch.new;
+  final CompositePodGroupSchedulingPolicy = module_scheduling_k8s_io.CompositePodGroupSchedulingPolicy.new;
+  final CompositePodGroupSchedulingPolicyArgs = module_scheduling_k8s_io.CompositePodGroupSchedulingPolicy.new;
+  final CompositePodGroupSchedulingPolicyPatch = module_scheduling_k8s_io.CompositePodGroupSchedulingPolicyPatch.new;
+  final CompositePodGroupSchedulingPolicyPatchArgs = module_scheduling_k8s_io.CompositePodGroupSchedulingPolicyPatch.new;
+  final CompositePodGroupSpec = module_scheduling_k8s_io.CompositePodGroupSpec.new;
+  final CompositePodGroupSpecArgs = module_scheduling_k8s_io.CompositePodGroupSpec.new;
+  final CompositePodGroupSpecPatch = module_scheduling_k8s_io.CompositePodGroupSpecPatch.new;
+  final CompositePodGroupSpecPatchArgs = module_scheduling_k8s_io.CompositePodGroupSpecPatch.new;
+  final CompositePodGroupStatus = module_scheduling_k8s_io.CompositePodGroupStatus.new;
+  final CompositePodGroupStatusArgs = module_scheduling_k8s_io.CompositePodGroupStatus.new;
+  final CompositePodGroupStatusPatch = module_scheduling_k8s_io.CompositePodGroupStatusPatch.new;
+  final CompositePodGroupStatusPatchArgs = module_scheduling_k8s_io.CompositePodGroupStatusPatch.new;
+  final CompositePodGroupTemplate = module_scheduling_k8s_io.CompositePodGroupTemplate.new;
+  final CompositePodGroupTemplateArgs = module_scheduling_k8s_io.CompositePodGroupTemplate.new;
+  final CompositePodGroupTemplatePatch = module_scheduling_k8s_io.CompositePodGroupTemplatePatch.new;
+  final CompositePodGroupTemplatePatchArgs = module_scheduling_k8s_io.CompositePodGroupTemplatePatch.new;
+  final DisruptionMode = module_scheduling_k8s_io.DisruptionMode.new;
+  final DisruptionModeArgs = module_scheduling_k8s_io.DisruptionMode.new;
+  final DisruptionModePatch = module_scheduling_k8s_io.DisruptionModePatch.new;
+  final DisruptionModePatchArgs = module_scheduling_k8s_io.DisruptionModePatch.new;
   final GangSchedulingPolicy = module_scheduling_k8s_io.GangSchedulingPolicy.new;
   final GangSchedulingPolicyArgs = module_scheduling_k8s_io.GangSchedulingPolicy.new;
   final GangSchedulingPolicyPatch = module_scheduling_k8s_io.GangSchedulingPolicyPatch.new;
@@ -2814,6 +2978,10 @@ class _SchedulingK8sIoModuleNamespace {
   final PodGroupListArgs = module_scheduling_k8s_io.PodGroupList.new;
   final PodGroupPatch = module_scheduling_k8s_io.PodGroupPatch.new;
   final PodGroupPatchArgs = module_scheduling_k8s_io.PodGroupPatch.new;
+  final PodGroupPolicy = module_scheduling_k8s_io.PodGroupPolicy.new;
+  final PodGroupPolicyArgs = module_scheduling_k8s_io.PodGroupPolicy.new;
+  final PodGroupPolicyPatch = module_scheduling_k8s_io.PodGroupPolicyPatch.new;
+  final PodGroupPolicyPatchArgs = module_scheduling_k8s_io.PodGroupPolicyPatch.new;
   final PodGroupResourceClaim = module_scheduling_k8s_io.PodGroupResourceClaim.new;
   final PodGroupResourceClaimArgs = module_scheduling_k8s_io.PodGroupResourceClaim.new;
   final PodGroupResourceClaimPatch = module_scheduling_k8s_io.PodGroupResourceClaimPatch.new;
@@ -2866,10 +3034,34 @@ class _SchedulingK8sIoModuleNamespace {
   final WorkloadListArgs = module_scheduling_k8s_io.WorkloadList.new;
   final WorkloadPatch = module_scheduling_k8s_io.WorkloadPatch.new;
   final WorkloadPatchArgs = module_scheduling_k8s_io.WorkloadPatch.new;
+  final WorkloadPodGroupDisruptionMode = module_scheduling_k8s_io.WorkloadPodGroupDisruptionMode.new;
+  final WorkloadPodGroupDisruptionModeArgs = module_scheduling_k8s_io.WorkloadPodGroupDisruptionMode.new;
+  final WorkloadPodGroupDisruptionModePatch = module_scheduling_k8s_io.WorkloadPodGroupDisruptionModePatch.new;
+  final WorkloadPodGroupDisruptionModePatchArgs = module_scheduling_k8s_io.WorkloadPodGroupDisruptionModePatch.new;
+  final WorkloadPodGroupGangSchedulingPolicy = module_scheduling_k8s_io.WorkloadPodGroupGangSchedulingPolicy.new;
+  final WorkloadPodGroupGangSchedulingPolicyArgs = module_scheduling_k8s_io.WorkloadPodGroupGangSchedulingPolicy.new;
+  final WorkloadPodGroupGangSchedulingPolicyPatch = module_scheduling_k8s_io.WorkloadPodGroupGangSchedulingPolicyPatch.new;
+  final WorkloadPodGroupGangSchedulingPolicyPatchArgs = module_scheduling_k8s_io.WorkloadPodGroupGangSchedulingPolicyPatch.new;
+  final WorkloadPodGroupResourceClaim = module_scheduling_k8s_io.WorkloadPodGroupResourceClaim.new;
+  final WorkloadPodGroupResourceClaimArgs = module_scheduling_k8s_io.WorkloadPodGroupResourceClaim.new;
+  final WorkloadPodGroupResourceClaimPatch = module_scheduling_k8s_io.WorkloadPodGroupResourceClaimPatch.new;
+  final WorkloadPodGroupResourceClaimPatchArgs = module_scheduling_k8s_io.WorkloadPodGroupResourceClaimPatch.new;
+  final WorkloadPodGroupSchedulingConstraints = module_scheduling_k8s_io.WorkloadPodGroupSchedulingConstraints.new;
+  final WorkloadPodGroupSchedulingConstraintsArgs = module_scheduling_k8s_io.WorkloadPodGroupSchedulingConstraints.new;
+  final WorkloadPodGroupSchedulingConstraintsPatch = module_scheduling_k8s_io.WorkloadPodGroupSchedulingConstraintsPatch.new;
+  final WorkloadPodGroupSchedulingConstraintsPatchArgs = module_scheduling_k8s_io.WorkloadPodGroupSchedulingConstraintsPatch.new;
+  final WorkloadPodGroupSchedulingPolicy = module_scheduling_k8s_io.WorkloadPodGroupSchedulingPolicy.new;
+  final WorkloadPodGroupSchedulingPolicyArgs = module_scheduling_k8s_io.WorkloadPodGroupSchedulingPolicy.new;
+  final WorkloadPodGroupSchedulingPolicyPatch = module_scheduling_k8s_io.WorkloadPodGroupSchedulingPolicyPatch.new;
+  final WorkloadPodGroupSchedulingPolicyPatchArgs = module_scheduling_k8s_io.WorkloadPodGroupSchedulingPolicyPatch.new;
   final WorkloadPodGroupTemplateReference = module_scheduling_k8s_io.WorkloadPodGroupTemplateReference.new;
   final WorkloadPodGroupTemplateReferenceArgs = module_scheduling_k8s_io.WorkloadPodGroupTemplateReference.new;
   final WorkloadPodGroupTemplateReferencePatch = module_scheduling_k8s_io.WorkloadPodGroupTemplateReferencePatch.new;
   final WorkloadPodGroupTemplateReferencePatchArgs = module_scheduling_k8s_io.WorkloadPodGroupTemplateReferencePatch.new;
+  final WorkloadReference = module_scheduling_k8s_io.WorkloadReference.new;
+  final WorkloadReferenceArgs = module_scheduling_k8s_io.WorkloadReference.new;
+  final WorkloadReferencePatch = module_scheduling_k8s_io.WorkloadReferencePatch.new;
+  final WorkloadReferencePatchArgs = module_scheduling_k8s_io.WorkloadReferencePatch.new;
   final WorkloadSpec = module_scheduling_k8s_io.WorkloadSpec.new;
   final WorkloadSpecArgs = module_scheduling_k8s_io.WorkloadSpec.new;
   final WorkloadSpecPatch = module_scheduling_k8s_io.WorkloadSpecPatch.new;
@@ -2877,7 +3069,7 @@ class _SchedulingK8sIoModuleNamespace {
 }
 
 class _SettingsK8sIoModuleNamespace {
-  const _SettingsK8sIoModuleNamespace();
+  _SettingsK8sIoModuleNamespace();
   final PodPreset = module_settings_k8s_io.PodPreset.new;
   final PodPresetArgs = module_settings_k8s_io.PodPreset.new;
   final PodPresetList = module_settings_k8s_io.PodPresetList.new;
@@ -2891,7 +3083,7 @@ class _SettingsK8sIoModuleNamespace {
 }
 
 class _StorageK8sIoModuleNamespace {
-  const _StorageK8sIoModuleNamespace();
+  _StorageK8sIoModuleNamespace();
   final CSIDriver = module_storage_k8s_io.CSIDriver.new;
   final CSIDriverArgs = module_storage_k8s_io.CSIDriver.new;
   final CSIDriverList = module_storage_k8s_io.CSIDriverList.new;
@@ -2916,6 +3108,10 @@ class _StorageK8sIoModuleNamespace {
   final CSINodeSpecArgs = module_storage_k8s_io.CSINodeSpec.new;
   final CSINodeSpecPatch = module_storage_k8s_io.CSINodeSpecPatch.new;
   final CSINodeSpecPatchArgs = module_storage_k8s_io.CSINodeSpecPatch.new;
+  final CSINodeStatus = module_storage_k8s_io.CSINodeStatus.new;
+  final CSINodeStatusArgs = module_storage_k8s_io.CSINodeStatus.new;
+  final CSINodeStatusPatch = module_storage_k8s_io.CSINodeStatusPatch.new;
+  final CSINodeStatusPatchArgs = module_storage_k8s_io.CSINodeStatusPatch.new;
   final CSIStorageCapacity = module_storage_k8s_io.CSIStorageCapacity.new;
   final CSIStorageCapacityArgs = module_storage_k8s_io.CSIStorageCapacity.new;
   final CSIStorageCapacityList = module_storage_k8s_io.CSIStorageCapacityList.new;
@@ -2928,6 +3124,14 @@ class _StorageK8sIoModuleNamespace {
   final StorageClassListArgs = module_storage_k8s_io.StorageClassList.new;
   final StorageClassPatch = module_storage_k8s_io.StorageClassPatch.new;
   final StorageClassPatchArgs = module_storage_k8s_io.StorageClassPatch.new;
+  final StorageHealth = module_storage_k8s_io.StorageHealth.new;
+  final StorageHealthArgs = module_storage_k8s_io.StorageHealth.new;
+  final StorageHealthCondition = module_storage_k8s_io.StorageHealthCondition.new;
+  final StorageHealthConditionArgs = module_storage_k8s_io.StorageHealthCondition.new;
+  final StorageHealthConditionPatch = module_storage_k8s_io.StorageHealthConditionPatch.new;
+  final StorageHealthConditionPatchArgs = module_storage_k8s_io.StorageHealthConditionPatch.new;
+  final StorageHealthPatch = module_storage_k8s_io.StorageHealthPatch.new;
+  final StorageHealthPatchArgs = module_storage_k8s_io.StorageHealthPatch.new;
   final TokenRequest = module_storage_k8s_io.TokenRequest.new;
   final TokenRequestArgs = module_storage_k8s_io.TokenRequest.new;
   final TokenRequestPatch = module_storage_k8s_io.TokenRequestPatch.new;
@@ -2967,7 +3171,7 @@ class _StorageK8sIoModuleNamespace {
 }
 
 class _StoragemigrationK8sIoModuleNamespace {
-  const _StoragemigrationK8sIoModuleNamespace();
+  _StoragemigrationK8sIoModuleNamespace();
   final GroupVersionResource = module_storagemigration_k8s_io.GroupVersionResource.new;
   final GroupVersionResourceArgs = module_storagemigration_k8s_io.GroupVersionResource.new;
   final GroupVersionResourcePatch = module_storagemigration_k8s_io.GroupVersionResourcePatch.new;
@@ -2993,7 +3197,7 @@ class _StoragemigrationK8sIoModuleNamespace {
 }
 
 class _YamlModuleNamespace {
-  const _YamlModuleNamespace();
+  _YamlModuleNamespace();
   final ConfigFile = module_yaml.ConfigFile.new;
   final ConfigFileArgs = module_yaml.ConfigFileArgs.new;
   final ConfigGroup = module_yaml.ConfigGroup.new;

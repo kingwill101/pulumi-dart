@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PodCondition contains details for the current condition of this pod.
 class PodConditionPatch {
   /// Last time we probed the condition.
-  final pulumi.Input<String>? lastProbeTime;
+  final pulumi.Input<String?>? lastProbeTime;
   /// Last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// If set, this represents the .metadata.generation that the pod condition was set based upon.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// Unique, one-word, CamelCase reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PodConditionPatch].
   /// [lastProbeTime] Last time we probed the condition.
@@ -54,7 +54,7 @@ class PodConditionPatch {
       lastProbeTime: (() { final guardedValue = map['lastProbeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastTransitionTime: (() { final guardedValue = map['lastTransitionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

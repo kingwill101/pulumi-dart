@@ -8,13 +8,13 @@ import 'user_subject_patch_flowcontrol_apiserver_k8s_io_v1beta3.dart';
 /// Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
 class SubjectPatchFlowcontrolApiserverK8sIoV1beta3 {
   /// `group` matches based on user group name.
-  final pulumi.Input<GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta3>? group;
+  final pulumi.Input<GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta3?>? group;
   /// `kind` indicates which one of the other fields is non-empty. Required
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// `serviceAccount` matches ServiceAccounts.
-  final pulumi.Input<ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta3>? serviceAccount;
+  final pulumi.Input<ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta3?>? serviceAccount;
   /// `user` matches based on username.
-  final pulumi.Input<UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3>? user;
+  final pulumi.Input<UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3?>? user;
 
   /// Creates a new [SubjectPatchFlowcontrolApiserverK8sIoV1beta3].
   /// [group] `group` matches based on user group name.

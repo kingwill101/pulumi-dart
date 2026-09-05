@@ -12,39 +12,39 @@ import 'object_reference.dart';
 /// {@macro pulumi_core_v1_event_args_doc}
 class EventArgs {
   /// What action was taken/failed regarding to the Regarding object.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// The number of times this event has occurred.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Time when this Event was first observed.
-  final pulumi.Input<String>? eventTime;
+  final pulumi.Input<String?>? eventTime;
   /// The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
-  final pulumi.Input<String>? firstTimestamp;
+  final pulumi.Input<String?>? firstTimestamp;
   /// The object that this event is about.
   final pulumi.Input<ObjectReference> involvedObject;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The time at which the most recent occurrence of this event was recorded.
-  final pulumi.Input<String>? lastTimestamp;
+  final pulumi.Input<String?>? lastTimestamp;
   /// A human-readable description of the status of this operation.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta> metadata;
   /// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Optional secondary object for more complex actions.
-  final pulumi.Input<ObjectReference>? related;
+  final pulumi.Input<ObjectReference?>? related;
   /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
-  final pulumi.Input<String>? reportingComponent;
+  final pulumi.Input<String?>? reportingComponent;
   /// ID of the controller instance, e.g. `kubelet-xyzf`.
-  final pulumi.Input<String>? reportingInstance;
+  final pulumi.Input<String?>? reportingInstance;
   /// Data about the Event series this event represents or nil if it's a singleton Event.
-  final pulumi.Input<EventSeries>? series;
+  final pulumi.Input<EventSeries?>? series;
   /// The component reporting this event. Should be a short machine understandable string.
-  final pulumi.Input<EventSource>? source;
+  final pulumi.Input<EventSource?>? source;
   /// Type of this event (Normal, Warning), new types could be added in the future
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EventArgs].
   /// [action] What action was taken/failed regarding to the Regarding object.
@@ -110,7 +110,7 @@ class EventArgs {
     return EventArgs(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       eventTime: (() { final guardedValue = map['eventTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firstTimestamp: (() { final guardedValue = map['firstTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       involvedObject: pulumi.Input.fromValue(ObjectReference.fromMap((map['involvedObject']! as Map).cast<String, dynamic>())),

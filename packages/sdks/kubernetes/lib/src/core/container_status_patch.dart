@@ -10,37 +10,37 @@ import 'volume_mount_status_patch.dart';
 /// ContainerStatus contains details for the current status of this container.
 class ContainerStatusPatch {
   /// AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.
-  final pulumi.Input<Map<String, String>>? allocatedResources;
+  final pulumi.Input<Map<String, String>?>? allocatedResources;
   /// AllocatedResourcesStatus represents the status of various resources allocated for this Pod.
-  final pulumi.Input<List<ResourceStatusPatch>>? allocatedResourcesStatus;
+  final pulumi.Input<List<ResourceStatusPatch>?>? allocatedResourcesStatus;
   /// ContainerID is the ID of the container in the format '&lt;type&gt;://&lt;container_id&gt;'. Where type is a container runtime identifier, returned from Version call of CRI API (for example "containerd").
-  final pulumi.Input<String>? containerID;
+  final pulumi.Input<String?>? containerID;
   /// Image is the name of container image that the container is running. The container image may not match the image used in the PodSpec, as it may have been resolved by the runtime. More info: https://kubernetes.io/docs/concepts/containers/images.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// ImageID is the image ID of the container's image. The image ID may not match the image ID of the image used in the PodSpec, as it may have been resolved by the runtime.
-  final pulumi.Input<String>? imageID;
+  final pulumi.Input<String?>? imageID;
   /// LastTerminationState holds the last termination state of the container to help debug container crashes and restarts. This field is not populated if the container is still running and RestartCount is 0.
-  final pulumi.Input<ContainerStatePatch>? lastState;
+  final pulumi.Input<ContainerStatePatch?>? lastState;
   /// Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Ready specifies whether the container is currently passing its readiness check. The value will change as readiness probes keep executing. If no readiness probes are specified, this field defaults to true once the container is fully started (see Started field).
   ///
   /// The value is typically used to determine whether a container is ready to accept traffic.
-  final pulumi.Input<bool>? ready;
+  final pulumi.Input<bool?>? ready;
   /// Resources represents the compute resource requests and limits that have been successfully enacted on the running container after it has been started or has been successfully resized.
-  final pulumi.Input<ResourceRequirementsPatch>? resources;
+  final pulumi.Input<ResourceRequirementsPatch?>? resources;
   /// RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.
-  final pulumi.Input<int>? restartCount;
+  final pulumi.Input<int?>? restartCount;
   /// Started indicates whether the container has finished its postStart lifecycle hook and passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. In both cases, startup probes will run again. Is always true when no startupProbe is defined and container is running and has passed the postStart lifecycle hook. The null value must be treated the same as false.
-  final pulumi.Input<bool>? started;
+  final pulumi.Input<bool?>? started;
   /// State holds details about the container's current condition.
-  final pulumi.Input<ContainerStatePatch>? state;
+  final pulumi.Input<ContainerStatePatch?>? state;
   /// StopSignal reports the effective stop signal for this container
-  final pulumi.Input<String>? stopSignal;
+  final pulumi.Input<String?>? stopSignal;
   /// User represents user identity information initially attached to the first process of the container
-  final pulumi.Input<ContainerUserPatch>? user;
+  final pulumi.Input<ContainerUserPatch?>? user;
   /// Status of volume mounts.
-  final pulumi.Input<List<VolumeMountStatusPatch>>? volumeMounts;
+  final pulumi.Input<List<VolumeMountStatusPatch>?>? volumeMounts;
 
   /// Creates a new [ContainerStatusPatch].
   /// [allocatedResources] AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.
@@ -107,7 +107,7 @@ class ContainerStatusPatch {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ready: (() { final guardedValue = map['ready']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRequirementsPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      restartCount: (() { final guardedValue = map['restartCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      restartCount: (() { final guardedValue = map['restartCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       started: (() { final guardedValue = map['started']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerStatePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stopSignal: (() { final guardedValue = map['stopSignal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

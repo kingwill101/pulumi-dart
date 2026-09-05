@@ -7,9 +7,9 @@ import 'ingress_service_backend_patch.dart';
 /// IngressBackend describes all endpoints for a given service and port.
 class IngressBackendPatch {
   /// resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with "Service".
-  final pulumi.Input<TypedLocalObjectReferencePatch>? resource;
+  final pulumi.Input<TypedLocalObjectReferencePatch?>? resource;
   /// service references a service as a backend. This is a mutually exclusive setting with "Resource".
-  final pulumi.Input<IngressServiceBackendPatch>? service;
+  final pulumi.Input<IngressServiceBackendPatch?>? service;
 
   /// Creates a new [IngressBackendPatch].
   /// [resource] resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with "Service".

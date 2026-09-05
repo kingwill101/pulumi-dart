@@ -6,7 +6,7 @@ import 'node_selector.dart';
 /// VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.
 class VolumeNodeAffinity {
   /// required specifies hard node constraints that must be met.
-  final pulumi.Input<NodeSelector>? required;
+  final pulumi.Input<NodeSelector?>? required;
 
   /// Creates a new [VolumeNodeAffinity].
   /// [required] required specifies hard node constraints that must be met.

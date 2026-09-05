@@ -6,9 +6,9 @@ import '../meta/condition_patch.dart';
 /// Status of the storage version migration.
 class StorageVersionMigrationStatusPatchStoragemigrationK8sIoV1beta1 {
   /// The latest available observations of the migration's current state.
-  final pulumi.Input<List<ConditionPatch>>? conditions;
+  final pulumi.Input<List<ConditionPatch>?>? conditions;
   /// ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.
-  final pulumi.Input<String>? resourceVersion;
+  final pulumi.Input<String?>? resourceVersion;
 
   /// Creates a new [StorageVersionMigrationStatusPatchStoragemigrationK8sIoV1beta1].
   /// [conditions] The latest available observations of the migration's current state.

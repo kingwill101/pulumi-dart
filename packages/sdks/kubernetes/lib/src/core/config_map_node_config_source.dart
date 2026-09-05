@@ -11,9 +11,9 @@ class ConfigMapNodeConfigSource {
   /// Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.
   final pulumi.Input<String> namespace;
   /// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
-  final pulumi.Input<String>? resourceVersion;
+  final pulumi.Input<String?>? resourceVersion;
   /// UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [ConfigMapNodeConfigSource].
   /// [kubeletConfigKey] KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.

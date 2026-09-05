@@ -41,4 +41,20 @@ class ControllerRevisionPatchResource extends pulumi.CustomResource {
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     revision = registerOutput<int?>('revision');
   }
+
+  /// Creates a typed reference to an existing [ControllerRevisionPatchResource] resource.
+  ControllerRevisionPatchResource.reference(String urn)
+    : super(
+        'kubernetes:apps/v1beta1:ControllerRevisionPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    data = registerOutput<dynamic>('data');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    revision = registerOutput<int?>('revision');
+  }
 }

@@ -6,7 +6,7 @@ import 'limit_range_item_patch.dart';
 /// LimitRangeSpec defines a min/max usage limit for resources that match on kind.
 class LimitRangeSpecPatch {
   /// Limits is the list of LimitRangeItem objects that are enforced.
-  final pulumi.Input<List<LimitRangeItemPatch>>? limits;
+  final pulumi.Input<List<LimitRangeItemPatch>?>? limits;
 
   /// Creates a new [LimitRangeSpecPatch].
   /// [limits] Limits is the list of LimitRangeItem objects that are enforced.

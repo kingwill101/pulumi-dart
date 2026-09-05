@@ -1,42 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
-import 'pod_certificate_request_args.dart';
-import 'pod_certificate_request_spec.dart';
-import 'pod_certificate_request_status.dart';
+import 'pod_certificate_request_spec_certificates_k8s_io_v1beta1.dart';
+import 'pod_certificate_request_status_certificates_k8s_io_v1beta1.dart';
 
 /// PodCertificateRequest encodes a pod requesting a certificate from a given signer.
 ///
 /// Kubelets use this API to implement podCertificate projected volumes
-class PodCertificateRequestCertificatesK8sIoV1beta1 extends pulumi.CustomResource {
+class PodCertificateRequestCertificatesK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  late final pulumi.Output<String> apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  late final pulumi.Output<String> kind;
+  final pulumi.Input<String?>? kind;
   /// metadata contains the object metadata.
-  late final pulumi.Output<ObjectMeta> metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// spec contains the details about the certificate being requested.
-  late final pulumi.Output<PodCertificateRequestSpec> spec;
+  final pulumi.Input<PodCertificateRequestSpecCertificatesK8sIoV1beta1> spec;
   /// status contains the issued certificate, and a standard set of conditions.
-  late final pulumi.Output<PodCertificateRequestStatus?> status;
+  final pulumi.Input<PodCertificateRequestStatusCertificatesK8sIoV1beta1?>? status;
 
   /// Creates a new [PodCertificateRequestCertificatesK8sIoV1beta1].
-  /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [PodCertificateRequestCertificatesK8sIoV1beta1]. {@macro pulumi_certificates_k8s_io_v1beta1_pod_certificate_request_args_doc}
-  /// [options] Resource options controlling this resource's behavior.
-  PodCertificateRequestCertificatesK8sIoV1beta1(
-    String name, {
-    PodCertificateRequestArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'kubernetes:certificates.k8s.io/v1beta1:PodCertificateRequest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    apiVersion = registerOutput<String>('apiVersion');
-    kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spec = registerOutput<PodCertificateRequestSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodCertificateRequestSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    status = registerOutput<PodCertificateRequestStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodCertificateRequestStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] metadata contains the object metadata.
+  /// [spec] spec contains the details about the certificate being requested.
+  /// [status] status contains the issued certificate, and a standard set of conditions.
+  const PodCertificateRequestCertificatesK8sIoV1beta1({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    required this.spec,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<PodCertificateRequestSpecCertificatesK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<PodCertificateRequestStatusCertificatesK8sIoV1beta1, Map<String, dynamic>>(status, (value) => value.toMap()),
+    };
+  }
+
+  factory PodCertificateRequestCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+    return PodCertificateRequestCertificatesK8sIoV1beta1(
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(PodCertificateRequestSpecCertificatesK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodCertificateRequestStatusCertificatesK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+    );
   }
 }

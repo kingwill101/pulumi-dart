@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification defining the post-renderer to use.
 class PostRenderer {
   /// Arguments to pass to the post-renderer command.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Path to an executable to be used for post rendering.
   final pulumi.Input<String> command;
 

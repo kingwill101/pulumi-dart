@@ -8,15 +8,15 @@ import 'resource_pool_status_request_status_patch.dart';
 /// ResourcePoolStatusRequest triggers a one-time calculation of resource pool status based on the provided filters. Once status is set, the request is considered complete and will not be reprocessed. Users should delete and recreate requests to get updated information.
 class ResourcePoolStatusRequestPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// Spec defines the filters for which pools to include in the status. The spec is immutable once created.
-  final pulumi.Input<ResourcePoolStatusRequestSpecPatch>? spec;
+  final pulumi.Input<ResourcePoolStatusRequestSpecPatch?>? spec;
   /// Status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable.
-  final pulumi.Input<ResourcePoolStatusRequestStatusPatch>? status;
+  final pulumi.Input<ResourcePoolStatusRequestStatusPatch?>? status;
 
   /// Creates a new [ResourcePoolStatusRequestPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

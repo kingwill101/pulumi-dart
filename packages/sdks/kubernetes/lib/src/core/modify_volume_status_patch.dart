@@ -14,9 +14,9 @@ class ModifyVolumeStatusPatch {
   /// Infeasible indicates that the request has been rejected as invalid by the CSI driver. To
   /// resolve the error, a valid VolumeAttributesClass needs to be specified.
   /// Note: New statuses can be added in the future. Consumers should check for unknown statuses and fail appropriately.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// targetVolumeAttributesClassName is the name of the VolumeAttributesClass the PVC currently being reconciled
-  final pulumi.Input<String>? targetVolumeAttributesClassName;
+  final pulumi.Input<String?>? targetVolumeAttributesClassName;
 
   /// Creates a new [ModifyVolumeStatusPatch].
   /// [status] status is the status of the ControllerModifyVolume operation. It can be in any of following states:

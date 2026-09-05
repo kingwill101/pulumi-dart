@@ -6,7 +6,7 @@ import '../core/load_balancer_status.dart';
 /// IngressStatus describe the current state of the Ingress.
 class IngressStatus {
   /// LoadBalancer contains the current status of the load-balancer.
-  final pulumi.Input<LoadBalancerStatus>? loadBalancer;
+  final pulumi.Input<LoadBalancerStatus?>? loadBalancer;
 
   /// Creates a new [IngressStatus].
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer.

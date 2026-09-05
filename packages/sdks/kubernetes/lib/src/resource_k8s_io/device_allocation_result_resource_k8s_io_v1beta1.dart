@@ -9,9 +9,9 @@ class DeviceAllocationResultResourceK8sIoV1beta1 {
   /// This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
   ///
   /// This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters.
-  final pulumi.Input<List<DeviceAllocationConfigurationResourceK8sIoV1beta1>>? config;
+  final pulumi.Input<List<DeviceAllocationConfigurationResourceK8sIoV1beta1>?>? config;
   /// Results lists all allocated devices.
-  final pulumi.Input<List<DeviceRequestAllocationResultResourceK8sIoV1beta1>>? results;
+  final pulumi.Input<List<DeviceRequestAllocationResultResourceK8sIoV1beta1>?>? results;
 
   /// Creates a new [DeviceAllocationResultResourceK8sIoV1beta1].
   /// [config] This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.

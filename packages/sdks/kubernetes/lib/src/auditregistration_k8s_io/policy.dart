@@ -7,7 +7,7 @@ class Policy {
   /// The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
   final pulumi.Input<String> level;
   /// Stages is a list of stages for which events are created.
-  final pulumi.Input<List<String>>? stages;
+  final pulumi.Input<List<String>?>? stages;
 
   /// Creates a new [Policy].
   /// [level] The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required

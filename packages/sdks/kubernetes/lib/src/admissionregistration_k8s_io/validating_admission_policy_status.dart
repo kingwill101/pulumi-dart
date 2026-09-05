@@ -7,11 +7,11 @@ import 'type_checking.dart';
 /// ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.
 class ValidatingAdmissionPolicyStatus {
   /// conditions represent the latest available observations of a policy's current state.
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// observedGeneration is the generation observed by the controller.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// typeChecking contains the results of type checking for each expression. Presence of this field indicates the completion of the type checking.
-  final pulumi.Input<TypeChecking>? typeChecking;
+  final pulumi.Input<TypeChecking?>? typeChecking;
 
   /// Creates a new [ValidatingAdmissionPolicyStatus].
   /// [conditions] conditions represent the latest available observations of a policy's current state.
@@ -34,7 +34,7 @@ class ValidatingAdmissionPolicyStatus {
   factory ValidatingAdmissionPolicyStatus.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatus(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       typeChecking: (() { final guardedValue = map['typeChecking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TypeChecking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

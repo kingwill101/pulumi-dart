@@ -23,7 +23,7 @@ class EventEventsK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<String> eventTime;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
   /// note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
   late final pulumi.Output<String> note;
@@ -56,6 +56,34 @@ class EventEventsK8sIoV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    apiVersion = registerOutput<String>('apiVersion');
+    deprecatedCount = registerOutput<int>('deprecatedCount');
+    deprecatedFirstTimestamp = registerOutput<String>('deprecatedFirstTimestamp');
+    deprecatedLastTimestamp = registerOutput<String>('deprecatedLastTimestamp');
+    deprecatedSource = registerOutput<EventSource>('deprecatedSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventTime = registerOutput<String>('eventTime');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    note = registerOutput<String>('note');
+    reason = registerOutput<String>('reason');
+    regarding = registerOutput<ObjectReference>('regarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    related = registerOutput<ObjectReference>('related', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reportingController = registerOutput<String>('reportingController');
+    reportingInstance = registerOutput<String>('reportingInstance');
+    series = registerOutput<EventSeries>('series', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSeries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EventEventsK8sIoV1] resource.
+  EventEventsK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:events.k8s.io/v1:Event',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     apiVersion = registerOutput<String>('apiVersion');
     deprecatedCount = registerOutput<int>('deprecatedCount');

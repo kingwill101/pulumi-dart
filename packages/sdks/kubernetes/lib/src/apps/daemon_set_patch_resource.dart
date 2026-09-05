@@ -43,4 +43,20 @@ class DaemonSetPatchResource extends pulumi.CustomResource {
     spec = registerOutput<DaemonSetSpecPatchAppsV1beta2?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonSetSpecPatchAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<DaemonSetStatusPatchAppsV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonSetStatusPatchAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [DaemonSetPatchResource] resource.
+  DaemonSetPatchResource.reference(String urn)
+    : super(
+        'kubernetes:apps/v1beta2:DaemonSetPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<DaemonSetSpecPatchAppsV1beta2?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonSetSpecPatchAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<DaemonSetStatusPatchAppsV1beta2?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonSetStatusPatchAppsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

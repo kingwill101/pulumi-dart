@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'validating_webhook_configuration_patch_args.dart';
+import 'validating_webhook_patch.dart';
 
 /// Patch resources are used to modify existing Kubernetes resources by using
 /// Server-Side Apply updates. The name of the resource must be specified, but all other properties are optional. More than
@@ -17,7 +18,7 @@ class ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1 extends pu
   /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
   /// webhooks is a list of webhooks and the affected resources and operations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> webhooks;
+  late final pulumi.Output<List<ValidatingWebhookPatch>?> webhooks;
 
   /// Creates a new [ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1].
   /// [name] The Pulumi resource name.
@@ -36,6 +37,21 @@ class ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1 extends pu
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    webhooks = registerOutput<List<Map<String, dynamic>>?>('webhooks');
+    webhooks = registerOutput<List<ValidatingWebhookPatch>?>('webhooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidatingWebhookPatch>(guardedValue, (value) => ValidatingWebhookPatch.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1] resource.
+  ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1:ValidatingWebhookConfigurationPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webhooks = registerOutput<List<ValidatingWebhookPatch>?>('webhooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidatingWebhookPatch>(guardedValue, (value) => ValidatingWebhookPatch.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a vSphere volume resource.
 class VsphereVirtualDiskVolumeSourcePatch {
   /// fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
-  final pulumi.Input<String>? fsType;
+  final pulumi.Input<String?>? fsType;
   /// storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.
-  final pulumi.Input<String>? storagePolicyID;
+  final pulumi.Input<String?>? storagePolicyID;
   /// storagePolicyName is the storage Policy Based Management (SPBM) profile name.
-  final pulumi.Input<String>? storagePolicyName;
+  final pulumi.Input<String?>? storagePolicyName;
   /// volumePath is the path that identifies vSphere volume vmdk
-  final pulumi.Input<String>? volumePath;
+  final pulumi.Input<String?>? volumePath;
 
   /// Creates a new [VsphereVirtualDiskVolumeSourcePatch].
   /// [fsType] fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.

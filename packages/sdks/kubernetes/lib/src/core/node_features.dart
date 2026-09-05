@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeFeatures describes the set of features implemented by the CRI implementation. The features contained in the NodeFeatures should depend only on the cri implementation independent of runtime handlers.
 class NodeFeatures {
   /// SupplementalGroupsPolicy is set to true if the runtime supports SupplementalGroupsPolicy and ContainerUser.
-  final pulumi.Input<bool>? supplementalGroupsPolicy;
+  final pulumi.Input<bool?>? supplementalGroupsPolicy;
 
   /// Creates a new [NodeFeatures].
   /// [supplementalGroupsPolicy] SupplementalGroupsPolicy is set to true if the runtime supports SupplementalGroupsPolicy and ContainerUser.

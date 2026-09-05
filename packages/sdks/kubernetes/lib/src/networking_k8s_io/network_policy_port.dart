@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NetworkPolicyPort describes a port to allow traffic on
 class NetworkPolicyPort {
   /// endPort indicates that the range of ports from port to endPort if set, inclusive, should be allowed by the policy. This field cannot be defined if the port field is not defined or if the port field is defined as a named (string) port. The endPort must be equal or greater than port.
-  final pulumi.Input<int>? endPort;
+  final pulumi.Input<int?>? endPort;
   /// port represents the port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<dynamic>? port;
   /// protocol represents the protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [NetworkPolicyPort].
   /// [endPort] endPort indicates that the range of ports from port to endPort if set, inclusive, should be allowed by the policy. This field cannot be defined if the port field is not defined or if the port field is defined as a named (string) port. The endPort must be equal or greater than port.
@@ -31,8 +31,8 @@ class NetworkPolicyPort {
 
   factory NetworkPolicyPort.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyPort(
-      endPort: (() { final guardedValue = map['endPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      endPort: (() { final guardedValue = map['endPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

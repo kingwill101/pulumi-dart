@@ -6,7 +6,7 @@ import 'resource_claim_scheduling_status.dart';
 /// PodSchedulingStatus describes where resources for the Pod can be allocated.
 class PodSchedulingStatus {
   /// ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses "WaitForFirstConsumer" allocation mode.
-  final pulumi.Input<List<ResourceClaimSchedulingStatus>>? resourceClaims;
+  final pulumi.Input<List<ResourceClaimSchedulingStatus>?>? resourceClaims;
 
   /// Creates a new [PodSchedulingStatus].
   /// [resourceClaims] ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses "WaitForFirstConsumer" allocation mode.

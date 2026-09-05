@@ -9,7 +9,7 @@ class Condition {
   /// message is a human readable message indicating details about the transition. This may be an empty string.
   final pulumi.Input<String> message;
   /// observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.
   final pulumi.Input<String> reason;
   /// status of the condition, one of True, False, Unknown.
@@ -48,7 +48,7 @@ class Condition {
     return Condition(
       lastTransitionTime: pulumi.Input.fromValue(map['lastTransitionTime'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reason: pulumi.Input.fromValue(map['reason'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

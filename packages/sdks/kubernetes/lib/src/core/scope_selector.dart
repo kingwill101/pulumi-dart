@@ -6,7 +6,7 @@ import 'scoped_resource_selector_requirement.dart';
 /// A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.
 class ScopeSelector {
   /// A list of scope selector requirements by scope of the resources.
-  final pulumi.Input<List<ScopedResourceSelectorRequirement>>? matchExpressions;
+  final pulumi.Input<List<ScopedResourceSelectorRequirement>?>? matchExpressions;
 
   /// Creates a new [ScopeSelector].
   /// [matchExpressions] A list of scope selector requirements by scope of the resources.

@@ -10,13 +10,13 @@ import 'priority_level_configuration_spec_patch_flowcontrol_apiserver_k8s_io_v1b
 /// {@macro pulumi_flowcontrol_apiserver_k8s_io_v1beta2_priority_level_configuration_patch_flowcontrol_apiserver_k8s_io_v1beta2_args_doc}
 class PriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1beta2Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMetaPatch>? metadata;
+  final pulumi.Input<ObjectMetaPatch?>? metadata;
   /// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<PriorityLevelConfigurationSpecPatchFlowcontrolApiserverK8sIoV1beta2>? spec;
+  final pulumi.Input<PriorityLevelConfigurationSpecPatchFlowcontrolApiserverK8sIoV1beta2?>? spec;
 
   /// Creates a new [PriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1beta2Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

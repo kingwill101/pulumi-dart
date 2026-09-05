@@ -7,9 +7,9 @@ import 'load_balancer_status.dart';
 /// ServiceStatus represents the current status of a service.
 class ServiceStatus {
   /// Current service state
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// LoadBalancer contains the current status of the load-balancer, if one is present.
-  final pulumi.Input<LoadBalancerStatus>? loadBalancer;
+  final pulumi.Input<LoadBalancerStatus?>? loadBalancer;
 
   /// Creates a new [ServiceStatus].
   /// [conditions] Current service state

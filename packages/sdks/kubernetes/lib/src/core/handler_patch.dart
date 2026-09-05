@@ -8,11 +8,11 @@ import 'tcpsocket_action_patch.dart';
 /// Handler defines a specific action that should be taken
 class HandlerPatch {
   /// One and only one of the following should be specified. Exec specifies the action to take.
-  final pulumi.Input<ExecActionPatch>? exec;
+  final pulumi.Input<ExecActionPatch?>? exec;
   /// HTTPGet specifies the http request to perform.
-  final pulumi.Input<HTTPGetActionPatch>? httpGet;
+  final pulumi.Input<HTTPGetActionPatch?>? httpGet;
   /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-  final pulumi.Input<TCPSocketActionPatch>? tcpSocket;
+  final pulumi.Input<TCPSocketActionPatch?>? tcpSocket;
 
   /// Creates a new [HandlerPatch].
   /// [exec] One and only one of the following should be specified. Exec specifies the action to take.

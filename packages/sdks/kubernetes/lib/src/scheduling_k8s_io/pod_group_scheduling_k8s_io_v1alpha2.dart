@@ -1,40 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
-import 'pod_group_args.dart';
 import 'pod_group_spec.dart';
 import 'pod_group_status.dart';
 
 /// PodGroup represents a runtime instance of pods grouped together. PodGroups are created by workload controllers (Job, LWS, JobSet, etc...) from Workload.podGroupTemplates. PodGroup API enablement is toggled by the GenericWorkload feature gate.
-class PodGroupSchedulingK8sIoV1alpha2 extends pulumi.CustomResource {
+class PodGroupSchedulingK8sIoV1alpha2 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  late final pulumi.Output<String> apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  late final pulumi.Output<String> kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  late final pulumi.Output<ObjectMeta> metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Spec defines the desired state of the PodGroup.
-  late final pulumi.Output<PodGroupSpec> spec;
+  final pulumi.Input<PodGroupSpec> spec;
   /// Status represents the current observed state of the PodGroup.
-  late final pulumi.Output<PodGroupStatus?> status;
+  final pulumi.Input<PodGroupStatus?>? status;
 
   /// Creates a new [PodGroupSchedulingK8sIoV1alpha2].
-  /// [name] The Pulumi resource name.
-  /// [args] Arguments used to configure this [PodGroupSchedulingK8sIoV1alpha2]. {@macro pulumi_scheduling_k8s_io_v1alpha2_pod_group_args_doc}
-  /// [options] Resource options controlling this resource's behavior.
-  PodGroupSchedulingK8sIoV1alpha2(
-    String name, {
-    PodGroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'kubernetes:scheduling.k8s.io/v1alpha2:PodGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    apiVersion = registerOutput<String>('apiVersion');
-    kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spec = registerOutput<PodGroupSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodGroupSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    status = registerOutput<PodGroupStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodGroupStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] Spec defines the desired state of the PodGroup.
+  /// [status] Status represents the current observed state of the PodGroup.
+  const PodGroupSchedulingK8sIoV1alpha2({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    required this.spec,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<PodGroupSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<PodGroupStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+    };
+  }
+
+  factory PodGroupSchedulingK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
+    return PodGroupSchedulingK8sIoV1alpha2(
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(PodGroupSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodGroupStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+    );
   }
 }

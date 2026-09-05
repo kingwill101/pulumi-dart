@@ -9,11 +9,11 @@ class AllocationResultPatchResourceK8sIoV1beta1 {
   /// AllocationTimestamp stores the time when the resources were allocated. This field is not guaranteed to be set, in which case that time is unknown.
   ///
   /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gate.
-  final pulumi.Input<String>? allocationTimestamp;
+  final pulumi.Input<String?>? allocationTimestamp;
   /// Devices is the result of allocating devices.
-  final pulumi.Input<DeviceAllocationResultPatchResourceK8sIoV1beta1>? devices;
+  final pulumi.Input<DeviceAllocationResultPatchResourceK8sIoV1beta1?>? devices;
   /// NodeSelector defines where the allocated resources are available. If unset, they are available everywhere.
-  final pulumi.Input<NodeSelectorPatch>? nodeSelector;
+  final pulumi.Input<NodeSelectorPatch?>? nodeSelector;
 
   /// Creates a new [AllocationResultPatchResourceK8sIoV1beta1].
   /// [allocationTimestamp] AllocationTimestamp stores the time when the resources were allocated. This field is not guaranteed to be set, in which case that time is unknown.

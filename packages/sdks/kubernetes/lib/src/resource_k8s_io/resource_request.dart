@@ -6,7 +6,7 @@ import 'named_resources_request.dart';
 /// ResourceRequest is a request for resources from one particular driver.
 class ResourceRequest {
   /// NamedResources describes a request for resources with the named resources model.
-  final pulumi.Input<NamedResourcesRequest>? namedResources;
+  final pulumi.Input<NamedResourcesRequest?>? namedResources;
   /// VendorParameters are arbitrary setup parameters for the requested resource. They are ignored while allocating a claim.
   final pulumi.Input<dynamic>? vendorParameters;
 

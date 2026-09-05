@@ -10,11 +10,11 @@ class PodDisruptionBudgetPolicyV1 extends pulumi.CustomResource {
   late final pulumi.Output<String> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
-  /// Specification of the desired behavior of the PodDisruptionBudget.
+  /// spec is the specification of the desired behavior of the PodDisruptionBudget.
   late final pulumi.Output<PodDisruptionBudgetSpec> spec;
-  /// Most recently observed status of the PodDisruptionBudget.
+  /// status is the most recently observed status of the PodDisruptionBudget.
   late final pulumi.Output<PodDisruptionBudgetStatus?> status;
 
   /// Creates a new [PodDisruptionBudgetPolicyV1].
@@ -31,6 +31,22 @@ class PodDisruptionBudgetPolicyV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PodDisruptionBudgetSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodDisruptionBudgetSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PodDisruptionBudgetStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodDisruptionBudgetStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PodDisruptionBudgetPolicyV1] resource.
+  PodDisruptionBudgetPolicyV1.reference(String urn)
+    : super(
+        'kubernetes:policy/v1:PodDisruptionBudget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });

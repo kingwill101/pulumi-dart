@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'resource_claim_template_resource_k8s_io_v1.dart';
+import 'resource_claim_template.dart';
 
 /// {@template pulumi_resource_k8s_io_v1_resource_claim_template_list_args_doc}
 /// The set of arguments for ResourceClaimTemplateList.
@@ -10,13 +10,13 @@ import 'resource_claim_template_resource_k8s_io_v1.dart';
 /// {@macro pulumi_resource_k8s_io_v1_resource_claim_template_list_args_doc}
 class ResourceClaimTemplateListArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Items is the list of resource claim templates.
-  final pulumi.Input<List<ResourceClaimTemplateResourceK8sIoV1>> items;
+  final pulumi.Input<List<ResourceClaimTemplate>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [ResourceClaimTemplateListArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class ResourceClaimTemplateListArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<ResourceClaimTemplate>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ResourceClaimTemplate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class ResourceClaimTemplateListArgs {
   factory ResourceClaimTemplateListArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClaimTemplateListArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<ResourceClaimTemplateResourceK8sIoV1>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceClaimTemplate>(map['items']!, (value) => ResourceClaimTemplate.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

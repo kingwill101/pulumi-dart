@@ -6,9 +6,9 @@ import 'named_resources_attribute_patch.dart';
 /// NamedResourcesInstance represents one individual hardware instance that can be selected based on its attributes.
 class NamedResourcesInstancePatch {
   /// Attributes defines the attributes of this resource instance. The name of each attribute must be unique.
-  final pulumi.Input<List<NamedResourcesAttributePatch>>? attributes;
+  final pulumi.Input<List<NamedResourcesAttributePatch>?>? attributes;
   /// Name is unique identifier among all resource instances managed by the driver on the node. It must be a DNS subdomain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NamedResourcesInstancePatch].
   /// [attributes] Attributes defines the attributes of this resource instance. The name of each attribute must be unique.

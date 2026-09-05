@@ -10,7 +10,7 @@ class WatchEventPatch {
   /// * If Type is Error: *Status is recommended; other types may make sense
   /// depending on context.
   final pulumi.Input<dynamic>? object_;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WatchEventPatch].
   /// [object_] Object is:

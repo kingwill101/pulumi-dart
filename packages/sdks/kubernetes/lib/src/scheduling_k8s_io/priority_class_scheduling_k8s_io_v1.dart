@@ -12,7 +12,7 @@ class PriorityClassSchedulingK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<bool> globalDefault;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
   /// preemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
   late final pulumi.Output<String> preemptionPolicy;
@@ -33,6 +33,24 @@ class PriorityClassSchedulingK8sIoV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    description = registerOutput<String>('description');
+    globalDefault = registerOutput<bool>('globalDefault');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preemptionPolicy = registerOutput<String>('preemptionPolicy');
+    value = registerOutput<int>('value');
+  }
+
+  /// Creates a typed reference to an existing [PriorityClassSchedulingK8sIoV1] resource.
+  PriorityClassSchedulingK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:scheduling.k8s.io/v1:PriorityClass',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String>('apiVersion');
     description = registerOutput<String>('description');
     globalDefault = registerOutput<bool>('globalDefault');

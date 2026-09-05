@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// TokenRequestStatus is the result of a token request.
 class TokenRequestStatusPatch {
   /// expirationTimestamp is the time of expiration of the returned token.
-  final pulumi.Input<String>? expirationTimestamp;
+  final pulumi.Input<String?>? expirationTimestamp;
   /// token is the opaque bearer token.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [TokenRequestStatusPatch].
   /// [expirationTimestamp] expirationTimestamp is the time of expiration of the returned token.

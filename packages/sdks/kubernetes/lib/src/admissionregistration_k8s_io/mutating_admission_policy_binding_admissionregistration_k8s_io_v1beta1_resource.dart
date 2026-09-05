@@ -37,4 +37,19 @@ class MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1Resource ex
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spec = registerOutput<MutatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1Resource] resource.
+  MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1beta1:MutatingAdmissionPolicyBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<MutatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

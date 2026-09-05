@@ -6,7 +6,7 @@ import 'apiservice_condition_apiregistration_k8s_io_v1beta1.dart';
 /// APIServiceStatus contains derived information about an API server
 class APIServiceStatusApiregistrationK8sIoV1beta1 {
   /// Current service state of apiService.
-  final pulumi.Input<List<APIServiceConditionApiregistrationK8sIoV1beta1>>? conditions;
+  final pulumi.Input<List<APIServiceConditionApiregistrationK8sIoV1beta1>?>? conditions;
 
   /// Creates a new [APIServiceStatusApiregistrationK8sIoV1beta1].
   /// [conditions] Current service state of apiService.

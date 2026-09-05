@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
 class AllowedCSIDriverPatch {
   /// Name is the registered name of the CSI driver
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AllowedCSIDriverPatch].
   /// [name] Name is the registered name of the CSI driver

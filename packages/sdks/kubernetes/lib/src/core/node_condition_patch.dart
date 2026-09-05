@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeCondition contains condition information for a node.
 class NodeConditionPatch {
   /// Last time we got an update on a given condition.
-  final pulumi.Input<String>? lastHeartbeatTime;
+  final pulumi.Input<String?>? lastHeartbeatTime;
   /// Last time the condition transit from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// Human readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (brief) reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the condition, one of True, False, Unknown.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of node condition.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NodeConditionPatch].
   /// [lastHeartbeatTime] Last time we got an update on a given condition.

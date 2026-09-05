@@ -13,7 +13,7 @@ class ClusterTrustBundleSpecCertificatesK8sIoV1beta1 {
   /// If signerName is empty, then the ClusterTrustBundle object's name must not have such a prefix.
   ///
   /// List/watch requests for ClusterTrustBundles can filter on this field using a `spec.signerName=NAME` field selector.
-  final pulumi.Input<String>? signerName;
+  final pulumi.Input<String?>? signerName;
   /// trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
   ///
   /// The data must consist only of PEM certificate blocks that parse as valid X.509 certificates.  Each certificate must include a basic constraints extension with the CA bit set.  The API server will reject objects that contain duplicate certificates, or that use PEM block headers.

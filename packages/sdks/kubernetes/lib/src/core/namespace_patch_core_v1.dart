@@ -43,4 +43,20 @@ class NamespacePatchCoreV1 extends pulumi.CustomResource {
     spec = registerOutput<NamespaceSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<NamespaceStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [NamespacePatchCoreV1] resource.
+  NamespacePatchCoreV1.reference(String urn)
+    : super(
+        'kubernetes:core/v1:NamespacePatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<NamespaceSpecPatch?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<NamespaceStatusPatch?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

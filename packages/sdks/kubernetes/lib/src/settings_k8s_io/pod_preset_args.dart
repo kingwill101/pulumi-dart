@@ -10,11 +10,11 @@ import 'pod_preset_spec.dart';
 /// {@macro pulumi_settings_k8s_io_v1alpha1_pod_preset_args_doc}
 class PodPresetArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ObjectMeta>? metadata;
-  final pulumi.Input<PodPresetSpec>? spec;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<ObjectMeta?>? metadata;
+  final pulumi.Input<PodPresetSpec?>? spec;
 
   /// Creates a new [PodPresetArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

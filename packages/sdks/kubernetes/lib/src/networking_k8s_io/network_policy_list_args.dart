@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'network_policy_networking_k8s_io_v1.dart';
+import 'network_policy.dart';
 
 /// {@template pulumi_networking_k8s_io_v1_network_policy_list_args_doc}
 /// The set of arguments for NetworkPolicyList.
@@ -10,13 +10,13 @@ import 'network_policy_networking_k8s_io_v1.dart';
 /// {@macro pulumi_networking_k8s_io_v1_network_policy_list_args_doc}
 class NetworkPolicyListArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// items is a list of schema objects.
-  final pulumi.Input<List<NetworkPolicyNetworkingK8sIoV1>> items;
+  final pulumi.Input<List<NetworkPolicy>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ListMeta>? metadata;
+  final pulumi.Input<ListMeta?>? metadata;
 
   /// Creates a new [NetworkPolicyListArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -33,7 +33,7 @@ class NetworkPolicyListArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': items,
+      'items': pulumi.Input.mapInputValue<List<NetworkPolicy>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<NetworkPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
@@ -42,7 +42,7 @@ class NetworkPolicyListArgs {
   factory NetworkPolicyListArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyListArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<NetworkPolicyNetworkingK8sIoV1>()),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkPolicy>(map['items']!, (value) => NetworkPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

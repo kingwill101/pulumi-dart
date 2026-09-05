@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1 {
   /// Namespace to evaluate rules for. Required.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1].
   /// [namespace] Namespace to evaluate rules for. Required.

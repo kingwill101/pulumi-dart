@@ -10,13 +10,13 @@ import 'service_cidrspec_networking_k8s_io_v1alpha1.dart';
 /// {@macro pulumi_networking_k8s_io_v1alpha1_service_cidrnetworking_k8s_io_v1alpha1_args_doc}
 class ServiceCIDRNetworkingK8sIoV1alpha1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// spec is the desired state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<ServiceCIDRSpecNetworkingK8sIoV1alpha1>? spec;
+  final pulumi.Input<ServiceCIDRSpecNetworkingK8sIoV1alpha1?>? spec;
 
   /// Creates a new [ServiceCIDRNetworkingK8sIoV1alpha1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

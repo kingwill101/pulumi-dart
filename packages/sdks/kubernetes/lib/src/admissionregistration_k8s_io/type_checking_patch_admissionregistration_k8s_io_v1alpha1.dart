@@ -6,7 +6,7 @@ import 'expression_warning_patch_admissionregistration_k8s_io_v1alpha1.dart';
 /// TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy
 class TypeCheckingPatchAdmissionregistrationK8sIoV1alpha1 {
   /// The type checking warnings for each expression.
-  final pulumi.Input<List<ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1>>? expressionWarnings;
+  final pulumi.Input<List<ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1>?>? expressionWarnings;
 
   /// Creates a new [TypeCheckingPatchAdmissionregistrationK8sIoV1alpha1].
   /// [expressionWarnings] The type checking warnings for each expression.

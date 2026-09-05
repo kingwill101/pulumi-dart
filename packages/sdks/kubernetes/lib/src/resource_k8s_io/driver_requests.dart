@@ -6,9 +6,9 @@ import 'resource_request.dart';
 /// DriverRequests describes all resources that are needed from one particular driver.
 class DriverRequests {
   /// DriverName is the name used by the DRA driver kubelet plugin.
-  final pulumi.Input<String>? driverName;
+  final pulumi.Input<String?>? driverName;
   /// Requests describes all resources that are needed from the driver.
-  final pulumi.Input<List<ResourceRequest>>? requests;
+  final pulumi.Input<List<ResourceRequest>?>? requests;
   /// VendorParameters are arbitrary setup parameters for all requests of the claim. They are ignored while allocating the claim.
   final pulumi.Input<dynamic>? vendorParameters;
 

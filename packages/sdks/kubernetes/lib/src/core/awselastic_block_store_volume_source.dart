@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling.
 class AWSElasticBlockStoreVolumeSource {
   /// fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-  final pulumi.Input<String>? fsType;
+  final pulumi.Input<String?>? fsType;
   /// partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
-  final pulumi.Input<int>? partition;
+  final pulumi.Input<int?>? partition;
   /// readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
   final pulumi.Input<String> volumeID;
 
@@ -39,7 +39,7 @@ class AWSElasticBlockStoreVolumeSource {
   factory AWSElasticBlockStoreVolumeSource.fromMap(Map<String, dynamic> map) {
     return AWSElasticBlockStoreVolumeSource(
       fsType: (() { final guardedValue = map['fsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       volumeID: pulumi.Input.fromValue(map['volumeID'] as String),
     );

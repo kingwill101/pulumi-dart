@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
+import 'mutating_webhook.dart';
 import 'mutating_webhook_configuration_args.dart';
 
 /// MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.
@@ -11,7 +12,7 @@ class MutatingWebhookConfigurationAdmissionregistrationK8sIoV1 extends pulumi.Cu
   /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMeta> metadata;
   /// webhooks is a list of webhooks and the affected resources and operations.
-  late final pulumi.Output<List<Map<String, dynamic>>> webhooks;
+  late final pulumi.Output<List<MutatingWebhook>> webhooks;
 
   /// Creates a new [MutatingWebhookConfigurationAdmissionregistrationK8sIoV1].
   /// [name] The Pulumi resource name.
@@ -30,6 +31,21 @@ class MutatingWebhookConfigurationAdmissionregistrationK8sIoV1 extends pulumi.Cu
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
     metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    webhooks = registerOutput<List<Map<String, dynamic>>>('webhooks');
+    webhooks = registerOutput<List<MutatingWebhook>>('webhooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MutatingWebhook>(guardedValue, (value) => MutatingWebhook.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [MutatingWebhookConfigurationAdmissionregistrationK8sIoV1] resource.
+  MutatingWebhookConfigurationAdmissionregistrationK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:admissionregistration.k8s.io/v1:MutatingWebhookConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webhooks = registerOutput<List<MutatingWebhook>>('webhooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MutatingWebhook>(guardedValue, (value) => MutatingWebhook.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PriorityLevelConfigurationCondition defines the condition of priority level.
 class PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta1 {
   /// `lastTransitionTime` is the last time the condition transitioned from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// `message` is a human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// `status` is the status of the condition. Can be True, False, Unknown. Required.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// `type` is the type of the condition. Required.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta1].
   /// [lastTransitionTime] `lastTransitionTime` is the last time the condition transitioned from one status to another.

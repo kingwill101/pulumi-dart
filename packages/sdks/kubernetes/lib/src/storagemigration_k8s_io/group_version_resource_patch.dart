@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The names of the group, the version, and the resource.
 class GroupVersionResourcePatch {
   /// The name of the group.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// The name of the resource.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// The name of the version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GroupVersionResourcePatch].
   /// [group] The name of the group.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DaemonEndpoint contains information about a single Daemon endpoint.
 class DaemonEndpointPatch {
   /// Port number of the given endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [DaemonEndpointPatch].
   /// [port] Port number of the given endpoint.
@@ -21,7 +21,7 @@ class DaemonEndpointPatch {
 
   factory DaemonEndpointPatch.fromMap(Map<String, dynamic> map) {
     return DaemonEndpointPatch(
-      port: (() { final guardedValue = map['Port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['Port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

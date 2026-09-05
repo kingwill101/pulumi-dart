@@ -12,7 +12,7 @@ class RuntimeClassNodeK8sIoV1 extends pulumi.CustomResource {
   late final pulumi.Output<String> handler;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
   /// overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
   /// https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/
@@ -34,6 +34,23 @@ class RuntimeClassNodeK8sIoV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    handler = registerOutput<String>('handler');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overhead = registerOutput<Overhead>('overhead', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Overhead.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduling = registerOutput<Scheduling>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Scheduling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RuntimeClassNodeK8sIoV1] resource.
+  RuntimeClassNodeK8sIoV1.reference(String urn)
+    : super(
+        'kubernetes:node.k8s.io/v1:RuntimeClass',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String>('apiVersion');
     handler = registerOutput<String>('handler');
     kind = registerOutput<String>('kind');

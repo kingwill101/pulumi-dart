@@ -8,21 +8,25 @@ import 'key_to_path.dart';
 /// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. Secret volumes support ownership management and SELinux relabeling.
 class SecretVolumeSource {
   /// defaultMode is Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-  final pulumi.Input<int>? defaultMode;
+  final pulumi.Input<int?>? defaultMode;
+  /// defaultUser is Optional: The owner UID of the created files by default. The defaultUser field is only used as a fallback when the item-level user field is unset. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled.
+  final pulumi.Input<int?>? defaultUser;
   /// items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
-  final pulumi.Input<List<KeyToPath>>? items;
+  final pulumi.Input<List<KeyToPath>?>? items;
   /// optional field specify whether the Secret or its keys must be defined
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
   /// secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [SecretVolumeSource].
   /// [defaultMode] defaultMode is Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+  /// [defaultUser] defaultUser is Optional: The owner UID of the created files by default. The defaultUser field is only used as a fallback when the item-level user field is unset. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled.
   /// [items] items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
   /// [optional] optional field specify whether the Secret or its keys must be defined
   /// [secretName] secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
   const SecretVolumeSource({
     this.defaultMode,
+    this.defaultUser,
     this.items,
     this.optional,
     this.secretName,
@@ -31,6 +35,7 @@ class SecretVolumeSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultMode': ?defaultMode,
+      'defaultUser': ?defaultUser,
       'items': ?pulumi.Input.mapOptionalInputValue<List<KeyToPath>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<KeyToPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'optional': ?optional,
       'secretName': ?secretName,
@@ -39,7 +44,8 @@ class SecretVolumeSource {
 
   factory SecretVolumeSource.fromMap(Map<String, dynamic> map) {
     return SecretVolumeSource(
-      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultUser: (() { final guardedValue = map['defaultUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyToPath>(guardedValue, (value) => KeyToPath.fromMap((value as Map).cast<String, dynamic>()))); })(),
       optional: (() { final guardedValue = map['optional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,76 +9,76 @@ import 'repository_opts.dart';
 /// {@macro pulumi_helm_sh_v3_release_args_doc}
 class ReleaseArgs {
   /// Whether to allow Null values in helm chart configs.
-  final pulumi.Input<bool>? allowNullValues;
+  final pulumi.Input<bool?>? allowNullValues;
   /// If set, installation process purges chart on fail. `skipAwait` will be disabled automatically if atomic is used.
-  final pulumi.Input<bool>? atomic;
+  final pulumi.Input<bool?>? atomic;
   /// Chart name to be installed. A path may be used.
   final pulumi.Input<String> chart;
   /// Allow deletion of new resources created in this upgrade when upgrade fails.
-  final pulumi.Input<bool>? cleanupOnFail;
-  final pulumi.Input<String>? compat;
+  final pulumi.Input<bool?>? cleanupOnFail;
+  final pulumi.Input<String?>? compat;
   /// Create the namespace if it does not exist.
-  final pulumi.Input<bool>? createNamespace;
+  final pulumi.Input<bool?>? createNamespace;
   /// Run helm dependency update before installing the chart.
-  final pulumi.Input<bool>? dependencyUpdate;
+  final pulumi.Input<bool?>? dependencyUpdate;
   /// Add a custom description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Use chart development versions, too. Equivalent to version '&gt;0.0.0-0'. If `version` is set, this is ignored.
-  final pulumi.Input<bool>? devel;
+  final pulumi.Input<bool?>? devel;
   /// Prevent CRD hooks from running, but run other hooks.  See helm install --no-crd-hook
-  final pulumi.Input<bool>? disableCRDHooks;
+  final pulumi.Input<bool?>? disableCRDHooks;
   /// If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
-  final pulumi.Input<bool>? disableOpenapiValidation;
+  final pulumi.Input<bool?>? disableOpenapiValidation;
   /// Prevent hooks from running.
-  final pulumi.Input<bool>? disableWebhooks;
+  final pulumi.Input<bool?>? disableWebhooks;
   /// Force resource update through delete/recreate if needed.
-  final pulumi.Input<bool>? forceUpdate;
+  final pulumi.Input<bool?>? forceUpdate;
   /// Location of public keys used for verification. Used only if `verify` is true
-  final pulumi.Input<String>? keyring;
+  final pulumi.Input<String?>? keyring;
   /// Run helm lint when planning.
-  final pulumi.Input<bool>? lint;
+  final pulumi.Input<bool?>? lint;
   /// The rendered manifests as JSON. Not yet supported.
-  final pulumi.Input<Map<String, dynamic>>? manifest;
+  final pulumi.Input<Map<String, dynamic>?>? manifest;
   /// Limit the maximum number of revisions saved per release. Use 0 for no limit.
-  final pulumi.Input<int>? maxHistory;
+  final pulumi.Input<int?>? maxHistory;
   /// Release name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace to install the release into.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Postrender command to run.
-  final pulumi.Input<String>? postrender;
+  final pulumi.Input<String?>? postrender;
   /// Perform pods restart during upgrade/rollback.
-  final pulumi.Input<bool>? recreatePods;
+  final pulumi.Input<bool?>? recreatePods;
   /// If set, render subchart notes along with the parent.
-  final pulumi.Input<bool>? renderSubchartNotes;
+  final pulumi.Input<bool?>? renderSubchartNotes;
   /// Re-use the given name, even if that name is already used. This is unsafe in production
-  final pulumi.Input<bool>? replace;
+  final pulumi.Input<bool?>? replace;
   /// Specification defining the Helm chart repository to use.
-  final pulumi.Input<RepositoryOpts>? repositoryOpts;
+  final pulumi.Input<RepositoryOpts?>? repositoryOpts;
   /// When upgrading, reset the values to the ones built into the chart.
-  final pulumi.Input<bool>? resetValues;
+  final pulumi.Input<bool?>? resetValues;
   /// Names of resources created by the release grouped by "kind/version".
-  final pulumi.Input<Map<String, List<String>>>? resourceNames;
+  final pulumi.Input<Map<String, List<String>>?>? resourceNames;
   /// When upgrading, reuse the last release's values and merge in any overrides. If 'resetValues' is specified, this is ignored
-  final pulumi.Input<bool>? reuseValues;
+  final pulumi.Input<bool?>? reuseValues;
   /// By default, the provider waits until all resources are in a ready state before marking the release as successful. Setting this to true will skip such await logic.
-  final pulumi.Input<bool>? skipAwait;
+  final pulumi.Input<bool?>? skipAwait;
   /// If set, no CRDs will be installed. By default, CRDs are installed if not already present.
-  final pulumi.Input<bool>? skipCrds;
+  final pulumi.Input<bool?>? skipCrds;
   /// If set, install/upgrade will skip the check for existing resource conflicts and take ownership of the matching resources, adopting any that are not already managed by this release. This mirrors the Helm `--take-ownership` flag.
-  final pulumi.Input<bool>? takeOwnership;
+  final pulumi.Input<bool?>? takeOwnership;
   /// Time in seconds to wait for any individual kubernetes operation.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// List of assets (raw yaml files). Content is read and merged with values.
-  final pulumi.Input<List<dynamic>>? valueYamlFiles;
+  final pulumi.Input<List<dynamic>?>? valueYamlFiles;
   /// Custom values set for the release.
-  final pulumi.Input<Map<String, dynamic>>? values;
+  final pulumi.Input<Map<String, dynamic>?>? values;
   /// Verify the package before installing it.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
   /// Specify the exact chart version to install. If this is not specified, the latest version is installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Will wait until all Jobs have been completed before marking the release as successful. This is ignored if `skipAwait` is enabled.
-  final pulumi.Input<bool>? waitForJobs;
+  final pulumi.Input<bool?>? waitForJobs;
 
   /// Creates a new [ReleaseArgs].
   /// [allowNullValues] Whether to allow Null values in helm chart configs.
@@ -215,7 +215,7 @@ class ReleaseArgs {
       keyring: (() { final guardedValue = map['keyring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lint: (() { final guardedValue = map['lint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       manifest: (() { final guardedValue = map['manifest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
-      maxHistory: (() { final guardedValue = map['maxHistory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxHistory: (() { final guardedValue = map['maxHistory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       postrender: (() { final guardedValue = map['postrender']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -224,12 +224,12 @@ class ReleaseArgs {
       replace: (() { final guardedValue = map['replace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       repositoryOpts: (() { final guardedValue = map['repositoryOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryOpts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resetValues: (() { final guardedValue = map['resetValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      resourceNames: (() { final guardedValue = map['resourceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      resourceNames: (() { final guardedValue = map['resourceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       reuseValues: (() { final guardedValue = map['reuseValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       skipAwait: (() { final guardedValue = map['skipAwait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       skipCrds: (() { final guardedValue = map['skipCrds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       takeOwnership: (() { final guardedValue = map['takeOwnership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       valueYamlFiles: (() { final guardedValue = map['valueYamlFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       verify: (() { final guardedValue = map['verify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

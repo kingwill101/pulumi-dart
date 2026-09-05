@@ -6,13 +6,13 @@ import 'user_info.dart';
 /// TokenReviewStatus is the result of the token authentication request.
 class TokenReviewStatus {
   /// audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.
-  final pulumi.Input<List<String>>? audiences;
+  final pulumi.Input<List<String>?>? audiences;
   /// authenticated indicates that the token was associated with a known user.
-  final pulumi.Input<bool>? authenticated;
+  final pulumi.Input<bool?>? authenticated;
   /// error indicates that the token couldn't be checked
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// user is the UserInfo associated with the provided token.
-  final pulumi.Input<UserInfo>? user;
+  final pulumi.Input<UserInfo?>? user;
 
   /// Creates a new [TokenReviewStatus].
   /// [audiences] audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.

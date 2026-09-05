@@ -7,19 +7,19 @@ class ResourcePoolPatch {
   /// Generation tracks the change in a pool over time. Whenever a driver changes something about one or more of the resources in a pool, it must change the generation in all ResourceSlices which are part of that pool. Consumers of ResourceSlices should only consider resources from the pool with the highest generation number. The generation may be reset by drivers, which should be fine for consumers, assuming that all ResourceSlices in a pool are updated to match or deleted.
   ///
   /// Combined with ResourceSliceCount, this mechanism enables consumers to detect pools which are comprised of multiple ResourceSlices and are in an incomplete state.
-  final pulumi.Input<int>? generation;
-  /// Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required.
+  final pulumi.Input<int?>? generation;
+  /// Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required. A field selector can be used to list only ResourceSlice objects belonging to a certain pool.
   ///
   /// It must not be longer than 253 characters and must consist of one or more DNS sub-domains separated by slashes. This field is immutable.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ResourceSliceCount is the total number of ResourceSlices in the pool at this generation number. Must be greater than zero.
   ///
   /// Consumers can use this to check whether they have seen all ResourceSlices belonging to the same pool.
-  final pulumi.Input<int>? resourceSliceCount;
+  final pulumi.Input<int?>? resourceSliceCount;
 
   /// Creates a new [ResourcePoolPatch].
   /// [generation] Generation tracks the change in a pool over time. Whenever a driver changes something about one or more of the resources in a pool, it must change the generation in all ResourceSlices which are part of that pool. Consumers of ResourceSlices should only consider resources from the pool with the highest generation number. The generation may be reset by drivers, which should be fine for consumers, assuming that all ResourceSlices in a pool are updated to match or deleted.
-  /// [name] Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required.
+  /// [name] Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required. A field selector can be used to list only ResourceSlice objects belonging to a certain pool.
   /// [resourceSliceCount] ResourceSliceCount is the total number of ResourceSlices in the pool at this generation number. Must be greater than zero.
   const ResourcePoolPatch({
     this.generation,
@@ -37,9 +37,9 @@ class ResourcePoolPatch {
 
   factory ResourcePoolPatch.fromMap(Map<String, dynamic> map) {
     return ResourcePoolPatch(
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

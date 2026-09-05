@@ -7,11 +7,11 @@ import 'jsonpatch_patch_admissionregistration_k8s_io_v1beta1.dart';
 /// Mutation specifies the CEL expression which is used to apply the Mutation.
 class MutationPatchAdmissionregistrationK8sIoV1beta1 {
   /// applyConfiguration defines the desired configuration values of an object. The configuration is applied to the admission object using [structured merge diff](https://github.com/kubernetes-sigs/structured-merge-diff). A CEL expression is used to create apply configuration.
-  final pulumi.Input<ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1>? applyConfiguration;
+  final pulumi.Input<ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1?>? applyConfiguration;
   /// jsonPatch defines a [JSON patch](https://jsonpatch.com/) operation to perform a mutation to the object. A CEL expression is used to create the JSON patch.
-  final pulumi.Input<JSONPatchPatchAdmissionregistrationK8sIoV1beta1>? jsonPatch;
+  final pulumi.Input<JSONPatchPatchAdmissionregistrationK8sIoV1beta1?>? jsonPatch;
   /// patchType indicates the patch strategy used. Allowed values are "ApplyConfiguration" and "JSONPatch". Required.
-  final pulumi.Input<String>? patchType;
+  final pulumi.Input<String?>? patchType;
 
   /// Creates a new [MutationPatchAdmissionregistrationK8sIoV1beta1].
   /// [applyConfiguration] applyConfiguration defines the desired configuration values of an object. The configuration is applied to the admission object using [structured merge diff](https://github.com/kubernetes-sigs/structured-merge-diff). A CEL expression is used to create apply configuration.

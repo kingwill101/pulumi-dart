@@ -47,4 +47,22 @@ class PriorityClassPatchSchedulingK8sIoV1beta1Resource extends pulumi.CustomReso
     preemptionPolicy = registerOutput<String?>('preemptionPolicy');
     value = registerOutput<int?>('value');
   }
+
+  /// Creates a typed reference to an existing [PriorityClassPatchSchedulingK8sIoV1beta1Resource] resource.
+  PriorityClassPatchSchedulingK8sIoV1beta1Resource.reference(String urn)
+    : super(
+        'kubernetes:scheduling.k8s.io/v1beta1:PriorityClassPatch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    description = registerOutput<String?>('description');
+    globalDefault = registerOutput<bool?>('globalDefault');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preemptionPolicy = registerOutput<String?>('preemptionPolicy');
+    value = registerOutput<int?>('value');
+  }
 }

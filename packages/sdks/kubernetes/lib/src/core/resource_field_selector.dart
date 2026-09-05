@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ResourceFieldSelector represents container resources (cpu, memory) and their output format
 class ResourceFieldSelector {
   /// Container name: required for volumes, optional for env vars
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// Specifies the output format of the exposed resources, defaults to "1"
-  final pulumi.Input<String>? divisor;
+  final pulumi.Input<String?>? divisor;
   /// Required: resource to select
   final pulumi.Input<String> resource;
 

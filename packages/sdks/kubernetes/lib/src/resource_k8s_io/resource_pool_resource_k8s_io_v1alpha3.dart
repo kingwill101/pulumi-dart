@@ -37,9 +37,9 @@ class ResourcePoolResourceK8sIoV1alpha3 {
 
   factory ResourcePoolResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourcePoolResourceK8sIoV1alpha3(
-      generation: pulumi.Input.fromValue(map['generation'] as int),
+      generation: pulumi.Input.fromValue((map['generation'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceSliceCount: pulumi.Input.fromValue(map['resourceSliceCount'] as int),
+      resourceSliceCount: pulumi.Input.fromValue((map['resourceSliceCount'] as num).toInt()),
     );
   }
 }

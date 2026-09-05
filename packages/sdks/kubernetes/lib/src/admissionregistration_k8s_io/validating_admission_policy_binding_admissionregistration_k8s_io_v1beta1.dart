@@ -11,13 +11,13 @@ import 'validating_admission_policy_binding_spec_admissionregistration_k8s_io_v1
 /// The CEL expressions of a policy must have a computed CEL cost below the maximum CEL budget. Each evaluation of the policy is given an independent CEL cost budget. Adding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.
 class ValidatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-  final pulumi.Input<ObjectMeta>? metadata;
+  final pulumi.Input<ObjectMeta?>? metadata;
   /// Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.
-  final pulumi.Input<ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1>? spec;
+  final pulumi.Input<ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1?>? spec;
 
   /// Creates a new [ValidatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources

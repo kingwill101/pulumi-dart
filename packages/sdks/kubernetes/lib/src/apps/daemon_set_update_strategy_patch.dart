@@ -6,9 +6,9 @@ import 'rolling_update_daemon_set_patch.dart';
 /// DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.
 class DaemonSetUpdateStrategyPatch {
   /// Rolling update config params. Present only if type = "RollingUpdate".
-  final pulumi.Input<RollingUpdateDaemonSetPatch>? rollingUpdate;
+  final pulumi.Input<RollingUpdateDaemonSetPatch?>? rollingUpdate;
   /// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is RollingUpdate.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DaemonSetUpdateStrategyPatch].
   /// [rollingUpdate] Rolling update config params. Present only if type = "RollingUpdate".
