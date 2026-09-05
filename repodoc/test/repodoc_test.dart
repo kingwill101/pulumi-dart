@@ -204,5 +204,9 @@ All notable changes to this package will be documented in this file.
     expect(changelog.readAsStringSync(), contains('## 1.1.0+1'));
     expect(changelog.readAsStringSync(), contains('## 1.0.0+1'));
     expect(changelog.readAsStringSync(), contains('- Previous release.'));
+
+    final once = changelog.readAsStringSync();
+    prependChangelogRelease(changelog, version: '1.1.0+1', previous: once);
+    expect(changelog.readAsStringSync(), once);
   });
 }
