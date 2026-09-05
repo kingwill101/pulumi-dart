@@ -1,0 +1,132 @@
+name: Dart Provider Updates
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Provider to update; leave empty to check every provider
+        required: false
+        type: string
+  schedule:
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dart-provider-updates
+  cancel-in-progress: false
+
+env:
+  PULUMI_VERSION: 3.225.1
+
+jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: matrix
+        name: Build provider matrix
+        env:
+          REQUESTED_PROVIDER: ${{ inputs.provider }}
+        run: |
+          set -euo pipefail
+          if [[ -n "${REQUESTED_PROVIDER}" ]]; then
+            jq -e --arg provider "${REQUESTED_PROVIDER}" \
+              '.providers[] | select(.name == $provider)' \
+              packages/sdks/schema_sources.json >/dev/null
+            matrix="$(jq -cn --arg provider "${REQUESTED_PROVIDER}" '{provider: [$provider]}')"
+          else
+            matrix="$(jq -c '{provider: [.providers[].name]}' packages/sdks/schema_sources.json)"
+          fi
+          echo "matrix=${matrix}" >> "${GITHUB_OUTPUT}"
+
+  update-provider:
+    name: update provider - ${{ matrix.provider }}
+    needs: prepare-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+
+      - name: Check for schema drift
+        id: drift
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          report="${RUNNER_TEMP}/schema-drift-${{ matrix.provider }}.json"
+          dart run repodoc schema:check \
+            --provider "${{ matrix.provider }}" \
+            --json --pretty > "${report}"
+          cat "${report}"
+          {
+            echo "drift=$(jq -r '.drift' "${report}")"
+            echo "local_version=$(jq -r '.local_schema_version' "${report}")"
+            echo "upstream_version=$(jq -r '.upstream_version' "${report}")"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Set up Go
+        if: steps.drift.outputs.drift == 'true'
+        uses: actions/setup-go@v7
+        with:
+          go-version: 1.25.x
+
+      - name: Checkout required Pulumi submodule
+        if: steps.drift.outputs.drift == 'true'
+        run: git submodule update --init --depth 1 thirdparty/pulumi
+
+      - name: Install Pulumi CLI
+        if: steps.drift.outputs.drift == 'true'
+        run: |
+          curl -fsSL https://get.pulumi.com | sh -s -- --version "${PULUMI_VERSION}"
+          echo "${HOME}/.pulumi/bin" >> "${GITHUB_PATH}"
+
+      - name: Install Dart language host
+        if: steps.drift.outputs.drift == 'true'
+        run: |
+          cd pulumi-language-dart
+          go install .
+          echo "$(go env GOPATH)/bin" >> "${GITHUB_PATH}"
+
+      - name: Refresh generated provider package
+        if: steps.drift.outputs.drift == 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          dart run repodoc packages:update \
+            --provider "${{ matrix.provider }}" \
+            --allow-same-version
+
+      - name: Create or update provider pull request
+        if: steps.drift.outputs.drift == 'true'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        with:
+          token: ${{ secrets.PROVIDER_UPDATE_TOKEN || github.token }}
+          branch: automation/provider-${{ matrix.provider }}
+          base: master
+          delete-branch: true
+          commit-message: "chore(provider): update ${{ matrix.provider }} to ${{ steps.drift.outputs.upstream_version }}"
+          title: "chore(provider): update ${{ matrix.provider }} to ${{ steps.drift.outputs.upstream_version }}"
+          body: |
+            Automated weekly provider refresh for `${{ matrix.provider }}`.
+
+            - Local schema version: `${{ steps.drift.outputs.local_version }}`
+            - Upstream schema version: `${{ steps.drift.outputs.upstream_version }}`
+            - Generated with: `dart run repodoc packages:update --provider ${{ matrix.provider }} --allow-same-version`
+
+            This PR is updated in place if drift remains on a later run. Review and merge it normally after CI passes.
