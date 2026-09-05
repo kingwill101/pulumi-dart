@@ -1623,7 +1623,7 @@ class InternalRange extends pulumi.CustomResource {
           'gcp:networkconnectivity/internalRange:InternalRange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>('allocationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

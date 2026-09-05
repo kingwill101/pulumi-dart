@@ -79,7 +79,7 @@ class ClusterNodePoolNodeConfig {
   /// GKE node version 1.15.11-gke.15 or later
   /// Structure is documented below.
   final pulumi.Input<ClusterNodePoolNodeConfigGvnic?>? gvnic;
-  /// The maintenance policy for the hosts on which the GKE VMs run on.
+  /// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
   final pulumi.Input<ClusterNodePoolNodeConfigHostMaintenancePolicy?>? hostMaintenancePolicy;
   /// The image type to use for this node. Note that changing the image type
   /// will delete and recreate all nodes in the node pool.
@@ -197,7 +197,7 @@ class ClusterNodePoolNodeConfig {
   /// [gpudirectStrategy] The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance.
   /// [gvnic] Google Virtual NIC (gVNIC) is a virtual network interface.
-  /// [hostMaintenancePolicy] The maintenance policy for the hosts on which the GKE VMs run on.
+  /// [hostMaintenancePolicy] The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
   /// [imageType] The image type to use for this node. Note that changing the image type
   /// [kubeletConfig] Node kubelet configs. Structure is documented below.
   /// [labels] The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are

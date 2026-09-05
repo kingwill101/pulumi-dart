@@ -1115,7 +1115,7 @@ class AssetIamBinding extends pulumi.CustomResource {
           'gcp:dataplex/assetIamBinding:AssetIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     asset = registerOutput<String>('asset');
     condition = registerOutput<AssetIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

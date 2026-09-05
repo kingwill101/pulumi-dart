@@ -1014,7 +1014,7 @@ class Network extends pulumi.CustomResource {
           'gcp:compute/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     autoCreateSubnetworks = registerOutput<bool?>('autoCreateSubnetworks');
     bgpAlwaysCompareMed = registerOutput<bool>('bgpAlwaysCompareMed');

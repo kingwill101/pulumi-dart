@@ -507,7 +507,7 @@ class Environment extends pulumi.CustomResource {
           'gcp:diagflow/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     agentVersion = registerOutput<String?>('agentVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');

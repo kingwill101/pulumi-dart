@@ -15,6 +15,8 @@ import 'cluster_zone_distribution_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_redis_cluster_cluster_args_doc}
 class ClusterArgs {
+  /// Optional. The name of the ACL policy to attach to the cluster.
+  final pulumi.Input<String?>? aclPolicy;
   /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
   /// Default value is `AUTH_MODE_DISABLED`.
   /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -100,6 +102,7 @@ class ClusterArgs {
   final pulumi.Input<ClusterZoneDistributionConfig?>? zoneDistributionConfig;
 
   /// Creates a new [ClusterArgs].
+  /// [aclPolicy] Optional. The name of the ACL policy to attach to the cluster.
   /// [authorizationMode] Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
   /// [automatedBackupConfig] The automated backup config for a instance.
   /// [crossClusterReplicationConfig] Cross cluster replication config
@@ -125,6 +128,7 @@ class ClusterArgs {
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster.
   /// [zoneDistributionConfig] Immutable. Zone distribution config for Memorystore Redis cluster.
   const ClusterArgs({
+    this.aclPolicy,
     this.authorizationMode,
     this.automatedBackupConfig,
     this.crossClusterReplicationConfig,
@@ -153,6 +157,7 @@ class ClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclPolicy': ?aclPolicy,
       'authorizationMode': ?authorizationMode,
       'automatedBackupConfig': ?pulumi.Input.mapOptionalInputValue<ClusterAutomatedBackupConfig, Map<String, dynamic>>(automatedBackupConfig, (value) => value.toMap()),
       'crossClusterReplicationConfig': ?pulumi.Input.mapOptionalInputValue<ClusterCrossClusterReplicationConfig, Map<String, dynamic>>(crossClusterReplicationConfig, (value) => value.toMap()),
@@ -182,6 +187,7 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
+      aclPolicy: (() { final guardedValue = map['aclPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       automatedBackupConfig: (() { final guardedValue = map['automatedBackupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       crossClusterReplicationConfig: (() { final guardedValue = map['crossClusterReplicationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCrossClusterReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -609,7 +609,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends pulumi.C
           'gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

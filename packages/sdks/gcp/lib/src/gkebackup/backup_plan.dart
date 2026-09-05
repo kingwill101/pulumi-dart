@@ -372,7 +372,7 @@ import 'backup_plan_state.dart';
 ///         Name = "autopilot-cluster",
 ///         Location = "us-central1",
 ///         EnableAutopilot = true,
-///         IpAllocationPolicy = null,
+///         IpAllocationPolicy = new() { },
 ///         ReleaseChannel = new Gcp.Container.Inputs.ClusterReleaseChannelArgs
 ///         {
 ///             Channel = "RAPID",
@@ -3323,7 +3323,7 @@ class BackupPlan extends pulumi.CustomResource {
           'gcp:gkebackup/backupPlan:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

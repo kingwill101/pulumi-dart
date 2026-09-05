@@ -981,7 +981,7 @@ class EnvironmentIamMember extends pulumi.CustomResource {
           'gcp:apigee/environmentIamMember:EnvironmentIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<EnvironmentIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     envId = registerOutput<String>('envId');

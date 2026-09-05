@@ -380,7 +380,7 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
           'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cloudArmorTier = registerOutput<String>('cloudArmorTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');

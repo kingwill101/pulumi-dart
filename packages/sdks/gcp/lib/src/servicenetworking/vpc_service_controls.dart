@@ -384,7 +384,7 @@ class VpcServiceControls extends pulumi.CustomResource {
           'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     network = registerOutput<String>('network');

@@ -2141,7 +2141,7 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredUserCreatedEndpoints = registerOutput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>('desiredUserCreatedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(guardedValue, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });

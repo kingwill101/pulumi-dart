@@ -2471,7 +2471,7 @@ class Authority extends pulumi.CustomResource {
           'gcp:certificateauthority/authority:Authority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessUrls = registerOutput<List<AuthorityAccessUrl>>('accessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorityAccessUrl>(guardedValue, (value) => AuthorityAccessUrl.fromMap((value as Map).cast<String, dynamic>())); });

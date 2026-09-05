@@ -1011,7 +1011,7 @@ class QueueIamPolicy extends pulumi.CustomResource {
           'gcp:cloudtasks/queueIamPolicy:QueueIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

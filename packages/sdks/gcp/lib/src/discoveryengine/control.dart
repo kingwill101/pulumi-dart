@@ -130,7 +130,7 @@ import 'control_synonyms_action.dart';
 ///         },
 ///         IndustryVertical = "GENERIC",
 ///         AppType = "APP_TYPE_INTRANET",
-///         SearchEngineConfig = null,
+///         SearchEngineConfig = new() { },
 ///     });
 ///
 ///     var basicControl = new Gcp.DiscoveryEngine.Control("basic", new()
@@ -449,7 +449,7 @@ class Control extends pulumi.CustomResource {
           'gcp:discoveryengine/control:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');

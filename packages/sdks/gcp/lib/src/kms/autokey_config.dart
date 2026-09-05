@@ -750,7 +750,7 @@ class AutokeyConfig extends pulumi.CustomResource {
           'gcp:kms/autokeyConfig:AutokeyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');

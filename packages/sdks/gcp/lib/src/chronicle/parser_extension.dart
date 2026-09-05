@@ -697,7 +697,7 @@ class ParserExtension extends pulumi.CustomResource {
           'gcp:chronicle/parserExtension:ParserExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cbnSnippet = registerOutput<String?>('cbnSnippet');
     createTime = registerOutput<String>('createTime');

@@ -3975,7 +3975,7 @@ class FrameworkDeployment extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cloudControlDeploymentReferences = registerOutput<List<FrameworkDeploymentCloudControlDeploymentReference>>('cloudControlDeploymentReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(guardedValue, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>())); });
     cloudControlMetadatas = registerOutput<List<FrameworkDeploymentCloudControlMetadata>>('cloudControlMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(guardedValue, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>())); });

@@ -302,7 +302,7 @@ class ServicePerimeterDryRunResource extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

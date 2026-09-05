@@ -495,7 +495,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:bigtable/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clusters = registerOutput<List<InstanceCluster>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceCluster>(guardedValue, (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>())); });

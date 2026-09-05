@@ -774,7 +774,7 @@ class ChatEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/chatEngine:ChatEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineChatEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChatEngineChatEngineMetadata>(guardedValue, (value) => ChatEngineChatEngineMetadata.fromMap((value as Map).cast<String, dynamic>())); });

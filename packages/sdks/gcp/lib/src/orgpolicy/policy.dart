@@ -1488,7 +1488,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:orgpolicy/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

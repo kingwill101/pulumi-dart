@@ -607,7 +607,7 @@ class SecurityFeedback extends pulumi.CustomResource {
           'gcp:apigee/securityFeedback:SecurityFeedback',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');

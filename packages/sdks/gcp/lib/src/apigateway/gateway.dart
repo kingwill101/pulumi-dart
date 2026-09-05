@@ -81,7 +81,7 @@ class Gateway extends pulumi.CustomResource {
           'gcp:apigateway/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     apiConfig = registerOutput<String>('apiConfig');

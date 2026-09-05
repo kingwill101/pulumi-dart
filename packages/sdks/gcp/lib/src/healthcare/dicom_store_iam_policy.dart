@@ -703,7 +703,7 @@ class DicomStoreIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');

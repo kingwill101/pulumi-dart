@@ -895,7 +895,7 @@ class Collection extends pulumi.CustomResource {
           'gcp:vectorsearch/collection:Collection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     collectionId = registerOutput<String>('collectionId');

@@ -540,7 +540,7 @@ class BackendServiceSignedUrlKey extends pulumi.CustomResource {
           'gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['keyValue'],
         ) {
     backendService = registerOutput<String>('backendService');

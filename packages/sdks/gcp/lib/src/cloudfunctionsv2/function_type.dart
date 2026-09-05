@@ -7410,7 +7410,7 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctionsv2/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

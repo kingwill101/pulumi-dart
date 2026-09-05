@@ -952,7 +952,7 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

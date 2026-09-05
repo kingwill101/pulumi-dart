@@ -481,7 +481,7 @@ class BigQueryExport extends pulumi.CustomResource {
           'gcp:chronicle/bigQueryExport:BigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bigQueryExportPackage = registerOutput<String>('bigQueryExportPackage');
     entityGraphSettings = registerOutput<BigQueryExportEntityGraphSettings>('entityGraphSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportEntityGraphSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -653,7 +653,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///         BootstrapClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///         OnPremVersion = "1.31.0-gke.35",
 ///         ImageType = "ubuntu_containerd",
-///         Annotations = null,
+///         Annotations = new() { },
 ///         Vcenter = new Gcp.GkeOnPrem.Inputs.VmwareAdminClusterVcenterArgs
 ///         {
 ///             ResourcePool = "test resource pool",
@@ -1818,7 +1818,7 @@ class VmwareAdminCluster extends pulumi.CustomResource {
           'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     addonNode = registerOutput<VmwareAdminClusterAddonNode>('addonNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAddonNode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

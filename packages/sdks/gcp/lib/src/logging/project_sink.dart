@@ -1048,7 +1048,7 @@ class ProjectSink extends pulumi.CustomResource {
           'gcp:logging/projectSink:ProjectSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customWriterIdentity = registerOutput<String?>('customWriterIdentity');

@@ -104,6 +104,8 @@ class DatabaseInstanceSettings {
   final pulumi.Input<String?>? pricingPlan;
   /// Configuration of Read Pool Auto Scale.
   final pulumi.Input<DatabaseInstanceSettingsReadPoolAutoScaleConfig?>? readPoolAutoScaleConfig;
+  /// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+  final pulumi.Input<int?>? replicationLagMaxSeconds;
   /// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
   final pulumi.Input<bool?>? retainBackupsOnDelete;
   final pulumi.Input<DatabaseInstanceSettingsSqlServerAuditConfig?>? sqlServerAuditConfig;
@@ -154,6 +156,7 @@ class DatabaseInstanceSettings {
   /// [performanceCaptureConfig] Configuration of Performance Capture.
   /// [pricingPlan] Pricing plan for this instance, can only be `PER_USE`.
   /// [readPoolAutoScaleConfig] Configuration of Read Pool Auto Scale.
+  /// [replicationLagMaxSeconds] The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
   /// [retainBackupsOnDelete] When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
   /// [sqlServerAuditConfig] Optional.
   /// [tier] The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -195,6 +198,7 @@ class DatabaseInstanceSettings {
     this.performanceCaptureConfig,
     this.pricingPlan,
     this.readPoolAutoScaleConfig,
+    this.replicationLagMaxSeconds,
     this.retainBackupsOnDelete,
     this.sqlServerAuditConfig,
     required this.tier,
@@ -239,6 +243,7 @@ class DatabaseInstanceSettings {
       'performanceCaptureConfig': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceSettingsPerformanceCaptureConfig, Map<String, dynamic>>(performanceCaptureConfig, (value) => value.toMap()),
       'pricingPlan': ?pricingPlan,
       'readPoolAutoScaleConfig': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceSettingsReadPoolAutoScaleConfig, Map<String, dynamic>>(readPoolAutoScaleConfig, (value) => value.toMap()),
+      'replicationLagMaxSeconds': ?replicationLagMaxSeconds,
       'retainBackupsOnDelete': ?retainBackupsOnDelete,
       'sqlServerAuditConfig': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceSettingsSqlServerAuditConfig, Map<String, dynamic>>(sqlServerAuditConfig, (value) => value.toMap()),
       'tier': tier,
@@ -284,6 +289,7 @@ class DatabaseInstanceSettings {
       performanceCaptureConfig: (() { final guardedValue = map['performanceCaptureConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceSettingsPerformanceCaptureConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pricingPlan: (() { final guardedValue = map['pricingPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       readPoolAutoScaleConfig: (() { final guardedValue = map['readPoolAutoScaleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceSettingsReadPoolAutoScaleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      replicationLagMaxSeconds: (() { final guardedValue = map['replicationLagMaxSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       retainBackupsOnDelete: (() { final guardedValue = map['retainBackupsOnDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sqlServerAuditConfig: (() { final guardedValue = map['sqlServerAuditConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceSettingsSqlServerAuditConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tier: pulumi.Input.fromValue(map['tier'] as String),

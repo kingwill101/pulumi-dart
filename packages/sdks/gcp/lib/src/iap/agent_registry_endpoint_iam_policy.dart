@@ -2140,7 +2140,7 @@ class AgentRegistryEndpointIamPolicy extends pulumi.CustomResource {
           'gcp:iap/agentRegistryEndpointIamPolicy:AgentRegistryEndpointIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     endpointId = registerOutput<String>('endpointId');
     etag = registerOutput<String>('etag');

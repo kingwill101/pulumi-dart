@@ -430,7 +430,7 @@ class SyncAuthorization extends pulumi.CustomResource {
           'gcp:apigee/syncAuthorization:SyncAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     identities = registerOutput<List<String>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

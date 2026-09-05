@@ -49,7 +49,7 @@ import 'floorsetting_state.dart';
 ///     {
 ///         Parent = "projects/my-project-name",
 ///         Location = "global",
-///         FilterConfig = null,
+///         FilterConfig = new() { },
 ///     });
 ///
 /// });
@@ -457,7 +457,7 @@ import 'floorsetting_state.dart';
 ///     {
 ///         Location = "global",
 ///         Parent = "projects/my-project-name",
-///         FilterConfig = null,
+///         FilterConfig = new() { },
 ///         EnableFloorSettingEnforcement = false,
 ///         AiPlatformFloorSetting = new Gcp.ModelArmor.Inputs.FloorsettingAiPlatformFloorSettingArgs
 ///         {
@@ -652,7 +652,7 @@ class Floorsetting extends pulumi.CustomResource {
           'gcp:modelarmor/floorsetting:Floorsetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     aiPlatformFloorSetting = registerOutput<FloorsettingAiPlatformFloorSetting?>('aiPlatformFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingAiPlatformFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

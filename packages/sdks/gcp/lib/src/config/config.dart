@@ -1503,6 +1503,13 @@ class GcpConfig {
 
   bool get vectorSearchCustomEndpointIsSecret => _isSecret('vectorSearchCustomEndpoint');
 
+  String? get vertexAiAadCustomEndpoint {
+    final raw = _raw('vertexAiAadCustomEndpoint');
+    return raw;
+  }
+
+  bool get vertexAiAadCustomEndpointIsSecret => _isSecret('vertexAiAadCustomEndpoint');
+
   String? get vertexAiCustomEndpoint {
     final raw = _raw('vertexAiCustomEndpoint');
     return raw;

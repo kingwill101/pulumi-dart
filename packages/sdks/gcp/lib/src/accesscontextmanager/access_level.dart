@@ -347,7 +347,7 @@ class AccessLevel extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessLevel:AccessLevel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     basic = registerOutput<AccessLevelBasic?>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     custom = registerOutput<AccessLevelCustom?>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelCustom.fromMap((guardedValue as Map).cast<String, dynamic>()); });

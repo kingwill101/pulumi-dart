@@ -1102,7 +1102,7 @@ class DataAccessScope extends pulumi.CustomResource {
           'gcp:chronicle/dataAccessScope:DataAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowAll = registerOutput<bool?>('allowAll');
     allowedDataAccessLabels = registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>('allowedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(guardedValue, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });

@@ -284,7 +284,7 @@ class OauthClient extends pulumi.CustomResource {
           'gcp:iam/oauthClient:OauthClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

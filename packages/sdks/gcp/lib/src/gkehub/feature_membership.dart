@@ -2692,7 +2692,7 @@ class FeatureMembership extends pulumi.CustomResource {
           'gcp:gkehub/featureMembership:FeatureMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

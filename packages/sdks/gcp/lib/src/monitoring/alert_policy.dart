@@ -1245,7 +1245,7 @@ class AlertPolicy extends pulumi.CustomResource {
           'gcp:monitoring/alertPolicy:AlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyAlertStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     combiner = registerOutput<String>('combiner');

@@ -2292,7 +2292,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             { "parameters",
 ///             {
 ///                 { "type", "object" },
-///                 { "required", new[] {} },
+///                 { "required", new object?[] {} },
 ///                 { "properties", null },
 ///             } },
 ///         },
@@ -3243,6 +3243,58 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                             managedTopicEnum: "USER_PREFERENCES",
 ///                         },
 ///                     }],
+///                     generateMemoriesExamples: [{
+///                         conversationSource: {
+///                             events: [{
+///                                 content: {
+///                                     role: "user",
+///                                     parts: [
+///                                         {
+///                                             text: "I like pepperoni pizza",
+///                                         },
+///                                         {
+///                                             functionCall: {
+///                                                 id: "fn-call-1",
+///                                                 name: "order_pizza",
+///                                                 args: JSON.stringify({
+///                                                     type: "pepperoni",
+///                                                 }),
+///                                             },
+///                                         },
+///                                         {
+///                                             functionResponse: {
+///                                                 id: "fn-resp-1",
+///                                                 name: "order_pizza",
+///                                                 response: JSON.stringify({
+///                                                     status: "ordered",
+///                                                 }),
+///                                             },
+///                                         },
+///                                         {
+///                                             executableCode: {
+///                                                 id: "exec-code-1",
+///                                                 language: "PYTHON",
+///                                                 code: "print('pizza')",
+///                                             },
+///                                         },
+///                                         {
+///                                             codeExecutionResult: {
+///                                                 id: "exec-result-1",
+///                                                 outcome: "OUTCOME_OK",
+///                                                 output: "pizza",
+///                                             },
+///                                         },
+///                                     ],
+///                                 },
+///                             }],
+///                         },
+///                         generatedMemories: [{
+///                             fact: "User likes pepperoni pizza.",
+///                             topics: [{
+///                                 managedMemoryTopic: "USER_PREFERENCES",
+///                             }],
+///                         }],
+///                     }],
 ///                 },
 ///                 {
 ///                     scopeKeys: [
@@ -3370,6 +3422,58 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                         "managed_memory_topic": {
 ///                             "managed_topic_enum": "USER_PREFERENCES",
 ///                         },
+///                     }],
+///                     "generate_memories_examples": [{
+///                         "conversation_source": {
+///                             "events": [{
+///                                 "content": {
+///                                     "role": "user",
+///                                     "parts": [
+///                                         {
+///                                             "text": "I like pepperoni pizza",
+///                                         },
+///                                         {
+///                                             "function_call": {
+///                                                 "id": "fn-call-1",
+///                                                 "name": "order_pizza",
+///                                                 "args": json.dumps({
+///                                                     "type": "pepperoni",
+///                                                 }),
+///                                             },
+///                                         },
+///                                         {
+///                                             "function_response": {
+///                                                 "id": "fn-resp-1",
+///                                                 "name": "order_pizza",
+///                                                 "response": json.dumps({
+///                                                     "status": "ordered",
+///                                                 }),
+///                                             },
+///                                         },
+///                                         {
+///                                             "executable_code": {
+///                                                 "id": "exec-code-1",
+///                                                 "language": "PYTHON",
+///                                                 "code": "print('pizza')",
+///                                             },
+///                                         },
+///                                         {
+///                                             "code_execution_result": {
+///                                                 "id": "exec-result-1",
+///                                                 "outcome": "OUTCOME_OK",
+///                                                 "output": "pizza",
+///                                             },
+///                                         },
+///                                     ],
+///                                 },
+///                             }],
+///                         },
+///                         "generated_memories": [{
+///                             "fact": "User likes pepperoni pizza.",
+///                             "topics": [{
+///                                 "managed_memory_topic": "USER_PREFERENCES",
+///                             }],
+///                         }],
 ///                     }],
 ///                 },
 ///                 {
@@ -3522,6 +3626,88 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                 },
 ///                             },
 ///                         },
+///                         GenerateMemoriesExamples = new[]
+///                         {
+///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs
+///                             {
+///                                 ConversationSource = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs
+///                                 {
+///                                     Events = new[]
+///                                     {
+///                                         new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs
+///                                         {
+///                                             Content = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs
+///                                             {
+///                                                 Role = "user",
+///                                                 Parts = new[]
+///                                                 {
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         Text = "I like pepperoni pizza",
+///                                                     },
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         FunctionCall = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs
+///                                                         {
+///                                                             Id = "fn-call-1",
+///                                                             Name = "order_pizza",
+///                                                             Args = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                                                             {
+///                                                                 ["type"] = "pepperoni",
+///                                                             }),
+///                                                         },
+///                                                     },
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         FunctionResponse = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs
+///                                                         {
+///                                                             Id = "fn-resp-1",
+///                                                             Name = "order_pizza",
+///                                                             Response = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                                                             {
+///                                                                 ["status"] = "ordered",
+///                                                             }),
+///                                                         },
+///                                                     },
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         ExecutableCode = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs
+///                                                         {
+///                                                             Id = "exec-code-1",
+///                                                             Language = "PYTHON",
+///                                                             Code = "print('pizza')",
+///                                                         },
+///                                                     },
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         CodeExecutionResult = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs
+///                                                         {
+///                                                             Id = "exec-result-1",
+///                                                             Outcome = "OUTCOME_OK",
+///                                                             Output = "pizza",
+///                                                         },
+///                                                     },
+///                                                 },
+///                                             },
+///                                         },
+///                                     },
+///                                 },
+///                                 GeneratedMemories = new[]
+///                                 {
+///                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs
+///                                     {
+///                                         Fact = "User likes pepperoni pizza.",
+///                                         Topics = new[]
+///                                         {
+///                                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs
+///                                             {
+///                                                 ManagedMemoryTopic = "USER_PREFERENCES",
+///                                             },
+///                                         },
+///                                     },
+///                                 },
+///                             },
+///                         },
 ///                     },
 ///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs
 ///                     {
@@ -3665,7 +3851,21 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
+/// 			"type": "pepperoni",
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]string{
+/// 			"status": "ordered",
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json1 := string(tmpJSON1)
+/// 		tmpJSON2, err := json.Marshal(map[string]interface{}{
 /// 			"type": "OBJECT",
 /// 			"properties": map[string]interface{}{
 /// 				"name": map[string]string{
@@ -3699,8 +3899,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		json2 := string(tmpJSON2)
+/// 		tmpJSON3, err := json.Marshal(map[string]interface{}{
 /// 			"type": "OBJECT",
 /// 			"properties": map[string]interface{}{
 /// 				"main_topic": map[string]string{
@@ -3721,7 +3921,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		json1 := string(tmpJSON1)
+/// 		json3 := string(tmpJSON3)
 /// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
 /// 			DisplayName: pulumi.String("re-ctx-spec"),
 /// 			Description: pulumi.String("Reasoning engine with context spec"),
@@ -3760,6 +3960,62 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 									},
 /// 								},
 /// 							},
+/// 							GenerateMemoriesExamples: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArray{
+/// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs{
+/// 									ConversationSource: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs{
+/// 										Events: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArray{
+/// 											&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs{
+/// 												Content: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs{
+/// 													Role: pulumi.String("user"),
+/// 													Parts: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArray{
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															Text: pulumi.String("I like pepperoni pizza"),
+/// 														},
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															FunctionCall: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs{
+/// 																Id:   pulumi.String("fn-call-1"),
+/// 																Name: pulumi.String("order_pizza"),
+/// 																Args: pulumi.String(json0),
+/// 															},
+/// 														},
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															FunctionResponse: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs{
+/// 																Id:       pulumi.String("fn-resp-1"),
+/// 																Name:     pulumi.String("order_pizza"),
+/// 																Response: pulumi.String(json1),
+/// 															},
+/// 														},
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															ExecutableCode: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs{
+/// 																Id:       pulumi.String("exec-code-1"),
+/// 																Language: pulumi.String("PYTHON"),
+/// 																Code:     pulumi.String("print('pizza')"),
+/// 															},
+/// 														},
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															CodeExecutionResult: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs{
+/// 																Id:      pulumi.String("exec-result-1"),
+/// 																Outcome: pulumi.String("OUTCOME_OK"),
+/// 																Output:  pulumi.String("pizza"),
+/// 															},
+/// 														},
+/// 													},
+/// 												},
+/// 											},
+/// 										},
+/// 									},
+/// 									GeneratedMemories: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArray{
+/// 										&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs{
+/// 											Fact: pulumi.String("User likes pepperoni pizza."),
+/// 											Topics: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArray{
+/// 												&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs{
+/// 													ManagedMemoryTopic: pulumi.String("USER_PREFERENCES"),
+/// 												},
+/// 											},
+/// 										},
+/// 									},
+/// 								},
+/// 							},
 /// 						},
 /// 						&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{
 /// 							ScopeKeys: pulumi.StringArray{
@@ -3785,7 +4041,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 							SchemaConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{
 /// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{
 /// 									Id:           pulumi.String("user-profile"),
-/// 									MemorySchema: pulumi.String(json0),
+/// 									MemorySchema: pulumi.String(json2),
 /// 								},
 /// 							},
 /// 						},
@@ -3797,7 +4053,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 							SchemaConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{
 /// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{
 /// 									Id:           pulumi.String("conversation-summary"),
-/// 									MemorySchema: pulumi.String(json1),
+/// 									MemorySchema: pulumi.String(json3),
 /// 								},
 /// 							},
 /// 						},
@@ -3859,6 +4115,52 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///           "managedMemoryTopic" = {
 ///             "managedTopicEnum" = "USER_PREFERENCES"
 ///           }
+///         }]
+///         "generateMemoriesExamples" = [{
+///           "conversationSource" = {
+///             "events" = [{
+///               "content" = {
+///                 "role" = "user"
+///                 "parts" = [{
+///                   "text" = "I like pepperoni pizza"
+///                   }, {
+///                   "functionCall" = {
+///                     "id"   = "fn-call-1"
+///                     "name" = "order_pizza"
+///                     "args" = jsonencode({
+///                       "type" = "pepperoni"
+///                     })
+///                   }
+///                   }, {
+///                   "functionResponse" = {
+///                     "id"   = "fn-resp-1"
+///                     "name" = "order_pizza"
+///                     "response" = jsonencode({
+///                       "status" = "ordered"
+///                     })
+///                   }
+///                   }, {
+///                   "executableCode" = {
+///                     "id"       = "exec-code-1"
+///                     "language" = "PYTHON"
+///                     "code"     = "print('pizza')"
+///                   }
+///                   }, {
+///                   "codeExecutionResult" = {
+///                     "id"      = "exec-result-1"
+///                     "outcome" = "OUTCOME_OK"
+///                     "output"  = "pizza"
+///                   }
+///                 }]
+///               }
+///             }]
+///           }
+///           "generatedMemories" = [{
+///             "fact" = "User likes pepperoni pizza."
+///             "topics" = [{
+///               "managedMemoryTopic" = "USER_PREFERENCES"
+///             }]
+///           }]
 ///         }]
 ///         }, {
 ///         "scopeKeys"                 = ["user_id", "session_id"]
@@ -3950,6 +4252,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs;
@@ -4004,6 +4317,59 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                             .memoryTopics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs.builder()
 ///                                 .managedMemoryTopic(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs.builder()
 ///                                     .managedTopicEnum("USER_PREFERENCES")
+///                                     .build())
+///                                 .build())
+///                             .generateMemoriesExamples(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs.builder()
+///                                 .conversationSource(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs.builder()
+///                                     .events(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs.builder()
+///                                         .content(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs.builder()
+///                                             .role("user")
+///                                             .parts(
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .text("I like pepperoni pizza")
+///                                                     .build(),
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .functionCall(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs.builder()
+///                                                         .id("fn-call-1")
+///                                                         .name("order_pizza")
+///                                                         .args(serializeJson(
+///                                                             jsonObject(
+///                                                                 jsonProperty("type", "pepperoni")
+///                                                             )))
+///                                                         .build())
+///                                                     .build(),
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .functionResponse(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs.builder()
+///                                                         .id("fn-resp-1")
+///                                                         .name("order_pizza")
+///                                                         .response(serializeJson(
+///                                                             jsonObject(
+///                                                                 jsonProperty("status", "ordered")
+///                                                             )))
+///                                                         .build())
+///                                                     .build(),
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .executableCode(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs.builder()
+///                                                         .id("exec-code-1")
+///                                                         .language("PYTHON")
+///                                                         .code("print('pizza')")
+///                                                         .build())
+///                                                     .build(),
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .codeExecutionResult(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs.builder()
+///                                                         .id("exec-result-1")
+///                                                         .outcome("OUTCOME_OK")
+///                                                         .output("pizza")
+///                                                         .build())
+///                                                     .build())
+///                                             .build())
+///                                         .build())
+///                                     .build())
+///                                 .generatedMemories(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs.builder()
+///                                     .fact("User likes pepperoni pizza.")
+///                                     .topics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs.builder()
+///                                         .managedMemoryTopic("USER_PREFERENCES")
+///                                         .build())
 ///                                     .build())
 ///                                 .build())
 ///                             .build(),
@@ -4126,6 +4492,37 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///               memoryTopics:
 ///                 - managedMemoryTopic:
 ///                     managedTopicEnum: USER_PREFERENCES
+///               generateMemoriesExamples:
+///                 - conversationSource:
+///                     events:
+///                       - content:
+///                           role: user
+///                           parts:
+///                             - text: I like pepperoni pizza
+///                             - functionCall:
+///                                 id: fn-call-1
+///                                 name: order_pizza
+///                                 args:
+///                                   fn::toJSON:
+///                                     type: pepperoni
+///                             - functionResponse:
+///                                 id: fn-resp-1
+///                                 name: order_pizza
+///                                 response:
+///                                   fn::toJSON:
+///                                     status: ordered
+///                             - executableCode:
+///                                 id: exec-code-1
+///                                 language: PYTHON
+///                                 code: print('pizza')
+///                             - codeExecutionResult:
+///                                 id: exec-result-1
+///                                 outcome: OUTCOME_OK
+///                                 output: pizza
+///                   generatedMemories:
+///                     - fact: User likes pepperoni pizza.
+///                       topics:
+///                         - managedMemoryTopic: USER_PREFERENCES
 ///             - scopeKeys:
 ///                 - user_id
 ///                 - session_id
@@ -4725,7 +5122,7 @@ class AiReasoningEngine extends pulumi.CustomResource {
           'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

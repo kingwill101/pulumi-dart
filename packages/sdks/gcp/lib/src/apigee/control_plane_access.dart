@@ -429,7 +429,7 @@ class ControlPlaneAccess extends pulumi.CustomResource {
           'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

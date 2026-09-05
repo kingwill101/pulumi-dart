@@ -984,7 +984,7 @@ class ConfigIamMember extends pulumi.CustomResource {
           'gcp:runtimeconfig/configIamMember:ConfigIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<ConfigIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');

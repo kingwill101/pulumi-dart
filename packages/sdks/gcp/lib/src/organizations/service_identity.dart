@@ -201,7 +201,7 @@ class ServiceIdentity extends pulumi.CustomResource {
           'gcp:organizations/serviceIdentity:ServiceIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     email = registerOutput<String>('email');
     member = registerOutput<String>('member');

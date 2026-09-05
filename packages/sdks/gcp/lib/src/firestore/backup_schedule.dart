@@ -84,7 +84,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 ///         Project = "my-project-name",
 ///         Database = database.Name,
 ///         Retention = "8467200s",
-///         DailyRecurrence = null,
+///         DailyRecurrence = new() { },
 ///     });
 ///
 /// });
@@ -469,7 +469,7 @@ class BackupSchedule extends pulumi.CustomResource {
           'gcp:firestore/backupSchedule:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
     database = registerOutput<String?>('database');

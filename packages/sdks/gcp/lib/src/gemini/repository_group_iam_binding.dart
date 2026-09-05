@@ -1071,7 +1071,7 @@ class RepositoryGroupIamBinding extends pulumi.CustomResource {
           'gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     condition = registerOutput<RepositoryGroupIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGroupIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

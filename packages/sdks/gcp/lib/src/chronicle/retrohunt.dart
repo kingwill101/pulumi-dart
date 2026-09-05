@@ -316,7 +316,7 @@ class Retrohunt extends pulumi.CustomResource {
           'gcp:chronicle/retrohunt:Retrohunt',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     retrohuntId = registerOutput<String>('RetrohuntId');
     executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RetrohuntExecutionInterval>(guardedValue, (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>())); });

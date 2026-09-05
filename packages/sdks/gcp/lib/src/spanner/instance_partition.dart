@@ -530,7 +530,7 @@ class InstancePartition extends pulumi.CustomResource {
           'gcp:spanner/instancePartition:InstancePartition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     autoscalingConfig = registerOutput<InstancePartitionAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePartitionAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');

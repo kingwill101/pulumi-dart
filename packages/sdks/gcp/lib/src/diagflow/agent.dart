@@ -479,7 +479,7 @@ class Agent extends pulumi.CustomResource {
           'gcp:diagflow/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apiVersion = registerOutput<String>('apiVersion');
     avatarUri = registerOutput<String?>('avatarUri');

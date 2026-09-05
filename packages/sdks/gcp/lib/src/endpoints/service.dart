@@ -285,7 +285,7 @@ class Service extends pulumi.CustomResource {
           'gcp:endpoints/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apis = registerOutput<List<ServiceApi>>('apis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceApi>(guardedValue, (value) => ServiceApi.fromMap((value as Map).cast<String, dynamic>())); });
     configId = registerOutput<String>('configId');

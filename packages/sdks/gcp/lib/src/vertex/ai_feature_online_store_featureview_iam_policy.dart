@@ -1016,7 +1016,7 @@ class AiFeatureOnlineStoreFeatureviewIamPolicy extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');

@@ -1027,7 +1027,7 @@ class CryptoKeyIAMMember extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<CryptoKeyIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cryptoKeyId = registerOutput<String>('cryptoKeyId');

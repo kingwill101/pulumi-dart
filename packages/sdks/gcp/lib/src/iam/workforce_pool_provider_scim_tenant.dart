@@ -510,7 +510,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     baseUri = registerOutput<String>('baseUri');
     claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

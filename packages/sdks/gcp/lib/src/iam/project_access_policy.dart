@@ -544,7 +544,7 @@ class ProjectAccessPolicy extends pulumi.CustomResource {
           'gcp:iam/projectAccessPolicy:ProjectAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

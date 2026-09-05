@@ -210,7 +210,7 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
           'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     api = registerOutput<String>('api');
     basepaths = registerOutput<List<String>>('basepaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

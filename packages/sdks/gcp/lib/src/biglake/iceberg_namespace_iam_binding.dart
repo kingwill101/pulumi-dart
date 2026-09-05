@@ -1026,7 +1026,7 @@ class IcebergNamespaceIamBinding extends pulumi.CustomResource {
           'gcp:biglake/icebergNamespaceIamBinding:IcebergNamespaceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<IcebergNamespaceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergNamespaceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

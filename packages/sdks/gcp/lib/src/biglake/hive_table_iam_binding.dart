@@ -1073,7 +1073,7 @@ class HiveTableIamBinding extends pulumi.CustomResource {
           'gcp:biglake/hiveTableIamBinding:HiveTableIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<HiveTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

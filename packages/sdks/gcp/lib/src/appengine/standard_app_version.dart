@@ -1412,7 +1412,7 @@ class StandardAppVersion extends pulumi.CustomResource {
           'gcp:appengine/standardAppVersion:StandardAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appEngineApis = registerOutput<bool?>('appEngineApis');
     appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

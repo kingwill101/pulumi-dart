@@ -881,7 +881,7 @@ class AccountIamBinding extends pulumi.CustomResource {
           'gcp:billing/accountIamBinding:AccountIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     condition = registerOutput<AccountIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -641,7 +641,7 @@ class FutureReservation extends pulumi.CustomResource {
           'gcp:compute/futureReservation:FutureReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     aggregateReservation = registerOutput<FutureReservationAggregateReservation?>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAggregateReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoCreatedReservationsDeleteTime = registerOutput<String?>('autoCreatedReservationsDeleteTime');

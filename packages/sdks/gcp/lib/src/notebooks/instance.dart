@@ -1229,7 +1229,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:notebooks/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

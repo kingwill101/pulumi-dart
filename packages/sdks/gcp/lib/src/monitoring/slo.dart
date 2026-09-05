@@ -1686,7 +1686,7 @@ class Slo extends pulumi.CustomResource {
           'gcp:monitoring/slo:Slo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     basicSli = registerOutput<SloBasicSli?>('basicSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     calendarPeriod = registerOutput<String?>('calendarPeriod');

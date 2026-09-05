@@ -668,7 +668,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:binaryauthorization/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     admissionWhitelistPatterns = registerOutput<List<PolicyAdmissionWhitelistPattern>?>('admissionWhitelistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(guardedValue, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>())); });
     clusterAdmissionRules = registerOutput<List<PolicyClusterAdmissionRule>?>('clusterAdmissionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyClusterAdmissionRule>(guardedValue, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>())); });

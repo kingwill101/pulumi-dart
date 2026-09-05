@@ -953,7 +953,7 @@ class AiLogicConfig extends pulumi.CustomResource {
           'gcp:firebase/aiLogicConfig:AiLogicConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -251,7 +251,7 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
           'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

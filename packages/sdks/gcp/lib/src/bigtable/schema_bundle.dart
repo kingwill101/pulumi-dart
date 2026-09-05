@@ -387,7 +387,7 @@ class SchemaBundle extends pulumi.CustomResource {
           'gcp:bigtable/schemaBundle:SchemaBundle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');

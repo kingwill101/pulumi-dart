@@ -1991,7 +1991,7 @@ class CaPoolIamMember extends pulumi.CustomResource {
           'gcp:certificateauthority/caPoolIamMember:CaPoolIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     caPool = registerOutput<String>('caPool');
     condition = registerOutput<CaPoolIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -1284,7 +1284,7 @@ class AppHostingTraffic extends pulumi.CustomResource {
           'gcp:firebase/appHostingTraffic:AppHostingTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');

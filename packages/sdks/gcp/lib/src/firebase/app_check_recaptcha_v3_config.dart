@@ -308,7 +308,7 @@ class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
           'gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['siteSecret'],
         ) {
     appId = registerOutput<String>('appId');

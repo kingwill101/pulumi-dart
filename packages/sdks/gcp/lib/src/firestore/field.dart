@@ -354,7 +354,7 @@ import 'field_ttl_config.dart';
 ///         Database = database.Name,
 ///         Collection = "chatrooms",
 ///         FieldId = "timestamp",
-///         TtlConfig = null,
+///         TtlConfig = new() { },
 ///     });
 ///
 /// });
@@ -774,8 +774,8 @@ import 'field_ttl_config.dart';
 ///         Database = database.Name,
 ///         Collection = "chatrooms",
 ///         FieldId = "timestamp",
-///         TtlConfig = null,
-///         IndexConfig = null,
+///         TtlConfig = new() { },
+///         IndexConfig = new() { },
 ///     });
 ///
 /// });
@@ -988,7 +988,7 @@ import 'field_ttl_config.dart';
 ///         {
 ///             ExpirationOffset = "2592000s",
 ///         },
-///         IndexConfig = null,
+///         IndexConfig = new() { },
 ///     });
 ///
 /// });
@@ -1994,7 +1994,7 @@ class Field extends pulumi.CustomResource {
           'gcp:firestore/field:Field',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');

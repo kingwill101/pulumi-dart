@@ -288,7 +288,7 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
           'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     connectedEndpointGroups = registerOutput<List<MirroringDeploymentGroupConnectedEndpointGroup>>('connectedEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupConnectedEndpointGroup>(guardedValue, (value) => MirroringDeploymentGroupConnectedEndpointGroup.fromMap((value as Map).cast<String, dynamic>())); });

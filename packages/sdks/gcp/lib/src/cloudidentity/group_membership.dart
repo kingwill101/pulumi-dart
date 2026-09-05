@@ -638,7 +638,7 @@ class GroupMembership extends pulumi.CustomResource {
           'gcp:cloudidentity/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     createTime = registerOutput<String>('createTime');

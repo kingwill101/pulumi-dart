@@ -298,7 +298,7 @@ class ManagementOrganizationEventThreatDetectionCustomModule extends pulumi.Cust
           'gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     config = registerOutput<String?>('config');
     deletionPolicy = registerOutput<String>('deletionPolicy');

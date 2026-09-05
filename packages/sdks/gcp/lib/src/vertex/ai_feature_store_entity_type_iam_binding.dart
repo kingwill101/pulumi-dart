@@ -983,7 +983,7 @@ class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<AiFeatureStoreEntityTypeIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureStoreEntityTypeIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entitytype = registerOutput<String>('entitytype');

@@ -2289,7 +2289,7 @@ class IAMAuditConfig extends pulumi.CustomResource {
           'gcp:projects/iAMAuditConfig:IAMAuditConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(guardedValue, (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');

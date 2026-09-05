@@ -868,7 +868,7 @@ class DataStore extends pulumi.CustomResource {
           'gcp:discoveryengine/dataStore:DataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     aclEnabled = registerOutput<bool?>('aclEnabled');
     advancedSiteSearchConfig = registerOutput<DataStoreAdvancedSiteSearchConfig>('advancedSiteSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

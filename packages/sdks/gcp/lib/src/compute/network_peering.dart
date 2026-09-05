@@ -297,7 +297,7 @@ class NetworkPeering extends pulumi.CustomResource {
           'gcp:compute/networkPeering:NetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');

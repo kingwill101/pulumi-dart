@@ -1180,7 +1180,7 @@ class CxTestCase extends pulumi.CustomResource {
           'gcp:diagflow/cxTestCase:CxTestCase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

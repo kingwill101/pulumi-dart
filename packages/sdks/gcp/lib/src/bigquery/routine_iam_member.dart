@@ -1025,7 +1025,7 @@ class RoutineIamMember extends pulumi.CustomResource {
           'gcp:bigquery/routineIamMember:RoutineIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<RoutineIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');

@@ -1115,7 +1115,7 @@ class AssetIamMember extends pulumi.CustomResource {
           'gcp:dataplex/assetIamMember:AssetIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     asset = registerOutput<String>('asset');
     condition = registerOutput<AssetIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

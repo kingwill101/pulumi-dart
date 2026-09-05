@@ -1057,7 +1057,7 @@ class SearchEngineIamPolicy extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngineIamPolicy:SearchEngineIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     engineId = registerOutput<String>('engineId');

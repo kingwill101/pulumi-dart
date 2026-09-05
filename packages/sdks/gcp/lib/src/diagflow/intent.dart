@@ -711,7 +711,7 @@ class Intent extends pulumi.CustomResource {
           'gcp:diagflow/intent:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

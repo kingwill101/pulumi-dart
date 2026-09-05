@@ -799,7 +799,7 @@ class AnalysisRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/analysisRule:AnalysisRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     analysisPercentage = registerOutput<double?>('analysisPercentage');

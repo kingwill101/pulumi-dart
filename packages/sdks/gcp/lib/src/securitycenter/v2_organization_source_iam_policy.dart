@@ -921,7 +921,7 @@ class V2OrganizationSourceIamPolicy extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     organization = registerOutput<String>('organization');

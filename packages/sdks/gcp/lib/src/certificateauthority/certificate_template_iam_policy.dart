@@ -1971,7 +1971,7 @@ class CertificateTemplateIamPolicy extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     etag = registerOutput<String>('etag');

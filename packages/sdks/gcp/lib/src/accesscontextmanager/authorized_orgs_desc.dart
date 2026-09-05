@@ -294,7 +294,7 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
           'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     assetType = registerOutput<String?>('assetType');
     authorizationDirection = registerOutput<String?>('authorizationDirection');

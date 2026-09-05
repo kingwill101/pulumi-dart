@@ -462,7 +462,7 @@ class TargetSSLProxy extends pulumi.CustomResource {
           'gcp:compute/targetSSLProxy:TargetSSLProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     backendService = registerOutput<String>('backendService');
     certificateMap = registerOutput<String?>('certificateMap');

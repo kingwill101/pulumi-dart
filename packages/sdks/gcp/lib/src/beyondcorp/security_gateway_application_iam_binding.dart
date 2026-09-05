@@ -2156,7 +2156,7 @@ class SecurityGatewayApplicationIamBinding extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayApplicationIamBinding:SecurityGatewayApplicationIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     condition = registerOutput<SecurityGatewayApplicationIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayApplicationIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

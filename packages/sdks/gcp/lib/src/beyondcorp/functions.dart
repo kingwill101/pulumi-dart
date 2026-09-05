@@ -12,6 +12,8 @@ import 'get_security_gateway_iam_policy_args.dart';
 import 'get_security_gateway_iam_policy_result.dart';
 import 'get_security_gateway_result.dart';
 
+/// &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+///
 /// Get information about a Google BeyondCorp App Connection.
 ///
 /// ## Example Usage
@@ -141,6 +143,8 @@ pulumi.Output<GetAppConnectionResult> getAppConnectionOutput(
   ).apply(GetAppConnectionResult.fromMap);
 }
 
+/// &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+///
 /// Get information about a Google BeyondCorp App Connector.
 ///
 /// ## Example Usage
@@ -270,6 +274,8 @@ pulumi.Output<GetAppConnectorResult> getAppConnectorOutput(
   ).apply(GetAppConnectorResult.fromMap);
 }
 
+/// &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+///
 /// Get information about a Google BeyondCorp App Gateway.
 ///
 /// ## Example Usage

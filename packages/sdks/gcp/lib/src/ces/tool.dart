@@ -1221,7 +1221,7 @@ import 'tool_widget_tool.dart';
 ///         {
 ///             basic.DataStoreId,
 ///         },
-///         SearchEngineConfig = null,
+///         SearchEngineConfig = new() { },
 ///     });
 ///
 ///     var my_app = new Gcp.Ces.App("my-app", new()
@@ -2390,7 +2390,7 @@ import 'tool_widget_tool.dart';
 ///         App = my_app.AppId,
 ///         DisplayName = "Target Agent",
 ///         Instruction = "Target agent instruction",
-///         LlmAgent = null,
+///         LlmAgent = new() { },
 ///     });
 ///
 ///     var cesToolAgentBasic = new Gcp.Ces.Tool("ces_tool_agent_basic", new()
@@ -3385,7 +3385,7 @@ class Tool extends pulumi.CustomResource {
           'gcp:ces/tool:Tool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');

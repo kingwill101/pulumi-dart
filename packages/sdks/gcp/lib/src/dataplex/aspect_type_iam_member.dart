@@ -1028,7 +1028,7 @@ class AspectTypeIamMember extends pulumi.CustomResource {
           'gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     aspectTypeId = registerOutput<String>('aspectTypeId');
     condition = registerOutput<AspectTypeIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AspectTypeIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

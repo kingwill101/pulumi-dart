@@ -960,7 +960,7 @@ class GCPolicy extends pulumi.CustomResource {
           'gcp:bigtable/gCPolicy:GCPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     columnFamily = registerOutput<String>('columnFamily');
     deletionPolicy = registerOutput<String>('deletionPolicy');

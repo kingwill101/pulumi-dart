@@ -428,7 +428,7 @@ class ClientTlsPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

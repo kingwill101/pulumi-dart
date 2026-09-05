@@ -1217,7 +1217,7 @@ import 'managed_zone_state.dart';
 ///                 Enabled = true,
 ///             },
 ///         },
-///         MasterAuthorizedNetworksConfig = null,
+///         MasterAuthorizedNetworksConfig = new() { },
 ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
 ///         {
 ///             ClusterSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges => secondaryIpRanges[0].RangeName),
@@ -2540,7 +2540,7 @@ class ManagedZone extends pulumi.CustomResource {
           'gcp:dns/managedZone:ManagedZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cloudLoggingConfig = registerOutput<ManagedZoneCloudLoggingConfig>('cloudLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneCloudLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

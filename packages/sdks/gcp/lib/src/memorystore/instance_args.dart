@@ -16,6 +16,9 @@ import 'instance_zone_distribution_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_memorystore_instance_instance_args_doc}
 class InstanceArgs {
+  /// The name of the ACL policy to attach to the instance.
+  /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+  final pulumi.Input<String?>? aclPolicy;
   /// Optional. Immutable. Authorization mode of the instance. Possible values:
   /// AUTH_DISABLED
   /// IAM_AUTH.
@@ -120,6 +123,7 @@ class InstanceArgs {
   final pulumi.Input<InstanceZoneDistributionConfig?>? zoneDistributionConfig;
 
   /// Creates a new [InstanceArgs].
+  /// [aclPolicy] The name of the ACL policy to attach to the instance.
   /// [authorizationMode] Optional. Immutable. Authorization mode of the instance. Possible values:
   /// [automatedBackupConfig] The automated backup config for a instance.
   /// [crossInstanceReplicationConfig] Cross instance replication config
@@ -148,6 +152,7 @@ class InstanceArgs {
   /// [transitEncryptionMode] Optional. Immutable. In-transit encryption mode of the instance.
   /// [zoneDistributionConfig] Zone distribution configuration for allocation of instance resources.
   const InstanceArgs({
+    this.aclPolicy,
     this.authorizationMode,
     this.automatedBackupConfig,
     this.crossInstanceReplicationConfig,
@@ -179,6 +184,7 @@ class InstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclPolicy': ?aclPolicy,
       'authorizationMode': ?authorizationMode,
       'automatedBackupConfig': ?pulumi.Input.mapOptionalInputValue<InstanceAutomatedBackupConfig, Map<String, dynamic>>(automatedBackupConfig, (value) => value.toMap()),
       'crossInstanceReplicationConfig': ?pulumi.Input.mapOptionalInputValue<InstanceCrossInstanceReplicationConfig, Map<String, dynamic>>(crossInstanceReplicationConfig, (value) => value.toMap()),
@@ -211,6 +217,7 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
+      aclPolicy: (() { final guardedValue = map['aclPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       automatedBackupConfig: (() { final guardedValue = map['automatedBackupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       crossInstanceReplicationConfig: (() { final guardedValue = map['crossInstanceReplicationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceCrossInstanceReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -485,7 +485,7 @@ class CustomConstraint extends pulumi.CustomResource {
           'gcp:orgpolicy/customConstraint:CustomConstraint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     actionType = registerOutput<String>('actionType');
     condition = registerOutput<String>('condition');

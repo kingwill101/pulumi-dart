@@ -37,6 +37,9 @@ import 'backend_service_tls_settings.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Backend Service Basic
@@ -4359,7 +4362,7 @@ class BackendService extends pulumi.CustomResource {
   /// Settings for enabling Cloud Identity Aware Proxy.
   /// If OAuth client is not set, the Google-managed OAuth client is used.
   /// Structure is documented below.
-  late final pulumi.Output<BackendServiceIap> iap;
+  late final pulumi.Output<BackendServiceIap?> iap;
   /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
   /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
   late final pulumi.Output<String?> ipAddressSelectionPolicy;
@@ -4518,7 +4521,7 @@ class BackendService extends pulumi.CustomResource {
           'gcp:compute/backendService:BackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
     backends = registerOutput<List<BackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceBackend>(guardedValue, (value) => BackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });
@@ -4541,7 +4544,7 @@ class BackendService extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     generatedId = registerOutput<int>('generatedId');
     healthChecks = registerOutput<String?>('healthChecks');
-    iap = registerOutput<BackendServiceIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iap = registerOutput<BackendServiceIap?>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     localityLbPolicies = registerOutput<List<BackendServiceLocalityLbPolicy>?>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLbPolicy>(guardedValue, (value) => BackendServiceLocalityLbPolicy.fromMap((value as Map).cast<String, dynamic>())); });
@@ -4610,7 +4613,7 @@ class BackendService extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     generatedId = registerOutput<int>('generatedId');
     healthChecks = registerOutput<String?>('healthChecks');
-    iap = registerOutput<BackendServiceIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iap = registerOutput<BackendServiceIap?>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     localityLbPolicies = registerOutput<List<BackendServiceLocalityLbPolicy>?>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLbPolicy>(guardedValue, (value) => BackendServiceLocalityLbPolicy.fromMap((value as Map).cast<String, dynamic>())); });
@@ -4664,7 +4667,7 @@ class BackendService extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     generatedId = registerOutput<int>('generatedId');
     healthChecks = registerOutput<String?>('healthChecks');
-    iap = registerOutput<BackendServiceIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iap = registerOutput<BackendServiceIap?>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     localityLbPolicies = registerOutput<List<BackendServiceLocalityLbPolicy>?>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLbPolicy>(guardedValue, (value) => BackendServiceLocalityLbPolicy.fromMap((value as Map).cast<String, dynamic>())); });

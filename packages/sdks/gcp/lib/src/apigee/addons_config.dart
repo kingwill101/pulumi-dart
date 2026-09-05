@@ -822,7 +822,7 @@ class AddonsConfig extends pulumi.CustomResource {
           'gcp:apigee/addonsConfig:AddonsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

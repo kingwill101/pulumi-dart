@@ -89,6 +89,8 @@ class GetDatabaseInstanceSetting {
   final pulumi.Input<String> pricingPlan;
   /// Configuration of Read Pool Auto Scale.
   final pulumi.Input<List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig>> readPoolAutoScaleConfigs;
+  /// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+  final pulumi.Input<int> replicationLagMaxSeconds;
   /// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
   final pulumi.Input<bool> retainBackupsOnDelete;
   final pulumi.Input<List<GetDatabaseInstanceSettingSqlServerAuditConfig>> sqlServerAuditConfigs;
@@ -136,6 +138,7 @@ class GetDatabaseInstanceSetting {
   /// [performanceCaptureConfigs] Configuration of Performance Capture.
   /// [pricingPlan] Pricing plan for this instance, can only be PER_USE.
   /// [readPoolAutoScaleConfigs] Configuration of Read Pool Auto Scale.
+  /// [replicationLagMaxSeconds] The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
   /// [retainBackupsOnDelete] When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
   /// [sqlServerAuditConfigs] Required.
   /// [tier] The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
@@ -177,6 +180,7 @@ class GetDatabaseInstanceSetting {
     required this.performanceCaptureConfigs,
     required this.pricingPlan,
     required this.readPoolAutoScaleConfigs,
+    required this.replicationLagMaxSeconds,
     required this.retainBackupsOnDelete,
     required this.sqlServerAuditConfigs,
     required this.tier,
@@ -221,6 +225,7 @@ class GetDatabaseInstanceSetting {
       'performanceCaptureConfigs': pulumi.Input.mapInputValue<List<GetDatabaseInstanceSettingPerformanceCaptureConfig>, List<Map<String, dynamic>>>(performanceCaptureConfigs, (value) => pulumi.Input.encodeList<GetDatabaseInstanceSettingPerformanceCaptureConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'pricingPlan': pricingPlan,
       'readPoolAutoScaleConfigs': pulumi.Input.mapInputValue<List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig>, List<Map<String, dynamic>>>(readPoolAutoScaleConfigs, (value) => pulumi.Input.encodeList<GetDatabaseInstanceSettingReadPoolAutoScaleConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'replicationLagMaxSeconds': replicationLagMaxSeconds,
       'retainBackupsOnDelete': retainBackupsOnDelete,
       'sqlServerAuditConfigs': pulumi.Input.mapInputValue<List<GetDatabaseInstanceSettingSqlServerAuditConfig>, List<Map<String, dynamic>>>(sqlServerAuditConfigs, (value) => pulumi.Input.encodeList<GetDatabaseInstanceSettingSqlServerAuditConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tier': tier,
@@ -266,6 +271,7 @@ class GetDatabaseInstanceSetting {
       performanceCaptureConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingPerformanceCaptureConfig>(map['performanceCaptureConfigs']!, (value) => GetDatabaseInstanceSettingPerformanceCaptureConfig.fromMap((value as Map).cast<String, dynamic>()))),
       pricingPlan: pulumi.Input.fromValue(map['pricingPlan'] as String),
       readPoolAutoScaleConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingReadPoolAutoScaleConfig>(map['readPoolAutoScaleConfigs']!, (value) => GetDatabaseInstanceSettingReadPoolAutoScaleConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      replicationLagMaxSeconds: pulumi.Input.fromValue((map['replicationLagMaxSeconds'] as num).toInt()),
       retainBackupsOnDelete: pulumi.Input.fromValue(map['retainBackupsOnDelete'] as bool),
       sqlServerAuditConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingSqlServerAuditConfig>(map['sqlServerAuditConfigs']!, (value) => GetDatabaseInstanceSettingSqlServerAuditConfig.fromMap((value as Map).cast<String, dynamic>()))),
       tier: pulumi.Input.fromValue(map['tier'] as String),

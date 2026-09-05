@@ -161,7 +161,7 @@ class ProjectMetadataItem extends pulumi.CustomResource {
           'gcp:compute/projectMetadataItem:ProjectMetadataItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     key = registerOutput<String>('key');

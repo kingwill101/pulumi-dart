@@ -598,7 +598,7 @@ class AppCheckServiceConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enforcementMode = registerOutput<String?>('enforcementMode');

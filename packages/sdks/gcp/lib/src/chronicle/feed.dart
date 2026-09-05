@@ -1072,7 +1072,7 @@ class Feed extends pulumi.CustomResource {
           'gcp:chronicle/feed:Feed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

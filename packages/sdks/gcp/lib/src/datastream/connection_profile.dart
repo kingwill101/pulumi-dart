@@ -3386,7 +3386,7 @@ class ConnectionProfile extends pulumi.CustomResource {
           'gcp:datastream/connectionProfile:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');

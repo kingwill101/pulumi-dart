@@ -276,7 +276,7 @@ class LicenseConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/licenseConfig:LicenseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

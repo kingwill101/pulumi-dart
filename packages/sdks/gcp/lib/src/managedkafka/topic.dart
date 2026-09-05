@@ -357,7 +357,7 @@ class Topic extends pulumi.CustomResource {
           'gcp:managedkafka/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cluster = registerOutput<String>('cluster');
     configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -320,7 +320,7 @@ class AppCheckDebugToken extends pulumi.CustomResource {
           'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['token'],
         ) {
     appId = registerOutput<String>('appId');

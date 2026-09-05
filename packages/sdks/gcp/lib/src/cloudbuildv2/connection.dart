@@ -1159,7 +1159,7 @@ class Connection extends pulumi.CustomResource {
           'gcp:cloudbuildv2/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBitbucketCloudConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -968,7 +968,7 @@ class ConfigIamPolicy extends pulumi.CustomResource {
           'gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     config = registerOutput<String>('config');
     etag = registerOutput<String>('etag');

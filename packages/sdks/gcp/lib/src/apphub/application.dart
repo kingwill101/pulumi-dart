@@ -652,7 +652,7 @@ class Application extends pulumi.CustomResource {
           'gcp:apphub/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ApplicationAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -375,7 +375,7 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
           'gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     bucketId = registerOutput<String>('bucketId');

@@ -2069,7 +2069,7 @@ class WebTypeAppEngingIamMember extends pulumi.CustomResource {
           'gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<WebTypeAppEngingIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTypeAppEngingIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

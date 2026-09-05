@@ -413,7 +413,7 @@ class ProjectFeed extends pulumi.CustomResource {
           'gcp:cloudasset/projectFeed:ProjectFeed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

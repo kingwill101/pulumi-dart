@@ -2242,7 +2242,7 @@ class AppEngineVersionIamMember extends pulumi.CustomResource {
           'gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineVersionIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineVersionIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

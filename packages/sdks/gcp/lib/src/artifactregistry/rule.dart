@@ -535,7 +535,7 @@ class Rule extends pulumi.CustomResource {
           'gcp:artifactregistry/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<RuleCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

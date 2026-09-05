@@ -526,7 +526,7 @@ class TargetSite extends pulumi.CustomResource {
           'gcp:discoveryengine/targetSite:TargetSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

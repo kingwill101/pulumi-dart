@@ -662,7 +662,7 @@ class Key extends pulumi.CustomResource {
           'gcp:serviceaccount/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -997,7 +997,7 @@ class User extends pulumi.CustomResource {
           'gcp:alloydb/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     cluster = registerOutput<String>('cluster');

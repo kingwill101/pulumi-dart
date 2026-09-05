@@ -1033,7 +1033,7 @@ class ConnectionIamMember extends pulumi.CustomResource {
           'gcp:bigquery/connectionIamMember:ConnectionIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<ConnectionIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String>('connectionId');

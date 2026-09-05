@@ -1,4 +1,11 @@
+export 'memorystore/acl_policy.dart';
+export 'memorystore/acl_policy_args.dart';
+export 'memorystore/acl_policy_rule.dart';
+export 'memorystore/acl_policy_state.dart';
 export 'memorystore/functions.dart';
+export 'memorystore/get_acl_policy_args.dart';
+export 'memorystore/get_acl_policy_result.dart';
+export 'memorystore/get_acl_policy_rule.dart';
 export 'memorystore/get_instance_args.dart';
 export 'memorystore/get_instance_automated_backup_config.dart';
 export 'memorystore/get_instance_automated_backup_config_fixed_frequency_schedule.dart';

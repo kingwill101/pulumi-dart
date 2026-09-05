@@ -21,6 +21,9 @@ import 'instance_zone_distribution_config.dart';
 
 /// Input properties used for looking up and filtering Instance resources.
 class InstanceState {
+  /// The name of the ACL policy to attach to the instance.
+  /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+  final pulumi.Input<String?>? aclPolicy;
   /// Optional. Immutable. Authorization mode of the instance. Possible values:
   /// AUTH_DISABLED
   /// IAM_AUTH.
@@ -79,6 +82,8 @@ class InstanceState {
   /// * Must not end with a hyphen
   /// * Must be unique within a location
   final pulumi.Input<String?>? instanceId;
+  /// Whether the ACL policy is in sync with the cluster.
+  final pulumi.Input<bool?>? isAclPolicyInSync;
   /// The KMS key used to encrypt the at-rest data of the cluster
   final pulumi.Input<String?>? kmsKey;
   /// Optional. Labels to represent user-provided metadata.
@@ -179,6 +184,7 @@ class InstanceState {
   final pulumi.Input<InstanceZoneDistributionConfig?>? zoneDistributionConfig;
 
   /// Creates a new [InstanceState].
+  /// [aclPolicy] The name of the ACL policy to attach to the instance.
   /// [authorizationMode] Optional. Immutable. Authorization mode of the instance. Possible values:
   /// [automatedBackupConfig] The automated backup config for a instance.
   /// [availableMaintenanceVersions] This field is used to determine the available maintenance versions for the self service update.
@@ -197,6 +203,7 @@ class InstanceState {
   /// [engineVersion] Optional. Engine version of the instance.
   /// [gcsSource] GCS source for the instance.
   /// [instanceId] Required. The ID to use for the instance, which will become the final component of
+  /// [isAclPolicyInSync] Whether the ACL policy is in sync with the cluster.
   /// [kmsKey] The KMS key used to encrypt the at-rest data of the cluster
   /// [labels] Optional. Labels to represent user-provided metadata.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
@@ -225,6 +232,7 @@ class InstanceState {
   /// [updateTime] Output only. Latest update timestamp of the instance.
   /// [zoneDistributionConfig] Zone distribution configuration for allocation of instance resources.
   const InstanceState({
+    this.aclPolicy,
     this.authorizationMode,
     this.automatedBackupConfig,
     this.availableMaintenanceVersions,
@@ -243,6 +251,7 @@ class InstanceState {
     this.engineVersion,
     this.gcsSource,
     this.instanceId,
+    this.isAclPolicyInSync,
     this.kmsKey,
     this.labels,
     this.location,
@@ -274,6 +283,7 @@ class InstanceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclPolicy': ?aclPolicy,
       'authorizationMode': ?authorizationMode,
       'automatedBackupConfig': ?pulumi.Input.mapOptionalInputValue<InstanceAutomatedBackupConfig, Map<String, dynamic>>(automatedBackupConfig, (value) => value.toMap()),
       'availableMaintenanceVersions': ?availableMaintenanceVersions,
@@ -292,6 +302,7 @@ class InstanceState {
       'engineVersion': ?engineVersion,
       'gcsSource': ?pulumi.Input.mapOptionalInputValue<InstanceGcsSource, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
       'instanceId': ?instanceId,
+      'isAclPolicyInSync': ?isAclPolicyInSync,
       'kmsKey': ?kmsKey,
       'labels': ?labels,
       'location': ?location,
@@ -324,6 +335,7 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
+      aclPolicy: (() { final guardedValue = map['aclPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       automatedBackupConfig: (() { final guardedValue = map['automatedBackupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -342,6 +354,7 @@ class InstanceState {
       engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gcsSource: (() { final guardedValue = map['gcsSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isAclPolicyInSync: (() { final guardedValue = map['isAclPolicyInSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

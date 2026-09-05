@@ -156,7 +156,7 @@ class AiModelGardenEnableModel extends pulumi.CustomResource {
           'gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     enablementState = registerOutput<String>('enablementState');
     project = registerOutput<String>('project');

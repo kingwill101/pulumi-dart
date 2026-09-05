@@ -1041,7 +1041,7 @@ class AgentGateway extends pulumi.CustomResource {
           'gcp:networkservices/agentGateway:AgentGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });

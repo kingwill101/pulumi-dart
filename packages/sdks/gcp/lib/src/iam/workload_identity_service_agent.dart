@@ -154,7 +154,7 @@ class WorkloadIdentityServiceAgent extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     parent = registerOutput<String>('parent');
     serviceAgents = registerOutput<List<WorkloadIdentityServiceAgentServiceAgent>>('serviceAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityServiceAgentServiceAgent>(guardedValue, (value) => WorkloadIdentityServiceAgentServiceAgent.fromMap((value as Map).cast<String, dynamic>())); });

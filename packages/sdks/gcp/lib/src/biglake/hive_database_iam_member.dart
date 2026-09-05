@@ -1030,7 +1030,7 @@ class HiveDatabaseIamMember extends pulumi.CustomResource {
           'gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<HiveDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

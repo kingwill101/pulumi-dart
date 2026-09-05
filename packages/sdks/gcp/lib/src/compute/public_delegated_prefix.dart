@@ -1062,7 +1062,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
           'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
     deletionPolicy = registerOutput<String>('deletionPolicy');

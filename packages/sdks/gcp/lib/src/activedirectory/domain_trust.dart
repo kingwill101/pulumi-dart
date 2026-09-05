@@ -225,7 +225,7 @@ class DomainTrust extends pulumi.CustomResource {
           'gcp:activedirectory/domainTrust:DomainTrust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['trustHandshakeSecret'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

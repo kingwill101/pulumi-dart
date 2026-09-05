@@ -210,7 +210,7 @@ class Environment extends pulumi.CustomResource {
           'gcp:notebooks/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     containerImage = registerOutput<EnvironmentContainerImage?>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

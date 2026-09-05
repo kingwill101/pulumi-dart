@@ -468,8 +468,8 @@ import 'insights_config_target_projects.dart';
 ///         Location = "us-central1",
 ///         InsightsConfigId = "tf-test-ic-apphub-_85072",
 ///         Project = project.ProjectId,
-///         Annotations = null,
-///         Labels = null,
+///         Annotations = new() { },
+///         Labels = new() { },
 ///         AppHubApplication = Std.Format.Invoke(new()
 ///         {
 ///             Input = "//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
@@ -1618,8 +1618,8 @@ import 'insights_config_target_projects.dart';
 ///         Location = "us-central1",
 ///         InsightsConfigId = "tf-test-ic-projects-_24469",
 ///         Project = project.ProjectId,
-///         Annotations = null,
-///         Labels = null,
+///         Annotations = new() { },
+///         Labels = new() { },
 ///         TargetProjects = new Gcp.DeveloperConnect.Inputs.InsightsConfigTargetProjectsArgs
 ///         {
 ///             ProjectIds = new[]
@@ -2385,7 +2385,7 @@ class InsightsConfig extends pulumi.CustomResource {
           'gcp:developerconnect/insightsConfig:InsightsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

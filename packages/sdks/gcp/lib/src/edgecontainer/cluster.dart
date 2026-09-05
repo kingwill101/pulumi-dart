@@ -443,7 +443,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:edgecontainer/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['clusterCaCertificate', 'effectiveLabels', 'pulumiLabels'],
         ) {
     authorization = registerOutput<ClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });

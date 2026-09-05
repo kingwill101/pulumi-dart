@@ -955,7 +955,7 @@ class V2Vm extends pulumi.CustomResource {
           'gcp:tpu/v2Vm:V2Vm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     acceleratorConfig = registerOutput<V2VmAcceleratorConfig>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

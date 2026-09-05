@@ -110,7 +110,7 @@ import 'zone_state.dart';
 ///         Description = "Zone for DCL",
 ///         DisplayName = "Zone for DCL",
 ///         Project = "my-project-name",
-///         Labels = null,
+///         Labels = new() { },
 ///     });
 ///
 /// });
@@ -355,7 +355,7 @@ class Zone extends pulumi.CustomResource {
           'gcp:dataplex/zone:Zone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assetStatuses = registerOutput<List<ZoneAssetStatus>>('assetStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneAssetStatus>(guardedValue, (value) => ZoneAssetStatus.fromMap((value as Map).cast<String, dynamic>())); });

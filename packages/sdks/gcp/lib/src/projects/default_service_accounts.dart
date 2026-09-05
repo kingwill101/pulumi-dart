@@ -274,7 +274,7 @@ class DefaultServiceAccounts extends pulumi.CustomResource {
           'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     project = registerOutput<String>('project');

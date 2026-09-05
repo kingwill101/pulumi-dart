@@ -283,7 +283,7 @@ class InterceptDeploymentGroup extends pulumi.CustomResource {
           'gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     connectedEndpointGroups = registerOutput<List<InterceptDeploymentGroupConnectedEndpointGroup>>('connectedEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptDeploymentGroupConnectedEndpointGroup>(guardedValue, (value) => InterceptDeploymentGroupConnectedEndpointGroup.fromMap((value as Map).cast<String, dynamic>())); });

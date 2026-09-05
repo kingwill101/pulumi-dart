@@ -734,7 +734,7 @@ class HiveTable extends pulumi.CustomResource {
           'gcp:biglake/hiveTable:HiveTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     createTime = registerOutput<String>('createTime');

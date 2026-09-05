@@ -71,7 +71,7 @@ class RouterNatAddress extends pulumi.CustomResource {
           'gcp:compute/routerNatAddress:RouterNatAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     drainNatIps = registerOutput<List<String>?>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

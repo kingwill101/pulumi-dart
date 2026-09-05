@@ -726,7 +726,7 @@ class DataTable extends pulumi.CustomResource {
           'gcp:chronicle/dataTable:DataTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     approximateRowCount = registerOutput<int>('approximateRowCount');
     columnInfos = registerOutput<List<DataTableColumnInfo>?>('columnInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataTableColumnInfo>(guardedValue, (value) => DataTableColumnInfo.fromMap((value as Map).cast<String, dynamic>())); });

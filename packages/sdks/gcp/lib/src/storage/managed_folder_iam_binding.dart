@@ -2067,7 +2067,7 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
           'gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<ManagedFolderIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

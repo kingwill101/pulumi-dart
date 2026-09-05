@@ -2067,7 +2067,7 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
           'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<ManagedFolderIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

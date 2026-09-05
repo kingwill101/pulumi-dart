@@ -683,7 +683,7 @@ class Dashboard extends pulumi.CustomResource {
           'gcp:monitoring/dashboard:Dashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     dashboardJson = registerOutput<String>('dashboardJson');
     deletionPolicy = registerOutput<String>('deletionPolicy');

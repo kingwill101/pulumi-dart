@@ -872,7 +872,7 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
           'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');

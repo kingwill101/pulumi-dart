@@ -2224,7 +2224,7 @@ class AppEngineVersionIamPolicy extends pulumi.CustomResource {
           'gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     etag = registerOutput<String>('etag');

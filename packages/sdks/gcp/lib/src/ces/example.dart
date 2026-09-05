@@ -436,7 +436,7 @@ import 'example_state.dart';
 ///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
-///         LlmAgent = null,
+///         LlmAgent = new() { },
 ///     });
 ///
 ///     var cesChildAgent = new Gcp.Ces.Agent("ces_child_agent", new()
@@ -451,7 +451,7 @@ import 'example_state.dart';
 ///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
-///         LlmAgent = null,
+///         LlmAgent = new() { },
 ///     });
 ///
 ///     var my_example = new Gcp.Ces.Example("my-example", new()
@@ -1457,7 +1457,7 @@ class Example extends pulumi.CustomResource {
           'gcp:ces/example:Example',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');

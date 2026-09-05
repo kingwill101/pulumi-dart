@@ -448,7 +448,7 @@ class Note extends pulumi.CustomResource {
           'gcp:containeranalysis/note:Note',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

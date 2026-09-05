@@ -85,7 +85,7 @@ import 'datascan_state.dart';
 ///                 OnDemand = null,
 ///             },
 ///         },
-///         DataProfileSpec = null,
+///         DataProfileSpec = new() { },
 ///         Project = "my-project-name",
 ///     });
 ///
@@ -710,7 +710,7 @@ import 'datascan_state.dart';
 ///                 },
 ///             },
 ///         },
-///         DataProfileSpec = null,
+///         DataProfileSpec = new() { },
 ///         Project = "my-project-name",
 ///     });
 ///
@@ -2336,7 +2336,7 @@ import 'datascan_state.dart';
 ///                 OnDemand = null,
 ///             },
 ///         },
-///         DataDiscoverySpec = null,
+///         DataDiscoverySpec = new() { },
 ///         Project = "my-project-name",
 ///     });
 ///
@@ -2662,7 +2662,7 @@ import 'datascan_state.dart';
 ///         Location = "us-central1",
 ///         FriendlyName = "tf-test-connection-_50610",
 ///         Description = "a bigquery connection for tf test",
-///         CloudResource = null,
+///         CloudResource = new() { },
 ///     });
 ///
 ///     var fullDiscovery = new Gcp.DataPlex.Datascan("full_discovery", new()
@@ -3168,7 +3168,7 @@ import 'datascan_state.dart';
 ///                 },
 ///             },
 ///         },
-///         DataDiscoverySpec = null,
+///         DataDiscoverySpec = new() { },
 ///         Project = "my-project-name",
 ///     });
 ///
@@ -4199,7 +4199,7 @@ import 'datascan_state.dart';
 ///                 },
 ///             },
 ///         },
-///         DataDocumentationSpec = null,
+///         DataDocumentationSpec = new() { },
 ///         Project = "my-project-name",
 ///     });
 ///
@@ -4707,7 +4707,7 @@ import 'datascan_state.dart';
 ///         {
 ///             UserCredential = null,
 ///         },
-///         DataProfileSpec = null,
+///         DataProfileSpec = new() { },
 ///         Project = "my-project-name",
 ///     }, new CustomResourceOptions
 ///     {
@@ -5263,7 +5263,7 @@ import 'datascan_state.dart';
 ///                 Email = sa.Email,
 ///             },
 ///         },
-///         DataProfileSpec = null,
+///         DataProfileSpec = new() { },
 ///         Project = "my-project-name",
 ///     }, new CustomResourceOptions
 ///     {
@@ -8402,7 +8402,7 @@ class Datascan extends pulumi.CustomResource {
           'gcp:dataplex/datascan:Datascan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

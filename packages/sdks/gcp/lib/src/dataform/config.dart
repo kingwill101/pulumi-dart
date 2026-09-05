@@ -942,7 +942,7 @@ class Config extends pulumi.CustomResource {
           'gcp:dataform/config:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     defaultKmsKeyName = registerOutput<String?>('defaultKmsKeyName');
     project = registerOutput<String>('project');

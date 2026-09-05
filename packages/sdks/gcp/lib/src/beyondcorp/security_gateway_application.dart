@@ -1307,7 +1307,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     createTime = registerOutput<String>('createTime');

@@ -1071,7 +1071,7 @@ class ZoneIamMember extends pulumi.CustomResource {
           'gcp:dataplex/zoneIamMember:ZoneIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<ZoneIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataplexZone = registerOutput<String>('dataplexZone');

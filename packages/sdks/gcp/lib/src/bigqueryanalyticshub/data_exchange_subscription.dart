@@ -765,7 +765,7 @@ class DataExchangeSubscription extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     dataExchange = registerOutput<String>('dataExchange');

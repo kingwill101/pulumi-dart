@@ -3140,7 +3140,7 @@ class Job extends pulumi.CustomResource {
           'gcp:bigquery/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     copy = registerOutput<JobCopy?>('copy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

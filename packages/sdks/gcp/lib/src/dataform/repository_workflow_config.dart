@@ -1479,7 +1479,7 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
           'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cronSchedule = registerOutput<String?>('cronSchedule');
     deletionPolicy = registerOutput<String>('deletionPolicy');

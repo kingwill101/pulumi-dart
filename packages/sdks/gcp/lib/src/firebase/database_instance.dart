@@ -707,7 +707,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:firebase/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     databaseUrl = registerOutput<String>('databaseUrl');
     deletionPolicy = registerOutput<String>('deletionPolicy');

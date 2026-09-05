@@ -63,7 +63,7 @@ import 'connection_state.dart';
 ///         Location = "US",
 ///         FriendlyName = "👋",
 ///         Description = "a riveting description",
-///         CloudResource = null,
+///         CloudResource = new() { },
 ///     });
 ///
 /// });
@@ -2830,7 +2830,7 @@ class Connection extends pulumi.CustomResource {
           'gcp:bigquery/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     aws = registerOutput<ConnectionAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azure = registerOutput<ConnectionAzure?>('azure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAzure.fromMap((guardedValue as Map).cast<String, dynamic>()); });

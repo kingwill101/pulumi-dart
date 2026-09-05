@@ -182,7 +182,7 @@ class Tenant extends pulumi.CustomResource {
           'gcp:identityplatform/tenant:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
     client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });

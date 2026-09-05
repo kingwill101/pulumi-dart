@@ -896,7 +896,7 @@ class Datastore extends pulumi.CustomResource {
           'gcp:apigee/datastore:Datastore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     datastoreConfig = registerOutput<DatastoreDatastoreConfig>('datastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreDatastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

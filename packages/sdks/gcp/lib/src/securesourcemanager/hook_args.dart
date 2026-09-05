@@ -19,7 +19,7 @@ class HookArgs {
   /// Set to true to stop sending traffic.
   final pulumi.Input<bool?>? disabled;
   /// The events that trigger hook on.
-  /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+  /// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
   final pulumi.Input<List<String>?>? events;
   /// The ID for the Hook.
   final pulumi.Input<String> hookId;

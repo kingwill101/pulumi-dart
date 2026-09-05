@@ -589,7 +589,7 @@ class Endpoint extends pulumi.CustomResource {
           'gcp:servicedirectory/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     address = registerOutput<String?>('address');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -94,7 +94,7 @@ import 'search_engine_state.dart';
 ///         {
 ///             basic.DataStoreId,
 ///         },
-///         SearchEngineConfig = null,
+///         SearchEngineConfig = new() { },
 ///     });
 ///
 /// });
@@ -273,6 +273,7 @@ import 'search_engine_state.dart';
 ///     features: {
 ///         "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
 ///         "disable-agent-sharing": "FEATURE_STATE_OFF",
+///         "enable-end-user-sharing-with-groups": "FEATURE_STATE_OFF",
 ///     },
 ///     knowledgeGraphConfig: {},
 /// });
@@ -305,6 +306,7 @@ import 'search_engine_state.dart';
 ///     features={
 ///         "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
 ///         "disable-agent-sharing": "FEATURE_STATE_OFF",
+///         "enable-end-user-sharing-with-groups": "FEATURE_STATE_OFF",
 ///     },
 ///     knowledge_graph_config={})
 /// ```
@@ -355,8 +357,9 @@ import 'search_engine_state.dart';
 ///         {
 ///             { "agent-sharing-without-admin-approval", "FEATURE_STATE_ON" },
 ///             { "disable-agent-sharing", "FEATURE_STATE_OFF" },
+///             { "enable-end-user-sharing-with-groups", "FEATURE_STATE_OFF" },
 ///         },
-///         KnowledgeGraphConfig = null,
+///         KnowledgeGraphConfig = new() { },
 ///     });
 ///
 /// });
@@ -405,6 +408,7 @@ import 'search_engine_state.dart';
 /// 			Features: pulumi.StringMap{
 /// 				"agent-sharing-without-admin-approval": pulumi.String("FEATURE_STATE_ON"),
 /// 				"disable-agent-sharing":                pulumi.String("FEATURE_STATE_OFF"),
+/// 				"enable-end-user-sharing-with-groups":  pulumi.String("FEATURE_STATE_OFF"),
 /// 			},
 /// 			KnowledgeGraphConfig: &discoveryengine.SearchEngineKnowledgeGraphConfigArgs{},
 /// 		})
@@ -449,6 +453,7 @@ import 'search_engine_state.dart';
 ///   features = {
 ///     "agent-sharing-without-admin-approval" = "FEATURE_STATE_ON"
 ///     "disable-agent-sharing"                = "FEATURE_STATE_OFF"
+///     "enable-end-user-sharing-with-groups"  = "FEATURE_STATE_OFF"
 ///   }
 ///   knowledge_graph_config = {}
 /// }
@@ -503,7 +508,8 @@ import 'search_engine_state.dart';
 ///                 .build())
 ///             .features(Map.ofEntries(
 ///                 Map.entry("agent-sharing-without-admin-approval", "FEATURE_STATE_ON"),
-///                 Map.entry("disable-agent-sharing", "FEATURE_STATE_OFF")
+///                 Map.entry("disable-agent-sharing", "FEATURE_STATE_OFF"),
+///                 Map.entry("enable-end-user-sharing-with-groups", "FEATURE_STATE_OFF")
 ///             ))
 ///             .knowledgeGraphConfig(SearchEngineKnowledgeGraphConfigArgs.builder()
 ///                 .build())
@@ -546,6 +552,7 @@ import 'search_engine_state.dart';
 ///       features:
 ///         agent-sharing-without-admin-approval: FEATURE_STATE_ON
 ///         disable-agent-sharing: FEATURE_STATE_OFF
+///         enable-end-user-sharing-with-groups: FEATURE_STATE_OFF
 ///       knowledgeGraphConfig: {}
 /// ```
 ///
@@ -635,7 +642,7 @@ class SearchEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngine:SearchEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');

@@ -1073,7 +1073,7 @@ class SearchEngineIamMember extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngineIamMember:SearchEngineIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     condition = registerOutput<SearchEngineIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

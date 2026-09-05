@@ -131,4 +131,5 @@ export 'biglake/table.dart';
 export 'biglake/table_args.dart';
 export 'biglake/table_hive_options.dart';
 export 'biglake/table_hive_options_storage_descriptor.dart';
+export 'biglake/table_hive_options_storage_descriptor_serde_info.dart';
 export 'biglake/table_state.dart';

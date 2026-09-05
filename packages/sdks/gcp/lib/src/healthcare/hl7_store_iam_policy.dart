@@ -703,7 +703,7 @@ class Hl7StoreIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
