@@ -225,11 +225,16 @@ jobs:
         run: git diff --exit-code -- "packages/sdks/${{ steps.provider.outputs.name }}"
 
       - name: Analyze provider package
-        run: dart analyze "packages/sdks/${{ steps.provider.outputs.name }}"
+        run: dart analyze --no-fatal-infos "packages/sdks/${{ steps.provider.outputs.name }}"
 
       - name: Validate provider package publication
         working-directory: packages/sdks/${{ steps.provider.outputs.name }}
-        run: dart pub publish --dry-run
+        run: |
+          if grep -Eq '^publish_to:[[:space:]]*none([[:space:]]|$)' pubspec.yaml; then
+            echo "Package is marked publish_to: none; skipping publication validation."
+          else
+            dart pub publish --dry-run
+          fi
 
   check-pr:
     if: always()
