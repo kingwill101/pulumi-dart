@@ -14,6 +14,7 @@ class _IndexModuleNamespace {
   final StringResource = module_index.StringResource.new;
   final StringResourceArgs = module_index.StringResourceArgs.new;
   final multiArgumentInvoke = module_index.multiArgumentInvoke;
+  final multiArgumentInvokeOutput = module_index.multiArgumentInvokeOutput;
 }
 
 class _ProvidersModuleNamespace {

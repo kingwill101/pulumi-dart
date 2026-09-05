@@ -20,7 +20,9 @@ class _IndexMineModuleNamespace {
   final ResourceCallResultArgs = module_index_mine.ResourceCallIndexMineResult.new;
   final ResourceType = module_index_mine.ResourceType.new;
   final call = module_index_mine.call;
+  final callOutput = module_index_mine.callOutput;
   final concatWorld = module_index_mine.concatWorld;
+  final concatWorldOutput = module_index_mine.concatWorldOutput;
 }
 
 class _ProvidersModuleNamespace {

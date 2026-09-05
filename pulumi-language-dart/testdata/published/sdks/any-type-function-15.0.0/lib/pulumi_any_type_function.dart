@@ -12,6 +12,7 @@ class _IndexModuleNamespace {
   final DynListToDynResult = module_index.DynListToDynResult.new;
   final DynListToDynResultArgs = module_index.DynListToDynResult.new;
   final dynListToDyn = module_index.dynListToDyn;
+  final dynListToDynOutput = module_index.dynListToDynOutput;
 }
 
 class _ProvidersModuleNamespace {

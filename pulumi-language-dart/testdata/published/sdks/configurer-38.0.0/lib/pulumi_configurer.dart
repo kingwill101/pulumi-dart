@@ -20,8 +20,11 @@ class _IndexModuleNamespace {
   final PlainProviderArgs = module_index.PlainProviderArgs.new;
   final PlainValueArgs = module_index.PlainValueArgs.new;
   final nestedPlainProvider = module_index.nestedPlainProvider;
+  final nestedPlainProviderOutput = module_index.nestedPlainProviderOutput;
   final plainProvider = module_index.plainProvider;
+  final plainProviderOutput = module_index.plainProviderOutput;
   final plainValue = module_index.plainValue;
+  final plainValueOutput = module_index.plainValueOutput;
 }
 
 class _ProvidersModuleNamespace {

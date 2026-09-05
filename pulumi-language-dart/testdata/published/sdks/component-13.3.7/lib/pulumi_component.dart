@@ -30,7 +30,9 @@ class _IndexModuleNamespace {
   final PrefixedResult = module_index.PrefixedResult.new;
   final PrefixedResultArgs = module_index.PrefixedResult.new;
   final identity = module_index.identity;
+  final identityOutput = module_index.identityOutput;
   final prefixed = module_index.prefixed;
+  final prefixedOutput = module_index.prefixedOutput;
 }
 
 class _ProvidersModuleNamespace {

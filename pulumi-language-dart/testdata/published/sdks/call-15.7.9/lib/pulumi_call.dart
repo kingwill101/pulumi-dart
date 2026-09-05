@@ -16,6 +16,7 @@ class _IndexModuleNamespace {
   final ProviderValueResult = module_index.ProviderValueResult.new;
   final ProviderValueResultArgs = module_index.ProviderValueResult.new;
   final providerValue = module_index.providerValue;
+  final providerValueOutput = module_index.providerValueOutput;
 }
 
 class _ProvidersModuleNamespace {
@@ -35,5 +36,7 @@ class _ProvidersModuleNamespace {
   final ProviderPrefixedResult = module_providers.ProviderPrefixedResult.new;
   final ProviderPrefixedResultArgs = module_providers.ProviderPrefixedResult.new;
   final identity = module_providers.identity;
+  final identityOutput = module_providers.identityOutput;
   final prefixed = module_providers.prefixed;
+  final prefixedOutput = module_providers.prefixedOutput;
 }

@@ -16,6 +16,7 @@ class _IndexModuleNamespace {
   final ResourceDataArgs = module_index.ResourceData.new;
   final ResourceType = module_index.ResourceType.new;
   final fun = module_index.fun;
+  final funOutput = module_index.funOutput;
 }
 
 class _ProvidersModuleNamespace {

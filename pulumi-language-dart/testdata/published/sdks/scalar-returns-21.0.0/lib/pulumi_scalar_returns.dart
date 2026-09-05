@@ -12,8 +12,11 @@ class _IndexModuleNamespace {
   final InvokeMapArgs = module_index.InvokeMapArgs.new;
   final InvokeSecretArgs = module_index.InvokeSecretArgs.new;
   final invokeArray = module_index.invokeArray;
+  final invokeArrayOutput = module_index.invokeArrayOutput;
   final invokeMap = module_index.invokeMap;
+  final invokeMapOutput = module_index.invokeMapOutput;
   final invokeSecret = module_index.invokeSecret;
+  final invokeSecretOutput = module_index.invokeSecretOutput;
 }
 
 class _ProvidersModuleNamespace {
