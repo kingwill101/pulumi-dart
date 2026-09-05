@@ -57,6 +57,22 @@ Behavior:
 - uploads per-provider JSON reports as workflow artifacts
 - fails provider job when drift is detected
 
+## Automated provider update pull requests
+
+`.github/workflows/dart-provider-updates.yml` runs every Monday and can also be
+started manually for one provider. It checks each provider independently and,
+only when drift exists, refreshes the committed schema and generated Dart
+package in a provider-specific pull request. Its stable
+`automation/provider-<provider>` branches allow later runs to update an existing
+PR instead of opening duplicates.
+
+The workflow uses `PROVIDER_UPDATE_TOKEN` when that repository secret exists,
+falling back to `GITHUB_TOKEN`. A fine-grained token or GitHub App token should
+have repository contents and pull-request write access. Using a dedicated token
+also ensures that opening or updating an automated PR triggers the normal
+pull-request CI workflows; events created by `GITHUB_TOKEN` do not trigger new
+workflow runs.
+
 ## Update workflow when drift is detected
 
 Update one provider deliberately with `dart run repodoc`, then review both the schema and
