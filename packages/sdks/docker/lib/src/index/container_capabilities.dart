@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerCapabilities {
   /// List of linux capabilities to add.
-  final pulumi.Input<List<String>>? adds;
+  final pulumi.Input<List<String>?>? adds;
   /// List of linux capabilities to drop.
-  final pulumi.Input<List<String>>? drops;
+  final pulumi.Input<List<String>?>? drops;
 
   /// Creates a new [ContainerCapabilities].
   /// [adds] List of linux capabilities to add.

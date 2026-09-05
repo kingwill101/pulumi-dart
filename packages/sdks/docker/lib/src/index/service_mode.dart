@@ -5,9 +5,9 @@ import 'service_mode_replicated.dart';
 
 class ServiceMode {
   /// The global service mode. Defaults to `false`
-  final pulumi.Input<bool>? global;
+  final pulumi.Input<bool?>? global;
   /// The replicated service mode
-  final pulumi.Input<ServiceModeReplicated>? replicated;
+  final pulumi.Input<ServiceModeReplicated?>? replicated;
 
   /// Creates a new [ServiceMode].
   /// [global] The global service mode. Defaults to `false`

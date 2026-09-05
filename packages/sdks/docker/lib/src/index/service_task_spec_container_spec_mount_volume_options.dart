@@ -5,13 +5,13 @@ import 'service_task_spec_container_spec_mount_volume_options_label.dart';
 
 class ServiceTaskSpecContainerSpecMountVolumeOptions {
   /// Name of the driver to use to create the volume
-  final pulumi.Input<String>? driverName;
+  final pulumi.Input<String?>? driverName;
   /// key/value map of driver specific options
-  final pulumi.Input<Map<String, String>>? driverOptions;
+  final pulumi.Input<Map<String, String>?>? driverOptions;
   /// User-defined key/value metadata
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>>? labels;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>?>? labels;
   /// Populate volume with data from the target
-  final pulumi.Input<bool>? noCopy;
+  final pulumi.Input<bool?>? noCopy;
 
   /// Creates a new [ServiceTaskSpecContainerSpecMountVolumeOptions].
   /// [driverName] Name of the driver to use to create the volume

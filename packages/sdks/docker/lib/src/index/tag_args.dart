@@ -10,7 +10,7 @@ class TagArgs {
   /// Name of the source image.
   final pulumi.Input<String> sourceImage;
   /// List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
-  final pulumi.Input<List<String>>? tagTriggers;
+  final pulumi.Input<List<String>?>? tagTriggers;
   /// Name of the target image.
   final pulumi.Input<String> targetImage;
 

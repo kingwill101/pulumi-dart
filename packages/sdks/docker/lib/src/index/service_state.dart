@@ -13,23 +13,23 @@ import 'service_update_config.dart';
 /// Input properties used for looking up and filtering Service resources.
 class ServiceState {
   /// Configuration for the authentication for pulling the images of the service
-  final pulumi.Input<ServiceAuth>? auth;
+  final pulumi.Input<ServiceAuth?>? auth;
   /// A configuration to ensure that a service converges aka reaches the desired that of all task up and running
-  final pulumi.Input<ServiceConvergeConfig>? convergeConfig;
+  final pulumi.Input<ServiceConvergeConfig?>? convergeConfig;
   /// Properties that can be configured to access and load balance a service
-  final pulumi.Input<ServiceEndpointSpec>? endpointSpec;
+  final pulumi.Input<ServiceEndpointSpec?>? endpointSpec;
   /// User-defined key/value metadata
-  final pulumi.Input<List<ServiceLabel>>? labels;
+  final pulumi.Input<List<ServiceLabel>?>? labels;
   /// Scheduling mode for the service
-  final pulumi.Input<ServiceMode>? mode;
+  final pulumi.Input<ServiceMode?>? mode;
   /// Name of the service
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specification for the rollback strategy of the service
-  final pulumi.Input<ServiceRollbackConfig>? rollbackConfig;
+  final pulumi.Input<ServiceRollbackConfig?>? rollbackConfig;
   /// User modifiable task configuration
-  final pulumi.Input<ServiceTaskSpec>? taskSpec;
+  final pulumi.Input<ServiceTaskSpec?>? taskSpec;
   /// Specification for the update strategy of the service
-  final pulumi.Input<ServiceUpdateConfig>? updateConfig;
+  final pulumi.Input<ServiceUpdateConfig?>? updateConfig;
 
   /// Creates a new [ServiceState].
   /// [auth] Configuration for the authentication for pulling the images of the service

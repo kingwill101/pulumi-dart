@@ -6,13 +6,13 @@ import 'service_config_label.dart';
 /// Input properties used for looking up and filtering ServiceConfig resources.
 class ServiceConfigState {
   /// Base64-url-safe-encoded config data
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Raw (plain text) config data
-  final pulumi.Input<String>? dataRaw;
+  final pulumi.Input<String?>? dataRaw;
   /// User-defined key/value metadata
-  final pulumi.Input<List<ServiceConfigLabel>>? labels;
+  final pulumi.Input<List<ServiceConfigLabel>?>? labels;
   /// User-defined name of the config
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServiceConfigState].
   /// [data] Base64-url-safe-encoded config data

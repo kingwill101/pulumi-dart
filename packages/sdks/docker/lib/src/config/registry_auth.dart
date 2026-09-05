@@ -6,15 +6,15 @@ class RegistryAuth {
   /// Address of the registry
   final pulumi.Input<String> address;
   /// Setting this to `true` will tell the provider that this registry does not need authentication. Due to the docker internals, the provider will use dummy credentials (see https://github.com/kreuzwerker/terraform-provider-docker/issues/470 for more information). Defaults to `false`.
-  final pulumi.Input<bool>? authDisabled;
+  final pulumi.Input<bool?>? authDisabled;
   /// Path to docker json file for registry auth. Defaults to `~/.docker/config.json`. If `DOCKER_CONFIG` env variable is set, the value of `DOCKER_CONFIG` is used as the path. `DOCKER_CONFIG` can be set to a directory (as per Docker CLI) or a file path directly. `configFile` has precedence over all other options.
-  final pulumi.Input<String>? configFile;
+  final pulumi.Input<String?>? configFile;
   /// Plain content of the docker json file for registry auth. `configFileContent` has precedence over username/password.
-  final pulumi.Input<String>? configFileContent;
+  final pulumi.Input<String?>? configFileContent;
   /// Password for the registry. Defaults to `DOCKER_REGISTRY_PASS` env variable if set.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username for the registry. Defaults to `DOCKER_REGISTRY_USER` env variable if set.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [RegistryAuth].
   /// [address] Address of the registry

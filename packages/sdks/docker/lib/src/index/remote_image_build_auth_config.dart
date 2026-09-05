@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RemoteImageBuildAuthConfig {
   /// the auth token
-  final pulumi.Input<String>? auth;
+  final pulumi.Input<String?>? auth;
   /// the user emal
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// hostname of the registry
   final pulumi.Input<String> hostName;
   /// the identity token
-  final pulumi.Input<String>? identityToken;
+  final pulumi.Input<String?>? identityToken;
   /// the registry password
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// the registry token
-  final pulumi.Input<String>? registryToken;
+  final pulumi.Input<String?>? registryToken;
   /// the server address
-  final pulumi.Input<String>? serverAddress;
+  final pulumi.Input<String?>? serverAddress;
   /// the registry user name
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [RemoteImageBuildAuthConfig].
   /// [auth] the auth token

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerDevice {
   /// The path in the container where the device will be bound. If not set, it defaults to the value of `hostPath`.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// The path on the host where the device is located.
   final pulumi.Input<String> hostPath;
   /// The cgroup permissions given to the container to access the device. Defaults to `rwm`.
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
 
   /// Creates a new [ContainerDevice].
   /// [containerPath] The path in the container where the device will be bound. If not set, it defaults to the value of `hostPath`.

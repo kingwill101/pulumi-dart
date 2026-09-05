@@ -1,8 +1,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_args.dart';
 import 'container_capabilities.dart';
+import 'container_device.dart';
+import 'container_device_read_bp.dart';
+import 'container_device_read_iop.dart';
+import 'container_device_request.dart';
+import 'container_device_write_bp.dart';
+import 'container_device_write_iop.dart';
 import 'container_healthcheck.dart';
+import 'container_host.dart';
+import 'container_label.dart';
+import 'container_mount.dart';
+import 'container_network_data.dart';
+import 'container_networks_advanced.dart';
+import 'container_port.dart';
 import 'container_state.dart';
+import 'container_ulimit.dart';
+import 'container_upload.dart';
+import 'container_volume.dart';
 
 /// &lt;!-- Bug: Type and Name are switched --&gt;
 /// Manages the lifecycle of a Docker container.
@@ -357,18 +372,20 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<String?> cpus;
   /// If defined will attempt to stop the container before destroying. Container will be destroyed after `n` seconds or on successful stop.
   late final pulumi.Output<int?> destroyGraceSeconds;
+  /// Cgroup rules to allow access to classes of devices without binding specific device nodes.
+  late final pulumi.Output<List<String>?> deviceCgroupRules;
   /// Limit read rate (bytes per second) from a device. This is the equivalent to repeating `--device-read-bps` for `docker run`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deviceReadBps;
+  late final pulumi.Output<List<ContainerDeviceReadBp>?> deviceReadBps;
   /// Limit read rate (IO per second) from a device. This is the equivalent to repeating `--device-read-iops` for `docker run`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deviceReadIops;
+  late final pulumi.Output<List<ContainerDeviceReadIop>?> deviceReadIops;
   /// Device requests for the container, such as CDI devices (e.g., `nvidia.com/gpu=all`) or GPU requests. This is the equivalent to using the `--device` flag for CDI devices in `docker run`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deviceRequests;
+  late final pulumi.Output<List<ContainerDeviceRequest>?> deviceRequests;
   /// Limit write rate (bytes per second) to a device. This is the equivalent to repeating `--device-write-bps` for `docker run`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deviceWriteBps;
+  late final pulumi.Output<List<ContainerDeviceWriteBp>?> deviceWriteBps;
   /// Limit write rate (IO per second) to a device. This is the equivalent to repeating `--device-write-iops` for `docker run`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deviceWriteIops;
+  late final pulumi.Output<List<ContainerDeviceWriteIop>?> deviceWriteIops;
   /// Bind traditional devices to the container (e.g., `/dev/nvidia0`). For CDI devices, use `deviceRequests` instead.
-  late final pulumi.Output<List<Map<String, dynamic>>?> devices;
+  late final pulumi.Output<List<ContainerDevice>?> devices;
   /// DNS servers to use.
   late final pulumi.Output<List<String>?> dns;
   /// DNS options used by the DNS provider(s), see `resolv.conf` documentation for valid list of options.
@@ -392,7 +409,7 @@ class Container extends pulumi.CustomResource {
   /// Hostname of the container.
   late final pulumi.Output<String> hostname;
   /// Additional hosts to add to the container.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hosts;
+  late final pulumi.Output<List<ContainerHost>?> hosts;
   /// The ID of the image to back this container. The easiest way to get this value is to use the `imageId` attribute of the `docker.RemoteImage` resource as is shown in the example.
   late final pulumi.Output<String> image;
   /// Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
@@ -400,7 +417,7 @@ class Container extends pulumi.CustomResource {
   /// IPC sharing mode for the container. Possible values are: `none`, `private`, `shareable`, `container:&lt;name|id&gt;` or `host`.
   late final pulumi.Output<String> ipcMode;
   /// User-defined key/value metadata
-  late final pulumi.Output<List<Map<String, dynamic>>> labels;
+  late final pulumi.Output<List<ContainerLabel>> labels;
   /// The logging driver to use for the container.
   late final pulumi.Output<String> logDriver;
   /// Key/value pairs to use as options for the logging driver.
@@ -416,23 +433,23 @@ class Container extends pulumi.CustomResource {
   /// The total memory limit (memory + swap) for the container in MBs. This setting may compute to `-1` after `pulumi up` if the target host doesn't support memory swap, when that is the case docker will use a soft limitation.
   late final pulumi.Output<int?> memorySwap;
   /// Specification for mounts to be added to containers created as part of the service.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mounts;
+  late final pulumi.Output<List<ContainerMount>?> mounts;
   /// If `true`, then the Docker container will be kept running. If `false`, Terraform leaves the container alone. This attribute is also used to trigger a restart of a stopped container. If your container is stopped, Terraform will set `mustRun` to `false` and this will trigger a change. Defaults to `true`.
   late final pulumi.Output<bool?> mustRun;
   /// The name of the container.
   late final pulumi.Output<String> name;
   /// The data of the networks the container is connected to.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkDatas;
+  late final pulumi.Output<List<ContainerNetworkData>> networkDatas;
   /// Network mode of the container. Defaults to `bridge`. If your host OS is any other OS, you need to set this value explicitly, e.g. `nat` when your container will be running on an Windows host. See https://docs.docker.com/engine/network/ for more information.
   late final pulumi.Output<String?> networkMode;
   /// The networks the container is attached to. This is the equivalent to the `--network` option of `docker run`
-  late final pulumi.Output<List<Map<String, dynamic>>?> networksAdvanced;
+  late final pulumi.Output<List<ContainerNetworksAdvanced>?> networksAdvanced;
   /// The PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
   late final pulumi.Output<String?> pidMode;
   /// Platform in the format `os[/arch[/variant]]` used for image lookup and container runtime, for example `linux/amd64`.
   late final pulumi.Output<String> platform;
   /// Publish a container's port(s) to the host.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ports;
+  late final pulumi.Output<List<ContainerPort>?> ports;
   /// If `true`, the container runs in privileged mode.
   late final pulumi.Output<bool?> privileged;
   /// Publish all ports of the container.
@@ -468,15 +485,15 @@ class Container extends pulumi.CustomResource {
   /// If `true`, allocate a pseudo-tty (`docker run -t`). Defaults to `false`.
   late final pulumi.Output<bool?> tty;
   /// Ulimit options to add.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ulimits;
+  late final pulumi.Output<List<ContainerUlimit>?> ulimits;
   /// Specifies files to upload to the container before starting it. Only one of `content` or `contentBase64` can be set and at least one of them has to be set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> uploads;
+  late final pulumi.Output<List<ContainerUpload>?> uploads;
   /// User used for run the first process. Format is `user` or `user:group` which user and group can be passed literally or by name.
   late final pulumi.Output<String?> user;
   /// Sets the usernamespace mode for the container when usernamespace remapping option is enabled.
   late final pulumi.Output<String?> usernsMode;
   /// Spec for mounting volumes in the container.
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+  late final pulumi.Output<List<ContainerVolume>?> volumes;
   /// If `true`, then the Docker container is waited for being healthy state after creation. This requires your container to have a healthcheck, otherwise this provider will error. If `false`, then the container health state is not checked. Defaults to `false`.
   late final pulumi.Output<bool?> wait;
   /// The timeout in seconds to wait the container to be healthy after creation. Defaults to `60`.
@@ -496,14 +513,14 @@ class Container extends pulumi.CustomResource {
           'docker:index/container:Container',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     attach = registerOutput<bool?>('attach');
     bridge = registerOutput<String>('bridge');
     capabilities = registerOutput<ContainerCapabilities?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cgroupParent = registerOutput<String?>('cgroupParent');
     cgroupnsMode = registerOutput<String?>('cgroupnsMode');
-    command = registerOutput<List<String>>('command');
+    command = registerOutput<List<String>>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerLogs = registerOutput<String>('containerLogs');
     containerReadRefreshTimeoutMilliseconds = registerOutput<int?>('containerReadRefreshTimeoutMilliseconds');
     cpuPeriod = registerOutput<int?>('cpuPeriod');
@@ -512,44 +529,45 @@ class Container extends pulumi.CustomResource {
     cpuShares = registerOutput<int?>('cpuShares');
     cpus = registerOutput<String?>('cpus');
     destroyGraceSeconds = registerOutput<int?>('destroyGraceSeconds');
-    deviceReadBps = registerOutput<List<Map<String, dynamic>>?>('deviceReadBps');
-    deviceReadIops = registerOutput<List<Map<String, dynamic>>?>('deviceReadIops');
-    deviceRequests = registerOutput<List<Map<String, dynamic>>?>('deviceRequests');
-    deviceWriteBps = registerOutput<List<Map<String, dynamic>>?>('deviceWriteBps');
-    deviceWriteIops = registerOutput<List<Map<String, dynamic>>?>('deviceWriteIops');
-    devices = registerOutput<List<Map<String, dynamic>>?>('devices');
-    dns = registerOutput<List<String>?>('dns');
-    dnsOpts = registerOutput<List<String>?>('dnsOpts');
-    dnsSearches = registerOutput<List<String>?>('dnsSearches');
+    deviceCgroupRules = registerOutput<List<String>?>('deviceCgroupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deviceReadBps = registerOutput<List<ContainerDeviceReadBp>?>('deviceReadBps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceReadBp>(guardedValue, (value) => ContainerDeviceReadBp.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceReadIops = registerOutput<List<ContainerDeviceReadIop>?>('deviceReadIops', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceReadIop>(guardedValue, (value) => ContainerDeviceReadIop.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceRequests = registerOutput<List<ContainerDeviceRequest>?>('deviceRequests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceRequest>(guardedValue, (value) => ContainerDeviceRequest.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceWriteBps = registerOutput<List<ContainerDeviceWriteBp>?>('deviceWriteBps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceWriteBp>(guardedValue, (value) => ContainerDeviceWriteBp.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceWriteIops = registerOutput<List<ContainerDeviceWriteIop>?>('deviceWriteIops', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceWriteIop>(guardedValue, (value) => ContainerDeviceWriteIop.fromMap((value as Map).cast<String, dynamic>())); });
+    devices = registerOutput<List<ContainerDevice>?>('devices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDevice>(guardedValue, (value) => ContainerDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    dns = registerOutput<List<String>?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsOpts = registerOutput<List<String>?>('dnsOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsSearches = registerOutput<List<String>?>('dnsSearches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainname = registerOutput<String?>('domainname');
-    entrypoints = registerOutput<List<String>>('entrypoints');
-    envs = registerOutput<List<String>>('envs');
+    entrypoints = registerOutput<List<String>>('entrypoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    envs = registerOutput<List<String>>('envs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exitCode = registerOutput<int>('exitCode');
     gpus = registerOutput<String?>('gpus');
-    groupAdds = registerOutput<List<String>?>('groupAdds');
+    groupAdds = registerOutput<List<String>?>('groupAdds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     healthcheck = registerOutput<ContainerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostname = registerOutput<String>('hostname');
-    hosts = registerOutput<List<Map<String, dynamic>>?>('hosts');
+    hosts = registerOutput<List<ContainerHost>?>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerHost>(guardedValue, (value) => ContainerHost.fromMap((value as Map).cast<String, dynamic>())); });
     image = registerOutput<String>('image');
     init = registerOutput<bool>('init');
     ipcMode = registerOutput<String>('ipcMode');
-    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    labels = registerOutput<List<ContainerLabel>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerLabel>(guardedValue, (value) => ContainerLabel.fromMap((value as Map).cast<String, dynamic>())); });
     logDriver = registerOutput<String>('logDriver');
-    logOpts = registerOutput<Map<String, String>?>('logOpts');
+    logOpts = registerOutput<Map<String, String>?>('logOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logs = registerOutput<bool?>('logs');
     maxRetryCount = registerOutput<int?>('maxRetryCount');
     memory = registerOutput<int?>('memory');
     memoryReservation = registerOutput<int?>('memoryReservation');
     memorySwap = registerOutput<int?>('memorySwap');
-    mounts = registerOutput<List<Map<String, dynamic>>?>('mounts');
+    mounts = registerOutput<List<ContainerMount>?>('mounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerMount>(guardedValue, (value) => ContainerMount.fromMap((value as Map).cast<String, dynamic>())); });
     mustRun = registerOutput<bool?>('mustRun');
     this.name = registerOutput<String>('name');
-    networkDatas = registerOutput<List<Map<String, dynamic>>>('networkDatas');
+    networkDatas = registerOutput<List<ContainerNetworkData>>('networkDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkData>(guardedValue, (value) => ContainerNetworkData.fromMap((value as Map).cast<String, dynamic>())); });
     networkMode = registerOutput<String?>('networkMode');
-    networksAdvanced = registerOutput<List<Map<String, dynamic>>?>('networksAdvanced');
+    networksAdvanced = registerOutput<List<ContainerNetworksAdvanced>?>('networksAdvanced', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworksAdvanced>(guardedValue, (value) => ContainerNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>())); });
     pidMode = registerOutput<String?>('pidMode');
     platform = registerOutput<String>('platform');
-    ports = registerOutput<List<Map<String, dynamic>>?>('ports');
+    ports = registerOutput<List<ContainerPort>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerPort>(guardedValue, (value) => ContainerPort.fromMap((value as Map).cast<String, dynamic>())); });
     privileged = registerOutput<bool?>('privileged');
     publishAllPorts = registerOutput<bool?>('publishAllPorts');
     readOnly = registerOutput<bool?>('readOnly');
@@ -557,21 +575,21 @@ class Container extends pulumi.CustomResource {
     restart = registerOutput<String?>('restart');
     rm = registerOutput<bool?>('rm');
     runtime = registerOutput<String>('runtime');
-    securityOpts = registerOutput<List<String>>('securityOpts');
+    securityOpts = registerOutput<List<String>>('securityOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     shmSize = registerOutput<int>('shmSize');
     start = registerOutput<bool?>('start');
     stdinOpen = registerOutput<bool?>('stdinOpen');
     stopSignal = registerOutput<String>('stopSignal');
     stopTimeout = registerOutput<int>('stopTimeout');
-    storageOpts = registerOutput<Map<String, String>?>('storageOpts');
-    sysctls = registerOutput<Map<String, String>?>('sysctls');
-    tmpfs = registerOutput<Map<String, String>?>('tmpfs');
+    storageOpts = registerOutput<Map<String, String>?>('storageOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    sysctls = registerOutput<Map<String, String>?>('sysctls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tmpfs = registerOutput<Map<String, String>?>('tmpfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tty = registerOutput<bool?>('tty');
-    ulimits = registerOutput<List<Map<String, dynamic>>?>('ulimits');
-    uploads = registerOutput<List<Map<String, dynamic>>?>('uploads');
+    ulimits = registerOutput<List<ContainerUlimit>?>('ulimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerUlimit>(guardedValue, (value) => ContainerUlimit.fromMap((value as Map).cast<String, dynamic>())); });
+    uploads = registerOutput<List<ContainerUpload>?>('uploads', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerUpload>(guardedValue, (value) => ContainerUpload.fromMap((value as Map).cast<String, dynamic>())); });
     user = registerOutput<String?>('user');
     usernsMode = registerOutput<String?>('usernsMode');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<ContainerVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerVolume>(guardedValue, (value) => ContainerVolume.fromMap((value as Map).cast<String, dynamic>())); });
     wait = registerOutput<bool?>('wait');
     waitTimeout = registerOutput<int?>('waitTimeout');
     workingDir = registerOutput<String?>('workingDir');
@@ -582,11 +600,12 @@ class Container extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Container._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -605,7 +624,7 @@ class Container extends pulumi.CustomResource {
     capabilities = registerOutput<ContainerCapabilities?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cgroupParent = registerOutput<String?>('cgroupParent');
     cgroupnsMode = registerOutput<String?>('cgroupnsMode');
-    command = registerOutput<List<String>>('command');
+    command = registerOutput<List<String>>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerLogs = registerOutput<String>('containerLogs');
     containerReadRefreshTimeoutMilliseconds = registerOutput<int?>('containerReadRefreshTimeoutMilliseconds');
     cpuPeriod = registerOutput<int?>('cpuPeriod');
@@ -614,44 +633,45 @@ class Container extends pulumi.CustomResource {
     cpuShares = registerOutput<int?>('cpuShares');
     cpus = registerOutput<String?>('cpus');
     destroyGraceSeconds = registerOutput<int?>('destroyGraceSeconds');
-    deviceReadBps = registerOutput<List<Map<String, dynamic>>?>('deviceReadBps');
-    deviceReadIops = registerOutput<List<Map<String, dynamic>>?>('deviceReadIops');
-    deviceRequests = registerOutput<List<Map<String, dynamic>>?>('deviceRequests');
-    deviceWriteBps = registerOutput<List<Map<String, dynamic>>?>('deviceWriteBps');
-    deviceWriteIops = registerOutput<List<Map<String, dynamic>>?>('deviceWriteIops');
-    devices = registerOutput<List<Map<String, dynamic>>?>('devices');
-    dns = registerOutput<List<String>?>('dns');
-    dnsOpts = registerOutput<List<String>?>('dnsOpts');
-    dnsSearches = registerOutput<List<String>?>('dnsSearches');
+    deviceCgroupRules = registerOutput<List<String>?>('deviceCgroupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deviceReadBps = registerOutput<List<ContainerDeviceReadBp>?>('deviceReadBps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceReadBp>(guardedValue, (value) => ContainerDeviceReadBp.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceReadIops = registerOutput<List<ContainerDeviceReadIop>?>('deviceReadIops', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceReadIop>(guardedValue, (value) => ContainerDeviceReadIop.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceRequests = registerOutput<List<ContainerDeviceRequest>?>('deviceRequests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceRequest>(guardedValue, (value) => ContainerDeviceRequest.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceWriteBps = registerOutput<List<ContainerDeviceWriteBp>?>('deviceWriteBps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceWriteBp>(guardedValue, (value) => ContainerDeviceWriteBp.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceWriteIops = registerOutput<List<ContainerDeviceWriteIop>?>('deviceWriteIops', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceWriteIop>(guardedValue, (value) => ContainerDeviceWriteIop.fromMap((value as Map).cast<String, dynamic>())); });
+    devices = registerOutput<List<ContainerDevice>?>('devices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDevice>(guardedValue, (value) => ContainerDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    dns = registerOutput<List<String>?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsOpts = registerOutput<List<String>?>('dnsOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsSearches = registerOutput<List<String>?>('dnsSearches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainname = registerOutput<String?>('domainname');
-    entrypoints = registerOutput<List<String>>('entrypoints');
-    envs = registerOutput<List<String>>('envs');
+    entrypoints = registerOutput<List<String>>('entrypoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    envs = registerOutput<List<String>>('envs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exitCode = registerOutput<int>('exitCode');
     gpus = registerOutput<String?>('gpus');
-    groupAdds = registerOutput<List<String>?>('groupAdds');
+    groupAdds = registerOutput<List<String>?>('groupAdds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     healthcheck = registerOutput<ContainerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostname = registerOutput<String>('hostname');
-    hosts = registerOutput<List<Map<String, dynamic>>?>('hosts');
+    hosts = registerOutput<List<ContainerHost>?>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerHost>(guardedValue, (value) => ContainerHost.fromMap((value as Map).cast<String, dynamic>())); });
     image = registerOutput<String>('image');
     init = registerOutput<bool>('init');
     ipcMode = registerOutput<String>('ipcMode');
-    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    labels = registerOutput<List<ContainerLabel>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerLabel>(guardedValue, (value) => ContainerLabel.fromMap((value as Map).cast<String, dynamic>())); });
     logDriver = registerOutput<String>('logDriver');
-    logOpts = registerOutput<Map<String, String>?>('logOpts');
+    logOpts = registerOutput<Map<String, String>?>('logOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logs = registerOutput<bool?>('logs');
     maxRetryCount = registerOutput<int?>('maxRetryCount');
     memory = registerOutput<int?>('memory');
     memoryReservation = registerOutput<int?>('memoryReservation');
     memorySwap = registerOutput<int?>('memorySwap');
-    mounts = registerOutput<List<Map<String, dynamic>>?>('mounts');
+    mounts = registerOutput<List<ContainerMount>?>('mounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerMount>(guardedValue, (value) => ContainerMount.fromMap((value as Map).cast<String, dynamic>())); });
     mustRun = registerOutput<bool?>('mustRun');
     this.name = registerOutput<String>('name');
-    networkDatas = registerOutput<List<Map<String, dynamic>>>('networkDatas');
+    networkDatas = registerOutput<List<ContainerNetworkData>>('networkDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkData>(guardedValue, (value) => ContainerNetworkData.fromMap((value as Map).cast<String, dynamic>())); });
     networkMode = registerOutput<String?>('networkMode');
-    networksAdvanced = registerOutput<List<Map<String, dynamic>>?>('networksAdvanced');
+    networksAdvanced = registerOutput<List<ContainerNetworksAdvanced>?>('networksAdvanced', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworksAdvanced>(guardedValue, (value) => ContainerNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>())); });
     pidMode = registerOutput<String?>('pidMode');
     platform = registerOutput<String>('platform');
-    ports = registerOutput<List<Map<String, dynamic>>?>('ports');
+    ports = registerOutput<List<ContainerPort>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerPort>(guardedValue, (value) => ContainerPort.fromMap((value as Map).cast<String, dynamic>())); });
     privileged = registerOutput<bool?>('privileged');
     publishAllPorts = registerOutput<bool?>('publishAllPorts');
     readOnly = registerOutput<bool?>('readOnly');
@@ -659,21 +679,110 @@ class Container extends pulumi.CustomResource {
     restart = registerOutput<String?>('restart');
     rm = registerOutput<bool?>('rm');
     runtime = registerOutput<String>('runtime');
-    securityOpts = registerOutput<List<String>>('securityOpts');
+    securityOpts = registerOutput<List<String>>('securityOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     shmSize = registerOutput<int>('shmSize');
     start = registerOutput<bool?>('start');
     stdinOpen = registerOutput<bool?>('stdinOpen');
     stopSignal = registerOutput<String>('stopSignal');
     stopTimeout = registerOutput<int>('stopTimeout');
-    storageOpts = registerOutput<Map<String, String>?>('storageOpts');
-    sysctls = registerOutput<Map<String, String>?>('sysctls');
-    tmpfs = registerOutput<Map<String, String>?>('tmpfs');
+    storageOpts = registerOutput<Map<String, String>?>('storageOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    sysctls = registerOutput<Map<String, String>?>('sysctls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tmpfs = registerOutput<Map<String, String>?>('tmpfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tty = registerOutput<bool?>('tty');
-    ulimits = registerOutput<List<Map<String, dynamic>>?>('ulimits');
-    uploads = registerOutput<List<Map<String, dynamic>>?>('uploads');
+    ulimits = registerOutput<List<ContainerUlimit>?>('ulimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerUlimit>(guardedValue, (value) => ContainerUlimit.fromMap((value as Map).cast<String, dynamic>())); });
+    uploads = registerOutput<List<ContainerUpload>?>('uploads', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerUpload>(guardedValue, (value) => ContainerUpload.fromMap((value as Map).cast<String, dynamic>())); });
     user = registerOutput<String?>('user');
     usernsMode = registerOutput<String?>('usernsMode');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<ContainerVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerVolume>(guardedValue, (value) => ContainerVolume.fromMap((value as Map).cast<String, dynamic>())); });
+    wait = registerOutput<bool?>('wait');
+    waitTimeout = registerOutput<int?>('waitTimeout');
+    workingDir = registerOutput<String?>('workingDir');
+  }
+
+  /// Creates a typed reference to an existing [Container] resource.
+  Container.reference(String urn)
+    : super(
+        'docker:index/container:Container',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attach = registerOutput<bool?>('attach');
+    bridge = registerOutput<String>('bridge');
+    capabilities = registerOutput<ContainerCapabilities?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cgroupParent = registerOutput<String?>('cgroupParent');
+    cgroupnsMode = registerOutput<String?>('cgroupnsMode');
+    command = registerOutput<List<String>>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    containerLogs = registerOutput<String>('containerLogs');
+    containerReadRefreshTimeoutMilliseconds = registerOutput<int?>('containerReadRefreshTimeoutMilliseconds');
+    cpuPeriod = registerOutput<int?>('cpuPeriod');
+    cpuQuota = registerOutput<int?>('cpuQuota');
+    cpuSet = registerOutput<String?>('cpuSet');
+    cpuShares = registerOutput<int?>('cpuShares');
+    cpus = registerOutput<String?>('cpus');
+    destroyGraceSeconds = registerOutput<int?>('destroyGraceSeconds');
+    deviceCgroupRules = registerOutput<List<String>?>('deviceCgroupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deviceReadBps = registerOutput<List<ContainerDeviceReadBp>?>('deviceReadBps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceReadBp>(guardedValue, (value) => ContainerDeviceReadBp.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceReadIops = registerOutput<List<ContainerDeviceReadIop>?>('deviceReadIops', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceReadIop>(guardedValue, (value) => ContainerDeviceReadIop.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceRequests = registerOutput<List<ContainerDeviceRequest>?>('deviceRequests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceRequest>(guardedValue, (value) => ContainerDeviceRequest.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceWriteBps = registerOutput<List<ContainerDeviceWriteBp>?>('deviceWriteBps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceWriteBp>(guardedValue, (value) => ContainerDeviceWriteBp.fromMap((value as Map).cast<String, dynamic>())); });
+    deviceWriteIops = registerOutput<List<ContainerDeviceWriteIop>?>('deviceWriteIops', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDeviceWriteIop>(guardedValue, (value) => ContainerDeviceWriteIop.fromMap((value as Map).cast<String, dynamic>())); });
+    devices = registerOutput<List<ContainerDevice>?>('devices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerDevice>(guardedValue, (value) => ContainerDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    dns = registerOutput<List<String>?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsOpts = registerOutput<List<String>?>('dnsOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsSearches = registerOutput<List<String>?>('dnsSearches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    domainname = registerOutput<String?>('domainname');
+    entrypoints = registerOutput<List<String>>('entrypoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    envs = registerOutput<List<String>>('envs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    exitCode = registerOutput<int>('exitCode');
+    gpus = registerOutput<String?>('gpus');
+    groupAdds = registerOutput<List<String>?>('groupAdds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    healthcheck = registerOutput<ContainerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostname = registerOutput<String>('hostname');
+    hosts = registerOutput<List<ContainerHost>?>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerHost>(guardedValue, (value) => ContainerHost.fromMap((value as Map).cast<String, dynamic>())); });
+    image = registerOutput<String>('image');
+    init = registerOutput<bool>('init');
+    ipcMode = registerOutput<String>('ipcMode');
+    labels = registerOutput<List<ContainerLabel>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerLabel>(guardedValue, (value) => ContainerLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    logDriver = registerOutput<String>('logDriver');
+    logOpts = registerOutput<Map<String, String>?>('logOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    logs = registerOutput<bool?>('logs');
+    maxRetryCount = registerOutput<int?>('maxRetryCount');
+    memory = registerOutput<int?>('memory');
+    memoryReservation = registerOutput<int?>('memoryReservation');
+    memorySwap = registerOutput<int?>('memorySwap');
+    mounts = registerOutput<List<ContainerMount>?>('mounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerMount>(guardedValue, (value) => ContainerMount.fromMap((value as Map).cast<String, dynamic>())); });
+    mustRun = registerOutput<bool?>('mustRun');
+    this.name = registerOutput<String>('name');
+    networkDatas = registerOutput<List<ContainerNetworkData>>('networkDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkData>(guardedValue, (value) => ContainerNetworkData.fromMap((value as Map).cast<String, dynamic>())); });
+    networkMode = registerOutput<String?>('networkMode');
+    networksAdvanced = registerOutput<List<ContainerNetworksAdvanced>?>('networksAdvanced', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworksAdvanced>(guardedValue, (value) => ContainerNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>())); });
+    pidMode = registerOutput<String?>('pidMode');
+    platform = registerOutput<String>('platform');
+    ports = registerOutput<List<ContainerPort>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerPort>(guardedValue, (value) => ContainerPort.fromMap((value as Map).cast<String, dynamic>())); });
+    privileged = registerOutput<bool?>('privileged');
+    publishAllPorts = registerOutput<bool?>('publishAllPorts');
+    readOnly = registerOutput<bool?>('readOnly');
+    removeVolumes = registerOutput<bool?>('removeVolumes');
+    restart = registerOutput<String?>('restart');
+    rm = registerOutput<bool?>('rm');
+    runtime = registerOutput<String>('runtime');
+    securityOpts = registerOutput<List<String>>('securityOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    shmSize = registerOutput<int>('shmSize');
+    start = registerOutput<bool?>('start');
+    stdinOpen = registerOutput<bool?>('stdinOpen');
+    stopSignal = registerOutput<String>('stopSignal');
+    stopTimeout = registerOutput<int>('stopTimeout');
+    storageOpts = registerOutput<Map<String, String>?>('storageOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    sysctls = registerOutput<Map<String, String>?>('sysctls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tmpfs = registerOutput<Map<String, String>?>('tmpfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tty = registerOutput<bool?>('tty');
+    ulimits = registerOutput<List<ContainerUlimit>?>('ulimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerUlimit>(guardedValue, (value) => ContainerUlimit.fromMap((value as Map).cast<String, dynamic>())); });
+    uploads = registerOutput<List<ContainerUpload>?>('uploads', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerUpload>(guardedValue, (value) => ContainerUpload.fromMap((value as Map).cast<String, dynamic>())); });
+    user = registerOutput<String?>('user');
+    usernsMode = registerOutput<String?>('usernsMode');
+    volumes = registerOutput<List<ContainerVolume>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerVolume>(guardedValue, (value) => ContainerVolume.fromMap((value as Map).cast<String, dynamic>())); });
     wait = registerOutput<bool?>('wait');
     waitTimeout = registerOutput<int?>('waitTimeout');
     workingDir = registerOutput<String?>('workingDir');

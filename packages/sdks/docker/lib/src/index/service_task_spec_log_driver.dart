@@ -6,7 +6,7 @@ class ServiceTaskSpecLogDriver {
   /// The logging driver to use
   final pulumi.Input<String> name;
   /// The options for the logging driver
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
 
   /// Creates a new [ServiceTaskSpecLogDriver].
   /// [name] The logging driver to use

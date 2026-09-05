@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAuth {
   /// The password
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The address of the server for the authentication
   final pulumi.Input<String> serverAddress;
   /// The username
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ServiceAuth].
   /// [password] The password

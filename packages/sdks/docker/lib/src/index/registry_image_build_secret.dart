@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryImageBuildSecret {
   /// Environment variable source of the secret
-  final pulumi.Input<String>? env;
+  final pulumi.Input<String?>? env;
   /// ID of the secret. By default, secrets are mounted to /run/secrets/\n\n
   final pulumi.Input<String> id;
   /// File source of the secret. Takes precedence over `env`
-  final pulumi.Input<String>? src;
+  final pulumi.Input<String?>? src;
 
   /// Creates a new [RegistryImageBuildSecret].
   /// [env] Environment variable source of the secret

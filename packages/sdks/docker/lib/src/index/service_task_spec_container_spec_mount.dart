@@ -7,19 +7,19 @@ import 'service_task_spec_container_spec_mount_volume_options.dart';
 
 class ServiceTaskSpecContainerSpecMount {
   /// Optional configuration for the bind type
-  final pulumi.Input<ServiceTaskSpecContainerSpecMountBindOptions>? bindOptions;
+  final pulumi.Input<ServiceTaskSpecContainerSpecMountBindOptions?>? bindOptions;
   /// Whether the mount should be read-only
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Mount source (e.g. a volume name, a host path)
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Container path
   final pulumi.Input<String> target;
   /// Optional configuration for the tmpfs type
-  final pulumi.Input<ServiceTaskSpecContainerSpecMountTmpfsOptions>? tmpfsOptions;
+  final pulumi.Input<ServiceTaskSpecContainerSpecMountTmpfsOptions?>? tmpfsOptions;
   /// The mount type
   final pulumi.Input<String> type;
   /// Optional configuration for the volume type
-  final pulumi.Input<ServiceTaskSpecContainerSpecMountVolumeOptions>? volumeOptions;
+  final pulumi.Input<ServiceTaskSpecContainerSpecMountVolumeOptions?>? volumeOptions;
 
   /// Creates a new [ServiceTaskSpecContainerSpecMount].
   /// [bindOptions] Optional configuration for the bind type

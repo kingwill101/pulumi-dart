@@ -28,6 +28,17 @@ Future<GetLogsResult> getLogs(
   return GetLogsResult.fromMap(result);
 }
 
+pulumi.Output<GetLogsResult> getLogsOutput(
+  GetLogsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'docker:index/getLogs:getLogs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogsResult.fromMap);
+}
+
 /// `docker.Network` provides details about a specific Docker Network.
 ///
 /// ## Example Usage
@@ -144,6 +155,17 @@ Future<GetNetworkResult> getNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'docker:index/getNetwork:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
 }
 
 /// Reads the local Docker plugin. The plugin must be installed locally.
@@ -304,6 +326,17 @@ Future<GetPluginResult> getPlugin(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPluginResult.fromMap(result);
+}
+
+pulumi.Output<GetPluginResult> getPluginOutput(
+  GetPluginArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'docker:index/getPlugin:getPlugin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPluginResult.fromMap);
 }
 
 /// Reads the image metadata from a Docker Registry. Used in conjunction with the docker.RemoteImage resource to keep an image up to date on the latest available version of the tag.
@@ -469,6 +502,17 @@ Future<GetRegistryImageResult> getRegistryImage(
   return GetRegistryImageResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryImageResult> getRegistryImageOutput(
+  GetRegistryImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'docker:index/getRegistryImage:getRegistryImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryImageResult.fromMap);
+}
+
 /// Reads the image metadata for each manifest in a Docker multi-arch image from a Docker Registry.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_registry_image_manifests_get_registry_image_manifests_args_doc}
 /// [options] Invoke options controlling this call.
@@ -483,6 +527,17 @@ Future<GetRegistryImageManifestsResult> getRegistryImageManifests(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryImageManifestsResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryImageManifestsResult> getRegistryImageManifestsOutput(
+  GetRegistryImageManifestsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'docker:index/getRegistryImageManifests:getRegistryImageManifests',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryImageManifestsResult.fromMap);
 }
 
 /// `docker.RemoteImage` provides details about a specific Docker Image which need to be present on the Docker Host
@@ -711,4 +766,15 @@ Future<GetRemoteImageResult> getRemoteImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRemoteImageResult.fromMap(result);
+}
+
+pulumi.Output<GetRemoteImageResult> getRemoteImageOutput(
+  GetRemoteImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'docker:index/getRemoteImage:getRemoteImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRemoteImageResult.fromMap);
 }

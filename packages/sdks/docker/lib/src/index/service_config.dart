@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_config_args.dart';
+import 'service_config_label.dart';
 import 'service_config_state.dart';
 
 /// &lt;!-- Bug: Type and Name are switched --&gt;
@@ -127,7 +128,7 @@ class ServiceConfig extends pulumi.CustomResource {
   /// Raw (plain text) config data
   late final pulumi.Output<String?> dataRaw;
   /// User-defined key/value metadata
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<ServiceConfigLabel>?> labels;
   /// User-defined name of the config
   late final pulumi.Output<String> name;
 
@@ -143,11 +144,11 @@ class ServiceConfig extends pulumi.CustomResource {
           'docker:index/serviceConfig:ServiceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     data = registerOutput<String?>('data');
     dataRaw = registerOutput<String?>('dataRaw');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<ServiceConfigLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceConfigLabel>(guardedValue, (value) => ServiceConfigLabel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -156,11 +157,12 @@ class ServiceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -176,7 +178,22 @@ class ServiceConfig extends pulumi.CustomResource {
         ) {
     data = registerOutput<String?>('data');
     dataRaw = registerOutput<String?>('dataRaw');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<ServiceConfigLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceConfigLabel>(guardedValue, (value) => ServiceConfigLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [ServiceConfig] resource.
+  ServiceConfig.reference(String urn)
+    : super(
+        'docker:index/serviceConfig:ServiceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    data = registerOutput<String?>('data');
+    dataRaw = registerOutput<String?>('dataRaw');
+    labels = registerOutput<List<ServiceConfigLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceConfigLabel>(guardedValue, (value) => ServiceConfigLabel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

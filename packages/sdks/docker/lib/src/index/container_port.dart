@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerPort {
   /// Port exposed out of the container. If not given a free random port `&gt;= 32768` will be used.
-  final pulumi.Input<int>? external;
+  final pulumi.Input<int?>? external;
   /// Port within the container.
   final pulumi.Input<int> internal;
   /// IP address/mask that can access this port. Defaults to `0.0.0.0`.
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
   /// Protocol that can be used over this port. Defaults to `tcp`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [ContainerPort].
   /// [external] Port exposed out of the container. If not given a free random port `&gt;= 32768` will be used.
@@ -35,8 +35,8 @@ class ContainerPort {
 
   factory ContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerPort(
-      external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      internal: pulumi.Input.fromValue(map['internal'] as int),
+      external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      internal: pulumi.Input.fromValue((map['internal'] as num).toInt()),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

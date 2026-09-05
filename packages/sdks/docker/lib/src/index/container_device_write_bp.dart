@@ -26,7 +26,7 @@ class ContainerDeviceWriteBp {
   factory ContainerDeviceWriteBp.fromMap(Map<String, dynamic> map) {
     return ContainerDeviceWriteBp(
       path: pulumi.Input.fromValue(map['path'] as String),
-      rate: pulumi.Input.fromValue(map['rate'] as int),
+      rate: pulumi.Input.fromValue((map['rate'] as num).toInt()),
     );
   }
 }

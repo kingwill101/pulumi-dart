@@ -7,19 +7,19 @@ import 'container_mount_volume_options.dart';
 
 class ContainerMount {
   /// Optional configuration for the bind type.
-  final pulumi.Input<ContainerMountBindOptions>? bindOptions;
+  final pulumi.Input<ContainerMountBindOptions?>? bindOptions;
   /// Whether the mount should be read-only.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Mount source (e.g. a volume name, a host path).
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Container path
   final pulumi.Input<String> target;
   /// Optional configuration for the tmpfs type.
-  final pulumi.Input<ContainerMountTmpfsOptions>? tmpfsOptions;
+  final pulumi.Input<ContainerMountTmpfsOptions?>? tmpfsOptions;
   /// The mount type
   final pulumi.Input<String> type;
   /// Optional configuration for the volume type.
-  final pulumi.Input<ContainerMountVolumeOptions>? volumeOptions;
+  final pulumi.Input<ContainerMountVolumeOptions?>? volumeOptions;
 
   /// Creates a new [ContainerMount].
   /// [bindOptions] Optional configuration for the bind type.

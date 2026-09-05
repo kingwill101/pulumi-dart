@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerVolume {
   /// The path in the container where the volume will be mounted.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// The container where the volume is coming from.
-  final pulumi.Input<String>? fromContainer;
+  final pulumi.Input<String?>? fromContainer;
   /// The path on the host where the volume is coming from. If `hostPath` is set, it takes precedence over `volumeName`.
-  final pulumi.Input<String>? hostPath;
+  final pulumi.Input<String?>? hostPath;
   /// If `true`, this volume will be readonly. Defaults to `false`.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// SELinux relabel mode for bind mounts. Supported values are `z` and `Z`.
-  final pulumi.Input<String>? selinuxRelabel;
+  final pulumi.Input<String?>? selinuxRelabel;
   /// The name of the docker volume which should be mounted. Ignored when `hostPath` is set.
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
 
   /// Creates a new [ContainerVolume].
   /// [containerPath] The path in the container where the volume will be mounted.

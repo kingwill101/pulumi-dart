@@ -6,11 +6,11 @@ import 'secret_label.dart';
 /// Input properties used for looking up and filtering Secret resources.
 class SecretState {
   /// Base64-url-safe-encoded secret data
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// User-defined key/value metadata
-  final pulumi.Input<List<SecretLabel>>? labels;
+  final pulumi.Input<List<SecretLabel>?>? labels;
   /// User-defined name of the secret
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SecretState].
   /// [data] Base64-url-safe-encoded secret data

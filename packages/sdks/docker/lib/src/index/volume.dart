@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_args.dart';
 import 'volume_cluster.dart';
+import 'volume_label.dart';
 import 'volume_state.dart';
 
 /// &lt;!-- Bug: Type and Name are switched --&gt;
@@ -241,7 +242,7 @@ class Volume extends pulumi.CustomResource {
   /// Options specific to the driver.
   late final pulumi.Output<Map<String, String>?> driverOpts;
   /// User-defined key/value metadata
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<VolumeLabel>?> labels;
   /// The mountpoint of the volume.
   late final pulumi.Output<String> mountpoint;
   /// The name of the Docker volume (will be generated if not provided).
@@ -259,12 +260,12 @@ class Volume extends pulumi.CustomResource {
           'docker:index/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     cluster = registerOutput<VolumeCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String>('driver');
-    driverOpts = registerOutput<Map<String, String>?>('driverOpts');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    driverOpts = registerOutput<Map<String, String>?>('driverOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    labels = registerOutput<List<VolumeLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeLabel>(guardedValue, (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>())); });
     mountpoint = registerOutput<String>('mountpoint');
     this.name = registerOutput<String>('name');
   }
@@ -274,11 +275,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,8 +296,25 @@ class Volume extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<VolumeCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String>('driver');
-    driverOpts = registerOutput<Map<String, String>?>('driverOpts');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    driverOpts = registerOutput<Map<String, String>?>('driverOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    labels = registerOutput<List<VolumeLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeLabel>(guardedValue, (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    mountpoint = registerOutput<String>('mountpoint');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'docker:index/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cluster = registerOutput<VolumeCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    driver = registerOutput<String>('driver');
+    driverOpts = registerOutput<Map<String, String>?>('driverOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    labels = registerOutput<List<VolumeLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeLabel>(guardedValue, (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>())); });
     mountpoint = registerOutput<String>('mountpoint');
     this.name = registerOutput<String>('name');
   }
