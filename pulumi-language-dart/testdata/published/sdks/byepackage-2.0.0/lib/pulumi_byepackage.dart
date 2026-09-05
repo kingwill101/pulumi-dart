@@ -14,6 +14,7 @@ class _IndexModuleNamespace {
   final GoodbyeWorld = module_index.GoodbyeWorld.new;
   final GoodbyeWorldComponent = module_index.GoodbyeWorldComponent.new;
   final doGoodbyeWorld = module_index.doGoodbyeWorld;
+  final doGoodbyeWorldOutput = module_index.doGoodbyeWorldOutput;
 }
 
 class _ProvidersModuleNamespace {

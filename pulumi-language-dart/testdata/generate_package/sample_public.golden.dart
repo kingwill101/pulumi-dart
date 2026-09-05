@@ -17,6 +17,7 @@ class _IndexModuleNamespace {
   final WidgetMetadataArgs = module_index.WidgetMetadata.new;
   final WidgetMode = module_index.WidgetMode.values;
   final getWidgetDetails = module_index.getWidgetDetails;
+  final getWidgetDetailsOutput = module_index.getWidgetDetailsOutput;
 }
 
 class _ProvidersModuleNamespace {

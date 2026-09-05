@@ -14,6 +14,7 @@ class _IndexModuleNamespace {
   final ResourceArgs = module_index.ResourceArgs.new;
   final ResourceType = module_index.ResourceType.new;
   final invoke = module_index.invoke;
+  final invokeOutput = module_index.invokeOutput;
 }
 
 class _ProvidersModuleNamespace {

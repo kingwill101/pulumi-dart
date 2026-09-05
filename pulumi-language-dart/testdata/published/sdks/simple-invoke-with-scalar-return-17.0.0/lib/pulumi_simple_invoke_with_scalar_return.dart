@@ -12,6 +12,7 @@ class _IndexModuleNamespace {
   final StringResource = module_index.StringResource.new;
   final StringResourceArgs = module_index.StringResourceArgs.new;
   final myInvokeScalar = module_index.myInvokeScalar;
+  final myInvokeScalarOutput = module_index.myInvokeScalarOutput;
 }
 
 class _ProvidersModuleNamespace {

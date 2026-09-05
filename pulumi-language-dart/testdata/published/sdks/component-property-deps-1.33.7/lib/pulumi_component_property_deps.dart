@@ -19,6 +19,7 @@ class _IndexModuleNamespace {
   final RefsResult = module_index.RefsResult.new;
   final RefsResultArgs = module_index.RefsResult.new;
   final refs = module_index.refs;
+  final refsOutput = module_index.refsOutput;
 }
 
 class _ProvidersModuleNamespace {

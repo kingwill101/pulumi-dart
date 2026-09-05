@@ -22,6 +22,7 @@ class _IndexModuleNamespace {
   final Target = module_index.Target.new;
   final TargetArgs = module_index.TargetArgs.new;
   final getValues = module_index.getValues;
+  final getValuesOutput = module_index.getValuesOutput;
 }
 
 class _ProvidersModuleNamespace {

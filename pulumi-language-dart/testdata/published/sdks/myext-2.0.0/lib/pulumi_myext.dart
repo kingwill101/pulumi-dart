@@ -12,4 +12,5 @@ class _IndexModuleNamespace {
   final Greeting = module_index.Greeting.new;
   final GreetingComponent = module_index.GreetingComponent.new;
   final greet = module_index.greet;
+  final greetOutput = module_index.greetOutput;
 }

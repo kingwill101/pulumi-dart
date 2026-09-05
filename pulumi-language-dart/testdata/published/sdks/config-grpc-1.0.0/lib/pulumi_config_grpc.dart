@@ -61,6 +61,7 @@ class _IndexModuleNamespace {
   final Tstring3 = module_index.Tstring3.new;
   final Tstring3Args = module_index.Tstring3.new;
   final toSecret = module_index.toSecret;
+  final toSecretOutput = module_index.toSecretOutput;
 }
 
 class _ProvidersModuleNamespace {

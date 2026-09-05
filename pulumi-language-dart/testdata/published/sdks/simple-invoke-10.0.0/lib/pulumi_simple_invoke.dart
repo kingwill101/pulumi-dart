@@ -22,9 +22,13 @@ class _IndexModuleNamespace {
   final UnitResult = module_index.UnitResult.new;
   final UnitResultArgs = module_index.UnitResult.new;
   final getText = module_index.getText;
+  final getTextOutput = module_index.getTextOutput;
   final myInvoke = module_index.myInvoke;
+  final myInvokeOutput = module_index.myInvokeOutput;
   final secretInvoke = module_index.secretInvoke;
+  final secretInvokeOutput = module_index.secretInvokeOutput;
   final unit = module_index.unit;
+  final unitOutput = module_index.unitOutput;
 }
 
 class _ProvidersModuleNamespace {

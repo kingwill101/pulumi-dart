@@ -20,6 +20,7 @@ class _IndexConcatWorldModuleNamespace {
   final ConcatWorldResult = module_index_concat_world.ConcatWorldResult.new;
   final ConcatWorldResultArgs = module_index_concat_world.ConcatWorldResult.new;
   final concatWorld = module_index_concat_world.concatWorld;
+  final concatWorldOutput = module_index_concat_world.concatWorldOutput;
 }
 
 class _IndexResourceModuleNamespace {
@@ -33,6 +34,7 @@ class _IndexResourceModuleNamespace {
   final ResourceCallResultArgs = module_index_resource.ResourceCallResult.new;
   final ResourceType = module_index_resource.ResourceType.new;
   final call = module_index_resource.call;
+  final callOutput = module_index_resource.callOutput;
 }
 
 class _ModModuleNamespace {
@@ -49,7 +51,9 @@ class _ModModuleNamespace {
   final ResourceCallResultArgs = module_mod.ResourceCallResult.new;
   final ResourceType = module_mod.ResourceType.new;
   final call = module_mod.call;
+  final callOutput = module_mod.callOutput;
   final concatWorld = module_mod.concatWorld;
+  final concatWorldOutput = module_mod.concatWorldOutput;
 }
 
 class _ModConcatWorldModuleNamespace {
@@ -58,6 +62,7 @@ class _ModConcatWorldModuleNamespace {
   final ConcatWorldResult = module_mod_concat_world.ConcatWorldResult.new;
   final ConcatWorldResultArgs = module_mod_concat_world.ConcatWorldResult.new;
   final concatWorld = module_mod_concat_world.concatWorld;
+  final concatWorldOutput = module_mod_concat_world.concatWorldOutput;
 }
 
 class _ModResourceModuleNamespace {
@@ -71,6 +76,7 @@ class _ModResourceModuleNamespace {
   final ResourceCallResultArgs = module_mod_resource.ResourceCallResult.new;
   final ResourceType = module_mod_resource.ResourceType.new;
   final call = module_mod_resource.call;
+  final callOutput = module_mod_resource.callOutput;
 }
 
 class _ProvidersModuleNamespace {

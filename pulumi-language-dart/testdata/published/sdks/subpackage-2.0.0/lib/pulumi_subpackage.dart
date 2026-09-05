@@ -14,6 +14,7 @@ class _IndexModuleNamespace {
   final HelloWorld = module_index.HelloWorld.new;
   final HelloWorldComponent = module_index.HelloWorldComponent.new;
   final doHelloWorld = module_index.doHelloWorld;
+  final doHelloWorldOutput = module_index.doHelloWorldOutput;
 }
 
 class _ProvidersModuleNamespace {

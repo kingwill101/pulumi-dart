@@ -22,6 +22,7 @@ class _CoolModuleModuleNamespace {
   final SomeResource = module_cool_module.SomeResource.new;
   final SomeResourceArgs = module_cool_module.SomeResourceArgs.new;
   final someData = module_cool_module.someData;
+  final someDataOutput = module_cool_module.someDataOutput;
 }
 
 class _ProvidersModuleNamespace {

@@ -14,6 +14,7 @@ class _IndexModuleNamespace {
   final Goodbye = module_index.Goodbye.new;
   final GoodbyeComponent = module_index.GoodbyeComponent.new;
   final doGoodbye = module_index.doGoodbye;
+  final doGoodbyeOutput = module_index.doGoodbyeOutput;
 }
 
 class _ProvidersModuleNamespace {

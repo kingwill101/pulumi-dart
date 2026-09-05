@@ -14,6 +14,7 @@ class _IndexModuleNamespace {
   final ResourceArgs = module_index.ResourceArgs.new;
   final ResourceType = module_index.ResourceType.new;
   final getConfig = module_index.getConfig;
+  final getConfigOutput = module_index.getConfigOutput;
 }
 
 class _ProvidersModuleNamespace {
