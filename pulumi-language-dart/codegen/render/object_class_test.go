@@ -59,6 +59,8 @@ class WidgetArgs {
     );
   }
 }
+`, string(actual))
+}
 
 func TestObjectClassMakesDefaultedConstructorParametersNullable(t *testing.T) {
 	t.Parallel()
@@ -75,6 +77,4 @@ func TestObjectClassMakesDefaultedConstructorParametersNullable(t *testing.T) {
 	}))
 
 	require.Contains(t, actual, "pulumi.Input<WidgetMode>? mode,")
-}
-`, string(actual))
 }
