@@ -14,6 +14,10 @@ final class PackagesUpdateCommand extends Command<int> {
       ..addFlag(
         'allow-same-version',
         help: 'Allow schema content changes without a version increment.',
+      )
+      ..addFlag(
+        'skip-analysis',
+        help: 'Generate the package without requiring analyzer success.',
       );
   }
 
@@ -70,7 +74,11 @@ final class PackagesUpdateCommand extends Command<int> {
     await io.task(
       'Regenerate and analyze ${plan.provider}',
       run: () async {
-        await updater.apply(plan, schemaBytes);
+        await updater.apply(
+          plan,
+          schemaBytes,
+          analyze: !(option('skip-analysis') as bool),
+        );
         return TaskResult.success;
       },
     );
