@@ -478,7 +478,7 @@ class Environment extends pulumi.CustomResource {
           'gcp:apigee/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apiProxyType = registerOutput<String>('apiProxyType');
     clientIpResolutionConfig = registerOutput<EnvironmentClientIpResolutionConfig?>('clientIpResolutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

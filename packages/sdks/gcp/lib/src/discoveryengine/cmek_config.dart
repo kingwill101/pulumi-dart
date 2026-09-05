@@ -286,7 +286,7 @@ class CmekConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/cmekConfig:CmekConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cmekConfigId = registerOutput<String>('cmekConfigId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

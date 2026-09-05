@@ -225,7 +225,7 @@ class Project extends pulumi.CustomResource {
           'gcp:firebase/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');

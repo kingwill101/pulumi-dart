@@ -959,7 +959,7 @@ class BitbucketServerConfig extends pulumi.CustomResource {
           'gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apiKey = registerOutput<String>('apiKey');
     configId = registerOutput<String>('configId');

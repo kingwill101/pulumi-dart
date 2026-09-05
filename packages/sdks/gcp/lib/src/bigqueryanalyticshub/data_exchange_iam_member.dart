@@ -1028,7 +1028,7 @@ class DataExchangeIamMember extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<DataExchangeIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataExchangeId = registerOutput<String>('dataExchangeId');

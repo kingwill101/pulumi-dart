@@ -603,7 +603,7 @@ class Parser extends pulumi.CustomResource {
           'gcp:chronicle/parser:Parser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cbn = registerOutput<String?>('cbn');
     changelogs = registerOutput<List<ParserChangelog>>('changelogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserChangelog>(guardedValue, (value) => ParserChangelog.fromMap((value as Map).cast<String, dynamic>())); });

@@ -224,7 +224,7 @@ class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
           'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     editionConfig = registerOutput<String>('editionConfig');
     effectiveIntelligenceConfigs = registerOutput<List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlProjectIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });

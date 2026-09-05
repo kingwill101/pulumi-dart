@@ -2158,7 +2158,7 @@ class AgentRegistryMcpServerIamBinding extends pulumi.CustomResource {
           'gcp:iap/agentRegistryMcpServerIamBinding:AgentRegistryMcpServerIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<AgentRegistryMcpServerIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRegistryMcpServerIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

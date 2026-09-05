@@ -264,7 +264,7 @@ class GenericService extends pulumi.CustomResource {
           'gcp:monitoring/genericService:GenericService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     basicService = registerOutput<GenericServiceBasicService?>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenericServiceBasicService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

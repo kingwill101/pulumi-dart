@@ -58,7 +58,7 @@ class Flowhook extends pulumi.CustomResource {
           'gcp:apigee/flowhook:Flowhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     continueOnError = registerOutput<bool?>('continueOnError');
     deletionPolicy = registerOutput<String>('deletionPolicy');

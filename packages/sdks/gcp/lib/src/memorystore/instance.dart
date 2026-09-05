@@ -3279,6 +3279,9 @@ import 'instance_zone_distribution_config.dart';
 /// $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
 /// ```
 class Instance extends pulumi.CustomResource {
+  /// The name of the ACL policy to attach to the instance.
+  /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+  late final pulumi.Output<String?> aclPolicy;
   /// Optional. Immutable. Authorization mode of the instance. Possible values:
   /// AUTH_DISABLED
   /// IAM_AUTH.
@@ -3337,6 +3340,8 @@ class Instance extends pulumi.CustomResource {
   /// * Must not end with a hyphen
   /// * Must be unique within a location
   late final pulumi.Output<String> instanceId;
+  /// Whether the ACL policy is in sync with the cluster.
+  late final pulumi.Output<bool> isAclPolicyInSync;
   /// The KMS key used to encrypt the at-rest data of the cluster
   late final pulumi.Output<String?> kmsKey;
   /// Optional. Labels to represent user-provided metadata.
@@ -3448,9 +3453,10 @@ class Instance extends pulumi.CustomResource {
           'gcp:memorystore/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
+    aclPolicy = registerOutput<String?>('aclPolicy');
     authorizationMode = registerOutput<String>('authorizationMode');
     automatedBackupConfig = registerOutput<InstanceAutomatedBackupConfig?>('automatedBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -3469,6 +3475,7 @@ class Instance extends pulumi.CustomResource {
     engineVersion = registerOutput<String>('engineVersion');
     gcsSource = registerOutput<InstanceGcsSource?>('gcsSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
+    isAclPolicyInSync = registerOutput<bool>('isAclPolicyInSync');
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
@@ -3522,6 +3529,7 @@ class Instance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aclPolicy = registerOutput<String?>('aclPolicy');
     authorizationMode = registerOutput<String>('authorizationMode');
     automatedBackupConfig = registerOutput<InstanceAutomatedBackupConfig?>('automatedBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -3540,6 +3548,7 @@ class Instance extends pulumi.CustomResource {
     engineVersion = registerOutput<String>('engineVersion');
     gcsSource = registerOutput<InstanceGcsSource?>('gcsSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
+    isAclPolicyInSync = registerOutput<bool>('isAclPolicyInSync');
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
@@ -3579,6 +3588,7 @@ class Instance extends pulumi.CustomResource {
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         isResourceReference: true,
       ) {
+    aclPolicy = registerOutput<String?>('aclPolicy');
     authorizationMode = registerOutput<String>('authorizationMode');
     automatedBackupConfig = registerOutput<InstanceAutomatedBackupConfig?>('automatedBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -3597,6 +3607,7 @@ class Instance extends pulumi.CustomResource {
     engineVersion = registerOutput<String>('engineVersion');
     gcsSource = registerOutput<InstanceGcsSource?>('gcsSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
+    isAclPolicyInSync = registerOutput<bool>('isAclPolicyInSync');
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');

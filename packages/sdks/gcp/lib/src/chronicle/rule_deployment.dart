@@ -758,7 +758,7 @@ class RuleDeployment extends pulumi.CustomResource {
           'gcp:chronicle/ruleDeployment:RuleDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     alerting = registerOutput<bool?>('alerting');
     archiveTime = registerOutput<String>('archiveTime');

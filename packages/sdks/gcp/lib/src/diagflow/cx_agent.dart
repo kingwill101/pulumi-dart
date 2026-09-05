@@ -998,7 +998,7 @@ class CxAgent extends pulumi.CustomResource {
           'gcp:diagflow/cxAgent:CxAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     advancedSettings = registerOutput<CxAgentAdvancedSettings>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAnswerFeedbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -1027,7 +1027,7 @@ class FunctionIamMember extends pulumi.CustomResource {
           'gcp:cloudfunctions/functionIamMember:FunctionIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cloudFunction = registerOutput<String>('cloudFunction');
     condition = registerOutput<FunctionIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -1888,7 +1888,7 @@ class RolloutSequence extends pulumi.CustomResource {
           'gcp:gkehub/rolloutSequence:RolloutSequence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoUpgradeConfig = registerOutput<RolloutSequenceAutoUpgradeConfig?>('autoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

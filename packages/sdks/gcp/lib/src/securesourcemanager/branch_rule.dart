@@ -569,7 +569,7 @@ class BranchRule extends pulumi.CustomResource {
           'gcp:securesourcemanager/branchRule:BranchRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');

@@ -931,7 +931,7 @@ class EntryGroupIamPolicy extends pulumi.CustomResource {
           'gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     entryGroup = registerOutput<String>('entryGroup');
     etag = registerOutput<String>('etag');

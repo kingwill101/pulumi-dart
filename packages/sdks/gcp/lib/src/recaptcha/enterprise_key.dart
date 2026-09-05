@@ -416,7 +416,7 @@ import 'enterprise_key_web_settings.dart';
 ///             IntegrationType = "SCORE",
 ///             AllowAllDomains = true,
 ///         },
-///         Labels = null,
+///         Labels = new() { },
 ///     });
 ///
 /// });
@@ -1205,7 +1205,7 @@ class EnterpriseKey extends pulumi.CustomResource {
           'gcp:recaptcha/enterpriseKey:EnterpriseKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

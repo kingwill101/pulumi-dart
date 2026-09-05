@@ -317,7 +317,7 @@ class AuthConfig extends pulumi.CustomResource {
           'gcp:applicationintegration/authConfig:AuthConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     clientCertificate = registerOutput<AuthConfigClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

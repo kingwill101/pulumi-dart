@@ -1430,7 +1430,7 @@ class Job extends pulumi.CustomResource {
           'gcp:cloudscheduler/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attemptDeadline = registerOutput<String?>('attemptDeadline');

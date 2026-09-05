@@ -334,7 +334,7 @@ class V2OrganizationSccBigQueryExport extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');

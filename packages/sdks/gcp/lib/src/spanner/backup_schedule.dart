@@ -137,7 +137,7 @@ import 'backup_schedule_state.dart';
 ///                 Text = "0 12 * * *",
 ///             },
 ///         },
-///         FullBackupSpec = null,
+///         FullBackupSpec = new() { },
 ///         EncryptionConfig = new Gcp.Spanner.Inputs.BackupScheduleEncryptionConfigArgs
 ///         {
 ///             EncryptionType = "USE_DATABASE_ENCRYPTION",
@@ -461,7 +461,7 @@ import 'backup_schedule_state.dart';
 ///                 Text = "0 12 * * *",
 ///             },
 ///         },
-///         IncrementalBackupSpec = null,
+///         IncrementalBackupSpec = new() { },
 ///         EncryptionConfig = new Gcp.Spanner.Inputs.BackupScheduleEncryptionConfigArgs
 ///         {
 ///             EncryptionType = "GOOGLE_DEFAULT_ENCRYPTION",
@@ -733,7 +733,7 @@ class BackupSchedule extends pulumi.CustomResource {
           'gcp:spanner/backupSchedule:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');

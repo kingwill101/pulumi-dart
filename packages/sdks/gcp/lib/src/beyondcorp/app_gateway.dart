@@ -3,6 +3,8 @@ import 'app_gateway_allocated_connection.dart';
 import 'app_gateway_args.dart';
 import 'app_gateway_state.dart';
 
+/// &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+///
 /// A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates
 /// all the necessary GCP components needed for creating a BeyondCorp protected AppGateway. Multiple connectors can be
 /// authorised for a single AppGateway.
@@ -375,7 +377,7 @@ class AppGateway extends pulumi.CustomResource {
           'gcp:beyondcorp/appGateway:AppGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allocatedConnections = registerOutput<List<AppGatewayAllocatedConnection>>('allocatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGatewayAllocatedConnection>(guardedValue, (value) => AppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())); });

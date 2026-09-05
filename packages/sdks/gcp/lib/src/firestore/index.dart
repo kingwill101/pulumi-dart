@@ -3068,7 +3068,7 @@ class Index extends pulumi.CustomResource {
           'gcp:firestore/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apiScope = registerOutput<String?>('apiScope');
     collection = registerOutput<String>('collection');

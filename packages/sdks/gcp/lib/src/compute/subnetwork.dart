@@ -2675,7 +2675,7 @@ class Subnetwork extends pulumi.CustomResource {
           'gcp:compute/subnetwork:Subnetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowSubnetCidrRoutesOverlap = registerOutput<bool>('allowSubnetCidrRoutesOverlap');
     creationTimestamp = registerOutput<String>('creationTimestamp');

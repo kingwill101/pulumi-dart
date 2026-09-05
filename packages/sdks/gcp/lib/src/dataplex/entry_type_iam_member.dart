@@ -1028,7 +1028,7 @@ class EntryTypeIamMember extends pulumi.CustomResource {
           'gcp:dataplex/entryTypeIamMember:EntryTypeIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<EntryTypeIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntryTypeIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entryTypeId = registerOutput<String>('entryTypeId');

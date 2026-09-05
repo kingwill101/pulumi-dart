@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_cluster_acl_policy_args.dart';
+import 'get_cluster_acl_policy_result.dart';
 import 'get_cluster_args.dart';
 import 'get_cluster_result.dart';
 import 'get_instance_args.dart';
@@ -138,6 +140,142 @@ pulumi.Output<GetClusterResult> getClusterOutput(
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
   ).apply(GetClusterResult.fromMap);
+}
+
+/// Get information about a Google Cloud Redis Cluster ACL policy. For more information see the [official documentation](https://cloud.google.com/memorystore/docs/redis) or the [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const qa = gcp.redis.getClusterAclPolicy({
+///     aclPolicyId: "my-acl-policy",
+///     location: "us-central1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// qa = gcp.redis.get_cluster_acl_policy(acl_policy_id="my-acl-policy",
+///     location="us-central1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var qa = Gcp.Redis.GetClusterAclPolicy.Invoke(new()
+///     {
+///         AclPolicyId = "my-acl-policy",
+///         Location = "us-central1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := redis.LookupClusterAclPolicy(ctx, &redis.LookupClusterAclPolicyArgs{
+/// 			AclPolicyId: "my-acl-policy",
+/// 			Location:    pulumi.StringRef("us-central1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_redis_getclusteraclpolicy" "qa" {
+///   acl_policy_id = "my-acl-policy"
+///   location      = "us-central1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.redis.RedisFunctions;
+/// import com.pulumi.gcp.redis.inputs.GetClusterAclPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var qa = RedisFunctions.getClusterAclPolicy(GetClusterAclPolicyArgs.builder()
+///             .aclPolicyId("my-acl-policy")
+///             .location("us-central1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   qa:
+///     fn::invoke:
+///       function: gcp:redis:getClusterAclPolicy
+///       arguments:
+///         aclPolicyId: my-acl-policy
+///         location: us-central1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_redis_get_cluster_acl_policy_get_cluster_acl_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetClusterAclPolicyResult> getClusterAclPolicy(
+  GetClusterAclPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:redis/getClusterAclPolicy:getClusterAclPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetClusterAclPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
+  GetClusterAclPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:redis/getClusterAclPolicy:getClusterAclPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterAclPolicyResult.fromMap);
 }
 
 /// Get info about a Google Cloud Redis instance.

@@ -573,7 +573,7 @@ class Occurence extends pulumi.CustomResource {
           'gcp:containeranalysis/occurence:Occurence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

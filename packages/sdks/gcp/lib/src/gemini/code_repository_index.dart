@@ -198,7 +198,7 @@ class CodeRepositoryIndex extends pulumi.CustomResource {
           'gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     codeRepositoryIndexId = registerOutput<String>('codeRepositoryIndexId');

@@ -1012,7 +1012,7 @@ class DatascanIamPolicy extends pulumi.CustomResource {
           'gcp:dataplex/datascanIamPolicy:DatascanIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     dataScanId = registerOutput<String>('dataScanId');
     etag = registerOutput<String>('etag');

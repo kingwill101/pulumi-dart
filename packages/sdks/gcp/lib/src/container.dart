@@ -195,6 +195,7 @@ export 'container/cluster_node_config_guest_accelerator_gpu_driver_installation_
 export 'container/cluster_node_config_guest_accelerator_gpu_sharing_config.dart';
 export 'container/cluster_node_config_gvnic.dart';
 export 'container/cluster_node_config_host_maintenance_policy.dart';
+export 'container/cluster_node_config_host_maintenance_policy_opportunistic_maintenance_strategy.dart';
 export 'container/cluster_node_config_kubelet_config.dart';
 export 'container/cluster_node_config_kubelet_config_crash_loop_back_off.dart';
 export 'container/cluster_node_config_kubelet_config_eviction_minimum_reclaim.dart';
@@ -282,6 +283,7 @@ export 'container/cluster_node_pool_node_config_guest_accelerator_gpu_driver_ins
 export 'container/cluster_node_pool_node_config_guest_accelerator_gpu_sharing_config.dart';
 export 'container/cluster_node_pool_node_config_gvnic.dart';
 export 'container/cluster_node_pool_node_config_host_maintenance_policy.dart';
+export 'container/cluster_node_pool_node_config_host_maintenance_policy_opportunistic_maintenance_strategy.dart';
 export 'container/cluster_node_pool_node_config_kubelet_config.dart';
 export 'container/cluster_node_pool_node_config_kubelet_config_crash_loop_back_off.dart';
 export 'container/cluster_node_pool_node_config_kubelet_config_eviction_minimum_reclaim.dart';
@@ -463,6 +465,7 @@ export 'container/get_cluster_node_config_guest_accelerator_gpu_driver_installat
 export 'container/get_cluster_node_config_guest_accelerator_gpu_sharing_config.dart';
 export 'container/get_cluster_node_config_gvnic.dart';
 export 'container/get_cluster_node_config_host_maintenance_policy.dart';
+export 'container/get_cluster_node_config_host_maintenance_policy_opportunistic_maintenance_strategy.dart';
 export 'container/get_cluster_node_config_kubelet_config.dart';
 export 'container/get_cluster_node_config_kubelet_config_crash_loop_back_off.dart';
 export 'container/get_cluster_node_config_kubelet_config_eviction_minimum_reclaim.dart';
@@ -550,6 +553,7 @@ export 'container/get_cluster_node_pool_node_config_guest_accelerator_gpu_driver
 export 'container/get_cluster_node_pool_node_config_guest_accelerator_gpu_sharing_config.dart';
 export 'container/get_cluster_node_pool_node_config_gvnic.dart';
 export 'container/get_cluster_node_pool_node_config_host_maintenance_policy.dart';
+export 'container/get_cluster_node_pool_node_config_host_maintenance_policy_opportunistic_maintenance_strategy.dart';
 export 'container/get_cluster_node_pool_node_config_kubelet_config.dart';
 export 'container/get_cluster_node_pool_node_config_kubelet_config_crash_loop_back_off.dart';
 export 'container/get_cluster_node_pool_node_config_kubelet_config_eviction_minimum_reclaim.dart';
@@ -656,6 +660,7 @@ export 'container/node_pool_node_config_guest_accelerator_gpu_driver_installatio
 export 'container/node_pool_node_config_guest_accelerator_gpu_sharing_config.dart';
 export 'container/node_pool_node_config_gvnic.dart';
 export 'container/node_pool_node_config_host_maintenance_policy.dart';
+export 'container/node_pool_node_config_host_maintenance_policy_opportunistic_maintenance_strategy.dart';
 export 'container/node_pool_node_config_kubelet_config.dart';
 export 'container/node_pool_node_config_kubelet_config_crash_loop_back_off.dart';
 export 'container/node_pool_node_config_kubelet_config_eviction_minimum_reclaim.dart';

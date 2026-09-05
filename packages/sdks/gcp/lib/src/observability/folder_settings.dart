@@ -712,7 +712,7 @@ class FolderSettings extends pulumi.CustomResource {
           'gcp:observability/folderSettings:FolderSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     defaultStorageLocation = registerOutput<String?>('defaultStorageLocation');
     folder = registerOutput<String>('folder');

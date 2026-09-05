@@ -201,7 +201,7 @@ class IAMCustomRole extends pulumi.CustomResource {
           'gcp:projects/iAMCustomRole:IAMCustomRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deleted = registerOutput<bool>('deleted');
     deletionPolicy = registerOutput<String>('deletionPolicy');

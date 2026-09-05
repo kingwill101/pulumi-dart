@@ -1433,7 +1433,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:container/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     addonsConfig = registerOutput<ClusterAddonsConfig>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

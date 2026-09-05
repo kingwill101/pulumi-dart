@@ -1057,7 +1057,7 @@ class TaskIamPolicy extends pulumi.CustomResource {
           'gcp:dataplex/taskIamPolicy:TaskIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');

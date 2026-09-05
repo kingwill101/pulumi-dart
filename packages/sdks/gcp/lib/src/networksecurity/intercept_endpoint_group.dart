@@ -329,7 +329,7 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
           'gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     associations = registerOutput<List<InterceptEndpointGroupAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(guardedValue, (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>())); });

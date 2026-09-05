@@ -2158,7 +2158,7 @@ class AgentRegistryEndpointIamMember extends pulumi.CustomResource {
           'gcp:iap/agentRegistryEndpointIamMember:AgentRegistryEndpointIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<AgentRegistryEndpointIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRegistryEndpointIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointId = registerOutput<String>('endpointId');

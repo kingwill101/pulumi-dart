@@ -173,7 +173,7 @@ class BillingAccountExclusion extends pulumi.CustomResource {
           'gcp:logging/billingAccountExclusion:BillingAccountExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     description = registerOutput<String?>('description');

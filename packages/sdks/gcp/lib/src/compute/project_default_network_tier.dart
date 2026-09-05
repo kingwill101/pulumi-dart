@@ -143,7 +143,7 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
           'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     networkTier = registerOutput<String>('networkTier');
     project = registerOutput<String>('project');

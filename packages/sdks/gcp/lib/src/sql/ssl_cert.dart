@@ -261,7 +261,7 @@ class SslCert extends pulumi.CustomResource {
           'gcp:sql/sslCert:SslCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['cert', 'privateKey', 'serverCaCert'],
         ) {
     cert = registerOutput<String>('cert', isSecret: true);

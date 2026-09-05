@@ -563,7 +563,7 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['securityToken'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

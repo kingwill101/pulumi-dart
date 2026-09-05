@@ -1434,7 +1434,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
           'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexAutomaticResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

@@ -984,7 +984,7 @@ class ConfigIamBinding extends pulumi.CustomResource {
           'gcp:runtimeconfig/configIamBinding:ConfigIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<ConfigIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');

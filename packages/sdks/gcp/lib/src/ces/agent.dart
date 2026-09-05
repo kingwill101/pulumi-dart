@@ -410,7 +410,7 @@ import 'agent_toolset.dart';
 ///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
-///         LlmAgent = null,
+///         LlmAgent = new() { },
 ///     });
 ///
 ///     var cesGuardrailForAgent = new Gcp.Ces.Guardrail("ces_guardrail_for_agent", new()
@@ -544,7 +544,7 @@ import 'agent_toolset.dart';
 ///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
 ///             }),
 ///         },
-///         LlmAgent = null,
+///         LlmAgent = new() { },
 ///     });
 ///
 /// });
@@ -2113,7 +2113,7 @@ class Agent extends pulumi.CustomResource {
           'gcp:ces/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     afterAgentCallbacks = registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterAgentCallback>(guardedValue, (value) => AgentAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
     afterModelCallbacks = registerOutput<List<AgentAfterModelCallback>?>('afterModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterModelCallback>(guardedValue, (value) => AgentAfterModelCallback.fromMap((value as Map).cast<String, dynamic>())); });

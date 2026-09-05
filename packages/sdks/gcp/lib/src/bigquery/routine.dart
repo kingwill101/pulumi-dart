@@ -1082,7 +1082,7 @@ import 'routine_state.dart';
 ///     {
 ///         ConnectionId = "connection_id",
 ///         Location = "US",
-///         Spark = null,
+///         Spark = new() { },
 ///     });
 ///
 ///     var pyspark = new Gcp.BigQuery.Routine("pyspark", new()
@@ -1380,7 +1380,7 @@ import 'routine_state.dart';
 ///     {
 ///         ConnectionId = "connection_id",
 ///         Location = "US",
-///         Spark = null,
+///         Spark = new() { },
 ///     });
 ///
 ///     var pysparkMainfile = new Gcp.BigQuery.Routine("pyspark_mainfile", new()
@@ -1665,7 +1665,7 @@ import 'routine_state.dart';
 ///     {
 ///         ConnectionId = "connection_id",
 ///         Location = "US",
-///         Spark = null,
+///         Spark = new() { },
 ///     });
 ///
 ///     var sparkJar = new Gcp.BigQuery.Routine("spark_jar", new()
@@ -2153,7 +2153,7 @@ import 'routine_state.dart';
 ///     {
 ///         ConnectionId = "connection_id",
 ///         Location = "US",
-///         CloudResource = null,
+///         CloudResource = new() { },
 ///     });
 ///
 ///     var remoteFunction = new Gcp.BigQuery.Routine("remote_function", new()
@@ -2755,7 +2755,7 @@ class Routine extends pulumi.CustomResource {
           'gcp:bigquery/routine:Routine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     arguments = registerOutput<List<RoutineArgument>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');

@@ -693,7 +693,7 @@ class Plugin extends pulumi.CustomResource {
           'gcp:apihub/plugin:Plugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     actionsConfigs = registerOutput<List<PluginActionsConfig>?>('actionsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginActionsConfig>(guardedValue, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

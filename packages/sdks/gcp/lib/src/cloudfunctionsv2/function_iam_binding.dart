@@ -1027,7 +1027,7 @@ class FunctionIamBinding extends pulumi.CustomResource {
           'gcp:cloudfunctionsv2/functionIamBinding:FunctionIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     cloudFunction = registerOutput<String>('cloudFunction');
     condition = registerOutput<FunctionIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

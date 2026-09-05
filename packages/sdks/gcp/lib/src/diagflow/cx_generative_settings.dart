@@ -439,7 +439,7 @@ class CxGenerativeSettings extends pulumi.CustomResource {
           'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsFallbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsGenerativeSafetySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

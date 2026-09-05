@@ -2913,7 +2913,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:vmwareengine/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoscalingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

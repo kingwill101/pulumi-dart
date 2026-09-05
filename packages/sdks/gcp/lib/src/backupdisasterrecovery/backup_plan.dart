@@ -1209,7 +1209,7 @@ class BackupPlan extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     backupPlanId = registerOutput<String>('backupPlanId');
     backupRules = registerOutput<List<BackupPlanBackupRule>?>('backupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanBackupRule>(guardedValue, (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())); });

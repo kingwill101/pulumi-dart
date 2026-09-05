@@ -85,7 +85,7 @@ class AutoLabelingRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     autoLabelingRuleId = registerOutput<String?>('autoLabelingRuleId');

@@ -212,7 +212,7 @@ import 'response_policy_state.dart';
 ///                 Enabled = true,
 ///             },
 ///         },
-///         MasterAuthorizedNetworksConfig = null,
+///         MasterAuthorizedNetworksConfig = new() { },
 ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
 ///         {
 ///             ClusterSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges => secondaryIpRanges[0].RangeName),
@@ -632,7 +632,7 @@ class ResponsePolicy extends pulumi.CustomResource {
           'gcp:dns/responsePolicy:ResponsePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

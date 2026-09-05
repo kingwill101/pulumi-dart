@@ -610,7 +610,7 @@ class PrivateConnection extends pulumi.CustomResource {
           'gcp:databasemigrationservice/privateConnection:PrivateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');

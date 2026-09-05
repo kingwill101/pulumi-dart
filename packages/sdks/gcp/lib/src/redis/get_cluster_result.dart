@@ -18,6 +18,7 @@ import 'get_cluster_zone_distribution_config.dart';
 
 /// Result data returned by getCluster.
 class GetClusterResult {
+  final String? aclPolicy;
   final String? authorizationMode;
   final List<GetClusterAutomatedBackupConfig>? automatedBackupConfigs;
   final List<String>? availableMaintenanceVersions;
@@ -32,6 +33,7 @@ class GetClusterResult {
   final List<GetClusterGcsSource>? gcsSources;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
+  final bool? isAclPolicyInSync;
   final String? kmsKey;
   final Map<String, String>? labels;
   final List<GetClusterMaintenancePolicy>? maintenancePolicies;
@@ -62,6 +64,7 @@ class GetClusterResult {
   final List<GetClusterZoneDistributionConfig>? zoneDistributionConfigs;
 
   /// Creates a new [GetClusterResult].
+  /// [aclPolicy] Optional.
   /// [authorizationMode] Optional.
   /// [automatedBackupConfigs] Optional.
   /// [availableMaintenanceVersions] Optional.
@@ -75,6 +78,7 @@ class GetClusterResult {
   /// [effectiveMaintenanceVersion] Optional.
   /// [gcsSources] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [isAclPolicyInSync] Optional.
   /// [kmsKey] Optional.
   /// [labels] Optional.
   /// [maintenancePolicies] Optional.
@@ -104,6 +108,7 @@ class GetClusterResult {
   /// [uid] Optional.
   /// [zoneDistributionConfigs] Optional.
   const GetClusterResult({
+    this.aclPolicy,
     this.authorizationMode,
     this.automatedBackupConfigs,
     this.availableMaintenanceVersions,
@@ -117,6 +122,7 @@ class GetClusterResult {
     this.effectiveMaintenanceVersion,
     this.gcsSources,
     this.id,
+    this.isAclPolicyInSync,
     this.kmsKey,
     this.labels,
     this.maintenancePolicies,
@@ -149,6 +155,7 @@ class GetClusterResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclPolicy': ?aclPolicy,
       'authorizationMode': ?authorizationMode,
       'automatedBackupConfigs': ?(() { final guardedValue = automatedBackupConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAutomatedBackupConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'availableMaintenanceVersions': ?availableMaintenanceVersions,
@@ -162,6 +169,7 @@ class GetClusterResult {
       'effectiveMaintenanceVersion': ?effectiveMaintenanceVersion,
       'gcsSources': ?(() { final guardedValue = gcsSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterGcsSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
+      'isAclPolicyInSync': ?isAclPolicyInSync,
       'kmsKey': ?kmsKey,
       'labels': ?labels,
       'maintenancePolicies': ?(() { final guardedValue = maintenancePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMaintenancePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -195,6 +203,7 @@ class GetClusterResult {
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
+      aclPolicy: (() { final guardedValue = map['aclPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       automatedBackupConfigs: (() { final guardedValue = map['automatedBackupConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAutomatedBackupConfig>(guardedValue, (value) => GetClusterAutomatedBackupConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
@@ -208,6 +217,7 @@ class GetClusterResult {
       effectiveMaintenanceVersion: (() { final guardedValue = map['effectiveMaintenanceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gcsSources: (() { final guardedValue = map['gcsSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterGcsSource>(guardedValue, (value) => GetClusterGcsSource.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isAclPolicyInSync: (() { final guardedValue = map['isAclPolicyInSync']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMaintenancePolicy>(guardedValue, (value) => GetClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),

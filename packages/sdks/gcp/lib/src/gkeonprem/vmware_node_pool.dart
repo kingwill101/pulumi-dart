@@ -737,7 +737,7 @@ import 'vmware_node_pool_status.dart';
 ///         Location = "us-west1",
 ///         VmwareCluster = default_full.Name,
 ///         OnPremVersion = "1.33.0-gke.35",
-///         Annotations = null,
+///         Annotations = new() { },
 ///         Config = new Gcp.GkeOnPrem.Inputs.VMwareNodePoolConfigArgs
 ///         {
 ///             Cpus = 4,
@@ -1288,7 +1288,7 @@ class VMwareNodePool extends pulumi.CustomResource {
           'gcp:gkeonprem/vMwareNodePool:VMwareNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

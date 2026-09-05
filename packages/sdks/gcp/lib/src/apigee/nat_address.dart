@@ -1233,7 +1233,7 @@ class NatAddress extends pulumi.CustomResource {
           'gcp:apigee/natAddress:NatAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     activate = registerOutput<bool?>('activate');
     deletionPolicy = registerOutput<String>('deletionPolicy');

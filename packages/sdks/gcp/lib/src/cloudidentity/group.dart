@@ -250,7 +250,7 @@ class Group extends pulumi.CustomResource {
           'gcp:cloudidentity/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     additionalGroupKeys = registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');

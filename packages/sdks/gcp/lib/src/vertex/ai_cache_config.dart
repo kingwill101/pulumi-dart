@@ -160,7 +160,7 @@ class AiCacheConfig extends pulumi.CustomResource {
           'gcp:vertex/aiCacheConfig:AiCacheConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');

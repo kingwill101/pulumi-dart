@@ -562,7 +562,7 @@ class AuthorizedView extends pulumi.CustomResource {
           'gcp:bigtable/authorizedView:AuthorizedView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');

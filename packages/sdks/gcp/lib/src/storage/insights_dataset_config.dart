@@ -667,7 +667,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
           'gcp:storage/insightsDatasetConfig:InsightsDatasetConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     activityDataRetentionPeriodDays = registerOutput<int>('activityDataRetentionPeriodDays');
     createTime = registerOutput<String>('createTime');

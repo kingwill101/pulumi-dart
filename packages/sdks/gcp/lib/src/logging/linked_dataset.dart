@@ -442,7 +442,7 @@ class LinkedDataset extends pulumi.CustomResource {
           'gcp:logging/linkedDataset:LinkedDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bigqueryDatasets = registerOutput<List<LinkedDatasetBigqueryDataset>>('bigqueryDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(guardedValue, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');

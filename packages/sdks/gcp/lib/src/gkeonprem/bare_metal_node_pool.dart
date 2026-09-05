@@ -1015,7 +1015,7 @@ import 'bare_metal_node_pool_status.dart';
 ///         DisplayName = "test-name",
 ///         BareMetalCluster = default_full.Name,
 ///         Location = "us-west1",
-///         Annotations = null,
+///         Annotations = new() { },
 ///         NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalNodePoolNodePoolConfigArgs
 ///         {
 ///             OperatingSystem = "LINUX",
@@ -1559,7 +1559,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
           'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalCluster = registerOutput<String>('bareMetalCluster');

@@ -1156,7 +1156,7 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
           'gcp:bigquery/datasetAccess:DatasetAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });

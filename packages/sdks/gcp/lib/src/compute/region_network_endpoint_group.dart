@@ -1240,7 +1240,7 @@ import 'region_network_endpoint_group_state.dart';
 ///         Name = "appengine-neg",
 ///         NetworkEndpointType = "SERVERLESS",
 ///         Region = "us-central1",
-///         AppEngine = null,
+///         AppEngine = new() { },
 ///     });
 ///
 /// });
@@ -2632,7 +2632,7 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

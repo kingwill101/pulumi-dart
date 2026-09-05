@@ -1684,7 +1684,7 @@ import 'stream_state.dart';
 ///         DisplayName = "BigQuery Destination",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -2393,7 +2393,7 @@ import 'stream_state.dart';
 ///         DisplayName = "BigQuery Destination",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var stream5 = new Gcp.Datastream.Stream("stream5", new()
@@ -3180,7 +3180,7 @@ import 'stream_state.dart';
 ///         DisplayName = "BigQuery Destination",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -3228,7 +3228,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -3945,7 +3945,7 @@ import 'stream_state.dart';
 ///         DisplayName = "BigQuery Destination",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -3993,7 +3993,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -4710,7 +4710,7 @@ import 'stream_state.dart';
 ///         DisplayName = "BigQuery Destination",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "<%= ctx[:vars]['destination_connection_profile_id'] %>",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -4758,7 +4758,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -5404,7 +5404,7 @@ import 'stream_state.dart';
 ///         DisplayName = "Connection profile",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "dest-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
@@ -5499,7 +5499,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillAll = null,
+///         BackfillAll = new() { },
 ///     });
 ///
 ///     var db = new Gcp.Sql.Database("db", new()
@@ -6251,7 +6251,7 @@ import 'stream_state.dart';
 ///         DisplayName = "Connection profile",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -6279,7 +6279,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -7147,7 +7147,7 @@ import 'stream_state.dart';
 ///         DisplayName = "Connection profile",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -7175,7 +7175,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -8032,7 +8032,7 @@ import 'stream_state.dart';
 ///         DisplayName = "Connection profile",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -8060,7 +8060,7 @@ import 'stream_state.dart';
 ///                 AppendOnly = null,
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -8814,7 +8814,7 @@ import 'stream_state.dart';
 ///         ConnectionId = "blmt-connection",
 ///         FriendlyName = "Datastream BLMT Test Connection",
 ///         Description = "Connection for Datastream BLMT test",
-///         CloudResource = null,
+///         CloudResource = new() { },
 ///     });
 ///
 ///     var blmtConnectionBucketAdmin = new Gcp.Storage.BucketIAMMember("blmt_connection_bucket_admin", new()
@@ -8842,7 +8842,7 @@ import 'stream_state.dart';
 ///         DisplayName = "Connection profile",
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "blmt-destination-profile",
-///         BigqueryProfile = null,
+///         BigqueryProfile = new() { },
 ///     });
 ///
 ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -8884,7 +8884,7 @@ import 'stream_state.dart';
 ///                 AppendOnly = null,
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -9667,7 +9667,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///         RuleSets = new[]
 ///         {
 ///             new Gcp.Datastream.Inputs.StreamRuleSetArgs
@@ -10290,7 +10290,7 @@ import 'stream_state.dart';
 ///                 },
 ///             },
 ///         },
-///         BackfillNone = null,
+///         BackfillNone = new() { },
 ///     });
 ///
 /// });
@@ -10610,7 +10610,7 @@ class Stream extends pulumi.CustomResource {
           'gcp:datastream/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });

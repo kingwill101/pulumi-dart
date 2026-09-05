@@ -3104,7 +3104,7 @@ class Service extends pulumi.CustomResource {
           'gcp:cloudrun/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -813,7 +813,7 @@ class NetworkAttachment extends pulumi.CustomResource {
           'gcp:compute/networkAttachment:NetworkAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     connectionEndpoints = registerOutput<List<NetworkAttachmentConnectionEndpoint>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(guardedValue, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');

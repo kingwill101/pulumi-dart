@@ -496,7 +496,7 @@ class Dataset extends pulumi.CustomResource {
           'gcp:healthcare/dataset:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

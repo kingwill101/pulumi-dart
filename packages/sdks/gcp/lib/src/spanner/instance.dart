@@ -536,7 +536,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:spanner/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoscalingConfig = registerOutput<InstanceAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

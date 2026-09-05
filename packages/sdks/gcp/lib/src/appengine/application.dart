@@ -233,7 +233,7 @@ class Application extends pulumi.CustomResource {
           'gcp:appengine/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     authDomain = registerOutput<String>('authDomain');

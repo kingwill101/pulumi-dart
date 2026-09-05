@@ -995,7 +995,7 @@ class FlexibleAppVersion extends pulumi.CustomResource {
           'gcp:appengine/flexibleAppVersion:FlexibleAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticScaling = registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });

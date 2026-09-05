@@ -1,4 +1,8 @@
 export 'redis/cluster.dart';
+export 'redis/cluster_acl_policy.dart';
+export 'redis/cluster_acl_policy_args.dart';
+export 'redis/cluster_acl_policy_rule.dart';
+export 'redis/cluster_acl_policy_state.dart';
 export 'redis/cluster_args.dart';
 export 'redis/cluster_automated_backup_config.dart';
 export 'redis/cluster_automated_backup_config_fixed_frequency_schedule.dart';
@@ -36,6 +40,9 @@ export 'redis/cluster_user_created_connections_cluster_endpoint_connection_psc_c
 export 'redis/cluster_user_created_connections_state.dart';
 export 'redis/cluster_zone_distribution_config.dart';
 export 'redis/functions.dart';
+export 'redis/get_cluster_acl_policy_args.dart';
+export 'redis/get_cluster_acl_policy_result.dart';
+export 'redis/get_cluster_acl_policy_rule.dart';
 export 'redis/get_cluster_args.dart';
 export 'redis/get_cluster_automated_backup_config.dart';
 export 'redis/get_cluster_automated_backup_config_fixed_frequency_schedule.dart';

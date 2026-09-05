@@ -348,7 +348,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
           'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

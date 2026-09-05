@@ -3493,7 +3493,7 @@ class CloudControl extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/cloudControl:CloudControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cloudControlId = registerOutput<String>('cloudControlId');

@@ -1979,7 +1979,7 @@ class BucketIAMBinding extends pulumi.CustomResource {
           'gcp:storage/bucketIAMBinding:BucketIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<BucketIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

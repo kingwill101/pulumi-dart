@@ -937,7 +937,7 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<V2OrganizationSourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationSourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

@@ -317,8 +317,8 @@ import 'entitlement_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.privilegedaccessmanager.entitlement;
-/// import com.pulumi.gcp.privilegedaccessmanager.entitlementArgs;
+/// import com.pulumi.gcp.privilegedaccessmanager.Entitlement;
+/// import com.pulumi.gcp.privilegedaccessmanager.EntitlementArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementRequesterJustificationConfigArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementRequesterJustificationConfigUnstructuredArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementEligibleUserArgs;
@@ -499,7 +499,7 @@ class Entitlement extends pulumi.CustomResource {
           'gcp:privilegedaccessmanager/entitlement:entitlement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     additionalNotificationTargets = registerOutput<EntitlementAdditionalNotificationTargets?>('additionalNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });

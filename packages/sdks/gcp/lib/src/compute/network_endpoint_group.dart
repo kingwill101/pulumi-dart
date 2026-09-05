@@ -525,7 +525,7 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/networkEndpointGroup:NetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -227,7 +227,7 @@ import 'security_action_state.dart';
 ///                 "Public Cloud AWS",
 ///             },
 ///         },
-///         Allow = null,
+///         Allow = new() { },
 ///         ExpireTime = "2025-12-31T23:59:59Z",
 ///     }, new CustomResourceOptions
 ///     {
@@ -670,7 +670,7 @@ class SecurityAction extends pulumi.CustomResource {
           'gcp:apigee/securityAction:SecurityAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allow = registerOutput<Map<String, dynamic>?>('allow');
     apiProxies = registerOutput<List<String>?>('apiProxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

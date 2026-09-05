@@ -1430,7 +1430,7 @@ class Runtime extends pulumi.CustomResource {
           'gcp:notebooks/runtime:Runtime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -196,7 +196,7 @@ import 'security_gateway_state.dart';
 ///                 Region = "us-central1",
 ///             },
 ///         },
-///         Logging = null,
+///         Logging = new() { },
 ///     });
 ///
 /// });
@@ -712,7 +712,7 @@ class SecurityGateway extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGateway:SecurityGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');

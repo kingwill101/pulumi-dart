@@ -412,7 +412,7 @@ class DataCollector extends pulumi.CustomResource {
           'gcp:apigee/dataCollector:DataCollector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     dataCollectorId = registerOutput<String>('dataCollectorId');

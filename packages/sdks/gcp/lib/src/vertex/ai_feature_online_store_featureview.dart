@@ -2563,7 +2563,7 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///             { "foo", "bar" },
 ///         },
 ///         Region = "us-central1",
-///         Optimized = null,
+///         Optimized = new() { },
 ///         EmbeddingManagement = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs
 ///         {
 ///             Enabled = true,
@@ -3178,7 +3178,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

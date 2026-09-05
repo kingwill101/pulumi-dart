@@ -1954,7 +1954,7 @@ class Service extends pulumi.CustomResource {
           'gcp:apphub/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

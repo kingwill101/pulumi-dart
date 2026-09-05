@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'toolset_args.dart';
+import 'toolset_connector_toolset.dart';
 import 'toolset_mcp_toolset.dart';
 import 'toolset_open_api_toolset.dart';
 import 'toolset_state.dart';
@@ -4334,6 +4335,9 @@ import 'toolset_tool_fake_config.dart';
 class Toolset extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> app;
+  /// A toolset that generates tools from an Integration Connectors Connection.
+  /// Structure is documented below.
+  late final pulumi.Output<ToolsetConnectorToolset?> connectorToolset;
   /// Timestamp when the toolset was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -4372,6 +4376,10 @@ class Toolset extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The timeout for the toolset execution. If not set, the default timeout is
+  /// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+  /// toolsets.
+  late final pulumi.Output<String?> timeout;
   /// Configuration for tools behavior in fake mode.
   /// Structure is documented below.
   late final pulumi.Output<ToolsetToolFakeConfig?> toolFakeConfig;
@@ -4394,9 +4402,10 @@ class Toolset extends pulumi.CustomResource {
           'gcp:ces/toolset:Toolset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     app = registerOutput<String>('app');
+    connectorToolset = registerOutput<ToolsetConnectorToolset?>('connectorToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetConnectorToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -4408,6 +4417,7 @@ class Toolset extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openApiToolset = registerOutput<ToolsetOpenApiToolset?>('openApiToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetOpenApiToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
+    timeout = registerOutput<String?>('timeout');
     toolFakeConfig = registerOutput<ToolsetToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolsetId = registerOutput<String>('toolsetId');
     updateTime = registerOutput<String>('updateTime');
@@ -4438,6 +4448,7 @@ class Toolset extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     app = registerOutput<String>('app');
+    connectorToolset = registerOutput<ToolsetConnectorToolset?>('connectorToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetConnectorToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -4449,6 +4460,7 @@ class Toolset extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openApiToolset = registerOutput<ToolsetOpenApiToolset?>('openApiToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetOpenApiToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
+    timeout = registerOutput<String?>('timeout');
     toolFakeConfig = registerOutput<ToolsetToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolsetId = registerOutput<String>('toolsetId');
     updateTime = registerOutput<String>('updateTime');
@@ -4464,6 +4476,7 @@ class Toolset extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     app = registerOutput<String>('app');
+    connectorToolset = registerOutput<ToolsetConnectorToolset?>('connectorToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetConnectorToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -4475,6 +4488,7 @@ class Toolset extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openApiToolset = registerOutput<ToolsetOpenApiToolset?>('openApiToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetOpenApiToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
+    timeout = registerOutput<String?>('timeout');
     toolFakeConfig = registerOutput<ToolsetToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolsetId = registerOutput<String>('toolsetId');
     updateTime = registerOutput<String>('updateTime');

@@ -136,7 +136,7 @@ import 'vmware_cluster_vcenter.dart';
 ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///         Description = "test cluster",
 ///         OnPremVersion = "1.13.1-gke.35",
-///         Annotations = null,
+///         Annotations = new() { },
 ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
 ///         {
 ///             ServiceAddressCidrBlocks = new[]
@@ -588,7 +588,7 @@ import 'vmware_cluster_vcenter.dart';
 ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///         Description = "test cluster",
 ///         OnPremVersion = "1.13.1-gke.35",
-///         Annotations = null,
+///         Annotations = new() { },
 ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
 ///         {
 ///             ServiceAddressCidrBlocks = new[]
@@ -1244,7 +1244,7 @@ import 'vmware_cluster_vcenter.dart';
 ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///         Description = "test cluster",
 ///         OnPremVersion = "1.13.1-gke.35",
-///         Annotations = null,
+///         Annotations = new() { },
 ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
 ///         {
 ///             ServiceAddressCidrBlocks = new[]
@@ -1973,7 +1973,7 @@ class VMwareCluster extends pulumi.CustomResource {
           'gcp:gkeonprem/vMwareCluster:VMwareCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     adminClusterMembership = registerOutput<String>('adminClusterMembership');
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

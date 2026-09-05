@@ -108,7 +108,7 @@ class QaQuestion extends pulumi.CustomResource {
           'gcp:contactcenterinsights/qaQuestion:QaQuestion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     abbreviation = registerOutput<String?>('abbreviation');
     answerChoices = registerOutput<List<QaQuestionAnswerChoice>?>('answerChoices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaQuestionAnswerChoice>(guardedValue, (value) => QaQuestionAnswerChoice.fromMap((value as Map).cast<String, dynamic>())); });

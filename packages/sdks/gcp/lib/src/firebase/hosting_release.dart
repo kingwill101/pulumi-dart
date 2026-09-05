@@ -751,7 +751,7 @@ class HostingRelease extends pulumi.CustomResource {
           'gcp:firebase/hostingRelease:HostingRelease',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     channelId = registerOutput<String?>('channelId');
     message = registerOutput<String?>('message');

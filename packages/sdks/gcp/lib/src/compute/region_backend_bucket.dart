@@ -840,7 +840,7 @@ class RegionBackendBucket extends pulumi.CustomResource {
           'gcp:compute/regionBackendBucket:RegionBackendBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     creationTimestamp = registerOutput<String>('creationTimestamp');

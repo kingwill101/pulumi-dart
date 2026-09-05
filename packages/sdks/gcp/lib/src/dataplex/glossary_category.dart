@@ -474,7 +474,7 @@ class GlossaryCategory extends pulumi.CustomResource {
           'gcp:dataplex/glossaryCategory:GlossaryCategory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     categoryId = registerOutput<String?>('categoryId');

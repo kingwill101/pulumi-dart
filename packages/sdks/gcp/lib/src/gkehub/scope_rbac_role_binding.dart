@@ -562,7 +562,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
           'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

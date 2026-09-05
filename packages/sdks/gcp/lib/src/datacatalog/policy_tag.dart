@@ -519,7 +519,7 @@ class PolicyTag extends pulumi.CustomResource {
           'gcp:datacatalog/policyTag:PolicyTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

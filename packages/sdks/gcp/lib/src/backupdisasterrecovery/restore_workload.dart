@@ -1616,7 +1616,7 @@ class RestoreWorkload extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     backupId = registerOutput<String>('backupId');
     backupVaultId = registerOutput<String>('backupVaultId');

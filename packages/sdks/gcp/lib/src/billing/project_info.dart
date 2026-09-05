@@ -217,7 +217,7 @@ class ProjectInfo extends pulumi.CustomResource {
           'gcp:billing/projectInfo:ProjectInfo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     deletionPolicy = registerOutput<String>('deletionPolicy');

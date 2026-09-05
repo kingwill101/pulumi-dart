@@ -193,7 +193,7 @@ class Taxonomy extends pulumi.CustomResource {
           'gcp:datacatalog/taxonomy:Taxonomy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

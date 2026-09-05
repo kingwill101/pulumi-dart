@@ -609,7 +609,7 @@ class Rule extends pulumi.CustomResource {
           'gcp:chronicle/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     author = registerOutput<String>('author');

@@ -775,7 +775,7 @@ class Connector extends pulumi.CustomResource {
           'gcp:managedkafka/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     connectCluster = registerOutput<String>('connectCluster');

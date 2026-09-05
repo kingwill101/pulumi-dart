@@ -319,7 +319,7 @@ class FolderSettings extends pulumi.CustomResource {
           'gcp:logging/folderSettings:FolderSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     folder = registerOutput<String>('folder');

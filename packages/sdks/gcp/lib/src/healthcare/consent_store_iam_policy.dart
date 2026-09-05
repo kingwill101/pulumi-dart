@@ -965,7 +965,7 @@ class ConsentStoreIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     consentStoreId = registerOutput<String>('consentStoreId');
     dataset = registerOutput<String>('dataset');

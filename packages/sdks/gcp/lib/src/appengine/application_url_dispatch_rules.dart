@@ -456,7 +456,7 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
           'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dispatchRules = registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });

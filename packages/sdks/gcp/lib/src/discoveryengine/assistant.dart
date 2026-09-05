@@ -134,7 +134,7 @@ import 'assistant_state.dart';
 ///         {
 ///             basic.DataStoreId,
 ///         },
-///         SearchEngineConfig = null,
+///         SearchEngineConfig = new() { },
 ///     });
 ///
 ///     var basicAssistant = new Gcp.DiscoveryEngine.Assistant("basic", new()
@@ -479,7 +479,7 @@ class Assistant extends pulumi.CustomResource {
           'gcp:discoveryengine/assistant:Assistant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');

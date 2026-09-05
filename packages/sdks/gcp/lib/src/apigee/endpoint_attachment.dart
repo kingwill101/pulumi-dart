@@ -68,7 +68,7 @@ class EndpointAttachment extends pulumi.CustomResource {
           'gcp:apigee/endpointAttachment:EndpointAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     deletionPolicy = registerOutput<String>('deletionPolicy');

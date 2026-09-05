@@ -1064,7 +1064,7 @@ class Metric extends pulumi.CustomResource {
           'gcp:logging/metric:Metric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucketName = registerOutput<String?>('bucketName');
     bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricBucketOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

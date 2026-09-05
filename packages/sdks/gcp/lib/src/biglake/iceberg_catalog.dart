@@ -1174,7 +1174,7 @@ class IcebergCatalog extends pulumi.CustomResource {
           'gcp:biglake/icebergCatalog:IcebergCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     biglakeServiceAccount = registerOutput<String>('biglakeServiceAccount');
     biglakeServiceAccountId = registerOutput<String>('biglakeServiceAccountId');

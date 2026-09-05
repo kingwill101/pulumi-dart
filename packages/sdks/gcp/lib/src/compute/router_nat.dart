@@ -1492,7 +1492,7 @@ class RouterNat extends pulumi.CustomResource {
           'gcp:compute/routerNat:RouterNat',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     autoNetworkTier = registerOutput<String>('autoNetworkTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');

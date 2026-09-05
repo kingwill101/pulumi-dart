@@ -681,7 +681,7 @@ class FolderCustomModule extends pulumi.CustomResource {
           'gcp:securitycenter/folderCustomModule:FolderCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<FolderCustomModuleCustomConfig>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

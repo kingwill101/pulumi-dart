@@ -2178,7 +2178,7 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
     deletionPolicy = registerOutput<String>('deletionPolicy');

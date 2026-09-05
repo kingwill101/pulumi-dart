@@ -258,7 +258,7 @@ class PluginInstance extends pulumi.CustomResource {
           'gcp:apihub/pluginInstance:PluginInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     actions = registerOutput<List<PluginInstanceAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginInstanceAction>(guardedValue, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
     authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

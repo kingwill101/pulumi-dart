@@ -239,7 +239,7 @@ import 'runtime_template_state.dart';
 ///         {
 ///             EnableInternetAccess = true,
 ///         },
-///         SoftwareConfig = null,
+///         SoftwareConfig = new() { },
 ///     });
 ///
 /// });
@@ -983,7 +983,7 @@ class RuntimeTemplate extends pulumi.CustomResource {
           'gcp:colab/runtimeTemplate:RuntimeTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataPersistentDiskSpec = registerOutput<RuntimeTemplateDataPersistentDiskSpec>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

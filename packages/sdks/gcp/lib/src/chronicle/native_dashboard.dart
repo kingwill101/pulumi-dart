@@ -347,7 +347,7 @@ class NativeDashboard extends pulumi.CustomResource {
           'gcp:chronicle/nativeDashboard:NativeDashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     access = registerOutput<String?>('access');
     charts = registerOutput<List<NativeDashboardChart>>('charts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardChart>(guardedValue, (value) => NativeDashboardChart.fromMap((value as Map).cast<String, dynamic>())); });

@@ -211,7 +211,7 @@ class RouterInterface extends pulumi.CustomResource {
           'gcp:compute/routerInterface:RouterInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     interconnectAttachment = registerOutput<String?>('interconnectAttachment');

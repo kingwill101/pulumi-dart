@@ -1701,7 +1701,7 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     caPool = registerOutput<String>('caPool');
     createTime = registerOutput<String>('createTime');

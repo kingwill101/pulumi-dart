@@ -592,7 +592,7 @@ class StoragePool extends pulumi.CustomResource {
           'gcp:compute/storagePool:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     capacityProvisioningType = registerOutput<String>('capacityProvisioningType');

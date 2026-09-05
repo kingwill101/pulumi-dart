@@ -256,7 +256,7 @@ class FolderBucketConfig extends pulumi.CustomResource {
           'gcp:logging/folderBucketConfig:FolderBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -1028,7 +1028,7 @@ class DataProductIamMember extends pulumi.CustomResource {
           'gcp:dataplex/dataProductIamMember:DataProductIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<DataProductIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProductIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataProductId = registerOutput<String>('dataProductId');

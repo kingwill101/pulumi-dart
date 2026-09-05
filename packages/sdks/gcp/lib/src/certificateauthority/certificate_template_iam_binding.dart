@@ -1989,7 +1989,7 @@ class CertificateTemplateIamBinding extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     condition = registerOutput<CertificateTemplateIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

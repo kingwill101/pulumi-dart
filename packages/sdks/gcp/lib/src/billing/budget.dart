@@ -1926,7 +1926,7 @@ class Budget extends pulumi.CustomResource {
           'gcp:billing/budget:Budget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAllUpdatesRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     amount = registerOutput<BudgetAmount>('amount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAmount.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -870,7 +870,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
           'gcp:firebase/hostingCustomDomain:HostingCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     certPreference = registerOutput<String>('certPreference');
     certs = registerOutput<List<HostingCustomDomainCert>>('certs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainCert>(guardedValue, (value) => HostingCustomDomainCert.fromMap((value as Map).cast<String, dynamic>())); });

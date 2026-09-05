@@ -247,7 +247,7 @@ class ReservationAssignment extends pulumi.CustomResource {
           'gcp:bigquery/reservationAssignment:ReservationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');

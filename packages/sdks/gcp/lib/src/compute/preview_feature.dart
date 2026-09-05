@@ -204,7 +204,7 @@ class PreviewFeature extends pulumi.CustomResource {
           'gcp:compute/previewFeature:PreviewFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     activationStatus = registerOutput<String>('activationStatus');
     this.name = registerOutput<String>('name');

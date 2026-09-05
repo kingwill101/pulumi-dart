@@ -290,7 +290,7 @@ class BillingAccountSink extends pulumi.CustomResource {
           'gcp:logging/billingAccountSink:BillingAccountSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billingAccount = registerOutput<String>('billingAccount');

@@ -3074,7 +3074,7 @@ class AwsNodePool extends pulumi.CustomResource {
           'gcp:container/awsNodePool:AwsNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });

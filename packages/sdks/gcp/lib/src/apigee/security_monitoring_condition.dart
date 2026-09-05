@@ -180,7 +180,7 @@ import 'security_monitoring_condition_state.dart';
 ///         OrgId = apigeeOrg.Id,
 ///         Profile = "google-default",
 ///         Scope = "my-environment",
-///         IncludeAllResources = null,
+///         IncludeAllResources = new() { },
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -558,7 +558,7 @@ class SecurityMonitoringCondition extends pulumi.CustomResource {
           'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     conditionId = registerOutput<String>('conditionId');
     createTime = registerOutput<String>('createTime');

@@ -680,7 +680,7 @@ class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');

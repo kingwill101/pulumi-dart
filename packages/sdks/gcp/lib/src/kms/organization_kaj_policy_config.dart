@@ -199,7 +199,7 @@ class OrganizationKajPolicyConfig extends pulumi.CustomResource {
           'gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     defaultKeyAccessJustificationPolicy = registerOutput<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organization = registerOutput<String>('organization');

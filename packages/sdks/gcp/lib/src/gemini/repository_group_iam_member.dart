@@ -1071,7 +1071,7 @@ class RepositoryGroupIamMember extends pulumi.CustomResource {
           'gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     condition = registerOutput<RepositoryGroupIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGroupIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -107,7 +107,7 @@ import 'change_stream_state.dart';
 ///         Database = database.Name,
 ///         Name = "my-change-stream",
 ///         RetentionPeriod = "86400s",
-///         DatabaseScope = null,
+///         DatabaseScope = new() { },
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -630,7 +630,7 @@ class ChangeStream extends pulumi.CustomResource {
           'gcp:firestore/changeStream:ChangeStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     collectionGroupScope = registerOutput<ChangeStreamCollectionGroupScope?>('collectionGroupScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeStreamCollectionGroupScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

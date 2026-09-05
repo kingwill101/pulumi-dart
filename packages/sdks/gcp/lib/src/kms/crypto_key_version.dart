@@ -252,7 +252,7 @@ class CryptoKeyVersion extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     algorithm = registerOutput<String>('algorithm');
     attestations = registerOutput<List<CryptoKeyVersionAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CryptoKeyVersionAttestation>(guardedValue, (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>())); });

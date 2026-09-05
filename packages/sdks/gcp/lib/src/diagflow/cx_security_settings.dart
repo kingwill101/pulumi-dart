@@ -53,7 +53,7 @@ import 'cx_security_settings_state.dart';
 ///     {
 ///         DisplayName = "dialogflowcx-security-settings",
 ///         Location = "global",
-///         PurgeDataTypes = new[] {},
+///         PurgeDataTypes = new() {},
 ///         RetentionWindowDays = 7,
 ///     });
 ///
@@ -711,7 +711,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
           'gcp:diagflow/cxSecuritySettings:CxSecuritySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');

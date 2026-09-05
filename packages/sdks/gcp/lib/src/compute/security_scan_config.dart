@@ -659,7 +659,7 @@ class SecurityScanConfig extends pulumi.CustomResource {
           'gcp:compute/securityScanConfig:SecurityScanConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

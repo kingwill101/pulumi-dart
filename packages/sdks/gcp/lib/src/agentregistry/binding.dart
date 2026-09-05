@@ -407,7 +407,7 @@ class Binding extends pulumi.CustomResource {
           'gcp:agentregistry/binding:Binding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     authProviderBinding = registerOutput<BindingAuthProviderBinding>('authProviderBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingAuthProviderBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bindingId = registerOutput<String>('bindingId');

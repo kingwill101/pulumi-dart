@@ -380,7 +380,7 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
           'gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     action = registerOutput<RegionNetworkPolicyTrafficClassificationRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkPolicyTrafficClassificationRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

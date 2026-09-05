@@ -1962,7 +1962,7 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
           'gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -277,7 +277,7 @@ class Brand extends pulumi.CustomResource {
           'gcp:iap/brand:Brand',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     applicationTitle = registerOutput<String>('applicationTitle');
     this.name = registerOutput<String>('name');

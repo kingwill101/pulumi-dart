@@ -947,7 +947,7 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -1204,7 +1204,7 @@ class GuestPolicies extends pulumi.CustomResource {
           'gcp:osconfig/guestPolicies:GuestPolicies',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     assignment = registerOutput<GuestPoliciesAssignment>('assignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestPoliciesAssignment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

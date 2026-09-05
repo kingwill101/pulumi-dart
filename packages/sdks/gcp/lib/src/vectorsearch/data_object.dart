@@ -1193,7 +1193,7 @@ class DataObject extends pulumi.CustomResource {
           'gcp:vectorsearch/dataObject:DataObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     createTime = registerOutput<String>('createTime');

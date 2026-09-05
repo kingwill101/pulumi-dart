@@ -2022,7 +2022,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
           'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     checkerType = registerOutput<String>('checkerType');
     contentMatchers = registerOutput<List<UptimeCheckConfigContentMatcher>?>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(guardedValue, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>())); });

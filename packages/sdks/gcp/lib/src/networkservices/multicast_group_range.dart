@@ -446,7 +446,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
           'gcp:networkservices/multicastGroupRange:MulticastGroupRange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

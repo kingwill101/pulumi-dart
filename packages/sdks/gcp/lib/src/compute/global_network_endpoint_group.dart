@@ -312,7 +312,7 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');

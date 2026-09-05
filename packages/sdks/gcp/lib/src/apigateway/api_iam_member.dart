@@ -984,7 +984,7 @@ class ApiIamMember extends pulumi.CustomResource {
           'gcp:apigateway/apiIamMember:ApiIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     api = registerOutput<String>('api');
     condition = registerOutput<ApiIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

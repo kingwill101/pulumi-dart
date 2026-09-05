@@ -1178,7 +1178,7 @@ class ApiKey extends pulumi.CustomResource {
           'gcp:projects/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['keyString'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

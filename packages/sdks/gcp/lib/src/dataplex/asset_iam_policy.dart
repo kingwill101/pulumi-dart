@@ -1099,7 +1099,7 @@ class AssetIamPolicy extends pulumi.CustomResource {
           'gcp:dataplex/assetIamPolicy:AssetIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     asset = registerOutput<String>('asset');
     dataplexZone = registerOutput<String>('dataplexZone');

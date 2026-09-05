@@ -1989,7 +1989,7 @@ class CertificateTemplateIamMember extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     condition = registerOutput<CertificateTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

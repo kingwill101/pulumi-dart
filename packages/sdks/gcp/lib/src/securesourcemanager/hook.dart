@@ -46,7 +46,7 @@ class Hook extends pulumi.CustomResource {
   /// Set to true to stop sending traffic.
   late final pulumi.Output<bool?> disabled;
   /// The events that trigger hook on.
-  /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+  /// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
   late final pulumi.Output<List<String>> events;
   /// The ID for the Hook.
   late final pulumi.Output<String> hookId;
@@ -85,7 +85,7 @@ class Hook extends pulumi.CustomResource {
           'gcp:securesourcemanager/hook:Hook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['sensitiveQueryString'],
         ) {
     createTime = registerOutput<String>('createTime');

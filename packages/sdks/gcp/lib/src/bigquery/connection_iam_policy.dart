@@ -1017,7 +1017,7 @@ class ConnectionIamPolicy extends pulumi.CustomResource {
           'gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     etag = registerOutput<String>('etag');

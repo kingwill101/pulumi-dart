@@ -365,7 +365,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:privilegedaccessmanager/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

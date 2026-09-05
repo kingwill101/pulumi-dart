@@ -207,6 +207,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> transcoderCustomEndpoint;
   late final pulumi.Output<String?> universeDomain;
   late final pulumi.Output<String?> vectorSearchCustomEndpoint;
+  late final pulumi.Output<String?> vertexAiAadCustomEndpoint;
   late final pulumi.Output<String?> vertexAiCustomEndpoint;
   late final pulumi.Output<String?> vmwareengineCustomEndpoint;
   late final pulumi.Output<String?> vpcAccessCustomEndpoint;
@@ -228,7 +229,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'gcp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['accessToken'],
         ) {
     accessApprovalCustomEndpoint = registerOutput<String?>('accessApprovalCustomEndpoint');
@@ -431,6 +432,7 @@ class ProviderProvider extends pulumi.ProviderResource {
     transcoderCustomEndpoint = registerOutput<String?>('transcoderCustomEndpoint');
     universeDomain = registerOutput<String?>('universeDomain');
     vectorSearchCustomEndpoint = registerOutput<String?>('vectorSearchCustomEndpoint');
+    vertexAiAadCustomEndpoint = registerOutput<String?>('vertexAiAadCustomEndpoint');
     vertexAiCustomEndpoint = registerOutput<String?>('vertexAiCustomEndpoint');
     vmwareengineCustomEndpoint = registerOutput<String?>('vmwareengineCustomEndpoint');
     vpcAccessCustomEndpoint = registerOutput<String?>('vpcAccessCustomEndpoint');

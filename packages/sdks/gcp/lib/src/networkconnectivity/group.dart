@@ -315,7 +315,7 @@ class Group extends pulumi.CustomResource {
           'gcp:networkconnectivity/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoAccept = registerOutput<GroupAutoAccept?>('autoAccept', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAutoAccept.fromMap((guardedValue as Map).cast<String, dynamic>()); });

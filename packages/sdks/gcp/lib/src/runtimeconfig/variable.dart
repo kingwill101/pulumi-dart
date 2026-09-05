@@ -405,7 +405,7 @@ class Variable extends pulumi.CustomResource {
           'gcp:runtimeconfig/variable:Variable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['text', 'value'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

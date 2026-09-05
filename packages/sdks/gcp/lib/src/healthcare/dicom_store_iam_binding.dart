@@ -715,7 +715,7 @@ class DicomStoreIamBinding extends pulumi.CustomResource {
           'gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     condition = registerOutput<DicomStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dicomStoreId = registerOutput<String>('dicomStoreId');

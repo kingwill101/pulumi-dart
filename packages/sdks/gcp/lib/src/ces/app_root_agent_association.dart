@@ -117,7 +117,7 @@ import 'app_root_agent_association_state.dart';
 ///         AgentId = "agent-id",
 ///         DisplayName = "Example Agent",
 ///         Instruction = "You are a helpful assistant.",
-///         LlmAgent = null,
+///         LlmAgent = new() { },
 ///     });
 ///
 ///     var association = new Gcp.Ces.AppRootAgentAssociation("association", new()
@@ -357,7 +357,7 @@ class AppRootAgentAssociation extends pulumi.CustomResource {
           'gcp:ces/appRootAgentAssociation:AppRootAgentAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     appId = registerOutput<String>('appId');

@@ -405,7 +405,7 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');

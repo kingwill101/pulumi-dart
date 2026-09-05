@@ -441,7 +441,7 @@ class ProvisionScript extends pulumi.CustomResource {
           'gcp:sql/provisionScript:ProvisionScript',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String?>('deletionPolicy');

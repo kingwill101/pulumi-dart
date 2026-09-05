@@ -326,7 +326,7 @@ class FindingsRefinementDeployment extends pulumi.CustomResource {
           'gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     archived = registerOutput<bool?>('archived');
     detectionExclusionApplication = registerOutput<FindingsRefinementDeploymentDetectionExclusionApplication?>('detectionExclusionApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FindingsRefinementDeploymentDetectionExclusionApplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

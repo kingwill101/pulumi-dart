@@ -1043,7 +1043,7 @@ class EntryLink extends pulumi.CustomResource {
           'gcp:dataplex/entryLink:EntryLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     aspects = registerOutput<List<EntryLinkAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkAspect>(guardedValue, (value) => EntryLinkAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');

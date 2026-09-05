@@ -63,6 +63,9 @@ import 'table_state.dart';
 ///             locationUri: pulumi.interpolate`gs://${bucket.name}/${dataFolder.name}`,
 ///             inputFormat: "org.apache.hadoop.mapred.SequenceFileInputFormat",
 ///             outputFormat: "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+///             serdeInfo: {
+///                 serializationLib: "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+///             },
 ///         },
 ///         parameters: {
 ///             "spark.sql.create.version": "3.1.3",
@@ -125,6 +128,9 @@ import 'table_state.dart';
 /// ,
 ///             "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
 ///             "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+///             "serde_info": {
+///                 "serialization_lib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+///             },
 ///         },
 ///         "parameters": {
 ///             "spark.sql.create.version": "3.1.3",
@@ -212,6 +218,10 @@ import 'table_state.dart';
 ///                 }),
 ///                 InputFormat = "org.apache.hadoop.mapred.SequenceFileInputFormat",
 ///                 OutputFormat = "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+///                 SerdeInfo = new Gcp.BigLake.Inputs.TableHiveOptionsStorageDescriptorSerdeInfoArgs
+///                 {
+///                     SerializationLib = "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+///                 },
 ///             },
 ///             Parameters =
 ///             {
@@ -306,6 +316,9 @@ import 'table_state.dart';
 /// 					}).(pulumi.StringOutput),
 /// 					InputFormat:  pulumi.String("org.apache.hadoop.mapred.SequenceFileInputFormat"),
 /// 					OutputFormat: pulumi.String("org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat"),
+/// 					SerdeInfo: &biglake.TableHiveOptionsStorageDescriptorSerdeInfoArgs{
+/// 						SerializationLib: pulumi.String("org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe"),
+/// 					},
 /// 				},
 /// 				Parameters: pulumi.StringMap{
 /// 					"spark.sql.create.version":          pulumi.String("3.1.3"),
@@ -376,6 +389,9 @@ import 'table_state.dart';
 ///       location_uri  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.data_folder.name}"
 ///       input_format  = "org.apache.hadoop.mapred.SequenceFileInputFormat"
 ///       output_format = "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat"
+///       serde_info = {
+///         serialization_lib = "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe"
+///       }
 ///     }
 ///     parameters = {
 ///       "spark.sql.create.version"          = "3.1.3"
@@ -409,6 +425,7 @@ import 'table_state.dart';
 /// import com.pulumi.gcp.biglake.TableArgs;
 /// import com.pulumi.gcp.biglake.inputs.TableHiveOptionsArgs;
 /// import com.pulumi.gcp.biglake.inputs.TableHiveOptionsStorageDescriptorArgs;
+/// import com.pulumi.gcp.biglake.inputs.TableHiveOptionsStorageDescriptorSerdeInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -474,6 +491,9 @@ import 'table_state.dart';
 ///                     }))
 ///                     .inputFormat("org.apache.hadoop.mapred.SequenceFileInputFormat")
 ///                     .outputFormat("org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat")
+///                     .serdeInfo(TableHiveOptionsStorageDescriptorSerdeInfoArgs.builder()
+///                         .serializationLib("org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe")
+///                         .build())
 ///                     .build())
 ///                 .parameters(Map.ofEntries(
 ///                     Map.entry("spark.sql.create.version", "3.1.3"),
@@ -541,6 +561,8 @@ import 'table_state.dart';
 ///           locationUri: gs://${bucket.name}/${dataFolder.name}
 ///           inputFormat: org.apache.hadoop.mapred.SequenceFileInputFormat
 ///           outputFormat: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat
+///           serdeInfo:
+///             serializationLib: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
 ///         parameters:
 ///           spark.sql.create.version: 3.1.3
 ///           spark.sql.sources.schema.numParts: '1'
@@ -622,7 +644,7 @@ class Table extends pulumi.CustomResource {
           'gcp:biglake/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');

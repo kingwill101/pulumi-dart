@@ -311,7 +311,7 @@ class Database extends pulumi.CustomResource {
           'gcp:spanner/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     databaseDialect = registerOutput<String>('databaseDialect');
     ddls = registerOutput<List<String>?>('ddls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

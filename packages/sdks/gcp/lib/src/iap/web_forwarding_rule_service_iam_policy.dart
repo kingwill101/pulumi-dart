@@ -2051,7 +2051,7 @@ class WebForwardingRuleServiceIamPolicy extends pulumi.CustomResource {
           'gcp:iap/webForwardingRuleServiceIamPolicy:WebForwardingRuleServiceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     forwardingRuleServiceName = registerOutput<String>('forwardingRuleServiceName');

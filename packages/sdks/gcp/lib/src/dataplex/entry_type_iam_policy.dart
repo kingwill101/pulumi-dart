@@ -1012,7 +1012,7 @@ class EntryTypeIamPolicy extends pulumi.CustomResource {
           'gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     entryTypeId = registerOutput<String>('entryTypeId');
     etag = registerOutput<String>('etag');

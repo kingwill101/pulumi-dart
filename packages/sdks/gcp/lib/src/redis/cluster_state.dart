@@ -18,6 +18,8 @@ import 'cluster_zone_distribution_config.dart';
 
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
+  /// Optional. The name of the ACL policy to attach to the cluster.
+  final pulumi.Input<String?>? aclPolicy;
   /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
   /// Default value is `AUTH_MODE_DISABLED`.
   /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -60,6 +62,8 @@ class ClusterState {
   /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
   /// Structure is documented below.
   final pulumi.Input<ClusterGcsSource?>? gcsSource;
+  /// Optional. Whether the ACL policy is in sync with the cluster.
+  final pulumi.Input<bool?>? isAclPolicyInSync;
   /// The KMS key used to encrypt the at-rest data of the cluster.
   final pulumi.Input<String?>? kmsKey;
   /// Resource labels to represent user provided metadata.
@@ -147,6 +151,7 @@ class ClusterState {
   final pulumi.Input<ClusterZoneDistributionConfig?>? zoneDistributionConfig;
 
   /// Creates a new [ClusterState].
+  /// [aclPolicy] Optional. The name of the ACL policy to attach to the cluster.
   /// [authorizationMode] Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
   /// [automatedBackupConfig] The automated backup config for a instance.
   /// [availableMaintenanceVersions] This field is used to determine the available maintenance versions for the self service update.
@@ -159,6 +164,7 @@ class ClusterState {
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [effectiveMaintenanceVersion] This field represents the actual maintenance version of the cluster.
   /// [gcsSource] Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+  /// [isAclPolicyInSync] Optional. Whether the ACL policy is in sync with the cluster.
   /// [kmsKey] The KMS key used to encrypt the at-rest data of the cluster.
   /// [labels] Resource labels to represent user provided metadata.
   /// [maintenancePolicy] Maintenance policy for a cluster
@@ -188,6 +194,7 @@ class ClusterState {
   /// [uid] System assigned, unique identifier for the cluster.
   /// [zoneDistributionConfig] Immutable. Zone distribution config for Memorystore Redis cluster.
   const ClusterState({
+    this.aclPolicy,
     this.authorizationMode,
     this.automatedBackupConfig,
     this.availableMaintenanceVersions,
@@ -200,6 +207,7 @@ class ClusterState {
     this.effectiveLabels,
     this.effectiveMaintenanceVersion,
     this.gcsSource,
+    this.isAclPolicyInSync,
     this.kmsKey,
     this.labels,
     this.maintenancePolicy,
@@ -232,6 +240,7 @@ class ClusterState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclPolicy': ?aclPolicy,
       'authorizationMode': ?authorizationMode,
       'automatedBackupConfig': ?pulumi.Input.mapOptionalInputValue<ClusterAutomatedBackupConfig, Map<String, dynamic>>(automatedBackupConfig, (value) => value.toMap()),
       'availableMaintenanceVersions': ?availableMaintenanceVersions,
@@ -244,6 +253,7 @@ class ClusterState {
       'effectiveLabels': ?effectiveLabels,
       'effectiveMaintenanceVersion': ?effectiveMaintenanceVersion,
       'gcsSource': ?pulumi.Input.mapOptionalInputValue<ClusterGcsSource, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
+      'isAclPolicyInSync': ?isAclPolicyInSync,
       'kmsKey': ?kmsKey,
       'labels': ?labels,
       'maintenancePolicy': ?pulumi.Input.mapOptionalInputValue<ClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicy, (value) => value.toMap()),
@@ -277,6 +287,7 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
+      aclPolicy: (() { final guardedValue = map['aclPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       automatedBackupConfig: (() { final guardedValue = map['automatedBackupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -289,6 +300,7 @@ class ClusterState {
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveMaintenanceVersion: (() { final guardedValue = map['effectiveMaintenanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gcsSource: (() { final guardedValue = map['gcsSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      isAclPolicyInSync: (() { final guardedValue = map['isAclPolicyInSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       maintenancePolicy: (() { final guardedValue = map['maintenancePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

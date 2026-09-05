@@ -678,7 +678,7 @@ class EncryptionSpec extends pulumi.CustomResource {
           'gcp:diagflow/encryptionSpec:EncryptionSpec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionSpecEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

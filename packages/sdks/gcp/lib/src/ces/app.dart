@@ -565,7 +565,7 @@ import 'app_variable_declaration.dart';
 ///             },
 ///         },
 ///         GlobalInstruction = "You are a virtual assistant for an e-commerce platform. Be friendly and helpful.",
-///         Guardrails = new[] {},
+///         Guardrails = new() {},
 ///         DefaultChannelProfile = new Gcp.Ces.Inputs.AppDefaultChannelProfileArgs
 ///         {
 ///             ChannelType = "WEB_UI",
@@ -1882,7 +1882,7 @@ import 'app_variable_declaration.dart';
 ///             },
 ///         },
 ///         GlobalInstruction = "You are a virtual assistant for an e-commerce platform. Be friendly and helpful.",
-///         Guardrails = new[] {},
+///         Guardrails = new() {},
 ///         DefaultChannelProfile = new Gcp.Ces.Inputs.AppDefaultChannelProfileArgs
 ///         {
 ///             ChannelType = "WEB_UI",
@@ -2677,7 +2677,7 @@ class App extends pulumi.CustomResource {
           'gcp:ces/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAudioProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

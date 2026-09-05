@@ -85,7 +85,7 @@ class AssessmentRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/assessmentRule:AssessmentRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     assessmentRuleId = registerOutput<String?>('assessmentRuleId');

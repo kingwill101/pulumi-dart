@@ -5867,7 +5867,7 @@ class Trigger extends pulumi.CustomResource {
           'gcp:cloudbuild/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     approvalConfig = registerOutput<TriggerApprovalConfig>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bitbucketServerTriggerConfig = registerOutput<TriggerBitbucketServerTriggerConfig?>('bitbucketServerTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerBitbucketServerTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

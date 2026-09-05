@@ -219,6 +219,7 @@ class ProviderArgs {
   final pulumi.Input<String?>? universeDomain;
   final pulumi.Input<bool?>? userProjectOverride;
   final pulumi.Input<String?>? vectorSearchCustomEndpoint;
+  final pulumi.Input<String?>? vertexAiAadCustomEndpoint;
   final pulumi.Input<String?>? vertexAiCustomEndpoint;
   final pulumi.Input<String?>? vmwareengineCustomEndpoint;
   final pulumi.Input<String?>? vpcAccessCustomEndpoint;
@@ -439,6 +440,7 @@ class ProviderArgs {
   /// [universeDomain] Optional.
   /// [userProjectOverride] Optional.
   /// [vectorSearchCustomEndpoint] Optional.
+  /// [vertexAiAadCustomEndpoint] Optional.
   /// [vertexAiCustomEndpoint] Optional.
   /// [vmwareengineCustomEndpoint] Optional.
   /// [vpcAccessCustomEndpoint] Optional.
@@ -658,6 +660,7 @@ class ProviderArgs {
     this.universeDomain,
     this.userProjectOverride,
     this.vectorSearchCustomEndpoint,
+    this.vertexAiAadCustomEndpoint,
     this.vertexAiCustomEndpoint,
     this.vmwareengineCustomEndpoint,
     this.vpcAccessCustomEndpoint,
@@ -880,6 +883,7 @@ class ProviderArgs {
       'universeDomain': ?universeDomain,
       'userProjectOverride': ?userProjectOverride,
       'vectorSearchCustomEndpoint': ?vectorSearchCustomEndpoint,
+      'vertexAiAadCustomEndpoint': ?vertexAiAadCustomEndpoint,
       'vertexAiCustomEndpoint': ?vertexAiCustomEndpoint,
       'vmwareengineCustomEndpoint': ?vmwareengineCustomEndpoint,
       'vpcAccessCustomEndpoint': ?vpcAccessCustomEndpoint,
@@ -1103,6 +1107,7 @@ class ProviderArgs {
       universeDomain: (() { final guardedValue = map['universeDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userProjectOverride: (() { final guardedValue = map['userProjectOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vectorSearchCustomEndpoint: (() { final guardedValue = map['vectorSearchCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vertexAiAadCustomEndpoint: (() { final guardedValue = map['vertexAiAadCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vertexAiCustomEndpoint: (() { final guardedValue = map['vertexAiCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmwareengineCustomEndpoint: (() { final guardedValue = map['vmwareengineCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcAccessCustomEndpoint: (() { final guardedValue = map['vpcAccessCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

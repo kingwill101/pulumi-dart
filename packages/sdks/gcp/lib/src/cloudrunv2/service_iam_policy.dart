@@ -1011,7 +1011,7 @@ class ServiceIamPolicy extends pulumi.CustomResource {
           'gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

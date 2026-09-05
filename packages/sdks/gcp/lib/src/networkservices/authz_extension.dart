@@ -744,7 +744,7 @@ class AuthzExtension extends pulumi.CustomResource {
           'gcp:networkservices/authzExtension:AuthzExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authority = registerOutput<String?>('authority');

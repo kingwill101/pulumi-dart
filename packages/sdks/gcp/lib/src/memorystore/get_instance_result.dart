@@ -21,6 +21,7 @@ import 'get_instance_zone_distribution_config.dart';
 
 /// Result data returned by getInstance.
 class GetInstanceResult {
+  final String? aclPolicy;
   final String? authorizationMode;
   final List<GetInstanceAutomatedBackupConfig>? automatedBackupConfigs;
   final List<String>? availableMaintenanceVersions;
@@ -41,6 +42,7 @@ class GetInstanceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? instanceId;
+  final bool? isAclPolicyInSync;
   final String? kmsKey;
   final Map<String, String>? labels;
   final String? location;
@@ -70,6 +72,7 @@ class GetInstanceResult {
   final List<GetInstanceZoneDistributionConfig>? zoneDistributionConfigs;
 
   /// Creates a new [GetInstanceResult].
+  /// [aclPolicy] Optional.
   /// [authorizationMode] Optional.
   /// [automatedBackupConfigs] Optional.
   /// [availableMaintenanceVersions] Optional.
@@ -89,6 +92,7 @@ class GetInstanceResult {
   /// [gcsSources] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Optional.
+  /// [isAclPolicyInSync] Optional.
   /// [kmsKey] Optional.
   /// [labels] Optional.
   /// [location] Optional.
@@ -117,6 +121,7 @@ class GetInstanceResult {
   /// [updateTime] Optional.
   /// [zoneDistributionConfigs] Optional.
   const GetInstanceResult({
+    this.aclPolicy,
     this.authorizationMode,
     this.automatedBackupConfigs,
     this.availableMaintenanceVersions,
@@ -136,6 +141,7 @@ class GetInstanceResult {
     this.gcsSources,
     this.id,
     this.instanceId,
+    this.isAclPolicyInSync,
     this.kmsKey,
     this.labels,
     this.location,
@@ -167,6 +173,7 @@ class GetInstanceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclPolicy': ?aclPolicy,
       'authorizationMode': ?authorizationMode,
       'automatedBackupConfigs': ?(() { final guardedValue = automatedBackupConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceAutomatedBackupConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'availableMaintenanceVersions': ?availableMaintenanceVersions,
@@ -186,6 +193,7 @@ class GetInstanceResult {
       'gcsSources': ?(() { final guardedValue = gcsSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceGcsSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
       'instanceId': ?instanceId,
+      'isAclPolicyInSync': ?isAclPolicyInSync,
       'kmsKey': ?kmsKey,
       'labels': ?labels,
       'location': ?location,
@@ -218,6 +226,7 @@ class GetInstanceResult {
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
+      aclPolicy: (() { final guardedValue = map['aclPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       automatedBackupConfigs: (() { final guardedValue = map['automatedBackupConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceAutomatedBackupConfig>(guardedValue, (value) => GetInstanceAutomatedBackupConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
@@ -237,6 +246,7 @@ class GetInstanceResult {
       gcsSources: (() { final guardedValue = map['gcsSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceGcsSource>(guardedValue, (value) => GetInstanceGcsSource.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isAclPolicyInSync: (() { final guardedValue = map['isAclPolicyInSync']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),

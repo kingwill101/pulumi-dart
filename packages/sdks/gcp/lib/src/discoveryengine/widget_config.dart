@@ -132,7 +132,7 @@ import 'widget_config_ui_settings.dart';
 ///         },
 ///         IndustryVertical = "GENERIC",
 ///         AppType = "APP_TYPE_INTRANET",
-///         SearchEngineConfig = null,
+///         SearchEngineConfig = new() { },
 ///     });
 ///
 ///     var basicWidgetConfig = new Gcp.DiscoveryEngine.WidgetConfig("basic", new()
@@ -452,7 +452,7 @@ class WidgetConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/widgetConfig:WidgetConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     accessSettings = registerOutput<WidgetConfigAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetConfigAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');

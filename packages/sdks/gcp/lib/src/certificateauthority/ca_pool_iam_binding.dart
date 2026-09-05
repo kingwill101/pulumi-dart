@@ -1991,7 +1991,7 @@ class CaPoolIamBinding extends pulumi.CustomResource {
           'gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     caPool = registerOutput<String>('caPool');
     condition = registerOutput<CaPoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

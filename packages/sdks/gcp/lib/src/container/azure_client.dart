@@ -195,7 +195,7 @@ class AzureClient extends pulumi.CustomResource {
           'gcp:container/azureClient:AzureClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     certificate = registerOutput<String>('certificate');

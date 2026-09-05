@@ -32,7 +32,7 @@ class TagBindingCollection extends pulumi.CustomResource {
           'gcp:tags/tagBindingCollection:TagBindingCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     activeTags = registerOutput<Map<String, String>>('activeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     fullResourceName = registerOutput<String>('fullResourceName');

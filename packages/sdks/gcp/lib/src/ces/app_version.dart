@@ -276,7 +276,7 @@ class AppVersion extends pulumi.CustomResource {
           'gcp:ces/appVersion:AppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     appVersionId = registerOutput<String>('appVersionId');

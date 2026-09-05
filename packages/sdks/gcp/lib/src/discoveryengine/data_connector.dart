@@ -1206,7 +1206,7 @@ class DataConnector extends pulumi.CustomResource {
           'gcp:discoveryengine/dataConnector:DataConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
         ) {
     actionConfig = registerOutput<DataConnectorActionConfig?>('actionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorActionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionState = registerOutput<String>('actionState');
